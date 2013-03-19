@@ -20,6 +20,10 @@ static FileSystem *singleton = nil;
     return singleton;
 }
 
+- (Folder*)getRootFolder
+{
+    return _rootFolder;
+}
 
 - (id)init
 {
