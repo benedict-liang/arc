@@ -30,7 +30,9 @@ static FileSystem *singleton = nil;
     self = [super init];
     if (self) {
         // Set up the root folder.
-        
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSURL *documentUrl = [fileManager URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+        _rootFolder = [[Folder alloc] initWithURL:documentUrl];
     }
     return self;
 }
