@@ -24,9 +24,10 @@
     [super viewDidLoad];
     _fileSystem = [FileSystem getInstance];
     Folder *rootFolder = [_fileSystem getRootFolder];
-    NSArray *fileObjectsArray = [rootFolder getFiles];
+    NSArray *fileObjectsArray = [rootFolder contents];
     
-//    _codeViewController =
+    _codeViewController = [[CodeViewController alloc] init];
+    _codeViewController.delegate = self;
     FileNavigationViewController *fileNavigator = [[FileNavigationViewController alloc] initWithFiles:fileObjectsArray];
 }
 

@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainViewControllerDelegate.h"
 
 @interface CodeViewController : UIViewController
+
+// define delegate property
+@property (nonatomic, assign) id delegate;
 
 @end

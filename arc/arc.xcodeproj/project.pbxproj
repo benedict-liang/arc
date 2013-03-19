@@ -58,6 +58,7 @@
 		8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationState.m; sourceTree = "<group>"; };
 		8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewController.h; sourceTree = "<group>"; };
 		8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeViewController.m; sourceTree = "<group>"; };
+		8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewControllerDelegate.h; sourceTree = "<group>"; };
 		FC4B269C16F88CB800E1DC49 /* FileNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileNavigationViewController.h; sourceTree = "<group>"; };
 		FC4B269D16F88CB800E1DC49 /* FileNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileNavigationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +167,7 @@
 				FC4B269D16F88CB800E1DC49 /* FileNavigationViewController.m */,
 				8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */,
 				8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */,
+				8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
