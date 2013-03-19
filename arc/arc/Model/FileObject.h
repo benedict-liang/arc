@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSString* path;
 
 // The parent of this object (if any.)
-@property (strong, nonatomic) FileObject* parent;
+@property (weak, nonatomic) FileObject* parent;
 
 // Whether this object is a folder or not.
 @property bool isFolder;
