@@ -3,7 +3,7 @@
 //  arc
 //
 //  Created by Jerome Cheng on 19/3/13.
-//  Copyright (c) 2013 Benedict Liang. All rights reserved.
+//  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
