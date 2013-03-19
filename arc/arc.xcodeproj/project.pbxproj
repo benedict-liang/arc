@@ -105,11 +105,11 @@
 		4C43F8F416F86AA900159B29 /* arc */ = {
 			isa = PBXGroup;
 			children = (
-				8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */,
-				8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */,
 				8FCA1D6616F86C7000C6AAFC /* View Controllers */,
 				4C43F91116F86AFE00159B29 /* View */,
 				4C43F90E16F86AC400159B29 /* Model */,
+				8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */,
+				8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */,
 				4C43F8FD16F86AA900159B29 /* AppDelegate.h */,
 				4C43F8FE16F86AA900159B29 /* AppDelegate.m */,
 				4C43F90616F86AA900159B29 /* arc.xcdatamodeld */,
