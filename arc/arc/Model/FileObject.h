@@ -22,4 +22,8 @@
 // Pointer to the contents of this object.
 @property id contents;
 
+// Creates a FileObject to represent the given URL.
+// url should be an object on the file system.
+- (id)initWithURL:(NSURL*)url;
+
 @end
