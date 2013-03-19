@@ -1,1 +1,1 @@
-# (arc): (arc) reads code
+# Arc: Arc reads code
