@@ -22,4 +22,13 @@ static FileSystem *singleton;
     }
 }
 
+- (id) init
+{
+    self = [super init];
+    if (self) {
+        // Set up the root folder.
+        
+    }
+}
+
 @end

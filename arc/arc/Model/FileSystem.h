@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "Folder.h"
 
-@interface FileSystem : NSObject
+@interface FileSystem : NSObject {
+    Folder *_rootFolder; // The root folder.
+}
 
 // Returns the root folder of the entire file system.
 - (Folder*) getRootFolder;
