@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "UIFileNavigationController.h"
+#import "FileNavigationViewController.h"
 
-@interface UIFileNavigationController ()
+@interface FileNavigationViewController ()
 
 @end
 
-@implementation UIFileNavigationController
+@implementation FileNavigationViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

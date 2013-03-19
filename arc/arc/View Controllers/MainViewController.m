@@ -14,15 +14,6 @@
 
 @implementation MainViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)loadView
 {
     [self setView:[[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
@@ -31,10 +22,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    Folder *rootFolder = [[FileSystem getInstance] getRootFolder];
+    _fileSystem = [FileSystem getInstance];
+    Folder *rootFolder = [_fileSystem getRootFolder];
     NSArray *fileObjectsArray = [rootFolder getFiles];
     
-    //UIFileNavigatorViewController *fileNavigator = [[UIFileNavigatorViewController alloc] initWithFiles:fileObjectsArray];
+//    _codeViewController =
+    FileNavigationViewController *fileNavigator = [[FileNavigationViewController alloc] initWithFiles:fileObjectsArray];
+}
+
+- (void)showFile:(File*)file {
+    
 }
 
 - (void)didReceiveMemoryWarning
