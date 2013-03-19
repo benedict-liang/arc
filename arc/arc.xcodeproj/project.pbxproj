@@ -24,6 +24,7 @@
 		4C43F91416F86B1100159B29 /* UICodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F91316F86B1100159B29 /* UICodeView.m */; };
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
 		8FCA1D6A16F8707900C6AAFC /* FileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F91016F86AD000159B29 /* FileObject.m */; };
+		FC4B269E16F88CB800E1DC49 /* UIFileNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B269D16F88CB800E1DC49 /* UIFileNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,8 @@
 		4C43F91316F86B1100159B29 /* UICodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UICodeView.m; path = View/UICodeView.m; sourceTree = "<group>"; };
 		8FCA1D6716F86C7000C6AAFC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		8FCA1D6816F86C7000C6AAFC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		FC4B269C16F88CB800E1DC49 /* UIFileNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFileNavigationController.h; sourceTree = "<group>"; };
+		FC4B269D16F88CB800E1DC49 /* UIFileNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFileNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +159,8 @@
 			children = (
 				8FCA1D6716F86C7000C6AAFC /* MainViewController.h */,
 				8FCA1D6816F86C7000C6AAFC /* MainViewController.m */,
+				FC4B269C16F88CB800E1DC49 /* UIFileNavigationController.h */,
+				FC4B269D16F88CB800E1DC49 /* UIFileNavigationController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -234,6 +239,7 @@
 				025B52AE16F86C8700C20559 /* File.m in Sources */,
 				8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */,
 				025B52B116F86FFC00C20559 /* FileSystem.m in Sources */,
+				FC4B269E16F88CB800E1DC49 /* UIFileNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
