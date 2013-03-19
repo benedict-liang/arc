@@ -23,6 +23,7 @@
 		4C43F90816F86AA900159B29 /* arc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F90616F86AA900159B29 /* arc.xcdatamodeld */; };
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
 		8FCA1D6A16F8707900C6AAFC /* FileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F91016F86AD000159B29 /* FileObject.m */; };
+		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
 		FC4B269E16F88CB800E1DC49 /* UIFileNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B269D16F88CB800E1DC49 /* UIFileNavigationController.m */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,8 @@
 		4C43F91016F86AD000159B29 /* FileObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileObject.m; sourceTree = "<group>"; };
 		8FCA1D6716F86C7000C6AAFC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		8FCA1D6816F86C7000C6AAFC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationState.h; sourceTree = "<group>"; };
+		8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationState.m; sourceTree = "<group>"; };
 		FC4B269C16F88CB800E1DC49 /* UIFileNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFileNavigationController.h; sourceTree = "<group>"; };
 		FC4B269D16F88CB800E1DC49 /* UIFileNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFileNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +105,8 @@
 		4C43F8F416F86AA900159B29 /* arc */ = {
 			isa = PBXGroup;
 			children = (
+				8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */,
+				8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */,
 				8FCA1D6616F86C7000C6AAFC /* View Controllers */,
 				4C43F91116F86AFE00159B29 /* View */,
 				4C43F90E16F86AC400159B29 /* Model */,
@@ -234,6 +239,7 @@
 				8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */,
 				025B52B116F86FFC00C20559 /* FileSystem.m in Sources */,
 				FC4B269E16F88CB800E1DC49 /* UIFileNavigationController.m in Sources */,
+				8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

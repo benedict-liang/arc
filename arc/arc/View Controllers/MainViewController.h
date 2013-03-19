@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FileSystem.h"
+#import "Folder.h"
 
 @interface MainViewController : UIViewController {
     

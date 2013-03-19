@@ -31,11 +31,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    Folder *rootFolder = [[FileSystem getInstance] getRootFolder];
+    NSArray *fileObjectsArray = [rootFolder getFiles];
     
-    // ?!?!
-    UIWebView *wv = [[UIWebView alloc] initWithFrame:self.view.frame];
-    [wv loadHTMLString:@"<html contenteditable style='font-family:monaco;margin: 200px 50px' spellcheck='false' autocapitalize='off' autocorrect='off' autocomplete='off'>" baseURL:nil];
-    [self.view addSubview:wv];
+    //UIFileNavigatorViewController *fileNavigator = [[UIFileNavigatorViewController alloc] initWithFiles:fileObjectsArray];
 }
 
 - (void)didReceiveMemoryWarning
