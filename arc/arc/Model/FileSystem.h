@@ -10,6 +10,7 @@
 #import "Folder.h"
 
 @interface FileSystem : NSObject {
+    @private
     Folder *_rootFolder; // The root folder.
 }
 
