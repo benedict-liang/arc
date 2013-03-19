@@ -7,127 +7,123 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0289C75216F8667400CC230A /* FileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0289C75116F8667300CC230A /* FileObject.m */; };
-		8F7ED88A16F863640084F4C6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7ED88916F863640084F4C6 /* UIKit.framework */; };
-		8F7ED88C16F863640084F4C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7ED88B16F863640084F4C6 /* Foundation.framework */; };
-		8F7ED88E16F863640084F4C6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7ED88D16F863640084F4C6 /* CoreGraphics.framework */; };
-		8F7ED89016F863640084F4C6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7ED88F16F863640084F4C6 /* CoreData.framework */; };
-		8F7ED89616F863640084F4C6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F7ED89416F863640084F4C6 /* InfoPlist.strings */; };
-		8F7ED89816F863640084F4C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7ED89716F863640084F4C6 /* main.m */; };
-		8F7ED89C16F863640084F4C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7ED89B16F863640084F4C6 /* AppDelegate.m */; };
-		8F7ED89E16F863640084F4C6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F7ED89D16F863640084F4C6 /* Default.png */; };
-		8F7ED8A016F863640084F4C6 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F7ED89F16F863640084F4C6 /* Default@2x.png */; };
-		8F7ED8A216F863640084F4C6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F7ED8A116F863640084F4C6 /* Default-568h@2x.png */; };
-		8F7ED8A516F863640084F4C6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F7ED8A316F863640084F4C6 /* MainStoryboard.storyboard */; };
-		8F7ED8A816F863640084F4C6 /* arc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8F7ED8A616F863640084F4C6 /* arc.xcdatamodeld */; };
-		8F7ED8AB16F863640084F4C6 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7ED8AA16F863640084F4C6 /* MasterViewController.m */; };
-		8F7ED8AE16F863640084F4C6 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7ED8AD16F863640084F4C6 /* DetailViewController.m */; };
+		4C43F8DE16F8693300159B29 /* FileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F8DD16F8693300159B29 /* FileObject.m */; };
+		8F4B0DF716F867A4009D72A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F4B0DF616F867A4009D72A7 /* UIKit.framework */; };
+		8F4B0DF916F867A4009D72A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F4B0DF816F867A4009D72A7 /* Foundation.framework */; };
+		8F4B0DFB16F867A4009D72A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F4B0DFA16F867A4009D72A7 /* CoreGraphics.framework */; };
+		8F4B0DFD16F867A4009D72A7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F4B0DFC16F867A4009D72A7 /* CoreData.framework */; };
+		8F4B0E0316F867A4009D72A7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F4B0E0116F867A4009D72A7 /* InfoPlist.strings */; };
+		8F4B0E0516F867A4009D72A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F4B0E0416F867A4009D72A7 /* main.m */; };
+		8F4B0E0916F867A4009D72A7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F4B0E0816F867A4009D72A7 /* AppDelegate.m */; };
+		8F4B0E0B16F867A4009D72A7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4B0E0A16F867A4009D72A7 /* Default.png */; };
+		8F4B0E0D16F867A4009D72A7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4B0E0C16F867A4009D72A7 /* Default@2x.png */; };
+		8F4B0E0F16F867A4009D72A7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F4B0E0E16F867A4009D72A7 /* Default-568h@2x.png */; };
+		8F4B0E1216F867A4009D72A7 /* arc2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8F4B0E1016F867A4009D72A7 /* arc2.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0289C75016F8667300CC230A /* FileObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileObject.h; sourceTree = "<group>"; };
-		0289C75116F8667300CC230A /* FileObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileObject.m; sourceTree = "<group>"; };
-		8F7ED88616F863640084F4C6 /* arc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arc.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F7ED88916F863640084F4C6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		8F7ED88B16F863640084F4C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		8F7ED88D16F863640084F4C6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		8F7ED88F16F863640084F4C6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		8F7ED89316F863640084F4C6 /* arc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "arc-Info.plist"; sourceTree = "<group>"; };
-		8F7ED89516F863640084F4C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8F7ED89716F863640084F4C6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8F7ED89916F863640084F4C6 /* arc-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "arc-Prefix.pch"; sourceTree = "<group>"; };
-		8F7ED89A16F863640084F4C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		8F7ED89B16F863640084F4C6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8F7ED89D16F863640084F4C6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		8F7ED89F16F863640084F4C6 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		8F7ED8A116F863640084F4C6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		8F7ED8A416F863640084F4C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		8F7ED8A716F863640084F4C6 /* arc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = arc.xcdatamodel; sourceTree = "<group>"; };
-		8F7ED8A916F863640084F4C6 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		8F7ED8AA16F863640084F4C6 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		8F7ED8AC16F863640084F4C6 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		8F7ED8AD16F863640084F4C6 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		4C43F8DC16F8693300159B29 /* FileObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileObject.h; sourceTree = "<group>"; };
+		4C43F8DD16F8693300159B29 /* FileObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileObject.m; sourceTree = "<group>"; };
+		8F4B0DF316F867A4009D72A7 /* arc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F4B0DF616F867A4009D72A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8F4B0DF816F867A4009D72A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8F4B0DFA16F867A4009D72A7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8F4B0DFC16F867A4009D72A7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		8F4B0E0016F867A4009D72A7 /* arc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "arc-Info.plist"; sourceTree = "<group>"; };
+		8F4B0E0216F867A4009D72A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8F4B0E0416F867A4009D72A7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8F4B0E0616F867A4009D72A7 /* arc-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "arc-Prefix.pch"; sourceTree = "<group>"; };
+		8F4B0E0716F867A4009D72A7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8F4B0E0816F867A4009D72A7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8F4B0E0A16F867A4009D72A7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		8F4B0E0C16F867A4009D72A7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		8F4B0E0E16F867A4009D72A7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8F4B0E1116F867A4009D72A7 /* arc2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = arc2.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8F7ED88316F863640084F4C6 /* Frameworks */ = {
+		8F4B0DF016F867A4009D72A7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F7ED88A16F863640084F4C6 /* UIKit.framework in Frameworks */,
-				8F7ED88C16F863640084F4C6 /* Foundation.framework in Frameworks */,
-				8F7ED88E16F863640084F4C6 /* CoreGraphics.framework in Frameworks */,
-				8F7ED89016F863640084F4C6 /* CoreData.framework in Frameworks */,
+				8F4B0DF716F867A4009D72A7 /* UIKit.framework in Frameworks */,
+				8F4B0DF916F867A4009D72A7 /* Foundation.framework in Frameworks */,
+				8F4B0DFB16F867A4009D72A7 /* CoreGraphics.framework in Frameworks */,
+				8F4B0DFD16F867A4009D72A7 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0289C74E16F865AA00CC230A /* Model */ = {
+		4C43F8DA16F8692500159B29 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0289C75016F8667300CC230A /* FileObject.h */,
-				0289C75116F8667300CC230A /* FileObject.m */,
+				4C43F8DC16F8693300159B29 /* FileObject.h */,
+				4C43F8DD16F8693300159B29 /* FileObject.m */,
 			);
 			name = Model;
+			path = ../arc/Model;
 			sourceTree = "<group>";
 		};
-		8F7ED87D16F863640084F4C6 = {
+		4C43F8DB16F8692900159B29 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8F7ED89116F863640084F4C6 /* arc */,
-				8F7ED88816F863640084F4C6 /* Frameworks */,
-				8F7ED88716F863640084F4C6 /* Products */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		8F4B0DEA16F867A4009D72A7 = {
+			isa = PBXGroup;
+			children = (
+				8F4B0DFE16F867A4009D72A7 /* arc */,
+				8F4B0DF516F867A4009D72A7 /* Frameworks */,
+				8F4B0DF416F867A4009D72A7 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		8F7ED88716F863640084F4C6 /* Products */ = {
+		8F4B0DF416F867A4009D72A7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8F7ED88616F863640084F4C6 /* arc.app */,
+				8F4B0DF316F867A4009D72A7 /* arc.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8F7ED88816F863640084F4C6 /* Frameworks */ = {
+		8F4B0DF516F867A4009D72A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8F7ED88916F863640084F4C6 /* UIKit.framework */,
-				8F7ED88B16F863640084F4C6 /* Foundation.framework */,
-				8F7ED88D16F863640084F4C6 /* CoreGraphics.framework */,
-				8F7ED88F16F863640084F4C6 /* CoreData.framework */,
+				8F4B0DF616F867A4009D72A7 /* UIKit.framework */,
+				8F4B0DF816F867A4009D72A7 /* Foundation.framework */,
+				8F4B0DFA16F867A4009D72A7 /* CoreGraphics.framework */,
+				8F4B0DFC16F867A4009D72A7 /* CoreData.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8F7ED89116F863640084F4C6 /* arc */ = {
+		8F4B0DFE16F867A4009D72A7 /* arc */ = {
 			isa = PBXGroup;
 			children = (
-				0289C74E16F865AA00CC230A /* Model */,
-				8F7ED89A16F863640084F4C6 /* AppDelegate.h */,
-				8F7ED89B16F863640084F4C6 /* AppDelegate.m */,
-				8F7ED8A316F863640084F4C6 /* MainStoryboard.storyboard */,
-				8F7ED8A916F863640084F4C6 /* MasterViewController.h */,
-				8F7ED8AA16F863640084F4C6 /* MasterViewController.m */,
-				8F7ED8AC16F863640084F4C6 /* DetailViewController.h */,
-				8F7ED8AD16F863640084F4C6 /* DetailViewController.m */,
-				8F7ED8A616F863640084F4C6 /* arc.xcdatamodeld */,
-				8F7ED89216F863640084F4C6 /* Supporting Files */,
+				4C43F8DB16F8692900159B29 /* View */,
+				4C43F8DA16F8692500159B29 /* Model */,
+				8F4B0E0716F867A4009D72A7 /* AppDelegate.h */,
+				8F4B0E0816F867A4009D72A7 /* AppDelegate.m */,
+				8F4B0E1016F867A4009D72A7 /* arc2.xcdatamodeld */,
+				8F4B0DFF16F867A4009D72A7 /* Supporting Files */,
 			);
 			path = arc;
 			sourceTree = "<group>";
 		};
-		8F7ED89216F863640084F4C6 /* Supporting Files */ = {
+		8F4B0DFF16F867A4009D72A7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8F7ED89316F863640084F4C6 /* arc-Info.plist */,
-				8F7ED89416F863640084F4C6 /* InfoPlist.strings */,
-				8F7ED89716F863640084F4C6 /* main.m */,
-				8F7ED89916F863640084F4C6 /* arc-Prefix.pch */,
-				8F7ED89D16F863640084F4C6 /* Default.png */,
-				8F7ED89F16F863640084F4C6 /* Default@2x.png */,
-				8F7ED8A116F863640084F4C6 /* Default-568h@2x.png */,
+				8F4B0E0016F867A4009D72A7 /* arc-Info.plist */,
+				8F4B0E0116F867A4009D72A7 /* InfoPlist.strings */,
+				8F4B0E0416F867A4009D72A7 /* main.m */,
+				8F4B0E0616F867A4009D72A7 /* arc-Prefix.pch */,
+				8F4B0E0A16F867A4009D72A7 /* Default.png */,
+				8F4B0E0C16F867A4009D72A7 /* Default@2x.png */,
+				8F4B0E0E16F867A4009D72A7 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -135,101 +131,90 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8F7ED88516F863640084F4C6 /* arc */ = {
+		8F4B0DF216F867A4009D72A7 /* arc */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8F7ED8B116F863640084F4C6 /* Build configuration list for PBXNativeTarget "arc" */;
+			buildConfigurationList = 8F4B0E1516F867A4009D72A7 /* Build configuration list for PBXNativeTarget "arc" */;
 			buildPhases = (
-				8F7ED88216F863640084F4C6 /* Sources */,
-				8F7ED88316F863640084F4C6 /* Frameworks */,
-				8F7ED88416F863640084F4C6 /* Resources */,
+				8F4B0DEF16F867A4009D72A7 /* Sources */,
+				8F4B0DF016F867A4009D72A7 /* Frameworks */,
+				8F4B0DF116F867A4009D72A7 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = arc;
-			productName = arc;
-			productReference = 8F7ED88616F863640084F4C6 /* arc.app */;
+			productName = arc2;
+			productReference = 8F4B0DF316F867A4009D72A7 /* arc.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		8F7ED87E16F863640084F4C6 /* Project object */ = {
+		8F4B0DEB16F867A4009D72A7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Benedict Liang";
 			};
-			buildConfigurationList = 8F7ED88116F863640084F4C6 /* Build configuration list for PBXProject "arc" */;
+			buildConfigurationList = 8F4B0DEE16F867A4009D72A7 /* Build configuration list for PBXProject "arc" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 8F7ED87D16F863640084F4C6;
-			productRefGroup = 8F7ED88716F863640084F4C6 /* Products */;
+			mainGroup = 8F4B0DEA16F867A4009D72A7;
+			productRefGroup = 8F4B0DF416F867A4009D72A7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8F7ED88516F863640084F4C6 /* arc */,
+				8F4B0DF216F867A4009D72A7 /* arc */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8F7ED88416F863640084F4C6 /* Resources */ = {
+		8F4B0DF116F867A4009D72A7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F7ED89616F863640084F4C6 /* InfoPlist.strings in Resources */,
-				8F7ED89E16F863640084F4C6 /* Default.png in Resources */,
-				8F7ED8A016F863640084F4C6 /* Default@2x.png in Resources */,
-				8F7ED8A216F863640084F4C6 /* Default-568h@2x.png in Resources */,
-				8F7ED8A516F863640084F4C6 /* MainStoryboard.storyboard in Resources */,
+				8F4B0E0316F867A4009D72A7 /* InfoPlist.strings in Resources */,
+				8F4B0E0B16F867A4009D72A7 /* Default.png in Resources */,
+				8F4B0E0D16F867A4009D72A7 /* Default@2x.png in Resources */,
+				8F4B0E0F16F867A4009D72A7 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8F7ED88216F863640084F4C6 /* Sources */ = {
+		8F4B0DEF16F867A4009D72A7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F7ED89816F863640084F4C6 /* main.m in Sources */,
-				8F7ED89C16F863640084F4C6 /* AppDelegate.m in Sources */,
-				8F7ED8A816F863640084F4C6 /* arc.xcdatamodeld in Sources */,
-				8F7ED8AB16F863640084F4C6 /* MasterViewController.m in Sources */,
-				8F7ED8AE16F863640084F4C6 /* DetailViewController.m in Sources */,
-				0289C75216F8667400CC230A /* FileObject.m in Sources */,
+				8F4B0E0516F867A4009D72A7 /* main.m in Sources */,
+				8F4B0E0916F867A4009D72A7 /* AppDelegate.m in Sources */,
+				8F4B0E1216F867A4009D72A7 /* arc2.xcdatamodeld in Sources */,
+				4C43F8DE16F8693300159B29 /* FileObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8F7ED89416F863640084F4C6 /* InfoPlist.strings */ = {
+		8F4B0E0116F867A4009D72A7 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8F7ED89516F863640084F4C6 /* en */,
+				8F4B0E0216F867A4009D72A7 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		8F7ED8A316F863640084F4C6 /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8F7ED8A416F863640084F4C6 /* en */,
-			);
-			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		8F7ED8AF16F863640084F4C6 /* Debug */ = {
+		8F4B0E1316F867A4009D72A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -261,7 +246,7 @@
 			};
 			name = Debug;
 		};
-		8F7ED8B016F863640084F4C6 /* Release */ = {
+		8F4B0E1416F867A4009D72A7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -287,24 +272,24 @@
 			};
 			name = Release;
 		};
-		8F7ED8B216F863640084F4C6 /* Debug */ = {
+		8F4B0E1616F867A4009D72A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
-				INFOPLIST_FILE = "arc/arc-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "arc2/arc-Prefix.pch";
+				INFOPLIST_FILE = "arc2/arc-Info.plist";
+				PRODUCT_NAME = arc;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		8F7ED8B316F863640084F4C6 /* Release */ = {
+		8F4B0E1716F867A4009D72A7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
-				INFOPLIST_FILE = "arc/arc-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "arc2/arc-Prefix.pch";
+				INFOPLIST_FILE = "arc2/arc-Info.plist";
+				PRODUCT_NAME = arc;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -312,20 +297,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8F7ED88116F863640084F4C6 /* Build configuration list for PBXProject "arc" */ = {
+		8F4B0DEE16F867A4009D72A7 /* Build configuration list for PBXProject "arc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8F7ED8AF16F863640084F4C6 /* Debug */,
-				8F7ED8B016F863640084F4C6 /* Release */,
+				8F4B0E1316F867A4009D72A7 /* Debug */,
+				8F4B0E1416F867A4009D72A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8F7ED8B116F863640084F4C6 /* Build configuration list for PBXNativeTarget "arc" */ = {
+		8F4B0E1516F867A4009D72A7 /* Build configuration list for PBXNativeTarget "arc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8F7ED8B216F863640084F4C6 /* Debug */,
-				8F7ED8B316F863640084F4C6 /* Release */,
+				8F4B0E1616F867A4009D72A7 /* Debug */,
+				8F4B0E1716F867A4009D72A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -333,17 +318,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8F7ED8A616F863640084F4C6 /* arc.xcdatamodeld */ = {
+		8F4B0E1016F867A4009D72A7 /* arc2.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8F7ED8A716F863640084F4C6 /* arc.xcdatamodel */,
+				8F4B0E1116F867A4009D72A7 /* arc2.xcdatamodel */,
 			);
-			currentVersion = 8F7ED8A716F863640084F4C6 /* arc.xcdatamodel */;
-			path = arc.xcdatamodeld;
+			currentVersion = 8F4B0E1116F867A4009D72A7 /* arc2.xcdatamodel */;
+			path = arc2.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
 	};
-	rootObject = 8F7ED87E16F863640084F4C6 /* Project object */;
+	rootObject = 8F4B0DEB16F867A4009D72A7 /* Project object */;
 }

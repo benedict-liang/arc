@@ -1,6 +1,6 @@
 //
 //  main.m
-//  arc
+//  arc2
 //
 //  Created by Benedict Liang on 19/3/13.
 //  Copyright (c) 2013 Benedict Liang. All rights reserved.
