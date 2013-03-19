@@ -11,6 +11,6 @@
 @interface Folder : FileObject
 
 // Returns an NSArray of FileObjects contained by this folder.
-- (NSArray*) getFiles;
+- (NSArray*)getFiles;
 
 @end

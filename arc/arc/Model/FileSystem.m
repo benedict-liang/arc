@@ -12,7 +12,7 @@ static FileSystem *singleton = nil;
 
 @implementation FileSystem
 
-+ (FileSystem*) getInstance
++ (FileSystem*)getInstance
 {
     if (singleton == nil) {
         singleton = [[super allocWithZone:NULL] init];
@@ -20,7 +20,8 @@ static FileSystem *singleton = nil;
     return singleton;
 }
 
-- (id) init
+
+- (id)init
 {
     self = [super init];
     if (self) {
