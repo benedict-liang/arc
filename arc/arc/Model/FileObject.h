@@ -19,6 +19,9 @@
 // The parent of this object (if any.)
 @property (weak, nonatomic) FileObject* parent;
 
+// Pointer to the contents of this object.
+@property id contents;
+
 // Whether this object is a folder or not.
 @property bool isFolder;
 

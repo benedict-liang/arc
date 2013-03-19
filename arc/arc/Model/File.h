@@ -10,7 +10,5 @@
 
 @interface File : FileObject
 
-// Returns an NSString containing the full contents of this file.
-- (NSString*)getContents;
 
 @end
