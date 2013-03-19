@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FileNavigationViewController : UITableViewController
+@interface FileNavigationViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate> {
+    @private
+}
 
 -(id)initWithFiles:(NSArray*)files;
 
