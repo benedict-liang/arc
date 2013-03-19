@@ -10,5 +10,9 @@
 
 @interface Folder : FileObject
 
+// Creates a folder object to represent the given URL.
+// url should be a folder on the file system.
+- (id)initWithURL:(NSURL*)url;
+
 
 @end
