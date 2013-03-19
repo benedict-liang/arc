@@ -27,7 +27,7 @@
     NSArray *fileObjectsArray = [rootFolder getFiles];
     
 //    _codeViewController =
-    UIFileNavigationController *fileNavigator = [[UIFileNavigationController alloc] initWithFiles:fileObjectsArray];
+    FileNavigationViewController *fileNavigator = [[FileNavigationViewController alloc] initWithFiles:fileObjectsArray];
 }
 
 - (void)showFile:(File*)file {

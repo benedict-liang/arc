@@ -11,7 +11,7 @@
 #import "Folder.h"
 #import "File.h"
 #import "ApplicationState.h"
-#import "UIFileNavigationController.h"
+#import "FileNavigationViewController.h"
 
 @interface MainViewController : UIViewController {
     @private
