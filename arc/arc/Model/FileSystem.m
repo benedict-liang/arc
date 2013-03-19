@@ -8,18 +8,16 @@
 
 #import "FileSystem.h"
 
-static FileSystem *singleton;
+static FileSystem *singleton = nil;
 
 @implementation FileSystem
 
-+ (void) initialize
++ (FileSystem*) getInstance
 {
-    static BOOL initialized = NO;
-    if (!initialized)
-    {
-        initialized = YES;
-        singleton = [[FileSystem alloc] init];
+    if (singleton == nil) {
+        singleton = [[super allocWithZone:NULL] init];
     }
+    return singleton;
 }
 
 - (id) init
@@ -29,6 +27,7 @@ static FileSystem *singleton;
         // Set up the root folder.
         
     }
+    return self;
 }
 
 @end
