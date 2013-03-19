@@ -8,6 +8,18 @@
 
 #import "FileSystem.h"
 
+static FileSystem *singleton;
+
 @implementation FileSystem
+
++ (void) initialize
+{
+    static BOOL initialized = NO;
+    if (!initialized)
+    {
+        initialized = YES;
+        singleton = [[FileSystem alloc] init];
+    }
+}
 
 @end

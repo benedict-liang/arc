@@ -14,4 +14,7 @@
 // Returns the root folder of the entire file system.
 - (Folder*) getRootFolder;
 
+// Returns the single FileSystem instance.
++ (FileSystem*) getInstance;
+
 @end
