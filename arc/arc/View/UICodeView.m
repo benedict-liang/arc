@@ -30,7 +30,9 @@
 
 - (void)render:(FileObject*)file
 {
-    // TODO.
+    UIWebView *wv = [[UIWebView alloc] init];
+    [wv loadHTMLString:@"<html contenteditable></html>" baseURL:nil];
+    [self addSubview:wv];
 }
 
 @end
