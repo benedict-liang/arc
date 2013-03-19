@@ -26,8 +26,12 @@
 - (id)initWithFiles:(NSArray *)files {
     self = [super init];
     if (self) {
-        _view = [[UITableView alloc] initWithFrame:[self defaultFrame] style:UITableViewStylePlain];
+        _table = [[UITableView alloc] initWithFrame:[self defaultFrame] style:UITableViewStylePlain];
+        [_table setDataSource:self];
+        [_table setDelegate:self];
         
+        _view = _table;
+        _data = files;
     }
     return self;
 }
@@ -56,16 +60,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [_data count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -73,6 +75,9 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
     // Configure the cell...
     
     return cell;
