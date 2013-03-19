@@ -22,7 +22,4 @@
 // Pointer to the contents of this object.
 @property id contents;
 
-// Whether this object is a folder or not.
-@property bool isFolder;
-
 @end
