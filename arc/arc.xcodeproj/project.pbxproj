@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0289C75216F8667400CC230A /* FileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0289C75116F8667300CC230A /* FileObject.m */; };
 		8F7ED88A16F863640084F4C6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7ED88916F863640084F4C6 /* UIKit.framework */; };
 		8F7ED88C16F863640084F4C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7ED88B16F863640084F4C6 /* Foundation.framework */; };
 		8F7ED88E16F863640084F4C6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7ED88D16F863640084F4C6 /* CoreGraphics.framework */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0289C75016F8667300CC230A /* FileObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileObject.h; sourceTree = "<group>"; };
+		0289C75116F8667300CC230A /* FileObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileObject.m; sourceTree = "<group>"; };
 		8F7ED88616F863640084F4C6 /* arc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F7ED88916F863640084F4C6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8F7ED88B16F863640084F4C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -61,6 +64,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0289C74E16F865AA00CC230A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0289C75016F8667300CC230A /* FileObject.h */,
+				0289C75116F8667300CC230A /* FileObject.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		8F7ED87D16F863640084F4C6 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +104,7 @@
 		8F7ED89116F863640084F4C6 /* arc */ = {
 			isa = PBXGroup;
 			children = (
+				0289C74E16F865AA00CC230A /* Model */,
 				8F7ED89A16F863640084F4C6 /* AppDelegate.h */,
 				8F7ED89B16F863640084F4C6 /* AppDelegate.m */,
 				8F7ED8A316F863640084F4C6 /* MainStoryboard.storyboard */,
@@ -190,6 +203,7 @@
 				8F7ED8A816F863640084F4C6 /* arc.xcdatamodeld in Sources */,
 				8F7ED8AB16F863640084F4C6 /* MasterViewController.m in Sources */,
 				8F7ED8AE16F863640084F4C6 /* DetailViewController.m in Sources */,
+				0289C75216F8667400CC230A /* FileObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +328,7 @@
 				8F7ED8B316F863640084F4C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
