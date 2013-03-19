@@ -19,6 +19,7 @@
 		4C43F90516F86AA900159B29 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43F90416F86AA900159B29 /* Default-568h@2x.png */; };
 		4C43F90816F86AA900159B29 /* arc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F90616F86AA900159B29 /* arc.xcdatamodeld */; };
 		4C43F91416F86B1100159B29 /* UICodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F91316F86B1100159B29 /* UICodeView.m */; };
+		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		4C43F91016F86AD000159B29 /* FileObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileObject.m; sourceTree = "<group>"; };
 		4C43F91216F86B1100159B29 /* UICodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UICodeView.h; path = View/UICodeView.h; sourceTree = "<group>"; };
 		4C43F91316F86B1100159B29 /* UICodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UICodeView.m; path = View/UICodeView.m; sourceTree = "<group>"; };
+		8FCA1D6716F86C7000C6AAFC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		8FCA1D6816F86C7000C6AAFC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,7 @@
 		4C43F8F416F86AA900159B29 /* arc */ = {
 			isa = PBXGroup;
 			children = (
+				8FCA1D6616F86C7000C6AAFC /* View Controllers */,
 				4C43F91116F86AFE00159B29 /* View */,
 				4C43F90E16F86AC400159B29 /* Model */,
 				4C43F8FD16F86AA900159B29 /* AppDelegate.h */,
@@ -129,6 +133,15 @@
 				4C43F91316F86B1100159B29 /* UICodeView.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		8FCA1D6616F86C7000C6AAFC /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8FCA1D6716F86C7000C6AAFC /* MainViewController.h */,
+				8FCA1D6816F86C7000C6AAFC /* MainViewController.m */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +213,7 @@
 				4C43F8FF16F86AA900159B29 /* AppDelegate.m in Sources */,
 				4C43F90816F86AA900159B29 /* arc.xcdatamodeld in Sources */,
 				4C43F91416F86B1100159B29 /* UICodeView.m in Sources */,
+				8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +330,7 @@
 				4C43F90D16F86AA900159B29 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
