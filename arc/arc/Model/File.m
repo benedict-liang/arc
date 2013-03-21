@@ -10,4 +10,12 @@
 
 @implementation File
 
+- (id)initWithURL:(NSURL *)url {
+    self = [super initWithURL:url];
+    if (self) {
+        [self setContents:[NSString stringWithContentsOfFile:[self path] encoding:NSUTF8StringEncoding error:nil]];
+    }
+    return self;
+}
+
 @end
