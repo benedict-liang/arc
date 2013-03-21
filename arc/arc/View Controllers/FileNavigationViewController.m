@@ -30,7 +30,8 @@
         [_table setDataSource:self];
         [_table setDelegate:self];
         
-        _view = _table;
+//        _view = _table;
+        [self setView:_table];
         _data = files;
     }
     return self;
