@@ -14,4 +14,6 @@
 // define delegate property
 @property (nonatomic, assign) id delegate;
 
+//TODO: Needs a show file method that takes in a file object
+
 @end
