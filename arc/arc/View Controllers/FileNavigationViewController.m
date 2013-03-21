@@ -36,7 +36,7 @@
     }
     return self;
 }
-
+    //TODO temporary. Should be managed by MainViewController as it depends on orientation
 - (CGRect)defaultFrame {
     return CGRectMake(0, 0, 100, 200);
 }
@@ -84,6 +84,8 @@
     return cell;
 }
 #pragma mark - Table view delegate
+
+//TODO implement protocol to send selected result back to MainView VC
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

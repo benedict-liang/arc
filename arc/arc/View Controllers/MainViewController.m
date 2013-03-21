@@ -28,6 +28,7 @@
     
     _codeViewController = [[CodeViewController alloc] init];
     _codeViewController.delegate = self;
+    //poor man's unit test :P
     _fileNavigator = [[FileNavigationViewController alloc] initWithFiles:@[@"test1",@"test2"]];
     [self.view addSubview:_fileNavigator.view];
 }
