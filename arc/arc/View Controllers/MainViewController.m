@@ -35,7 +35,20 @@
     [self.view addSubview:_fileNavigator.view];
 }
 
+#pragma mark - MainViewControllerDelegate Methods
+
+// Shows the file using the CodeViewController
 - (void)showFile:(File*)file {
+
+}
+
+// Updates the FileNavigatorViewController view after adding a folder
+- (void)updateAddFolderView:(Folder*)folder {
+    
+}
+
+// Updates the FileNavigatorViewController view after adding a file
+- (void)updateAddFileView:(File*)file {
     
 }
 
