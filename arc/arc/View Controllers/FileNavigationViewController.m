@@ -26,13 +26,13 @@
 - (id)initWithFiles:(NSArray *)files {
     self = [super init];
     if (self) {
-        _table = [[UITableView alloc] initWithFrame:[self defaultFrame] style:UITableViewStylePlain];
-        [_table setDataSource:self];
-        [_table setDelegate:self];
-        
-//        _view = _table;
-        [self setView:_table];
+        UITableView* table = [[UITableView alloc] initWithFrame:[self defaultFrame] style:UITableViewStylePlain];
         _data = files;
+        [table setDataSource:self];
+        [table setDelegate:self];
+        [table reloadData];
+        [self setView:table];
+        
     }
     return self;
 }
@@ -74,13 +74,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     // Configure the cell...
-    
+    cell.textLabel.text = [self.data objectAtIndex:indexPath.row];
     return cell;
 }
 #pragma mark - Table view delegate

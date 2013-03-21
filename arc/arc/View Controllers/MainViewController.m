@@ -28,7 +28,8 @@
     
     _codeViewController = [[CodeViewController alloc] init];
     _codeViewController.delegate = self;
-    FileNavigationViewController *fileNavigator = [[FileNavigationViewController alloc] initWithFiles:fileObjectsArray];
+    _fileNavigator = [[FileNavigationViewController alloc] initWithFiles:@[@"test1",@"test2"]];
+    [self.view addSubview:_fileNavigator.view];
 }
 
 - (void)showFile:(File*)file {

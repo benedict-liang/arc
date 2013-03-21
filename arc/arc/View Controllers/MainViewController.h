@@ -21,6 +21,7 @@
     @private
     FileSystem *_fileSystem;
     CodeViewController *_codeViewController;
+    FileNavigationViewController *_fileNavigator;
 }
 
 

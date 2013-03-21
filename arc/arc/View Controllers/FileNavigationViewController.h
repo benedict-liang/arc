@@ -8,11 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FileNavigationViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate> {
-    @private
-    UITableView* _table;
-    NSArray* _data;
-}
+@interface FileNavigationViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+@property(nonatomic) NSArray* data;
 -(id)initWithFiles:(NSArray*)files;
 
 @end
