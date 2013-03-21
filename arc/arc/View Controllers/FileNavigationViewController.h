@@ -14,4 +14,7 @@
 //Currently files is considered an array of strings. I'm thinking it would be helpful to pass the filesystem here, as the FileNavigator would need to view the file heirarchy.
 -(id)initWithFiles:(NSArray*)files;
 
+// define delegate property
+@property (nonatomic, assign) id delegate;
+
 @end
