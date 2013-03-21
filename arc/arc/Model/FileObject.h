@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FileObject : NSObject
+@interface FileObject : NSObject {
+    @private
+    NSURL* _url;
+}
 
 // The name of this object.
 @property (strong, nonatomic) NSString* name;

@@ -17,6 +17,7 @@
         NSURL *filePathUrl = [url filePathURL];
         _name = [filePathUrl lastPathComponent];
         _path = [filePathUrl absoluteString];
+        _url = filePathUrl;
     }
     return self;
 }
