@@ -73,4 +73,28 @@ static FileSystem *singleton = nil;
     return [NSString stringWithContentsOfFile:[file path] encoding:NSUTF8StringEncoding error:nil];
 }
 
+// Creates a folder with the given name within the given folder.
+// Returns YES if successful, NO otherwise.
+- (BOOL)createFolderWithName:(NSString*)name inFolder:(Folder*)folder
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    // Replace all spaces in the string with %20.
+    // (This is an existing pre-defined method. Wow.)
+    NSString *escapedName = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    // Add a / to the end, if necessary.
+    NSString *formattedName;
+    if ([escapedName hasSuffix:@"/"]) {
+        formattedName = escapedName;
+    } else {
+        formattedName = [escapedName stringByAppendingString:@"/"];
+    }
+    
+    NSURL *currentFolderURL = [NSURL URLWithString:[folder path]];
+    NSURL *newFolderURL = [NSURL URLWithString:formattedName relativeToURL:currentFolderURL];
+    
+    return [fileManager createDirectoryAtURL:newFolderURL withIntermediateDirectories:YES attributes:nil error:nil];
+}
+
 @end
