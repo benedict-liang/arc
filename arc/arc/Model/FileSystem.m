@@ -37,4 +37,28 @@ static FileSystem *singleton = nil;
     return self;
 }
 
+// Returns an NSArray of FileObjects, corresponding to the contents
+// of the given folder.
+- (NSArray*)getFolderContents:(Folder *)folder
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *allPaths = [fileManager contentsOfDirectoryAtPath:[folder path] error:nil];
+    NSMutableArray *folderObjects = [[NSMutableArray alloc] initWithCapacity:0];
+    NSMutableArray *fileObjects = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    for (NSString *currentPath in allPaths) {
+        NSURL *currentURL = [[NSURL alloc] initWithString:currentPath];
+        if ([fileManager fileExistsAtPath:currentPath isDirectory:YES]) {
+            Folder *currentFolder = [[Folder alloc] initWithURL:currentURL];
+            [folderObjects addObject:currentFolder];
+        } else {
+            File *currentFile = [[File alloc] initWithURL:currentURL];
+            [fileObjects addObject:currentFile];
+        }
+    }
+    
+    [folderObjects addObjectsFromArray:fileObjects];
+    return folderObjects;
+}
+
 @end

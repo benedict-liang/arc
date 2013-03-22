@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Folder.h"
+#import "File.h"
 
 @interface FileSystem : NSObject {
     @private
