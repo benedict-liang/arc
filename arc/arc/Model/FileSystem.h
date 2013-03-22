@@ -28,4 +28,8 @@
 // Returns an NSString containing the contents of the given file.
 - (NSString*)getFileContents:(File*)file;
 
+// Creates a folder with the given name within the given folder.
+// Returns YES if successful, NO otherwise.
+- (BOOL)createFolderWithName:(NSString*)name inFolder:(Folder*)folder;
+
 @end
