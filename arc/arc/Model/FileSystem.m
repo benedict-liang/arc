@@ -52,7 +52,9 @@ static FileSystem *singleton = nil;
     
     for (NSString *currentPath in allPaths) {
         NSURL *currentURL = [[NSURL alloc] initWithString:currentPath];
-        if ([fileManager fileExistsAtPath:currentPath isDirectory:YES]) {
+        BOOL isCurrentDirectory;
+        [fileManager fileExistsAtPath:currentPath isDirectory:&isCurrentDirectory];
+        if (isCurrentDirectory) {
             Folder *currentFolder = [[Folder alloc] initWithURL:currentURL];
             [folderObjects addObject:currentFolder];
         } else {
