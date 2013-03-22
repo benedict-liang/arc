@@ -20,4 +20,11 @@
 // Returns the single FileSystem instance.
 + (FileSystem*)getInstance;
 
+// Returns an NSArray of FileObjects, corresponding to the contents
+// of the given folder.
+- (NSArray*)getFolderContents:(Folder*)folder;
+
+// Returns an NSString containing the contents of the given file.
+- (NSString*)getFileContents:(File*)file;
+
 @end
