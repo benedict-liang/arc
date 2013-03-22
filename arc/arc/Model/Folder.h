@@ -11,13 +11,4 @@
 
 @interface Folder : FileObject
 
-// Creates a folder with the given name inside this folder.
-// Returns YES if successful, NO otherwise.
-- (BOOL)addFolder:(NSString*)folderName;
-
-// Adds the given file to this folder.
-// Returns YES if successful, NO otherwise.
-- (BOOL)addFile:(File*)file;
-
-
 @end
