@@ -61,4 +61,10 @@ static FileSystem *singleton = nil;
     return folderObjects;
 }
 
+// Returns an NSString containing the contents of the given file.
+- (NSString*)getFileContents:(File*)file
+{
+    return [NSString stringWithContentsOfFile:[file path] encoding:NSUTF8StringEncoding error:nil];
+}
+
 @end
