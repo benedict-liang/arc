@@ -33,6 +33,10 @@ static FileSystem *singleton = nil;
         NSFileManager *fileManager = [NSFileManager defaultManager];
         NSURL *documentUrl = [fileManager URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
         _rootFolder = [[Folder alloc] initWithURL:documentUrl];
+        
+        // If it doesn't already exist, create the "External" folder.
+        NSURL *externalRelativeUrl = [NSURL URLWithString:@"./Received%20Documents/" relativeToURL:documentUrl];
+        BOOL createdRelative = [fileManager createDirectoryAtURL:externalRelativeUrl withIntermediateDirectories:YES attributes:nil error:nil];
     }
     return self;
 }
