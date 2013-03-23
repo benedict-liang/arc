@@ -30,6 +30,7 @@
     for (FileObject *currentObject in fileObjectsArray) {
         NSLog(@"%@", [currentObject name]);
         NSLog(@"Folder? %@", [currentObject isKindOfClass:[Folder class]] ? @"Yes" : @"No");
+        NSLog(@"%@", [currentObject getContents]);
     }
     
     _codeViewController = [[CodeViewController alloc] init];
