@@ -44,6 +44,7 @@
 - (id)getContents;
 
 // Removes this object from the file system.
-- (void)remove;
+// Returns YES if successful, NO otherwise.
+- (BOOL)remove;
 
 @end

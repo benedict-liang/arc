@@ -65,7 +65,8 @@
 }
 
 // Removes this object from the file system.
-- (void)remove
+// Returns YES if successful, NO otherwise.
+- (BOOL)remove
 {
     // This method must be implemented in a subclass.
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"Method %@ not implemented in FileObject.", NSStringFromSelector(_cmd)] userInfo:nil];
