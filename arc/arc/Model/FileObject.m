@@ -16,10 +16,9 @@
 {
     self = [super init];
     if (self) {
-        NSURL *filePathUrl = [url filePathURL];
-        _name = [filePathUrl lastPathComponent];
-        _path = [filePathUrl absoluteString];
-        _url = filePathUrl;
+        _name = [url lastPathComponent];
+        _path = [url absoluteString];
+        _url = url;
         _needsRefresh = YES;
     }
     return self;
