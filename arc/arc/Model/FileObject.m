@@ -50,4 +50,20 @@
     }
 }
 
+// Refreshes the contents of this object by reloading them
+// from the file system.
+// Returns the contents when done.
+- (id)refreshContents
+{
+    // This method must be implemented in a subclass.
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"Method %@ not implemented in FileObject.", NSStringFromSelector(_cmd)] userInfo:nil];
+}
+
+// Removes this object from the file system.
+- (void)remove
+{
+    // This method must be implemented in a subclass.
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"Method %@ not implemented in FileObject.", NSStringFromSelector(_cmd)] userInfo:nil];
+}
+
 @end
