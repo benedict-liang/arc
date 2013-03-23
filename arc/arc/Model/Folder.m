@@ -22,14 +22,14 @@
     NSMutableArray *folderObjects = [[NSMutableArray alloc] initWithCapacity:0];
     NSMutableArray *fileObjects = [[NSMutableArray alloc] initWithCapacity:0];
     
-    for (NSString *currentPath in allPaths) {
-        NSURL *currentURL = [[NSURL alloc] initWithString:currentPath];
-        BOOL isCurrentDirectory;
+    for (NSString *currentName in allPaths) {
+        NSString *escapedName = [currentName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSURL *currentURL = [[NSURL alloc] initWithString:escapedName relativeToURL:_url];
         
-        // We don't need to check that the file actually exists,
-        // since we wouldn't have its path if it didn't. We just need
-        // to see if it's a directory.
-        [fileManager fileExistsAtPath:currentPath isDirectory:&isCurrentDirectory];
+        // We already know the file exists, but we need to figure out if
+        // it's a file or folder.
+        BOOL isCurrentDirectory;
+        [fileManager fileExistsAtPath:[currentURL path] isDirectory:&isCurrentDirectory];
         if (isCurrentDirectory) {
             Folder *currentFolder = [[Folder alloc] initWithURL:currentURL parent:self];
             [folderObjects addObject:currentFolder];
