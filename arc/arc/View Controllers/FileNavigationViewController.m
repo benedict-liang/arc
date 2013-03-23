@@ -13,6 +13,7 @@
 @end
 
 @implementation FileNavigationViewController
+@synthesize delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
