@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "File.h"
+#import "Folder.h"
 
 @interface ApplicationState : NSObject
+
+@property (strong, nonatomic) File *currentFileOpened;
+@property (strong, nonatomic) Folder *currentFolderOpened;
 
 @end

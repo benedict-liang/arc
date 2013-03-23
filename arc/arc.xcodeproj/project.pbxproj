@@ -250,8 +250,8 @@
 		4CD06B7D16FDF59E00C9DED3 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				8F5C5C1416FDFDBE00B31A19 /* Utils.m */,
 				8F5C5C1516FDFDBE00B31A19 /* Utils.h */,
+				8F5C5C1416FDFDBE00B31A19 /* Utils.m */,
 				4CD06B7E16FDF61C00C9DED3 /* Constants.h */,
 				4CD06B7F16FDF61C00C9DED3 /* Constants.m */,
 				8F5C5C1716FDFED300B31A19 /* Find.h */,
