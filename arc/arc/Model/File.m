@@ -7,6 +7,7 @@
 //
 
 #import "File.h"
+#import "Folder.h"
 
 @implementation File
 

@@ -7,7 +7,8 @@
 //
 
 #import "FileObject.h"
-#import "Folder.h"
+
+@class Folder;
 
 @interface File : FileObject
 
