@@ -10,4 +10,29 @@
 
 @implementation Folder
 
+- (id)refreshContents
+{
+    // Load the contents of this folder.
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *allPaths = [fileManager contentsOfDirectoryAtPath:[self path] error:nil];
+    NSMutableArray *folderObjects = [[NSMutableArray alloc] initWithCapacity:0];
+    NSMutableArray *fileObjects = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    for (NSString *currentPath in allPaths) {
+        NSURL *currentURL = [[NSURL alloc] initWithString:currentPath];
+        BOOL isCurrentDirectory;
+        [fileManager fileExistsAtPath:currentPath isDirectory:&isCurrentDirectory];
+        if (isCurrentDirectory) {
+            Folder *currentFolder = [[Folder alloc] initWithURL:currentURL parent:self];
+            [folderObjects addObject:currentFolder];
+        } else {
+            File *currentFile = [[File alloc] initWithURL:currentURL parent:self];
+            [fileObjects addObject:currentFile];
+        }
+    }
+    
+    [folderObjects addObjectsFromArray:fileObjects];
+    return folderObjects;
+}
+
 @end
