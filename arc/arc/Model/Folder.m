@@ -46,9 +46,14 @@
 }
 
 // Removes this object from the file system.
-- (void)remove
+- (BOOL)remove
 {
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"Method %@ not implemented in Folder.", NSStringFromSelector(_cmd)] userInfo:nil];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL success = [fileManager removeItemAtURL:_url error:nil];
+    if (success) {
+        [[self parent] flagForRefresh];
+    }
+    return success;
 }
 
 @end
