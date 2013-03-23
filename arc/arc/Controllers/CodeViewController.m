@@ -30,20 +30,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    CGColorRef color = [UIColor grayColor].CGColor;
+    CTFontRef font = CTFontCreateWithName(CFSTR("Source Code Pro"), 40.0, NULL);
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    // Font
+                                    (__bridge id)font, (id)kCTFontAttributeName,
+
+                                    // Color
+                                    color, (id)kCTForegroundColorAttributeName,
+                                    nil
+                                ];
     
     NSString *str = @"(define arc '(arc reads code))";
-    
-    UIFont *font = [UIFont fontWithName:@"Source Code Pro" size:50.0f];
-    NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:str];
-
-    [string addAttribute:NSForegroundColorAttributeName
-                   value:[UIColor grayColor]
-                   range:NSMakeRange(0,str.length)];
-    
-    [string addAttribute:NSFontAttributeName
-                   value:font
-                   range:NSMakeRange(0,str.length)];
-    
+    NSAttributedString * string = [[NSMutableAttributedString alloc]
+                                   initWithString:str
+                                   attributes:attributes];
     [self.view setAttributedString:string];
 }
 
