@@ -40,4 +40,10 @@
     return folderObjects;
 }
 
+// Removes this object from the file system.
+- (void)remove
+{
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"Method %@ not implemented in Folder.", NSStringFromSelector(_cmd)] userInfo:nil];
+}
+
 @end
