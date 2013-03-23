@@ -18,7 +18,7 @@
 {
     // Load the contents of this folder.
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *allPaths = [fileManager contentsOfDirectoryAtPath:[self path] error:nil];
+    NSArray *allPaths = [fileManager contentsOfDirectoryAtPath:[_url path] error:nil];
     NSMutableArray *folderObjects = [[NSMutableArray alloc] initWithCapacity:0];
     NSMutableArray *fileObjects = [[NSMutableArray alloc] initWithCapacity:0];
     

@@ -40,7 +40,7 @@
 // File returns an NSString of the text contained within it.
 - (id)refreshContents
 {
-    _contents = [NSString stringWithContentsOfFile:[self path] encoding:NSUTF8StringEncoding error:nil];
+    _contents = [NSString stringWithContentsOfFile:[_url path] encoding:NSUTF8StringEncoding error:nil];
     _needsRefresh = NO;
     return _contents;
 }
