@@ -49,11 +49,11 @@
 - (BOOL)remove
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    BOOL success = [fileManager removeItemAtURL:_url error:nil];
-    if (success) {
+    BOOL isRemovalSuccessful = [fileManager removeItemAtURL:_url error:nil];
+    if (isRemovalSuccessful) {
         [[self parent] flagForRefresh];
     }
-    return success;
+    return isRemovalSuccessful;
 }
 
 // Renames the folder to the given name.
@@ -64,11 +64,11 @@
     NSString *newPath = [parentPath stringByAppendingPathComponent:name];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    BOOL success = [fileManager moveItemAtPath:[self path] toPath:newPath error:nil];
-    if (success) {
+    BOOL isRenameSuccessful = [fileManager moveItemAtPath:[self path] toPath:newPath error:nil];
+    if (isRenameSuccessful) {
         [[self parent] flagForRefresh];
     }
-    return success;
+    return isRenameSuccessful;
 }
 
 - (BOOL)createFolder:(NSString *)name
@@ -88,11 +88,11 @@
     
     NSURL *newFolderURL = [NSURL URLWithString:formattedName relativeToURL:_url];
     
-    BOOL success = [fileManager createDirectoryAtURL:newFolderURL withIntermediateDirectories:YES attributes:nil error:nil];
-    if (success) {
+    BOOL isCreateSuccessful = [fileManager createDirectoryAtURL:newFolderURL withIntermediateDirectories:YES attributes:nil error:nil];
+    if (isCreateSuccessful) {
         [self flagForRefresh];
     }
-    return success;
+    return isCreateSuccessful;
 }
 
 @end
