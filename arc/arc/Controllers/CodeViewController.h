@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "SubViewController.h"
+#import "CoreTextUIView.h"
 
 @interface CodeViewController : UIViewController<SubViewController>
-
-//TODO: Needs a show file method that takes in a file object
+@property (nonatomic, strong) CoreTextUIView *view;
 @end
