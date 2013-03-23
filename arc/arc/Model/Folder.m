@@ -10,6 +10,9 @@
 
 @implementation Folder
 
+// Refreshes the contents of this object by reloading them
+// from the file system.
+// Returns the contents when done.
 - (id)refreshContents
 {
     // Load the contents of this folder.
