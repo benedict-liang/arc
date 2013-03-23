@@ -13,6 +13,7 @@
 #import "File.h"
 #import "FileNavigationViewController.h"
 #import "CodeViewController.h"
+#import "Constants.h"
 
 @interface MainViewController ()
 @property CodeViewController *codeViewController;
@@ -46,13 +47,18 @@
         NSLog(@"%@", [currentObject getContents]);
     }
     
+    // TODO
+    // this is temporary to glue the stuff together.
+    // - ymichael
     _codeViewController = [[CodeViewController alloc] init];
     _codeViewController.delegate = self;
+    _codeViewController.view.frame = SIZE_CODE_VIEW_PORTRAIT;
     
     _fileNavigator = [[FileNavigationViewController alloc] initWithFolder:_rootFolder];
     _fileNavigator.delegate = self;
     
     [self.view addSubview:_fileNavigator.view];
+    [self.view addSubview:_codeViewController.view];
 }
 
 #pragma mark - MainViewControllerDelegate Methods

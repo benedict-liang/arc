@@ -26,6 +26,8 @@
 		4CD06B6E16FDEEC100C9DED3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EE16F86AA900159B29 /* Foundation.framework */; };
 		4CD06B7416FDEEC100C9DED3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CD06B7216FDEEC100C9DED3 /* InfoPlist.strings */; };
 		4CD06B7716FDEEC100C9DED3 /* arcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7616FDEEC100C9DED3 /* arcTests.m */; };
+		4CD06B8016FDF61C00C9DED3 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7F16FDF61C00C9DED3 /* Constants.m */; };
+		4CD06B8316FDF62800C9DED3 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B8216FDF62800C9DED3 /* Utils.m */; };
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
 		8FCA1D6A16F8707900C6AAFC /* FileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F91016F86AD000159B29 /* FileObject.m */; };
 		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
@@ -70,6 +72,10 @@
 		4CD06B7516FDEEC100C9DED3 /* arcTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = arcTests.h; sourceTree = "<group>"; };
 		4CD06B7616FDEEC100C9DED3 /* arcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = arcTests.m; sourceTree = "<group>"; };
 		4CD06B7816FDEEC100C9DED3 /* arcTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "arcTests-Prefix.pch"; sourceTree = "<group>"; };
+		4CD06B7E16FDF61C00C9DED3 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = General/Constants.h; sourceTree = "<group>"; };
+		4CD06B7F16FDF61C00C9DED3 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = General/Constants.m; sourceTree = "<group>"; };
+		4CD06B8116FDF62800C9DED3 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		4CD06B8216FDF62800C9DED3 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		8FCA1D6716F86C7000C6AAFC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		8FCA1D6816F86C7000C6AAFC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationState.h; sourceTree = "<group>"; };
@@ -143,6 +149,7 @@
 		4C43F8F416F86AA900159B29 /* arc */ = {
 			isa = PBXGroup;
 			children = (
+				4CD06B7D16FDF59E00C9DED3 /* General */,
 				8FCA1D6616F86C7000C6AAFC /* Controllers */,
 				4C43F91116F86AFE00159B29 /* View */,
 				4C43F90E16F86AC400159B29 /* Model */,
@@ -229,6 +236,17 @@
 				4CD06B7816FDEEC100C9DED3 /* arcTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4CD06B7D16FDF59E00C9DED3 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				4CD06B7E16FDF61C00C9DED3 /* Constants.h */,
+				4CD06B7F16FDF61C00C9DED3 /* Constants.m */,
+				4CD06B8116FDF62800C9DED3 /* Utils.h */,
+				4CD06B8216FDF62800C9DED3 /* Utils.m */,
+			);
+			name = General;
 			sourceTree = "<group>";
 		};
 		8FCA1D6616F86C7000C6AAFC /* Controllers */ = {
@@ -364,6 +382,8 @@
 				8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */,
 				8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */,
 				028DA2D716FD827000E2E5D9 /* RootFolder.m in Sources */,
+				4CD06B8016FDF61C00C9DED3 /* Constants.m in Sources */,
+				4CD06B8316FDF62800C9DED3 /* Utils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
