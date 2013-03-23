@@ -11,6 +11,7 @@
 @interface FileObject : NSObject {
     @private
     NSURL* _url;
+    id _contents;
 }
 
 // The name of this object.
@@ -21,9 +22,6 @@
 
 // The parent of this object (if any.)
 @property (weak, nonatomic) FileObject* parent;
-
-// The contents of this object.
-@property id contents;
 
 // Creates a FileObject to represent the given URL.
 // url should be an object on the file system.
@@ -37,6 +35,9 @@
 // them from the file system.
 // Returns the contents when done.
 - (id)refreshContents;
+
+// Gets the contents of this object.
+- (id)getContents;
 
 // Removes this object from the file system.
 - (void)remove;
