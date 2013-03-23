@@ -11,4 +11,8 @@
 
 @interface Folder : FileObject
 
+// Renames the folder to the given name.
+// Returns YES if successful, NO otherwise.
+- (BOOL)rename:(NSString*)name;
+
 @end

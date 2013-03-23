@@ -56,4 +56,16 @@
     return success;
 }
 
+// Renames the folder to the given name.
+// Returns YES if successful, NO otherwise.
+- (BOOL)rename:(NSString*)name
+{
+    NSString *parentPath = [[[self parent] path] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *newPath = [parentPath stringByAppendingPathComponent:name];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL success = [fileManager moveItemAtPath:[self path] toPath:newPath error:nil];
+    return success;
+}
+
 @end
