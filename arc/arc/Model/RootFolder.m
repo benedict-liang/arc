@@ -28,11 +28,6 @@ static RootFolder *singleton = nil;
 
     if (self = [super initWithURL:documentUrl]) {
         [self createFolder:@"External Files"];
-        
-        // TEMPORARY: Create a few test files.
-        File *test = [File fileWithName:@"test.txt" Contents:@"This is a test" inFolder:self];
-        File *test2 = [File fileWithName:@"anotherTest.c" Contents:@"Hello world!"inFolder:self];
-        File *test3 = [File fileWithName:@"and_another.test" Contents:@"Does this thing work?" inFolder:self];
     }
     return self;
 }
