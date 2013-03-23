@@ -21,6 +21,11 @@
 		4C43F90316F86AA900159B29 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43F90216F86AA900159B29 /* Default@2x.png */; };
 		4C43F90516F86AA900159B29 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43F90416F86AA900159B29 /* Default-568h@2x.png */; };
 		4C43F90816F86AA900159B29 /* arc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F90616F86AA900159B29 /* arc.xcdatamodeld */; };
+		4CD06B6C16FDEEC100C9DED3 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD06B3B16FDEDA600C9DED3 /* SenTestingKit.framework */; };
+		4CD06B6D16FDEEC100C9DED3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
+		4CD06B6E16FDEEC100C9DED3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EE16F86AA900159B29 /* Foundation.framework */; };
+		4CD06B7416FDEEC100C9DED3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CD06B7216FDEEC100C9DED3 /* InfoPlist.strings */; };
+		4CD06B7716FDEEC100C9DED3 /* arcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7616FDEEC100C9DED3 /* arcTests.m */; };
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
 		8FCA1D6A16F8707900C6AAFC /* FileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F91016F86AD000159B29 /* FileObject.m */; };
 		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
@@ -54,10 +59,21 @@
 		4C43F90F16F86AD000159B29 /* FileObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileObject.h; sourceTree = "<group>"; };
 		4C43F91016F86AD000159B29 /* FileObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileObject.m; sourceTree = "<group>"; };
 		4CD06B2C16FDE92D00C9DED3 /* SubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubViewController.h; sourceTree = "<group>"; };
+		4CD06B3B16FDEDA600C9DED3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		4CD06B3D16FDEDA600C9DED3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		4CD06B4016FDEDA600C9DED3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		4CD06B4116FDEDA600C9DED3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		4CD06B4216FDEDA600C9DED3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4CD06B6B16FDEEC100C9DED3 /* arcTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = arcTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CD06B7116FDEEC100C9DED3 /* arcTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "arcTests-Info.plist"; sourceTree = "<group>"; };
+		4CD06B7316FDEEC100C9DED3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4CD06B7516FDEEC100C9DED3 /* arcTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = arcTests.h; sourceTree = "<group>"; };
+		4CD06B7616FDEEC100C9DED3 /* arcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = arcTests.m; sourceTree = "<group>"; };
+		4CD06B7816FDEEC100C9DED3 /* arcTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "arcTests-Prefix.pch"; sourceTree = "<group>"; };
 		8FCA1D6716F86C7000C6AAFC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		8FCA1D6816F86C7000C6AAFC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationState.h; path = ../ApplicationState.h; sourceTree = "<group>"; };
-		8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplicationState.m; path = ../ApplicationState.m; sourceTree = "<group>"; };
+		8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationState.h; sourceTree = "<group>"; };
+		8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationState.m; sourceTree = "<group>"; };
 		8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewController.h; sourceTree = "<group>"; };
 		8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeViewController.m; sourceTree = "<group>"; };
 		8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewControllerDelegate.h; sourceTree = "<group>"; };
@@ -77,6 +93,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4CD06B6716FDEEC100C9DED3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD06B6C16FDEEC100C9DED3 /* SenTestingKit.framework in Frameworks */,
+				4CD06B6D16FDEEC100C9DED3 /* UIKit.framework in Frameworks */,
+				4CD06B6E16FDEEC100C9DED3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -84,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				4C43F8F416F86AA900159B29 /* arc */,
+				4CD06B6F16FDEEC100C9DED3 /* arcTests */,
 				4C43F8EB16F86AA900159B29 /* Frameworks */,
 				4C43F8EA16F86AA900159B29 /* Products */,
 			);
@@ -93,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				4C43F8E916F86AA900159B29 /* arc.app */,
+				4CD06B6B16FDEEC100C9DED3 /* arcTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,6 +133,9 @@
 				4C43F8EE16F86AA900159B29 /* Foundation.framework */,
 				4C43F8F016F86AA900159B29 /* CoreGraphics.framework */,
 				4C43F8F216F86AA900159B29 /* CoreData.framework */,
+				4CD06B3B16FDEDA600C9DED3 /* SenTestingKit.framework */,
+				4CD06B3D16FDEDA600C9DED3 /* Cocoa.framework */,
+				4CD06B3F16FDEDA600C9DED3 /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -167,7 +198,37 @@
 				8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */,
 				4CD06B2C16FDE92D00C9DED3 /* SubViewController.h */,
 			);
-			name = Protocols;
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		4CD06B3F16FDEDA600C9DED3 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4CD06B4016FDEDA600C9DED3 /* AppKit.framework */,
+				4CD06B4116FDEDA600C9DED3 /* CoreData.framework */,
+				4CD06B4216FDEDA600C9DED3 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		4CD06B6F16FDEEC100C9DED3 /* arcTests */ = {
+			isa = PBXGroup;
+			children = (
+				4CD06B7516FDEEC100C9DED3 /* arcTests.h */,
+				4CD06B7616FDEEC100C9DED3 /* arcTests.m */,
+				4CD06B7016FDEEC100C9DED3 /* Supporting Files */,
+			);
+			path = arcTests;
+			sourceTree = "<group>";
+		};
+		4CD06B7016FDEEC100C9DED3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4CD06B7116FDEEC100C9DED3 /* arcTests-Info.plist */,
+				4CD06B7216FDEEC100C9DED3 /* InfoPlist.strings */,
+				4CD06B7816FDEEC100C9DED3 /* arcTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		8FCA1D6616F86C7000C6AAFC /* Controllers */ = {
@@ -181,8 +242,7 @@
 				8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */,
 				8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */,
 			);
-			name = Controllers;
-			path = "View Controllers";
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +264,24 @@
 			productName = arc;
 			productReference = 4C43F8E916F86AA900159B29 /* arc.app */;
 			productType = "com.apple.product-type.application";
+		};
+		4CD06B6A16FDEEC100C9DED3 /* arcTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CD06B7B16FDEEC100C9DED3 /* Build configuration list for PBXNativeTarget "arcTests" */;
+			buildPhases = (
+				4CD06B6616FDEEC100C9DED3 /* Sources */,
+				4CD06B6716FDEEC100C9DED3 /* Frameworks */,
+				4CD06B6816FDEEC100C9DED3 /* Resources */,
+				4CD06B6916FDEEC100C9DED3 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = arcTests;
+			productName = arcTests;
+			productReference = 4CD06B6B16FDEEC100C9DED3 /* arcTests.octest */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -227,6 +305,7 @@
 			projectRoot = "";
 			targets = (
 				4C43F8E816F86AA900159B29 /* arc */,
+				4CD06B6A16FDEEC100C9DED3 /* arcTests */,
 			);
 		};
 /* End PBXProject section */
@@ -243,7 +322,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4CD06B6816FDEEC100C9DED3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD06B7416FDEEC100C9DED3 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4CD06B6916FDEEC100C9DED3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4C43F8E516F86AA900159B29 /* Sources */ = {
@@ -264,6 +367,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4CD06B6616FDEEC100C9DED3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CD06B7716FDEEC100C9DED3 /* arcTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -271,6 +382,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				4C43F8F816F86AA900159B29 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4CD06B7216FDEEC100C9DED3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CD06B7316FDEEC100C9DED3 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -356,6 +475,42 @@
 			};
 			name = Release;
 		};
+		4CD06B7916FDEEC100C9DED3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "arcTests/arcTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "arcTests/arcTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		4CD06B7A16FDEEC100C9DED3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "arcTests/arcTests-Prefix.pch";
+				INFOPLIST_FILE = "arcTests/arcTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -376,6 +531,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		4CD06B7B16FDEEC100C9DED3 /* Build configuration list for PBXNativeTarget "arcTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CD06B7916FDEEC100C9DED3 /* Debug */,
+				4CD06B7A16FDEEC100C9DED3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
