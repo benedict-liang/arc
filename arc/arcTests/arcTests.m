@@ -31,14 +31,24 @@
 
 - (void)testCreateFiles
 {
-    File *test = [File fileWithName:@"test.txt" Contents:@"This is a test" inFolder:_rootFolder];
-    File *test2 = [File fileWithName:@"anotherTest.c" Contents:@"Hello world!"inFolder:_rootFolder];
-    File *test3 = [File fileWithName:@"and_another.test" Contents:@"Does this thing work?" inFolder:_rootFolder];
+    NSString *testFileName = @"test.txt";
+    NSString *testFileContents = @"This is a test.";
+    
+    [File fileWithName:testFileName Contents:testFileContents inFolder:_rootFolder];
     
     NSArray *rootContents = [_rootFolder getContents];
-    int expected = 4;
+    int expected = 2;
     int actual = [rootContents count];
-    STAssertEquals(expected, actual, @"Root folder contains 4 objects");
+    STAssertEquals(expected, actual, @"Root folder contains 2 objects");
+    
+    File *retrieved;
+    for (FileObject *currentObject in rootContents) {
+        if ([currentObject isKindOfClass:[File class]]) {
+            retrieved = (File*)currentObject;
+        }
+    }
+    STAssertTrue([testFileName isEqualToString:[retrieved name]], @"File name is persisted.");
+    STAssertTrue([testFileContents isEqualToString:[retrieved getContents]], @"File contents are persisted.");
 }
 
 @end
