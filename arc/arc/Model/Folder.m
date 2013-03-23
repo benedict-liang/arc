@@ -13,6 +13,7 @@
 // Refreshes the contents of this object by reloading them
 // from the file system.
 // Returns the contents when done.
+// Folder returns an NSArray of FileObjects contained within it.
 - (id)refreshContents
 {
     // Load the contents of this folder.
