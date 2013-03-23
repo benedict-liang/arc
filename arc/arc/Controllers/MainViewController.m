@@ -39,14 +39,6 @@
     _rootFolder = [RootFolder getInstance];
     NSArray *fileObjectsArray = [_rootFolder getContents];
     
-    // Jerome (2013-03-23): logs all folders and files in the root.
-    // Demonstrates that they exist.
-    for (FileObject *currentObject in fileObjectsArray) {
-        NSLog(@"%@", [currentObject name]);
-        NSLog(@"Folder? %@", [currentObject isKindOfClass:[Folder class]] ? @"Yes" : @"No");
-        NSLog(@"%@", [currentObject getContents]);
-    }
-    
     // TODO
     // this is temporary to glue the stuff together.
     // - ymichael

@@ -7,7 +7,13 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "RootFolder.h"
+#import "FileObject.h"
+#import "Folder.h"
+#import "File.h"
 
-@interface arcTests : SenTestCase
+@interface arcTests : SenTestCase {
+    RootFolder *_rootFolder;
+}
 
 @end

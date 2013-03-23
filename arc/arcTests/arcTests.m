@@ -10,11 +10,13 @@
 
 @implementation arcTests
 
+
 - (void)setUp
 {
     [super setUp];
     
     // Set-up code here.
+    _rootFolder = [RootFolder getInstance];
 }
 
 - (void)tearDown
@@ -22,11 +24,31 @@
     // Tear-down code here.
     
     [super tearDown];
+    for (FileObject *current in [_rootFolder getContents]) {
+        [current remove];
+    }
 }
 
-- (void)test
+- (void)testCreateFiles
 {
-    STAssertNotNil(@"asdf", @"This is the test case description");
+    NSString *testFileName = @"test.txt";
+    NSString *testFileContents = @"This is a test.";
+    
+    [File fileWithName:testFileName Contents:testFileContents inFolder:_rootFolder];
+    
+    NSArray *rootContents = [_rootFolder getContents];
+    int expected = 2;
+    int actual = [rootContents count];
+    STAssertEquals(expected, actual, @"Root folder contains 2 objects");
+    
+    File *retrieved;
+    for (FileObject *currentObject in rootContents) {
+        if ([currentObject isKindOfClass:[File class]]) {
+            retrieved = (File*)currentObject;
+        }
+    }
+    STAssertTrue([testFileName isEqualToString:[retrieved name]], @"File name is persisted.");
+    STAssertTrue([testFileContents isEqualToString:[retrieved getContents]], @"File contents are persisted.");
 }
 
 @end

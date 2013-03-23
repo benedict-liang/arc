@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0234361E16FDFA3C00B0D7AE /* FileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F91016F86AD000159B29 /* FileObject.m */; };
+		0234361F16FDFA4100B0D7AE /* RootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 028DA2D616FD826F00E2E5D9 /* RootFolder.m */; };
+		0234362016FDFA4500B0D7AE /* Folder.m in Sources */ = {isa = PBXBuildFile; fileRef = 025B52AA16F86C4B00C20559 /* Folder.m */; };
+		0234362116FDFA4900B0D7AE /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 025B52AD16F86C8700C20559 /* File.m */; };
 		025B52AB16F86C4B00C20559 /* Folder.m in Sources */ = {isa = PBXBuildFile; fileRef = 025B52AA16F86C4B00C20559 /* Folder.m */; };
 		025B52AE16F86C8700C20559 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 025B52AD16F86C8700C20559 /* File.m */; };
 		028DA2D716FD827000E2E5D9 /* RootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 028DA2D616FD826F00E2E5D9 /* RootFolder.m */; };
@@ -27,13 +31,24 @@
 		4CD06B7416FDEEC100C9DED3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CD06B7216FDEEC100C9DED3 /* InfoPlist.strings */; };
 		4CD06B7716FDEEC100C9DED3 /* arcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7616FDEEC100C9DED3 /* arcTests.m */; };
 		4CD06B8016FDF61C00C9DED3 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7F16FDF61C00C9DED3 /* Constants.m */; };
-		4CD06B8316FDF62800C9DED3 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B8216FDF62800C9DED3 /* Utils.m */; };
+		8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1416FDFDBE00B31A19 /* Utils.m */; };
+		8F5C5C1916FDFED300B31A19 /* Find.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1816FDFED300B31A19 /* Find.m */; };
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
 		8FCA1D6A16F8707900C6AAFC /* FileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F91016F86AD000159B29 /* FileObject.m */; };
 		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
 		8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */; };
 		FC4B269E16F88CB800E1DC49 /* FileNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B269D16F88CB800E1DC49 /* FileNavigationViewController.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0234361C16FDFA0700B0D7AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C43F8E116F86AA800159B29 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C43F8E816F86AA900159B29;
+			remoteInfo = arc;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -74,8 +89,10 @@
 		4CD06B7816FDEEC100C9DED3 /* arcTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "arcTests-Prefix.pch"; sourceTree = "<group>"; };
 		4CD06B7E16FDF61C00C9DED3 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = General/Constants.h; sourceTree = "<group>"; };
 		4CD06B7F16FDF61C00C9DED3 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = General/Constants.m; sourceTree = "<group>"; };
-		4CD06B8116FDF62800C9DED3 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
-		4CD06B8216FDF62800C9DED3 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		8F5C5C1416FDFDBE00B31A19 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = General/Utils.m; sourceTree = "<group>"; };
+		8F5C5C1516FDFDBE00B31A19 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = General/Utils.h; sourceTree = "<group>"; };
+		8F5C5C1716FDFED300B31A19 /* Find.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Find.h; path = General/Find.h; sourceTree = "<group>"; };
+		8F5C5C1816FDFED300B31A19 /* Find.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Find.m; path = General/Find.m; sourceTree = "<group>"; };
 		8FCA1D6716F86C7000C6AAFC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		8FCA1D6816F86C7000C6AAFC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationState.h; sourceTree = "<group>"; };
@@ -151,7 +168,6 @@
 			children = (
 				4CD06B7D16FDF59E00C9DED3 /* General */,
 				8FCA1D6616F86C7000C6AAFC /* Controllers */,
-				4C43F91116F86AFE00159B29 /* View */,
 				4C43F90E16F86AC400159B29 /* Model */,
 				4C43F8FD16F86AA900159B29 /* AppDelegate.h */,
 				4C43F8FE16F86AA900159B29 /* AppDelegate.m */,
@@ -190,13 +206,6 @@
 				025B52AD16F86C8700C20559 /* File.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		4C43F91116F86AFE00159B29 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = View;
 			sourceTree = "<group>";
 		};
 		4CD06B2D16FDE97E00C9DED3 /* Protocols */ = {
@@ -241,10 +250,12 @@
 		4CD06B7D16FDF59E00C9DED3 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				8F5C5C1416FDFDBE00B31A19 /* Utils.m */,
+				8F5C5C1516FDFDBE00B31A19 /* Utils.h */,
 				4CD06B7E16FDF61C00C9DED3 /* Constants.h */,
 				4CD06B7F16FDF61C00C9DED3 /* Constants.m */,
-				4CD06B8116FDF62800C9DED3 /* Utils.h */,
-				4CD06B8216FDF62800C9DED3 /* Utils.m */,
+				8F5C5C1716FDFED300B31A19 /* Find.h */,
+				8F5C5C1816FDFED300B31A19 /* Find.m */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -295,6 +306,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0234361D16FDFA0700B0D7AE /* PBXTargetDependency */,
 			);
 			name = arcTests;
 			productName = arcTests;
@@ -383,7 +395,8 @@
 				8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */,
 				028DA2D716FD827000E2E5D9 /* RootFolder.m in Sources */,
 				4CD06B8016FDF61C00C9DED3 /* Constants.m in Sources */,
-				4CD06B8316FDF62800C9DED3 /* Utils.m in Sources */,
+				8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */,
+				8F5C5C1916FDFED300B31A19 /* Find.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,11 +404,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0234362116FDFA4900B0D7AE /* File.m in Sources */,
+				0234362016FDFA4500B0D7AE /* Folder.m in Sources */,
+				0234361F16FDFA4100B0D7AE /* RootFolder.m in Sources */,
+				0234361E16FDFA3C00B0D7AE /* FileObject.m in Sources */,
 				4CD06B7716FDEEC100C9DED3 /* arcTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0234361D16FDFA0700B0D7AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C43F8E816F86AA900159B29 /* arc */;
+			targetProxy = 0234361C16FDFA0700B0D7AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4C43F8F716F86AA900159B29 /* InfoPlist.strings */ = {
@@ -559,6 +584,7 @@
 				4CD06B7A16FDEEC100C9DED3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
