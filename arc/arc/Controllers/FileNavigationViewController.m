@@ -23,27 +23,20 @@
     }
     return self;
 }
-- (void)setupTable {
-    UITableView* table = [[UITableView alloc] initWithFrame:[self defaultFrame] style:UITableViewStylePlain];
+- (void)setupTableWithFrame:(CGRect)frame {
+    UITableView* table = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     [table setDataSource:self];
     [table setDelegate:self];
     [table reloadData];
     [self setView:table];
     
 }
-- (id)initWithFiles:(NSArray *)files {
-    self = [super init];
-    if (self) {
-        _data = files;
-        [self setupTable];
-    }
-    return self;
-}
-- (id)initWithFolder:(Folder *)folder {
+
+- (id)initWithFolder:(Folder *)folder frame:(CGRect)frame {
     self = [super init];
     if (self) {
         _data = [folder getContents];
-        [self setupTable];
+        [self setupTableWithFrame:frame];
     }
     return self;
 }

@@ -14,9 +14,7 @@
 
 @property(nonatomic) NSArray* data;
 
--(id)initWithFiles:(NSArray*)files;
-
--(id)initWithFolder:(Folder*)folder;
+- (id)initWithFolder:(Folder *)folder frame:(CGRect)frame;
 // define delegate property
 @property (nonatomic, assign) id delegate;
 

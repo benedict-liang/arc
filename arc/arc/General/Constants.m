@@ -13,7 +13,7 @@
 // {{x, y}, {width, height}}
 const CGRect SIZE_CODE_VIEW_PORTRAIT = {{100, 0}, {100, 500}};
 const CGRect SIZE_CODE_VIEW_LANDSCAPE = {};
-
+const CGRect SIZE_FILENAV_VIEW_PORTRAIT = {{0,0}, {100,500}};
 // random commit
 
 @implementation Constants

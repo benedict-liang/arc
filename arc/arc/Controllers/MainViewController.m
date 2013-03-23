@@ -54,7 +54,7 @@
     _codeViewController.delegate = self;
     _codeViewController.view.frame = SIZE_CODE_VIEW_PORTRAIT;
     
-    _fileNavigator = [[FileNavigationViewController alloc] initWithFolder:_rootFolder];
+    _fileNavigator = [[FileNavigationViewController alloc] initWithFolder:_rootFolder frame:SIZE_FILENAV_VIEW_PORTRAIT];
     _fileNavigator.delegate = self;
     
     [self.view addSubview:_fileNavigator.view];
