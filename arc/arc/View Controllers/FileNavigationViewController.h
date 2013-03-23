@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Folder.h"
 @interface FileNavigationViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic) NSArray* data;
 
-//Currently files is considered an array of strings. I'm thinking it would be helpful to pass the filesystem here, as the FileNavigator would need to view the file heirarchy.
+
 -(id)initWithFiles:(NSArray*)files;
 
+-(id)initWithFolder:(Folder*)folder;
 // define delegate property
 @property (nonatomic, assign) id delegate;
 

@@ -22,23 +22,33 @@
     }
     return self;
 }
-
+- (void)setupTable {
+    UITableView* table = [[UITableView alloc] initWithFrame:[self defaultFrame] style:UITableViewStylePlain];
+    [table setDataSource:self];
+    [table setDelegate:self];
+    [table reloadData];
+    [self setView:table];
+    
+}
 - (id)initWithFiles:(NSArray *)files {
     self = [super init];
     if (self) {
-        UITableView* table = [[UITableView alloc] initWithFrame:[self defaultFrame] style:UITableViewStylePlain];
         _data = files;
-        [table setDataSource:self];
-        [table setDelegate:self];
-        [table reloadData];
-        [self setView:table];
-        
+        [self setupTable];
+    }
+    return self;
+}
+- (id)initWithFolder:(Folder *)folder {
+    self = [super init];
+    if (self) {
+        _data = [folder getContents];
+        [self setupTable];
     }
     return self;
 }
     //TODO temporary. Should be managed by MainViewController as it depends on orientation
 - (CGRect)defaultFrame {
-    return CGRectMake(0, 0, 100, 200);
+    return CGRectMake(0, 0, 200, 600);
 }
 - (void)viewDidLoad
 {
@@ -80,7 +90,14 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     // Configure the cell...
-    cell.textLabel.text = [self.data objectAtIndex:indexPath.row];
+    if ([[self.data objectAtIndex:indexPath.row] isKindOfClass:[FileObject class]]) {
+        
+        cell.textLabel.text = [(FileObject*)[self.data objectAtIndex:indexPath.row] name];
+        
+    } else if([[self.data objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]) {
+        cell.textLabel.text = [self.data objectAtIndex:indexPath.row];
+    }
+    
     return cell;
 }
 #pragma mark - Table view delegate
