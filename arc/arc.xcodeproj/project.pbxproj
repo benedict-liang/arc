@@ -165,7 +165,6 @@
 			children = (
 				4CD06B7D16FDF59E00C9DED3 /* General */,
 				8FCA1D6616F86C7000C6AAFC /* Controllers */,
-				4C43F91116F86AFE00159B29 /* View */,
 				4C43F90E16F86AC400159B29 /* Model */,
 				4C43F8FD16F86AA900159B29 /* AppDelegate.h */,
 				4C43F8FE16F86AA900159B29 /* AppDelegate.m */,
@@ -204,13 +203,6 @@
 				025B52AD16F86C8700C20559 /* File.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		4C43F91116F86AFE00159B29 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = View;
 			sourceTree = "<group>";
 		};
 		4CD06B2D16FDE97E00C9DED3 /* Protocols */ = {
