@@ -14,5 +14,7 @@
 const CGRect SIZE_CODE_VIEW_PORTRAIT = {{100, 0}, {100, 500}};
 const CGRect SIZE_CODE_VIEW_LANDSCAPE = {};
 
+// random commit
+
 @implementation Constants
 @end
