@@ -31,6 +31,9 @@
 		4CD06B7416FDEEC100C9DED3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CD06B7216FDEEC100C9DED3 /* InfoPlist.strings */; };
 		4CD06B7716FDEEC100C9DED3 /* arcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7616FDEEC100C9DED3 /* arcTests.m */; };
 		4CD06B8016FDF61C00C9DED3 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7F16FDF61C00C9DED3 /* Constants.m */; };
+		4CD06B8616FE0FE600C9DED3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD06B8416FE0FC900C9DED3 /* CoreText.framework */; };
+		4CD06B8A16FE125100C9DED3 /* CoreTextUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B8916FE125100C9DED3 /* CoreTextUIView.m */; };
+		4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */; };
 		8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1416FDFDBE00B31A19 /* Utils.m */; };
 		8F5C5C1916FDFED300B31A19 /* Find.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1816FDFED300B31A19 /* Find.m */; };
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
@@ -77,7 +80,6 @@
 		4C43F91016F86AD000159B29 /* FileObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileObject.m; sourceTree = "<group>"; };
 		4CD06B2C16FDE92D00C9DED3 /* SubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubViewController.h; sourceTree = "<group>"; };
 		4CD06B3B16FDEDA600C9DED3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		4CD06B3D16FDEDA600C9DED3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		4CD06B4016FDEDA600C9DED3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		4CD06B4116FDEDA600C9DED3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		4CD06B4216FDEDA600C9DED3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -89,6 +91,10 @@
 		4CD06B7816FDEEC100C9DED3 /* arcTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "arcTests-Prefix.pch"; sourceTree = "<group>"; };
 		4CD06B7E16FDF61C00C9DED3 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = General/Constants.h; sourceTree = "<group>"; };
 		4CD06B7F16FDF61C00C9DED3 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = General/Constants.m; sourceTree = "<group>"; };
+		4CD06B8416FE0FC900C9DED3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		4CD06B8816FE125100C9DED3 /* CoreTextUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreTextUIView.h; path = View/CoreTextUIView.h; sourceTree = "<group>"; };
+		4CD06B8916FE125100C9DED3 /* CoreTextUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreTextUIView.m; path = View/CoreTextUIView.m; sourceTree = "<group>"; };
+		4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
 		8F5C5C1416FDFDBE00B31A19 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = General/Utils.m; sourceTree = "<group>"; };
 		8F5C5C1516FDFDBE00B31A19 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = General/Utils.h; sourceTree = "<group>"; };
 		8F5C5C1716FDFED300B31A19 /* Find.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Find.h; path = General/Find.h; sourceTree = "<group>"; };
@@ -109,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CD06B8616FE0FE600C9DED3 /* CoreText.framework in Frameworks */,
 				4C43F8ED16F86AA900159B29 /* UIKit.framework in Frameworks */,
 				4C43F8EF16F86AA900159B29 /* Foundation.framework in Frameworks */,
 				4C43F8F116F86AA900159B29 /* CoreGraphics.framework in Frameworks */,
@@ -151,13 +158,13 @@
 		4C43F8EB16F86AA900159B29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4CD06B8416FE0FC900C9DED3 /* CoreText.framework */,
 				025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */,
 				4C43F8EC16F86AA900159B29 /* UIKit.framework */,
 				4C43F8EE16F86AA900159B29 /* Foundation.framework */,
 				4C43F8F016F86AA900159B29 /* CoreGraphics.framework */,
 				4C43F8F216F86AA900159B29 /* CoreData.framework */,
 				4CD06B3B16FDEDA600C9DED3 /* SenTestingKit.framework */,
-				4CD06B3D16FDEDA600C9DED3 /* Cocoa.framework */,
 				4CD06B3F16FDEDA600C9DED3 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -169,6 +176,8 @@
 				4CD06B7D16FDF59E00C9DED3 /* General */,
 				8FCA1D6616F86C7000C6AAFC /* Controllers */,
 				4C43F90E16F86AC400159B29 /* Model */,
+				4CD06B8716FE122400C9DED3 /* View */,
+				4CD06B9016FE1A6900C9DED3 /* Assets */,
 				4C43F8FD16F86AA900159B29 /* AppDelegate.h */,
 				4C43F8FE16F86AA900159B29 /* AppDelegate.m */,
 				4C43F90616F86AA900159B29 /* arc.xcdatamodeld */,
@@ -260,6 +269,32 @@
 			name = General;
 			sourceTree = "<group>";
 		};
+		4CD06B8716FE122400C9DED3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4CD06B8816FE125100C9DED3 /* CoreTextUIView.h */,
+				4CD06B8916FE125100C9DED3 /* CoreTextUIView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		4CD06B9016FE1A6900C9DED3 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				4CD06B9116FE1A7100C9DED3 /* Fonts */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		4CD06B9116FE1A7100C9DED3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */,
+			);
+			name = Fonts;
+			path = Assets/Fonts;
+			sourceTree = "<group>";
+		};
 		8FCA1D6616F86C7000C6AAFC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +384,7 @@
 				4C43F90116F86AA900159B29 /* Default.png in Resources */,
 				4C43F90316F86AA900159B29 /* Default@2x.png in Resources */,
 				4C43F90516F86AA900159B29 /* Default-568h@2x.png in Resources */,
+				4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +433,7 @@
 				4CD06B8016FDF61C00C9DED3 /* Constants.m in Sources */,
 				8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */,
 				8F5C5C1916FDFED300B31A19 /* Find.m in Sources */,
+				4CD06B8A16FE125100C9DED3 /* CoreTextUIView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
