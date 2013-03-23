@@ -32,6 +32,7 @@
 		4CD06B7716FDEEC100C9DED3 /* arcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7616FDEEC100C9DED3 /* arcTests.m */; };
 		4CD06B8016FDF61C00C9DED3 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7F16FDF61C00C9DED3 /* Constants.m */; };
 		8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1416FDFDBE00B31A19 /* Utils.m */; };
+		8F5C5C1916FDFED300B31A19 /* Find.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1816FDFED300B31A19 /* Find.m */; };
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
 		8FCA1D6A16F8707900C6AAFC /* FileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F91016F86AD000159B29 /* FileObject.m */; };
 		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
@@ -90,6 +91,8 @@
 		4CD06B7F16FDF61C00C9DED3 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = General/Constants.m; sourceTree = "<group>"; };
 		8F5C5C1416FDFDBE00B31A19 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = General/Utils.m; sourceTree = "<group>"; };
 		8F5C5C1516FDFDBE00B31A19 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = General/Utils.h; sourceTree = "<group>"; };
+		8F5C5C1716FDFED300B31A19 /* Find.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Find.h; path = General/Find.h; sourceTree = "<group>"; };
+		8F5C5C1816FDFED300B31A19 /* Find.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Find.m; path = General/Find.m; sourceTree = "<group>"; };
 		8FCA1D6716F86C7000C6AAFC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		8FCA1D6816F86C7000C6AAFC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationState.h; sourceTree = "<group>"; };
@@ -251,6 +254,8 @@
 				8F5C5C1516FDFDBE00B31A19 /* Utils.h */,
 				4CD06B7E16FDF61C00C9DED3 /* Constants.h */,
 				4CD06B7F16FDF61C00C9DED3 /* Constants.m */,
+				8F5C5C1716FDFED300B31A19 /* Find.h */,
+				8F5C5C1816FDFED300B31A19 /* Find.m */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -391,6 +396,7 @@
 				028DA2D716FD827000E2E5D9 /* RootFolder.m in Sources */,
 				4CD06B8016FDF61C00C9DED3 /* Constants.m in Sources */,
 				8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */,
+				8F5C5C1916FDFED300B31A19 /* Find.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
