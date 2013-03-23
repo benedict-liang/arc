@@ -7,13 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MainViewControllerDelegate.h"
+#import "SubViewController.h"
 
-@interface CodeViewController : UIViewController
-
-// define delegate property
-@property (nonatomic, assign) id delegate;
+@interface CodeViewController : UIViewController<SubViewController>
 
 //TODO: Needs a show file method that takes in a file object
-
 @end

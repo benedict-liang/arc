@@ -13,6 +13,7 @@
 @end
 
 @implementation CodeViewController
+@synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

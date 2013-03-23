@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Folder.h"
-@interface FileNavigationViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
-@property(nonatomic) NSArray* data;
+#import "SubViewController.h"
 
+@interface FileNavigationViewController : UITableViewController <SubViewController, UITableViewDataSource, UITableViewDelegate>
+
+@property(nonatomic) NSArray* data;
 
 -(id)initWithFiles:(NSArray*)files;
 
@@ -19,5 +21,4 @@
 @property (nonatomic, assign) id delegate;
 
 //TODO: needs update view methods upon adding a) a file b) a folder. Alternatively, it could take in a FileObject.
-
 @end

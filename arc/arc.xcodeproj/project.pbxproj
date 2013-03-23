@@ -53,10 +53,11 @@
 		4C43F90716F86AA900159B29 /* arc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = arc.xcdatamodel; sourceTree = "<group>"; };
 		4C43F90F16F86AD000159B29 /* FileObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileObject.h; sourceTree = "<group>"; };
 		4C43F91016F86AD000159B29 /* FileObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileObject.m; sourceTree = "<group>"; };
+		4CD06B2C16FDE92D00C9DED3 /* SubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubViewController.h; sourceTree = "<group>"; };
 		8FCA1D6716F86C7000C6AAFC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		8FCA1D6816F86C7000C6AAFC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationState.h; sourceTree = "<group>"; };
-		8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationState.m; sourceTree = "<group>"; };
+		8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApplicationState.h; path = ../ApplicationState.h; sourceTree = "<group>"; };
+		8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplicationState.m; path = ../ApplicationState.m; sourceTree = "<group>"; };
 		8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewController.h; sourceTree = "<group>"; };
 		8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeViewController.m; sourceTree = "<group>"; };
 		8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewControllerDelegate.h; sourceTree = "<group>"; };
@@ -82,7 +83,6 @@
 		4C43F8E016F86AA800159B29 = {
 			isa = PBXGroup;
 			children = (
-				025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */,
 				4C43F8F416F86AA900159B29 /* arc */,
 				4C43F8EB16F86AA900159B29 /* Frameworks */,
 				4C43F8EA16F86AA900159B29 /* Products */,
@@ -100,6 +100,7 @@
 		4C43F8EB16F86AA900159B29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */,
 				4C43F8EC16F86AA900159B29 /* UIKit.framework */,
 				4C43F8EE16F86AA900159B29 /* Foundation.framework */,
 				4C43F8F016F86AA900159B29 /* CoreGraphics.framework */,
@@ -111,11 +112,9 @@
 		4C43F8F416F86AA900159B29 /* arc */ = {
 			isa = PBXGroup;
 			children = (
-				8FCA1D6616F86C7000C6AAFC /* View Controllers */,
+				8FCA1D6616F86C7000C6AAFC /* Controllers */,
 				4C43F91116F86AFE00159B29 /* View */,
 				4C43F90E16F86AC400159B29 /* Model */,
-				8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */,
-				8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */,
 				4C43F8FD16F86AA900159B29 /* AppDelegate.h */,
 				4C43F8FE16F86AA900159B29 /* AppDelegate.m */,
 				4C43F90616F86AA900159B29 /* arc.xcdatamodeld */,
@@ -141,14 +140,16 @@
 		4C43F90E16F86AC400159B29 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */,
+				8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */,
+				028DA2D516FD826F00E2E5D9 /* RootFolder.h */,
+				028DA2D616FD826F00E2E5D9 /* RootFolder.m */,
 				4C43F90F16F86AD000159B29 /* FileObject.h */,
 				4C43F91016F86AD000159B29 /* FileObject.m */,
 				025B52A916F86C4B00C20559 /* Folder.h */,
 				025B52AA16F86C4B00C20559 /* Folder.m */,
 				025B52AC16F86C8700C20559 /* File.h */,
 				025B52AD16F86C8700C20559 /* File.m */,
-				028DA2D516FD826F00E2E5D9 /* RootFolder.h */,
-				028DA2D616FD826F00E2E5D9 /* RootFolder.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,17 +161,27 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		8FCA1D6616F86C7000C6AAFC /* View Controllers */ = {
+		4CD06B2D16FDE97E00C9DED3 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */,
+				4CD06B2C16FDE92D00C9DED3 /* SubViewController.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		8FCA1D6616F86C7000C6AAFC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4CD06B2D16FDE97E00C9DED3 /* Protocols */,
 				8FCA1D6716F86C7000C6AAFC /* MainViewController.h */,
 				8FCA1D6816F86C7000C6AAFC /* MainViewController.m */,
 				FC4B269C16F88CB800E1DC49 /* FileNavigationViewController.h */,
 				FC4B269D16F88CB800E1DC49 /* FileNavigationViewController.m */,
 				8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */,
 				8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */,
-				8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */,
 			);
+			name = Controllers;
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
@@ -284,10 +295,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -314,6 +322,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
