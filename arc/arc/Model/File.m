@@ -17,6 +17,7 @@
 - (id)refreshContents
 {
     _contents = [NSString stringWithContentsOfFile:[self path] encoding:NSUTF8StringEncoding error:nil];
+    _needsRefresh = NO;
     return _contents;
 }
 

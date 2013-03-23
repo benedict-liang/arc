@@ -12,6 +12,7 @@
     @protected
     NSURL* _url;
     id _contents;
+    BOOL _needsRefresh;
 }
 
 // The name of this object.

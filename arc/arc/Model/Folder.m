@@ -41,6 +41,7 @@
     
     [folderObjects addObjectsFromArray:fileObjects];
     _contents = folderObjects;
+    _needsRefresh = NO;
     return folderObjects;
 }
 

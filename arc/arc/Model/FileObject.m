@@ -20,6 +20,7 @@
         _name = [filePathUrl lastPathComponent];
         _path = [filePathUrl absoluteString];
         _url = filePathUrl;
+        _needsRefresh = YES;
     }
     return self;
 }
@@ -41,9 +42,7 @@
     // of the entire file system structure (instead of recursively
     // creating it when the root is initialised.)
     
-    // Check if the contents have been initialised.
-    if (_contents == nil) {
-        // They haven't.
+    if (_needsRefresh) {
         return [self refreshContents];
     } else {
         return _contents;
