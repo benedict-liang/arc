@@ -7,25 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RootFolder.h"
-#import "Folder.h"
-#import "File.h"
-
-#import "ApplicationState.h"
-
-#import "FileNavigationViewController.h"
-#import "CodeViewController.h"
 #import "MainViewControllerDelegate.h"
 
-@interface MainViewController : UIViewController <MainViewControllerDelegate> {
-    @private
-    RootFolder *_rootFolder;
-    CodeViewController *_codeViewController;
-    FileNavigationViewController *_fileNavigator;
-}
-
-
+@interface MainViewController : UIViewController <MainViewControllerDelegate>
 // Returns the MainViewController singleton.
 //+ (MainViewController*) getInstance;
-
 @end

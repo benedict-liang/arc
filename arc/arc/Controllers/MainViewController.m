@@ -7,16 +7,29 @@
 //
 
 #import "MainViewController.h"
+#import "ApplicationState.h"
+#import "RootFolder.h"
+#import "Folder.h"
+#import "File.h"
+#import "FileNavigationViewController.h"
+#import "CodeViewController.h"
 
 @interface MainViewController ()
-
+@property CodeViewController *codeViewController;
+@property FileNavigationViewController *fileNavigator;
+@property RootFolder *rootFolder;
 @end
 
 @implementation MainViewController
+@synthesize codeViewController = _codeViewController;
+@synthesize fileNavigator = _fileNavigator;
+@synthesize rootFolder = _rootFolder;
 
 - (void)loadView
 {
-    [self setView:[[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
+    [self setView:
+     [[UIView alloc]
+      initWithFrame:[[UIScreen mainScreen] bounds]]];
 }
 
 - (void)viewDidLoad
