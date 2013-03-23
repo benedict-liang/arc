@@ -34,4 +34,20 @@
     return self;
 }
 
+// Gets the contents of this object.
+- (id)getContents
+{
+    // This implementation allows for "lazy" initialisation
+    // of the entire file system structure (instead of recursively
+    // creating it when the root is initialised.)
+    
+    // Check if the contents have been initialised.
+    if (_contents == nil) {
+        // They haven't.
+        return [self refreshContents];
+    } else {
+        return _contents;
+    }
+}
+
 @end
