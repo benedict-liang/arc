@@ -7,8 +7,12 @@
 //
 
 #import "FileObject.h"
+#import "Folder.h"
 
 @interface File : FileObject
 
+// Creates a file with the given name and contents, in the given folder.
+// Returns a reference to the file.
+- (id)fileWithName:(NSString*)name Contents:(NSString*)contents inFolder:(Folder*)folder;
 
 @end

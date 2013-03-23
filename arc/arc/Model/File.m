@@ -10,6 +10,24 @@
 
 @implementation File
 
+// Creates a file with the given name and contents, in the given folder.
+// Returns a reference to the file.
+- (id)fileWithName:(NSString*)name Contents:(NSString*)contents inFolder:(Folder*)folder
+{
+    // Get the URL for the new file.
+    NSString *path = [[folder path] stringByAppendingPathComponent:name];
+    NSURL *fileURL = [NSURL URLWithString:path];
+    
+    // Write the file.
+    BOOL isWriteSuccessful = [contents writeToURL:fileURL atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    if (isWriteSuccessful) {
+        [folder flagForRefresh];
+        return [[File alloc] initWithURL:fileURL parent:folder];
+    } else {
+        return nil;
+    }
+}
+
 // Refreshes the contents of this object by reloading
 // them from the file system.
 // Returns the contents when done.
