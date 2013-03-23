@@ -82,7 +82,6 @@
 		4C43F8E016F86AA800159B29 = {
 			isa = PBXGroup;
 			children = (
-				025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */,
 				4C43F8F416F86AA900159B29 /* arc */,
 				4C43F8EB16F86AA900159B29 /* Frameworks */,
 				4C43F8EA16F86AA900159B29 /* Products */,
@@ -100,6 +99,7 @@
 		4C43F8EB16F86AA900159B29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */,
 				4C43F8EC16F86AA900159B29 /* UIKit.framework */,
 				4C43F8EE16F86AA900159B29 /* Foundation.framework */,
 				4C43F8F016F86AA900159B29 /* CoreGraphics.framework */,
