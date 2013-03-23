@@ -24,4 +24,14 @@
     return self;
 }
 
+// Creates a FileObject to represent the given URL,
+// with its parent set to the given FileObject.
+- (id)initWithURL:(NSURL *)url parent:(FileObject *)parent
+{
+    if (self = [self initWithURL:url]) {
+        _parent = parent;
+    }
+    return self;
+}
+
 @end
