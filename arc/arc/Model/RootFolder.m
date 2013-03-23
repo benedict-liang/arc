@@ -8,6 +8,48 @@
 
 #import "RootFolder.h"
 
+static RootFolder *singleton = nil;
+
 @implementation RootFolder
+
+// Returns the single RootFolder instance.
++ (RootFolder*)getInstance
+{
+    if (singleton == nil) {
+        singleton = [[super allocWithZone:NULL] init];
+    }
+    return singleton;
+}
+
+- (id)init
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *documentUrl = [fileManager URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+
+    if (self = [super initWithURL:documentUrl]) {
+        [self createFolder:@"External Files"];
+    }
+    return self;
+}
+
+// RootFolder cannot be removed.
+- (BOOL)remove
+{
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"RootFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
+}
+
+// RootFolder cannot be renamed.
+- (BOOL)rename:(NSString *)name
+{
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"RootFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
+}
+
+// RootFolder cannot be initialised externally.
+- (id)initWithURL:(NSURL *)url {
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"RootFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
+}
+- (id)initWithURL:(NSURL *)url parent:(FileObject *)parent {
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"RootFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
+}
 
 @end

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		025B52AB16F86C4B00C20559 /* Folder.m in Sources */ = {isa = PBXBuildFile; fileRef = 025B52AA16F86C4B00C20559 /* Folder.m */; };
 		025B52AE16F86C8700C20559 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 025B52AD16F86C8700C20559 /* File.m */; };
-		025B52B116F86FFC00C20559 /* FileSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 025B52B016F86FFC00C20559 /* FileSystem.m */; };
+		028DA2D716FD827000E2E5D9 /* RootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 028DA2D616FD826F00E2E5D9 /* RootFolder.m */; };
 		4C43F8ED16F86AA900159B29 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
 		4C43F8EF16F86AA900159B29 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EE16F86AA900159B29 /* Foundation.framework */; };
 		4C43F8F116F86AA900159B29 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8F016F86AA900159B29 /* CoreGraphics.framework */; };
@@ -34,8 +34,8 @@
 		025B52AA16F86C4B00C20559 /* Folder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Folder.m; sourceTree = "<group>"; };
 		025B52AC16F86C8700C20559 /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
 		025B52AD16F86C8700C20559 /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
-		025B52AF16F86FFC00C20559 /* FileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystem.h; sourceTree = "<group>"; };
-		025B52B016F86FFC00C20559 /* FileSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSystem.m; sourceTree = "<group>"; };
+		028DA2D516FD826F00E2E5D9 /* RootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootFolder.h; sourceTree = "<group>"; };
+		028DA2D616FD826F00E2E5D9 /* RootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootFolder.m; sourceTree = "<group>"; };
 		4C43F8E916F86AA900159B29 /* arc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C43F8EC16F86AA900159B29 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4C43F8EE16F86AA900159B29 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -147,8 +147,8 @@
 				025B52AA16F86C4B00C20559 /* Folder.m */,
 				025B52AC16F86C8700C20559 /* File.h */,
 				025B52AD16F86C8700C20559 /* File.m */,
-				025B52AF16F86FFC00C20559 /* FileSystem.h */,
-				025B52B016F86FFC00C20559 /* FileSystem.m */,
+				028DA2D516FD826F00E2E5D9 /* RootFolder.h */,
+				028DA2D616FD826F00E2E5D9 /* RootFolder.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -246,10 +246,10 @@
 				025B52AB16F86C4B00C20559 /* Folder.m in Sources */,
 				025B52AE16F86C8700C20559 /* File.m in Sources */,
 				8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */,
-				025B52B116F86FFC00C20559 /* FileSystem.m in Sources */,
 				FC4B269E16F88CB800E1DC49 /* FileNavigationViewController.m in Sources */,
 				8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */,
 				8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */,
+				028DA2D716FD827000E2E5D9 /* RootFolder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
