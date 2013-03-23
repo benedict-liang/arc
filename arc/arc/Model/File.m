@@ -43,11 +43,11 @@
 - (BOOL)remove
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    BOOL success = [fileManager removeItemAtURL:_url error:nil];
-    if (success) {
+    BOOL isRemovalSuccessful = [fileManager removeItemAtURL:_url error:nil];
+    if (isRemovalSuccessful) {
         [[self parent] flagForRefresh];
     }
-    return success;
+    return isRemovalSuccessful;
 }
 
 @end
