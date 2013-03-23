@@ -15,13 +15,16 @@
 // Returns a reference to the file.
 + (id)fileWithName:(NSString*)name Contents:(NSString*)contents inFolder:(Folder*)folder
 {
+    // Escape the file name.
+    NSString *escapedName = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
     // Get the URL for the new file.
-    NSString *path = [[folder path] stringByAppendingPathComponent:name];
-    NSURL *fileURL = [NSURL URLWithString:path];
+    NSURL *folderURL = [NSURL URLWithString:[folder path]];
+    NSURL *fileURL = [NSURL URLWithString:escapedName relativeToURL:folderURL];
     
     // Write the file.
     NSError *error;
-    BOOL isWriteSuccessful = [contents writeToURL:fileURL atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    BOOL isWriteSuccessful = [contents writeToFile:[fileURL path] atomically:YES encoding:NSUTF8StringEncoding error:&error];
     if (isWriteSuccessful) {
         [folder flagForRefresh];
         return [[File alloc] initWithURL:fileURL parent:folder];
