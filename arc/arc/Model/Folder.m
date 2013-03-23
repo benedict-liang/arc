@@ -71,4 +71,28 @@
     return success;
 }
 
+- (BOOL)createFolder:(NSString *)name
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    // Replace all spaces in the string with %20.
+    NSString *escapedName = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    // Add a / to the end, if necessary.
+    NSString *formattedName;
+    if ([escapedName hasSuffix:@"/"]) {
+        formattedName = escapedName;
+    } else {
+        formattedName = [escapedName stringByAppendingString:@"/"];
+    }
+    
+    NSURL *newFolderURL = [NSURL URLWithString:formattedName relativeToURL:_url];
+    
+    BOOL success = [fileManager createDirectoryAtURL:newFolderURL withIntermediateDirectories:YES attributes:nil error:nil];
+    if (success) {
+        [self flagForRefresh];
+    }
+    return success;
+}
+
 @end
