@@ -22,8 +22,23 @@
 // The parent of this object (if any.)
 @property (weak, nonatomic) FileObject* parent;
 
+// The contents of this object.
+@property id contents;
+
 // Creates a FileObject to represent the given URL.
 // url should be an object on the file system.
 - (id)initWithURL:(NSURL*)url;
+
+// Creates a FileObject to represent the given URL,
+// with its parent set to the given FileObject.
+- (id)initWithURL:(NSURL*)url parent:(FileObject*)parent;
+
+// Refreshes the contents of this object by reloading
+// them from the file system.
+// Returns the contents when done.
+- (id)refreshContents;
+
+// Removes this object from the file system.
+- (void)remove;
 
 @end
