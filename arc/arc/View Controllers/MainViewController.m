@@ -22,10 +22,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _fileSystem = [FileSystem getInstance];
-    Folder *rootFolder = [_fileSystem getRootFolder];
-//    NSArray *fileObjectsArray = [rootFolder contents];
-    NSArray *fileObjectsArray = [_fileSystem getFolderContents:rootFolder];
+    _rootFolder = [RootFolder getInstance];
+    NSArray *fileObjectsArray = [_rootFolder getContents];
     
     _codeViewController = [[CodeViewController alloc] init];
     _codeViewController.delegate = self;

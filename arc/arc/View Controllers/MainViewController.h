@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FileSystem.h"
+#import "RootFolder.h"
 #import "Folder.h"
 #import "File.h"
 
@@ -19,7 +19,7 @@
 
 @interface MainViewController : UIViewController <MainViewControllerDelegate> {
     @private
-    FileSystem *_fileSystem;
+    RootFolder *_rootFolder;
     CodeViewController *_codeViewController;
     FileNavigationViewController *_fileNavigator;
 }
