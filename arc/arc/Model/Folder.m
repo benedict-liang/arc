@@ -63,12 +63,14 @@
 // Returns YES if successful, NO otherwise.
 - (BOOL)rename:(NSString*)name
 {
-    NSString *parentPath = [[[self parent] path] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *newPath = [parentPath stringByAppendingPathComponent:name];
+    NSString *parentPath = [[self parent] path];
+    NSString *newPath = [[parentPath stringByAppendingPathComponent:name] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSURL *newURL = [NSURL URLWithString:newPath];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error;
-    BOOL isRenameSuccessful = [fileManager moveItemAtPath:[self path] toPath:newPath error:&error];
+    BOOL isRenameSuccessful = [fileManager moveItemAtURL:_url toURL:newURL error:&error];
     if (isRenameSuccessful) {
         [[self parent] flagForRefresh];
     } else {
