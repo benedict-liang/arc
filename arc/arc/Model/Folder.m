@@ -25,6 +25,10 @@
     for (NSString *currentPath in allPaths) {
         NSURL *currentURL = [[NSURL alloc] initWithString:currentPath];
         BOOL isCurrentDirectory;
+        
+        // We don't need to check that the file actually exists,
+        // since we wouldn't have its path if it didn't. We just need
+        // to see if it's a directory.
         [fileManager fileExistsAtPath:currentPath isDirectory:&isCurrentDirectory];
         if (isCurrentDirectory) {
             Folder *currentFolder = [[Folder alloc] initWithURL:currentURL parent:self];
