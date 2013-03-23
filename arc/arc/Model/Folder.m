@@ -65,6 +65,9 @@
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL success = [fileManager moveItemAtPath:[self path] toPath:newPath error:nil];
+    if (success) {
+        [[self parent] flagForRefresh];
+    }
     return success;
 }
 
