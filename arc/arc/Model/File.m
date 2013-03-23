@@ -12,7 +12,7 @@
 
 // Creates a file with the given name and contents, in the given folder.
 // Returns a reference to the file.
-- (id)fileWithName:(NSString*)name Contents:(NSString*)contents inFolder:(Folder*)folder
++ (id)fileWithName:(NSString*)name Contents:(NSString*)contents inFolder:(Folder*)folder
 {
     // Get the URL for the new file.
     NSString *path = [[folder path] stringByAppendingPathComponent:name];
