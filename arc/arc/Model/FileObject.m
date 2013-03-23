@@ -49,6 +49,12 @@
     }
 }
 
+// Flags this object as needing its contents refreshed.
+- (void)flagForRefresh
+{
+    _needsRefresh = YES;
+}
+
 // Refreshes the contents of this object by reloading them
 // from the file system.
 // Returns the contents when done.

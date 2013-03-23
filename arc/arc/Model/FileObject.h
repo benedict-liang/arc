@@ -37,6 +37,9 @@
 // Returns the contents when done.
 - (id)refreshContents;
 
+// Flags this object as needing its contents refreshed.
+- (void)flagForRefresh;
+
 // Gets the contents of this object.
 - (id)getContents;
 
