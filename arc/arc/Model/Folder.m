@@ -35,6 +35,7 @@
     }
     
     [folderObjects addObjectsFromArray:fileObjects];
+    _contents = folderObjects;
     return folderObjects;
 }
 
