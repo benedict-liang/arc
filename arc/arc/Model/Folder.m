@@ -49,9 +49,12 @@
 - (BOOL)remove
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    BOOL isRemovalSuccessful = [fileManager removeItemAtURL:_url error:nil];
+    NSError *error;
+    BOOL isRemovalSuccessful = [fileManager removeItemAtURL:_url error:&error];
     if (isRemovalSuccessful) {
         [[self parent] flagForRefresh];
+    } else {
+        NSLog(@"%@", error);
     }
     return isRemovalSuccessful;
 }
@@ -64,9 +67,12 @@
     NSString *newPath = [parentPath stringByAppendingPathComponent:name];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    BOOL isRenameSuccessful = [fileManager moveItemAtPath:[self path] toPath:newPath error:nil];
+    NSError *error;
+    BOOL isRenameSuccessful = [fileManager moveItemAtPath:[self path] toPath:newPath error:&error];
     if (isRenameSuccessful) {
         [[self parent] flagForRefresh];
+    } else {
+        NSLog(@"%@", error);
     }
     return isRenameSuccessful;
 }
@@ -88,9 +94,12 @@
     
     NSURL *newFolderURL = [NSURL URLWithString:formattedName relativeToURL:_url];
     
-    BOOL isCreateSuccessful = [fileManager createDirectoryAtURL:newFolderURL withIntermediateDirectories:YES attributes:nil error:nil];
+    NSError *error;
+    BOOL isCreateSuccessful = [fileManager createDirectoryAtURL:newFolderURL withIntermediateDirectories:YES attributes:nil error:&error];
     if (isCreateSuccessful) {
         [self flagForRefresh];
+    } else {
+        NSLog(@"%@", error);
     }
     return isCreateSuccessful;
 }

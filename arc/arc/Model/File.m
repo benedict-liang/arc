@@ -20,11 +20,13 @@
     NSURL *fileURL = [NSURL URLWithString:path];
     
     // Write the file.
-    BOOL isWriteSuccessful = [contents writeToURL:fileURL atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    NSError *error;
+    BOOL isWriteSuccessful = [contents writeToURL:fileURL atomically:YES encoding:NSUTF8StringEncoding error:&error];
     if (isWriteSuccessful) {
         [folder flagForRefresh];
         return [[File alloc] initWithURL:fileURL parent:folder];
     } else {
+        NSLog(@"%@", error);
         return nil;
     }
 }
@@ -44,9 +46,12 @@
 - (BOOL)remove
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    BOOL isRemovalSuccessful = [fileManager removeItemAtURL:_url error:nil];
+    NSError *error;
+    BOOL isRemovalSuccessful = [fileManager removeItemAtURL:_url error:&error];
     if (isRemovalSuccessful) {
         [[self parent] flagForRefresh];
+    } else {
+        NSLog(@"%@", error);
     }
     return isRemovalSuccessful;
 }
