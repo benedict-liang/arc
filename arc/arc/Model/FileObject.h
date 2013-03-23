@@ -18,7 +18,8 @@
 // The name of this object.
 @property (strong, nonatomic) NSString* name;
 
-// The full file path of this object.
+// The full file path of this object. Can be used
+// to recreate an NSURL.
 @property (strong, nonatomic) NSString* path;
 
 // The parent of this object (if any.)
