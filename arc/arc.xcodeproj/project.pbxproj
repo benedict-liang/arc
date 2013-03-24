@@ -38,6 +38,109 @@
 		4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */; };
 		8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1416FDFDBE00B31A19 /* Utils.m */; };
 		8F5C5C1916FDFED300B31A19 /* Find.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1816FDFED300B31A19 /* Find.m */; };
+		8FAD0E0016FF09C500681CC5 /* About Persistent Includes.tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D8B16FF09C500681CC5 /* About Persistent Includes.tmCommand */; };
+		8FAD0E0116FF09C500681CC5 /* CodeCompletion HTML Attributes.tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D8C16FF09C500681CC5 /* CodeCompletion HTML Attributes.tmCommand */; };
+		8FAD0E0216FF09C500681CC5 /* CodeCompletion HTML Tags.tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D8D16FF09C500681CC5 /* CodeCompletion HTML Tags.tmCommand */; };
+		8FAD0E0316FF09C500681CC5 /* Convert Line : Selection to URL Escapes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D8E16FF09C500681CC5 /* Convert Line : Selection to URL Escapes.plist */; };
+		8FAD0E0416FF09C500681CC5 /* Convert to HTML Entities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D8F16FF09C500681CC5 /* Convert to HTML Entities.plist */; };
+		8FAD0E0516FF09C500681CC5 /* Convert to named entities excl tags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D9016FF09C500681CC5 /* Convert to named entities excl tags.plist */; };
+		8FAD0E0616FF09C500681CC5 /* Decode HTML Entities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D9116FF09C500681CC5 /* Decode HTML Entities.plist */; };
+		8FAD0E0716FF09C500681CC5 /* Decode Numeric URL Escapes in Line : Selection.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D9216FF09C500681CC5 /* Decode Numeric URL Escapes in Line : Selection.plist */; };
+		8FAD0E0816FF09C500681CC5 /* Documentation for Tag.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D9316FF09C500681CC5 /* Documentation for Tag.plist */; };
+		8FAD0E0916FF09C500681CC5 /* Encrypt Line : Selection (ROT 13).tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D9416FF09C500681CC5 /* Encrypt Line : Selection (ROT 13).tmCommand */; };
+		8FAD0E0A16FF09C500681CC5 /* Insert Close Tag.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D9516FF09C500681CC5 /* Insert Close Tag.plist */; };
+		8FAD0E0B16FF09C500681CC5 /* Insert Entity….plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D9616FF09C500681CC5 /* Insert Entity….plist */; };
+		8FAD0E0C16FF09C500681CC5 /* Insert Tag Pair.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D9716FF09C500681CC5 /* Insert Tag Pair.plist */; };
+		8FAD0E0D16FF09C500681CC5 /* Persistent Include.tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D9816FF09C500681CC5 /* Persistent Include.tmCommand */; };
+		8FAD0E0E16FF09C500681CC5 /* Preview in All Active Browsers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D9916FF09C500681CC5 /* Preview in All Active Browsers.plist */; };
+		8FAD0E0F16FF09C500681CC5 /* Refresh All Active Browsers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D9A16FF09C500681CC5 /* Refresh All Active Browsers.plist */; };
+		8FAD0E1016FF09C500681CC5 /* Show Web Preview.tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D9B16FF09C500681CC5 /* Show Web Preview.tmCommand */; };
+		8FAD0E1116FF09C500681CC5 /* Strip HTML tags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D9C16FF09C500681CC5 /* Strip HTML tags.plist */; };
+		8FAD0E1216FF09C500681CC5 /* Tidy.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D9D16FF09C500681CC5 /* Tidy.plist */; };
+		8FAD0E1316FF09C500681CC5 /* Update Includes.tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D9E16FF09C500681CC5 /* Update Includes.tmCommand */; };
+		8FAD0E1416FF09C500681CC5 /* Update Project.tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D9F16FF09C500681CC5 /* Update Project.tmCommand */; };
+		8FAD0E1516FF09C500681CC5 /* W3C validation.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DA016FF09C500681CC5 /* W3C validation.plist */; };
+		8FAD0E1616FF09C500681CC5 /* Wrap Each Selected Line in Open:Close Tag.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DA116FF09C500681CC5 /* Wrap Each Selected Line in Open:Close Tag.plist */; };
+		8FAD0E1716FF09C500681CC5 /* Anchor Tag.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DA316FF09C500681CC5 /* Anchor Tag.plist */; };
+		8FAD0E1816FF09C500681CC5 /* CSS Link.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DA416FF09C500681CC5 /* CSS Link.plist */; };
+		8FAD0E1916FF09C500681CC5 /* Image Tag.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DA516FF09C500681CC5 /* Image Tag.plist */; };
+		8FAD0E1A16FF09C500681CC5 /* Insert Anchor href 2.tmDragCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DA616FF09C500681CC5 /* Insert Anchor href 2.tmDragCommand */; };
+		8FAD0E1B16FF09C500681CC5 /* Insert Anchor href.tmDragCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DA716FF09C500681CC5 /* Insert Anchor href.tmDragCommand */; };
+		8FAD0E1C16FF09C500681CC5 /* Insert Flash Movie (Swf).tmDragCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DA816FF09C500681CC5 /* Insert Flash Movie (Swf).tmDragCommand */; };
+		8FAD0E1D16FF09C500681CC5 /* Insert JS Link.tmDragCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DA916FF09C500681CC5 /* Insert JS Link.tmDragCommand */; };
+		8FAD0E1E16FF09C500681CC5 /* Insert QuickTime Movie.tmDragCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DAA16FF09C500681CC5 /* Insert QuickTime Movie.tmDragCommand */; };
+		8FAD0E1F16FF09C500681CC5 /* Insert URL.tmDragCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DAB16FF09C500681CC5 /* Insert URL.tmDragCommand */; };
+		8FAD0E2016FF09C500681CC5 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DAC16FF09C500681CC5 /* info.plist */; };
+		8FAD0E2116FF09C500681CC5 /* Delete whitespace between tags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DAE16FF09C500681CC5 /* Delete whitespace between tags.plist */; };
+		8FAD0E2216FF09C500681CC5 /* Comments.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DB016FF09C500681CC5 /* Comments.plist */; };
+		8FAD0E2316FF09C500681CC5 /* Completions HTML Attributes.tmPreferences in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DB116FF09C500681CC5 /* Completions HTML Attributes.tmPreferences */; };
+		8FAD0E2416FF09C500681CC5 /* Empty tag typing pairs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DB216FF09C500681CC5 /* Empty tag typing pairs.plist */; };
+		8FAD0E2516FF09C500681CC5 /* Folding.tmPreferences in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DB316FF09C500681CC5 /* Folding.tmPreferences */; };
+		8FAD0E2616FF09C500681CC5 /* Indent Corrections.tmPreferences in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DB416FF09C500681CC5 /* Indent Corrections.tmPreferences */; };
+		8FAD0E2716FF09C500681CC5 /* Miscellaneous.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DB516FF09C500681CC5 /* Miscellaneous.plist */; };
+		8FAD0E2816FF09C500681CC5 /* Symbol List: ID.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DB616FF09C500681CC5 /* Symbol List: ID.plist */; };
+		8FAD0E2916FF09C500681CC5 /* Tag Completions.tmPreferences in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DB716FF09C500681CC5 /* Tag Completions.tmPreferences */; };
+		8FAD0E2A16FF09C500681CC5 /* Tag preferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DB816FF09C500681CC5 /* Tag preferences.plist */; };
+		8FAD0E2B16FF09C500681CC5 /* README.mdown in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DB916FF09C500681CC5 /* README.mdown */; };
+		8FAD0E2C16FF09C500681CC5 /* DocType HTML 4.0 Strict.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DBB16FF09C500681CC5 /* DocType HTML 4.0 Strict.plist */; };
+		8FAD0E2D16FF09C500681CC5 /* DocType HTML 5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DBC16FF09C500681CC5 /* DocType HTML 5.plist */; };
+		8FAD0E2E16FF09C500681CC5 /* DocType XHTL 1.0 Frameset.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DBD16FF09C500681CC5 /* DocType XHTL 1.0 Frameset.plist */; };
+		8FAD0E2F16FF09C500681CC5 /* DocType XHTML 1.0 Strict.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DBE16FF09C500681CC5 /* DocType XHTML 1.0 Strict.plist */; };
+		8FAD0E3016FF09C500681CC5 /* DocType XHTML 1.0 Transitional.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DBF16FF09C500681CC5 /* DocType XHTML 1.0 Transitional.plist */; };
+		8FAD0E3116FF09C500681CC5 /* DocType XHTML 1.1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DC016FF09C500681CC5 /* DocType XHTML 1.1.plist */; };
+		8FAD0E3216FF09C500681CC5 /* Embed QT movie (movie).plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DC116FF09C500681CC5 /* Embed QT movie (movie).plist */; };
+		8FAD0E3316FF09C500681CC5 /* Emphasize.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DC216FF09C500681CC5 /* Emphasize.tmSnippet */; };
+		8FAD0E3416FF09C500681CC5 /* Fieldset.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DC316FF09C500681CC5 /* Fieldset.tmSnippet */; };
+		8FAD0E3516FF09C500681CC5 /* HTML — 4.0 Transitional (doctype).plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DC416FF09C500681CC5 /* HTML — 4.0 Transitional (doctype).plist */; };
+		8FAD0E3616FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 5_0 only.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DC516FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 5_0 only.tmSnippet */; };
+		8FAD0E3716FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 5_5 only.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DC616FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 5_5 only.tmSnippet */; };
+		8FAD0E3816FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 5_x.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DC716FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 5_x.tmSnippet */; };
+		8FAD0E3916FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 6 and below.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DC816FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 6 and below.tmSnippet */; };
+		8FAD0E3A16FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 6 only.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DC916FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 6 only.tmSnippet */; };
+		8FAD0E3B16FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 7+.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DCA16FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 7+.tmSnippet */; };
+		8FAD0E3C16FF09C500681CC5 /* IE Conditional Comment: Internet Explorer.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DCB16FF09C500681CC5 /* IE Conditional Comment: Internet Explorer.tmSnippet */; };
+		8FAD0E3D16FF09C500681CC5 /* IE Conditional Comment: NOT Internet Explorer.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DCC16FF09C500681CC5 /* IE Conditional Comment: NOT Internet Explorer.tmSnippet */; };
+		8FAD0E3E16FF09C500681CC5 /* Input with Label.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DCD16FF09C500681CC5 /* Input with Label.tmSnippet */; };
+		8FAD0E3F16FF09C500681CC5 /* Option.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DCE16FF09C500681CC5 /* Option.tmSnippet */; };
+		8FAD0E4016FF09C500681CC5 /* Select Box.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DCF16FF09C500681CC5 /* Select Box.tmSnippet */; };
+		8FAD0E4116FF09C500681CC5 /* Smart return:indent for tag pairs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DD016FF09C500681CC5 /* Smart return:indent for tag pairs.plist */; };
+		8FAD0E4216FF09C500681CC5 /* Strong.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DD116FF09C500681CC5 /* Strong.tmSnippet */; };
+		8FAD0E4316FF09C500681CC5 /* Wrap in <?= … ?>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DD216FF09C500681CC5 /* Wrap in <?= … ?>.plist */; };
+		8FAD0E4416FF09C500681CC5 /* Wrap Selection In Tag.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DD316FF09C500681CC5 /* Wrap Selection In Tag.plist */; };
+		8FAD0E4516FF09C500681CC5 /* XHTML   <input>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DD416FF09C500681CC5 /* XHTML   <input>.plist */; };
+		8FAD0E4616FF09C500681CC5 /* XHTML   <textarea>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DD516FF09C500681CC5 /* XHTML   <textarea>.plist */; };
+		8FAD0E4716FF09C500681CC5 /* XHTML &nbsp; NonBreakingSpace.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DD616FF09C500681CC5 /* XHTML &nbsp; NonBreakingSpace.plist */; };
+		8FAD0E4816FF09C500681CC5 /* XHTML <a mailto: >.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DD716FF09C500681CC5 /* XHTML <a mailto: >.plist */; };
+		8FAD0E4916FF09C500681CC5 /* XHTML <base>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DD816FF09C500681CC5 /* XHTML <base>.plist */; };
+		8FAD0E4A16FF09C500681CC5 /* XHTML <body>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DD916FF09C500681CC5 /* XHTML <body>.plist */; };
+		8FAD0E4B16FF09C500681CC5 /* XHTML <br :>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DDA16FF09C500681CC5 /* XHTML <br :>.plist */; };
+		8FAD0E4C16FF09C500681CC5 /* XHTML <div>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DDB16FF09C500681CC5 /* XHTML <div>.plist */; };
+		8FAD0E4D16FF09C500681CC5 /* XHTML <form>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DDC16FF09C500681CC5 /* XHTML <form>.plist */; };
+		8FAD0E4E16FF09C500681CC5 /* XHTML <h1>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DDD16FF09C500681CC5 /* XHTML <h1>.plist */; };
+		8FAD0E4F16FF09C500681CC5 /* XHTML <head>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DDE16FF09C500681CC5 /* XHTML <head>.plist */; };
+		8FAD0E5016FF09C500681CC5 /* XHTML <link>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DDF16FF09C500681CC5 /* XHTML <link>.plist */; };
+		8FAD0E5116FF09C500681CC5 /* XHTML <meta>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DE016FF09C500681CC5 /* XHTML <meta>.plist */; };
+		8FAD0E5216FF09C500681CC5 /* XHTML <script src...>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DE116FF09C500681CC5 /* XHTML <script src...>.plist */; };
+		8FAD0E5316FF09C500681CC5 /* XHTML <script>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DE216FF09C500681CC5 /* XHTML <script>.plist */; };
+		8FAD0E5416FF09C500681CC5 /* XHTML <style>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DE316FF09C500681CC5 /* XHTML <style>.plist */; };
+		8FAD0E5516FF09C500681CC5 /* XHTML <table>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DE416FF09C500681CC5 /* XHTML <table>.plist */; };
+		8FAD0E5616FF09C500681CC5 /* XHTML <title>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DE516FF09C500681CC5 /* XHTML <title>.plist */; };
+		8FAD0E5716FF09C500681CC5 /* entities.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DE716FF09C500681CC5 /* entities.txt */; };
+		8FAD0E5816FF09C500681CC5 /* Insert Entity.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DE916FF09C500681CC5 /* Insert Entity.nib */; };
+		8FAD0E5916FF09C500681CC5 /* tminclude.rb in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DEA16FF09C500681CC5 /* tminclude.rb */; };
+		8FAD0E5A16FF09C500681CC5 /* HTML.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DEC16FF09C500681CC5 /* HTML.plist */; };
+		8FAD0E5B16FF09C500681CC5 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DEF16FF09C500681CC5 /* index.html */; };
+		8FAD0E5C16FF09C500681CC5 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DF016FF09C500681CC5 /* info.plist */; };
+		8FAD0E5D16FF09C500681CC5 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DF216FF09C500681CC5 /* index.html */; };
+		8FAD0E5E16FF09C500681CC5 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DF316FF09C500681CC5 /* info.plist */; };
+		8FAD0E5F16FF09C500681CC5 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DF516FF09C500681CC5 /* index.html */; };
+		8FAD0E6016FF09C500681CC5 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DF616FF09C500681CC5 /* info.plist */; };
+		8FAD0E6116FF09C500681CC5 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DF816FF09C500681CC5 /* index.html */; };
+		8FAD0E6216FF09C500681CC5 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DF916FF09C500681CC5 /* info.plist */; };
+		8FAD0E6316FF09C500681CC5 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DFB16FF09C500681CC5 /* index.html */; };
+		8FAD0E6416FF09C500681CC5 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DFC16FF09C500681CC5 /* info.plist */; };
+		8FAD0E6516FF09C500681CC5 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DFE16FF09C500681CC5 /* index.html */; };
+		8FAD0E6616FF09C500681CC5 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0DFF16FF09C500681CC5 /* info.plist */; };
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
 		8FCA1D6A16F8707900C6AAFC /* FileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F91016F86AD000159B29 /* FileObject.m */; };
 		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
@@ -103,6 +206,109 @@
 		8F5C5C1516FDFDBE00B31A19 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = General/Utils.h; sourceTree = "<group>"; };
 		8F5C5C1716FDFED300B31A19 /* Find.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Find.h; path = General/Find.h; sourceTree = "<group>"; };
 		8F5C5C1816FDFED300B31A19 /* Find.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Find.m; path = General/Find.m; sourceTree = "<group>"; };
+		8FAD0D8B16FF09C500681CC5 /* About Persistent Includes.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "About Persistent Includes.tmCommand"; sourceTree = "<group>"; };
+		8FAD0D8C16FF09C500681CC5 /* CodeCompletion HTML Attributes.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CodeCompletion HTML Attributes.tmCommand"; sourceTree = "<group>"; };
+		8FAD0D8D16FF09C500681CC5 /* CodeCompletion HTML Tags.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CodeCompletion HTML Tags.tmCommand"; sourceTree = "<group>"; };
+		8FAD0D8E16FF09C500681CC5 /* Convert Line : Selection to URL Escapes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Convert Line : Selection to URL Escapes.plist"; sourceTree = "<group>"; };
+		8FAD0D8F16FF09C500681CC5 /* Convert to HTML Entities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Convert to HTML Entities.plist"; sourceTree = "<group>"; };
+		8FAD0D9016FF09C500681CC5 /* Convert to named entities excl tags.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Convert to named entities excl tags.plist"; sourceTree = "<group>"; };
+		8FAD0D9116FF09C500681CC5 /* Decode HTML Entities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Decode HTML Entities.plist"; sourceTree = "<group>"; };
+		8FAD0D9216FF09C500681CC5 /* Decode Numeric URL Escapes in Line : Selection.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Decode Numeric URL Escapes in Line : Selection.plist"; sourceTree = "<group>"; };
+		8FAD0D9316FF09C500681CC5 /* Documentation for Tag.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Documentation for Tag.plist"; sourceTree = "<group>"; };
+		8FAD0D9416FF09C500681CC5 /* Encrypt Line : Selection (ROT 13).tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Encrypt Line : Selection (ROT 13).tmCommand"; sourceTree = "<group>"; };
+		8FAD0D9516FF09C500681CC5 /* Insert Close Tag.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Insert Close Tag.plist"; sourceTree = "<group>"; };
+		8FAD0D9616FF09C500681CC5 /* Insert Entity….plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Insert Entity….plist"; sourceTree = "<group>"; };
+		8FAD0D9716FF09C500681CC5 /* Insert Tag Pair.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Insert Tag Pair.plist"; sourceTree = "<group>"; };
+		8FAD0D9816FF09C500681CC5 /* Persistent Include.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Persistent Include.tmCommand"; sourceTree = "<group>"; };
+		8FAD0D9916FF09C500681CC5 /* Preview in All Active Browsers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Preview in All Active Browsers.plist"; sourceTree = "<group>"; };
+		8FAD0D9A16FF09C500681CC5 /* Refresh All Active Browsers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Refresh All Active Browsers.plist"; sourceTree = "<group>"; };
+		8FAD0D9B16FF09C500681CC5 /* Show Web Preview.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Show Web Preview.tmCommand"; sourceTree = "<group>"; };
+		8FAD0D9C16FF09C500681CC5 /* Strip HTML tags.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Strip HTML tags.plist"; sourceTree = "<group>"; };
+		8FAD0D9D16FF09C500681CC5 /* Tidy.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tidy.plist; sourceTree = "<group>"; };
+		8FAD0D9E16FF09C500681CC5 /* Update Includes.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Update Includes.tmCommand"; sourceTree = "<group>"; };
+		8FAD0D9F16FF09C500681CC5 /* Update Project.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Update Project.tmCommand"; sourceTree = "<group>"; };
+		8FAD0DA016FF09C500681CC5 /* W3C validation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "W3C validation.plist"; sourceTree = "<group>"; };
+		8FAD0DA116FF09C500681CC5 /* Wrap Each Selected Line in Open:Close Tag.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Wrap Each Selected Line in Open:Close Tag.plist"; sourceTree = "<group>"; };
+		8FAD0DA316FF09C500681CC5 /* Anchor Tag.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Anchor Tag.plist"; sourceTree = "<group>"; };
+		8FAD0DA416FF09C500681CC5 /* CSS Link.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CSS Link.plist"; sourceTree = "<group>"; };
+		8FAD0DA516FF09C500681CC5 /* Image Tag.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Image Tag.plist"; sourceTree = "<group>"; };
+		8FAD0DA616FF09C500681CC5 /* Insert Anchor href 2.tmDragCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Insert Anchor href 2.tmDragCommand"; sourceTree = "<group>"; };
+		8FAD0DA716FF09C500681CC5 /* Insert Anchor href.tmDragCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Insert Anchor href.tmDragCommand"; sourceTree = "<group>"; };
+		8FAD0DA816FF09C500681CC5 /* Insert Flash Movie (Swf).tmDragCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Insert Flash Movie (Swf).tmDragCommand"; sourceTree = "<group>"; };
+		8FAD0DA916FF09C500681CC5 /* Insert JS Link.tmDragCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Insert JS Link.tmDragCommand"; sourceTree = "<group>"; };
+		8FAD0DAA16FF09C500681CC5 /* Insert QuickTime Movie.tmDragCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Insert QuickTime Movie.tmDragCommand"; sourceTree = "<group>"; };
+		8FAD0DAB16FF09C500681CC5 /* Insert URL.tmDragCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Insert URL.tmDragCommand"; sourceTree = "<group>"; };
+		8FAD0DAC16FF09C500681CC5 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		8FAD0DAE16FF09C500681CC5 /* Delete whitespace between tags.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Delete whitespace between tags.plist"; sourceTree = "<group>"; };
+		8FAD0DB016FF09C500681CC5 /* Comments.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Comments.plist; sourceTree = "<group>"; };
+		8FAD0DB116FF09C500681CC5 /* Completions HTML Attributes.tmPreferences */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Completions HTML Attributes.tmPreferences"; sourceTree = "<group>"; };
+		8FAD0DB216FF09C500681CC5 /* Empty tag typing pairs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Empty tag typing pairs.plist"; sourceTree = "<group>"; };
+		8FAD0DB316FF09C500681CC5 /* Folding.tmPreferences */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Folding.tmPreferences; sourceTree = "<group>"; };
+		8FAD0DB416FF09C500681CC5 /* Indent Corrections.tmPreferences */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Indent Corrections.tmPreferences"; sourceTree = "<group>"; };
+		8FAD0DB516FF09C500681CC5 /* Miscellaneous.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Miscellaneous.plist; sourceTree = "<group>"; };
+		8FAD0DB616FF09C500681CC5 /* Symbol List: ID.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Symbol List: ID.plist"; sourceTree = "<group>"; };
+		8FAD0DB716FF09C500681CC5 /* Tag Completions.tmPreferences */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Tag Completions.tmPreferences"; sourceTree = "<group>"; };
+		8FAD0DB816FF09C500681CC5 /* Tag preferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Tag preferences.plist"; sourceTree = "<group>"; };
+		8FAD0DB916FF09C500681CC5 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mdown; sourceTree = "<group>"; };
+		8FAD0DBB16FF09C500681CC5 /* DocType HTML 4.0 Strict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DocType HTML 4.0 Strict.plist"; sourceTree = "<group>"; };
+		8FAD0DBC16FF09C500681CC5 /* DocType HTML 5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DocType HTML 5.plist"; sourceTree = "<group>"; };
+		8FAD0DBD16FF09C500681CC5 /* DocType XHTL 1.0 Frameset.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DocType XHTL 1.0 Frameset.plist"; sourceTree = "<group>"; };
+		8FAD0DBE16FF09C500681CC5 /* DocType XHTML 1.0 Strict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DocType XHTML 1.0 Strict.plist"; sourceTree = "<group>"; };
+		8FAD0DBF16FF09C500681CC5 /* DocType XHTML 1.0 Transitional.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DocType XHTML 1.0 Transitional.plist"; sourceTree = "<group>"; };
+		8FAD0DC016FF09C500681CC5 /* DocType XHTML 1.1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DocType XHTML 1.1.plist"; sourceTree = "<group>"; };
+		8FAD0DC116FF09C500681CC5 /* Embed QT movie (movie).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Embed QT movie (movie).plist"; sourceTree = "<group>"; };
+		8FAD0DC216FF09C500681CC5 /* Emphasize.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Emphasize.tmSnippet; sourceTree = "<group>"; };
+		8FAD0DC316FF09C500681CC5 /* Fieldset.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Fieldset.tmSnippet; sourceTree = "<group>"; };
+		8FAD0DC416FF09C500681CC5 /* HTML — 4.0 Transitional (doctype).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HTML — 4.0 Transitional (doctype).plist"; sourceTree = "<group>"; };
+		8FAD0DC516FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 5_0 only.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "IE Conditional Comment: Internet Explorer 5_0 only.tmSnippet"; sourceTree = "<group>"; };
+		8FAD0DC616FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 5_5 only.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "IE Conditional Comment: Internet Explorer 5_5 only.tmSnippet"; sourceTree = "<group>"; };
+		8FAD0DC716FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 5_x.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "IE Conditional Comment: Internet Explorer 5_x.tmSnippet"; sourceTree = "<group>"; };
+		8FAD0DC816FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 6 and below.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "IE Conditional Comment: Internet Explorer 6 and below.tmSnippet"; sourceTree = "<group>"; };
+		8FAD0DC916FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 6 only.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "IE Conditional Comment: Internet Explorer 6 only.tmSnippet"; sourceTree = "<group>"; };
+		8FAD0DCA16FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 7+.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "IE Conditional Comment: Internet Explorer 7+.tmSnippet"; sourceTree = "<group>"; };
+		8FAD0DCB16FF09C500681CC5 /* IE Conditional Comment: Internet Explorer.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "IE Conditional Comment: Internet Explorer.tmSnippet"; sourceTree = "<group>"; };
+		8FAD0DCC16FF09C500681CC5 /* IE Conditional Comment: NOT Internet Explorer.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "IE Conditional Comment: NOT Internet Explorer.tmSnippet"; sourceTree = "<group>"; };
+		8FAD0DCD16FF09C500681CC5 /* Input with Label.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Input with Label.tmSnippet"; sourceTree = "<group>"; };
+		8FAD0DCE16FF09C500681CC5 /* Option.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Option.tmSnippet; sourceTree = "<group>"; };
+		8FAD0DCF16FF09C500681CC5 /* Select Box.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Select Box.tmSnippet"; sourceTree = "<group>"; };
+		8FAD0DD016FF09C500681CC5 /* Smart return:indent for tag pairs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Smart return:indent for tag pairs.plist"; sourceTree = "<group>"; };
+		8FAD0DD116FF09C500681CC5 /* Strong.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Strong.tmSnippet; sourceTree = "<group>"; };
+		8FAD0DD216FF09C500681CC5 /* Wrap in <?= … ?>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Wrap in <?= … ?>.plist"; sourceTree = "<group>"; };
+		8FAD0DD316FF09C500681CC5 /* Wrap Selection In Tag.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Wrap Selection In Tag.plist"; sourceTree = "<group>"; };
+		8FAD0DD416FF09C500681CC5 /* XHTML   <input>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML   <input>.plist"; sourceTree = "<group>"; };
+		8FAD0DD516FF09C500681CC5 /* XHTML   <textarea>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML   <textarea>.plist"; sourceTree = "<group>"; };
+		8FAD0DD616FF09C500681CC5 /* XHTML &nbsp; NonBreakingSpace.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML &nbsp; NonBreakingSpace.plist"; sourceTree = "<group>"; };
+		8FAD0DD716FF09C500681CC5 /* XHTML <a mailto: >.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <a mailto: >.plist"; sourceTree = "<group>"; };
+		8FAD0DD816FF09C500681CC5 /* XHTML <base>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <base>.plist"; sourceTree = "<group>"; };
+		8FAD0DD916FF09C500681CC5 /* XHTML <body>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <body>.plist"; sourceTree = "<group>"; };
+		8FAD0DDA16FF09C500681CC5 /* XHTML <br :>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <br :>.plist"; sourceTree = "<group>"; };
+		8FAD0DDB16FF09C500681CC5 /* XHTML <div>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <div>.plist"; sourceTree = "<group>"; };
+		8FAD0DDC16FF09C500681CC5 /* XHTML <form>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <form>.plist"; sourceTree = "<group>"; };
+		8FAD0DDD16FF09C500681CC5 /* XHTML <h1>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <h1>.plist"; sourceTree = "<group>"; };
+		8FAD0DDE16FF09C500681CC5 /* XHTML <head>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <head>.plist"; sourceTree = "<group>"; };
+		8FAD0DDF16FF09C500681CC5 /* XHTML <link>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <link>.plist"; sourceTree = "<group>"; };
+		8FAD0DE016FF09C500681CC5 /* XHTML <meta>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <meta>.plist"; sourceTree = "<group>"; };
+		8FAD0DE116FF09C500681CC5 /* XHTML <script src...>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <script src...>.plist"; sourceTree = "<group>"; };
+		8FAD0DE216FF09C500681CC5 /* XHTML <script>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <script>.plist"; sourceTree = "<group>"; };
+		8FAD0DE316FF09C500681CC5 /* XHTML <style>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <style>.plist"; sourceTree = "<group>"; };
+		8FAD0DE416FF09C500681CC5 /* XHTML <table>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <table>.plist"; sourceTree = "<group>"; };
+		8FAD0DE516FF09C500681CC5 /* XHTML <title>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <title>.plist"; sourceTree = "<group>"; };
+		8FAD0DE716FF09C500681CC5 /* entities.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = entities.txt; sourceTree = "<group>"; };
+		8FAD0DE916FF09C500681CC5 /* Insert Entity.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = "Insert Entity.nib"; sourceTree = "<group>"; };
+		8FAD0DEA16FF09C500681CC5 /* tminclude.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = tminclude.rb; sourceTree = "<group>"; };
+		8FAD0DEC16FF09C500681CC5 /* HTML.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HTML.plist; sourceTree = "<group>"; };
+		8FAD0DEF16FF09C500681CC5 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		8FAD0DF016FF09C500681CC5 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		8FAD0DF216FF09C500681CC5 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		8FAD0DF316FF09C500681CC5 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		8FAD0DF516FF09C500681CC5 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		8FAD0DF616FF09C500681CC5 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		8FAD0DF816FF09C500681CC5 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		8FAD0DF916FF09C500681CC5 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		8FAD0DFB16FF09C500681CC5 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		8FAD0DFC16FF09C500681CC5 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		8FAD0DFE16FF09C500681CC5 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		8FAD0DFF16FF09C500681CC5 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		8FCA1D6716F86C7000C6AAFC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		8FCA1D6816F86C7000C6AAFC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationState.h; sourceTree = "<group>"; };
@@ -287,6 +493,7 @@
 		4CD06B9016FE1A6900C9DED3 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				8FAD0CAD16FF011C00681CC5 /* TextmateBundles */,
 				4CD06B9116FE1A7100C9DED3 /* Fonts */,
 			);
 			name = Assets;
@@ -299,6 +506,245 @@
 			);
 			name = Fonts;
 			path = Assets/Fonts;
+			sourceTree = "<group>";
+		};
+		8FAD0CAD16FF011C00681CC5 /* TextmateBundles */ = {
+			isa = PBXGroup;
+			children = (
+				8FAD0D8916FF09C500681CC5 /* html.tmbundle */,
+			);
+			name = TextmateBundles;
+			path = Assets/TextmateBundles;
+			sourceTree = "<group>";
+		};
+		8FAD0D8916FF09C500681CC5 /* html.tmbundle */ = {
+			isa = PBXGroup;
+			children = (
+				8FAD0D8A16FF09C500681CC5 /* Commands */,
+				8FAD0DA216FF09C500681CC5 /* DragCommands */,
+				8FAD0DAC16FF09C500681CC5 /* info.plist */,
+				8FAD0DAD16FF09C500681CC5 /* Macros */,
+				8FAD0DAF16FF09C500681CC5 /* Preferences */,
+				8FAD0DB916FF09C500681CC5 /* README.mdown */,
+				8FAD0DBA16FF09C500681CC5 /* Snippets */,
+				8FAD0DE616FF09C500681CC5 /* Support */,
+				8FAD0DEB16FF09C500681CC5 /* Syntaxes */,
+				8FAD0DED16FF09C500681CC5 /* Templates */,
+			);
+			path = html.tmbundle;
+			sourceTree = "<group>";
+		};
+		8FAD0D8A16FF09C500681CC5 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				8FAD0D8B16FF09C500681CC5 /* About Persistent Includes.tmCommand */,
+				8FAD0D8C16FF09C500681CC5 /* CodeCompletion HTML Attributes.tmCommand */,
+				8FAD0D8D16FF09C500681CC5 /* CodeCompletion HTML Tags.tmCommand */,
+				8FAD0D8E16FF09C500681CC5 /* Convert Line : Selection to URL Escapes.plist */,
+				8FAD0D8F16FF09C500681CC5 /* Convert to HTML Entities.plist */,
+				8FAD0D9016FF09C500681CC5 /* Convert to named entities excl tags.plist */,
+				8FAD0D9116FF09C500681CC5 /* Decode HTML Entities.plist */,
+				8FAD0D9216FF09C500681CC5 /* Decode Numeric URL Escapes in Line : Selection.plist */,
+				8FAD0D9316FF09C500681CC5 /* Documentation for Tag.plist */,
+				8FAD0D9416FF09C500681CC5 /* Encrypt Line : Selection (ROT 13).tmCommand */,
+				8FAD0D9516FF09C500681CC5 /* Insert Close Tag.plist */,
+				8FAD0D9616FF09C500681CC5 /* Insert Entity….plist */,
+				8FAD0D9716FF09C500681CC5 /* Insert Tag Pair.plist */,
+				8FAD0D9816FF09C500681CC5 /* Persistent Include.tmCommand */,
+				8FAD0D9916FF09C500681CC5 /* Preview in All Active Browsers.plist */,
+				8FAD0D9A16FF09C500681CC5 /* Refresh All Active Browsers.plist */,
+				8FAD0D9B16FF09C500681CC5 /* Show Web Preview.tmCommand */,
+				8FAD0D9C16FF09C500681CC5 /* Strip HTML tags.plist */,
+				8FAD0D9D16FF09C500681CC5 /* Tidy.plist */,
+				8FAD0D9E16FF09C500681CC5 /* Update Includes.tmCommand */,
+				8FAD0D9F16FF09C500681CC5 /* Update Project.tmCommand */,
+				8FAD0DA016FF09C500681CC5 /* W3C validation.plist */,
+				8FAD0DA116FF09C500681CC5 /* Wrap Each Selected Line in Open:Close Tag.plist */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		8FAD0DA216FF09C500681CC5 /* DragCommands */ = {
+			isa = PBXGroup;
+			children = (
+				8FAD0DA316FF09C500681CC5 /* Anchor Tag.plist */,
+				8FAD0DA416FF09C500681CC5 /* CSS Link.plist */,
+				8FAD0DA516FF09C500681CC5 /* Image Tag.plist */,
+				8FAD0DA616FF09C500681CC5 /* Insert Anchor href 2.tmDragCommand */,
+				8FAD0DA716FF09C500681CC5 /* Insert Anchor href.tmDragCommand */,
+				8FAD0DA816FF09C500681CC5 /* Insert Flash Movie (Swf).tmDragCommand */,
+				8FAD0DA916FF09C500681CC5 /* Insert JS Link.tmDragCommand */,
+				8FAD0DAA16FF09C500681CC5 /* Insert QuickTime Movie.tmDragCommand */,
+				8FAD0DAB16FF09C500681CC5 /* Insert URL.tmDragCommand */,
+			);
+			path = DragCommands;
+			sourceTree = "<group>";
+		};
+		8FAD0DAD16FF09C500681CC5 /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				8FAD0DAE16FF09C500681CC5 /* Delete whitespace between tags.plist */,
+			);
+			path = Macros;
+			sourceTree = "<group>";
+		};
+		8FAD0DAF16FF09C500681CC5 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				8FAD0DB016FF09C500681CC5 /* Comments.plist */,
+				8FAD0DB116FF09C500681CC5 /* Completions HTML Attributes.tmPreferences */,
+				8FAD0DB216FF09C500681CC5 /* Empty tag typing pairs.plist */,
+				8FAD0DB316FF09C500681CC5 /* Folding.tmPreferences */,
+				8FAD0DB416FF09C500681CC5 /* Indent Corrections.tmPreferences */,
+				8FAD0DB516FF09C500681CC5 /* Miscellaneous.plist */,
+				8FAD0DB616FF09C500681CC5 /* Symbol List: ID.plist */,
+				8FAD0DB716FF09C500681CC5 /* Tag Completions.tmPreferences */,
+				8FAD0DB816FF09C500681CC5 /* Tag preferences.plist */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		8FAD0DBA16FF09C500681CC5 /* Snippets */ = {
+			isa = PBXGroup;
+			children = (
+				8FAD0DBB16FF09C500681CC5 /* DocType HTML 4.0 Strict.plist */,
+				8FAD0DBC16FF09C500681CC5 /* DocType HTML 5.plist */,
+				8FAD0DBD16FF09C500681CC5 /* DocType XHTL 1.0 Frameset.plist */,
+				8FAD0DBE16FF09C500681CC5 /* DocType XHTML 1.0 Strict.plist */,
+				8FAD0DBF16FF09C500681CC5 /* DocType XHTML 1.0 Transitional.plist */,
+				8FAD0DC016FF09C500681CC5 /* DocType XHTML 1.1.plist */,
+				8FAD0DC116FF09C500681CC5 /* Embed QT movie (movie).plist */,
+				8FAD0DC216FF09C500681CC5 /* Emphasize.tmSnippet */,
+				8FAD0DC316FF09C500681CC5 /* Fieldset.tmSnippet */,
+				8FAD0DC416FF09C500681CC5 /* HTML — 4.0 Transitional (doctype).plist */,
+				8FAD0DC516FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 5_0 only.tmSnippet */,
+				8FAD0DC616FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 5_5 only.tmSnippet */,
+				8FAD0DC716FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 5_x.tmSnippet */,
+				8FAD0DC816FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 6 and below.tmSnippet */,
+				8FAD0DC916FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 6 only.tmSnippet */,
+				8FAD0DCA16FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 7+.tmSnippet */,
+				8FAD0DCB16FF09C500681CC5 /* IE Conditional Comment: Internet Explorer.tmSnippet */,
+				8FAD0DCC16FF09C500681CC5 /* IE Conditional Comment: NOT Internet Explorer.tmSnippet */,
+				8FAD0DCD16FF09C500681CC5 /* Input with Label.tmSnippet */,
+				8FAD0DCE16FF09C500681CC5 /* Option.tmSnippet */,
+				8FAD0DCF16FF09C500681CC5 /* Select Box.tmSnippet */,
+				8FAD0DD016FF09C500681CC5 /* Smart return:indent for tag pairs.plist */,
+				8FAD0DD116FF09C500681CC5 /* Strong.tmSnippet */,
+				8FAD0DD216FF09C500681CC5 /* Wrap in <?= … ?>.plist */,
+				8FAD0DD316FF09C500681CC5 /* Wrap Selection In Tag.plist */,
+				8FAD0DD416FF09C500681CC5 /* XHTML   <input>.plist */,
+				8FAD0DD516FF09C500681CC5 /* XHTML   <textarea>.plist */,
+				8FAD0DD616FF09C500681CC5 /* XHTML &nbsp; NonBreakingSpace.plist */,
+				8FAD0DD716FF09C500681CC5 /* XHTML <a mailto: >.plist */,
+				8FAD0DD816FF09C500681CC5 /* XHTML <base>.plist */,
+				8FAD0DD916FF09C500681CC5 /* XHTML <body>.plist */,
+				8FAD0DDA16FF09C500681CC5 /* XHTML <br :>.plist */,
+				8FAD0DDB16FF09C500681CC5 /* XHTML <div>.plist */,
+				8FAD0DDC16FF09C500681CC5 /* XHTML <form>.plist */,
+				8FAD0DDD16FF09C500681CC5 /* XHTML <h1>.plist */,
+				8FAD0DDE16FF09C500681CC5 /* XHTML <head>.plist */,
+				8FAD0DDF16FF09C500681CC5 /* XHTML <link>.plist */,
+				8FAD0DE016FF09C500681CC5 /* XHTML <meta>.plist */,
+				8FAD0DE116FF09C500681CC5 /* XHTML <script src...>.plist */,
+				8FAD0DE216FF09C500681CC5 /* XHTML <script>.plist */,
+				8FAD0DE316FF09C500681CC5 /* XHTML <style>.plist */,
+				8FAD0DE416FF09C500681CC5 /* XHTML <table>.plist */,
+				8FAD0DE516FF09C500681CC5 /* XHTML <title>.plist */,
+			);
+			path = Snippets;
+			sourceTree = "<group>";
+		};
+		8FAD0DE616FF09C500681CC5 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				8FAD0DE716FF09C500681CC5 /* entities.txt */,
+				8FAD0DE816FF09C500681CC5 /* nibs */,
+				8FAD0DEA16FF09C500681CC5 /* tminclude.rb */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		8FAD0DE816FF09C500681CC5 /* nibs */ = {
+			isa = PBXGroup;
+			children = (
+				8FAD0DE916FF09C500681CC5 /* Insert Entity.nib */,
+			);
+			path = nibs;
+			sourceTree = "<group>";
+		};
+		8FAD0DEB16FF09C500681CC5 /* Syntaxes */ = {
+			isa = PBXGroup;
+			children = (
+				8FAD0DEC16FF09C500681CC5 /* HTML.plist */,
+			);
+			path = Syntaxes;
+			sourceTree = "<group>";
+		};
+		8FAD0DED16FF09C500681CC5 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				8FAD0DEE16FF09C500681CC5 /* HTML – 4.0 Strict */,
+				8FAD0DF116FF09C500681CC5 /* HTML — 4.0 Transitional */,
+				8FAD0DF416FF09C500681CC5 /* XHTML – 1.0 Frameset */,
+				8FAD0DF716FF09C500681CC5 /* XHTML – 1.0 Strict */,
+				8FAD0DFA16FF09C500681CC5 /* XHTML – 1.0 Transitional */,
+				8FAD0DFD16FF09C500681CC5 /* XHTML – 1.1 */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
+		8FAD0DEE16FF09C500681CC5 /* HTML – 4.0 Strict */ = {
+			isa = PBXGroup;
+			children = (
+				8FAD0DEF16FF09C500681CC5 /* index.html */,
+				8FAD0DF016FF09C500681CC5 /* info.plist */,
+			);
+			path = "HTML – 4.0 Strict";
+			sourceTree = "<group>";
+		};
+		8FAD0DF116FF09C500681CC5 /* HTML — 4.0 Transitional */ = {
+			isa = PBXGroup;
+			children = (
+				8FAD0DF216FF09C500681CC5 /* index.html */,
+				8FAD0DF316FF09C500681CC5 /* info.plist */,
+			);
+			path = "HTML — 4.0 Transitional";
+			sourceTree = "<group>";
+		};
+		8FAD0DF416FF09C500681CC5 /* XHTML – 1.0 Frameset */ = {
+			isa = PBXGroup;
+			children = (
+				8FAD0DF516FF09C500681CC5 /* index.html */,
+				8FAD0DF616FF09C500681CC5 /* info.plist */,
+			);
+			path = "XHTML – 1.0 Frameset";
+			sourceTree = "<group>";
+		};
+		8FAD0DF716FF09C500681CC5 /* XHTML – 1.0 Strict */ = {
+			isa = PBXGroup;
+			children = (
+				8FAD0DF816FF09C500681CC5 /* index.html */,
+				8FAD0DF916FF09C500681CC5 /* info.plist */,
+			);
+			path = "XHTML – 1.0 Strict";
+			sourceTree = "<group>";
+		};
+		8FAD0DFA16FF09C500681CC5 /* XHTML – 1.0 Transitional */ = {
+			isa = PBXGroup;
+			children = (
+				8FAD0DFB16FF09C500681CC5 /* index.html */,
+				8FAD0DFC16FF09C500681CC5 /* info.plist */,
+			);
+			path = "XHTML – 1.0 Transitional";
+			sourceTree = "<group>";
+		};
+		8FAD0DFD16FF09C500681CC5 /* XHTML – 1.1 */ = {
+			isa = PBXGroup;
+			children = (
+				8FAD0DFE16FF09C500681CC5 /* index.html */,
+				8FAD0DFF16FF09C500681CC5 /* info.plist */,
+			);
+			path = "XHTML – 1.1";
 			sourceTree = "<group>";
 		};
 		8FCA1D6616F86C7000C6AAFC /* Controllers */ = {
@@ -391,6 +837,109 @@
 				4C43F90316F86AA900159B29 /* Default@2x.png in Resources */,
 				4C43F90516F86AA900159B29 /* Default-568h@2x.png in Resources */,
 				4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */,
+				8FAD0E0016FF09C500681CC5 /* About Persistent Includes.tmCommand in Resources */,
+				8FAD0E0116FF09C500681CC5 /* CodeCompletion HTML Attributes.tmCommand in Resources */,
+				8FAD0E0216FF09C500681CC5 /* CodeCompletion HTML Tags.tmCommand in Resources */,
+				8FAD0E0316FF09C500681CC5 /* Convert Line : Selection to URL Escapes.plist in Resources */,
+				8FAD0E0416FF09C500681CC5 /* Convert to HTML Entities.plist in Resources */,
+				8FAD0E0516FF09C500681CC5 /* Convert to named entities excl tags.plist in Resources */,
+				8FAD0E0616FF09C500681CC5 /* Decode HTML Entities.plist in Resources */,
+				8FAD0E0716FF09C500681CC5 /* Decode Numeric URL Escapes in Line : Selection.plist in Resources */,
+				8FAD0E0816FF09C500681CC5 /* Documentation for Tag.plist in Resources */,
+				8FAD0E0916FF09C500681CC5 /* Encrypt Line : Selection (ROT 13).tmCommand in Resources */,
+				8FAD0E0A16FF09C500681CC5 /* Insert Close Tag.plist in Resources */,
+				8FAD0E0B16FF09C500681CC5 /* Insert Entity….plist in Resources */,
+				8FAD0E0C16FF09C500681CC5 /* Insert Tag Pair.plist in Resources */,
+				8FAD0E0D16FF09C500681CC5 /* Persistent Include.tmCommand in Resources */,
+				8FAD0E0E16FF09C500681CC5 /* Preview in All Active Browsers.plist in Resources */,
+				8FAD0E0F16FF09C500681CC5 /* Refresh All Active Browsers.plist in Resources */,
+				8FAD0E1016FF09C500681CC5 /* Show Web Preview.tmCommand in Resources */,
+				8FAD0E1116FF09C500681CC5 /* Strip HTML tags.plist in Resources */,
+				8FAD0E1216FF09C500681CC5 /* Tidy.plist in Resources */,
+				8FAD0E1316FF09C500681CC5 /* Update Includes.tmCommand in Resources */,
+				8FAD0E1416FF09C500681CC5 /* Update Project.tmCommand in Resources */,
+				8FAD0E1516FF09C500681CC5 /* W3C validation.plist in Resources */,
+				8FAD0E1616FF09C500681CC5 /* Wrap Each Selected Line in Open:Close Tag.plist in Resources */,
+				8FAD0E1716FF09C500681CC5 /* Anchor Tag.plist in Resources */,
+				8FAD0E1816FF09C500681CC5 /* CSS Link.plist in Resources */,
+				8FAD0E1916FF09C500681CC5 /* Image Tag.plist in Resources */,
+				8FAD0E1A16FF09C500681CC5 /* Insert Anchor href 2.tmDragCommand in Resources */,
+				8FAD0E1B16FF09C500681CC5 /* Insert Anchor href.tmDragCommand in Resources */,
+				8FAD0E1C16FF09C500681CC5 /* Insert Flash Movie (Swf).tmDragCommand in Resources */,
+				8FAD0E1D16FF09C500681CC5 /* Insert JS Link.tmDragCommand in Resources */,
+				8FAD0E1E16FF09C500681CC5 /* Insert QuickTime Movie.tmDragCommand in Resources */,
+				8FAD0E1F16FF09C500681CC5 /* Insert URL.tmDragCommand in Resources */,
+				8FAD0E2016FF09C500681CC5 /* info.plist in Resources */,
+				8FAD0E2116FF09C500681CC5 /* Delete whitespace between tags.plist in Resources */,
+				8FAD0E2216FF09C500681CC5 /* Comments.plist in Resources */,
+				8FAD0E2316FF09C500681CC5 /* Completions HTML Attributes.tmPreferences in Resources */,
+				8FAD0E2416FF09C500681CC5 /* Empty tag typing pairs.plist in Resources */,
+				8FAD0E2516FF09C500681CC5 /* Folding.tmPreferences in Resources */,
+				8FAD0E2616FF09C500681CC5 /* Indent Corrections.tmPreferences in Resources */,
+				8FAD0E2716FF09C500681CC5 /* Miscellaneous.plist in Resources */,
+				8FAD0E2816FF09C500681CC5 /* Symbol List: ID.plist in Resources */,
+				8FAD0E2916FF09C500681CC5 /* Tag Completions.tmPreferences in Resources */,
+				8FAD0E2A16FF09C500681CC5 /* Tag preferences.plist in Resources */,
+				8FAD0E2B16FF09C500681CC5 /* README.mdown in Resources */,
+				8FAD0E2C16FF09C500681CC5 /* DocType HTML 4.0 Strict.plist in Resources */,
+				8FAD0E2D16FF09C500681CC5 /* DocType HTML 5.plist in Resources */,
+				8FAD0E2E16FF09C500681CC5 /* DocType XHTL 1.0 Frameset.plist in Resources */,
+				8FAD0E2F16FF09C500681CC5 /* DocType XHTML 1.0 Strict.plist in Resources */,
+				8FAD0E3016FF09C500681CC5 /* DocType XHTML 1.0 Transitional.plist in Resources */,
+				8FAD0E3116FF09C500681CC5 /* DocType XHTML 1.1.plist in Resources */,
+				8FAD0E3216FF09C500681CC5 /* Embed QT movie (movie).plist in Resources */,
+				8FAD0E3316FF09C500681CC5 /* Emphasize.tmSnippet in Resources */,
+				8FAD0E3416FF09C500681CC5 /* Fieldset.tmSnippet in Resources */,
+				8FAD0E3516FF09C500681CC5 /* HTML — 4.0 Transitional (doctype).plist in Resources */,
+				8FAD0E3616FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 5_0 only.tmSnippet in Resources */,
+				8FAD0E3716FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 5_5 only.tmSnippet in Resources */,
+				8FAD0E3816FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 5_x.tmSnippet in Resources */,
+				8FAD0E3916FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 6 and below.tmSnippet in Resources */,
+				8FAD0E3A16FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 6 only.tmSnippet in Resources */,
+				8FAD0E3B16FF09C500681CC5 /* IE Conditional Comment: Internet Explorer 7+.tmSnippet in Resources */,
+				8FAD0E3C16FF09C500681CC5 /* IE Conditional Comment: Internet Explorer.tmSnippet in Resources */,
+				8FAD0E3D16FF09C500681CC5 /* IE Conditional Comment: NOT Internet Explorer.tmSnippet in Resources */,
+				8FAD0E3E16FF09C500681CC5 /* Input with Label.tmSnippet in Resources */,
+				8FAD0E3F16FF09C500681CC5 /* Option.tmSnippet in Resources */,
+				8FAD0E4016FF09C500681CC5 /* Select Box.tmSnippet in Resources */,
+				8FAD0E4116FF09C500681CC5 /* Smart return:indent for tag pairs.plist in Resources */,
+				8FAD0E4216FF09C500681CC5 /* Strong.tmSnippet in Resources */,
+				8FAD0E4316FF09C500681CC5 /* Wrap in <?= … ?>.plist in Resources */,
+				8FAD0E4416FF09C500681CC5 /* Wrap Selection In Tag.plist in Resources */,
+				8FAD0E4516FF09C500681CC5 /* XHTML   <input>.plist in Resources */,
+				8FAD0E4616FF09C500681CC5 /* XHTML   <textarea>.plist in Resources */,
+				8FAD0E4716FF09C500681CC5 /* XHTML &nbsp; NonBreakingSpace.plist in Resources */,
+				8FAD0E4816FF09C500681CC5 /* XHTML <a mailto: >.plist in Resources */,
+				8FAD0E4916FF09C500681CC5 /* XHTML <base>.plist in Resources */,
+				8FAD0E4A16FF09C500681CC5 /* XHTML <body>.plist in Resources */,
+				8FAD0E4B16FF09C500681CC5 /* XHTML <br :>.plist in Resources */,
+				8FAD0E4C16FF09C500681CC5 /* XHTML <div>.plist in Resources */,
+				8FAD0E4D16FF09C500681CC5 /* XHTML <form>.plist in Resources */,
+				8FAD0E4E16FF09C500681CC5 /* XHTML <h1>.plist in Resources */,
+				8FAD0E4F16FF09C500681CC5 /* XHTML <head>.plist in Resources */,
+				8FAD0E5016FF09C500681CC5 /* XHTML <link>.plist in Resources */,
+				8FAD0E5116FF09C500681CC5 /* XHTML <meta>.plist in Resources */,
+				8FAD0E5216FF09C500681CC5 /* XHTML <script src...>.plist in Resources */,
+				8FAD0E5316FF09C500681CC5 /* XHTML <script>.plist in Resources */,
+				8FAD0E5416FF09C500681CC5 /* XHTML <style>.plist in Resources */,
+				8FAD0E5516FF09C500681CC5 /* XHTML <table>.plist in Resources */,
+				8FAD0E5616FF09C500681CC5 /* XHTML <title>.plist in Resources */,
+				8FAD0E5716FF09C500681CC5 /* entities.txt in Resources */,
+				8FAD0E5816FF09C500681CC5 /* Insert Entity.nib in Resources */,
+				8FAD0E5916FF09C500681CC5 /* tminclude.rb in Resources */,
+				8FAD0E5A16FF09C500681CC5 /* HTML.plist in Resources */,
+				8FAD0E5B16FF09C500681CC5 /* index.html in Resources */,
+				8FAD0E5C16FF09C500681CC5 /* info.plist in Resources */,
+				8FAD0E5D16FF09C500681CC5 /* index.html in Resources */,
+				8FAD0E5E16FF09C500681CC5 /* info.plist in Resources */,
+				8FAD0E5F16FF09C500681CC5 /* index.html in Resources */,
+				8FAD0E6016FF09C500681CC5 /* info.plist in Resources */,
+				8FAD0E6116FF09C500681CC5 /* index.html in Resources */,
+				8FAD0E6216FF09C500681CC5 /* info.plist in Resources */,
+				8FAD0E6316FF09C500681CC5 /* index.html in Resources */,
+				8FAD0E6416FF09C500681CC5 /* info.plist in Resources */,
+				8FAD0E6516FF09C500681CC5 /* index.html in Resources */,
+				8FAD0E6616FF09C500681CC5 /* info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
