@@ -13,6 +13,7 @@
 @property CodeViewController *codeViewController;
 @property FileNavigationViewController *fileNavigator;
 @property RootFolder *rootFolder;
+@property LeftBarViewController *leftBar;
 @end
 
 @implementation MainViewController
@@ -40,10 +41,11 @@
     _codeViewController.delegate = self;
     _codeViewController.view.frame = SIZE_CODE_VIEW_PORTRAIT;
     
-    _fileNavigator = [[FileNavigationViewController alloc] initWithFolder:_rootFolder frame:SIZE_FILENAV_VIEW_PORTRAIT];
-    _fileNavigator.delegate = self;
+    _leftBar = [[LeftBarViewController alloc] initWithFolder:_rootFolder];
+    //_fileNavigator = [[FileNavigationViewController alloc] initWithFolder:_rootFolder frame:SIZE_FILENAV_VIEW_PORTRAIT];
+    //_fileNavigator.delegate = self;
     
-    [self.view addSubview:_fileNavigator.view];
+    [self.view addSubview:_leftBar.view];
     [self.view addSubview:_codeViewController.view];
 }
 

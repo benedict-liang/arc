@@ -22,10 +22,19 @@
     }
     return self;
 }
+- (id)initWithFolder:(Folder*)folder {
+    self = [super init];
+    if (self) {
+        [self setupFileNavWithFolder:folder];
+    }
+    return self;
+}
 - (void)setupFileNavWithFolder:(Folder*)folder {
     _fileNav = [[FileNavigationViewController alloc] initWithFolder:folder frame:SIZE_FILENAV_VIEW_PORTRAIT];
     _navController = [[UINavigationController alloc] initWithRootViewController:_fileNav];
-    [self setView:_navController.view];
+    //self.view = [[UIView alloc] init];
+    [self.view addSubview:_navController.view];
+    [self.view addSubview:_fileNav.view];
     
 }
 - (void)viewDidLoad

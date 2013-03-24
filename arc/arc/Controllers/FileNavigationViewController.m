@@ -123,9 +123,9 @@
      */
     if ([[self.data objectAtIndex:indexPath.row] isKindOfClass:[Folder class]]) {
         NSLog(@"%@",self.navigationController);
-        FileNavigationViewController* nextFolder = [[FileNavigationViewController alloc] initWithFolder:[self.data objectAtIndex:indexPath.row] frame:self.view.frame];
+        self.folderView = [[FileNavigationViewController alloc] initWithFolder:[self.data objectAtIndex:indexPath.row] frame:self.view.frame];
         
-        //[self.navigationController pushViewController:nextFolder animated:YES];
+        [self.navigationController pushViewController:self.folderView animated:YES];
     }
 }
 

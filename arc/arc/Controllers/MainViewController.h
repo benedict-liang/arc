@@ -16,6 +16,7 @@
 #import "FileNavigationViewController.h"
 #import "CodeViewController.h"
 #import "Constants.h"
+#import "LeftBarViewController.h"
 
 @interface MainViewController : UIViewController <MainViewControllerDelegate>
 // Returns the MainViewController singleton.

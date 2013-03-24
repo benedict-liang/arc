@@ -20,5 +20,6 @@
 //@property UINavigationController* navigationController;
 @property UITableView* table;
 @property UIWindow* window;
+@property FileNavigationViewController* folderView;
 //TODO: needs update view methods upon adding a) a file b) a folder. Alternatively, it could take in a FileObject.
 @end
