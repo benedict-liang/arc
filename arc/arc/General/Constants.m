@@ -16,7 +16,7 @@ const CGRect SIZE_CODE_VIEW_LANDSCAPE = {};
 const CGRect SIZE_FILENAV_VIEW_PORTRAIT = {{0,0}, {100,500}};
 
 // Default Folder Names
-const NSString *FOLDER_EXTERNAL_APPLICATIONS = @"External Applications";
+NSString* const FOLDER_EXTERNAL_APPLICATIONS = @"External Applications";
 
 @implementation Constants
 @end
