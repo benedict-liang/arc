@@ -111,7 +111,28 @@
 // Returns YES if successful, NO otherwise.
 - (BOOL)takeFile:(File *)file
 {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
     
+    // Get the new URL.
+    NSString *escapedName = [[file name] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *newURL = [NSURL URLWithString:escapedName relativeToURL:self.url];
+    
+    // Move the file on the disk.
+    NSError *error;
+    BOOL isMoveSuccessful = [fileManager moveItemAtURL:[file url] toURL:newURL error:&error];
+    
+    // Handle the outcome.
+    if (isMoveSuccessful) {
+        [file setUrl:newURL];
+        [file setParent:self];
+        
+        // Possibly look into updating contents list manually.
+        [self flagForRefresh];
+    } else {
+        NSLog(@"%@", error);
+    }
+    
+    return isMoveSuccessful;
 }
 
 @end
