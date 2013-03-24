@@ -27,7 +27,7 @@
         
         // Pass the file to whatever needs it.
         // <Fill this in here.>
-        
+        NSString *contents = [receivedFile getContents];
         return YES;
     }
     return NO;
