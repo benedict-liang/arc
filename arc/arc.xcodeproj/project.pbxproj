@@ -36,6 +36,7 @@
 		4CD06B8616FE0FE600C9DED3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD06B8416FE0FC900C9DED3 /* CoreText.framework */; };
 		4CD06B8A16FE125100C9DED3 /* CoreTextUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B8916FE125100C9DED3 /* CoreTextUIView.m */; };
 		4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */; };
+		8F236C5F16FF17CE0051A720 /* TMBundleSyntaxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F236C5E16FF17CE0051A720 /* TMBundleSyntaxParser.m */; };
 		8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1416FDFDBE00B31A19 /* Utils.m */; };
 		8F5C5C1916FDFED300B31A19 /* Find.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1816FDFED300B31A19 /* Find.m */; };
 		8FAD0E0016FF09C500681CC5 /* About Persistent Includes.tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8FAD0D8B16FF09C500681CC5 /* About Persistent Includes.tmCommand */; };
@@ -202,6 +203,8 @@
 		4CD06B8816FE125100C9DED3 /* CoreTextUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreTextUIView.h; path = View/CoreTextUIView.h; sourceTree = "<group>"; };
 		4CD06B8916FE125100C9DED3 /* CoreTextUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreTextUIView.m; path = View/CoreTextUIView.m; sourceTree = "<group>"; };
 		4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
+		8F236C5D16FF17CE0051A720 /* TMBundleSyntaxParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleSyntaxParser.h; sourceTree = "<group>"; };
+		8F236C5E16FF17CE0051A720 /* TMBundleSyntaxParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBundleSyntaxParser.m; sourceTree = "<group>"; };
 		8F5C5C1416FDFDBE00B31A19 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = General/Utils.m; sourceTree = "<group>"; };
 		8F5C5C1516FDFDBE00B31A19 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = General/Utils.h; sourceTree = "<group>"; };
 		8F5C5C1716FDFED300B31A19 /* Find.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Find.h; path = General/Find.h; sourceTree = "<group>"; };
@@ -471,6 +474,7 @@
 		4CD06B7D16FDF59E00C9DED3 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				8F236C5C16FF17BE0051A720 /* TMBundleHandlers */,
 				8F5C5C1516FDFDBE00B31A19 /* Utils.h */,
 				8F5C5C1416FDFDBE00B31A19 /* Utils.m */,
 				4CD06B7E16FDF61C00C9DED3 /* Constants.h */,
@@ -506,6 +510,16 @@
 			);
 			name = Fonts;
 			path = Assets/Fonts;
+			sourceTree = "<group>";
+		};
+		8F236C5C16FF17BE0051A720 /* TMBundleHandlers */ = {
+			isa = PBXGroup;
+			children = (
+				8F236C5D16FF17CE0051A720 /* TMBundleSyntaxParser.h */,
+				8F236C5E16FF17CE0051A720 /* TMBundleSyntaxParser.m */,
+			);
+			name = TMBundleHandlers;
+			path = General/TMBundleHandlers;
 			sourceTree = "<group>";
 		};
 		8FAD0CAD16FF011C00681CC5 /* TextmateBundles */ = {
@@ -990,6 +1004,7 @@
 				8F5C5C1916FDFED300B31A19 /* Find.m in Sources */,
 				4CD06B8A16FE125100C9DED3 /* CoreTextUIView.m in Sources */,
 				026AC54516FF06F7001E03E5 /* FileHelper.m in Sources */,
+				8F236C5F16FF17CE0051A720 /* TMBundleSyntaxParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
