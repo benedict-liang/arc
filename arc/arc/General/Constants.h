@@ -15,4 +15,7 @@
 extern const CGRect SIZE_CODE_VIEW_PORTRAIT;
 extern const CGRect SIZE_CODE_VIEW_LANDSCAPE;
 extern const CGRect SIZE_FILENAV_VIEW_PORTRAIT;
+
+// Default Folder Names
+extern const NSString *FOLDER_EXTERNAL_APPLICATIONS;
 @end
