@@ -7,6 +7,7 @@
 //
 
 #import "RootFolder.h"
+#import "Constants.h"
 
 static RootFolder *singleton = nil;
 
@@ -27,7 +28,8 @@ static RootFolder *singleton = nil;
     NSURL *documentUrl = [fileManager URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
 
     if (self = [super initWithURL:documentUrl]) {
-        [self createFolder:@"External Files"];
+        // Create the folder to store documents from other apps.
+        [self createFolder:FOLDER_EXTERNAL_APPLICATIONS];
     }
     return self;
 }
