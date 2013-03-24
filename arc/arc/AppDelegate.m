@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "FileHelper.h"
 
 @implementation AppDelegate
 
@@ -20,7 +21,16 @@
 // and we are given its URL.
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    
+    // Check that this is a file URL.
+    if ([url isFileURL]) {
+        File *receivedFile = [FileHelper fileWithURL:url sourceApplication:sourceApplication annotation:annotation];
+        
+        // Pass the file to whatever needs it.
+        // <Fill this in here.>
+        
+        return YES;
+    }
+    return NO;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
