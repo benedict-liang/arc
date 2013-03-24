@@ -18,13 +18,13 @@
 {
     // Load the contents of this folder.
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *allPaths = [fileManager contentsOfDirectoryAtPath:[_url path] error:nil];
+    NSArray *allPaths = [fileManager contentsOfDirectoryAtPath:[self.url path] error:nil];
     NSMutableArray *folderObjects = [[NSMutableArray alloc] initWithCapacity:0];
     NSMutableArray *fileObjects = [[NSMutableArray alloc] initWithCapacity:0];
     
     for (NSString *currentName in allPaths) {
         NSString *escapedName = [currentName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSURL *currentURL = [[NSURL alloc] initWithString:escapedName relativeToURL:_url];
+        NSURL *currentURL = [[NSURL alloc] initWithString:escapedName relativeToURL:self.url];
         
         // We already know the file exists, but we need to figure out if
         // it's a file or folder.
@@ -50,7 +50,7 @@
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error;
-    BOOL isRemovalSuccessful = [fileManager removeItemAtURL:_url error:&error];
+    BOOL isRemovalSuccessful = [fileManager removeItemAtURL:self.url error:&error];
     if (isRemovalSuccessful) {
         [[self parent] flagForRefresh];
     } else {
@@ -63,14 +63,13 @@
 // Returns YES if successful, NO otherwise.
 - (BOOL)rename:(NSString*)name
 {
-    NSString *parentPath = [[self parent] path];
-    NSString *newPath = [[parentPath stringByAppendingPathComponent:name] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *escapedName = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    NSURL *newURL = [NSURL URLWithString:newPath];
+    NSURL *newURL = [NSURL URLWithString:escapedName relativeToURL:self.parent.url];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error;
-    BOOL isRenameSuccessful = [fileManager moveItemAtURL:_url toURL:newURL error:&error];
+    BOOL isRenameSuccessful = [fileManager moveItemAtURL:self.url toURL:newURL error:&error];
     if (isRenameSuccessful) {
         [[self parent] flagForRefresh];
     } else {
@@ -79,6 +78,8 @@
     return isRenameSuccessful;
 }
 
+// Creates a folder with the given name in this folder.
+// Returns YES if successful, NO otherwise.
 - (BOOL)createFolder:(NSString *)name
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -94,7 +95,7 @@
         formattedName = [escapedName stringByAppendingString:@"/"];
     }
     
-    NSURL *newFolderURL = [NSURL URLWithString:formattedName relativeToURL:_url];
+    NSURL *newFolderURL = [NSURL URLWithString:formattedName relativeToURL:self.url];
     
     NSError *error;
     BOOL isCreateSuccessful = [fileManager createDirectoryAtURL:newFolderURL withIntermediateDirectories:YES attributes:nil error:&error];
@@ -104,6 +105,34 @@
         NSLog(@"%@", error);
     }
     return isCreateSuccessful;
+}
+
+// Moves a given file to this folder.
+// Returns YES if successful, NO otherwise.
+- (BOOL)takeFile:(File *)file
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    // Get the new URL.
+    NSString *escapedName = [[file name] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *newURL = [NSURL URLWithString:escapedName relativeToURL:self.url];
+    
+    // Move the file on the disk.
+    NSError *error;
+    BOOL isMoveSuccessful = [fileManager moveItemAtURL:[file url] toURL:newURL error:&error];
+    
+    // Handle the outcome.
+    if (isMoveSuccessful) {
+        [file setUrl:newURL];
+        [file setParent:self];
+        
+        // Possibly look into updating contents list manually.
+        [self flagForRefresh];
+    } else {
+        NSLog(@"%@", error);
+    }
+    
+    return isMoveSuccessful;
 }
 
 @end

@@ -19,4 +19,8 @@
 // Returns YES if successful, NO otherwise.
 - (BOOL)createFolder:(NSString*)name;
 
+// Moves a given file to this folder.
+// Returns YES if successful, NO otherwise.
+- (BOOL)takeFile:(File*)file;
+
 @end

@@ -13,6 +13,9 @@
 		0234362116FDFA4900B0D7AE /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 025B52AD16F86C8700C20559 /* File.m */; };
 		025B52AB16F86C4B00C20559 /* Folder.m in Sources */ = {isa = PBXBuildFile; fileRef = 025B52AA16F86C4B00C20559 /* Folder.m */; };
 		025B52AE16F86C8700C20559 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 025B52AD16F86C8700C20559 /* File.m */; };
+		026AC54516FF06F7001E03E5 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 026AC54416FF06F6001E03E5 /* FileHelper.m */; };
+		026AC54616FF06F7001E03E5 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 026AC54416FF06F6001E03E5 /* FileHelper.m */; };
+		026AC54716FF104D001E03E5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7F16FDF61C00C9DED3 /* Constants.m */; };
 		028DA2D716FD827000E2E5D9 /* RootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 028DA2D616FD826F00E2E5D9 /* RootFolder.m */; };
 		4C43F8ED16F86AA900159B29 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
 		4C43F8EF16F86AA900159B29 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EE16F86AA900159B29 /* Foundation.framework */; };
@@ -60,6 +63,8 @@
 		025B52AA16F86C4B00C20559 /* Folder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Folder.m; sourceTree = "<group>"; };
 		025B52AC16F86C8700C20559 /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
 		025B52AD16F86C8700C20559 /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
+		026AC54316FF06F6001E03E5 /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
+		026AC54416FF06F6001E03E5 /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
 		028DA2D516FD826F00E2E5D9 /* RootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootFolder.h; sourceTree = "<group>"; };
 		028DA2D616FD826F00E2E5D9 /* RootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootFolder.m; sourceTree = "<group>"; };
 		4C43F8E916F86AA900159B29 /* arc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arc.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,6 +221,8 @@
 				025B52AA16F86C4B00C20559 /* Folder.m */,
 				025B52AC16F86C8700C20559 /* File.h */,
 				025B52AD16F86C8700C20559 /* File.m */,
+				026AC54316FF06F6001E03E5 /* FileHelper.h */,
+				026AC54416FF06F6001E03E5 /* FileHelper.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -284,7 +291,6 @@
 		4CD06B9016FE1A6900C9DED3 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				8FAD0CAD16FF011C00681CC5 /* TextmateBundles */,
 				4CD06B9116FE1A7100C9DED3 /* Fonts */,
 			);
 			name = Assets;
@@ -297,14 +303,6 @@
 			);
 			name = Fonts;
 			path = Assets/Fonts;
-			sourceTree = "<group>";
-		};
-		8FAD0CAD16FF011C00681CC5 /* TextmateBundles */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = TextmateBundles;
-			path = Assets/TextmateBundles;
 			sourceTree = "<group>";
 		};
 		8FCA1D6616F86C7000C6AAFC /* Controllers */ = {
@@ -449,6 +447,9 @@
 				8F5C5C1916FDFED300B31A19 /* Find.m in Sources */,
 				4CD06B8A16FE125100C9DED3 /* CoreTextUIView.m in Sources */,
 				FC4B26CE16FF6E3800E1DC49 /* LeftBarViewController.m in Sources */,
+				026AC54516FF06F7001E03E5 /* FileHelper.m in Sources */,
+				8FAD0D7916FF011C00681CC5 /* inspectClass.m in Sources */,
+				8FAD0D8716FF011C00681CC5 /* class_in.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,11 +457,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				026AC54716FF104D001E03E5 /* Constants.m in Sources */,
 				0234362116FDFA4900B0D7AE /* File.m in Sources */,
 				0234362016FDFA4500B0D7AE /* Folder.m in Sources */,
 				0234361F16FDFA4100B0D7AE /* RootFolder.m in Sources */,
 				0234361E16FDFA3C00B0D7AE /* FileObject.m in Sources */,
 				4CD06B7716FDEEC100C9DED3 /* arcTests.m in Sources */,
+				026AC54616FF06F7001E03E5 /* FileHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

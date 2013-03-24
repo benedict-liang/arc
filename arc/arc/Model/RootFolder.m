@@ -7,6 +7,7 @@
 //
 
 #import "RootFolder.h"
+#import "Constants.h"
 
 static RootFolder *singleton = nil;
 
@@ -26,8 +27,9 @@ static RootFolder *singleton = nil;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *documentUrl = [fileManager URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
 
-    if (self = [super initWithURL:documentUrl]) {
-        [self createFolder:@"External Files"];
+    if (self = [super initWithURL:documentUrl parent:nil]) {
+        // Create the folder to store documents from other apps.
+        [self createFolder:FOLDER_EXTERNAL_APPLICATIONS];
     }
     return self;
 }
@@ -45,9 +47,6 @@ static RootFolder *singleton = nil;
 }
 
 // RootFolder cannot be initialised externally.
-- (id)initWithURL:(NSURL *)url {
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"RootFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
-}
 - (id)initWithURL:(NSURL *)url parent:(FileObject *)parent {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"RootFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
 }
