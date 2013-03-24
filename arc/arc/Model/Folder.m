@@ -79,6 +79,8 @@
     return isRenameSuccessful;
 }
 
+// Creates a folder with the given name in this folder.
+// Returns YES if successful, NO otherwise.
 - (BOOL)createFolder:(NSString *)name
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
