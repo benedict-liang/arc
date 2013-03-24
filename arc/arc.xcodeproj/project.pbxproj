@@ -284,6 +284,7 @@
 		4CD06B9016FE1A6900C9DED3 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				8FAD0CAD16FF011C00681CC5 /* TextmateBundles */,
 				4CD06B9116FE1A7100C9DED3 /* Fonts */,
 			);
 			name = Assets;
@@ -296,6 +297,14 @@
 			);
 			name = Fonts;
 			path = Assets/Fonts;
+			sourceTree = "<group>";
+		};
+		8FAD0CAD16FF011C00681CC5 /* TextmateBundles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = TextmateBundles;
+			path = Assets/TextmateBundles;
 			sourceTree = "<group>";
 		};
 		8FCA1D6616F86C7000C6AAFC /* Controllers */ = {
