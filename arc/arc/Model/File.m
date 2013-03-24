@@ -19,8 +19,7 @@
     NSString *escapedName = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     // Get the URL for the new file.
-    NSURL *folderURL = [NSURL URLWithString:[folder path]];
-    NSURL *fileURL = [NSURL URLWithString:escapedName relativeToURL:folderURL];
+    NSURL *fileURL = [NSURL URLWithString:escapedName relativeToURL:[folder url]];
     
     // Write the file.
     NSError *error;
@@ -40,7 +39,7 @@
 // File returns an NSString of the text contained within it.
 - (id)refreshContents
 {
-    _contents = [NSString stringWithContentsOfFile:[_url path] encoding:NSUTF8StringEncoding error:nil];
+    _contents = [NSString stringWithContentsOfFile:[self.url path] encoding:NSUTF8StringEncoding error:nil];
     _needsRefresh = NO;
     return _contents;
 }
@@ -50,7 +49,7 @@
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error;
-    BOOL isRemovalSuccessful = [fileManager removeItemAtURL:_url error:&error];
+    BOOL isRemovalSuccessful = [fileManager removeItemAtURL:self.url error:&error];
     if (isRemovalSuccessful) {
         [[self parent] flagForRefresh];
     } else {

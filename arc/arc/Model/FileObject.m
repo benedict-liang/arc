@@ -17,7 +17,6 @@
     self = [super init];
     if (self) {
         _name = [url lastPathComponent];
-        _path = [url absoluteString];
         _url = url;
         _needsRefresh = YES;
     }

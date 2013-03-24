@@ -10,7 +10,6 @@
 
 @interface FileObject : NSObject {
     @protected
-    NSURL* _url;
     id _contents;
     BOOL _needsRefresh;
 }
@@ -18,9 +17,8 @@
 // The name of this object.
 @property (strong, nonatomic) NSString* name;
 
-// The full file path of this object. Can be used
-// to recreate an NSURL.
-@property (strong, nonatomic) NSString* path;
+// The NSURL of this object.
+@property (strong, nonatomic) NSURL* url;
 
 // The parent of this object (if any.)
 @property (weak, nonatomic) FileObject* parent;
