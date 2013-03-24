@@ -41,6 +41,7 @@
 		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
 		8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */; };
 		FC4B269E16F88CB800E1DC49 /* FileNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B269D16F88CB800E1DC49 /* FileNavigationViewController.m */; };
+		FC4B26CE16FF6E3800E1DC49 /* LeftBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B26CD16FF6E3700E1DC49 /* LeftBarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,8 @@
 		8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewControllerDelegate.h; sourceTree = "<group>"; };
 		FC4B269C16F88CB800E1DC49 /* FileNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileNavigationViewController.h; sourceTree = "<group>"; };
 		FC4B269D16F88CB800E1DC49 /* FileNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileNavigationViewController.m; sourceTree = "<group>"; };
+		FC4B26CC16FF6E3700E1DC49 /* LeftBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftBarViewController.h; sourceTree = "<group>"; };
+		FC4B26CD16FF6E3700E1DC49 /* LeftBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftBarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +308,8 @@
 				FC4B269D16F88CB800E1DC49 /* FileNavigationViewController.m */,
 				8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */,
 				8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */,
+				FC4B26CC16FF6E3700E1DC49 /* LeftBarViewController.h */,
+				FC4B26CD16FF6E3700E1DC49 /* LeftBarViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -434,6 +439,7 @@
 				8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */,
 				8F5C5C1916FDFED300B31A19 /* Find.m in Sources */,
 				4CD06B8A16FE125100C9DED3 /* CoreTextUIView.m in Sources */,
+				FC4B26CE16FF6E3800E1DC49 /* LeftBarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

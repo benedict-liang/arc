@@ -28,7 +28,20 @@
     [table setDataSource:self];
     [table setDelegate:self];
     [table reloadData];
+    //self.view = [[UIView alloc] initWithFrame:frame];
+    //[self.view addSubview:table];
+    _table = table;
+    
+   // UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:self];
     [self setView:table];
+    //[self.navigationController pushViewController:table animated:]
+    //_window = [[UIApplication sharedApplication] keyWindow];
+    //_window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, 100, 500)];
+    //_window.rootViewController = _navigationController;
+    
+    //[_window makeKeyAndVisible];
+    //self.navigationController.title = @"NavBar";
+    //[self.view addSubview:_navigationController.view];
     
 }
 
@@ -53,6 +66,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,6 +121,12 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    if ([[self.data objectAtIndex:indexPath.row] isKindOfClass:[Folder class]]) {
+        NSLog(@"%@",self.navigationController);
+        FileNavigationViewController* nextFolder = [[FileNavigationViewController alloc] initWithFolder:[self.data objectAtIndex:indexPath.row] frame:self.view.frame];
+        
+        //[self.navigationController pushViewController:nextFolder animated:YES];
+    }
 }
 
 @end
