@@ -27,7 +27,7 @@ static RootFolder *singleton = nil;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *documentUrl = [fileManager URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
 
-    if (self = [super initWithURL:documentUrl]) {
+    if (self = [super initWithURL:documentUrl parent:nil]) {
         // Create the folder to store documents from other apps.
         [self createFolder:FOLDER_EXTERNAL_APPLICATIONS];
     }

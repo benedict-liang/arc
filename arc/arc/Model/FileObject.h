@@ -25,10 +25,6 @@
 // The parent of this object (if any.)
 @property (weak, nonatomic) FileObject* parent;
 
-// Creates a FileObject to represent the given URL.
-// url should be an object on the file system.
-- (id)initWithURL:(NSURL*)url;
-
 // Creates a FileObject to represent the given URL,
 // with its parent set to the given FileObject.
 - (id)initWithURL:(NSURL*)url parent:(FileObject*)parent;
