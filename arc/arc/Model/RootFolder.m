@@ -47,9 +47,6 @@ static RootFolder *singleton = nil;
 }
 
 // RootFolder cannot be initialised externally.
-- (id)initWithURL:(NSURL *)url {
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"RootFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
-}
 - (id)initWithURL:(NSURL *)url parent:(FileObject *)parent {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"RootFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
 }

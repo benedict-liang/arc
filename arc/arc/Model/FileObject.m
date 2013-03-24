@@ -10,24 +10,14 @@
 
 @implementation FileObject
 
-// Creates a FileObject to represent the given URL.
-// url should be an object on the file system.
-- (id)initWithURL:(NSURL *)url
-{
-    self = [super init];
-    if (self) {
-        _name = [url lastPathComponent];
-        _url = url;
-        _needsRefresh = YES;
-    }
-    return self;
-}
-
 // Creates a FileObject to represent the given URL,
 // with its parent set to the given FileObject.
 - (id)initWithURL:(NSURL *)url parent:(FileObject *)parent
 {
-    if (self = [self initWithURL:url]) {
+    if (self = [super init]) {
+        _name = [url lastPathComponent];
+        _url = url;
+        _needsRefresh = YES;
         _parent = parent;
     }
     return self;
