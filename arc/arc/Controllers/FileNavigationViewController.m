@@ -28,20 +28,8 @@
     [table setDataSource:self];
     [table setDelegate:self];
     [table reloadData];
-    //self.view = [[UIView alloc] initWithFrame:frame];
-    //[self.view addSubview:table];
-    _table = table;
-    
-   // UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:self];
     [self setView:table];
-    //[self.navigationController pushViewController:table animated:]
-    //_window = [[UIApplication sharedApplication] keyWindow];
-    //_window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, 100, 500)];
-    //_window.rootViewController = _navigationController;
-    
-    //[_window makeKeyAndVisible];
-    //self.navigationController.title = @"NavBar";
-    //[self.view addSubview:_navigationController.view];
+
     
 }
 

@@ -32,7 +32,6 @@
 - (void)setupFileNavWithFolder:(Folder*)folder {
     _fileNav = [[FileNavigationViewController alloc] initWithFolder:folder frame:SIZE_FILENAV_VIEW_PORTRAIT];
     _navController = [[UINavigationController alloc] initWithRootViewController:_fileNav];
-    //self.view = [[UIView alloc] init];
     [self.view addSubview:_navController.view];
     [self.view addSubview:_fileNav.view];
     
