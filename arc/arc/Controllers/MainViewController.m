@@ -42,8 +42,9 @@
     _leftBar.delegate = self;
     
     // Add Subviews to Main View
-    [self.view addSubview:_leftBar.view];
     [self.view addSubview:_codeView.view];
+    
+    [self.view addSubview:_leftBar.view];
     
     // Resize Subviews
     [self resizeSubViews];
@@ -59,9 +60,10 @@
     } else {
         
     }
-
-    _codeView.view.frame = self.view.frame;
-    _leftBar.view.frame = CGRectMake(0, 0, SIZE_LEFTBAR_WIDTH, self.view.bounds.size.height);
+    
+    CGRect window = [[UIScreen mainScreen] bounds];
+    _codeView.view.frame = CGRectMake(SIZE_LEFTBAR_WIDTH, 0, window.size.width, window.size.height);
+    _leftBar.view.frame = CGRectMake(0, 0, SIZE_LEFTBAR_WIDTH, window.size.height);
 }
 
 
@@ -88,4 +90,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    [self resizeSubViews];
+    return YES;
+}
 @end

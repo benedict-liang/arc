@@ -10,7 +10,7 @@
 //
 // Sizes
 //
-const float SIZE_LEFTBAR_WIDTH = 100;
+const float SIZE_LEFTBAR_WIDTH = 200;
 
 // Default Folder Names
 NSString* const FOLDER_EXTERNAL_APPLICATIONS = @"External Applications";
