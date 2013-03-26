@@ -47,6 +47,11 @@
     
     // Resize Subviews
     [self resizeSubViews];
+    
+    TMBundleSyntaxParser *syntaxParser = [[TMBundleSyntaxParser alloc] init];
+    NSArray *fileTypesArray = [syntaxParser getFileTypes:@"html.tmbundle"];
+    
+    NSLog(@"file types array: %@", fileTypesArray);
 }
 
 // Resizes SubViews Based on Application's Orientation

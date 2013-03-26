@@ -13,5 +13,6 @@
 - (NSArray*)getFileTypes:(NSString*)TMBundleName;
 - (NSArray*)getFoldingMarkers:(NSString*)TMBundleName;
 - (NSArray*)getFirstLineMatch:(NSString*)TMBundleName;
+- (NSArray*)getPatterns:(NSString*)TMBundleName;
 
 @end
