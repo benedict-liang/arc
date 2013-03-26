@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "FileNavigationViewController.h"
+#import "SubViewController.h"
 #import "Constants.h"
-@interface LeftBarViewController : UIViewController
+
+@interface LeftBarViewController : UIViewController<SubViewController>
 @property FileNavigationViewController* fileNav;
 @property UINavigationController* navController;
-@property (nonatomic, assign) id delegate;
 - (id)initWithFolder:(Folder*)folder;
 @end
