@@ -13,7 +13,8 @@
 // Sizes
 //
 extern const float SIZE_LEFTBAR_WIDTH;
-
+extern const float SIZE_TOOLBAR_HEIGHT;
+extern const CGSize SIZE_POPOVER;
 // Default Folder Names
 extern NSString* const FOLDER_EXTERNAL_APPLICATIONS;
 @end
