@@ -36,66 +36,8 @@
 		4CD06B8616FE0FE600C9DED3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD06B8416FE0FC900C9DED3 /* CoreText.framework */; };
 		4CD06B8A16FE125100C9DED3 /* CoreTextUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B8916FE125100C9DED3 /* CoreTextUIView.m */; };
 		4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */; };
-		8F563ECB170160CD00EE5643 /* About Persistent Includes.tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E56170160CD00EE5643 /* About Persistent Includes.tmCommand */; };
-		8F563ECE170160CD00EE5643 /* Convert Line : Selection to URL Escapes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E59170160CD00EE5643 /* Convert Line : Selection to URL Escapes.plist */; };
-		8F563ED0170160CD00EE5643 /* Convert to named entities excl tags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E5B170160CD00EE5643 /* Convert to named entities excl tags.plist */; };
-		8F563ED2170160CD00EE5643 /* Decode Numeric URL Escapes in Line : Selection.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E5D170160CD00EE5643 /* Decode Numeric URL Escapes in Line : Selection.plist */; };
-		8F563ED3170160CD00EE5643 /* Documentation for Tag.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E5E170160CD00EE5643 /* Documentation for Tag.plist */; };
-		8F563ED4170160CD00EE5643 /* Encrypt Line : Selection (ROT 13).tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E5F170160CD00EE5643 /* Encrypt Line : Selection (ROT 13).tmCommand */; };
-		8F563ED5170160CD00EE5643 /* Insert Close Tag.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E60170160CD00EE5643 /* Insert Close Tag.plist */; };
-		8F563ED6170160CD00EE5643 /* Insert Entity….plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E61170160CD00EE5643 /* Insert Entity….plist */; };
-		8F563ED7170160CD00EE5643 /* Insert Tag Pair.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E62170160CD00EE5643 /* Insert Tag Pair.plist */; };
-		8F563ED8170160CD00EE5643 /* Persistent Include.tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E63170160CD00EE5643 /* Persistent Include.tmCommand */; };
-		8F563ED9170160CD00EE5643 /* Preview in All Active Browsers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E64170160CD00EE5643 /* Preview in All Active Browsers.plist */; };
-		8F563EDA170160CD00EE5643 /* Refresh All Active Browsers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E65170160CD00EE5643 /* Refresh All Active Browsers.plist */; };
-		8F563EDB170160CD00EE5643 /* Show Web Preview.tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E66170160CD00EE5643 /* Show Web Preview.tmCommand */; };
-		8F563EDD170160CD00EE5643 /* Tidy.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E68170160CD00EE5643 /* Tidy.plist */; };
-		8F563EDE170160CD00EE5643 /* Update Includes.tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E69170160CD00EE5643 /* Update Includes.tmCommand */; };
-		8F563EDF170160CD00EE5643 /* Update Project.tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E6A170160CD00EE5643 /* Update Project.tmCommand */; };
-		8F563EE0170160CD00EE5643 /* W3C validation.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E6B170160CD00EE5643 /* W3C validation.plist */; };
-		8F563EE1170160CD00EE5643 /* Wrap Each Selected Line in Open:Close Tag.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E6C170160CD00EE5643 /* Wrap Each Selected Line in Open:Close Tag.plist */; };
-		8F563EE2170160CD00EE5643 /* Anchor Tag.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E6E170160CD00EE5643 /* Anchor Tag.plist */; };
-		8F563EE3170160CD00EE5643 /* CSS Link.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E6F170160CD00EE5643 /* CSS Link.plist */; };
-		8F563EE4170160CD00EE5643 /* Image Tag.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E70170160CD00EE5643 /* Image Tag.plist */; };
-		8F563EE5170160CD00EE5643 /* Insert Anchor href 2.tmDragCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E71170160CD00EE5643 /* Insert Anchor href 2.tmDragCommand */; };
-		8F563EE6170160CD00EE5643 /* Insert Anchor href.tmDragCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E72170160CD00EE5643 /* Insert Anchor href.tmDragCommand */; };
-		8F563EE7170160CD00EE5643 /* Insert Flash Movie (Swf).tmDragCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E73170160CD00EE5643 /* Insert Flash Movie (Swf).tmDragCommand */; };
-		8F563EE8170160CD00EE5643 /* Insert JS Link.tmDragCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E74170160CD00EE5643 /* Insert JS Link.tmDragCommand */; };
-		8F563EE9170160CD00EE5643 /* Insert QuickTime Movie.tmDragCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E75170160CD00EE5643 /* Insert QuickTime Movie.tmDragCommand */; };
-		8F563EEA170160CD00EE5643 /* Insert URL.tmDragCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E76170160CD00EE5643 /* Insert URL.tmDragCommand */; };
-		8F563EEC170160CD00EE5643 /* Delete whitespace between tags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E79170160CD00EE5643 /* Delete whitespace between tags.plist */; };
-		8F563EED170160CD00EE5643 /* Comments.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E7B170160CD00EE5643 /* Comments.plist */; };
-		8F563EEF170160CD00EE5643 /* Empty tag typing pairs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E7D170160CD00EE5643 /* Empty tag typing pairs.plist */; };
-		8F563EF0170160CD00EE5643 /* Folding.tmPreferences in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E7E170160CD00EE5643 /* Folding.tmPreferences */; };
-		8F563EF1170160CD00EE5643 /* Indent Corrections.tmPreferences in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E7F170160CD00EE5643 /* Indent Corrections.tmPreferences */; };
-		8F563EF2170160CD00EE5643 /* Miscellaneous.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E80170160CD00EE5643 /* Miscellaneous.plist */; };
-		8F563EF3170160CD00EE5643 /* Symbol List: ID.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E81170160CD00EE5643 /* Symbol List: ID.plist */; };
-		8F563EF4170160CD00EE5643 /* Tag Completions.tmPreferences in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E82170160CD00EE5643 /* Tag Completions.tmPreferences */; };
-		8F563EF5170160CD00EE5643 /* Tag preferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E83170160CD00EE5643 /* Tag preferences.plist */; };
-		8F563EF6170160CD00EE5643 /* README.mdown in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E84170160CD00EE5643 /* README.mdown */; };
-		8F563EF9170160CD00EE5643 /* DocType XHTL 1.0 Frameset.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E88170160CD00EE5643 /* DocType XHTL 1.0 Frameset.plist */; };
-		8F563EFD170160CD00EE5643 /* Embed QT movie (movie).plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E8C170160CD00EE5643 /* Embed QT movie (movie).plist */; };
-		8F563EFE170160CD00EE5643 /* Emphasize.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E8D170160CD00EE5643 /* Emphasize.tmSnippet */; };
-		8F563EFF170160CD00EE5643 /* Fieldset.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E8E170160CD00EE5643 /* Fieldset.tmSnippet */; };
-		8F563F01170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_0 only.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E90170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_0 only.tmSnippet */; };
-		8F563F02170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_5 only.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E91170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_5 only.tmSnippet */; };
-		8F563F03170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_x.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E92170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_x.tmSnippet */; };
-		8F563F04170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 6 and below.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E93170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 6 and below.tmSnippet */; };
-		8F563F05170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 6 only.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E94170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 6 only.tmSnippet */; };
-		8F563F06170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 7+.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E95170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 7+.tmSnippet */; };
-		8F563F07170160CD00EE5643 /* IE Conditional Comment: Internet Explorer.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E96170160CD00EE5643 /* IE Conditional Comment: Internet Explorer.tmSnippet */; };
-		8F563F08170160CD00EE5643 /* IE Conditional Comment: NOT Internet Explorer.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E97170160CD00EE5643 /* IE Conditional Comment: NOT Internet Explorer.tmSnippet */; };
-		8F563F09170160CD00EE5643 /* Input with Label.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E98170160CD00EE5643 /* Input with Label.tmSnippet */; };
-		8F563F0A170160CD00EE5643 /* Option.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E99170160CD00EE5643 /* Option.tmSnippet */; };
-		8F563F0B170160CD00EE5643 /* Select Box.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E9A170160CD00EE5643 /* Select Box.tmSnippet */; };
-		8F563F0C170160CD00EE5643 /* Smart return:indent for tag pairs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E9B170160CD00EE5643 /* Smart return:indent for tag pairs.plist */; };
-		8F563F0D170160CD00EE5643 /* Strong.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E9C170160CD00EE5643 /* Strong.tmSnippet */; };
-		8F563F0E170160CD00EE5643 /* Wrap in <?= … ?>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E9D170160CD00EE5643 /* Wrap in <?= … ?>.plist */; };
-		8F563F0F170160CD00EE5643 /* Wrap Selection In Tag.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E9E170160CD00EE5643 /* Wrap Selection In Tag.plist */; };
-		8F563F22170160CD00EE5643 /* entities.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8F563EB2170160CD00EE5643 /* entities.txt */; };
-		8F563F23170160CD00EE5643 /* Insert Entity.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8F563EB4170160CD00EE5643 /* Insert Entity.nib */; };
-		8F563F24170160CD00EE5643 /* tminclude.rb in Resources */ = {isa = PBXBuildFile; fileRef = 8F563EB5170160CD00EE5643 /* tminclude.rb */; };
 		8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */; };
+		8F563F361701682500EE5643 /* HTML.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563EB7170160CD00EE5643 /* HTML.plist */; };
 		8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1416FDFDBE00B31A19 /* Utils.m */; };
 		8F5C5C1916FDFED300B31A19 /* Find.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1816FDFED300B31A19 /* Find.m */; };
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
@@ -811,65 +753,7 @@
 				4C43F90316F86AA900159B29 /* Default@2x.png in Resources */,
 				4C43F90516F86AA900159B29 /* Default-568h@2x.png in Resources */,
 				4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */,
-				8F563ECB170160CD00EE5643 /* About Persistent Includes.tmCommand in Resources */,
-				8F563ECE170160CD00EE5643 /* Convert Line : Selection to URL Escapes.plist in Resources */,
-				8F563ED0170160CD00EE5643 /* Convert to named entities excl tags.plist in Resources */,
-				8F563ED2170160CD00EE5643 /* Decode Numeric URL Escapes in Line : Selection.plist in Resources */,
-				8F563ED3170160CD00EE5643 /* Documentation for Tag.plist in Resources */,
-				8F563ED4170160CD00EE5643 /* Encrypt Line : Selection (ROT 13).tmCommand in Resources */,
-				8F563ED5170160CD00EE5643 /* Insert Close Tag.plist in Resources */,
-				8F563ED6170160CD00EE5643 /* Insert Entity….plist in Resources */,
-				8F563ED7170160CD00EE5643 /* Insert Tag Pair.plist in Resources */,
-				8F563ED8170160CD00EE5643 /* Persistent Include.tmCommand in Resources */,
-				8F563ED9170160CD00EE5643 /* Preview in All Active Browsers.plist in Resources */,
-				8F563EDA170160CD00EE5643 /* Refresh All Active Browsers.plist in Resources */,
-				8F563EDB170160CD00EE5643 /* Show Web Preview.tmCommand in Resources */,
-				8F563EDD170160CD00EE5643 /* Tidy.plist in Resources */,
-				8F563EDE170160CD00EE5643 /* Update Includes.tmCommand in Resources */,
-				8F563EDF170160CD00EE5643 /* Update Project.tmCommand in Resources */,
-				8F563EE0170160CD00EE5643 /* W3C validation.plist in Resources */,
-				8F563EE1170160CD00EE5643 /* Wrap Each Selected Line in Open:Close Tag.plist in Resources */,
-				8F563EE2170160CD00EE5643 /* Anchor Tag.plist in Resources */,
-				8F563EE3170160CD00EE5643 /* CSS Link.plist in Resources */,
-				8F563EE4170160CD00EE5643 /* Image Tag.plist in Resources */,
-				8F563EE5170160CD00EE5643 /* Insert Anchor href 2.tmDragCommand in Resources */,
-				8F563EE6170160CD00EE5643 /* Insert Anchor href.tmDragCommand in Resources */,
-				8F563EE7170160CD00EE5643 /* Insert Flash Movie (Swf).tmDragCommand in Resources */,
-				8F563EE8170160CD00EE5643 /* Insert JS Link.tmDragCommand in Resources */,
-				8F563EE9170160CD00EE5643 /* Insert QuickTime Movie.tmDragCommand in Resources */,
-				8F563EEA170160CD00EE5643 /* Insert URL.tmDragCommand in Resources */,
-				8F563EEC170160CD00EE5643 /* Delete whitespace between tags.plist in Resources */,
-				8F563EED170160CD00EE5643 /* Comments.plist in Resources */,
-				8F563EEF170160CD00EE5643 /* Empty tag typing pairs.plist in Resources */,
-				8F563EF0170160CD00EE5643 /* Folding.tmPreferences in Resources */,
-				8F563EF1170160CD00EE5643 /* Indent Corrections.tmPreferences in Resources */,
-				8F563EF2170160CD00EE5643 /* Miscellaneous.plist in Resources */,
-				8F563EF3170160CD00EE5643 /* Symbol List: ID.plist in Resources */,
-				8F563EF4170160CD00EE5643 /* Tag Completions.tmPreferences in Resources */,
-				8F563EF5170160CD00EE5643 /* Tag preferences.plist in Resources */,
-				8F563EF6170160CD00EE5643 /* README.mdown in Resources */,
-				8F563EF9170160CD00EE5643 /* DocType XHTL 1.0 Frameset.plist in Resources */,
-				8F563EFD170160CD00EE5643 /* Embed QT movie (movie).plist in Resources */,
-				8F563EFE170160CD00EE5643 /* Emphasize.tmSnippet in Resources */,
-				8F563EFF170160CD00EE5643 /* Fieldset.tmSnippet in Resources */,
-				8F563F01170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_0 only.tmSnippet in Resources */,
-				8F563F02170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_5 only.tmSnippet in Resources */,
-				8F563F03170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_x.tmSnippet in Resources */,
-				8F563F04170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 6 and below.tmSnippet in Resources */,
-				8F563F05170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 6 only.tmSnippet in Resources */,
-				8F563F06170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 7+.tmSnippet in Resources */,
-				8F563F07170160CD00EE5643 /* IE Conditional Comment: Internet Explorer.tmSnippet in Resources */,
-				8F563F08170160CD00EE5643 /* IE Conditional Comment: NOT Internet Explorer.tmSnippet in Resources */,
-				8F563F09170160CD00EE5643 /* Input with Label.tmSnippet in Resources */,
-				8F563F0A170160CD00EE5643 /* Option.tmSnippet in Resources */,
-				8F563F0B170160CD00EE5643 /* Select Box.tmSnippet in Resources */,
-				8F563F0C170160CD00EE5643 /* Smart return:indent for tag pairs.plist in Resources */,
-				8F563F0D170160CD00EE5643 /* Strong.tmSnippet in Resources */,
-				8F563F0E170160CD00EE5643 /* Wrap in <?= … ?>.plist in Resources */,
-				8F563F0F170160CD00EE5643 /* Wrap Selection In Tag.plist in Resources */,
-				8F563F22170160CD00EE5643 /* entities.txt in Resources */,
-				8F563F23170160CD00EE5643 /* Insert Entity.nib in Resources */,
-				8F563F24170160CD00EE5643 /* tminclude.rb in Resources */,
+				8F563F361701682500EE5643 /* HTML.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
