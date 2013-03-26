@@ -35,6 +35,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Jerome: Temporary code to move support files into the Documents folder.
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSURL *documentsURL = [[RootFolder getInstance] url];
+    NSString *sampleFileName = @"GameObject.h";
+    NSURL *sampleFileURL = [[NSBundle mainBundle] URLForResource:sampleFileName withExtension:nil];
+    NSURL *newFileURL = [NSURL URLWithString:sampleFileName relativeToURL:documentsURL];
+    if (![fileManager fileExistsAtPath:[newFileURL path]]) {
+        [fileManager copyItemAtURL:sampleFileURL toURL:newFileURL error:nil];
+        [[RootFolder getInstance] flagForRefresh];
+        NSArray *contents = [[RootFolder getInstance] getContents];
+    }
+    // End of temporary code.
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Create MainViewController and set as Window's RootViewController

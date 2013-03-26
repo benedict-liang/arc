@@ -15,4 +15,7 @@
 @property (strong, nonatomic) File *currentFileOpened;
 @property (strong, nonatomic) Folder *currentFolderOpened;
 
+// Returns a sample file.
++ (File*)getSampleFile;
+
 @end
