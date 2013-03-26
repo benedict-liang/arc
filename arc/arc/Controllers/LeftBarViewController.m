@@ -13,6 +13,7 @@
 @end
 
 @implementation LeftBarViewController
+@synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,7 +31,7 @@
     return self;
 }
 - (void)setupFileNavWithFolder:(Folder*)folder {
-    _fileNav = [[FileNavigationViewController alloc] initWithFolder:folder frame:SIZE_FILENAV_VIEW_PORTRAIT];
+    _fileNav = [[FileNavigationViewController alloc] initWithFolder:folder frame:self.view.bounds];
     _navController = [[UINavigationController alloc] initWithRootViewController:_fileNav];
     [self.view addSubview:_navController.view];
     [self.view addSubview:_fileNav.view];
