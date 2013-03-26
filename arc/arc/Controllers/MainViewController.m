@@ -6,19 +6,14 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
+
 #import "MainViewController.h"
-#import "ApplicationState.h"
-#import "RootFolder.h"
-#import "Folder.h"
-#import "File.h"
-#import "FileNavigationViewController.h"
-#import "CodeViewController.h"
-#import "Constants.h"
 
 @interface MainViewController ()
 @property CodeViewController *codeViewController;
 @property FileNavigationViewController *fileNavigator;
 @property RootFolder *rootFolder;
+@property LeftBarViewController *leftBar;
 @end
 
 @implementation MainViewController
@@ -46,10 +41,9 @@
     _codeViewController.delegate = self;
     _codeViewController.view.frame = SIZE_CODE_VIEW_PORTRAIT;
     
-    _fileNavigator = [[FileNavigationViewController alloc] initWithFolder:_rootFolder frame:SIZE_FILENAV_VIEW_PORTRAIT];
-    _fileNavigator.delegate = self;
+    _leftBar = [[LeftBarViewController alloc] initWithFolder:_rootFolder];
     
-    [self.view addSubview:_fileNavigator.view];
+    [self.view addSubview:_leftBar.view];
     [self.view addSubview:_codeViewController.view];
 }
 

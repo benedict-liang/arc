@@ -29,6 +29,7 @@
     [table setDelegate:self];
     [table reloadData];
     [self setView:table];
+
     
 }
 
@@ -53,6 +54,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,6 +109,12 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    if ([[self.data objectAtIndex:indexPath.row] isKindOfClass:[Folder class]]) {
+        NSLog(@"%@",self.navigationController);
+        self.folderView = [[FileNavigationViewController alloc] initWithFolder:[self.data objectAtIndex:indexPath.row] frame:self.view.frame];
+        
+        [self.navigationController pushViewController:self.folderView animated:YES];
+    }
 }
 
 @end

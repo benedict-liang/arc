@@ -17,6 +17,7 @@
 - (id)initWithFolder:(Folder *)folder frame:(CGRect)frame;
 // define delegate property
 @property (nonatomic, assign) id delegate;
-
+@property UIWindow* window;
+@property FileNavigationViewController* folderView;
 //TODO: needs update view methods upon adding a) a file b) a folder. Alternatively, it could take in a FileObject.
 @end
