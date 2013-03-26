@@ -10,4 +10,16 @@
 
 @implementation TMBundleSyntaxParser
 
+- (NSArray*)getFileTypes:(NSString*)TMBundleName {
+    return nil;
+}
+
+- (NSArray*)getFoldingMarkers:(NSString*)TMBundleName {
+    return nil;
+}
+
+- (NSArray*)getFirstLineMatch:(NSString*)TMBundleName {
+    return nil;
+}
+
 @end
