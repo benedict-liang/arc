@@ -61,6 +61,11 @@
     
     // Resize Subviews
     [self resizeSubViews];
+    
+    TMBundleSyntaxParser *syntaxParser = [[TMBundleSyntaxParser alloc] init];
+    NSArray *fileTypesArray = [syntaxParser getFileTypes:@"html.tmbundle"];
+    
+    NSLog(@"file types array: %@", fileTypesArray);
 }
 
 // Resizes SubViews Based on Application's Orientation
@@ -88,19 +93,26 @@
 
 #pragma mark - MainViewControllerDelegate Methods
 
+// Shows/hides LeftBar
+- (void)showLeftBar
+{
+    // TODO
+}
+- (void)hideLeftBar
+{
+    // TODO
+}
+
 // Shows the file using the CodeViewController
-- (void)showFile:(File*)file {
-
+- (void)fileSelected:(File*)file
+{
+    // TODO
 }
 
-// Updates the FileNavigatorViewController view after adding a folder
-- (void)updateAddFolderView:(Folder*)folder {
-    
-}
-
-// Updates the FileNavigatorViewController view after adding a file
-- (void)updateAddFileView:(File*)file {
-    
+// Updates Current Folder being Viewed
+- (void)folderSelected:(Folder*)folder
+{
+    // TODO
 }
 
 - (void)didReceiveMemoryWarning

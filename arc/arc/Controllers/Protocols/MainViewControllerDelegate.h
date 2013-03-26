@@ -12,16 +12,17 @@
 
 @protocol MainViewControllerDelegate// <NSObject>
 
+#pragma mark - Triggered by CodeViewController
+
+// Show/hide LeftBar
+- (void)showLeftBar;
+- (void)hideLeftBar;
+
+#pragma mark - Triggered by LeftBarViewController
+
 // Shows the file using the CodeViewController
-- (void)showFile:(File*)file;
+- (void)fileSelected:(File*)file;
 
-// Updates the FileNavigatorViewController view after adding a folder
-- (void)updateAddFolderView:(Folder*)folder;
-
-// Updates the FileNavigatorViewController view after adding a file
-- (void)updateAddFileView:(File*)file;
-
-// Updates the global view upon changing settings
-//- (void)updateSettings;
-
+// Updates Current Folder being Viewed
+- (void)folderSelected:(Folder*)folder;
 @end

@@ -16,6 +16,8 @@
 #import "CodeViewController.h"
 #import "LeftBarViewController.h"
 
+#import "TMBundleSyntaxParser.h"
+
 @interface MainViewController : UIViewController <MainViewControllerDelegate>
 // Returns the MainViewController singleton.
 //+ (MainViewController*) getInstance;
