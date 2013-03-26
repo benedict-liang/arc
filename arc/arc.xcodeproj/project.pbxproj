@@ -767,11 +767,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
-=======
 				02B04FCA1701672700FE51CB /* GameObject.h in Resources */,
 				4C43F8F916F86AA900159B29 /* InfoPlist.strings in Resources */,
->>>>>>> 2aa1c64f94ad32a848c27ce79fcf255aefb77255
 				4C43F90116F86AA900159B29 /* Default.png in Resources */,
 				4C43F90316F86AA900159B29 /* Default@2x.png in Resources */,
 				4C43F90516F86AA900159B29 /* Default-568h@2x.png in Resources */,
