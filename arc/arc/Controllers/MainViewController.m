@@ -43,14 +43,18 @@
     _leftBar = [[LeftBarViewController alloc] initWithFolder:_rootFolder];
     _leftBar.delegate = self;
     
-    // ToolBar. Active only in portrait mode for now.
+    
     CGRect window = [[UIScreen mainScreen] bounds];
+    
+    // ToolBar. Active only in portrait mode for now.
     _toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, window.size.width, SIZE_TOOLBAR_HEIGHT)];
     
+    //Toolbar Button
     UIBarButtonItem *overlayButton = [[UIBarButtonItem alloc] initWithTitle:@"Open" style:UIBarButtonSystemItemAction target:self action:@selector(triggerPopover:)];
     [_toolbar setItems:@[overlayButton]];
     [_toolbar setBarStyle:UIBarStyleBlackTranslucent];
     
+    //Popover
     _popover = [[UIPopoverController alloc] initWithContentViewController:_leftBar];
     _popover.popoverContentSize = SIZE_POPOVER;
     
@@ -72,7 +76,9 @@
 - (void)resizeSubViews
 {
     CGRect window = [[UIScreen mainScreen] bounds];
+    
     // TODO.
+    // Omer (26.03.2013): Simply add toolbar when in Portrait and remove it when in Landscape.
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
     if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) {
         
@@ -121,10 +127,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+// enable autorotation
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     [self resizeSubViews];
     return YES;
 }
+
+// popover click callback
 -(void)triggerPopover:(UIBarButtonItem*)button {
     [self.popover presentPopoverFromBarButtonItem:button permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
