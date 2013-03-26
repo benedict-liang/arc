@@ -35,7 +35,6 @@
     _navController = [[UINavigationController alloc] initWithRootViewController:_fileNav];
     [self.view addSubview:_navController.view];
     [self.view addSubview:_fileNav.view];
-    
 }
 - (void)viewDidLoad
 {
