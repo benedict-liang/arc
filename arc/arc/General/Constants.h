@@ -12,9 +12,7 @@
 //
 // Sizes
 //
-extern const CGRect SIZE_CODE_VIEW_PORTRAIT;
-extern const CGRect SIZE_CODE_VIEW_LANDSCAPE;
-extern const CGRect SIZE_FILENAV_VIEW_PORTRAIT;
+extern const float SIZE_LEFTBAR_WIDTH;
 
 // Default Folder Names
 extern NSString* const FOLDER_EXTERNAL_APPLICATIONS;

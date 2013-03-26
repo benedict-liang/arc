@@ -8,14 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "MainViewControllerDelegate.h"
-
+#import "Constants.h"
 #import "ApplicationState.h"
 #import "RootFolder.h"
 #import "Folder.h"
 #import "File.h"
-#import "FileNavigationViewController.h"
 #import "CodeViewController.h"
-#import "Constants.h"
 #import "LeftBarViewController.h"
 
 @interface MainViewController : UIViewController <MainViewControllerDelegate>
