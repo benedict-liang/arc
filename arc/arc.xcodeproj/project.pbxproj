@@ -28,6 +28,7 @@
 		4C43F90316F86AA900159B29 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43F90216F86AA900159B29 /* Default@2x.png */; };
 		4C43F90516F86AA900159B29 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43F90416F86AA900159B29 /* Default-568h@2x.png */; };
 		4C43F90816F86AA900159B29 /* arc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F90616F86AA900159B29 /* arc.xcdatamodeld */; };
+		4C45551A17017005001C6F1D /* BasicStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C45551917017005001C6F1D /* BasicStyles.m */; };
 		4CD06B6C16FDEEC100C9DED3 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD06B3B16FDEDA600C9DED3 /* SenTestingKit.framework */; };
 		4CD06B6D16FDEEC100C9DED3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
 		4CD06B6E16FDEEC100C9DED3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EE16F86AA900159B29 /* Foundation.framework */; };
@@ -87,6 +88,9 @@
 		4C43F90716F86AA900159B29 /* arc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = arc.xcdatamodel; sourceTree = "<group>"; };
 		4C43F90F16F86AD000159B29 /* FileObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileObject.h; sourceTree = "<group>"; };
 		4C43F91016F86AD000159B29 /* FileObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileObject.m; sourceTree = "<group>"; };
+		4C45551717016F93001C6F1D /* CodeViewMiddleware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CodeViewMiddleware.h; path = View/Middleware/CodeViewMiddleware.h; sourceTree = "<group>"; };
+		4C45551817017005001C6F1D /* BasicStyles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicStyles.h; path = View/Middleware/BasicStyles.h; sourceTree = "<group>"; };
+		4C45551917017005001C6F1D /* BasicStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicStyles.m; path = View/Middleware/BasicStyles.m; sourceTree = "<group>"; };
 		4CD06B2C16FDE92D00C9DED3 /* SubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubViewController.h; sourceTree = "<group>"; };
 		4CD06B3B16FDEDA600C9DED3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		4CD06B4016FDEDA600C9DED3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -336,6 +340,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		4C45551617016F21001C6F1D /* Middleware */ = {
+			isa = PBXGroup;
+			children = (
+				4C45551717016F93001C6F1D /* CodeViewMiddleware.h */,
+				4C45551817017005001C6F1D /* BasicStyles.h */,
+				4C45551917017005001C6F1D /* BasicStyles.m */,
+			);
+			name = Middleware;
+			sourceTree = "<group>";
+		};
 		4CD06B2D16FDE97E00C9DED3 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +406,7 @@
 		4CD06B8716FE122400C9DED3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4C45551617016F21001C6F1D /* Middleware */,
 				4CD06B8816FE125100C9DED3 /* CoreTextUIView.h */,
 				4CD06B8916FE125100C9DED3 /* CoreTextUIView.m */,
 			);
@@ -813,6 +828,7 @@
 				4CD06B8A16FE125100C9DED3 /* CoreTextUIView.m in Sources */,
 				FC4B26CE16FF6E3800E1DC49 /* LeftBarViewController.m in Sources */,
 				026AC54516FF06F7001E03E5 /* FileHelper.m in Sources */,
+                4C45551A17017005001C6F1D /* BasicStyles.m in Sources */,
                 8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
