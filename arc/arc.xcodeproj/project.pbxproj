@@ -21,7 +21,6 @@
 		4C43F8EF16F86AA900159B29 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EE16F86AA900159B29 /* Foundation.framework */; };
 		4C43F8F116F86AA900159B29 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8F016F86AA900159B29 /* CoreGraphics.framework */; };
 		4C43F8F316F86AA900159B29 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8F216F86AA900159B29 /* CoreData.framework */; };
-		4C43F8F916F86AA900159B29 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C43F8F716F86AA900159B29 /* InfoPlist.strings */; };
 		4C43F8FB16F86AA900159B29 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F8FA16F86AA900159B29 /* main.m */; };
 		4C43F8FF16F86AA900159B29 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F8FE16F86AA900159B29 /* AppDelegate.m */; };
 		4C43F90116F86AA900159B29 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43F90016F86AA900159B29 /* Default.png */; };
@@ -37,6 +36,66 @@
 		4CD06B8616FE0FE600C9DED3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD06B8416FE0FC900C9DED3 /* CoreText.framework */; };
 		4CD06B8A16FE125100C9DED3 /* CoreTextUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B8916FE125100C9DED3 /* CoreTextUIView.m */; };
 		4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */; };
+		8F563ECB170160CD00EE5643 /* About Persistent Includes.tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E56170160CD00EE5643 /* About Persistent Includes.tmCommand */; };
+		8F563ECE170160CD00EE5643 /* Convert Line : Selection to URL Escapes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E59170160CD00EE5643 /* Convert Line : Selection to URL Escapes.plist */; };
+		8F563ED0170160CD00EE5643 /* Convert to named entities excl tags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E5B170160CD00EE5643 /* Convert to named entities excl tags.plist */; };
+		8F563ED2170160CD00EE5643 /* Decode Numeric URL Escapes in Line : Selection.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E5D170160CD00EE5643 /* Decode Numeric URL Escapes in Line : Selection.plist */; };
+		8F563ED3170160CD00EE5643 /* Documentation for Tag.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E5E170160CD00EE5643 /* Documentation for Tag.plist */; };
+		8F563ED4170160CD00EE5643 /* Encrypt Line : Selection (ROT 13).tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E5F170160CD00EE5643 /* Encrypt Line : Selection (ROT 13).tmCommand */; };
+		8F563ED5170160CD00EE5643 /* Insert Close Tag.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E60170160CD00EE5643 /* Insert Close Tag.plist */; };
+		8F563ED6170160CD00EE5643 /* Insert Entity….plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E61170160CD00EE5643 /* Insert Entity….plist */; };
+		8F563ED7170160CD00EE5643 /* Insert Tag Pair.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E62170160CD00EE5643 /* Insert Tag Pair.plist */; };
+		8F563ED8170160CD00EE5643 /* Persistent Include.tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E63170160CD00EE5643 /* Persistent Include.tmCommand */; };
+		8F563ED9170160CD00EE5643 /* Preview in All Active Browsers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E64170160CD00EE5643 /* Preview in All Active Browsers.plist */; };
+		8F563EDA170160CD00EE5643 /* Refresh All Active Browsers.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E65170160CD00EE5643 /* Refresh All Active Browsers.plist */; };
+		8F563EDB170160CD00EE5643 /* Show Web Preview.tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E66170160CD00EE5643 /* Show Web Preview.tmCommand */; };
+		8F563EDD170160CD00EE5643 /* Tidy.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E68170160CD00EE5643 /* Tidy.plist */; };
+		8F563EDE170160CD00EE5643 /* Update Includes.tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E69170160CD00EE5643 /* Update Includes.tmCommand */; };
+		8F563EDF170160CD00EE5643 /* Update Project.tmCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E6A170160CD00EE5643 /* Update Project.tmCommand */; };
+		8F563EE0170160CD00EE5643 /* W3C validation.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E6B170160CD00EE5643 /* W3C validation.plist */; };
+		8F563EE1170160CD00EE5643 /* Wrap Each Selected Line in Open:Close Tag.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E6C170160CD00EE5643 /* Wrap Each Selected Line in Open:Close Tag.plist */; };
+		8F563EE2170160CD00EE5643 /* Anchor Tag.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E6E170160CD00EE5643 /* Anchor Tag.plist */; };
+		8F563EE3170160CD00EE5643 /* CSS Link.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E6F170160CD00EE5643 /* CSS Link.plist */; };
+		8F563EE4170160CD00EE5643 /* Image Tag.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E70170160CD00EE5643 /* Image Tag.plist */; };
+		8F563EE5170160CD00EE5643 /* Insert Anchor href 2.tmDragCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E71170160CD00EE5643 /* Insert Anchor href 2.tmDragCommand */; };
+		8F563EE6170160CD00EE5643 /* Insert Anchor href.tmDragCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E72170160CD00EE5643 /* Insert Anchor href.tmDragCommand */; };
+		8F563EE7170160CD00EE5643 /* Insert Flash Movie (Swf).tmDragCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E73170160CD00EE5643 /* Insert Flash Movie (Swf).tmDragCommand */; };
+		8F563EE8170160CD00EE5643 /* Insert JS Link.tmDragCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E74170160CD00EE5643 /* Insert JS Link.tmDragCommand */; };
+		8F563EE9170160CD00EE5643 /* Insert QuickTime Movie.tmDragCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E75170160CD00EE5643 /* Insert QuickTime Movie.tmDragCommand */; };
+		8F563EEA170160CD00EE5643 /* Insert URL.tmDragCommand in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E76170160CD00EE5643 /* Insert URL.tmDragCommand */; };
+		8F563EEC170160CD00EE5643 /* Delete whitespace between tags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E79170160CD00EE5643 /* Delete whitespace between tags.plist */; };
+		8F563EED170160CD00EE5643 /* Comments.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E7B170160CD00EE5643 /* Comments.plist */; };
+		8F563EEF170160CD00EE5643 /* Empty tag typing pairs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E7D170160CD00EE5643 /* Empty tag typing pairs.plist */; };
+		8F563EF0170160CD00EE5643 /* Folding.tmPreferences in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E7E170160CD00EE5643 /* Folding.tmPreferences */; };
+		8F563EF1170160CD00EE5643 /* Indent Corrections.tmPreferences in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E7F170160CD00EE5643 /* Indent Corrections.tmPreferences */; };
+		8F563EF2170160CD00EE5643 /* Miscellaneous.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E80170160CD00EE5643 /* Miscellaneous.plist */; };
+		8F563EF3170160CD00EE5643 /* Symbol List: ID.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E81170160CD00EE5643 /* Symbol List: ID.plist */; };
+		8F563EF4170160CD00EE5643 /* Tag Completions.tmPreferences in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E82170160CD00EE5643 /* Tag Completions.tmPreferences */; };
+		8F563EF5170160CD00EE5643 /* Tag preferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E83170160CD00EE5643 /* Tag preferences.plist */; };
+		8F563EF6170160CD00EE5643 /* README.mdown in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E84170160CD00EE5643 /* README.mdown */; };
+		8F563EF9170160CD00EE5643 /* DocType XHTL 1.0 Frameset.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E88170160CD00EE5643 /* DocType XHTL 1.0 Frameset.plist */; };
+		8F563EFD170160CD00EE5643 /* Embed QT movie (movie).plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E8C170160CD00EE5643 /* Embed QT movie (movie).plist */; };
+		8F563EFE170160CD00EE5643 /* Emphasize.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E8D170160CD00EE5643 /* Emphasize.tmSnippet */; };
+		8F563EFF170160CD00EE5643 /* Fieldset.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E8E170160CD00EE5643 /* Fieldset.tmSnippet */; };
+		8F563F01170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_0 only.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E90170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_0 only.tmSnippet */; };
+		8F563F02170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_5 only.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E91170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_5 only.tmSnippet */; };
+		8F563F03170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_x.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E92170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_x.tmSnippet */; };
+		8F563F04170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 6 and below.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E93170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 6 and below.tmSnippet */; };
+		8F563F05170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 6 only.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E94170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 6 only.tmSnippet */; };
+		8F563F06170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 7+.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E95170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 7+.tmSnippet */; };
+		8F563F07170160CD00EE5643 /* IE Conditional Comment: Internet Explorer.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E96170160CD00EE5643 /* IE Conditional Comment: Internet Explorer.tmSnippet */; };
+		8F563F08170160CD00EE5643 /* IE Conditional Comment: NOT Internet Explorer.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E97170160CD00EE5643 /* IE Conditional Comment: NOT Internet Explorer.tmSnippet */; };
+		8F563F09170160CD00EE5643 /* Input with Label.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E98170160CD00EE5643 /* Input with Label.tmSnippet */; };
+		8F563F0A170160CD00EE5643 /* Option.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E99170160CD00EE5643 /* Option.tmSnippet */; };
+		8F563F0B170160CD00EE5643 /* Select Box.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E9A170160CD00EE5643 /* Select Box.tmSnippet */; };
+		8F563F0C170160CD00EE5643 /* Smart return:indent for tag pairs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E9B170160CD00EE5643 /* Smart return:indent for tag pairs.plist */; };
+		8F563F0D170160CD00EE5643 /* Strong.tmSnippet in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E9C170160CD00EE5643 /* Strong.tmSnippet */; };
+		8F563F0E170160CD00EE5643 /* Wrap in <?= … ?>.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E9D170160CD00EE5643 /* Wrap in <?= … ?>.plist */; };
+		8F563F0F170160CD00EE5643 /* Wrap Selection In Tag.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563E9E170160CD00EE5643 /* Wrap Selection In Tag.plist */; };
+		8F563F22170160CD00EE5643 /* entities.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8F563EB2170160CD00EE5643 /* entities.txt */; };
+		8F563F23170160CD00EE5643 /* Insert Entity.nib in Resources */ = {isa = PBXBuildFile; fileRef = 8F563EB4170160CD00EE5643 /* Insert Entity.nib */; };
+		8F563F24170160CD00EE5643 /* tminclude.rb in Resources */ = {isa = PBXBuildFile; fileRef = 8F563EB5170160CD00EE5643 /* tminclude.rb */; };
+		8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */; };
 		8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1416FDFDBE00B31A19 /* Utils.m */; };
 		8F5C5C1916FDFED300B31A19 /* Find.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1816FDFED300B31A19 /* Find.m */; };
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
@@ -101,6 +160,111 @@
 		4CD06B8816FE125100C9DED3 /* CoreTextUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreTextUIView.h; path = View/CoreTextUIView.h; sourceTree = "<group>"; };
 		4CD06B8916FE125100C9DED3 /* CoreTextUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreTextUIView.m; path = View/CoreTextUIView.m; sourceTree = "<group>"; };
 		4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
+		8F563E56170160CD00EE5643 /* About Persistent Includes.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "About Persistent Includes.tmCommand"; sourceTree = "<group>"; };
+		8F563E57170160CD00EE5643 /* CodeCompletion HTML Attributes.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CodeCompletion HTML Attributes.tmCommand"; sourceTree = "<group>"; };
+		8F563E58170160CD00EE5643 /* CodeCompletion HTML Tags.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CodeCompletion HTML Tags.tmCommand"; sourceTree = "<group>"; };
+		8F563E59170160CD00EE5643 /* Convert Line : Selection to URL Escapes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Convert Line : Selection to URL Escapes.plist"; sourceTree = "<group>"; };
+		8F563E5A170160CD00EE5643 /* Convert to HTML Entities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Convert to HTML Entities.plist"; sourceTree = "<group>"; };
+		8F563E5B170160CD00EE5643 /* Convert to named entities excl tags.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Convert to named entities excl tags.plist"; sourceTree = "<group>"; };
+		8F563E5C170160CD00EE5643 /* Decode HTML Entities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Decode HTML Entities.plist"; sourceTree = "<group>"; };
+		8F563E5D170160CD00EE5643 /* Decode Numeric URL Escapes in Line : Selection.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Decode Numeric URL Escapes in Line : Selection.plist"; sourceTree = "<group>"; };
+		8F563E5E170160CD00EE5643 /* Documentation for Tag.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Documentation for Tag.plist"; sourceTree = "<group>"; };
+		8F563E5F170160CD00EE5643 /* Encrypt Line : Selection (ROT 13).tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Encrypt Line : Selection (ROT 13).tmCommand"; sourceTree = "<group>"; };
+		8F563E60170160CD00EE5643 /* Insert Close Tag.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Insert Close Tag.plist"; sourceTree = "<group>"; };
+		8F563E61170160CD00EE5643 /* Insert Entity….plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Insert Entity….plist"; sourceTree = "<group>"; };
+		8F563E62170160CD00EE5643 /* Insert Tag Pair.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Insert Tag Pair.plist"; sourceTree = "<group>"; };
+		8F563E63170160CD00EE5643 /* Persistent Include.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Persistent Include.tmCommand"; sourceTree = "<group>"; };
+		8F563E64170160CD00EE5643 /* Preview in All Active Browsers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Preview in All Active Browsers.plist"; sourceTree = "<group>"; };
+		8F563E65170160CD00EE5643 /* Refresh All Active Browsers.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Refresh All Active Browsers.plist"; sourceTree = "<group>"; };
+		8F563E66170160CD00EE5643 /* Show Web Preview.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Show Web Preview.tmCommand"; sourceTree = "<group>"; };
+		8F563E67170160CD00EE5643 /* Strip HTML tags.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Strip HTML tags.plist"; sourceTree = "<group>"; };
+		8F563E68170160CD00EE5643 /* Tidy.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tidy.plist; sourceTree = "<group>"; };
+		8F563E69170160CD00EE5643 /* Update Includes.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Update Includes.tmCommand"; sourceTree = "<group>"; };
+		8F563E6A170160CD00EE5643 /* Update Project.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Update Project.tmCommand"; sourceTree = "<group>"; };
+		8F563E6B170160CD00EE5643 /* W3C validation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "W3C validation.plist"; sourceTree = "<group>"; };
+		8F563E6C170160CD00EE5643 /* Wrap Each Selected Line in Open:Close Tag.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Wrap Each Selected Line in Open:Close Tag.plist"; sourceTree = "<group>"; };
+		8F563E6E170160CD00EE5643 /* Anchor Tag.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Anchor Tag.plist"; sourceTree = "<group>"; };
+		8F563E6F170160CD00EE5643 /* CSS Link.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CSS Link.plist"; sourceTree = "<group>"; };
+		8F563E70170160CD00EE5643 /* Image Tag.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Image Tag.plist"; sourceTree = "<group>"; };
+		8F563E71170160CD00EE5643 /* Insert Anchor href 2.tmDragCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Insert Anchor href 2.tmDragCommand"; sourceTree = "<group>"; };
+		8F563E72170160CD00EE5643 /* Insert Anchor href.tmDragCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Insert Anchor href.tmDragCommand"; sourceTree = "<group>"; };
+		8F563E73170160CD00EE5643 /* Insert Flash Movie (Swf).tmDragCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Insert Flash Movie (Swf).tmDragCommand"; sourceTree = "<group>"; };
+		8F563E74170160CD00EE5643 /* Insert JS Link.tmDragCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Insert JS Link.tmDragCommand"; sourceTree = "<group>"; };
+		8F563E75170160CD00EE5643 /* Insert QuickTime Movie.tmDragCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Insert QuickTime Movie.tmDragCommand"; sourceTree = "<group>"; };
+		8F563E76170160CD00EE5643 /* Insert URL.tmDragCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Insert URL.tmDragCommand"; sourceTree = "<group>"; };
+		8F563E77170160CD00EE5643 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		8F563E79170160CD00EE5643 /* Delete whitespace between tags.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Delete whitespace between tags.plist"; sourceTree = "<group>"; };
+		8F563E7B170160CD00EE5643 /* Comments.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Comments.plist; sourceTree = "<group>"; };
+		8F563E7C170160CD00EE5643 /* Completions HTML Attributes.tmPreferences */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Completions HTML Attributes.tmPreferences"; sourceTree = "<group>"; };
+		8F563E7D170160CD00EE5643 /* Empty tag typing pairs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Empty tag typing pairs.plist"; sourceTree = "<group>"; };
+		8F563E7E170160CD00EE5643 /* Folding.tmPreferences */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Folding.tmPreferences; sourceTree = "<group>"; };
+		8F563E7F170160CD00EE5643 /* Indent Corrections.tmPreferences */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Indent Corrections.tmPreferences"; sourceTree = "<group>"; };
+		8F563E80170160CD00EE5643 /* Miscellaneous.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Miscellaneous.plist; sourceTree = "<group>"; };
+		8F563E81170160CD00EE5643 /* Symbol List: ID.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Symbol List: ID.plist"; sourceTree = "<group>"; };
+		8F563E82170160CD00EE5643 /* Tag Completions.tmPreferences */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Tag Completions.tmPreferences"; sourceTree = "<group>"; };
+		8F563E83170160CD00EE5643 /* Tag preferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Tag preferences.plist"; sourceTree = "<group>"; };
+		8F563E84170160CD00EE5643 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mdown; sourceTree = "<group>"; };
+		8F563E86170160CD00EE5643 /* DocType HTML 4.0 Strict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DocType HTML 4.0 Strict.plist"; sourceTree = "<group>"; };
+		8F563E87170160CD00EE5643 /* DocType HTML 5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DocType HTML 5.plist"; sourceTree = "<group>"; };
+		8F563E88170160CD00EE5643 /* DocType XHTL 1.0 Frameset.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DocType XHTL 1.0 Frameset.plist"; sourceTree = "<group>"; };
+		8F563E89170160CD00EE5643 /* DocType XHTML 1.0 Strict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DocType XHTML 1.0 Strict.plist"; sourceTree = "<group>"; };
+		8F563E8A170160CD00EE5643 /* DocType XHTML 1.0 Transitional.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DocType XHTML 1.0 Transitional.plist"; sourceTree = "<group>"; };
+		8F563E8B170160CD00EE5643 /* DocType XHTML 1.1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DocType XHTML 1.1.plist"; sourceTree = "<group>"; };
+		8F563E8C170160CD00EE5643 /* Embed QT movie (movie).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Embed QT movie (movie).plist"; sourceTree = "<group>"; };
+		8F563E8D170160CD00EE5643 /* Emphasize.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Emphasize.tmSnippet; sourceTree = "<group>"; };
+		8F563E8E170160CD00EE5643 /* Fieldset.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Fieldset.tmSnippet; sourceTree = "<group>"; };
+		8F563E8F170160CD00EE5643 /* HTML — 4.0 Transitional (doctype).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HTML — 4.0 Transitional (doctype).plist"; sourceTree = "<group>"; };
+		8F563E90170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_0 only.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "IE Conditional Comment: Internet Explorer 5_0 only.tmSnippet"; sourceTree = "<group>"; };
+		8F563E91170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_5 only.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "IE Conditional Comment: Internet Explorer 5_5 only.tmSnippet"; sourceTree = "<group>"; };
+		8F563E92170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_x.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "IE Conditional Comment: Internet Explorer 5_x.tmSnippet"; sourceTree = "<group>"; };
+		8F563E93170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 6 and below.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "IE Conditional Comment: Internet Explorer 6 and below.tmSnippet"; sourceTree = "<group>"; };
+		8F563E94170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 6 only.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "IE Conditional Comment: Internet Explorer 6 only.tmSnippet"; sourceTree = "<group>"; };
+		8F563E95170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 7+.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "IE Conditional Comment: Internet Explorer 7+.tmSnippet"; sourceTree = "<group>"; };
+		8F563E96170160CD00EE5643 /* IE Conditional Comment: Internet Explorer.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "IE Conditional Comment: Internet Explorer.tmSnippet"; sourceTree = "<group>"; };
+		8F563E97170160CD00EE5643 /* IE Conditional Comment: NOT Internet Explorer.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "IE Conditional Comment: NOT Internet Explorer.tmSnippet"; sourceTree = "<group>"; };
+		8F563E98170160CD00EE5643 /* Input with Label.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Input with Label.tmSnippet"; sourceTree = "<group>"; };
+		8F563E99170160CD00EE5643 /* Option.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Option.tmSnippet; sourceTree = "<group>"; };
+		8F563E9A170160CD00EE5643 /* Select Box.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Select Box.tmSnippet"; sourceTree = "<group>"; };
+		8F563E9B170160CD00EE5643 /* Smart return:indent for tag pairs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Smart return:indent for tag pairs.plist"; sourceTree = "<group>"; };
+		8F563E9C170160CD00EE5643 /* Strong.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Strong.tmSnippet; sourceTree = "<group>"; };
+		8F563E9D170160CD00EE5643 /* Wrap in <?= … ?>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Wrap in <?= … ?>.plist"; sourceTree = "<group>"; };
+		8F563E9E170160CD00EE5643 /* Wrap Selection In Tag.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Wrap Selection In Tag.plist"; sourceTree = "<group>"; };
+		8F563E9F170160CD00EE5643 /* XHTML   <input>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML   <input>.plist"; sourceTree = "<group>"; };
+		8F563EA0170160CD00EE5643 /* XHTML   <textarea>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML   <textarea>.plist"; sourceTree = "<group>"; };
+		8F563EA1170160CD00EE5643 /* XHTML &nbsp; NonBreakingSpace.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML &nbsp; NonBreakingSpace.plist"; sourceTree = "<group>"; };
+		8F563EA2170160CD00EE5643 /* XHTML <a mailto: >.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <a mailto: >.plist"; sourceTree = "<group>"; };
+		8F563EA3170160CD00EE5643 /* XHTML <base>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <base>.plist"; sourceTree = "<group>"; };
+		8F563EA4170160CD00EE5643 /* XHTML <body>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <body>.plist"; sourceTree = "<group>"; };
+		8F563EA5170160CD00EE5643 /* XHTML <br :>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <br :>.plist"; sourceTree = "<group>"; };
+		8F563EA6170160CD00EE5643 /* XHTML <div>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <div>.plist"; sourceTree = "<group>"; };
+		8F563EA7170160CD00EE5643 /* XHTML <form>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <form>.plist"; sourceTree = "<group>"; };
+		8F563EA8170160CD00EE5643 /* XHTML <h1>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <h1>.plist"; sourceTree = "<group>"; };
+		8F563EA9170160CD00EE5643 /* XHTML <head>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <head>.plist"; sourceTree = "<group>"; };
+		8F563EAA170160CD00EE5643 /* XHTML <link>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <link>.plist"; sourceTree = "<group>"; };
+		8F563EAB170160CD00EE5643 /* XHTML <meta>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <meta>.plist"; sourceTree = "<group>"; };
+		8F563EAC170160CD00EE5643 /* XHTML <script src...>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <script src...>.plist"; sourceTree = "<group>"; };
+		8F563EAD170160CD00EE5643 /* XHTML <script>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <script>.plist"; sourceTree = "<group>"; };
+		8F563EAE170160CD00EE5643 /* XHTML <style>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <style>.plist"; sourceTree = "<group>"; };
+		8F563EAF170160CD00EE5643 /* XHTML <table>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <table>.plist"; sourceTree = "<group>"; };
+		8F563EB0170160CD00EE5643 /* XHTML <title>.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTML <title>.plist"; sourceTree = "<group>"; };
+		8F563EB2170160CD00EE5643 /* entities.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = entities.txt; sourceTree = "<group>"; };
+		8F563EB4170160CD00EE5643 /* Insert Entity.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = "Insert Entity.nib"; sourceTree = "<group>"; };
+		8F563EB5170160CD00EE5643 /* tminclude.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = tminclude.rb; sourceTree = "<group>"; };
+		8F563EB7170160CD00EE5643 /* HTML.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HTML.plist; sourceTree = "<group>"; };
+		8F563EBA170160CD00EE5643 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		8F563EBB170160CD00EE5643 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		8F563EBD170160CD00EE5643 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		8F563EBE170160CD00EE5643 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		8F563EC0170160CD00EE5643 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		8F563EC1170160CD00EE5643 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		8F563EC3170160CD00EE5643 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		8F563EC4170160CD00EE5643 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		8F563EC6170160CD00EE5643 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		8F563EC7170160CD00EE5643 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		8F563EC9170160CD00EE5643 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		8F563ECA170160CD00EE5643 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		8F563F33170161C900EE5643 /* TMBundleSyntaxParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleSyntaxParser.h; sourceTree = "<group>"; };
+		8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBundleSyntaxParser.m; sourceTree = "<group>"; };
 		8F5C5C1416FDFDBE00B31A19 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = General/Utils.m; sourceTree = "<group>"; };
 		8F5C5C1516FDFDBE00B31A19 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = General/Utils.h; sourceTree = "<group>"; };
 		8F5C5C1716FDFED300B31A19 /* Find.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Find.h; path = General/Find.h; sourceTree = "<group>"; };
@@ -269,6 +433,7 @@
 		4CD06B7D16FDF59E00C9DED3 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				8F563F32170161B600EE5643 /* TMBundleProcessing */,
 				8F5C5C1516FDFDBE00B31A19 /* Utils.h */,
 				8F5C5C1416FDFDBE00B31A19 /* Utils.m */,
 				4CD06B7E16FDF61C00C9DED3 /* Constants.h */,
@@ -291,6 +456,7 @@
 		4CD06B9016FE1A6900C9DED3 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				8F563E53170160CD00EE5643 /* TextMateBundles */,
 				4CD06B9116FE1A7100C9DED3 /* Fonts */,
 			);
 			name = Assets;
@@ -303,6 +469,255 @@
 			);
 			name = Fonts;
 			path = Assets/Fonts;
+			sourceTree = "<group>";
+		};
+		8F563E53170160CD00EE5643 /* TextMateBundles */ = {
+			isa = PBXGroup;
+			children = (
+				8F563E54170160CD00EE5643 /* html.tmbundle */,
+			);
+			name = TextMateBundles;
+			path = Assets/TextMateBundles;
+			sourceTree = "<group>";
+		};
+		8F563E54170160CD00EE5643 /* html.tmbundle */ = {
+			isa = PBXGroup;
+			children = (
+				8F563E55170160CD00EE5643 /* Commands */,
+				8F563E6D170160CD00EE5643 /* DragCommands */,
+				8F563E77170160CD00EE5643 /* info.plist */,
+				8F563E78170160CD00EE5643 /* Macros */,
+				8F563E7A170160CD00EE5643 /* Preferences */,
+				8F563E84170160CD00EE5643 /* README.mdown */,
+				8F563E85170160CD00EE5643 /* Snippets */,
+				8F563EB1170160CD00EE5643 /* Support */,
+				8F563EB6170160CD00EE5643 /* Syntaxes */,
+				8F563EB8170160CD00EE5643 /* Templates */,
+			);
+			path = html.tmbundle;
+			sourceTree = "<group>";
+		};
+		8F563E55170160CD00EE5643 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				8F563E56170160CD00EE5643 /* About Persistent Includes.tmCommand */,
+				8F563E57170160CD00EE5643 /* CodeCompletion HTML Attributes.tmCommand */,
+				8F563E58170160CD00EE5643 /* CodeCompletion HTML Tags.tmCommand */,
+				8F563E59170160CD00EE5643 /* Convert Line : Selection to URL Escapes.plist */,
+				8F563E5A170160CD00EE5643 /* Convert to HTML Entities.plist */,
+				8F563E5B170160CD00EE5643 /* Convert to named entities excl tags.plist */,
+				8F563E5C170160CD00EE5643 /* Decode HTML Entities.plist */,
+				8F563E5D170160CD00EE5643 /* Decode Numeric URL Escapes in Line : Selection.plist */,
+				8F563E5E170160CD00EE5643 /* Documentation for Tag.plist */,
+				8F563E5F170160CD00EE5643 /* Encrypt Line : Selection (ROT 13).tmCommand */,
+				8F563E60170160CD00EE5643 /* Insert Close Tag.plist */,
+				8F563E61170160CD00EE5643 /* Insert Entity….plist */,
+				8F563E62170160CD00EE5643 /* Insert Tag Pair.plist */,
+				8F563E63170160CD00EE5643 /* Persistent Include.tmCommand */,
+				8F563E64170160CD00EE5643 /* Preview in All Active Browsers.plist */,
+				8F563E65170160CD00EE5643 /* Refresh All Active Browsers.plist */,
+				8F563E66170160CD00EE5643 /* Show Web Preview.tmCommand */,
+				8F563E67170160CD00EE5643 /* Strip HTML tags.plist */,
+				8F563E68170160CD00EE5643 /* Tidy.plist */,
+				8F563E69170160CD00EE5643 /* Update Includes.tmCommand */,
+				8F563E6A170160CD00EE5643 /* Update Project.tmCommand */,
+				8F563E6B170160CD00EE5643 /* W3C validation.plist */,
+				8F563E6C170160CD00EE5643 /* Wrap Each Selected Line in Open:Close Tag.plist */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		8F563E6D170160CD00EE5643 /* DragCommands */ = {
+			isa = PBXGroup;
+			children = (
+				8F563E6E170160CD00EE5643 /* Anchor Tag.plist */,
+				8F563E6F170160CD00EE5643 /* CSS Link.plist */,
+				8F563E70170160CD00EE5643 /* Image Tag.plist */,
+				8F563E71170160CD00EE5643 /* Insert Anchor href 2.tmDragCommand */,
+				8F563E72170160CD00EE5643 /* Insert Anchor href.tmDragCommand */,
+				8F563E73170160CD00EE5643 /* Insert Flash Movie (Swf).tmDragCommand */,
+				8F563E74170160CD00EE5643 /* Insert JS Link.tmDragCommand */,
+				8F563E75170160CD00EE5643 /* Insert QuickTime Movie.tmDragCommand */,
+				8F563E76170160CD00EE5643 /* Insert URL.tmDragCommand */,
+			);
+			path = DragCommands;
+			sourceTree = "<group>";
+		};
+		8F563E78170160CD00EE5643 /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				8F563E79170160CD00EE5643 /* Delete whitespace between tags.plist */,
+			);
+			path = Macros;
+			sourceTree = "<group>";
+		};
+		8F563E7A170160CD00EE5643 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				8F563E7B170160CD00EE5643 /* Comments.plist */,
+				8F563E7C170160CD00EE5643 /* Completions HTML Attributes.tmPreferences */,
+				8F563E7D170160CD00EE5643 /* Empty tag typing pairs.plist */,
+				8F563E7E170160CD00EE5643 /* Folding.tmPreferences */,
+				8F563E7F170160CD00EE5643 /* Indent Corrections.tmPreferences */,
+				8F563E80170160CD00EE5643 /* Miscellaneous.plist */,
+				8F563E81170160CD00EE5643 /* Symbol List: ID.plist */,
+				8F563E82170160CD00EE5643 /* Tag Completions.tmPreferences */,
+				8F563E83170160CD00EE5643 /* Tag preferences.plist */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		8F563E85170160CD00EE5643 /* Snippets */ = {
+			isa = PBXGroup;
+			children = (
+				8F563E86170160CD00EE5643 /* DocType HTML 4.0 Strict.plist */,
+				8F563E87170160CD00EE5643 /* DocType HTML 5.plist */,
+				8F563E88170160CD00EE5643 /* DocType XHTL 1.0 Frameset.plist */,
+				8F563E89170160CD00EE5643 /* DocType XHTML 1.0 Strict.plist */,
+				8F563E8A170160CD00EE5643 /* DocType XHTML 1.0 Transitional.plist */,
+				8F563E8B170160CD00EE5643 /* DocType XHTML 1.1.plist */,
+				8F563E8C170160CD00EE5643 /* Embed QT movie (movie).plist */,
+				8F563E8D170160CD00EE5643 /* Emphasize.tmSnippet */,
+				8F563E8E170160CD00EE5643 /* Fieldset.tmSnippet */,
+				8F563E8F170160CD00EE5643 /* HTML — 4.0 Transitional (doctype).plist */,
+				8F563E90170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_0 only.tmSnippet */,
+				8F563E91170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_5 only.tmSnippet */,
+				8F563E92170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_x.tmSnippet */,
+				8F563E93170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 6 and below.tmSnippet */,
+				8F563E94170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 6 only.tmSnippet */,
+				8F563E95170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 7+.tmSnippet */,
+				8F563E96170160CD00EE5643 /* IE Conditional Comment: Internet Explorer.tmSnippet */,
+				8F563E97170160CD00EE5643 /* IE Conditional Comment: NOT Internet Explorer.tmSnippet */,
+				8F563E98170160CD00EE5643 /* Input with Label.tmSnippet */,
+				8F563E99170160CD00EE5643 /* Option.tmSnippet */,
+				8F563E9A170160CD00EE5643 /* Select Box.tmSnippet */,
+				8F563E9B170160CD00EE5643 /* Smart return:indent for tag pairs.plist */,
+				8F563E9C170160CD00EE5643 /* Strong.tmSnippet */,
+				8F563E9D170160CD00EE5643 /* Wrap in <?= … ?>.plist */,
+				8F563E9E170160CD00EE5643 /* Wrap Selection In Tag.plist */,
+				8F563E9F170160CD00EE5643 /* XHTML   <input>.plist */,
+				8F563EA0170160CD00EE5643 /* XHTML   <textarea>.plist */,
+				8F563EA1170160CD00EE5643 /* XHTML &nbsp; NonBreakingSpace.plist */,
+				8F563EA2170160CD00EE5643 /* XHTML <a mailto: >.plist */,
+				8F563EA3170160CD00EE5643 /* XHTML <base>.plist */,
+				8F563EA4170160CD00EE5643 /* XHTML <body>.plist */,
+				8F563EA5170160CD00EE5643 /* XHTML <br :>.plist */,
+				8F563EA6170160CD00EE5643 /* XHTML <div>.plist */,
+				8F563EA7170160CD00EE5643 /* XHTML <form>.plist */,
+				8F563EA8170160CD00EE5643 /* XHTML <h1>.plist */,
+				8F563EA9170160CD00EE5643 /* XHTML <head>.plist */,
+				8F563EAA170160CD00EE5643 /* XHTML <link>.plist */,
+				8F563EAB170160CD00EE5643 /* XHTML <meta>.plist */,
+				8F563EAC170160CD00EE5643 /* XHTML <script src...>.plist */,
+				8F563EAD170160CD00EE5643 /* XHTML <script>.plist */,
+				8F563EAE170160CD00EE5643 /* XHTML <style>.plist */,
+				8F563EAF170160CD00EE5643 /* XHTML <table>.plist */,
+				8F563EB0170160CD00EE5643 /* XHTML <title>.plist */,
+			);
+			path = Snippets;
+			sourceTree = "<group>";
+		};
+		8F563EB1170160CD00EE5643 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				8F563EB2170160CD00EE5643 /* entities.txt */,
+				8F563EB3170160CD00EE5643 /* nibs */,
+				8F563EB5170160CD00EE5643 /* tminclude.rb */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		8F563EB3170160CD00EE5643 /* nibs */ = {
+			isa = PBXGroup;
+			children = (
+				8F563EB4170160CD00EE5643 /* Insert Entity.nib */,
+			);
+			path = nibs;
+			sourceTree = "<group>";
+		};
+		8F563EB6170160CD00EE5643 /* Syntaxes */ = {
+			isa = PBXGroup;
+			children = (
+				8F563EB7170160CD00EE5643 /* HTML.plist */,
+			);
+			path = Syntaxes;
+			sourceTree = "<group>";
+		};
+		8F563EB8170160CD00EE5643 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				8F563EB9170160CD00EE5643 /* HTML – 4.0 Strict */,
+				8F563EBC170160CD00EE5643 /* HTML — 4.0 Transitional */,
+				8F563EBF170160CD00EE5643 /* XHTML – 1.0 Frameset */,
+				8F563EC2170160CD00EE5643 /* XHTML – 1.0 Strict */,
+				8F563EC5170160CD00EE5643 /* XHTML – 1.0 Transitional */,
+				8F563EC8170160CD00EE5643 /* XHTML – 1.1 */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
+		8F563EB9170160CD00EE5643 /* HTML – 4.0 Strict */ = {
+			isa = PBXGroup;
+			children = (
+				8F563EBA170160CD00EE5643 /* index.html */,
+				8F563EBB170160CD00EE5643 /* info.plist */,
+			);
+			path = "HTML – 4.0 Strict";
+			sourceTree = "<group>";
+		};
+		8F563EBC170160CD00EE5643 /* HTML — 4.0 Transitional */ = {
+			isa = PBXGroup;
+			children = (
+				8F563EBD170160CD00EE5643 /* index.html */,
+				8F563EBE170160CD00EE5643 /* info.plist */,
+			);
+			path = "HTML — 4.0 Transitional";
+			sourceTree = "<group>";
+		};
+		8F563EBF170160CD00EE5643 /* XHTML – 1.0 Frameset */ = {
+			isa = PBXGroup;
+			children = (
+				8F563EC0170160CD00EE5643 /* index.html */,
+				8F563EC1170160CD00EE5643 /* info.plist */,
+			);
+			path = "XHTML – 1.0 Frameset";
+			sourceTree = "<group>";
+		};
+		8F563EC2170160CD00EE5643 /* XHTML – 1.0 Strict */ = {
+			isa = PBXGroup;
+			children = (
+				8F563EC3170160CD00EE5643 /* index.html */,
+				8F563EC4170160CD00EE5643 /* info.plist */,
+			);
+			path = "XHTML – 1.0 Strict";
+			sourceTree = "<group>";
+		};
+		8F563EC5170160CD00EE5643 /* XHTML – 1.0 Transitional */ = {
+			isa = PBXGroup;
+			children = (
+				8F563EC6170160CD00EE5643 /* index.html */,
+				8F563EC7170160CD00EE5643 /* info.plist */,
+			);
+			path = "XHTML – 1.0 Transitional";
+			sourceTree = "<group>";
+		};
+		8F563EC8170160CD00EE5643 /* XHTML – 1.1 */ = {
+			isa = PBXGroup;
+			children = (
+				8F563EC9170160CD00EE5643 /* index.html */,
+				8F563ECA170160CD00EE5643 /* info.plist */,
+			);
+			path = "XHTML – 1.1";
+			sourceTree = "<group>";
+		};
+		8F563F32170161B600EE5643 /* TMBundleProcessing */ = {
+			isa = PBXGroup;
+			children = (
+				8F563F33170161C900EE5643 /* TMBundleSyntaxParser.h */,
+				8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */,
+			);
+			name = TMBundleProcessing;
+			path = General/TMBundleProcessing;
 			sourceTree = "<group>";
 		};
 		8FCA1D6616F86C7000C6AAFC /* Controllers */ = {
@@ -392,11 +807,69 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C43F8F916F86AA900159B29 /* InfoPlist.strings in Resources */,
 				4C43F90116F86AA900159B29 /* Default.png in Resources */,
 				4C43F90316F86AA900159B29 /* Default@2x.png in Resources */,
 				4C43F90516F86AA900159B29 /* Default-568h@2x.png in Resources */,
 				4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */,
+				8F563ECB170160CD00EE5643 /* About Persistent Includes.tmCommand in Resources */,
+				8F563ECE170160CD00EE5643 /* Convert Line : Selection to URL Escapes.plist in Resources */,
+				8F563ED0170160CD00EE5643 /* Convert to named entities excl tags.plist in Resources */,
+				8F563ED2170160CD00EE5643 /* Decode Numeric URL Escapes in Line : Selection.plist in Resources */,
+				8F563ED3170160CD00EE5643 /* Documentation for Tag.plist in Resources */,
+				8F563ED4170160CD00EE5643 /* Encrypt Line : Selection (ROT 13).tmCommand in Resources */,
+				8F563ED5170160CD00EE5643 /* Insert Close Tag.plist in Resources */,
+				8F563ED6170160CD00EE5643 /* Insert Entity….plist in Resources */,
+				8F563ED7170160CD00EE5643 /* Insert Tag Pair.plist in Resources */,
+				8F563ED8170160CD00EE5643 /* Persistent Include.tmCommand in Resources */,
+				8F563ED9170160CD00EE5643 /* Preview in All Active Browsers.plist in Resources */,
+				8F563EDA170160CD00EE5643 /* Refresh All Active Browsers.plist in Resources */,
+				8F563EDB170160CD00EE5643 /* Show Web Preview.tmCommand in Resources */,
+				8F563EDD170160CD00EE5643 /* Tidy.plist in Resources */,
+				8F563EDE170160CD00EE5643 /* Update Includes.tmCommand in Resources */,
+				8F563EDF170160CD00EE5643 /* Update Project.tmCommand in Resources */,
+				8F563EE0170160CD00EE5643 /* W3C validation.plist in Resources */,
+				8F563EE1170160CD00EE5643 /* Wrap Each Selected Line in Open:Close Tag.plist in Resources */,
+				8F563EE2170160CD00EE5643 /* Anchor Tag.plist in Resources */,
+				8F563EE3170160CD00EE5643 /* CSS Link.plist in Resources */,
+				8F563EE4170160CD00EE5643 /* Image Tag.plist in Resources */,
+				8F563EE5170160CD00EE5643 /* Insert Anchor href 2.tmDragCommand in Resources */,
+				8F563EE6170160CD00EE5643 /* Insert Anchor href.tmDragCommand in Resources */,
+				8F563EE7170160CD00EE5643 /* Insert Flash Movie (Swf).tmDragCommand in Resources */,
+				8F563EE8170160CD00EE5643 /* Insert JS Link.tmDragCommand in Resources */,
+				8F563EE9170160CD00EE5643 /* Insert QuickTime Movie.tmDragCommand in Resources */,
+				8F563EEA170160CD00EE5643 /* Insert URL.tmDragCommand in Resources */,
+				8F563EEC170160CD00EE5643 /* Delete whitespace between tags.plist in Resources */,
+				8F563EED170160CD00EE5643 /* Comments.plist in Resources */,
+				8F563EEF170160CD00EE5643 /* Empty tag typing pairs.plist in Resources */,
+				8F563EF0170160CD00EE5643 /* Folding.tmPreferences in Resources */,
+				8F563EF1170160CD00EE5643 /* Indent Corrections.tmPreferences in Resources */,
+				8F563EF2170160CD00EE5643 /* Miscellaneous.plist in Resources */,
+				8F563EF3170160CD00EE5643 /* Symbol List: ID.plist in Resources */,
+				8F563EF4170160CD00EE5643 /* Tag Completions.tmPreferences in Resources */,
+				8F563EF5170160CD00EE5643 /* Tag preferences.plist in Resources */,
+				8F563EF6170160CD00EE5643 /* README.mdown in Resources */,
+				8F563EF9170160CD00EE5643 /* DocType XHTL 1.0 Frameset.plist in Resources */,
+				8F563EFD170160CD00EE5643 /* Embed QT movie (movie).plist in Resources */,
+				8F563EFE170160CD00EE5643 /* Emphasize.tmSnippet in Resources */,
+				8F563EFF170160CD00EE5643 /* Fieldset.tmSnippet in Resources */,
+				8F563F01170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_0 only.tmSnippet in Resources */,
+				8F563F02170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_5 only.tmSnippet in Resources */,
+				8F563F03170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 5_x.tmSnippet in Resources */,
+				8F563F04170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 6 and below.tmSnippet in Resources */,
+				8F563F05170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 6 only.tmSnippet in Resources */,
+				8F563F06170160CD00EE5643 /* IE Conditional Comment: Internet Explorer 7+.tmSnippet in Resources */,
+				8F563F07170160CD00EE5643 /* IE Conditional Comment: Internet Explorer.tmSnippet in Resources */,
+				8F563F08170160CD00EE5643 /* IE Conditional Comment: NOT Internet Explorer.tmSnippet in Resources */,
+				8F563F09170160CD00EE5643 /* Input with Label.tmSnippet in Resources */,
+				8F563F0A170160CD00EE5643 /* Option.tmSnippet in Resources */,
+				8F563F0B170160CD00EE5643 /* Select Box.tmSnippet in Resources */,
+				8F563F0C170160CD00EE5643 /* Smart return:indent for tag pairs.plist in Resources */,
+				8F563F0D170160CD00EE5643 /* Strong.tmSnippet in Resources */,
+				8F563F0E170160CD00EE5643 /* Wrap in <?= … ?>.plist in Resources */,
+				8F563F0F170160CD00EE5643 /* Wrap Selection In Tag.plist in Resources */,
+				8F563F22170160CD00EE5643 /* entities.txt in Resources */,
+				8F563F23170160CD00EE5643 /* Insert Entity.nib in Resources */,
+				8F563F24170160CD00EE5643 /* tminclude.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,8 +921,7 @@
 				4CD06B8A16FE125100C9DED3 /* CoreTextUIView.m in Sources */,
 				FC4B26CE16FF6E3800E1DC49 /* LeftBarViewController.m in Sources */,
 				026AC54516FF06F7001E03E5 /* FileHelper.m in Sources */,
-				8FAD0D7916FF011C00681CC5 /* inspectClass.m in Sources */,
-				8FAD0D8716FF011C00681CC5 /* class_in.mm in Sources */,
+				8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
