@@ -17,6 +17,7 @@
 		026AC54616FF06F7001E03E5 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 026AC54416FF06F6001E03E5 /* FileHelper.m */; };
 		026AC54716FF104D001E03E5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7F16FDF61C00C9DED3 /* Constants.m */; };
 		028DA2D716FD827000E2E5D9 /* RootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 028DA2D616FD826F00E2E5D9 /* RootFolder.m */; };
+		02B04FCA1701672700FE51CB /* GameObject.h in Resources */ = {isa = PBXBuildFile; fileRef = 02B04FC91701608C00FE51CB /* GameObject.h */; };
 		4C43F8ED16F86AA900159B29 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
 		4C43F8EF16F86AA900159B29 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EE16F86AA900159B29 /* Foundation.framework */; };
 		4C43F8F116F86AA900159B29 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8F016F86AA900159B29 /* CoreGraphics.framework */; };
@@ -68,6 +69,7 @@
 		026AC54416FF06F6001E03E5 /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
 		028DA2D516FD826F00E2E5D9 /* RootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootFolder.h; sourceTree = "<group>"; };
 		028DA2D616FD826F00E2E5D9 /* RootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootFolder.m; sourceTree = "<group>"; };
+		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
 		4C43F8E916F86AA900159B29 /* arc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C43F8EC16F86AA900159B29 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4C43F8EE16F86AA900159B29 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -303,6 +305,7 @@
 		4C43F8F516F86AA900159B29 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				02B04FC91701608C00FE51CB /* GameObject.h */,
 				4C43F8F616F86AA900159B29 /* arc-Info.plist */,
 				4C43F8F716F86AA900159B29 /* InfoPlist.strings */,
 				4C43F8FA16F86AA900159B29 /* main.m */,
@@ -749,6 +752,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
+=======
+				02B04FCA1701672700FE51CB /* GameObject.h in Resources */,
+				4C43F8F916F86AA900159B29 /* InfoPlist.strings in Resources */,
+>>>>>>> 2aa1c64f94ad32a848c27ce79fcf255aefb77255
 				4C43F90116F86AA900159B29 /* Default.png in Resources */,
 				4C43F90316F86AA900159B29 /* Default@2x.png in Resources */,
 				4C43F90516F86AA900159B29 /* Default-568h@2x.png in Resources */,
@@ -805,7 +813,7 @@
 				4CD06B8A16FE125100C9DED3 /* CoreTextUIView.m in Sources */,
 				FC4B26CE16FF6E3800E1DC49 /* LeftBarViewController.m in Sources */,
 				026AC54516FF06F7001E03E5 /* FileHelper.m in Sources */,
-				8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */,
+                8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

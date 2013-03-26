@@ -49,6 +49,8 @@
     [self.view setAttributedString:string];
 }
 
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
