@@ -23,9 +23,10 @@
     }
     return self;
 }
-- (id)initWithFolder:(Folder*)folder {
+- (id)initWithFolder:(Folder*)folder delegate:(id)del {
     self = [super init];
     if (self) {
+        self.delegate = del;
         [self setupFileNavWithFolder:folder];
     }
     return self;
