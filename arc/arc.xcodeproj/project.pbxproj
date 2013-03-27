@@ -48,6 +48,7 @@
 		8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */; };
 		FC4B269E16F88CB800E1DC49 /* FileNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B269D16F88CB800E1DC49 /* FileNavigationViewController.m */; };
 		FC4B26CE16FF6E3800E1DC49 /* LeftBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B26CD16FF6E3700E1DC49 /* LeftBarViewController.m */; };
+		FCB0548017034DE6007832D7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FCB0547F17034DE6007832D7 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -228,6 +229,7 @@
 		FC4B269D16F88CB800E1DC49 /* FileNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileNavigationViewController.m; sourceTree = "<group>"; };
 		FC4B26CC16FF6E3700E1DC49 /* LeftBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftBarViewController.h; sourceTree = "<group>"; };
 		FC4B26CD16FF6E3700E1DC49 /* LeftBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftBarViewController.m; sourceTree = "<group>"; };
+		FCB0547F17034DE6007832D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +311,7 @@
 		4C43F8F516F86AA900159B29 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FCB0547F17034DE6007832D7 /* README.md */,
 				02B04FC91701608C00FE51CB /* GameObject.h */,
 				4C43F8F616F86AA900159B29 /* arc-Info.plist */,
 				4C43F8F716F86AA900159B29 /* InfoPlist.strings */,
@@ -768,12 +771,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				02B04FCA1701672700FE51CB /* GameObject.h in Resources */,
-				4C43F8F916F86AA900159B29 /* InfoPlist.strings in Resources */,
 				4C43F90116F86AA900159B29 /* Default.png in Resources */,
 				4C43F90316F86AA900159B29 /* Default@2x.png in Resources */,
 				4C43F90516F86AA900159B29 /* Default-568h@2x.png in Resources */,
 				4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */,
 				8F563F361701682500EE5643 /* HTML.plist in Resources */,
+				FCB0548017034DE6007832D7 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -825,8 +828,8 @@
 				4CD06B8A16FE125100C9DED3 /* CoreTextUIView.m in Sources */,
 				FC4B26CE16FF6E3800E1DC49 /* LeftBarViewController.m in Sources */,
 				026AC54516FF06F7001E03E5 /* FileHelper.m in Sources */,
-                4C45551A17017005001C6F1D /* BasicStyles.m in Sources */,
-                8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */,
+				4C45551A17017005001C6F1D /* BasicStyles.m in Sources */,
+				8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

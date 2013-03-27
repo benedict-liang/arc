@@ -39,12 +39,21 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *documentsURL = [[RootFolder getInstance] url];
     NSString *sampleFileName = @"GameObject.h";
+    NSString *sampleFile1 = @"README.md";
     NSURL *sampleFileURL = [[NSBundle mainBundle] URLForResource:sampleFileName withExtension:nil];
+    NSURL *sampleFile1URL = [[NSBundle mainBundle] URLForResource:sampleFile1 withExtension:nil];
     NSURL *newFileURL = [NSURL URLWithString:sampleFileName relativeToURL:documentsURL];
+    NSURL *newFile1URL = [NSURL URLWithString:sampleFile1 relativeToURL:documentsURL];
+    
     if (![fileManager fileExistsAtPath:[newFileURL path]]) {
         [fileManager copyItemAtURL:sampleFileURL toURL:newFileURL error:nil];
         [[RootFolder getInstance] flagForRefresh];
         NSArray *contents = [[RootFolder getInstance] getContents];
+    }
+    if (![fileManager fileExistsAtPath:[newFile1URL path]]) {
+        [fileManager copyItemAtURL:sampleFile1URL toURL:newFile1URL error:nil];
+        [[RootFolder getInstance] flagForRefresh];
+        //NSArray *contents = [[RootFolder getInstance] getContents];
     }
     // End of temporary code.
     
