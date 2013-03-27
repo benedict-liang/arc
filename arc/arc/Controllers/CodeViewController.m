@@ -9,6 +9,7 @@
 #import "CodeViewController.h"
 #import "ApplicationState.h"
 #import "BasicStyles.h"
+#import "SyntaxHighlight.h"
 @interface CodeViewController ()
 //
 // Array of @selectors
@@ -60,6 +61,7 @@
     
     // Middleware
     [[[BasicStyles alloc] init] execOn:_attributedString FromFile:_currentFile];
+    [[[SyntaxHighlight alloc] init] execOn:_attributedString FromFile:_currentFile];
     
     // Render Code to screen
     [self render];

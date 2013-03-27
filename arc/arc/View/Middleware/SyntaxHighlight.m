@@ -11,7 +11,7 @@
 @implementation SyntaxHighlight
 -(void)initPatterns {
     _patterns = @[
-    @{@"keyword": @{@"patterns": @[@"if", @"while", @"\\{", @"\\}", @"\\[", @"\\]", @"@property"],
+    @{@"keyword": @{@"patterns": @[@"if", @"while", @"\\{", @"\\}", @"\\[", @"\\]", @"@property", @"void"],
                     @"foreground": [UIColor redColor]}}
     ];
 }
@@ -25,13 +25,14 @@
     NSArray* matches = [regex matchesInString:_content options:0 range:NSMakeRange(0, [_content length])];
     
     for (NSTextCheckingResult *match in matches) {
-        [results addObject:[NSValue value:(__bridge const void *)(match) withObjCType:@encode(NSRange)]];
+        NSRange range = [match range];
+        [results addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
     }
     return results;
 }
 -(void)styleOnRange:(NSRange)range fcolor:(UIColor*)fcolor {
     [_output addAttribute:(id)kCTForegroundColorAttributeName
-                    value:fcolor range:range];
+                    value:(__bridge id)fcolor.CGColor range:range];
     
 }
 -(void)iterPatternsAndApply {
@@ -52,6 +53,7 @@
     }
 }
 -(void)execOn:(NSMutableAttributedString *)attributedString FromFile:(File *)file {
+    _output = attributedString;
     [self initPatterns];
     _content = [file getContents];
     [self iterPatternsAndApply];
