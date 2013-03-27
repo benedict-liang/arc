@@ -11,8 +11,12 @@
 @implementation SyntaxHighlight
 -(void)initPatterns {
     _patterns = @[
-    @{@"keyword": @{@"patterns": @[@"if", @"while", @"\\{", @"\\}", @"\\[", @"\\]", @"@property", @"void"],
-                    @"foreground": [UIColor redColor]}}
+    @{@"keyword": @{@"patterns": @[@"\\sif\\s", @"\\swhile\\s", @"@property", @"@interface", @"#import"],
+                    @"foreground": [UIColor redColor]}},
+    @{@"constants": @{@"patterns": @[@"void"],
+                        @"foreground": [UIColor blueColor]}},
+    @{@"parens": @{@"patterns": @[@"\\{", @"\\}", @"\\[", @"\\]",@"\\)",@"\\("],
+                    @"foreground": [UIColor brownColor]}}
     ];
 }
 -(NSArray*)foundPattern:(NSString*)p {
