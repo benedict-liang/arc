@@ -102,18 +102,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    
     if ([[self.data objectAtIndex:indexPath.row] isKindOfClass:[Folder class]]) {
+        
+        // navigation logic
+        
         NSLog(@"%@",self.navigationController);
         self.folderView = [[FileNavigationViewController alloc] initWithFolder:[self.data objectAtIndex:indexPath.row] frame:self.view.frame];
         
         [self.navigationController pushViewController:self.folderView animated:YES];
+        
+    } else if ([[self.data objectAtIndex:indexPath.row] isKindOfClass:[File class]]) {
+        
+        [self.delegate fileSelected:[self.data objectAtIndex:indexPath.row]];
     }
 }
 

@@ -111,7 +111,7 @@
 // Shows the file using the CodeViewController
 - (void)fileSelected:(File*)file
 {
-    // TODO
+    [_codeView showFile:file];
 }
 
 // Updates Current Folder being Viewed
