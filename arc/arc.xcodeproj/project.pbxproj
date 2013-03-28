@@ -39,6 +39,13 @@
 		4CD06B8A16FE125100C9DED3 /* CoreTextUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B8916FE125100C9DED3 /* CoreTextUIView.m */; };
 		4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */; };
 		8F151051170443AC00115E5E /* home.html in Resources */ = {isa = PBXBuildFile; fileRef = 8F151050170443AC00115E5E /* home.html */; };
+		8F1510B91704483500115E5E /* test-myobfuscate-input.js in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510841704483500115E5E /* test-myobfuscate-input.js */; };
+		8F1510BA1704483500115E5E /* test-myobfuscate-output.js in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510851704483500115E5E /* test-myobfuscate-output.js */; };
+		8F1510BB1704483500115E5E /* test-packer-62-input.js in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510861704483500115E5E /* test-packer-62-input.js */; };
+		8F1510BC1704483500115E5E /* test-packer-non62-input.js in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510871704483500115E5E /* test-packer-non62-input.js */; };
+		8F1510C31704483500115E5E /* JavaScript.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F15108F1704483500115E5E /* JavaScript.plist */; };
+		8F1510C41704483500115E5E /* Regular Expressions (JavaScript).tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = 8F1510901704483500115E5E /* Regular Expressions (JavaScript).tmLanguage */; };
+		8F1510C617044A4C00115E5E /* Solarized (light).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = 8F1510C517044A4C00115E5E /* Solarized (light).tmTheme */; };
 		8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */; };
 		8F563F361701682500EE5643 /* HTML.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563EB7170160CD00EE5643 /* HTML.plist */; };
 		8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1416FDFDBE00B31A19 /* Utils.m */; };
@@ -113,6 +120,59 @@
 		4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
 		8F15104F1704410000115E5E /* TMBundleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleHeader.h; sourceTree = "<group>"; };
 		8F151050170443AC00115E5E /* home.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = home.html; sourceTree = "<group>"; };
+		8F1510541704483500115E5E /* Copy as Bookmarklet to Clipboard.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Copy as Bookmarklet to Clipboard.tmCommand"; sourceTree = "<group>"; };
+		8F1510551704483500115E5E /* Documentation for Word.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Documentation for Word.plist"; sourceTree = "<group>"; };
+		8F1510561704483500115E5E /* New Function.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "New Function.tmCommand"; sourceTree = "<group>"; };
+		8F1510571704483500115E5E /* New Method.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "New Method.tmCommand"; sourceTree = "<group>"; };
+		8F1510581704483500115E5E /* Reformat Document : Selection.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Reformat Document : Selection.tmCommand"; sourceTree = "<group>"; };
+		8F1510591704483500115E5E /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		8F15105B1704483500115E5E /* Comments.tmPreferences */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Comments.tmPreferences; sourceTree = "<group>"; };
+		8F15105C1704483500115E5E /* Folding.tmPreferences */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Folding.tmPreferences; sourceTree = "<group>"; };
+		8F15105D1704483500115E5E /* JavaScript Indent.tmPreferences */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "JavaScript Indent.tmPreferences"; sourceTree = "<group>"; };
+		8F15105E1704483500115E5E /* Symbol List Banned.tmPreferences */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Symbol List Banned.tmPreferences"; sourceTree = "<group>"; };
+		8F15105F1704483500115E5E /* Symbol List Class.tmPreferences */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Symbol List Class.tmPreferences"; sourceTree = "<group>"; };
+		8F1510601704483500115E5E /* Symbol List Instance.tmPreferences */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Symbol List Instance.tmPreferences"; sourceTree = "<group>"; };
+		8F1510611704483500115E5E /* Symbol List Sub 1.tmPreferences */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Symbol List Sub 1.tmPreferences"; sourceTree = "<group>"; };
+		8F1510621704483500115E5E /* Symbol List Sub 2.tmPreferences */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Symbol List Sub 2.tmPreferences"; sourceTree = "<group>"; };
+		8F1510631704483500115E5E /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.mdown; sourceTree = "<group>"; };
+		8F1510651704483500115E5E /* for (…) {…} (faster).tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "for (…) {…} (faster).tmSnippet"; sourceTree = "<group>"; };
+		8F1510661704483500115E5E /* for (…) {…}.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "for (…) {…}.tmSnippet"; sourceTree = "<group>"; };
+		8F1510671704483500115E5E /* function (fun).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "function (fun).plist"; sourceTree = "<group>"; };
+		8F1510681704483500115E5E /* function.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = function.tmSnippet; sourceTree = "<group>"; };
+		8F1510691704483500115E5E /* Get Elements.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Get Elements.tmSnippet"; sourceTree = "<group>"; };
+		8F15106A1704483500115E5E /* if ___ else.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "if ___ else.tmSnippet"; sourceTree = "<group>"; };
+		8F15106B1704483500115E5E /* if.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = if.tmSnippet; sourceTree = "<group>"; };
+		8F15106C1704483500115E5E /* Object key — key: "value".tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Object key — key: \"value\".tmSnippet"; sourceTree = "<group>"; };
+		8F15106D1704483500115E5E /* Object Method String.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Object Method String.tmSnippet"; sourceTree = "<group>"; };
+		8F15106E1704483500115E5E /* Object Method.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Object Method.tmSnippet"; sourceTree = "<group>"; };
+		8F15106F1704483500115E5E /* Object Value JS.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Object Value JS.tmSnippet"; sourceTree = "<group>"; };
+		8F1510701704483500115E5E /* Prototype (proto).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Prototype (proto).plist"; sourceTree = "<group>"; };
+		8F1510711704483500115E5E /* setTimeout function.tmSnippet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "setTimeout function.tmSnippet"; sourceTree = "<group>"; };
+		8F1510731704483500115E5E /* dev_guru_index.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = dev_guru_index.gz; sourceTree = "<group>"; };
+		8F1510761704483500115E5E /* __init__.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		8F1510781704483500115E5E /* __init__.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		8F1510791704483500115E5E /* testindentation.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = testindentation.py; sourceTree = "<group>"; };
+		8F15107A1704483500115E5E /* testjsbeautifier.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = testjsbeautifier.py; sourceTree = "<group>"; };
+		8F15107C1704483500115E5E /* __init__.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		8F15107D1704483500115E5E /* evalbased.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = evalbased.py; sourceTree = "<group>"; };
+		8F15107E1704483500115E5E /* javascriptobfuscator.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = javascriptobfuscator.py; sourceTree = "<group>"; };
+		8F15107F1704483500115E5E /* myobfuscate.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = myobfuscate.py; sourceTree = "<group>"; };
+		8F1510801704483500115E5E /* packer.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = packer.py; sourceTree = "<group>"; };
+		8F1510811704483500115E5E /* README.specs.mkd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.specs.mkd; sourceTree = "<group>"; };
+		8F1510831704483500115E5E /* __init__.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		8F1510841704483500115E5E /* test-myobfuscate-input.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "test-myobfuscate-input.js"; sourceTree = "<group>"; };
+		8F1510851704483500115E5E /* test-myobfuscate-output.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "test-myobfuscate-output.js"; sourceTree = "<group>"; };
+		8F1510861704483500115E5E /* test-packer-62-input.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "test-packer-62-input.js"; sourceTree = "<group>"; };
+		8F1510871704483500115E5E /* test-packer-non62-input.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "test-packer-non62-input.js"; sourceTree = "<group>"; };
+		8F1510881704483500115E5E /* testjavascriptobfuscator.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = testjavascriptobfuscator.py; sourceTree = "<group>"; };
+		8F1510891704483500115E5E /* testmyobfuscate.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = testmyobfuscate.py; sourceTree = "<group>"; };
+		8F15108A1704483500115E5E /* testpacker.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = testpacker.py; sourceTree = "<group>"; };
+		8F15108B1704483500115E5E /* testurlencode.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = testurlencode.py; sourceTree = "<group>"; };
+		8F15108C1704483500115E5E /* urlencode.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = urlencode.py; sourceTree = "<group>"; };
+		8F15108D1704483500115E5E /* jsbeautifier-license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "jsbeautifier-license.txt"; sourceTree = "<group>"; };
+		8F15108F1704483500115E5E /* JavaScript.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = JavaScript.plist; sourceTree = "<group>"; };
+		8F1510901704483500115E5E /* Regular Expressions (JavaScript).tmLanguage */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Regular Expressions (JavaScript).tmLanguage"; sourceTree = "<group>"; };
+		8F1510C517044A4C00115E5E /* Solarized (light).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Solarized (light).tmTheme"; sourceTree = "<group>"; };
 		8F563E56170160CD00EE5643 /* About Persistent Includes.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "About Persistent Includes.tmCommand"; sourceTree = "<group>"; };
 		8F563E57170160CD00EE5643 /* CodeCompletion HTML Attributes.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CodeCompletion HTML Attributes.tmCommand"; sourceTree = "<group>"; };
 		8F563E58170160CD00EE5643 /* CodeCompletion HTML Tags.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CodeCompletion HTML Tags.tmCommand"; sourceTree = "<group>"; };
@@ -443,9 +503,150 @@
 			path = Assets/Fonts;
 			sourceTree = "<group>";
 		};
+		8F1510521704483500115E5E /* javascript.tmbundle */ = {
+			isa = PBXGroup;
+			children = (
+				8F1510531704483500115E5E /* Commands */,
+				8F1510591704483500115E5E /* info.plist */,
+				8F15105A1704483500115E5E /* Preferences */,
+				8F1510631704483500115E5E /* README.mdown */,
+				8F1510641704483500115E5E /* Snippets */,
+				8F1510721704483500115E5E /* Support */,
+				8F15108E1704483500115E5E /* Syntaxes */,
+			);
+			path = javascript.tmbundle;
+			sourceTree = "<group>";
+		};
+		8F1510531704483500115E5E /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				8F1510541704483500115E5E /* Copy as Bookmarklet to Clipboard.tmCommand */,
+				8F1510551704483500115E5E /* Documentation for Word.plist */,
+				8F1510561704483500115E5E /* New Function.tmCommand */,
+				8F1510571704483500115E5E /* New Method.tmCommand */,
+				8F1510581704483500115E5E /* Reformat Document : Selection.tmCommand */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		8F15105A1704483500115E5E /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				8F15105B1704483500115E5E /* Comments.tmPreferences */,
+				8F15105C1704483500115E5E /* Folding.tmPreferences */,
+				8F15105D1704483500115E5E /* JavaScript Indent.tmPreferences */,
+				8F15105E1704483500115E5E /* Symbol List Banned.tmPreferences */,
+				8F15105F1704483500115E5E /* Symbol List Class.tmPreferences */,
+				8F1510601704483500115E5E /* Symbol List Instance.tmPreferences */,
+				8F1510611704483500115E5E /* Symbol List Sub 1.tmPreferences */,
+				8F1510621704483500115E5E /* Symbol List Sub 2.tmPreferences */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		8F1510641704483500115E5E /* Snippets */ = {
+			isa = PBXGroup;
+			children = (
+				8F1510651704483500115E5E /* for (…) {…} (faster).tmSnippet */,
+				8F1510661704483500115E5E /* for (…) {…}.tmSnippet */,
+				8F1510671704483500115E5E /* function (fun).plist */,
+				8F1510681704483500115E5E /* function.tmSnippet */,
+				8F1510691704483500115E5E /* Get Elements.tmSnippet */,
+				8F15106A1704483500115E5E /* if ___ else.tmSnippet */,
+				8F15106B1704483500115E5E /* if.tmSnippet */,
+				8F15106C1704483500115E5E /* Object key — key: "value".tmSnippet */,
+				8F15106D1704483500115E5E /* Object Method String.tmSnippet */,
+				8F15106E1704483500115E5E /* Object Method.tmSnippet */,
+				8F15106F1704483500115E5E /* Object Value JS.tmSnippet */,
+				8F1510701704483500115E5E /* Prototype (proto).plist */,
+				8F1510711704483500115E5E /* setTimeout function.tmSnippet */,
+			);
+			path = Snippets;
+			sourceTree = "<group>";
+		};
+		8F1510721704483500115E5E /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				8F1510731704483500115E5E /* dev_guru_index.gz */,
+				8F1510741704483500115E5E /* lib */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		8F1510741704483500115E5E /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				8F1510751704483500115E5E /* jsbeautifier */,
+				8F15108D1704483500115E5E /* jsbeautifier-license.txt */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		8F1510751704483500115E5E /* jsbeautifier */ = {
+			isa = PBXGroup;
+			children = (
+				8F1510761704483500115E5E /* __init__.py */,
+				8F1510771704483500115E5E /* tests */,
+				8F15107B1704483500115E5E /* unpackers */,
+			);
+			path = jsbeautifier;
+			sourceTree = "<group>";
+		};
+		8F1510771704483500115E5E /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				8F1510781704483500115E5E /* __init__.py */,
+				8F1510791704483500115E5E /* testindentation.py */,
+				8F15107A1704483500115E5E /* testjsbeautifier.py */,
+			);
+			path = tests;
+			sourceTree = "<group>";
+		};
+		8F15107B1704483500115E5E /* unpackers */ = {
+			isa = PBXGroup;
+			children = (
+				8F15107C1704483500115E5E /* __init__.py */,
+				8F15107D1704483500115E5E /* evalbased.py */,
+				8F15107E1704483500115E5E /* javascriptobfuscator.py */,
+				8F15107F1704483500115E5E /* myobfuscate.py */,
+				8F1510801704483500115E5E /* packer.py */,
+				8F1510811704483500115E5E /* README.specs.mkd */,
+				8F1510821704483500115E5E /* tests */,
+				8F15108C1704483500115E5E /* urlencode.py */,
+			);
+			path = unpackers;
+			sourceTree = "<group>";
+		};
+		8F1510821704483500115E5E /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				8F1510831704483500115E5E /* __init__.py */,
+				8F1510841704483500115E5E /* test-myobfuscate-input.js */,
+				8F1510851704483500115E5E /* test-myobfuscate-output.js */,
+				8F1510861704483500115E5E /* test-packer-62-input.js */,
+				8F1510871704483500115E5E /* test-packer-non62-input.js */,
+				8F1510881704483500115E5E /* testjavascriptobfuscator.py */,
+				8F1510891704483500115E5E /* testmyobfuscate.py */,
+				8F15108A1704483500115E5E /* testpacker.py */,
+				8F15108B1704483500115E5E /* testurlencode.py */,
+			);
+			path = tests;
+			sourceTree = "<group>";
+		};
+		8F15108E1704483500115E5E /* Syntaxes */ = {
+			isa = PBXGroup;
+			children = (
+				8F15108F1704483500115E5E /* JavaScript.plist */,
+				8F1510901704483500115E5E /* Regular Expressions (JavaScript).tmLanguage */,
+			);
+			path = Syntaxes;
+			sourceTree = "<group>";
+		};
 		8F563E53170160CD00EE5643 /* TextMateBundles */ = {
 			isa = PBXGroup;
 			children = (
+				8F1510C517044A4C00115E5E /* Solarized (light).tmTheme */,
+				8F1510521704483500115E5E /* javascript.tmbundle */,
 				8F563E54170160CD00EE5643 /* html.tmbundle */,
 			);
 			name = TextMateBundles;
@@ -788,6 +989,9 @@
 				8F563F361701682500EE5643 /* HTML.plist in Resources */,
 				FCB0548017034DE6007832D7 /* README.md in Resources */,
 				8F151051170443AC00115E5E /* home.html in Resources */,
+				8F1510C31704483500115E5E /* JavaScript.plist in Resources */,
+				8F1510C41704483500115E5E /* Regular Expressions (JavaScript).tmLanguage in Resources */,
+				8F1510C617044A4C00115E5E /* Solarized (light).tmTheme in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -842,6 +1046,10 @@
 				4C45551A17017005001C6F1D /* BasicStyles.m in Sources */,
 				8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */,
 				FCB0548417036010007832D7 /* SyntaxHighlight.m in Sources */,
+				8F1510B91704483500115E5E /* test-myobfuscate-input.js in Sources */,
+				8F1510BA1704483500115E5E /* test-myobfuscate-output.js in Sources */,
+				8F1510BB1704483500115E5E /* test-packer-62-input.js in Sources */,
+				8F1510BC1704483500115E5E /* test-packer-non62-input.js in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
