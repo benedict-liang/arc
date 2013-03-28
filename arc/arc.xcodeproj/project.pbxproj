@@ -110,6 +110,7 @@
 		4CD06B8816FE125100C9DED3 /* CoreTextUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreTextUIView.h; path = View/CoreTextUIView.h; sourceTree = "<group>"; };
 		4CD06B8916FE125100C9DED3 /* CoreTextUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreTextUIView.m; path = View/CoreTextUIView.m; sourceTree = "<group>"; };
 		4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
+		8F15104F1704410000115E5E /* TMBundleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleHeader.h; sourceTree = "<group>"; };
 		8F563E56170160CD00EE5643 /* About Persistent Includes.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "About Persistent Includes.tmCommand"; sourceTree = "<group>"; };
 		8F563E57170160CD00EE5643 /* CodeCompletion HTML Attributes.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CodeCompletion HTML Attributes.tmCommand"; sourceTree = "<group>"; };
 		8F563E58170160CD00EE5643 /* CodeCompletion HTML Tags.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CodeCompletion HTML Tags.tmCommand"; sourceTree = "<group>"; };
@@ -681,6 +682,7 @@
 		8F563F32170161B600EE5643 /* TMBundleProcessing */ = {
 			isa = PBXGroup;
 			children = (
+				8F15104F1704410000115E5E /* TMBundleHeader.h */,
 				8F563F33170161C900EE5643 /* TMBundleSyntaxParser.h */,
 				8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */,
 			);
