@@ -43,7 +43,7 @@
         }
     }
     [styles setValue:scopes forKey:@"scopes"];
-    NSLog(@"%@",styles);
+    //NSLog(@"%@",styles);
     return styles;
 }
 +(NSDictionary*)filterEmptyStringVals:(NSDictionary*)dict {
