@@ -14,8 +14,18 @@
 //Produced a dictionary of the following format
 /*
  {
-    global = {
-        background = 
+    global : {
+        background : UIColor
+        ...
+    }
+    scopes : {
+        "comment": {
+            "foreground": UIColor
+        },
+        "string.quoted.double.html" : {
+            "foreground": UIColor
+        }
+    }
  */
 + (NSDictionary*)produceStylesWithTheme:(NSURL*)url;
 
