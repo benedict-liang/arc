@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TMBundleGrammar.h"
 
 @interface TMBundleSyntaxParser : NSObject
 
 + (NSArray*)getKeyList:(NSString*)TMBundleName;
 + (NSArray*)getPlistData:(NSString*)TMBundleName withSectionHeader:(NSString*)sectionHeader;
++ (NSArray*)getPatternsArray:(NSArray*)patternsSection;
 
 @end

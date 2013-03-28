@@ -7,7 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @interface TMBundleThemeHandler : NSObject
+//Passed a URL to a tmTheme file.
+//Produced a dictionary of the following format
+/*
+ {
+    global : {
+        background : UIColor
+        ...
+    }
+    scopes : {
+        "comment": {
+            "foreground": UIColor
+        },
+        "string.quoted.double.html" : {
+            "foreground": UIColor
+        }
+    }
+ */
++ (NSDictionary*)produceStylesWithTheme:(NSURL*)url;
 
 @end
