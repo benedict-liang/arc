@@ -7,3 +7,4 @@
 //
 
 #import "TMBundleSyntaxParser.h"
+#import "TMBundleThemeHandler.h"

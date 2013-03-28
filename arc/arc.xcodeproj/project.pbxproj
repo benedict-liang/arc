@@ -46,6 +46,7 @@
 		8F1510C31704483500115E5E /* JavaScript.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F15108F1704483500115E5E /* JavaScript.plist */; };
 		8F1510C41704483500115E5E /* Regular Expressions (JavaScript).tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = 8F1510901704483500115E5E /* Regular Expressions (JavaScript).tmLanguage */; };
 		8F1510C617044A4C00115E5E /* Solarized (light).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = 8F1510C517044A4C00115E5E /* Solarized (light).tmTheme */; };
+		8F1510C9170468B100115E5E /* TMBundleThemeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510C8170468B100115E5E /* TMBundleThemeHandler.m */; };
 		8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */; };
 		8F563F361701682500EE5643 /* HTML.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563EB7170160CD00EE5643 /* HTML.plist */; };
 		8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1416FDFDBE00B31A19 /* Utils.m */; };
@@ -173,6 +174,8 @@
 		8F15108F1704483500115E5E /* JavaScript.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = JavaScript.plist; sourceTree = "<group>"; };
 		8F1510901704483500115E5E /* Regular Expressions (JavaScript).tmLanguage */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Regular Expressions (JavaScript).tmLanguage"; sourceTree = "<group>"; };
 		8F1510C517044A4C00115E5E /* Solarized (light).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Solarized (light).tmTheme"; sourceTree = "<group>"; };
+		8F1510C7170468B000115E5E /* TMBundleThemeHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleThemeHandler.h; sourceTree = "<group>"; };
+		8F1510C8170468B100115E5E /* TMBundleThemeHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBundleThemeHandler.m; sourceTree = "<group>"; };
 		8F563E56170160CD00EE5643 /* About Persistent Includes.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "About Persistent Includes.tmCommand"; sourceTree = "<group>"; };
 		8F563E57170160CD00EE5643 /* CodeCompletion HTML Attributes.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CodeCompletion HTML Attributes.tmCommand"; sourceTree = "<group>"; };
 		8F563E58170160CD00EE5643 /* CodeCompletion HTML Tags.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CodeCompletion HTML Tags.tmCommand"; sourceTree = "<group>"; };
@@ -889,6 +892,8 @@
 				8F15104F1704410000115E5E /* TMBundleHeader.h */,
 				8F563F33170161C900EE5643 /* TMBundleSyntaxParser.h */,
 				8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */,
+				8F1510C7170468B000115E5E /* TMBundleThemeHandler.h */,
+				8F1510C8170468B100115E5E /* TMBundleThemeHandler.m */,
 			);
 			name = TMBundleProcessing;
 			path = General/TMBundleProcessing;
@@ -1050,6 +1055,7 @@
 				8F1510BA1704483500115E5E /* test-myobfuscate-output.js in Sources */,
 				8F1510BB1704483500115E5E /* test-packer-62-input.js in Sources */,
 				8F1510BC1704483500115E5E /* test-packer-non62-input.js in Sources */,
+				8F1510C9170468B100115E5E /* TMBundleThemeHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
