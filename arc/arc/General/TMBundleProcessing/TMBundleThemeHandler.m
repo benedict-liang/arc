@@ -11,6 +11,7 @@
 @implementation TMBundleThemeHandler
 
 + (NSDictionary*)produceStylesWithTheme:(NSURL *)url {
+    //TODO manage theme selection
     NSURL *testURL = [[NSBundle mainBundle] URLForResource:@"Solarized (light).tmTheme" withExtension:nil];
     NSDictionary* tmTheme = [NSDictionary dictionaryWithContentsOfURL:testURL];
     
@@ -18,6 +19,8 @@
     
     NSMutableDictionary *styles = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *global = [[NSMutableDictionary alloc] initWithDictionary:[(NSDictionary*)[settings objectAtIndex:0] objectForKey:@"settings"]];
+    
+    global = [NSMutableDictionary dictionaryWithDictionary:[TMBundleThemeHandler mapHexStrToUIColor:global]];
     
     NSMutableDictionary *scopes = [[NSMutableDictionary alloc] init];
     
@@ -28,6 +31,7 @@
         NSDictionary* asetting = [settings objectAtIndex:i];
         NSDictionary* astyle = [asetting objectForKey:@"settings"];
         astyle = [TMBundleThemeHandler filterEmptyStringVals:astyle];
+        astyle = [TMBundleThemeHandler mapHexStrToUIColor:astyle];
         NSString* scopeString = [asetting objectForKey:@"scope"];
         if (scopeString) {
             NSArray* scopeStrings = [scopeString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@", "]];
@@ -52,7 +56,23 @@
     }
     return res;
 }
-+(NSDictionary*)mapHexToUIColor:(NSDictionary*)dict {
-    return nil;
+
+//maps "#FDF5E3" to UIColor. only applies to keys specified in colorKeys
++(NSDictionary*)mapHexStrToUIColor:(NSDictionary*)dict {
+    NSArray *colorKeys = @[@"foreground", @"background"];
+    NSMutableDictionary* res = [[NSMutableDictionary alloc] init];
+    for (NSString *k in dict) {
+        if ([colorKeys containsObject:k]) {
+            NSString *hexStr = [dict objectForKey:k];
+            unsigned rgb;
+            NSScanner *scanner = [NSScanner scannerWithString:hexStr];
+            [scanner setScanLocation:1];
+            [scanner scanHexInt:&rgb];
+            [res setValue:UIColorFromRGB(rgb) forKey:k];
+        } else {
+            [res setValue:[dict objectForKey:k] forKey:k];
+        }
+    }
+    return res;
 }
 @end
