@@ -38,6 +38,7 @@
 		4CD06B8616FE0FE600C9DED3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD06B8416FE0FC900C9DED3 /* CoreText.framework */; };
 		4CD06B8A16FE125100C9DED3 /* CoreTextUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B8916FE125100C9DED3 /* CoreTextUIView.m */; };
 		4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */; };
+		8F151051170443AC00115E5E /* home.html in Resources */ = {isa = PBXBuildFile; fileRef = 8F151050170443AC00115E5E /* home.html */; };
 		8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */; };
 		8F563F361701682500EE5643 /* HTML.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563EB7170160CD00EE5643 /* HTML.plist */; };
 		8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1416FDFDBE00B31A19 /* Utils.m */; };
@@ -111,6 +112,7 @@
 		4CD06B8916FE125100C9DED3 /* CoreTextUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreTextUIView.m; path = View/CoreTextUIView.m; sourceTree = "<group>"; };
 		4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
 		8F15104F1704410000115E5E /* TMBundleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleHeader.h; sourceTree = "<group>"; };
+		8F151050170443AC00115E5E /* home.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = home.html; sourceTree = "<group>"; };
 		8F563E56170160CD00EE5643 /* About Persistent Includes.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "About Persistent Includes.tmCommand"; sourceTree = "<group>"; };
 		8F563E57170160CD00EE5643 /* CodeCompletion HTML Attributes.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CodeCompletion HTML Attributes.tmCommand"; sourceTree = "<group>"; };
 		8F563E58170160CD00EE5643 /* CodeCompletion HTML Tags.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CodeCompletion HTML Tags.tmCommand"; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 			children = (
 				FCB0547F17034DE6007832D7 /* README.md */,
 				02B04FC91701608C00FE51CB /* GameObject.h */,
+				8F151050170443AC00115E5E /* home.html */,
 				4C43F8F616F86AA900159B29 /* arc-Info.plist */,
 				4C43F8F716F86AA900159B29 /* InfoPlist.strings */,
 				4C43F8FA16F86AA900159B29 /* main.m */,
@@ -784,6 +787,7 @@
 				4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */,
 				8F563F361701682500EE5643 /* HTML.plist in Resources */,
 				FCB0548017034DE6007832D7 /* README.md in Resources */,
+				8F151051170443AC00115E5E /* home.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
