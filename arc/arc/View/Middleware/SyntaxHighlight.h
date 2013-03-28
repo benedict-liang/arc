@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreText/CoreText.h>
 #import "CodeViewMiddleware.h"
+#import "TMBundleHeader.h"
+
 @interface SyntaxHighlight : NSObject <CodeViewMiddleware>
 @property NSArray* patterns;
 @property NSString* content;
