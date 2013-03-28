@@ -119,4 +119,22 @@
     STAssertTrue([retrievedName isEqualToString:renamedName], @"Folder rename is persisted.");
 }
 
+- (void)testRemove
+{
+    NSString *testFolderName = @"This Will Be Deleted!";
+    [_rootFolder createFolder:testFolderName];
+    
+    Folder *folderDeletionTarget = (Folder*)[_rootFolder retrieveObjectWithName:testFolderName];
+    STAssertTrue([folderDeletionTarget remove], @"Folder deletion returns YES.");
+    
+    NSString *testFileName = @"delete.txt";
+    File *fileDeletionTarget = [File fileWithName:testFileName Contents:testFolderName inFolder:_rootFolder];
+    STAssertTrue([fileDeletionTarget remove], @"File deletion returns YES.");
+    
+    NSArray *rootContents = [_rootFolder getContents];
+    int expected = 1;
+    int actual = [rootContents count];
+    STAssertEquals(expected, actual, @"Root folder has only the External Applications folder in it.");
+}
+
 @end

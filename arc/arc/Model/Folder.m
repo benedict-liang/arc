@@ -136,4 +136,20 @@
     return isMoveSuccessful;
 }
 
+// Looks for a FileObject with the given name within this folder.
+// Returns the FileObject if found, nil otherwise.
+// NOTE: This runs in O(n) where n is number of objects in the folder.
+- (FileObject*)retrieveObjectWithName:(NSString*)name
+{
+    NSArray *contents = [self getContents];
+    
+    for (FileObject *currentObject in contents) {
+        if ([[currentObject name] isEqualToString:name]) {
+            return currentObject;
+        }
+    }
+    
+    return nil;
+}
+
 @end
