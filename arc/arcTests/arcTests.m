@@ -18,17 +18,16 @@
     
     // Set-up code here.
     _rootFolder = [RootFolder getInstance];
-    
-    for (FileObject *current in [_rootFolder getContents]) {
-        if (![[current name] isEqualToString:FOLDER_EXTERNAL_APPLICATIONS]) {
-            [current remove];
-        }
-    }
 }
 
 - (void)tearDown
 {
     // Tear-down code here.
+    for (FileObject *current in [_rootFolder getContents]) {
+        if (![[current name] isEqualToString:FOLDER_EXTERNAL_APPLICATIONS]) {
+            [current remove];
+        }
+    }
     
     [super tearDown];
 }
