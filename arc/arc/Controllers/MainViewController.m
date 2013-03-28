@@ -58,9 +58,9 @@
     _popover.popoverContentSize = SIZE_POPOVER;
     
     // Add Subviews to Main View
-    [self.view addSubview:_codeView.view];
-    
     [self.view addSubview:_leftBar.view];
+    
+    [self.view addSubview:_codeView.view];
     
     // Resize Subviews
     [self resizeSubViews];
