@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="static/style.css" />
+  </head>
+  <body>
+    <div id="header">
+      <a href='/'><img id="logo" src='static/images/logo.png' /></a>
+    </div>
+    <table width="100%">
+      <tr>
+        <td id="module_info">
+          <input id="searchbar"></input>
+          <div id="module_title">
+            <span id="module_code"></span>
+            <span id="module_mc"></span>
+            <br/>
+            <span id="module_name"></span>
+          </div>
+          <div id="module_other_desc">
+            <ul>
+              <li><b>Description: </b><span id="module_desc" class="subtle-text"></span></li>
+              <li><b>Workload: </b><span id="module_wl" class="subtle-text"></span></li>
+              <li><b>Prerequisites: </b><span id="module_prereq" class="subtle-text"></span></li>
+              <li><b>Preclusions: </b><span id="module_preexc" class="subtle-text"></span></li>
+              <li><b>Cross-listing: </b><span id="module_cl" class="subtle-text"></span></li>
+            </ul>
+          </div>
+        </td>
+        <td id="graph-tabs">
+          <ul id="tabs-head">
+            <li class="graph-tab-title"><a class="ui-tab-name" href="#tab-1">All</a></li>
+          </ul>
+          <div id="tab-1" class="graph">
+            <div id="container-1">
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Javascript -->
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js'></script>
+    <script src='static/kinetic-v3.7.4.min.js'></script>
+    <script src='static/script.js'></script>
+    <script src='static/graph.js'></script>
+    <script src='static/control.js'></script>
+  </body>
+</html>
