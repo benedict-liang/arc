@@ -10,4 +10,6 @@
 
 @interface TMBundleThemeHandler : NSObject
 
++ (NSDictionary*)produceStylesWithTheme:(NSURL*)url;
+
 @end

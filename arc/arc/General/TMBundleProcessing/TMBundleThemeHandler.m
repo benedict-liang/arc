@@ -10,4 +10,19 @@
 
 @implementation TMBundleThemeHandler
 
++ (NSDictionary*)produceStylesWithTheme:(NSURL *)url {
+    NSURL *testURL = [[NSBundle mainBundle] URLForResource:@"Solarized (light).tmTheme" withExtension:nil];
+    NSDictionary* tmTheme = [NSDictionary dictionaryWithContentsOfURL:testURL];
+    
+    NSArray *settings = [tmTheme objectForKey:@"settings"];
+    
+    NSMutableDictionary *styles = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *global = [[NSMutableDictionary alloc] initWithDictionary:[(NSDictionary*)[settings objectAtIndex:0] objectForKey:@"settings"]];
+    
+    //[global setValue: forKey:@""]
+    
+    [styles setValue:global forKey:@"global"];
+    NSLog(@"%@",styles);
+    return styles;
+}
 @end
