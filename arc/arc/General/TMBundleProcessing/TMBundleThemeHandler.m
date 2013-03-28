@@ -27,6 +27,7 @@
     for (int i= 1; i < settings.count; i++) {
         NSDictionary* asetting = [settings objectAtIndex:i];
         NSDictionary* astyle = [asetting objectForKey:@"settings"];
+        astyle = [TMBundleThemeHandler filterEmptyStringVals:astyle];
         NSString* scopeString = [asetting objectForKey:@"scope"];
         if (scopeString) {
             NSArray* scopeStrings = [scopeString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@", "]];
@@ -40,5 +41,18 @@
     [styles setValue:scopes forKey:@"scopes"];
     NSLog(@"%@",styles);
     return styles;
+}
++(NSDictionary*)filterEmptyStringVals:(NSDictionary*)dict {
+    NSMutableDictionary* res = [[NSMutableDictionary alloc] init];
+    for (id k in dict) {
+        NSString *v = [dict objectForKey:k];
+        if (![v isEqualToString:@""]) {
+            [res setValue:v forKey:k];
+        }
+    }
+    return res;
+}
++(NSDictionary*)mapHexToUIColor:(NSDictionary*)dict {
+    return nil;
 }
 @end
