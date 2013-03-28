@@ -85,4 +85,38 @@
     STAssertTrue([testFolderName isEqualToString:retrievedName], @"Folder name is persisted.");
 }
 
+- (void)testRenameFolder
+{
+    NSString *testFolderName = @"Test Folder";
+    [_rootFolder createFolder:testFolderName];
+    
+    NSArray *rootContents = [_rootFolder getContents];
+    int expected = 2;
+    int actual = [rootContents count];
+    STAssertEquals(expected, actual, @"Root folder contains 2 objects");
+    
+    Folder *retrieved;
+    for (FileObject *currentObject in rootContents) {
+        if ([currentObject isKindOfClass:[Folder class]] && [[currentObject name] isEqualToString:testFolderName]) {
+            retrieved = (Folder*)currentObject;
+            break;
+        }
+    }
+    
+    NSString *renamedName = @"Renamed";
+    [retrieved rename:renamedName];
+    NSString *renamedObjectName = [retrieved name];
+    STAssertTrue([renamedObjectName isEqualToString:renamedName], @"Folder is renamed successfully.");
+
+    rootContents = [_rootFolder getContents];
+    for (FileObject *currentObject in rootContents) {
+        if ([currentObject isKindOfClass:[Folder class]] && [[currentObject name] isEqualToString:testFolderName]) {
+            retrieved = (Folder*)currentObject;
+            break;
+        }
+    }
+    NSString *retrievedName = [retrieved name];
+    STAssertTrue([retrievedName isEqualToString:renamedName], @"Folder rename is persisted.");
+}
+
 @end
