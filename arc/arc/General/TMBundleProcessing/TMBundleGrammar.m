@@ -29,7 +29,7 @@
                               @"beginCaptures", @"",
                               @"endCaptures", @"",
                               @"repository", @"",
-                              @"include", @"",
+                              @"include", [NSValue valueWithPointer:@selector(resolveInclude:)],
                               nil];
     }
     
@@ -54,7 +54,7 @@
 }
 
 - (void)initializeRepository:(NSArray*)pListsArray {
-    //combine repositories
+    //combine repositories of all plists
     NSMutableDictionary *tempRepositoryDictionary = [[NSMutableDictionary alloc] init];
     for (NSDictionary *plist in pListsArray) {
         NSDictionary *currentRepository = [plist objectForKey:@"repository"];
@@ -64,6 +64,18 @@
     _repositories = [NSDictionary dictionaryWithDictionary:tempRepositoryDictionary];
 }
 
-
+- (void)resolveInclude:(NSString*)includeString {
+    // Handles 3 types of includes
+    if ([includeString isEqualToString:@"$self"]) {
+        
+    }
+    else if ([includeString characterAtIndex:0] == '#') {
+        // Get rule from repository
+        NSDictionary *rule = [self getRuleFromRepository:[includeString substringFromIndex:1]];
+    }
+    else {
+        //TODO: find scope name of another language
+    }
+}
 
 @end
