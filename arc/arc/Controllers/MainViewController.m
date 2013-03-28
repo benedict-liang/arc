@@ -69,8 +69,11 @@
     NSArray *patternsArray = [TMBundleSyntaxParser getPlistData:@"html.tmbundle"
                                                withSectionHeader:[sectionHeaders objectAtIndex:0]];
     
-    NSLog(@"section headers array: %@", sectionHeaders);
-    NSLog(@"patterns array: %@", patternsArray);
+    //NSLog(@"section headers array: %@", sectionHeaders);
+    //NSLog(@"patterns array: %@", patternsArray);
+    NSDictionary *temp = [TMBundleThemeHandler produceStylesWithTheme:nil];
+    
+    
 }
 
 // Resizes SubViews Based on Application's Orientation
