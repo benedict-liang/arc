@@ -12,6 +12,9 @@
 
 @interface File : FileObject
 
+// The extension of this file.
+@property (strong, nonatomic) NSString* extension;
+
 // Creates a file with the given name and contents, in the given folder.
 // Returns a reference to the file.
 + (id)fileWithName:(NSString*)name Contents:(NSString*)contents inFolder:(Folder*)folder;

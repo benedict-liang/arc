@@ -11,6 +11,16 @@
 
 @implementation File
 
+// Creates a File to represent the given URL,
+// with its parent set to the given FileObject.
+- (id)initWithURL:(NSURL *)url parent:(FileObject *)parent
+{
+    if (self = [super init]) {
+        _extension = [self.name pathExtension];
+    }
+    return self;
+}
+
 // Creates a file with the given name and contents, in the given folder.
 // Returns a reference to the file.
 + (id)fileWithName:(NSString*)name Contents:(NSString*)contents inFolder:(Folder*)folder
