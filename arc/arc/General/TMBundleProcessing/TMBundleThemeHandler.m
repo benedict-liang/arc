@@ -19,7 +19,6 @@
     NSMutableDictionary *styles = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *global = [[NSMutableDictionary alloc] initWithDictionary:[(NSDictionary*)[settings objectAtIndex:0] objectForKey:@"settings"]];
     
-    //[global setValue: forKey:@""]
     NSMutableDictionary *scopes = [[NSMutableDictionary alloc] init];
     
     [styles setValue:global forKey:@"global"];
@@ -29,8 +28,13 @@
         NSDictionary* asetting = [settings objectAtIndex:i];
         NSDictionary* astyle = [asetting objectForKey:@"settings"];
         NSString* scopeString = [asetting objectForKey:@"scope"];
-        if (astyle) {
-            [scopes setValue:astyle forKey:scopeString];
+        if (scopeString) {
+            NSArray* scopeStrings = [scopeString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@", "]];
+            for (NSString *ascope in scopeStrings) {
+                if (![ascope isEqualToString:@""]) {
+                    [scopes setValue:astyle forKey:ascope];
+                }
+            }
         }
     }
     [styles setValue:scopes forKey:@"scopes"];
