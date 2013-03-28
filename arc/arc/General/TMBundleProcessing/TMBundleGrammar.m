@@ -36,6 +36,8 @@
     return ruleKeysDictionary;
 }
 
+#pragma mark - Initialisation
+
 - (id)initWithPlist:(NSDictionary*)plist {
     return [self initWithPlists:[NSArray arrayWithObject:plist]];
 }
@@ -61,5 +63,7 @@
     
     _repositories = [NSDictionary dictionaryWithDictionary:tempRepositoryDictionary];
 }
+
+
 
 @end
