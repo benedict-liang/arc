@@ -20,8 +20,20 @@
     NSMutableDictionary *global = [[NSMutableDictionary alloc] initWithDictionary:[(NSDictionary*)[settings objectAtIndex:0] objectForKey:@"settings"]];
     
     //[global setValue: forKey:@""]
+    NSMutableDictionary *scopes = [[NSMutableDictionary alloc] init];
     
     [styles setValue:global forKey:@"global"];
+    
+    
+    for (int i= 1; i < settings.count; i++) {
+        NSDictionary* asetting = [settings objectAtIndex:i];
+        NSDictionary* astyle = [asetting objectForKey:@"settings"];
+        NSString* scopeString = [asetting objectForKey:@"scope"];
+        if (astyle) {
+            [scopes setValue:astyle forKey:scopeString];
+        }
+    }
+    [styles setValue:scopes forKey:@"scopes"];
     NSLog(@"%@",styles);
     return styles;
 }
