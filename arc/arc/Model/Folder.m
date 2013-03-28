@@ -72,6 +72,7 @@
     BOOL isRenameSuccessful = [fileManager moveItemAtURL:self.url toURL:newURL error:&error];
     if (isRenameSuccessful) {
         [[self parent] flagForRefresh];
+        [self setName:name];
     } else {
         NSLog(@"%@", error);
     }

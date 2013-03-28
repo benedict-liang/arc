@@ -10,9 +10,7 @@
 
 @interface TMBundleSyntaxParser : NSObject
 
-- (NSArray*)getFileTypes:(NSString*)TMBundleName;
-- (NSArray*)getFoldingMarkers:(NSString*)TMBundleName;
-- (NSArray*)getFirstLineMatch:(NSString*)TMBundleName;
-- (NSArray*)getPatterns:(NSString*)TMBundleName;
++ (NSArray*)getKeyList:(NSString*)TMBundleName;
++ (NSArray*)getPlistData:(NSString*)TMBundleName withSectionHeader:(NSString*)sectionHeader;
 
 @end

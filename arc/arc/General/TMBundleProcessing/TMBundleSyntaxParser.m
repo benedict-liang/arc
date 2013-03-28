@@ -10,39 +10,23 @@
 
 @implementation TMBundleSyntaxParser
 
-- (NSDictionary*)getPListContent:(NSString*)TMBundleName {
++ (NSDictionary*)getPListContent:(NSString*)TMBundleName {
     NSBundle *mainBundle = [NSBundle mainBundle];
+    //TODO: Get plists name from Syntaxes folder
     NSURL *syntaxFileURL = [mainBundle URLForResource:@"HTML.plist" withExtension:nil];
     NSDictionary *plist = [NSDictionary dictionaryWithContentsOfURL:syntaxFileURL];
     
     return plist;
 }
 
-- (NSArray*)getFileTypes:(NSString*)TMBundleName {
-    NSDictionary *plist = [self getPListContent:TMBundleName];
-    NSArray *fileTypesArray = [plist objectForKey:@"fileTypes"];
-    
-    return fileTypesArray;
++ (NSArray*)getKeyList:(NSString*)TMBundleName {
+    NSDictionary *plist = [TMBundleSyntaxParser getPListContent:TMBundleName];
+    return [plist allKeys];
 }
 
-- (NSArray*)getFoldingMarkers:(NSString*)TMBundleName {
-    
-    
-    return nil;
-}
-
-- (NSArray*)getFirstLineMatch:(NSString*)TMBundleName {
-    NSDictionary *plist = [self getPListContent:TMBundleName];
-    NSArray *firstLineMatch = [plist objectForKey:@"firstLineMatch"];
-    
-    return firstLineMatch;
-}
-
-- (NSArray*)getPatterns:(NSString*)TMBundleName {
-    NSDictionary *plist = [self getPListContent:TMBundleName];
-    NSArray *patternsArray = [plist objectForKey:@"patterns"];
-    
-    return patternsArray;
++ (NSArray*)getPlistData:(NSString*)TMBundleName withSectionHeader:(NSString*)sectionHeader {
+    NSDictionary *plist = [TMBundleSyntaxParser getPListContent:TMBundleName];
+    return [plist objectForKey:sectionHeader];
 }
 
 @end
