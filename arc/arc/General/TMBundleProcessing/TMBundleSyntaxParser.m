@@ -10,23 +10,44 @@
 
 @implementation TMBundleSyntaxParser
 
-+ (NSDictionary*)getPListContent:(NSString*)TMBundleName {
++ (NSArray*)getSyntaxPLists:(NSString*)TMBundleName {
+    NSMutableArray *plistArray = [[NSMutableArray alloc] init];
+    
     NSBundle *mainBundle = [NSBundle mainBundle];
     //TODO: Get plists name from Syntaxes folder
-    NSURL *syntaxFileURL = [mainBundle URLForResource:@"HTML.plist" withExtension:nil];
+    NSURL *syntaxFileURL = [mainBundle URLForResource:@"JavaScript.plist" withExtension:nil];
     NSDictionary *plist = [NSDictionary dictionaryWithContentsOfURL:syntaxFileURL];
     
-    return plist;
+    [plistArray addObject:plist];
+    
+    NSURL *syntaxFileURL1 = [mainBundle URLForResource:@"Regular Expressions (JavaScript).tmLanguage" withExtension:nil];
+    NSDictionary *plist1 = [NSDictionary dictionaryWithContentsOfURL:syntaxFileURL1];
+
+    [plistArray addObject:plist1];
+    
+    return [NSArray arrayWithArray:plistArray];
 }
 
 + (NSArray*)getKeyList:(NSString*)TMBundleName {
-    NSDictionary *plist = [TMBundleSyntaxParser getPListContent:TMBundleName];
+    NSDictionary *plist = (NSDictionary*)[[TMBundleSyntaxParser getSyntaxPLists:TMBundleName] objectAtIndex:0];
     return [plist allKeys];
 }
 
 + (NSArray*)getPlistData:(NSString*)TMBundleName withSectionHeader:(NSString*)sectionHeader {
-    NSDictionary *plist = [TMBundleSyntaxParser getPListContent:TMBundleName];
+    NSDictionary *plist = (NSDictionary*)[[TMBundleSyntaxParser getSyntaxPLists:TMBundleName] objectAtIndex:0];
     return [plist objectForKey:sectionHeader];
+}
+
++ (NSArray*)getPatternsArray:(NSArray*)patternsSection {
+//    for (NSDictionary *syntaxItem in patternsSection) {
+//        
+//    }
+    
+    NSArray *plistsArray = [TMBundleSyntaxParser getSyntaxPLists:@"name"];
+    
+    TMBundleGrammar *grammar = [[TMBundleGrammar alloc] initWithPlists:plistsArray];
+    
+    return nil;
 }
 
 @end
