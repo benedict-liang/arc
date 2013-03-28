@@ -15,7 +15,7 @@
 // with its parent set to the given FileObject.
 - (id)initWithURL:(NSURL *)url parent:(FileObject *)parent
 {
-    if (self = [super init]) {
+    if (self = [super initWithURL:url parent:parent]) {
         _extension = [self.name pathExtension];
     }
     return self;
