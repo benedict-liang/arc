@@ -10,4 +10,8 @@
 
 @interface TMBundleGrammar : NSObject
 
+- (id)initWithPlist:(NSDictionary*)plist;
+- (id)initWithPlists:(NSArray*)pListsArray;
+
+
 @end
