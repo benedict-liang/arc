@@ -43,6 +43,7 @@
 //        
 //    }
     
+    //TODO: syntax name is for testing only
     NSArray *plistsArray = [TMBundleSyntaxParser getSyntaxPLists:@"name"];
     
     TMBundleGrammar *grammar = [[TMBundleGrammar alloc] initWithPlists:plistsArray];
