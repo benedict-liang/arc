@@ -10,7 +10,7 @@
 #import <CoreText/CoreText.h>
 
 @interface CoreTextUIView ()
-
+- (void)updateHeight;
 @end
 
 @implementation CoreTextUIView
@@ -22,6 +22,7 @@
     self = [super init];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _padding = 20;
     }
     return self;
@@ -57,7 +58,6 @@
     
     // Update frame height
     self.frame = CGRectMake(0, 0, self.frame.size.width, height);
-    NSLog(@"%@", NSStringFromCGRect(self.frame));
 }
 
 - (void)drawRect:(CGRect)rect
@@ -103,11 +103,6 @@
         
         // Restore State of the Context
         CGContextRestoreGState(context);
-        
-        // Resize ScollView (parent) Content Size
-        // TODO. (this should not be here)
-        UIScrollView *scrollView = (UIScrollView*) self.superview;
-        scrollView.contentSize = self.bounds.size;
     }
 }
 
