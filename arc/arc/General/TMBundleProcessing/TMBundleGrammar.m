@@ -22,7 +22,7 @@
     
     if (ruleKeysDictionary == nil) {
         ruleKeysDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                              [NSValue valueWithPointer:@selector(resolveReturnValue:)], @"name",//[NSValue valueWithPointer:@selector(foo)],
+                              [NSValue valueWithPointer:@selector(resolveReturnValue:)], @"name",
                               [NSValue valueWithPointer:@selector(resolveReturnValue:)], @"begin",
                               [NSValue valueWithPointer:@selector(resolveReturnValue:)], @"end",
                               [NSValue valueWithPointer:@selector(resolveReturnValue:)], @"match",
@@ -30,7 +30,6 @@
                               [NSValue valueWithPointer:@selector(resolveCaptures:)], @"captures",
                               [NSValue valueWithPointer:@selector(resolveCaptures:)], @"beginCaptures", 
                               [NSValue valueWithPointer:@selector(resolveCaptures:)], @"endCaptures",
-                              // TODO: implement method to resolve patterns
                               [NSValue valueWithPointer:@selector(resolvePatterns:)], @"patterns",
                               [NSValue valueWithPointer:@selector(resolveInclude:)], @"include",
                               nil];
@@ -161,7 +160,7 @@
     
     // Handles 3 types of includes
     if ([includeString isEqualToString:@"$self"]) {
-        //Skip $self for now
+        // TODO: Skip $self for now
         return nil;
     }
     else if ([includeString characterAtIndex:0] == '#') {
