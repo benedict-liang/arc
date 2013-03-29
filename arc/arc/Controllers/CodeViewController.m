@@ -8,19 +8,18 @@
 #import <CoreText/CoreText.h>
 #import "CodeViewController.h"
 #import "CoreTextUIView.h"
-#import "ApplicationState.h"
 #import "ArcAttributedString.h"
 #import "BasicStyles.h"
 #import "SyntaxHighlight.h"
 @interface CodeViewController ()
 @property File *currentFile;
-@property CoreTextUIView *codeView;
+@property CoreTextUIView *coreTextView;
 @property ArcAttributedString *arcAttributedString;
 @end
 
 @implementation CodeViewController
 @synthesize delegate;
-@synthesize codeView = _codeView;
+@synthesize coreTextView = _coreTextView;
 @synthesize currentFile = _currentFile;
 @synthesize arcAttributedString = _arcAttributedString;
 
@@ -35,19 +34,15 @@
 
 - (void)loadView
 {
-    self.view = [[UIScrollView alloc] init];
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.view.autoresizesSubviews = YES;
-    self.view.scrollEnabled = YES;
+    self.view = [[CodeView alloc] init];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _codeView = [[CoreTextUIView alloc] init];
-    [self.view addSubview:_codeView];
-    _codeView.frame = self.view.bounds;
-    _codeView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    _coreTextView = [[CoreTextUIView alloc] init];
+    [self.view addSubview:_coreTextView];
+    _coreTextView.frame = self.view.bounds;
 }
 
 - (void)showFile:(File*)file
@@ -61,9 +56,11 @@
     
     [self loadFile:_currentFile];
     
-    // Middleware
+    // Middleware (String Settings)
     [[[BasicStyles alloc] init] execOn:_arcAttributedString FromFile:_currentFile];
     [[[SyntaxHighlight alloc] init] execOn:_arcAttributedString FromFile:_currentFile];
+    
+    // Middleware (View Settings)
     
     // Render Code to screen
     [self render];
@@ -77,7 +74,10 @@
 
 - (void)render
 {
-    [_codeView setAttributedString:_arcAttributedString.attributedString];
+    [_coreTextView setAttributedString:_arcAttributedString.attributedString];
+    
+    // Resize codeView (parent) Content Size
+    self.view.contentSize = _coreTextView.bounds.size;
 }
 
 @end

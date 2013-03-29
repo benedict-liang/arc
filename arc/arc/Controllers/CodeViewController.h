@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "SubViewController.h"
 #import "CoreTextUIView.h"
+#import "CodeView.h"
 #import "File.h"
 
 @interface CodeViewController : UIViewController<SubViewController>
 // Loads File
-@property (nonatomic, strong) UIScrollView *view;
+@property (nonatomic, strong) CodeView *view;
 - (void)showFile:(File*)file;
 @end
