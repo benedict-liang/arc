@@ -64,18 +64,29 @@
     _repositories = [NSDictionary dictionaryWithDictionary:tempRepositoryDictionary];
 }
 
-- (void)resolveInclude:(NSString*)includeString {
+- (id)resolveInclude:(NSString*)includeString {
     // Handles 3 types of includes
     if ([includeString isEqualToString:@"$self"]) {
-        
+        //Skip $self for now
+        return nil;
     }
     else if ([includeString characterAtIndex:0] == '#') {
         // Get rule from repository
         NSDictionary *rule = [self getRuleFromRepository:[includeString substringFromIndex:1]];
+        return rule;
     }
     else {
         //TODO: find scope name of another language
+        return nil;
     }
+}
+
+- (NSDictionary*)getRuleFromRepository:(NSString*)repositoryName {
+    if (_repositories == nil) {
+        return nil;
+    }
+    
+    return [_repositories objectForKey:repositoryName];
 }
 
 @end

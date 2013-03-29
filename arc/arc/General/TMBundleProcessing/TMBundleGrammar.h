@@ -13,5 +13,7 @@
 - (id)initWithPlist:(NSDictionary*)plist;
 - (id)initWithPlists:(NSArray*)pListsArray;
 
+// Replaces includes with related variable values
+- (id)resolveInclude:(NSString*)includeString;
 
 @end
