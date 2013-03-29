@@ -30,9 +30,10 @@
         // <Fill this in here.>
         return YES;
     } else {
-        // Pass off to DropBox.
+        // Pass off to DropBox for authentication.
         DBAccount *dropboxAccount = [[DBAccountManager sharedManager] handleOpenURL:url];
         if (dropboxAccount) {
+            // Set up the DropBox Filesystem.
             DBFilesystem *dropboxFilesystem = [[DBFilesystem alloc] initWithAccount:dropboxAccount];
             [DBFilesystem setSharedFilesystem:dropboxFilesystem];
         }
