@@ -40,7 +40,8 @@
     _codeView.delegate = self;
 
     // LeftBar
-    _leftBar = [[LeftBarViewController alloc] initWithFolder:_rootFolder delegate:self];
+    _leftBar = [[LeftBarViewController alloc] initWithFolder:_rootFolder];
+    _leftBar.delegate = self;
     
     
     CGRect window = [[UIScreen mainScreen] bounds];
@@ -49,7 +50,10 @@
     _toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, window.size.width, SIZE_TOOLBAR_HEIGHT)];
     
     //Toolbar Button
-    UIBarButtonItem *overlayButton = [[UIBarButtonItem alloc] initWithTitle:@"Open" style:UIBarButtonSystemItemAction target:self action:@selector(triggerPopover:)];
+    UIBarButtonItem *overlayButton = [[UIBarButtonItem alloc] initWithTitle:@"Open"
+                                                                      style:UIBarButtonSystemItemAction
+                                                                     target:self
+                                                                     action:@selector(triggerPopover:)];
     [_toolbar setItems:@[overlayButton]];
     [_toolbar setBarStyle:UIBarStyleBlackTranslucent];
     
@@ -86,7 +90,8 @@
     // TODO.
     // Omer (26.03.2013): Simply add toolbar when in Portrait and remove it when in Landscape.
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-    if (orientation == UIDeviceOrientationPortrait || orientation == UIDeviceOrientationPortraitUpsideDown) {
+    if (orientation == UIDeviceOrientationPortrait ||
+        orientation == UIDeviceOrientationPortraitUpsideDown) {
         
         _codeView.view.frame = window;
         [self.view addSubview:_toolbar];
@@ -140,6 +145,8 @@
 
 // popover click callback
 -(void)triggerPopover:(UIBarButtonItem*)button {
-    [self.popover presentPopoverFromBarButtonItem:button permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    [self.popover presentPopoverFromBarButtonItem:button
+                         permittedArrowDirections:UIPopoverArrowDirectionAny
+                                         animated:YES];
 }
 @end
