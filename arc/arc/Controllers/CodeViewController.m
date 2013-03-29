@@ -7,22 +7,19 @@
 //
 #import <CoreText/CoreText.h>
 #import "CodeViewController.h"
+#import "CoreTextUIView.h"
 #import "ApplicationState.h"
 #import "BasicStyles.h"
 #import "SyntaxHighlight.h"
 @interface CodeViewController ()
-//
-// Array of @selectors
-//
-// each @selector is called with
-// - (NSAttributedString*) attributedString
-// - (File*) currentFile
 @property File *currentFile;
+@property CoreTextUIView *codeView;
 @property NSMutableAttributedString *attributedString;
 @end
 
 @implementation CodeViewController
 @synthesize delegate;
+@synthesize codeView = _codeView;
 @synthesize currentFile = _currentFile;
 @synthesize attributedString = _attributedString;
 
@@ -37,12 +34,18 @@
 
 - (void)loadView
 {
-    self.view = [[CoreTextUIView alloc] init];
+    self.view = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 768, 1024)];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.scrollEnabled = YES;
+    self.view.contentSize = CGSizeMake(768, 2000);
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _codeView = [[CoreTextUIView alloc] init];
+    [self.view addSubview:_codeView];
+    _codeView.frame = self.view.bounds;
     
     // tmp
     [self showFile:[ApplicationState getSampleFile]];
@@ -76,7 +79,7 @@
 
 - (void)render
 {
-    [self.view setAttributedString:_attributedString];
+    [_codeView setAttributedString:_attributedString];
 }
 
 @end
