@@ -22,14 +22,14 @@
     
     if (ruleKeysDictionary == nil) {
         ruleKeysDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                              @"name", [NSValue valueWithPointer:@selector(foo)],
-                              @"begin", @"",
-                              @"end", @"",
-                              @"captures", @"",
-                              @"beginCaptures", @"",
-                              @"endCaptures", @"",
-                              @"repository", @"",
-                              @"include", [NSValue valueWithPointer:@selector(resolveInclude:)],
+                              @"", @"name",//[NSValue valueWithPointer:@selector(foo)],
+                              @"", @"begin",
+                              @"", @"end",
+                              [NSValue valueWithPointer:@selector(resolveCaptures:)], @"captures",
+                              [NSValue valueWithPointer:@selector(resolveCaptures:)], @"beginCaptures", 
+                              [NSValue valueWithPointer:@selector(resolveCaptures:)], @"endCaptures",
+                              @"", @"repository",
+                              [NSValue valueWithPointer:@selector(resolveInclude:)], @"include",
                               nil];
     }
     
