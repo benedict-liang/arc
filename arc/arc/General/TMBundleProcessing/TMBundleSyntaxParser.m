@@ -38,6 +38,27 @@
     return [plist objectForKey:sectionHeader];
 }
 
++ (BOOL)canHandleFileType:(NSString*)fileExtension forTMBundle:(NSString*)TMBundleName {
+    //remove initial dot character
+    if ([fileExtension characterAtIndex:0] == '.') {
+        fileExtension = [fileExtension substringFromIndex:1];
+    }
+    
+    NSArray *plistsArray = [TMBundleSyntaxParser getSyntaxPLists:TMBundleName];
+    
+    for (NSDictionary *plist in plistsArray) {
+        NSArray *fileTypes = [plist objectForKey:@"fileTypes"];
+        
+        if (fileTypes != nil) {
+            if ([fileTypes containsObject:fileExtension]) {
+                return YES;
+            }
+        }
+    }
+    
+    return NO;
+}
+
 // Returns a patterns array that is stripped of all unused keys/values,
 // and is now only a level deep for each pattern group.
 + (NSArray*)getPatternsArray:(NSString*)TMBundleName {
