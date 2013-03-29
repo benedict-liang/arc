@@ -31,7 +31,7 @@
                               [NSValue valueWithPointer:@selector(resolveCaptures:)], @"beginCaptures", 
                               [NSValue valueWithPointer:@selector(resolveCaptures:)], @"endCaptures",
                               // TODO: implement method to resolve patterns
-                              [NSValue valueWithPointer:@selector(resolveReturnValue:)], @"patterns",
+                              [NSValue valueWithPointer:@selector(resolvePatterns:)], @"patterns",
                               [NSValue valueWithPointer:@selector(resolveInclude:)], @"include",
                               nil];
     }
@@ -78,7 +78,28 @@
 
 - (id)resolveCaptures:(id)value {
     //return an array of scopes
+    if (![value isKindOfClass:[NSDictionary class]]) {
+        return nil;
+    }
+    NSDictionary *capturesDictionary = (NSDictionary*)value;
+    NSMutableArray *capturesArray = [[NSMutableArray alloc] init];
     
+    for (NSString *key in [capturesDictionary allKeys]) {
+        NSDictionary *capture = [capturesDictionary objectForKey:key];
+        NSString *scope = [capture objectForKey:@"name"];
+        
+        if (scope != nil) {
+            [capturesArray addObject:scope];
+        }
+    }
+    
+    if ([capturesArray count] == 0) {
+        return nil;
+    }
+    return [NSArray arrayWithArray:capturesArray];
+}
+
+- (id)resolvePatterns:(id)value {
     return nil;
 }
 
