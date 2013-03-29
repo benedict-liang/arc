@@ -23,16 +23,6 @@
     _patterns = [TMBundleSyntaxParser getPatternsArray:patternsSection];
     _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
     NSLog(@"patterns array: %@", _patterns);
-    /*
-        _patterns = @[
-                  @{@"keyword": @{@"patterns": @[@"\\sif\\s", @"\\swhile\\s", @"@property", @"@interface", @"#import"],
-                                  @"foreground": [UIColor redColor]}},
-                  @{@"constants": @{@"patterns": @[@"void"],
-                                    @"foreground": [UIColor blueColor]}},
-                  @{@"parens": @{@"patterns": @[@"\\{", @"\\}", @"\\[", @"\\]",@"\\)",@"\\("],
-                                 @"foreground": [UIColor brownColor]}}
-                  ];
-     */
 }
 - (NSArray*)foundPattern:(NSString*)p {
     NSError *error = NULL;
@@ -57,7 +47,14 @@
     for (NSDictionary* syntaxItem in _patterns) {
         NSString *name = [syntaxItem objectForKey:@"name"];
         NSString *match = [syntaxItem objectForKey:@"match"];
+        NSString *begin = [syntaxItem objectForKey:@"begin"];
+        NSString *beginCaptures = [syntaxItem objectForKey:@"beginCaptures"];
+        NSString *end = [syntaxItem objectForKey:@"end"];
+        NSString *endCaptures = [syntaxItem objectForKey:@"endCaptures"];
+        
         NSArray *nameMatches = nil;
+        
+        //case name, match
         if (name && match) {
             nameMatches = [self foundPattern:match];
             for (NSValue *v in nameMatches) {

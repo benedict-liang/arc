@@ -324,7 +324,6 @@
 		FCB0547F17034DE6007832D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		FCB0548217036010007832D7 /* SyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlight.h; sourceTree = "<group>"; };
 		FCB0548317036010007832D7 /* SyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxHighlight.m; sourceTree = "<group>"; };
-		FCE665321706004C0055F69C /* backbone.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = backbone.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -440,7 +439,6 @@
 		4C43F8F516F86AA900159B29 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FCE665321706004C0055F69C /* backbone.js */,
 				FCB0547F17034DE6007832D7 /* README.md */,
 				02B04FC91701608C00FE51CB /* GameObject.h */,
 				8F151050170443AC00115E5E /* home.html */,
