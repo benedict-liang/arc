@@ -98,11 +98,11 @@
 
 #pragma mark - Public API
 
-- (void)parseGrammar:(NSString*)key withValue:(id)value {
+- (id)parseGrammar:(NSString*)key withValue:(id)value {
     NSValue *ruleAction = [[TMBundleGrammar getRuleKeysDictionary] objectForKey:key];
     
     SEL selector = [ruleAction pointerValue];
-    [self performSelector:selector withObject:value];
+    return [self performSelector:selector withObject:value];
 }
 
 @end
