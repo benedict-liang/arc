@@ -56,6 +56,8 @@
 		8F1510C617044A4C00115E5E /* Solarized (light).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = 8F1510C517044A4C00115E5E /* Solarized (light).tmTheme */; };
 		8F1510C9170468B100115E5E /* TMBundleThemeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510C8170468B100115E5E /* TMBundleThemeHandler.m */; };
 		8F1510CC1704697900115E5E /* TMBundleGrammar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510CB1704697900115E5E /* TMBundleGrammar.m */; };
+		8F2F5B8117061435005AD37F /* nav_gmaps_sample.js in Sources */ = {isa = PBXBuildFile; fileRef = 8F2F5B8017061435005AD37F /* nav_gmaps_sample.js */; };
+		8F2F5B8217061445005AD37F /* nav_gmaps_sample.js in Resources */ = {isa = PBXBuildFile; fileRef = 8F2F5B8017061435005AD37F /* nav_gmaps_sample.js */; };
 		8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */; };
 		8F563F361701682500EE5643 /* HTML.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563EB7170160CD00EE5643 /* HTML.plist */; };
 		8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1416FDFDBE00B31A19 /* Utils.m */; };
@@ -198,6 +200,7 @@
 		8F1510C8170468B100115E5E /* TMBundleThemeHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBundleThemeHandler.m; sourceTree = "<group>"; };
 		8F1510CA1704697900115E5E /* TMBundleGrammar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleGrammar.h; sourceTree = "<group>"; };
 		8F1510CB1704697900115E5E /* TMBundleGrammar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBundleGrammar.m; sourceTree = "<group>"; };
+		8F2F5B8017061435005AD37F /* nav_gmaps_sample.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = nav_gmaps_sample.js; sourceTree = "<group>"; };
 		8F563E56170160CD00EE5643 /* About Persistent Includes.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "About Persistent Includes.tmCommand"; sourceTree = "<group>"; };
 		8F563E57170160CD00EE5643 /* CodeCompletion HTML Attributes.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CodeCompletion HTML Attributes.tmCommand"; sourceTree = "<group>"; };
 		8F563E58170160CD00EE5643 /* CodeCompletion HTML Tags.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CodeCompletion HTML Tags.tmCommand"; sourceTree = "<group>"; };
@@ -439,6 +442,7 @@
 				FCB0547F17034DE6007832D7 /* README.md */,
 				02B04FC91701608C00FE51CB /* GameObject.h */,
 				8F151050170443AC00115E5E /* home.html */,
+				8F2F5B8017061435005AD37F /* nav_gmaps_sample.js */,
 				4C43F8F616F86AA900159B29 /* arc-Info.plist */,
 				4C43F8F716F86AA900159B29 /* InfoPlist.strings */,
 				4C43F8FA16F86AA900159B29 /* main.m */,
@@ -1043,6 +1047,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02B04FCA1701672700FE51CB /* GameObject.h in Resources */,
+				8F2F5B8217061445005AD37F /* nav_gmaps_sample.js in Resources */,
 				4C43F90116F86AA900159B29 /* Default.png in Resources */,
 				4C43F90316F86AA900159B29 /* Default@2x.png in Resources */,
 				4C43F90516F86AA900159B29 /* Default-568h@2x.png in Resources */,
@@ -1116,6 +1121,7 @@
 				026BC47E1705923500A9AA5F /* DropBoxManager.m in Sources */,
 				4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */,
 				4C12D0781706074600F4593B /* CodeView.m in Sources */,
+				8F2F5B8117061435005AD37F /* nav_gmaps_sample.js in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
