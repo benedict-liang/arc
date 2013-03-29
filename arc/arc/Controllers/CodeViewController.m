@@ -9,19 +9,20 @@
 #import "CodeViewController.h"
 #import "CoreTextUIView.h"
 #import "ApplicationState.h"
+#import "ArcAttributedString.h"
 #import "BasicStyles.h"
 #import "SyntaxHighlight.h"
 @interface CodeViewController ()
 @property File *currentFile;
 @property CoreTextUIView *codeView;
-@property NSMutableAttributedString *attributedString;
+@property ArcAttributedString *arcAttributedString;
 @end
 
 @implementation CodeViewController
 @synthesize delegate;
 @synthesize codeView = _codeView;
 @synthesize currentFile = _currentFile;
-@synthesize attributedString = _attributedString;
+@synthesize arcAttributedString = _arcAttributedString;
 
 - (id)init
 {
@@ -63,8 +64,8 @@
     [self loadFile:_currentFile];
     
     // Middleware
-    [[[BasicStyles alloc] init] execOn:_attributedString FromFile:_currentFile];
-    [[[SyntaxHighlight alloc] init] execOn:_attributedString FromFile:_currentFile];
+    [[[BasicStyles alloc] init] execOn:_arcAttributedString FromFile:_currentFile];
+    [[[SyntaxHighlight alloc] init] execOn:_arcAttributedString FromFile:_currentFile];
     
     // Render Code to screen
     [self render];
@@ -72,14 +73,13 @@
 
 - (void)loadFile:(File*)file
 {
-    // Create new NSMutableAttributed String for currentFile
-    _attributedString = [[NSMutableAttributedString alloc]
-                         initWithString:[_currentFile contents]];
+    _arcAttributedString = [[ArcAttributedString alloc]
+                            initWithString:[_currentFile contents]];
 }
 
 - (void)render
 {
-    [_codeView setAttributedString:_attributedString];
+    [_codeView setAttributedString:_arcAttributedString.attributedString];
 }
 
 @end

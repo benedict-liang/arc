@@ -24,6 +24,7 @@
 		026BC47E1705923500A9AA5F /* DropBoxManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 026BC47D1705923500A9AA5F /* DropBoxManager.m */; };
 		028DA2D716FD827000E2E5D9 /* RootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 028DA2D616FD826F00E2E5D9 /* RootFolder.m */; };
 		02B04FCA1701672700FE51CB /* GameObject.h in Resources */ = {isa = PBXBuildFile; fileRef = 02B04FC91701608C00FE51CB /* GameObject.h */; };
+		4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D0711705CA7800F4593B /* ArcAttributedString.m */; };
 		4C43F8ED16F86AA900159B29 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
 		4C43F8EF16F86AA900159B29 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EE16F86AA900159B29 /* Foundation.framework */; };
 		4C43F8F116F86AA900159B29 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8F016F86AA900159B29 /* CoreGraphics.framework */; };
@@ -96,6 +97,8 @@
 		028DA2D516FD826F00E2E5D9 /* RootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootFolder.h; sourceTree = "<group>"; };
 		028DA2D616FD826F00E2E5D9 /* RootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootFolder.m; sourceTree = "<group>"; };
 		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
+		4C12D0701705CA7800F4593B /* ArcAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcAttributedString.h; sourceTree = "<group>"; };
+		4C12D0711705CA7800F4593B /* ArcAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcAttributedString.m; sourceTree = "<group>"; };
 		4C43F8E916F86AA900159B29 /* arc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C43F8EC16F86AA900159B29 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4C43F8EE16F86AA900159B29 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -113,9 +116,9 @@
 		4C43F90716F86AA900159B29 /* arc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = arc.xcdatamodel; sourceTree = "<group>"; };
 		4C43F90F16F86AD000159B29 /* FileObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileObject.h; sourceTree = "<group>"; };
 		4C43F91016F86AD000159B29 /* FileObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileObject.m; sourceTree = "<group>"; };
-		4C45551717016F93001C6F1D /* CodeViewMiddleware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CodeViewMiddleware.h; path = View/Middleware/CodeViewMiddleware.h; sourceTree = "<group>"; };
-		4C45551817017005001C6F1D /* BasicStyles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicStyles.h; path = View/Middleware/BasicStyles.h; sourceTree = "<group>"; };
-		4C45551917017005001C6F1D /* BasicStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicStyles.m; path = View/Middleware/BasicStyles.m; sourceTree = "<group>"; };
+		4C45551717016F93001C6F1D /* CodeViewMiddleware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewMiddleware.h; sourceTree = "<group>"; };
+		4C45551817017005001C6F1D /* BasicStyles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicStyles.h; sourceTree = "<group>"; };
+		4C45551917017005001C6F1D /* BasicStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicStyles.m; sourceTree = "<group>"; };
 		4CD06B2C16FDE92D00C9DED3 /* SubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubViewController.h; sourceTree = "<group>"; };
 		4CD06B3B16FDEDA600C9DED3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		4CD06B4016FDEDA600C9DED3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -130,8 +133,8 @@
 		4CD06B7E16FDF61C00C9DED3 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = General/Constants.h; sourceTree = "<group>"; };
 		4CD06B7F16FDF61C00C9DED3 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = General/Constants.m; sourceTree = "<group>"; };
 		4CD06B8416FE0FC900C9DED3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		4CD06B8816FE125100C9DED3 /* CoreTextUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreTextUIView.h; path = View/CoreTextUIView.h; sourceTree = "<group>"; };
-		4CD06B8916FE125100C9DED3 /* CoreTextUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreTextUIView.m; path = View/CoreTextUIView.m; sourceTree = "<group>"; };
+		4CD06B8816FE125100C9DED3 /* CoreTextUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTextUIView.h; sourceTree = "<group>"; };
+		4CD06B8916FE125100C9DED3 /* CoreTextUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreTextUIView.m; sourceTree = "<group>"; };
 		4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
 		8F15104F1704410000115E5E /* TMBundleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleHeader.h; sourceTree = "<group>"; };
 		8F151050170443AC00115E5E /* home.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = home.html; sourceTree = "<group>"; };
@@ -313,8 +316,8 @@
 		FC4B26CC16FF6E3700E1DC49 /* LeftBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftBarViewController.h; sourceTree = "<group>"; };
 		FC4B26CD16FF6E3700E1DC49 /* LeftBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftBarViewController.m; sourceTree = "<group>"; };
 		FCB0547F17034DE6007832D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		FCB0548217036010007832D7 /* SyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyntaxHighlight.h; path = View/Middleware/SyntaxHighlight.h; sourceTree = "<group>"; };
-		FCB0548317036010007832D7 /* SyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyntaxHighlight.m; path = View/Middleware/SyntaxHighlight.m; sourceTree = "<group>"; };
+		FCB0548217036010007832D7 /* SyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlight.h; sourceTree = "<group>"; };
+		FCB0548317036010007832D7 /* SyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxHighlight.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -466,7 +469,7 @@
 				FCB0548217036010007832D7 /* SyntaxHighlight.h */,
 				FCB0548317036010007832D7 /* SyntaxHighlight.m */,
 			);
-			name = Middleware;
+			path = Middleware;
 			sourceTree = "<group>";
 		};
 		4CD06B2D16FDE97E00C9DED3 /* Protocols */ = {
@@ -528,8 +531,10 @@
 				4C45551617016F21001C6F1D /* Middleware */,
 				4CD06B8816FE125100C9DED3 /* CoreTextUIView.h */,
 				4CD06B8916FE125100C9DED3 /* CoreTextUIView.m */,
+				4C12D0701705CA7800F4593B /* ArcAttributedString.h */,
+				4C12D0711705CA7800F4593B /* ArcAttributedString.m */,
 			);
-			name = View;
+			path = View;
 			sourceTree = "<group>";
 		};
 		4CD06B9016FE1A6900C9DED3 /* Assets */ = {
@@ -1104,6 +1109,7 @@
 				8F1510C9170468B100115E5E /* TMBundleThemeHandler.m in Sources */,
 				8F1510CC1704697900115E5E /* TMBundleGrammar.m in Sources */,
 				026BC47E1705923500A9AA5F /* DropBoxManager.m in Sources */,
+				4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

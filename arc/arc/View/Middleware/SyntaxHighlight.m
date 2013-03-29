@@ -7,9 +7,10 @@
 //
 
 #import "SyntaxHighlight.h"
+#import "ArcAttributedString.h"
 
 @implementation SyntaxHighlight
--(void)initPatterns {
+- (void)initPatterns {
     _patterns = @[
     @{@"keyword": @{@"patterns": @[@"\\sif\\s", @"\\swhile\\s", @"@property", @"@interface", @"#import"],
                     @"foreground": [UIColor redColor]}},
@@ -19,7 +20,7 @@
                     @"foreground": [UIColor brownColor]}}
     ];
 }
--(NSArray*)foundPattern:(NSString*)p {
+- (NSArray*)foundPattern:(NSString*)p {
     NSError *error = NULL;
     NSMutableArray* results = [[NSMutableArray alloc] init];
     NSRegularExpression *regex = [NSRegularExpression
@@ -34,11 +35,10 @@
     }
     return results;
 }
--(void)styleOnRange:(NSRange)range fcolor:(UIColor*)fcolor {
-    [_output addAttribute:(id)kCTForegroundColorAttributeName
-                    value:(__bridge id)fcolor.CGColor range:range];
-    
+- (void)styleOnRange:(NSRange)range fcolor:(UIColor*)fcolor {
+    [_output setColor:[fcolor CGColor] OnRange:range];
 }
+
 -(void)iterPatternsAndApply {
     for (NSDictionary* apattern in _patterns) {
         for (id descriptor in apattern) {
@@ -56,8 +56,8 @@
         }
     }
 }
--(void)execOn:(NSMutableAttributedString *)attributedString FromFile:(File *)file {
-    _output = attributedString;
+- (void)execOn:(ArcAttributedString *)arcAttributedString FromFile:(File *)file {
+    _output = arcAttributedString;
     [self initPatterns];
     _content = [file contents];
     [self iterPatternsAndApply];

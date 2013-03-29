@@ -7,20 +7,19 @@
 //
 
 #import <CoreText/CoreText.h>
+#import "ArcAttributedString.h"
 #import "BasicStyles.h"
 
 @implementation BasicStyles
-- (void)execOn:(NSMutableAttributedString*) attributedString FromFile:(File*)file
+- (void)execOn:(ArcAttributedString*) arcAttributedString FromFile:(File*)file;
 {
     CGColorRef color = [UIColor blackColor].CGColor;
-    CTFontRef font = CTFontCreateWithName(CFSTR("Source Code Pro"), 20.0, NULL);
+    [arcAttributedString setColor:color];
     
-    [attributedString addAttribute:(id)kCTForegroundColorAttributeName
-                              value:(__bridge id)color
-                              range:NSMakeRange(0, attributedString.string.length)];
+    NSString *fontFamily = @"Source Code Pro";
+    [arcAttributedString setFontFamily:fontFamily];
     
-    [attributedString addAttribute:(id)kCTFontAttributeName
-                              value:(__bridge id)font
-                              range:NSMakeRange(0, attributedString.string.length)];
+    int fontSize = 14;
+    [arcAttributedString setFontSize:fontSize];
 }
 @end

@@ -94,7 +94,6 @@
         [_toolbar removeFromSuperview];
         [_popover dismissPopoverAnimated:NO];
         [self.view addSubview:_leftBar.view];
-        
     }
     
 }

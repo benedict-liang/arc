@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "File.h"
+#import "ArcAttributedString.h"
 
 @protocol CodeViewMiddleware <NSObject>
-// Adds attributes to attributedString
+// Adds attributes to ArcAttributedString
 // File object is passed in as a reference (if more infomation is needed)
-- (void)execOn:(NSMutableAttributedString*) attributedString FromFile:(File*)file;
+- (void)execOn:(ArcAttributedString*) arcAttributedString FromFile:(File*)file;
 @end
