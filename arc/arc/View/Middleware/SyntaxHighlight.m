@@ -11,7 +11,13 @@
 
 @implementation SyntaxHighlight
 
--(void)initPatternsAndTheme {
++ (void)arcAttributedString:(ArcAttributedString *)arcAttributedString OfFile:(File *)file
+{
+    SyntaxHighlight *sh = [[self alloc] init];
+    [sh execOn:arcAttributedString FromFile:file];
+}
+
+- (void)initPatternsAndTheme {
     
     NSArray *patternsSection = [TMBundleSyntaxParser getPlistData:@"html.tmbundle" withSectionHeader:@"patterns"];
     _patterns = [TMBundleSyntaxParser getPatternsArray:patternsSection];
@@ -27,7 +33,6 @@
                                  @"foreground": [UIColor brownColor]}}
                   ];
      */
-
 }
 - (NSArray*)foundPattern:(NSString*)p {
     NSError *error = NULL;

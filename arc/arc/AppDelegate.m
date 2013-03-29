@@ -49,12 +49,15 @@
     NSString *sampleFileName = @"GameObject.h";
     NSString *sampleFile1 = @"README.md";
     NSString *sampleFile2 = @"home.html";
+    NSString *sampleFile3 = @"nav_gmaps_sample.js";
     NSURL *sampleFileURL = [[NSBundle mainBundle] URLForResource:sampleFileName withExtension:nil];
     NSURL *sampleFile1URL = [[NSBundle mainBundle] URLForResource:sampleFile1 withExtension:nil];
     NSURL *sampleFile2URL = [[NSBundle mainBundle] URLForResource:sampleFile2 withExtension:nil];
+    NSURL *sampleFile3URL = [[NSBundle mainBundle] URLForResource:sampleFile3 withExtension:nil];
     NSURL *newFileURL = [NSURL URLWithString:sampleFileName relativeToURL:documentsURL];
     NSURL *newFile1URL = [NSURL URLWithString:sampleFile1 relativeToURL:documentsURL];
     NSURL *newFile2URL = [NSURL URLWithString:sampleFile2 relativeToURL:documentsURL];
+    NSURL *newFile3URL = [NSURL URLWithString:sampleFile3 relativeToURL:documentsURL];
     
     if (![fileManager fileExistsAtPath:[newFileURL path]]) {
         [fileManager copyItemAtURL:sampleFileURL toURL:newFileURL error:nil];
@@ -66,6 +69,10 @@
     }
     if (![fileManager fileExistsAtPath:[newFile2URL path]]) {
         [fileManager copyItemAtURL:sampleFile2URL toURL:newFile2URL error:nil];
+        [[RootFolder getInstance] flagForRefresh];
+    }
+    if (![fileManager fileExistsAtPath:[newFile3URL path]]) {
+        [fileManager copyItemAtURL:sampleFile3URL toURL:newFile3URL error:nil];
         [[RootFolder getInstance] flagForRefresh];
     }
     // End of temporary code.

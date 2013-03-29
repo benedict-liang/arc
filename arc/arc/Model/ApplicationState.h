@@ -11,11 +11,25 @@
 #import "Folder.h"
 
 @interface ApplicationState : NSObject
++ (ApplicationState*)sharedApplicationState;
 
 @property (strong, nonatomic) File *currentFileOpened;
 @property (strong, nonatomic) Folder *currentFolderOpened;
 
+//
+// Settings and Preferences
+//
+// Accumulated Settings (For serialization)
+@property (nonatomic, readonly) NSDictionary *settings;
+
+// Individual Settings
+@property (nonatomic) int fontSize;
+@property (nonatomic, strong) NSString* fontFamily;
+@property (nonatomic, strong) NSString* colorScheme;
+@property (nonatomic) BOOL lineNumbers;
+@property (nonatomic) BOOL wordWrap;
+
+// tmp
 // Returns a sample file.
 + (File*)getSampleFile;
-
 @end
