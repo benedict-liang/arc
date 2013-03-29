@@ -36,7 +36,7 @@
 - (id)initWithFolder:(Folder *)folder frame:(CGRect)frame {
     self = [super init];
     if (self) {
-        _data = [folder getContents];
+        _data = [folder contents];
         [self setupTableWithFrame:frame];
     }
     return self;

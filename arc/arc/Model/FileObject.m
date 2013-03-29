@@ -24,7 +24,7 @@
 }
 
 // Gets the contents of this object.
-- (id)getContents
+- (id)contents
 {
     // This implementation allows for "lazy" initialisation
     // of the entire file system structure (instead of recursively

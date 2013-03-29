@@ -18,7 +18,7 @@
 // Returns a sample file.
 + (File*)getSampleFile
 {
-    for (FileObject *currentObject in [[RootFolder getInstance] getContents]) {
+    for (FileObject *currentObject in [[RootFolder getInstance] contents]) {
         if ([[currentObject name] isEqualToString:@"GameObject.h"]) {
             return (File*)currentObject;
         }

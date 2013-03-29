@@ -71,7 +71,7 @@
 {
     // Create new NSMutableAttributed String for currentFile
     _attributedString = [[NSMutableAttributedString alloc]
-                         initWithString:[_currentFile getContents]];
+                         initWithString:[_currentFile contents]];
 }
 
 - (void)render
