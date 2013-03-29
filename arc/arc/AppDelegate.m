@@ -27,7 +27,6 @@
         
         // Pass the file to whatever needs it.
         // <Fill this in here.>
-        NSString *contents = [receivedFile getContents];
         return YES;
     }
     return NO;
@@ -51,17 +50,14 @@
     if (![fileManager fileExistsAtPath:[newFileURL path]]) {
         [fileManager copyItemAtURL:sampleFileURL toURL:newFileURL error:nil];
         [[RootFolder getInstance] flagForRefresh];
-        NSArray *contents = [[RootFolder getInstance] getContents];
     }
     if (![fileManager fileExistsAtPath:[newFile1URL path]]) {
         [fileManager copyItemAtURL:sampleFile1URL toURL:newFile1URL error:nil];
         [[RootFolder getInstance] flagForRefresh];
-        //NSArray *contents = [[RootFolder getInstance] getContents];
     }
     if (![fileManager fileExistsAtPath:[newFile2URL path]]) {
         [fileManager copyItemAtURL:sampleFile2URL toURL:newFile2URL error:nil];
         [[RootFolder getInstance] flagForRefresh];
-        //NSArray *contents = [[RootFolder getInstance] getContents];
     }
     // End of temporary code.
     
