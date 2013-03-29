@@ -50,7 +50,6 @@
     
     if (self != nil) {
         [self initializeRepository:pListsArray];
-        NSLog(@"repo: %@", _repositories);
     }
     
     return self;
