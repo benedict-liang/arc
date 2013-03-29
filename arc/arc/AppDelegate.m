@@ -70,6 +70,18 @@
     }
     // End of temporary code.
     
+    // Create the DropBox account manager.
+    DBAccountManager* dbAccountManager =
+    [[DBAccountManager alloc] initWithAppKey:CLOUD_DROPBOX_KEY secret:CLOUD_DROPBOX_SECRET];
+    [DBAccountManager setSharedManager:dbAccountManager];
+    DBAccount *dbAccount = dbAccountManager.linkedAccount;
+    
+    if (dbAccount) {
+        // We already have an account, and can set up the DropBox file system.
+        DBFilesystem *dbFilesystem = [[DBFilesystem alloc] initWithAccount:dbAccount];
+        [DBFilesystem setSharedFilesystem:dbFilesystem];
+    }
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Create MainViewController and set as Window's RootViewController
