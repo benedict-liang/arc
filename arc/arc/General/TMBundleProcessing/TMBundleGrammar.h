@@ -13,5 +13,6 @@
 - (id)initWithPlist:(NSDictionary*)plist;
 - (id)initWithPlists:(NSArray*)pListsArray;
 
+- (id)parseGrammar:(NSString*)key withValue:(id)value;
 
 @end

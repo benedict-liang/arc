@@ -38,17 +38,24 @@
     return [plist objectForKey:sectionHeader];
 }
 
-+ (NSArray*)getPatternsArray:(NSArray*)patternsSection {
-//    for (NSDictionary *syntaxItem in patternsSection) {
-//        
-//    }
+// Returns a patterns array that is stripped of all unused keys/values,
+// and is now only a level deep for each pattern group.
++ (NSArray*)getPatternsArray:(NSString*)TMBundleName {
+    NSMutableArray *patternsArray = [[NSMutableArray alloc] init];
     
-    //TODO: syntax name is for testing only
-    NSArray *plistsArray = [TMBundleSyntaxParser getSyntaxPLists:@"name"];
+    NSArray *plistsArray = [TMBundleSyntaxParser getSyntaxPLists:TMBundleName];
     
     TMBundleGrammar *grammar = [[TMBundleGrammar alloc] initWithPlists:plistsArray];
     
-    return nil;
+    // TODO: Handle conditions to parse multiple plists, and combine the results
+    NSDictionary *plist = [plistsArray objectAtIndex:0];
+    id patternsValue = [plist objectForKey:@"patterns"];
+    if (patternsValue != nil) {
+        NSArray *test = [grammar parseGrammar:@"patterns" withValue:patternsValue];
+        [patternsArray addObjectsFromArray:test];
+    }
+
+    return [NSArray arrayWithArray:patternsArray];
 }
 
 @end

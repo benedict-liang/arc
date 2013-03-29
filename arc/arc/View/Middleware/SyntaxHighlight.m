@@ -10,15 +10,21 @@
 #import "ArcAttributedString.h"
 
 @implementation SyntaxHighlight
-- (void)initPatterns {
-    _patterns = @[
-    @{@"keyword": @{@"patterns": @[@"\\sif\\s", @"\\swhile\\s", @"@property", @"@interface", @"#import"],
-                    @"foreground": [UIColor redColor]}},
-    @{@"constants": @{@"patterns": @[@"void"],
-                        @"foreground": [UIColor blueColor]}},
-    @{@"parens": @{@"patterns": @[@"\\{", @"\\}", @"\\[", @"\\]",@"\\)",@"\\("],
-                    @"foreground": [UIColor brownColor]}}
-    ];
+
+-(void)initPatterns {
+    
+    NSArray *patternsSection = [TMBundleSyntaxParser getPlistData:@"html.tmbundle" withSectionHeader:@"patterns"];
+    _patterns = [TMBundleSyntaxParser getPatternsArray:patternsSection];
+    NSLog(@"patterns array: %@", _patterns);
+        _patterns = @[
+                  @{@"keyword": @{@"patterns": @[@"\\sif\\s", @"\\swhile\\s", @"@property", @"@interface", @"#import"],
+                                  @"foreground": [UIColor redColor]}},
+                  @{@"constants": @{@"patterns": @[@"void"],
+                                    @"foreground": [UIColor blueColor]}},
+                  @{@"parens": @{@"patterns": @[@"\\{", @"\\}", @"\\[", @"\\]",@"\\)",@"\\("],
+                                 @"foreground": [UIColor brownColor]}}
+                  ];
+
 }
 - (NSArray*)foundPattern:(NSString*)p {
     NSError *error = NULL;
