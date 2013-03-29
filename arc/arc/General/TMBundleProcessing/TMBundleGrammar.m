@@ -100,6 +100,55 @@
 }
 
 - (id)resolvePatterns:(id)value {
+    if (![value isKindOfClass:[NSArray class]]) {
+        return nil;
+    }
+    NSArray *patternsArray = (NSArray*)value;
+    NSMutableArray *processedPatternsArray = [[NSMutableArray alloc] init];
+
+    for (NSDictionary *dict in patternsArray) {
+        NSMutableDictionary *processedPatternItem = [[NSMutableDictionary alloc] init];
+        for (NSString *key in [dict allKeys]) {
+            id result = [self parseGrammar:key withValue:[dict objectForKey:key]];
+            if (result != nil) {
+                if (![key isEqualToString:@"include"]) {
+                    [processedPatternItem setObject:result forKey:key];
+                }
+                
+                NSDictionary *processedInclude = [self processRecursiveInclude:result];
+                if (processedInclude != nil) {
+                    [processedPatternItem addEntriesFromDictionary:processedInclude];
+                }
+            }
+        }
+        
+        if ([processedPatternItem count] != 0) {
+            [processedPatternsArray addObject:[NSDictionary dictionaryWithDictionary:processedPatternItem]];
+        }
+    }
+    
+    return [NSArray arrayWithArray:processedPatternsArray];
+}
+
+- (NSDictionary*)processRecursiveInclude:(id)result {
+    if (![result isKindOfClass:[NSDictionary class]]) {
+        return nil;
+    }
+    
+    NSDictionary *resultDict = (NSDictionary*)result;
+    id value = [resultDict objectForKey:@"patterns"];
+    
+    if (value == nil) {
+        return nil;
+    }
+    
+    id processedResult = [self parseGrammar:@"patterns" withValue:value];
+    
+    if ([processedResult isKindOfClass:[NSArray class]]) {
+        NSArray *temp = (NSArray*)processedResult;
+        return (NSDictionary*)[temp objectAtIndex:0];
+    }
+    
     return nil;
 }
 
