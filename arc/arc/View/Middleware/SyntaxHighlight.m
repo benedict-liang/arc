@@ -49,17 +49,18 @@
 }
 
 -(void)iterPatternsAndApply {
-    for (NSDictionary* apattern in _patterns) {
-        for (id descriptor in apattern) {
-            NSDictionary* record = [apattern objectForKey:descriptor];
-            NSArray* regexes = [record objectForKey:@"patterns"];
-            UIColor* color = [record objectForKey:@"foreground"];
-            for (NSString* p in regexes) {
-                NSArray* regexRanges = [self foundPattern:p];
-                for (NSValue* v in regexRanges) {
-                    NSRange range;
-                    [v getValue:&range];
-                    [self styleOnRange:range fcolor:color];
+    for (NSDictionary* syntaxItem in _patterns) {
+        NSString *name = [syntaxItem objectForKey:@"name"];
+        NSString *match = [syntaxItem objectForKey:@"match"];
+        NSArray *nameMatches = nil;
+        if (name && match) {
+            nameMatches = [self foundPattern:match];
+            for (NSValue *v in nameMatches) {
+                NSRange range;
+                [v getValue:&range];
+                NSDictionary* style = [(NSDictionary*)[_theme objectForKey:@"scopes"] objectForKey:name];
+                if (style) {
+                    [self styleOnRange:range fcolor:[style objectForKey:@"foreground"]];
                 }
             }
         }
