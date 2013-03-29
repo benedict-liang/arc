@@ -10,6 +10,13 @@
 #import "ArcAttributedString.h"
 
 @implementation SyntaxHighlight
+
++ (void)arcAttributedString:(ArcAttributedString*)arcAttributedString OfFile:(File*)file
+{
+    SyntaxHighlight *sh = [[SyntaxHighlight alloc] init];
+    [sh execOn:arcAttributedString FromFile:file];
+}
+
 - (void)initPatterns {
     _patterns = @[
     @{@"keyword": @{@"patterns": @[@"\\sif\\s", @"\\swhile\\s", @"@property", @"@interface", @"#import"],

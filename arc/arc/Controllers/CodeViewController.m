@@ -49,19 +49,15 @@
 {
     // Update Current file
     _currentFile = file;
-    
-    // Updated and Display relevant meta data
-    // (filename, type, etc.)
-    // TODO
-    
     [self loadFile:_currentFile];
-    
-    // Middleware (String Settings)
-    [[[BasicStyles alloc] init] execOn:_arcAttributedString FromFile:_currentFile];
-    [[[SyntaxHighlight alloc] init] execOn:_arcAttributedString FromFile:_currentFile];
-    
-    // Middleware (View Settings)
-    
+
+
+    // Middleware to Style Attributed String
+    [BasicStyles arcAttributedString:_arcAttributedString
+                              OfFile:_currentFile];
+    [SyntaxHighlight arcAttributedString:_arcAttributedString
+                                  OfFile:_currentFile];
+
     // Render Code to screen
     [self render];
 }
