@@ -19,7 +19,7 @@
     NSString *fontFamily = @"Source Code Pro";
     [arcAttributedString setFontFamily:fontFamily];
     
-    int fontSize = 14;
+    int fontSize = 24;
     [arcAttributedString setFontSize:fontSize];
 }
 @end
