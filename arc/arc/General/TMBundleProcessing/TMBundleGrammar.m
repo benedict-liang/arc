@@ -64,6 +64,8 @@
     _repositories = [NSDictionary dictionaryWithDictionary:tempRepositoryDictionary];
 }
 
+#pragma mark - Grammar Processing
+
 // Replaces includes with related variable values
 - (id)resolveInclude:(id)value {
     if (![value isKindOfClass:[NSString class]]) {
