@@ -106,6 +106,13 @@
 			</array>
 		</dict>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>db-q591oqy8n4yxgt1</string>
+		</dict>
+	</array>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
