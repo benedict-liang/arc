@@ -12,8 +12,7 @@
 #import "File.h"
 
 @interface CodeViewController : UIViewController<SubViewController>
-@property (nonatomic, strong) CoreTextUIView *view;
-
 // Loads File
+@property (nonatomic, strong) UIScrollView *view;
 - (void)showFile:(File*)file;
 @end

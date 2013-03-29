@@ -28,8 +28,8 @@
 
 - (void)setAttributedString:(NSAttributedString *)attributedString
 {
-    [self setNeedsDisplay];
     _attributedString = attributedString;
+    [self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect
@@ -44,14 +44,16 @@
         CGContextTranslateCTM(context, 0, self.bounds.size.height);
         CGContextScaleCTM(context, 1.0, -1.0);
         
-        CGMutablePathRef path = CGPathCreateMutable(); //1
-        CGPathAddRect(path, NULL, self.bounds );
+        // Generate the path for the text
+        CGMutablePathRef path = CGPathCreateMutable();
+        CGPathAddRect(path, NULL, self.bounds);
         
         CTFramesetterRef framesetter =
         CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_attributedString);
         CTFrameRef frame =
-        CTFramesetterCreateFrame(framesetter,
-                                 CFRangeMake(0, [_attributedString length]), path, NULL);
+            CTFramesetterCreateFrame(framesetter,
+                CFRangeMake(0, 0), path, NULL);
+
         CTFrameDraw(frame, context);
         CFRelease(frame);
         CFRelease(path);

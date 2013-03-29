@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreText/CoreText.h>
 #import "CodeViewMiddleware.h"
+#import "ArcAttributedString.h"
 #import "TMBundleHeader.h"
 
 @interface SyntaxHighlight : NSObject <CodeViewMiddleware>
 @property NSArray* patterns;
 @property NSString* content;
-@property NSMutableAttributedString* output;
+@property ArcAttributedString* output;
 @end

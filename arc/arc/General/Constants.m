@@ -7,18 +7,22 @@
 //
 
 #import "Constants.h"
-//
+
 // Sizes
-//
 const float SIZE_LEFTBAR_WIDTH = 200;
 const float SIZE_TOOLBAR_HEIGHT = 30;
 const CGSize SIZE_POPOVER = {200,300};
+
+// Defaults
+const int DEFAULT_FONT_SIZE = 12;
+const NSString* DEFAULT_FONT_FAMILY = @"Source Code Pro";
+const CGColorRef* DEFAULT_TEXT_COLOR = {0};
 // Default Folder Names
-NSString* const FOLDER_EXTERNAL_APPLICATIONS = @"External Applications";
+const NSString* FOLDER_EXTERNAL_APPLICATIONS = @"External Applications";
 
 // API Keys
-NSString* const CLOUD_DROPBOX_KEY = @"q591oqy8n4yxgt1";
-NSString* const CLOUD_DROPBOX_SECRET = @"kkb1vzgnah76zmr";
+const NSString* CLOUD_DROPBOX_KEY = @"q591oqy8n4yxgt1";
+const NSString* CLOUD_DROPBOX_SECRET = @"kkb1vzgnah76zmr";
 
 @implementation Constants
 @end

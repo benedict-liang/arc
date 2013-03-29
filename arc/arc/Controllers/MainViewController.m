@@ -56,6 +56,7 @@
     //Popover
     _popover = [[UIPopoverController alloc] initWithContentViewController:_leftBar];
     _popover.popoverContentSize = SIZE_POPOVER;
+
     
     // Add Subviews to Main View
     [self.view addSubview:_leftBar.view];
@@ -72,8 +73,6 @@
     //NSLog(@"section headers array: %@", sectionHeaders);
     //NSLog(@"patterns array: %@", patternsArray);
     NSDictionary *temp = [TMBundleThemeHandler produceStylesWithTheme:nil];
-    
-    
 }
 
 // Resizes SubViews Based on Application's Orientation
@@ -95,7 +94,6 @@
         [_toolbar removeFromSuperview];
         [_popover dismissPopoverAnimated:NO];
         [self.view addSubview:_leftBar.view];
-        
     }
     
 }
