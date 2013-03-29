@@ -35,10 +35,10 @@
 
 - (void)loadView
 {
-    self.view = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 768, 1024)];
+    self.view = [[UIScrollView alloc] init];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.view.autoresizesSubviews = YES;
     self.view.scrollEnabled = YES;
-    self.view.contentSize = CGSizeMake(768, 2000);
 }
 
 - (void)viewDidLoad
@@ -47,9 +47,7 @@
     _codeView = [[CoreTextUIView alloc] init];
     [self.view addSubview:_codeView];
     _codeView.frame = self.view.bounds;
-    
-    // tmp
-    [self showFile:[ApplicationState getSampleFile]];
+    _codeView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 }
 
 - (void)showFile:(File*)file

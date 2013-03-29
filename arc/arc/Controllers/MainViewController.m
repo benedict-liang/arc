@@ -73,6 +73,9 @@
     //NSLog(@"section headers array: %@", sectionHeaders);
     //NSLog(@"patterns array: %@", patternsArray);
     NSDictionary *temp = [TMBundleThemeHandler produceStylesWithTheme:nil];
+    
+    // tmp
+    [_codeView showFile:[ApplicationState getSampleFile]];
 }
 
 // Resizes SubViews Based on Application's Orientation
