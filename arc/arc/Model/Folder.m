@@ -141,7 +141,7 @@
 // NOTE: This runs in O(n) where n is number of objects in the folder.
 - (FileObject*)retrieveObjectWithName:(NSString*)name
 {
-    NSArray *contents = [self getContents];
+    NSArray *contents = [self contents];
     
     for (FileObject *currentObject in contents) {
         if ([[currentObject name] isEqualToString:name]) {

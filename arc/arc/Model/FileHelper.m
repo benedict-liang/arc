@@ -21,7 +21,7 @@
     Folder *inboxFolder = [[Folder alloc] initWithURL:inboxURL parent:root];
     
     // Get the External Applications folder.
-    NSArray *rootContents = [root getContents];
+    NSArray *rootContents = [root contents];
     Folder *externalFolder;
     for (FileObject *currentObject in rootContents) {
         if ([currentObject isKindOfClass:[Folder class]] && [[currentObject name] isEqualToString:FOLDER_EXTERNAL_APPLICATIONS]) {

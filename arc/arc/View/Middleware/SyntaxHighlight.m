@@ -59,7 +59,7 @@
 -(void)execOn:(NSMutableAttributedString *)attributedString FromFile:(File *)file {
     _output = attributedString;
     [self initPatterns];
-    _content = [file getContents];
+    _content = [file contents];
     [self iterPatternsAndApply];
 }
 @end

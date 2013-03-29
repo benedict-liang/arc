@@ -36,7 +36,7 @@
 - (void)flagForRefresh;
 
 // Gets the contents of this object.
-- (id)getContents;
+- (id)contents;
 
 // Removes this object from the file system.
 // Returns YES if successful, NO otherwise.

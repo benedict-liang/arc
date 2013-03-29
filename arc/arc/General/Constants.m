@@ -16,5 +16,9 @@ const CGSize SIZE_POPOVER = {200,300};
 // Default Folder Names
 NSString* const FOLDER_EXTERNAL_APPLICATIONS = @"External Applications";
 
+// API Keys
+NSString* const CLOUD_DROPBOX_KEY = @"q591oqy8n4yxgt1";
+NSString* const CLOUD_DROPBOX_SECRET = @"kkb1vzgnah76zmr";
+
 @implementation Constants
 @end

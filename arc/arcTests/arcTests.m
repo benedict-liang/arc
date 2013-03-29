@@ -23,7 +23,7 @@
 - (void)tearDown
 {
     // Tear-down code here.
-    for (FileObject *current in [_rootFolder getContents]) {
+    for (FileObject *current in [_rootFolder contents]) {
         if (![[current name] isEqualToString:FOLDER_EXTERNAL_APPLICATIONS]) {
             [current remove];
         }
@@ -39,7 +39,7 @@
     
     [File fileWithName:testFileName Contents:testFileContents inFolder:_rootFolder];
     
-    NSArray *rootContents = [_rootFolder getContents];
+    NSArray *rootContents = [_rootFolder contents];
     int expected = 2;
     int actual = [rootContents count];
     STAssertEquals(expected, actual, @"Root folder contains 2 objects");
@@ -53,7 +53,7 @@
     }
     
     NSString *retrievedName = [retrieved name];
-    NSString *retrievedContents = [retrieved getContents];
+    NSString *retrievedContents = [retrieved contents];
     
     STAssertNotNil(retrieved, @"File is persisted and retrievable.");
     STAssertTrue([testFileName isEqualToString:retrievedName], @"File name is persisted.");
@@ -66,7 +66,7 @@
     
     [_rootFolder createFolder:testFolderName];
     
-    NSArray *rootContents = [_rootFolder getContents];
+    NSArray *rootContents = [_rootFolder contents];
     int expected = 2;
     int actual = [rootContents count];
     STAssertEquals(expected, actual, @"Root folder contains 2 objects");
@@ -90,7 +90,7 @@
     NSString *testFolderName = @"Test Folder";
     [_rootFolder createFolder:testFolderName];
     
-    NSArray *rootContents = [_rootFolder getContents];
+    NSArray *rootContents = [_rootFolder contents];
     int expected = 2;
     int actual = [rootContents count];
     STAssertEquals(expected, actual, @"Root folder contains 2 objects");
@@ -108,7 +108,7 @@
     NSString *renamedObjectName = [retrieved name];
     STAssertTrue([renamedObjectName isEqualToString:renamedName], @"Folder is renamed successfully.");
 
-    rootContents = [_rootFolder getContents];
+    rootContents = [_rootFolder contents];
     for (FileObject *currentObject in rootContents) {
         if ([currentObject isKindOfClass:[Folder class]] && [[currentObject name] isEqualToString:testFolderName]) {
             retrieved = (Folder*)currentObject;
@@ -131,7 +131,7 @@
     File *fileDeletionTarget = [File fileWithName:testFileName Contents:testFolderName inFolder:_rootFolder];
     STAssertTrue([fileDeletionTarget remove], @"File deletion returns YES.");
     
-    NSArray *rootContents = [_rootFolder getContents];
+    NSArray *rootContents = [_rootFolder contents];
     int expected = 1;
     int actual = [rootContents count];
     STAssertEquals(expected, actual, @"Root folder has only the External Applications folder in it.");

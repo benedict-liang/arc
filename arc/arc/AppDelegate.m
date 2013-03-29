@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "FileHelper.h"
+#import <Dropbox/Dropbox.h>
 
 @implementation AppDelegate
 
@@ -27,8 +28,15 @@
         
         // Pass the file to whatever needs it.
         // <Fill this in here.>
-        NSString *contents = [receivedFile getContents];
         return YES;
+    } else {
+        // Pass off to DropBox for authentication.
+        DBAccount *dropboxAccount = [[DBAccountManager sharedManager] handleOpenURL:url];
+        if (dropboxAccount) {
+            // Set up the DropBox Filesystem.
+            DBFilesystem *dropboxFilesystem = [[DBFilesystem alloc] initWithAccount:dropboxAccount];
+            [DBFilesystem setSharedFilesystem:dropboxFilesystem];
+        }
     }
     return NO;
 }
@@ -51,19 +59,28 @@
     if (![fileManager fileExistsAtPath:[newFileURL path]]) {
         [fileManager copyItemAtURL:sampleFileURL toURL:newFileURL error:nil];
         [[RootFolder getInstance] flagForRefresh];
-        NSArray *contents = [[RootFolder getInstance] getContents];
     }
     if (![fileManager fileExistsAtPath:[newFile1URL path]]) {
         [fileManager copyItemAtURL:sampleFile1URL toURL:newFile1URL error:nil];
         [[RootFolder getInstance] flagForRefresh];
-        //NSArray *contents = [[RootFolder getInstance] getContents];
     }
     if (![fileManager fileExistsAtPath:[newFile2URL path]]) {
         [fileManager copyItemAtURL:sampleFile2URL toURL:newFile2URL error:nil];
         [[RootFolder getInstance] flagForRefresh];
-        //NSArray *contents = [[RootFolder getInstance] getContents];
     }
     // End of temporary code.
+    
+    // Create the DropBox account manager.
+    DBAccountManager* dbAccountManager =
+    [[DBAccountManager alloc] initWithAppKey:CLOUD_DROPBOX_KEY secret:CLOUD_DROPBOX_SECRET];
+    [DBAccountManager setSharedManager:dbAccountManager];
+    DBAccount *dbAccount = dbAccountManager.linkedAccount;
+    
+    if (dbAccount) {
+        // We already have an account, and can set up the DropBox file system.
+        DBFilesystem *dbFilesystem = [[DBFilesystem alloc] initWithAccount:dbAccount];
+        [DBFilesystem setSharedFilesystem:dbFilesystem];
+    }
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
