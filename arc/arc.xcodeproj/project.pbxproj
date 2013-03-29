@@ -70,7 +70,6 @@
 		FC4B26CE16FF6E3800E1DC49 /* LeftBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B26CD16FF6E3700E1DC49 /* LeftBarViewController.m */; };
 		FCB0548017034DE6007832D7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FCB0547F17034DE6007832D7 /* README.md */; };
 		FCB0548417036010007832D7 /* SyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB0548317036010007832D7 /* SyntaxHighlight.m */; };
-		FCE665331706004C0055F69C /* backbone.js in Sources */ = {isa = PBXBuildFile; fileRef = FCE665321706004C0055F69C /* backbone.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */

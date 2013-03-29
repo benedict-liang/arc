@@ -14,5 +14,5 @@
 @interface LeftBarViewController : UIViewController<SubViewController>
 @property FileNavigationViewController* fileNav;
 @property UINavigationController* navController;
-- (id)initWithFolder:(Folder*)folder;
+- (id)initWithFolder:(Folder*)folder delegate:(id)del;
 @end

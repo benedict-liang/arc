@@ -40,8 +40,7 @@
     _codeView.delegate = self;
 
     // LeftBar
-    _leftBar = [[LeftBarViewController alloc] initWithFolder:_rootFolder];
-    _leftBar.delegate = self;
+    _leftBar = [[LeftBarViewController alloc] initWithFolder:_rootFolder delegate:self];
     
     
     CGRect window = [[UIScreen mainScreen] bounds];
