@@ -22,13 +22,16 @@
     
     if (ruleKeysDictionary == nil) {
         ruleKeysDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                              @"", @"name",//[NSValue valueWithPointer:@selector(foo)],
-                              @"", @"begin",
-                              @"", @"end",
+                              [NSValue valueWithPointer:@selector(resolveReturnValue:)], @"name",//[NSValue valueWithPointer:@selector(foo)],
+                              [NSValue valueWithPointer:@selector(resolveReturnValue:)], @"begin",
+                              [NSValue valueWithPointer:@selector(resolveReturnValue:)], @"end",
+                              [NSValue valueWithPointer:@selector(resolveReturnValue:)], @"match",
+                              [NSValue valueWithPointer:@selector(resolveDeletes:)], @"comment",
                               [NSValue valueWithPointer:@selector(resolveCaptures:)], @"captures",
                               [NSValue valueWithPointer:@selector(resolveCaptures:)], @"beginCaptures", 
                               [NSValue valueWithPointer:@selector(resolveCaptures:)], @"endCaptures",
-                              @"", @"repository",
+                              // TODO: implement method to resolve patterns
+                              [NSValue valueWithPointer:@selector(resolveReturnValue:)], @"patterns",
                               [NSValue valueWithPointer:@selector(resolveInclude:)], @"include",
                               nil];
     }
@@ -65,6 +68,20 @@
 }
 
 #pragma mark - Grammar Processing
+
+- (id)resolveReturnValue:(id)value {
+    return value;
+}
+
+- (id)resolveDeletes:(id)value {
+    return nil;
+}
+
+- (id)resolveCaptures:(id)value {
+    //return an array of scopes
+    
+    return nil;
+}
 
 // Replaces includes with related variable values
 - (id)resolveInclude:(id)value {
