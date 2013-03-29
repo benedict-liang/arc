@@ -10,4 +10,13 @@
 
 @implementation DropBoxManager
 
+// Downloads the given DBFile into the given Folder.
+// Returns the resulting File object if successful, nil otherwise.
++ (File*)saveDBFile:(DBFile*)dbFile toFolder:(Folder*)folder
+{
+    NSString *fileName = [[[dbFile info] path] name];
+    NSString *fileContents = [dbFile readString:nil];
+    return [File fileWithName:fileName Contents:fileContents inFolder:folder];
+}
+
 @end
