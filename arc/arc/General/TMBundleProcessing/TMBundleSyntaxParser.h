@@ -13,6 +13,9 @@
 
 + (NSArray*)getKeyList:(NSString*)TMBundleName;
 + (NSArray*)getPlistData:(NSString*)TMBundleName withSectionHeader:(NSString*)sectionHeader;
-+ (NSArray*)getPatternsArray:(NSArray*)patternsSection;
+
+// Returns a patterns array that is stripped of all unused keys/values,
+// and is now only a level deep for each pattern group.
++ (NSArray*)getPatternsArray:(NSString*)TMBundleName;
 
 @end
