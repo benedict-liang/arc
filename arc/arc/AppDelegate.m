@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "FileHelper.h"
+#import <Dropbox/Dropbox.h>
 
 @implementation AppDelegate
 
@@ -28,6 +29,13 @@
         // Pass the file to whatever needs it.
         // <Fill this in here.>
         return YES;
+    } else {
+        // Pass off to DropBox.
+        DBAccount *dropboxAccount = [[DBAccountManager sharedManager] handleOpenURL:url];
+        if (dropboxAccount) {
+            DBFilesystem *dropboxFilesystem = [[DBFilesystem alloc] initWithAccount:dropboxAccount];
+            [DBFilesystem setSharedFilesystem:dropboxFilesystem];
+        }
     }
     return NO;
 }

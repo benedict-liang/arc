@@ -21,6 +21,7 @@
 		026BC475170589B000A9AA5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC474170589B000A9AA5F /* Security.framework */; };
 		026BC477170589BD00A9AA5F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC476170589BD00A9AA5F /* SystemConfiguration.framework */; };
 		026BC479170589C600A9AA5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC478170589C600A9AA5F /* QuartzCore.framework */; };
+		026BC47E1705923500A9AA5F /* DropBoxManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 026BC47D1705923500A9AA5F /* DropBoxManager.m */; };
 		028DA2D716FD827000E2E5D9 /* RootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 028DA2D616FD826F00E2E5D9 /* RootFolder.m */; };
 		02B04FCA1701672700FE51CB /* GameObject.h in Resources */ = {isa = PBXBuildFile; fileRef = 02B04FC91701608C00FE51CB /* GameObject.h */; };
 		4C43F8ED16F86AA900159B29 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
@@ -90,6 +91,8 @@
 		026BC474170589B000A9AA5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		026BC476170589BD00A9AA5F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		026BC478170589C600A9AA5F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		026BC47C1705923500A9AA5F /* DropBoxManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxManager.h; sourceTree = "<group>"; };
+		026BC47D1705923500A9AA5F /* DropBoxManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxManager.m; sourceTree = "<group>"; };
 		028DA2D516FD826F00E2E5D9 /* RootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootFolder.h; sourceTree = "<group>"; };
 		028DA2D616FD826F00E2E5D9 /* RootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootFolder.m; sourceTree = "<group>"; };
 		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
@@ -345,6 +348,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		026BC47A1705913200A9AA5F /* Local Files */ = {
+			isa = PBXGroup;
+			children = (
+				028DA2D516FD826F00E2E5D9 /* RootFolder.h */,
+				028DA2D616FD826F00E2E5D9 /* RootFolder.m */,
+				4C43F90F16F86AD000159B29 /* FileObject.h */,
+				4C43F91016F86AD000159B29 /* FileObject.m */,
+				025B52A916F86C4B00C20559 /* Folder.h */,
+				025B52AA16F86C4B00C20559 /* Folder.m */,
+				025B52AC16F86C8700C20559 /* File.h */,
+				025B52AD16F86C8700C20559 /* File.m */,
+			);
+			name = "Local Files";
+			sourceTree = "<group>";
+		};
+		026BC47B1705913A00A9AA5F /* DropBox */ = {
+			isa = PBXGroup;
+			children = (
+				026BC47C1705923500A9AA5F /* DropBoxManager.h */,
+				026BC47D1705923500A9AA5F /* DropBoxManager.m */,
+			);
+			name = DropBox;
+			sourceTree = "<group>";
+		};
 		4C43F8E016F86AA800159B29 = {
 			isa = PBXGroup;
 			children = (
@@ -422,14 +449,8 @@
 			children = (
 				8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */,
 				8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */,
-				028DA2D516FD826F00E2E5D9 /* RootFolder.h */,
-				028DA2D616FD826F00E2E5D9 /* RootFolder.m */,
-				4C43F90F16F86AD000159B29 /* FileObject.h */,
-				4C43F91016F86AD000159B29 /* FileObject.m */,
-				025B52A916F86C4B00C20559 /* Folder.h */,
-				025B52AA16F86C4B00C20559 /* Folder.m */,
-				025B52AC16F86C8700C20559 /* File.h */,
-				025B52AD16F86C8700C20559 /* File.m */,
+				026BC47A1705913200A9AA5F /* Local Files */,
+				026BC47B1705913A00A9AA5F /* DropBox */,
 				026AC54316FF06F6001E03E5 /* FileHelper.h */,
 				026AC54416FF06F6001E03E5 /* FileHelper.m */,
 			);
@@ -1082,6 +1103,7 @@
 				8F1510BC1704483500115E5E /* test-packer-non62-input.js in Sources */,
 				8F1510C9170468B100115E5E /* TMBundleThemeHandler.m in Sources */,
 				8F1510CC1704697900115E5E /* TMBundleGrammar.m in Sources */,
+				026BC47E1705923500A9AA5F /* DropBoxManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
