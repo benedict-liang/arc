@@ -15,5 +15,6 @@
 @interface SyntaxHighlight : NSObject <CodeViewMiddleware>
 @property NSArray* patterns;
 @property NSString* content;
+@property NSDictionary* theme;
 @property ArcAttributedString* output;
 @end

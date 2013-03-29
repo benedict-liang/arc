@@ -70,14 +70,13 @@
     // Resize Subviews
     [self resizeSubViews];
     
-    NSArray *sectionHeaders = [TMBundleSyntaxParser getKeyList:@"html.tmbundle"];
-    NSArray *patternsArray = [TMBundleSyntaxParser getPlistData:@"html.tmbundle"
+    NSArray *sectionHeaders = [TMBundleSyntaxParser getKeyList:@"javascript.tmbundle"];
+    NSArray *patternsArray = [TMBundleSyntaxParser getPlistData:@"javascript.tmbundle"
                                                withSectionHeader:[sectionHeaders objectAtIndex:0]];
     
     //NSLog(@"section headers array: %@", sectionHeaders);
     //NSLog(@"patterns array: %@", patternsArray);
     NSDictionary *temp = [TMBundleThemeHandler produceStylesWithTheme:nil];
-    
     // tmp
     [_codeView showFile:[ApplicationState getSampleFile]];
 }
