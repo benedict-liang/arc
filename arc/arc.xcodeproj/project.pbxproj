@@ -16,6 +16,11 @@
 		026AC54516FF06F7001E03E5 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 026AC54416FF06F6001E03E5 /* FileHelper.m */; };
 		026AC54616FF06F7001E03E5 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 026AC54416FF06F6001E03E5 /* FileHelper.m */; };
 		026AC54716FF104D001E03E5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7F16FDF61C00C9DED3 /* Constants.m */; };
+		026BC4711705895500A9AA5F /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC4701705895500A9AA5F /* Dropbox.framework */; };
+		026BC473170589A700A9AA5F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC472170589A700A9AA5F /* CFNetwork.framework */; };
+		026BC475170589B000A9AA5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC474170589B000A9AA5F /* Security.framework */; };
+		026BC477170589BD00A9AA5F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC476170589BD00A9AA5F /* SystemConfiguration.framework */; };
+		026BC479170589C600A9AA5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC478170589C600A9AA5F /* QuartzCore.framework */; };
 		028DA2D716FD827000E2E5D9 /* RootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 028DA2D616FD826F00E2E5D9 /* RootFolder.m */; };
 		02B04FCA1701672700FE51CB /* GameObject.h in Resources */ = {isa = PBXBuildFile; fileRef = 02B04FC91701608C00FE51CB /* GameObject.h */; };
 		4C43F8ED16F86AA900159B29 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
@@ -80,6 +85,11 @@
 		025B52AD16F86C8700C20559 /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
 		026AC54316FF06F6001E03E5 /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
 		026AC54416FF06F6001E03E5 /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
+		026BC4701705895500A9AA5F /* Dropbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dropbox.framework; path = arc/Dropbox.framework; sourceTree = "<group>"; };
+		026BC472170589A700A9AA5F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		026BC474170589B000A9AA5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		026BC476170589BD00A9AA5F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		026BC478170589C600A9AA5F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		028DA2D516FD826F00E2E5D9 /* RootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootFolder.h; sourceTree = "<group>"; };
 		028DA2D616FD826F00E2E5D9 /* RootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootFolder.m; sourceTree = "<group>"; };
 		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
@@ -312,8 +322,13 @@
 				4CD06B8616FE0FE600C9DED3 /* CoreText.framework in Frameworks */,
 				4C43F8ED16F86AA900159B29 /* UIKit.framework in Frameworks */,
 				4C43F8EF16F86AA900159B29 /* Foundation.framework in Frameworks */,
+				026BC479170589C600A9AA5F /* QuartzCore.framework in Frameworks */,
+				026BC473170589A700A9AA5F /* CFNetwork.framework in Frameworks */,
+				026BC477170589BD00A9AA5F /* SystemConfiguration.framework in Frameworks */,
 				4C43F8F116F86AA900159B29 /* CoreGraphics.framework in Frameworks */,
+				026BC475170589B000A9AA5F /* Security.framework in Frameworks */,
 				4C43F8F316F86AA900159B29 /* CoreData.framework in Frameworks */,
+				026BC4711705895500A9AA5F /* Dropbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +367,11 @@
 		4C43F8EB16F86AA900159B29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				026BC478170589C600A9AA5F /* QuartzCore.framework */,
+				026BC476170589BD00A9AA5F /* SystemConfiguration.framework */,
+				026BC474170589B000A9AA5F /* Security.framework */,
+				026BC472170589A700A9AA5F /* CFNetwork.framework */,
+				026BC4701705895500A9AA5F /* Dropbox.framework */,
 				4CD06B8416FE0FC900C9DED3 /* CoreText.framework */,
 				025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */,
 				4C43F8EC16F86AA900159B29 /* UIKit.framework */,
@@ -1168,6 +1188,10 @@
 		4C43F90C16F86AA900159B29 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/arc\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
 				INFOPLIST_FILE = "arc/arc-Info.plist";
@@ -1179,6 +1203,10 @@
 		4C43F90D16F86AA900159B29 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/arc\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
 				INFOPLIST_FILE = "arc/arc-Info.plist";
