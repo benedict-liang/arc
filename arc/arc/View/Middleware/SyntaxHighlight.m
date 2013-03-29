@@ -11,11 +11,13 @@
 
 @implementation SyntaxHighlight
 
--(void)initPatterns {
+-(void)initPatternsAndTheme {
     
     NSArray *patternsSection = [TMBundleSyntaxParser getPlistData:@"html.tmbundle" withSectionHeader:@"patterns"];
     _patterns = [TMBundleSyntaxParser getPatternsArray:patternsSection];
+    _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
     NSLog(@"patterns array: %@", _patterns);
+    /*
         _patterns = @[
                   @{@"keyword": @{@"patterns": @[@"\\sif\\s", @"\\swhile\\s", @"@property", @"@interface", @"#import"],
                                   @"foreground": [UIColor redColor]}},
@@ -24,6 +26,7 @@
                   @{@"parens": @{@"patterns": @[@"\\{", @"\\}", @"\\[", @"\\]",@"\\)",@"\\("],
                                  @"foreground": [UIColor brownColor]}}
                   ];
+     */
 
 }
 - (NSArray*)foundPattern:(NSString*)p {
@@ -64,7 +67,7 @@
 }
 - (void)execOn:(ArcAttributedString *)arcAttributedString FromFile:(File *)file {
     _output = arcAttributedString;
-    [self initPatterns];
+    [self initPatternsAndTheme];
     _content = [file contents];
     [self iterPatternsAndApply];
 }
