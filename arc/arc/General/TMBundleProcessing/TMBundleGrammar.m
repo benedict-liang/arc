@@ -64,7 +64,13 @@
     _repositories = [NSDictionary dictionaryWithDictionary:tempRepositoryDictionary];
 }
 
-- (id)resolveInclude:(NSString*)includeString {
+// Replaces includes with related variable values
+- (id)resolveInclude:(id)value {
+    if (![value isKindOfClass:[NSString class]]) {
+        return nil;
+    }
+    NSString *includeString = (NSString*)value;
+    
     // Handles 3 types of includes
     if ([includeString isEqualToString:@"$self"]) {
         //Skip $self for now
@@ -87,6 +93,16 @@
     }
     
     return [_repositories objectForKey:repositoryName];
+}
+
+
+#pragma mark - Public API
+
+- (void)parseGrammar:(NSString*)key withValue:(id)value {
+    NSValue *ruleAction = [[TMBundleGrammar getRuleKeysDictionary] objectForKey:key];
+    
+    SEL selector = [ruleAction pointerValue];
+    [self performSelector:selector withObject:value];
 }
 
 @end
