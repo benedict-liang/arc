@@ -15,6 +15,7 @@
 @property File *currentFile;
 @property CoreTextUIView *coreTextView;
 @property ArcAttributedString *arcAttributedString;
+- (void)refreshSubViewSizes;
 @end
 
 @implementation CodeViewController
@@ -47,7 +48,13 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [self refreshSubViewSizes];
+}
+
+- (void)refreshSubViewSizes
+{
     [_coreTextView refresh];
+
     // Resize codeView (parent) Content Size
     self.view.contentSize = _coreTextView.bounds.size;
 }
@@ -67,6 +74,9 @@
 
     // Render Code to screen
     [self render];
+    
+    // Update Sizes of SubViews
+    [self refreshSubViewSizes];
 }
 
 - (void)loadFile:(File*)file
