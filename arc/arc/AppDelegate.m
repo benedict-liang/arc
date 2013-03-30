@@ -79,7 +79,8 @@
     
     // Create the DropBox account manager.
     DBAccountManager* dbAccountManager =
-    [[DBAccountManager alloc] initWithAppKey:CLOUD_DROPBOX_KEY secret:CLOUD_DROPBOX_SECRET];
+    [[DBAccountManager alloc] initWithAppKey:(NSString*)CLOUD_DROPBOX_KEY
+                                      secret:(NSString*)CLOUD_DROPBOX_SECRET];
     [DBAccountManager setSharedManager:dbAccountManager];
     DBAccount *dbAccount = dbAccountManager.linkedAccount;
     
@@ -91,11 +92,13 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    // Create MainViewController and set as Window's RootViewController
+    // Create MainViewController
     MainViewController *mainViewController = [[MainViewController alloc] init];
+    
+    // Set MainViewController as RootViewController
     self.window.RootViewController = mainViewController;
-
     self.window.backgroundColor = [UIColor whiteColor];
+
     [self.window makeKeyAndVisible];
     return YES;
 }

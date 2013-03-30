@@ -22,17 +22,24 @@
 @synthesize leftBar = _leftBar;
 @synthesize rootFolder = _rootFolder;
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _rootFolder = [RootFolder sharedRootFolder];
+    }
+    return self;
+}
+
 - (void)loadView
 {
     [self setView:[[UIView alloc]
-      initWithFrame:[[UIScreen mainScreen] bounds]]];
+                   initWithFrame:[[UIScreen mainScreen] bounds]]];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    _rootFolder = [RootFolder sharedRootFolder];
     
     // CodeView
     _codeView = [[CodeViewController alloc] init];
