@@ -19,8 +19,7 @@
 
 - (void)initPatternsAndTheme {
     
-    NSArray *patternsSection = [TMBundleSyntaxParser getPlistData:@"html.tmbundle" withSectionHeader:@"patterns"];
-    _patterns = [TMBundleSyntaxParser getPatternsArray:patternsSection];
+    _patterns = [TMBundleSyntaxParser getPatternsArray:@"javascript.tmbundle"];
     _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
     //NSLog(@"patterns array: %@", _patterns);
 }
