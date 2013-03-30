@@ -1,3 +1,6 @@
+/*
+ Testing block comment
+ */
 $(document).ready(function(){
 
 var map;
