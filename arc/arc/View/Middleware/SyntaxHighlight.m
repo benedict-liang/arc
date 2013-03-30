@@ -22,7 +22,7 @@
     NSArray *patternsSection = [TMBundleSyntaxParser getPlistData:@"html.tmbundle" withSectionHeader:@"patterns"];
     _patterns = [TMBundleSyntaxParser getPatternsArray:patternsSection];
     _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
-    NSLog(@"patterns array: %@", _patterns);
+    //NSLog(@"patterns array: %@", _patterns);
 }
 - (NSArray*)foundPattern:(NSString*)p {
     NSError *error = NULL;
@@ -73,6 +73,7 @@
     }
     return scopes;
 }
+
 - (void)applyStyleToScope:(NSString*)name range:(NSRange)range {
     NSDictionary* style = [(NSDictionary*)[_theme objectForKey:@"scopes"] objectForKey:name];
     if (style) {
@@ -80,6 +81,7 @@
     }
     NSLog(@"%@",[self capturableScopes:name]);
 }
+
 - (void)applyStyleToCaptures:(NSArray*)captures pattern:(NSString*)match {
     NSArray *captureMatches = nil;
     for (int i = 0; i < [captures count]; i++) {
