@@ -100,14 +100,10 @@
             [self applyStyleToCaptures:captures pattern:match];
         }
         if (beginCaptures && begin) {
-            for (int i =0; i < [beginCaptures count]; i++) {
-                captureMatches = [self foundPattern:begin capture:i];
-                for (NSValue *v in captureMatches) {
-                    NSRange range;
-                    [v getValue:&range];
-                    [self applyStyleToScope:[captures objectAtIndex:i] range:range];
-                }
-            }
+            [self applyStyleToCaptures:beginCaptures pattern:begin];
+        }
+        if (endCaptures && end) {
+            [self applyStyleToCaptures:endCaptures pattern:end];
         }
     }
 }
