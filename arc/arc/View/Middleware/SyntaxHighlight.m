@@ -113,8 +113,8 @@
         }
     }
 }
--(void)iterPatternsAndApplyForRange:(NSRange)contentRange {
-    for (NSDictionary* syntaxItem in _patterns) {
+-(void)iterPatternsAndApplyForRange:(NSRange)contentRange patterns:(NSArray*)patterns {
+    for (NSDictionary* syntaxItem in patterns) {
         NSString *name = [syntaxItem objectForKey:@"name"];
         NSString *match = [syntaxItem objectForKey:@"match"];
         NSString *begin = [syntaxItem objectForKey:@"begin"];
@@ -122,6 +122,7 @@
         NSString *end = [syntaxItem objectForKey:@"end"];
         NSArray *endCaptures = [syntaxItem objectForKey:@"endCaptures"];
         NSArray *captures = [syntaxItem objectForKey:@"captures"];
+        NSArray *embedPatterns = [syntaxItem objectForKey:@"patterns"];
         
         NSArray *nameMatches = nil;
         //case name, match
@@ -150,10 +151,15 @@
             
             while (brange.length != 0 && erange.location + erange.length < [_content length] ) {
                 
-                
                 int bEnds = brange.location + brange.length;
                 erange = [self findFirstPattern:end range:NSMakeRange(bEnds, [_content length] - bEnds)];
                 int eEnds = erange.location + erange.length;
+                
+                if (embedPatterns) {
+                    
+                    [self iterPatternsAndApplyForRange:NSMakeRange(brange.location, eEnds) patterns:embedPatterns];
+                }
+                
                 if (brange.length > 0 && erange.length > 0 && eEnds <= [_content length]) {
                     [self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location)];
                 }
@@ -168,6 +174,6 @@
     _output = arcAttributedString;
     [self initPatternsAndTheme];
     _content = [file contents];
-    [self iterPatternsAndApplyForRange:NSMakeRange(0, [_content length])];
+    [self iterPatternsAndApplyForRange:NSMakeRange(0, [_content length]) patterns:_patterns];
 }
 @end
