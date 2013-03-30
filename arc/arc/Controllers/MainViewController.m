@@ -24,8 +24,7 @@
 
 - (void)loadView
 {
-    [self setView:
-     [[UIView alloc]
+    [self setView:[[UIView alloc]
       initWithFrame:[[UIScreen mainScreen] bounds]]];
 }
 
@@ -40,9 +39,9 @@
     _codeView.delegate = self;
 
     // LeftBar
-    _leftBar = [[LeftBarViewController alloc] initWithFolder:_rootFolder delegate:self];
-    
-    
+    _leftBar = [[LeftBarViewController alloc] initWithFolder:_rootFolder
+                                                    delegate:self];
+
     CGRect window = [[UIScreen mainScreen] bounds];
     
     // ToolBar. Active only in portrait mode for now.
