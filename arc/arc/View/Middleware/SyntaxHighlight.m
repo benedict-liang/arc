@@ -38,6 +38,16 @@
     }
     return results;
 }
+- (NSRange)findFirstPattern:(NSString*)p range:(NSRange)range {
+    NSError *error = NULL;
+    
+    NSRegularExpression *regex = [NSRegularExpression
+                                  regularExpressionWithPattern:p
+                                  options:NSRegularExpressionCaseInsensitive
+                                  error:&error];
+    NSTextCheckingResult *res = [regex firstMatchInString:_content options:0 range:range];
+    return [res range];
+}
 - (NSArray*)foundPattern:(NSString*)p capture:(int)c {
     NSError *error = NULL;
     NSMutableArray* results = [[NSMutableArray alloc] init];
@@ -129,7 +139,20 @@
             [self applyStyleToCaptures:endCaptures pattern:end];
         }
         //matching blocks
-        
+        if (name && begin && end) {
+            
+            NSRange brange = [self findFirstPattern:begin range:NSMakeRange(0, [_content length])];
+            
+            int bEnds = brange.location + brange.length;
+            NSRange erange = [self findFirstPattern:end range:NSMakeRange(bEnds, [_content length] - bEnds)];
+            int eEnds = erange.location + erange.length - brange.location;
+            if (brange.length > 0 && erange.length > 0 && (brange.location + eEnds) < [_content length]) {
+                [self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds)];
+                
+            }
+            
+        }
+        /*
         if (name && begin && end) {
             NSArray *begins = [self foundPattern:begin];
             NSArray *ends = [self foundPattern:end];
@@ -150,7 +173,7 @@
             } else {
               //  NSLog(@"blocks don't match");
             }
-        }
+        }*/
     }
 }
 - (void)execOn:(ArcAttributedString *)arcAttributedString FromFile:(File *)file {
