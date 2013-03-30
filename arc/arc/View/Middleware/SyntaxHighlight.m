@@ -39,33 +39,63 @@
     }
     return results;
 }
+- (NSArray*)foundPattern:(NSString*)p capture:(int)c {
+    NSError *error = NULL;
+    NSMutableArray* results = [[NSMutableArray alloc] init];
+    NSRegularExpression *regex = [NSRegularExpression
+                                  regularExpressionWithPattern:p
+                                  options:NSRegularExpressionCaseInsensitive
+                                  error:&error];
+    NSArray* matches = [regex matchesInString:_content options:0 range:NSMakeRange(0, [_content length])];
+    
+    for (NSTextCheckingResult *match in matches) {
+        NSRange range = [match rangeAtIndex:c];
+        [results addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
+    }
+    return results;
+}
 - (void)styleOnRange:(NSRange)range fcolor:(UIColor*)fcolor {
     [_output setColor:[fcolor CGColor] OnRange:range];
 }
 
+- (void)applyStyleToScope:(NSString*)name range:(NSRange)range {
+    NSDictionary* style = [(NSDictionary*)[_theme objectForKey:@"scopes"] objectForKey:name];
+    if (style) {
+        [self styleOnRange:range fcolor:[style objectForKey:@"foreground"]];
+    }
+}
 -(void)iterPatternsAndApply {
     for (NSDictionary* syntaxItem in _patterns) {
         NSString *name = [syntaxItem objectForKey:@"name"];
         NSString *match = [syntaxItem objectForKey:@"match"];
         NSString *begin = [syntaxItem objectForKey:@"begin"];
-        NSString *beginCaptures = [syntaxItem objectForKey:@"beginCaptures"];
+        NSArray *beginCaptures = [syntaxItem objectForKey:@"beginCaptures"];
         NSString *end = [syntaxItem objectForKey:@"end"];
-        NSString *endCaptures = [syntaxItem objectForKey:@"endCaptures"];
+        NSArray *endCaptures = [syntaxItem objectForKey:@"endCaptures"];
+        NSArray *captures = [syntaxItem objectForKey:@"captures"];
         
         NSArray *nameMatches = nil;
-        
+        NSArray *captureMatches = nil;
         //case name, match
         if (name && match) {
             nameMatches = [self foundPattern:match];
             for (NSValue *v in nameMatches) {
                 NSRange range;
                 [v getValue:&range];
-                NSDictionary* style = [(NSDictionary*)[_theme objectForKey:@"scopes"] objectForKey:name];
-                if (style) {
-                    [self styleOnRange:range fcolor:[style objectForKey:@"foreground"]];
+                [self applyStyleToScope:name range:range];
+            }
+        }
+        if (captures && match) {
+            for (int i = 0; i < [captures count]; i++) {
+                captureMatches = [self foundPattern:match capture:i];
+                for (NSValue *v in captureMatches) {
+                    NSRange range;
+                    [v getValue:&range];
+                    [self applyStyleToScope:[captures objectAtIndex:i] range:range];
                 }
             }
         }
+        
     }
 }
 - (void)execOn:(ArcAttributedString *)arcAttributedString FromFile:(File *)file {
