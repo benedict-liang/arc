@@ -10,80 +10,73 @@
 #import "MainViewController.h"
 
 @interface MainViewController ()
-@property CodeViewController *codeView;
-@property LeftBarViewController *leftBar;
+@property CodeViewController *codeViewController;
+@property LeftBarViewController *leftBarViewController;
 @property RootFolder *rootFolder;
 @property UIToolbar *toolbar;
 @property UIPopoverController *popover;
 @end
 
 @implementation MainViewController
-@synthesize codeView = _codeView;
-@synthesize leftBar = _leftBar;
+@synthesize codeViewController = _codeViewController;
+@synthesize leftBarViewController = _leftBarViewController;
 @synthesize rootFolder = _rootFolder;
 
 - (id)init
 {
     self = [super init];
     if (self) {
+        // tmp. should use application state
         _rootFolder = [RootFolder sharedRootFolder];
+        
+//        // CodeView
+//        _codeViewController = [[CodeViewController alloc] init];
+//        _codeViewController.delegate = self;
+//        
+//        // LeftBar
+//        _leftBarViewController = [[LeftBarViewController alloc] init];
+//        _leftBarViewController.delegate = self;
+//        
+//        // MainViewController is a SplitViewController
+//        self.viewControllers = [NSArray arrayWithObjects:
+//                                _leftBarViewController,
+//                                _codeViewController,
+//                                nil];
     }
     return self;
-}
-
-- (void)loadView
-{
-    [self setView:[[UIView alloc]
-                   initWithFrame:[[UIScreen mainScreen] bounds]]];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // CodeView
-    _codeView = [[CodeViewController alloc] init];
-    _codeView.delegate = self;
 
-    // LeftBar
-    _leftBar = [[LeftBarViewController alloc] initWithFolder:_rootFolder
-                                                    delegate:self];
-
-    CGRect window = [[UIScreen mainScreen] bounds];
-    
-    // ToolBar. Active only in portrait mode for now.
-    _toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, window.size.width, SIZE_TOOLBAR_HEIGHT)];
-    
-    //Toolbar Button
-    UIBarButtonItem *overlayButton = [[UIBarButtonItem alloc] initWithTitle:@"Open"
-                                                                      style:UIBarButtonSystemItemAction
-                                                                     target:self
-                                                                     action:@selector(triggerPopover:)];
-    [_toolbar setItems:@[overlayButton]];
-    [_toolbar setBarStyle:UIBarStyleBlackTranslucent];
-    
-    //Popover
-    _popover = [[UIPopoverController alloc] initWithContentViewController:_leftBar];
-    _popover.popoverContentSize = SIZE_POPOVER;
-
-    
-    // Add Subviews to Main View
-    [self.view addSubview:_leftBar.view];
-    
-    [self.view addSubview:_codeView.view];
+//    // ToolBar. Active only in portrait mode for now.
+//    _toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, window.size.width, SIZE_TOOLBAR_HEIGHT)];
+//    
+//    //Toolbar Button
+//    UIBarButtonItem *overlayButton = [[UIBarButtonItem alloc] initWithTitle:@"Open"
+//                                                                      style:UIBarButtonSystemItemAction
+//                                                                     target:self
+//                                                                     action:@selector(triggerPopover:)];
+//    [_toolbar setItems:@[overlayButton]];
+//    [_toolbar setBarStyle:UIBarStyleBlackTranslucent];
+//    
+//    //Popover
+//    _popover = [[UIPopoverController alloc] initWithContentViewController:_leftBar];
+//    _popover.popoverContentSize = SIZE_POPOVER;
     
     // Resize Subviews
-    [self resizeSubViews];
+//    [self resizeSubViews];
     
-    NSArray *sectionHeaders = [TMBundleSyntaxParser getKeyList:@"javascript.tmbundle"];
-    NSArray *patternsArray = [TMBundleSyntaxParser getPlistData:@"javascript.tmbundle"
-                                               withSectionHeader:[sectionHeaders objectAtIndex:0]];
-    
-    //NSLog(@"section headers array: %@", sectionHeaders);
-    //NSLog(@"patterns array: %@", patternsArray);
-    NSDictionary *temp = [TMBundleThemeHandler produceStylesWithTheme:nil];
-    // tmp
-    [_codeView showFile:[ApplicationState getSampleFile]];
+//    NSArray *sectionHeaders = [TMBundleSyntaxParser getKeyList:@"javascript.tmbundle"];
+//    NSArray *patternsArray = [TMBundleSyntaxParser getPlistData:@"javascript.tmbundle"
+//                                               withSectionHeader:[sectionHeaders objectAtIndex:0]];
+//    
+//    //NSLog(@"section headers array: %@", sectionHeaders);
+//    //NSLog(@"patterns array: %@", patternsArray);
+//    NSDictionary *temp = [TMBundleThemeHandler produceStylesWithTheme:nil];
+//    // tmp
+//    [_codeViewController showFile:[ApplicationState getSampleFile]];
 }
 
 // Resizes SubViews Based on Application's Orientation
@@ -97,15 +90,15 @@
     if (orientation == UIDeviceOrientationPortrait ||
         orientation == UIDeviceOrientationPortraitUpsideDown) {
         
-        _codeView.view.frame = window;
+        _codeViewController.view.frame = window;
         [self.view addSubview:_toolbar];
         
     } else {
-        _codeView.view.frame = CGRectMake(SIZE_LEFTBAR_WIDTH, 0, window.size.width, window.size.height);
-        _leftBar.view.frame = CGRectMake(0, 0, SIZE_LEFTBAR_WIDTH, window.size.height);
+        _codeViewController.view.frame = CGRectMake(SIZE_LEFTBAR_WIDTH, 0, window.size.width, window.size.height);
+        _leftBarViewController.view.frame = CGRectMake(0, 0, SIZE_LEFTBAR_WIDTH, window.size.height);
         [_toolbar removeFromSuperview];
         [_popover dismissPopoverAnimated:NO];
-        [self.view addSubview:_leftBar.view];
+        [self.view addSubview:_leftBarViewController.view];
     }
     
 }
@@ -126,7 +119,7 @@
 // Shows the file using the CodeViewController
 - (void)fileSelected:(File*)file
 {
-    [_codeView showFile:file];
+    [_codeViewController showFile:file];
 }
 
 // Updates Current Folder being Viewed

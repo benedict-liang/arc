@@ -90,15 +90,28 @@
         [DBFilesystem setSharedFilesystem:dbFilesystem];
     }
     
+    // Create Window Object
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Create MainViewController
     MainViewController *mainViewController = [[MainViewController alloc] init];
     
+    // Create CodeViewController
+    CodeViewController *codeViewController = [[CodeViewController alloc] init];
+    codeViewController.delegate = mainViewController;
+    
+    // Create LeftBarViewController
+    LeftBarViewController *leftBarViewController = [[LeftBarViewController alloc] init];
+    leftBarViewController.delegate = mainViewController;
+    
+    // Assign SubViewControllers
+    mainViewController.viewControllers = [NSArray arrayWithObjects:
+                                          leftBarViewController,
+                                          codeViewController,
+                                          nil];
+    
     // Set MainViewController as RootViewController
     self.window.RootViewController = mainViewController;
-    self.window.backgroundColor = [UIColor whiteColor];
-
     [self.window makeKeyAndVisible];
     return YES;
 }

@@ -15,11 +15,20 @@
 @implementation LeftBarViewController
 @synthesize delegate;
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.view.backgroundColor = [UIColor blueColor];
+    }
+    return self;
+}
+
+
 - (id)initWithFolder:(Folder*)folder delegate:(id)del{
     self = [super init];
     if (self) {
         self.delegate = del;
-        [self setupFileNavWithFolder:folder];
     }
     return self;
 }
