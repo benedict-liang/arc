@@ -95,7 +95,16 @@
                 }
             }
         }
-        
+        if (beginCaptures && begin) {
+            for (int i =0; i < [beginCaptures count]; i++) {
+                captureMatches = [self foundPattern:begin capture:i];
+                for (NSValue *v in captureMatches) {
+                    NSRange range;
+                    [v getValue:&range];
+                    [self applyStyleToScope:[captures objectAtIndex:i] range:range];
+                }
+            }
+        }
     }
 }
 - (void)execOn:(ArcAttributedString *)arcAttributedString FromFile:(File *)file {
