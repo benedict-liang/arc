@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
+#import <Dropbox/Dropbox.h>
 #import "Folder.h"
 
 @interface DropBoxFolder : Folder

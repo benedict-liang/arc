@@ -21,7 +21,7 @@
     
     _patterns = [TMBundleSyntaxParser getPatternsArray:@"javascript.tmbundle"];
     _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
-    NSLog(@"patterns array: %@", _patterns);
+    //NSLog(@"patterns array: %@", _patterns);
 }
 - (NSArray*)foundPattern:(NSString*)p {
     NSError *error = NULL;
@@ -57,12 +57,37 @@
     [_output setColor:[fcolor CGColor] OnRange:range];
 }
 
+- (NSArray*)capturableScopes:(NSString*)name {
+    NSArray *splitScopes = [name componentsSeparatedByString:@"."];
+    NSString *accum = nil;
+    NSMutableArray *scopes = [NSMutableArray array];
+    
+    for (NSString*  s in splitScopes) {
+        if (!accum) {
+            accum = s;
+        } else {
+            accum = [accum stringByAppendingFormat:@".%@",s];
+        }
+        [scopes addObject:accum];
+    }
+    return scopes;
+}
+
 - (void)applyStyleToScope:(NSString*)name range:(NSRange)range {
-    NSDictionary* style = [(NSDictionary*)[_theme objectForKey:@"scopes"] objectForKey:name];
-    if (style) {
-        [self styleOnRange:range fcolor:[style objectForKey:@"foreground"]];
+    
+    NSArray* capturableScopes = [self capturableScopes:name];
+    for (NSString *s in capturableScopes) {
+        NSDictionary* style = [(NSDictionary*)[_theme objectForKey:@"scopes"] objectForKey:s];
+        UIColor *fg = nil;
+        if (style) {
+            fg = [style objectForKey:@"foreground"];
+        }
+        if (fg) {
+            [self styleOnRange:range fcolor:fg];
+        }
     }
 }
+
 - (void)applyStyleToCaptures:(NSArray*)captures pattern:(NSString*)match {
     NSArray *captureMatches = nil;
     for (int i = 0; i < [captures count]; i++) {
@@ -104,6 +129,7 @@
             [self applyStyleToCaptures:endCaptures pattern:end];
         }
         //matching blocks
+        /*
         if (name && begin && end) {
             NSArray *begins = [self foundPattern:begin];
             NSArray *ends = [self foundPattern:end];
@@ -121,7 +147,7 @@
             } else {
                 NSLog(@"blocks don't match");
             }
-        }
+        }*/
     }
 }
 - (void)execOn:(ArcAttributedString *)arcAttributedString FromFile:(File *)file {
