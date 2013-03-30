@@ -9,17 +9,17 @@
 #import "RootFolder.h"
 #import "Constants.h"
 
-static RootFolder *singleton = nil;
+static RootFolder *sharedRootFolder = nil;
 
 @implementation RootFolder
 
 // Returns the single RootFolder instance.
-+ (RootFolder*)getInstance
++ (RootFolder*)sharedRootFolder
 {
-    if (singleton == nil) {
-        singleton = [[super allocWithZone:NULL] init];
+    if (sharedRootFolder == nil) {
+        sharedRootFolder = [[super allocWithZone:NULL] init];
     }
-    return singleton;
+    return sharedRootFolder;
 }
 
 - (id)init
@@ -29,7 +29,7 @@ static RootFolder *singleton = nil;
 
     if (self = [super initWithURL:documentUrl parent:nil]) {
         // Create the folder to store documents from other apps.
-        [self createFolder:FOLDER_EXTERNAL_APPLICATIONS];
+        [self createFolder:(NSString*) FOLDER_EXTERNAL_APPLICATIONS];
     }
     return self;
 }

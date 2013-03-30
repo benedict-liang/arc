@@ -36,7 +36,7 @@ static ApplicationState *sharedApplicationState = nil;
     self = [super init];
     if (self) {
         // Defaults || Get Previous State from plist
-        _currentFolderOpened = [RootFolder getInstance];
+        _currentFolderOpened = [RootFolder sharedRootFolder];
         _currentFileOpened = nil;
     }
     return self;
@@ -50,7 +50,7 @@ static ApplicationState *sharedApplicationState = nil;
 // Returns a sample file.
 + (File*)getSampleFile
 {
-    for (FileObject *currentObject in [[RootFolder getInstance] contents]) {
+    for (FileObject *currentObject in [[RootFolder sharedRootFolder] contents]) {
         if ([[currentObject name] isEqualToString:@"GameObject.h"]) {
             return (File*)currentObject;
         }

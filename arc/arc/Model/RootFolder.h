@@ -11,6 +11,6 @@
 @interface RootFolder : Folder
 
 // Returns the single RootFolder instance.
-+ (RootFolder*)getInstance;
++ (RootFolder*)sharedRootFolder;
 
 @end
