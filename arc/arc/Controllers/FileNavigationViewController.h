@@ -10,14 +10,6 @@
 #import "Folder.h"
 #import "SubViewController.h"
 
-@interface FileNavigationViewController : UITableViewController <SubViewController, UITableViewDataSource, UITableViewDelegate>
-
-@property(nonatomic) NSArray* data;
-
-- (id)initWithFolder:(Folder *)folder frame:(CGRect)frame;
-// define delegate property
-@property (nonatomic, assign) id delegate;
-@property UIWindow* window;
-@property FileNavigationViewController* folderView;
-//TODO: needs update view methods upon adding a) a file b) a folder. Alternatively, it could take in a FileObject.
+@interface FileNavigationViewController : UIViewController <SubViewController, UITableViewDelegate, UITableViewDataSource>
+- (void)showFolder:(Folder*)folder;
 @end

@@ -38,8 +38,6 @@
 
 - (void)refresh
 {
-    NSLog(@"%@", NSStringFromCGRect(self.bounds));
-    NSLog(@"%@", NSStringFromCGRect(self.frame));
     [self updateHeight];
     [self setNeedsDisplay];
 }
