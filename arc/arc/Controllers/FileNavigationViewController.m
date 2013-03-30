@@ -60,8 +60,14 @@
                                                           style:UITableViewStylePlain];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
         UIViewAutoresizingFlexibleWidth;
-    _tableView.dataSource = self;
+
+    // TableView Row Height
     _tableView.rowHeight = 60;
+    
+    // Set TableView's Delegate and DataSource
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    
     [self.view addSubview:_tableView];
 }
 
@@ -118,26 +124,14 @@
     cell.textLabel.text = fileObject.name;    
     return cell;
 }
+
 #pragma mark - Table view delegate
 
-//TODO implement protocol to send selected result back to MainView VC
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    
-//    if ([[self.data objectAtIndex:indexPath.row] isKindOfClass:[Folder class]]) {
-//        
-//        // navigation logic
-//        
-//        NSLog(@"%@",self.navigationController);
-//        self.folderView = [[FileNavigationViewController alloc] initWithFolder:[self.data objectAtIndex:indexPath.row] frame:self.view.frame];
-//        
-//        [self.navigationController pushViewController:self.folderView animated:YES];
-//        
-//    } else if ([[self.data objectAtIndex:indexPath.row] isKindOfClass:[File class]]) {
-//        
-//        [self.delegate fileSelected:[self.data objectAtIndex:indexPath.row]];
-//    }
+    NSArray *section = [_filesAndFolders objectAtIndex:indexPath.section];
+    FileObject *fileObject = [section objectAtIndex:indexPath.row];
+    NSLog(@"%@", fileObject.name);
 }
 
 @end
