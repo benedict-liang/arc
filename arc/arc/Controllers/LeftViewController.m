@@ -52,8 +52,12 @@
     [self addChildViewController:_settingsViewController];
     
     // TMP.
-    _fileNavigationViewController.view.frame = self.view.bounds;
-    [self.view addSubview:_fileNavigationViewController.view];
+//    _fileNavigationViewController.view.frame = self.view.bounds;
+//    [self.view addSubview:_fileNavigationViewController.view];
+
+    _settingsViewController.view.frame = self.view.bounds;
+    [self.view addSubview:_settingsViewController.view];
+    
 }
 
 @end
