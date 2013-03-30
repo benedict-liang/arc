@@ -82,9 +82,13 @@
   //  NSLog(@"%@",[self capturableScopes:name]);
     NSArray* capturableScopes = [self capturableScopes:name];
     for (NSString *s in capturableScopes) {
-        NSDictionary* style = [(NSDictionary*)[_theme objectForKey:@"scopes"] objectForKey:name];
+        NSDictionary* style = [(NSDictionary*)[_theme objectForKey:@"scopes"] objectForKey:s];
+        UIColor *fg = nil;
         if (style) {
-            [self styleOnRange:range fcolor:[style objectForKey:@"foreground"]];
+            fg = [style objectForKey:@"foreground"];
+        }
+        if (fg) {
+            [self styleOnRange:range fcolor:fg];
         }
     }
 }
@@ -130,6 +134,7 @@
             [self applyStyleToCaptures:endCaptures pattern:end];
         }
         //matching blocks
+        /*
         if (name && begin && end) {
             NSArray *begins = [self foundPattern:begin];
             NSArray *ends = [self foundPattern:end];
@@ -147,7 +152,7 @@
             } else {
                 NSLog(@"blocks don't match");
             }
-        }
+        }*/
     }
 }
 - (void)execOn:(ArcAttributedString *)arcAttributedString FromFile:(File *)file {
