@@ -58,11 +58,27 @@
     [_output setColor:[fcolor CGColor] OnRange:range];
 }
 
+- (NSArray*)capturableScopes:(NSString*)name {
+    NSArray *splitScopes = [name componentsSeparatedByString:@"."];
+    NSString *accum = nil;
+    NSMutableArray *scopes = [NSMutableArray array];
+    
+    for (NSString*  s in splitScopes) {
+        if (!accum) {
+            accum = s;
+        } else {
+            accum = [accum stringByAppendingFormat:@".%@",s];
+        }
+        [scopes addObject:accum];
+    }
+    return scopes;
+}
 - (void)applyStyleToScope:(NSString*)name range:(NSRange)range {
     NSDictionary* style = [(NSDictionary*)[_theme objectForKey:@"scopes"] objectForKey:name];
     if (style) {
         [self styleOnRange:range fcolor:[style objectForKey:@"foreground"]];
     }
+    NSLog(@"%@",[self capturableScopes:name]);
 }
 - (void)applyStyleToCaptures:(NSArray*)captures pattern:(NSString*)match {
     NSArray *captureMatches = nil;
