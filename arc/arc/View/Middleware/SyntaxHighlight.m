@@ -79,7 +79,14 @@
     if (style) {
         [self styleOnRange:range fcolor:[style objectForKey:@"foreground"]];
     }
-    NSLog(@"%@",[self capturableScopes:name]);
+  //  NSLog(@"%@",[self capturableScopes:name]);
+    NSArray* capturableScopes = [self capturableScopes:name];
+    for (NSString *s in capturableScopes) {
+        NSDictionary* style = [(NSDictionary*)[_theme objectForKey:@"scopes"] objectForKey:name];
+        if (style) {
+            [self styleOnRange:range fcolor:[style objectForKey:@"foreground"]];
+        }
+    }
 }
 
 - (void)applyStyleToCaptures:(NSArray*)captures pattern:(NSString*)match {
