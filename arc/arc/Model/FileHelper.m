@@ -24,7 +24,8 @@
     NSArray *rootContents = [root contents];
     Folder *externalFolder;
     for (FileObject *currentObject in rootContents) {
-        if ([currentObject isKindOfClass:[Folder class]] && [[currentObject name] isEqualToString:FOLDER_EXTERNAL_APPLICATIONS]) {
+        if ([currentObject isKindOfClass:[Folder class]] &&
+            [[currentObject name] isEqualToString:(NSString*)FOLDER_EXTERNAL_APPLICATIONS]) {
             externalFolder = (Folder*)currentObject;
             break;
         }
