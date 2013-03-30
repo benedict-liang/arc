@@ -105,6 +105,24 @@
         if (endCaptures && end) {
             [self applyStyleToCaptures:endCaptures pattern:end];
         }
+        if (name && begin && end) {
+            NSArray *begins = [self foundPattern:begin];
+            NSArray *ends = [self foundPattern:end];
+            if ([begins count] == [ends count]) {
+                for (int i =0; i < [begins count]; i++) {
+                    NSRange brange;
+                    NSRange erange;
+                    NSValue *v1 = [begins objectAtIndex:i];
+                    [v1 getValue:&brange];
+                    NSValue *v2 = [ends objectAtIndex:i];
+                    [v2 getValue:&erange];
+                    NSRange blockRange = {brange.location, brange.location - (erange.location + erange.length)};
+                    [self applyStyleToScope:name range:blockRange];
+                }
+            } else {
+                NSLog(@"blocks don't match");
+            }
+        }
     }
 }
 - (void)execOn:(ArcAttributedString *)arcAttributedString FromFile:(File *)file {
