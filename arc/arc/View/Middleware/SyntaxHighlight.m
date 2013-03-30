@@ -86,7 +86,6 @@
         NSArray *captures = [syntaxItem objectForKey:@"captures"];
         
         NSArray *nameMatches = nil;
-        NSArray *captureMatches = nil;
         //case name, match
         if (name && match) {
             nameMatches = [self foundPattern:match];
@@ -105,6 +104,7 @@
         if (endCaptures && end) {
             [self applyStyleToCaptures:endCaptures pattern:end];
         }
+        //matching blocks
         if (name && begin && end) {
             NSArray *begins = [self foundPattern:begin];
             NSArray *ends = [self foundPattern:end];
