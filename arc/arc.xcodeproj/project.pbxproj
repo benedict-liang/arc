@@ -46,6 +46,8 @@
 		4CD06B8616FE0FE600C9DED3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD06B8416FE0FC900C9DED3 /* CoreText.framework */; };
 		4CD06B8A16FE125100C9DED3 /* CoreTextUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B8916FE125100C9DED3 /* CoreTextUIView.m */; };
 		4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */; };
+		4CF6F0EE1706E08800EDDEDC /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0ED1706E08800EDDEDC /* file.png */; };
+		4CF6F0F21706E29300EDDEDC /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F11706E29300EDDEDC /* folder.png */; };
 		8F151051170443AC00115E5E /* home.html in Resources */ = {isa = PBXBuildFile; fileRef = 8F151050170443AC00115E5E /* home.html */; };
 		8F1510B91704483500115E5E /* test-myobfuscate-input.js in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510841704483500115E5E /* test-myobfuscate-input.js */; };
 		8F1510BA1704483500115E5E /* test-myobfuscate-output.js in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510851704483500115E5E /* test-myobfuscate-output.js */; };
@@ -141,6 +143,8 @@
 		4CD06B8816FE125100C9DED3 /* CoreTextUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTextUIView.h; sourceTree = "<group>"; };
 		4CD06B8916FE125100C9DED3 /* CoreTextUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreTextUIView.m; sourceTree = "<group>"; };
 		4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
+		4CF6F0ED1706E08800EDDEDC /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
+		4CF6F0F11706E29300EDDEDC /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
 		8F15104F1704410000115E5E /* TMBundleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleHeader.h; sourceTree = "<group>"; };
 		8F151050170443AC00115E5E /* home.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = home.html; sourceTree = "<group>"; };
 		8F1510541704483500115E5E /* Copy as Bookmarklet to Clipboard.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Copy as Bookmarklet to Clipboard.tmCommand"; sourceTree = "<group>"; };
@@ -549,6 +553,7 @@
 		4CD06B9016FE1A6900C9DED3 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				4CF6F0EC1706E05500EDDEDC /* Images */,
 				8F563E53170160CD00EE5643 /* TextMateBundles */,
 				4CD06B9116FE1A7100C9DED3 /* Fonts */,
 			);
@@ -562,6 +567,16 @@
 			);
 			name = Fonts;
 			path = Assets/Fonts;
+			sourceTree = "<group>";
+		};
+		4CF6F0EC1706E05500EDDEDC /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				4CF6F0F11706E29300EDDEDC /* folder.png */,
+				4CF6F0ED1706E08800EDDEDC /* file.png */,
+			);
+			name = Images;
+			path = Assets/Images;
 			sourceTree = "<group>";
 		};
 		8F1510521704483500115E5E /* javascript.tmbundle */ = {
@@ -1058,6 +1073,8 @@
 				8F1510C31704483500115E5E /* JavaScript.plist in Resources */,
 				8F1510C41704483500115E5E /* Regular Expressions (JavaScript).tmLanguage in Resources */,
 				8F1510C617044A4C00115E5E /* Solarized (light).tmTheme in Resources */,
+				4CF6F0EE1706E08800EDDEDC /* file.png in Resources */,
+				4CF6F0F21706E29300EDDEDC /* folder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

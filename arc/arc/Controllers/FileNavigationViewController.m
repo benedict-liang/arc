@@ -8,6 +8,9 @@
 
 #import "FileNavigationViewController.h"
 #import "RootFolder.h"
+#import "File.h"
+#import "Folder.h"
+
 @interface FileNavigationViewController ()
 @property Folder *currentFolder;
 @property UITableView *tableView;
@@ -26,7 +29,7 @@
     if (self) {
         // tmp.
         _currentFolder = [RootFolder sharedRootFolder];
-        _filesAndFolders = [NSArray arrayWithObjects:@"asdf", @"qwer", @"zxcv", nil];
+        _filesAndFolders = (NSArray*)[_currentFolder contents];
     }
     return self;
 }
@@ -72,16 +75,19 @@
                                       reuseIdentifier:cellIdentifier];
     }
 
-//    // Configure the cell...
-//    if ([[self.data objectAtIndex:indexPath.row] isKindOfClass:[FileObject class]]) {
-//        
-//        cell.textLabel.text = [(FileObject*)[self.data objectAtIndex:indexPath.row] name];
-//        
-//    } else if([[self.data objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]) {
-//        cell.textLabel.text = [self.data objectAtIndex:indexPath.row];
-//    }
     
-    cell.textLabel.text = [_filesAndFolders objectAtIndex:indexPath.row];
+    
+    FileObject *fileObject = [_filesAndFolders objectAtIndex:indexPath.row];
+    
+    if ([fileObject isKindOfClass:[File class]]) {
+        cell.imageView.image = [UIImage imageNamed:@"file.png"];
+        
+    } else if ([fileObject isKindOfClass:[Folder class]]) {
+        cell.imageView.image = [UIImage imageNamed:@"folder.png"];
+    }
+    
+    cell.textLabel.text = fileObject.name;
+    
     return cell;
 }
 #pragma mark - Table view delegate
