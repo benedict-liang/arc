@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     
-    _rootFolder = [RootFolder getInstance];
+    _rootFolder = [RootFolder sharedRootFolder];
     
     // CodeView
     _codeView = [[CodeViewController alloc] init];

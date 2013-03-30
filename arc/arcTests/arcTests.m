@@ -17,7 +17,7 @@
     [super setUp];
     
     // Set-up code here.
-    _rootFolder = [RootFolder getInstance];
+    _rootFolder = [RootFolder sharedRootFolder];
 }
 
 - (void)tearDown

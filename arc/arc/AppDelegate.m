@@ -45,7 +45,7 @@
 {
     // Jerome: Temporary code to move support files into the Documents folder.
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *documentsURL = [[RootFolder getInstance] url];
+    NSURL *documentsURL = [[RootFolder sharedRootFolder] url];
     NSString *sampleFileName = @"GameObject.h";
     NSString *sampleFile1 = @"README.md";
     NSString *sampleFile2 = @"home.html";
@@ -61,19 +61,19 @@
     
     if (![fileManager fileExistsAtPath:[newFileURL path]]) {
         [fileManager copyItemAtURL:sampleFileURL toURL:newFileURL error:nil];
-        [[RootFolder getInstance] flagForRefresh];
+        [[RootFolder sharedRootFolder] flagForRefresh];
     }
     if (![fileManager fileExistsAtPath:[newFile1URL path]]) {
         [fileManager copyItemAtURL:sampleFile1URL toURL:newFile1URL error:nil];
-        [[RootFolder getInstance] flagForRefresh];
+        [[RootFolder sharedRootFolder] flagForRefresh];
     }
     if (![fileManager fileExistsAtPath:[newFile2URL path]]) {
         [fileManager copyItemAtURL:sampleFile2URL toURL:newFile2URL error:nil];
-        [[RootFolder getInstance] flagForRefresh];
+        [[RootFolder sharedRootFolder] flagForRefresh];
     }
     if (![fileManager fileExistsAtPath:[newFile3URL path]]) {
         [fileManager copyItemAtURL:sampleFile3URL toURL:newFile3URL error:nil];
-        [[RootFolder getInstance] flagForRefresh];
+        [[RootFolder sharedRootFolder] flagForRefresh];
     }
     // End of temporary code.
     

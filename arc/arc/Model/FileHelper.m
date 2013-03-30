@@ -16,7 +16,7 @@
 + (File*)fileWithURL:(NSURL *)url sourceApplication:(NSString *)application annotation:(id)annotation
 {
     // Get the "Inbox" folder where it's stored.
-    RootFolder *root = [RootFolder getInstance];
+    RootFolder *root = [RootFolder sharedRootFolder];
     NSURL *inboxURL = [url URLByDeletingLastPathComponent];
     Folder *inboxFolder = [[Folder alloc] initWithURL:inboxURL parent:root];
     
