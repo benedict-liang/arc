@@ -25,7 +25,8 @@
     return self;
 }
 
-- (void)setupFileNavWithFolder:(Folder*)folder {
+- (void)setupFileNavWithFolder:(Folder*)folder
+{
 //    _navController = [[UINavigationController alloc] initWithRootViewController:_fileNav];
 //    [self.view addSubview:_navController.view];
 //    [self.view addSubview:_fileNav.view];
@@ -34,8 +35,10 @@
 {
     [super viewDidLoad];
     
+    // File Navigator View Controller
     _fileNav = [[FileNavigationViewController alloc] init];
     _fileNav.delegate = self.delegate;
+    _fileNav.view.frame = self.view.bounds;
     [self.view addSubview:_fileNav.view];
 }
 

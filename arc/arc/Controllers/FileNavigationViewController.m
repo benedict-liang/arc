@@ -10,11 +10,13 @@
 #import "RootFolder.h"
 @interface FileNavigationViewController ()
 @property Folder *currentFolder;
+@property UITableView *tableView;
 @property NSArray *filesAndFolders;
 @end
 
 @implementation FileNavigationViewController
 @synthesize delegate;
+@synthesize tableView = _tableView;
 @synthesize currentFolder = _currentFolder;
 @synthesize filesAndFolders = _filesAndFolders;
 
@@ -24,6 +26,7 @@
     if (self) {
         // tmp.
         _currentFolder = [RootFolder sharedRootFolder];
+        _filesAndFolders = [NSArray arrayWithObjects:@"asdf", @"qwer", @"zxcv", nil];
     }
     return self;
 }
@@ -31,17 +34,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.autoresizesSubviews = YES;
 
-    // tmp.
-    _filesAndFolders = [NSArray arrayWithObjects:@"asdf", @"qwer", @"zxcv", nil];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.frame
-                                             style:UITableViewStylePlain];
-    tableView.dataSource = self;
-    [self.view addSubview:tableView];
+    // Set Up TableView
+    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds
+                                                          style:UITableViewStylePlain];
+    _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
+        UIViewAutoresizingFlexibleWidth;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
 }
 
 - (void)showFolder:(Folder *)folder
