@@ -7,6 +7,7 @@
 //
 
 #import "FileNavigationViewController.h"
+#import "Utils.h"
 #import "RootFolder.h"
 #import "File.h"
 #import "Folder.h"
@@ -29,7 +30,22 @@
     if (self) {
         // tmp.
         _currentFolder = [RootFolder sharedRootFolder];
-        _filesAndFolders = (NSArray*)[_currentFolder contents];
+        
+        NSMutableArray *folders = [NSMutableArray array];
+        NSMutableArray *files = [NSMutableArray array];
+        NSArray *folderContents = (NSArray*)[_currentFolder contents];
+        for (FileObject *fileObject in folderContents) {
+            if ([fileObject isKindOfClass:[File class]]) {
+                [files addObject:fileObject];
+            } else if ([fileObject isKindOfClass:[Folder class]]) {
+                [folders addObject:fileObject];
+            }
+        }
+        
+        _filesAndFolders = [NSArray arrayWithObjects:
+                            folders,
+                            files,
+                            nil];
     }
     return self;
 }
@@ -45,6 +61,7 @@
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
         UIViewAutoresizingFlexibleWidth;
     _tableView.dataSource = self;
+    _tableView.rowHeight = 60;
     [self.view addSubview:_tableView];
 }
 
@@ -57,12 +74,20 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return [_filesAndFolders count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_filesAndFolders count];
+    return [[_filesAndFolders objectAtIndex:section] count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"Folders";
+    } else {
+        return @"Files";
+    }
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -71,23 +96,26 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                       reuseIdentifier:cellIdentifier];
     }
 
     
-    
-    FileObject *fileObject = [_filesAndFolders objectAtIndex:indexPath.row];
+    NSArray *section = [_filesAndFolders objectAtIndex:indexPath.section];
+    FileObject *fileObject = [section objectAtIndex:indexPath.row];
     
     if ([fileObject isKindOfClass:[File class]]) {
-        cell.imageView.image = [UIImage imageNamed:@"file.png"];
-        
+        File *file = (File*) fileObject;
+        cell.imageView.image = [Utils scale:[UIImage imageNamed:@"file.png"]
+                                     toSize:CGSizeMake(40, 40)];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ file", file.extension];
     } else if ([fileObject isKindOfClass:[Folder class]]) {
-        cell.imageView.image = [UIImage imageNamed:@"folder.png"];
+        cell.imageView.image = [Utils scale:[UIImage imageNamed:@"folder.png"]
+                                     toSize:CGSizeMake(40, 40)];
+        cell.detailTextLabel.text = @"Folder";
     }
-    
-    cell.textLabel.text = fileObject.name;
-    
+
+    cell.textLabel.text = fileObject.name;    
     return cell;
 }
 #pragma mark - Table view delegate

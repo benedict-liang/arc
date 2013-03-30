@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface Utils : NSObject
-
+// Taken from http://stackoverflow.com/questions/941604/setting-uiimage-dimensions-on-uitableviewcell-image
++ (UIImage *)scale:(UIImage *)image toSize:(CGSize)size;
 @end
