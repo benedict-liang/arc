@@ -13,7 +13,6 @@
 #import "File.h"
 
 @interface CodeViewController : UIViewController<SubViewController>
-// Loads File
 @property (nonatomic, strong) CodeView *view;
 - (void)showFile:(File*)file;
 @end

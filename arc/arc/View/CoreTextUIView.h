@@ -11,4 +11,5 @@
 @interface CoreTextUIView : UIView
 @property (nonatomic, strong) NSAttributedString *attributedString;
 @property (nonatomic) int padding;
+- (void)refresh;
 @end

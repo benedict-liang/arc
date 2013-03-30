@@ -31,15 +31,23 @@
 
 - (void)setAttributedString:(NSAttributedString *)attributedString
 {
+    // Update Attributed String
     _attributedString = attributedString;
+    [self refresh];
+}
+
+- (void)refresh
+{
+    NSLog(@"%@", NSStringFromCGRect(self.bounds));
+    NSLog(@"%@", NSStringFromCGRect(self.frame));
     [self updateHeight];
     [self setNeedsDisplay];
 }
 
 - (void)updateHeight
 {
-    CFRange stringRange = CFRangeMake(0, _attributedString.string.length);
-    float textWidth = self.bounds.size.width - 2*_padding;
+    CFRange stringRange = CFRangeMake(0, _attributedString.string.length);    
+    float textWidth = self.frame.size.width - 2*_padding;
     
     // Get a Framesetter to draw the actual text
     CTFramesetterRef framesetter =
@@ -57,7 +65,7 @@
     float height = suggestedSize.height + 2*_padding;
     
     // Update frame height
-    self.frame = CGRectMake(0, 0, self.frame.size.width, height);
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, height);
 }
 
 - (void)drawRect:(CGRect)rect

@@ -45,6 +45,13 @@
     _coreTextView.frame = self.view.bounds;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [_coreTextView refresh];
+    // Resize codeView (parent) Content Size
+    self.view.contentSize = _coreTextView.bounds.size;
+}
+
 - (void)showFile:(File*)file
 {
     // Update Current file
@@ -71,9 +78,6 @@
 - (void)render
 {
     [_coreTextView setAttributedString:_arcAttributedString.attributedString];
-    
-    // Resize codeView (parent) Content Size
-    self.view.contentSize = _coreTextView.bounds.size;
 }
 
 @end

@@ -19,6 +19,4 @@
 #import "TMBundleHeader.h"
 
 @interface MainViewController : UISplitViewController <MainViewControllerDelegate>
-// Returns the MainViewController singleton.
-//+ (MainViewController*) getInstance;
 @end
