@@ -23,14 +23,14 @@
     _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
     NSLog(@"patterns array: %@", _patterns);
 }
-- (NSArray*)foundPattern:(NSString*)p {
+- (NSArray*)foundPattern:(NSString*)p range:(NSRange)r {
     NSError *error = NULL;
     NSMutableArray* results = [[NSMutableArray alloc] init];
     NSRegularExpression *regex = [NSRegularExpression
                                   regularExpressionWithPattern:p
                                   options:NSRegularExpressionCaseInsensitive
                                   error:&error];
-    NSArray* matches = [regex matchesInString:_content options:0 range:NSMakeRange(0, [_content length])];
+    NSArray* matches = [regex matchesInString:_content options:0 range:r];
     
     for (NSTextCheckingResult *match in matches) {
         NSRange range = [match range];
@@ -52,14 +52,14 @@
         return NSMakeRange(0, 0);
     }
 }
-- (NSArray*)foundPattern:(NSString*)p capture:(int)c {
+- (NSArray*)foundPattern:(NSString*)p capture:(int)c range:(NSRange)r {
     NSError *error = NULL;
     NSMutableArray* results = [[NSMutableArray alloc] init];
     NSRegularExpression *regex = [NSRegularExpression
                                   regularExpressionWithPattern:p
                                   options:NSRegularExpressionCaseInsensitive
                                   error:&error];
-    NSArray* matches = [regex matchesInString:_content options:0 range:NSMakeRange(0, [_content length])];
+    NSArray* matches = [regex matchesInString:_content options:0 range:r];
     
     for (NSTextCheckingResult *match in matches) {
         NSRange range = [match rangeAtIndex:c];
@@ -102,10 +102,10 @@
     }
 }
 
-- (void)applyStyleToCaptures:(NSArray*)captures pattern:(NSString*)match {
+- (void)applyStyleToCaptures:(NSArray*)captures pattern:(NSString*)match range:(NSRange)r {
     NSArray *captureMatches = nil;
     for (int i = 0; i < [captures count]; i++) {
-        captureMatches = [self foundPattern:match capture:i];
+        captureMatches = [self foundPattern:match capture:i range:r];
         for (NSValue *v in captureMatches) {
             NSRange range;
             [v getValue:&range];
@@ -113,7 +113,7 @@
         }
     }
 }
--(void)iterPatternsAndApply {
+-(void)iterPatternsAndApplyForRange:(NSRange)contentRange {
     for (NSDictionary* syntaxItem in _patterns) {
         NSString *name = [syntaxItem objectForKey:@"name"];
         NSString *match = [syntaxItem objectForKey:@"match"];
@@ -126,7 +126,7 @@
         NSArray *nameMatches = nil;
         //case name, match
         if (name && match) {
-            nameMatches = [self foundPattern:match];
+            nameMatches = [self foundPattern:match range:contentRange];
             for (NSValue *v in nameMatches) {
                 NSRange range;
                 [v getValue:&range];
@@ -134,13 +134,13 @@
             }
         }
         if (captures && match) {
-            [self applyStyleToCaptures:captures pattern:match];
+            [self applyStyleToCaptures:captures pattern:match range:contentRange];
         }
         if (beginCaptures && begin) {
-            [self applyStyleToCaptures:beginCaptures pattern:begin];
+            [self applyStyleToCaptures:beginCaptures pattern:begin range:contentRange];
         }
         if (endCaptures && end) {
-            [self applyStyleToCaptures:endCaptures pattern:end];
+            [self applyStyleToCaptures:endCaptures pattern:end range:contentRange];
         }
         //matching blocks
         if (name && begin && end) {
@@ -149,6 +149,8 @@
             NSRange erange = NSMakeRange(0, 0);
             
             while (brange.length != 0 && erange.location + erange.length < [_content length] ) {
+                
+                
                 int bEnds = brange.location + brange.length;
                 erange = [self findFirstPattern:end range:NSMakeRange(bEnds, [_content length] - bEnds)];
                 int eEnds = erange.location + erange.length;
@@ -166,6 +168,6 @@
     _output = arcAttributedString;
     [self initPatternsAndTheme];
     _content = [file contents];
-    [self iterPatternsAndApply];
+    [self iterPatternsAndApplyForRange:NSMakeRange(0, [_content length])];
 }
 @end
