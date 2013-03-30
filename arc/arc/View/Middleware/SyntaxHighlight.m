@@ -46,7 +46,11 @@
                                   options:NSRegularExpressionCaseInsensitive
                                   error:&error];
     NSTextCheckingResult *res = [regex firstMatchInString:_content options:0 range:range];
-    return [res range];
+    if (res) {
+        return [res range];
+    } else {
+        return NSMakeRange(0, 0);
+    }
 }
 - (NSArray*)foundPattern:(NSString*)p capture:(int)c {
     NSError *error = NULL;
@@ -142,14 +146,17 @@
         if (name && begin && end) {
             
             NSRange brange = [self findFirstPattern:begin range:NSMakeRange(0, [_content length])];
+            NSRange erange = NSMakeRange(0, 0);
             
-            int bEnds = brange.location + brange.length;
-            NSRange erange = [self findFirstPattern:end range:NSMakeRange(bEnds, [_content length] - bEnds)];
-            int eEnds = erange.location + erange.length - brange.location;
-            if (brange.length > 0 && erange.length > 0 && (brange.location + eEnds) < [_content length]) {
-                [self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds)];
-                
-            }
+            while (brange.length != 0 && erange.location + erange.length < [_content length] ) {
+                int bEnds = brange.location + brange.length;
+                erange = [self findFirstPattern:end range:NSMakeRange(bEnds, [_content length] - bEnds)];
+                int eEnds = erange.location + erange.length;
+                if (brange.length > 0 && erange.length > 0 && eEnds <= [_content length]) {
+                    [self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location)];
+                }
+                brange = [self findFirstPattern:begin range:NSMakeRange(eEnds, [_content length] - eEnds )];
+           }
             
         }
         /*
