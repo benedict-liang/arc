@@ -13,7 +13,8 @@
 @end
 
 @implementation LeftViewController
-@synthesize delegate;
+@synthesize delegate = _delegate;
+@synthesize fileNavigationViewController = _fileNavigationViewController;
 
 - (id)init
 {
@@ -25,21 +26,22 @@
     return self;
 }
 
-- (void)setupFileNavWithFolder:(Folder*)folder
+- (void)setDelegate:(id<MainViewControllerDelegate>)delegate
 {
-//    _navController = [[UINavigationController alloc] initWithRootViewController:_fileNav];
-//    [self.view addSubview:_navController.view];
-//    [self.view addSubview:_fileNav.view];
+    _delegate = delegate;
+    _fileNavigationViewController.delegate = delegate;
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     // File Navigator View Controller
-    _fileNav = [[FileNavigationViewController alloc] init];
-    _fileNav.delegate = self.delegate;
-    _fileNav.view.frame = self.view.bounds;
-    [self.view addSubview:_fileNav.view];
+    _fileNavigationViewController = [[FileNavigationViewController alloc] init];
+    [self addChildViewController:_fileNavigationViewController];
+    
+    _fileNavigationViewController.view.frame = self.view.bounds;
+    [self.view addSubview:_fileNavigationViewController.view];
 }
 
 @end

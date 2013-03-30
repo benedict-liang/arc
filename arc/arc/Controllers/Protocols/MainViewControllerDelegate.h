@@ -19,10 +19,5 @@
 - (void)hideLeftBar;
 
 #pragma mark - Triggered by LeftBarViewController
-
-// Shows the file using the CodeViewController
-- (void)fileSelected:(File*)file;
-
-// Updates Current Folder being Viewed
-- (void)folderSelected:(Folder*)folder;
+- (void)fileObjectSelected:(FileObject*)fileObject;
 @end

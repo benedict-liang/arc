@@ -12,6 +12,6 @@
 #import "Constants.h"
 
 @interface LeftViewController : UIViewController<SubViewController>
-@property FileNavigationViewController* fileNav;
+@property FileNavigationViewController* fileNavigationViewController;
 @property UINavigationController* navController;
 @end

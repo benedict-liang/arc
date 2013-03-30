@@ -131,7 +131,7 @@
 {
     NSArray *section = [_filesAndFolders objectAtIndex:indexPath.section];
     FileObject *fileObject = [section objectAtIndex:indexPath.row];
-    NSLog(@"%@", fileObject.name);
+    [self.delegate fileObjectSelected:fileObject];
 }
 
 @end
