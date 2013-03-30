@@ -64,6 +64,17 @@
         [self styleOnRange:range fcolor:[style objectForKey:@"foreground"]];
     }
 }
+- (void)applyStyleToCaptures:(NSArray*)captures pattern:(NSString*)match {
+    NSArray *captureMatches = nil;
+    for (int i = 0; i < [captures count]; i++) {
+        captureMatches = [self foundPattern:match capture:i];
+        for (NSValue *v in captureMatches) {
+            NSRange range;
+            [v getValue:&range];
+            [self applyStyleToScope:[captures objectAtIndex:i] range:range];
+        }
+    }
+}
 -(void)iterPatternsAndApply {
     for (NSDictionary* syntaxItem in _patterns) {
         NSString *name = [syntaxItem objectForKey:@"name"];
@@ -86,14 +97,7 @@
             }
         }
         if (captures && match) {
-            for (int i = 0; i < [captures count]; i++) {
-                captureMatches = [self foundPattern:match capture:i];
-                for (NSValue *v in captureMatches) {
-                    NSRange range;
-                    [v getValue:&range];
-                    [self applyStyleToScope:[captures objectAtIndex:i] range:range];
-                }
-            }
+            [self applyStyleToCaptures:captures pattern:match];
         }
         if (beginCaptures && begin) {
             for (int i =0; i < [beginCaptures count]; i++) {
