@@ -7,13 +7,17 @@
 //
 
 #import "LeftViewController.h"
+#import "FileNavigationViewController.h"
+#import "SettingsViewController.h"
 
 @interface LeftViewController ()
-
+@property FileNavigationViewController* fileNavigationViewController;
+@property SettingsViewController *settingsViewController;
 @end
 
 @implementation LeftViewController
 @synthesize delegate = _delegate;
+@synthesize settingsViewController = _settingsViewController;
 @synthesize fileNavigationViewController = _fileNavigationViewController;
 
 - (id)init
@@ -29,7 +33,11 @@
 - (void)setDelegate:(id<MainViewControllerDelegate>)delegate
 {
     _delegate = delegate;
-    _fileNavigationViewController.delegate = delegate;
+    
+    // Assign Delegate to ChildViewControllers
+    for (id<SubViewController> childVC in self.childViewControllers) {
+        childVC.delegate = delegate;
+    }
 }
 
 - (void)viewDidLoad
@@ -40,6 +48,10 @@
     _fileNavigationViewController = [[FileNavigationViewController alloc] init];
     [self addChildViewController:_fileNavigationViewController];
     
+    _settingsViewController = [[SettingsViewController alloc] init];
+    [self addChildViewController:_settingsViewController];
+    
+    // TMP.
     _fileNavigationViewController.view.frame = self.view.bounds;
     [self.view addSubview:_fileNavigationViewController.view];
 }

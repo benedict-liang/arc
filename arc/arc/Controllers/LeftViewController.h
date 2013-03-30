@@ -7,11 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FileNavigationViewController.h"
 #import "SubViewController.h"
-#import "Constants.h"
-
 @interface LeftViewController : UIViewController<SubViewController>
-@property FileNavigationViewController* fileNavigationViewController;
-@property UINavigationController* navController;
 @end

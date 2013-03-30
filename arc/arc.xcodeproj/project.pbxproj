@@ -48,6 +48,7 @@
 		4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */; };
 		4CF6F0EE1706E08800EDDEDC /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0ED1706E08800EDDEDC /* file.png */; };
 		4CF6F0F21706E29300EDDEDC /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F11706E29300EDDEDC /* folder.png */; };
+		4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */; };
 		8F151051170443AC00115E5E /* home.html in Resources */ = {isa = PBXBuildFile; fileRef = 8F151050170443AC00115E5E /* home.html */; };
 		8F1510B91704483500115E5E /* test-myobfuscate-input.js in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510841704483500115E5E /* test-myobfuscate-input.js */; };
 		8F1510BA1704483500115E5E /* test-myobfuscate-output.js in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510851704483500115E5E /* test-myobfuscate-output.js */; };
@@ -145,6 +146,8 @@
 		4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
 		4CF6F0ED1706E08800EDDEDC /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
 		4CF6F0F11706E29300EDDEDC /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
+		4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		8F15104F1704410000115E5E /* TMBundleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleHeader.h; sourceTree = "<group>"; };
 		8F151050170443AC00115E5E /* home.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = home.html; sourceTree = "<group>"; };
 		8F1510541704483500115E5E /* Copy as Bookmarklet to Clipboard.tmCommand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Copy as Bookmarklet to Clipboard.tmCommand"; sourceTree = "<group>"; };
@@ -986,6 +989,8 @@
 				FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */,
 				FC4B269C16F88CB800E1DC49 /* FileNavigationViewController.h */,
 				FC4B269D16F88CB800E1DC49 /* FileNavigationViewController.m */,
+				4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */,
+				4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1139,6 +1144,7 @@
 				4C12D0781706074600F4593B /* CodeView.m in Sources */,
 				8F2F5B8117061435005AD37F /* nav_gmaps_sample.js in Sources */,
 				02BF74DF1706C14800397605 /* DropBoxFolder.m in Sources */,
+				4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
