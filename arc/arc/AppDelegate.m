@@ -101,12 +101,12 @@
     codeViewController.delegate = mainViewController;
     
     // Create LeftBarViewController
-    LeftBarViewController *leftBarViewController = [[LeftBarViewController alloc] init];
-    leftBarViewController.delegate = mainViewController;
+    LeftViewController *leftViewController = [[LeftViewController alloc] init];
+    leftViewController.delegate = mainViewController;
     
     // Assign SubViewControllers
     mainViewController.viewControllers = [NSArray arrayWithObjects:
-                                          leftBarViewController,
+                                          leftViewController,
                                           codeViewController,
                                           nil];
     

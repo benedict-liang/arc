@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "LeftBarViewController.h"
+#import "LeftViewController.h"
 
-@interface LeftBarViewController ()
+@interface LeftViewController ()
 
 @end
 
-@implementation LeftBarViewController
+@implementation LeftViewController
 @synthesize delegate;
 
 - (id)init

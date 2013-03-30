@@ -14,7 +14,7 @@
 #import "Folder.h"
 #import "File.h"
 #import "CodeViewController.h"
-#import "LeftBarViewController.h"
+#import "LeftViewController.h"
 
 #import "TMBundleHeader.h"
 

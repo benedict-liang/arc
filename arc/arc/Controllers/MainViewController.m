@@ -11,7 +11,7 @@
 
 @interface MainViewController ()
 @property CodeViewController *codeViewController;
-@property LeftBarViewController *leftBarViewController;
+@property LeftViewController *leftViewController;
 
 @property RootFolder *rootFolder;
 @property UIToolbar *toolbar;
@@ -20,7 +20,7 @@
 
 @implementation MainViewController
 @synthesize codeViewController = _codeViewController;
-@synthesize leftBarViewController = _leftBarViewController;
+@synthesize leftViewController = _leftViewController;
 @synthesize rootFolder = _rootFolder;
 
 - (id)init
@@ -37,7 +37,7 @@
 {
     [super viewDidLoad];
 
-    _leftBarViewController = [self.viewControllers objectAtIndex:0];
+    _leftViewController = [self.viewControllers objectAtIndex:0];
     _codeViewController = [self.viewControllers objectAtIndex:1];
 
 //    // ToolBar. Active only in portrait mode for now.
