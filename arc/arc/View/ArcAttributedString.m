@@ -12,6 +12,7 @@
 
 @interface ArcAttributedString ()
 @property (nonatomic, strong) NSMutableAttributedString *_attributedString;
+@property (nonatomic, strong) NSAttributedString *cachedAttributedString;
 @property (nonatomic, strong) NSMutableArray *attributes;
 @property (nonatomic, strong) NSString *string;
 @property (nonatomic, strong) NSString *fontFamily;
@@ -22,6 +23,7 @@
 
 @implementation ArcAttributedString
 @synthesize _attributedString = __attributedString;
+@synthesize cachedAttributedString = _cachedAttributedString;
 @synthesize attributes = _attributes;
 @synthesize stringRange = _stringRange;
 @synthesize fontFamily = _fontFamily;
@@ -37,6 +39,7 @@
         _attributes = [NSMutableArray array];
         __attributedString = [[NSMutableAttributedString alloc]
                               initWithString:_string];
+        _cachedAttributedString = nil;
     }
     return self;
 }
@@ -92,6 +95,10 @@
 
 - (NSAttributedString*)attributedString
 {
+    if (_cachedAttributedString) {
+        return _cachedAttributedString;
+    }
+    
     NSMutableAttributedString *tmp = [[NSMutableAttributedString alloc] initWithAttributedString:__attributedString];
     
     for (NSDictionary *prop in _attributes) {
@@ -100,8 +107,10 @@
                     range:NSRangeFromString([prop objectForKey:@"range"])];
     }
     
-    return [[NSAttributedString alloc] initWithAttributedString:tmp];
+    
+    
+    _cachedAttributedString = [[NSAttributedString alloc] initWithAttributedString:tmp];
+    return _cachedAttributedString;
 }
-
 
 @end
