@@ -74,7 +74,9 @@
     float height = suggestedSize.height + 2*_padding;
     
     // Update frame height
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, height);
+    self.frame = CGRectMake(
+        self.frame.origin.x, self.frame.origin.y,
+        self.frame.size.width, height);
 }
 
 - (void)drawRect:(CGRect)rect
