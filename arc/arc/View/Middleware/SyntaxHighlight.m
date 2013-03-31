@@ -168,16 +168,22 @@
         //matching blocks
         
         if (begin && end) {
-            
-            //if ([begin isEqualToString:@"(^[ \\t]+)?(?=//)"] && [end isEqualToString:@"(?!\\G)"]) {
-            //    NSLog(@"finally");
-           // }
+            /*
+             Algo finds a begin match and an end match (from begin to content's end), reseting the next begin to after end, until no more matches are found or end > content
+             Also applies nested patterns recursively
+             
+             TODO. debug for why single line comments aren't working
+             Symptoms: comment.single.* for js tmbundle is inside a begin end pair, of which begin - end = 1.
+            if ([begin isEqualToString:@"(^[ \\t]+)?(?=//)"] && [end isEqualToString:@"(?!\\G)"]) {
+                NSLog(@"finally");
+            }*/
             //NSLog(@"before brange: %d %d", contentRange.location, contentRange.length);
             NSRange brange = [self findFirstPattern:begin range:contentRange];
             NSRange erange = NSMakeRange(0, 0);
             
             while (brange.location != NSNotFound && erange.location + erange.length < contentRange.length ) {
-            
+                
+                // using longs because int went out of range as NSNotFound returns MAX_INT, which fucks arithmetic
                 long bEnds = brange.location + brange.length;
                 if (contentRange.length > bEnds) {
                     //NSLog(@"before erange: %d %d", bEnds, contentRange.length - bEnds);
