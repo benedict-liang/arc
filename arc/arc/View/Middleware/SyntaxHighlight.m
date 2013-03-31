@@ -41,7 +41,7 @@
         
         }
     } else {
-        NSLog(@"index out of range in foundPattern");
+        NSLog(@"index out of range in foundPattern: %d %d",r.location, r.length);
     }
     
     return results;
@@ -59,7 +59,7 @@
         //NSLog(@"findFirstPattern:   %d %d",r.location,r.length);
         return [regex rangeOfFirstMatchInString:_content options:0 range:r];
     } else {
-        NSLog(@"index out of bounds in regex. findFirstPatten");
+        NSLog(@"index out of bounds in regex. findFirstPatten:%d %d",r.location,r.length);
         return NSMakeRange(NSNotFound, 0);
     }
     
@@ -84,7 +84,7 @@
         
         }
     } else {
-        NSLog(@"index error in capture");
+        NSLog(@"index error in capture:%d %d",r.location,r.length);
     }
     
     return results;
@@ -166,6 +166,7 @@
             [self applyStyleToCaptures:endCaptures pattern:end range:contentRange];
         }
         //matching blocks
+        
         if (begin && end) {
             
             //if ([begin isEqualToString:@"(^[ \\t]+)?(?=//)"] && [end isEqualToString:@"(?!\\G)"]) {
@@ -177,21 +178,25 @@
             
             while (brange.location != NSNotFound && erange.location + erange.length < contentRange.length ) {
             
-                int bEnds = brange.location + brange.length;
-                if (contentRange.length - bEnds > 0) {
+                long bEnds = brange.location + brange.length;
+                if (contentRange.length > bEnds) {
                     //NSLog(@"before erange: %d %d", bEnds, contentRange.length - bEnds);
                     erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds)];
+                } else {
+                    //if bEnds > contentRange.length, skip
+                    return;
                 }
                 
-                int eEnds = erange.location + erange.length;
+                long eEnds = erange.location + erange.length;
                 NSArray *embedPatterns = [syntaxItem objectForKey:@"patterns"];
-                if (eEnds - brange.location > 0) {
+                //if there are characters between begin and end, and brange and erange are valid results
+                if (eEnds - brange.location > 0 && brange.location != NSNotFound && erange.location != NSNotFound && eEnds <= contentRange.length) {
                     if (embedPatterns) {
-                        
+                        //recursively apply iterPatterns to embedded patterns inclusive of begin and end
                         [self iterPatternsAndApplyForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns];
                     }
                     
-                    if (brange.location != NSNotFound && erange.location != NSNotFound && eEnds < contentRange.length && name) {
+                    if (name) {
                         [self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location)];
                     }
                     //NSLog(@"before brange2: %d %d", contentRange.location, contentRange.length);
