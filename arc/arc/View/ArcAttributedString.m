@@ -12,9 +12,9 @@
 
 @interface ArcAttributedString ()
 @property (nonatomic, strong) NSMutableAttributedString *_attributedString;
+@property (nonatomic, strong) NSMutableArray *attributes;
 @property (nonatomic, strong) NSString *string;
 @property (nonatomic, strong) NSString *fontFamily;
-@property (nonatomic) CGColorRef color;
 @property (nonatomic) NSRange stringRange;
 @property (nonatomic)  int fontSize;
 - (void)updateFontProperties;
@@ -22,20 +22,21 @@
 
 @implementation ArcAttributedString
 @synthesize _attributedString = __attributedString;
+@synthesize attributes = _attributes;
 @synthesize stringRange = _stringRange;
 @synthesize fontFamily = _fontFamily;
 @synthesize fontSize = _fontSize;
-@synthesize color = _color;
 
 - (id)initWithString:(NSString*)string
 {
     self = [super init];
     if (self) {
         _fontFamily = (NSString*) DEFAULT_FONT_FAMILY;
-        _color = (CGColorRef) DEFAULT_TEXT_COLOR;
         _fontSize = DEFAULT_FONT_SIZE;
         [self setString:string];
-        __attributedString = [[NSMutableAttributedString alloc] initWithString:_string];
+        _attributes = [NSMutableArray array];
+        __attributedString = [[NSMutableAttributedString alloc]
+                              initWithString:_string];
     }
     return self;
 }
@@ -49,16 +50,18 @@
 
 - (void)setColor:(CGColorRef)color
 {
-    _color = color;
-    [self setColor:_color OnRange:_stringRange];
+    [__attributedString addAttribute:(id)kCTForegroundColorAttributeName
+                               value:(__bridge id)color
+                               range:_stringRange];
 }
 
 - (void)setColor:(CGColorRef)color OnRange:(NSRange)range
 {
-    _color = color;
-    [__attributedString addAttribute:(id)kCTForegroundColorAttributeName
-                               value:(__bridge id)_color
-                               range:range];
+    [_attributes addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                           (__bridge id)color, @"value",
+                           (id)kCTForegroundColorAttributeName, @"type",
+                           NSStringFromRange(range), @"range",
+                           nil]];
 }
 
 - (void)setFontSize:(int)fontSize
@@ -82,9 +85,22 @@
                                range:_stringRange];
 }
 
-- (NSAttributedString*)attributedString
+- (NSAttributedString*)plainAttributedString
 {
     return [[NSAttributedString alloc] initWithAttributedString:__attributedString];
+}
+
+- (NSAttributedString*)attributedString
+{
+    NSMutableAttributedString *tmp = [[NSMutableAttributedString alloc] initWithAttributedString:__attributedString];
+    
+    for (NSDictionary *prop in _attributes) {
+        [tmp addAttribute:[prop objectForKey:@"type"]
+                    value:[prop objectForKey:@"value"]
+                    range:NSRangeFromString([prop objectForKey:@"range"])];
+    }
+    
+    return [[NSAttributedString alloc] initWithAttributedString:tmp];
 }
 
 

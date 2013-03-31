@@ -10,6 +10,7 @@
 
 @interface ArcAttributedString : NSObject
 @property (nonatomic, readonly) NSAttributedString *attributedString;
+@property (nonatomic, readonly) NSAttributedString *plainAttributedString;
 - (id)initWithString:(NSString*)string;
 
 // Properties
