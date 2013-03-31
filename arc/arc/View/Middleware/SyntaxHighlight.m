@@ -30,27 +30,39 @@
                                   regularExpressionWithPattern:p
                                   options:NSRegularExpressionCaseInsensitive
                                   error:&error];
-    NSArray* matches = [regex matchesInString:_content options:0 range:r];
-    
-    for (NSTextCheckingResult *match in matches) {
-        NSRange range = [match range];
-        [results addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
+    if (r.location + r.length <= [_content length]) {
+        NSArray* matches = [regex matchesInString:_content options:0 range:r];
+        
+        for (NSTextCheckingResult *match in matches) {
+            NSRange range = [match range];
+            if (range.location != NSNotFound) {
+                [results addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];    
+            }
+        
+        }
+    } else {
+        NSLog(@"index out of range in foundPattern");
     }
+    
     return results;
 }
-- (NSRange)findFirstPattern:(NSString*)p range:(NSRange)range {
+- (NSRange)findFirstPattern:(NSString*)p range:(NSRange)r {
     NSError *error = NULL;
     
     NSRegularExpression *regex = [NSRegularExpression
                                   regularExpressionWithPattern:p
                                   options:NSRegularExpressionCaseInsensitive
                                   error:&error];
-    NSTextCheckingResult *res = [regex firstMatchInString:_content options:0 range:range];
-    if (res) {
+    NSTextCheckingResult *res = nil;
+    
+    if (r.location + r.length <= [_content length]) {
+        res = [regex firstMatchInString:_content options:0 range:r];
         return [res range];
     } else {
-        return NSMakeRange(0, 0);
+        NSLog(@"index out of bounds in regex. findFirstPatten");
+        return NSMakeRange(NSNotFound, 0);
     }
+    
 }
 - (NSArray*)foundPattern:(NSString*)p capture:(int)c range:(NSRange)r {
     NSError *error = NULL;
@@ -59,12 +71,20 @@
                                   regularExpressionWithPattern:p
                                   options:NSRegularExpressionCaseInsensitive
                                   error:&error];
-    NSArray* matches = [regex matchesInString:_content options:0 range:r];
     
-    for (NSTextCheckingResult *match in matches) {
-        NSRange range = [match rangeAtIndex:c];
-        [results addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
+    
+    
+    if (r.location + r.length <= [_content length]) {
+        NSArray* matches = [regex matchesInString:_content options:0 range:r];
+        for (NSTextCheckingResult *match in matches) {
+            NSRange range = [match rangeAtIndex:c];
+            if (range.location != NSNotFound) {
+                [results addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
+            }
+        
+        }
     }
+    
     return results;
 }
 - (void)styleOnRange:(NSRange)range fcolor:(UIColor*)fcolor {
@@ -122,7 +142,7 @@
         NSString *end = [syntaxItem objectForKey:@"end"];
         NSArray *endCaptures = [syntaxItem objectForKey:@"endCaptures"];
         NSArray *captures = [syntaxItem objectForKey:@"captures"];
-        NSArray *embedPatterns = [syntaxItem objectForKey:@"patterns"];
+        
         
         NSArray *nameMatches = nil;
         //case name, match
@@ -144,26 +164,29 @@
             [self applyStyleToCaptures:endCaptures pattern:end range:contentRange];
         }
         //matching blocks
-        if (name && begin && end) {
+        if (begin && end) {
             
-            NSRange brange = [self findFirstPattern:begin range:NSMakeRange(0, [_content length])];
+            if ([begin isEqualToString:@"(^[ \\t]+)?(?=//)"] && [end isEqualToString:@"(?!\\G)"]) {
+                NSLog(@"finally");
+            }
+            NSRange brange = [self findFirstPattern:begin range:contentRange];
             NSRange erange = NSMakeRange(0, 0);
             
-            while (brange.length != 0 && erange.location + erange.length < [_content length] ) {
+            while (brange.location != NSNotFound && erange.location + erange.length < contentRange.length ) {
                 
                 int bEnds = brange.location + brange.length;
-                erange = [self findFirstPattern:end range:NSMakeRange(bEnds, [_content length] - bEnds)];
+                erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds)];
                 int eEnds = erange.location + erange.length;
-                
+                NSArray *embedPatterns = [syntaxItem objectForKey:@"patterns"];
                 if (embedPatterns) {
                     
-                    [self iterPatternsAndApplyForRange:NSMakeRange(brange.location, eEnds) patterns:embedPatterns];
+                    [self iterPatternsAndApplyForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns];
                 }
                 
-                if (brange.length > 0 && erange.length > 0 && eEnds <= [_content length]) {
+                if (brange.location != NSNotFound && erange.location != NSNotFound && eEnds < contentRange.length && name) {
                     [self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location)];
                 }
-                brange = [self findFirstPattern:begin range:NSMakeRange(eEnds, [_content length] - eEnds )];
+                brange = [self findFirstPattern:begin range:NSMakeRange(eEnds, contentRange.length - eEnds)];
            }
             
         }
