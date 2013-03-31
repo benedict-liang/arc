@@ -11,9 +11,11 @@
 
 @interface CoreTextUIView ()
 - (void)updateHeight;
+@property CTFramesetterRef frameSetter;
 @end
 
 @implementation CoreTextUIView
+@synthesize frameSetter = _frameSetter;
 @synthesize padding = _padding;
 @synthesize attributedString = _attributedString;
 
@@ -33,7 +35,20 @@
 {
     // Update Attributed String
     _attributedString = attributedString;
+    [self updateFrameSetter];
     [self refresh];
+}
+
+- (void)updateFrameSetter
+{
+    // Release Previous FrameSetter
+    if (_frameSetter) {
+        CFRelease(_frameSetter);
+    }
+
+    // Get a Framesetter to draw the actual text
+    _frameSetter = CTFramesetterCreateWithAttributedString(
+        (__bridge CFAttributedStringRef)_attributedString);
 }
 
 - (void)refresh
@@ -44,16 +59,12 @@
 
 - (void)updateHeight
 {
-    CFRange stringRange = CFRangeMake(0, _attributedString.string.length);    
+    CFRange stringRange = CFRangeMake(0, _attributedString.string.length);
     float textWidth = self.frame.size.width - 2*_padding;
-    
-    // Get a Framesetter to draw the actual text
-    CTFramesetterRef framesetter =
-        CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_attributedString);
     
     // Calculate Suggested Size for Text
     CGSize suggestedSize = CTFramesetterSuggestFrameSizeWithConstraints(
-        framesetter,
+        _frameSetter,
         stringRange,
         NULL,
         CGSizeMake(textWidth, CGFLOAT_MAX),
@@ -64,9 +75,6 @@
     
     // Update frame height
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, height);
-    
-    // Release
-    CFRelease(framesetter);
 }
 
 - (void)drawRect:(CGRect)rect
@@ -88,10 +96,6 @@
         CGContextTranslateCTM(context, 0, self.bounds.size.height);
         CGContextScaleCTM(context, 1.0, -1.0);
         
-        // Get a Framesetter to draw the actual text
-        CTFramesetterRef framesetter =
-        CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_attributedString);
-        
         // Create TextRectangle
         CGRect textRect = CGRectMake(_padding, _padding, textWidth, textHeight);
         
@@ -100,7 +104,7 @@
         CGPathAddRect(path, NULL, textRect);
         
         // Create Frame from Framesetter and Path
-        CTFrameRef frame = CTFramesetterCreateFrame(framesetter, stringRange, path, NULL);
+        CTFrameRef frame = CTFramesetterCreateFrame(_frameSetter, stringRange, path, NULL);
         
         // Draw Frame onto Context
         CTFrameDraw(frame, context);
@@ -108,7 +112,6 @@
         // Release C Objects
         CFRelease(frame);
         CFRelease(path);
-        CFRelease(framesetter);
         
         // Restore State of the Context
         CGContextRestoreGState(context);
