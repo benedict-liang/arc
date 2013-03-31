@@ -64,6 +64,9 @@
     
     // Update frame height
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, height);
+    
+    // Release
+    CFRelease(framesetter);
 }
 
 - (void)drawRect:(CGRect)rect
