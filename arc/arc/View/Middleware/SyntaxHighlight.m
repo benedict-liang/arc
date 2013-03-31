@@ -21,7 +21,7 @@
     
     _patterns = [TMBundleSyntaxParser getPatternsArray:@"javascript.tmbundle"];
     _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
-    NSLog(@"patterns array: %@", _patterns);
+    //NSLog(@"patterns array: %@", _patterns);
 }
 - (NSArray*)foundPattern:(NSString*)p range:(NSRange)r {
     NSError *error = NULL;
@@ -56,7 +56,7 @@
     NSTextCheckingResult *res = nil;
     
     if ((r.location + r.length <= [_content length]) && (r.length > 0) && (r.length <= [_content length])) {
-        NSLog(@"findFirstPattern:   %d %d",r.location,r.length);
+        //NSLog(@"findFirstPattern:   %d %d",r.location,r.length);
         return [regex rangeOfFirstMatchInString:_content options:0 range:r];
     } else {
         NSLog(@"index out of bounds in regex. findFirstPatten");
@@ -168,10 +168,10 @@
         //matching blocks
         if (begin && end) {
             
-            if ([begin isEqualToString:@"(^[ \\t]+)?(?=//)"] && [end isEqualToString:@"(?!\\G)"]) {
-                NSLog(@"finally");
-            }
-            NSLog(@"before brange: %d %d", contentRange.location, contentRange.length);
+            //if ([begin isEqualToString:@"(^[ \\t]+)?(?=//)"] && [end isEqualToString:@"(?!\\G)"]) {
+            //    NSLog(@"finally");
+           // }
+            //NSLog(@"before brange: %d %d", contentRange.location, contentRange.length);
             NSRange brange = [self findFirstPattern:begin range:contentRange];
             NSRange erange = NSMakeRange(0, 0);
             
@@ -179,7 +179,7 @@
             
                 int bEnds = brange.location + brange.length;
                 if (contentRange.length - bEnds > 0) {
-                    NSLog(@"before erange: %d %d", bEnds, contentRange.length - bEnds);
+                    //NSLog(@"before erange: %d %d", bEnds, contentRange.length - bEnds);
                     erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds)];
                 }
                 
@@ -194,7 +194,7 @@
                     if (brange.location != NSNotFound && erange.location != NSNotFound && eEnds < contentRange.length && name) {
                         [self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location)];
                     }
-                    NSLog(@"before brange2: %d %d", contentRange.location, contentRange.length);
+                    //NSLog(@"before brange2: %d %d", contentRange.location, contentRange.length);
                     brange = [self findFirstPattern:begin range:NSMakeRange(eEnds, contentRange.length - eEnds)];
                 }
                 
