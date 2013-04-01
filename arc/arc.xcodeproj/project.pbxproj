@@ -14,7 +14,6 @@
 		026BC477170589BD00A9AA5F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC476170589BD00A9AA5F /* SystemConfiguration.framework */; };
 		026BC479170589C600A9AA5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC478170589C600A9AA5F /* QuartzCore.framework */; };
 		02B04FCA1701672700FE51CB /* GameObject.h in Resources */ = {isa = PBXBuildFile; fileRef = 02B04FC91701608C00FE51CB /* GameObject.h */; };
-		02BF74DF1706C14800397605 /* DropBoxFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02BF74DE1706C14800397605 /* DropBoxFolder.m */; };
 		02E51AE017092D4300247AF5 /* LocalFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51ADF17092D4300247AF5 /* LocalFolder.m */; };
 		02E51AE417093C8B00247AF5 /* LocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AE317093C8B00247AF5 /* LocalFile.m */; };
 		02E51AE71709438900247AF5 /* LocalRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AE61709438900247AF5 /* LocalRootFolder.m */; };
@@ -88,8 +87,6 @@
 		026BC476170589BD00A9AA5F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		026BC478170589C600A9AA5F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
-		02BF74DD1706C14700397605 /* DropBoxFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxFolder.h; sourceTree = "<group>"; };
-		02BF74DE1706C14800397605 /* DropBoxFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxFolder.m; sourceTree = "<group>"; };
 		02E51ADE17092D4300247AF5 /* LocalFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFolder.h; sourceTree = "<group>"; };
 		02E51ADF17092D4300247AF5 /* LocalFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFolder.m; sourceTree = "<group>"; };
 		02E51AE117092FCE00247AF5 /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = File.h; path = Protocols/File.h; sourceTree = "<group>"; };
@@ -379,15 +376,6 @@
 			name = "Local Files";
 			sourceTree = "<group>";
 		};
-		026BC47B1705913A00A9AA5F /* DropBox */ = {
-			isa = PBXGroup;
-			children = (
-				02BF74DD1706C14700397605 /* DropBoxFolder.h */,
-				02BF74DE1706C14800397605 /* DropBoxFolder.m */,
-			);
-			name = DropBox;
-			sourceTree = "<group>";
-		};
 		4C43F8E016F86AA800159B29 = {
 			isa = PBXGroup;
 			children = (
@@ -468,7 +456,6 @@
 				8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */,
 				8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */,
 				026BC47A1705913200A9AA5F /* Local Files */,
-				026BC47B1705913A00A9AA5F /* DropBox */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1137,7 +1124,6 @@
 				4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */,
 				4C12D0781706074600F4593B /* CodeView.m in Sources */,
 				8F2F5B8117061435005AD37F /* nav_gmaps_sample.js in Sources */,
-				02BF74DF1706C14800397605 /* DropBoxFolder.m in Sources */,
 				4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */,
 				02E51AE017092D4300247AF5 /* LocalFolder.m in Sources */,
 				02E51AE417093C8B00247AF5 /* LocalFile.m in Sources */,
