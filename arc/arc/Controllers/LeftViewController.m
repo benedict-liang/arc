@@ -11,13 +11,13 @@
 #import "FileNavigationViewController.h"
 #import "SettingsViewController.h"
 
+#import "RootFolder.h"
+
 @interface LeftViewController ()
-@property UIToolbar* toolbar;
-@property UIViewController* currentViewController;
+@property id<Folder> currentFolder;
+@property UINavigationController *navigationController;
 @property FileNavigationViewController* fileNavigationViewController;
 @property SettingsViewController *settingsViewController;
-- (void)showSettings:(id)sender;
-- (void)showFileNavigator:(id)sender;
 @end
 
 @implementation LeftViewController
@@ -28,6 +28,7 @@
     self = [super init];
     if (self) {
         self.view.autoresizesSubviews = YES;
+        self.view.clipsToBounds = YES;
     }
     return self;
 }
@@ -35,95 +36,58 @@
 - (void)setDelegate:(id<MainViewControllerProtocol>)delegate
 {
     _delegate = delegate;
-
-    // Assign Delegate to ChildViewControllers
-    for (id<SubViewControllerProtocol> childViewController
-         in self.childViewControllers) {
-        childViewController.delegate = delegate;
-    }
+    // Assign Delegates to ChildViewControllers
+    _fileNavigationViewController.delegate = delegate;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // File Navigator View Controller
-    _fileNavigationViewController = [[FileNavigationViewController alloc] init];
-    [self addChildViewController:_fileNavigationViewController];
-    
-    // Settings View Controller
-    _settingsViewController = [[SettingsViewController alloc] init];
-    [self addChildViewController:_settingsViewController];
-
-    [self showFileNavigator:nil];
-
-    // Toolbar
-    _toolbar = [[UIToolbar alloc] init];
-    _toolbar.frame = CGRectMake(0, 0, self.view.frame.size.width, SIZE_TOOLBAR_HEIGHT);
-    _toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    [self.view addSubview:_toolbar];
-    
-    // Update Toolbar
-    [self updateToolBar];
+    [self setUpNavigationViewController];
 }
-- (void)updateToolBar
+
+- (void)setUpNavigationViewController
 {
-    UIBarButtonItem *button;
-    if (_currentViewController == nil ||
-        _currentViewController != _fileNavigationViewController) {
-        button = [[UIBarButtonItem alloc] initWithTitle:@"Settings"
-                                                  style:UIBarButtonItemStyleBordered
-                                                 target:self
-                                                 action:@selector(showSettings:)];
-    } else {
-        button = [[UIBarButtonItem alloc] initWithTitle:@"Files"
-                                                  style:UIBarButtonItemStyleBordered
-                                                 target:self
-                                                 action:@selector(showFileNavigator:)];
-    }
-    _toolbar.items = [NSArray arrayWithObject:button];
+    _navigationController = [[UINavigationController alloc] init];
+    _navigationController.toolbarHidden = NO;
+    _navigationController.view.frame = self.view.bounds;
+    [self.view addSubview:_navigationController.view];
 }
 
 - (void)showFolder:(id<Folder>)folder
 {
-    // TODO
-}
-
-- (void)showSettings:(id)sender
-{
-    [self transitionToViewController:_settingsViewController
-                         withOptions:UIViewAnimationOptionTransitionFlipFromLeft];
+    self.navigationItem.backBarButtonItem =
+        [[UIBarButtonItem alloc] initWithTitle:@"Custom Title"
+                                         style:UIBarButtonItemStyleBordered
+                                        target:nil
+                                        action:nil];
     
-    // Update toolbar
-    [self updateToolBar];
+    // File Navigator View Controller
+    FileNavigationViewController *fileNavigationViewController =
+        [[FileNavigationViewController alloc] initWithFolder:folder];
+    fileNavigationViewController.delegate = self.delegate;
+    [_navigationController pushViewController:fileNavigationViewController
+                                     animated:YES];
 }
 
-- (void)showFileNavigator:(id)sender
-{
-    [self transitionToViewController:_fileNavigationViewController
-                         withOptions:UIViewAnimationOptionTransitionFlipFromRight];
-    
-    // Update toolbar
-    [self updateToolBar];
-}
 
-- (void)transitionToViewController:(UIViewController *)nextViewController
-                       withOptions:(UIViewAnimationOptions)options
-{
-    nextViewController.view.frame = CGRectMake(
-        self.view.bounds.origin.x, SIZE_TOOLBAR_HEIGHT,
-        self.view.bounds.size.width, self.view.bounds.size.height);
-
-    [UIView transitionWithView:self.view
-                      duration:0.65f
-                       options:options
-                    animations:^{
-                        [_currentViewController.view removeFromSuperview];
-                        [self.view addSubview:nextViewController.view];
-                    }
-                    completion:^(BOOL finished){
-                        _currentViewController = nextViewController;
-                    }];
-}
+//- (void)transitionToViewController:(UIViewController *)nextViewController
+//                       withOptions:(UIViewAnimationOptions)options
+//{
+//    nextViewController.view.frame = CGRectMake(
+//        self.view.bounds.origin.x, SIZE_TOOLBAR_HEIGHT,
+//        self.view.bounds.size.width, self.view.bounds.size.height);
+//
+//    [UIView transitionWithView:self.view
+//                      duration:0.65f
+//                       options:options
+//                    animations:^{
+//                        [_currentViewController.view removeFromSuperview];
+//                        [self.view addSubview:nextViewController.view];
+//                    }
+//                    completion:^(BOOL finished){
+//                        _currentViewController = nextViewController;
+//                    }];
+//}
 
 @end

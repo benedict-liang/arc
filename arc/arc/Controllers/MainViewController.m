@@ -36,7 +36,7 @@
 
     // TMP
     [self fileSelected:[ApplicationState getSampleFile]];
-    [self folderSelected:[RootFolder sharedRootFolder]];
+    [self folderSelected:[LocalRootFolder sharedLocalRootFolder]];
 }
 
 // Shows the file using the CodeViewController
@@ -44,7 +44,6 @@
 {
     // TODO
     // Register with Application State
-
     [_codeViewController showFile:file];
 }
 
@@ -53,7 +52,6 @@
 {
     // TODO
     // Register with Application State
-
     [_leftViewController showFolder:folder];
 }
 

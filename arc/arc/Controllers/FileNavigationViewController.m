@@ -13,47 +13,47 @@
 #import "Folder.h"
 
 @interface FileNavigationViewController ()
-@property id<Folder> currentFolder;
+@property id<Folder> folder;
 @property UITableView *tableView;
 @property NSArray *filesAndFolders;
 @end
 
 @implementation FileNavigationViewController
-@synthesize delegate;
-@synthesize tableView = _tableView;
-@synthesize currentFolder = _currentFolder;
-@synthesize filesAndFolders = _filesAndFolders;
+@synthesize delegate = _delegate;
 
-- (id)init
+- (id)initWithFolder:(id<Folder>)folder
 {
     self = [super init];
     if (self) {
-        // tmp.
-        _currentFolder = [RootFolder sharedRootFolder];
-        
-        NSMutableArray *folders = [NSMutableArray array];
-        NSMutableArray *files = [NSMutableArray array];
-        NSArray *folderContents = (NSArray*)[_currentFolder contents];
-
-        for (id<FileSystemObject> fileObject in folderContents) {
-            if ([[fileObject class] conformsToProtocol:@protocol(File)]) {
-                [files addObject:fileObject];
-            } else if ([[fileObject class] conformsToProtocol:@protocol(Folder) ]) {
-                [folders addObject:fileObject];
-            }
-        }
-        
-        _filesAndFolders = [NSArray arrayWithObjects:
-                            folders,
-                            files,
-                            nil];
+        _folder = folder;
+        [self sortFilesAndFolders];
     }
     return self;
+}
+
+- (void)sortFilesAndFolders
+{
+    NSMutableArray *folders = [NSMutableArray array];
+    NSMutableArray *files = [NSMutableArray array];
+    NSArray *fileObjects = (NSArray*)[_folder contents];
+
+    for (id<FileSystemObject> fileSystemObject in fileObjects) {
+        if ([[fileSystemObject class] conformsToProtocol:@protocol(File)]) {
+            [files addObject:fileSystemObject];
+        } else if ([[fileSystemObject class] conformsToProtocol:@protocol(Folder) ]) {
+            [folders addObject:fileSystemObject];
+        }
+    }
+    _filesAndFolders = [NSArray arrayWithObjects:folders, files, nil];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Hooks into UINavigationViewController
+    self.title = _folder.name;
+
     self.view.autoresizesSubviews = YES;
 
     // Set Up TableView
@@ -70,11 +70,6 @@
     _tableView.delegate = self;
     
     [self.view addSubview:_tableView];
-}
-
-- (void)showFolder:(id<Folder>)folder
-{
-    
 }
 
 #pragma mark - Table view data source
@@ -133,6 +128,9 @@
     NSArray *section = [_filesAndFolders objectAtIndex:indexPath.section];
     id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
     [self.delegate fileObjectSelected:fileObject];
+    
+    // unhighlight TableViewCell
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
