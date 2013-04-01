@@ -13,24 +13,27 @@
 + (void)arcAttributedString:(ArcAttributedString *)arcAttributedString OfFile:(id<File>)file delegate:(id)del
 
 {
-    SyntaxHighlight *sh = [[self alloc] init];
-    sh.delegate = del;
-    sh.currentFile = file;
+    SyntaxHighlight *sh = [[self alloc] initWithFile:file del:del];
     ArcAttributedString *copy = [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
-    sh.content = (NSString *)[file contents];
     [sh performSelectorInBackground:@selector(execOn:) withObject:copy];
 }
-
-- (void)initPatternsAndTheme {
-    
-    _patterns = [TMBundleSyntaxParser getPatternsArray:@"javascript.tmbundle"];
-    _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
-    //NSLog(@"patterns array: %@", _patterns);
+- initWithFile:(id<File>)file del:(id)d {
+    self = [super init];
+    if (self) {
+        _delegate = d;
+        _currentFile = file;
+        _content = [file contents];
+        _patterns = [TMBundleSyntaxParser getPatternsArray:@"javascript.tmbundle"];
+        _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
+    }
+    return self;
 }
+
 - (NSArray*)foundPattern:(NSString*)p range:(NSRange)r {
   
     return [self foundPattern:p capture:0 range:r];
 }
+
 - (NSRange)findFirstPattern:(NSString*)p range:(NSRange)r {
     NSError *error = NULL;
     
@@ -164,7 +167,7 @@
         }
     }*/
 }
--(void)iterPatternsAndApplyForRange:(NSRange)contentRange patterns:(NSArray*)patterns {
+-(NSDictionary*)iterPatternsForRange:(NSRange)contentRange patterns:(NSArray*)patterns {
     for (NSDictionary* syntaxItem in patterns) {
         NSString *name = [syntaxItem objectForKey:@"name"];
         NSString *match = [syntaxItem objectForKey:@"match"];
@@ -219,7 +222,7 @@
                     erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds)];
                 } else {
                     //if bEnds > contentRange.length, skip
-                    return;
+                    break;
                 }
                 
                 long eEnds = erange.location + erange.length;
@@ -228,7 +231,7 @@
                 if (eEnds - brange.location > 0 && brange.location != NSNotFound && erange.location != NSNotFound && eEnds <= contentRange.length) {
                     if (embedPatterns) {
                         //recursively apply iterPatterns to embedded patterns inclusive of begin and end
-                        [self iterPatternsAndApplyForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns];
+                        [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns];
                     }
                     
                     if (name) {
@@ -248,8 +251,6 @@
 - (void)execOn:(ArcAttributedString *)arcAttributedString {
 
     _output = arcAttributedString;
-    [self initPatternsAndTheme];
-    //_content = [file contents];
     [self iterPatternsAndApplyForRange:NSMakeRange(0, [_content length]) patterns:_patterns];
     if (self.delegate) {
         [self.delegate mergeAndRenderWith:_output forFile:self.currentFile];
