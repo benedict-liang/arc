@@ -59,5 +59,28 @@
     _needsRefresh = YES;
 }
 
+// Moves the given FileSystemObject to this Folder.
+// The given file must be of the same "type" as this Folder
+// (e.g. iOS file system, DropBox, etc.)
+// Returns YES if successful, NO otherwise.
+- (BOOL)takeFileSystemObject:(id<FileSystemObject>)target
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSString *newTargetPath = [_path stringByAppendingPathComponent:[[target path] lastPathComponent]];
+    
+    NSError *error;
+    BOOL isMoveSuccessful = [fileManager moveItemAtPath:[target path] toPath:newTargetPath error:&error];
+    if (isMoveSuccessful) {
+        [self markNeedsRefresh];
+        [target setParent:self];
+        [target setPath:newTargetPath];
+        return YES;
+    } else {
+        NSLog(@"%@", error);
+        return NO;
+    }
+}
+
 
 @end
