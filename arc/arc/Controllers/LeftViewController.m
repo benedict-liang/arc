@@ -22,28 +22,24 @@
 
 @implementation LeftViewController
 @synthesize delegate = _delegate;
-@synthesize toolbar = _toolbar;
-@synthesize currentViewController = _currentViewController;
-@synthesize settingsViewController = _settingsViewController;
-@synthesize fileNavigationViewController = _fileNavigationViewController;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        self.view.backgroundColor = [UIColor blueColor];
         self.view.autoresizesSubviews = YES;
     }
     return self;
 }
 
-- (void)setDelegate:(id<MainViewControllerDelegate>)delegate
+- (void)setDelegate:(id<MainViewControllerProtocol>)delegate
 {
     _delegate = delegate;
-    
+
     // Assign Delegate to ChildViewControllers
-    for (id<SubViewController> childVC in self.childViewControllers) {
-        childVC.delegate = delegate;
+    for (id<SubViewControllerProtocol> childViewController
+         in self.childViewControllers) {
+        childViewController.delegate = delegate;
     }
 }
 
@@ -55,17 +51,19 @@
     _fileNavigationViewController = [[FileNavigationViewController alloc] init];
     [self addChildViewController:_fileNavigationViewController];
     
+    // Settings View Controller
     _settingsViewController = [[SettingsViewController alloc] init];
     [self addChildViewController:_settingsViewController];
 
     [self showFileNavigator:nil];
 
+    // Toolbar
     _toolbar = [[UIToolbar alloc] init];
     _toolbar.frame = CGRectMake(0, 0, self.view.frame.size.width, SIZE_TOOLBAR_HEIGHT);
     _toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:_toolbar];
     
-    // Update toolbar
+    // Update Toolbar
     [self updateToolBar];
 }
 - (void)updateToolBar
@@ -86,6 +84,11 @@
     _toolbar.items = [NSArray arrayWithObject:button];
 }
 
+- (void)showFolder:(id<Folder>)folder
+{
+    // TODO
+}
+
 - (void)showSettings:(id)sender
 {
     [self transitionToViewController:_settingsViewController
@@ -104,8 +107,6 @@
     [self updateToolBar];
 }
 
-// Adapted from:
-//http://stackoverflow.com/questions/8146253/animate-change-of-view-controllers-without-using-navigation-controller-stack-su
 - (void)transitionToViewController:(UIViewController *)nextViewController
                        withOptions:(UIViewAnimationOptions)options
 {

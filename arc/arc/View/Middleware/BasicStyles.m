@@ -16,7 +16,7 @@
     CGColorRef color = [UIColor blackColor].CGColor;
     [arcAttributedString setColor:color];
     
-    NSString *fontFamily = @"Source Code Pro";
+    NSString *fontFamily = @"SourceCodePro-Regular";
     [arcAttributedString setFontFamily:fontFamily];
     
     int fontSize = 24;

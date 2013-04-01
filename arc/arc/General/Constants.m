@@ -15,16 +15,17 @@ const CGSize SIZE_POPOVER = {200,300};
 
 // Defaults
 const int DEFAULT_FONT_SIZE = 12;
-const NSString* DEFAULT_FONT_FAMILY = @"Source Code Pro";
+NSString* const DEFAULT_FONT_FAMILY = @"SourceCodePro-Regular";
 const CGColorRef* DEFAULT_TEXT_COLOR = {0};
 
 // Default Folder Names
-const NSString* FOLDER_EXTERNAL_APPLICATIONS = @"External Applications";
-const NSString* FOLDER_ROOT = @"Documents";
+NSString* const FOLDER_EXTERNAL_APPLICATIONS = @"External Applications";
+NSString* const FOLDER_ROOT = @"Documents";
+NSString* const FOLDER_DROPBOX_ROOT = @"DropBox";
 
 // API Keys
-const NSString* CLOUD_DROPBOX_KEY = @"q591oqy8n4yxgt1";
-const NSString* CLOUD_DROPBOX_SECRET = @"kkb1vzgnah76zmr";
+NSString* const CLOUD_DROPBOX_KEY = @"q591oqy8n4yxgt1";
+NSString* const CLOUD_DROPBOX_SECRET = @"kkb1vzgnah76zmr";
 
 @implementation Constants
 @end

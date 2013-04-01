@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Folder.h"
-#import "SubViewController.h"
+#import "SubViewControllerProtocol.h"
 
-@interface FileNavigationViewController : UIViewController <SubViewController, UITableViewDelegate, UITableViewDataSource>
+@interface FileNavigationViewController : UIViewController <SubViewControllerProtocol, UITableViewDelegate, UITableViewDataSource>
 - (void)showFolder:(id<Folder>)folder;
 @end

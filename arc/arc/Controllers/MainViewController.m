@@ -6,34 +6,23 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-
 #import "MainViewController.h"
 
 @interface MainViewController ()
-@property CodeViewController *codeViewController;
-@property LeftViewController *leftViewController;
-
-@property LocalRootFolder *rootFolder; // To be changed to actual RootFolder later.
-@property UIToolbar *toolbar;
-@property UIPopoverController *popover;
-
+@property id<CodeViewControllerProtocol> codeViewController;
+@property id<LeftViewControllerProtocol> leftViewController;
 
 - (void)fileSelected:(id<File>)file;
 - (void)folderSelected:(id<Folder>)folder;
-
 @end
 
 @implementation MainViewController
-@synthesize codeViewController = _codeViewController;
-@synthesize leftViewController = _leftViewController;
-@synthesize rootFolder = _rootFolder;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        // tmp. should use application state
-        _rootFolder = [LocalRootFolder sharedLocalRootFolder]; // To be changed.
+
     }
     return self;
 }
@@ -45,13 +34,17 @@
     _leftViewController = [self.viewControllers objectAtIndex:0];
     _codeViewController = [self.viewControllers objectAtIndex:1];
 
-    // tmp
-    [_codeViewController showFile:[ApplicationState getSampleFile]];
+    // TMP
+    [self fileSelected:[ApplicationState getSampleFile]];
+    [self folderSelected:[RootFolder sharedRootFolder]];
 }
 
 // Shows the file using the CodeViewController
 - (void)fileSelected:(id<File>)file
 {
+    // TODO
+    // Register with Application State
+
     [_codeViewController showFile:file];
 }
 
@@ -59,11 +52,13 @@
 - (void)folderSelected:(id<Folder>)folder
 {
     // TODO
+    // Register with Application State
+
+    [_leftViewController showFolder:folder];
 }
 
 #pragma mark - MainViewControllerDelegate Methods
 
-// Shows/hides LeftBar
 - (void)showLeftBar
 {
     // TODO
@@ -73,12 +68,12 @@
     // TODO
 }
 
-- (void)fileObjectSelected:(id<FileSystemObject>)fileObject
+- (void)fileObjectSelected:(id<FileSystemObject>)fileSystemObject;
 {
-    if ([[fileObject class] conformsToProtocol:@protocol(Folder)]) {
-        [self folderSelected:(id<Folder>)fileObject];
+    if ([[fileSystemObject class] conformsToProtocol:@protocol(Folder)]) {
+        [self folderSelected:(id<Folder>)fileSystemObject];
     } else {
-        [self fileSelected:(id<File>)fileObject];
+        [self fileSelected:(id<File>)fileSystemObject];
     }
 }
 
@@ -87,12 +82,7 @@
     [super didReceiveMemoryWarning];
 }
 
-// popover click callback
--(void)triggerPopover:(UIBarButtonItem*)button {
-    [self.popover presentPopoverFromBarButtonItem:button
-                         permittedArrowDirections:UIPopoverArrowDirectionAny
-                                         animated:YES];
-}
+#pragma mark - UISplitViewController iOS 5.1 Compatibility (Rotation)
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

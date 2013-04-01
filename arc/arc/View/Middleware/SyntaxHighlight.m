@@ -17,7 +17,7 @@
     sh.delegate = del;
     sh.currentFile = file;
     ArcAttributedString *copy = [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
-    sh.content = [file contents];
+    sh.content = (NSString *)[file contents];
     [sh performSelectorInBackground:@selector(execOn:) withObject:copy];
 }
 

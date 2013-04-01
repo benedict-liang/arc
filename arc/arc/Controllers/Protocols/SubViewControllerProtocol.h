@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MainViewControllerDelegate.h"
+#import "MainViewControllerProtocol.h"
 
-@protocol SubViewController <NSObject>
-@property (nonatomic, weak) id<MainViewControllerDelegate> delegate;
+@protocol SubViewControllerProtocol <NSObject>
+@property (nonatomic, weak) id<MainViewControllerProtocol> delegate;
 @end

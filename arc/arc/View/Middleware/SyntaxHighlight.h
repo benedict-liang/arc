@@ -13,7 +13,6 @@
 #import "TMBundleHeader.h"
 #import "CodeViewControllerDelegate.h"
 #import "File.h"
-
 @interface SyntaxHighlight : NSObject <CodeViewMiddleware>
 @property NSArray* patterns;
 @property NSString* content;
@@ -21,4 +20,5 @@
 @property ArcAttributedString* output;
 @property id<CodeViewControllerDelegate> delegate;
 @property id<File> currentFile;
+
 @end

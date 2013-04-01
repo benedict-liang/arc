@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SubViewController.h"
+#import "SubViewControllerProtocol.h"
 
-@interface SettingsViewController : UIViewController <SubViewController, UITableViewDelegate, UITableViewDataSource>
+@interface SettingsViewController : UIViewController <SubViewControllerProtocol, UITableViewDelegate, UITableViewDataSource>
 @end
