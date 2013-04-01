@@ -90,7 +90,11 @@
         DBError *error;
         
         BOOL isMoveSuccessful = [filesystem movePath:targetPath toPath:newPath error:&error];
-        if (!isMoveSuccessful) {
+        if (isMoveSuccessful) {
+            [self markNeedsRefresh];
+            [target setParent:self];
+            [target setPath:[newPath stringValue]];
+        } else {
             NSLog(@"%@", error);
         }
         return isMoveSuccessful;
