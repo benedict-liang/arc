@@ -118,7 +118,8 @@
 // Returns the created Folder object.
 - (id<Folder>)createFolderWithName:(NSString*)name
 {
-    NSString *newFolderPath = [_path stringByAppendingPathComponent:name];
+    NSString *escapedName = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *newFolderPath = [_path stringByAppendingPathComponent:escapedName];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
@@ -138,7 +139,8 @@
 // Renames this Folder to the given name.
 - (BOOL)rename:(NSString*)name
 {
-    NSString *newPath = [[_parent path] stringByAppendingPathComponent:name];
+    NSString *escapedName = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *newPath = [[_parent path] stringByAppendingPathComponent:escapedName];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
