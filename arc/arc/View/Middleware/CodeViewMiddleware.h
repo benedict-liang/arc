@@ -13,5 +13,5 @@
 @protocol CodeViewMiddleware <NSObject>
 // Adds attributes to ArcAttributedString
 // File object is passed in as a reference (if more infomation is needed)
-+ (void)arcAttributedString:(ArcAttributedString*)arcAttributedString OfFile:(File*)file;
++ (void)arcAttributedString:(ArcAttributedString*)arcAttributedString OfFile:(File*)file delegate:(id)del;
 @end

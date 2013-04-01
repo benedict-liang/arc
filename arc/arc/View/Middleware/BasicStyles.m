@@ -11,7 +11,7 @@
 #import "BasicStyles.h"
 
 @implementation BasicStyles
-+ (void)arcAttributedString:(ArcAttributedString*)arcAttributedString OfFile:(File*)file;
++ (void)arcAttributedString:(ArcAttributedString*)arcAttributedString OfFile:(File*)file delegate:(id)del;
 {
     CGColorRef color = [UIColor blackColor].CGColor;
     [arcAttributedString setColor:color];

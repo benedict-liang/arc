@@ -11,13 +11,13 @@
 
 @implementation SyntaxHighlight
 
-+ (void)arcAttributedString:(ArcAttributedString *)arcAttributedString OfFile:(File *)file
++ (void)arcAttributedString:(ArcAttributedString *)arcAttributedString OfFile:(File *)file delegate:(id)del
 {
     SyntaxHighlight *sh = [[self alloc] init];
+    sh.delegate = del;
     ArcAttributedString *copy = [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
     sh.content = [file contents];
     [sh performSelectorInBackground:@selector(execOn:) withObject:copy];
-    
 }
 
 - (void)initPatternsAndTheme {

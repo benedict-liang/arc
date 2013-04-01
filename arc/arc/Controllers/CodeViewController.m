@@ -68,9 +68,11 @@
 
     // Middleware to Style Attributed String
     [BasicStyles arcAttributedString:_arcAttributedString
-                              OfFile:_currentFile];
+                              OfFile:_currentFile
+                            delegate:self];
     [SyntaxHighlight arcAttributedString:_arcAttributedString
-                                  OfFile:_currentFile];
+                                  OfFile:_currentFile
+                                delegate:self];
 
     // Render Code to screen
     [self render];
