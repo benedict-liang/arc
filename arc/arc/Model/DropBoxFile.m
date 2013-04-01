@@ -36,4 +36,27 @@
     }
 }
 
+// Refreshes the contents of this object, and returns them (for convenience.)
+- (id<NSObject>)refreshContents
+{
+    DBPath *ourPath = [[DBPath alloc] initWithString:_path];
+    DBFilesystem *filesystem = [DBFilesystem sharedFilesystem];
+    
+    DBError *error;
+    DBFile *ourFile = [filesystem openFile:ourPath error:&error];
+    
+    if (ourFile) {
+        NSString *contents = [ourFile readString:&error];
+        if (contents) {
+            _contents = contents;
+            _needsRefresh = NO;
+        }
+    }
+    
+    if (error) {
+        NSLog(@"%@", error);
+    }
+    return  _contents;
+}
+
 @end
