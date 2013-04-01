@@ -11,7 +11,7 @@
 @implementation LocalFolder
 
 // Synthesize properties from protocol.
-@synthesize name=_name, path=_path, parent=_parent;
+@synthesize name=_name, path=_path, parent=_parent, needsRefresh=_needsRefresh;
 
 // Initialises this object with the given name, path, and parent.
 - (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent
