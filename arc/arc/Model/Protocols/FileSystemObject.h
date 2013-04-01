@@ -19,13 +19,13 @@
 @property (strong, nonatomic) NSString *path;
 
 // The parent of this object.
-@property (weak, nonatomic) <FileSystemObject> *parent;
+@property (weak, nonatomic) id<FileSystemObject> parent;
 
 // Returns the contents of this object.
-- (id)contents;
+- (id<NSObject>)contents;
 
 // Refreshes the contents of this object, and returns them (for convenience.)
-- (id)refreshContents;
+- (id<NSObject>)refreshContents;
 
 // Marks this object as needing to be refreshed.
 - (void)markNeedsRefresh;
