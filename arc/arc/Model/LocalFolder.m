@@ -35,5 +35,23 @@
     }
 }
 
+// Refreshes the contents of this object, and returns them (for convenience.)
+- (id<NSObject>)refreshContents
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+
+    NSError *error;
+    NSArray *retrievedContents = [fileManager contentsOfDirectoryAtPath:_path error:&error];
+    
+    if (error) {
+        NSLog(@"%@", error);
+        return nil;
+    } else {
+        _contents = retrievedContents;
+        _needsRefresh = NO;
+        return retrievedContents;
+    }
+}
+
 
 @end
