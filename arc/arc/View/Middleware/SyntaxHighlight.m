@@ -15,6 +15,7 @@
 {
     SyntaxHighlight *sh = [[self alloc] init];
     sh.delegate = del;
+    sh.currentFile = file;
     ArcAttributedString *copy = [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
     sh.content = (NSString *)[file contents];
     [sh performSelectorInBackground:@selector(execOn:) withObject:copy];
@@ -205,6 +206,9 @@
     [self initPatternsAndTheme];
     //_content = [file contents];
     [self iterPatternsAndApplyForRange:NSMakeRange(0, [_content length]) patterns:_patterns];
-    [self.delegate mergeAndRenderWith:_output];
+    if (self.delegate) {
+        [self.delegate mergeAndRenderWith:_output forFile:self.currentFile];
+    }
+ 
 }
 @end
