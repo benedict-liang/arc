@@ -47,9 +47,22 @@
         NSLog(@"%@", error);
         return nil;
     } else {
-        _contents = retrievedContents;
+        NSMutableArray *contents = [[NSMutableArray alloc] init];
+        
+        for (NSString *currentPath in retrievedContents) {
+            NSString *itemName = [currentPath lastPathComponent];
+            
+            id<FileSystemObject>retrievedObject;
+            if ([[NSURL fileURLWithPath:currentPath] isDirectory]) {
+                retrievedObject = [[LocalFolder alloc] initWithName:itemName path:currentPath parent:self];
+            } else {
+                retrievedObject = [[LocalFile alloc] initWithName:itemName path:currentPath parent:self];
+            }
+            [contents addObject:retrievedObject];
+        }
+        _contents = contents;
         _needsRefresh = NO;
-        return retrievedContents;
+        return _contents;
     }
 }
 

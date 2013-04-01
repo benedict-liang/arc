@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Folder.h"
+#import "LocalFile.h"
 
 @interface LocalFolder : NSObject <Folder> {
     NSArray *_contents;
