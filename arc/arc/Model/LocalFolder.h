@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "Folder.h"
 
-@interface LocalFolder : NSObject <Folder>
+@interface LocalFolder : NSObject <Folder> {
+    NSArray *_contents;
+    BOOL _needsRefresh;
+}
 
 @end
