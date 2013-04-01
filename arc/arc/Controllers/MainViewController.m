@@ -13,13 +13,13 @@
 @property CodeViewController *codeViewController;
 @property LeftViewController *leftViewController;
 
-@property RootFolder *rootFolder;
+@property LocalRootFolder *rootFolder; // To be changed to actual RootFolder later.
 @property UIToolbar *toolbar;
 @property UIPopoverController *popover;
 
 
-- (void)fileSelected:(File*)file;
-- (void)folderSelected:(Folder*)folder;
+- (void)fileSelected:(id<File>)file;
+- (void)folderSelected:(id<Folder>)folder;
 
 @end
 
@@ -33,7 +33,7 @@
     self = [super init];
     if (self) {
         // tmp. should use application state
-        _rootFolder = [RootFolder sharedRootFolder];
+        _rootFolder = [LocalRootFolder sharedLocalRootFolder]; // To be changed.
     }
     return self;
 }
@@ -50,13 +50,13 @@
 }
 
 // Shows the file using the CodeViewController
-- (void)fileSelected:(File*)file
+- (void)fileSelected:(id<File>)file
 {
     [_codeViewController showFile:file];
 }
 
 // Updates Current Folder being Viewed
-- (void)folderSelected:(Folder*)folder
+- (void)folderSelected:(id<Folder>)folder
 {
     // TODO
 }
@@ -73,12 +73,12 @@
     // TODO
 }
 
-- (void)fileObjectSelected:(FileObject *)fileObject
+- (void)fileObjectSelected:(id<FileSystemObject>)fileObject
 {
-    if ([fileObject isKindOfClass:[Folder class]]) {
-        [self folderSelected:(Folder*)fileObject];
+    if ([[fileObject class] conformsToProtocol:@protocol(Folder)]) {
+        [self folderSelected:(id<Folder>)fileObject];
     } else {
-        [self fileSelected:(File*)fileObject];
+        [self fileSelected:(id<File>)fileObject];
     }
 }
 

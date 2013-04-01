@@ -10,7 +10,7 @@
 #import "MainViewControllerDelegate.h"
 #import "Constants.h"
 #import "ApplicationState.h"
-#import "RootFolder.h"
+#import "LocalRootFolder.h" // To be changed.
 #import "Folder.h"
 #import "File.h"
 #import "CodeViewController.h"
