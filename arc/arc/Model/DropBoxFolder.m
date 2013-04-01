@@ -160,4 +160,24 @@
     return isRenameSuccessful;
 }
 
+// Removes this object.
+// Returns YES if successful, NO otherwise.
+// If NO is returned, the state of the object or its contents is unstable.
+- (BOOL)remove
+{
+    DBPath *ourPath = [[DBPath alloc] initWithString:_path];
+    
+    DBFilesystem *filesystem = [DBFilesystem sharedFilesystem];
+    
+    DBError *error;
+    BOOL isRemoveSuccessful = [filesystem deletePath:ourPath error:&error];
+    
+    if (isRemoveSuccessful) {
+        [_parent markNeedsRefresh];
+    } else {
+        NSLog(@"%@", error);
+    }
+    return isRemoveSuccessful;
+}
+
 @end
