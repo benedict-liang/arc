@@ -118,6 +118,7 @@
 
     NSError *error;
     BOOL isCreateSuccessful = [fileManager createDirectoryAtPath:newFolderPath withIntermediateDirectories:YES attributes:nil error:&error];
+   
     if (isCreateSuccessful) {
         LocalFolder *newFolder = [[LocalFolder alloc] initWithName:name path:newFolderPath parent:self];
         [self markNeedsRefresh];
@@ -125,6 +126,24 @@
     } else {
         NSLog(@"%@", error);
         return nil;
+    }
+}
+
+// Renames this Folder to the given name.
+- (BOOL)rename:(NSString*)name
+{
+    NSString *newPath = [[_parent path] stringByAppendingPathComponent:name];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+
+    NSError *error;
+    BOOL isRenameSuccessful = [fileManager moveItemAtPath:_path toPath:newPath error:&error];
+
+    if (isRenameSuccessful) {
+        _name = name;
+        [_parent markNeedsRefresh];
+        
+        // Update all contents with the new path.
     }
 }
 

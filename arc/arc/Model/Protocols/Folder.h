@@ -26,6 +26,7 @@
 - (id<Folder>)createFolderWithName:(NSString*)name;
 
 // Renames this Folder to the given name.
-- (void)rename:(NSString*)name;
+// Returns YES if successful, NO otherwise.
+- (BOOL)rename:(NSString*)name;
 
 @end
