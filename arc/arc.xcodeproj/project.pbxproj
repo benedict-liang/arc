@@ -91,6 +91,7 @@
 		025B52AA16F86C4B00C20559 /* Folder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Folder.m; sourceTree = "<group>"; };
 		025B52AC16F86C8700C20559 /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
 		025B52AD16F86C8700C20559 /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
+		0260B509170921DB0091B012 /* FileSystemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemObject.h; sourceTree = "<group>"; };
 		026AC54316FF06F6001E03E5 /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
 		026AC54416FF06F6001E03E5 /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
 		026BC4701705895500A9AA5F /* Dropbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dropbox.framework; path = arc/Dropbox.framework; sourceTree = "<group>"; };
@@ -364,6 +365,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0260B508170921C10091B012 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0260B509170921DB0091B012 /* FileSystemObject.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		026BC47A1705913200A9AA5F /* Local Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,6 +473,7 @@
 		4C43F90E16F86AC400159B29 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0260B508170921C10091B012 /* Protocols */,
 				8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */,
 				8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */,
 				026BC47A1705913200A9AA5F /* Local Files */,
