@@ -14,7 +14,6 @@
 #import "RootFolder.h"
 
 @interface LeftViewController ()
-@property id<Folder> currentFolder;
 @property UIViewController *currentViewController;
 @property UINavigationController *documentsNavigationViewController;
 @property UINavigationController *settingsNavigationViewController;
@@ -57,25 +56,61 @@
 }
 
 - (void)showFolder:(id<Folder>)folder
-{    
+{
+    [self pushFolderView:folder];
+}
+
+// tmp hack
+- (void)forceFolder:(id<Folder>)folder
+{
+    if (_currentViewController != _documentsNavigationViewController) {
+        [self showDocuments:nil];
+    }
+
+    [_documentsNavigationViewController popToRootViewControllerAnimated:NO];
+    
+    id<Folder> current = folder;
+    NSMutableArray *pathToRootFolder = [NSMutableArray array];
+    while ([current parent]) {
+        [pathToRootFolder addObject:current];
+        current = (id<Folder>)[current parent];
+    }
+    
+    id<Folder> parent;
+    NSEnumerator *enumerator = [pathToRootFolder reverseObjectEnumerator];
+    while (parent = [enumerator nextObject]) {
+        [self pushFolderView:parent
+                    animated:NO];
+    }
+
+}
+
+- (void)pushFolderView:(id<Folder>)folder animated:(BOOL)animated
+{
     // File Navigator View Controller
     FolderViewController *folderViewController =
-        [[FolderViewController alloc] initWithFolder:folder];
+    [[FolderViewController alloc] initWithFolder:folder];
     folderViewController.delegate = self.delegate;
     [_documentsNavigationViewController pushViewController:folderViewController
-                                     animated:YES];
+                                                  animated:animated];
     
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc]
                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                       target:nil action:nil];
-
+    
     UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Settings"
                                                                style:UIBarButtonItemStyleBordered
                                                               target:self
                                                               action:@selector(showSettings:)];
-
+    
     [folderViewController setToolbarItems:[NSArray arrayWithObjects:flexibleSpace,button, nil]
-                                         animated:YES];
+                                 animated:animated];
+}
+
+
+- (void)pushFolderView:(id<Folder>)folder
+{
+    [self pushFolderView:folder animated:YES];
 }
 
 - (void)showSettings:(id)sender

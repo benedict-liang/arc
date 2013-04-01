@@ -18,4 +18,8 @@
 
 #pragma mark - Triggered by LeftBarViewController
 - (void)fileObjectSelected:(id<FileSystemObject>)fileSystemObject;
+
+#pragma mark - File/Folder Selection
+- (void)openIn:(id<File>)file;
+
 @end

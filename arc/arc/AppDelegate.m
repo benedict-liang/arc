@@ -44,8 +44,11 @@
         LocalFile *receivedFile = [[LocalFile alloc] initWithName:[url lastPathComponent]
                                                              path:[url path]
                                                            parent:inboxFolder];
-        // Pass the file to whatever needs it.
-        // <Fill this in here.>
+        
+        // Open file
+        id<MainViewControllerProtocol> mainViewController = (id<MainViewControllerProtocol>) _window.rootViewController;
+        [mainViewController openIn:receivedFile];
+
         return YES;
     } else {
         // Pass off to DropBox for authentication.

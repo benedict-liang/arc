@@ -39,6 +39,13 @@
     [self folderSelected:[LocalRootFolder sharedLocalRootFolder]];
 }
 
+// tmp
+- (void)openIn:(id<File>)file
+{
+    [_leftViewController forceFolder:(id<Folder>)[file parent]];
+    [self fileSelected:file];
+}
+
 // Shows the file using the CodeViewController
 - (void)fileSelected:(id<File>)file
 {

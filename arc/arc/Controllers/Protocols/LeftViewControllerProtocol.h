@@ -11,4 +11,8 @@
 
 @protocol LeftViewControllerProtocol <NSObject>
 - (void)showFolder:(id<Folder>)folder;
+
+
+// tmp
+- (void)forceFolder:(id<Folder>)folder;
 @end
