@@ -53,5 +53,11 @@
     }
 }
 
+// Marks this object as needing to be refreshed.
+- (void)markNeedsRefresh
+{
+    _needsRefresh = YES;
+}
+
 
 @end
