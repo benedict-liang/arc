@@ -8,7 +8,7 @@
 
 #import "Constants.h"
 #import "LeftViewController.h"
-#import "FileNavigationViewController.h"
+#import "FolderViewController.h"
 #import "SettingsViewController.h"
 
 #import "RootFolder.h"
@@ -16,8 +16,8 @@
 @interface LeftViewController ()
 @property id<Folder> currentFolder;
 @property UIViewController *currentViewController;
-@property UINavigationController* fileNavigationViewController;
-@property UINavigationController *settingsViewController;
+@property UINavigationController *documentsNavigationViewController;
+@property UINavigationController *settingsNavigationViewController;
 @end
 
 @implementation LeftViewController
@@ -43,25 +43,26 @@
     [super viewDidLoad];
     
     // File Navigator
-    _fileNavigationViewController = [[UINavigationController alloc] init];
-    _fileNavigationViewController.toolbarHidden = NO;
-    [self addChildViewController:_fileNavigationViewController];
+    _documentsNavigationViewController = [[UINavigationController alloc] init];
+    _documentsNavigationViewController.toolbarHidden = NO;
+    [self addChildViewController:_documentsNavigationViewController];
     
     // Settings View Controller
-    _settingsViewController = [[UINavigationController alloc] init];
-    _settingsViewController.toolbarHidden = NO;
-    [self addChildViewController:_settingsViewController];
+    _settingsNavigationViewController = [[UINavigationController alloc] init];
+    _settingsNavigationViewController.toolbarHidden = NO;
+    [self addChildViewController:_settingsNavigationViewController];
     
+    // Show Documents By default
     [self showDocuments:nil];
 }
 
 - (void)showFolder:(id<Folder>)folder
 {    
     // File Navigator View Controller
-    FileNavigationViewController *fileNavigationViewController =
-        [[FileNavigationViewController alloc] initWithFolder:folder];
-    fileNavigationViewController.delegate = self.delegate;
-    [_fileNavigationViewController pushViewController:fileNavigationViewController
+    FolderViewController *folderViewController =
+        [[FolderViewController alloc] initWithFolder:folder];
+    folderViewController.delegate = self.delegate;
+    [_documentsNavigationViewController pushViewController:folderViewController
                                      animated:YES];
     
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc]
@@ -73,13 +74,13 @@
                                                               target:self
                                                               action:@selector(showSettings:)];
 
-    [fileNavigationViewController setToolbarItems:[NSArray arrayWithObjects:flexibleSpace,button, nil]
+    [folderViewController setToolbarItems:[NSArray arrayWithObjects:flexibleSpace,button, nil]
                                          animated:YES];
 }
 
 - (void)showSettings:(id)sender
 {
-    if (_settingsViewController.topViewController == nil) {
+    if (_settingsNavigationViewController.topViewController == nil) {
         SettingsViewController *settingsTableViewController = [[SettingsViewController alloc] init];
         UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc]
                                           initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
@@ -93,17 +94,17 @@
         [settingsTableViewController
             setToolbarItems:[NSArray arrayWithObjects:flexibleSpace,button, nil]
             animated:YES];
-        [_settingsViewController pushViewController:settingsTableViewController
+        [_settingsNavigationViewController pushViewController:settingsTableViewController
                                            animated:YES];
     }
 
-    [self transitionToViewController:_settingsViewController
+    [self transitionToViewController:_settingsNavigationViewController
                          withOptions:UIViewAnimationOptionTransitionFlipFromLeft];
 }
 
 - (void)showDocuments:(id)sender
 {
-    [self transitionToViewController:_fileNavigationViewController
+    [self transitionToViewController:_documentsNavigationViewController
                          withOptions:UIViewAnimationOptionTransitionFlipFromRight];
 }
 

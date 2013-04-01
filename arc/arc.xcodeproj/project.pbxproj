@@ -60,7 +60,7 @@
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
 		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
 		8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */; };
-		FC4B269E16F88CB800E1DC49 /* FileNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B269D16F88CB800E1DC49 /* FileNavigationViewController.m */; };
+		FC4B269E16F88CB800E1DC49 /* FolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B269D16F88CB800E1DC49 /* FolderViewController.m */; };
 		FC4B26CE16FF6E3800E1DC49 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */; };
 		FCB0548017034DE6007832D7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FCB0547F17034DE6007832D7 /* README.md */; };
 		FCB0548417036010007832D7 /* SyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB0548317036010007832D7 /* SyntaxHighlight.m */; };
@@ -321,8 +321,8 @@
 		8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewController.h; sourceTree = "<group>"; };
 		8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeViewController.m; sourceTree = "<group>"; };
 		8FCA1D7116F8AA6000C6AAFC /* MainViewControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewControllerProtocol.h; sourceTree = "<group>"; };
-		FC4B269C16F88CB800E1DC49 /* FileNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileNavigationViewController.h; sourceTree = "<group>"; };
-		FC4B269D16F88CB800E1DC49 /* FileNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileNavigationViewController.m; sourceTree = "<group>"; };
+		FC4B269C16F88CB800E1DC49 /* FolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewController.h; sourceTree = "<group>"; };
+		FC4B269D16F88CB800E1DC49 /* FolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderViewController.m; sourceTree = "<group>"; };
 		FC4B26CC16FF6E3700E1DC49 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
 		FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 		FCB0547F17034DE6007832D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -1000,8 +1000,8 @@
 				8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */,
 				FC4B26CC16FF6E3700E1DC49 /* LeftViewController.h */,
 				FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */,
-				FC4B269C16F88CB800E1DC49 /* FileNavigationViewController.h */,
-				FC4B269D16F88CB800E1DC49 /* FileNavigationViewController.m */,
+				FC4B269C16F88CB800E1DC49 /* FolderViewController.h */,
+				FC4B269D16F88CB800E1DC49 /* FolderViewController.m */,
 				4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */,
 				4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */,
 			);
@@ -1131,7 +1131,7 @@
 				4C43F8FF16F86AA900159B29 /* AppDelegate.m in Sources */,
 				4C43F90816F86AA900159B29 /* arc.xcdatamodeld in Sources */,
 				8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */,
-				FC4B269E16F88CB800E1DC49 /* FileNavigationViewController.m in Sources */,
+				FC4B269E16F88CB800E1DC49 /* FolderViewController.m in Sources */,
 				8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */,
 				8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */,
 				4CD06B8016FDF61C00C9DED3 /* Constants.m in Sources */,

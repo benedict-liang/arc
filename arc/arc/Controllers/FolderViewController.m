@@ -6,19 +6,19 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "FileNavigationViewController.h"
+#import "FolderViewController.h"
 #import "Utils.h"
 #import "RootFolder.h"
 #import "File.h"
 #import "Folder.h"
 
-@interface FileNavigationViewController ()
+@interface FolderViewController ()
 @property id<Folder> folder;
 @property UITableView *tableView;
 @property NSArray *filesAndFolders;
 @end
 
-@implementation FileNavigationViewController
+@implementation FolderViewController
 @synthesize delegate = _delegate;
 
 - (id)initWithFolder:(id<Folder>)folder

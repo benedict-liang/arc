@@ -10,6 +10,6 @@
 #import "Folder.h"
 #import "SubViewControllerProtocol.h"
 
-@interface FileNavigationViewController : UIViewController <SubViewControllerProtocol, UITableViewDelegate, UITableViewDataSource>
+@interface FolderViewController : UIViewController <SubViewControllerProtocol, UITableViewDelegate, UITableViewDataSource>
 - (id)initWithFolder:(id<Folder>)folder;
 @end
