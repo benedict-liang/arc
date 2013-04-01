@@ -142,9 +142,13 @@
     if (isRenameSuccessful) {
         _name = name;
         [_parent markNeedsRefresh];
-        
-        // Update all contents with the new path.
+        [self markNeedsRefresh];
+        // Need to reinit our contents, since all the paths from
+        // this folder down have now changed.
+    } else {
+        NSLog(@"%@", error);
     }
+    return isRenameSuccessful;
 }
 
 @end
