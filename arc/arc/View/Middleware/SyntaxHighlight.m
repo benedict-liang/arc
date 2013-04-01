@@ -111,19 +111,18 @@
     }
 }
 
-- (void)applyStyleToCaptures:(NSArray*)captures pattern:(NSString*)match range:(NSRange)r output:(ArcAttributedString*)o {
+- (NSDictionary*)applyStyleToCaptures:(NSArray*)captures pattern:(NSString*)match range:(NSRange)r output:(ArcAttributedString*)o {
 
-    // Non-Multithreaded
+    // Original Code
+    NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
+     NSArray *captureMatches = nil;
+     for (int i = 0; i < [captures count]; i++) {
+         captureMatches = [self foundPattern:match capture:i range:r];
+         [dict setObject:captureMatches forKey:[captures objectAtIndex:i]];
+    }
     
-//    for (int i=0; i<[captures count]; i++) {
-//        [self foundPattern:match capture:i range:r];
-//    }
-    
-    // Non-Multithreaded ends here
-    
-    
+    /*
     // Multithreaded
-    
     NSMutableDictionary *aggregateDictionary = [[NSMutableDictionary alloc] init];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_semaphore_t array_sema = dispatch_semaphore_create(1);
@@ -131,10 +130,12 @@
 
     dispatch_apply([captures count], queue, ^(size_t i){
         dispatch_group_async(group, queue, ^ {
-            NSArray *patternArray = [self foundPattern:match capture:i range:r];
-            
+            NSArray *captureMatches = [self foundPattern:match capture:i range:r];
+            for (NSValue *v in captureMatches) {
+                
+            }
             dispatch_semaphore_wait(array_sema, DISPATCH_TIME_FOREVER);
-            [aggregateDictionary setObject:[NSNumber numberWithInt:(int)i] forKey:patternArray];
+            //[aggregateDictionary setObject:[NSNumber numberWithInt:(int)i] forKey:patternArray];
             dispatch_semaphore_signal(array_sema);
        });
     });
@@ -149,102 +150,102 @@
             [self applyStyleToScope:[captures objectAtIndex:[index integerValue]] range:range output:o];
         }
     }
-    
-    
-    // Multithreaded ends here
-    
-    
-    
-    // Original Code
-/*
-    NSArray *captureMatches = nil;    
-    for (int i = 0; i < [captures count]; i++) {
-        captureMatches = [self foundPattern:match capture:i range:r];
-        for (NSValue *v in captureMatches) {
-            NSRange range;
-            [v getValue:&range];
-            [self applyStyleToScope:[captures objectAtIndex:i] range:range];
-        }
-    }*/
+    // Multithreaded ends here*/
+    return dict;
 }
 -(void)iterPatternsForRange:(NSRange)contentRange patterns:(NSArray*)patterns output:(ArcAttributedString*)output {
-    for (NSDictionary* syntaxItem in patterns) {
-        NSString *name = [syntaxItem objectForKey:@"name"];
-        NSString *match = [syntaxItem objectForKey:@"match"];
-        NSString *begin = [syntaxItem objectForKey:@"begin"];
-        NSArray *beginCaptures = [syntaxItem objectForKey:@"beginCaptures"];
-        NSString *end = [syntaxItem objectForKey:@"end"];
-        NSArray *endCaptures = [syntaxItem objectForKey:@"endCaptures"];
-        NSArray *captures = [syntaxItem objectForKey:@"captures"];
-        
-        
-        NSArray *nameMatches = nil;
-        //case name, match
-        if (name && match) {
-            nameMatches = [self foundPattern:match range:contentRange];
-            for (NSValue *v in nameMatches) {
-                NSRange range;
-                [v getValue:&range];
-                [self applyStyleToScope:name range:range output:output];
-            }
-        }
-        if (captures && match) {
-            [self applyStyleToCaptures:captures pattern:match range:contentRange output:output];
-        }
-        if (beginCaptures && begin) {
-            [self applyStyleToCaptures:beginCaptures pattern:begin range:contentRange output:output];
-        }
-        if (endCaptures && end) {
-            [self applyStyleToCaptures:endCaptures pattern:end range:contentRange output:output];
-        }
-        //matching blocks
-        
-        if (begin && end) {
-            /*
-             Algo finds a begin match and an end match (from begin to content's end), reseting the next begin to after end, until no more matches are found or end > content
-             Also applies nested patterns recursively
-             
-             TODO. debug for why single line comments aren't working
-             Symptoms: comment.single.* for js tmbundle is inside a begin end pair, of which begin - end = 1.
-            if ([begin isEqualToString:@"(^[ \\t]+)?(?=//)"] && [end isEqualToString:@"(?!\\G)"]) {
-                NSLog(@"finally");
-            }*/
-            //NSLog(@"before brange: %d %d", contentRange.location, contentRange.length);
-            NSRange brange = [self findFirstPattern:begin range:contentRange];
-            NSRange erange = NSMakeRange(0, 0);
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    dispatch_semaphore_t outputSema = dispatch_semaphore_create(1);
+    dispatch_group_t group = dispatch_group_create();
+    
+    dispatch_apply([patterns count], queue, ^(size_t i){
+        dispatch_group_async(group, queue, ^{
+            NSDictionary* syntaxItem = [patterns objectAtIndex:i];
+            NSString *name = [syntaxItem objectForKey:@"name"];
+            NSString *match = [syntaxItem objectForKey:@"match"];
+            NSString *begin = [syntaxItem objectForKey:@"begin"];
+            NSArray *beginCaptures = [syntaxItem objectForKey:@"beginCaptures"];
+            NSString *end = [syntaxItem objectForKey:@"end"];
+            NSArray *endCaptures = [syntaxItem objectForKey:@"endCaptures"];
+            NSArray *captures = [syntaxItem objectForKey:@"captures"];
             
-            while (brange.location != NSNotFound && erange.location + erange.length < contentRange.length ) {
-                
-                // using longs because int went out of range as NSNotFound returns MAX_INT, which fucks arithmetic
-                long bEnds = brange.location + brange.length;
-                if (contentRange.length > bEnds) {
-                    //NSLog(@"before erange: %d %d", bEnds, contentRange.length - bEnds);
-                    erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds)];
-                } else {
-                    //if bEnds > contentRange.length, skip
-                    break;
+            
+            NSArray *nameMatches = nil;
+            NSDictionary *captureMatches = nil;
+            NSDictionary *beginCMatches = nil;
+            NSDictionary *endCMatches = nil;
+            
+            //case name, match
+            if (name && match) {
+                nameMatches = [self foundPattern:match range:contentRange];
+                for (NSValue *v in nameMatches) {
+                    NSRange range;
+                    [v getValue:&range];
+                    [self applyStyleToScope:name range:range output:output];
                 }
+            }
+            if (captures && match) {
+                [self applyStyleToCaptures:captures pattern:match range:contentRange output:output];
+            }
+            if (beginCaptures && begin) {
+                [self applyStyleToCaptures:beginCaptures pattern:begin range:contentRange output:output];
+            }
+            if (endCaptures && end) {
+                [self applyStyleToCaptures:endCaptures pattern:end range:contentRange output:output];
+            }
+            //matching blocks
+            
+            if (begin && end) {
+                /*
+                 Algo finds a begin match and an end match (from begin to content's end), reseting the next begin to after end, until no more matches are found or end > content
+                 Also applies nested patterns recursively
+                 
+                 TODO. debug for why single line comments aren't working
+                 Symptoms: comment.single.* for js tmbundle is inside a begin end pair, of which begin - end = 1.
+                 if ([begin isEqualToString:@"(^[ \\t]+)?(?=//)"] && [end isEqualToString:@"(?!\\G)"]) {
+                 NSLog(@"finally");
+                 }*/
+                //NSLog(@"before brange: %d %d", contentRange.location, contentRange.length);
+                NSRange brange = [self findFirstPattern:begin range:contentRange];
+                NSRange erange = NSMakeRange(0, 0);
                 
-                long eEnds = erange.location + erange.length;
-                NSArray *embedPatterns = [syntaxItem objectForKey:@"patterns"];
-                //if there are characters between begin and end, and brange and erange are valid results
-                if (eEnds - brange.location > 0 && brange.location != NSNotFound && erange.location != NSNotFound && eEnds <= contentRange.length) {
-                    if (embedPatterns) {
-                        //recursively apply iterPatterns to embedded patterns inclusive of begin and end
-                        [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns output:output];
+                while (brange.location != NSNotFound && erange.location + erange.length < contentRange.length ) {
+                    
+                    // using longs because int went out of range as NSNotFound returns MAX_INT, which fucks arithmetic
+                    long bEnds = brange.location + brange.length;
+                    if (contentRange.length > bEnds) {
+                        //NSLog(@"before erange: %d %d", bEnds, contentRange.length - bEnds);
+                        erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds)];
+                    } else {
+                        //if bEnds > contentRange.length, skip
+                        break;
                     }
                     
-                    if (name) {
-                        [self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location) output:output];
+                    long eEnds = erange.location + erange.length;
+                    NSArray *embedPatterns = [syntaxItem objectForKey:@"patterns"];
+                    //if there are characters between begin and end, and brange and erange are valid results
+                    if (eEnds - brange.location > 0 && brange.location != NSNotFound && erange.location != NSNotFound && eEnds <= contentRange.length) {
+                        if (embedPatterns) {
+                            //recursively apply iterPatterns to embedded patterns inclusive of begin and end
+                            [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns output:output];
+                        }
+                        
+                        if (name) {
+                            [self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location) output:output];
+                        }
+                        //NSLog(@"before brange2: %d %d", contentRange.location, contentRange.length);
+                        brange = [self findFirstPattern:begin range:NSMakeRange(eEnds, contentRange.length - eEnds)];
                     }
-                    //NSLog(@"before brange2: %d %d", contentRange.location, contentRange.length);
-                    brange = [self findFirstPattern:begin range:NSMakeRange(eEnds, contentRange.length - eEnds)];
+                    
                 }
                 
-           }
-            
-        }
+            }
+
+        });
+    });
     
+    for (NSDictionary* syntaxItem in patterns) {
+            
     }
 }
 
