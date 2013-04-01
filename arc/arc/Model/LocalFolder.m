@@ -49,8 +49,9 @@
     } else {
         NSMutableArray *contents = [[NSMutableArray alloc] init];
         
-        for (NSString *currentPath in retrievedContents) {
-            NSString *itemName = [currentPath lastPathComponent];
+        for (NSString *currentRelativePath in retrievedContents) {
+            NSString *itemName = currentRelativePath;
+            NSString *currentPath = [_path stringByAppendingPathComponent:itemName];
             
             id<FileSystemObject>retrievedObject;
             BOOL isCurrentPathDirectory;
