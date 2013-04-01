@@ -13,8 +13,8 @@
 @interface ApplicationState : NSObject
 + (ApplicationState*)sharedApplicationState;
 
-@property (strong, nonatomic) File *currentFileOpened;
-@property (strong, nonatomic) Folder *currentFolderOpened;
+@property (strong, nonatomic) id<File> currentFileOpened;
+@property (strong, nonatomic) id<Folder> currentFolderOpened;
 
 //
 // Settings and Preferences
@@ -31,5 +31,5 @@
 
 // tmp
 // Returns a sample file.
-+ (File*)getSampleFile;
++ (id<File>)getSampleFile;
 @end
