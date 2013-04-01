@@ -25,5 +25,15 @@
     return self;
 }
 
+// Returns the contents of this object.
+- (id<NSObject>)contents
+{
+    if (_needsRefresh) {
+        return [self refreshContents];
+    } else {
+        return _contents;
+    }
+}
+
 
 @end
