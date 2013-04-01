@@ -14,5 +14,5 @@
 
 @interface CodeViewController : UIViewController<SubViewController>
 @property (nonatomic, strong) CodeView *view;
-- (void)showFile:(File*)file;
+- (void)showFile:(id<File>)file;
 @end
