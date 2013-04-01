@@ -53,7 +53,9 @@
             NSString *itemName = [currentPath lastPathComponent];
             
             id<FileSystemObject>retrievedObject;
-            if ([[NSURL fileURLWithPath:currentPath] isDirectory]) {
+            BOOL isCurrentPathDirectory;
+            [fileManager fileExistsAtPath:currentPath isDirectory:&isCurrentPathDirectory];
+            if (isCurrentPathDirectory) {
                 retrievedObject = [[LocalFolder alloc] initWithName:itemName path:currentPath parent:self];
             } else {
                 retrievedObject = [[LocalFile alloc] initWithName:itemName path:currentPath parent:self];
