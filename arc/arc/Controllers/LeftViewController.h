@@ -8,5 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "SubViewControllerProtocol.h"
-@interface LeftViewController : UIViewController<SubViewControllerProtocol>
+#import "LeftViewControllerProtocol.h"
+@interface LeftViewController : UIViewController<SubViewControllerProtocol, LeftViewControllerProtocol>
 @end

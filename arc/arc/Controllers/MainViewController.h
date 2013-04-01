@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "MainViewControllerProtocol.h"
-#import "Constants.h"
 #import "ApplicationState.h"
 #import "RootFolder.h"
 #import "Folder.h"

@@ -105,6 +105,7 @@
 		4C12D0711705CA7800F4593B /* ArcAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcAttributedString.m; sourceTree = "<group>"; };
 		4C12D0761706074600F4593B /* CodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeView.h; sourceTree = "<group>"; };
 		4C12D0771706074600F4593B /* CodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeView.m; sourceTree = "<group>"; };
+		4C21C9E71709D387002F4FEA /* LeftViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewControllerProtocol.h; sourceTree = "<group>"; };
 		4C43F8E916F86AA900159B29 /* arc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C43F8EC16F86AA900159B29 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4C43F8EE16F86AA900159B29 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -502,6 +503,7 @@
 				8FCA1D7116F8AA6000C6AAFC /* MainViewControllerProtocol.h */,
 				4CD06B2C16FDE92D00C9DED3 /* SubViewControllerProtocol.h */,
 				FCE8F95D1709806B00C08724 /* CodeViewControllerProtocol.h */,
+				4C21C9E71709D387002F4FEA /* LeftViewControllerProtocol.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
