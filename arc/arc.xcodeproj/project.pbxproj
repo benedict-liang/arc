@@ -47,16 +47,11 @@
 		4CF6F0F21706E29300EDDEDC /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F11706E29300EDDEDC /* folder.png */; };
 		4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */; };
 		8F151051170443AC00115E5E /* home.html in Resources */ = {isa = PBXBuildFile; fileRef = 8F151050170443AC00115E5E /* home.html */; };
-		8F1510B91704483500115E5E /* test-myobfuscate-input.js in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510841704483500115E5E /* test-myobfuscate-input.js */; };
-		8F1510BA1704483500115E5E /* test-myobfuscate-output.js in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510851704483500115E5E /* test-myobfuscate-output.js */; };
-		8F1510BB1704483500115E5E /* test-packer-62-input.js in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510861704483500115E5E /* test-packer-62-input.js */; };
-		8F1510BC1704483500115E5E /* test-packer-non62-input.js in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510871704483500115E5E /* test-packer-non62-input.js */; };
 		8F1510C31704483500115E5E /* JavaScript.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F15108F1704483500115E5E /* JavaScript.plist */; };
 		8F1510C41704483500115E5E /* Regular Expressions (JavaScript).tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = 8F1510901704483500115E5E /* Regular Expressions (JavaScript).tmLanguage */; };
 		8F1510C617044A4C00115E5E /* Solarized (light).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = 8F1510C517044A4C00115E5E /* Solarized (light).tmTheme */; };
 		8F1510C9170468B100115E5E /* TMBundleThemeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510C8170468B100115E5E /* TMBundleThemeHandler.m */; };
 		8F1510CC1704697900115E5E /* TMBundleGrammar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510CB1704697900115E5E /* TMBundleGrammar.m */; };
-		8F2F5B8117061435005AD37F /* nav_gmaps_sample.js in Sources */ = {isa = PBXBuildFile; fileRef = 8F2F5B8017061435005AD37F /* nav_gmaps_sample.js */; };
 		8F2F5B8217061445005AD37F /* nav_gmaps_sample.js in Resources */ = {isa = PBXBuildFile; fileRef = 8F2F5B8017061435005AD37F /* nav_gmaps_sample.js */; };
 		8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */; };
 		8F563F361701682500EE5643 /* HTML.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F563EB7170160CD00EE5643 /* HTML.plist */; };
@@ -1145,15 +1140,10 @@
 				4C45551A17017005001C6F1D /* BasicStyles.m in Sources */,
 				8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */,
 				FCB0548417036010007832D7 /* SyntaxHighlight.m in Sources */,
-				8F1510B91704483500115E5E /* test-myobfuscate-input.js in Sources */,
-				8F1510BA1704483500115E5E /* test-myobfuscate-output.js in Sources */,
-				8F1510BB1704483500115E5E /* test-packer-62-input.js in Sources */,
-				8F1510BC1704483500115E5E /* test-packer-non62-input.js in Sources */,
 				8F1510C9170468B100115E5E /* TMBundleThemeHandler.m in Sources */,
 				8F1510CC1704697900115E5E /* TMBundleGrammar.m in Sources */,
 				4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */,
 				4C12D0781706074600F4593B /* CodeView.m in Sources */,
-				8F2F5B8117061435005AD37F /* nav_gmaps_sample.js in Sources */,
 				4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */,
 				02E51AE017092D4300247AF5 /* LocalFolder.m in Sources */,
 				02E51AE417093C8B00247AF5 /* LocalFile.m in Sources */,
