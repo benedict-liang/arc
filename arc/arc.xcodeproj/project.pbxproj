@@ -17,6 +17,9 @@
 		02E51AE017092D4300247AF5 /* LocalFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51ADF17092D4300247AF5 /* LocalFolder.m */; };
 		02E51AE417093C8B00247AF5 /* LocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AE317093C8B00247AF5 /* LocalFile.m */; };
 		02E51AE71709438900247AF5 /* LocalRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AE61709438900247AF5 /* LocalRootFolder.m */; };
+		02E51AEB1709580400247AF5 /* DropBoxFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AEA1709580400247AF5 /* DropBoxFile.m */; };
+		02E51AEE1709581200247AF5 /* DropBoxFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AED1709581200247AF5 /* DropBoxFolder.m */; };
+		02E51AF11709582300247AF5 /* DropBoxRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AF01709582300247AF5 /* DropBoxRootFolder.m */; };
 		4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D0711705CA7800F4593B /* ArcAttributedString.m */; };
 		4C12D0781706074600F4593B /* CodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D0771706074600F4593B /* CodeView.m */; };
 		4C43F8ED16F86AA900159B29 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
@@ -94,6 +97,12 @@
 		02E51AE317093C8B00247AF5 /* LocalFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFile.m; sourceTree = "<group>"; };
 		02E51AE51709438800247AF5 /* LocalRootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalRootFolder.h; sourceTree = "<group>"; };
 		02E51AE61709438900247AF5 /* LocalRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalRootFolder.m; sourceTree = "<group>"; };
+		02E51AE91709580400247AF5 /* DropBoxFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxFile.h; sourceTree = "<group>"; };
+		02E51AEA1709580400247AF5 /* DropBoxFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxFile.m; sourceTree = "<group>"; };
+		02E51AEC1709581100247AF5 /* DropBoxFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxFolder.h; sourceTree = "<group>"; };
+		02E51AED1709581200247AF5 /* DropBoxFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxFolder.m; sourceTree = "<group>"; };
+		02E51AEF1709582300247AF5 /* DropBoxRootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxRootFolder.h; sourceTree = "<group>"; };
+		02E51AF01709582300247AF5 /* DropBoxRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxRootFolder.m; sourceTree = "<group>"; };
 		4C12D0701705CA7800F4593B /* ArcAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcAttributedString.h; sourceTree = "<group>"; };
 		4C12D0711705CA7800F4593B /* ArcAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcAttributedString.m; sourceTree = "<group>"; };
 		4C12D0761706074600F4593B /* CodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeView.h; sourceTree = "<group>"; };
@@ -376,6 +385,19 @@
 			name = "Local Files";
 			sourceTree = "<group>";
 		};
+		02E51AE8170957ED00247AF5 /* DropBox Files */ = {
+			isa = PBXGroup;
+			children = (
+				02E51AE91709580400247AF5 /* DropBoxFile.h */,
+				02E51AEA1709580400247AF5 /* DropBoxFile.m */,
+				02E51AEC1709581100247AF5 /* DropBoxFolder.h */,
+				02E51AED1709581200247AF5 /* DropBoxFolder.m */,
+				02E51AEF1709582300247AF5 /* DropBoxRootFolder.h */,
+				02E51AF01709582300247AF5 /* DropBoxRootFolder.m */,
+			);
+			name = "DropBox Files";
+			sourceTree = "<group>";
+		};
 		4C43F8E016F86AA800159B29 = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +474,7 @@
 		4C43F90E16F86AC400159B29 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				02E51AE8170957ED00247AF5 /* DropBox Files */,
 				0260B508170921C10091B012 /* Protocols */,
 				8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */,
 				8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */,
@@ -1128,6 +1151,9 @@
 				02E51AE017092D4300247AF5 /* LocalFolder.m in Sources */,
 				02E51AE417093C8B00247AF5 /* LocalFile.m in Sources */,
 				02E51AE71709438900247AF5 /* LocalRootFolder.m in Sources */,
+				02E51AEB1709580400247AF5 /* DropBoxFile.m in Sources */,
+				02E51AEE1709581200247AF5 /* DropBoxFolder.m in Sources */,
+				02E51AF11709582300247AF5 /* DropBoxRootFolder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

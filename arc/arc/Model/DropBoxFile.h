@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "File.h"
 
-@interface DropBoxFile : NSObject
+@interface DropBoxFile : NSObject <File>
 
 @end
