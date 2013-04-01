@@ -108,15 +108,51 @@
 }
 
 - (void)applyStyleToCaptures:(NSArray*)captures pattern:(NSString*)match range:(NSRange)r {
-    NSArray *captureMatches = nil;
-    for (int i = 0; i < [captures count]; i++) {
-        captureMatches = [self foundPattern:match capture:i range:r];
-        for (NSValue *v in captureMatches) {
-            NSRange range;
-            [v getValue:&range];
-            [self applyStyleToScope:[captures objectAtIndex:i] range:range];
-        }
+
+    // Non-Multithreaded
+    
+    for (int i=0; i<[captures count]; i++) {
+        [self foundPattern:match capture:i range:r];
     }
+    
+    // Non-Multithreaded ends here
+    
+    
+    // Multithreaded
+    
+//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+//    dispatch_group_t group = dispatch_group_create();
+//    dispatch_group_async(group, queue, ^{
+//        dispatch_apply([captures count], queue, ^(size_t i){
+//            [self foundPattern:match capture:i range:r];
+//        });
+//    });
+//    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+//    dispatch_release(group);
+    
+    // Multithreaded ends here
+    
+    
+    
+    // Original Code
+    
+//    for (int i=0; i<[testArray count]; i++) {
+//        for (NSValue *v in [testArray objectAtIndex:i]) {
+//            NSRange range;
+//            [v getValue:&range];
+//            [self applyStyleToScope:[captures objectAtIndex:i] range:range];
+//        }
+//    }
+    
+//    NSArray *captureMatches = nil;    
+//    for (int i = 0; i < [captures count]; i++) {
+//        captureMatches = [self foundPattern:match capture:i range:r];
+//        for (NSValue *v in captureMatches) {
+//            NSRange range;
+//            [v getValue:&range];
+//            [self applyStyleToScope:[captures objectAtIndex:i] range:range];
+//        }
+//    }
 }
 -(void)iterPatternsAndApplyForRange:(NSRange)contentRange patterns:(NSArray*)patterns {
     for (NSDictionary* syntaxItem in patterns) {
