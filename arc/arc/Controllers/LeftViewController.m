@@ -84,6 +84,11 @@
     _toolbar.items = [NSArray arrayWithObject:button];
 }
 
+- (void)showFolder:(id<Folder>)folder
+{
+    // TODO
+}
+
 - (void)showSettings:(id)sender
 {
     [self transitionToViewController:_settingsViewController

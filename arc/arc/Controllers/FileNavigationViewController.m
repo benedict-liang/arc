@@ -34,6 +34,7 @@
         NSMutableArray *folders = [NSMutableArray array];
         NSMutableArray *files = [NSMutableArray array];
         NSArray *folderContents = (NSArray*)[_currentFolder contents];
+
         for (id<FileSystemObject> fileObject in folderContents) {
             if ([[fileObject class] conformsToProtocol:@protocol(File)]) {
                 [files addObject:fileObject];

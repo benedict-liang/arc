@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "CodeViewController.h"
+#import "LeftViewController.h"
+
 // Necessary only if "Open in..." handling is inline here.
 #import "LocalFolder.h"
 #import "LocalFile.h"
@@ -113,11 +116,12 @@
     MainViewController *mainViewController = [[MainViewController alloc] init];
     
     // Create CodeViewController
-    CodeViewController *codeViewController = [[CodeViewController alloc] init];
+    id<CodeViewControllerProtocol, SubViewControllerProtocol> codeViewController = [[CodeViewController alloc] init];
     
     // Create LeftBarViewController
-    LeftViewController *leftViewController = [[LeftViewController alloc] init];
-    
+    id<LeftViewControllerProtocol, SubViewControllerProtocol> leftViewController = [[LeftViewController alloc] init];
+
+    // Assign Delegates
     leftViewController.delegate = mainViewController;
     codeViewController.delegate = mainViewController;
     
@@ -126,7 +130,7 @@
                                           leftViewController,
                                           codeViewController,
                                           nil];
-    
+
     // Set MainViewController as RootViewController
     self.window.RootViewController = mainViewController;
     [self.window makeKeyAndVisible];

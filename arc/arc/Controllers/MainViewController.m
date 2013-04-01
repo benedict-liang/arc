@@ -9,8 +9,9 @@
 #import "MainViewController.h"
 
 @interface MainViewController ()
-@property CodeViewController *codeViewController;
-@property LeftViewController *leftViewController;
+@property id<CodeViewControllerProtocol> codeViewController;
+@property id<LeftViewControllerProtocol> leftViewController;
+
 - (void)fileSelected:(id<File>)file;
 - (void)folderSelected:(id<Folder>)folder;
 @end
@@ -34,7 +35,8 @@
     _codeViewController = [self.viewControllers objectAtIndex:1];
 
     // TMP
-    [_codeViewController showFile:[ApplicationState getSampleFile]];
+    [self fileSelected:[ApplicationState getSampleFile]];
+    [self folderSelected:[RootFolder sharedRootFolder]];
 }
 
 // Shows the file using the CodeViewController
@@ -50,6 +52,9 @@
 - (void)folderSelected:(id<Folder>)folder
 {
     // TODO
+    // Register with Application State
+
+    [_leftViewController showFolder:folder];
 }
 
 #pragma mark - MainViewControllerDelegate Methods

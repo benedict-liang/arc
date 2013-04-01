@@ -17,5 +17,5 @@
 @property NSString* content;
 @property NSDictionary* theme;
 @property ArcAttributedString* output;
-@property id<ContentViewControllerProtocol> delegate;
+@property id<CodeViewControllerProtocol> delegate;
 @end

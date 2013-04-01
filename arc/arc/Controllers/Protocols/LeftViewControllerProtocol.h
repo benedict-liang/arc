@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Folder.h"
 
 @protocol LeftViewControllerProtocol <NSObject>
-
+- (void)showFolder:(id<Folder>)folder;
 @end

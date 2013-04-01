@@ -7,6 +7,8 @@
 //
 
 #import "MainViewControllerProtocol.h"
+#import "CodeViewControllerProtocol.h"
+#import "LeftViewControllerProtocol.h"
 #import "ApplicationState.h"
 #import "RootFolder.h"
 #import "Folder.h"
