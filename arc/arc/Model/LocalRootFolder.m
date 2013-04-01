@@ -31,5 +31,20 @@ static LocalRootFolder *sharedLocalRootFolder = nil;
     return self;
 }
 
+// Renames this Folder to the given name.
+- (BOOL)rename:(NSString*)name
+{
+    // LocalRootFolder can't be renamed.
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"LocalRootFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
+}
+
+// Removes this object.
+// Returns YES if successful, NO otherwise.
+// If NO is returned, the state of the object or its contents is unstable.
+- (BOOL)remove
+{
+    // LocalRootFolder can't be removed.
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"LocalRootFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
+}
 
 @end
