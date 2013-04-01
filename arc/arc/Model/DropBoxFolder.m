@@ -137,4 +137,27 @@
         return nil;
     }
 }
+
+// Renames this Folder to the given name.
+- (BOOL)rename:(NSString *)name
+{
+    DBPath *parentPath = [[DBPath alloc] initWithString:[_parent path]];
+    DBPath *newPath = [parentPath childPath:name];
+    DBPath *ourPath = [[DBPath alloc] initWithString:_path];
+    
+    DBFilesystem *filesystem = [DBFilesystem sharedFilesystem];
+    
+    DBError *error;
+    BOOL isRenameSuccessful = [filesystem movePath:ourPath toPath:newPath error:&error];
+
+    if (isRenameSuccessful) {
+        _name = name;
+        [_parent markNeedsRefresh];
+        [self markNeedsRefresh];
+    } else {
+        NSLog(@"%@", error);
+    }
+    return isRenameSuccessful;
+}
+
 @end
