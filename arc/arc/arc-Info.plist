@@ -109,8 +109,10 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleURLName</key>
-			<string>db-q591oqy8n4yxgt1</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>db-q591oqy8n4yxgt1</string>
+			</array>
 		</dict>
 	</array>
 	<key>UIFileSharingEnabled</key>

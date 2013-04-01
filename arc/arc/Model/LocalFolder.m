@@ -11,7 +11,7 @@
 @implementation LocalFolder
 
 // Synthesize properties from protocol.
-@synthesize name=_name, path=_path, parent=_parent;
+@synthesize name=_name, path=_path, parent=_parent, needsRefresh=_needsRefresh;
 
 // Initialises this object with the given name, path, and parent.
 - (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent
@@ -83,26 +83,29 @@
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    NSString *newTargetPath = [_path stringByAppendingPathComponent:[[target path] lastPathComponent]];
-    
-    NSError *error;
-    BOOL isMoveSuccessful = [fileManager moveItemAtPath:[target path] toPath:newTargetPath error:&error];
-    if (isMoveSuccessful) {
-        [self markNeedsRefresh];
-        [target setParent:self];
-        [target setPath:newTargetPath];
-        return YES;
+    if ([fileManager fileExistsAtPath:[target path]]) {
+        NSString *newTargetPath = [_path stringByAppendingPathComponent:[[target path] lastPathComponent]];
+        
+        NSError *error;
+        BOOL isMoveSuccessful = [fileManager moveItemAtPath:[target path] toPath:newTargetPath error:&error];
+        if (isMoveSuccessful) {
+            [self markNeedsRefresh];
+            [target setParent:self];
+            [target setPath:newTargetPath];
+        } else {
+            NSLog(@"%@", error);
+        }
+        return isMoveSuccessful;
     } else {
-        NSLog(@"%@", error);
         return NO;
     }
 }
 
 // Returns the FileSystemObject with the given name.
 // Will return nil if the object is not found.
-- (id<FileSystemObject>)retrieveItemWithName:(NSString*)name
+- (id<FileSystemObject>)retrieveItemWithName:(NSString *)name
 {
-    NSArray *contents = (NSArray*)[self contents];
+    NSArray *contents = (NSArray *)[self contents];
     for (id<FileSystemObject>currentObject in contents) {
         if ([[currentObject name] isEqualToString:name]) {
             return currentObject;
@@ -113,9 +116,10 @@
 
 // Creates a Folder with the given name inside this one.
 // Returns the created Folder object.
-- (id<Folder>)createFolderWithName:(NSString*)name
+- (id<Folder>)createFolderWithName:(NSString *)name
 {
-    NSString *newFolderPath = [_path stringByAppendingPathComponent:name];
+    NSString *escapedName = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *newFolderPath = [_path stringByAppendingPathComponent:escapedName];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
@@ -133,9 +137,10 @@
 }
 
 // Renames this Folder to the given name.
-- (BOOL)rename:(NSString*)name
+- (BOOL)rename:(NSString *)name
 {
-    NSString *newPath = [[_parent path] stringByAppendingPathComponent:name];
+    NSString *escapedName = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *newPath = [[_parent path] stringByAppendingPathComponent:escapedName];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
 

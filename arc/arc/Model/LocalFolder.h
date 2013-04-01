@@ -12,7 +12,6 @@
 
 @interface LocalFolder : NSObject <Folder> {
     NSArray *_contents;
-    BOOL _needsRefresh;
 }
 
 @end

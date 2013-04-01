@@ -32,7 +32,7 @@ static ApplicationState *sharedApplicationState = nil;
     self = [super init];
     if (self) {
         // Defaults || Get Previous State from plist
-        _currentFolderOpened = [LocalRootFolder sharedLocalRootFolder]; // To be changed to the final RootFolder later.
+        _currentFolderOpened = [RootFolder sharedRootFolder];
         _currentFileOpened = nil;
     }
     return self;
@@ -46,7 +46,7 @@ static ApplicationState *sharedApplicationState = nil;
 // Returns a sample file.
 + (id<File>)getSampleFile
 {
-    return (id<File>)[[LocalRootFolder sharedLocalRootFolder] retrieveItemWithName:@"GameObject.h"];
+    return (id<File>)[[RootFolder sharedRootFolder] retrieveItemWithName:@"GameObject.h"];
 }
 
 @end

@@ -21,6 +21,7 @@ const CGColorRef* DEFAULT_TEXT_COLOR = {0};
 // Default Folder Names
 const NSString* FOLDER_EXTERNAL_APPLICATIONS = @"External Applications";
 const NSString* FOLDER_ROOT = @"Documents";
+const NSString* FOLDER_DROPBOX_ROOT = @"DropBox";
 
 // API Keys
 const NSString* CLOUD_DROPBOX_KEY = @"q591oqy8n4yxgt1";

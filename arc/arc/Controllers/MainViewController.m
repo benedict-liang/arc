@@ -13,7 +13,7 @@
 @property CodeViewController *codeViewController;
 @property LeftViewController *leftViewController;
 
-@property LocalRootFolder *rootFolder; // To be changed to actual RootFolder later.
+@property RootFolder *rootFolder;
 @property UIToolbar *toolbar;
 @property UIPopoverController *popover;
 
@@ -33,7 +33,7 @@
     self = [super init];
     if (self) {
         // tmp. should use application state
-        _rootFolder = [LocalRootFolder sharedLocalRootFolder]; // To be changed.
+        _rootFolder = [RootFolder sharedRootFolder];
     }
     return self;
 }

@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Dropbox/Dropbox.h>
 #import "File.h"
 
-@interface DropBoxFile : NSObject <File>
+@interface DropBoxFile : NSObject <File> {
+    NSString *_contents;
+    BOOL _needsRefresh;
+}
 
 @end

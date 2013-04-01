@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Dropbox/Dropbox.h>
 #import "DropBoxFolder.h"
+#import "Constants.h"
 
 @interface DropBoxRootFolder : DropBoxFolder
+
++ (DropBoxRootFolder *)sharedDropBoxRootFolder;
 
 @end

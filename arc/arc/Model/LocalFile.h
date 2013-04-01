@@ -11,7 +11,6 @@
 
 @interface LocalFile : NSObject <File> {
     NSString *_contents;
-    BOOL _needsRefresh;
 }
 
 @end

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "File.h"
 #import "Folder.h"
-#import "LocalRootFolder.h" // To be changed to the final RootFolder later.
+#import "RootFolder.h"
 
 @interface ApplicationState : NSObject
 + (ApplicationState*)sharedApplicationState;

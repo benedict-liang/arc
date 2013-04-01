@@ -12,6 +12,6 @@
 
 @interface LocalRootFolder : LocalFolder
 
-+ (LocalRootFolder*)sharedLocalRootFolder;
++ (LocalRootFolder *)sharedLocalRootFolder;
 
 @end

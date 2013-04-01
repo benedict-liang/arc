@@ -19,14 +19,14 @@
 
 // Returns the FileSystemObject with the given name.
 // Will return nil if the object is not found.
-- (id<FileSystemObject>)retrieveItemWithName:(NSString*)name;
+- (id<FileSystemObject>)retrieveItemWithName:(NSString *)name;
 
 // Creates a Folder with the given name inside this one.
 // Returns the created Folder object.
-- (id<Folder>)createFolderWithName:(NSString*)name;
+- (id<Folder>)createFolderWithName:(NSString *)name;
 
 // Renames this Folder to the given name.
 // Returns YES if successful, NO otherwise.
-- (BOOL)rename:(NSString*)name;
+- (BOOL)rename:(NSString *)name;
 
 @end
