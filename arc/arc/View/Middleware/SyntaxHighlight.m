@@ -109,7 +109,52 @@
 }
 
 - (void)applyStyleToCaptures:(NSArray*)captures pattern:(NSString*)match range:(NSRange)r {
-    NSArray *captureMatches = nil;
+
+    // Non-Multithreaded
+    
+//    for (int i=0; i<[captures count]; i++) {
+//        [self foundPattern:match capture:i range:r];
+//    }
+    
+    // Non-Multithreaded ends here
+    
+    
+    // Multithreaded
+    
+//    NSMutableDictionary *aggregateDictionary = [[NSMutableDictionary alloc] init];
+//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+//    dispatch_semaphore_t array_sema = dispatch_semaphore_create(1);
+//    dispatch_group_t group = dispatch_group_create();
+//
+//    dispatch_apply([captures count], queue, ^(size_t i){
+//        dispatch_group_async(group, queue, ^ {
+//            NSArray *patternArray = [self foundPattern:match capture:i range:r];
+//            
+//            dispatch_semaphore_wait(array_sema, DISPATCH_TIME_FOREVER);
+//            [aggregateDictionary setObject:[NSNumber numberWithInt:(int)i] forKey:patternArray];
+//            dispatch_semaphore_signal(array_sema);
+//        });
+//    });
+//    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+//    dispatch_release(group);
+//    
+//    for (NSArray *arr in [aggregateDictionary allKeys]) {
+//        NSNumber *index = (NSNumber*)[aggregateDictionary objectForKey:arr];
+//        for (NSValue *v in arr) {
+//            NSRange range;
+//            [v getValue:&range];
+//            [self applyStyleToScope:[captures objectAtIndex:[index integerValue]] range:range];
+//        }
+//    }
+    
+    
+    // Multithreaded ends here
+    
+    
+    
+    // Original Code
+    
+    NSArray *captureMatches = nil;    
     for (int i = 0; i < [captures count]; i++) {
         captureMatches = [self foundPattern:match capture:i range:r];
         for (NSValue *v in captureMatches) {
