@@ -12,7 +12,7 @@
 @property (nonatomic, readonly) NSAttributedString *attributedString;
 @property (nonatomic, readonly) NSAttributedString *plainAttributedString;
 - (id)initWithString:(NSString*)string;
-
+- (id)initWithArcAttributedString:(ArcAttributedString*)aas;
 // Properties
 - (void)setFontSize:(int)fontSize;
 - (void)setFontFamily:(NSString*)fontFamily;

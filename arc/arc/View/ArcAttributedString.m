@@ -43,7 +43,18 @@
     }
     return self;
 }
+- (id)initWithArcAttributedString:(ArcAttributedString *)aas {
 
+    self = [super init];
+    if (self) {
+        _fontFamily = [aas fontFamily];
+        _fontSize = [aas fontSize];
+        _attributes = [NSMutableArray array];
+        __attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:[aas attributedString]];
+        _cachedAttributedString = nil;
+    }
+    return self;
+}
 
 - (void)setString:(NSString *)string
 {
