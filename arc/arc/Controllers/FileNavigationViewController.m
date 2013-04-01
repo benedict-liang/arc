@@ -8,7 +8,7 @@
 
 #import "FileNavigationViewController.h"
 #import "Utils.h"
-#import "LocalRootFolder.h" // To be replaced.
+#import "RootFolder.h"
 #import "File.h"
 #import "Folder.h"
 
@@ -29,7 +29,7 @@
     self = [super init];
     if (self) {
         // tmp.
-        _currentFolder = [LocalRootFolder sharedLocalRootFolder];
+        _currentFolder = [RootFolder sharedRootFolder];
         
         NSMutableArray *folders = [NSMutableArray array];
         NSMutableArray *files = [NSMutableArray array];
