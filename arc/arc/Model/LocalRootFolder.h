@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LocalFolder.h"
 
-@interface LocalRootFolder : NSObject
+@interface LocalRootFolder : LocalFolder
 
 @end
