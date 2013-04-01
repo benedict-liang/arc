@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Dropbox/Dropbox.h>
 #import "Folder.h"
 #import "DropBoxRootFolder.h"
 #import "LocalRootFolder.h"

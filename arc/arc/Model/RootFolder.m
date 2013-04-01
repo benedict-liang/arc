@@ -37,8 +37,12 @@ static RootFolder *sharedRootFolder = nil;
 - (id<NSObject>)refreshContents
 {
     NSArray *localFileContents = (NSArray *)[[LocalRootFolder sharedLocalRootFolder] refreshContents];
-    NSArray *allContents = [localFileContents arrayByAddingObject:[DropBoxRootFolder sharedDropBoxRootFolder]];
-    _contents = allContents;
+
+    if ([[DBAccountManager sharedManager] linkedAccount]) {
+        _contents = [localFileContents arrayByAddingObject:[DropBoxRootFolder sharedDropBoxRootFolder]];
+    } else {
+        _contents = localFileContents;
+    }
     _needsRefresh = NO;
     return _contents;
 }
