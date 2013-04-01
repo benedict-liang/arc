@@ -87,11 +87,13 @@
                             initWithString:[_currentFile contents]];
 }
 
-- (void)mergeAndRenderWith:(ArcAttributedString*)aas
+- (void)mergeAndRenderWith:(ArcAttributedString*)aas forFile:(id<File>)file
 {
     //TODO merge aas with _arcAttributedString.
-    _arcAttributedString = aas;
-    [self render];
+    if ([file isEqual:_currentFile]) {
+        _arcAttributedString = aas;
+        [self render];
+    }
 }
 - (void)render
 {
