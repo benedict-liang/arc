@@ -15,7 +15,7 @@ const CGSize SIZE_POPOVER = {200,300};
 
 // Defaults
 const int DEFAULT_FONT_SIZE = 12;
-const NSString* DEFAULT_FONT_FAMILY = @"Source Code Pro";
+const NSString* DEFAULT_FONT_FAMILY = @"SourceCodePro-Regular";
 const CGColorRef* DEFAULT_TEXT_COLOR = {0};
 
 // Default Folder Names
