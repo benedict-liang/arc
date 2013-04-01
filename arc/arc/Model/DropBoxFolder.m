@@ -75,4 +75,27 @@
     _needsRefresh = YES;
 }
 
+// Moves the given FileSystemObject to this Folder.
+// The given file must be of the same "type" as this Folder
+// (e.g. iOS file system, DropBox, etc.)
+// Returns YES if successful, NO otherwise.
+- (BOOL)takeFileSystemObject:(id<FileSystemObject>)target
+{
+    DBPath *targetPath = [[DBPath alloc] initWithString:[target path]];
+    if (targetPath) {
+        DBPath *ourPath = [[DBPath alloc] initWithString:_path];
+        DBPath *newPath = [ourPath childPath:[targetPath name]];
+        
+        DBFilesystem *filesystem = [DBFilesystem sharedFilesystem];
+        DBError *error;
+        
+        BOOL isMoveSuccessful = [filesystem movePath:targetPath toPath:newPath error:&error];
+        if (!isMoveSuccessful) {
+            NSLog(@"%@", error);
+        }
+        return isMoveSuccessful;
+    } else {
+        return NO;
+    }
+}
 @end
