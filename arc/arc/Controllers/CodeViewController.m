@@ -89,6 +89,7 @@
 
 - (void)mergeAndRenderWith:(ArcAttributedString*)aas
 {
+    //TODO merge aas with _arcAttributedString.
     _arcAttributedString = aas;
     [self render];
 }
