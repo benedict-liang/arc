@@ -11,7 +11,7 @@
 #import "CoreTextUIView.h"
 #import "CodeView.h"
 #import "File.h"
-
+#import "Protocols/CodeViewControllerDelegate.h"
 @interface CodeViewController : UIViewController<SubViewController>
 @property (nonatomic, strong) CodeView *view;
 - (void)showFile:(File*)file;

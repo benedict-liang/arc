@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CodeViewController.h"
+#import "ArcAttributedString.h"
 
 @protocol CodeViewControllerDelegate <NSObject>
-- (void)mergeAndRenderWith:()
+
+- (void)mergeAndRenderWith:(ArcAttributedString*)aas;
 @end

@@ -85,9 +85,13 @@
                             initWithString:[_currentFile contents]];
 }
 
+- (void)mergeAndRenderWith:(ArcAttributedString*)aas
+{
+    _arcAttributedString = aas;
+    [self render];
+}
 - (void)render
 {
     [_coreTextView setAttributedString:_arcAttributedString.attributedString];
 }
-
 @end
