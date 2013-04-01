@@ -57,12 +57,13 @@
 {
     [super viewDidLoad];
     self.view.autoresizesSubviews = YES;
+    self.title = @"Settings";
     
     // Set Up TableView
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds
                                               style:UITableViewStyleGrouped];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
-    UIViewAutoresizingFlexibleWidth;
+        UIViewAutoresizingFlexibleWidth;
     
     // Set TableView's Delegate and DataSource
     _tableView.dataSource = self;
@@ -102,7 +103,6 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:cellIdentifier];
     }
-    
     
     NSDictionary *section = [_options objectAtIndex:indexPath.section];
     NSString *label = [[section objectForKey:@"options"] objectAtIndex:indexPath.row];

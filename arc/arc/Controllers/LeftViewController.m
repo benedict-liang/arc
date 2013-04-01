@@ -15,9 +15,9 @@
 
 @interface LeftViewController ()
 @property id<Folder> currentFolder;
-@property UINavigationController *navigationController;
-@property FileNavigationViewController* fileNavigationViewController;
-@property SettingsViewController *settingsViewController;
+@property UIViewController *currentViewController;
+@property UINavigationController* fileNavigationViewController;
+@property UINavigationController *settingsViewController;
 @end
 
 @implementation LeftViewController
@@ -36,58 +36,91 @@
 - (void)setDelegate:(id<MainViewControllerProtocol>)delegate
 {
     _delegate = delegate;
-    // Assign Delegates to ChildViewControllers
-    _fileNavigationViewController.delegate = delegate;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setUpNavigationViewController];
-}
-
-- (void)setUpNavigationViewController
-{
-    _navigationController = [[UINavigationController alloc] init];
-    _navigationController.toolbarHidden = NO;
-    _navigationController.view.frame = self.view.bounds;
-    [self.view addSubview:_navigationController.view];
+    
+    // File Navigator
+    _fileNavigationViewController = [[UINavigationController alloc] init];
+    _fileNavigationViewController.toolbarHidden = NO;
+    [self addChildViewController:_fileNavigationViewController];
+    
+    // Settings View Controller
+    _settingsViewController = [[UINavigationController alloc] init];
+    _settingsViewController.toolbarHidden = NO;
+    [self addChildViewController:_settingsViewController];
+    
+    [self showDocuments:nil];
 }
 
 - (void)showFolder:(id<Folder>)folder
-{
-    self.navigationItem.backBarButtonItem =
-        [[UIBarButtonItem alloc] initWithTitle:@"Custom Title"
-                                         style:UIBarButtonItemStyleBordered
-                                        target:nil
-                                        action:nil];
-    
+{    
     // File Navigator View Controller
     FileNavigationViewController *fileNavigationViewController =
         [[FileNavigationViewController alloc] initWithFolder:folder];
     fileNavigationViewController.delegate = self.delegate;
-    [_navigationController pushViewController:fileNavigationViewController
+    [_fileNavigationViewController pushViewController:fileNavigationViewController
                                      animated:YES];
+    
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc]
+                                      initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                      target:nil action:nil];
+
+    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Settings"
+                                                               style:UIBarButtonItemStyleBordered
+                                                              target:self
+                                                              action:@selector(showSettings:)];
+
+    [fileNavigationViewController setToolbarItems:[NSArray arrayWithObjects:flexibleSpace,button, nil]
+                                         animated:YES];
 }
 
+- (void)showSettings:(id)sender
+{
+    if (_settingsViewController.topViewController == nil) {
+        SettingsViewController *settingsTableViewController = [[SettingsViewController alloc] init];
+        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc]
+                                          initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                          target:nil action:nil];
+        
+        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Documents"
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:self
+                                                                  action:@selector(showDocuments:)];
+        
+        [settingsTableViewController
+            setToolbarItems:[NSArray arrayWithObjects:flexibleSpace,button, nil]
+            animated:YES];
+        [_settingsViewController pushViewController:settingsTableViewController
+                                           animated:YES];
+    }
 
-//- (void)transitionToViewController:(UIViewController *)nextViewController
-//                       withOptions:(UIViewAnimationOptions)options
-//{
-//    nextViewController.view.frame = CGRectMake(
-//        self.view.bounds.origin.x, SIZE_TOOLBAR_HEIGHT,
-//        self.view.bounds.size.width, self.view.bounds.size.height);
-//
-//    [UIView transitionWithView:self.view
-//                      duration:0.65f
-//                       options:options
-//                    animations:^{
-//                        [_currentViewController.view removeFromSuperview];
-//                        [self.view addSubview:nextViewController.view];
-//                    }
-//                    completion:^(BOOL finished){
-//                        _currentViewController = nextViewController;
-//                    }];
-//}
+    [self transitionToViewController:_settingsViewController
+                         withOptions:UIViewAnimationOptionTransitionFlipFromLeft];
+}
+
+- (void)showDocuments:(id)sender
+{
+    [self transitionToViewController:_fileNavigationViewController
+                         withOptions:UIViewAnimationOptionTransitionFlipFromRight];
+}
+
+- (void)transitionToViewController:(UINavigationController *)nextViewController
+                       withOptions:(UIViewAnimationOptions)options
+{
+    nextViewController.view.frame = self.view.bounds;
+    [UIView transitionWithView:self.view
+                      duration:0.65f
+                       options:options
+                    animations:^{
+                        [_currentViewController.view removeFromSuperview];
+                        [self.view addSubview:nextViewController.view];
+                    }
+                    completion:^(BOOL finished){
+                        _currentViewController = nextViewController;
+                    }];
+}
 
 @end
