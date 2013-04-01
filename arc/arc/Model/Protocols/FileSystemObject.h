@@ -35,4 +35,9 @@
 // Marks this object as needing to be refreshed.
 - (void)markNeedsRefresh;
 
+// Removes this object.
+// Returns YES if successful, NO otherwise.
+// If NO is returned, the state of the object or its contents is unstable.
+- (BOOL)remove;
+
 @end
