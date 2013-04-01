@@ -23,4 +23,24 @@ static RootFolder *sharedRootFolder = nil;
     return sharedRootFolder;
 }
 
+// Returns the contents of this object.
+- (id<NSObject>)contents
+{
+    if (_needsRefresh) {
+        return [self refreshContents];
+    } else {
+        return _contents;
+    }
+}
+
+// Refreshes the contents of this object, and returns them (for convenience.)
+- (id<NSObject>)refreshContents
+{
+    NSArray *localFileContents = (NSArray *)[[LocalRootFolder sharedLocalRootFolder] refreshContents];
+    NSArray *allContents = [localFileContents arrayByAddingObject:[DropBoxRootFolder sharedDropBoxRootFolder]];
+    _contents = allContents;
+    _needsRefresh = NO;
+    return _contents;
+}
+
 @end
