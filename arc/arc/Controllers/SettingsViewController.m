@@ -71,7 +71,7 @@
     [self.view addSubview:_tableView];
 }
 
-- (void)showFolder:(Folder *)folder
+- (void)showFolder:(id<Folder>)folder
 {
     
 }
