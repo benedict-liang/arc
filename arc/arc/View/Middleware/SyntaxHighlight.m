@@ -166,6 +166,14 @@
     }
     
 }
+-(NSDictionary*)merge:(NSDictionary*)d1 withd2:(NSDictionary*)d2 {
+    NSMutableDictionary* res = [[NSMutableDictionary alloc] initWithDictionary:d1];
+    
+    for (id k in d2) {
+        [res setValue:[d2 objectForKey:k] forKey:k];
+    }
+    return res;
+}
 -(void)iterPatternsForRange:(NSRange)contentRange patterns:(NSArray*)patterns output:(ArcAttributedString*)output {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_semaphore_t outputSema = dispatch_semaphore_create(1);
@@ -192,24 +200,17 @@
             //case name, match
             if (name && match) {
                 NSArray *a = [self foundPattern:match range:contentRange];
-                nameMatches = @{name: a};
+                nameMatches = [self merge:@{name: a} withd2:nameMatches];
             }
             if (captures && match) {
-                captureMatches = [self findCaptures:captures pattern:match range:contentRange];
+                captureMatches = [self merge:[self findCaptures:captures pattern:match range:contentRange] withd2:captureMatches];
             }
             if (beginCaptures && begin) {
-                beginCMatches = [self findCaptures:beginCaptures pattern:begin range:contentRange];
+                beginCMatches = [self merge:[self findCaptures:beginCaptures pattern:begin range:contentRange] withd2:beginCMatches];
             }
             if (endCaptures && end) {
-                endCMatches = [self findCaptures:endCaptures pattern:end range:contentRange];
+                endCMatches = [self merge:[self findCaptures:endCaptures pattern:end range:contentRange] withd2:endCMatches];
             }
-           dispatch_semaphore_wait(outputSema, DISPATCH_TIME_FOREVER);
-           
-            [self applyStylesTo:output withRanges:nameMatches];
-            [self applyStylesTo:output withRanges:captureMatches];
-            [self applyStylesTo:output withRanges:beginCMatches];
-            [self applyStylesTo:output withRanges:endCMatches];
-            dispatch_semaphore_signal(outputSema);
             
             //matching blocks
             
@@ -267,6 +268,10 @@
 
 
     dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+    [self applyStylesTo:output withRanges:nameMatches];
+    [self applyStylesTo:output withRanges:captureMatches];
+    [self applyStylesTo:output withRanges:beginCMatches];
+    [self applyStylesTo:output withRanges:endCMatches];
     dispatch_release(group);
 
 }
