@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		026AC54516FF06F7001E03E5 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 026AC54416FF06F6001E03E5 /* FileHelper.m */; };
-		026AC54616FF06F7001E03E5 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 026AC54416FF06F6001E03E5 /* FileHelper.m */; };
 		026AC54716FF104D001E03E5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7F16FDF61C00C9DED3 /* Constants.m */; };
 		026BC4711705895500A9AA5F /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC4701705895500A9AA5F /* Dropbox.framework */; };
 		026BC473170589A700A9AA5F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC472170589A700A9AA5F /* CFNetwork.framework */; };
@@ -84,8 +82,6 @@
 		025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		0260B50A1709286E0091B012 /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Folder.h; path = Protocols/Folder.h; sourceTree = "<group>"; };
 		0260B50B170928820091B012 /* FileSystemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystemObject.h; path = Protocols/FileSystemObject.h; sourceTree = "<group>"; };
-		026AC54316FF06F6001E03E5 /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
-		026AC54416FF06F6001E03E5 /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
 		026BC4701705895500A9AA5F /* Dropbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dropbox.framework; path = arc/Dropbox.framework; sourceTree = "<group>"; };
 		026BC472170589A700A9AA5F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		026BC474170589B000A9AA5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -473,8 +469,6 @@
 				8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */,
 				026BC47A1705913200A9AA5F /* Local Files */,
 				026BC47B1705913A00A9AA5F /* DropBox */,
-				026AC54316FF06F6001E03E5 /* FileHelper.h */,
-				026AC54416FF06F6001E03E5 /* FileHelper.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1131,7 +1125,6 @@
 				8F5C5C1916FDFED300B31A19 /* Find.m in Sources */,
 				4CD06B8A16FE125100C9DED3 /* CoreTextUIView.m in Sources */,
 				FC4B26CE16FF6E3800E1DC49 /* LeftViewController.m in Sources */,
-				026AC54516FF06F7001E03E5 /* FileHelper.m in Sources */,
 				4C45551A17017005001C6F1D /* BasicStyles.m in Sources */,
 				8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */,
 				FCB0548417036010007832D7 /* SyntaxHighlight.m in Sources */,
@@ -1158,7 +1151,6 @@
 			files = (
 				026AC54716FF104D001E03E5 /* Constants.m in Sources */,
 				4CD06B7716FDEEC100C9DED3 /* arcTests.m in Sources */,
-				026AC54616FF06F7001E03E5 /* FileHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
