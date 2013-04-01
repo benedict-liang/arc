@@ -84,7 +84,7 @@
 - (void)loadFile:(id<File>)file
 {
     _arcAttributedString = [[ArcAttributedString alloc]
-                            initWithString:[_currentFile contents]];
+                            initWithString:(NSString *)[_currentFile contents]];
 }
 
 - (void)mergeAndRenderWith:(ArcAttributedString*)aas
