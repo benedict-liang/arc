@@ -23,6 +23,7 @@
 		02BF74DF1706C14800397605 /* DropBoxFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02BF74DE1706C14800397605 /* DropBoxFolder.m */; };
 		02E51AE017092D4300247AF5 /* LocalFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51ADF17092D4300247AF5 /* LocalFolder.m */; };
 		02E51AE417093C8B00247AF5 /* LocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AE317093C8B00247AF5 /* LocalFile.m */; };
+		02E51AE71709438900247AF5 /* LocalRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AE61709438900247AF5 /* LocalRootFolder.m */; };
 		4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D0711705CA7800F4593B /* ArcAttributedString.m */; };
 		4C12D0781706074600F4593B /* CodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D0771706074600F4593B /* CodeView.m */; };
 		4C43F8ED16F86AA900159B29 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
@@ -105,6 +106,8 @@
 		02E51AE117092FCE00247AF5 /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = File.h; path = Protocols/File.h; sourceTree = "<group>"; };
 		02E51AE217093C8B00247AF5 /* LocalFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFile.h; sourceTree = "<group>"; };
 		02E51AE317093C8B00247AF5 /* LocalFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFile.m; sourceTree = "<group>"; };
+		02E51AE51709438800247AF5 /* LocalRootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalRootFolder.h; sourceTree = "<group>"; };
+		02E51AE61709438900247AF5 /* LocalRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalRootFolder.m; sourceTree = "<group>"; };
 		4C12D0701705CA7800F4593B /* ArcAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcAttributedString.h; sourceTree = "<group>"; };
 		4C12D0711705CA7800F4593B /* ArcAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcAttributedString.m; sourceTree = "<group>"; };
 		4C12D0761706074600F4593B /* CodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeView.h; sourceTree = "<group>"; };
@@ -384,6 +387,8 @@
 				02E51ADF17092D4300247AF5 /* LocalFolder.m */,
 				02E51AE217093C8B00247AF5 /* LocalFile.h */,
 				02E51AE317093C8B00247AF5 /* LocalFile.m */,
+				02E51AE51709438800247AF5 /* LocalRootFolder.h */,
+				02E51AE61709438900247AF5 /* LocalRootFolder.m */,
 			);
 			name = "Local Files";
 			sourceTree = "<group>";
@@ -1155,6 +1160,7 @@
 				4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */,
 				02E51AE017092D4300247AF5 /* LocalFolder.m in Sources */,
 				02E51AE417093C8B00247AF5 /* LocalFile.m in Sources */,
+				02E51AE71709438900247AF5 /* LocalRootFolder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
