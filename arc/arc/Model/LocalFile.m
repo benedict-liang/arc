@@ -20,6 +20,7 @@
         _name = name;
         _path = path;
         _parent = parent;
+        _extension = [name pathExtension];
         _needsRefresh = YES;
     }
     return self;
@@ -48,6 +49,12 @@
         _contents = retrievedContents;
     }
     return _contents;
+}
+
+// Marks this object as needing to be refreshed.
+- (void)markNeedsRefresh
+{
+    _needsRefresh = YES;
 }
 
 @end
