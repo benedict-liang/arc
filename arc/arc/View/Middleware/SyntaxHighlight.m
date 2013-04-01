@@ -111,7 +111,7 @@
     }
 }
 
-- (NSDictionary*)applyStyleToCaptures:(NSArray*)captures pattern:(NSString*)match range:(NSRange)r output:(ArcAttributedString*)o {
+- (NSDictionary*)findCaptures:(NSArray*)captures pattern:(NSString*)match range:(NSRange)r {
 
     // Original Code
     NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
@@ -195,17 +195,18 @@
                 nameMatches = @{name: a};
             }
             if (captures && match) {
-                captureMatches = [self applyStyleToCaptures:captures pattern:match range:contentRange output:output];
+                captureMatches = [self findCaptures:captures pattern:match range:contentRange];
             }
             if (beginCaptures && begin) {
-                beginCMatches = [self applyStyleToCaptures:beginCaptures pattern:begin range:contentRange output:output];
+                beginCMatches = [self findCaptures:beginCaptures pattern:begin range:contentRange];
             }
             if (endCaptures && end) {
-                endCMatches = [self applyStyleToCaptures:endCaptures pattern:end range:contentRange output:output];
+                endCMatches = [self findCaptures:endCaptures pattern:end range:contentRange];
             }
-            dispatch_semaphore_wait(outputSema, DISPATCH_TIME_FOREVER);
-            [self applyStylesTo:output withRanges:captureMatches];
+           dispatch_semaphore_wait(outputSema, DISPATCH_TIME_FOREVER);
+           
             [self applyStylesTo:output withRanges:nameMatches];
+            [self applyStylesTo:output withRanges:captureMatches];
             [self applyStylesTo:output withRanges:beginCMatches];
             [self applyStylesTo:output withRanges:endCMatches];
             dispatch_semaphore_signal(outputSema);
@@ -249,7 +250,7 @@
                         }
                         
                         if (name) {
-                            dispatch_semaphore_wait(outputSema, DISPATCH_TIME_FOREVER);
+                           dispatch_semaphore_wait(outputSema, DISPATCH_TIME_FOREVER);
                             [self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location) output:output];
                             dispatch_semaphore_signal(outputSema);
                         }
