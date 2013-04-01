@@ -83,17 +83,20 @@
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    NSString *newTargetPath = [_path stringByAppendingPathComponent:[[target path] lastPathComponent]];
-    
-    NSError *error;
-    BOOL isMoveSuccessful = [fileManager moveItemAtPath:[target path] toPath:newTargetPath error:&error];
-    if (isMoveSuccessful) {
-        [self markNeedsRefresh];
-        [target setParent:self];
-        [target setPath:newTargetPath];
-        return YES;
+    if ([fileManager fileExistsAtPath:[target path]]) {
+        NSString *newTargetPath = [_path stringByAppendingPathComponent:[[target path] lastPathComponent]];
+        
+        NSError *error;
+        BOOL isMoveSuccessful = [fileManager moveItemAtPath:[target path] toPath:newTargetPath error:&error];
+        if (isMoveSuccessful) {
+            [self markNeedsRefresh];
+            [target setParent:self];
+            [target setPath:newTargetPath];
+        } else {
+            NSLog(@"%@", error);
+        }
+        return isMoveSuccessful;
     } else {
-        NSLog(@"%@", error);
         return NO;
     }
 }
