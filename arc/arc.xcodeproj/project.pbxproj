@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0234361E16FDFA3C00B0D7AE /* FileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F91016F86AD000159B29 /* FileObject.m */; };
 		0234361F16FDFA4100B0D7AE /* RootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 028DA2D616FD826F00E2E5D9 /* RootFolder.m */; };
-		0234362016FDFA4500B0D7AE /* Folder.m in Sources */ = {isa = PBXBuildFile; fileRef = 025B52AA16F86C4B00C20559 /* Folder.m */; };
 		0234362116FDFA4900B0D7AE /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 025B52AD16F86C8700C20559 /* File.m */; };
-		025B52AB16F86C4B00C20559 /* Folder.m in Sources */ = {isa = PBXBuildFile; fileRef = 025B52AA16F86C4B00C20559 /* Folder.m */; };
 		025B52AE16F86C8700C20559 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 025B52AD16F86C8700C20559 /* File.m */; };
 		026AC54516FF06F7001E03E5 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 026AC54416FF06F6001E03E5 /* FileHelper.m */; };
 		026AC54616FF06F7001E03E5 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 026AC54416FF06F6001E03E5 /* FileHelper.m */; };
@@ -68,7 +65,6 @@
 		8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1416FDFDBE00B31A19 /* Utils.m */; };
 		8F5C5C1916FDFED300B31A19 /* Find.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1816FDFED300B31A19 /* Find.m */; };
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
-		8FCA1D6A16F8707900C6AAFC /* FileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F91016F86AD000159B29 /* FileObject.m */; };
 		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
 		8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */; };
 		FC4B269E16F88CB800E1DC49 /* FileNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B269D16F88CB800E1DC49 /* FileNavigationViewController.m */; };
@@ -89,8 +85,6 @@
 
 /* Begin PBXFileReference section */
 		025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		025B52AA16F86C4B00C20559 /* Folder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Folder.m; sourceTree = "<group>"; };
-		025B52AC16F86C8700C20559 /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
 		025B52AD16F86C8700C20559 /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
 		0260B50A1709286E0091B012 /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Folder.h; path = Protocols/Folder.h; sourceTree = "<group>"; };
 		0260B50B170928820091B012 /* FileSystemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystemObject.h; path = Protocols/FileSystemObject.h; sourceTree = "<group>"; };
@@ -130,8 +124,6 @@
 		4C43F90216F86AA900159B29 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4C43F90416F86AA900159B29 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4C43F90716F86AA900159B29 /* arc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = arc.xcdatamodel; sourceTree = "<group>"; };
-		4C43F90F16F86AD000159B29 /* FileObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileObject.h; sourceTree = "<group>"; };
-		4C43F91016F86AD000159B29 /* FileObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileObject.m; sourceTree = "<group>"; };
 		4C45551717016F93001C6F1D /* CodeViewMiddleware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewMiddleware.h; sourceTree = "<group>"; };
 		4C45551817017005001C6F1D /* BasicStyles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicStyles.h; sourceTree = "<group>"; };
 		4C45551917017005001C6F1D /* BasicStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicStyles.m; sourceTree = "<group>"; };
@@ -387,10 +379,6 @@
 			children = (
 				028DA2D516FD826F00E2E5D9 /* RootFolder.h */,
 				028DA2D616FD826F00E2E5D9 /* RootFolder.m */,
-				4C43F90F16F86AD000159B29 /* FileObject.h */,
-				4C43F91016F86AD000159B29 /* FileObject.m */,
-				025B52AA16F86C4B00C20559 /* Folder.m */,
-				025B52AC16F86C8700C20559 /* File.h */,
 				025B52AD16F86C8700C20559 /* File.m */,
 				02E51ADE17092D4300247AF5 /* LocalFolder.h */,
 				02E51ADF17092D4300247AF5 /* LocalFolder.m */,
@@ -1136,11 +1124,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FCA1D6A16F8707900C6AAFC /* FileObject.m in Sources */,
 				4C43F8FB16F86AA900159B29 /* main.m in Sources */,
 				4C43F8FF16F86AA900159B29 /* AppDelegate.m in Sources */,
 				4C43F90816F86AA900159B29 /* arc.xcdatamodeld in Sources */,
-				025B52AB16F86C4B00C20559 /* Folder.m in Sources */,
 				025B52AE16F86C8700C20559 /* File.m in Sources */,
 				8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */,
 				FC4B269E16F88CB800E1DC49 /* FileNavigationViewController.m in Sources */,
@@ -1178,9 +1164,7 @@
 			files = (
 				026AC54716FF104D001E03E5 /* Constants.m in Sources */,
 				0234362116FDFA4900B0D7AE /* File.m in Sources */,
-				0234362016FDFA4500B0D7AE /* Folder.m in Sources */,
 				0234361F16FDFA4100B0D7AE /* RootFolder.m in Sources */,
-				0234361E16FDFA3C00B0D7AE /* FileObject.m in Sources */,
 				4CD06B7716FDEEC100C9DED3 /* arcTests.m in Sources */,
 				026AC54616FF06F7001E03E5 /* FileHelper.m in Sources */,
 			);
