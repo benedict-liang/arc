@@ -205,6 +205,9 @@
     [self initPatternsAndTheme];
     //_content = [file contents];
     [self iterPatternsAndApplyForRange:NSMakeRange(0, [_content length]) patterns:_patterns];
-    [self.delegate mergeAndRenderWith:_output];
+    if (self.delegate) {
+        [self.delegate mergeAndRenderWith:_output];
+    }
+ 
 }
 @end

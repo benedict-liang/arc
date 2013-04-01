@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "ArcAttributedString.h"
-
+#import "File.h"
 @protocol CodeViewControllerDelegate <NSObject>
 
-- (void)mergeAndRenderWith:(ArcAttributedString*)aas;
+- (void)mergeAndRenderWith:(ArcAttributedString*)aas forFile:(id<File>)file;
 @end
