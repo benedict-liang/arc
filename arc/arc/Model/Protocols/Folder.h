@@ -20,6 +20,10 @@
 // Will return nil if the object is not found.
 - (id<FileSystemObject>)retrieveItemWithName:(NSString*)name;
 
+// Creates a Folder with the given name inside this one.
+// Returns the created Folder object.
+- (id<Folder>)createFolderWithName:(NSString*)name;
+
 // Renames this Folder to the given name.
 - (void)rename:(NSString*)name;
 
