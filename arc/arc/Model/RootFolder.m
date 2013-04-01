@@ -23,17 +23,10 @@ static RootFolder *sharedRootFolder = nil;
     return sharedRootFolder;
 }
 
-- (id)init{
-    if (self = [super init]) {
-        _needsRefresh = YES;
-    }
-    return self;
-}
-
 // Returns the contents of this object.
 - (id<NSObject>)contents
 {
-    if (_needsRefresh) {
+    if ([[LocalRootFolder sharedLocalRootFolder] needsRefresh]) {
         return [self refreshContents];
     } else {
         return _contents;
@@ -50,7 +43,6 @@ static RootFolder *sharedRootFolder = nil;
     } else {
         _contents = localFileContents;
     }
-    _needsRefresh = NO;
     return _contents;
 }
 
