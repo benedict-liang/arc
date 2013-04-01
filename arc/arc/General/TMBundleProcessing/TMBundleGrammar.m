@@ -17,6 +17,10 @@
 @implementation TMBundleGrammar
 @synthesize repositories = _repositories;
 
+// Suppress warning for performSelector with ARC
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+
 + (NSDictionary*)getRuleKeysDictionary {
     static NSDictionary *ruleKeysDictionary;
     
@@ -189,7 +193,13 @@
     NSValue *ruleAction = [[TMBundleGrammar getRuleKeysDictionary] objectForKey:key];
     
     SEL selector = [ruleAction pointerValue];
+
     return [self performSelector:selector withObject:value];
+
+
 }
+
+// Suppress warning for performSelector with ARC
+#pragma clang diagnostic pop
 
 @end
