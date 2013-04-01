@@ -11,7 +11,7 @@
 
 @implementation SyntaxHighlight
 
-+ (void)arcAttributedString:(ArcAttributedString *)arcAttributedString OfFile:(File *)file
++ (void)arcAttributedString:(ArcAttributedString *)arcAttributedString OfFile:(id<File>)file
 {
     SyntaxHighlight *sh = [[self alloc] init];
     [sh execOn:arcAttributedString FromFile:file];
@@ -215,7 +215,7 @@
     
     }
 }
-- (void)execOn:(ArcAttributedString *)arcAttributedString FromFile:(File *)file {
+- (void)execOn:(ArcAttributedString *)arcAttributedString FromFile:(id<File>)file {
     _output = arcAttributedString;
     [self initPatternsAndTheme];
     _content = [file contents];
