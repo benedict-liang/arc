@@ -23,6 +23,13 @@ static RootFolder *sharedRootFolder = nil;
     return sharedRootFolder;
 }
 
+- (id)init{
+    if (self = [super init]) {
+        _needsRefresh = YES;
+    }
+    return self;
+}
+
 // Returns the contents of this object.
 - (id<NSObject>)contents
 {
