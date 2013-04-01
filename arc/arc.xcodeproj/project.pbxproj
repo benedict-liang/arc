@@ -91,7 +91,6 @@
 		025B52AA16F86C4B00C20559 /* Folder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Folder.m; sourceTree = "<group>"; };
 		025B52AC16F86C8700C20559 /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
 		025B52AD16F86C8700C20559 /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
-		0260B509170921DB0091B012 /* FileSystemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemObject.h; sourceTree = "<group>"; };
 		0260B50A1709286E0091B012 /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Folder.h; path = Protocols/Folder.h; sourceTree = "<group>"; };
 		0260B50B170928820091B012 /* FileSystemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystemObject.h; path = Protocols/FileSystemObject.h; sourceTree = "<group>"; };
 		026AC54316FF06F6001E03E5 /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
@@ -371,7 +370,6 @@
 			isa = PBXGroup;
 			children = (
 				0260B50B170928820091B012 /* FileSystemObject.h */,
-				0260B509170921DB0091B012 /* FileSystemObject.h */,
 				0260B50A1709286E0091B012 /* Folder.h */,
 			);
 			name = Protocols;
