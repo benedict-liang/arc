@@ -23,6 +23,9 @@
 // The parent of this object.
 @property (weak, nonatomic) id<FileSystemObject> parent;
 
+// Initialises this object with the given name, path, and parent.
+- (id)initWithName:(NSString*)name path:(NSString*)path parent:(id<FileSystemObject>)parent;
+
 // Returns the contents of this object.
 - (id<NSObject>)contents;
 
