@@ -10,6 +10,8 @@
 
 @protocol FileSystemObject <NSObject>
 
+@required
+
 // The name of this object.
 @property (strong, nonatomic) NSString *name;
 
