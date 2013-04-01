@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "ArcAttributedString.h"
 
-@protocol CodeViewControllerDelegate <NSObject>
-
+@protocol ContentViewControllerProtocol <NSObject>
 - (void)mergeAndRenderWith:(ArcAttributedString*)aas;
 @end

@@ -37,12 +37,12 @@
     return self;
 }
 
-- (void)setDelegate:(id<MainViewControllerDelegate>)delegate
+- (void)setDelegate:(id<MainViewControllerProtocol>)delegate
 {
     _delegate = delegate;
     
     // Assign Delegate to ChildViewControllers
-    for (id<SubViewController> childVC in self.childViewControllers) {
+    for (id<SubViewControllerProtocol> childVC in self.childViewControllers) {
         childVC.delegate = delegate;
     }
 }

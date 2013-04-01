@@ -123,7 +123,7 @@
 		4C45551717016F93001C6F1D /* CodeViewMiddleware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewMiddleware.h; sourceTree = "<group>"; };
 		4C45551817017005001C6F1D /* BasicStyles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicStyles.h; sourceTree = "<group>"; };
 		4C45551917017005001C6F1D /* BasicStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicStyles.m; sourceTree = "<group>"; };
-		4CD06B2C16FDE92D00C9DED3 /* SubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubViewController.h; sourceTree = "<group>"; };
+		4CD06B2C16FDE92D00C9DED3 /* SubViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubViewControllerProtocol.h; sourceTree = "<group>"; };
 		4CD06B3B16FDEDA600C9DED3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		4CD06B4016FDEDA600C9DED3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		4CD06B4116FDEDA600C9DED3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -319,7 +319,7 @@
 		8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationState.m; sourceTree = "<group>"; };
 		8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewController.h; sourceTree = "<group>"; };
 		8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeViewController.m; sourceTree = "<group>"; };
-		8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewControllerDelegate.h; sourceTree = "<group>"; };
+		8FCA1D7116F8AA6000C6AAFC /* MainViewControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewControllerProtocol.h; sourceTree = "<group>"; };
 		FC4B269C16F88CB800E1DC49 /* FileNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileNavigationViewController.h; sourceTree = "<group>"; };
 		FC4B269D16F88CB800E1DC49 /* FileNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileNavigationViewController.m; sourceTree = "<group>"; };
 		FC4B26CC16FF6E3700E1DC49 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
@@ -327,7 +327,7 @@
 		FCB0547F17034DE6007832D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		FCB0548217036010007832D7 /* SyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlight.h; sourceTree = "<group>"; };
 		FCB0548317036010007832D7 /* SyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxHighlight.m; sourceTree = "<group>"; };
-		FCE8F95D1709806B00C08724 /* CodeViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeViewControllerDelegate.h; sourceTree = "<group>"; };
+		FCE8F95D1709806B00C08724 /* CodeViewControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeViewControllerProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -499,9 +499,9 @@
 		4CD06B2D16FDE97E00C9DED3 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */,
-				4CD06B2C16FDE92D00C9DED3 /* SubViewController.h */,
-				FCE8F95D1709806B00C08724 /* CodeViewControllerDelegate.h */,
+				8FCA1D7116F8AA6000C6AAFC /* MainViewControllerProtocol.h */,
+				4CD06B2C16FDE92D00C9DED3 /* SubViewControllerProtocol.h */,
+				FCE8F95D1709806B00C08724 /* CodeViewControllerProtocol.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";

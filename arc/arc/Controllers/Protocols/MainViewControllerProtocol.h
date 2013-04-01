@@ -7,17 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FileSystemObject.h"
 #import "File.h"
 #import "Folder.h"
 
-@protocol MainViewControllerDelegate// <NSObject>
-
+@protocol MainViewControllerProtocol
 #pragma mark - Triggered by CodeViewController
-
-// Show/hide LeftBar
 - (void)showLeftBar;
 - (void)hideLeftBar;
 
 #pragma mark - Triggered by LeftBarViewController
-- (void)fileObjectSelected:(id<File>)fileObject;
+- (void)fileObjectSelected:(id<FileSystemObject>)fileSystemObject;
 @end

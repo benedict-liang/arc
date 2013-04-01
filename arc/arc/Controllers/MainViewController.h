@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MainViewControllerDelegate.h"
+#import "MainViewControllerProtocol.h"
 #import "Constants.h"
 #import "ApplicationState.h"
 #import "RootFolder.h"
@@ -18,5 +18,5 @@
 
 #import "TMBundleHeader.h"
 
-@interface MainViewController : UISplitViewController <MainViewControllerDelegate>
+@interface MainViewController : UISplitViewController <MainViewControllerProtocol>
 @end
