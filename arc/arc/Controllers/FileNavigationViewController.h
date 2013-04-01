@@ -11,5 +11,5 @@
 #import "SubViewController.h"
 
 @interface FileNavigationViewController : UIViewController <SubViewController, UITableViewDelegate, UITableViewDataSource>
-- (void)showFolder:(Folder*)folder;
+- (void)showFolder:(id<Folder>)folder;
 @end

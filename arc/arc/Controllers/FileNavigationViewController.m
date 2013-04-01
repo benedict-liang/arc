@@ -8,12 +8,12 @@
 
 #import "FileNavigationViewController.h"
 #import "Utils.h"
-#import "RootFolder.h"
+#import "LocalRootFolder.h" // To be replaced.
 #import "File.h"
 #import "Folder.h"
 
 @interface FileNavigationViewController ()
-@property Folder *currentFolder;
+@property id<Folder> currentFolder;
 @property UITableView *tableView;
 @property NSArray *filesAndFolders;
 @end
@@ -29,15 +29,15 @@
     self = [super init];
     if (self) {
         // tmp.
-        _currentFolder = [RootFolder sharedRootFolder];
+        _currentFolder = [LocalRootFolder sharedLocalRootFolder];
         
         NSMutableArray *folders = [NSMutableArray array];
         NSMutableArray *files = [NSMutableArray array];
         NSArray *folderContents = (NSArray*)[_currentFolder contents];
-        for (FileObject *fileObject in folderContents) {
-            if ([fileObject isKindOfClass:[File class]]) {
+        for (id<FileSystemObject> fileObject in folderContents) {
+            if ([[fileObject class] conformsToProtocol:@protocol(File)]) {
                 [files addObject:fileObject];
-            } else if ([fileObject isKindOfClass:[Folder class]]) {
+            } else if ([[fileObject class] conformsToProtocol:@protocol(Folder) ]) {
                 [folders addObject:fileObject];
             }
         }
@@ -71,7 +71,7 @@
     [self.view addSubview:_tableView];
 }
 
-- (void)showFolder:(Folder *)folder
+- (void)showFolder:(id<Folder>)folder
 {
     
 }
@@ -108,14 +108,14 @@
 
     
     NSArray *section = [_filesAndFolders objectAtIndex:indexPath.section];
-    FileObject *fileObject = [section objectAtIndex:indexPath.row];
+    id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
     
-    if ([fileObject isKindOfClass:[File class]]) {
-        File *file = (File*) fileObject;
+    if ([[fileObject class] conformsToProtocol:@protocol(File)]) {
+        id<File> file = (id<File>) fileObject;
         cell.imageView.image = [Utils scale:[UIImage imageNamed:@"file.png"]
                                      toSize:CGSizeMake(40, 40)];
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ file", file.extension];
-    } else if ([fileObject isKindOfClass:[Folder class]]) {
+    } else if ([[fileObject class] conformsToProtocol:@protocol(Folder)]) {
         cell.imageView.image = [Utils scale:[UIImage imageNamed:@"folder.png"]
                                      toSize:CGSizeMake(40, 40)];
         cell.detailTextLabel.text = @"Folder";
@@ -130,7 +130,7 @@
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NSArray *section = [_filesAndFolders objectAtIndex:indexPath.section];
-    FileObject *fileObject = [section objectAtIndex:indexPath.row];
+    id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
     [self.delegate fileObjectSelected:fileObject];
 }
 
