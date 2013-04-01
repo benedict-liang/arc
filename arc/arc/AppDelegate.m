@@ -8,7 +8,11 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
-#import "FileHelper.h"
+// Necessary only if "Open in..." handling is inline here.
+#import "LocalFolder.h"
+#import "LocalFile.h"
+#import "LocalRootFolder.h"
+// End of "Open in..." imports
 #import <Dropbox/Dropbox.h>
 
 @implementation AppDelegate
@@ -24,7 +28,13 @@
 {
     // Check that this is a file URL.
     if ([url isFileURL]) {
-        File *receivedFile = [FileHelper fileWithURL:url sourceApplication:sourceApplication annotation:annotation];
+        // Get the "Inbox" folder.
+        NSURL *inboxURL = [url URLByDeletingLastPathComponent];
+        NSString *inboxName = [inboxURL lastPathComponent];
+        NSString *inboxPath = [inboxURL path];
+        LocalFolder *inboxFolder = [[LocalFolder alloc] initWithName:inboxName path:inboxPath parent:[LocalRootFolder sharedLocalRootFolder]];
+        
+        LocalFile *receivedFile = [[LocalFile alloc] initWithName:[url lastPathComponent] path:[url path] parent:inboxFolder];
         
         // Pass the file to whatever needs it.
         // <Fill this in here.>
@@ -45,7 +55,8 @@
 {
     // Jerome: Temporary code to move support files into the Documents folder.
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSURL *documentsURL = [[RootFolder sharedRootFolder] url];
+    NSString *documentsPath = [[LocalRootFolder sharedLocalRootFolder] path];
+    NSURL *documentsURL = [NSURL fileURLWithPath:documentsPath];
     NSString *sampleFileName = @"GameObject.h";
     NSString *sampleFile1 = @"README.md";
     NSString *sampleFile2 = @"home.html";
@@ -61,19 +72,19 @@
     
     if (![fileManager fileExistsAtPath:[newFileURL path]]) {
         [fileManager copyItemAtURL:sampleFileURL toURL:newFileURL error:nil];
-        [[RootFolder sharedRootFolder] flagForRefresh];
+        [[LocalRootFolder sharedLocalRootFolder] markNeedsRefresh];
     }
     if (![fileManager fileExistsAtPath:[newFile1URL path]]) {
         [fileManager copyItemAtURL:sampleFile1URL toURL:newFile1URL error:nil];
-        [[RootFolder sharedRootFolder] flagForRefresh];
+        [[LocalRootFolder sharedLocalRootFolder] markNeedsRefresh];
     }
     if (![fileManager fileExistsAtPath:[newFile2URL path]]) {
         [fileManager copyItemAtURL:sampleFile2URL toURL:newFile2URL error:nil];
-        [[RootFolder sharedRootFolder] flagForRefresh];
+        [[LocalRootFolder sharedLocalRootFolder] markNeedsRefresh];
     }
     if (![fileManager fileExistsAtPath:[newFile3URL path]]) {
         [fileManager copyItemAtURL:sampleFile3URL toURL:newFile3URL error:nil];
-        [[RootFolder sharedRootFolder] flagForRefresh];
+        [[LocalRootFolder sharedLocalRootFolder] markNeedsRefresh];
     }
     // End of temporary code.
     
