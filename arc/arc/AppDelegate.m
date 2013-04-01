@@ -125,6 +125,16 @@
     // Set MainViewController as RootViewController
     self.window.RootViewController = mainViewController;
     [self.window makeKeyAndVisible];
+    
+    // TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP TEMP
+    // Temporary code to authenticate with DropBox.
+    DBAccountManager *accountManager = [DBAccountManager sharedManager];
+    if (!dbAccount) {
+        // Link to the main view controller instance here.
+        [accountManager linkFromController:mainViewController];
+    }
+    // End of temporary code.
+    
     return YES;
 }
 

@@ -31,6 +31,7 @@ static DropBoxRootFolder *sharedDropBoxRootFolder = nil;
     return self;
 }
 
+
 // Renames this Folder to the given name.
 - (BOOL)rename:(NSString *)name
 {
