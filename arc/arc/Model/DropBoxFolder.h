@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Dropbox/Dropbox.h>
 #import "Folder.h"
 
-@interface DropBoxFolder : NSObject <Folder>
+@interface DropBoxFolder : NSObject <Folder> {
+    NSArray *_contents;
+    BOOL _needsRefresh;
+}
 
 @end
