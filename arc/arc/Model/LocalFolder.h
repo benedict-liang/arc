@@ -1,5 +1,5 @@
 //
-//  DropBoxFolder.h
+//  LocalFolder.h
 //  arc
 //
 //  Created by Jerome Cheng on 1/4/13.
@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "Folder.h"
+#import "LocalFile.h"
 
-@interface DropBoxFolder : NSObject <Folder>
+@interface LocalFolder : NSObject <Folder> {
+    NSArray *_contents;
+    BOOL _needsRefresh;
+}
 
 @end

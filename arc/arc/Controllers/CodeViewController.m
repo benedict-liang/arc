@@ -12,7 +12,7 @@
 #import "BasicStyles.h"
 #import "SyntaxHighlight.h"
 @interface CodeViewController ()
-@property File *currentFile;
+@property id<File> currentFile;
 @property CoreTextUIView *coreTextView;
 @property ArcAttributedString *arcAttributedString;
 - (void)refreshSubViewSizes;
@@ -59,7 +59,7 @@
     self.view.contentSize = _coreTextView.bounds.size;
 }
 
-- (void)showFile:(File*)file
+- (void)showFile:(id<File>)file
 {
     // Update Current file
     _currentFile = file;
@@ -81,7 +81,7 @@
     [self refreshSubViewSizes];
 }
 
-- (void)loadFile:(File*)file
+- (void)loadFile:(id<File>)file
 {
     _arcAttributedString = [[ArcAttributedString alloc]
                             initWithString:[_currentFile contents]];

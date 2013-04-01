@@ -1,13 +1,14 @@
 //
-//  DropBoxFolder.m
+//  DropBoxFile.h
 //  arc
 //
 //  Created by Jerome Cheng on 1/4/13.
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "DropBoxFolder.h"
+#import <Foundation/Foundation.h>
+#import "File.h"
 
-@implementation DropBoxFolder
+@interface DropBoxFile : NSObject <File>
 
 @end

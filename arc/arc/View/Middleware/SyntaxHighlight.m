@@ -10,8 +10,8 @@
 #import "ArcAttributedString.h"
 
 @implementation SyntaxHighlight
++ (void)arcAttributedString:(ArcAttributedString *)arcAttributedString OfFile:(id<File>)file delegate:(id)del
 
-+ (void)arcAttributedString:(ArcAttributedString *)arcAttributedString OfFile:(File *)file delegate:(id)del
 {
     SyntaxHighlight *sh = [[self alloc] init];
     sh.delegate = del;
@@ -198,7 +198,9 @@
     
     }
 }
+
 - (void)execOn:(ArcAttributedString *)arcAttributedString {
+
     _output = arcAttributedString;
     [self initPatternsAndTheme];
     //_content = [file contents];

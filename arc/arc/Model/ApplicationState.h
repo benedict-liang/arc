@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "File.h"
 #import "Folder.h"
+#import "LocalRootFolder.h" // To be changed to the final RootFolder later.
 
 @interface ApplicationState : NSObject
 + (ApplicationState*)sharedApplicationState;
 
-@property (strong, nonatomic) File *currentFileOpened;
-@property (strong, nonatomic) Folder *currentFolderOpened;
+@property (strong, nonatomic) id<File> currentFileOpened;
+@property (strong, nonatomic) id<Folder> currentFolderOpened;
 
 //
 // Settings and Preferences
@@ -31,5 +32,5 @@
 
 // tmp
 // Returns a sample file.
-+ (File*)getSampleFile;
++ (id<File>)getSampleFile;
 @end

@@ -21,6 +21,7 @@ extern const CGColorRef* DEFAULT_TEXT_COLOR;
 
 // Default Folder Names
 extern const NSString* FOLDER_EXTERNAL_APPLICATIONS;
+extern const NSString* FOLDER_ROOT;
 
 // API Keys
 extern const NSString* CLOUD_DROPBOX_KEY;

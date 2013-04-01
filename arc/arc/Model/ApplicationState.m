@@ -7,10 +7,6 @@
 //
 
 #import "ApplicationState.h"
-// Temporary imports. Remove when getSampleFile is no longer needed.
-#import "FileObject.h"
-#import "RootFolder.h"
-// End of temporary imports.
 
 @interface ApplicationState ()
 @property NSMutableDictionary *_settings;
@@ -36,7 +32,7 @@ static ApplicationState *sharedApplicationState = nil;
     self = [super init];
     if (self) {
         // Defaults || Get Previous State from plist
-        _currentFolderOpened = [RootFolder sharedRootFolder];
+        _currentFolderOpened = [LocalRootFolder sharedLocalRootFolder]; // To be changed to the final RootFolder later.
         _currentFileOpened = nil;
     }
     return self;
@@ -48,14 +44,9 @@ static ApplicationState *sharedApplicationState = nil;
 }
 
 // Returns a sample file.
-+ (File*)getSampleFile
++ (id<File>)getSampleFile
 {
-    for (FileObject *currentObject in [[RootFolder sharedRootFolder] contents]) {
-        if ([[currentObject name] isEqualToString:@"GameObject.h"]) {
-            return (File*)currentObject;
-        }
-    }
-    return nil;
+    return (id<File>)[[LocalRootFolder sharedLocalRootFolder] retrieveItemWithName:@"GameObject.h"];
 }
 
 @end

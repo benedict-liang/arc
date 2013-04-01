@@ -1,5 +1,5 @@
 //
-//  DropBoxFolder.h
+//  LocalRootFolder.h
 //  arc
 //
 //  Created by Jerome Cheng on 1/4/13.
@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Folder.h"
+#import "LocalFolder.h"
+#import "Constants.h"
 
-@interface DropBoxFolder : NSObject <Folder>
+@interface LocalRootFolder : LocalFolder
+
++ (LocalRootFolder*)sharedLocalRootFolder;
 
 @end
