@@ -107,6 +107,7 @@
 		02BF74DE1706C14800397605 /* DropBoxFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxFolder.m; sourceTree = "<group>"; };
 		02E51ADE17092D4300247AF5 /* LocalFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFolder.h; sourceTree = "<group>"; };
 		02E51ADF17092D4300247AF5 /* LocalFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFolder.m; sourceTree = "<group>"; };
+		02E51AE117092FCE00247AF5 /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = File.h; path = Protocols/File.h; sourceTree = "<group>"; };
 		4C12D0701705CA7800F4593B /* ArcAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcAttributedString.h; sourceTree = "<group>"; };
 		4C12D0711705CA7800F4593B /* ArcAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcAttributedString.m; sourceTree = "<group>"; };
 		4C12D0761706074600F4593B /* CodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeView.h; sourceTree = "<group>"; };
@@ -373,6 +374,7 @@
 			children = (
 				0260B50B170928820091B012 /* FileSystemObject.h */,
 				0260B50A1709286E0091B012 /* Folder.h */,
+				02E51AE117092FCE00247AF5 /* File.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
