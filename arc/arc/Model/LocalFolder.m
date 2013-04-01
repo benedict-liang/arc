@@ -95,4 +95,24 @@
     return nil;
 }
 
+// Creates a Folder with the given name inside this one.
+// Returns the created Folder object.
+- (id<Folder>)createFolderWithName:(NSString*)name
+{
+    NSString *newFolderPath = [_path stringByAppendingPathComponent:name];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+
+    NSError *error;
+    BOOL isCreateSuccessful = [fileManager createDirectoryAtPath:newFolderPath withIntermediateDirectories:YES attributes:nil error:&error];
+    if (isCreateSuccessful) {
+        LocalFolder *newFolder = [[LocalFolder alloc] initWithName:name path:newFolderPath parent:self];
+        [self markNeedsRefresh];
+        return newFolder;
+    } else {
+        NSLog(@"%@", error);
+        return nil;
+    }
+}
+
 @end
