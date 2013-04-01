@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CodeViewController.h"
 
 @protocol CodeViewControllerDelegate <NSObject>
-
+- (void)mergeAndRenderWith:()
 @end
