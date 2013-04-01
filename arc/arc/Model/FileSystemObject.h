@@ -10,4 +10,24 @@
 
 @protocol FileSystemObject <NSObject>
 
+// The name of this object.
+@property (strong, nonatomic) NSString *name;
+
+// The path leading to this object.
+// This should be able to be used to reconstruct whatever is needed
+// to actually access the file/folder.
+@property (strong, nonatomic) NSString *path;
+
+// The parent of this object.
+@property (weak, nonatomic) <FileSystemObject> *parent;
+
+// Returns the contents of this object.
+- (id)contents;
+
+// Refreshes the contents of this object, and returns them (for convenience.)
+- (id)refreshContents;
+
+// Marks this object as needing to be refreshed.
+- (void)markNeedsRefresh;
+
 @end
