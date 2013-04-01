@@ -19,5 +19,5 @@
 - (void)hideLeftBar;
 
 #pragma mark - Triggered by LeftBarViewController
-- (void)fileObjectSelected:(FileObject*)fileObject;
+- (void)fileObjectSelected:(id<File>)fileObject;
 @end
