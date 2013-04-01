@@ -24,7 +24,9 @@
 // Handles the case when the application launches through "Open in..."
 // The file to be opened is saved by the OS into our Documents folder,
 // and we are given its URL.
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+                                       sourceApplication:(NSString *)sourceApplication
+                                              annotation:(id)annotation
 {
     // Check that this is a file URL.
     if ([url isFileURL]) {
@@ -32,10 +34,13 @@
         NSURL *inboxURL = [url URLByDeletingLastPathComponent];
         NSString *inboxName = [inboxURL lastPathComponent];
         NSString *inboxPath = [inboxURL path];
-        LocalFolder *inboxFolder = [[LocalFolder alloc] initWithName:inboxName path:inboxPath parent:[LocalRootFolder sharedLocalRootFolder]];
-        
-        LocalFile *receivedFile = [[LocalFile alloc] initWithName:[url lastPathComponent] path:[url path] parent:inboxFolder];
-        
+        LocalFolder *inboxFolder = [[LocalFolder alloc] initWithName:inboxName
+                                                                path:inboxPath
+                                                              parent:[LocalRootFolder sharedLocalRootFolder]];
+
+        LocalFile *receivedFile = [[LocalFile alloc] initWithName:[url lastPathComponent]
+                                                             path:[url path]
+                                                           parent:inboxFolder];
         // Pass the file to whatever needs it.
         // <Fill this in here.>
         return YES;
