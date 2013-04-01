@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0234361F16FDFA4100B0D7AE /* RootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 028DA2D616FD826F00E2E5D9 /* RootFolder.m */; };
-		0234362116FDFA4900B0D7AE /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 025B52AD16F86C8700C20559 /* File.m */; };
-		025B52AE16F86C8700C20559 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 025B52AD16F86C8700C20559 /* File.m */; };
 		026AC54516FF06F7001E03E5 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 026AC54416FF06F6001E03E5 /* FileHelper.m */; };
 		026AC54616FF06F7001E03E5 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 026AC54416FF06F6001E03E5 /* FileHelper.m */; };
 		026AC54716FF104D001E03E5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7F16FDF61C00C9DED3 /* Constants.m */; };
@@ -18,7 +15,6 @@
 		026BC475170589B000A9AA5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC474170589B000A9AA5F /* Security.framework */; };
 		026BC477170589BD00A9AA5F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC476170589BD00A9AA5F /* SystemConfiguration.framework */; };
 		026BC479170589C600A9AA5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC478170589C600A9AA5F /* QuartzCore.framework */; };
-		028DA2D716FD827000E2E5D9 /* RootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 028DA2D616FD826F00E2E5D9 /* RootFolder.m */; };
 		02B04FCA1701672700FE51CB /* GameObject.h in Resources */ = {isa = PBXBuildFile; fileRef = 02B04FC91701608C00FE51CB /* GameObject.h */; };
 		02BF74DF1706C14800397605 /* DropBoxFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02BF74DE1706C14800397605 /* DropBoxFolder.m */; };
 		02E51AE017092D4300247AF5 /* LocalFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51ADF17092D4300247AF5 /* LocalFolder.m */; };
@@ -86,7 +82,6 @@
 
 /* Begin PBXFileReference section */
 		025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		025B52AD16F86C8700C20559 /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
 		0260B50A1709286E0091B012 /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Folder.h; path = Protocols/Folder.h; sourceTree = "<group>"; };
 		0260B50B170928820091B012 /* FileSystemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystemObject.h; path = Protocols/FileSystemObject.h; sourceTree = "<group>"; };
 		026AC54316FF06F6001E03E5 /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
@@ -96,8 +91,6 @@
 		026BC474170589B000A9AA5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		026BC476170589BD00A9AA5F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		026BC478170589C600A9AA5F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		028DA2D516FD826F00E2E5D9 /* RootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootFolder.h; sourceTree = "<group>"; };
-		028DA2D616FD826F00E2E5D9 /* RootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootFolder.m; sourceTree = "<group>"; };
 		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
 		02BF74DD1706C14700397605 /* DropBoxFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxFolder.h; sourceTree = "<group>"; };
 		02BF74DE1706C14800397605 /* DropBoxFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxFolder.m; sourceTree = "<group>"; };
@@ -380,9 +373,6 @@
 		026BC47A1705913200A9AA5F /* Local Files */ = {
 			isa = PBXGroup;
 			children = (
-				028DA2D516FD826F00E2E5D9 /* RootFolder.h */,
-				028DA2D616FD826F00E2E5D9 /* RootFolder.m */,
-				025B52AD16F86C8700C20559 /* File.m */,
 				02E51ADE17092D4300247AF5 /* LocalFolder.h */,
 				02E51ADF17092D4300247AF5 /* LocalFolder.m */,
 				02E51AE217093C8B00247AF5 /* LocalFile.h */,
@@ -1132,12 +1122,10 @@
 				4C43F8FB16F86AA900159B29 /* main.m in Sources */,
 				4C43F8FF16F86AA900159B29 /* AppDelegate.m in Sources */,
 				4C43F90816F86AA900159B29 /* arc.xcdatamodeld in Sources */,
-				025B52AE16F86C8700C20559 /* File.m in Sources */,
 				8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */,
 				FC4B269E16F88CB800E1DC49 /* FileNavigationViewController.m in Sources */,
 				8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */,
 				8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */,
-				028DA2D716FD827000E2E5D9 /* RootFolder.m in Sources */,
 				4CD06B8016FDF61C00C9DED3 /* Constants.m in Sources */,
 				8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */,
 				8F5C5C1916FDFED300B31A19 /* Find.m in Sources */,
@@ -1169,8 +1157,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				026AC54716FF104D001E03E5 /* Constants.m in Sources */,
-				0234362116FDFA4900B0D7AE /* File.m in Sources */,
-				0234361F16FDFA4100B0D7AE /* RootFolder.m in Sources */,
 				4CD06B7716FDEEC100C9DED3 /* arcTests.m in Sources */,
 				026AC54616FF06F7001E03E5 /* FileHelper.m in Sources */,
 			);
