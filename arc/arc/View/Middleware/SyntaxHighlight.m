@@ -24,27 +24,8 @@
     //NSLog(@"patterns array: %@", _patterns);
 }
 - (NSArray*)foundPattern:(NSString*)p range:(NSRange)r {
-    NSError *error = NULL;
-    NSMutableArray* results = [[NSMutableArray alloc] init];
-    NSRegularExpression *regex = [NSRegularExpression
-                                  regularExpressionWithPattern:p
-                                  options:NSRegularExpressionCaseInsensitive
-                                  error:&error];
-    if (r.location + r.length <= [_content length]) {
-        NSArray* matches = [regex matchesInString:_content options:0 range:r];
-        
-        for (NSTextCheckingResult *match in matches) {
-            NSRange range = [match range];
-            if (range.location != NSNotFound) {
-                [results addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];    
-            }
-        
-        }
-    } else {
-        NSLog(@"index out of range in foundPattern: %d %d",r.location, r.length);
-    }
-    
-    return results;
+  
+    return [self foundPattern:p capture:0 range:r];
 }
 - (NSRange)findFirstPattern:(NSString*)p range:(NSRange)r {
     NSError *error = NULL;
@@ -53,7 +34,6 @@
                                   regularExpressionWithPattern:p
                                   options:NSRegularExpressionCaseInsensitive
                                   error:&error];
-    NSTextCheckingResult *res = nil;
     
     if ((r.location + r.length <= [_content length]) && (r.length > 0) && (r.length <= [_content length])) {
         //NSLog(@"findFirstPattern:   %d %d",r.location,r.length);
