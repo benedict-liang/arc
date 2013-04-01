@@ -25,4 +25,29 @@
     return self;
 }
 
+// Returns the contents of this object.
+- (id<NSObject>)contents
+{
+    if (_needsRefresh) {
+        return [self refreshContents];
+    } else {
+        return _contents;
+    }
+}
+
+// Refreshes the contents of this object, and returns them (for convenience.)
+- (id<NSObject>)refreshContents
+{
+    NSError *error;
+    NSString *retrievedContents = [NSString stringWithContentsOfFile:_path encoding:NSUTF8StringEncoding error:&error];
+    
+    if (error) {
+        NSLog(@"%@", error);
+    } else {
+        _needsRefresh = NO;
+        _contents = retrievedContents;
+    }
+    return _contents;
+}
+
 @end
