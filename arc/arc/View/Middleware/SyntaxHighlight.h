@@ -15,7 +15,6 @@
 #import "File.h"
 @interface SyntaxHighlight : NSObject <CodeViewMiddleware>
 @property NSDictionary* theme;
-@property (readonly) ArcAttributedString* output;
 @property (readonly) id<CodeViewControllerProtocol> delegate;
 @property (readonly) id<File> currentFile;
 @property (readonly) NSString* content;

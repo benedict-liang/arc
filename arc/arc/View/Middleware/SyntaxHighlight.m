@@ -76,8 +76,8 @@
     
     return results;
 }
-- (void)styleOnRange:(NSRange)range fcolor:(UIColor*)fcolor {
-    [_output setColor:[fcolor CGColor] OnRange:range];
+- (void)styleOnRange:(NSRange)range fcolor:(UIColor*)fcolor output:(ArcAttributedString*)output {
+    [output setColor:[fcolor CGColor] OnRange:range];
 }
 
 - (NSArray*)capturableScopes:(NSString*)name {
@@ -96,7 +96,7 @@
     return scopes;
 }
 
-- (void)applyStyleToScope:(NSString*)name range:(NSRange)range {
+- (void)applyStyleToScope:(NSString*)name range:(NSRange)range output:(ArcAttributedString*)o {
     
     NSArray* capturableScopes = [self capturableScopes:name];
     for (NSString *s in capturableScopes) {
@@ -106,12 +106,12 @@
             fg = [style objectForKey:@"foreground"];
         }
         if (fg) {
-            [self styleOnRange:range fcolor:fg];
+            [self styleOnRange:range fcolor:fg output:o];
         }
     }
 }
 
-- (void)applyStyleToCaptures:(NSArray*)captures pattern:(NSString*)match range:(NSRange)r {
+- (void)applyStyleToCaptures:(NSArray*)captures pattern:(NSString*)match range:(NSRange)r output:(ArcAttributedString*)o {
 
     // Non-Multithreaded
     
@@ -146,7 +146,7 @@
         for (NSValue *v in arr) {
             NSRange range;
             [v getValue:&range];
-            [self applyStyleToScope:[captures objectAtIndex:[index integerValue]] range:range];
+            [self applyStyleToScope:[captures objectAtIndex:[index integerValue]] range:range output:o];
         }
     }
     
@@ -167,7 +167,7 @@
         }
     }*/
 }
--(NSDictionary*)iterPatternsForRange:(NSRange)contentRange patterns:(NSArray*)patterns {
+-(void)iterPatternsForRange:(NSRange)contentRange patterns:(NSArray*)patterns output:(ArcAttributedString*)output {
     for (NSDictionary* syntaxItem in patterns) {
         NSString *name = [syntaxItem objectForKey:@"name"];
         NSString *match = [syntaxItem objectForKey:@"match"];
@@ -185,17 +185,17 @@
             for (NSValue *v in nameMatches) {
                 NSRange range;
                 [v getValue:&range];
-                [self applyStyleToScope:name range:range];
+                [self applyStyleToScope:name range:range output:output];
             }
         }
         if (captures && match) {
-            [self applyStyleToCaptures:captures pattern:match range:contentRange];
+            [self applyStyleToCaptures:captures pattern:match range:contentRange output:output];
         }
         if (beginCaptures && begin) {
-            [self applyStyleToCaptures:beginCaptures pattern:begin range:contentRange];
+            [self applyStyleToCaptures:beginCaptures pattern:begin range:contentRange output:output];
         }
         if (endCaptures && end) {
-            [self applyStyleToCaptures:endCaptures pattern:end range:contentRange];
+            [self applyStyleToCaptures:endCaptures pattern:end range:contentRange output:output];
         }
         //matching blocks
         
@@ -231,11 +231,11 @@
                 if (eEnds - brange.location > 0 && brange.location != NSNotFound && erange.location != NSNotFound && eEnds <= contentRange.length) {
                     if (embedPatterns) {
                         //recursively apply iterPatterns to embedded patterns inclusive of begin and end
-                        [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns];
+                        [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns output:output];
                     }
                     
                     if (name) {
-                        [self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location)];
+                        [self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location) output:output];
                     }
                     //NSLog(@"before brange2: %d %d", contentRange.location, contentRange.length);
                     brange = [self findFirstPattern:begin range:NSMakeRange(eEnds, contentRange.length - eEnds)];
@@ -250,10 +250,9 @@
 
 - (void)execOn:(ArcAttributedString *)arcAttributedString {
 
-    _output = arcAttributedString;
-    [self iterPatternsAndApplyForRange:NSMakeRange(0, [_content length]) patterns:_patterns];
+    [self iterPatternsForRange:NSMakeRange(0, [_content length]) patterns:_patterns output:arcAttributedString];
     if (self.delegate) {
-        [self.delegate mergeAndRenderWith:_output forFile:self.currentFile];
+        [self.delegate mergeAndRenderWith:arcAttributedString forFile:self.currentFile];
     }
  
 }
