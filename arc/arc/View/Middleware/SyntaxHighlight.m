@@ -153,10 +153,28 @@
     // Multithreaded ends here*/
     return dict;
 }
+-(void)applyStylesTo:(ArcAttributedString*)output withRanges:(NSDictionary*)pairs {
+    if (pairs) {
+        for (NSString* scope in pairs) {
+            NSArray* ranges = [pairs objectForKey:scope];
+            for (NSValue *v in ranges) {
+                NSRange range;
+                [v getValue:&range];
+                [self applyStyleToScope:scope range:range output:output];
+            }
+        }
+    }
+    
+}
 -(void)iterPatternsForRange:(NSRange)contentRange patterns:(NSArray*)patterns output:(ArcAttributedString*)output {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_semaphore_t outputSema = dispatch_semaphore_create(1);
     dispatch_group_t group = dispatch_group_create();
+    
+    __block NSDictionary *nameMatches = nil;
+    __block NSDictionary *captureMatches = nil;
+    __block NSDictionary *beginCMatches = nil;
+    __block NSDictionary *endCMatches = nil;
     
     dispatch_apply([patterns count], queue, ^(size_t i){
         dispatch_group_async(group, queue, ^{
@@ -169,29 +187,21 @@
             NSArray *endCaptures = [syntaxItem objectForKey:@"endCaptures"];
             NSArray *captures = [syntaxItem objectForKey:@"captures"];
             
-            
-            NSArray *nameMatches = nil;
-            NSDictionary *captureMatches = nil;
-            NSDictionary *beginCMatches = nil;
-            NSDictionary *endCMatches = nil;
+
             
             //case name, match
             if (name && match) {
-                nameMatches = [self foundPattern:match range:contentRange];
-                for (NSValue *v in nameMatches) {
-                    NSRange range;
-                    [v getValue:&range];
-                    [self applyStyleToScope:name range:range output:output];
-                }
+                NSArray *a = [self foundPattern:match range:contentRange];
+                nameMatches = @{name: a};
             }
             if (captures && match) {
-                [self applyStyleToCaptures:captures pattern:match range:contentRange output:output];
+                captureMatches = [self applyStyleToCaptures:captures pattern:match range:contentRange output:output];
             }
             if (beginCaptures && begin) {
-                [self applyStyleToCaptures:beginCaptures pattern:begin range:contentRange output:output];
+                beginCMatches = [self applyStyleToCaptures:beginCaptures pattern:begin range:contentRange output:output];
             }
             if (endCaptures && end) {
-                [self applyStyleToCaptures:endCaptures pattern:end range:contentRange output:output];
+                endCMatches = [self applyStyleToCaptures:endCaptures pattern:end range:contentRange output:output];
             }
             //matching blocks
             
@@ -231,7 +241,9 @@
                         }
                         
                         if (name) {
+                            dispatch_semaphore_wait(outputSema, DISPATCH_TIME_FOREVER);
                             [self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location) output:output];
+                            dispatch_semaphore_signal(outputSema);
                         }
                         //NSLog(@"before brange2: %d %d", contentRange.location, contentRange.length);
                         brange = [self findFirstPattern:begin range:NSMakeRange(eEnds, contentRange.length - eEnds)];
@@ -243,10 +255,12 @@
 
         });
     });
-    
-    for (NSDictionary* syntaxItem in patterns) {
-            
-    }
+    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+    dispatch_release(group);
+    [self applyStylesTo:output withRanges:nameMatches];
+    [self applyStylesTo:output withRanges:beginCMatches];
+    [self applyStylesTo:output withRanges:endCMatches];
+    [self applyStylesTo:output withRanges:captureMatches];
 }
 
 - (void)execOn:(ArcAttributedString *)arcAttributedString {
