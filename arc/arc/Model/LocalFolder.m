@@ -151,4 +151,22 @@
     return isRenameSuccessful;
 }
 
+// Removes this object.
+// Returns YES if successful, NO otherwise.
+// If NO is returned, the state of the object or its contents is unstable.
+- (BOOL)remove
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSError *error;
+    BOOL isRemoveSuccessful = [fileManager removeItemAtPath:_path error:&error];
+    
+    if (isRemoveSuccessful) {
+        [_parent markNeedsRefresh];
+    } else {
+        NSLog(@"%@", error);
+    }
+    return isRemoveSuccessful;
+}
+
 @end
