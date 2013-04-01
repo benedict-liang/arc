@@ -19,4 +19,5 @@
 @property (readonly) id<File> currentFile;
 @property (readonly) NSString* content;
 @property (readonly) NSArray* patterns;
+@property ArcAttributedString* finalOutput;
 @end

@@ -203,9 +203,17 @@
             if (endCaptures && end) {
                 endCMatches = [self applyStyleToCaptures:endCaptures pattern:end range:contentRange output:output];
             }
+            dispatch_semaphore_wait(outputSema, DISPATCH_TIME_FOREVER);
+            [self applyStylesTo:output withRanges:captureMatches];
+            [self applyStylesTo:output withRanges:nameMatches];
+            [self applyStylesTo:output withRanges:beginCMatches];
+            [self applyStylesTo:output withRanges:endCMatches];
+            dispatch_semaphore_signal(outputSema);
+            
             //matching blocks
             
-            if (begin && end) {
+            if (begin && end)
+            {
                 /*
                  Algo finds a begin match and an end match (from begin to content's end), reseting the next begin to after end, until no more matches are found or end > content
                  Also applies nested patterns recursively
@@ -237,7 +245,7 @@
                     if (eEnds - brange.location > 0 && brange.location != NSNotFound && erange.location != NSNotFound && eEnds <= contentRange.length) {
                         if (embedPatterns) {
                             //recursively apply iterPatterns to embedded patterns inclusive of begin and end
-                            [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns output:output];
+                           // [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns output:output];
                         }
                         
                         if (name) {
@@ -255,20 +263,21 @@
 
         });
     });
+
+
     dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     dispatch_release(group);
-    [self applyStylesTo:output withRanges:nameMatches];
-    [self applyStylesTo:output withRanges:beginCMatches];
-    [self applyStylesTo:output withRanges:endCMatches];
-    [self applyStylesTo:output withRanges:captureMatches];
+
 }
-
-- (void)execOn:(ArcAttributedString *)arcAttributedString {
-
-    [self iterPatternsForRange:NSMakeRange(0, [_content length]) patterns:_patterns output:arcAttributedString];
+- (void)updateView {
     if (self.delegate) {
-        [self.delegate mergeAndRenderWith:arcAttributedString forFile:self.currentFile];
+        [self.delegate mergeAndRenderWith:_finalOutput forFile:self.currentFile];
     }
+}
+- (void)execOn:(ArcAttributedString *)arcAttributedString {
+    _finalOutput = arcAttributedString;
+    [self iterPatternsForRange:NSMakeRange(0, [_content length]) patterns:_patterns output:arcAttributedString];
+    [self updateView];
  
 }
 @end
