@@ -14,7 +14,7 @@
 @synthesize name=_name, path=_path, parent=_parent, extension=_extension;
 
 // Initialises this object with the given name, path, and parent.
-- (id)initWithName:(NSString*)name path:(NSString*)path parent:(id<FileSystemObject>)parent
+- (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent
 {
     if (self = [super init]) {
         _name = name;

@@ -105,9 +105,9 @@
 
 // Returns the FileSystemObject with the given name.
 // Will return nil if the object is not found.
-- (id<FileSystemObject>)retrieveItemWithName:(NSString*)name
+- (id<FileSystemObject>)retrieveItemWithName:(NSString *)name
 {
-    NSArray *contents = (NSArray*)[self contents];
+    NSArray *contents = (NSArray *)[self contents];
     for (id<FileSystemObject>currentObject in contents) {
         if ([[currentObject name] isEqualToString:name]) {
             return currentObject;
@@ -118,7 +118,7 @@
 
 // Creates a Folder with the given name inside this one.
 // Returns the created Folder object.
-- (id<Folder>)createFolderWithName:(NSString*)name
+- (id<Folder>)createFolderWithName:(NSString *)name
 {
     DBPath *ourPath = [[DBPath alloc] initWithString:_path];
     DBPath *childPath = [ourPath childPath:name];

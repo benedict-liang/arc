@@ -32,7 +32,7 @@ static LocalRootFolder *sharedLocalRootFolder = nil;
 }
 
 // Renames this Folder to the given name.
-- (BOOL)rename:(NSString*)name
+- (BOOL)rename:(NSString *)name
 {
     // LocalRootFolder can't be renamed.
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"LocalRootFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
