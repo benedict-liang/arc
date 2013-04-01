@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LocalFolder.h"
+#import "Constants.h"
 
 @interface LocalRootFolder : LocalFolder
 
