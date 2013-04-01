@@ -35,4 +35,38 @@
     }
 }
 
+// Refreshes the contents of this object, and returns them (for convenience.)
+- (id<NSObject>)refreshContents
+{
+    DBPath *path = [[DBPath alloc] initWithString:_path];
+    DBFilesystem *filesystem = [DBFilesystem sharedFilesystem];
+    
+    DBError *error;
+    NSArray *retrievedFileInfo = [filesystem listFolder:path error:&error];
+    NSMutableArray *contents = [[NSMutableArray alloc] init];
+    if (retrievedFileInfo) {
+        for (DBFileInfo *currentInfo in retrievedFileInfo) {
+            DBPath *currentPath = [currentInfo path];
+            NSString *currentPathString = [currentPath stringValue];
+            NSString *currentName = [currentPath name];
+            
+            id<FileSystemObject>currentObject;
+            if ([currentInfo isFolder]) {
+                currentObject = [[DropBoxFolder alloc] initWithName:currentName path:currentPathString parent:self];
+            } else {
+                currentObject = [[DropBoxFile alloc] initWithName:currentName path:currentPathString parent:self];
+            }
+            [contents addObject:currentObject];
+        }
+        
+        _contents = contents;
+        _needsRefresh = NO;
+    } else {
+        NSLog(@"%@", error);
+        return nil;
+    }
+    
+    return _contents;
+}
+
 @end
