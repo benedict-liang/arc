@@ -14,7 +14,10 @@
 + (void)arcAttributedString:(ArcAttributedString *)arcAttributedString OfFile:(File *)file
 {
     SyntaxHighlight *sh = [[self alloc] init];
-    [sh execOn:arcAttributedString FromFile:file];
+    ArcAttributedString *copy = [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
+    sh.content = [file contents];
+    [sh performSelectorInBackground:@selector(execOn:) withObject:copy];
+    
 }
 
 - (void)initPatternsAndTheme {
@@ -195,10 +198,10 @@
     
     }
 }
-- (void)execOn:(ArcAttributedString *)arcAttributedString FromFile:(File *)file {
+- (void)execOn:(ArcAttributedString *)arcAttributedString {
     _output = arcAttributedString;
     [self initPatternsAndTheme];
-    _content = [file contents];
+    //_content = [file contents];
     [self iterPatternsAndApplyForRange:NSMakeRange(0, [_content length]) patterns:_patterns];
 }
 @end
