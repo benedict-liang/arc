@@ -102,4 +102,17 @@
         return NO;
     }
 }
+
+// Returns the FileSystemObject with the given name.
+// Will return nil if the object is not found.
+- (id<FileSystemObject>)retrieveItemWithName:(NSString*)name
+{
+    NSArray *contents = (NSArray*)[self contents];
+    for (id<FileSystemObject>currentObject in contents) {
+        if ([[currentObject name] isEqualToString:name]) {
+            return currentObject;
+        }
+    }
+    return nil;
+}
 @end
