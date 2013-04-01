@@ -13,9 +13,7 @@
 #import "TMBundleHeader.h"
 #import "CodeViewControllerProtocol.h"
 #import "File.h"
-@interface SyntaxHighlight : NSObject <CodeViewMiddleware> {
-    dispatch_semaphore_t outputSema;
-}
+@interface SyntaxHighlight : NSObject <CodeViewMiddleware>
 @property NSDictionary* theme;
 @property (readonly) id<CodeViewControllerProtocol> delegate;
 @property (readonly) id<File> currentFile;
