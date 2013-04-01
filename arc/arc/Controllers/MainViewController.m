@@ -11,14 +11,8 @@
 @interface MainViewController ()
 @property CodeViewController *codeViewController;
 @property LeftViewController *leftViewController;
-
-@property RootFolder *rootFolder;
-@property UIToolbar *toolbar;
-@property UIPopoverController *popover;
-
 - (void)fileSelected:(id<File>)file;
 - (void)folderSelected:(id<Folder>)folder;
-
 @end
 
 @implementation MainViewController
@@ -27,8 +21,7 @@
 {
     self = [super init];
     if (self) {
-        // TMP
-        _rootFolder = [RootFolder sharedRootFolder];
+
     }
     return self;
 }

@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "MainViewControllerProtocol.h"
 #import "ApplicationState.h"
 #import "RootFolder.h"
@@ -14,7 +13,6 @@
 #import "File.h"
 #import "CodeViewController.h"
 #import "LeftViewController.h"
-
 #import "TMBundleHeader.h"
 
 @interface MainViewController : UISplitViewController <MainViewControllerProtocol>
