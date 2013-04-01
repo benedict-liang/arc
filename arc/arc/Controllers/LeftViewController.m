@@ -82,6 +82,7 @@
 {
     if (_settingsNavigationViewController.topViewController == nil) {
         SettingsViewController *settingsTableViewController = [[SettingsViewController alloc] init];
+        settingsTableViewController.delegate = self.delegate;
         UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc]
                                           initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                           target:nil action:nil];
