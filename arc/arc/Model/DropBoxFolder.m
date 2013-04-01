@@ -115,4 +115,26 @@
     }
     return nil;
 }
+
+// Creates a Folder with the given name inside this one.
+// Returns the created Folder object.
+- (id<Folder>)createFolderWithName:(NSString*)name
+{
+    DBPath *ourPath = [[DBPath alloc] initWithString:_path];
+    DBPath *childPath = [ourPath childPath:name];
+    
+    DBFilesystem *filesystem = [DBFilesystem sharedFilesystem];
+    
+    DBError *error;
+    BOOL isCreateSuccessful = [filesystem createFolder:childPath error:&error];
+
+    if (isCreateSuccessful) {
+        DropBoxFolder *newFolder = [[DropBoxFolder alloc] initWithName:name path:[childPath stringValue] parent:self];
+        [self markNeedsRefresh];
+        return newFolder;
+    } else {
+        NSLog(@"%@", error);
+        return nil;
+    }
+}
 @end
