@@ -22,16 +22,11 @@
 
 @implementation LeftViewController
 @synthesize delegate = _delegate;
-@synthesize toolbar = _toolbar;
-@synthesize currentViewController = _currentViewController;
-@synthesize settingsViewController = _settingsViewController;
-@synthesize fileNavigationViewController = _fileNavigationViewController;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        self.view.backgroundColor = [UIColor blueColor];
         self.view.autoresizesSubviews = YES;
     }
     return self;
