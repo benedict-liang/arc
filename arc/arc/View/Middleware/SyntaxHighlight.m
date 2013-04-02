@@ -114,12 +114,30 @@
 - (NSDictionary*)findCaptures:(NSArray*)captures pattern:(NSString*)match range:(NSRange)r {
 
     // Original Code
+//    NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
+//    NSArray *captureMatches = nil;
+//    for (int i = 0; i < [captures count]; i++) {
+//        captureMatches = [self foundPattern:match capture:i range:r];
+//        [dict setObject:captureMatches forKey:[captures objectAtIndex:i]];
+//    }
+    
     NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
-     NSArray *captureMatches = nil;
-     for (int i = 0; i < [captures count]; i++) {
-         captureMatches = [self foundPattern:match capture:i range:r];
-         [dict setObject:captureMatches forKey:[captures objectAtIndex:i]];
-    }
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    dispatch_semaphore_t array_sema = dispatch_semaphore_create(1);
+    dispatch_group_t group = dispatch_group_create();
+    
+    dispatch_apply([captures count], queue, ^(size_t i){
+        dispatch_group_async(group, queue, ^ {
+            NSArray *captureMatches = [self foundPattern:match capture:i range:r];
+            dispatch_semaphore_wait(array_sema, DISPATCH_TIME_FOREVER);
+            
+            [dict setObject:captureMatches forKey:[captures objectAtIndex:i]];
+            
+            dispatch_semaphore_signal(array_sema);
+        });
+    });
+    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+    dispatch_release(group);
     
     /*
     // Multithreaded
