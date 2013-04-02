@@ -39,7 +39,7 @@
     
     NSRegularExpression *regex = [NSRegularExpression
                                   regularExpressionWithPattern:p
-                                  options:NSRegularExpressionUseUnicodeWordBoundaries
+                                  options:0
                                   error:&error];
     
     if ((r.location + r.length <= [_content length]) && (r.length > 0) && (r.length <= [_content length])) {
@@ -56,7 +56,7 @@
     NSMutableArray* results = [[NSMutableArray alloc] init];
     NSRegularExpression *regex = [NSRegularExpression
                                   regularExpressionWithPattern:p
-                                  options:NSRegularExpressionCaseInsensitive
+                                  options:0
                                   error:&error];
     
     
@@ -239,13 +239,15 @@
                  */
                  if ([begin isEqualToString:@"(^[ \\t]+)?(?=//)"] && [end isEqualToString:@"(?!\\G)"]) {
                      NSLog(@"finally");
+                     
                       NSRange brange = [self findFirstPattern:begin range:contentRange];
                      NSLog(@"%d %d", brange.location, brange.length);
                      long bEnds = brange.location + brange.length;
-                     NSRange erange = [self findFirstPattern:@"\\n" range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
-                     NSLog(@"%d %d", erange.location, erange.length);
-                     //end = @"\\n";
-                 }
+                     //NSRange erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
+                     //NSRange erange = NSMakeRange(bEnds, );
+                    // NSLog(@"%d %d", erange.location, erange.length);
+                     
+                }
                 //NSLog(@"before brange: %d %d", contentRange.location, contentRange.length);
                 NSRange brange = [self findFirstPattern:begin range:contentRange];
                 NSRange erange = NSMakeRange(0, 0);
@@ -256,7 +258,12 @@
                     long bEnds = brange.location + brange.length;
                     if (contentRange.length > bEnds) {
                         //NSLog(@"before erange: %d %d", bEnds, contentRange.length - bEnds);
-                        erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds)];
+                        if ([end isEqualToString:@"(?!\\G)"]) {
+                            erange = NSMakeRange(bEnds, contentRange.length - bEnds);
+                        } else {
+                            erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
+
+                        }
                     } else {
                         //if bEnds > contentRange.length, skip
                         break;
@@ -272,8 +279,9 @@
                         }
                         
                         if (name) {
-                         //   NSLog(@"%@",name);
+                            
                            dispatch_semaphore_wait(outputSema, DISPATCH_TIME_FOREVER);
+                            NSLog(@"%@",name);
                             [self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location) output:output];
                             dispatch_semaphore_signal(outputSema);
                         }
