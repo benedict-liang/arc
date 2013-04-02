@@ -39,7 +39,7 @@
     
     NSRegularExpression *regex = [NSRegularExpression
                                   regularExpressionWithPattern:p
-                                  options:NSRegularExpressionCaseInsensitive
+                                  options:NSRegularExpressionUseUnicodeWordBoundaries
                                   error:&error];
     
     if ((r.location + r.length <= [_content length]) && (r.length > 0) && (r.length <= [_content length])) {
@@ -196,11 +196,7 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_semaphore_t outputSema = dispatch_semaphore_create(1);
     dispatch_group_t group = dispatch_group_create();
-    
-    __block NSDictionary *nameMatches = nil;
-    __block NSDictionary *captureMatches = nil;
-    __block NSDictionary *beginCMatches = nil;
-    __block NSDictionary *endCMatches = nil;
+
     
     dispatch_apply([patterns count], queue, ^(size_t i){
         dispatch_group_async(group, queue, ^{
@@ -240,9 +236,16 @@
                  
                  TODO. debug for why single line comments aren't working
                  Symptoms: comment.single.* for js tmbundle is inside a begin end pair, of which begin - end = 1.
+                 */
                  if ([begin isEqualToString:@"(^[ \\t]+)?(?=//)"] && [end isEqualToString:@"(?!\\G)"]) {
-                 NSLog(@"finally");
-                 }*/
+                     NSLog(@"finally");
+                      NSRange brange = [self findFirstPattern:begin range:contentRange];
+                     NSLog(@"%d %d", brange.location, brange.length);
+                     long bEnds = brange.location + brange.length;
+                     NSRange erange = [self findFirstPattern:@"\\n" range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
+                     NSLog(@"%d %d", erange.location, erange.length);
+                     //end = @"\\n";
+                 }
                 //NSLog(@"before brange: %d %d", contentRange.location, contentRange.length);
                 NSRange brange = [self findFirstPattern:begin range:contentRange];
                 NSRange erange = NSMakeRange(0, 0);
@@ -265,10 +268,11 @@
                     if (eEnds - brange.location > 0 && brange.location != NSNotFound && erange.location != NSNotFound && eEnds <= contentRange.length) {
                         if (embedPatterns) {
                             //recursively apply iterPatterns to embedded patterns inclusive of begin and end
-                           // [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns output:output];
+                            [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns output:output];
                         }
                         
                         if (name) {
+                         //   NSLog(@"%@",name);
                            dispatch_semaphore_wait(outputSema, DISPATCH_TIME_FOREVER);
                             [self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location) output:output];
                             dispatch_semaphore_signal(outputSema);
@@ -286,10 +290,7 @@
 
 
     dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-    [self applyStylesTo:output withRanges:nameMatches];
-    [self applyStylesTo:output withRanges:captureMatches];
-    [self applyStylesTo:output withRanges:beginCMatches];
-    [self applyStylesTo:output withRanges:endCMatches];
+
     dispatch_release(group);
 
 }
@@ -300,7 +301,12 @@
 }
 - (void)execOn:(ArcAttributedString *)arcAttributedString {
     _finalOutput = arcAttributedString;
+    ArcAttributedString* output = arcAttributedString;
     [self iterPatternsForRange:NSMakeRange(0, [_content length]) patterns:_patterns output:arcAttributedString];
+    [self applyStylesTo:output withRanges:nameMatches];
+    [self applyStylesTo:output withRanges:captureMatches];
+    [self applyStylesTo:output withRanges:beginCMatches];
+    [self applyStylesTo:output withRanges:endCMatches];
     [self updateView];
  
 }

@@ -13,7 +13,12 @@
 #import "TMBundleHeader.h"
 #import "CodeViewControllerProtocol.h"
 #import "File.h"
-@interface SyntaxHighlight : NSObject <CodeViewMiddleware>
+@interface SyntaxHighlight : NSObject <CodeViewMiddleware> {
+    __block NSDictionary *nameMatches;
+    __block NSDictionary *captureMatches;
+    __block NSDictionary *beginCMatches;
+    __block NSDictionary *endCMatches;
+}
 @property NSDictionary* theme;
 @property (readonly) id<CodeViewControllerProtocol> delegate;
 @property (readonly) id<File> currentFile;
