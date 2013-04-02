@@ -16,6 +16,7 @@ extern const CGSize SIZE_POPOVER;
 
 // Defaults
 extern const int DEFAULT_FONT_SIZE;
+extern NSString* const FILE_APP_STATE;
 extern NSString* const DEFAULT_FONT_FAMILY;
 extern const CGColorRef* DEFAULT_TEXT_COLOR;
 

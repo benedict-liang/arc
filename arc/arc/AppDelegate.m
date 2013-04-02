@@ -66,12 +66,11 @@
 {
     // Check if we have our appState property list.
     // If not, move it into the Documents library.
-    NSString *appStateName = @"appState.plist";
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *documentsPath = [[LocalRootFolder sharedLocalRootFolder] path];
-    NSString *appStatePath = [documentsPath stringByAppendingPathComponent:appStateName];
+    NSString *appStatePath = [documentsPath stringByAppendingPathComponent:FILE_APP_STATE];
     if (![fileManager fileExistsAtPath:appStatePath]) {
-        NSURL *plistURL = [[NSBundle mainBundle] URLForResource:appStateName withExtension:nil];
+        NSURL *plistURL = [[NSBundle mainBundle] URLForResource:FILE_APP_STATE withExtension:nil];
         NSURL *targetURL = [NSURL fileURLWithPath:appStatePath];
     
         NSError *error;
