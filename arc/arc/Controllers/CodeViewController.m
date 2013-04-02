@@ -83,7 +83,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self refreshSubViewSizes];
+    [super viewDidAppear:animated];
+    //Causes memory bug on iOS6 simulator. 
+    //[self refreshSubViewSizes];
 }
 
 - (void)refreshSubViewSizes
