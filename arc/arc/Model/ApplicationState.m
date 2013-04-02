@@ -31,11 +31,17 @@ static ApplicationState *sharedApplicationState = nil;
 {
     self = [super init];
     if (self) {
-        // Defaults || Get Previous State from plist
+        // Get the stored settings dictionary.
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSString *documentsPath = [[fileManager URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil] path];
+        NSString *settingsPath = [documentsPath stringByAppendingPathComponent:FILE_APP_STATE];
+        NSDictionary *storedSettings = [[NSDictionary dictionaryWithContentsOfFile:settingsPath] valueForKey:KEY_SETTINGS_ROOT];
+    
+        // Restore settings from the dictionary.
         _currentFolderOpened = [RootFolder sharedRootFolder];
         _currentFileOpened = nil;
-        _fontFamily = DEFAULT_FONT_FAMILY;
-        _fontSize = DEFAULT_FONT_SIZE;
+        _fontFamily = [storedSettings valueForKey:KEY_FONT_FAMILY];
+        _fontSize = [(NSNumber*)[storedSettings valueForKey:KEY_FONT_SIZE] intValue];
     }
     return self;
 }
