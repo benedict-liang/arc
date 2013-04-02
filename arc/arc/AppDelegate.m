@@ -64,9 +64,24 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Jerome: Temporary code to move support files into the Documents folder.
+    // Check if we have our appState property list.
+    // If not, move it into the Documents library.
+    NSString *appStateName = @"appState.plist";
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *documentsPath = [[LocalRootFolder sharedLocalRootFolder] path];
+    NSString *appStatePath = [documentsPath stringByAppendingPathComponent:appStateName];
+    if (![fileManager fileExistsAtPath:appStatePath]) {
+        NSURL *plistURL = [[NSBundle mainBundle] URLForResource:appStateName withExtension:nil];
+        NSURL *targetURL = [NSURL fileURLWithPath:appStatePath];
+    
+        NSError *error;
+        [fileManager copyItemAtURL:plistURL toURL:targetURL error:&error];
+        if (error) {
+            NSLog(@"%@", error);
+        }
+    }
+    
+    // Jerome: Temporary code to move support files into the Documents folder.
     NSURL *documentsURL = [NSURL fileURLWithPath:documentsPath];
     NSString *sampleFileName = @"GameObject.h";
     NSString *sampleFile1 = @"README.md";
