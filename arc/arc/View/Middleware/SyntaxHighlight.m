@@ -307,6 +307,7 @@
 
 - (BOOL)fixAnchor:(NSString*)pattern {
     //return [pattern stringByReplacingOccurrencesOfString:@"\\G" withString:@"\uFFFF"];
+    // TODO: pattern for \\z : @"$(?!\n)(?<!\n)"
     return ([pattern rangeOfString:@"\\G"].location != NSNotFound ||
             [pattern rangeOfString:@"\\A"].location != NSNotFound);
 }
