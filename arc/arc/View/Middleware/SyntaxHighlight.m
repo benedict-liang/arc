@@ -236,7 +236,7 @@
                  
                  TODO. debug for why single line comments aren't working
                  Symptoms: comment.single.* for js tmbundle is inside a begin end pair, of which begin - end = 1.
-                 */
+                 
                  if ([begin isEqualToString:@"(^[ \\t]+)?(?=//)"] && [end isEqualToString:@"(?!\\G)"]) {
                      NSLog(@"finally");
                      
@@ -247,7 +247,7 @@
                      //NSRange erange = NSMakeRange(bEnds, );
                     // NSLog(@"%d %d", erange.location, erange.length);
                      
-                }
+                }*/
                 //NSLog(@"before brange: %d %d", contentRange.location, contentRange.length);
                 NSRange brange = [self findFirstPattern:begin range:contentRange];
                 NSRange erange = NSMakeRange(0, 0);
@@ -281,7 +281,7 @@
                         if (name) {
                             
                            dispatch_semaphore_wait(outputSema, DISPATCH_TIME_FOREVER);
-                            NSLog(@"%@",name);
+                           // NSLog(@"%@",name);
                             [self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location) output:output];
                             dispatch_semaphore_signal(outputSema);
                         }
