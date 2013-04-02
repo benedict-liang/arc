@@ -21,6 +21,9 @@ extern const CGColorRef* DEFAULT_TEXT_COLOR;
 
 // App State
 extern NSString* const FILE_APP_STATE;
+extern NSString* const KEY_CURRENT_FOLDER;
+extern NSString* const KEY_CURRENT_FILE;
+// Settings
 extern NSString* const KEY_SETTINGS_ROOT;
 extern NSString* const KEY_FONT_FAMILY;
 extern NSString* const KEY_FONT_SIZE;
