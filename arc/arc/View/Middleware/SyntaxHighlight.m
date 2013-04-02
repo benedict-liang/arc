@@ -258,7 +258,7 @@
                     long bEnds = brange.location + brange.length;
                     if (contentRange.length > bEnds) {
                         //NSLog(@"before erange: %d %d", bEnds, contentRange.length - bEnds);
-                        if ([end isEqualToString:@"(?!\\G)"]) {
+                        if ([end rangeOfString:@"\\G"].location != NSNotFound) {
                             erange = NSMakeRange(bEnds, contentRange.length - bEnds);
                         } else {
                             erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
