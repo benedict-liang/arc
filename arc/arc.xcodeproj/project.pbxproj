@@ -23,6 +23,7 @@
 		02E51AF11709582300247AF5 /* DropBoxRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AF01709582300247AF5 /* DropBoxRootFolder.m */; };
 		4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D0711705CA7800F4593B /* ArcAttributedString.m */; };
 		4C12D0781706074600F4593B /* CodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D0771706074600F4593B /* CodeView.m */; };
+		4C36137D170AC673009358B1 /* dropbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C36137C170AC673009358B1 /* dropbox.png */; };
 		4C43F8ED16F86AA900159B29 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
 		4C43F8EF16F86AA900159B29 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EE16F86AA900159B29 /* Foundation.framework */; };
 		4C43F8F116F86AA900159B29 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8F016F86AA900159B29 /* CoreGraphics.framework */; };
@@ -106,6 +107,7 @@
 		4C12D0761706074600F4593B /* CodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeView.h; sourceTree = "<group>"; };
 		4C12D0771706074600F4593B /* CodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeView.m; sourceTree = "<group>"; };
 		4C21C9E71709D387002F4FEA /* LeftViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewControllerProtocol.h; sourceTree = "<group>"; };
+		4C36137C170AC673009358B1 /* dropbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropbox.png; sourceTree = "<group>"; };
 		4C43F8E916F86AA900159B29 /* arc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C43F8EC16F86AA900159B29 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4C43F8EE16F86AA900159B29 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -588,6 +590,7 @@
 		4CF6F0EC1706E05500EDDEDC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4C36137C170AC673009358B1 /* dropbox.png */,
 				4CF6F0F11706E29300EDDEDC /* folder.png */,
 				4CF6F0ED1706E08800EDDEDC /* file.png */,
 			);
@@ -1093,6 +1096,7 @@
 				8F1510C617044A4C00115E5E /* Solarized (light).tmTheme in Resources */,
 				4CF6F0EE1706E08800EDDEDC /* file.png in Resources */,
 				4CF6F0F21706E29300EDDEDC /* folder.png in Resources */,
+				4C36137D170AC673009358B1 /* dropbox.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

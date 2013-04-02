@@ -46,6 +46,16 @@
     [self fileSelected:file];
 }
 
+- (void)dropboxAuthentication
+{
+    DBAccountManager *dbAccountManager = [DBAccountManager sharedManager];
+    DBAccount *dbAccount = dbAccountManager.linkedAccount;
+    if (!dbAccount) {
+        // Link to the main view controller instance here.
+        [dbAccountManager linkFromController:self];
+    }
+}
+
 // Shows the file using the CodeViewController
 - (void)fileSelected:(id<File>)file
 {

@@ -19,7 +19,9 @@
 #pragma mark - Triggered by LeftBarViewController
 - (void)fileObjectSelected:(id<FileSystemObject>)fileSystemObject;
 
-#pragma mark - File/Folder Selection
+// TODO, refactor these methods
+#pragma mark - Others
 - (void)openIn:(id<File>)file;
+- (void)dropboxAuthentication;
 
 @end

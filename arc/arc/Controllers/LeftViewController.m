@@ -103,7 +103,16 @@
                                                               target:self
                                                               action:@selector(showSettings:)];
     
-    [folderViewController setToolbarItems:[NSArray arrayWithObjects:flexibleSpace,button, nil]
+    UIBarButtonItem *dropbox = [[UIBarButtonItem alloc] initWithTitle:@"Dropbox"
+                                                               style:UIBarButtonItemStyleBordered
+                                                              target:self
+                                                              action:@selector(showDropBox:)];
+
+    [folderViewController setToolbarItems:[NSArray arrayWithObjects:
+                                           dropbox,
+                                           flexibleSpace,
+                                           button,
+                                           nil]
                                  animated:animated];
 }
 
@@ -111,6 +120,11 @@
 - (void)pushFolderView:(id<Folder>)folder
 {
     [self pushFolderView:folder animated:YES];
+}
+
+- (void)showDropBox:(id)sender
+{
+    [self.delegate dropboxAuthentication];
 }
 
 - (void)showSettings:(id)sender
