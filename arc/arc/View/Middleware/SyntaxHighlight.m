@@ -193,11 +193,14 @@
     return res;
 }
 - (NSDictionary*) addRange:(NSRange)r scope:(NSString*)s dict:(NSDictionary*)d {
-    NSArray* ranges = [d objectForKey:s];
+ 
+    
     NSMutableDictionary* res = [NSMutableDictionary dictionaryWithDictionary:d];
+    NSArray* ranges = [res objectForKey:s];
     if (ranges) {
         NSMutableArray* temp = [NSMutableArray arrayWithArray:ranges];
-        [temp addObect:[NSValue value:&r withObjCType:@encode(NSRange)]];
+        
+        [temp addObject:[NSValue value:&r withObjCType:@encode(NSRange)]];
         [res setObject:temp forKey:s];
     } else {
         
@@ -297,7 +300,7 @@
                             
                            //dispatch_semaphore_wait(outputSema, DISPATCH_TIME_FOREVER);
                            // NSLog(@"%@",name);
-                            [self addRange:NSMakeRange(brange.location, eEnds - brange.location) scope:name dict:pairMatches];
+                            pairMatches = [self addRange:NSMakeRange(brange.location, eEnds - brange.location) scope:name dict:pairMatches];
                             
                             //[self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location) output:output];
                             //dispatch_semaphore_signal(outputSema);
@@ -332,6 +335,7 @@
     [self applyStylesTo:output withRanges:captureMatches];
     [self applyStylesTo:output withRanges:beginCMatches];
     [self applyStylesTo:output withRanges:endCMatches];
+    [self applyStylesTo:output withRanges:pairMatches];
     [self updateView];
  
 }
