@@ -22,9 +22,14 @@
     if (self) {
         _delegate = d;
         _currentFile = file;
-        _content = [file contents];
         _patterns = [TMBundleSyntaxParser getPatternsArray:@"javascript.tmbundle"];
         _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
+        if ([[file contents] isKindOfClass:[NSString class]]) {
+            _content = (NSString*)[file contents];
+        }
+        else {
+            self = nil;
+        }
     }
     return self;
 }
