@@ -16,9 +16,14 @@ extern const CGSize SIZE_POPOVER;
 
 // Defaults
 extern const int DEFAULT_FONT_SIZE;
-extern NSString* const FILE_APP_STATE;
 extern NSString* const DEFAULT_FONT_FAMILY;
 extern const CGColorRef* DEFAULT_TEXT_COLOR;
+
+// App State
+extern NSString* const FILE_APP_STATE;
+extern NSString* const KEY_SETTINGS_ROOT;
+extern NSString* const KEY_FONT_FAMILY;
+extern NSString* const KEY_FONT_SIZE;
 
 // Default Folder Names
 extern NSString* const FOLDER_EXTERNAL_APPLICATIONS;

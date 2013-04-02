@@ -15,9 +15,14 @@ const CGSize SIZE_POPOVER = {200,300};
 
 // Defaults
 const int DEFAULT_FONT_SIZE = 12;
-NSString *const FILE_APP_STATE = @"appState.plist";
 NSString* const DEFAULT_FONT_FAMILY = @"SourceCodePro-Regular";
 const CGColorRef* DEFAULT_TEXT_COLOR = {0};
+
+// App State
+NSString *const FILE_APP_STATE = @"appState.plist";
+NSString *const KEY_SETTINGS_ROOT = @"Settings";
+NSString *const KEY_FONT_FAMILY = @"fontFamily";
+NSString *const KEY_FONT_SIZE = @"fontSize";
 
 // Default Folder Names
 NSString* const FOLDER_EXTERNAL_APPLICATIONS = @"External Applications";
