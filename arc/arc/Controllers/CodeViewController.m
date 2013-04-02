@@ -13,16 +13,14 @@
 #import "SyntaxHighlight.h"
 @interface CodeViewController ()
 @property id<File> currentFile;
+@property CodeView *codeView;
 @property CoreTextUIView *coreTextView;
 @property ArcAttributedString *arcAttributedString;
 - (void)refreshSubViewSizes;
 @end
 
 @implementation CodeViewController
-@synthesize delegate;
-@synthesize coreTextView = _coreTextView;
-@synthesize currentFile = _currentFile;
-@synthesize arcAttributedString = _arcAttributedString;
+@synthesize delegate = _delegate;
 
 - (id)init
 {
@@ -33,17 +31,26 @@
     return self;
 }
 
-- (void)loadView
-{
-    self.view = [[CodeView alloc] init];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Add a toolbar
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:
+        CGRectMake(0, 0, self.view.bounds.size.width, SIZE_TOOLBAR_HEIGHT)];
+    toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    
+    _codeView = [[CodeView alloc] init];
+    _codeView.frame = CGRectMake(0, SIZE_TOOLBAR_HEIGHT,
+        self.view.bounds.size.width, self.view.bounds.size.height - SIZE_TOOLBAR_HEIGHT);
+    _codeView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
     _coreTextView = [[CoreTextUIView alloc] init];
-    [self.view addSubview:_coreTextView];
-    _coreTextView.frame = self.view.bounds;
+    _coreTextView.frame = _codeView.bounds;
+    [_codeView addSubview:_coreTextView];
+    
+    [self.view addSubview:toolbar];
+    [self.view addSubview:_codeView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -56,7 +63,7 @@
     [_coreTextView refresh];
 
     // Resize codeView (parent) Content Size
-    self.view.contentSize = _coreTextView.bounds.size;
+    _codeView.contentSize = _coreTextView.bounds.size;
 }
 
 - (void)showFile:(id<File>)file
