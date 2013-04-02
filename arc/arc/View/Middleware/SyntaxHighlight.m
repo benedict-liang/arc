@@ -22,9 +22,14 @@
     if (self) {
         _delegate = d;
         _currentFile = file;
-        _content = [file contents];
         _patterns = [TMBundleSyntaxParser getPatternsArray:@"javascript.tmbundle"];
         _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
+        if ([[file contents] isKindOfClass:[NSString class]]) {
+            _content = (NSString*)[file contents];
+        }
+        else {
+            self = nil;
+        }
     }
     return self;
 }
@@ -128,10 +133,10 @@
     
     dispatch_apply([captures count], queue, ^(size_t i){
         dispatch_group_async(group, queue, ^ {
-            NSArray *captureMatches = [self foundPattern:match capture:i range:r];
+            NSArray *patternMatches = [self foundPattern:match capture:i range:r];
             dispatch_semaphore_wait(array_sema, DISPATCH_TIME_FOREVER);
             
-            [dict setObject:captureMatches forKey:[captures objectAtIndex:i]];
+            [dict setObject:patternMatches forKey:[captures objectAtIndex:i]];
             
             dispatch_semaphore_signal(array_sema);
         });
@@ -275,8 +280,9 @@
                     long bEnds = brange.location + brange.length;
                     if (contentRange.length > bEnds) {
                         //NSLog(@"before erange: %d %d", bEnds, contentRange.length - bEnds);
+
                         //HACK BELOW. BLAME TEXTMATE FOR THIS SHIT. IT MAKES COMMENTS WORK THOUGH
-                        if ([end rangeOfString:@"\\G"].location != NSNotFound) {
+                        if ([self fixAnchor:end]) {
                             erange = NSMakeRange(bEnds, contentRange.length - bEnds);
                         } else {
                             erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
@@ -322,6 +328,14 @@
     dispatch_release(group);
 
 }
+
+- (BOOL)fixAnchor:(NSString*)pattern {
+    //return [pattern stringByReplacingOccurrencesOfString:@"\\G" withString:@"\uFFFF"];
+    // TODO: pattern for \\z : @"$(?!\n)(?<!\n)"
+    return ([pattern rangeOfString:@"\\G"].location != NSNotFound ||
+            [pattern rangeOfString:@"\\A"].location != NSNotFound);
+}
+
 - (void)updateView {
     if (self.delegate) {
         [self.delegate mergeAndRenderWith:_finalOutput forFile:self.currentFile];
