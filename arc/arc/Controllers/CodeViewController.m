@@ -27,7 +27,7 @@
 {
     self = [super init];
     if (self) {
-
+        _isLoaded = NO;
     }
     return self;
 }
@@ -67,6 +67,7 @@
 //                       flexibleSpace,
 //                       nil]
 //             animated:YES];
+    _isLoaded = YES;
 }
 
 - (void)showLeftBar:(id)sender
@@ -124,6 +125,9 @@
 - (void)mergeAndRenderWith:(ArcAttributedString*)aas forFile:(id<File>)file
 {
     //TODO merge aas with _arcAttributedString.
+    while (!_isLoaded) {
+        
+    }
     if ([file isEqual:_currentFile]) {
         _arcAttributedString = aas;
         [self render];
