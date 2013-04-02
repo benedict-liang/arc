@@ -17,5 +17,5 @@
 #import "LeftViewController.h"
 #import "TMBundleHeader.h"
 
-@interface MainViewController : UISplitViewController <MainViewControllerProtocol>
+@interface MainViewController : UISplitViewController <MainViewControllerProtocol, UISplitViewControllerDelegate>
 @end

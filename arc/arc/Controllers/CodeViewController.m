@@ -21,6 +21,7 @@
 
 @implementation CodeViewController
 @synthesize delegate = _delegate;
+@synthesize toolbar = _toolbar;
 
 - (id)init
 {
@@ -36,9 +37,9 @@
     [super viewDidLoad];
     
     // Add a toolbar
-    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:
+    _toolbar = [[UIToolbar alloc] initWithFrame:
         CGRectMake(0, 0, self.view.bounds.size.width, SIZE_TOOLBAR_HEIGHT)];
-    toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    _toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
     _codeView = [[CodeView alloc] init];
     _codeView.frame = CGRectMake(0, SIZE_TOOLBAR_HEIGHT,
@@ -49,9 +50,35 @@
     _coreTextView.frame = _codeView.bounds;
     [_codeView addSubview:_coreTextView];
     
-    [self.view addSubview:toolbar];
+    [self.view addSubview:_toolbar];
     [self.view addSubview:_codeView];
+    
+//    
+//    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc]
+//                                      initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+//                                      target:nil action:nil];
+//    
+//    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"<"
+//                                                               style:UIBarButtonItemStylePlain
+//                                                              target:self
+//                                                              action:@selector(hideLeftBar:)];
+//    [_toolbar setItems:[NSArray arrayWithObjects:
+//                       button,
+//                       flexibleSpace,
+//                       nil]
+//             animated:YES];
 }
+
+- (void)showLeftBar:(id)sender
+{
+    
+}
+
+- (void)hideLeftBar:(id)sender
+{
+    [self.delegate hideLeftBar];
+}
+
 
 - (void)viewDidAppear:(BOOL)animated
 {

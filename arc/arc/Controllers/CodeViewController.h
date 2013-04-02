@@ -14,4 +14,5 @@
 #import "CodeViewControllerProtocol.h"
 @interface CodeViewController : UIViewController<SubViewControllerProtocol, CodeViewControllerProtocol>
 @property (nonatomic, strong) CodeView *view;
+@property (nonatomic, strong) UIToolbar *toolbar;
 @end
