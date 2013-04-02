@@ -258,8 +258,9 @@
                     long bEnds = brange.location + brange.length;
                     if (contentRange.length > bEnds) {
                         //NSLog(@"before erange: %d %d", bEnds, contentRange.length - bEnds);
+
                         //HACK BELOW. BLAME TEXTMATE FOR THIS SHIT. IT MAKES COMMENTS WORK THOUGH
-                        if ([end rangeOfString:@"\\G"].location != NSNotFound) {
+                        if ([self fixAnchor:end]) {
                             erange = NSMakeRange(bEnds, contentRange.length - bEnds);
                         } else {
                             erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
@@ -303,6 +304,13 @@
     dispatch_release(group);
 
 }
+
+- (BOOL)fixAnchor:(NSString*)pattern {
+    //return [pattern stringByReplacingOccurrencesOfString:@"\\G" withString:@"\uFFFF"];
+    return ([pattern rangeOfString:@"\\G"].location != NSNotFound ||
+            [pattern rangeOfString:@"\\A"].location != NSNotFound);
+}
+
 - (void)updateView {
     if (self.delegate) {
         [self.delegate mergeAndRenderWith:_finalOutput forFile:self.currentFile];
