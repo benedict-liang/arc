@@ -15,8 +15,6 @@ extern const float SIZE_TOOLBAR_HEIGHT;
 extern const CGSize SIZE_POPOVER;
 
 // Defaults
-extern const int DEFAULT_FONT_SIZE;
-extern NSString* const DEFAULT_FONT_FAMILY;
 extern const CGColorRef* DEFAULT_TEXT_COLOR;
 
 // App State
