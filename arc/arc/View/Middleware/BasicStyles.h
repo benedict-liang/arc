@@ -8,5 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "CodeViewMiddleware.h"
+#import "ApplicationState.h"
 @interface BasicStyles : NSObject<CodeViewMiddleware>
 @end

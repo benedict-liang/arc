@@ -13,13 +13,15 @@
 @implementation BasicStyles
 + (void)arcAttributedString:(ArcAttributedString*)arcAttributedString OfFile:(id<File>)file delegate:(id)del;
 {
+    ApplicationState *state = [ApplicationState sharedApplicationState];
+    
     CGColorRef color = [UIColor blackColor].CGColor;
     [arcAttributedString setColor:color];
     
-    NSString *fontFamily = @"SourceCodePro-Regular";
+    NSString *fontFamily = [state fontFamily];
     [arcAttributedString setFontFamily:fontFamily];
     
-    int fontSize = 24;
+    int fontSize = [state fontSize];
     [arcAttributedString setFontSize:fontSize];
 }
 @end
