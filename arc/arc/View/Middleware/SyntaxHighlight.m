@@ -258,6 +258,7 @@
                     long bEnds = brange.location + brange.length;
                     if (contentRange.length > bEnds) {
                         //NSLog(@"before erange: %d %d", bEnds, contentRange.length - bEnds);
+                        //HACK BELOW. BLAME TEXTMATE FOR THIS SHIT. IT MAKES COMMENTS WORK THOUGH
                         if ([end isEqualToString:@"(?!\\G)"]) {
                             erange = NSMakeRange(bEnds, contentRange.length - bEnds);
                         } else {
