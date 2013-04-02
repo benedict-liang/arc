@@ -192,6 +192,20 @@
     }
     return res;
 }
+- (NSDictionary*) addRange:(NSRange)r scope:(NSString*)s dict:(NSDictionary*)d {
+    NSArray* ranges = [d objectForKey:s];
+    NSMutableDictionary* res = [NSMutableDictionary dictionaryWithDictionary:d];
+    if (ranges) {
+        NSMutableArray* temp = [NSMutableArray arrayWithArray:ranges];
+        [temp addObect:[NSValue value:&r withObjCType:@encode(NSRange)]];
+        [res setObject:temp forKey:s];
+    } else {
+        
+        [res setObject:@[[NSValue value:&r withObjCType:@encode(NSRange)]] forKey:s];
+        
+    }
+    return res;
+}
 -(void)iterPatternsForRange:(NSRange)contentRange patterns:(NSArray*)patterns output:(ArcAttributedString*)output {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_semaphore_t outputSema = dispatch_semaphore_create(1);
@@ -281,10 +295,12 @@
                         
                         if (name) {
                             
-                           dispatch_semaphore_wait(outputSema, DISPATCH_TIME_FOREVER);
+                           //dispatch_semaphore_wait(outputSema, DISPATCH_TIME_FOREVER);
                            // NSLog(@"%@",name);
-                            [self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location) output:output];
-                            dispatch_semaphore_signal(outputSema);
+                            [self addRange:NSMakeRange(brange.location, eEnds - brange.location) scope:name dict:pairMatches];
+                            
+                            //[self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location) output:output];
+                            //dispatch_semaphore_signal(outputSema);
                         }
                         //NSLog(@"before brange2: %d %d", contentRange.location, contentRange.length);
                         brange = [self findFirstPattern:begin range:NSMakeRange(eEnds, contentRange.length - eEnds)];

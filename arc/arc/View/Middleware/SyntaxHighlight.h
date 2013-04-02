@@ -18,6 +18,7 @@
     __block NSDictionary *captureMatches;
     __block NSDictionary *beginCMatches;
     __block NSDictionary *endCMatches;
+    __block NSDictionary *pairMatches;
 }
 @property NSDictionary* theme;
 @property (readonly) id<CodeViewControllerProtocol> delegate;
