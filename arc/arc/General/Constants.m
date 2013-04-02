@@ -19,13 +19,13 @@ NSString* const DEFAULT_FONT_FAMILY = @"SourceCodePro-Regular";
 const CGColorRef* DEFAULT_TEXT_COLOR = {0};
 
 // App State
-NSString *const FILE_APP_STATE = @"appState.plist";
-extern NSString* const KEY_CURRENT_FOLDER;
-extern NSString* const KEY_CURRENT_FILE;
+NSString* const FILE_APP_STATE = @"appState.plist";
+NSString* const KEY_CURRENT_FOLDER;
+NSString* const KEY_CURRENT_FILE;
 // Settings
-NSString *const KEY_SETTINGS_ROOT = @"Settings";
-NSString *const KEY_FONT_FAMILY = @"fontFamily";
-NSString *const KEY_FONT_SIZE = @"fontSize";
+NSString* const KEY_SETTINGS_ROOT = @"Settings";
+NSString* const KEY_FONT_FAMILY = @"fontFamily";
+NSString* const KEY_FONT_SIZE = @"fontSize";
 
 // Default Folder Names
 NSString* const FOLDER_EXTERNAL_APPLICATIONS = @"External Applications";

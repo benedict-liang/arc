@@ -1136,13 +1136,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C43F8FB16F86AA900159B29 /* main.m in Sources */,
+				4CD06B8016FDF61C00C9DED3 /* Constants.m in Sources */,
 				4C43F8FF16F86AA900159B29 /* AppDelegate.m in Sources */,
 				4C43F90816F86AA900159B29 /* arc.xcdatamodeld in Sources */,
 				8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */,
 				FC4B269E16F88CB800E1DC49 /* FolderViewController.m in Sources */,
 				8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */,
 				8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */,
-				4CD06B8016FDF61C00C9DED3 /* Constants.m in Sources */,
 				8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */,
 				8F5C5C1916FDFED300B31A19 /* Find.m in Sources */,
 				4CD06B8A16FE125100C9DED3 /* CoreTextUIView.m in Sources */,
