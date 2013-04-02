@@ -259,7 +259,7 @@
                     if (contentRange.length > bEnds) {
                         //NSLog(@"before erange: %d %d", bEnds, contentRange.length - bEnds);
                         //HACK BELOW. BLAME TEXTMATE FOR THIS SHIT. IT MAKES COMMENTS WORK THOUGH
-                        if ([end isEqualToString:@"(?!\\G)"]) {
+                        if ([end rangeOfString:@"\\G"].location != NSNotFound) {
                             erange = NSMakeRange(bEnds, contentRange.length - bEnds);
                         } else {
                             erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
