@@ -36,7 +36,7 @@
 
     // TMP
     [self fileSelected:[ApplicationState getSampleFile]];
-    [self folderSelected:[LocalRootFolder sharedLocalRootFolder]];
+    [self folderSelected:[RootFolder sharedRootFolder]];
 }
 
 // tmp

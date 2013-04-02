@@ -19,6 +19,7 @@ static RootFolder *sharedRootFolder = nil;
 {
     if (sharedRootFolder == nil) {
         sharedRootFolder = [[super allocWithZone:NULL] init];
+        [sharedRootFolder markNeedsRefresh];
     }
     return sharedRootFolder;
 }
@@ -26,7 +27,7 @@ static RootFolder *sharedRootFolder = nil;
 // Returns the contents of this object.
 - (id<NSObject>)contents
 {
-    if ([[LocalRootFolder sharedLocalRootFolder] needsRefresh]) {
+    if ([[LocalRootFolder sharedLocalRootFolder] needsRefresh] || _needsRefresh) {
         return [self refreshContents];
     } else {
         return _contents;
@@ -43,12 +44,14 @@ static RootFolder *sharedRootFolder = nil;
     } else {
         _contents = localFileContents;
     }
+    _needsRefresh = NO;
     return _contents;
 }
 
 // Marks this object as needing to be refreshed.
 - (void)markNeedsRefresh
 {
+    _needsRefresh = YES;
     [[LocalRootFolder sharedLocalRootFolder] markNeedsRefresh];
 }
 
