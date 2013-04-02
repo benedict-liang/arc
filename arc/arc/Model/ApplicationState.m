@@ -34,6 +34,8 @@ static ApplicationState *sharedApplicationState = nil;
         // Defaults || Get Previous State from plist
         _currentFolderOpened = [RootFolder sharedRootFolder];
         _currentFileOpened = nil;
+        _fontFamily = DEFAULT_FONT_FAMILY;
+        _fontSize = DEFAULT_FONT_SIZE;
     }
     return self;
 }
