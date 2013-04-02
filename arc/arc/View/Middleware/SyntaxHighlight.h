@@ -14,11 +14,10 @@
 #import "CodeViewControllerProtocol.h"
 #import "File.h"
 @interface SyntaxHighlight : NSObject <CodeViewMiddleware>
-@property NSArray* patterns;
-@property NSString* content;
 @property NSDictionary* theme;
-@property ArcAttributedString* output;
-@property id<CodeViewControllerProtocol> delegate;
-@property id<File> currentFile;
-
+@property (readonly) id<CodeViewControllerProtocol> delegate;
+@property (readonly) id<File> currentFile;
+@property (readonly) NSString* content;
+@property (readonly) NSArray* patterns;
+@property ArcAttributedString* finalOutput;
 @end
