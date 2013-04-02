@@ -128,10 +128,10 @@
     
     dispatch_apply([captures count], queue, ^(size_t i){
         dispatch_group_async(group, queue, ^ {
-            NSArray *captureMatches = [self foundPattern:match capture:i range:r];
+            NSArray *patternMatches = [self foundPattern:match capture:i range:r];
             dispatch_semaphore_wait(array_sema, DISPATCH_TIME_FOREVER);
             
-            [dict setObject:captureMatches forKey:[captures objectAtIndex:i]];
+            [dict setObject:patternMatches forKey:[captures objectAtIndex:i]];
             
             dispatch_semaphore_signal(array_sema);
         });
