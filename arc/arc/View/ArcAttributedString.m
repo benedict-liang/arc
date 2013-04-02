@@ -9,6 +9,7 @@
 #import "Constants.h"
 #import <CoreText/CoreText.h>
 #import "ArcAttributedString.h"
+#import "ApplicationState.h"
 
 @interface ArcAttributedString ()
 @property (nonatomic, strong) NSMutableAttributedString *_attributedString;
@@ -33,8 +34,11 @@
 {
     self = [super init];
     if (self) {
-        _fontFamily = (NSString*) DEFAULT_FONT_FAMILY;
-        _fontSize = DEFAULT_FONT_SIZE;
+        // Get the font family and size from app state.
+        ApplicationState *appState = [ApplicationState sharedApplicationState];
+        
+        _fontFamily = [appState fontFamily];
+        _fontSize = [appState fontSize];
         [self setString:string];
         _attributes = [NSMutableArray array];
         __attributedString = [[NSMutableAttributedString alloc]
