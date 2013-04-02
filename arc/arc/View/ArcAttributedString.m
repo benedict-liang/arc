@@ -43,8 +43,8 @@
     }
     return self;
 }
-- (id)initWithArcAttributedString:(ArcAttributedString *)aas {
-
+- (id)initWithArcAttributedString:(ArcAttributedString *)aas
+{
     self = [super init];
     if (self) {
         _fontFamily = [aas fontFamily];
