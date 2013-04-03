@@ -152,6 +152,11 @@
                          withOptions:UIViewAnimationOptionTransitionFlipFromLeft];
 }
 
+- (NSString*)title
+{
+    return @"Documents";
+}
+
 - (void)showDocuments:(id)sender
 {
     [self transitionToViewController:_documentsNavigationViewController

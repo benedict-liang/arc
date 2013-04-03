@@ -22,9 +22,14 @@
     if (self) {
         _delegate = d;
         _currentFile = file;
-        _content = [file contents];
         _patterns = [TMBundleSyntaxParser getPatternsArray:@"javascript.tmbundle"];
         _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
+        if ([[file contents] isKindOfClass:[NSString class]]) {
+            _content = (NSString*)[file contents];
+        }
+        else {
+            self = nil;
+        }
     }
     return self;
 }
@@ -39,7 +44,7 @@
     
     NSRegularExpression *regex = [NSRegularExpression
                                   regularExpressionWithPattern:p
-                                  options:NSRegularExpressionCaseInsensitive
+                                  options:0
                                   error:&error];
     
     if ((r.location + r.length <= [_content length]) && (r.length > 0) && (r.length <= [_content length])) {
@@ -56,7 +61,7 @@
     NSMutableArray* results = [[NSMutableArray alloc] init];
     NSRegularExpression *regex = [NSRegularExpression
                                   regularExpressionWithPattern:p
-                                  options:NSRegularExpressionCaseInsensitive
+                                  options:0
                                   error:&error];
     
     
@@ -128,10 +133,10 @@
     
     dispatch_apply([captures count], queue, ^(size_t i){
         dispatch_group_async(group, queue, ^ {
-            NSArray *captureMatches = [self foundPattern:match capture:i range:r];
+            NSArray *patternMatches = [self foundPattern:match capture:i range:r];
             dispatch_semaphore_wait(array_sema, DISPATCH_TIME_FOREVER);
             
-            [dict setObject:captureMatches forKey:[captures objectAtIndex:i]];
+            [dict setObject:patternMatches forKey:[captures objectAtIndex:i]];
             
             dispatch_semaphore_signal(array_sema);
         });
@@ -192,15 +197,28 @@
     }
     return res;
 }
+- (NSDictionary*) addRange:(NSRange)r scope:(NSString*)s dict:(NSDictionary*)d {
+ 
+    
+    NSMutableDictionary* res = [NSMutableDictionary dictionaryWithDictionary:d];
+    NSArray* ranges = [res objectForKey:s];
+    if (ranges) {
+        NSMutableArray* temp = [NSMutableArray arrayWithArray:ranges];
+        
+        [temp addObject:[NSValue value:&r withObjCType:@encode(NSRange)]];
+        [res setObject:temp forKey:s];
+    } else {
+        
+        [res setObject:@[[NSValue value:&r withObjCType:@encode(NSRange)]] forKey:s];
+        
+    }
+    return res;
+}
 -(void)iterPatternsForRange:(NSRange)contentRange patterns:(NSArray*)patterns output:(ArcAttributedString*)output {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_semaphore_t outputSema = dispatch_semaphore_create(1);
     dispatch_group_t group = dispatch_group_create();
-    
-    __block NSDictionary *nameMatches = nil;
-    __block NSDictionary *captureMatches = nil;
-    __block NSDictionary *beginCMatches = nil;
-    __block NSDictionary *endCMatches = nil;
+
     
     dispatch_apply([patterns count], queue, ^(size_t i){
         dispatch_group_async(group, queue, ^{
@@ -240,9 +258,18 @@
                  
                  TODO. debug for why single line comments aren't working
                  Symptoms: comment.single.* for js tmbundle is inside a begin end pair, of which begin - end = 1.
+                 
                  if ([begin isEqualToString:@"(^[ \\t]+)?(?=//)"] && [end isEqualToString:@"(?!\\G)"]) {
-                 NSLog(@"finally");
-                 }*/
+                     NSLog(@"finally");
+                     
+                      NSRange brange = [self findFirstPattern:begin range:contentRange];
+                     NSLog(@"%d %d", brange.location, brange.length);
+                     long bEnds = brange.location + brange.length;
+                     //NSRange erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
+                     //NSRange erange = NSMakeRange(bEnds, );
+                    // NSLog(@"%d %d", erange.location, erange.length);
+                     
+                }*/
                 //NSLog(@"before brange: %d %d", contentRange.location, contentRange.length);
                 NSRange brange = [self findFirstPattern:begin range:contentRange];
                 NSRange erange = NSMakeRange(0, 0);
@@ -253,7 +280,14 @@
                     long bEnds = brange.location + brange.length;
                     if (contentRange.length > bEnds) {
                         //NSLog(@"before erange: %d %d", bEnds, contentRange.length - bEnds);
-                        erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds)];
+
+                        //HACK BELOW. BLAME TEXTMATE FOR THIS SHIT. IT MAKES COMMENTS WORK THOUGH
+                        if ([self fixAnchor:end]) {
+                            erange = NSMakeRange(bEnds, contentRange.length - bEnds);
+                        } else {
+                            erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
+
+                        }
                     } else {
                         //if bEnds > contentRange.length, skip
                         break;
@@ -265,13 +299,17 @@
                     if (eEnds - brange.location > 0 && brange.location != NSNotFound && erange.location != NSNotFound && eEnds <= contentRange.length) {
                         if (embedPatterns) {
                             //recursively apply iterPatterns to embedded patterns inclusive of begin and end
-                           // [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns output:output];
+                            [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns output:output];
                         }
                         
                         if (name) {
-                           dispatch_semaphore_wait(outputSema, DISPATCH_TIME_FOREVER);
-                            [self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location) output:output];
-                            dispatch_semaphore_signal(outputSema);
+                            
+                           //dispatch_semaphore_wait(outputSema, DISPATCH_TIME_FOREVER);
+                           // NSLog(@"%@",name);
+                            pairMatches = [self addRange:NSMakeRange(brange.location, eEnds - brange.location) scope:name dict:pairMatches];
+                            
+                            //[self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location) output:output];
+                            //dispatch_semaphore_signal(outputSema);
                         }
                         //NSLog(@"before brange2: %d %d", contentRange.location, contentRange.length);
                         brange = [self findFirstPattern:begin range:NSMakeRange(eEnds, contentRange.length - eEnds)];
@@ -286,13 +324,18 @@
 
 
     dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-    [self applyStylesTo:output withRanges:nameMatches];
-    [self applyStylesTo:output withRanges:captureMatches];
-    [self applyStylesTo:output withRanges:beginCMatches];
-    [self applyStylesTo:output withRanges:endCMatches];
+
     dispatch_release(group);
 
 }
+
+- (BOOL)fixAnchor:(NSString*)pattern {
+    //return [pattern stringByReplacingOccurrencesOfString:@"\\G" withString:@"\uFFFF"];
+    // TODO: pattern for \\z : @"$(?!\n)(?<!\n)"
+    return ([pattern rangeOfString:@"\\G"].location != NSNotFound ||
+            [pattern rangeOfString:@"\\A"].location != NSNotFound);
+}
+
 - (void)updateView {
     if (self.delegate) {
         [self.delegate mergeAndRenderWith:_finalOutput forFile:self.currentFile];
@@ -300,7 +343,13 @@
 }
 - (void)execOn:(ArcAttributedString *)arcAttributedString {
     _finalOutput = arcAttributedString;
+    ArcAttributedString* output = arcAttributedString;
     [self iterPatternsForRange:NSMakeRange(0, [_content length]) patterns:_patterns output:arcAttributedString];
+    [self applyStylesTo:output withRanges:nameMatches];
+    [self applyStylesTo:output withRanges:captureMatches];
+    [self applyStylesTo:output withRanges:beginCMatches];
+    [self applyStylesTo:output withRanges:endCMatches];
+    [self applyStylesTo:output withRanges:pairMatches];
     [self updateView];
  
 }

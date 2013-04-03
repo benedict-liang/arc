@@ -10,6 +10,7 @@
 #import "Folder.h"
 
 @protocol LeftViewControllerProtocol <NSObject>
+@property (nonatomic, readonly) NSString *title;
 - (void)showFolder:(id<Folder>)folder;
 
 
