@@ -32,15 +32,19 @@ static ApplicationState *sharedApplicationState = nil;
         NSFileManager *fileManager = [NSFileManager defaultManager];
         NSString *documentsPath = [[fileManager URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil] path];
         NSString *settingsPath = [documentsPath stringByAppendingPathComponent:FILE_APP_STATE];
-        NSDictionary *storedSettings = [[NSDictionary dictionaryWithContentsOfFile:settingsPath] valueForKey:KEY_SETTINGS_ROOT];
+        NSDictionary *storedState = [NSDictionary dictionaryWithContentsOfFile:settingsPath];
+        NSDictionary *storedSettings = [storedState valueForKey:KEY_SETTINGS_ROOT];
     
         // Restore settings from the dictionary.
-        _currentFolderOpened = [RootFolder sharedRootFolder];
-        _currentFileOpened = nil;
         _fontFamily = [storedSettings valueForKey:KEY_FONT_FAMILY];
         _fontSize = [(NSNumber*)[storedSettings valueForKey:KEY_FONT_SIZE] intValue];
         _wordWrap = (BOOL)[storedSettings valueForKey:KEY_WORD_WRAP];
         _lineNumbers = (BOOL)[storedSettings valueForKey:KEY_LINE_NUMBERS];
+        
+        // Restore application state.
+        _currentFolderOpened = [RootFolder sharedRootFolder];
+        _currentFileOpened = nil;
+        _fonts = [storedState valueForKey:KEY_FONTS];
     }
     return self;
 }

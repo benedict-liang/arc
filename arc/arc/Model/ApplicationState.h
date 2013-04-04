@@ -20,6 +20,10 @@
 //
 // Settings and Preferences
 //
+// Font Dictionary
+@property (nonatomic, strong) NSDictionary* fonts;
+
+
 // Individual Settings
 @property (nonatomic) int fontSize;
 @property (nonatomic, strong) NSString* fontFamily;
