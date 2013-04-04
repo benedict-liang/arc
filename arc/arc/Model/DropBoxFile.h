@@ -12,7 +12,6 @@
 
 @interface DropBoxFile : NSObject <File> {
     NSString *_contents;
-    BOOL _needsRefresh;
 }
 
 @end
