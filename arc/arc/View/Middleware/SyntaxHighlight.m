@@ -51,7 +51,7 @@
         //NSLog(@"findFirstPattern:   %d %d",r.location,r.length);
         return [regex rangeOfFirstMatchInString:_content options:0 range:r];
     } else {
-        NSLog(@"index out of bounds in regex. findFirstPatten:%d %d",r.location,r.length);
+        //NSLog(@"index out of bounds in regex. findFirstPatten:%d %d",r.location,r.length);
         return NSMakeRange(NSNotFound, 0);
     }
     
