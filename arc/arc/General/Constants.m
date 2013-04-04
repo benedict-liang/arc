@@ -20,6 +20,7 @@ const CGColorRef* DEFAULT_TEXT_COLOR = {0};
 NSString* const FILE_APP_STATE = @"appState.plist";
 NSString* const KEY_CURRENT_FOLDER = @"currentFolder";
 NSString* const KEY_CURRENT_FILE = @"currentFile";
+NSString* const KEY_FONTS = @"Fonts";
 // Settings
 NSString* const KEY_SETTINGS_ROOT = @"Settings";
 NSString* const KEY_FONT_FAMILY = @"fontFamily";
