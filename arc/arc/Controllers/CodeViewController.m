@@ -141,8 +141,7 @@
     {
         CTTypesetterRef typesetter = CTFramesetterGetTypesetter(_frameSetter);
         CFIndex count = CTTypesetterSuggestLineBreak(typesetter, start, boundsWidth);
-        CTLineRef line = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)([_arcAttributedString.attributedString attributedSubstringFromRange:NSMakeRange(start, count)]));
-        [_lines addObject:(__bridge id)(line)];
+        [_lines addObject:[NSValue valueWithRange:NSMakeRange(start, count)]];
         start += count;
     }
     
@@ -153,7 +152,11 @@
 {
     CGFloat asscent, descent, leading;
     if ([_lines count] > 0) {
-        CTLineRef line = (__bridge CTLineRef)([_lines objectAtIndex:0]);
+        CTLineRef line = CTLineCreateWithAttributedString(
+              (__bridge CFAttributedStringRef)(
+                  [_arcAttributedString.attributedString attributedSubstringFromRange:
+                      [[_lines objectAtIndex:0] rangeValue]]));
+
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
         _lineHeight = asscent + descent + leading;
         _tableView.rowHeight = ceil(_lineHeight);
@@ -177,9 +180,6 @@
 
     if ([file isEqual:_currentFile]) {
         _arcAttributedString = arcAttributedString;
-        
-        // tmp
-        [self generateLines];
         [self.tableView reloadData];
     }
 }
@@ -207,8 +207,13 @@
     }
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     NSUInteger lineNumber = indexPath.row;
-    CTLineRef ref = (__bridge CTLineRef)[_lines objectAtIndex:lineNumber];
-    cell.line = ref;
+
+    CTLineRef lineRef = CTLineCreateWithAttributedString(
+        (__bridge CFAttributedStringRef)(
+            [_arcAttributedString.attributedString attributedSubstringFromRange:
+            [[_lines objectAtIndex:lineNumber] rangeValue]]));
+    cell.line = lineRef;
+    
     [cell setNeedsDisplay];
     return cell;
 }
