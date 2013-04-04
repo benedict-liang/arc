@@ -18,7 +18,7 @@
 		<key>lineNumbers</key>
 		<true/>
 		<key>wordWrap</key>
-		<string>NO</string>
+		<false/>
 	</dict>
 </dict>
 </plist>
