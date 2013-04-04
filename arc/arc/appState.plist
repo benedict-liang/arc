@@ -8,6 +8,10 @@
 		<string>SourceCodePro-Regular</string>
 		<key>fontSize</key>
 		<integer>14</integer>
+		<key>lineNumbers</key>
+		<true/>
+		<key>wordWrap</key>
+		<string>NO</string>
 	</dict>
 </dict>
 </plist>
