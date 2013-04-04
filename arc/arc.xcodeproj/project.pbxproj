@@ -61,6 +61,9 @@
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
 		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
 		8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */; };
+		FC086EAA170DCB1C00B7E057 /* Objective-C++.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = FC086EA7170DCB1C00B7E057 /* Objective-C++.tmLanguage */; };
+		FC086EAB170DCB1C00B7E057 /* Objective-C.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = FC086EA8170DCB1C00B7E057 /* Objective-C.tmLanguage */; };
+		FC086EAC170DCB1C00B7E057 /* Strings File.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = FC086EA9170DCB1C00B7E057 /* Strings File.tmLanguage */; };
 		FC4B269E16F88CB800E1DC49 /* FolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B269D16F88CB800E1DC49 /* FolderViewController.m */; };
 		FC4B26CE16FF6E3800E1DC49 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */; };
 		FCB0548017034DE6007832D7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FCB0547F17034DE6007832D7 /* README.md */; };
@@ -322,6 +325,9 @@
 		8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewController.h; sourceTree = "<group>"; };
 		8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeViewController.m; sourceTree = "<group>"; };
 		8FCA1D7116F8AA6000C6AAFC /* MainViewControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewControllerProtocol.h; sourceTree = "<group>"; };
+		FC086EA7170DCB1C00B7E057 /* Objective-C++.tmLanguage */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Objective-C++.tmLanguage"; sourceTree = "<group>"; };
+		FC086EA8170DCB1C00B7E057 /* Objective-C.tmLanguage */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Objective-C.tmLanguage"; sourceTree = "<group>"; };
+		FC086EA9170DCB1C00B7E057 /* Strings File.tmLanguage */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Strings File.tmLanguage"; sourceTree = "<group>"; };
 		FC4B269C16F88CB800E1DC49 /* FolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewController.h; sourceTree = "<group>"; };
 		FC4B269D16F88CB800E1DC49 /* FolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderViewController.m; sourceTree = "<group>"; };
 		FC4B26CC16FF6E3700E1DC49 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
@@ -738,6 +744,7 @@
 		8F563E53170160CD00EE5643 /* TextMateBundles */ = {
 			isa = PBXGroup;
 			children = (
+				FC086EA5170DCB1C00B7E057 /* objective-c.tmbundle */,
 				8F1510C517044A4C00115E5E /* Solarized (light).tmTheme */,
 				8F1510521704483500115E5E /* javascript.tmbundle */,
 				8F563E54170160CD00EE5643 /* html.tmbundle */,
@@ -1009,6 +1016,24 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		FC086EA5170DCB1C00B7E057 /* objective-c.tmbundle */ = {
+			isa = PBXGroup;
+			children = (
+				FC086EA6170DCB1C00B7E057 /* Syntaxes */,
+			);
+			path = "objective-c.tmbundle";
+			sourceTree = "<group>";
+		};
+		FC086EA6170DCB1C00B7E057 /* Syntaxes */ = {
+			isa = PBXGroup;
+			children = (
+				FC086EA7170DCB1C00B7E057 /* Objective-C++.tmLanguage */,
+				FC086EA8170DCB1C00B7E057 /* Objective-C.tmLanguage */,
+				FC086EA9170DCB1C00B7E057 /* Strings File.tmLanguage */,
+			);
+			path = Syntaxes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1096,6 +1121,9 @@
 				4CF6F0F21706E29300EDDEDC /* folder.png in Resources */,
 				4C36137D170AC673009358B1 /* dropbox.png in Resources */,
 				02E162CD170B02F400C9D23B /* appState.plist in Resources */,
+				FC086EAA170DCB1C00B7E057 /* Objective-C++.tmLanguage in Resources */,
+				FC086EAB170DCB1C00B7E057 /* Objective-C.tmLanguage in Resources */,
+				FC086EAC170DCB1C00B7E057 /* Strings File.tmLanguage in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
