@@ -31,7 +31,11 @@
 @property (nonatomic) BOOL lineNumbers;
 @property (nonatomic) BOOL wordWrap;
 
+// Saves settings to disk.
+- (void)saveStateToDisk;
+
 // tmp
 // Returns a sample file.
 + (id<File>)getSampleFile;
+
 @end
