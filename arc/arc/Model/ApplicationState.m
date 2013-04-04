@@ -41,19 +41,25 @@ static ApplicationState *sharedApplicationState = nil;
     return storedState;
 }
 
+// Given a key, returns the corresponding setting.
+- (id)settingForKey:(NSString *)key
+{
+    return [__settings valueForKey:key];
+}
+
+// Updates the setting stored with the given key.
+- (void)setSetting:(id)value forKey:(NSString *)key
+{
+    [__settings setValue:value forKey:key];
+}
+
 - (id)init
 {
     self = [super init];
     if (self) {
         // Get the stored settings dictionary.
         NSDictionary *storedState = [self retrieveSavedState];
-        NSDictionary *storedSettings = [storedState valueForKey:KEY_SETTINGS_ROOT];
-    
-        // Restore settings from the dictionary.
-        _fontFamily = [storedSettings valueForKey:KEY_FONT_FAMILY];
-        _fontSize = [(NSNumber*)[storedSettings valueForKey:KEY_FONT_SIZE] intValue];
-        _wordWrap = (BOOL)[storedSettings valueForKey:KEY_WORD_WRAP];
-        _lineNumbers = (BOOL)[storedSettings valueForKey:KEY_LINE_NUMBERS];
+        __settings = [storedState valueForKey:KEY_SETTINGS_ROOT];
         
         // Restore application state.
         _currentFolderOpened = [RootFolder sharedRootFolder];
@@ -74,13 +80,13 @@ static ApplicationState *sharedApplicationState = nil;
     [savedState setValue:[_currentFileOpened path] forKey:KEY_CURRENT_FILE];
     
     // Save our settings into a dictionary.
-    NSMutableDictionary *settingsDictionary = [[NSMutableDictionary alloc] init];
-    [settingsDictionary setValue:_fontFamily forKey:KEY_FONT_FAMILY];
-    [settingsDictionary setValue:[NSNumber numberWithInt:_fontSize] forKey:KEY_FONT_SIZE];
-    [settingsDictionary setValue:[NSNumber numberWithBool:_wordWrap] forKey:KEY_WORD_WRAP];
-    [settingsDictionary setValue:[NSNumber numberWithBool:_lineNumbers] forKey:KEY_LINE_NUMBERS];
+//    NSMutableDictionary *settingsDictionary = [[NSMutableDictionary alloc] init];
+//    [settingsDictionary setValue:_fontFamily forKey:KEY_FONT_FAMILY];
+//    [settingsDictionary setValue:[NSNumber numberWithInt:_fontSize] forKey:KEY_FONT_SIZE];
+//    [settingsDictionary setValue:[NSNumber numberWithBool:_wordWrap] forKey:KEY_WORD_WRAP];
+//    [settingsDictionary setValue:[NSNumber numberWithBool:_lineNumbers] forKey:KEY_LINE_NUMBERS];
     
-    [savedState setValue:settingsDictionary forKey:KEY_SETTINGS_ROOT];
+    [savedState setValue:__settings forKey:KEY_SETTINGS_ROOT];
     
     // Save the dictionary back to disk.
     [savedState writeToFile:[self getStateDictionaryPath] atomically:YES];
