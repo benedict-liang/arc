@@ -102,19 +102,15 @@
     
     if (![fileManager fileExistsAtPath:[newFileURL path]]) {
         [fileManager copyItemAtURL:sampleFileURL toURL:newFileURL error:nil];
-        [[LocalRootFolder sharedLocalRootFolder] markNeedsRefresh];
     }
     if (![fileManager fileExistsAtPath:[newFile1URL path]]) {
         [fileManager copyItemAtURL:sampleFile1URL toURL:newFile1URL error:nil];
-        [[LocalRootFolder sharedLocalRootFolder] markNeedsRefresh];
     }
     if (![fileManager fileExistsAtPath:[newFile2URL path]]) {
         [fileManager copyItemAtURL:sampleFile2URL toURL:newFile2URL error:nil];
-        [[LocalRootFolder sharedLocalRootFolder] markNeedsRefresh];
     }
     if (![fileManager fileExistsAtPath:[newFile3URL path]]) {
         [fileManager copyItemAtURL:sampleFile3URL toURL:newFile3URL error:nil];
-        [[LocalRootFolder sharedLocalRootFolder] markNeedsRefresh];
     }
     // End of temporary code.
     
