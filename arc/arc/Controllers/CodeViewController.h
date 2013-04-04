@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "SubViewControllerProtocol.h"
-#import "CoreTextUIView.h"
-#import "CodeView.h"
 #import "File.h"
 #import "CodeViewControllerProtocol.h"
 @interface CodeViewController : UIViewController<SubViewControllerProtocol, CodeViewControllerProtocol, UITableViewDataSource>
