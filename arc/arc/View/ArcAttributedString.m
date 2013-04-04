@@ -37,8 +37,8 @@
         // Get the font family and size from app state.
         ApplicationState *appState = [ApplicationState sharedApplicationState];
         
-        _fontFamily = [appState fontFamily];
-        _fontSize = [appState fontSize];
+        _fontFamily = [appState settingForKey:KEY_FONT_FAMILY];
+        _fontSize = [appState settingForKey:KEY_FONT_SIZE];
         [self setString:string];
         _attributes = [NSMutableArray array];
         __attributedString = [[NSMutableAttributedString alloc]
