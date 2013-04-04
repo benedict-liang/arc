@@ -168,9 +168,10 @@
         // TODO: Skip $self for now
         return nil;
     }
-    else if ([includeString characterAtIndex:0] == '#') {
+    else if ([includeString characterAtIndex:0] == '#' && ![includeString isEqualToString:@"#disabled"]) {
         // Get rule from repository
-        NSDictionary *rule = [self getRuleFromRepository:[includeString substringFromIndex:1]];
+        NSString *str = [includeString substringFromIndex:1];
+        NSDictionary *rule = [self getRuleFromRepository:str];
         return rule;
     }
     else {
