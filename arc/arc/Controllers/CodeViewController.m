@@ -228,7 +228,9 @@
                 [[_lines objectAtIndex:lineNumber] rangeValue]]));
         
         // Memoise.
-        [_lineRefs insertObject:(__bridge id)(lineRef) atIndex:lineNumber];
+        if (_lineRefs) {
+           [_lineRefs insertObject:(__bridge id)(lineRef) atIndex:lineNumber]; 
+        }
     }
     
     cell.line = lineRef;
