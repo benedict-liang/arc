@@ -18,10 +18,10 @@
     CGColorRef color = [UIColor blackColor].CGColor;
     [arcAttributedString setColor:color];
     
-    NSString *fontFamily = [state fontFamily];
+    NSString *fontFamily = [state settingForKey:KEY_FONT_FAMILY];
     [arcAttributedString setFontFamily:fontFamily];
     
-    int fontSize = [state fontSize];
+    int fontSize = [(NSNumber*)[state settingForKey:KEY_FONT_SIZE] intValue];
     [arcAttributedString setFontSize:fontSize];
 }
 @end

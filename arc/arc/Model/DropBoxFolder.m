@@ -8,6 +8,10 @@
 
 #import "DropBoxFolder.h"
 
+@interface DropBoxFolder ()
+@property (nonatomic) NSArray *contents;
+@end
+
 @implementation DropBoxFolder
 
 // Synthesize protocol properties.

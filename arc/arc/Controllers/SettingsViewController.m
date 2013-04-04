@@ -28,24 +28,12 @@
         NSMutableDictionary *group;
         
         // Fonts
+        NSDictionary *fontDictionary = [[ApplicationState sharedApplicationState] fonts];
         group = [NSMutableDictionary dictionary];
-        [group setObject:@"Font" forKey:@"name"];
-        [group setObject:[NSArray arrayWithObjects:
-                          @"Source Code Pro",
-                          @"Inconsolata",
-                          nil]
-                  forKey:@"options"];
-        [_options addObject:group];
-
-        
-        // Others
-        group = [NSMutableDictionary dictionary];
-        [group setObject:@"Others" forKey:@"name"];
-        [group setObject:[NSArray arrayWithObjects:
-                          @"A",
-                          @"B",
-                          nil]
-                  forKey:@"options"];
+        [group setObject:@"Font" forKey:@"sectionName"];
+        [group setObject:KEY_FONT_FAMILY forKey:@"settingsKey"];
+        [group setObject:fontDictionary
+                  forKey:@"keyValuePairs"];
         [_options addObject:group];
 
         group = nil;
@@ -86,12 +74,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[_options objectAtIndex:section] objectForKey:@"options"] count];
+    return [[[_options objectAtIndex:section] objectForKey:@"keyValuePairs"] count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [[_options objectAtIndex:section] objectForKey:@"name"];
+    return [[_options objectAtIndex:section] objectForKey:@"sectionName"];
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -104,10 +92,21 @@
                                       reuseIdentifier:cellIdentifier];
     }
     
-    NSDictionary *section = [_options objectAtIndex:indexPath.section];
-    NSString *label = [[section objectForKey:@"options"] objectAtIndex:indexPath.row];
+    NSDictionary *sectionProperties = [_options objectAtIndex:indexPath.section];
     
-    cell.textLabel.text = label;
+    NSDictionary *options = [sectionProperties objectForKey:@"keyValuePairs"];
+    NSArray *allKeys = [options allKeys];
+    NSArray *allValues = [options objectsForKeys:allKeys notFoundMarker:@"None"];
+    
+    NSString *key = [allKeys objectAtIndex:indexPath.row];
+    NSString *value = [allValues objectAtIndex:indexPath.row];
+    
+    NSString *currentSetting = [[ApplicationState sharedApplicationState] settingForKey:[sectionProperties valueForKey:@"settingsKey"]];
+    if ([value isEqualToString:currentSetting]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    
+    cell.textLabel.text = key;
     return cell;
 }
 
@@ -115,7 +114,24 @@
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
+    // Get the properties associated with this section.
+    NSDictionary *sectionProperties = [_options objectAtIndex:indexPath.section];
+    NSDictionary *options = [sectionProperties objectForKey:@"keyValuePairs"];
+    NSArray *allKeys = [options allKeys];
+    NSArray *allValues = [options objectsForKeys:allKeys notFoundMarker:@"None"];
     
+    // Get the value associated with the row.
+    NSString *value = [allValues objectAtIndex:indexPath.row];
+    
+    ApplicationState *state = [ApplicationState sharedApplicationState];
+    
+    // Update the appropriate setting using the key associated with this section.
+    NSString *currentKey = [sectionProperties valueForKey:@"settingsKey"];
+    [state setSetting:value forKey:currentKey];
+    [state saveStateToDisk];
+    
+    // Add a checkmark to the row.
+    [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
 }
 
 @end

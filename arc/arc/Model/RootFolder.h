@@ -25,9 +25,7 @@
  by LocalRootFolder, and adds the DropBoxRootFolder to it.
  */
 
-@interface RootFolder : NSObject <Folder> {
-    NSArray *_contents;
-}
+@interface RootFolder : NSObject <Folder>
 
 + (RootFolder *)sharedRootFolder;
 

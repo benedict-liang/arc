@@ -20,17 +20,21 @@
 //
 // Settings and Preferences
 //
-// Accumulated Settings (For serialization)
-@property (nonatomic, readonly) NSDictionary *settings;
+// Font Dictionary
+@property (nonatomic, strong) NSDictionary* fonts;
 
-// Individual Settings
-@property (nonatomic) int fontSize;
-@property (nonatomic, strong) NSString* fontFamily;
-@property (nonatomic, strong) NSString* colorScheme;
-@property (nonatomic) BOOL lineNumbers;
-@property (nonatomic) BOOL wordWrap;
+
+// Given a key, returns the corresponding setting.
+- (id)settingForKey:(NSString *)key;
+
+// Updates the setting stored with the given key.
+- (void)setSetting:(id)value forKey:(NSString *)key;
+
+// Saves settings to disk.
+- (void)saveStateToDisk;
 
 // tmp
 // Returns a sample file.
 + (id<File>)getSampleFile;
+
 @end

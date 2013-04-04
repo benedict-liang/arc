@@ -13,6 +13,7 @@
 		026BC475170589B000A9AA5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC474170589B000A9AA5F /* Security.framework */; };
 		026BC477170589BD00A9AA5F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC476170589BD00A9AA5F /* SystemConfiguration.framework */; };
 		026BC479170589C600A9AA5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC478170589C600A9AA5F /* QuartzCore.framework */; };
+		02A5198D170DC0CE007C038E /* Inconsolata.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02A5198C170DC0CE007C038E /* Inconsolata.ttf */; };
 		02B04FCA1701672700FE51CB /* GameObject.h in Resources */ = {isa = PBXBuildFile; fileRef = 02B04FC91701608C00FE51CB /* GameObject.h */; };
 		02D2B73F17099E89002D22E7 /* RootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D2B73E17099E88002D22E7 /* RootFolder.m */; };
 		02E162CD170B02F400C9D23B /* appState.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02E162CC170B02F400C9D23B /* appState.plist */; };
@@ -86,6 +87,7 @@
 		026BC474170589B000A9AA5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		026BC476170589BD00A9AA5F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		026BC478170589C600A9AA5F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		02A5198C170DC0CE007C038E /* Inconsolata.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inconsolata.ttf; sourceTree = "<group>"; };
 		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
 		02D2B73D17099E88002D22E7 /* RootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootFolder.h; sourceTree = "<group>"; };
 		02D2B73E17099E88002D22E7 /* RootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootFolder.m; sourceTree = "<group>"; };
@@ -476,10 +478,10 @@
 		4C43F90E16F86AC400159B29 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				02E51AE8170957ED00247AF5 /* DropBox Files */,
-				0260B508170921C10091B012 /* Protocols */,
 				8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */,
 				8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */,
+				0260B508170921C10091B012 /* Protocols */,
+				02E51AE8170957ED00247AF5 /* DropBox Files */,
 				026BC47A1705913200A9AA5F /* Local Files */,
 				02D2B73D17099E88002D22E7 /* RootFolder.h */,
 				02D2B73E17099E88002D22E7 /* RootFolder.m */,
@@ -579,6 +581,7 @@
 		4CD06B9116FE1A7100C9DED3 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				02A5198C170DC0CE007C038E /* Inconsolata.ttf */,
 				4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */,
 			);
 			name = Fonts;
@@ -1096,6 +1099,7 @@
 				4CF6F0F21706E29300EDDEDC /* folder.png in Resources */,
 				4C36137D170AC673009358B1 /* dropbox.png in Resources */,
 				02E162CD170B02F400C9D23B /* appState.plist in Resources */,
+				02A5198D170DC0CE007C038E /* Inconsolata.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
