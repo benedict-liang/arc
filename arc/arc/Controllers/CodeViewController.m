@@ -58,9 +58,6 @@
     // Set Up TableView
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds
                                               style:UITableViewStylePlain];
-    [_tableView registerClass:[CodeLineCell class]
-       forCellReuseIdentifier:@"CodeLineCell"];
-    
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
         UIViewAutoresizingFlexibleWidth;
     
