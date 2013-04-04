@@ -13,7 +13,6 @@
 
 @interface DropBoxFolder : NSObject <Folder> {
     NSArray *_contents;
-    BOOL _needsRefresh;
 }
 
 @end
