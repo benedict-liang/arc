@@ -76,6 +76,8 @@
     
     // TODO.
     // What is this?
+    //(Omer) Boolean var set to yes when loaded. so mergeAndRenderWith doesn't update before view is loaded. Can happen if syntax highlighting is finished before view is loaded
+    
     _isLoaded = YES;
 }
 
