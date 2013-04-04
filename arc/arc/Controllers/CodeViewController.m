@@ -98,6 +98,12 @@
 
 - (void)showFile:(id<File>)file
 {
+    if ([file isEqual:_currentFile]) {
+        [self clearMemoisedInformation];
+        [_tableView reloadData];
+        return;
+    }
+    
     // Update Current file
     _currentFile = file;
     
