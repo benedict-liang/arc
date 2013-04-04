@@ -7,16 +7,24 @@
 //
 #import <CoreText/CoreText.h>
 #import "CodeViewController.h"
-#import "CoreTextUIView.h"
+#import "CodeLineCell.h"
 #import "ArcAttributedString.h"
+
+// Middleware
 #import "BasicStyles.h"
 #import "SyntaxHighlight.h"
+
 @interface CodeViewController ()
 @property id<File> currentFile;
-@property CodeView *codeView;
-@property CoreTextUIView *coreTextView;
+@property (nonatomic, strong) UITableView *tableView;
 @property ArcAttributedString *arcAttributedString;
-- (void)refreshSubViewSizes;
+@property CTFramesetterRef frameSetter;
+@property CGFloat lineHeight;
+@property NSMutableArray *lines;
+- (void)loadFile;
+- (void)clearPreviousLayoutInformation;
+- (void)generateLines;
+- (void)calcLineHeight;
 @end
 
 @implementation CodeViewController
@@ -27,6 +35,7 @@
 {
     self = [super init];
     if (self) {
+        _lines = [NSMutableArray array];
         _isLoaded = NO;
     }
     return self;
@@ -35,38 +44,35 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.autoresizesSubviews = YES;
     
     // Add a toolbar
     _toolbar = [[UIToolbar alloc] initWithFrame:
-        CGRectMake(0, 0, self.view.bounds.size.width, SIZE_TOOLBAR_HEIGHT)];
+                CGRectMake(0, 0, self.view.bounds.size.width, SIZE_TOOLBAR_HEIGHT)];
     _toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    
-    _codeView = [[CodeView alloc] init];
-    _codeView.frame = CGRectMake(0, SIZE_TOOLBAR_HEIGHT,
-        self.view.bounds.size.width, self.view.bounds.size.height - SIZE_TOOLBAR_HEIGHT);
-    _codeView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
-    _coreTextView = [[CoreTextUIView alloc] init];
-    _coreTextView.frame = _codeView.bounds;
-    [_codeView addSubview:_coreTextView];
-    
     [self.view addSubview:_toolbar];
-    [self.view addSubview:_codeView];
     
-//    
-//    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc]
-//                                      initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-//                                      target:nil action:nil];
-//    
-//    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"<"
-//                                                               style:UIBarButtonItemStylePlain
-//                                                              target:self
-//                                                              action:@selector(hideLeftBar:)];
-//    [_toolbar setItems:[NSArray arrayWithObjects:
-//                       button,
-//                       flexibleSpace,
-//                       nil]
-//             animated:YES];
+    // Set Up TableView
+    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds
+                                              style:UITableViewStylePlain];
+    [_tableView registerClass:[CodeLineCell class]
+       forCellReuseIdentifier:@"CodeLineCell"];
+    
+    _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
+        UIViewAutoresizingFlexibleWidth;
+    
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.autoresizesSubviews = YES;
+    
+    // Set TableView's Delegate and DataSource
+    _tableView.dataSource = self;
+    _tableView.frame = CGRectMake(0, SIZE_TOOLBAR_HEIGHT,
+                                  self.view.bounds.size.width,
+                                  self.view.bounds.size.height - SIZE_TOOLBAR_HEIGHT);
+    [self.view addSubview:_tableView];
+    
+    // TODO.
+    // What is this?
     _isLoaded = YES;
 }
 
@@ -77,7 +83,7 @@
 
 - (void)hideLeftBar:(id)sender
 {
-    [self.delegate hideLeftBar];
+
 }
 
 
@@ -88,20 +94,12 @@
     //[self refreshSubViewSizes];
 }
 
-- (void)refreshSubViewSizes
-{
-    [_coreTextView refresh];
-
-    // Resize codeView (parent) Content Size
-    _codeView.contentSize = _coreTextView.bounds.size;
-}
-
 - (void)showFile:(id<File>)file
 {
     // Update Current file
     _currentFile = file;
-    [self loadFile:_currentFile];
-
+    
+    [self loadFile];
 
     // Middleware to Style Attributed String
     [BasicStyles arcAttributedString:_arcAttributedString
@@ -112,13 +110,57 @@
                                 delegate:self];
 
     // Render Code to screen
-    [self render];
-    
-    // Update Sizes of SubViews
-    [self refreshSubViewSizes];
+    [self generateLines];
+    [self.tableView reloadData];
 }
 
-- (void)loadFile:(id<File>)file
+// Helper method to release our cached Core Text framesetter and frame
+- (void)clearPreviousLayoutInformation
+{
+    if (_frameSetter != NULL) {
+        CFRelease(_frameSetter);
+        _frameSetter = NULL;
+    }
+}
+
+- (void)generateLines
+{
+    [self clearPreviousLayoutInformation];
+    self.lines = [NSMutableArray array];
+    
+    CFAttributedStringRef ref = (CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.attributedString);
+    _frameSetter = CTFramesetterCreateWithAttributedString(ref);
+    
+    // Work out the geometry
+    CGFloat boundsWidth = _tableView.bounds.size.width - 20*2 - 45;
+    
+    // Calculate the lines
+    CFIndex start = 0;
+    NSUInteger length = CFAttributedStringGetLength(ref);
+    while (start < length)
+    {
+        CTTypesetterRef typesetter = CTFramesetterGetTypesetter(_frameSetter);
+        CFIndex count = CTTypesetterSuggestLineBreak(typesetter, start, boundsWidth);
+        CTLineRef line = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)([_arcAttributedString.attributedString attributedSubstringFromRange:NSMakeRange(start, count)]));
+        [_lines addObject:(__bridge id)(line)];
+        start += count;
+    }
+    
+    [self calcLineHeight];
+}
+
+- (void)calcLineHeight
+{
+    CGFloat asscent, descent, leading;
+    if ([_lines count] > 0) {
+        CTLineRef line = (__bridge CTLineRef)([_lines objectAtIndex:0]);
+        CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
+        _lineHeight = asscent + descent + leading;
+        _tableView.rowHeight = ceil(_lineHeight);
+    }
+}
+
+- (void)loadFile
 {
     _arcAttributedString = [[ArcAttributedString alloc]
                             initWithString:(NSString *)[_currentFile contents]];
@@ -127,17 +169,48 @@
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
                    forFile:(id<File>)file
 {
-    //TODO merge aas with _arcAttributedString.
+    //TODO
+    // merge arcAttributedString (param) with _arcAttributedString.
     while (!_isLoaded) {
-        
+
     }
+
     if ([file isEqual:_currentFile]) {
         _arcAttributedString = arcAttributedString;
-        [self render];
+        
+        // tmp
+        [self generateLines];
+        [self.tableView reloadData];
     }
 }
-- (void)render
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [_coreTextView setAttributedString:_arcAttributedString.attributedString];
+    return 1;
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [_lines count];
+}
+
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    static NSString *cellIdentifier = @"CodeLineCell";
+    CodeLineCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[CodeLineCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                   reuseIdentifier:cellIdentifier];
+    }
+    cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    NSUInteger lineNumber = indexPath.row;
+    CTLineRef ref = (__bridge CTLineRef)[_lines objectAtIndex:lineNumber];
+    cell.line = ref;
+    [cell setNeedsDisplay];
+    return cell;
+}
+
 @end
