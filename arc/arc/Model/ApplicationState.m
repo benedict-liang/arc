@@ -42,6 +42,8 @@ static ApplicationState *sharedApplicationState = nil;
         _currentFileOpened = nil;
         _fontFamily = [storedSettings valueForKey:KEY_FONT_FAMILY];
         _fontSize = [(NSNumber*)[storedSettings valueForKey:KEY_FONT_SIZE] intValue];
+        _wordWrap = (BOOL)[storedSettings valueForKey:KEY_WORD_WRAP];
+        _lineNumbers = (BOOL)[storedSettings valueForKey:KEY_LINE_NUMBERS];
     }
     return self;
 }
