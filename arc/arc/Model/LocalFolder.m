@@ -11,7 +11,7 @@
 @implementation LocalFolder
 
 // Synthesize properties from protocol.
-@synthesize name=_name, path=_path, parent=_parent, needsRefresh=_needsRefresh;
+@synthesize name=_name, path=_path, parent=_parent;
 
 // Initialises this object with the given name, path, and parent.
 - (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent
@@ -20,23 +20,12 @@
         _name = name;
         _path = path;
         _parent = parent;
-        _needsRefresh = YES;
     }
     return self;
 }
 
 // Returns the contents of this object.
 - (id<NSObject>)contents
-{
-    if (_needsRefresh) {
-        return [self refreshContents];
-    } else {
-        return _contents;
-    }
-}
-
-// Refreshes the contents of this object, and returns them (for convenience.)
-- (id<NSObject>)refreshContents
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
@@ -64,15 +53,8 @@
             [contents addObject:retrievedObject];
         }
         _contents = contents;
-        _needsRefresh = NO;
         return _contents;
     }
-}
-
-// Marks this object as needing to be refreshed.
-- (void)markNeedsRefresh
-{
-    _needsRefresh = YES;
 }
 
 // Moves the given FileSystemObject to this Folder.
@@ -89,7 +71,6 @@
         NSError *error;
         BOOL isMoveSuccessful = [fileManager moveItemAtPath:[target path] toPath:newTargetPath error:&error];
         if (isMoveSuccessful) {
-            [self markNeedsRefresh];
             [target setParent:self];
             [target setPath:newTargetPath];
         } else {
@@ -128,7 +109,6 @@
    
     if (isCreateSuccessful) {
         LocalFolder *newFolder = [[LocalFolder alloc] initWithName:name path:newFolderPath parent:self];
-        [self markNeedsRefresh];
         return newFolder;
     } else {
         NSLog(@"%@", error);
@@ -149,10 +129,6 @@
 
     if (isRenameSuccessful) {
         _name = name;
-        [_parent markNeedsRefresh];
-        [self markNeedsRefresh];
-        // Need to reinit our contents, since all the paths from
-        // this folder down have now changed.
     } else {
         NSLog(@"%@", error);
     }
@@ -169,9 +145,7 @@
     NSError *error;
     BOOL isRemoveSuccessful = [fileManager removeItemAtPath:_path error:&error];
     
-    if (isRemoveSuccessful) {
-        [_parent markNeedsRefresh];
-    } else {
+    if (!isRemoveSuccessful) {
         NSLog(@"%@", error);
     }
     return isRemoveSuccessful;
