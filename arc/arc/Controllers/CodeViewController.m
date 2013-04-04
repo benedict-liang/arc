@@ -58,9 +58,6 @@
     // Set Up TableView
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds
                                               style:UITableViewStylePlain];
-    [_tableView registerClass:[CodeLineCell class]
-       forCellReuseIdentifier:@"CodeLineCell"];
-    
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
         UIViewAutoresizingFlexibleWidth;
     
@@ -76,6 +73,8 @@
     
     // TODO.
     // What is this?
+    //(Omer) Boolean var set to yes when loaded. so mergeAndRenderWith doesn't update before view is loaded. Can happen if syntax highlighting is finished before view is loaded
+    
     _isLoaded = YES;
 }
 
@@ -229,7 +228,9 @@
                 [[_lines objectAtIndex:lineNumber] rangeValue]]));
         
         // Memoise.
-        [_lineRefs insertObject:(__bridge id)(lineRef) atIndex:lineNumber];
+        if (_lineRefs) {
+           [_lineRefs insertObject:(__bridge id)(lineRef) atIndex:lineNumber]; 
+        }
     }
     
     cell.line = lineRef;
