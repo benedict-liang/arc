@@ -12,6 +12,7 @@
 
 @protocol CodeViewControllerProtocol <NSObject>
 - (void)showFile:(id<File>)file;
+- (void)refreshForSetting:(NSString*)setting;
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
                    forFile:(id<File>)file;
 @end

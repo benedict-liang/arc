@@ -58,6 +58,11 @@
     }
 }
 
+- (void)refreshCodeViewForSetting:(NSString *)setting
+{
+    [_codeViewController refreshForSetting:setting];
+}
+
 // Shows the file using the CodeViewController
 - (void)fileSelected:(id<File>)file
 {

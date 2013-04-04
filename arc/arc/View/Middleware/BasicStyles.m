@@ -11,7 +11,20 @@
 #import "BasicStyles.h"
 
 @implementation BasicStyles
-+ (void)arcAttributedString:(ArcAttributedString*)arcAttributedString OfFile:(id<File>)file delegate:(id)del;
+//@synthesize settings = _settings;
+//
+//- (id)init {
+//    self = [super init];
+//    if (self) {
+//        _settings = [NSArray arrayWithObjects:
+//                     KEY_FONT_FAMILY,
+//                     KEY_FONT_SIZE,
+//                     nil];
+//    }
+//    return self;
+//}
+
++ (void)arcAttributedString:(ArcAttributedString*)arcAttributedString OfFile:(id<File>)file delegate:(id)delegate;
 {
     ApplicationState *state = [ApplicationState sharedApplicationState];
     

@@ -86,10 +86,12 @@
 {
     static NSString *cellIdentifier = @"SettingsCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
+
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:cellIdentifier];
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
     NSDictionary *sectionProperties = [_options objectAtIndex:indexPath.section];
@@ -132,6 +134,15 @@
     
     // Add a checkmark to the row.
     [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
+
+    // trigger a codeViewRefresh
+    [self.delegate refreshCodeViewForSetting:currentKey];
+
+    // unhighlight TableViewCell
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    // Reload TableView data
+    [tableView reloadData];
 }
 
 @end

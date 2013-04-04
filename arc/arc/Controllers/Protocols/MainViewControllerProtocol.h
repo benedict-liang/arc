@@ -21,6 +21,7 @@
 
 // TODO, refactor these methods
 #pragma mark - Others
+- (void)refreshCodeViewForSetting:(NSString *)setting;
 - (void)openIn:(id<File>)file;
 - (void)dropboxAuthentication;
 
