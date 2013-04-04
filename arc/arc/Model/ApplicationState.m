@@ -15,9 +15,6 @@
 static ApplicationState *sharedApplicationState = nil;
 
 @implementation ApplicationState
-@synthesize _settings = __settings;
-@synthesize currentFileOpened = _currentFileOpened;
-@synthesize currentFolderOpened = _currentFolderOpened;
 
 + (ApplicationState*)sharedApplicationState
 {
@@ -46,11 +43,6 @@ static ApplicationState *sharedApplicationState = nil;
         _lineNumbers = (BOOL)[storedSettings valueForKey:KEY_LINE_NUMBERS];
     }
     return self;
-}
-
-- (NSDictionary*)settings
-{
-    return [NSDictionary dictionaryWithDictionary:__settings];
 }
 
 // Returns a sample file.

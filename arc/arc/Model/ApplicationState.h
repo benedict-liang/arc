@@ -20,9 +20,6 @@
 //
 // Settings and Preferences
 //
-// Accumulated Settings (For serialization)
-@property (nonatomic, readonly) NSDictionary *settings;
-
 // Individual Settings
 @property (nonatomic) int fontSize;
 @property (nonatomic, strong) NSString* fontFamily;
