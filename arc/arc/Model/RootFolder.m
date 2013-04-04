@@ -13,13 +13,12 @@ static RootFolder *sharedRootFolder = nil;
 @implementation RootFolder
 
 // Synthesize properties from protocol.
-@synthesize name=_name, path=_path, parent=_parent, needsRefresh=_needsRefresh;
+@synthesize name=_name, path=_path, parent=_parent;
 
 + (RootFolder *)sharedRootFolder
 {
     if (sharedRootFolder == nil) {
         sharedRootFolder = [[super allocWithZone:NULL] init];
-        [sharedRootFolder markNeedsRefresh];
     }
     return sharedRootFolder;
 }
@@ -27,32 +26,14 @@ static RootFolder *sharedRootFolder = nil;
 // Returns the contents of this object.
 - (id<NSObject>)contents
 {
-    if ([[LocalRootFolder sharedLocalRootFolder] needsRefresh] || _needsRefresh) {
-        return [self refreshContents];
-    } else {
-        return _contents;
-    }
-}
-
-// Refreshes the contents of this object, and returns them (for convenience.)
-- (id<NSObject>)refreshContents
-{
-    NSArray *localFileContents = (NSArray *)[[LocalRootFolder sharedLocalRootFolder] refreshContents];
+    NSArray *localFileContents = (NSArray *)[[LocalRootFolder sharedLocalRootFolder] contents];
 
     if ([[DBAccountManager sharedManager] linkedAccount]) {
         _contents = [localFileContents arrayByAddingObject:[DropBoxRootFolder sharedDropBoxRootFolder]];
     } else {
         _contents = localFileContents;
     }
-    _needsRefresh = NO;
     return _contents;
-}
-
-// Marks this object as needing to be refreshed.
-- (void)markNeedsRefresh
-{
-    _needsRefresh = YES;
-    [[LocalRootFolder sharedLocalRootFolder] markNeedsRefresh];
 }
 
 // Initialises this object with the given name, path, and parent.
