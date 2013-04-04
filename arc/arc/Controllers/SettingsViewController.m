@@ -28,23 +28,10 @@
         NSMutableDictionary *group;
         
         // Fonts
+        NSDictionary *fontDictionary = [[ApplicationState sharedApplicationState] fonts];
         group = [NSMutableDictionary dictionary];
         [group setObject:@"Font" forKey:@"name"];
-        [group setObject:[NSArray arrayWithObjects:
-                          @"Source Code Pro",
-                          @"Inconsolata",
-                          nil]
-                  forKey:@"options"];
-        [_options addObject:group];
-
-        
-        // Others
-        group = [NSMutableDictionary dictionary];
-        [group setObject:@"Others" forKey:@"name"];
-        [group setObject:[NSArray arrayWithObjects:
-                          @"A",
-                          @"B",
-                          nil]
+        [group setObject:fontDictionary
                   forKey:@"options"];
         [_options addObject:group];
 
@@ -105,7 +92,7 @@
     }
     
     NSDictionary *section = [_options objectAtIndex:indexPath.section];
-    NSString *label = [[section objectForKey:@"options"] objectAtIndex:indexPath.row];
+    NSString *label = [[[section objectForKey:@"options"] allKeys] objectAtIndex:indexPath.row];
     
     cell.textLabel.text = label;
     return cell;
