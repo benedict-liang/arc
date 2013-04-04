@@ -21,8 +21,10 @@
 @property CTFramesetterRef frameSetter;
 @property CGFloat lineHeight;
 @property NSMutableArray *lines;
+@property NSMutableArray *lineRefs;
 - (void)loadFile;
 - (void)clearPreviousLayoutInformation;
+- (void)clearMemoisedInformation;
 - (void)generateLines;
 - (void)calcLineHeight;
 @end
@@ -36,6 +38,7 @@
     self = [super init];
     if (self) {
         _lines = [NSMutableArray array];
+        _lineRefs = [NSMutableArray array];
         _isLoaded = NO;
     }
     return self;
@@ -111,22 +114,29 @@
 
     // Render Code to screen
     [self generateLines];
-    [self.tableView reloadData];
+    [_tableView reloadData];
 }
 
-// Helper method to release our cached Core Text framesetter and frame
+- (void)clearMemoisedInformation
+{
+    _lineRefs = [NSMutableArray array];
+}
+
 - (void)clearPreviousLayoutInformation
 {
     if (_frameSetter != NULL) {
         CFRelease(_frameSetter);
         _frameSetter = NULL;
     }
+
+    _lines = [NSMutableArray array];
+    [self clearMemoisedInformation];
 }
 
 - (void)generateLines
 {
     [self clearPreviousLayoutInformation];
-    self.lines = [NSMutableArray array];
+    _lines = [NSMutableArray array];
     
     CFAttributedStringRef ref = (CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.attributedString);
     _frameSetter = CTFramesetterCreateWithAttributedString(ref);
@@ -180,7 +190,8 @@
 
     if ([file isEqual:_currentFile]) {
         _arcAttributedString = arcAttributedString;
-        [self.tableView reloadData];
+        [self clearMemoisedInformation];
+        [_tableView reloadData];
     }
 }
 
@@ -208,12 +219,20 @@
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     NSUInteger lineNumber = indexPath.row;
 
-    CTLineRef lineRef = CTLineCreateWithAttributedString(
-        (__bridge CFAttributedStringRef)(
-            [_arcAttributedString.attributedString attributedSubstringFromRange:
-            [[_lines objectAtIndex:lineNumber] rangeValue]]));
-    cell.line = lineRef;
+    CTLineRef lineRef = (lineNumber < [_lineRefs count]) ?
+        (__bridge CTLineRef)[_lineRefs objectAtIndex:lineNumber] : nil;
     
+    if (lineRef == nil) {
+        lineRef = CTLineCreateWithAttributedString(
+            (__bridge CFAttributedStringRef)(
+                [_arcAttributedString.attributedString attributedSubstringFromRange:
+                [[_lines objectAtIndex:lineNumber] rangeValue]]));
+        
+        // Memoise.
+        [_lineRefs insertObject:(__bridge id)(lineRef) atIndex:lineNumber];
+    }
+    
+    cell.line = lineRef;
     [cell setNeedsDisplay];
     return cell;
 }
