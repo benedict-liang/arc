@@ -8,6 +8,10 @@
 
 #import "LocalFolder.h"
 
+@interface LocalFolder ()
+@property (nonatomic) NSArray *contents;
+@end
+
 @implementation LocalFolder
 
 // Synthesize properties from protocol.

@@ -8,6 +8,10 @@
 
 #import "LocalFile.h"
 
+@interface LocalFile ()
+@property (nonatomic) NSString *contents;
+@end
+
 @implementation LocalFile
 
 // Synthesize properties from protocol.

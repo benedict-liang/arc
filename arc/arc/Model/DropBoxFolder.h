@@ -11,8 +11,6 @@
 #import "Folder.h"
 #import "DropBoxFile.h"
 
-@interface DropBoxFolder : NSObject <Folder> {
-    NSArray *_contents;
-}
+@interface DropBoxFolder : NSObject <Folder>
 
 @end

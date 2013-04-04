@@ -10,8 +10,6 @@
 #import "Folder.h"
 #import "LocalFile.h"
 
-@interface LocalFolder : NSObject <Folder> {
-    NSArray *_contents;
-}
+@interface LocalFolder : NSObject <Folder>
 
 @end
