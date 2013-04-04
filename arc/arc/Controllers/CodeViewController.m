@@ -39,7 +39,6 @@
     if (self) {
         _lines = [NSMutableArray array];
         _lineRefs = [NSMutableArray array];
-        _isLoaded = NO;
     }
     return self;
 }
@@ -70,12 +69,6 @@
                                   self.view.bounds.size.width,
                                   self.view.bounds.size.height - SIZE_TOOLBAR_HEIGHT);
     [self.view addSubview:_tableView];
-    
-    // TODO.
-    // What is this?
-    //(Omer) Boolean var set to yes when loaded. so mergeAndRenderWith doesn't update before view is loaded. Can happen if syntax highlighting is finished before view is loaded
-    
-    _isLoaded = YES;
 }
 
 - (void)showLeftBar:(id)sender
@@ -187,12 +180,6 @@
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
                    forFile:(id<File>)file
 {
-    //TODO
-    // merge arcAttributedString (param) with _arcAttributedString.
-    while (!_isLoaded) {
-
-    }
-
     if ([file isEqual:_currentFile]) {
         _arcAttributedString = arcAttributedString;
         [self clearMemoisedInformation];

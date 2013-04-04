@@ -33,8 +33,10 @@
 
     _leftViewController = [self.viewControllers objectAtIndex:0];
     _codeViewController = [self.viewControllers objectAtIndex:1];
+}
 
-    // TMP
+- (void)viewWillAppear:(BOOL)animated
+{
     [self fileSelected:[ApplicationState getSampleFile]];
     [self folderSelected:[RootFolder sharedRootFolder]];
 }

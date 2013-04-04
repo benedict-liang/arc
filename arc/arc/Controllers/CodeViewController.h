@@ -11,6 +11,5 @@
 #import "File.h"
 #import "CodeViewControllerProtocol.h"
 @interface CodeViewController : UIViewController<SubViewControllerProtocol, CodeViewControllerProtocol, UITableViewDataSource>
-@property BOOL isLoaded;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @end
