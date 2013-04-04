@@ -12,7 +12,7 @@
 
 @protocol CodeViewControllerProtocol <NSObject>
 - (void)showFile:(id<File>)file;
-- (void)mergeAndRenderWith:(ArcAttributedString*)aas forFile:(id<File>)file;;
-
+- (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
+                   forFile:(id<File>)file;
 @end
 
