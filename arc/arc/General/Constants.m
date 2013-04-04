@@ -24,6 +24,8 @@ NSString* const KEY_CURRENT_FILE = @"currentFile";
 NSString* const KEY_SETTINGS_ROOT = @"Settings";
 NSString* const KEY_FONT_FAMILY = @"fontFamily";
 NSString* const KEY_FONT_SIZE = @"fontSize";
+NSString* const KEY_LINE_NUMBERS = @"lineNumbers";
+NSString* const KEY_WORD_WRAP = @"wordWrap";
 
 // Default Folder Names
 NSString* const FOLDER_EXTERNAL_APPLICATIONS = @"External Applications";
