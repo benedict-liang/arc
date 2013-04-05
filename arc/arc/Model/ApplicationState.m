@@ -24,6 +24,18 @@ static ApplicationState *sharedApplicationState = nil;
     return sharedApplicationState;
 }
 
+- (void)setCurrentFileOpened:(id<File>)currentFileOpened
+{
+    _currentFileOpened = currentFileOpened;
+    [self setSetting:[currentFileOpened path] forKey:KEY_CURRENT_FILE];
+}
+
+- (void)setCurrentFolderOpened:(id<Folder>)currentFolderOpened
+{
+    _currentFolderOpened = currentFolderOpened;
+    [self setSetting:[currentFolderOpened path] forKey:KEY_CURRENT_FOLDER];
+}
+
 // Helper method to get the path of the state plist.
 - (NSString *)getStateDictionaryPath
 {
