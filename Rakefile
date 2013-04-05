@@ -10,6 +10,9 @@ def cleaned_name(fname)
 	return ps[0,ps.length-1].join('.')
 end
 
+def dirless_name(fname)
+	return fname.split(BUNDLE_DIR)[1]
+end
 # task to generate BundleConfig.plist
 # Structure of object produce:
 #{'fileTypes':{fileType:[bundles]} , 'bundles':{bundleName:1}}
@@ -29,7 +32,7 @@ task :config do
 		 			if !global_fileTypes[ftype]
 		 				global_fileTypes[ftype] = []
 		 			end
-		 		global_fileTypes[ftype].push(fname)
+		 		global_fileTypes[ftype].push(dirless_name(fname))
 		 		end
 	 		end
 		end	
