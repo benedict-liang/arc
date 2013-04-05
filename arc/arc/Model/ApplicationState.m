@@ -82,13 +82,7 @@ static ApplicationState *sharedApplicationState = nil;
     [savedState setValue:[_currentFolderOpened path] forKey:KEY_CURRENT_FOLDER];
     [savedState setValue:[_currentFileOpened path] forKey:KEY_CURRENT_FILE];
     
-    // Save our settings into a dictionary.
-//    NSMutableDictionary *settingsDictionary = [[NSMutableDictionary alloc] init];
-//    [settingsDictionary setValue:_fontFamily forKey:KEY_FONT_FAMILY];
-//    [settingsDictionary setValue:[NSNumber numberWithInt:_fontSize] forKey:KEY_FONT_SIZE];
-//    [settingsDictionary setValue:[NSNumber numberWithBool:_wordWrap] forKey:KEY_WORD_WRAP];
-//    [settingsDictionary setValue:[NSNumber numberWithBool:_lineNumbers] forKey:KEY_LINE_NUMBERS];
-    
+    // Save our settings.
     [savedState setValue:__settings forKey:KEY_SETTINGS_ROOT];
     
     // Save the dictionary back to disk.
