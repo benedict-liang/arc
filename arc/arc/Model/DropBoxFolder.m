@@ -163,7 +163,24 @@
 // at that path.
 - (id<FileSystemObject>)objectAtPath:(NSString *)path
 {
-    return self; // TEMP.
+    NSString *commonPrefix = [[self path] commonPrefixWithString:path options:NSCaseInsensitiveSearch];
+    NSString *newPathString = [path substringFromIndex:[commonPrefix length]];
+    
+    NSArray *pathComponents = [newPathString pathComponents];
+    
+    if ([pathComponents count] == 0) {
+        return self;
+    } else if ([pathComponents count] == 2) {
+        // The object should be in this folder. Return it.
+        NSString *unescapedName = [[pathComponents objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        return [self retrieveItemWithName:unescapedName];
+    } else {
+        // Get the next folder.
+        NSString *nextFolderName = [pathComponents objectAtIndex:1];
+        DropBoxFolder *nextSearch = (DropBoxFolder *)[self retrieveItemWithName:nextFolderName];
+        
+        return [nextSearch objectAtPath:path];
+    }
 }
 
 @end
