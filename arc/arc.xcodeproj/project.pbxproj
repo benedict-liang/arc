@@ -38,6 +38,8 @@
 		4C43F90816F86AA900159B29 /* arc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F90616F86AA900159B29 /* arc.xcdatamodeld */; };
 		4C45551A17017005001C6F1D /* BasicStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C45551917017005001C6F1D /* BasicStyles.m */; };
 		4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C963C81170D8E96004FDACB /* CodeLineCell.m */; };
+		4C9E0619170F3AFC0000F783 /* arc72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E0618170F3AFC0000F783 /* arc72.png */; };
+		4C9E061B170F3B1A0000F783 /* arc144.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E061A170F3B1A0000F783 /* arc144.png */; };
 		4CD06B6C16FDEEC100C9DED3 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD06B3B16FDEDA600C9DED3 /* SenTestingKit.framework */; };
 		4CD06B6D16FDEEC100C9DED3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
 		4CD06B6E16FDEEC100C9DED3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EE16F86AA900159B29 /* Foundation.framework */; };
@@ -131,6 +133,8 @@
 		4C45551917017005001C6F1D /* BasicStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicStyles.m; sourceTree = "<group>"; };
 		4C963C80170D8E96004FDACB /* CodeLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeLineCell.h; sourceTree = "<group>"; };
 		4C963C81170D8E96004FDACB /* CodeLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeLineCell.m; sourceTree = "<group>"; };
+		4C9E0618170F3AFC0000F783 /* arc72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc72.png; sourceTree = SOURCE_ROOT; };
+		4C9E061A170F3B1A0000F783 /* arc144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc144.png; sourceTree = SOURCE_ROOT; };
 		4CA4DE42170EA04400A86109 /* DetailViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewControllerDelegate.h; sourceTree = "<group>"; };
 		4CA4DE43170EA4C200A86109 /* MasterViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewControllerDelegate.h; sourceTree = "<group>"; };
 		4CD06B2C16FDE92D00C9DED3 /* SubViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubViewControllerDelegate.h; sourceTree = "<group>"; };
@@ -452,6 +456,8 @@
 				4C43F90E16F86AC400159B29 /* Model */,
 				4CD06B8716FE122400C9DED3 /* View */,
 				4CD06B9016FE1A6900C9DED3 /* Assets */,
+				4C9E061A170F3B1A0000F783 /* arc144.png */,
+				4C9E0618170F3AFC0000F783 /* arc72.png */,
 				4C43F8FD16F86AA900159B29 /* AppDelegate.h */,
 				4C43F8FE16F86AA900159B29 /* AppDelegate.m */,
 				4C43F90616F86AA900159B29 /* arc.xcdatamodeld */,
@@ -1108,6 +1114,8 @@
 				02E162CD170B02F400C9D23B /* appState.plist in Resources */,
 				02A5198D170DC0CE007C038E /* Inconsolata.ttf in Resources */,
 				028B4900170E9D0600C0CEF6 /* UbuntuMono.ttf in Resources */,
+				4C9E0619170F3AFC0000F783 /* arc72.png in Resources */,
+				4C9E061B170F3B1A0000F783 /* arc144.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
