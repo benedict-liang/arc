@@ -15,15 +15,15 @@
     
     NSBundle *mainBundle = [NSBundle mainBundle];
     //TODO: Get plists name from Syntaxes folder
-    NSURL *syntaxFileURL = [mainBundle URLForResource:@"Python.tmLanguage" withExtension:nil];
-    NSDictionary *plist = [NSDictionary dictionaryWithContentsOfURL:syntaxFileURL];
+//    NSURL *syntaxFileURL = [mainBundle URLForResource:@"Python.tmLanguage" withExtension:nil];
+//    NSDictionary *plist = [NSDictionary dictionaryWithContentsOfURL:syntaxFileURL];
+//    
+//    [plistArray addObject:plist];
     
-    [plistArray addObject:plist];
-    
-//    NSURL *syntaxFileURL1 = [mainBundle URLForResource:@"Regular Expressions (JavaScript).tmLanguage" withExtension:nil];
-//    NSDictionary *plist1 = [NSDictionary dictionaryWithContentsOfURL:syntaxFileURL1];
+    NSURL *syntaxFileURL1 = [mainBundle URLForResource:@"Objective-C.tmLanguage" withExtension:nil];
+   NSDictionary *plist1 = [NSDictionary dictionaryWithContentsOfURL:syntaxFileURL1];
 
-   // [plistArray addObject:plist1];
+    [plistArray addObject:plist1];
     
     return [NSArray arrayWithArray:plistArray];
 }

@@ -110,7 +110,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>@"</string>
+			<string>@&quot;</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -120,7 +120,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>"</string>
+			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
@@ -141,7 +141,7 @@
 					<key>match</key>
 					<string>(?x)%
 						(\d+\$)?                             # field (argument #)
-						[#0\- +']*                          # flags
+						[#0\- +&apos;]*                          # flags
 						((-?\d+)|\*(-?\d+\$)?)?              # minimum field width
 						(\.((-?\d+)|\*(-?\d+\$)?)?)?         # precision
 						[@]                                  # conversion type
@@ -534,7 +534,7 @@
 						</dict>
 						<dict>
 							<key>begin</key>
-							<string>@"</string>
+							<string>@&quot;</string>
 							<key>beginCaptures</key>
 							<dict>
 								<key>0</key>
@@ -544,7 +544,7 @@
 								</dict>
 							</dict>
 							<key>end</key>
-							<string>"</string>
+							<string>&quot;</string>
 							<key>endCaptures</key>
 							<dict>
 								<key>0</key>
@@ -595,7 +595,7 @@
 								</dict>
 								<dict>
 									<key>match</key>
-									<string>\\(\\|[abefnrtv'"?]|[0-3]\d{,2}|[4-7]\d?|x[a-zA-Z0-9]+)</string>
+									<string>\\(\\|[abefnrtv&apos;&quot;?]|[0-3]\d{,2}|[4-7]\d?|x[a-zA-Z0-9]+)</string>
 									<key>name</key>
 									<string>constant.character.escape.objc</string>
 								</dict>
@@ -623,7 +623,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?=\w)(?&lt;=[\w\])"] )(\w+(?:(:)|(?=\])))</string>
+					<string>(?=\w)(?&lt;=[\w\])&quot;] )(\w+(?:(:)|(?=\])))</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -810,10 +810,6 @@
 			<string>^\s*#\s*endif\b.*$</string>
 			<key>patterns</key>
 			<array>
-				<dict>
-					<key>include</key>
-					<string>#disabled</string>
-				</dict>
 				<dict>
 					<key>include</key>
 					<string>#pragma-mark</string>
