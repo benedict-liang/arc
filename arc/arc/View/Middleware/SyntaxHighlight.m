@@ -68,14 +68,23 @@
     
     if (r.location + r.length <= [_content length]) {
         NSArray* matches = [regex matchesInString:_content options:0 range:r];
-        for (NSTextCheckingResult *match in matches) {
-            NSRange range = [match rangeAtIndex:c];
-            if (range.location != NSNotFound) {
-                [results addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
+        @try {
+            for (NSTextCheckingResult *match in matches) {
+                NSRange range = [match rangeAtIndex:c];
+                if (range.location != NSNotFound) {
+                    [results addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
+                }
+                
             }
-        
+
         }
-    } else {
+        @catch (NSException *exception) {
+            NSLog(@"exception at found pattern");
+        }
+        @finally {
+            
+        }
+        } else {
         NSLog(@"index error in capture:%d %d",r.location,r.length);
     }
     
