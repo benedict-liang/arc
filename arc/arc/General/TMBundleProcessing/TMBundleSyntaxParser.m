@@ -117,6 +117,26 @@
 
 // Returns a patterns array that is stripped of all unused keys/values,
 // and is now only a level deep for each pattern group.
++ (NSArray*)getPatternsArrayForFileType:(NSString*)fileType {
+    NSMutableArray *patternsArray = [[NSMutableArray alloc] init];
+    
+    NSArray *plistsArray = [TMBundleSyntaxParser getSyntaxPListsForFileType:fileType];
+    
+    TMBundleGrammar *grammar = [[TMBundleGrammar alloc] initWithPlists:plistsArray];
+    
+    // TODO: Handle conditions to parse multiple plists, and combine the results
+    NSDictionary *plist = [plistsArray objectAtIndex:0];
+    id patternsValue = [plist objectForKey:@"patterns"];
+    if (patternsValue != nil) {
+        NSArray *test = [grammar parseGrammar:@"patterns" withValue:patternsValue];
+        [patternsArray addObjectsFromArray:test];
+    }
+    
+    return [NSArray arrayWithArray:patternsArray];
+}
+
+// Returns a patterns array that is stripped of all unused keys/values,
+// and is now only a level deep for each pattern group.
 + (NSArray*)getPatternsArray:(NSString*)TMBundleName {
     NSMutableArray *patternsArray = [[NSMutableArray alloc] init];
     [TMBundleSyntaxParser getSyntaxPListsForFileType:@"m"];

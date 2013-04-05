@@ -19,6 +19,10 @@
 
 // Returns a patterns array that is stripped of all unused keys/values,
 // and is now only a level deep for each pattern group.
++ (NSArray*)getPatternsArrayForFileType:(NSString*)fileType;
+
+// Returns a patterns array that is stripped of all unused keys/values,
+// and is now only a level deep for each pattern group.
 + (NSArray*)getPatternsArray:(NSString*)TMBundleName;
 
 @end
