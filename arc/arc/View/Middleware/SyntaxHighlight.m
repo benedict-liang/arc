@@ -54,7 +54,7 @@
     
     NSRegularExpression *regex = [NSRegularExpression
                                   regularExpressionWithPattern:p
-                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines
+                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines | NSRegularExpressionAllowCommentsAndWhitespace
                                   error:&error];
     
     if ((r.location + r.length <= [_content length]) && (r.length > 0) && (r.length <= [_content length])) {
@@ -71,7 +71,7 @@
     NSMutableArray* results = [[NSMutableArray alloc] init];
     NSRegularExpression *regex = [NSRegularExpression
                                   regularExpressionWithPattern:p
-                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines
+                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines | NSRegularExpressionAllowCommentsAndWhitespace
                                   error:&error];
     
     
@@ -136,34 +136,40 @@
     }
 }
 
-- (NSDictionary*)findCaptures:(NSArray*)captures pattern:(NSString*)match range:(NSRange)r {
+- (NSDictionary*)findCaptures:(NSDictionary*)captures pattern:(NSString*)match range:(NSRange)r {
 
     // Original Code
-//    NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
-//    NSArray *captureMatches = nil;
+    NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
+    NSArray *captureM = nil;
+    for (id k in captures) {
+        int i = [k intValue];
+        captureM = [self foundPattern:match capture:i range:r];
+        [dict setObject:captureM forKey:k];
+    }
 //    for (int i = 0; i < [captures count]; i++) {
-//        captureMatches = [self foundPattern:match capture:i range:r];
-//        [dict setObject:captureMatches forKey:[captures objectAtIndex:i]];
+//        captureM = [self foundPattern:match capture:i range:r];
+//        [captures objectForKey:]
+//        [dict setObject:captureM forKey:[captures objectForKey:[NSString stringWithFormat:@"%d",i]]];
 //    }
     
-    NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
-    dispatch_semaphore_t array_sema = dispatch_semaphore_create(1);
-    dispatch_group_t group = dispatch_group_create();
-    
-    dispatch_apply([captures count], queue, ^(size_t i){
-        dispatch_group_async(group, queue, ^ {
-            NSArray *patternMatches = [self foundPattern:match capture:i range:r];
-            dispatch_semaphore_wait(array_sema, DISPATCH_TIME_FOREVER);
-            
-            [dict setObject:patternMatches forKey:[captures objectAtIndex:i]];
-            
-            dispatch_semaphore_signal(array_sema);
-        });
-    });
-    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-    dispatch_release(group);
-    
+//    NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
+//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+//    dispatch_semaphore_t array_sema = dispatch_semaphore_create(1);
+//    dispatch_group_t group = dispatch_group_create();
+//    
+//    dispatch_apply([captures count], queue, ^(size_t i){
+//        dispatch_group_async(group, queue, ^ {
+//            NSArray *patternMatches = [self foundPattern:match capture:i range:r];
+//            dispatch_semaphore_wait(array_sema, DISPATCH_TIME_FOREVER);
+//            
+//            [dict setObject:patternMatches forKey:[captures objectAtIndex:i]];
+//            
+//            dispatch_semaphore_signal(array_sema);
+//        });
+//    });
+//    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+//    dispatch_release(group);
+//    
 
     return dict;
 }
@@ -223,7 +229,13 @@
     else if ([include characterAtIndex:0] == '#') {
         // Get rule from repository
         NSString *str = [include substringFromIndex:1];
-        return [NSArray arrayWithObject:[self repositoryRule:str]];
+        id rule = [self repositoryRule:str];
+        if (rule) {
+            return [NSArray arrayWithObject:rule];
+        } else {
+            return nil;
+        }
+        
     }
     else {
         //TODO: find scope name of another language
@@ -243,10 +255,10 @@
             NSString *name = [syntaxItem objectForKey:@"name"];
             NSString *match = [syntaxItem objectForKey:@"match"];
             NSString *begin = [syntaxItem objectForKey:@"begin"];
-            NSArray *beginCaptures = [syntaxItem objectForKey:@"beginCaptures"];
+            NSDictionary *beginCaptures = [syntaxItem objectForKey:@"beginCaptures"];
             NSString *end = [syntaxItem objectForKey:@"end"];
-            NSArray *endCaptures = [syntaxItem objectForKey:@"endCaptures"];
-            NSArray *captures = [syntaxItem objectForKey:@"captures"];
+            NSDictionary *endCaptures = [syntaxItem objectForKey:@"endCaptures"];
+            NSDictionary *captures = [syntaxItem objectForKey:@"captures"];
             NSString *include = [syntaxItem objectForKey:@"include"];
  
                 //case name, match
