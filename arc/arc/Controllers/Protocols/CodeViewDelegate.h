@@ -15,5 +15,8 @@
 - (void)refreshForSetting:(NSString*)setting;
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
                    forFile:(id<File>)file;
+
+# pragma mark - Code View Properties
+@property (nonatomic, strong) UIColor *backgroundColor;
 @end
 

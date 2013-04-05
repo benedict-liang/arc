@@ -22,7 +22,6 @@
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property CTFramesetterRef frameSetter;
 @property CGFloat lineHeight;
-@property NSArray *middlewares;
 @property NSMutableArray *lines;
 @property NSMutableArray *lineRefs;
 - (void)loadFile;
@@ -36,6 +35,7 @@
 
 @implementation CodeViewController
 @synthesize delegate = _delegate;
+@synthesize backgroundColor = _backgroundColor;
 
 - (id)init
 {
@@ -43,10 +43,9 @@
     if (self) {
         _lines = [NSMutableArray array];
         _lineRefs = [NSMutableArray array];
-        _middlewares = [NSArray arrayWithObjects:
-                       [[BasicStyles alloc] init],
-                       [[SyntaxHighlight alloc] init],
-                       nil];
+        
+        // Defaults
+        _backgroundColor = [Utils colorWithHexString:@"FDF6E3"];
     }
     return self;
 }
@@ -67,7 +66,7 @@
                                               style:UITableViewStylePlain];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
         UIViewAutoresizingFlexibleWidth;
-    
+    _tableView.backgroundColor = _backgroundColor;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.autoresizesSubviews = YES;
     
@@ -183,6 +182,9 @@
     }
 }
 
+
+#pragma mark - Code View Delegate
+
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
                    forFile:(id<File>)file
 {
@@ -192,6 +194,7 @@
         [_tableView reloadData];
     }
 }
+
 
 #pragma mark - Detail View Controller Delegate
 
