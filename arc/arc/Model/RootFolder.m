@@ -27,6 +27,17 @@ static RootFolder *sharedRootFolder = nil;
     return sharedRootFolder;
 }
 
+- (id)init
+{
+    if (self = [super init]) {
+        LocalRootFolder *localRoot = [LocalRootFolder sharedLocalRootFolder];
+        _name = [localRoot name];
+        _path = [localRoot path];
+        _parent = nil;
+    }
+    return nil;
+}
+
 // Returns the contents of this object.
 - (id<NSObject>)contents
 {
