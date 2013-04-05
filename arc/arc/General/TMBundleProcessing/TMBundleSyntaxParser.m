@@ -10,6 +10,8 @@
 
 @implementation TMBundleSyntaxParser
 
+#pragma mark - Initializers
+
 + (NSArray*)getSyntaxPLists:(NSString*)TMBundleName {
     NSMutableArray *plistArray = [[NSMutableArray alloc] init];
     
@@ -27,6 +29,58 @@
     
     return [NSArray arrayWithArray:plistArray];
 }
+
++ (NSDictionary*)getFileTypeDictionary {
+    static NSDictionary *fileTypeDictionary;
+    
+    if (fileTypeDictionary == nil) {
+        NSBundle *mainBundle = [NSBundle mainBundle];
+        NSString *filePathString = [mainBundle pathForResource:SYNTAXES_FILE_LIST
+                                                  ofType:nil];
+        NSString *file = [NSString stringWithContentsOfFile:filePathString
+                                                  encoding:NSUTF8StringEncoding
+                                                     error:nil];
+        NSArray *fileLines = [file componentsSeparatedByString:@"\n"];
+        
+        NSMutableDictionary *tempDictionary = [[NSMutableDictionary alloc] init];
+        for (NSString *file in fileLines) {
+            NSString *filePath = [mainBundle pathForResource:file
+                                                            ofType:nil];
+            NSDictionary *filePlist = [NSDictionary dictionaryWithContentsOfFile:filePath];
+            NSArray *fileTypesArray = [filePlist objectForKey:@"fileTypes"];
+            if (fileTypesArray) {
+                [tempDictionary setObject:fileTypesArray forKey:filePath];
+            }
+        }
+        
+        fileTypeDictionary = [NSDictionary dictionaryWithDictionary:tempDictionary];
+    }
+    
+    return fileTypeDictionary;
+}
+
++ (NSArray*)getSyntaxPListsForFileType:(NSString*)fileType {
+    NSMutableArray *plistArray = [[NSMutableArray alloc] init];
+    
+    NSMutableArray *acceptedFilePaths = [[NSMutableArray alloc] init];
+    
+    NSDictionary *fileTypeDictionary = [TMBundleSyntaxParser getFileTypeDictionary];
+    for (NSString *filePath in fileTypeDictionary) {
+        NSArray *fileTypesArray = [fileTypeDictionary objectForKey:filePath];
+        if ([fileTypesArray indexOfObject:fileType] != NSNotFound) {
+            [acceptedFilePaths addObject:filePath];
+        }
+    }
+    
+    for (NSString *filePath in acceptedFilePaths) {
+        NSDictionary *plist = [NSDictionary dictionaryWithContentsOfFile:filePath];
+        [plistArray addObject:plist];
+    }
+
+    return [NSArray arrayWithArray:plistArray];
+}
+
+#pragma mark - Helper Methods
 
 + (NSArray*)getKeyList:(NSString*)TMBundleName {
     NSDictionary *plist = (NSDictionary*)[[TMBundleSyntaxParser getSyntaxPLists:TMBundleName] objectAtIndex:0];
@@ -59,11 +113,33 @@
     return NO;
 }
 
+#pragma mark - Public API
+
+// Returns a patterns array that is stripped of all unused keys/values,
+// and is now only a level deep for each pattern group.
++ (NSArray*)getPatternsArrayForFileType:(NSString*)fileType {
+    NSMutableArray *patternsArray = [[NSMutableArray alloc] init];
+    
+    NSArray *plistsArray = [TMBundleSyntaxParser getSyntaxPListsForFileType:fileType];
+    
+    TMBundleGrammar *grammar = [[TMBundleGrammar alloc] initWithPlists:plistsArray];
+    
+    // TODO: Handle conditions to parse multiple plists, and combine the results
+    NSDictionary *plist = [plistsArray objectAtIndex:0];
+    id patternsValue = [plist objectForKey:@"patterns"];
+    if (patternsValue != nil) {
+        NSArray *test = [grammar parseGrammar:@"patterns" withValue:patternsValue];
+        [patternsArray addObjectsFromArray:test];
+    }
+    
+    return [NSArray arrayWithArray:patternsArray];
+}
+
 // Returns a patterns array that is stripped of all unused keys/values,
 // and is now only a level deep for each pattern group.
 + (NSArray*)getPatternsArray:(NSString*)TMBundleName {
     NSMutableArray *patternsArray = [[NSMutableArray alloc] init];
-    
+    [TMBundleSyntaxParser getSyntaxPListsForFileType:@"m"];
     NSArray *plistsArray = [TMBundleSyntaxParser getSyntaxPLists:TMBundleName];
     
     TMBundleGrammar *grammar = [[TMBundleGrammar alloc] initWithPlists:plistsArray];
@@ -78,6 +154,7 @@
 
     return [NSArray arrayWithArray:patternsArray];
 }
+
 
 + (NSArray*)patternsArrayForExt:(NSString *)fileExt {
     NSURL* bundleConf = [[NSBundle mainBundle] URLForResource:@"BundleConf.plist" withExtension:nil];

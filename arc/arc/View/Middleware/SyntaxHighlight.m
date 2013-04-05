@@ -23,6 +23,7 @@
         _delegate = d;
         _currentFile = file;
         _patterns = [TMBundleSyntaxParser patternsArrayForExt:[file extension]];
+
         _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
         if ([[file contents] isKindOfClass:[NSString class]]) {
             _content = (NSString*)[file contents];

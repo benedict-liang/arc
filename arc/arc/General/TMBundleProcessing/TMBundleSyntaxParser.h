@@ -19,8 +19,13 @@
 
 // Returns a patterns array that is stripped of all unused keys/values,
 // and is now only a level deep for each pattern group.
++ (NSArray*)getPatternsArrayForFileType:(NSString*)fileType;
+
+// Returns a patterns array that is stripped of all unused keys/values,
+// and is now only a level deep for each pattern group.
 + (NSArray*)getPatternsArray:(NSString*)TMBundleName;
 
+//Returns a patterns array. Uses file Ext from cached BundleConf.plist
 + (NSArray*)patternsArrayForExt:(NSString *)fileExt;
 
 @end
