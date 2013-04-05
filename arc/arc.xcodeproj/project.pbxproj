@@ -66,6 +66,8 @@
 		FC086EAC170DCB1C00B7E057 /* Strings File.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = FC086EA9170DCB1C00B7E057 /* Strings File.tmLanguage */; };
 		FC4B269E16F88CB800E1DC49 /* FolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B269D16F88CB800E1DC49 /* FolderViewController.m */; };
 		FC4B26CE16FF6E3800E1DC49 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */; };
+		FC83B7C8170EAD3800C91763 /* Python.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = FC83B7C6170EAD3800C91763 /* Python.tmLanguage */; };
+		FC83B7C9170EAD3800C91763 /* Regular Expressions (Python).tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = FC83B7C7170EAD3800C91763 /* Regular Expressions (Python).tmLanguage */; };
 		FCB0548017034DE6007832D7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FCB0547F17034DE6007832D7 /* README.md */; };
 		FCB0548417036010007832D7 /* SyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB0548317036010007832D7 /* SyntaxHighlight.m */; };
 /* End PBXBuildFile section */
@@ -332,6 +334,8 @@
 		FC4B269D16F88CB800E1DC49 /* FolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderViewController.m; sourceTree = "<group>"; };
 		FC4B26CC16FF6E3700E1DC49 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
 		FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		FC83B7C6170EAD3800C91763 /* Python.tmLanguage */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Python.tmLanguage; sourceTree = "<group>"; };
+		FC83B7C7170EAD3800C91763 /* Regular Expressions (Python).tmLanguage */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Regular Expressions (Python).tmLanguage"; sourceTree = "<group>"; };
 		FCB0547F17034DE6007832D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		FCB0548217036010007832D7 /* SyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlight.h; sourceTree = "<group>"; };
 		FCB0548317036010007832D7 /* SyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxHighlight.m; sourceTree = "<group>"; };
@@ -744,6 +748,7 @@
 		8F563E53170160CD00EE5643 /* TextMateBundles */ = {
 			isa = PBXGroup;
 			children = (
+				FC83B7C4170EAD3800C91763 /* python.tmbundle */,
 				FC086EA5170DCB1C00B7E057 /* objective-c.tmbundle */,
 				8F1510C517044A4C00115E5E /* Solarized (light).tmTheme */,
 				8F1510521704483500115E5E /* javascript.tmbundle */,
@@ -1034,6 +1039,23 @@
 			path = Syntaxes;
 			sourceTree = "<group>";
 		};
+		FC83B7C4170EAD3800C91763 /* python.tmbundle */ = {
+			isa = PBXGroup;
+			children = (
+				FC83B7C5170EAD3800C91763 /* Syntaxes */,
+			);
+			path = python.tmbundle;
+			sourceTree = "<group>";
+		};
+		FC83B7C5170EAD3800C91763 /* Syntaxes */ = {
+			isa = PBXGroup;
+			children = (
+				FC83B7C6170EAD3800C91763 /* Python.tmLanguage */,
+				FC83B7C7170EAD3800C91763 /* Regular Expressions (Python).tmLanguage */,
+			);
+			path = Syntaxes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1124,6 +1146,8 @@
 				FC086EAA170DCB1C00B7E057 /* Objective-C++.tmLanguage in Resources */,
 				FC086EAB170DCB1C00B7E057 /* Objective-C.tmLanguage in Resources */,
 				FC086EAC170DCB1C00B7E057 /* Strings File.tmLanguage in Resources */,
+				FC83B7C8170EAD3800C91763 /* Python.tmLanguage in Resources */,
+				FC83B7C9170EAD3800C91763 /* Regular Expressions (Python).tmLanguage in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
