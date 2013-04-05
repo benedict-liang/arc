@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <FileSystemObject.h>
+#import "FileSystemObject.h"
 
 @interface Utils : NSObject
 // Taken from http://stackoverflow.com/questions/941604/setting-uiimage-dimensions-on-uitableviewcell-image

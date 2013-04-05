@@ -27,7 +27,6 @@
 - (void)processFile;
 - (void)renderFile;
 - (void)clearPreviousLayoutInformation;
-- (void)clearMemoisedInformation;
 - (void)generateLines;
 - (void)calcLineHeight;
 @end
@@ -86,7 +85,6 @@
 - (void)showFile:(id<File>)file
 {
     if ([file isEqual:_currentFile]) {
-        [self clearMemoisedInformation];
         [_tableView reloadData];
         return;
     }

@@ -10,6 +10,5 @@
 #import "Folder.h"
 
 @protocol FileNavigatorViewControllerDelegate <NSObject>
-- (void)showFolder:(id<Folder>)folder;
-- (void)forceFolder:(id<Folder>)folder;
+- (void)navigateTo:(id<Folder>)folder;
 @end

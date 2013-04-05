@@ -44,7 +44,7 @@
 // tmp
 - (void)openIn:(id<File>)file
 {
-    [_leftViewController forceFolder:(id<Folder>)[file parent]];
+    [_leftViewController navigateTo:(id<Folder>)[file parent]];
     [self fileSelected:file];
 }
 
@@ -63,22 +63,6 @@
     [_codeViewController refreshForSetting:setting];
 }
 
-// Shows the file using the CodeViewController
-- (void)fileSelected:(id<File>)file
-{
-    // TODO
-    // Register with Application State
-    [_codeViewController showFile:file];
-}
-
-// Updates Current Folder being Viewed
-- (void)folderSelected:(id<Folder>)folder
-{
-    // TODO
-    // Register with Application State
-    [_leftViewController showFolder:folder];
-}
-
 #pragma mark - MainViewControllerDelegate Methods
 
 - (void)fileObjectSelected:(id<FileSystemObject>)fileSystemObject;
@@ -93,9 +77,20 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
+// Shows the file using the CodeViewController
+- (void)fileSelected:(id<File>)file
 {
-    [super didReceiveMemoryWarning];
+    // TODO
+    // Register with Application State
+    [_codeViewController showFile:file];
+}
+
+// Updates Current Folder being Viewed
+- (void)folderSelected:(id<Folder>)folder
+{
+    // TODO
+    // Register with Application State
+    [_leftViewController navigateTo:folder];
 }
 
 #pragma mark - UISpiltViewControllerDelegate Methods

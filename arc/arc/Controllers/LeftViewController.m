@@ -14,6 +14,7 @@
 #import "RootFolder.h"
 
 @interface LeftViewController ()
+@property (nonatomic, strong) id<Folder> currentFolder;
 @property UIViewController *currentViewController;
 @property UINavigationController *documentsNavigationViewController;
 @property UINavigationController *settingsNavigationViewController;
@@ -55,34 +56,49 @@
     [self showDocuments:nil];
 }
 
-- (void)showFolder:(id<Folder>)folder
-{
-    [self pushFolderView:folder];
-}
-
-// tmp hack
-- (void)forceFolder:(id<Folder>)folder
+- (void)navigateTo:(id<Folder>)folder
 {
     if (_currentViewController != _documentsNavigationViewController) {
         [self showDocuments:nil];
     }
-
-    [_documentsNavigationViewController popToRootViewControllerAnimated:NO];
     
-    id<Folder> current = folder;
-    NSMutableArray *pathToRootFolder = [NSMutableArray array];
-    while ([current parent]) {
-        [pathToRootFolder addObject:current];
-        current = (id<Folder>)[current parent];
-    }
     
-    id<Folder> parent;
-    NSEnumerator *enumerator = [pathToRootFolder reverseObjectEnumerator];
-    while (parent = [enumerator nextObject]) {
-        [self pushFolderView:parent
-                    animated:NO];
+    if ([Utils isEqual:[folder parent] and:_currentFolder]) {
+        // Normal Folder selected
+        [self pushFolderView:folder];
+    } else if ([Utils isEqual:folder and:[_currentFolder parent]]) {
+        // Back Button.
+        // noop.
+    } else {
+        // Jump to Folder.
+        
+        // Clear stack of folderViewController
+        [_documentsNavigationViewController popToRootViewControllerAnimated:NO];
+
+        // Find path to root (excluding current folder and root)
+        id<Folder> current = folder;
+        NSMutableArray *pathToRootFolder = [NSMutableArray array];
+        while ([current parent]) {
+            [pathToRootFolder addObject:[current parent]];
+            current = (id<Folder>)[current parent];
+        }
+        
+        // Push folderViewController onto the stack (w/o animation)
+        // reverse order.
+        id<Folder> parent;
+        NSEnumerator *enumerator = [pathToRootFolder reverseObjectEnumerator];
+        while (parent = [enumerator nextObject]) {
+            [self pushFolderView:parent
+                        animated:NO];
+        }
+        
+        // push folder to navigate to.
+        [self pushFolderView:folder];
     }
 
+    
+    // Update current folder.
+    _currentFolder = folder;
 }
 
 - (void)pushFolderView:(id<Folder>)folder animated:(BOOL)animated
