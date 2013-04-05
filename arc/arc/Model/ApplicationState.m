@@ -51,6 +51,7 @@ static ApplicationState *sharedApplicationState = nil;
 - (void)setSetting:(id)value forKey:(NSString *)key
 {
     [__settings setValue:value forKey:key];
+    [self saveStateToDisk];
 }
 
 - (id)init

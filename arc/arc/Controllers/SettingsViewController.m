@@ -134,7 +134,6 @@
     // Update the appropriate setting using the key associated with this section.
     NSString *currentKey = [sectionProperties valueForKey:@"settingsKey"];
     [state setSetting:value forKey:currentKey];
-    [state saveStateToDisk];
     
     // Add a checkmark to the row.
     [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
