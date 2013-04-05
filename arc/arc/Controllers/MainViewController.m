@@ -37,8 +37,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     ApplicationState *appState = [ApplicationState sharedApplicationState];
-    [self fileSelected:[appState settingForKey:KEY_CURRENT_FILE]];
-    [self folderSelected:[appState settingForKey:KEY_CURRENT_FOLDER]];
+    [self fileSelected:[appState currentFileOpened]];
+    [self folderSelected:[appState currentFolderOpened]];
 }
 
 // tmp
