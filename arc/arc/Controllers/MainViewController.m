@@ -36,8 +36,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self fileSelected:[ApplicationState getSampleFile]];
-    [self folderSelected:[RootFolder sharedRootFolder]];
+    ApplicationState *appState = [ApplicationState sharedApplicationState];
+    [self fileSelected:[appState settingForKey:KEY_CURRENT_FILE]];
+    [self folderSelected:[appState settingForKey:KEY_CURRENT_FOLDER]];
 }
 
 // tmp
@@ -82,11 +83,16 @@
 
 - (void)fileObjectSelected:(id<FileSystemObject>)fileSystemObject;
 {
+    ApplicationState *appState = [ApplicationState sharedApplicationState];
+    NSString *key;
     if ([[fileSystemObject class] conformsToProtocol:@protocol(Folder)]) {
         [self folderSelected:(id<Folder>)fileSystemObject];
+        key = KEY_CURRENT_FOLDER;
     } else {
         [self fileSelected:(id<File>)fileSystemObject];
+        key = KEY_CURRENT_FILE;
     }
+    [appState setSetting:[fileSystemObject path] forKey:key];
 }
 
 - (void)didReceiveMemoryWarning
