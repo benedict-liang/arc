@@ -66,6 +66,7 @@
 		FC086EAB170DCB1C00B7E057 /* Objective-C.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = FC086EA8170DCB1C00B7E057 /* Objective-C.tmLanguage */; };
 		FC086EAC170DCB1C00B7E057 /* Strings File.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = FC086EA9170DCB1C00B7E057 /* Strings File.tmLanguage */; };
 		FC4A8529170EB47200463EDA /* twist.py in Resources */ = {isa = PBXBuildFile; fileRef = FC4A8528170EB47200463EDA /* twist.py */; };
+		FC4A852C170EC8CE00463EDA /* TMBundleConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC4A852B170EC8CE00463EDA /* TMBundleConfig.plist */; };
 		FC4B269E16F88CB800E1DC49 /* FolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B269D16F88CB800E1DC49 /* FolderViewController.m */; };
 		FC4B26CE16FF6E3800E1DC49 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */; };
 		FC83B7C8170EAD3800C91763 /* Python.tmLanguage in Resources */ = {isa = PBXBuildFile; fileRef = FC83B7C6170EAD3800C91763 /* Python.tmLanguage */; };
@@ -334,6 +335,7 @@
 		FC086EA8170DCB1C00B7E057 /* Objective-C.tmLanguage */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Objective-C.tmLanguage"; sourceTree = "<group>"; };
 		FC086EA9170DCB1C00B7E057 /* Strings File.tmLanguage */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Strings File.tmLanguage"; sourceTree = "<group>"; };
 		FC4A8528170EB47200463EDA /* twist.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = twist.py; sourceTree = "<group>"; };
+		FC4A852B170EC8CE00463EDA /* TMBundleConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TMBundleConfig.plist; sourceTree = "<group>"; };
 		FC4B269C16F88CB800E1DC49 /* FolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewController.h; sourceTree = "<group>"; };
 		FC4B269D16F88CB800E1DC49 /* FolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderViewController.m; sourceTree = "<group>"; };
 		FC4B26CC16FF6E3700E1DC49 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
@@ -1004,6 +1006,7 @@
 				8F1510C8170468B100115E5E /* TMBundleThemeHandler.m */,
 				8F1510CA1704697900115E5E /* TMBundleGrammar.h */,
 				8F1510CB1704697900115E5E /* TMBundleGrammar.m */,
+				FC4A852B170EC8CE00463EDA /* TMBundleConfig.plist */,
 			);
 			name = TMBundleProcessing;
 			path = General/TMBundleProcessing;
@@ -1156,6 +1159,7 @@
 				FC83B7C9170EAD3800C91763 /* Regular Expressions (Python).tmLanguage in Resources */,
 				02A5198D170DC0CE007C038E /* Inconsolata.ttf in Resources */,
 				FC4A8529170EB47200463EDA /* twist.py in Resources */,
+				FC4A852C170EC8CE00463EDA /* TMBundleConfig.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

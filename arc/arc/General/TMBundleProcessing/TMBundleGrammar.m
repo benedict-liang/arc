@@ -172,11 +172,15 @@
         // TODO: Skip $self for now
         return nil;
     }
-    else if ([includeString characterAtIndex:0] == '#' && ![includeString isEqualToString:@"#disabled"]) {
+    else if ([includeString characterAtIndex:0] == '#') {
         // Get rule from repository
         NSString *str = [includeString substringFromIndex:1];
         NSDictionary *rule = [self getRuleFromRepository:str];
-        return rule;
+        if (rule) {
+            return rule;
+        }
+        return nil;
+        
     }
     else {
         //TODO: find scope name of another language
