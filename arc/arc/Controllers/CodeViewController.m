@@ -156,6 +156,7 @@
     // Calculate the lines
     CFIndex start = 0;
     NSUInteger length = CFAttributedStringGetLength(ref);
+    CFBridgingRelease(ref);
     while (start < length)
     {
         CTTypesetterRef typesetter = CTFramesetterGetTypesetter(_frameSetter);

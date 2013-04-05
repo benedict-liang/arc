@@ -25,7 +25,7 @@ static DropBoxRootFolder *sharedDropBoxRootFolder = nil;
     DBPath *rootPath = [DBPath root];
     NSString *ourPath = [rootPath stringValue];
     
-    if (self = [super initWithName:FOLDER_DROPBOX_ROOT path:ourPath parent:nil]) {
+    if (self = [super initWithName:FOLDER_DROPBOX_ROOT path:ourPath parent:[LocalRootFolder sharedLocalRootFolder]]) {
         
     }
     return self;

@@ -149,6 +149,10 @@
     
     if ([processedResult isKindOfClass:[NSArray class]]) {
         NSArray *temp = (NSArray*)processedResult;
+
+        if ([temp count] == 0) {
+            return nil;
+        }
         return (NSDictionary*)[temp objectAtIndex:0];
     }
     
@@ -194,9 +198,11 @@
     
     SEL selector = [ruleAction pointerValue];
 
+    if (!selector) {
+        return [self performSelector:@selector(resolveReturnValue:) withObject:value];
+    }
+
     return [self performSelector:selector withObject:value];
-
-
 }
 
 // Suppress warning for performSelector with ARC
