@@ -47,6 +47,22 @@ static RootFolder *sharedRootFolder = nil;
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"RootFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
 }
 
+// Given a FileSystemObject path, searches for and returns the object
+// at that path.
+- (id<FileSystemObject>)objectAtPath:(NSString *)path
+{
+    // If we have DropBox, check if it's in the DropBox folder.
+    if ([[DBAccountManager sharedManager] linkedAccount]) {
+        id<FileSystemObject> dropBoxObject = [[DropBoxRootFolder sharedDropBoxRootFolder] objectAtPath:path];
+        if (dropBoxObject) {
+            return dropBoxObject;
+        }
+    }
+    
+    // Check the local file system.
+    return [[LocalRootFolder sharedLocalRootFolder] objectAtPath:path];
+}
+
 // Moves the given FileSystemObject to this Folder.
 // The given file must be of the same "type" as this Folder
 // (e.g. iOS file system, DropBox, etc.)
