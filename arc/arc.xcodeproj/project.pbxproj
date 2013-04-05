@@ -220,11 +220,11 @@
 		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
 		8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */; };
 		FC4A8529170EB47200463EDA /* twist.py in Resources */ = {isa = PBXBuildFile; fileRef = FC4A8528170EB47200463EDA /* twist.py */; };
-		FC4A852C170EC8CE00463EDA /* TMBundleConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC4A852B170EC8CE00463EDA /* TMBundleConfig.plist */; };
 		FC4B269E16F88CB800E1DC49 /* FolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B269D16F88CB800E1DC49 /* FolderViewController.m */; };
 		FC4B26CE16FF6E3800E1DC49 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */; };
 		FCB0548017034DE6007832D7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FCB0547F17034DE6007832D7 /* README.md */; };
 		FCB0548417036010007832D7 /* SyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB0548317036010007832D7 /* SyntaxHighlight.m */; };
+		FCFB4DA2170F466200B25FDC /* BundleConf.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCFB4DA1170F466200B25FDC /* BundleConf.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -489,10 +489,8 @@
 		8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationState.m; sourceTree = "<group>"; };
 		8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewController.h; sourceTree = "<group>"; };
 		8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeViewController.m; sourceTree = "<group>"; };
-		8FCA1D7116F8AA6000C6AAFC /* MainViewControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewControllerProtocol.h; sourceTree = "<group>"; };
-		FC4A8528170EB47200463EDA /* twist.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = twist.py; sourceTree = "<group>"; };
-		FC4A852B170EC8CE00463EDA /* TMBundleConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TMBundleConfig.plist; sourceTree = "<group>"; };
 		8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewControllerDelegate.h; sourceTree = "<group>"; };
+		FC4A8528170EB47200463EDA /* twist.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = twist.py; sourceTree = "<group>"; };
 		FC4B269C16F88CB800E1DC49 /* FolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewController.h; sourceTree = "<group>"; };
 		FC4B269D16F88CB800E1DC49 /* FolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderViewController.m; sourceTree = "<group>"; };
 		FC4B26CC16FF6E3700E1DC49 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
@@ -501,6 +499,7 @@
 		FCB0548217036010007832D7 /* SyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlight.h; sourceTree = "<group>"; };
 		FCB0548317036010007832D7 /* SyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxHighlight.m; sourceTree = "<group>"; };
 		FCE8F95D1709806B00C08724 /* CodeViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeViewDelegate.h; sourceTree = "<group>"; };
+		FCFB4DA1170F466200B25FDC /* BundleConf.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BundleConf.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -943,6 +942,7 @@
 		8F563F32170161B600EE5643 /* TMBundleProcessing */ = {
 			isa = PBXGroup;
 			children = (
+				FCFB4DA1170F466200B25FDC /* BundleConf.plist */,
 				8F15104F1704410000115E5E /* TMBundleHeader.h */,
 				8F563F33170161C900EE5643 /* TMBundleSyntaxParser.h */,
 				8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */,
@@ -950,7 +950,6 @@
 				8F1510C8170468B100115E5E /* TMBundleThemeHandler.m */,
 				8F1510CA1704697900115E5E /* TMBundleGrammar.h */,
 				8F1510CB1704697900115E5E /* TMBundleGrammar.m */,
-				FC4A852B170EC8CE00463EDA /* TMBundleConfig.plist */,
 			);
 			name = TMBundleProcessing;
 			path = General/TMBundleProcessing;
@@ -1060,7 +1059,6 @@
 				02E162CD170B02F400C9D23B /* appState.plist in Resources */,
 				02A5198D170DC0CE007C038E /* Inconsolata.ttf in Resources */,
 				FC4A8529170EB47200463EDA /* twist.py in Resources */,
-				FC4A852C170EC8CE00463EDA /* TMBundleConfig.plist in Resources */,
 				8F1BC1CF170F1C1900D1D049 /* text.xml.xsl.plist in Resources */,
 				8F1BC1D0170F1C1900D1D049 /* text.xml.strict.plist in Resources */,
 				8F1BC1D1170F1C1900D1D049 /* text.xml.plist in Resources */,
@@ -1221,6 +1219,7 @@
 				8F1BC26C170F1C1900D1D049 /* source.active4d.library.plist in Resources */,
 				8F1BC26D170F1C1900D1D049 /* source.actionscript.plist in Resources */,
 				028B4900170E9D0600C0CEF6 /* UbuntuMono.ttf in Resources */,
+				FCFB4DA2170F466200B25FDC /* BundleConf.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

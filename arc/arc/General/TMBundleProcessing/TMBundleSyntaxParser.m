@@ -20,7 +20,7 @@
 //    
 //    [plistArray addObject:plist];
     
-    NSURL *syntaxFileURL1 = [mainBundle URLForResource:@"source.python.plist" withExtension:nil];
+    NSURL *syntaxFileURL1 = [mainBundle URLForResource:TMBundleName withExtension:nil];
    NSDictionary *plist1 = [NSDictionary dictionaryWithContentsOfURL:syntaxFileURL1];
 
     [plistArray addObject:plist1];
