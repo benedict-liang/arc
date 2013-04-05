@@ -84,15 +84,13 @@
 - (void)fileObjectSelected:(id<FileSystemObject>)fileSystemObject;
 {
     ApplicationState *appState = [ApplicationState sharedApplicationState];
-    NSString *key;
     if ([[fileSystemObject class] conformsToProtocol:@protocol(Folder)]) {
         [self folderSelected:(id<Folder>)fileSystemObject];
-        key = KEY_CURRENT_FOLDER;
+        [appState setCurrentFolderOpened:(id<Folder>)fileSystemObject];
     } else {
         [self fileSelected:(id<File>)fileSystemObject];
-        key = KEY_CURRENT_FILE;
+        [appState setCurrentFileOpened:(id<File>)fileSystemObject];
     }
-    [appState setSetting:[fileSystemObject path] forKey:key];
 }
 
 - (void)didReceiveMemoryWarning
