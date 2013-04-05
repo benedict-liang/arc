@@ -1,5 +1,5 @@
 //
-//  LeftViewControllerProtocol.h
+//  FileNavigatorViewControllerDelegate.h
 //  arc
 //
 //  Created by Yong Michael on 1/4/13.
@@ -9,11 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Folder.h"
 
-@protocol LeftViewControllerProtocol <NSObject>
-@property (nonatomic, readonly) NSString *title;
+@protocol FileNavigatorViewControllerDelegate <NSObject>
 - (void)showFolder:(id<Folder>)folder;
-
-
-// tmp
 - (void)forceFolder:(id<Folder>)folder;
 @end

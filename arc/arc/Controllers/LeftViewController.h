@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "SubViewControllerDelegate.h"
-#import "LeftViewControllerProtocol.h"
-@interface LeftViewController : UIViewController<SubViewControllerDelegate, LeftViewControllerProtocol>
+#import "FileNavigatorViewControllerDelegate.h"
+@interface LeftViewController : UIViewController<SubViewControllerDelegate, FileNavigatorViewControllerDelegate>
 @end

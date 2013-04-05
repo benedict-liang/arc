@@ -137,7 +137,7 @@
     id<CodeViewDelegate, SubViewControllerDelegate> codeViewController = [[CodeViewController alloc] init];
     
     // Create LeftBarViewController
-    id<LeftViewControllerProtocol, SubViewControllerDelegate> leftViewController = [[LeftViewController alloc] init];
+    id<FileNavigatorViewControllerDelegate, SubViewControllerDelegate> leftViewController = [[LeftViewController alloc] init];
 
     // Assign Delegates
     leftViewController.delegate = mainViewController;

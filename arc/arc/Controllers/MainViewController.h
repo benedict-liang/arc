@@ -7,14 +7,12 @@
 //
 
 #import "MainViewControllerDelegate.h"
-#import "CodeViewDelegate.h"
-#import "LeftViewControllerProtocol.h"
+#import "CodeViewController.h"
+#import "LeftViewController.h"
 #import "ApplicationState.h"
 #import "RootFolder.h"
 #import "Folder.h"
 #import "File.h"
-#import "CodeViewController.h"
-#import "LeftViewController.h"
 #import "TMBundleHeader.h"
 
 @interface MainViewController : UISplitViewController <MainViewControllerDelegate, UISplitViewControllerDelegate>

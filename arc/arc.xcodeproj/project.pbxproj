@@ -107,7 +107,7 @@
 		02E51AF01709582300247AF5 /* DropBoxRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxRootFolder.m; sourceTree = "<group>"; };
 		4C12D0701705CA7800F4593B /* ArcAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcAttributedString.h; sourceTree = "<group>"; };
 		4C12D0711705CA7800F4593B /* ArcAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcAttributedString.m; sourceTree = "<group>"; };
-		4C21C9E71709D387002F4FEA /* LeftViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewControllerProtocol.h; sourceTree = "<group>"; };
+		4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileNavigatorViewControllerDelegate.h; sourceTree = "<group>"; };
 		4C36137C170AC673009358B1 /* dropbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropbox.png; sourceTree = "<group>"; };
 		4C43F8E916F86AA900159B29 /* arc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C43F8EC16F86AA900159B29 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -507,9 +507,9 @@
 			children = (
 				8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */,
 				4CD06B2C16FDE92D00C9DED3 /* SubViewControllerDelegate.h */,
-				FCE8F95D1709806B00C08724 /* CodeViewDelegate.h */,
-				4C21C9E71709D387002F4FEA /* LeftViewControllerProtocol.h */,
 				4CA4DE42170EA04400A86109 /* DetailViewControllerDelegate.h */,
+				FCE8F95D1709806B00C08724 /* CodeViewDelegate.h */,
+				4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
