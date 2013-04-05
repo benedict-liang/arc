@@ -44,7 +44,7 @@
     
     NSRegularExpression *regex = [NSRegularExpression
                                   regularExpressionWithPattern:p
-                                  options:NSRegularExpressionUseUnixLineSeparators
+                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines
                                   error:&error];
     
     if ((r.location + r.length <= [_content length]) && (r.length > 0) && (r.length <= [_content length])) {
@@ -61,7 +61,7 @@
     NSMutableArray* results = [[NSMutableArray alloc] init];
     NSRegularExpression *regex = [NSRegularExpression
                                   regularExpressionWithPattern:p
-                                  options:NSRegularExpressionUseUnixLineSeparators
+                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines
                                   error:&error];
     
     
@@ -247,6 +247,7 @@
                 NSArray *a = [self foundPattern:match range:contentRange];
                 nameMatches = [self merge:@{name: a} withd2:nameMatches];
                 if ([name isEqualToString:@"comment.line.double-slash.js"]) {
+                    a = [self foundPattern:@"(//).*\\n?" range:contentRange];
                     NSLog(@"comment:%@ %@",match, a);
                 }
             }
