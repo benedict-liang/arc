@@ -205,6 +205,33 @@
     }
     return res;
 }
+- (id)repositoryRule:(NSString*)rule {
+    NSDictionary* repo = [_bundle objectForKey:@"repository"];
+    return [repo objectForKey:rule];
+}
+- (NSArray*)externalInclude:(NSString*)name {
+    
+    NSDictionary *includedBundle = [TMBundleSyntaxParser plistByName:name];
+    return [includedBundle objectForKey:@"patterns"];
+}
+- (NSArray*)resolveInclude:(NSString*)include {
+    
+    if ([include isEqualToString:@"$self"]) {
+        //returns top most pattern
+        return [_bundle objectForKey:@"patterns"];
+    }
+    else if ([include characterAtIndex:0] == '#') {
+        // Get rule from repository
+        NSString *str = [include substringFromIndex:1];
+        return [NSArray arrayWithObject:[self repositoryRule:str]];
+    }
+    else {
+        //TODO: find scope name of another language
+        return [self externalInclude:include];
+    }
+
+}
+
 -(void)iterPatternsForRange:(NSRange)contentRange patterns:(NSArray*)patterns output:(ArcAttributedString*)output {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_group_t group = dispatch_group_create();
@@ -220,8 +247,7 @@
             NSString *end = [syntaxItem objectForKey:@"end"];
             NSArray *endCaptures = [syntaxItem objectForKey:@"endCaptures"];
             NSArray *captures = [syntaxItem objectForKey:@"captures"];
-            
-
+            NSString *include = [syntaxItem objectForKey:@"include"];
  
                 //case name, match
             if (name && match) {
@@ -245,22 +271,8 @@
                 /*
                  Algo finds a begin match and an end match (from begin to content's end), reseting the next begin to after end, until no more matches are found or end > content
                  Also applies nested patterns recursively
-                 
-                 TODO. debug for why single line comments aren't working
-                 Symptoms: comment.single.* for js tmbundle is inside a begin end pair, of which begin - end = 1.
-                 
-                 if ([begin isEqualToString:@"(^[ \\t]+)?(?=//)"] && [end isEqualToString:@"(?!\\G)"]) {
-                     NSLog(@"finally");
-                     
-                      NSRange brange = [self findFirstPattern:begin range:contentRange];
-                     NSLog(@"%d %d", brange.location, brange.length);
-                     long bEnds = brange.location + brange.length;
-                     //NSRange erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
-                     //NSRange erange = NSMakeRange(bEnds, );
-                    // NSLog(@"%d %d", erange.location, erange.length);
-                     
-                }*/
-                //NSLog(@"before brange: %d %d", contentRange.location, contentRange.length);
+               */
+ 
                 NSRange brange = [self findFirstPattern:begin range:contentRange];
                 NSRange erange = NSMakeRange(0, 0);
                 
@@ -285,6 +297,7 @@
                     
                     long eEnds = erange.location + erange.length;
                     NSArray *embedPatterns = [syntaxItem objectForKey:@"patterns"];
+                    
                     //if there are characters between begin and end, and brange and erange are valid results
                     if (eEnds - brange.location > 0 && brange.location != NSNotFound && erange.location != NSNotFound && eEnds <= contentRange.length) {
                         if (embedPatterns) {
@@ -293,20 +306,19 @@
                         }
                         
                         if (name) {
-                            
-                           //dispatch_semaphore_wait(outputSema, DISPATCH_TIME_FOREVER);
-                           // NSLog(@"%@",name);
+
                             pairMatches = [self addRange:NSMakeRange(brange.location, eEnds - brange.location) scope:name dict:pairMatches];
-                            
-                            //[self applyStyleToScope:name range:NSMakeRange(brange.location, eEnds - brange.location) output:output];
-                            //dispatch_semaphore_signal(outputSema);
+
                         }
-                        //NSLog(@"before brange2: %d %d", contentRange.location, contentRange.length);
                         brange = [self findFirstPattern:begin range:NSMakeRange(eEnds, contentRange.length - eEnds)];
                     }
                     
                 }
                 
+            }
+            if (include) {
+                id includes = [self resolveInclude:include];
+                [self iterPatternsForRange:contentRange patterns:includes output:output];
             }
 
         });

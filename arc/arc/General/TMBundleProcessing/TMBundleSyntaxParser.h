@@ -14,7 +14,7 @@
 // returns a plist for a file extension
 + (NSDictionary*)plistForExt:(NSString *)fileExt;
 
-// returns a plist by name
-+ (NSDictionary*)syntaxPList:(NSString*)TMBundleName;
+// returns a plist by name, without extension
++ (NSDictionary*)plistByName:(NSString*)TMBundleName;
 
 @end

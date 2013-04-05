@@ -12,7 +12,7 @@
 
 #pragma mark - Initializers
 
-+ (NSDictionary*)syntaxPList:(NSString*)TMBundleName {
++ (NSDictionary*)plistByName:(NSString*)TMBundleName {
     if ([[TMBundleSyntaxParser existingBundles] objectForKey:TMBundleName]) {
         NSURL *syntaxFileURL = [[NSBundle mainBundle] URLForResource:TMBundleName withExtension:@"plist"];
         
@@ -46,7 +46,7 @@
     
         NSString* bundleName = [legitBundles objectAtIndex:0];
         
-        return [TMBundleSyntaxParser syntaxPList:bundleName];
+        return [TMBundleSyntaxParser plistByName:bundleName];
     
     } else {
         NSLog(@"Appropriate bundle not found");
