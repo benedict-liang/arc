@@ -24,6 +24,6 @@
 @property (readonly) id<CodeViewDelegate> delegate;
 @property (readonly) id<File> currentFile;
 @property (readonly) NSString* content;
-@property (readonly) NSArray* patterns;
+@property (readonly) NSDictionary* bundle;
 @property ArcAttributedString* finalOutput;
 @end

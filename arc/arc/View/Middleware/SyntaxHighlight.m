@@ -14,19 +14,26 @@
 
 {
     SyntaxHighlight *sh = [[self alloc] initWithFile:file del:del];
-    if (sh.patterns) {
+    
+    if (sh.bundle) {
+    
         ArcAttributedString *copy = [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
+        
         [sh performSelectorInBackground:@selector(execOn:) withObject:copy];
     }
 }
+
 - initWithFile:(id<File>)file del:(id)d {
     self = [super init];
     if (self) {
         _delegate = d;
+        
         _currentFile = file;
-        _patterns = [TMBundleSyntaxParser patternsArrayForExt:[file extension]];
-
+        
+        _bundle = [TMBundleSyntaxParser plistForExt:[file extension]];
+        
         _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
+        
         if ([[file contents] isKindOfClass:[NSString class]]) {
             _content = (NSString*)[file contents];
         }
@@ -157,36 +164,7 @@
     dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     dispatch_release(group);
     
-    /*
-    // Multithreaded
-    NSMutableDictionary *aggregateDictionary = [[NSMutableDictionary alloc] init];
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
-    dispatch_semaphore_t array_sema = dispatch_semaphore_create(1);
-    dispatch_group_t group = dispatch_group_create();
 
-    dispatch_apply([captures count], queue, ^(size_t i){
-        dispatch_group_async(group, queue, ^ {
-            NSArray *captureMatches = [self foundPattern:match capture:i range:r];
-            for (NSValue *v in captureMatches) {
-                
-            }
-            dispatch_semaphore_wait(array_sema, DISPATCH_TIME_FOREVER);
-            //[aggregateDictionary setObject:[NSNumber numberWithInt:(int)i] forKey:patternArray];
-            dispatch_semaphore_signal(array_sema);
-       });
-    });
-    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-    dispatch_release(group);
-    
-    for (NSArray *arr in [aggregateDictionary allKeys]) {
-        NSNumber *index = (NSNumber*)[aggregateDictionary objectForKey:arr];
-        for (NSValue *v in arr) {
-            NSRange range;
-            [v getValue:&range];
-            [self applyStyleToScope:[captures objectAtIndex:[index integerValue]] range:range output:o];
-        }
-    }
-    // Multithreaded ends here*/
     return dict;
 }
 -(void)applyStylesTo:(ArcAttributedString*)output withRanges:(NSDictionary*)pairs {
@@ -356,7 +334,7 @@
 - (void)execOn:(ArcAttributedString *)arcAttributedString {
     _finalOutput = arcAttributedString;
     ArcAttributedString* output = arcAttributedString;
-    [self iterPatternsForRange:NSMakeRange(0, [_content length]) patterns:_patterns output:arcAttributedString];
+    [self iterPatternsForRange:NSMakeRange(0, [_content length]) patterns:[_bundle objectForKey:@"patterns"] output:arcAttributedString];
     [self applyStylesTo:output withRanges:nameMatches];
     [self applyStylesTo:output withRanges:captureMatches];
     [self applyStylesTo:output withRanges:beginCMatches];
