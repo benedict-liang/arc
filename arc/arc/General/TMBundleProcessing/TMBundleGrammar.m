@@ -35,7 +35,7 @@
                               [NSValue valueWithPointer:@selector(resolveCaptures:)], @"beginCaptures", 
                               [NSValue valueWithPointer:@selector(resolveCaptures:)], @"endCaptures",
                               [NSValue valueWithPointer:@selector(resolvePatterns:)], @"patterns",
-                              [NSValue valueWithPointer:@selector(resolveInclude:)], @"include",
+                              [NSValue valueWithPointer:@selector(resolveReturnValue:)], @"include",
                               [NSValue valueWithPointer:@selector(resolveReturnValue:)], @"contentName",
                               nil];
     }
