@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "File.h"
 
-@interface LocalFile : NSObject <File> {
-    NSString *_contents;
-}
+@interface LocalFile : NSObject <File>
 
 @end

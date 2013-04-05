@@ -20,10 +20,10 @@
     
     [plistArray addObject:plist];
     
-    NSURL *syntaxFileURL1 = [mainBundle URLForResource:@"Regular Expressions (JavaScript).tmLanguage" withExtension:nil];
-    NSDictionary *plist1 = [NSDictionary dictionaryWithContentsOfURL:syntaxFileURL1];
+//    NSURL *syntaxFileURL1 = [mainBundle URLForResource:@"Regular Expressions (JavaScript).tmLanguage" withExtension:nil];
+//    NSDictionary *plist1 = [NSDictionary dictionaryWithContentsOfURL:syntaxFileURL1];
 
-    [plistArray addObject:plist1];
+   // [plistArray addObject:plist1];
     
     return [NSArray arrayWithArray:plistArray];
 }

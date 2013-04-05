@@ -7,6 +7,9 @@
 //
 
 #import "DropBoxFile.h"
+@interface DropBoxFile ()
+@property (nonatomic) NSString *contents;
+@end
 
 @implementation DropBoxFile
 

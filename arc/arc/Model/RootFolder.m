@@ -8,6 +8,10 @@
 
 #import "RootFolder.h"
 
+@interface RootFolder ()
+@property (nonatomic) NSArray *contents;
+@end
+
 static RootFolder *sharedRootFolder = nil;
 
 @implementation RootFolder

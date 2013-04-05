@@ -21,10 +21,13 @@ extern const CGColorRef* DEFAULT_TEXT_COLOR;
 extern NSString* const FILE_APP_STATE;
 extern NSString* const KEY_CURRENT_FOLDER;
 extern NSString* const KEY_CURRENT_FILE;
+extern NSString* const KEY_FONTS;
 // Settings
 extern NSString* const KEY_SETTINGS_ROOT;
 extern NSString* const KEY_FONT_FAMILY;
 extern NSString* const KEY_FONT_SIZE;
+extern NSString* const KEY_LINE_NUMBERS;
+extern NSString* const KEY_WORD_WRAP;
 
 // Default Folder Names
 extern NSString* const FOLDER_EXTERNAL_APPLICATIONS;

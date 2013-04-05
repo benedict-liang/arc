@@ -216,7 +216,6 @@
 }
 -(void)iterPatternsForRange:(NSRange)contentRange patterns:(NSArray*)patterns output:(ArcAttributedString*)output {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
-    dispatch_semaphore_t outputSema = dispatch_semaphore_create(1);
     dispatch_group_t group = dispatch_group_create();
 
     

@@ -2,12 +2,23 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Fonts</key>
+	<dict>
+		<key>Source Code Pro</key>
+		<string>SourceCodePro-Regular</string>
+		<key>Inconsolata</key>
+		<string>Inconsolata</string>
+	</dict>
 	<key>Settings</key>
 	<dict>
 		<key>fontFamily</key>
 		<string>SourceCodePro-Regular</string>
 		<key>fontSize</key>
 		<integer>14</integer>
+		<key>lineNumbers</key>
+		<true/>
+		<key>wordWrap</key>
+		<false/>
 	</dict>
 </dict>
 </plist>

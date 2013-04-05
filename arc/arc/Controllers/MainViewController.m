@@ -33,8 +33,10 @@
 
     _leftViewController = [self.viewControllers objectAtIndex:0];
     _codeViewController = [self.viewControllers objectAtIndex:1];
+}
 
-    // TMP
+- (void)viewWillAppear:(BOOL)animated
+{
     [self fileSelected:[ApplicationState getSampleFile]];
     [self folderSelected:[RootFolder sharedRootFolder]];
 }
@@ -54,6 +56,11 @@
         // Link to the main view controller instance here.
         [dbAccountManager linkFromController:self];
     }
+}
+
+- (void)refreshCodeViewForSetting:(NSString *)setting
+{
+    [_codeViewController refreshForSetting:setting];
 }
 
 // Shows the file using the CodeViewController

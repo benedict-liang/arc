@@ -10,8 +10,6 @@
 #import <Dropbox/Dropbox.h>
 #import "File.h"
 
-@interface DropBoxFile : NSObject <File> {
-    NSString *_contents;
-}
+@interface DropBoxFile : NSObject <File>
 
 @end

@@ -7,6 +7,7 @@
 //
 #import <CoreText/CoreText.h>
 #import "CodeViewController.h"
+#import "CodeViewMiddleware.h"
 #import "CodeLineCell.h"
 #import "ArcAttributedString.h"
 
@@ -20,9 +21,12 @@
 @property ArcAttributedString *arcAttributedString;
 @property CTFramesetterRef frameSetter;
 @property CGFloat lineHeight;
+@property NSArray *middlewares;
 @property NSMutableArray *lines;
 @property NSMutableArray *lineRefs;
 - (void)loadFile;
+- (void)processFile;
+- (void)renderFile;
 - (void)clearPreviousLayoutInformation;
 - (void)clearMemoisedInformation;
 - (void)generateLines;
@@ -39,7 +43,10 @@
     if (self) {
         _lines = [NSMutableArray array];
         _lineRefs = [NSMutableArray array];
-        _isLoaded = NO;
+        _middlewares = [NSArray arrayWithObjects:
+                       [[BasicStyles alloc] init],
+                       [[SyntaxHighlight alloc] init],
+                       nil];
     }
     return self;
 }
@@ -70,12 +77,6 @@
                                   self.view.bounds.size.width,
                                   self.view.bounds.size.height - SIZE_TOOLBAR_HEIGHT);
     [self.view addSubview:_tableView];
-    
-    // TODO.
-    // What is this?
-    //(Omer) Boolean var set to yes when loaded. so mergeAndRenderWith doesn't update before view is loaded. Can happen if syntax highlighting is finished before view is loaded
-    
-    _isLoaded = YES;
 }
 
 - (void)showLeftBar:(id)sender
@@ -88,12 +89,22 @@
 
 }
 
-
-- (void)viewDidAppear:(BOOL)animated
+- (void)refreshForSetting:(NSString *)setting
 {
-    [super viewDidAppear:animated];
-    //Causes memory bug on iOS6 simulator. 
-    //[self refreshSubViewSizes];
+//    for (id<CodeViewMiddleware> middleware in _middlewares) {
+//        // Only execute relevant middleware
+//        if ([middleware.settings indexOfObjectIdenticalTo:setting] != NSNotFound) {
+//            [middleware arcAttributedString:_arcAttributedString
+//                                     OfFile:_currentFile
+//                                   delegate:self];
+//        }
+//    }
+    
+//    [self clearMemoisedInformation];
+//    [self renderFile];
+    id<File> tmp = _currentFile;
+    _currentFile = nil;
+    [self showFile:tmp];
 }
 
 - (void)showFile:(id<File>)file
@@ -108,19 +119,34 @@
     _currentFile = file;
     
     [self loadFile];
+    [self processFile];
+    [self generateLines];
+    [self renderFile];
 
-    // Middleware to Style Attributed String
+}
+
+- (void)loadFile
+{
+    _arcAttributedString = [[ArcAttributedString alloc]
+                            initWithString:(NSString *)[_currentFile contents]];
+}
+
+- (void)processFile
+{
     [BasicStyles arcAttributedString:_arcAttributedString
                               OfFile:_currentFile
                             delegate:self];
     [SyntaxHighlight arcAttributedString:_arcAttributedString
                                   OfFile:_currentFile
                                 delegate:self];
+}
 
+- (void)renderFile
+{
     // Render Code to screen
-    [self generateLines];
     [_tableView reloadData];
 }
+
 
 - (void)clearMemoisedInformation
 {
@@ -152,6 +178,7 @@
     // Calculate the lines
     CFIndex start = 0;
     NSUInteger length = CFAttributedStringGetLength(ref);
+    CFBridgingRelease(ref);
     while (start < length)
     {
         CTTypesetterRef typesetter = CTFramesetterGetTypesetter(_frameSetter);
@@ -178,21 +205,9 @@
     }
 }
 
-- (void)loadFile
-{
-    _arcAttributedString = [[ArcAttributedString alloc]
-                            initWithString:(NSString *)[_currentFile contents]];
-}
-
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
                    forFile:(id<File>)file
 {
-    //TODO
-    // merge arcAttributedString (param) with _arcAttributedString.
-    while (!_isLoaded) {
-
-    }
-
     if ([file isEqual:_currentFile]) {
         _arcAttributedString = arcAttributedString;
         [self clearMemoisedInformation];

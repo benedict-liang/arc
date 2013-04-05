@@ -13,7 +13,10 @@
 @protocol CodeViewMiddleware <NSObject>
 // Adds attributes to ArcAttributedString
 // File object is passed in as a reference (if more infomation is needed)
++ (void)arcAttributedString:(ArcAttributedString*)arcAttributedString
+                     OfFile:(id<File>)file
+                   delegate:(id)delegate;
 
-+ (void)arcAttributedString:(ArcAttributedString*)arcAttributedString OfFile:(id<File>)file delegate:(id)del;
-
+//// Array of Settings that Middleware is concerned with.
+//@property (nonatomic, readonly) NSArray *settings;
 @end
