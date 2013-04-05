@@ -15,7 +15,7 @@
     
     NSBundle *mainBundle = [NSBundle mainBundle];
     //TODO: Get plists name from Syntaxes folder
-    NSURL *syntaxFileURL = [mainBundle URLForResource:@"Objective-C.tmLanguage" withExtension:nil];
+    NSURL *syntaxFileURL = [mainBundle URLForResource:@"Python.tmLanguage" withExtension:nil];
     NSDictionary *plist = [NSDictionary dictionaryWithContentsOfURL:syntaxFileURL];
     
     [plistArray addObject:plist];
