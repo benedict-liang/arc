@@ -62,8 +62,11 @@ static ApplicationState *sharedApplicationState = nil;
         __settings = [storedState valueForKey:KEY_SETTINGS_ROOT];
         
         // Restore application state.
-        _currentFolderOpened = [RootFolder sharedRootFolder];
-        _currentFileOpened = nil;
+        NSString *folderPath = [storedState valueForKey:KEY_CURRENT_FOLDER];
+        NSString *filePath = [storedState valueForKey:KEY_CURRENT_FILE];
+        
+        _currentFolderOpened = (id<Folder>)[[RootFolder sharedRootFolder] objectAtPath:folderPath];
+        _currentFileOpened = (id<File>)[[RootFolder sharedRootFolder] objectAtPath:filePath];
         _fonts = [storedState valueForKey:KEY_FONTS];
     }
     return self;
