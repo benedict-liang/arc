@@ -71,4 +71,12 @@
     return [[fileSystemObject1 path] isEqualToString:[fileSystemObject2 path]];
 }
 
+
++ (UIBarButtonItem *)flexibleSpace
+{
+    return [[UIBarButtonItem alloc]
+            initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                 target:nil
+                                 action:nil];
+}
 @end

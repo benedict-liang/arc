@@ -17,4 +17,6 @@
 + (UIColor *)colorWithHexString:(NSString *)hexString;
 
 + (BOOL)isEqual:(id<FileSystemObject>)fileSystemObject1 and:(id<FileSystemObject>)fileSystemObject2;
+
++ (UIBarButtonItem *)flexibleSpace;
 @end
