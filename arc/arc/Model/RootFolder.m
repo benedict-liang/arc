@@ -35,7 +35,7 @@ static RootFolder *sharedRootFolder = nil;
         _path = [localRoot path];
         _parent = nil;
     }
-    return nil;
+    return self;
 }
 
 // Returns the contents of this object.
