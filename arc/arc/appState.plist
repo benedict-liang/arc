@@ -5,7 +5,7 @@
 	<key>Fonts</key>
 	<dict>
 		<key>Ubuntu Mono</key>
-		<string>UbuntuMono</string>
+		<string>UbuntuMono-Regular</string>
 		<key>Source Code Pro</key>
 		<string>SourceCodePro-Regular</string>
 		<key>Inconsolata</key>
