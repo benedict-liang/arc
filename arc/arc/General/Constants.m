@@ -40,5 +40,8 @@ NSString* const CLOUD_DROPBOX_SECRET = @"kkb1vzgnah76zmr";
 // Syntaxes File List
 NSString* const SYNTAXES_FILE_LIST = @"syntaxesFileList.txt";
 
+// Bundle Conf
+NSString* const BUNDLE_CONF = @"BundleConf.plist";
+
 @implementation Constants
 @end

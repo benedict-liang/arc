@@ -41,4 +41,7 @@ extern NSString* const CLOUD_DROPBOX_SECRET;
 // Syntaxes File List
 extern NSString* const SYNTAXES_FILE_LIST;
 
+// Bundle Conf
+extern NSString* const BUNDLE_CONF;
+
 @end
