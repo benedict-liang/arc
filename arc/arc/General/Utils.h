@@ -7,8 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FileSystemObject.h"
 
 @interface Utils : NSObject
 // Taken from http://stackoverflow.com/questions/941604/setting-uiimage-dimensions-on-uitableviewcell-image
 + (UIImage *)scale:(UIImage *)image toSize:(CGSize)size;
+
+// Taken from http://stackoverflow.com/questions/1560081/how-can-i-create-a-uicolor-from-a-hex-string
++ (UIColor *)colorWithHexString:(NSString *)hexString;
+
++ (BOOL)isEqual:(id<FileSystemObject>)fileSystemObject1 and:(id<FileSystemObject>)fileSystemObject2;
+
++ (UIBarButtonItem *)flexibleSpace;
 @end

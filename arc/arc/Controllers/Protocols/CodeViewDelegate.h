@@ -1,5 +1,5 @@
 //
-//  CodeViewControllerDelegate.h
+//  CodeViewDelegate.h
 //  arc
 //
 //  Created by omer iqbal on 1/4/13.
@@ -10,10 +10,13 @@
 #import "ArcAttributedString.h"
 #import "File.h"
 
-@protocol CodeViewControllerProtocol <NSObject>
+@protocol CodeViewDelegate <NSObject>
 - (void)showFile:(id<File>)file;
 - (void)refreshForSetting:(NSString*)setting;
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
                    forFile:(id<File>)file;
+
+# pragma mark - Code View Properties
+@property (nonatomic, strong) UIColor *backgroundColor;
 @end
 

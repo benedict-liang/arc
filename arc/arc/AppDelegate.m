@@ -46,7 +46,7 @@
                                                            parent:inboxFolder];
         
         // Open file
-        id<MainViewControllerProtocol> mainViewController = (id<MainViewControllerProtocol>) _window.rootViewController;
+        id<MainViewControllerDelegate> mainViewController = (id<MainViewControllerDelegate>) _window.rootViewController;
         [mainViewController openIn:receivedFile];
 
         return YES;
@@ -83,11 +83,6 @@
         [fileManager copyItemAtURL:plistURL toURL:targetURL error:&error];
         if (error) {
             NSLog(@"%@", error);
-        } else {
-            // Get the dictionary and save our root folder path into it (as a default.)
-            NSMutableDictionary *settingsDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:[targetURL path]];
-            [settingsDictionary setValue:documentsPath forKey:KEY_CURRENT_FOLDER];
-            [settingsDictionary writeToFile:appStatePath atomically:YES];
         }
     }
     
@@ -122,10 +117,10 @@
     MainViewController *mainViewController = [[MainViewController alloc] init];
     
     // Create CodeViewController
-    id<CodeViewControllerProtocol, SubViewControllerProtocol> codeViewController = [[CodeViewController alloc] init];
+    id<CodeViewDelegate, SubViewControllerDelegate> codeViewController = [[CodeViewController alloc] init];
     
     // Create LeftBarViewController
-    id<LeftViewControllerProtocol, SubViewControllerProtocol> leftViewController = [[LeftViewController alloc] init];
+    id<FileNavigatorViewControllerDelegate, SubViewControllerDelegate> leftViewController = [[LeftViewController alloc] init];
 
     // Assign Delegates
     leftViewController.delegate = mainViewController;
@@ -140,7 +135,7 @@
     mainViewController.delegate = mainViewController;
     
     // Set MainViewController as RootViewController
-    self.window.RootViewController = mainViewController;
+    [self.window setRootViewController:mainViewController];
     [self.window makeKeyAndVisible];
 
     return YES;

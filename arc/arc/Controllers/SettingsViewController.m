@@ -96,15 +96,19 @@
     
     NSDictionary *sectionProperties = [_options objectAtIndex:indexPath.section];
     
+    // Get the settings dictionary associated with this section.
     NSDictionary *options = [sectionProperties objectForKey:@"keyValuePairs"];
     NSArray *allKeys = [options allKeys];
     NSArray *allValues = [options objectsForKeys:allKeys notFoundMarker:@"None"];
     
+    // Get the key-value pair to associate with this row.
     NSString *key = [allKeys objectAtIndex:indexPath.row];
     NSString *value = [allValues objectAtIndex:indexPath.row];
     
+    // Set the row properties.
     NSString *currentSetting = [[ApplicationState sharedApplicationState] settingForKey:[sectionProperties valueForKey:@"settingsKey"]];
     if ([value isEqualToString:currentSetting]) {
+        // Put a checkmark on the row if it's the one for the currently applied setting.
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     
@@ -130,18 +134,15 @@
     // Update the appropriate setting using the key associated with this section.
     NSString *currentKey = [sectionProperties valueForKey:@"settingsKey"];
     [state setSetting:value forKey:currentKey];
-    [state saveStateToDisk];
     
     // Add a checkmark to the row.
     [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
 
-    // trigger a codeViewRefresh
+    // Refresh the code view.
     [self.delegate refreshCodeViewForSetting:currentKey];
 
-    // unhighlight TableViewCell
+    // Unhighlight the row, and reload the table.
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    // Reload TableView data
     [tableView reloadData];
 }
 

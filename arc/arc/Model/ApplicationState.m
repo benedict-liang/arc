@@ -24,6 +24,18 @@ static ApplicationState *sharedApplicationState = nil;
     return sharedApplicationState;
 }
 
+- (void)setCurrentFileOpened:(id<File>)currentFileOpened
+{
+    _currentFileOpened = currentFileOpened;
+    [self setSetting:[currentFileOpened path] forKey:KEY_CURRENT_FILE];
+}
+
+- (void)setCurrentFolderOpened:(id<Folder>)currentFolderOpened
+{
+    _currentFolderOpened = currentFolderOpened;
+    [self setSetting:[currentFolderOpened path] forKey:KEY_CURRENT_FOLDER];
+}
+
 // Helper method to get the path of the state plist.
 - (NSString *)getStateDictionaryPath
 {
@@ -51,6 +63,7 @@ static ApplicationState *sharedApplicationState = nil;
 - (void)setSetting:(id)value forKey:(NSString *)key
 {
     [__settings setValue:value forKey:key];
+    [self saveStateToDisk];
 }
 
 - (id)init
@@ -62,8 +75,21 @@ static ApplicationState *sharedApplicationState = nil;
         __settings = [storedState valueForKey:KEY_SETTINGS_ROOT];
         
         // Restore application state.
-        _currentFolderOpened = [RootFolder sharedRootFolder];
-        _currentFileOpened = nil;
+        NSString *folderPath = [storedState valueForKey:KEY_CURRENT_FOLDER];
+        NSString *filePath = [storedState valueForKey:KEY_CURRENT_FILE];
+        
+        // If we have no folder path, we should set a default.
+        if (!folderPath) {
+            folderPath = [[LocalRootFolder sharedLocalRootFolder] path];
+        }
+        
+        // TEMPORARILY set a default for the current file.
+        if (!filePath) {
+            filePath = [[ApplicationState getSampleFile] path];
+        }
+        
+        _currentFolderOpened = (id<Folder>)[[RootFolder sharedRootFolder] objectAtPath:folderPath];
+        _currentFileOpened = (id<File>)[[RootFolder sharedRootFolder] objectAtPath:filePath];
         _fonts = [storedState valueForKey:KEY_FONTS];
     }
     return self;
@@ -79,13 +105,7 @@ static ApplicationState *sharedApplicationState = nil;
     [savedState setValue:[_currentFolderOpened path] forKey:KEY_CURRENT_FOLDER];
     [savedState setValue:[_currentFileOpened path] forKey:KEY_CURRENT_FILE];
     
-    // Save our settings into a dictionary.
-//    NSMutableDictionary *settingsDictionary = [[NSMutableDictionary alloc] init];
-//    [settingsDictionary setValue:_fontFamily forKey:KEY_FONT_FAMILY];
-//    [settingsDictionary setValue:[NSNumber numberWithInt:_fontSize] forKey:KEY_FONT_SIZE];
-//    [settingsDictionary setValue:[NSNumber numberWithBool:_wordWrap] forKey:KEY_WORD_WRAP];
-//    [settingsDictionary setValue:[NSNumber numberWithBool:_lineNumbers] forKey:KEY_LINE_NUMBERS];
-    
+    // Save our settings.
     [savedState setValue:__settings forKey:KEY_SETTINGS_ROOT];
     
     // Save the dictionary back to disk.

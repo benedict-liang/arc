@@ -11,10 +11,7 @@
 #import "File.h"
 #import "Folder.h"
 
-@protocol MainViewControllerProtocol
-#pragma mark - Triggered by CodeViewController
-- (void)showLeftBar;
-- (void)hideLeftBar;
+@protocol MainViewControllerDelegate
 
 #pragma mark - Triggered by LeftBarViewController
 - (void)fileObjectSelected:(id<FileSystemObject>)fileSystemObject;

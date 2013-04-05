@@ -58,7 +58,7 @@
 
     // Set Up TableView
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds
-                                                          style:UITableViewStylePlain];
+                                              style:UITableViewStylePlain];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
         UIViewAutoresizingFlexibleWidth;
 
@@ -72,6 +72,19 @@
     [self.view addSubview:_tableView];
 }
 
+// Work Around to track back button action.
+- (void)viewWillDisappear:(BOOL)animated
+{
+    if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
+        // back button was pressed.
+        // We know this is true because self is no longer
+        // in the navigation stack.
+        [self.delegate fileObjectSelected:[_folder parent]];
+    }
+    
+    [super viewWillDisappear:animated];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -79,12 +92,14 @@
     return [_filesAndFolders count];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
 {
     return [[_filesAndFolders objectAtIndex:section] count];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+- (NSString *)tableView:(UITableView *)tableView
+titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         return @"Folders";
     } else {
@@ -92,7 +107,8 @@
     }
 }
 
-- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
+- (UITableViewCell*)tableView:(UITableView*)tableView
+        cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     static NSString *cellIdentifier = @"FileAndFolderCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];

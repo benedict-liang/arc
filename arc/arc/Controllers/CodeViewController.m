@@ -18,35 +18,32 @@
 @interface CodeViewController ()
 @property id<File> currentFile;
 @property (nonatomic, strong) UITableView *tableView;
-@property ArcAttributedString *arcAttributedString;
+@property (nonatomic, strong) ArcAttributedString *arcAttributedString;
+@property (nonatomic, strong) UIToolbar *toolbar;
+@property (nonatomic, strong) UIBarButtonItem *toolbarTitle;
 @property CTFramesetterRef frameSetter;
 @property CGFloat lineHeight;
-@property NSArray *middlewares;
 @property NSMutableArray *lines;
-@property NSMutableArray *lineRefs;
 - (void)loadFile;
 - (void)processFile;
 - (void)renderFile;
 - (void)clearPreviousLayoutInformation;
-- (void)clearMemoisedInformation;
 - (void)generateLines;
 - (void)calcLineHeight;
 @end
 
 @implementation CodeViewController
 @synthesize delegate = _delegate;
-@synthesize toolbar = _toolbar;
+@synthesize backgroundColor = _backgroundColor;
 
 - (id)init
 {
     self = [super init];
     if (self) {
         _lines = [NSMutableArray array];
-        _lineRefs = [NSMutableArray array];
-        _middlewares = [NSArray arrayWithObjects:
-                       [[BasicStyles alloc] init],
-                       [[SyntaxHighlight alloc] init],
-                       nil];
+        
+        // Defaults
+        _backgroundColor = [Utils colorWithHexString:@"FDF6E3"];
     }
     return self;
 }
@@ -60,6 +57,17 @@
     _toolbar = [[UIToolbar alloc] initWithFrame:
                 CGRectMake(0, 0, self.view.bounds.size.width, SIZE_TOOLBAR_HEIGHT)];
     _toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    
+    _toolbarTitle = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                     style:UIBarButtonItemStylePlain
+                                                    target:nil
+                                                    action:nil];
+    _toolbar.items = [NSArray arrayWithObjects:
+                       [Utils flexibleSpace],
+                       _toolbarTitle,
+                       [Utils flexibleSpace],
+                       nil];
+
     [self.view addSubview:_toolbar];
     
     // Set Up TableView
@@ -67,7 +75,7 @@
                                               style:UITableViewStylePlain];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
         UIViewAutoresizingFlexibleWidth;
-    
+    _tableView.backgroundColor = _backgroundColor;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.autoresizesSubviews = YES;
     
@@ -79,29 +87,8 @@
     [self.view addSubview:_tableView];
 }
 
-- (void)showLeftBar:(id)sender
-{
-    
-}
-
-- (void)hideLeftBar:(id)sender
-{
-
-}
-
 - (void)refreshForSetting:(NSString *)setting
 {
-//    for (id<CodeViewMiddleware> middleware in _middlewares) {
-//        // Only execute relevant middleware
-//        if ([middleware.settings indexOfObjectIdenticalTo:setting] != NSNotFound) {
-//            [middleware arcAttributedString:_arcAttributedString
-//                                     OfFile:_currentFile
-//                                   delegate:self];
-//        }
-//    }
-    
-//    [self clearMemoisedInformation];
-//    [self renderFile];
     id<File> tmp = _currentFile;
     _currentFile = nil;
     [self showFile:tmp];
@@ -110,7 +97,6 @@
 - (void)showFile:(id<File>)file
 {
     if ([file isEqual:_currentFile]) {
-        [self clearMemoisedInformation];
         [_tableView reloadData];
         return;
     }
@@ -118,11 +104,12 @@
     // Update Current file
     _currentFile = file;
     
+    [self updateToolbarTitle];
+    
     [self loadFile];
     [self processFile];
     [self generateLines];
     [self renderFile];
-
 }
 
 - (void)loadFile
@@ -147,10 +134,9 @@
     [_tableView reloadData];
 }
 
-
-- (void)clearMemoisedInformation
+- (void)updateToolbarTitle
 {
-    _lineRefs = [NSMutableArray array];
+    _toolbarTitle.title = [_currentFile name];
 }
 
 - (void)clearPreviousLayoutInformation
@@ -161,7 +147,6 @@
     }
 
     _lines = [NSMutableArray array];
-    [self clearMemoisedInformation];
 }
 
 - (void)generateLines
@@ -205,14 +190,38 @@
     }
 }
 
+
+#pragma mark - Code View Delegate
+
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
                    forFile:(id<File>)file
 {
     if ([file isEqual:_currentFile]) {
         _arcAttributedString = arcAttributedString;
-        [self clearMemoisedInformation];
         [_tableView reloadData];
     }
+}
+
+
+#pragma mark - Detail View Controller Delegate
+
+- (void)showShowMasterViewButton:(UIBarButtonItem *)button
+{
+    _toolbar.items = [NSArray arrayWithObjects:
+                      button,
+                      [Utils flexibleSpace],
+                      _toolbarTitle,
+                      [Utils flexibleSpace],
+                      nil];
+}
+
+- (void)hideShowMasterViewButton:(UIBarButtonItem *)button
+{
+    _toolbar.items = [NSArray arrayWithObjects:
+                      [Utils flexibleSpace],
+                      _toolbarTitle,
+                      [Utils flexibleSpace],
+                      nil];
 }
 
 #pragma mark - Table view data source
@@ -239,21 +248,11 @@
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     NSUInteger lineNumber = indexPath.row;
 
-    CTLineRef lineRef = (lineNumber < [_lineRefs count]) ?
-        (__bridge CTLineRef)[_lineRefs objectAtIndex:lineNumber] : nil;
-    
-    if (lineRef == nil) {
-        lineRef = CTLineCreateWithAttributedString(
+    CTLineRef lineRef = CTLineCreateWithAttributedString(
             (__bridge CFAttributedStringRef)(
                 [_arcAttributedString.attributedString attributedSubstringFromRange:
                 [[_lines objectAtIndex:lineNumber] rangeValue]]));
-        
-        // Memoise.
-        if (_lineRefs) {
-           [_lineRefs insertObject:(__bridge id)(lineRef) atIndex:lineNumber]; 
-        }
-    }
-    
+
     cell.line = lineRef;
     [cell setNeedsDisplay];
     return cell;
