@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SubViewControllerDelegate.h"
+#import "MasterViewControllerDelegate.h"
 #import "FileNavigatorViewControllerDelegate.h"
-@interface LeftViewController : UIViewController<SubViewControllerDelegate, FileNavigatorViewControllerDelegate>
+
+@interface LeftViewController : UIViewController<SubViewControllerDelegate,
+    MasterViewControllerDelegate, FileNavigatorViewControllerDelegate>
 @end

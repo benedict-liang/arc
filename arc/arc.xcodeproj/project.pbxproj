@@ -130,6 +130,7 @@
 		4C963C80170D8E96004FDACB /* CodeLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeLineCell.h; sourceTree = "<group>"; };
 		4C963C81170D8E96004FDACB /* CodeLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeLineCell.m; sourceTree = "<group>"; };
 		4CA4DE42170EA04400A86109 /* DetailViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewControllerDelegate.h; sourceTree = "<group>"; };
+		4CA4DE43170EA4C200A86109 /* MasterViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewControllerDelegate.h; sourceTree = "<group>"; };
 		4CD06B2C16FDE92D00C9DED3 /* SubViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubViewControllerDelegate.h; sourceTree = "<group>"; };
 		4CD06B3B16FDEDA600C9DED3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		4CD06B4016FDEDA600C9DED3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -507,6 +508,7 @@
 			children = (
 				8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */,
 				4CD06B2C16FDE92D00C9DED3 /* SubViewControllerDelegate.h */,
+				4CA4DE43170EA4C200A86109 /* MasterViewControllerDelegate.h */,
 				4CA4DE42170EA04400A86109 /* DetailViewControllerDelegate.h */,
 				FCE8F95D1709806B00C08724 /* CodeViewDelegate.h */,
 				4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */,
