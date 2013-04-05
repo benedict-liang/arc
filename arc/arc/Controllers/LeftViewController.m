@@ -32,7 +32,7 @@
     return self;
 }
 
-- (void)setDelegate:(id<MainViewControllerProtocol>)delegate
+- (void)setDelegate:(id<MainViewControllerDelegate>)delegate
 {
     _delegate = delegate;
 }

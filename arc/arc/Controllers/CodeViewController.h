@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SubViewControllerProtocol.h"
+#import "SubViewControllerDelegate.h"
+#import "CodeViewDelegate.h"
+#import "DetailViewControllerDelegate.h"
 #import "File.h"
-#import "CodeViewControllerProtocol.h"
-@interface CodeViewController : UIViewController<SubViewControllerProtocol, CodeViewControllerProtocol, UITableViewDataSource>
-@property (nonatomic, strong) UIToolbar *toolbar;
+
+@interface CodeViewController : UIViewController<SubViewControllerDelegate,
+    CodeViewDelegate, UITableViewDataSource,
+    UITableViewDelegate, DetailViewControllerDelegate>
 @end

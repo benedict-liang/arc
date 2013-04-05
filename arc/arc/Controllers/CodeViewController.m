@@ -18,7 +18,8 @@
 @interface CodeViewController ()
 @property id<File> currentFile;
 @property (nonatomic, strong) UITableView *tableView;
-@property ArcAttributedString *arcAttributedString;
+@property (nonatomic, strong) ArcAttributedString *arcAttributedString;
+@property (nonatomic, strong) UIToolbar *toolbar;
 @property CTFramesetterRef frameSetter;
 @property CGFloat lineHeight;
 @property NSArray *middlewares;
@@ -35,7 +36,6 @@
 
 @implementation CodeViewController
 @synthesize delegate = _delegate;
-@synthesize toolbar = _toolbar;
 
 - (id)init
 {
@@ -79,29 +79,8 @@
     [self.view addSubview:_tableView];
 }
 
-- (void)showLeftBar:(id)sender
-{
-    
-}
-
-- (void)hideLeftBar:(id)sender
-{
-
-}
-
 - (void)refreshForSetting:(NSString *)setting
 {
-//    for (id<CodeViewMiddleware> middleware in _middlewares) {
-//        // Only execute relevant middleware
-//        if ([middleware.settings indexOfObjectIdenticalTo:setting] != NSNotFound) {
-//            [middleware arcAttributedString:_arcAttributedString
-//                                     OfFile:_currentFile
-//                                   delegate:self];
-//        }
-//    }
-    
-//    [self clearMemoisedInformation];
-//    [self renderFile];
     id<File> tmp = _currentFile;
     _currentFile = nil;
     [self showFile:tmp];
@@ -122,7 +101,6 @@
     [self processFile];
     [self generateLines];
     [self renderFile];
-
 }
 
 - (void)loadFile
@@ -212,6 +190,18 @@
         [self clearMemoisedInformation];
         [_tableView reloadData];
     }
+}
+
+#pragma mark - Detail View Controller Delegate
+
+- (void)showShowMasterViewButton:(UIBarButtonItem *)button
+{
+    [_toolbar setItems:[NSArray arrayWithObject:button]];
+}
+
+- (void)hideShowMasterViewButton:(UIBarButtonItem *)button
+{
+    [_toolbar setItems:[NSArray array]];
 }
 
 #pragma mark - Table view data source

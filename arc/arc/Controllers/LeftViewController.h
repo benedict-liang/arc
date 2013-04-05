@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SubViewControllerProtocol.h"
+#import "SubViewControllerDelegate.h"
 #import "LeftViewControllerProtocol.h"
-@interface LeftViewController : UIViewController<SubViewControllerProtocol, LeftViewControllerProtocol>
+@interface LeftViewController : UIViewController<SubViewControllerDelegate, LeftViewControllerProtocol>
 @end

@@ -46,7 +46,7 @@
                                                            parent:inboxFolder];
         
         // Open file
-        id<MainViewControllerProtocol> mainViewController = (id<MainViewControllerProtocol>) _window.rootViewController;
+        id<MainViewControllerDelegate> mainViewController = (id<MainViewControllerDelegate>) _window.rootViewController;
         [mainViewController openIn:receivedFile];
 
         return YES;
@@ -134,10 +134,10 @@
     MainViewController *mainViewController = [[MainViewController alloc] init];
     
     // Create CodeViewController
-    id<CodeViewControllerProtocol, SubViewControllerProtocol> codeViewController = [[CodeViewController alloc] init];
+    id<CodeViewDelegate, SubViewControllerDelegate> codeViewController = [[CodeViewController alloc] init];
     
     // Create LeftBarViewController
-    id<LeftViewControllerProtocol, SubViewControllerProtocol> leftViewController = [[LeftViewController alloc] init];
+    id<LeftViewControllerProtocol, SubViewControllerDelegate> leftViewController = [[LeftViewController alloc] init];
 
     // Assign Delegates
     leftViewController.delegate = mainViewController;

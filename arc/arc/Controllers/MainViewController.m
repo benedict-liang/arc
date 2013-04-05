@@ -9,9 +9,8 @@
 #import "MainViewController.h"
 
 @interface MainViewController ()
-@property id<CodeViewControllerProtocol> codeViewController;
-@property id<LeftViewControllerProtocol> leftViewController;
-@property BOOL hideLeftView;
+@property CodeViewController *codeViewController;
+@property LeftViewController *leftViewController;
 - (void)fileSelected:(id<File>)file;
 - (void)folderSelected:(id<Folder>)folder;
 @end
@@ -22,7 +21,7 @@
 {
     self = [super init];
     if (self) {
-        _hideLeftView = NO;
+
     }
     return self;
 }
@@ -81,17 +80,6 @@
 
 #pragma mark - MainViewControllerDelegate Methods
 
-- (void)showLeftBar
-{
-    _hideLeftView = NO;
-    [self.view setNeedsLayout];
-}
-- (void)hideLeftBar
-{
-    _hideLeftView = YES;
-    [self.view setNeedsLayout];
-}
-
 - (void)fileObjectSelected:(id<FileSystemObject>)fileSystemObject;
 {
     if ([[fileSystemObject class] conformsToProtocol:@protocol(Folder)]) {
@@ -108,30 +96,19 @@
 
 #pragma mark - UISpiltViewControllerDelegate Methods
 
-//- (BOOL)splitViewController:(UISplitViewController *)svc
-//   shouldHideViewController:(UIViewController *)vc
-//              inOrientation:(UIInterfaceOrientation)orientation
-//{
-//    NSLog(@"asdf");
-//    return _hideLeftView;
-//}
-
 - (void)splitViewController:(UISplitViewController *)svc
      willHideViewController:(UIViewController *)aViewController
           withBarButtonItem:(UIBarButtonItem *)barButtonItem
        forPopoverController:(UIPopoverController *)pc
 {
-
-    barButtonItem.title = [((LeftViewController*) aViewController) title];
-    [((CodeViewController*)_codeViewController) toolbar].items = [NSArray arrayWithObject:barButtonItem];
+    [_codeViewController showShowMasterViewButton:barButtonItem];
 }
 
 - (void)splitViewController:(UISplitViewController *)svc
      willShowViewController:(UIViewController *)aViewController
   invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
-    CodeViewController *codeViewController = (CodeViewController*) _codeViewController;
-    codeViewController.toolbar.items = [NSArray array];
+    [_codeViewController hideShowMasterViewButton:barButtonItem];
 }
 
 #pragma mark - UISplitViewController iOS 5.1 Compatibility (Rotation)

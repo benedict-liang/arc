@@ -11,7 +11,7 @@
 #import "CodeViewMiddleware.h"
 #import "ArcAttributedString.h"
 #import "TMBundleHeader.h"
-#import "CodeViewControllerProtocol.h"
+#import "CodeViewDelegate.h"
 #import "File.h"
 @interface SyntaxHighlight : NSObject <CodeViewMiddleware> {
     __block NSDictionary *nameMatches;
@@ -21,7 +21,7 @@
     __block NSDictionary *pairMatches;
 }
 @property NSDictionary* theme;
-@property (readonly) id<CodeViewControllerProtocol> delegate;
+@property (readonly) id<CodeViewDelegate> delegate;
 @property (readonly) id<File> currentFile;
 @property (readonly) NSString* content;
 @property (readonly) NSArray* patterns;
