@@ -22,7 +22,7 @@
     if (self) {
         _delegate = d;
         _currentFile = file;
-        _patterns = [TMBundleSyntaxParser getPatternsArray:@"Objective-C.tmLanguage"];
+        _patterns = [TMBundleSyntaxParser getPatternsArray:@"source.js.plist"];
         _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
         if ([[file contents] isKindOfClass:[NSString class]]) {
             _content = (NSString*)[file contents];
@@ -44,7 +44,7 @@
     
     NSRegularExpression *regex = [NSRegularExpression
                                   regularExpressionWithPattern:p
-                                  options:0
+                                  options:NSRegularExpressionUseUnixLineSeparators
                                   error:&error];
     
     if ((r.location + r.length <= [_content length]) && (r.length > 0) && (r.length <= [_content length])) {
@@ -61,7 +61,7 @@
     NSMutableArray* results = [[NSMutableArray alloc] init];
     NSRegularExpression *regex = [NSRegularExpression
                                   regularExpressionWithPattern:p
-                                  options:0
+                                  options:NSRegularExpressionUseUnixLineSeparators
                                   error:&error];
     
     
@@ -241,11 +241,14 @@
             NSArray *captures = [syntaxItem objectForKey:@"captures"];
             
 
-            
-            //case name, match
+ 
+                //case name, match
             if (name && match) {
                 NSArray *a = [self foundPattern:match range:contentRange];
                 nameMatches = [self merge:@{name: a} withd2:nameMatches];
+                if ([name isEqualToString:@"comment.line.double-slash.js"]) {
+                    NSLog(@"comment:%@ %@",match, a);
+                }
             }
             if (captures && match) {
                 captureMatches = [self merge:[self findCaptures:captures pattern:match range:contentRange] withd2:captureMatches];

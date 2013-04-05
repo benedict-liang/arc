@@ -20,7 +20,7 @@
 //    
 //    [plistArray addObject:plist];
     
-    NSURL *syntaxFileURL1 = [mainBundle URLForResource:@"Objective-C.tmLanguage" withExtension:nil];
+    NSURL *syntaxFileURL1 = [mainBundle URLForResource:@"source.js.plist" withExtension:nil];
    NSDictionary *plist1 = [NSDictionary dictionaryWithContentsOfURL:syntaxFileURL1];
 
     [plistArray addObject:plist1];
