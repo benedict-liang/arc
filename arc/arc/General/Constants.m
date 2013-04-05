@@ -37,5 +37,8 @@ NSString* const FOLDER_DROPBOX_ROOT = @"DropBox";
 NSString* const CLOUD_DROPBOX_KEY = @"q591oqy8n4yxgt1";
 NSString* const CLOUD_DROPBOX_SECRET = @"kkb1vzgnah76zmr";
 
+// Syntaxes File List
+NSString* const SYNTAXES_FILE_LIST = @"syntaxesFileList.txt";
+
 @implementation Constants
 @end
