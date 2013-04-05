@@ -10,6 +10,8 @@
 
 @implementation TMBundleSyntaxParser
 
+#pragma mark - Initializers
+
 + (NSArray*)getSyntaxPLists:(NSString*)TMBundleName {
     NSMutableArray *plistArray = [[NSMutableArray alloc] init];
     
@@ -74,12 +76,11 @@
         NSDictionary *plist = [NSDictionary dictionaryWithContentsOfFile:filePath];
         [plistArray addObject:plist];
     }
-    
-    NSLog(@"plist array: %@", plistArray);
-    
-    
+
     return [NSArray arrayWithArray:plistArray];
 }
+
+#pragma mark - Helper Methods
 
 + (NSArray*)getKeyList:(NSString*)TMBundleName {
     NSDictionary *plist = (NSDictionary*)[[TMBundleSyntaxParser getSyntaxPLists:TMBundleName] objectAtIndex:0];
@@ -112,11 +113,13 @@
     return NO;
 }
 
+#pragma mark - Public API
+
 // Returns a patterns array that is stripped of all unused keys/values,
 // and is now only a level deep for each pattern group.
 + (NSArray*)getPatternsArray:(NSString*)TMBundleName {
     NSMutableArray *patternsArray = [[NSMutableArray alloc] init];
-    
+    [TMBundleSyntaxParser getSyntaxPListsForFileType:@"m"];
     NSArray *plistsArray = [TMBundleSyntaxParser getSyntaxPLists:TMBundleName];
     
     TMBundleGrammar *grammar = [[TMBundleGrammar alloc] initWithPlists:plistsArray];
