@@ -246,10 +246,6 @@
             if (name && match) {
                 NSArray *a = [self foundPattern:match range:contentRange];
                 nameMatches = [self merge:@{name: a} withd2:nameMatches];
-                if ([name isEqualToString:@"comment.line.double-slash.js"]) {
-                    a = [self foundPattern:@"(//).*\\n?" range:contentRange];
-                    NSLog(@"comment:%@ %@",match, a);
-                }
             }
             if (captures && match) {
                 captureMatches = [self merge:[self findCaptures:captures pattern:match range:contentRange] withd2:captureMatches];
