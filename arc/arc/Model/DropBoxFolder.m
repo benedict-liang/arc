@@ -159,5 +159,11 @@
     }
     return isRemoveSuccessful;
 }
+// Given a FileSystemObject path, searches for and returns the object
+// at that path.
+- (id<FileSystemObject>)objectAtPath:(NSString *)path
+{
+    return self; // TEMP.
+}
 
 @end
