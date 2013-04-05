@@ -64,4 +64,11 @@
     [[NSScanner scannerWithString: fullHex] scanHexInt: &hexComponent];
     return hexComponent / 255.0;
 }
+
++ (BOOL)isEqual:(id<FileSystemObject>)fileSystemObject1
+            and:(id<FileSystemObject>)fileSystemObject2
+{
+    return [[fileSystemObject1 path] isEqualToString:[fileSystemObject2 path]];
+}
+
 @end
