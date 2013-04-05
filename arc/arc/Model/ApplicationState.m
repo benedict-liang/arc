@@ -78,6 +78,16 @@ static ApplicationState *sharedApplicationState = nil;
         NSString *folderPath = [storedState valueForKey:KEY_CURRENT_FOLDER];
         NSString *filePath = [storedState valueForKey:KEY_CURRENT_FILE];
         
+        // If we have no folder path, we should set a default.
+        if (!folderPath) {
+            folderPath = [[LocalRootFolder sharedLocalRootFolder] path];
+        }
+        
+        // TEMPORARILY set a default for the current file.
+        if (!filePath) {
+            filePath = [[ApplicationState getSampleFile] path];
+        }
+        
         _currentFolderOpened = (id<Folder>)[[RootFolder sharedRootFolder] objectAtPath:folderPath];
         _currentFileOpened = (id<File>)[[RootFolder sharedRootFolder] objectAtPath:filePath];
         _fonts = [storedState valueForKey:KEY_FONTS];

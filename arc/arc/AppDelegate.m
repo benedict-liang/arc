@@ -77,11 +77,6 @@
         [fileManager copyItemAtURL:plistURL toURL:targetURL error:&error];
         if (error) {
             NSLog(@"%@", error);
-        } else {
-            // Get the dictionary and save our root folder path into it (as a default.)
-            NSMutableDictionary *settingsDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:[targetURL path]];
-            [settingsDictionary setValue:documentsPath forKey:KEY_CURRENT_FOLDER];
-            [settingsDictionary writeToFile:appStatePath atomically:YES];
         }
     }
     
