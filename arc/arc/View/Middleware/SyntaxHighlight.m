@@ -77,8 +77,8 @@
     
     
     if (r.location + r.length <= [_content length]) {
-        NSArray* matches = [regex matchesInString:_content options:0 range:r];
-        
+        @try {
+            NSArray* matches = [regex matchesInString:_content options:0 range:r];
             for (NSTextCheckingResult *match in matches) {
                 @try {
                     NSRange range = [match rangeAtIndex:c];
@@ -95,6 +95,14 @@
                 }
             }
 
+        }
+        @catch (NSException *exception) {
+            NSLog(@"Exception in matches");
+        }
+        @finally {
+            
+        }
+            
         } else {
         NSLog(@"index error in capture:%d %d",r.location,r.length);
     }
@@ -355,15 +363,25 @@
         [self.delegate mergeAndRenderWith:_finalOutput forFile:self.currentFile];
     }
 }
+- (void)logs {
+    NSLog(@"%@",nameMatches);
+    NSLog(@"%@",captureMatches);
+    NSLog(@"%@",beginCMatches);
+    NSLog(@"%@",endCMatches);
+    NSLog(@"%@",pairMatches);
+    
+}
 - (void)execOn:(ArcAttributedString *)arcAttributedString {
     _finalOutput = arcAttributedString;
     ArcAttributedString* output = arcAttributedString;
     [self iterPatternsForRange:NSMakeRange(0, [_content length]) patterns:[_bundle objectForKey:@"patterns"] output:arcAttributedString];
+
     [self applyStylesTo:output withRanges:nameMatches];
     [self applyStylesTo:output withRanges:captureMatches];
     [self applyStylesTo:output withRanges:beginCMatches];
     [self applyStylesTo:output withRanges:endCMatches];
     [self applyStylesTo:output withRanges:pairMatches];
+    [self logs];
     [self updateView];
  
 }
