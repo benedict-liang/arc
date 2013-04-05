@@ -12,7 +12,9 @@
 @interface TMBundleSyntaxParser : NSObject
 
 // returns a plist for a file extension
-
 + (NSDictionary*)plistForExt:(NSString *)fileExt;
+
+// returns a plist by name
++ (NSDictionary*)syntaxPList:(NSString*)TMBundleName;
 
 @end

@@ -13,12 +13,23 @@
 #pragma mark - Initializers
 
 + (NSDictionary*)syntaxPList:(NSString*)TMBundleName {
-    
-    NSURL *syntaxFileURL = [[NSBundle mainBundle] URLForResource:TMBundleName withExtension:nil];
-   
-    return [NSDictionary dictionaryWithContentsOfURL:syntaxFileURL];
+    if ([[TMBundleSyntaxParser existingBundles] objectForKey:TMBundleName]) {
+        NSURL *syntaxFileURL = [[NSBundle mainBundle] URLForResource:TMBundleName withExtension:@"plist"];
+        
+        return [NSDictionary dictionaryWithContentsOfURL:syntaxFileURL];
+    } else {
+        return nil;
+    }
+
 }
 
++ (NSDictionary*)existingBundles {
+    NSURL* bundleConf = [[NSBundle mainBundle] URLForResource:@"BundleConf.plist" withExtension:nil];
+    
+    NSDictionary* extToBundle = [NSDictionary dictionaryWithContentsOfURL:bundleConf];
+    
+    return [extToBundle objectForKey:@"bundles"];
+}
 + (NSDictionary*)fileTypesToBundles {
     NSURL* bundleConf = [[NSBundle mainBundle] URLForResource:@"BundleConf.plist" withExtension:nil];
     
