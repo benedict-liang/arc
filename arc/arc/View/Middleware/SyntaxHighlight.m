@@ -14,8 +14,10 @@
 
 {
     SyntaxHighlight *sh = [[self alloc] initWithFile:file del:del];
-    ArcAttributedString *copy = [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
-    [sh performSelectorInBackground:@selector(execOn:) withObject:copy];
+    if (sh.patterns) {
+        ArcAttributedString *copy = [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
+        [sh performSelectorInBackground:@selector(execOn:) withObject:copy];
+    }
 }
 - initWithFile:(id<File>)file del:(id)d {
     self = [super init];

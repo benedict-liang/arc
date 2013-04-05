@@ -117,6 +117,7 @@
 
 // Returns a patterns array that is stripped of all unused keys/values,
 // and is now only a level deep for each pattern group.
+/*
 + (NSArray*)getPatternsArrayForFileType:(NSString*)fileType {
     NSMutableArray *patternsArray = [[NSMutableArray alloc] init];
     
@@ -133,13 +134,15 @@
     }
     
     return [NSArray arrayWithArray:patternsArray];
-}
+}*/
 
 // Returns a patterns array that is stripped of all unused keys/values,
 // and is now only a level deep for each pattern group.
+
 + (NSArray*)getPatternsArray:(NSString*)TMBundleName {
+    
     NSMutableArray *patternsArray = [[NSMutableArray alloc] init];
-    [TMBundleSyntaxParser getSyntaxPListsForFileType:@"m"];
+    
     NSArray *plistsArray = [TMBundleSyntaxParser getSyntaxPLists:TMBundleName];
     
     TMBundleGrammar *grammar = [[TMBundleGrammar alloc] initWithPlists:plistsArray];
@@ -155,17 +158,21 @@
     return [NSArray arrayWithArray:patternsArray];
 }
 
-
-+ (NSArray*)patternsArrayForExt:(NSString *)fileExt {
++ (NSDictionary*)fileTypesToBundles {
     NSURL* bundleConf = [[NSBundle mainBundle] URLForResource:@"BundleConf.plist" withExtension:nil];
     NSDictionary* extToBundle = [NSDictionary dictionaryWithContentsOfURL:bundleConf];
-    NSArray* legitBundles = [extToBundle objectForKey:fileExt];
+    return [extToBundle objectForKey:@"fileTypes"];
+}
+
++ (NSArray*)patternsArrayForExt:(NSString *)fileExt {
+    
+    NSArray* legitBundles = [[TMBundleSyntaxParser fileTypesToBundles] objectForKey:fileExt];
     if (legitBundles) {
         NSString* bundleName = [legitBundles objectAtIndex:0];
         return [TMBundleSyntaxParser getPatternsArray:bundleName];
     } else {
         NSLog(@"Appropriate bundle not found");
-        return [NSArray array];
+        return nil;
     }
 }
 @end
