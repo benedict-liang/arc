@@ -23,7 +23,6 @@
 @property CTFramesetterRef frameSetter;
 @property CGFloat lineHeight;
 @property NSMutableArray *lines;
-@property NSMutableArray *lineRefs;
 - (void)loadFile;
 - (void)processFile;
 - (void)renderFile;
@@ -42,7 +41,6 @@
     self = [super init];
     if (self) {
         _lines = [NSMutableArray array];
-        _lineRefs = [NSMutableArray array];
         
         // Defaults
         _backgroundColor = [Utils colorWithHexString:@"FDF6E3"];
@@ -124,12 +122,6 @@
     [_tableView reloadData];
 }
 
-
-- (void)clearMemoisedInformation
-{
-    _lineRefs = [NSMutableArray array];
-}
-
 - (void)clearPreviousLayoutInformation
 {
     if (_frameSetter != NULL) {
@@ -138,7 +130,6 @@
     }
 
     _lines = [NSMutableArray array];
-    [self clearMemoisedInformation];
 }
 
 - (void)generateLines
@@ -190,7 +181,6 @@
 {
     if ([file isEqual:_currentFile]) {
         _arcAttributedString = arcAttributedString;
-        [self clearMemoisedInformation];
         [_tableView reloadData];
     }
 }
@@ -232,21 +222,11 @@
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     NSUInteger lineNumber = indexPath.row;
 
-    CTLineRef lineRef = (lineNumber < [_lineRefs count]) ?
-        (__bridge CTLineRef)[_lineRefs objectAtIndex:lineNumber] : nil;
-    
-    if (lineRef == nil) {
-        lineRef = CTLineCreateWithAttributedString(
+    CTLineRef lineRef = CTLineCreateWithAttributedString(
             (__bridge CFAttributedStringRef)(
                 [_arcAttributedString.attributedString attributedSubstringFromRange:
                 [[_lines objectAtIndex:lineNumber] rangeValue]]));
-        
-        // Memoise.
-        if (_lineRefs) {
-           [_lineRefs insertObject:(__bridge id)(lineRef) atIndex:lineNumber]; 
-        }
-    }
-    
+
     cell.line = lineRef;
     [cell setNeedsDisplay];
     return cell;
