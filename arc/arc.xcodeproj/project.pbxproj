@@ -52,6 +52,165 @@
 		8F1510C617044A4C00115E5E /* Solarized (light).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = 8F1510C517044A4C00115E5E /* Solarized (light).tmTheme */; };
 		8F1510C9170468B100115E5E /* TMBundleThemeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510C8170468B100115E5E /* TMBundleThemeHandler.m */; };
 		8F1510CC1704697900115E5E /* TMBundleGrammar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510CB1704697900115E5E /* TMBundleGrammar.m */; };
+		8F1BC1CF170F1C1900D1D049 /* text.xml.xsl.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC130170F1C0D00D1D049 /* text.xml.xsl.plist */; };
+		8F1BC1D0170F1C1900D1D049 /* text.xml.strict.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC131170F1C0D00D1D049 /* text.xml.strict.plist */; };
+		8F1BC1D1170F1C1900D1D049 /* text.xml.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC132170F1C0D00D1D049 /* text.xml.plist */; };
+		8F1BC1D2170F1C1900D1D049 /* text.xml.apple-dist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC133170F1C0E00D1D049 /* text.xml.apple-dist.plist */; };
+		8F1BC1D3170F1C1900D1D049 /* text.txt2tags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC134170F1C0E00D1D049 /* text.txt2tags.plist */; };
+		8F1BC1D4170F1C1900D1D049 /* text.tex.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC135170F1C0E00D1D049 /* text.tex.plist */; };
+		8F1BC1D5170F1C1900D1D049 /* text.tex.math.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC136170F1C0E00D1D049 /* text.tex.math.plist */; };
+		8F1BC1D6170F1C1900D1D049 /* text.tex.latex.sweave.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC137170F1C0E00D1D049 /* text.tex.latex.sweave.plist */; };
+		8F1BC1D7170F1C1900D1D049 /* text.tex.latex.rd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC138170F1C0E00D1D049 /* text.tex.latex.rd.plist */; };
+		8F1BC1D8170F1C1900D1D049 /* text.tex.latex.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC139170F1C0E00D1D049 /* text.tex.latex.plist */; };
+		8F1BC1D9170F1C1900D1D049 /* text.tex.latex.memoir.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC13A170F1C0E00D1D049 /* text.tex.latex.memoir.plist */; };
+		8F1BC1DA170F1C1900D1D049 /* text.tex.latex.haskell.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC13B170F1C0E00D1D049 /* text.tex.latex.haskell.plist */; };
+		8F1BC1DB170F1C1900D1D049 /* text.tex.latex.beamer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC13C170F1C0E00D1D049 /* text.tex.latex.beamer.plist */; };
+		8F1BC1DC170F1C1900D1D049 /* text.tabular.tsv.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC13D170F1C0E00D1D049 /* text.tabular.tsv.plist */; };
+		8F1BC1DD170F1C1900D1D049 /* text.tabular.csv.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC13E170F1C0E00D1D049 /* text.tabular.csv.plist */; };
+		8F1BC1DE170F1C1900D1D049 /* text.subversion-commit.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC13F170F1C0E00D1D049 /* text.subversion-commit.plist */; };
+		8F1BC1DF170F1C1900D1D049 /* text.setext.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC140170F1C0E00D1D049 /* text.setext.plist */; };
+		8F1BC1E0170F1C1900D1D049 /* text.restructuredtext.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC141170F1C0E00D1D049 /* text.restructuredtext.plist */; };
+		8F1BC1E1170F1C1900D1D049 /* text.pmwiki.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC142170F1C0E00D1D049 /* text.pmwiki.plist */; };
+		8F1BC1E2170F1C1900D1D049 /* text.plist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC143170F1C0E00D1D049 /* text.plist.plist */; };
+		8F1BC1E3170F1C1900D1D049 /* text.plain.release-notes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC144170F1C0E00D1D049 /* text.plain.release-notes.plist */; };
+		8F1BC1E4170F1C1900D1D049 /* text.plain.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC145170F1C0E00D1D049 /* text.plain.plist */; };
+		8F1BC1E5170F1C1900D1D049 /* text.plain.gtd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC146170F1C0F00D1D049 /* text.plain.gtd.plist */; };
+		8F1BC1E6170F1C1900D1D049 /* text.moinmoin.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC147170F1C0F00D1D049 /* text.moinmoin.plist */; };
+		8F1BC1E7170F1C1900D1D049 /* text.man.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC148170F1C0F00D1D049 /* text.man.plist */; };
+		8F1BC1E8170F1C1900D1D049 /* text.mail.markdown.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC149170F1C0F00D1D049 /* text.mail.markdown.plist */; };
+		8F1BC1E9170F1C1900D1D049 /* text.log.latex.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC14A170F1C0F00D1D049 /* text.log.latex.plist */; };
+		8F1BC1EA170F1C1900D1D049 /* text.html.xhtml.1-strict.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC14B170F1C0F00D1D049 /* text.html.xhtml.1-strict.plist */; };
+		8F1BC1EB170F1C1900D1D049 /* text.html.twiki.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC14C170F1C0F00D1D049 /* text.html.twiki.plist */; };
+		8F1BC1EC170F1C1900D1D049 /* text.html.tt.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC14D170F1C0F00D1D049 /* text.html.tt.plist */; };
+		8F1BC1ED170F1C1900D1D049 /* text.html.textile.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC14E170F1C0F00D1D049 /* text.html.textile.plist */; };
+		8F1BC1EE170F1C1900D1D049 /* text.html.tcl.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC14F170F1C0F00D1D049 /* text.html.tcl.plist */; };
+		8F1BC1EF170F1C1900D1D049 /* text.html.strict.active4d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC150170F1C0F00D1D049 /* text.html.strict.active4d.plist */; };
+		8F1BC1F0170F1C1900D1D049 /* text.html.ruby.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC151170F1C0F00D1D049 /* text.html.ruby.plist */; };
+		8F1BC1F1170F1C1900D1D049 /* text.html.mt.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC152170F1C0F00D1D049 /* text.html.mt.plist */; };
+		8F1BC1F2170F1C1900D1D049 /* text.html.mediawiki.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC153170F1C1000D1D049 /* text.html.mediawiki.plist */; };
+		8F1BC1F3170F1C1900D1D049 /* text.html.mason.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC154170F1C1000D1D049 /* text.html.mason.plist */; };
+		8F1BC1F4170F1C1900D1D049 /* text.html.markdown.multimarkdown.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC155170F1C1000D1D049 /* text.html.markdown.multimarkdown.plist */; };
+		8F1BC1F5170F1C1900D1D049 /* text.html.doxygen.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC156170F1C1000D1D049 /* text.html.doxygen.plist */; };
+		8F1BC1F6170F1C1900D1D049 /* text.html.dokuwiki.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC157170F1C1000D1D049 /* text.html.dokuwiki.plist */; };
+		8F1BC1F7170F1C1900D1D049 /* text.html.django.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC158170F1C1000D1D049 /* text.html.django.plist */; };
+		8F1BC1F8170F1C1900D1D049 /* text.html.cfm.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC159170F1C1000D1D049 /* text.html.cfm.plist */; };
+		8F1BC1F9170F1C1900D1D049 /* text.html.basic.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC15A170F1C1000D1D049 /* text.html.basic.plist */; };
+		8F1BC1FA170F1C1900D1D049 /* text.html.asp.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC15B170F1C1000D1D049 /* text.html.asp.plist */; };
+		8F1BC1FB170F1C1900D1D049 /* text.html.asp.net.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC15C170F1C1000D1D049 /* text.html.asp.net.plist */; };
+		8F1BC1FC170F1C1900D1D049 /* text.haml.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC15D170F1C1000D1D049 /* text.haml.plist */; };
+		8F1BC1FD170F1C1900D1D049 /* text.gtdalt.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC15E170F1C1000D1D049 /* text.gtdalt.plist */; };
+		8F1BC1FE170F1C1900D1D049 /* text.blog.textile.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC15F170F1C1000D1D049 /* text.blog.textile.plist */; };
+		8F1BC1FF170F1C1900D1D049 /* text.blog.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC160170F1C1000D1D049 /* text.blog.plist */; };
+		8F1BC200170F1C1900D1D049 /* text.blog.markdown.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC161170F1C1000D1D049 /* text.blog.markdown.plist */; };
+		8F1BC201170F1C1900D1D049 /* text.blog.html.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC162170F1C1000D1D049 /* text.blog.html.plist */; };
+		8F1BC202170F1C1900D1D049 /* text.bibtex.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC163170F1C1000D1D049 /* text.bibtex.plist */; };
+		8F1BC203170F1C1900D1D049 /* text.bbcode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC164170F1C1000D1D049 /* text.bbcode.plist */; };
+		8F1BC204170F1C1900D1D049 /* text.active4d-ini.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC165170F1C1000D1D049 /* text.active4d-ini.plist */; };
+		8F1BC205170F1C1900D1D049 /* source.yaml.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC166170F1C1000D1D049 /* source.yaml.plist */; };
+		8F1BC206170F1C1900D1D049 /* source.tcl.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC167170F1C1000D1D049 /* source.tcl.plist */; };
+		8F1BC207170F1C1900D1D049 /* source.tcl.macports.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC168170F1C1100D1D049 /* source.tcl.macports.plist */; };
+		8F1BC208170F1C1900D1D049 /* source.swig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC169170F1C1100D1D049 /* source.swig.plist */; };
+		8F1BC209170F1C1900D1D049 /* source.strings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC16A170F1C1100D1D049 /* source.strings.plist */; };
+		8F1BC20A170F1C1900D1D049 /* source.ssh-config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC16B170F1C1100D1D049 /* source.ssh-config.plist */; };
+		8F1BC20B170F1C1900D1D049 /* source.sql.ruby.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC16C170F1C1100D1D049 /* source.sql.ruby.plist */; };
+		8F1BC20C170F1C1900D1D049 /* source.sql.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC16D170F1C1100D1D049 /* source.sql.plist */; };
+		8F1BC20D170F1C1900D1D049 /* source.smarty.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC16E170F1C1100D1D049 /* source.smarty.plist */; };
+		8F1BC20E170F1C1900D1D049 /* source.slate.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC16F170F1C1100D1D049 /* source.slate.plist */; };
+		8F1BC20F170F1C1900D1D049 /* source.shell.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC170170F1C1100D1D049 /* source.shell.plist */; };
+		8F1BC210170F1C1900D1D049 /* source.scss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC171170F1C1300D1D049 /* source.scss.plist */; };
+		8F1BC211170F1C1900D1D049 /* source.scilab.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC172170F1C1300D1D049 /* source.scilab.plist */; };
+		8F1BC212170F1C1900D1D049 /* source.scheme.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC173170F1C1300D1D049 /* source.scheme.plist */; };
+		8F1BC213170F1C1900D1D049 /* source.sass.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC174170F1C1300D1D049 /* source.sass.plist */; };
+		8F1BC214170F1C1900D1D049 /* source.s5.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC175170F1C1300D1D049 /* source.s5.plist */; };
+		8F1BC215170F1C1900D1D049 /* source.ruby.rails.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC176170F1C1300D1D049 /* source.ruby.rails.plist */; };
+		8F1BC216170F1C1900D1D049 /* source.ruby.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC177170F1C1300D1D049 /* source.ruby.plist */; };
+		8F1BC217170F1C1900D1D049 /* source.ruby.experimental.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC178170F1C1300D1D049 /* source.ruby.experimental.plist */; };
+		8F1BC218170F1C1900D1D049 /* source.rez.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC179170F1C1300D1D049 /* source.rez.plist */; };
+		8F1BC219170F1C1900D1D049 /* source.remind.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC17A170F1C1300D1D049 /* source.remind.plist */; };
+		8F1BC21A170F1C1900D1D049 /* source.regexp.python.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC17B170F1C1300D1D049 /* source.regexp.python.plist */; };
+		8F1BC21B170F1C1900D1D049 /* source.regexp.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC17C170F1C1300D1D049 /* source.regexp.plist */; };
+		8F1BC21C170F1C1900D1D049 /* source.regexp.oniguruma.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC17D170F1C1300D1D049 /* source.regexp.oniguruma.plist */; };
+		8F1BC21D170F1C1900D1D049 /* source.r.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC17E170F1C1300D1D049 /* source.r.plist */; };
+		8F1BC21E170F1C1900D1D049 /* source.r-console.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC17F170F1C1300D1D049 /* source.r-console.plist */; };
+		8F1BC21F170F1C1900D1D049 /* source.quake-config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC180170F1C1300D1D049 /* source.quake-config.plist */; };
+		8F1BC220170F1C1900D1D049 /* source.qmake.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC181170F1C1300D1D049 /* source.qmake.plist */; };
+		8F1BC221170F1C1900D1D049 /* source.python.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC182170F1C1300D1D049 /* source.python.plist */; };
+		8F1BC222170F1C1900D1D049 /* source.python.django.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC183170F1C1300D1D049 /* source.python.django.plist */; };
+		8F1BC223170F1C1900D1D049 /* source.prolog.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC184170F1C1300D1D049 /* source.prolog.plist */; };
+		8F1BC224170F1C1900D1D049 /* source.processing.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC185170F1C1300D1D049 /* source.processing.plist */; };
+		8F1BC225170F1C1900D1D049 /* source.postscript.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC186170F1C1300D1D049 /* source.postscript.plist */; };
+		8F1BC226170F1C1900D1D049 /* source.plist.tm-grammar.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC187170F1C1300D1D049 /* source.plist.tm-grammar.plist */; };
+		8F1BC227170F1C1900D1D049 /* source.php.cake.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC188170F1C1300D1D049 /* source.php.cake.plist */; };
+		8F1BC228170F1C1900D1D049 /* source.perl.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC189170F1C1300D1D049 /* source.perl.plist */; };
+		8F1BC229170F1C1900D1D049 /* source.pascal.vectorscript.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC18A170F1C1300D1D049 /* source.pascal.vectorscript.plist */; };
+		8F1BC22A170F1C1900D1D049 /* source.pascal.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC18B170F1C1300D1D049 /* source.pascal.plist */; };
+		8F1BC22B170F1C1900D1D049 /* source.open-gl.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC18C170F1C1300D1D049 /* source.open-gl.plist */; };
+		8F1BC22C170F1C1900D1D049 /* source.ocamlyacc.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC18D170F1C1300D1D049 /* source.ocamlyacc.plist */; };
+		8F1BC22D170F1C1900D1D049 /* source.ocamllex.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC18E170F1C1300D1D049 /* source.ocamllex.plist */; };
+		8F1BC22E170F1C1900D1D049 /* source.ocaml.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC18F170F1C1300D1D049 /* source.ocaml.plist */; };
+		8F1BC22F170F1C1900D1D049 /* source.objc++.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC190170F1C1400D1D049 /* source.objc++.plist */; };
+		8F1BC230170F1C1900D1D049 /* source.objc.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC191170F1C1400D1D049 /* source.objc.plist */; };
+		8F1BC231170F1C1900D1D049 /* source.nant-build.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC192170F1C1400D1D049 /* source.nant-build.plist */; };
+		8F1BC232170F1C1900D1D049 /* source.modula-3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC193170F1C1400D1D049 /* source.modula-3.plist */; };
+		8F1BC233170F1C1900D1D049 /* source.ml.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC194170F1C1400D1D049 /* source.ml.plist */; };
+		8F1BC234170F1C1900D1D049 /* source.mips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC195170F1C1400D1D049 /* source.mips.plist */; };
+		8F1BC235170F1C1900D1D049 /* source.mel.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC196170F1C1400D1D049 /* source.mel.plist */; };
+		8F1BC236170F1C1900D1D049 /* source.matlab.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC197170F1C1400D1D049 /* source.matlab.plist */; };
+		8F1BC237170F1C1900D1D049 /* source.makefile.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC198170F1C1400D1D049 /* source.makefile.plist */; };
+		8F1BC238170F1C1900D1D049 /* source.lua.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC199170F1C1400D1D049 /* source.lua.plist */; };
+		8F1BC239170F1C1900D1D049 /* source.logtalk.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC19A170F1C1400D1D049 /* source.logtalk.plist */; };
+		8F1BC23A170F1C1900D1D049 /* source.logo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC19B170F1C1400D1D049 /* source.logo.plist */; };
+		8F1BC23B170F1C1900D1D049 /* source.lisp.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC19C170F1C1400D1D049 /* source.lisp.plist */; };
+		8F1BC23C170F1C1900D1D049 /* source.lilypond.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC19D170F1C1400D1D049 /* source.lilypond.plist */; };
+		8F1BC23D170F1C1900D1D049 /* source.lighttpd-config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC19E170F1C1400D1D049 /* source.lighttpd-config.plist */; };
+		8F1BC23E170F1C1900D1D049 /* source.lex.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC19F170F1C1400D1D049 /* source.lex.plist */; };
+		8F1BC23F170F1C1900D1D049 /* source.json.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1A0170F1C1400D1D049 /* source.json.plist */; };
+		8F1BC240170F1C1900D1D049 /* source.js.yui.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1A1170F1C1400D1D049 /* source.js.yui.plist */; };
+		8F1BC241170F1C1900D1D049 /* source.js.prototype.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1A2170F1C1800D1D049 /* source.js.prototype.plist */; };
+		8F1BC242170F1C1900D1D049 /* source.js.prototype.bracketed.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1A3170F1C1800D1D049 /* source.js.prototype.bracketed.plist */; };
+		8F1BC243170F1C1900D1D049 /* source.js.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1A4170F1C1800D1D049 /* source.js.plist */; };
+		8F1BC244170F1C1900D1D049 /* source.js.mootools.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1A5170F1C1800D1D049 /* source.js.mootools.plist */; };
+		8F1BC245170F1C1900D1D049 /* source.js.jquery.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1A6170F1C1800D1D049 /* source.js.jquery.plist */; };
+		8F1BC246170F1C1900D1D049 /* source.js.greasemonkey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1A7170F1C1800D1D049 /* source.js.greasemonkey.plist */; };
+		8F1BC247170F1C1900D1D049 /* source.java.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1A8170F1C1800D1D049 /* source.java.plist */; };
+		8F1BC248170F1C1900D1D049 /* source.java-props.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1A9170F1C1800D1D049 /* source.java-props.plist */; };
+		8F1BC249170F1C1900D1D049 /* source.io.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1AA170F1C1800D1D049 /* source.io.plist */; };
+		8F1BC24A170F1C1900D1D049 /* source.ini.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1AB170F1C1800D1D049 /* source.ini.plist */; };
+		8F1BC24B170F1C1900D1D049 /* source.inform.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1AC170F1C1800D1D049 /* source.inform.plist */; };
+		8F1BC24C170F1C1900D1D049 /* source.icalendar.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1AD170F1C1800D1D049 /* source.icalendar.plist */; };
+		8F1BC24D170F1C1900D1D049 /* source.haskell.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1AE170F1C1800D1D049 /* source.haskell.plist */; };
+		8F1BC24E170F1C1900D1D049 /* source.groovy.groovy.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1AF170F1C1800D1D049 /* source.groovy.groovy.plist */; };
+		8F1BC24F170F1C1900D1D049 /* source.gri.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1B0170F1C1800D1D049 /* source.gri.plist */; };
+		8F1BC250170F1C1900D1D049 /* source.fxscript.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1B1170F1C1800D1D049 /* source.fxscript.plist */; };
+		8F1BC251170F1C1900D1D049 /* source.fscript.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1B2170F1C1800D1D049 /* source.fscript.plist */; };
+		8F1BC252170F1C1900D1D049 /* source.fortran.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1B3170F1C1800D1D049 /* source.fortran.plist */; };
+		8F1BC253170F1C1900D1D049 /* source.erlang.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1B4170F1C1800D1D049 /* source.erlang.plist */; };
+		8F1BC254170F1C1900D1D049 /* source.eiffel.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1B5170F1C1800D1D049 /* source.eiffel.plist */; };
+		8F1BC255170F1C1900D1D049 /* source.dylan.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1B6170F1C1800D1D049 /* source.dylan.plist */; };
+		8F1BC256170F1C1900D1D049 /* source.dot.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1B7170F1C1800D1D049 /* source.dot.plist */; };
+		8F1BC257170F1C1900D1D049 /* source.diff.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1B8170F1C1800D1D049 /* source.diff.plist */; };
+		8F1BC258170F1C1900D1D049 /* source.d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1B9170F1C1900D1D049 /* source.d.plist */; };
+		8F1BC259170F1C1900D1D049 /* source.css.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1BA170F1C1900D1D049 /* source.css.plist */; };
+		8F1BC25A170F1C1900D1D049 /* source.css.beta.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1BB170F1C1900D1D049 /* source.css.beta.plist */; };
+		8F1BC25B170F1C1900D1D049 /* source.context-free.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1BC170F1C1900D1D049 /* source.context-free.plist */; };
+		8F1BC25C170F1C1900D1D049 /* source.coffee.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1BD170F1C1900D1D049 /* source.coffee.plist */; };
+		8F1BC25D170F1C1900D1D049 /* source.cm.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1BE170F1C1900D1D049 /* source.cm.plist */; };
+		8F1BC25E170F1C1900D1D049 /* source.camlp4.ocaml.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1BF170F1C1900D1D049 /* source.camlp4.ocaml.plist */; };
+		8F1BC25F170F1C1900D1D049 /* source.c++.qt.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1C0170F1C1900D1D049 /* source.c++.qt.plist */; };
+		8F1BC260170F1C1900D1D049 /* source.c++.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1C1170F1C1900D1D049 /* source.c++.plist */; };
+		8F1BC261170F1C1900D1D049 /* source.c.ragel.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1C2170F1C1900D1D049 /* source.c.ragel.plist */; };
+		8F1BC262170F1C1900D1D049 /* source.c.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1C3170F1C1900D1D049 /* source.c.plist */; };
+		8F1BC263170F1C1900D1D049 /* source.c-sharp.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1C4170F1C1900D1D049 /* source.c-sharp.plist */; };
+		8F1BC264170F1C1900D1D049 /* source.asp.vb.net.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1C5170F1C1900D1D049 /* source.asp.vb.net.plist */; };
+		8F1BC265170F1C1900D1D049 /* source.asp.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1C6170F1C1900D1D049 /* source.asp.plist */; };
+		8F1BC266170F1C1900D1D049 /* source.applescript.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1C7170F1C1900D1D049 /* source.applescript.plist */; };
+		8F1BC267170F1C1900D1D049 /* source.apache-config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1C8170F1C1900D1D049 /* source.apache-config.plist */; };
+		8F1BC268170F1C1900D1D049 /* source.apache-config.mod_perl.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1C9170F1C1900D1D049 /* source.apache-config.mod_perl.plist */; };
+		8F1BC269170F1C1900D1D049 /* source.antlr.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1CA170F1C1900D1D049 /* source.antlr.plist */; };
+		8F1BC26A170F1C1900D1D049 /* source.ada.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1CB170F1C1900D1D049 /* source.ada.plist */; };
+		8F1BC26B170F1C1900D1D049 /* source.active4d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1CC170F1C1900D1D049 /* source.active4d.plist */; };
+		8F1BC26C170F1C1900D1D049 /* source.active4d.library.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1CD170F1C1900D1D049 /* source.active4d.library.plist */; };
+		8F1BC26D170F1C1900D1D049 /* source.actionscript.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1CE170F1C1900D1D049 /* source.actionscript.plist */; };
 		8F2F5B8217061445005AD37F /* nav_gmaps_sample.js in Resources */ = {isa = PBXBuildFile; fileRef = 8F2F5B8017061435005AD37F /* nav_gmaps_sample.js */; };
 		8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */; };
 		8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1416FDFDBE00B31A19 /* Utils.m */; };
@@ -154,6 +313,165 @@
 		8F1510C8170468B100115E5E /* TMBundleThemeHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBundleThemeHandler.m; sourceTree = "<group>"; };
 		8F1510CA1704697900115E5E /* TMBundleGrammar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleGrammar.h; sourceTree = "<group>"; };
 		8F1510CB1704697900115E5E /* TMBundleGrammar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBundleGrammar.m; sourceTree = "<group>"; };
+		8F1BC130170F1C0D00D1D049 /* text.xml.xsl.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.xml.xsl.plist; sourceTree = "<group>"; };
+		8F1BC131170F1C0D00D1D049 /* text.xml.strict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.xml.strict.plist; sourceTree = "<group>"; };
+		8F1BC132170F1C0D00D1D049 /* text.xml.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.xml.plist; sourceTree = "<group>"; };
+		8F1BC133170F1C0E00D1D049 /* text.xml.apple-dist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "text.xml.apple-dist.plist"; sourceTree = "<group>"; };
+		8F1BC134170F1C0E00D1D049 /* text.txt2tags.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.txt2tags.plist; sourceTree = "<group>"; };
+		8F1BC135170F1C0E00D1D049 /* text.tex.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.tex.plist; sourceTree = "<group>"; };
+		8F1BC136170F1C0E00D1D049 /* text.tex.math.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.tex.math.plist; sourceTree = "<group>"; };
+		8F1BC137170F1C0E00D1D049 /* text.tex.latex.sweave.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.tex.latex.sweave.plist; sourceTree = "<group>"; };
+		8F1BC138170F1C0E00D1D049 /* text.tex.latex.rd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.tex.latex.rd.plist; sourceTree = "<group>"; };
+		8F1BC139170F1C0E00D1D049 /* text.tex.latex.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.tex.latex.plist; sourceTree = "<group>"; };
+		8F1BC13A170F1C0E00D1D049 /* text.tex.latex.memoir.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.tex.latex.memoir.plist; sourceTree = "<group>"; };
+		8F1BC13B170F1C0E00D1D049 /* text.tex.latex.haskell.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.tex.latex.haskell.plist; sourceTree = "<group>"; };
+		8F1BC13C170F1C0E00D1D049 /* text.tex.latex.beamer.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.tex.latex.beamer.plist; sourceTree = "<group>"; };
+		8F1BC13D170F1C0E00D1D049 /* text.tabular.tsv.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.tabular.tsv.plist; sourceTree = "<group>"; };
+		8F1BC13E170F1C0E00D1D049 /* text.tabular.csv.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.tabular.csv.plist; sourceTree = "<group>"; };
+		8F1BC13F170F1C0E00D1D049 /* text.subversion-commit.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "text.subversion-commit.plist"; sourceTree = "<group>"; };
+		8F1BC140170F1C0E00D1D049 /* text.setext.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.setext.plist; sourceTree = "<group>"; };
+		8F1BC141170F1C0E00D1D049 /* text.restructuredtext.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.restructuredtext.plist; sourceTree = "<group>"; };
+		8F1BC142170F1C0E00D1D049 /* text.pmwiki.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.pmwiki.plist; sourceTree = "<group>"; };
+		8F1BC143170F1C0E00D1D049 /* text.plist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.plist.plist; sourceTree = "<group>"; };
+		8F1BC144170F1C0E00D1D049 /* text.plain.release-notes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "text.plain.release-notes.plist"; sourceTree = "<group>"; };
+		8F1BC145170F1C0E00D1D049 /* text.plain.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.plain.plist; sourceTree = "<group>"; };
+		8F1BC146170F1C0F00D1D049 /* text.plain.gtd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.plain.gtd.plist; sourceTree = "<group>"; };
+		8F1BC147170F1C0F00D1D049 /* text.moinmoin.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.moinmoin.plist; sourceTree = "<group>"; };
+		8F1BC148170F1C0F00D1D049 /* text.man.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.man.plist; sourceTree = "<group>"; };
+		8F1BC149170F1C0F00D1D049 /* text.mail.markdown.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.mail.markdown.plist; sourceTree = "<group>"; };
+		8F1BC14A170F1C0F00D1D049 /* text.log.latex.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.log.latex.plist; sourceTree = "<group>"; };
+		8F1BC14B170F1C0F00D1D049 /* text.html.xhtml.1-strict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "text.html.xhtml.1-strict.plist"; sourceTree = "<group>"; };
+		8F1BC14C170F1C0F00D1D049 /* text.html.twiki.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.html.twiki.plist; sourceTree = "<group>"; };
+		8F1BC14D170F1C0F00D1D049 /* text.html.tt.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.html.tt.plist; sourceTree = "<group>"; };
+		8F1BC14E170F1C0F00D1D049 /* text.html.textile.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.html.textile.plist; sourceTree = "<group>"; };
+		8F1BC14F170F1C0F00D1D049 /* text.html.tcl.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.html.tcl.plist; sourceTree = "<group>"; };
+		8F1BC150170F1C0F00D1D049 /* text.html.strict.active4d.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.html.strict.active4d.plist; sourceTree = "<group>"; };
+		8F1BC151170F1C0F00D1D049 /* text.html.ruby.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.html.ruby.plist; sourceTree = "<group>"; };
+		8F1BC152170F1C0F00D1D049 /* text.html.mt.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.html.mt.plist; sourceTree = "<group>"; };
+		8F1BC153170F1C1000D1D049 /* text.html.mediawiki.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.html.mediawiki.plist; sourceTree = "<group>"; };
+		8F1BC154170F1C1000D1D049 /* text.html.mason.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.html.mason.plist; sourceTree = "<group>"; };
+		8F1BC155170F1C1000D1D049 /* text.html.markdown.multimarkdown.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.html.markdown.multimarkdown.plist; sourceTree = "<group>"; };
+		8F1BC156170F1C1000D1D049 /* text.html.doxygen.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.html.doxygen.plist; sourceTree = "<group>"; };
+		8F1BC157170F1C1000D1D049 /* text.html.dokuwiki.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.html.dokuwiki.plist; sourceTree = "<group>"; };
+		8F1BC158170F1C1000D1D049 /* text.html.django.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.html.django.plist; sourceTree = "<group>"; };
+		8F1BC159170F1C1000D1D049 /* text.html.cfm.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.html.cfm.plist; sourceTree = "<group>"; };
+		8F1BC15A170F1C1000D1D049 /* text.html.basic.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.html.basic.plist; sourceTree = "<group>"; };
+		8F1BC15B170F1C1000D1D049 /* text.html.asp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.html.asp.plist; sourceTree = "<group>"; };
+		8F1BC15C170F1C1000D1D049 /* text.html.asp.net.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.html.asp.net.plist; sourceTree = "<group>"; };
+		8F1BC15D170F1C1000D1D049 /* text.haml.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.haml.plist; sourceTree = "<group>"; };
+		8F1BC15E170F1C1000D1D049 /* text.gtdalt.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.gtdalt.plist; sourceTree = "<group>"; };
+		8F1BC15F170F1C1000D1D049 /* text.blog.textile.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.blog.textile.plist; sourceTree = "<group>"; };
+		8F1BC160170F1C1000D1D049 /* text.blog.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.blog.plist; sourceTree = "<group>"; };
+		8F1BC161170F1C1000D1D049 /* text.blog.markdown.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.blog.markdown.plist; sourceTree = "<group>"; };
+		8F1BC162170F1C1000D1D049 /* text.blog.html.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.blog.html.plist; sourceTree = "<group>"; };
+		8F1BC163170F1C1000D1D049 /* text.bibtex.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.bibtex.plist; sourceTree = "<group>"; };
+		8F1BC164170F1C1000D1D049 /* text.bbcode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.bbcode.plist; sourceTree = "<group>"; };
+		8F1BC165170F1C1000D1D049 /* text.active4d-ini.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "text.active4d-ini.plist"; sourceTree = "<group>"; };
+		8F1BC166170F1C1000D1D049 /* source.yaml.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.yaml.plist; sourceTree = "<group>"; };
+		8F1BC167170F1C1000D1D049 /* source.tcl.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.tcl.plist; sourceTree = "<group>"; };
+		8F1BC168170F1C1100D1D049 /* source.tcl.macports.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.tcl.macports.plist; sourceTree = "<group>"; };
+		8F1BC169170F1C1100D1D049 /* source.swig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.swig.plist; sourceTree = "<group>"; };
+		8F1BC16A170F1C1100D1D049 /* source.strings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.strings.plist; sourceTree = "<group>"; };
+		8F1BC16B170F1C1100D1D049 /* source.ssh-config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "source.ssh-config.plist"; sourceTree = "<group>"; };
+		8F1BC16C170F1C1100D1D049 /* source.sql.ruby.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.sql.ruby.plist; sourceTree = "<group>"; };
+		8F1BC16D170F1C1100D1D049 /* source.sql.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.sql.plist; sourceTree = "<group>"; };
+		8F1BC16E170F1C1100D1D049 /* source.smarty.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.smarty.plist; sourceTree = "<group>"; };
+		8F1BC16F170F1C1100D1D049 /* source.slate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.slate.plist; sourceTree = "<group>"; };
+		8F1BC170170F1C1100D1D049 /* source.shell.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.shell.plist; sourceTree = "<group>"; };
+		8F1BC171170F1C1300D1D049 /* source.scss.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.scss.plist; sourceTree = "<group>"; };
+		8F1BC172170F1C1300D1D049 /* source.scilab.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.scilab.plist; sourceTree = "<group>"; };
+		8F1BC173170F1C1300D1D049 /* source.scheme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.scheme.plist; sourceTree = "<group>"; };
+		8F1BC174170F1C1300D1D049 /* source.sass.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.sass.plist; sourceTree = "<group>"; };
+		8F1BC175170F1C1300D1D049 /* source.s5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.s5.plist; sourceTree = "<group>"; };
+		8F1BC176170F1C1300D1D049 /* source.ruby.rails.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.ruby.rails.plist; sourceTree = "<group>"; };
+		8F1BC177170F1C1300D1D049 /* source.ruby.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.ruby.plist; sourceTree = "<group>"; };
+		8F1BC178170F1C1300D1D049 /* source.ruby.experimental.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.ruby.experimental.plist; sourceTree = "<group>"; };
+		8F1BC179170F1C1300D1D049 /* source.rez.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.rez.plist; sourceTree = "<group>"; };
+		8F1BC17A170F1C1300D1D049 /* source.remind.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.remind.plist; sourceTree = "<group>"; };
+		8F1BC17B170F1C1300D1D049 /* source.regexp.python.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.regexp.python.plist; sourceTree = "<group>"; };
+		8F1BC17C170F1C1300D1D049 /* source.regexp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.regexp.plist; sourceTree = "<group>"; };
+		8F1BC17D170F1C1300D1D049 /* source.regexp.oniguruma.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.regexp.oniguruma.plist; sourceTree = "<group>"; };
+		8F1BC17E170F1C1300D1D049 /* source.r.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.r.plist; sourceTree = "<group>"; };
+		8F1BC17F170F1C1300D1D049 /* source.r-console.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "source.r-console.plist"; sourceTree = "<group>"; };
+		8F1BC180170F1C1300D1D049 /* source.quake-config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "source.quake-config.plist"; sourceTree = "<group>"; };
+		8F1BC181170F1C1300D1D049 /* source.qmake.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.qmake.plist; sourceTree = "<group>"; };
+		8F1BC182170F1C1300D1D049 /* source.python.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.python.plist; sourceTree = "<group>"; };
+		8F1BC183170F1C1300D1D049 /* source.python.django.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.python.django.plist; sourceTree = "<group>"; };
+		8F1BC184170F1C1300D1D049 /* source.prolog.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.prolog.plist; sourceTree = "<group>"; };
+		8F1BC185170F1C1300D1D049 /* source.processing.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.processing.plist; sourceTree = "<group>"; };
+		8F1BC186170F1C1300D1D049 /* source.postscript.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.postscript.plist; sourceTree = "<group>"; };
+		8F1BC187170F1C1300D1D049 /* source.plist.tm-grammar.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "source.plist.tm-grammar.plist"; sourceTree = "<group>"; };
+		8F1BC188170F1C1300D1D049 /* source.php.cake.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.php.cake.plist; sourceTree = "<group>"; };
+		8F1BC189170F1C1300D1D049 /* source.perl.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.perl.plist; sourceTree = "<group>"; };
+		8F1BC18A170F1C1300D1D049 /* source.pascal.vectorscript.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.pascal.vectorscript.plist; sourceTree = "<group>"; };
+		8F1BC18B170F1C1300D1D049 /* source.pascal.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.pascal.plist; sourceTree = "<group>"; };
+		8F1BC18C170F1C1300D1D049 /* source.open-gl.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "source.open-gl.plist"; sourceTree = "<group>"; };
+		8F1BC18D170F1C1300D1D049 /* source.ocamlyacc.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.ocamlyacc.plist; sourceTree = "<group>"; };
+		8F1BC18E170F1C1300D1D049 /* source.ocamllex.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.ocamllex.plist; sourceTree = "<group>"; };
+		8F1BC18F170F1C1300D1D049 /* source.ocaml.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.ocaml.plist; sourceTree = "<group>"; };
+		8F1BC190170F1C1400D1D049 /* source.objc++.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "source.objc++.plist"; sourceTree = "<group>"; };
+		8F1BC191170F1C1400D1D049 /* source.objc.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.objc.plist; sourceTree = "<group>"; };
+		8F1BC192170F1C1400D1D049 /* source.nant-build.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "source.nant-build.plist"; sourceTree = "<group>"; };
+		8F1BC193170F1C1400D1D049 /* source.modula-3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "source.modula-3.plist"; sourceTree = "<group>"; };
+		8F1BC194170F1C1400D1D049 /* source.ml.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.ml.plist; sourceTree = "<group>"; };
+		8F1BC195170F1C1400D1D049 /* source.mips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.mips.plist; sourceTree = "<group>"; };
+		8F1BC196170F1C1400D1D049 /* source.mel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.mel.plist; sourceTree = "<group>"; };
+		8F1BC197170F1C1400D1D049 /* source.matlab.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.matlab.plist; sourceTree = "<group>"; };
+		8F1BC198170F1C1400D1D049 /* source.makefile.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.makefile.plist; sourceTree = "<group>"; };
+		8F1BC199170F1C1400D1D049 /* source.lua.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.lua.plist; sourceTree = "<group>"; };
+		8F1BC19A170F1C1400D1D049 /* source.logtalk.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.logtalk.plist; sourceTree = "<group>"; };
+		8F1BC19B170F1C1400D1D049 /* source.logo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.logo.plist; sourceTree = "<group>"; };
+		8F1BC19C170F1C1400D1D049 /* source.lisp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.lisp.plist; sourceTree = "<group>"; };
+		8F1BC19D170F1C1400D1D049 /* source.lilypond.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.lilypond.plist; sourceTree = "<group>"; };
+		8F1BC19E170F1C1400D1D049 /* source.lighttpd-config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "source.lighttpd-config.plist"; sourceTree = "<group>"; };
+		8F1BC19F170F1C1400D1D049 /* source.lex.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.lex.plist; sourceTree = "<group>"; };
+		8F1BC1A0170F1C1400D1D049 /* source.json.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.json.plist; sourceTree = "<group>"; };
+		8F1BC1A1170F1C1400D1D049 /* source.js.yui.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.js.yui.plist; sourceTree = "<group>"; };
+		8F1BC1A2170F1C1800D1D049 /* source.js.prototype.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.js.prototype.plist; sourceTree = "<group>"; };
+		8F1BC1A3170F1C1800D1D049 /* source.js.prototype.bracketed.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.js.prototype.bracketed.plist; sourceTree = "<group>"; };
+		8F1BC1A4170F1C1800D1D049 /* source.js.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.js.plist; sourceTree = "<group>"; };
+		8F1BC1A5170F1C1800D1D049 /* source.js.mootools.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.js.mootools.plist; sourceTree = "<group>"; };
+		8F1BC1A6170F1C1800D1D049 /* source.js.jquery.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.js.jquery.plist; sourceTree = "<group>"; };
+		8F1BC1A7170F1C1800D1D049 /* source.js.greasemonkey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.js.greasemonkey.plist; sourceTree = "<group>"; };
+		8F1BC1A8170F1C1800D1D049 /* source.java.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.java.plist; sourceTree = "<group>"; };
+		8F1BC1A9170F1C1800D1D049 /* source.java-props.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "source.java-props.plist"; sourceTree = "<group>"; };
+		8F1BC1AA170F1C1800D1D049 /* source.io.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.io.plist; sourceTree = "<group>"; };
+		8F1BC1AB170F1C1800D1D049 /* source.ini.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.ini.plist; sourceTree = "<group>"; };
+		8F1BC1AC170F1C1800D1D049 /* source.inform.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.inform.plist; sourceTree = "<group>"; };
+		8F1BC1AD170F1C1800D1D049 /* source.icalendar.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.icalendar.plist; sourceTree = "<group>"; };
+		8F1BC1AE170F1C1800D1D049 /* source.haskell.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.haskell.plist; sourceTree = "<group>"; };
+		8F1BC1AF170F1C1800D1D049 /* source.groovy.groovy.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.groovy.groovy.plist; sourceTree = "<group>"; };
+		8F1BC1B0170F1C1800D1D049 /* source.gri.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.gri.plist; sourceTree = "<group>"; };
+		8F1BC1B1170F1C1800D1D049 /* source.fxscript.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.fxscript.plist; sourceTree = "<group>"; };
+		8F1BC1B2170F1C1800D1D049 /* source.fscript.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.fscript.plist; sourceTree = "<group>"; };
+		8F1BC1B3170F1C1800D1D049 /* source.fortran.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.fortran.plist; sourceTree = "<group>"; };
+		8F1BC1B4170F1C1800D1D049 /* source.erlang.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.erlang.plist; sourceTree = "<group>"; };
+		8F1BC1B5170F1C1800D1D049 /* source.eiffel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.eiffel.plist; sourceTree = "<group>"; };
+		8F1BC1B6170F1C1800D1D049 /* source.dylan.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.dylan.plist; sourceTree = "<group>"; };
+		8F1BC1B7170F1C1800D1D049 /* source.dot.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.dot.plist; sourceTree = "<group>"; };
+		8F1BC1B8170F1C1800D1D049 /* source.diff.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.diff.plist; sourceTree = "<group>"; };
+		8F1BC1B9170F1C1900D1D049 /* source.d.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.d.plist; sourceTree = "<group>"; };
+		8F1BC1BA170F1C1900D1D049 /* source.css.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.css.plist; sourceTree = "<group>"; };
+		8F1BC1BB170F1C1900D1D049 /* source.css.beta.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.css.beta.plist; sourceTree = "<group>"; };
+		8F1BC1BC170F1C1900D1D049 /* source.context-free.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "source.context-free.plist"; sourceTree = "<group>"; };
+		8F1BC1BD170F1C1900D1D049 /* source.coffee.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.coffee.plist; sourceTree = "<group>"; };
+		8F1BC1BE170F1C1900D1D049 /* source.cm.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.cm.plist; sourceTree = "<group>"; };
+		8F1BC1BF170F1C1900D1D049 /* source.camlp4.ocaml.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.camlp4.ocaml.plist; sourceTree = "<group>"; };
+		8F1BC1C0170F1C1900D1D049 /* source.c++.qt.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "source.c++.qt.plist"; sourceTree = "<group>"; };
+		8F1BC1C1170F1C1900D1D049 /* source.c++.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "source.c++.plist"; sourceTree = "<group>"; };
+		8F1BC1C2170F1C1900D1D049 /* source.c.ragel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.c.ragel.plist; sourceTree = "<group>"; };
+		8F1BC1C3170F1C1900D1D049 /* source.c.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.c.plist; sourceTree = "<group>"; };
+		8F1BC1C4170F1C1900D1D049 /* source.c-sharp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "source.c-sharp.plist"; sourceTree = "<group>"; };
+		8F1BC1C5170F1C1900D1D049 /* source.asp.vb.net.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.asp.vb.net.plist; sourceTree = "<group>"; };
+		8F1BC1C6170F1C1900D1D049 /* source.asp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.asp.plist; sourceTree = "<group>"; };
+		8F1BC1C7170F1C1900D1D049 /* source.applescript.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.applescript.plist; sourceTree = "<group>"; };
+		8F1BC1C8170F1C1900D1D049 /* source.apache-config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "source.apache-config.plist"; sourceTree = "<group>"; };
+		8F1BC1C9170F1C1900D1D049 /* source.apache-config.mod_perl.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "source.apache-config.mod_perl.plist"; sourceTree = "<group>"; };
+		8F1BC1CA170F1C1900D1D049 /* source.antlr.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.antlr.plist; sourceTree = "<group>"; };
+		8F1BC1CB170F1C1900D1D049 /* source.ada.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.ada.plist; sourceTree = "<group>"; };
+		8F1BC1CC170F1C1900D1D049 /* source.active4d.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.active4d.plist; sourceTree = "<group>"; };
+		8F1BC1CD170F1C1900D1D049 /* source.active4d.library.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.active4d.library.plist; sourceTree = "<group>"; };
+		8F1BC1CE170F1C1900D1D049 /* source.actionscript.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.actionscript.plist; sourceTree = "<group>"; };
 		8F2F5B8017061435005AD37F /* nav_gmaps_sample.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = nav_gmaps_sample.js; sourceTree = "<group>"; };
 		8F563F33170161C900EE5643 /* TMBundleSyntaxParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleSyntaxParser.h; sourceTree = "<group>"; };
 		8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBundleSyntaxParser.m; sourceTree = "<group>"; };
@@ -449,6 +767,165 @@
 		8F563E53170160CD00EE5643 /* TextMateBundles */ = {
 			isa = PBXGroup;
 			children = (
+				8F1BC130170F1C0D00D1D049 /* text.xml.xsl.plist */,
+				8F1BC131170F1C0D00D1D049 /* text.xml.strict.plist */,
+				8F1BC132170F1C0D00D1D049 /* text.xml.plist */,
+				8F1BC133170F1C0E00D1D049 /* text.xml.apple-dist.plist */,
+				8F1BC134170F1C0E00D1D049 /* text.txt2tags.plist */,
+				8F1BC135170F1C0E00D1D049 /* text.tex.plist */,
+				8F1BC136170F1C0E00D1D049 /* text.tex.math.plist */,
+				8F1BC137170F1C0E00D1D049 /* text.tex.latex.sweave.plist */,
+				8F1BC138170F1C0E00D1D049 /* text.tex.latex.rd.plist */,
+				8F1BC139170F1C0E00D1D049 /* text.tex.latex.plist */,
+				8F1BC13A170F1C0E00D1D049 /* text.tex.latex.memoir.plist */,
+				8F1BC13B170F1C0E00D1D049 /* text.tex.latex.haskell.plist */,
+				8F1BC13C170F1C0E00D1D049 /* text.tex.latex.beamer.plist */,
+				8F1BC13D170F1C0E00D1D049 /* text.tabular.tsv.plist */,
+				8F1BC13E170F1C0E00D1D049 /* text.tabular.csv.plist */,
+				8F1BC13F170F1C0E00D1D049 /* text.subversion-commit.plist */,
+				8F1BC140170F1C0E00D1D049 /* text.setext.plist */,
+				8F1BC141170F1C0E00D1D049 /* text.restructuredtext.plist */,
+				8F1BC142170F1C0E00D1D049 /* text.pmwiki.plist */,
+				8F1BC143170F1C0E00D1D049 /* text.plist.plist */,
+				8F1BC144170F1C0E00D1D049 /* text.plain.release-notes.plist */,
+				8F1BC145170F1C0E00D1D049 /* text.plain.plist */,
+				8F1BC146170F1C0F00D1D049 /* text.plain.gtd.plist */,
+				8F1BC147170F1C0F00D1D049 /* text.moinmoin.plist */,
+				8F1BC148170F1C0F00D1D049 /* text.man.plist */,
+				8F1BC149170F1C0F00D1D049 /* text.mail.markdown.plist */,
+				8F1BC14A170F1C0F00D1D049 /* text.log.latex.plist */,
+				8F1BC14B170F1C0F00D1D049 /* text.html.xhtml.1-strict.plist */,
+				8F1BC14C170F1C0F00D1D049 /* text.html.twiki.plist */,
+				8F1BC14D170F1C0F00D1D049 /* text.html.tt.plist */,
+				8F1BC14E170F1C0F00D1D049 /* text.html.textile.plist */,
+				8F1BC14F170F1C0F00D1D049 /* text.html.tcl.plist */,
+				8F1BC150170F1C0F00D1D049 /* text.html.strict.active4d.plist */,
+				8F1BC151170F1C0F00D1D049 /* text.html.ruby.plist */,
+				8F1BC152170F1C0F00D1D049 /* text.html.mt.plist */,
+				8F1BC153170F1C1000D1D049 /* text.html.mediawiki.plist */,
+				8F1BC154170F1C1000D1D049 /* text.html.mason.plist */,
+				8F1BC155170F1C1000D1D049 /* text.html.markdown.multimarkdown.plist */,
+				8F1BC156170F1C1000D1D049 /* text.html.doxygen.plist */,
+				8F1BC157170F1C1000D1D049 /* text.html.dokuwiki.plist */,
+				8F1BC158170F1C1000D1D049 /* text.html.django.plist */,
+				8F1BC159170F1C1000D1D049 /* text.html.cfm.plist */,
+				8F1BC15A170F1C1000D1D049 /* text.html.basic.plist */,
+				8F1BC15B170F1C1000D1D049 /* text.html.asp.plist */,
+				8F1BC15C170F1C1000D1D049 /* text.html.asp.net.plist */,
+				8F1BC15D170F1C1000D1D049 /* text.haml.plist */,
+				8F1BC15E170F1C1000D1D049 /* text.gtdalt.plist */,
+				8F1BC15F170F1C1000D1D049 /* text.blog.textile.plist */,
+				8F1BC160170F1C1000D1D049 /* text.blog.plist */,
+				8F1BC161170F1C1000D1D049 /* text.blog.markdown.plist */,
+				8F1BC162170F1C1000D1D049 /* text.blog.html.plist */,
+				8F1BC163170F1C1000D1D049 /* text.bibtex.plist */,
+				8F1BC164170F1C1000D1D049 /* text.bbcode.plist */,
+				8F1BC165170F1C1000D1D049 /* text.active4d-ini.plist */,
+				8F1BC166170F1C1000D1D049 /* source.yaml.plist */,
+				8F1BC167170F1C1000D1D049 /* source.tcl.plist */,
+				8F1BC168170F1C1100D1D049 /* source.tcl.macports.plist */,
+				8F1BC169170F1C1100D1D049 /* source.swig.plist */,
+				8F1BC16A170F1C1100D1D049 /* source.strings.plist */,
+				8F1BC16B170F1C1100D1D049 /* source.ssh-config.plist */,
+				8F1BC16C170F1C1100D1D049 /* source.sql.ruby.plist */,
+				8F1BC16D170F1C1100D1D049 /* source.sql.plist */,
+				8F1BC16E170F1C1100D1D049 /* source.smarty.plist */,
+				8F1BC16F170F1C1100D1D049 /* source.slate.plist */,
+				8F1BC170170F1C1100D1D049 /* source.shell.plist */,
+				8F1BC171170F1C1300D1D049 /* source.scss.plist */,
+				8F1BC172170F1C1300D1D049 /* source.scilab.plist */,
+				8F1BC173170F1C1300D1D049 /* source.scheme.plist */,
+				8F1BC174170F1C1300D1D049 /* source.sass.plist */,
+				8F1BC175170F1C1300D1D049 /* source.s5.plist */,
+				8F1BC176170F1C1300D1D049 /* source.ruby.rails.plist */,
+				8F1BC177170F1C1300D1D049 /* source.ruby.plist */,
+				8F1BC178170F1C1300D1D049 /* source.ruby.experimental.plist */,
+				8F1BC179170F1C1300D1D049 /* source.rez.plist */,
+				8F1BC17A170F1C1300D1D049 /* source.remind.plist */,
+				8F1BC17B170F1C1300D1D049 /* source.regexp.python.plist */,
+				8F1BC17C170F1C1300D1D049 /* source.regexp.plist */,
+				8F1BC17D170F1C1300D1D049 /* source.regexp.oniguruma.plist */,
+				8F1BC17E170F1C1300D1D049 /* source.r.plist */,
+				8F1BC17F170F1C1300D1D049 /* source.r-console.plist */,
+				8F1BC180170F1C1300D1D049 /* source.quake-config.plist */,
+				8F1BC181170F1C1300D1D049 /* source.qmake.plist */,
+				8F1BC182170F1C1300D1D049 /* source.python.plist */,
+				8F1BC183170F1C1300D1D049 /* source.python.django.plist */,
+				8F1BC184170F1C1300D1D049 /* source.prolog.plist */,
+				8F1BC185170F1C1300D1D049 /* source.processing.plist */,
+				8F1BC186170F1C1300D1D049 /* source.postscript.plist */,
+				8F1BC187170F1C1300D1D049 /* source.plist.tm-grammar.plist */,
+				8F1BC188170F1C1300D1D049 /* source.php.cake.plist */,
+				8F1BC189170F1C1300D1D049 /* source.perl.plist */,
+				8F1BC18A170F1C1300D1D049 /* source.pascal.vectorscript.plist */,
+				8F1BC18B170F1C1300D1D049 /* source.pascal.plist */,
+				8F1BC18C170F1C1300D1D049 /* source.open-gl.plist */,
+				8F1BC18D170F1C1300D1D049 /* source.ocamlyacc.plist */,
+				8F1BC18E170F1C1300D1D049 /* source.ocamllex.plist */,
+				8F1BC18F170F1C1300D1D049 /* source.ocaml.plist */,
+				8F1BC190170F1C1400D1D049 /* source.objc++.plist */,
+				8F1BC191170F1C1400D1D049 /* source.objc.plist */,
+				8F1BC192170F1C1400D1D049 /* source.nant-build.plist */,
+				8F1BC193170F1C1400D1D049 /* source.modula-3.plist */,
+				8F1BC194170F1C1400D1D049 /* source.ml.plist */,
+				8F1BC195170F1C1400D1D049 /* source.mips.plist */,
+				8F1BC196170F1C1400D1D049 /* source.mel.plist */,
+				8F1BC197170F1C1400D1D049 /* source.matlab.plist */,
+				8F1BC198170F1C1400D1D049 /* source.makefile.plist */,
+				8F1BC199170F1C1400D1D049 /* source.lua.plist */,
+				8F1BC19A170F1C1400D1D049 /* source.logtalk.plist */,
+				8F1BC19B170F1C1400D1D049 /* source.logo.plist */,
+				8F1BC19C170F1C1400D1D049 /* source.lisp.plist */,
+				8F1BC19D170F1C1400D1D049 /* source.lilypond.plist */,
+				8F1BC19E170F1C1400D1D049 /* source.lighttpd-config.plist */,
+				8F1BC19F170F1C1400D1D049 /* source.lex.plist */,
+				8F1BC1A0170F1C1400D1D049 /* source.json.plist */,
+				8F1BC1A1170F1C1400D1D049 /* source.js.yui.plist */,
+				8F1BC1A2170F1C1800D1D049 /* source.js.prototype.plist */,
+				8F1BC1A3170F1C1800D1D049 /* source.js.prototype.bracketed.plist */,
+				8F1BC1A4170F1C1800D1D049 /* source.js.plist */,
+				8F1BC1A5170F1C1800D1D049 /* source.js.mootools.plist */,
+				8F1BC1A6170F1C1800D1D049 /* source.js.jquery.plist */,
+				8F1BC1A7170F1C1800D1D049 /* source.js.greasemonkey.plist */,
+				8F1BC1A8170F1C1800D1D049 /* source.java.plist */,
+				8F1BC1A9170F1C1800D1D049 /* source.java-props.plist */,
+				8F1BC1AA170F1C1800D1D049 /* source.io.plist */,
+				8F1BC1AB170F1C1800D1D049 /* source.ini.plist */,
+				8F1BC1AC170F1C1800D1D049 /* source.inform.plist */,
+				8F1BC1AD170F1C1800D1D049 /* source.icalendar.plist */,
+				8F1BC1AE170F1C1800D1D049 /* source.haskell.plist */,
+				8F1BC1AF170F1C1800D1D049 /* source.groovy.groovy.plist */,
+				8F1BC1B0170F1C1800D1D049 /* source.gri.plist */,
+				8F1BC1B1170F1C1800D1D049 /* source.fxscript.plist */,
+				8F1BC1B2170F1C1800D1D049 /* source.fscript.plist */,
+				8F1BC1B3170F1C1800D1D049 /* source.fortran.plist */,
+				8F1BC1B4170F1C1800D1D049 /* source.erlang.plist */,
+				8F1BC1B5170F1C1800D1D049 /* source.eiffel.plist */,
+				8F1BC1B6170F1C1800D1D049 /* source.dylan.plist */,
+				8F1BC1B7170F1C1800D1D049 /* source.dot.plist */,
+				8F1BC1B8170F1C1800D1D049 /* source.diff.plist */,
+				8F1BC1B9170F1C1900D1D049 /* source.d.plist */,
+				8F1BC1BA170F1C1900D1D049 /* source.css.plist */,
+				8F1BC1BB170F1C1900D1D049 /* source.css.beta.plist */,
+				8F1BC1BC170F1C1900D1D049 /* source.context-free.plist */,
+				8F1BC1BD170F1C1900D1D049 /* source.coffee.plist */,
+				8F1BC1BE170F1C1900D1D049 /* source.cm.plist */,
+				8F1BC1BF170F1C1900D1D049 /* source.camlp4.ocaml.plist */,
+				8F1BC1C0170F1C1900D1D049 /* source.c++.qt.plist */,
+				8F1BC1C1170F1C1900D1D049 /* source.c++.plist */,
+				8F1BC1C2170F1C1900D1D049 /* source.c.ragel.plist */,
+				8F1BC1C3170F1C1900D1D049 /* source.c.plist */,
+				8F1BC1C4170F1C1900D1D049 /* source.c-sharp.plist */,
+				8F1BC1C5170F1C1900D1D049 /* source.asp.vb.net.plist */,
+				8F1BC1C6170F1C1900D1D049 /* source.asp.plist */,
+				8F1BC1C7170F1C1900D1D049 /* source.applescript.plist */,
+				8F1BC1C8170F1C1900D1D049 /* source.apache-config.plist */,
+				8F1BC1C9170F1C1900D1D049 /* source.apache-config.mod_perl.plist */,
+				8F1BC1CA170F1C1900D1D049 /* source.antlr.plist */,
+				8F1BC1CB170F1C1900D1D049 /* source.ada.plist */,
+				8F1BC1CC170F1C1900D1D049 /* source.active4d.plist */,
+				8F1BC1CD170F1C1900D1D049 /* source.active4d.library.plist */,
+				8F1BC1CE170F1C1900D1D049 /* source.actionscript.plist */,
 				8F1510C517044A4C00115E5E /* Solarized (light).tmTheme */,
 			);
 			name = TextMateBundles;
@@ -576,6 +1053,165 @@
 				02A5198D170DC0CE007C038E /* Inconsolata.ttf in Resources */,
 				FC4A8529170EB47200463EDA /* twist.py in Resources */,
 				FC4A852C170EC8CE00463EDA /* TMBundleConfig.plist in Resources */,
+				8F1BC1CF170F1C1900D1D049 /* text.xml.xsl.plist in Resources */,
+				8F1BC1D0170F1C1900D1D049 /* text.xml.strict.plist in Resources */,
+				8F1BC1D1170F1C1900D1D049 /* text.xml.plist in Resources */,
+				8F1BC1D2170F1C1900D1D049 /* text.xml.apple-dist.plist in Resources */,
+				8F1BC1D3170F1C1900D1D049 /* text.txt2tags.plist in Resources */,
+				8F1BC1D4170F1C1900D1D049 /* text.tex.plist in Resources */,
+				8F1BC1D5170F1C1900D1D049 /* text.tex.math.plist in Resources */,
+				8F1BC1D6170F1C1900D1D049 /* text.tex.latex.sweave.plist in Resources */,
+				8F1BC1D7170F1C1900D1D049 /* text.tex.latex.rd.plist in Resources */,
+				8F1BC1D8170F1C1900D1D049 /* text.tex.latex.plist in Resources */,
+				8F1BC1D9170F1C1900D1D049 /* text.tex.latex.memoir.plist in Resources */,
+				8F1BC1DA170F1C1900D1D049 /* text.tex.latex.haskell.plist in Resources */,
+				8F1BC1DB170F1C1900D1D049 /* text.tex.latex.beamer.plist in Resources */,
+				8F1BC1DC170F1C1900D1D049 /* text.tabular.tsv.plist in Resources */,
+				8F1BC1DD170F1C1900D1D049 /* text.tabular.csv.plist in Resources */,
+				8F1BC1DE170F1C1900D1D049 /* text.subversion-commit.plist in Resources */,
+				8F1BC1DF170F1C1900D1D049 /* text.setext.plist in Resources */,
+				8F1BC1E0170F1C1900D1D049 /* text.restructuredtext.plist in Resources */,
+				8F1BC1E1170F1C1900D1D049 /* text.pmwiki.plist in Resources */,
+				8F1BC1E2170F1C1900D1D049 /* text.plist.plist in Resources */,
+				8F1BC1E3170F1C1900D1D049 /* text.plain.release-notes.plist in Resources */,
+				8F1BC1E4170F1C1900D1D049 /* text.plain.plist in Resources */,
+				8F1BC1E5170F1C1900D1D049 /* text.plain.gtd.plist in Resources */,
+				8F1BC1E6170F1C1900D1D049 /* text.moinmoin.plist in Resources */,
+				8F1BC1E7170F1C1900D1D049 /* text.man.plist in Resources */,
+				8F1BC1E8170F1C1900D1D049 /* text.mail.markdown.plist in Resources */,
+				8F1BC1E9170F1C1900D1D049 /* text.log.latex.plist in Resources */,
+				8F1BC1EA170F1C1900D1D049 /* text.html.xhtml.1-strict.plist in Resources */,
+				8F1BC1EB170F1C1900D1D049 /* text.html.twiki.plist in Resources */,
+				8F1BC1EC170F1C1900D1D049 /* text.html.tt.plist in Resources */,
+				8F1BC1ED170F1C1900D1D049 /* text.html.textile.plist in Resources */,
+				8F1BC1EE170F1C1900D1D049 /* text.html.tcl.plist in Resources */,
+				8F1BC1EF170F1C1900D1D049 /* text.html.strict.active4d.plist in Resources */,
+				8F1BC1F0170F1C1900D1D049 /* text.html.ruby.plist in Resources */,
+				8F1BC1F1170F1C1900D1D049 /* text.html.mt.plist in Resources */,
+				8F1BC1F2170F1C1900D1D049 /* text.html.mediawiki.plist in Resources */,
+				8F1BC1F3170F1C1900D1D049 /* text.html.mason.plist in Resources */,
+				8F1BC1F4170F1C1900D1D049 /* text.html.markdown.multimarkdown.plist in Resources */,
+				8F1BC1F5170F1C1900D1D049 /* text.html.doxygen.plist in Resources */,
+				8F1BC1F6170F1C1900D1D049 /* text.html.dokuwiki.plist in Resources */,
+				8F1BC1F7170F1C1900D1D049 /* text.html.django.plist in Resources */,
+				8F1BC1F8170F1C1900D1D049 /* text.html.cfm.plist in Resources */,
+				8F1BC1F9170F1C1900D1D049 /* text.html.basic.plist in Resources */,
+				8F1BC1FA170F1C1900D1D049 /* text.html.asp.plist in Resources */,
+				8F1BC1FB170F1C1900D1D049 /* text.html.asp.net.plist in Resources */,
+				8F1BC1FC170F1C1900D1D049 /* text.haml.plist in Resources */,
+				8F1BC1FD170F1C1900D1D049 /* text.gtdalt.plist in Resources */,
+				8F1BC1FE170F1C1900D1D049 /* text.blog.textile.plist in Resources */,
+				8F1BC1FF170F1C1900D1D049 /* text.blog.plist in Resources */,
+				8F1BC200170F1C1900D1D049 /* text.blog.markdown.plist in Resources */,
+				8F1BC201170F1C1900D1D049 /* text.blog.html.plist in Resources */,
+				8F1BC202170F1C1900D1D049 /* text.bibtex.plist in Resources */,
+				8F1BC203170F1C1900D1D049 /* text.bbcode.plist in Resources */,
+				8F1BC204170F1C1900D1D049 /* text.active4d-ini.plist in Resources */,
+				8F1BC205170F1C1900D1D049 /* source.yaml.plist in Resources */,
+				8F1BC206170F1C1900D1D049 /* source.tcl.plist in Resources */,
+				8F1BC207170F1C1900D1D049 /* source.tcl.macports.plist in Resources */,
+				8F1BC208170F1C1900D1D049 /* source.swig.plist in Resources */,
+				8F1BC209170F1C1900D1D049 /* source.strings.plist in Resources */,
+				8F1BC20A170F1C1900D1D049 /* source.ssh-config.plist in Resources */,
+				8F1BC20B170F1C1900D1D049 /* source.sql.ruby.plist in Resources */,
+				8F1BC20C170F1C1900D1D049 /* source.sql.plist in Resources */,
+				8F1BC20D170F1C1900D1D049 /* source.smarty.plist in Resources */,
+				8F1BC20E170F1C1900D1D049 /* source.slate.plist in Resources */,
+				8F1BC20F170F1C1900D1D049 /* source.shell.plist in Resources */,
+				8F1BC210170F1C1900D1D049 /* source.scss.plist in Resources */,
+				8F1BC211170F1C1900D1D049 /* source.scilab.plist in Resources */,
+				8F1BC212170F1C1900D1D049 /* source.scheme.plist in Resources */,
+				8F1BC213170F1C1900D1D049 /* source.sass.plist in Resources */,
+				8F1BC214170F1C1900D1D049 /* source.s5.plist in Resources */,
+				8F1BC215170F1C1900D1D049 /* source.ruby.rails.plist in Resources */,
+				8F1BC216170F1C1900D1D049 /* source.ruby.plist in Resources */,
+				8F1BC217170F1C1900D1D049 /* source.ruby.experimental.plist in Resources */,
+				8F1BC218170F1C1900D1D049 /* source.rez.plist in Resources */,
+				8F1BC219170F1C1900D1D049 /* source.remind.plist in Resources */,
+				8F1BC21A170F1C1900D1D049 /* source.regexp.python.plist in Resources */,
+				8F1BC21B170F1C1900D1D049 /* source.regexp.plist in Resources */,
+				8F1BC21C170F1C1900D1D049 /* source.regexp.oniguruma.plist in Resources */,
+				8F1BC21D170F1C1900D1D049 /* source.r.plist in Resources */,
+				8F1BC21E170F1C1900D1D049 /* source.r-console.plist in Resources */,
+				8F1BC21F170F1C1900D1D049 /* source.quake-config.plist in Resources */,
+				8F1BC220170F1C1900D1D049 /* source.qmake.plist in Resources */,
+				8F1BC221170F1C1900D1D049 /* source.python.plist in Resources */,
+				8F1BC222170F1C1900D1D049 /* source.python.django.plist in Resources */,
+				8F1BC223170F1C1900D1D049 /* source.prolog.plist in Resources */,
+				8F1BC224170F1C1900D1D049 /* source.processing.plist in Resources */,
+				8F1BC225170F1C1900D1D049 /* source.postscript.plist in Resources */,
+				8F1BC226170F1C1900D1D049 /* source.plist.tm-grammar.plist in Resources */,
+				8F1BC227170F1C1900D1D049 /* source.php.cake.plist in Resources */,
+				8F1BC228170F1C1900D1D049 /* source.perl.plist in Resources */,
+				8F1BC229170F1C1900D1D049 /* source.pascal.vectorscript.plist in Resources */,
+				8F1BC22A170F1C1900D1D049 /* source.pascal.plist in Resources */,
+				8F1BC22B170F1C1900D1D049 /* source.open-gl.plist in Resources */,
+				8F1BC22C170F1C1900D1D049 /* source.ocamlyacc.plist in Resources */,
+				8F1BC22D170F1C1900D1D049 /* source.ocamllex.plist in Resources */,
+				8F1BC22E170F1C1900D1D049 /* source.ocaml.plist in Resources */,
+				8F1BC22F170F1C1900D1D049 /* source.objc++.plist in Resources */,
+				8F1BC230170F1C1900D1D049 /* source.objc.plist in Resources */,
+				8F1BC231170F1C1900D1D049 /* source.nant-build.plist in Resources */,
+				8F1BC232170F1C1900D1D049 /* source.modula-3.plist in Resources */,
+				8F1BC233170F1C1900D1D049 /* source.ml.plist in Resources */,
+				8F1BC234170F1C1900D1D049 /* source.mips.plist in Resources */,
+				8F1BC235170F1C1900D1D049 /* source.mel.plist in Resources */,
+				8F1BC236170F1C1900D1D049 /* source.matlab.plist in Resources */,
+				8F1BC237170F1C1900D1D049 /* source.makefile.plist in Resources */,
+				8F1BC238170F1C1900D1D049 /* source.lua.plist in Resources */,
+				8F1BC239170F1C1900D1D049 /* source.logtalk.plist in Resources */,
+				8F1BC23A170F1C1900D1D049 /* source.logo.plist in Resources */,
+				8F1BC23B170F1C1900D1D049 /* source.lisp.plist in Resources */,
+				8F1BC23C170F1C1900D1D049 /* source.lilypond.plist in Resources */,
+				8F1BC23D170F1C1900D1D049 /* source.lighttpd-config.plist in Resources */,
+				8F1BC23E170F1C1900D1D049 /* source.lex.plist in Resources */,
+				8F1BC23F170F1C1900D1D049 /* source.json.plist in Resources */,
+				8F1BC240170F1C1900D1D049 /* source.js.yui.plist in Resources */,
+				8F1BC241170F1C1900D1D049 /* source.js.prototype.plist in Resources */,
+				8F1BC242170F1C1900D1D049 /* source.js.prototype.bracketed.plist in Resources */,
+				8F1BC243170F1C1900D1D049 /* source.js.plist in Resources */,
+				8F1BC244170F1C1900D1D049 /* source.js.mootools.plist in Resources */,
+				8F1BC245170F1C1900D1D049 /* source.js.jquery.plist in Resources */,
+				8F1BC246170F1C1900D1D049 /* source.js.greasemonkey.plist in Resources */,
+				8F1BC247170F1C1900D1D049 /* source.java.plist in Resources */,
+				8F1BC248170F1C1900D1D049 /* source.java-props.plist in Resources */,
+				8F1BC249170F1C1900D1D049 /* source.io.plist in Resources */,
+				8F1BC24A170F1C1900D1D049 /* source.ini.plist in Resources */,
+				8F1BC24B170F1C1900D1D049 /* source.inform.plist in Resources */,
+				8F1BC24C170F1C1900D1D049 /* source.icalendar.plist in Resources */,
+				8F1BC24D170F1C1900D1D049 /* source.haskell.plist in Resources */,
+				8F1BC24E170F1C1900D1D049 /* source.groovy.groovy.plist in Resources */,
+				8F1BC24F170F1C1900D1D049 /* source.gri.plist in Resources */,
+				8F1BC250170F1C1900D1D049 /* source.fxscript.plist in Resources */,
+				8F1BC251170F1C1900D1D049 /* source.fscript.plist in Resources */,
+				8F1BC252170F1C1900D1D049 /* source.fortran.plist in Resources */,
+				8F1BC253170F1C1900D1D049 /* source.erlang.plist in Resources */,
+				8F1BC254170F1C1900D1D049 /* source.eiffel.plist in Resources */,
+				8F1BC255170F1C1900D1D049 /* source.dylan.plist in Resources */,
+				8F1BC256170F1C1900D1D049 /* source.dot.plist in Resources */,
+				8F1BC257170F1C1900D1D049 /* source.diff.plist in Resources */,
+				8F1BC258170F1C1900D1D049 /* source.d.plist in Resources */,
+				8F1BC259170F1C1900D1D049 /* source.css.plist in Resources */,
+				8F1BC25A170F1C1900D1D049 /* source.css.beta.plist in Resources */,
+				8F1BC25B170F1C1900D1D049 /* source.context-free.plist in Resources */,
+				8F1BC25C170F1C1900D1D049 /* source.coffee.plist in Resources */,
+				8F1BC25D170F1C1900D1D049 /* source.cm.plist in Resources */,
+				8F1BC25E170F1C1900D1D049 /* source.camlp4.ocaml.plist in Resources */,
+				8F1BC25F170F1C1900D1D049 /* source.c++.qt.plist in Resources */,
+				8F1BC260170F1C1900D1D049 /* source.c++.plist in Resources */,
+				8F1BC261170F1C1900D1D049 /* source.c.ragel.plist in Resources */,
+				8F1BC262170F1C1900D1D049 /* source.c.plist in Resources */,
+				8F1BC263170F1C1900D1D049 /* source.c-sharp.plist in Resources */,
+				8F1BC264170F1C1900D1D049 /* source.asp.vb.net.plist in Resources */,
+				8F1BC265170F1C1900D1D049 /* source.asp.plist in Resources */,
+				8F1BC266170F1C1900D1D049 /* source.applescript.plist in Resources */,
+				8F1BC267170F1C1900D1D049 /* source.apache-config.plist in Resources */,
+				8F1BC268170F1C1900D1D049 /* source.apache-config.mod_perl.plist in Resources */,
+				8F1BC269170F1C1900D1D049 /* source.antlr.plist in Resources */,
+				8F1BC26A170F1C1900D1D049 /* source.ada.plist in Resources */,
+				8F1BC26B170F1C1900D1D049 /* source.active4d.plist in Resources */,
+				8F1BC26C170F1C1900D1D049 /* source.active4d.library.plist in Resources */,
+				8F1BC26D170F1C1900D1D049 /* source.actionscript.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
