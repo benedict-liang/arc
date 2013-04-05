@@ -21,4 +21,6 @@
 // and is now only a level deep for each pattern group.
 + (NSArray*)getPatternsArray:(NSString*)TMBundleName;
 
++ (NSArray*)patternsArrayForExt:(NSString *)fileExt;
+
 @end

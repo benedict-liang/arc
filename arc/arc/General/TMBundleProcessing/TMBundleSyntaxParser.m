@@ -79,4 +79,16 @@
     return [NSArray arrayWithArray:patternsArray];
 }
 
++ (NSArray*)patternsArrayForExt:(NSString *)fileExt {
+    NSURL* bundleConf = [[NSBundle mainBundle] URLForResource:@"BundleConf.plist" withExtension:nil];
+    NSDictionary* extToBundle = [NSDictionary dictionaryWithContentsOfURL:bundleConf];
+    NSArray* legitBundles = [extToBundle objectForKey:fileExt];
+    if (legitBundles) {
+        NSString* bundleName = [legitBundles objectAtIndex:0];
+        return [TMBundleSyntaxParser getPatternsArray:bundleName];
+    } else {
+        NSLog(@"Appropriate bundle not found");
+        return [NSArray array];
+    }
+}
 @end
