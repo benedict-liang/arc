@@ -36,6 +36,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    // Work Around to trigger delegate and show document button in uitoolbar.
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft animated:NO];
+
     ApplicationState *appState = [ApplicationState sharedApplicationState];
     [self fileSelected:[appState currentFileOpened]];
     [self folderSelected:[appState currentFolderOpened]];
@@ -67,29 +70,26 @@
 
 - (void)fileObjectSelected:(id<FileSystemObject>)fileSystemObject;
 {
-    ApplicationState *appState = [ApplicationState sharedApplicationState];
     if ([[fileSystemObject class] conformsToProtocol:@protocol(Folder)]) {
         [self folderSelected:(id<Folder>)fileSystemObject];
-        [appState setCurrentFolderOpened:(id<Folder>)fileSystemObject];
     } else {
         [self fileSelected:(id<File>)fileSystemObject];
-        [appState setCurrentFileOpened:(id<File>)fileSystemObject];
     }
 }
 
 // Shows the file using the CodeViewController
 - (void)fileSelected:(id<File>)file
 {
-    // TODO
-    // Register with Application State
+    ApplicationState *appState = [ApplicationState sharedApplicationState];
+    [appState setCurrentFileOpened:file];
     [_codeViewController showFile:file];
 }
 
 // Updates Current Folder being Viewed
 - (void)folderSelected:(id<Folder>)folder
 {
-    // TODO
-    // Register with Application State
+    ApplicationState *appState = [ApplicationState sharedApplicationState];
+    [appState setCurrentFolderOpened:folder];
     [_leftViewController navigateTo:folder];
 }
 

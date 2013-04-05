@@ -20,6 +20,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ArcAttributedString *arcAttributedString;
 @property (nonatomic, strong) UIToolbar *toolbar;
+@property (nonatomic, strong) UIBarButtonItem *toolbarTitle;
 @property CTFramesetterRef frameSetter;
 @property CGFloat lineHeight;
 @property NSMutableArray *lines;
@@ -56,6 +57,17 @@
     _toolbar = [[UIToolbar alloc] initWithFrame:
                 CGRectMake(0, 0, self.view.bounds.size.width, SIZE_TOOLBAR_HEIGHT)];
     _toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    
+    _toolbarTitle = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                     style:UIBarButtonItemStylePlain
+                                                    target:nil
+                                                    action:nil];
+    _toolbar.items = [NSArray arrayWithObjects:
+                       [Utils flexibleSpace],
+                       _toolbarTitle,
+                       [Utils flexibleSpace],
+                       nil];
+
     [self.view addSubview:_toolbar];
     
     // Set Up TableView
@@ -92,6 +104,8 @@
     // Update Current file
     _currentFile = file;
     
+    [self updateToolbarTitle];
+    
     [self loadFile];
     [self processFile];
     [self generateLines];
@@ -118,6 +132,11 @@
 {
     // Render Code to screen
     [_tableView reloadData];
+}
+
+- (void)updateToolbarTitle
+{
+    _toolbarTitle.title = [_currentFile name];
 }
 
 - (void)clearPreviousLayoutInformation
@@ -188,12 +207,21 @@
 
 - (void)showShowMasterViewButton:(UIBarButtonItem *)button
 {
-    [_toolbar setItems:[NSArray arrayWithObject:button]];
+    _toolbar.items = [NSArray arrayWithObjects:
+                      button,
+                      [Utils flexibleSpace],
+                      _toolbarTitle,
+                      [Utils flexibleSpace],
+                      nil];
 }
 
 - (void)hideShowMasterViewButton:(UIBarButtonItem *)button
 {
-    [_toolbar setItems:[NSArray array]];
+    _toolbar.items = [NSArray arrayWithObjects:
+                      [Utils flexibleSpace],
+                      _toolbarTitle,
+                      [Utils flexibleSpace],
+                      nil];
 }
 
 #pragma mark - Table view data source

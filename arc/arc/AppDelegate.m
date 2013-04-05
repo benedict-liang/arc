@@ -147,7 +147,7 @@
     mainViewController.delegate = mainViewController;
     
     // Set MainViewController as RootViewController
-    self.window.RootViewController = mainViewController;
+    [self.window setRootViewController:mainViewController];
     [self.window makeKeyAndVisible];
 
     return YES;

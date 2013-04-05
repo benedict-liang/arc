@@ -110,24 +110,20 @@
     [_documentsNavigationViewController pushViewController:folderViewController
                                                   animated:animated];
     
-    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc]
-                                      initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                      target:nil action:nil];
-    
-    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Settings"
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:@"Settings"
                                                                style:UIBarButtonItemStyleBordered
                                                               target:self
                                                               action:@selector(showSettings:)];
     
-    UIBarButtonItem *dropbox = [[UIBarButtonItem alloc] initWithTitle:@"Dropbox"
+    UIBarButtonItem *dropboxButton = [[UIBarButtonItem alloc] initWithTitle:@"Dropbox"
                                                                style:UIBarButtonItemStyleBordered
                                                               target:self
                                                               action:@selector(showDropBox:)];
 
     [folderViewController setToolbarItems:[NSArray arrayWithObjects:
-                                           dropbox,
-                                           flexibleSpace,
-                                           button,
+                                           dropboxButton,
+                                           [Utils flexibleSpace],
+                                           settingsButton,
                                            nil]
                                  animated:animated];
 }
@@ -148,9 +144,6 @@
     if (_settingsNavigationViewController.topViewController == nil) {
         SettingsViewController *settingsTableViewController = [[SettingsViewController alloc] init];
         settingsTableViewController.delegate = self.delegate;
-        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc]
-                                          initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                          target:nil action:nil];
         
         UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Documents"
                                                                    style:UIBarButtonItemStyleBordered
@@ -158,7 +151,10 @@
                                                                   action:@selector(showDocuments:)];
         
         [settingsTableViewController
-            setToolbarItems:[NSArray arrayWithObjects:flexibleSpace,button, nil]
+            setToolbarItems:[NSArray arrayWithObjects:
+                             [Utils flexibleSpace],
+                             button,
+                             nil]
             animated:YES];
         [_settingsNavigationViewController pushViewController:settingsTableViewController
                                            animated:YES];
