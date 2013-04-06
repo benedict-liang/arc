@@ -17,6 +17,21 @@
     
     NSString *fileString = (NSString*)[file contents];
     
+    NSMutableArray * rangesArray = [self getArrayofRangesFromFileString:fileString
+                                        withSearchText:searchText];
+    
+    if ([rangesArray count] == 1) {
+        return nil;
+    }
+    
+    [rangesArray removeLastObject];
+    
+    return [NSArray arrayWithArray:rangesArray];
+}
+
++ (NSMutableArray *)getArrayofRangesFromFileString:(NSString *)fileString
+                                    withSearchText:(NSString *)searchText {
+    
     NSMutableArray *rangesArray = [[NSMutableArray alloc] init];
     
     int length = [fileString length];
@@ -34,14 +49,7 @@
             range = NSMakeRange(range.location + range.length, length - (range.location + range.length));
         }
     }
-    
-    if ([rangesArray count] == 1) {
-        return nil;
-    }
-    
-    [rangesArray removeLastObject];
-    
-    return [NSArray arrayWithArray:rangesArray];
+    return rangesArray;
 }
 
 @end
