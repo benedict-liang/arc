@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol PluginDelegate <NSObject>
-
+@property (nonatomic, strong) NSArray *settings;
+- (NSDictionary *)propertiesFor:(NSString *)setting;
+- (id<NSObject>)defaultValueFor:(NSString *)setting;
 @end
