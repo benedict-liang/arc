@@ -9,7 +9,7 @@
 #import "ApplicationState.h"
 
 @interface ApplicationState ()
-@property (strong, nonatomic) NSMutableDictionary *_settings;
+@property (strong, nonatomic) NSMutableDictionary *settings;
 @end
 
 static ApplicationState *sharedApplicationState = nil;
@@ -30,7 +30,10 @@ static ApplicationState *sharedApplicationState = nil;
     if (self) {
         // Get the stored settings dictionary.
         NSMutableDictionary *storedState = [self retrieveSavedState];
-        __settings = [storedState valueForKey:KEY_SETTINGS_ROOT];
+        _settings = [storedState valueForKey:KEY_SETTINGS_ROOT];
+        if (_settings == nil) {
+            _settings = [NSMutableDictionary dictionary];
+        }
         
         // Restore application state.
         NSString *folderPath = [storedState valueForKey:KEY_CURRENT_FOLDER];
@@ -107,13 +110,13 @@ static ApplicationState *sharedApplicationState = nil;
 // Given a key, returns the corresponding setting.
 - (id)settingForKey:(NSString *)key
 {
-    return [__settings valueForKey:key];
+    return [_settings valueForKey:key];
 }
 
 // Updates the setting stored with the given key.
 - (void)setSetting:(id)value forKey:(NSString *)key
 {
-    [__settings setValue:value
+    [_settings setValue:value
                   forKey:key];
 
     [self saveStateToDisk];
@@ -133,7 +136,7 @@ static ApplicationState *sharedApplicationState = nil;
                   forKey:KEY_CURRENT_FILE];
     
     // Save our settings.
-    [savedState setValue:__settings
+    [savedState setValue:_settings
                   forKey:KEY_SETTINGS_ROOT];
     
     // Save the dictionary back to disk.
@@ -141,10 +144,21 @@ static ApplicationState *sharedApplicationState = nil;
                  atomically:YES];
 }
 
+- (void)registerPlugin:(id<PluginDelegate>)plugin
+{
+    for (NSString *settingKey in [plugin settingKeys]) {
+        if ([_settings objectForKey:settingKey] == nil) {
+            [self setSetting:[plugin defaultValueFor:settingKey]
+                          forKey:settingKey];
+        }
+    }
+}
+
 // Returns a sample file.
 + (id<File>)getSampleFile
 {
-    return (id<File>)[[RootFolder sharedRootFolder] retrieveItemWithName:@"GameObject.h"];
+    return (id<File>)[[RootFolder sharedRootFolder]
+                      retrieveItemWithName:@"GameObject.h"];
 }
 
 @end

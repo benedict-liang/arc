@@ -10,6 +10,7 @@
 #import "File.h"
 #import "Folder.h"
 #import "RootFolder.h"
+#import "PluginDelegate.h"
 
 @interface ApplicationState : NSObject
 + (ApplicationState*)sharedApplicationState;
@@ -41,4 +42,5 @@
 // Returns a sample file.
 + (id<File>)getSampleFile;
 
+- (void)registerPlugin:(id<PluginDelegate>)plugin;
 @end
