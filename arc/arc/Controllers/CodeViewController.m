@@ -86,11 +86,16 @@
                                   self.view.bounds.size.width,
                                   self.view.bounds.size.height - SIZE_TOOLBAR_HEIGHT);
     
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    _tableView.tableHeaderView = _searchBar;
-    _searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
+    [self addSearchBarToTableViewTop];
     
     [self.view addSubview:_tableView];
+}
+
+- (void)addSearchBarToTableViewTop
+{
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, SIZE_TOOLBAR_HEIGHT)];
+    _tableView.tableHeaderView = _searchBar;
+    _searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
 }
 
 - (void)refreshForSetting:(NSString *)setting
