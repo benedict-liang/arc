@@ -31,6 +31,7 @@
         NSDictionary *fontDictionary = [[ApplicationState sharedApplicationState] fonts];
         group = [NSMutableDictionary dictionary];
         [group setObject:@"Font" forKey:@"sectionName"];
+        [group setObject:@"mcq" forKey:@"type"];
         [group setObject:KEY_FONT_FAMILY forKey:@"settingsKey"];
         [group setObject:fontDictionary
                   forKey:@"keyValuePairs"];
@@ -96,23 +97,25 @@
     
     NSDictionary *sectionProperties = [_options objectAtIndex:indexPath.section];
     
-    // Get the settings dictionary associated with this section.
-    NSDictionary *options = [sectionProperties objectForKey:@"keyValuePairs"];
-    NSArray *allKeys = [options allKeys];
-    NSArray *allValues = [options objectsForKeys:allKeys notFoundMarker:@"None"];
-    
-    // Get the key-value pair to associate with this row.
-    NSString *key = [allKeys objectAtIndex:indexPath.row];
-    NSString *value = [allValues objectAtIndex:indexPath.row];
-    
-    // Set the row properties.
-    NSString *currentSetting = [[ApplicationState sharedApplicationState] settingForKey:[sectionProperties valueForKey:@"settingsKey"]];
-    if ([value isEqualToString:currentSetting]) {
-        // Put a checkmark on the row if it's the one for the currently applied setting.
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    if ([[sectionProperties valueForKey:@"type"] isEqualToString:@"mcq"]) {
+        // Get the settings dictionary associated with this section.
+        NSDictionary *options = [sectionProperties objectForKey:@"keyValuePairs"];
+        NSArray *allKeys = [options allKeys];
+        NSArray *allValues = [options objectsForKeys:allKeys notFoundMarker:@"None"];
+        
+        // Get the key-value pair to associate with this row.
+        NSString *key = [allKeys objectAtIndex:indexPath.row];
+        NSString *value = [allValues objectAtIndex:indexPath.row];
+        
+        // Set the row properties.
+        NSString *currentSetting = [[ApplicationState sharedApplicationState] settingForKey:[sectionProperties valueForKey:@"settingsKey"]];
+        if ([value isEqualToString:currentSetting]) {
+            // Put a checkmark on the row if it's the one for the currently applied setting.
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        
+        cell.textLabel.text = key;
     }
-    
-    cell.textLabel.text = key;
     return cell;
 }
 
