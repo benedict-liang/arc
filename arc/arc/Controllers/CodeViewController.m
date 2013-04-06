@@ -96,6 +96,7 @@
     _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, SIZE_TOOLBAR_HEIGHT)];
     _tableView.tableHeaderView = _searchBar;
     _searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
+    _searchBar.delegate = (id<UISearchBarDelegate>)self;
     
     // Hides search bar upon load
     _tableView.contentOffset = CGPointMake(0, SIZE_TOOLBAR_HEIGHT);

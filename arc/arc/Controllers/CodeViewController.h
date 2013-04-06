@@ -14,5 +14,5 @@
 
 @interface CodeViewController : UIViewController<SubViewControllerDelegate,
     CodeViewDelegate, UITableViewDataSource,
-    UITableViewDelegate, DetailViewControllerDelegate>
+    UITableViewDelegate, DetailViewControllerDelegate, UISearchDisplayDelegate>
 @end
