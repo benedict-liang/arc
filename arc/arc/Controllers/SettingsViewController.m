@@ -160,52 +160,33 @@
 - (UITableViewCell*)rangeCellFromTableView:(UITableView *)tableView
                             withProperties:(NSDictionary*)properties
 {
-    static NSString *cellIdentifier = @"SettingsMCQCell";
+    static NSString *cellIdentifier = @"SetingsRangeCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:cellIdentifier];
     }
+    
+    // TODO.
 
     cell.textLabel.text = [properties objectForKey:@"sectionHeading"];
     return cell;
 }
 
-// = @"SettingsCell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//
-//    if (cell == nil) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-//                                      reuseIdentifier:cellIdentifier];
-//    } else {
-//        cell.accessoryType = UITableViewCellAccessoryNone;
-//    }
-//    
-//    NSDictionary *sectionProperties = [_settingOptions objectAtIndex:indexPath.section];
-//    
-//    // Types: Range, MCQ, Boolean
-//    if ([[sectionProperties valueForKey:@"type"] isEqualToString:@"mcq"]) {
-//        // Get the settings dictionary associated with this section.
-//        NSDictionary *options = [sectionProperties objectForKey:@"keyValuePairs"];
-//        NSArray *allKeys = [options allKeys];
-//        NSArray *allValues = [options objectsForKeys:allKeys notFoundMarker:@"None"];
-//        
-//        // TODO: handle case where there are many options (e.g. >5)
-//        // Get the key-value pair to associate with this row.
-//        NSString *key = [allKeys objectAtIndex:indexPath.row];
-//        NSString *value = [allValues objectAtIndex:indexPath.row];
-//        
-//        // Set the row properties.
-//        NSString *currentSetting = [[ApplicationState sharedApplicationState] settingForKey:[sectionProperties valueForKey:@"settingsKey"]];
-//        if ([value isEqualToString:currentSetting]) {
-//            // Put a checkmark on the row if it's the one for the currently applied setting.
-//            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//        }
-//        
-//        cell.textLabel.text = key;
-//    }
-//    return cell;
-//}
+- (UITableViewCell*)boolCellFromTableView:(UITableView *)tableView
+                           withProperties:(NSDictionary*)properties
+{
+    static NSString *cellIdentifier = @"SettingsBoolCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:cellIdentifier];
+    }
+    UISwitch *switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
+    cell.accessoryView = switchview;
+    cell.textLabel.text = [properties objectForKey:@"sectionHeading"];
+    return cell;
+}
 
 #pragma mark - Table view delegate
 
