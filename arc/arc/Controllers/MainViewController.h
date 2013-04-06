@@ -8,6 +8,7 @@
 
 #import "MainViewControllerDelegate.h"
 #import "CodeViewController.h"
+#import "SettingsViewController.h"
 #import "LeftViewController.h"
 #import "ApplicationState.h"
 #import "RootFolder.h"

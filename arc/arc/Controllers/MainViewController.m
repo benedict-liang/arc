@@ -48,6 +48,8 @@
 - (void)registerPlugin:(id<PluginDelegate>)plugin
 {
     // TODO.
+    // Register each plugin's setting with CodeViewController,
+    // SettingsViewController, and ApplicationState.
 }
 
 - (void)viewDidLoad
