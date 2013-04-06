@@ -23,6 +23,10 @@
 // Font Dictionary
 @property (nonatomic, strong) NSDictionary* fonts;
 
+// Given an array of Setting Keys,
+// return a Dictionary with keys as settingKeys and
+// values as corresponding setting Values
+- (id)settingsForKeys:(NSArray *)settingKeys;
 
 // Given a key, returns the corresponding setting.
 - (id)settingForKey:(NSString *)key;

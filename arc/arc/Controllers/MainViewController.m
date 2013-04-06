@@ -30,7 +30,6 @@
     self = [super init];
     if (self) {
         _plugins = [NSArray arrayWithObjects:
-//                    [SyntaxHighlightingPlugin class],
                     [[FontFamilyPlugin alloc] init],
                     [[FontSizePlugin alloc] init],
                     nil];
@@ -47,7 +46,8 @@
 
 - (void)registerPlugin:(id<PluginDelegate>)plugin
 {
-    // TODO.
+    // Register Plugin with CodeViewController
+    [_codeViewController registerPlugin:plugin];
 }
 
 - (void)viewDidLoad
@@ -56,6 +56,9 @@
 
     _leftViewController = [self.viewControllers objectAtIndex:0];
     _codeViewController = [self.viewControllers objectAtIndex:1];
+
+    // Not sure if this is the best place for this.
+    [self registerPlugins];
 }
 
 - (void)viewWillAppear:(BOOL)animated

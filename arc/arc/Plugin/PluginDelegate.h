@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ArcAttributedString.h"
 #import "File.h"
+@protocol CodeViewDelegate;
 
 typedef enum {
     kMCQSettingType,
@@ -36,8 +37,24 @@ typedef enum {
 // Returns the default value for the given setting key.
 - (id<NSObject>)defaultValueFor:(NSString *)settingKey;
 
-// Exec Method (Middleware)
-- (void)arcAttributedString:(ArcAttributedString*)arcAttributedString
-                     ofFile:(id<File>)file
-                   delegate:(id)delegate;
+// Exec Methods (Middleware)
+// - All Optional, implement as necessary
+@optional
+- (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString
+                           ofFile:(id<File>)file
+                        forValues:(NSDictionary *)properties
+                         delegate:(id)delegate;
+
+@optional
+- (void)execOnTableView:(UITableView *)tableView
+                 ofFile:(id<File>)file
+              forValues:(NSDictionary *)properties
+               delegate:(id)delegate;
+
+// Last Resort
+@optional
+- (void)execOnCodeViewController:(id<CodeViewDelegate>)codeView
+                          ofFile:(id<File>)file
+                       forValues:(NSDictionary *)properties
+                        delegate:(id)delegate;
 @end

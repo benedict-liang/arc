@@ -18,6 +18,7 @@
 @interface CodeViewController ()
 @property id<File> currentFile;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) ApplicationState *state;
 @property (nonatomic, strong) ArcAttributedString *arcAttributedString;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *toolbarTitle;
@@ -43,6 +44,7 @@
     if (self) {
         _lines = [NSMutableArray array];
         _plugins = [NSMutableArray array];
+        _state = [ApplicationState sharedApplicationState];
         
         // Defaults
         _backgroundColor = [Utils colorWithHexString:@"FDF6E3"];
@@ -122,13 +124,16 @@
 
 - (void)processFile
 {
+    NSDictionary *settings;
     for (id<PluginDelegate> plugin in _plugins) {
+        settings = [_state settingsForKeys:[plugin settingKeys]];
         if ([plugin respondsToSelector:
-             @selector(arcAttributedString:ofFile:delegate:)])
+             @selector(execOnArcAttributedString:ofFile:forValues:delegate:)])
         {
-            [plugin arcAttributedString:_arcAttributedString
-                                 ofFile:_currentFile
-                               delegate:self];
+            [plugin execOnArcAttributedString:_arcAttributedString
+                                       ofFile:_currentFile
+                                    forValues:settings
+                                     delegate:self];
         }
     }
 }

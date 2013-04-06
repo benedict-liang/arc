@@ -8,12 +8,16 @@
 
 #import "FontFamilyPlugin.h"
 
+
 @interface FontFamilyPlugin ()
+@property NSString *fontFamilySettingKey;
+@property NSString *defaultFontFamily;
+
 // Array containing the dictionaries corresponding to each setting key.
-@property NSArray *_propertyDictionaries;
+@property NSArray *propertyDictionaries;
 
 // Array containing the default values corresponding to each setting key.
-@property NSArray *_defaultValues;
+@property NSArray *defaultValues;
 @end
 
 @implementation FontFamilyPlugin
@@ -24,18 +28,34 @@
 - (id)init
 {
     if (self = [super init]) {
-        _settingKeys = [NSArray arrayWithObject:@"fontFamily"];
+        _fontFamilySettingKey = @"fontFamily";
+        _defaultFontFamily = @"SourceCodePro-Regular";
+
+        _settingKeys = [NSArray arrayWithObject:_fontFamilySettingKey];
         
         // Setup the dictionary to be returned.
-        NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
-        [properties setValue:@"Font Family" forKey:PLUGIN_TITLE];
-        [properties setValue:[NSNumber numberWithInt:kMCQSettingType] forKey:PLUGIN_TYPE];
-        [properties setValue:[NSArray arrayWithObjects:@"Inconsolata", @"Source Code Pro", "Ubuntu Monospace", nil] forKey:PLUGIN_LABELS];
-        [properties setValue:[NSArray arrayWithObjects:@"Inconsolata", @"SourceCodePro-Regular", @"UbuntuMono-Regular", nil] forKey:PLUGIN_VALUES];
-        __propertyDictionaries = [NSArray arrayWithObject:properties];
-        
-        // Setup the default values.
-        __defaultValues = [NSArray arrayWithObject:@"SourceCodePro-Regular"];
+        NSMutableDictionary *properties = [NSMutableDictionary dictionary];
+        [properties setValue:@"Font Family"
+                      forKey:PLUGIN_TITLE];
+
+        [properties setValue:[NSNumber numberWithInt:kMCQSettingType]
+                      forKey:PLUGIN_TYPE];
+
+        [properties setValue:[NSArray arrayWithObjects:
+                              _defaultFontFamily,
+                              @"Inconsolata",
+                              @"Ubuntu Monospace",
+                              nil]
+                      forKey:PLUGIN_LABELS];
+
+        [properties setValue:[NSArray arrayWithObjects:
+                              @"Inconsolata",
+                              @"SourceCodePro-Regular",
+                              @"UbuntuMono-Regular",
+                              nil]
+                      forKey:PLUGIN_VALUES];
+
+        _propertyDictionaries = [NSArray arrayWithObject:properties];
     }
     return self;
 }
@@ -44,14 +64,24 @@
 - (NSDictionary *)propertiesFor:(NSString *)settingKey
 {
     int dictionaryIndex = [_settingKeys indexOfObject:settingKey];
-    return [__propertyDictionaries objectAtIndex:dictionaryIndex];
+    return [_propertyDictionaries objectAtIndex:dictionaryIndex];
 }
 
 // Returns the default value for the given setting key.
 - (id<NSObject>)defaultValueFor:(NSString *)settingKey
 {
     int dictionaryIndex = [_settingKeys indexOfObject:settingKey];
-    return [__defaultValues objectAtIndex:dictionaryIndex];
+    return [_defaultValues objectAtIndex:dictionaryIndex];
 }
+
+- (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString
+                           ofFile:(id<File>)file
+                        forValues:(NSDictionary *)properties
+                         delegate:(id)delegate
+{
+    NSString *fontFamily = [properties objectForKey:_fontFamilySettingKey];
+    [arcAttributedString setFontFamily:fontFamily];
+}
+
 
 @end

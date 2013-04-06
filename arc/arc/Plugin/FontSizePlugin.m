@@ -22,11 +22,11 @@
     return [NSNumber numberWithInt:14];
 }
 
-// Exec Method (Middleware)
-- (void)arcAttributedString:(ArcAttributedString*)arcAttributedString
-                     ofFile:(id<File>)file
-                   delegate:(id)delegate
+- (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString
+                           ofFile:(id<File>)file
+                        forValues:(NSDictionary *)properties
+                         delegate:(id)delegate
 {
-//        [arcAttributedString setFontSize:fontSize];
+    [arcAttributedString setFontSize:14];
 }
 @end
