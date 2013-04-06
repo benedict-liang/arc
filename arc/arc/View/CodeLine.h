@@ -1,16 +1,15 @@
 //
-//  CodeLineCell.h
+//  CodeLine.h
 //  arc
 //
-//  Created by Yong Michael on 31/3/13.
+//  Created by Yong Michael on 6/4/13.
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <CoreText/CoreText.h>
-#import "CodeLine.h"
 
-@interface CodeLineCell : UITableViewCell
-@property (nonatomic) CTLineRef line;
+@interface CodeLine : UIView
+- (id)initWithLine:(CTLineRef)line;
 @end

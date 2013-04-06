@@ -48,6 +48,7 @@
 		4CD06B8016FDF61C00C9DED3 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7F16FDF61C00C9DED3 /* Constants.m */; };
 		4CD06B8616FE0FE600C9DED3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD06B8416FE0FC900C9DED3 /* CoreText.framework */; };
 		4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */; };
+		4CD47747170FF8F70054738D /* CodeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD47746170FF8F70054738D /* CodeLine.m */; };
 		4CF6F0EE1706E08800EDDEDC /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0ED1706E08800EDDEDC /* file.png */; };
 		4CF6F0F21706E29300EDDEDC /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F11706E29300EDDEDC /* folder.png */; };
 		4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */; };
@@ -152,6 +153,8 @@
 		4CD06B7F16FDF61C00C9DED3 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = General/Constants.m; sourceTree = "<group>"; };
 		4CD06B8416FE0FC900C9DED3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
+		4CD47745170FF8F70054738D /* CodeLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeLine.h; sourceTree = "<group>"; };
+		4CD47746170FF8F70054738D /* CodeLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeLine.m; sourceTree = "<group>"; };
 		4CF6F0ED1706E08800EDDEDC /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
 		4CF6F0F11706E29300EDDEDC /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
 		4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -574,6 +577,8 @@
 				4C45551617016F21001C6F1D /* Middleware */,
 				4C963C80170D8E96004FDACB /* CodeLineCell.h */,
 				4C963C81170D8E96004FDACB /* CodeLineCell.m */,
+				4CD47745170FF8F70054738D /* CodeLine.h */,
+				4CD47746170FF8F70054738D /* CodeLine.m */,
 				4C12D0701705CA7800F4593B /* ArcAttributedString.h */,
 				4C12D0711705CA7800F4593B /* ArcAttributedString.m */,
 			);
@@ -1176,6 +1181,7 @@
 				02E51AF11709582300247AF5 /* DropBoxRootFolder.m in Sources */,
 				02D2B73F17099E89002D22E7 /* RootFolder.m in Sources */,
 				4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */,
+				4CD47747170FF8F70054738D /* CodeLine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
