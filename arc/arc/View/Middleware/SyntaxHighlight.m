@@ -307,16 +307,18 @@
                     NSArray *embedPatterns = [syntaxItem objectForKey:@"patterns"];
                     
                     //if there are characters between begin and end, and brange and erange are valid results
-                    if (eEnds - brange.location > 0 && brange.location != NSNotFound && erange.location != NSNotFound && eEnds <= contentRange.length) {
-                        if (embedPatterns) {
-                            //recursively apply iterPatterns to embedded patterns inclusive of begin and end
-                            [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns output:output];
-                        }
+                    if (eEnds > brange.location && brange.location != NSNotFound && erange.location != NSNotFound && eEnds <= contentRange.length) {
                         
                         if (name) {
 
                             pairMatches = [self addRange:NSMakeRange(brange.location, eEnds - brange.location) scope:name dict:pairMatches];
 
+                        }
+                        if (embedPatterns) {
+                            //recursively apply iterPatterns to embedded patterns inclusive of begin and end
+                            NSLog(@"recurring with %d %ld", brange.location, eEnds - brange.location);
+                            
+                            [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns output:output];
                         }
                         brange = [self findFirstPattern:begin range:NSMakeRange(eEnds, contentRange.length - eEnds)];
                     }
@@ -324,10 +326,10 @@
                 }
                 
             }
-            if (include && contentRange.location >= 0 && contentRange.length >=0) {
-                id includes = [self resolveInclude:include];
-                [self iterPatternsForRange:contentRange patterns:includes output:output];
-            }
+//            if (include && contentRange.location >= 0 && contentRange.length >=0) {
+//                id includes = [self resolveInclude:include];
+//                [self iterPatternsForRange:contentRange patterns:includes output:output];
+//            }
 
         });
     });
