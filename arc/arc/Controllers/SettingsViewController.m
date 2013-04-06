@@ -9,7 +9,7 @@
 #import "SettingsViewController.h"
 
 @interface SettingsViewController ()
-@property NSMutableArray *options;
+@property NSMutableArray *settingOptions;
 @property NSMutableArray *plugins;
 @property UITableView *tableView;
 @end
@@ -21,7 +21,7 @@
 {
     self = [super init];
     if (self) {
-        _options = [NSMutableArray array];
+        _settingOptions = [NSMutableArray array];
         _plugins = [NSMutableArray array];
     }
     return self;
@@ -43,6 +43,9 @@
     _tableView.dataSource = self;
     _tableView.delegate = self;
     
+    [self generateSections];
+    NSLog(@"%@", _settingOptions);
+    
     [self.view addSubview:_tableView];
 }
 
@@ -54,21 +57,58 @@
     }
 }
 
+- (void)generateSections
+{
+    _settingOptions = [NSMutableArray array];
+    for (id<PluginDelegate> plugin in _plugins) {
+        for (NSString *setting in [plugin settingKeys]) {
+            NSMutableDictionary *section = [NSMutableDictionary dictionary];
+            
+            // Section Heading
+            [section setValue:setting forKey:@"sectionHeading"];
+            
+            NSDictionary *properties = [plugin propertiesFor:setting];
+            
+            // TODO.
+            // add util method to facilitate autoboxing of enums.
+
+            int type = [[properties objectForKey:PLUGIN_TYPE] intValue];
+            [section setValue:[properties objectForKey:PLUGIN_TYPE]
+                       forKey:@"sectionType"];
+
+            if (type == kMCQSettingType) {
+                [section setValue:[properties objectForKey:PLUGIN_OPTIONS]
+                           forKey:@"sectionOptions"];
+            }
+
+            [_settingOptions addObject:section];
+        }
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [_options count];
+    return [_settingOptions count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[_options objectAtIndex:section] objectForKey:@"keyValuePairs"] count];
+    NSDictionary *sectionProperties = (NSDictionary*)[_settingOptions objectAtIndex:section];
+    int type = [[sectionProperties objectForKey:@"sectionType"] intValue];
+    
+    if (type == kMCQSettingType) {
+        return [[sectionProperties objectForKey:@"sectionOptions"] count];
+    } else {
+        // Bool and range types have only one row.
+        return 1;
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [[_options objectAtIndex:section] objectForKey:@"sectionName"];
+    return [[_settingOptions objectAtIndex:section] objectForKey:@"sectionHeading"];
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -83,7 +123,7 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    NSDictionary *sectionProperties = [_options objectAtIndex:indexPath.section];
+    NSDictionary *sectionProperties = [_settingOptions objectAtIndex:indexPath.section];
     
     // Types: Range, MCQ, Boolean
     if ([[sectionProperties valueForKey:@"type"] isEqualToString:@"mcq"]) {
@@ -114,7 +154,7 @@
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     // Get the properties associated with this section.
-    NSDictionary *sectionProperties = [_options objectAtIndex:indexPath.section];
+    NSDictionary *sectionProperties = [_settingOptions objectAtIndex:indexPath.section];
     NSDictionary *options = [sectionProperties objectForKey:@"keyValuePairs"];
     NSArray *allKeys = [options allKeys];
     NSArray *allValues = [options objectsForKeys:allKeys notFoundMarker:@"None"];

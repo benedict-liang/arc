@@ -15,9 +15,11 @@
 
 @interface LeftViewController ()
 @property (nonatomic, strong) id<Folder> currentFolder;
-@property UIViewController *currentViewController;
-@property UINavigationController *documentsNavigationViewController;
-@property UINavigationController *settingsNavigationViewController;
+@property (nonatomic, strong) UIViewController *currentViewController;
+@property (nonatomic, strong) UINavigationController *documentsNavigationViewController;
+@property (nonatomic, strong) UINavigationController *settingsNavigationViewController;
+@property (nonatomic, strong) SettingsViewController *settingsViewController;
+- (void)bootstrapSettingsView;
 @end
 
 @implementation LeftViewController
@@ -55,33 +57,37 @@
     _settingsNavigationViewController.toolbarHidden = NO;
     [self addChildViewController:_settingsNavigationViewController];
     
+    // Actual Settings View
+    [self bootstrapSettingsView];
+
     // Show Documents By default
     [self showDocuments:nil];
+}
+
+- (void)bootstrapSettingsView
+{
+    _settingsViewController = [[SettingsViewController alloc] init];
+    _settingsViewController.delegate = self.delegate;
+    UIBarButtonItem *button =
+    [[UIBarButtonItem alloc] initWithTitle:@"Documents"
+                                     style:UIBarButtonItemStyleBordered
+                                    target:self
+                                    action:@selector(showDocuments:)];
+    
+    [_settingsViewController setToolbarItems:[NSArray arrayWithObjects:
+                                              [Utils flexibleSpace],
+                                              button,
+                                              nil]
+                                    animated:YES];
+    
+    [_settingsNavigationViewController pushViewController:_settingsViewController
+                                                 animated:YES];
 }
 
 # pragma mark - Methods to Switch Between Document and Settings View
 
 - (void)showSettings:(id)sender
 {
-    if (_settingsNavigationViewController.topViewController == nil) {
-        SettingsViewController *settingsTableViewController = [[SettingsViewController alloc] init];
-        settingsTableViewController.delegate = self.delegate;
-        
-        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Documents"
-                                                                   style:UIBarButtonItemStyleBordered
-                                                                  target:self
-                                                                  action:@selector(showDocuments:)];
-        
-        [settingsTableViewController
-            setToolbarItems:[NSArray arrayWithObjects:
-                             [Utils flexibleSpace],
-                             button,
-                             nil]
-            animated:YES];
-        [_settingsNavigationViewController pushViewController:settingsTableViewController
-                                           animated:YES];
-    }
-
     [self transitionToViewController:_settingsNavigationViewController
                          withOptions:UIViewAnimationOptionTransitionFlipFromLeft];
 }
@@ -112,7 +118,8 @@
 
 - (void)registerPlugin:(id<PluginDelegate>)plugin
 {
-
+    // delegate to actual settings view controller
+    [_settingsViewController registerPlugin:plugin];
 }
 
 # pragma mark - FileNavigatorViewController Delegate Methods
@@ -135,7 +142,7 @@
         
         // Clear stack of folderViewController
         [_documentsNavigationViewController popToRootViewControllerAnimated:NO];
-
+        
         // Find path to root (excluding current folder and root)
         id<Folder> current = folder;
         NSMutableArray *pathToRootFolder = [NSMutableArray array];
@@ -180,7 +187,7 @@
                                                                       style:UIBarButtonItemStyleBordered
                                                                      target:self
                                                                      action:@selector(showDropBox:)];
-
+    
     [folderViewController setToolbarItems:[NSArray arrayWithObjects:
                                            dropboxButton,
                                            [Utils flexibleSpace],

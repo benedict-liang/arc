@@ -79,10 +79,10 @@ static ApplicationState *sharedApplicationState = nil;
                                           appropriateForURL:nil
                                                      create:YES
                                                       error:nil] path];
-
+    
     NSString *settingsPath =
-        [documentsPath stringByAppendingPathComponent:FILE_APP_STATE];
-
+    [documentsPath stringByAppendingPathComponent:FILE_APP_STATE];
+    
     return settingsPath;
 }
 
@@ -91,20 +91,20 @@ static ApplicationState *sharedApplicationState = nil;
 {
     NSString *settingsPath = [self getStateDictionaryPath];
     NSMutableDictionary *storedState =
-        [NSMutableDictionary dictionaryWithContentsOfFile:settingsPath];
+    [NSMutableDictionary dictionaryWithContentsOfFile:settingsPath];
     return storedState;
 }
 
 - (id)settingsForKeys:(NSArray *)settingKeys
 {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    NSMutableDictionary *settingsDict = [NSMutableDictionary dictionary];
     
     for (NSString *settingKey in settingKeys) {
-        [dict setObject:[self settingForKey:settingKey]
-                 forKey:settingKey];
+        [settingsDict setObject:[self settingForKey:settingKey]
+                         forKey:settingKey];
     }
-
-    return dict;
+    
+    return settingsDict;
 }
 
 // Given a key, returns the corresponding setting.
@@ -117,8 +117,8 @@ static ApplicationState *sharedApplicationState = nil;
 - (void)setSetting:(id)value forKey:(NSString *)key
 {
     [_settings setValue:value
-                  forKey:key];
-
+                 forKey:key];
+    
     [self saveStateToDisk];
 }
 
@@ -131,7 +131,7 @@ static ApplicationState *sharedApplicationState = nil;
     // Set our application state.
     [savedState setValue:[_currentFolderOpened path]
                   forKey:KEY_CURRENT_FOLDER];
-
+    
     [savedState setValue:[_currentFileOpened path]
                   forKey:KEY_CURRENT_FILE];
     
@@ -149,20 +149,9 @@ static ApplicationState *sharedApplicationState = nil;
     for (NSString *settingKey in [plugin settingKeys]) {
         if ([_settings objectForKey:settingKey] == nil) {
             [self setSetting:[plugin defaultValueFor:settingKey]
-                          forKey:settingKey];
+                      forKey:settingKey];
         }
     }
-}
-
-// Given an array of setting keys, returns the corresponding settings.
-- (NSDictionary *)settingsForKeys:(NSArray *)settingKeys
-{
-    NSMutableDictionary *settingDictionary = [[NSMutableDictionary alloc] init];
-    
-    for (NSString *currentKey in settingKeys) {
-        [settingDictionary setValue:[self settingForKey:currentKey] forKey:currentKey];
-    }
-    return [NSDictionary dictionaryWithDictionary:settingDictionary];
 }
 
 // Returns a sample file.

@@ -280,6 +280,7 @@
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     // TODO.
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
