@@ -1,0 +1,13 @@
+//
+//  FullTextSearch.h
+//  arc
+//
+//  Created by Benedict Liang on 6/4/13.
+//  Copyright (c) 2013 nus.cs3217. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface FullTextSearch : NSObject
+
+@end
