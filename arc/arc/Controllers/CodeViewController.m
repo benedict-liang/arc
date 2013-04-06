@@ -124,7 +124,7 @@
 {
     for (id<PluginDelegate> plugin in _plugins) {
         if ([plugin respondsToSelector:
-             @selector(arcAttributedString:OfFile:delegate:)])
+             @selector(arcAttributedString:ofFile:delegate:)])
         {
             [plugin arcAttributedString:_arcAttributedString
                                  ofFile:_currentFile
