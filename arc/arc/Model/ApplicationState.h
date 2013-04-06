@@ -33,6 +33,10 @@
 // Saves settings to disk.
 - (void)saveStateToDisk;
 
+// Given an array of setting keys, returns a dictionary with
+// the corresponding settings.
+- (NSArray *)settingsForKeys:(NSArray *)settingKeys;
+
 // tmp
 // Returns a sample file.
 + (id<File>)getSampleFile;
