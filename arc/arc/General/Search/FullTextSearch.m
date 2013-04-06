@@ -11,7 +11,37 @@
 @implementation FullTextSearch
 
 + (NSArray*)searchForText:(NSString*)searchText inFile:(id<File>)file {
-    return nil;
+    if (![[file contents] isKindOfClass:[NSString class]]) {
+        return nil;
+    }
+    
+    NSString *fileString = (NSString*)[file contents];
+    
+    NSMutableArray *rangesArray = [[NSMutableArray alloc] init];
+    
+    int length = [fileString length];
+    NSRange range = NSMakeRange(0, length);
+    
+    while(range.location != NSNotFound)
+    {
+        range = [fileString rangeOfString:searchText
+                                  options:NSCaseInsensitiveSearch
+                                    range:range];
+        
+        [rangesArray addObject:[NSValue valueWithRange:range]];
+        
+        if(range.location != NSNotFound) {
+            range = NSMakeRange(range.location + range.length, length - (range.location + range.length));
+        }
+    }
+    
+    if ([rangesArray count] == 1) {
+        return nil;
+    }
+    
+    [rangesArray removeLastObject];
+    
+    return [NSArray arrayWithArray:rangesArray];
 }
 
 @end
