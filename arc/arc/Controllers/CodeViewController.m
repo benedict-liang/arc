@@ -10,6 +10,7 @@
 #import "CodeViewMiddleware.h"
 #import "CodeLineCell.h"
 #import "ArcAttributedString.h"
+#import "FullTextSearch.h"
 
 // Middleware
 #import "BasicStyles.h"
