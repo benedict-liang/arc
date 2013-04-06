@@ -10,7 +10,11 @@
 #import "ArcAttributedString.h"
 #import "File.h"
 
-typedef enum { kMCQSettingType, kRangeSettingType, kBoolSettingType } kSettingType;
+typedef enum {
+    kMCQSettingType,
+    kRangeSettingType,
+    kBoolSettingType
+} kSettingType;
 
 @protocol PluginDelegate <NSObject>
 // Returns an array of NSStrings
