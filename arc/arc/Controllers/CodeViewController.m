@@ -279,7 +279,7 @@
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    NSLog(@"asdf");
+    // TODO.
 }
 
 @end
