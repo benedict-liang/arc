@@ -35,6 +35,6 @@ typedef enum {
 
 // Exec Method (Middleware)
 + (void)arcAttributedString:(ArcAttributedString*)arcAttributedString
-                     OfFile:(id<File>)file
+                     ofFile:(id<File>)file
                    delegate:(id)delegate;
 @end
