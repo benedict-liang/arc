@@ -9,7 +9,7 @@
 #import "ApplicationState.h"
 
 @interface ApplicationState ()
-@property NSMutableDictionary *_settings;
+@property (strong, nonatomic) NSMutableDictionary *_settings;
 @end
 
 static ApplicationState *sharedApplicationState = nil;
@@ -22,6 +22,35 @@ static ApplicationState *sharedApplicationState = nil;
         sharedApplicationState = [[super allocWithZone:NULL] init];
     }
     return sharedApplicationState;
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        // Get the stored settings dictionary.
+        NSMutableDictionary *storedState = [self retrieveSavedState];
+        __settings = [storedState valueForKey:KEY_SETTINGS_ROOT];
+        
+        // Restore application state.
+        NSString *folderPath = [storedState valueForKey:KEY_CURRENT_FOLDER];
+        NSString *filePath = [storedState valueForKey:KEY_CURRENT_FILE];
+        
+        // If we have no folder path, we should set a default.
+        if (!folderPath) {
+            folderPath = [[LocalRootFolder sharedLocalRootFolder] path];
+        }
+        
+        // TEMPORARILY set a default for the current file.
+        if (!filePath) {
+            filePath = [[ApplicationState getSampleFile] path];
+        }
+        
+        _currentFolderOpened = (id<Folder>)[[RootFolder sharedRootFolder] objectAtPath:folderPath];
+        _currentFileOpened = (id<File>)[[RootFolder sharedRootFolder] objectAtPath:filePath];
+        _fonts = [storedState valueForKey:KEY_FONTS];
+    }
+    return self;
 }
 
 - (void)setCurrentFileOpened:(id<File>)currentFileOpened
@@ -46,10 +75,10 @@ static ApplicationState *sharedApplicationState = nil;
 }
 
 // Helper method to retrieve the saved state from the plist.
-- (NSDictionary *)retrieveSavedState
+- (NSMutableDictionary *)retrieveSavedState
 {
     NSString *settingsPath = [self getStateDictionaryPath];
-    NSDictionary *storedState = [NSDictionary dictionaryWithContentsOfFile:settingsPath];
+    NSMutableDictionary *storedState = [NSMutableDictionary dictionaryWithContentsOfFile:settingsPath];
     return storedState;
 }
 
@@ -64,35 +93,6 @@ static ApplicationState *sharedApplicationState = nil;
 {
     [__settings setValue:value forKey:key];
     [self saveStateToDisk];
-}
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Get the stored settings dictionary.
-        NSDictionary *storedState = [self retrieveSavedState];
-        __settings = [storedState valueForKey:KEY_SETTINGS_ROOT];
-        
-        // Restore application state.
-        NSString *folderPath = [storedState valueForKey:KEY_CURRENT_FOLDER];
-        NSString *filePath = [storedState valueForKey:KEY_CURRENT_FILE];
-        
-        // If we have no folder path, we should set a default.
-        if (!folderPath) {
-            folderPath = [[LocalRootFolder sharedLocalRootFolder] path];
-        }
-        
-        // TEMPORARILY set a default for the current file.
-        if (!filePath) {
-            filePath = [[ApplicationState getSampleFile] path];
-        }
-        
-        _currentFolderOpened = (id<Folder>)[[RootFolder sharedRootFolder] objectAtPath:folderPath];
-        _currentFileOpened = (id<File>)[[RootFolder sharedRootFolder] objectAtPath:filePath];
-        _fonts = [storedState valueForKey:KEY_FONTS];
-    }
-    return self;
 }
 
 // Saves settings to disk.

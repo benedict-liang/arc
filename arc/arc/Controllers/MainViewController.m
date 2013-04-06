@@ -80,8 +80,8 @@
 // Shows the file using the CodeViewController
 - (void)fileSelected:(id<File>)file
 {
-    ApplicationState *appState = [ApplicationState sharedApplicationState];
-    [appState setCurrentFileOpened:file];
+ ApplicationState *appState = [ApplicationState sharedApplicationState];
+  [appState setCurrentFileOpened:file];
     [_codeViewController showFile:file];
 }
 

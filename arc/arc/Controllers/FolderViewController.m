@@ -100,6 +100,11 @@
 
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {
+    // Hide section title if section has zero rows
+    if ([self tableView:tableView numberOfRowsInSection:section] == 0) {
+        return nil;
+    }
+
     if (section == 0) {
         return @"Folders";
     } else {
