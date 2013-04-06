@@ -21,7 +21,7 @@ typedef enum {
 // eg: [@"fontFamily", @"fontSize"]
 @property (nonatomic, strong) NSArray *settingKeys;
 
-// Returns a NSDictionary of properties for setting
+// Returns an NSDictionary of properties for setting
 // eg: [pluginInstance propertiesFor:@"fontFamily"]
 // returns:
 // {
@@ -31,7 +31,7 @@ typedef enum {
 // }
 - (NSDictionary *)propertiesFor:(NSString *)settingKey;
 
-// Returns Default Value for given setting
+// Returns the default value for given setting
 - (id<NSObject>)defaultValueFor:(NSString *)settingKey;
 
 // Exec Method (Middleware)
