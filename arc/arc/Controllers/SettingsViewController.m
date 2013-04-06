@@ -9,9 +9,10 @@
 #import "SettingsViewController.h"
 
 @interface SettingsViewController ()
-@property NSMutableArray *settingOptions;
-@property NSMutableArray *plugins;
-@property UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *settingOptions;
+@property (nonatomic, strong) NSMutableArray *plugins;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) ApplicationState *appState;
 @end
 
 @implementation SettingsViewController
@@ -23,6 +24,7 @@
     if (self) {
         _settingOptions = [NSMutableArray array];
         _plugins = [NSMutableArray array];
+        _appState = [ApplicationState sharedApplicationState];
     }
     return self;
 }
@@ -63,12 +65,16 @@
         for (NSString *setting in [plugin settingKeys]) {
             NSMutableDictionary *section = [NSMutableDictionary dictionary];
             
+            // Section Setting Key
+            [section setValue:setting
+                       forKey:@"sectionSettingKey"];
+            
             NSDictionary *properties = [plugin propertiesFor:setting];
             
             // Section Heading
             [section setValue:[properties objectForKey:PLUGIN_TITLE]
                        forKey:@"sectionHeading"];
-
+            
             // TODO.
             // add utils method to make "casting"/comparing enums easier
             int type = [[properties objectForKey:PLUGIN_TYPE] intValue];
@@ -127,11 +133,9 @@
 
     int type = [[sectionProperties objectForKey:@"sectionType"] intValue];
     if (type == kMCQSettingType) {
-        NSDictionary *option = [[sectionProperties
-                                 objectForKey:@"sectionOptions"]
-                                    objectAtIndex:indexPath.row];
         return [self mCQCellFromTableView:tableView
-                           withProperties:option];
+                           withProperties:sectionProperties
+                    cellForRowAtIndexPath:indexPath];
     } else if (type == kRangeSettingType) {
         return [self rangeCellFromTableView:tableView
                              withProperties:sectionProperties];
@@ -145,15 +149,30 @@
 
 - (UITableViewCell*)mCQCellFromTableView:(UITableView *)tableView
                           withProperties:(NSDictionary*)properties
+                   cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
+    NSDictionary *option = [[properties
+                             objectForKey:@"sectionOptions"]
+                            objectAtIndex:indexPath.row];
+    
     static NSString *cellIdentifier = @"SettingsMCQCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:cellIdentifier];
     }
-    cell.accessoryType = UITableViewCellAccessoryNone;
-    cell.textLabel.text = [properties objectForKey:PLUGIN_LABEL];
+    
+    // Plugin values need to be comparable somehow
+    // easiers is to make them all strings.
+    NSString *value = [option objectForKey:PLUGIN_VALUE];
+    NSString *settingKey = [properties objectForKey:@"sectionSettingKey"];
+    if ([[_appState settingForKey:settingKey] isEqualToString:value]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
+    cell.textLabel.text = [option objectForKey:PLUGIN_LABEL];
     return cell;
 }
 
@@ -192,30 +211,30 @@
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    // Get the properties associated with this section.
-    NSDictionary *sectionProperties = [_settingOptions objectAtIndex:indexPath.section];
-    NSDictionary *options = [sectionProperties objectForKey:@"keyValuePairs"];
-    NSArray *allKeys = [options allKeys];
-    NSArray *allValues = [options objectsForKeys:allKeys notFoundMarker:@"None"];
     
-    // Get the value associated with the row.
-    NSString *value = [allValues objectAtIndex:indexPath.row];
+    NSDictionary *sectionProperties =
+        (NSDictionary*)[_settingOptions objectAtIndex:indexPath.section];
     
-    ApplicationState *state = [ApplicationState sharedApplicationState];
-    
-    // Update the appropriate setting using the key associated with this section.
-    NSString *currentKey = [sectionProperties valueForKey:@"settingsKey"];
-    [state setSetting:value forKey:currentKey];
-    
-    // Add a checkmark to the row.
-    [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
+    int type = [[sectionProperties objectForKey:@"sectionType"] intValue];
+    if (type == kMCQSettingType) {
+        NSDictionary *option = [[sectionProperties
+                                 objectForKey:@"sectionOptions"]
+                                    objectAtIndex:indexPath.row];
+        
+        NSString *value = [option objectForKey:PLUGIN_VALUE];
+        NSString *settingKey = [sectionProperties objectForKey:@"sectionSettingKey"];
 
-    // Refresh the code view.
-    [self.delegate refreshCodeViewForSetting:currentKey];
+        // Update App State
+        [_appState setSetting:value forKey:settingKey];
 
-    // Unhighlight the row, and reload the table.
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [tableView reloadData];
+        
+        // Refresh the code view.
+        [self.delegate refreshCodeViewForSetting:settingKey];
+        
+        // Unhighlight the row, and reload the table.
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [tableView reloadData];
+    }
 }
 
 @end

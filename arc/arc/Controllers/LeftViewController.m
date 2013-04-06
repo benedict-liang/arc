@@ -41,6 +41,7 @@
 - (void)setDelegate:(id<MainViewControllerDelegate>)delegate
 {
     _delegate = delegate;
+    _settingsViewController.delegate = delegate;
 }
 
 - (void)viewDidLoad
