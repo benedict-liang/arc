@@ -280,4 +280,10 @@
     NSLog(@"asdf");
 }
 
+#pragma mark - Search Bar delegate
+
+- (void)searchBarSearchButtonClicked:(UISearchBar*)searchBar {
+    
+}
+
 @end
