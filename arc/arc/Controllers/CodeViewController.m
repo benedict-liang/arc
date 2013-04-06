@@ -284,7 +284,10 @@
 #pragma mark - Search Bar delegate
 
 - (void)searchBarSearchButtonClicked:(UISearchBar*)searchBar {
-    
+    NSString *searchString = [searchBar text];
+    NSArray *searchResultRanges = [FullTextSearch searchForText:searchString inFile:_currentFile];
+    // TODO: Check if searchResultRanges is nil before using the data
+
     // Hide keyboard after search button clicked
     [searchBar resignFirstResponder];
 }
