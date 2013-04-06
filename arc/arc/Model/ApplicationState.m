@@ -112,6 +112,17 @@ static ApplicationState *sharedApplicationState = nil;
     [savedState writeToFile:[self getStateDictionaryPath] atomically:YES];
 }
 
+// Given an array of setting keys, returns the corresponding settings.
+- (NSDictionary *)settingsForKeys:(NSArray *)settingKeys
+{
+    NSMutableDictionary *settingDictionary = [[NSMutableDictionary alloc] init];
+    
+    for (NSString *currentKey in settingKeys) {
+        [settingDictionary setValue:[self settingForKey:currentKey] forKey:currentKey];
+    }
+    return [NSDictionary dictionaryWithDictionary:settingDictionary];
+}
+
 // Returns a sample file.
 + (id<File>)getSampleFile
 {
