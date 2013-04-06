@@ -454,6 +454,7 @@
 		4C43F8F416F86AA900159B29 /* arc */ = {
 			isa = PBXGroup;
 			children = (
+				4C45551617016F21001C6F1D /* Plugins */,
 				4CD06B7D16FDF59E00C9DED3 /* General */,
 				8FCA1D6616F86C7000C6AAFC /* Controllers */,
 				4C43F90E16F86AC400159B29 /* Model */,
@@ -502,7 +503,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		4C45551617016F21001C6F1D /* Middleware */ = {
+		4C45551617016F21001C6F1D /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
 				4C45551717016F93001C6F1D /* CodeViewMiddleware.h */,
@@ -511,7 +512,8 @@
 				FCB0548217036010007832D7 /* SyntaxHighlight.h */,
 				FCB0548317036010007832D7 /* SyntaxHighlight.m */,
 			);
-			path = Middleware;
+			name = Plugins;
+			path = View/Middleware;
 			sourceTree = "<group>";
 		};
 		4CD06B2D16FDE97E00C9DED3 /* Protocols */ = {
@@ -574,7 +576,6 @@
 		4CD06B8716FE122400C9DED3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4C45551617016F21001C6F1D /* Middleware */,
 				4C963C80170D8E96004FDACB /* CodeLineCell.h */,
 				4C963C81170D8E96004FDACB /* CodeLineCell.m */,
 				4CD47745170FF8F70054738D /* CodeLine.h */,
