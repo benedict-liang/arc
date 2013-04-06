@@ -21,6 +21,7 @@
 @property (nonatomic, strong) ArcAttributedString *arcAttributedString;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *toolbarTitle;
+@property (nonatomic, strong) UISearchBar *searchBar;
 @property CTFramesetterRef frameSetter;
 @property CGFloat lineHeight;
 @property NSMutableArray *lines;
@@ -84,6 +85,11 @@
     _tableView.frame = CGRectMake(0, SIZE_TOOLBAR_HEIGHT,
                                   self.view.bounds.size.width,
                                   self.view.bounds.size.height - SIZE_TOOLBAR_HEIGHT);
+    
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    _tableView.tableHeaderView = _searchBar;
+    _searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
+    
     [self.view addSubview:_tableView];
 }
 
