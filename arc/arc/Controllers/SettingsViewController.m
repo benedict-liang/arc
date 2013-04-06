@@ -97,12 +97,14 @@
     
     NSDictionary *sectionProperties = [_options objectAtIndex:indexPath.section];
     
+    // Types: Range, MCQ, Boolean
     if ([[sectionProperties valueForKey:@"type"] isEqualToString:@"mcq"]) {
         // Get the settings dictionary associated with this section.
         NSDictionary *options = [sectionProperties objectForKey:@"keyValuePairs"];
         NSArray *allKeys = [options allKeys];
         NSArray *allValues = [options objectsForKeys:allKeys notFoundMarker:@"None"];
         
+        // TODO: handle case where there are many options (e.g. >5)
         // Get the key-value pair to associate with this row.
         NSString *key = [allKeys objectAtIndex:indexPath.row];
         NSString *value = [allValues objectAtIndex:indexPath.row];
