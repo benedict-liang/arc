@@ -506,11 +506,7 @@
 		4C45551617016F21001C6F1D /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				4C45551717016F93001C6F1D /* CodeViewMiddleware.h */,
-				4C45551817017005001C6F1D /* BasicStyles.h */,
-				4C45551917017005001C6F1D /* BasicStyles.m */,
-				FCB0548217036010007832D7 /* SyntaxHighlight.h */,
-				FCB0548317036010007832D7 /* SyntaxHighlight.m */,
+				4CD47748171013A30054738D /* old */,
 			);
 			name = Plugins;
 			path = View/Middleware;
@@ -605,6 +601,18 @@
 			);
 			name = Fonts;
 			path = Assets/Fonts;
+			sourceTree = "<group>";
+		};
+		4CD47748171013A30054738D /* old */ = {
+			isa = PBXGroup;
+			children = (
+				4C45551717016F93001C6F1D /* CodeViewMiddleware.h */,
+				4C45551817017005001C6F1D /* BasicStyles.h */,
+				4C45551917017005001C6F1D /* BasicStyles.m */,
+				FCB0548217036010007832D7 /* SyntaxHighlight.h */,
+				FCB0548317036010007832D7 /* SyntaxHighlight.m */,
+			);
+			name = old;
 			sourceTree = "<group>";
 		};
 		4CF6F0EC1706E05500EDDEDC /* Images */ = {
