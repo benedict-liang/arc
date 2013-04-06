@@ -76,28 +76,20 @@
     
     
     
-    if (r.location + r.length <= [_content length]) {
+    if (r.location + r.length <= [_content length] && r.location >= 0) {
         @try {
             NSArray* matches = [regex matchesInString:_content options:0 range:r];
             for (NSTextCheckingResult *match in matches) {
-                @try {
-                    NSRange range = [match rangeAtIndex:c];
-                    if (range.location != NSNotFound) {
-                        [results addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
-                    }
-                }
-                @catch (NSException *exception) {
-                    NSLog(@"exception at found pattern. results:%@ \n matches:%@",results, match);
-                    return results;
-                }
-                @finally {
+               
+                NSRange range = [match rangeAtIndex:c];
+                if (range.location != NSNotFound) {
+                    [results addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
                     
                 }
             }
-
         }
         @catch (NSException *exception) {
-            NSLog(@"Exception in matches");
+            NSLog(@"Exception in matches, %@ %d %d %d",[exception name],r.location, r.length, [_content length]);
         }
         @finally {
             
@@ -336,7 +328,7 @@
                 }
                 
             }
-            if (include) {
+            if (include && contentRange.location >= 0 && contentRange.length >=0) {
                 id includes = [self resolveInclude:include];
                 [self iterPatternsForRange:contentRange patterns:includes output:output];
             }
