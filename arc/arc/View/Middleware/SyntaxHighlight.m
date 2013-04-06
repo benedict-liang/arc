@@ -140,7 +140,8 @@
     for (id k in captures) {
         int i = [k intValue];
         captureM = [self foundPattern:match capture:i range:r];
-        [dict setObject:captureM forKey:k];
+        NSString* scope = [[captures objectForKey:k] objectForKey:@"name"];
+        [dict setObject:captureM forKey:scope];
     }
 //    for (int i = 0; i < [captures count]; i++) {
 //        captureM = [self foundPattern:match capture:i range:r];
@@ -256,7 +257,7 @@
             NSDictionary *endCaptures = [syntaxItem objectForKey:@"endCaptures"];
             NSDictionary *captures = [syntaxItem objectForKey:@"captures"];
             NSString *include = [syntaxItem objectForKey:@"include"];
- 
+            
                 //case name, match
             if (name && match) {
                 NSArray *a = [self foundPattern:match range:contentRange];
@@ -316,9 +317,10 @@
                         }
                         if (embedPatterns) {
                             //recursively apply iterPatterns to embedded patterns inclusive of begin and end
+                            [self logs];
                             NSLog(@"recurring with %d %ld", brange.location, eEnds - brange.location);
                             
-                            [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns output:output];
+                          //  [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns output:output];
                         }
                         brange = [self findFirstPattern:begin range:NSMakeRange(eEnds, contentRange.length - eEnds)];
                     }
@@ -354,11 +356,11 @@
     }
 }
 - (void)logs {
-    NSLog(@"%@",nameMatches);
-    NSLog(@"%@",captureMatches);
-    NSLog(@"%@",beginCMatches);
-    NSLog(@"%@",endCMatches);
-    NSLog(@"%@",pairMatches);
+    NSLog(@"nameMatches: %@",nameMatches);
+    NSLog(@"captureM: %@",captureMatches);
+    NSLog(@"beginM: %@",beginCMatches);
+    NSLog(@"endM: %@",endCMatches);
+    NSLog(@"pairM: %@",pairMatches);
     
 }
 - (void)execOn:(ArcAttributedString *)arcAttributedString {
