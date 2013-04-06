@@ -1,26 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>Fonts</key>
-	<dict>
-		<key>Ubuntu Mono</key>
-		<string>UbuntuMono-Regular</string>
-		<key>Source Code Pro</key>
-		<string>SourceCodePro-Regular</string>
-		<key>Inconsolata</key>
-		<string>Inconsolata</string>
-	</dict>
-	<key>Settings</key>
-	<dict>
-		<key>fontFamily</key>
-		<string>SourceCodePro-Regular</string>
-		<key>fontSize</key>
-		<integer>14</integer>
-		<key>lineNumbers</key>
-		<true/>
-		<key>wordWrap</key>
-		<false/>
-	</dict>
-</dict>
+<dict/>
 </plist>
