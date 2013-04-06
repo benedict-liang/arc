@@ -17,21 +17,23 @@ typedef enum {
 } kSettingType;
 
 @protocol PluginDelegate <NSObject>
-// Returns an array of NSStrings
+// Returns an array of NSStrings corresponding to the
+// settings keys this plugin uses.
 // eg: [@"fontFamily", @"fontSize"]
 @property (nonatomic, strong) NSArray *settingKeys;
 
-// Returns an NSDictionary of properties for setting
+// Returns an NSDictionary of properties for this plugin.
 // eg: [pluginInstance propertiesFor:@"fontFamily"]
 // returns:
 // {
+//   title: "Font Family",
 //   type: kMCQSettingType,
-//   labels: ["Inconsolata", "Source Code Pro", "Ubuntu Monospace"]
+//   labels: ["Inconsolata", "Source Code Pro", "Ubuntu Monospace"],
 //   values: ["Inconsolata", "SourceCodePro-Regular", "Ubuntu Mono Regular"]
 // }
 - (NSDictionary *)propertiesFor:(NSString *)settingKey;
 
-// Returns the default value for given setting
+// Returns the default value for the given setting key.
 - (id<NSObject>)defaultValueFor:(NSString *)settingKey;
 
 // Exec Method (Middleware)
