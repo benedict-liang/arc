@@ -8,6 +8,14 @@
 
 #import "FontFamilyPlugin.h"
 
+@interface FontFamilyPlugin ()
+// Array containing the dictionaries corresponding to each setting key.
+@property NSArray *_propertyDictionaries;
+
+// Array containing the default values corresponding to each setting key.
+@property NSArray *_defaultValues;
+@end
+
 @implementation FontFamilyPlugin
 
 @end
