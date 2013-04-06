@@ -10,73 +10,54 @@
 
 @implementation TMBundleSyntaxParser
 
-+ (NSArray*)getSyntaxPLists:(NSString*)TMBundleName {
-    NSMutableArray *plistArray = [[NSMutableArray alloc] init];
-    
-    NSBundle *mainBundle = [NSBundle mainBundle];
-    //TODO: Get plists name from Syntaxes folder
-    NSURL *syntaxFileURL = [mainBundle URLForResource:@"JavaScript.plist" withExtension:nil];
-    NSDictionary *plist = [NSDictionary dictionaryWithContentsOfURL:syntaxFileURL];
-    
-    [plistArray addObject:plist];
-    
-    NSURL *syntaxFileURL1 = [mainBundle URLForResource:@"Regular Expressions (JavaScript).tmLanguage" withExtension:nil];
-    NSDictionary *plist1 = [NSDictionary dictionaryWithContentsOfURL:syntaxFileURL1];
+#pragma mark - Initializers
 
-    [plistArray addObject:plist1];
-    
-    return [NSArray arrayWithArray:plistArray];
-}
-
-+ (NSArray*)getKeyList:(NSString*)TMBundleName {
-    NSDictionary *plist = (NSDictionary*)[[TMBundleSyntaxParser getSyntaxPLists:TMBundleName] objectAtIndex:0];
-    return [plist allKeys];
-}
-
-+ (NSArray*)getPlistData:(NSString*)TMBundleName withSectionHeader:(NSString*)sectionHeader {
-    NSDictionary *plist = (NSDictionary*)[[TMBundleSyntaxParser getSyntaxPLists:TMBundleName] objectAtIndex:0];
-    return [plist objectForKey:sectionHeader];
-}
-
-+ (BOOL)canHandleFileType:(NSString*)fileExtension forTMBundle:(NSString*)TMBundleName {
-    //remove initial dot character
-    if ([fileExtension characterAtIndex:0] == '.') {
-        fileExtension = [fileExtension substringFromIndex:1];
-    }
-    
-    NSArray *plistsArray = [TMBundleSyntaxParser getSyntaxPLists:TMBundleName];
-    
-    for (NSDictionary *plist in plistsArray) {
-        NSArray *fileTypes = [plist objectForKey:@"fileTypes"];
++ (NSDictionary*)plistByName:(NSString*)TMBundleName {
+    if ([[TMBundleSyntaxParser existingBundles] objectForKey:TMBundleName]) {
+        NSURL *syntaxFileURL = [[NSBundle mainBundle] URLForResource:TMBundleName withExtension:@"plist"];
         
-        if (fileTypes != nil) {
-            if ([fileTypes containsObject:fileExtension]) {
-                return YES;
-            }
-        }
-    }
-    
-    return NO;
-}
-
-// Returns a patterns array that is stripped of all unused keys/values,
-// and is now only a level deep for each pattern group.
-+ (NSArray*)getPatternsArray:(NSString*)TMBundleName {
-    NSMutableArray *patternsArray = [[NSMutableArray alloc] init];
-    
-    NSArray *plistsArray = [TMBundleSyntaxParser getSyntaxPLists:TMBundleName];
-    
-    TMBundleGrammar *grammar = [[TMBundleGrammar alloc] initWithPlists:plistsArray];
-    
-    // TODO: Handle conditions to parse multiple plists, and combine the results
-    NSDictionary *plist = [plistsArray objectAtIndex:0];
-    id patternsValue = [plist objectForKey:@"patterns"];
-    if (patternsValue != nil) {
-        NSArray *test = [grammar parseGrammar:@"patterns" withValue:patternsValue];
-        [patternsArray addObjectsFromArray:test];
+        return [NSDictionary dictionaryWithContentsOfURL:syntaxFileURL];
+    } else {
+        return nil;
     }
 
-    return [NSArray arrayWithArray:patternsArray];
+}
++ (NSDictionary*)plistByFullName:(NSString*)fullName {
+    
+    NSURL *syntaxFileURL = [[NSBundle mainBundle] URLForResource:fullName withExtension:nil];
+    
+    return [NSDictionary dictionaryWithContentsOfURL:syntaxFileURL];
 }
 
++ (NSDictionary*)existingBundles {
+    NSURL* bundleConf = [[NSBundle mainBundle] URLForResource:@"BundleConf.plist" withExtension:nil];
+    
+    NSDictionary* extToBundle = [NSDictionary dictionaryWithContentsOfURL:bundleConf];
+    
+    return [extToBundle objectForKey:@"bundles"];
+}
++ (NSDictionary*)fileTypesToBundles {
+    NSURL* bundleConf = [[NSBundle mainBundle] URLForResource:@"BundleConf.plist" withExtension:nil];
+    
+    NSDictionary* extToBundle = [NSDictionary dictionaryWithContentsOfURL:bundleConf];
+    
+    return [extToBundle objectForKey:@"fileTypes"];
+}
+
++ (NSDictionary*)plistForExt:(NSString *)fileExt {
+    
+    NSArray* legitBundles = [[TMBundleSyntaxParser fileTypesToBundles] objectForKey:fileExt];
+    
+    if (legitBundles) {
+    
+        NSString* bundleName = [legitBundles objectAtIndex:0];
+        
+        return [TMBundleSyntaxParser plistByFullName:bundleName];
+    
+    } else {
+        NSLog(@"Appropriate bundle not found");
+        
+        return nil;
+    }
+}
 @end

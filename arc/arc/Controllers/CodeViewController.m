@@ -10,6 +10,7 @@
 #import "CodeViewMiddleware.h"
 #import "CodeLineCell.h"
 #import "ArcAttributedString.h"
+#import "FullTextSearch.h"
 
 // Middleware
 #import "BasicStyles.h"
@@ -22,6 +23,7 @@
 @property (nonatomic, strong) ArcAttributedString *arcAttributedString;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *toolbarTitle;
+@property (nonatomic, strong) UISearchBar *searchBar;
 @property CTFramesetterRef frameSetter;
 @property CGFloat lineHeight;
 @property NSMutableArray *lines;
@@ -88,7 +90,21 @@
     _tableView.frame = CGRectMake(0, SIZE_TOOLBAR_HEIGHT,
                                   self.view.bounds.size.width,
                                   self.view.bounds.size.height - SIZE_TOOLBAR_HEIGHT);
+    
+    [self addSearchBarToTableViewTop];
+    
     [self.view addSubview:_tableView];
+}
+
+- (void)addSearchBarToTableViewTop
+{
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, SIZE_TOOLBAR_HEIGHT)];
+    _tableView.tableHeaderView = _searchBar;
+    _searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
+    _searchBar.delegate = (id<UISearchBarDelegate>)self;
+    
+    // Hides search bar upon load
+    _tableView.contentOffset = CGPointMake(0, SIZE_TOOLBAR_HEIGHT);
 }
 
 - (void)refreshForSetting:(NSString *)setting
@@ -281,6 +297,17 @@
 {
     // TODO.
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - Search Bar delegate
+
+- (void)searchBarSearchButtonClicked:(UISearchBar*)searchBar {
+    NSString *searchString = [searchBar text];
+    NSArray *searchResultRanges = [FullTextSearch searchForText:searchString inFile:_currentFile];
+    // TODO: Check if searchResultRanges is nil before using the data
+
+    // Hide keyboard after search button clicked
+    [searchBar resignFirstResponder];
 }
 
 @end

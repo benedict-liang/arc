@@ -35,7 +35,8 @@
                               [NSValue valueWithPointer:@selector(resolveCaptures:)], @"beginCaptures", 
                               [NSValue valueWithPointer:@selector(resolveCaptures:)], @"endCaptures",
                               [NSValue valueWithPointer:@selector(resolvePatterns:)], @"patterns",
-                              [NSValue valueWithPointer:@selector(resolveInclude:)], @"include",
+                              [NSValue valueWithPointer:@selector(resolveReturnValue:)], @"include",
+                              [NSValue valueWithPointer:@selector(resolveReturnValue:)], @"contentName",
                               nil];
     }
     
@@ -173,8 +174,13 @@
     }
     else if ([includeString characterAtIndex:0] == '#') {
         // Get rule from repository
-        NSDictionary *rule = [self getRuleFromRepository:[includeString substringFromIndex:1]];
-        return rule;
+        NSString *str = [includeString substringFromIndex:1];
+        NSDictionary *rule = [self getRuleFromRepository:str];
+        if (rule) {
+            return rule;
+        }
+        return nil;
+        
     }
     else {
         //TODO: find scope name of another language

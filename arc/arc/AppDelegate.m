@@ -61,7 +61,13 @@
     }
     return NO;
 }
-
+- (void)addFileToFileManager:(NSFileManager*)fm name:(NSString*)name docURL:(NSURL*)docURL {
+    NSURL *sampleFile = [[NSBundle mainBundle] URLForResource:name withExtension:nil];
+    NSURL *newFile = [NSURL URLWithString:name relativeToURL:docURL];
+    if (![fm fileExistsAtPath:[newFile path]]) {
+        [fm copyItemAtURL:sampleFile toURL:newFile error:nil];
+    }
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Check if we have our appState property list.
@@ -82,31 +88,13 @@
     
     // Jerome: Temporary code to move support files into the Documents folder.
     NSURL *documentsURL = [NSURL fileURLWithPath:documentsPath];
-    NSString *sampleFileName = @"GameObject.h";
-    NSString *sampleFile1 = @"README.md";
-    NSString *sampleFile2 = @"home.html";
-    NSString *sampleFile3 = @"nav_gmaps_sample.js";
-    NSURL *sampleFileURL = [[NSBundle mainBundle] URLForResource:sampleFileName withExtension:nil];
-    NSURL *sampleFile1URL = [[NSBundle mainBundle] URLForResource:sampleFile1 withExtension:nil];
-    NSURL *sampleFile2URL = [[NSBundle mainBundle] URLForResource:sampleFile2 withExtension:nil];
-    NSURL *sampleFile3URL = [[NSBundle mainBundle] URLForResource:sampleFile3 withExtension:nil];
-    NSURL *newFileURL = [NSURL URLWithString:sampleFileName relativeToURL:documentsURL];
-    NSURL *newFile1URL = [NSURL URLWithString:sampleFile1 relativeToURL:documentsURL];
-    NSURL *newFile2URL = [NSURL URLWithString:sampleFile2 relativeToURL:documentsURL];
-    NSURL *newFile3URL = [NSURL URLWithString:sampleFile3 relativeToURL:documentsURL];
     
-    if (![fileManager fileExistsAtPath:[newFileURL path]]) {
-        [fileManager copyItemAtURL:sampleFileURL toURL:newFileURL error:nil];
-    }
-    if (![fileManager fileExistsAtPath:[newFile1URL path]]) {
-        [fileManager copyItemAtURL:sampleFile1URL toURL:newFile1URL error:nil];
-    }
-    if (![fileManager fileExistsAtPath:[newFile2URL path]]) {
-        [fileManager copyItemAtURL:sampleFile2URL toURL:newFile2URL error:nil];
-    }
-    if (![fileManager fileExistsAtPath:[newFile3URL path]]) {
-        [fileManager copyItemAtURL:sampleFile3URL toURL:newFile3URL error:nil];
-    }
+    [self addFileToFileManager:fileManager name:@"twist.py" docURL:documentsURL];
+    [self addFileToFileManager:fileManager name:@"GameObject.h" docURL:documentsURL];
+    [self addFileToFileManager:fileManager name:@"home.html" docURL:documentsURL];
+    [self addFileToFileManager:fileManager name:@"nav_gmaps_sample.js" docURL:documentsURL];
+    [self addFileToFileManager:fileManager name:@"README.md" docURL:documentsURL];
+    
     // End of temporary code.
     
     // Create the DropBox account manager.
