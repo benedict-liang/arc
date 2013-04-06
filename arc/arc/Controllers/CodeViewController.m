@@ -122,12 +122,12 @@
 
 - (void)processFile
 {
-    for (Class<PluginDelegate> plugin in _plugins) {
+    for (id<PluginDelegate> plugin in _plugins) {
         if ([plugin respondsToSelector:
              @selector(arcAttributedString:OfFile:delegate:)])
         {
             [plugin arcAttributedString:_arcAttributedString
-                                 OfFile:_currentFile
+                                 ofFile:_currentFile
                                delegate:self];
         }
     }
@@ -198,7 +198,7 @@
 
 #pragma mark - Code View Delegate
 
-- (void)registerPlugin:(Class<PluginDelegate>)plugin
+- (void)registerPlugin:(id<PluginDelegate>)plugin
 {
     // Only register a plugin once.
     if ([_plugins indexOfObject:plugin] == NSNotFound) {
