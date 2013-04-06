@@ -11,7 +11,7 @@
 @protocol PluginDelegate <NSObject>
 // Returns an array of NSStrings
 // eg: [@"fontFamily", @"fontSize"]
-@property (nonatomic, strong) NSArray *settings;
+@property (nonatomic, strong) NSArray *settingKeys;
 
 // Returns a NSDictionary of properties for setting
 // eg: [pluginInstance propertiesFor:@"fontFamily"]
@@ -20,8 +20,8 @@
 //   type: PluginEnum.MCQ,
 //   values: [A, B, C, D]
 // }
-- (NSDictionary *)propertiesFor:(NSString *)setting;
+- (NSDictionary *)propertiesFor:(NSString *)settingKey;
 
 // Returns Default Value for given setting
-- (id<NSObject>)defaultValueFor:(NSString *)setting;
+- (id<NSObject>)defaultValueFor:(NSString *)settingKey;
 @end
