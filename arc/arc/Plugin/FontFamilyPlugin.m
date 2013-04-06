@@ -13,16 +13,12 @@
 @property NSString *fontFamilySettingKey;
 @property NSString *defaultFontFamily;
 
-// Array containing the dictionaries corresponding to each setting key.
-@property NSArray *propertyDictionaries;
-
-// Array containing the default values corresponding to each setting key.
-@property NSArray *defaultValues;
+// Dictionary describing fontFamilySetting
+@property NSMutableDictionary *properties;
+@property NSArray *options;
 @end
 
 @implementation FontFamilyPlugin
-
-// Synthesize protocol properties.
 @synthesize settingKeys=_settingKeys;
 
 - (id)init
@@ -30,32 +26,33 @@
     if (self = [super init]) {
         _fontFamilySettingKey = @"fontFamily";
         _defaultFontFamily = @"SourceCodePro-Regular";
-
+        
         _settingKeys = [NSArray arrayWithObject:_fontFamilySettingKey];
         
         // Setup the dictionary to be returned.
-        NSMutableDictionary *properties = [NSMutableDictionary dictionary];
-        [properties setValue:@"Font Family"
-                      forKey:PLUGIN_TITLE];
-
-        [properties setValue:[NSNumber numberWithInt:kMCQSettingType]
-                      forKey:PLUGIN_TYPE];
-
-        [properties setValue:[NSArray arrayWithObjects:
-                              _defaultFontFamily,
-                              @"Inconsolata",
-                              @"Ubuntu Monospace",
-                              nil]
-                      forKey:PLUGIN_LABELS];
-
-        [properties setValue:[NSArray arrayWithObjects:
-                              @"Inconsolata",
-                              @"SourceCodePro-Regular",
-                              @"UbuntuMono-Regular",
-                              nil]
-                      forKey:PLUGIN_VALUES];
-
-        _propertyDictionaries = [NSArray arrayWithObject:properties];
+        _properties = [NSMutableDictionary dictionary];
+        [_properties setValue:@"Font Family"
+                       forKey:PLUGIN_TITLE];
+        
+        [_properties setValue:[NSNumber numberWithInt:kMCQSettingType]
+                       forKey:PLUGIN_TYPE];
+        
+        _options = @[
+                     @{
+                         PLUGIN_LABEL: @"Source Code Pro",
+                         PLUGIN_VALUE: _defaultFontFamily
+                         },
+                     @{
+                         PLUGIN_LABEL: @"Inconsolata",
+                         PLUGIN_VALUE: @"Inconsolata"
+                         },
+                     @{
+                         PLUGIN_LABEL: @"Ubuntu Monospace",
+                         PLUGIN_VALUE: @"UbuntuMono-Regular"
+                         }
+                     ];
+        
+        [_properties setValue:_options forKey:PLUGIN_OPTIONS];
     }
     return self;
 }
@@ -63,15 +60,17 @@
 // Returns an NSDictionary of properties for this plugin.
 - (NSDictionary *)propertiesFor:(NSString *)settingKey
 {
-    int dictionaryIndex = [_settingKeys indexOfObject:settingKey];
-    return [_propertyDictionaries objectAtIndex:dictionaryIndex];
+    return [NSDictionary dictionaryWithDictionary:_properties];
 }
 
 // Returns the default value for the given setting key.
 - (id<NSObject>)defaultValueFor:(NSString *)settingKey
 {
-    int dictionaryIndex = [_settingKeys indexOfObject:settingKey];
-    return [_defaultValues objectAtIndex:dictionaryIndex];
+    if ([settingKey isEqualToString:_fontFamilySettingKey]) {
+        return _defaultFontFamily;
+    }
+    
+    return nil;
 }
 
 - (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString
