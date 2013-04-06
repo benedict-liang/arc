@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ArcAttributedString.h"
+#import "File.h"
 
 @protocol PluginDelegate <NSObject>
 // Returns an array of NSStrings
@@ -24,4 +26,9 @@
 
 // Returns Default Value for given setting
 - (id<NSObject>)defaultValueFor:(NSString *)setting;
+
+
++ (void)arcAttributedString:(ArcAttributedString*)arcAttributedString
+                     OfFile:(id<File>)file
+                   delegate:(id)delegate;
 @end

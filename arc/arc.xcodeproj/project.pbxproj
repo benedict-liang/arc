@@ -49,6 +49,7 @@
 		4CD06B8616FE0FE600C9DED3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD06B8416FE0FC900C9DED3 /* CoreText.framework */; };
 		4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */; };
 		4CD47747170FF8F70054738D /* CodeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD47746170FF8F70054738D /* CodeLine.m */; };
+		4CD4774A171019960054738D /* PluginDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 4CD477491710146B0054738D /* PluginDelegate.h */; };
 		4CF6F0EE1706E08800EDDEDC /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0ED1706E08800EDDEDC /* file.png */; };
 		4CF6F0F21706E29300EDDEDC /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F11706E29300EDDEDC /* folder.png */; };
 		4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */; };
@@ -1166,6 +1167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CD4774A171019960054738D /* PluginDelegate.h in Sources */,
 				4C43F8FB16F86AA900159B29 /* main.m in Sources */,
 				4CD06B8016FDF61C00C9DED3 /* Constants.m in Sources */,
 				4C43F8FF16F86AA900159B29 /* AppDelegate.m in Sources */,
