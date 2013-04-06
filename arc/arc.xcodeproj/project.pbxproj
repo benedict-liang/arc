@@ -50,6 +50,8 @@
 		4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */; };
 		4CD47747170FF8F70054738D /* CodeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD47746170FF8F70054738D /* CodeLine.m */; };
 		4CE2950E17101BA0003B012A /* SyntaxHighlightingPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */; };
+		4CE2951117101C53003B012A /* FontSizePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE2951017101C53003B012A /* FontSizePlugin.m */; };
+		4CE2951417101C82003B012A /* FontFamilyPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE2951317101C82003B012A /* FontFamilyPlugin.m */; };
 		4CF6F0EE1706E08800EDDEDC /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0ED1706E08800EDDEDC /* file.png */; };
 		4CF6F0F21706E29300EDDEDC /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F11706E29300EDDEDC /* folder.png */; };
 		4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */; };
@@ -159,6 +161,10 @@
 		4CD477491710146B0054738D /* PluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginDelegate.h; path = arc/Plugin/PluginDelegate.h; sourceTree = SOURCE_ROOT; };
 		4CE2950C17101BA0003B012A /* SyntaxHighlightingPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlightingPlugin.h; sourceTree = "<group>"; };
 		4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxHighlightingPlugin.m; sourceTree = "<group>"; };
+		4CE2950F17101C53003B012A /* FontSizePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontSizePlugin.h; sourceTree = "<group>"; };
+		4CE2951017101C53003B012A /* FontSizePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontSizePlugin.m; sourceTree = "<group>"; };
+		4CE2951217101C82003B012A /* FontFamilyPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontFamilyPlugin.h; sourceTree = "<group>"; };
+		4CE2951317101C82003B012A /* FontFamilyPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontFamilyPlugin.m; sourceTree = "<group>"; };
 		4CF6F0ED1706E08800EDDEDC /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
 		4CF6F0F11706E29300EDDEDC /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
 		4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -514,6 +520,10 @@
 				4CD477491710146B0054738D /* PluginDelegate.h */,
 				4CE2950C17101BA0003B012A /* SyntaxHighlightingPlugin.h */,
 				4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */,
+				4CE2950F17101C53003B012A /* FontSizePlugin.h */,
+				4CE2951017101C53003B012A /* FontSizePlugin.m */,
+				4CE2951217101C82003B012A /* FontFamilyPlugin.h */,
+				4CE2951317101C82003B012A /* FontFamilyPlugin.m */,
 			);
 			name = Plugins;
 			path = Plugin;
@@ -1200,6 +1210,8 @@
 				4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */,
 				4CD47747170FF8F70054738D /* CodeLine.m in Sources */,
 				4CE2950E17101BA0003B012A /* SyntaxHighlightingPlugin.m in Sources */,
+				4CE2951117101C53003B012A /* FontSizePlugin.m in Sources */,
+				4CE2951417101C82003B012A /* FontFamilyPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
