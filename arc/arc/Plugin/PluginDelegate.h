@@ -10,6 +10,8 @@
 #import "ArcAttributedString.h"
 #import "File.h"
 
+typedef enum { kMCQSettingType, kRangeSettingType, kBoolSettingType } kSettingType;
+
 @protocol PluginDelegate <NSObject>
 // Returns an array of NSStrings
 // eg: [@"fontFamily", @"fontSize"]
@@ -19,7 +21,7 @@
 // eg: [pluginInstance propertiesFor:@"fontFamily"]
 // returns:
 // {
-//   type: PluginEnum.MCQ,
+//   type: kMCQSettingType,
 //   values: [A, B, C, D]
 // }
 - (NSDictionary *)propertiesFor:(NSString *)settingKey;
