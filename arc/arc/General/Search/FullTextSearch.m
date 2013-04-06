@@ -7,6 +7,7 @@
 //
 
 #import "FullTextSearch.h"
+#import "ArcAttributedString.h"
 
 @implementation FullTextSearch
 
