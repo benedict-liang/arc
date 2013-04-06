@@ -227,6 +227,7 @@
         // Get rule from repository
         NSString *str = [include substringFromIndex:1];
         id rule = [self repositoryRule:str];
+        NSLog(@"%@",rule);
         if (rule) {
             return [NSArray arrayWithObject:rule];
         } else {
@@ -240,7 +241,61 @@
     }
     
 }
+- (void)processPairRange:(NSRange)contentRange item:(NSDictionary*)syntaxItem o:(ArcAttributedString*)output{
+    /*
+     Algo finds a begin match and an end match (from begin to content's end), reseting the next begin to after end, until no more matches are found or end > content
+     Also applies nested patterns recursively
+     */
+    NSString* begin = [syntaxItem objectForKey:@"begin"];
+    NSString* end = [syntaxItem objectForKey:@"end"];
+    NSString* name = [syntaxItem objectForKey:@"name"];
+    NSRange brange = [self findFirstPattern:begin range:contentRange];
+    NSRange erange = NSMakeRange(0, 0);
+    
+    do
+    {
+        NSLog(@"traversing while brange:%@ erange:%@", [NSValue value:&brange withObjCType:@encode(NSRange)], [NSValue value:&erange withObjCType:@encode(NSRange)]);
+        // using longs because int went out of range as NSNotFound returns MAX_INT, which fucks arithmetic
+        long bEnds = brange.location + brange.length;
+        if (contentRange.length > bEnds) {
+            //HACK BELOW. BLAME TEXTMATE FOR THIS SHIT. IT MAKES COMMENTS WORK THOUGH
+            if ([self fixAnchor:end]) {
+                //erange = NSMakeRange(bEnds, contentRange.length - bEnds);
+            } else {
+                erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
+                
+            }
+        } else {
+            //if bEnds > contentRange.length, skip
+            break;
+        }
+        
+        long eEnds = erange.location + erange.length;
+        NSArray *embedPatterns = [syntaxItem objectForKey:@"patterns"];
+        
+        //if there are characters between begin and end, and brange and erange are valid results
+        if (eEnds > brange.location && brange.location != NSNotFound && erange.location != NSNotFound && eEnds - brange.location< contentRange.length)
+        {
+            
+            if (name) {
+                
+                pairMatches = [self addRange:NSMakeRange(brange.location, eEnds - brange.location) scope:name dict:pairMatches];
+                
+            }
+            if (embedPatterns) {
+                //recursively apply iterPatterns to embedded patterns inclusive of begin and end
+                // [self logs];
+                NSLog(@"recurring with %d %ld", brange.location, eEnds - brange.location);
+                
+                [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns output:output];
+            }
+            
+        }
+        brange = [self findFirstPattern:begin range:NSMakeRange(eEnds, contentRange.length - eEnds)];
+    }while ([self whileCondition:brange e:erange cr:contentRange]);
+    
 
+}
 -(void)iterPatternsForRange:(NSRange)contentRange patterns:(NSArray*)patterns output:(ArcAttributedString*)output {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_group_t group = dispatch_group_create();
@@ -277,61 +332,13 @@
             
             if (begin && end)
             {
-                /*
-                 Algo finds a begin match and an end match (from begin to content's end), reseting the next begin to after end, until no more matches are found or end > content
-                 Also applies nested patterns recursively
-                 */
-                
-                NSRange brange = [self findFirstPattern:begin range:contentRange];
-                NSRange erange = NSMakeRange(0, 0);
-                
-                while (brange.location != NSNotFound && erange.location + erange.length < contentRange.length && erange.location > 0)
-                {
-                    NSLog(@"traversing while brange:%@ erange:%@", [NSValue value:&brange withObjCType:@encode(NSRange)], [NSValue value:&erange withObjCType:@encode(NSRange)]);
-                    // using longs because int went out of range as NSNotFound returns MAX_INT, which fucks arithmetic
-                    long bEnds = brange.location + brange.length;
-                    if (contentRange.length > bEnds) {
-                        //HACK BELOW. BLAME TEXTMATE FOR THIS SHIT. IT MAKES COMMENTS WORK THOUGH
-                        if ([self fixAnchor:end]) {
-                            //erange = NSMakeRange(bEnds, contentRange.length - bEnds);
-                        } else {
-                            erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
-                            
-                        }
-                    } else {
-                        //if bEnds > contentRange.length, skip
-                        break;
-                    }
-                    
-                    long eEnds = erange.location + erange.length;
-                    NSArray *embedPatterns = [syntaxItem objectForKey:@"patterns"];
-                    
-                    //if there are characters between begin and end, and brange and erange are valid results
-                    if (eEnds > brange.location && brange.location != NSNotFound && erange.location != NSNotFound && eEnds <= contentRange.length)
-                    {
-                        
-                        if (name) {
-                            
-                            pairMatches = [self addRange:NSMakeRange(brange.location, eEnds - brange.location) scope:name dict:pairMatches];
-                            
-                        }
-                        if (embedPatterns) {
-                            //recursively apply iterPatterns to embedded patterns inclusive of begin and end
-                            // [self logs];
-                            NSLog(@"recurring with %d %ld", brange.location, eEnds - brange.location);
-                            
-                            [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns output:output];
-                        }
-                    
-                    }
-                brange = [self findFirstPattern:begin range:NSMakeRange(eEnds, contentRange.length - eEnds)];
+                [self processPairRange:contentRange item:syntaxItem o:output];
             }
             
-        }
         if (include)
         {
             id includes = [self resolveInclude:include];
-            NSLog(@"recurring for include with %d %d", contentRange.location, contentRange.length);
+            //NSLog(@"recurring for include: %@ with %d %d name:%@",includes, contentRange.location, contentRange.length, name);
             [self iterPatternsForRange:contentRange patterns:includes output:output];
         }
                              
@@ -344,7 +351,10 @@
     dispatch_release(group);
     
 }
-
+- (BOOL)whileCondition:(NSRange)brange e:(NSRange)erange cr:(NSRange)contentRange
+{
+    return brange.location != NSNotFound && erange.location + erange.length < contentRange.length && erange.location > 0 && !(NSEqualRanges(brange, NSMakeRange(0, 0)) && (NSEqualRanges(erange, NSMakeRange(0, 0))));
+}
 - (BOOL)fixAnchor:(NSString*)pattern {
     //return [pattern stringByReplacingOccurrencesOfString:@"\\G" withString:@"\uFFFF"];
     // TODO: pattern for \\z : @"$(?!\n)(?<!\n)"
