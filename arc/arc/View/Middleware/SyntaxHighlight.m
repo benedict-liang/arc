@@ -227,13 +227,8 @@
         // Get rule from repository
         NSString *str = [include substringFromIndex:1];
         id rule = [self repositoryRule:str];
-        NSLog(@"%@",rule);
-        if (rule) {
-            return [NSArray arrayWithObject:rule];
-        } else {
-            return nil;
-        }
-        
+       // NSLog(@"%@",rule);
+        return [NSArray arrayWithObject:rule];
     }
     else {
         //TODO: find scope name of another language
@@ -282,7 +277,7 @@
                 pairMatches = [self addRange:NSMakeRange(brange.location, eEnds - brange.location) scope:name dict:pairMatches];
                 
             }
-            if (embedPatterns) {
+            if (embedPatterns && contentRange.length < [_content length]) {
                 //recursively apply iterPatterns to embedded patterns inclusive of begin and end
                 // [self logs];
                 NSLog(@"recurring with %d %ld", brange.location, eEnds - brange.location);
@@ -297,6 +292,7 @@
 
 }
 -(void)iterPatternsForRange:(NSRange)contentRange patterns:(NSArray*)patterns output:(ArcAttributedString*)output {
+    NSLog(@"patterns: %@",patterns);
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_group_t group = dispatch_group_create();
     
@@ -333,15 +329,19 @@
             if (begin && end)
             {
                 [self processPairRange:contentRange item:syntaxItem o:output];
+                
+                if (include)
+                {
+                    id includes = [self resolveInclude:include];
+                    //NSLog(@"recurring for include: %@ with %d %d name:%@",includes, contentRange.location, contentRange.length, name);
+                    if (contentRange.length < [_content length]) {
+                        [self iterPatternsForRange:contentRange patterns:includes output:output];
+                    }
+                
+                }
+
             }
-            
-        if (include)
-        {
-            id includes = [self resolveInclude:include];
-            //NSLog(@"recurring for include: %@ with %d %d name:%@",includes, contentRange.location, contentRange.length, name);
-            [self iterPatternsForRange:contentRange patterns:includes output:output];
-        }
-                             
+                                    
         });
     });
     
@@ -353,7 +353,7 @@
 }
 - (BOOL)whileCondition:(NSRange)brange e:(NSRange)erange cr:(NSRange)contentRange
 {
-    return brange.location != NSNotFound && erange.location + erange.length < contentRange.length && erange.location > 0 && !(NSEqualRanges(brange, NSMakeRange(0, 0)) && (NSEqualRanges(erange, NSMakeRange(0, 0))));
+    return brange.location != NSNotFound && erange.location + erange.length < contentRange.length && erange.location > 0 && !(NSEqualRanges(brange, NSMakeRange(0, 0)) && (NSEqualRanges(erange, NSMakeRange(0, 0)))) && (erange.location < contentRange.length - 1);
 }
 - (BOOL)fixAnchor:(NSString*)pattern {
     //return [pattern stringByReplacingOccurrencesOfString:@"\\G" withString:@"\uFFFF"];
@@ -379,8 +379,6 @@
     _finalOutput = arcAttributedString;
     ArcAttributedString* output = arcAttributedString;
     [self iterPatternsForRange:NSMakeRange(0, [_content length]) patterns:[_bundle objectForKey:@"patterns"] output:arcAttributedString];
-    
-    
     
     [self applyStylesTo:output withRanges:pairMatches];
     [self applyStylesTo:output withRanges:nameMatches];
