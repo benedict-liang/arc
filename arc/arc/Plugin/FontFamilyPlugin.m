@@ -28,10 +28,10 @@
         
         // Setup the dictionary to be returned.
         NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
-        [properties setValue:@"Font Family" forKey:@"title"];
-        [properties setValue:[NSNumber numberWithInt:kMCQSettingType] forKey:@"type"];
-        [properties setValue:[NSArray arrayWithObjects:@"Inconsolata", @"Source Code Pro", "Ubuntu Monospace", nil] forKey:@"labels"];
-        [properties setValue:[NSArray arrayWithObjects:@"Inconsolata", @"SourceCodePro-Regular", @"UbuntuMono-Regular", nil] forKey:@"values"];
+        [properties setValue:@"Font Family" forKey:PLUGIN_TITLE];
+        [properties setValue:[NSNumber numberWithInt:kMCQSettingType] forKey:PLUGIN_TYPE];
+        [properties setValue:[NSArray arrayWithObjects:@"Inconsolata", @"Source Code Pro", "Ubuntu Monospace", nil] forKey:PLUGIN_LABELS];
+        [properties setValue:[NSArray arrayWithObjects:@"Inconsolata", @"SourceCodePro-Regular", @"UbuntuMono-Regular", nil] forKey:PLUGIN_VALUES];
         __propertyDictionaries = [NSArray arrayWithObject:properties];
         
         // Setup the default values.
