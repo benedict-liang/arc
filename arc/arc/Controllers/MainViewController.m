@@ -80,16 +80,16 @@
 // Shows the file using the CodeViewController
 - (void)fileSelected:(id<File>)file
 {
-// ApplicationState *appState = [ApplicationState sharedApplicationState];
-//  [appState setCurrentFileOpened:file];
+ ApplicationState *appState = [ApplicationState sharedApplicationState];
+  [appState setCurrentFileOpened:file];
     [_codeViewController showFile:file];
 }
 
 // Updates Current Folder being Viewed
 - (void)folderSelected:(id<Folder>)folder
 {
-//    ApplicationState *appState = [ApplicationState sharedApplicationState];
-//    [appState setCurrentFolderOpened:folder];
+    ApplicationState *appState = [ApplicationState sharedApplicationState];
+    [appState setCurrentFolderOpened:folder];
     [_leftViewController navigateTo:folder];
 }
 
