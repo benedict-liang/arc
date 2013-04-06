@@ -14,8 +14,9 @@
 #import "FontSizePlugin.h"
 
 @interface MainViewController ()
-@property CodeViewController *codeViewController;
-@property LeftViewController *leftViewController;
+@property (nonatomic, strong) CodeViewController *codeViewController;
+@property (nonatomic, strong) LeftViewController *leftViewController;
+@property (nonatomic, strong) ApplicationState *appState;
 @property NSArray *plugins;
 - (void)fileSelected:(id<File>)file;
 - (void)folderSelected:(id<Folder>)folder;
@@ -33,6 +34,7 @@
                     [[FontFamilyPlugin alloc] init],
                     [[FontSizePlugin alloc] init],
                     nil];
+        _appState = [ApplicationState sharedApplicationState];
     }
     return self;
 }
@@ -46,6 +48,12 @@
 
 - (void)registerPlugin:(id<PluginDelegate>)plugin
 {
+    // Register Plugin with Application State
+    [_appState registerPlugin:plugin];
+    
+    // Register Plugin with SettingsViewControllerDelegate
+    [_leftViewController registerPlugin:plugin];
+    
     // Register Plugin with CodeViewController
     [_codeViewController registerPlugin:plugin];
 }
@@ -71,7 +79,6 @@
     [self folderSelected:[appState currentFolderOpened]];
 }
 
-// tmp
 - (void)openIn:(id<File>)file
 {
     [_leftViewController navigateTo:(id<Folder>)[file parent]];
