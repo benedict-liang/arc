@@ -249,7 +249,7 @@
     
     do
     {
-        NSLog(@"traversing while brange:%@ erange:%@", [NSValue value:&brange withObjCType:@encode(NSRange)], [NSValue value:&erange withObjCType:@encode(NSRange)]);
+       // NSLog(@"traversing while brange:%@ erange:%@", [NSValue value:&brange withObjCType:@encode(NSRange)], [NSValue value:&erange withObjCType:@encode(NSRange)]);
         // using longs because int went out of range as NSNotFound returns MAX_INT, which fucks arithmetic
         long bEnds = brange.location + brange.length;
         if (contentRange.length > bEnds) {
@@ -280,7 +280,7 @@
             if (embedPatterns && contentRange.length < [_content length]) {
                 //recursively apply iterPatterns to embedded patterns inclusive of begin and end
                 // [self logs];
-                NSLog(@"recurring with %d %ld", brange.location, eEnds - brange.location);
+               // NSLog(@"recurring with %d %ld", brange.location, eEnds - brange.location);
                 
                 [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns output:output];
             }
@@ -292,7 +292,7 @@
 
 }
 -(void)iterPatternsForRange:(NSRange)contentRange patterns:(NSArray*)patterns output:(ArcAttributedString*)output {
-    NSLog(@"patterns: %@",patterns);
+  //  NSLog(@"patterns: %@",patterns);
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_group_t group = dispatch_group_create();
     
@@ -385,7 +385,7 @@
     [self applyStylesTo:output withRanges:captureMatches];
     [self applyStylesTo:output withRanges:beginCMatches];
     [self applyStylesTo:output withRanges:endCMatches];
-    [self logs];
+   // [self logs];
     NSLog(@"Updating!");
     [self updateView];
     
