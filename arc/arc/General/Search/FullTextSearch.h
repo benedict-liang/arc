@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ArcAttributedString.h"
+#import "File.h"
 
 @interface FullTextSearch : NSObject
+
++ (NSArray*)searchForText:(NSString*)searchText inFile:(id<File>)file;
 
 @end
