@@ -24,6 +24,7 @@
 @property CTFramesetterRef frameSetter;
 @property CGFloat lineHeight;
 @property NSMutableArray *lines;
+@property NSMutableArray *plugins;
 - (void)loadFile;
 - (void)processFile;
 - (void)renderFile;
@@ -41,6 +42,7 @@
     self = [super init];
     if (self) {
         _lines = [NSMutableArray array];
+        _plugins = [NSMutableArray array];
         
         // Defaults
         _backgroundColor = [Utils colorWithHexString:@"FDF6E3"];
@@ -120,12 +122,15 @@
 
 - (void)processFile
 {
-    [BasicStyles arcAttributedString:_arcAttributedString
-                              OfFile:_currentFile
-                            delegate:self];
-    [SyntaxHighlight arcAttributedString:_arcAttributedString
-                                  OfFile:_currentFile
-                                delegate:self];
+    for (Class<PluginDelegate> plugin in _plugins) {
+        if ([plugin respondsToSelector:
+             @selector(arcAttributedString:OfFile:delegate:)])
+        {
+            [plugin arcAttributedString:_arcAttributedString
+                                 OfFile:_currentFile
+                               delegate:self];
+        }
+    }
 }
 
 - (void)renderFile
@@ -193,6 +198,14 @@
 
 #pragma mark - Code View Delegate
 
+- (void)registerPlugin:(Class<PluginDelegate>)plugin
+{
+    // Only register a plugin once.
+    if ([_plugins indexOfObject:plugin] == NSNotFound) {
+        [_plugins addObject:plugin];
+    }
+}
+
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
                    forFile:(id<File>)file
 {
@@ -201,7 +214,6 @@
         [_tableView reloadData];
     }
 }
-
 
 #pragma mark - Detail View Controller Delegate
 

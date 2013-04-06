@@ -20,7 +20,7 @@
 - (void)fileSelected:(id<File>)file;
 - (void)folderSelected:(id<Folder>)folder;
 - (void)registerPlugins;
-- (void)registerPlugin:(Class<PluginDelegate>)pluginClass;
+- (void)registerPlugin:(id<PluginDelegate>)plugin;
 @end
 
 @implementation MainViewController
@@ -30,9 +30,9 @@
     self = [super init];
     if (self) {
         _plugins = [NSArray arrayWithObjects:
-                    [SyntaxHighlightingPlugin class],
-                    [FontFamilyPlugin class],
-                    [FontSizePlugin class],
+//                    [SyntaxHighlightingPlugin class],
+                    [[FontFamilyPlugin alloc] init],
+                    [[FontSizePlugin alloc] init],
                     nil];
     }
     return self;
@@ -40,12 +40,12 @@
 
 - (void)registerPlugins
 {
-    for (Class<PluginDelegate> plugin in _plugins) {
+    for (id<PluginDelegate> plugin in _plugins) {
         [self registerPlugin:plugin];
     }
 }
 
-- (void)registerPlugin:(Class<PluginDelegate>)pluginClass
+- (void)registerPlugin:(id<PluginDelegate>)plugin
 {
     // TODO.
 }

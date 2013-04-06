@@ -35,7 +35,7 @@ typedef enum {
 - (id<NSObject>)defaultValueFor:(NSString *)settingKey;
 
 // Exec Method (Middleware)
-+ (void)arcAttributedString:(ArcAttributedString*)arcAttributedString
+- (void)arcAttributedString:(ArcAttributedString*)arcAttributedString
                      ofFile:(id<File>)file
                    delegate:(id)delegate;
 @end
