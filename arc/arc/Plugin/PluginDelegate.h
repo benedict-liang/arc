@@ -25,8 +25,9 @@ typedef enum {
 // eg: [pluginInstance propertiesFor:@"fontFamily"]
 // returns:
 // {
+//   title: "Font Family",
 //   type: kMCQSettingType,
-//   labels: ["Inconsolata", "Source Code Pro", "Ubuntu Monospace"]
+//   labels: ["Inconsolata", "Source Code Pro", "Ubuntu Monospace"],
 //   values: ["Inconsolata", "SourceCodePro-Regular", "Ubuntu Mono Regular"]
 // }
 - (NSDictionary *)propertiesFor:(NSString *)settingKey;
