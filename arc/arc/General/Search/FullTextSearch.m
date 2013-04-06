@@ -10,6 +10,8 @@
 
 @implementation FullTextSearch
 
+#pragma mark - Public Methods
+
 + (NSArray*)searchForText:(NSString*)searchText inFile:(id<File>)file {
     if (![[file contents] isKindOfClass:[NSString class]]) {
         return nil;
@@ -28,6 +30,8 @@
     
     return [NSArray arrayWithArray:rangesArray];
 }
+
+#pragma mark - Private Methods
 
 + (NSMutableArray *)getArrayofRangesFromFileString:(NSString *)fileString
                                     withSearchText:(NSString *)searchText {
