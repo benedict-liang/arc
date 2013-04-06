@@ -19,6 +19,7 @@
     __block NSDictionary *beginCMatches;
     __block NSDictionary *endCMatches;
     __block NSDictionary *pairMatches;
+    __block NSDictionary *contentNameMatches;
 }
 @property NSDictionary* theme;
 @property (readonly) id<CodeViewDelegate> delegate;

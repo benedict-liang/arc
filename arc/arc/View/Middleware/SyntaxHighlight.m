@@ -227,8 +227,11 @@
         // Get rule from repository
         NSString *str = [include substringFromIndex:1];
         id rule = [self repositoryRule:str];
-       // NSLog(@"%@",rule);
-        return [NSArray arrayWithObject:rule];
+        if (rule)
+            return [NSArray arrayWithObject:rule];
+        else
+            return nil;
+        
     }
     else {
         //TODO: find scope name of another language
@@ -275,7 +278,9 @@
             if (name) {
                 
                 pairMatches = [self addRange:NSMakeRange(brange.location, eEnds - brange.location) scope:name dict:pairMatches];
-                
+            }
+            if ([syntaxItem objectForKey:@"contentName"]) {
+                contentNameMatches = [self addRange:NSMakeRange(bEnds, eEnds - bEnds) scope:name dict:contentNameMatches];
             }
             if (embedPatterns && contentRange.length < [_content length]) {
                 //recursively apply iterPatterns to embedded patterns inclusive of begin and end
@@ -330,18 +335,18 @@
             {
                 [self processPairRange:contentRange item:syntaxItem o:output];
                 
-                if (include)
-                {
-                    id includes = [self resolveInclude:include];
-                    //NSLog(@"recurring for include: %@ with %d %d name:%@",includes, contentRange.location, contentRange.length, name);
-                    if (contentRange.length < [_content length]) {
-                        [self iterPatternsForRange:contentRange patterns:includes output:output];
-                    }
-                
-                }
-
             }
-                                    
+            if (include)
+            {
+                id includes = [self resolveInclude:include];
+                //NSLog(@"recurring for include: %@ with %d %d name:%@",includes, contentRange.location, contentRange.length, name);
+                if (contentRange.length <= [_content length] && includes) {
+                    [self iterPatternsForRange:contentRange patterns:includes output:output];
+                }
+                
+            }
+
+            
         });
     });
     
@@ -385,6 +390,7 @@
     [self applyStylesTo:output withRanges:captureMatches];
     [self applyStylesTo:output withRanges:beginCMatches];
     [self applyStylesTo:output withRanges:endCMatches];
+    NSLog(@"%@",contentNameMatches);
    // [self logs];
     NSLog(@"Updating!");
     [self updateView];
