@@ -15,8 +15,5 @@
 #import "File.h"
 #import "TMBundleHeader.h"
 
-// Plugins
-#import "SyntaxHighlightingPlugin.h"
-
 @interface MainViewController : UISplitViewController <MainViewControllerDelegate, UISplitViewControllerDelegate>
 @end

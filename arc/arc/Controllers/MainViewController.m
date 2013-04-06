@@ -8,11 +8,19 @@
 
 #import "MainViewController.h"
 
+// Plugins
+#import "SyntaxHighlightingPlugin.h"
+#import "FontFamilyPlugin.h"
+#import "FontSizePlugin.h"
+
 @interface MainViewController ()
 @property CodeViewController *codeViewController;
 @property LeftViewController *leftViewController;
+@property NSArray *plugins;
 - (void)fileSelected:(id<File>)file;
 - (void)folderSelected:(id<Folder>)folder;
+- (void)registerPlugins;
+- (void)registerPlugin:(Class<PluginDelegate>)pluginClass;
 @end
 
 @implementation MainViewController
@@ -21,9 +29,25 @@
 {
     self = [super init];
     if (self) {
-
+        _plugins = [NSArray arrayWithObjects:
+                    [SyntaxHighlightingPlugin class],
+                    [FontFamilyPlugin class],
+                    [FontSizePlugin class],
+                    nil];
     }
     return self;
+}
+
+- (void)registerPlugins
+{
+    for (Class<PluginDelegate> plugin in _plugins) {
+        [self registerPlugin:plugin];
+    }
+}
+
+- (void)registerPlugin:(Class<PluginDelegate>)pluginClass
+{
+    // TODO.
 }
 
 - (void)viewDidLoad
