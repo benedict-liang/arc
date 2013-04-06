@@ -33,6 +33,9 @@
         [properties setValue:[NSArray arrayWithObjects:@"Inconsolata", @"Source Code Pro", "Ubuntu Monospace", nil] forKey:@"labels"];
         [properties setValue:[NSArray arrayWithObjects:@"Inconsolata", @"SourceCodePro-Regular", @"UbuntuMono-Regular", nil] forKey:@"values"];
         __propertyDictionaries = [NSArray arrayWithObject:properties];
+        
+        // Setup the default values.
+        __defaultValues = [NSArray arrayWithObject:@"SourceCodePro-Regular"];
     }
     return self;
 }
