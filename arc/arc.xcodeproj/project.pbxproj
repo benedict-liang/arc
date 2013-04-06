@@ -155,6 +155,7 @@
 		4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
 		4CD47745170FF8F70054738D /* CodeLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeLine.h; sourceTree = "<group>"; };
 		4CD47746170FF8F70054738D /* CodeLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeLine.m; sourceTree = "<group>"; };
+		4CD477491710146B0054738D /* PluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginDelegate.h; path = arc/Plugin/PluginDelegate.h; sourceTree = SOURCE_ROOT; };
 		4CF6F0ED1706E08800EDDEDC /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
 		4CF6F0F11706E29300EDDEDC /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
 		4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -507,6 +508,7 @@
 			isa = PBXGroup;
 			children = (
 				4CD47748171013A30054738D /* old */,
+				4CD477491710146B0054738D /* PluginDelegate.h */,
 			);
 			name = Plugins;
 			path = View/Middleware;
