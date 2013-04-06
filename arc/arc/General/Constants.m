@@ -28,6 +28,12 @@ NSString* const KEY_FONT_SIZE = @"fontSize";
 NSString* const KEY_LINE_NUMBERS = @"lineNumbers";
 NSString* const KEY_WORD_WRAP = @"wordWrap";
 
+// Plugin Dictionary Keys
+NSString* const PLUGIN_TITLE = @"title";
+NSString* const PLUGIN_TYPE = @"type";
+NSString* const PLUGIN_LABELS = @"labels";
+NSString* const PLUGIN_VALUES = @"values";
+
 // Default Folder Names
 NSString* const FOLDER_EXTERNAL_APPLICATIONS = @"External Applications";
 NSString* const FOLDER_ROOT = @"Documents";
