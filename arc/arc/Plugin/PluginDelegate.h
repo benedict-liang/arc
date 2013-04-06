@@ -26,7 +26,8 @@ typedef enum {
 // returns:
 // {
 //   type: kMCQSettingType,
-//   values: [A, B, C, D]
+//   labels: ["Inconsolata", "Source Code Pro", "Ubuntu Monospace"]
+//   values: ["Inconsolata", "SourceCodePro-Regular", "Ubuntu Mono Regular"]
 // }
 - (NSDictionary *)propertiesFor:(NSString *)settingKey;
 
