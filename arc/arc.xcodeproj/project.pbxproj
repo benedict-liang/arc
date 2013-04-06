@@ -165,6 +165,7 @@
 		4CE2951017101C53003B012A /* FontSizePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontSizePlugin.m; sourceTree = "<group>"; };
 		4CE2951217101C82003B012A /* FontFamilyPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontFamilyPlugin.h; sourceTree = "<group>"; };
 		4CE2951317101C82003B012A /* FontFamilyPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontFamilyPlugin.m; sourceTree = "<group>"; };
+		4CE2951517104A4C003B012A /* SettingsViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewDelegate.h; sourceTree = "<group>"; };
 		4CF6F0ED1706E08800EDDEDC /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
 		4CF6F0F11706E29300EDDEDC /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
 		4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -538,6 +539,7 @@
 				4CA4DE42170EA04400A86109 /* DetailViewControllerDelegate.h */,
 				FCE8F95D1709806B00C08724 /* CodeViewDelegate.h */,
 				4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */,
+				4CE2951517104A4C003B012A /* SettingsViewDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
