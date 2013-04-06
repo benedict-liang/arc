@@ -10,34 +10,19 @@
 
 @interface SettingsViewController ()
 @property NSMutableArray *options;
+@property NSMutableArray *plugins;
 @property UITableView *tableView;
 @end
 
 @implementation SettingsViewController
 @synthesize delegate;
-@synthesize tableView = _tableView;
-@synthesize options = _options;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        // tmp
         _options = [NSMutableArray array];
-        
-        NSMutableDictionary *group;
-        
-        // Fonts
-        NSDictionary *fontDictionary = [[ApplicationState sharedApplicationState] fonts];
-        group = [NSMutableDictionary dictionary];
-        [group setObject:@"Font" forKey:@"sectionName"];
-        [group setObject:@"mcq" forKey:@"type"];
-        [group setObject:KEY_FONT_FAMILY forKey:@"settingsKey"];
-        [group setObject:fontDictionary
-                  forKey:@"keyValuePairs"];
-        [_options addObject:group];
-
-        group = nil;
+        _plugins = [NSMutableArray array];
     }
     return self;
 }
@@ -61,9 +46,12 @@
     [self.view addSubview:_tableView];
 }
 
-- (void)showFolder:(id<Folder>)folder
+- (void)registerPlugin:(id<PluginDelegate>)plugin
 {
-    
+    // Only register a plugin once.
+    if ([_plugins indexOfObject:plugin] == NSNotFound) {
+        [_plugins addObject:plugin];
+    }
 }
 
 #pragma mark - Table view data source

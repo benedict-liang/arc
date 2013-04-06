@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PluginDelegate.h"
 
 @protocol SettingsViewDelegate <NSObject>
-
+- (void)registerPlugin:(id<PluginDelegate>)plugin;
 @end
