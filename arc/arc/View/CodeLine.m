@@ -20,7 +20,7 @@
     self = [super init];
     if (self) {
         self.layer.geometryFlipped = YES;
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor clearColor];
         _line = line;
     }
     return self;

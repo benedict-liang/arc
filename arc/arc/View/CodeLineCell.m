@@ -20,19 +20,22 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-
     }
     return self;
 }
 
 - (void)setLine:(CTLineRef)line
 {
+    for (UIView *view in self.contentView.subviews) {
+        [view removeFromSuperview];
+    }
+    
     _line = line;
     _codeLine = [[CodeLine alloc] initWithLine:_line];
     [self.contentView addSubview:_codeLine];
 
-    self.contentView.backgroundColor = [UIColor whiteColor];
-    self.backgroundColor = [UIColor whiteColor];
+    self.contentView.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor clearColor];
     _codeLine.frame = self.bounds;
 }
 
@@ -41,7 +44,7 @@
     if (highlighted) {
         _codeLine.backgroundColor = [UIColor blueColor];
     } else {
-        _codeLine.backgroundColor = [UIColor whiteColor];
+        _codeLine.backgroundColor = [UIColor clearColor];
     }
 }
 
