@@ -284,6 +284,8 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar*)searchBar {
     
+    // Hide keyboard after search button clicked
+    [searchBar resignFirstResponder];
 }
 
 @end
