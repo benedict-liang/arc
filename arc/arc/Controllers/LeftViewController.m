@@ -29,6 +29,9 @@
     if (self) {
         self.view.autoresizesSubviews = YES;
         self.view.clipsToBounds = YES;
+        
+        // tmp.
+        self.title = @"Documents";
     }
     return self;
 }
@@ -55,6 +58,64 @@
     // Show Documents By default
     [self showDocuments:nil];
 }
+
+# pragma mark - Methods to Switch Between Document and Settings View
+
+- (void)showSettings:(id)sender
+{
+    if (_settingsNavigationViewController.topViewController == nil) {
+        SettingsViewController *settingsTableViewController = [[SettingsViewController alloc] init];
+        settingsTableViewController.delegate = self.delegate;
+        
+        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Documents"
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:self
+                                                                  action:@selector(showDocuments:)];
+        
+        [settingsTableViewController
+            setToolbarItems:[NSArray arrayWithObjects:
+                             [Utils flexibleSpace],
+                             button,
+                             nil]
+            animated:YES];
+        [_settingsNavigationViewController pushViewController:settingsTableViewController
+                                           animated:YES];
+    }
+
+    [self transitionToViewController:_settingsNavigationViewController
+                         withOptions:UIViewAnimationOptionTransitionFlipFromLeft];
+}
+
+- (void)showDocuments:(id)sender
+{
+    [self transitionToViewController:_documentsNavigationViewController
+                         withOptions:UIViewAnimationOptionTransitionFlipFromRight];
+}
+
+- (void)transitionToViewController:(UINavigationController *)nextViewController
+                       withOptions:(UIViewAnimationOptions)options
+{
+    nextViewController.view.frame = self.view.bounds;
+    [UIView transitionWithView:self.view
+                      duration:0.65f
+                       options:options
+                    animations:^{
+                        [_currentViewController.view removeFromSuperview];
+                        [self.view addSubview:nextViewController.view];
+                    }
+                    completion:^(BOOL finished){
+                        _currentViewController = nextViewController;
+                    }];
+}
+
+# pragma mark - SettingsViewDelegate Methods
+
+- (void)registerPlugin:(id<PluginDelegate>)plugin
+{
+
+}
+
+# pragma mark - FileNavigatorViewController Delegate Methods
 
 - (void)navigateTo:(id<Folder>)folder
 {
@@ -95,7 +156,7 @@
         // push folder to navigate to.
         [self pushFolderView:folder];
     }
-
+    
     
     // Update current folder.
     _currentFolder = folder;
@@ -111,14 +172,14 @@
                                                   animated:animated];
     
     UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:@"Settings"
-                                                               style:UIBarButtonItemStyleBordered
-                                                              target:self
-                                                              action:@selector(showSettings:)];
+                                                                       style:UIBarButtonItemStyleBordered
+                                                                      target:self
+                                                                      action:@selector(showSettings:)];
     
     UIBarButtonItem *dropboxButton = [[UIBarButtonItem alloc] initWithTitle:@"Dropbox"
-                                                               style:UIBarButtonItemStyleBordered
-                                                              target:self
-                                                              action:@selector(showDropBox:)];
+                                                                      style:UIBarButtonItemStyleBordered
+                                                                     target:self
+                                                                     action:@selector(showDropBox:)];
 
     [folderViewController setToolbarItems:[NSArray arrayWithObjects:
                                            dropboxButton,
@@ -128,7 +189,6 @@
                                  animated:animated];
 }
 
-
 - (void)pushFolderView:(id<Folder>)folder
 {
     [self pushFolderView:folder animated:YES];
@@ -137,58 +197,6 @@
 - (void)showDropBox:(id)sender
 {
     [self.delegate dropboxAuthentication];
-}
-
-- (void)showSettings:(id)sender
-{
-    if (_settingsNavigationViewController.topViewController == nil) {
-        SettingsViewController *settingsTableViewController = [[SettingsViewController alloc] init];
-        settingsTableViewController.delegate = self.delegate;
-        
-        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Documents"
-                                                                   style:UIBarButtonItemStyleBordered
-                                                                  target:self
-                                                                  action:@selector(showDocuments:)];
-        
-        [settingsTableViewController
-            setToolbarItems:[NSArray arrayWithObjects:
-                             [Utils flexibleSpace],
-                             button,
-                             nil]
-            animated:YES];
-        [_settingsNavigationViewController pushViewController:settingsTableViewController
-                                           animated:YES];
-    }
-
-    [self transitionToViewController:_settingsNavigationViewController
-                         withOptions:UIViewAnimationOptionTransitionFlipFromLeft];
-}
-
-- (NSString*)title
-{
-    return @"Documents";
-}
-
-- (void)showDocuments:(id)sender
-{
-    [self transitionToViewController:_documentsNavigationViewController
-                         withOptions:UIViewAnimationOptionTransitionFlipFromRight];
-}
-
-- (void)transitionToViewController:(UINavigationController *)nextViewController
-                       withOptions:(UIViewAnimationOptions)options
-{
-    nextViewController.view.frame = self.view.bounds;
-    [UIView transitionWithView:self.view
-                      duration:0.65f
-                       options:options
-                    animations:^{
-                        [_currentViewController.view removeFromSuperview];
-                        [self.view addSubview:nextViewController.view];
-                    }
-                    completion:^(BOOL finished){
-                        _currentViewController = nextViewController;
-                    }];
 }
 
 @end

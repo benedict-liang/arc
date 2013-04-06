@@ -10,7 +10,9 @@
 #import "SubViewControllerDelegate.h"
 #import "MasterViewControllerDelegate.h"
 #import "FileNavigatorViewControllerDelegate.h"
+#import "SettingsViewDelegate.h"
 
 @interface LeftViewController : UIViewController<SubViewControllerDelegate,
-    MasterViewControllerDelegate, FileNavigatorViewControllerDelegate>
+    MasterViewControllerDelegate, FileNavigatorViewControllerDelegate,
+    SettingsViewDelegate>
 @end
