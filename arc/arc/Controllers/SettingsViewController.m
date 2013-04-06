@@ -33,6 +33,8 @@
     self.view.autoresizesSubviews = YES;
     self.title = @"Settings";
     
+    [self generateSections];
+    
     // Set Up TableView
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds
                                               style:UITableViewStyleGrouped];
@@ -42,9 +44,6 @@
     // Set TableView's Delegate and DataSource
     _tableView.dataSource = self;
     _tableView.delegate = self;
-    
-    [self generateSections];
-    NSLog(@"%@", _settingOptions);
     
     [self.view addSubview:_tableView];
 }
@@ -64,14 +63,14 @@
         for (NSString *setting in [plugin settingKeys]) {
             NSMutableDictionary *section = [NSMutableDictionary dictionary];
             
-            // Section Heading
-            [section setValue:setting forKey:@"sectionHeading"];
-            
             NSDictionary *properties = [plugin propertiesFor:setting];
             
-            // TODO.
-            // add util method to facilitate autoboxing of enums.
+            // Section Heading
+            [section setValue:[properties objectForKey:PLUGIN_TITLE]
+                       forKey:@"sectionHeading"];
 
+            // TODO.
+            // add utils method to make "casting"/comparing enums easier
             int type = [[properties objectForKey:PLUGIN_TYPE] intValue];
             [section setValue:[properties objectForKey:PLUGIN_TYPE]
                        forKey:@"sectionType"];
@@ -108,46 +107,105 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [[_settingOptions objectAtIndex:section] objectForKey:@"sectionHeading"];
+    NSDictionary *sectionProperties =
+        (NSDictionary*)[_settingOptions objectAtIndex:section];
+    
+    int type = [[sectionProperties objectForKey:@"sectionType"] intValue];
+    if (type == kMCQSettingType) {
+        return [sectionProperties objectForKey:@"sectionHeading"];
+    }
+
+    // Other types of settings are single row items.
+    // no section heading required.
+    return nil;
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    static NSString *cellIdentifier = @"SettingsCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    NSDictionary *sectionProperties =
+        (NSDictionary*)[_settingOptions objectAtIndex:indexPath.section];
 
+    int type = [[sectionProperties objectForKey:@"sectionType"] intValue];
+    if (type == kMCQSettingType) {
+        NSDictionary *option = [[sectionProperties
+                                 objectForKey:@"sectionOptions"]
+                                    objectAtIndex:indexPath.row];
+        return [self mCQCellFromTableView:tableView
+                           withProperties:option];
+    } else if (type == kRangeSettingType) {
+        return [self rangeCellFromTableView:tableView
+                             withProperties:sectionProperties];
+    } else if (type == kBoolSettingType) {
+        // TODO.
+        return nil;
+    }
+    
+    return nil;
+}
+
+- (UITableViewCell*)mCQCellFromTableView:(UITableView *)tableView
+                          withProperties:(NSDictionary*)properties
+{
+    static NSString *cellIdentifier = @"SettingsMCQCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:cellIdentifier];
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
     }
-    
-    NSDictionary *sectionProperties = [_settingOptions objectAtIndex:indexPath.section];
-    
-    // Types: Range, MCQ, Boolean
-    if ([[sectionProperties valueForKey:@"type"] isEqualToString:@"mcq"]) {
-        // Get the settings dictionary associated with this section.
-        NSDictionary *options = [sectionProperties objectForKey:@"keyValuePairs"];
-        NSArray *allKeys = [options allKeys];
-        NSArray *allValues = [options objectsForKeys:allKeys notFoundMarker:@"None"];
-        
-        // TODO: handle case where there are many options (e.g. >5)
-        // Get the key-value pair to associate with this row.
-        NSString *key = [allKeys objectAtIndex:indexPath.row];
-        NSString *value = [allValues objectAtIndex:indexPath.row];
-        
-        // Set the row properties.
-        NSString *currentSetting = [[ApplicationState sharedApplicationState] settingForKey:[sectionProperties valueForKey:@"settingsKey"]];
-        if ([value isEqualToString:currentSetting]) {
-            // Put a checkmark on the row if it's the one for the currently applied setting.
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
-        
-        cell.textLabel.text = key;
-    }
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.textLabel.text = [properties objectForKey:PLUGIN_LABEL];
     return cell;
 }
+
+- (UITableViewCell*)rangeCellFromTableView:(UITableView *)tableView
+                            withProperties:(NSDictionary*)properties
+{
+    static NSString *cellIdentifier = @"SettingsMCQCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:cellIdentifier];
+    }
+
+    cell.textLabel.text = [properties objectForKey:@"sectionHeading"];
+    return cell;
+}
+
+// = @"SettingsCell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+//
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+//                                      reuseIdentifier:cellIdentifier];
+//    } else {
+//        cell.accessoryType = UITableViewCellAccessoryNone;
+//    }
+//    
+//    NSDictionary *sectionProperties = [_settingOptions objectAtIndex:indexPath.section];
+//    
+//    // Types: Range, MCQ, Boolean
+//    if ([[sectionProperties valueForKey:@"type"] isEqualToString:@"mcq"]) {
+//        // Get the settings dictionary associated with this section.
+//        NSDictionary *options = [sectionProperties objectForKey:@"keyValuePairs"];
+//        NSArray *allKeys = [options allKeys];
+//        NSArray *allValues = [options objectsForKeys:allKeys notFoundMarker:@"None"];
+//        
+//        // TODO: handle case where there are many options (e.g. >5)
+//        // Get the key-value pair to associate with this row.
+//        NSString *key = [allKeys objectAtIndex:indexPath.row];
+//        NSString *value = [allValues objectAtIndex:indexPath.row];
+//        
+//        // Set the row properties.
+//        NSString *currentSetting = [[ApplicationState sharedApplicationState] settingForKey:[sectionProperties valueForKey:@"settingsKey"]];
+//        if ([value isEqualToString:currentSetting]) {
+//            // Put a checkmark on the row if it's the one for the currently applied setting.
+//            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//        }
+//        
+//        cell.textLabel.text = key;
+//    }
+//    return cell;
+//}
 
 #pragma mark - Table view delegate
 

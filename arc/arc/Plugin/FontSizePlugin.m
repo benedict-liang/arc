@@ -22,6 +22,7 @@
     self = [super init];
     if (self) {
         _fontSizeSettingsKey = @"fontSize";
+        _settingKeys = [NSArray arrayWithObject:_fontSizeSettingsKey];
         _defaultFontSize = 14;
         _properties = @{
                         PLUGIN_TITLE: @"Font Size",

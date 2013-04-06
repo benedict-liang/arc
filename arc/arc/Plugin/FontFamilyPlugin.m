@@ -26,7 +26,6 @@
     if (self = [super init]) {
         _fontFamilySettingKey = @"fontFamily";
         _defaultFontFamily = @"SourceCodePro-Regular";
-        
         _settingKeys = [NSArray arrayWithObject:_fontFamilySettingKey];
         
         // Setup the dictionary to be returned.
