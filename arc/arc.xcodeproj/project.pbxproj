@@ -17,6 +17,7 @@
 		02A5198D170DC0CE007C038E /* Inconsolata.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02A5198C170DC0CE007C038E /* Inconsolata.ttf */; };
 		02B04FCA1701672700FE51CB /* GameObject.h in Resources */ = {isa = PBXBuildFile; fileRef = 02B04FC91701608C00FE51CB /* GameObject.h */; };
 		02D2B73F17099E89002D22E7 /* RootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D2B73E17099E88002D22E7 /* RootFolder.m */; };
+		02D55DB51711694900DD48D7 /* PluginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D55DB41711694900DD48D7 /* PluginUtilities.m */; };
 		02E162CD170B02F400C9D23B /* appState.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02E162CC170B02F400C9D23B /* appState.plist */; };
 		02E51AE017092D4300247AF5 /* LocalFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51ADF17092D4300247AF5 /* LocalFolder.m */; };
 		02E51AE417093C8B00247AF5 /* LocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AE317093C8B00247AF5 /* LocalFile.m */; };
@@ -264,6 +265,8 @@
 		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
 		02D2B73D17099E88002D22E7 /* RootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootFolder.h; sourceTree = "<group>"; };
 		02D2B73E17099E88002D22E7 /* RootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootFolder.m; sourceTree = "<group>"; };
+		02D55DB31711694900DD48D7 /* PluginUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginUtilities.h; sourceTree = "<group>"; };
+		02D55DB41711694900DD48D7 /* PluginUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluginUtilities.m; sourceTree = "<group>"; };
 		02E162CC170B02F400C9D23B /* appState.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = appState.plist; sourceTree = "<group>"; };
 		02E51ADE17092D4300247AF5 /* LocalFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFolder.h; sourceTree = "<group>"; };
 		02E51ADF17092D4300247AF5 /* LocalFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFolder.m; sourceTree = "<group>"; };
@@ -708,6 +711,8 @@
 				4CE2951017101C53003B012A /* FontSizePlugin.m */,
 				4CE2951217101C82003B012A /* FontFamilyPlugin.h */,
 				4CE2951317101C82003B012A /* FontFamilyPlugin.m */,
+				02D55DB31711694900DD48D7 /* PluginUtilities.h */,
+				02D55DB41711694900DD48D7 /* PluginUtilities.m */,
 			);
 			name = Plugins;
 			path = Plugin;
@@ -1374,6 +1379,7 @@
 				4CE2951417101C82003B012A /* FontFamilyPlugin.m in Sources */,
 				8F84790D17102A14006893D6 /* FullTextSearch.m in Sources */,
 				4C8307EB17114CEF00F49C33 /* SettingCell.m in Sources */,
+				02D55DB51711694900DD48D7 /* PluginUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
