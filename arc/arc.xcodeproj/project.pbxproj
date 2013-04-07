@@ -235,6 +235,7 @@
 		FC72606F171114DA0068DD91 /* source.clojure.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC72606E171114DA0068DD91 /* source.clojure.plist */; };
 		FC726086171152910068DD91 /* Monokai.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC726084171152910068DD91 /* Monokai.tmTheme */; };
 		FC726087171152910068DD91 /* Solarized (light).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC726085171152910068DD91 /* Solarized (light).tmTheme */; };
+		FC7260921711B4D70068DD91 /* SyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7260911711B4D60068DD91 /* SyntaxHighlight.m */; };
 		FCB0548017034DE6007832D7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FCB0547F17034DE6007832D7 /* README.md */; };
 		FCFB4DA2170F466200B25FDC /* BundleConf.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCFB4DA1170F466200B25FDC /* BundleConf.plist */; };
 /* End PBXBuildFile section */
@@ -526,6 +527,8 @@
 		FC72606E171114DA0068DD91 /* source.clojure.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.clojure.plist; sourceTree = "<group>"; };
 		FC726084171152910068DD91 /* Monokai.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Monokai.tmTheme; sourceTree = "<group>"; };
 		FC726085171152910068DD91 /* Solarized (light).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Solarized (light).tmTheme"; sourceTree = "<group>"; };
+		FC7260901711B4D50068DD91 /* SyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlight.h; sourceTree = "<group>"; };
+		FC7260911711B4D60068DD91 /* SyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxHighlight.m; sourceTree = "<group>"; };
 		FCB0547F17034DE6007832D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		FCE8F95D1709806B00C08724 /* CodeViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeViewControllerDelegate.h; sourceTree = "<group>"; };
 		FCFB4DA1170F466200B25FDC /* BundleConf.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BundleConf.plist; sourceTree = "<group>"; };
@@ -705,6 +708,8 @@
 				4CE2951317101C82003B012A /* FontFamilyPlugin.m */,
 				02D55DB31711694900DD48D7 /* PluginUtilities.h */,
 				02D55DB41711694900DD48D7 /* PluginUtilities.m */,
+				FC7260901711B4D50068DD91 /* SyntaxHighlight.h */,
+				FC7260911711B4D60068DD91 /* SyntaxHighlight.m */,
 			);
 			name = Plugins;
 			path = Plugin;
@@ -1357,6 +1362,7 @@
 				8F84790D17102A14006893D6 /* FullTextSearch.m in Sources */,
 				4C8307EB17114CEF00F49C33 /* SettingCell.m in Sources */,
 				02D55DB51711694900DD48D7 /* PluginUtilities.m in Sources */,
+				FC7260921711B4D70068DD91 /* SyntaxHighlight.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
