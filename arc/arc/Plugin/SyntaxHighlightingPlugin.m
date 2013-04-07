@@ -371,9 +371,9 @@
             [pattern rangeOfString:@"\\A"].location != NSNotFound);
 }
 
-- (void)updateView {
+- (void)updateView:(ArcAttributedString*)output {
     if (self.delegate) {
-        [self.delegate mergeAndRenderWith:_finalOutput
+        [self.delegate mergeAndRenderWith:output
                                   forFile:self.currentFile
                                 WithStyle:[_theme objectForKey:@"global"]];
     }
@@ -399,6 +399,7 @@
 - (void)execOn:(ArcAttributedString *)output {
  
    // [self applyForeground:output];
+    _finalOutput = output;
     [self iterPatternsForRange:NSMakeRange(0, [_content length]) patterns:[_bundle objectForKey:@"patterns"] output:output];
     
 
@@ -412,7 +413,7 @@
     //NSLog(@"%@",pairMatches);
     //[self logs];
     //NSLog(@"Updating!");
-    [self updateView];
+    [self updateView:output];
 }
 - (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString ofFile:(id<File>)file forValues:(NSDictionary *)properties delegate:(id)delegate {
     
