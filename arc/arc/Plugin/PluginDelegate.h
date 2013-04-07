@@ -10,7 +10,7 @@
 #import "ArcAttributedString.h"
 #import "PluginUtilities.h"
 #import "File.h"
-@protocol CodeViewDelegate;
+@protocol CodeViewControllerDelegate;
 
 @protocol PluginDelegate <NSObject>
 // Returns an array of NSStrings corresponding to the
@@ -48,7 +48,7 @@
 
 // Last Resort
 @optional
-- (void)execOnCodeViewController:(id<CodeViewDelegate>)codeView
+- (void)execOnCodeViewController:(id<CodeViewControllerDelegate>)codeView
                           ofFile:(id<File>)file
                        forValues:(NSDictionary *)properties
                         delegate:(id)delegate;

@@ -106,28 +106,7 @@
 
 - (void)refreshForSetting:(NSString *)setting
 {
-    [self execPluginsForSetting:setting];
-    [self generateLines];
-    [self renderFile];
-}
-
-- (void)execPluginsForSetting:(NSString *)setting
-{
-    NSDictionary *settings;
-    for (id<PluginDelegate> plugin in _plugins) {
-        NSArray *settingKeys = [plugin settingKeys];
-        if (setting == nil || [settingKeys indexOfObject:setting] != NSNotFound) {
-            settings = [_appState settingsForKeys:settingKeys];
-            if ([plugin respondsToSelector:
-                 @selector(execOnArcAttributedString:ofFile:forValues:delegate:)])
-            {
-                [plugin execOnArcAttributedString:_arcAttributedString
-                                           ofFile:_currentFile
-                                        forValues:settings
-                                         delegate:self];
-            }
-        }
-    }
+    [self processFileForSetting:setting];
 }
 
 - (void)showFile:(id<File>)file
@@ -142,21 +121,27 @@
     [self updateToolbarTitle];
 
     [self loadFile];
-    [self processFile];
+    [self processFileForSetting:nil];
+}
+
+- (void)processFileForSetting:(NSString*)setting
+{
+    [self preRenderPluginsForSetting:setting];
     [self generateLines];
+    [self calcLineHeight];
     [self renderFile];
+    [self postRenderPluginsForSetting:setting];
+    [self finalPluginsForSetting:setting];
+
+    // Not sure where this should go for now.
+    [self finalPluginsForSetting:nil];
 }
 
 - (void)loadFile
 {
     _arcAttributedString =
-    [[ArcAttributedString alloc]
-     initWithString:(NSString *)[_currentFile contents]];
-}
-
-- (void)processFile
-{
-    [self execPluginsForSetting:nil];
+        [[ArcAttributedString alloc]
+            initWithString:(NSString *)[_currentFile contents]];
 }
 
 - (void)renderFile
@@ -203,8 +188,6 @@
         [_lines addObject:[NSValue valueWithRange:NSMakeRange(start, count)]];
         start += count;
     }
-    
-    [self calcLineHeight];
 }
 
 - (void)calcLineHeight
@@ -219,6 +202,66 @@
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
         _lineHeight = asscent + descent + leading;
         _tableView.rowHeight = ceil(_lineHeight);
+    }
+}
+
+#pragma mark - Execute Plugin Methods
+
+- (void)preRenderPluginsForSetting:(NSString *)setting
+{
+    NSDictionary *settings;
+    for (id<PluginDelegate> plugin in _plugins) {
+        NSArray *settingKeys = [plugin settingKeys];
+        if (setting == nil || [settingKeys indexOfObject:setting] != NSNotFound) {
+            settings = [_appState settingsForKeys:settingKeys];
+            if ([plugin respondsToSelector:
+                 @selector(execOnArcAttributedString:ofFile:forValues:delegate:)])
+            {
+                [plugin execOnArcAttributedString:_arcAttributedString
+                                           ofFile:_currentFile
+                                        forValues:settings
+                                         delegate:self];
+            }
+        }
+    }
+}
+
+
+- (void)postRenderPluginsForSetting:(NSString *)setting
+{
+    NSDictionary *settings;
+    for (id<PluginDelegate> plugin in _plugins) {
+        NSArray *settingKeys = [plugin settingKeys];
+        if (setting == nil || [settingKeys indexOfObject:setting] != NSNotFound) {
+            settings = [_appState settingsForKeys:settingKeys];
+            if ([plugin respondsToSelector:
+                 @selector(execOnTableView:ofFile:forValues:delegate:)])
+            {
+                [plugin execOnTableView:_tableView
+                                 ofFile:_currentFile
+                              forValues:settings
+                               delegate:self];
+            }
+        }
+    }
+}
+
+- (void)finalPluginsForSetting:(NSString *)setting
+{
+    NSDictionary *settings;
+    for (id<PluginDelegate> plugin in _plugins) {
+        NSArray *settingKeys = [plugin settingKeys];
+        if (setting == nil || [settingKeys indexOfObject:setting] != NSNotFound) {
+            settings = [_appState settingsForKeys:settingKeys];
+            if ([plugin respondsToSelector:
+                 @selector(execOnCodeViewController:ofFile:forValues:delegate:)])
+            {
+                [plugin execOnCodeViewController:self
+                                          ofFile:_currentFile
+                                       forValues:settings
+                                        delegate:self];
+            }
+        }
     }
 }
 
