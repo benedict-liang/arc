@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSMutableDictionary *sharedObject;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *toolbarTitle;
+@property (nonatomic, strong) UIBarButtonItem *portraitButton;
 @property (nonatomic, strong) UIBarButtonItem *searchButtonIcon;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UIPopoverController *resultsPopoverController;
@@ -317,6 +318,7 @@
                       [Utils flexibleSpace],
                       _searchButtonIcon,
                       nil];
+    _portraitButton = button;
 }
 
 - (void)hideShowMasterViewButton:(UIBarButtonItem *)button
