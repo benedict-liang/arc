@@ -96,6 +96,7 @@
     [self addFileToFileManager:fileManager name:@"README.md" docURL:documentsURL];
     [self addFileToFileManager:fileManager name:@"base.rb" docURL:documentsURL];
     [self addFileToFileManager:fileManager name:@"RequestBuilder.hs" docURL:documentsURL];
+    [self addFileToFileManager:fileManager name:@"filter_routes.clj" docURL:documentsURL];
     // End of temporary code.
     
     // Create the DropBox account manager.

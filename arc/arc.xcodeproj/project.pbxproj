@@ -229,6 +229,8 @@
 		FC72605A1710EAAF0068DD91 /* github.tmtheme in Resources */ = {isa = PBXBuildFile; fileRef = FC7260591710EAAF0068DD91 /* github.tmtheme */; };
 		FC726065171102660068DD91 /* base.rb in Resources */ = {isa = PBXBuildFile; fileRef = FC726064171102660068DD91 /* base.rb */; };
 		FC72606B171106C60068DD91 /* RequestBuilder.hs in Resources */ = {isa = PBXBuildFile; fileRef = FC72606A171106C60068DD91 /* RequestBuilder.hs */; };
+		FC72606D171113420068DD91 /* filter_routes.clj in Resources */ = {isa = PBXBuildFile; fileRef = FC72606C171113420068DD91 /* filter_routes.clj */; };
+		FC72606F171114DA0068DD91 /* source.clojure.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC72606E171114DA0068DD91 /* source.clojure.plist */; };
 		FCB0548017034DE6007832D7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FCB0547F17034DE6007832D7 /* README.md */; };
 		FCB0548417036010007832D7 /* SyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB0548317036010007832D7 /* SyntaxHighlight.m */; };
 		FCFB4DA2170F466200B25FDC /* BundleConf.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCFB4DA1170F466200B25FDC /* BundleConf.plist */; };
@@ -510,6 +512,8 @@
 		FC7260591710EAAF0068DD91 /* github.tmtheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = github.tmtheme; sourceTree = "<group>"; };
 		FC726064171102660068DD91 /* base.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = base.rb; sourceTree = "<group>"; };
 		FC72606A171106C60068DD91 /* RequestBuilder.hs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RequestBuilder.hs; sourceTree = "<group>"; };
+		FC72606C171113420068DD91 /* filter_routes.clj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = filter_routes.clj; sourceTree = "<group>"; };
+		FC72606E171114DA0068DD91 /* source.clojure.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.clojure.plist; sourceTree = "<group>"; };
 		FCB0547F17034DE6007832D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		FCB0548217036010007832D7 /* SyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlight.h; sourceTree = "<group>"; };
 		FCB0548317036010007832D7 /* SyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxHighlight.m; sourceTree = "<group>"; };
@@ -644,6 +648,7 @@
 		4C43F8F516F86AA900159B29 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FC72606C171113420068DD91 /* filter_routes.clj */,
 				FC72606A171106C60068DD91 /* RequestBuilder.hs */,
 				FC726064171102660068DD91 /* base.rb */,
 				FC4A8528170EB47200463EDA /* twist.py */,
@@ -794,6 +799,7 @@
 		8F563E53170160CD00EE5643 /* TextMateBundles */ = {
 			isa = PBXGroup;
 			children = (
+				FC72606E171114DA0068DD91 /* source.clojure.plist */,
 				FC7260591710EAAF0068DD91 /* github.tmtheme */,
 				8FC7BD3E170F435900D0FA3A /* syntaxesFileList.txt */,
 				8F1BC130170F1C0D00D1D049 /* text.xml.xsl.plist */,
@@ -1258,6 +1264,8 @@
 				FC72605A1710EAAF0068DD91 /* github.tmtheme in Resources */,
 				FC726065171102660068DD91 /* base.rb in Resources */,
 				FC72606B171106C60068DD91 /* RequestBuilder.hs in Resources */,
+				FC72606D171113420068DD91 /* filter_routes.clj in Resources */,
+				FC72606F171114DA0068DD91 /* source.clojure.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

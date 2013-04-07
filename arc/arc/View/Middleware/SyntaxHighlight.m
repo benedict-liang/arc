@@ -396,8 +396,8 @@
     [self applyStylesTo:output withRanges:beginCMatches];
     [self applyStylesTo:output withRanges:endCMatches];
     //NSLog(@"%@",pairMatches);
-   // [self logs];
-    NSLog(@"Updating!");
+    //[self logs];
+    //NSLog(@"Updating!");
     [self updateView];
     
 }
