@@ -110,13 +110,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSDictionary *sectionProperties = (NSDictionary*)[_settingOptions objectAtIndex:section];
-    int type = [[sectionProperties objectForKey:SECTION_TYPE] intValue];
+    kSettingType type = [PluginUtilities settingTypeForNumber:[sectionProperties objectForKey:SECTION_TYPE]];
     
-    if (type == kMCQSettingType) {
-        return [[sectionProperties objectForKey:SECTION_OPTIONS] count];
-    } else {
-        // Bool and range types have only one row.
-        return 1;
+    switch (type) {
+        case kMCQSettingType:
+            return [[sectionProperties objectForKey:SECTION_OPTIONS] count];
+        default:
+            // Other types have only one row.
+            return 1;
     }
 }
 
@@ -125,14 +126,14 @@
     NSDictionary *sectionProperties =
     (NSDictionary*)[_settingOptions objectAtIndex:section];
     
-    int type = [[sectionProperties objectForKey:SECTION_TYPE] intValue];
-    if (type == kMCQSettingType) {
-        return [sectionProperties objectForKey:SECTION_HEADING];
+    kSettingType type = [PluginUtilities settingTypeForNumber:[sectionProperties objectForKey:SECTION_TYPE]];
+    switch (type) {
+        case kMCQSettingType:
+            return [sectionProperties objectForKey:SECTION_HEADING];
+        default:
+            // Other types have no section heading.
+            return nil;
     }
-    
-    // Other types of settings are single row items.
-    // no section heading required.
-    return nil;
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -140,20 +141,20 @@
     NSDictionary *sectionProperties =
     (NSDictionary*)[_settingOptions objectAtIndex:indexPath.section];
     
-    int type = [[sectionProperties objectForKey:SECTION_TYPE] intValue];
-    if (type == kMCQSettingType) {
-        return [self mCQCellFromTableView:tableView
-                           withProperties:sectionProperties
-                    cellForRowAtIndexPath:indexPath];
-    } else if (type == kRangeSettingType) {
-        return [self rangeCellFromTableView:tableView
-                             withProperties:sectionProperties];
-    } else if (type == kBoolSettingType) {
-        // TODO.
-        return nil;
+    kSettingType type = [PluginUtilities settingTypeForNumber:[sectionProperties objectForKey:SECTION_TYPE]];
+    switch (type) {
+        case kMCQSettingType:
+            return [self mCQCellFromTableView:tableView
+                               withProperties:sectionProperties
+                        cellForRowAtIndexPath:indexPath];
+        case kRangeSettingType:
+            return [self rangeCellFromTableView:tableView
+                                 withProperties:sectionProperties];
+        case kBoolSettingType:
+            // TODO.
+        default:
+            return nil;
     }
-    
-    return nil;
 }
 
 - (UITableViewCell*)mCQCellFromTableView:(UITableView *)tableView
@@ -172,7 +173,7 @@
     }
     
     // Plugin values need to be comparable somehow
-    // easiers is to make them all strings.
+    // easiest option is to make them all strings.
     NSString *value = [option objectForKey:PLUGIN_VALUE];
     NSString *settingKey = [properties objectForKey:SECTION_SETTING_KEY];
     if ([[_appState settingForKey:settingKey] isEqualToString:value]) {
