@@ -66,10 +66,14 @@
                                                      style:UIBarButtonItemStylePlain
                                                     target:nil
                                                     action:nil];
+    UIBarButtonItem *searchButtonIcon = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
+                                                                                  target:self
+                                                                                  action:@selector(showSearchBar:)];
     _toolbar.items = [NSArray arrayWithObjects:
                        [Utils flexibleSpace],
                        _toolbarTitle,
                        [Utils flexibleSpace],
+                      searchButtonIcon,
                        nil];
 
     [self.view addSubview:_toolbar];
