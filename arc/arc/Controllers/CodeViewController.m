@@ -261,6 +261,11 @@
                                                                                  target:self
                                                                                  action:@selector(hideSearchToolBar)];
     [_toolbar setItems:[NSArray arrayWithObjects:[Utils flexibleSpace], searchBarItem, doneBarItem, nil] animated:YES];
+    
+    // Initialize results tableview controller
+    _resultsViewController = [[ResultsTableViewController alloc] init];
+    _resultsPopoverController = [[UIPopoverController alloc] initWithContentViewController:_resultsViewController];
+    _resultsPopoverController.passthroughViews = [NSArray arrayWithObject:_searchBar];
 }
 
 - (void)hideSearchToolBar {
