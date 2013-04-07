@@ -24,4 +24,18 @@ NSString* const SECTION_SETTING_KEY = @"sectionSettingKey";
 NSString* const SECTION_HEADING = @"sectionHeading";
 NSString* const SECTION_TYPE = @"sectionType";
 NSString* const SECTION_OPTIONS = @"sectionOptions";
+
+// Casts a kSettingType into an NSNumber, suitable for
+// saving into a dictionary.
++ (NSNumber *)numberForSettingType:(kSettingType)enumValue
+{
+    return [NSNumber numberWithInt:enumValue];
+}
+
+// Takes an NSNumber and turns it back into a kSettingType.
++ (kSettingType)settingTypeForNumber:(NSNumber *)number
+{
+    return [number intValue];
+}
+
 @end

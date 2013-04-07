@@ -31,4 +31,11 @@ extern NSString* const SECTION_HEADING;
 extern NSString* const SECTION_TYPE;
 extern NSString* const SECTION_OPTIONS;
 
+// Casts a kSettingType into an NSNumber, suitable for
+// saving into a dictionary.
++ (NSNumber *)numberForSettingType:(kSettingType)enumValue;
+
+// Takes an NSNumber and turns it back into a kSettingType.
++ (kSettingType)settingTypeForNumber:(NSNumber *)number;
+
 @end
