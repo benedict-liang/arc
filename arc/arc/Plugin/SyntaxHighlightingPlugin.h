@@ -14,7 +14,7 @@
 #import "File.h"
 #import "SyntaxHighlight.h"
 
-// a SyntaxHighlight factory of sorts
+// a SyntaxHighlight factory of sorts. creates immutable SyntaxHighlight objects when called by protocol, which operate on their own threads.
 
 @interface SyntaxHighlightingPlugin : NSObject<PluginDelegate> {
  

@@ -12,6 +12,7 @@
 #import "CodeViewControllerDelegate.h"
 #import "File.h"
 
+//Immutable class. Holds thread local state
 
 @interface SyntaxHighlight : NSObject {
     __block NSDictionary *nameMatches;
