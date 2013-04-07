@@ -389,6 +389,15 @@
     
     // Hide keyboard after search button clicked
     [searchBar resignFirstResponder];
+    
+    // Show results
+    _resultsViewController.resultsArray = searchResultRanges;
+    [_resultsViewController reloadInputViews];
+    [_resultsPopoverController presentPopoverFromRect:[_searchBar bounds]
+                                              inView:_searchBar
+                            permittedArrowDirections:UIPopoverArrowDirectionAny
+                                            animated:YES];
+    
 }
 
 @end
