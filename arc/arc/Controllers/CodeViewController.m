@@ -153,7 +153,7 @@
     _lines = [NSMutableArray array];
     
     CFAttributedStringRef ref =
-    (CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.attributedString);
+    (CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.plainAttributedString);
     _frameSetter = CTFramesetterCreateWithAttributedString(ref);
     
     // Work out the geometry
@@ -177,10 +177,10 @@
     CGFloat asscent, descent, leading;
     if ([_lines count] > 0) {
         CTLineRef line = CTLineCreateWithAttributedString(
-                                                          (__bridge CFAttributedStringRef)(
-                                                                                           [_arcAttributedString.attributedString attributedSubstringFromRange:
-                                                                                            [[_lines objectAtIndex:0] rangeValue]]));
-        
+            (__bridge CFAttributedStringRef)(
+                [_arcAttributedString.attributedString attributedSubstringFromRange:
+                    [[_lines objectAtIndex:0] rangeValue]]));
+
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
         _lineHeight = asscent + descent + leading;
         _tableView.rowHeight = ceil(_lineHeight);

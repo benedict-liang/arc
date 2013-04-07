@@ -10,17 +10,29 @@
 
 @interface ArcAttributedString : NSObject
 @property (nonatomic, readonly) NSString *string;
+@property (nonatomic, readonly) NSRange stringRange;
 @property (nonatomic, readonly) NSAttributedString *attributedString;
 @property (nonatomic, readonly) NSAttributedString *plainAttributedString;
-- (id)initWithString:(NSString*)string;
+@property (nonatomic, readonly) NSDictionary *attributesDictionary;
+@property (nonatomic, readonly) NSDictionary *appliedAttributesDictionary;
 
-// to change
+// Constructors
+- (id)initWithString:(NSString*)string;
 - (id)initWithArcAttributedString:(ArcAttributedString*)arcAttributedString;
 
-// Properties
+//
+// Attributed String Mutators
+//
+
+// Font{Size, Family}
 - (void)setFontSize:(int)fontSize;
 - (void)setFontFamily:(NSString*)fontFamily;
+
+// Color
 - (void)setColor:(CGColorRef)color
          OnRange:(NSRange)range
       ForSetting:(NSString*)settingKey;
+
+// Remove Attributes based on settings Key
+- (void)removeAttributesForSettingKey:(NSString*)settingKey;
 @end

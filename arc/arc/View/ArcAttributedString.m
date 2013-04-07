@@ -13,10 +13,9 @@
 
 @interface ArcAttributedString ()
 @property (nonatomic, strong) NSMutableAttributedString *_attributedString;
-@property (nonatomic, strong) NSMutableAttributedString *cachedattributedString;
-@property (nonatomic, strong) NSMutableDictionary *attributesDictionary;
-@property (nonatomic, strong) NSString *string;
-@property (nonatomic) NSRange stringRange;
+@property (nonatomic, strong) NSMutableAttributedString *_plainAttributedString;
+@property (nonatomic, strong) NSMutableDictionary *_attributesDictionary;
+@property (nonatomic, strong) NSMutableDictionary *_appliedAttributesDictionary;
 
 // Font
 @property (nonatomic, strong) NSString *fontFamily;
@@ -25,6 +24,8 @@
 @end
 
 @implementation ArcAttributedString
+@synthesize string = _string;
+@synthesize stringRange = _stringRange;
 
 - (id)initWithString:(NSString*)string
 {
@@ -32,14 +33,15 @@
     if (self) {
         _string = string;
         _stringRange = NSMakeRange(0, _string.length);
-        
         __attributedString = [[NSMutableAttributedString alloc]
                               initWithString:_string];
         
-        // Used to store (buffer attributes)
-        _attributesDictionary = [NSMutableDictionary dictionary];
+        __plainAttributedString = [[NSMutableAttributedString alloc]
+                                  initWithString:_string];
         
-        _cachedattributedString = nil;
+        // Used to store(buffer) attributes
+        __attributesDictionary = [NSMutableDictionary dictionary];
+        __appliedAttributesDictionary = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -55,81 +57,107 @@
         __attributedString = [[NSMutableAttributedString alloc]
                               initWithAttributedString:[arcAttributedString attributedString]];
         
-        // Used to store (buffer attributes)
-        _attributesDictionary = [NSMutableDictionary dictionary];
+        __plainAttributedString = [[NSMutableAttributedString alloc]
+                                   initWithAttributedString:[arcAttributedString plainAttributedString]];
         
-        _cachedattributedString = nil;
+        // Used to store (buffer attributes)
+        __attributesDictionary = [NSMutableDictionary dictionaryWithDictionary:
+                                 [arcAttributedString attributesDictionary]];
+        __appliedAttributesDictionary = [NSMutableDictionary dictionaryWithDictionary:
+                                        [arcAttributedString appliedAttributesDictionary]];
     }
     return self;
 }
 
 - (void)removeAttributesForSettingKey:(NSString*)settingKey
 {
-    for (NSDictionary *attribute in [_attributesDictionary objectForKey:settingKey]) {
+    for (NSDictionary *attribute in [__appliedAttributesDictionary objectForKey:settingKey]) {
         [__attributedString removeAttribute:[attribute objectForKey:@"type"]
                                       range:NSRangeFromString([attribute objectForKey:@"range"])];
     }
+    
+    // remove object from dictionary
+    [__appliedAttributesDictionary removeObjectForKey:settingKey];
 }
 
 - (NSAttributedString*)attributedString
-{
-    if (_cachedattributedString != nil) {
-        return _cachedattributedString;
-    }
-    
-    _cachedattributedString =
-        [[NSMutableAttributedString alloc] initWithAttributedString:__attributedString];
-    
-    for (NSString* propertyAttributes in _attributesDictionary) {
-        for (NSDictionary* attribute in [_attributesDictionary objectForKey:propertyAttributes]) {
-            [_cachedattributedString addAttribute:[attribute objectForKey:@"type"]
+{    
+    for (NSString* property in __attributesDictionary) {
+        for (NSDictionary* attribute in [__attributesDictionary objectForKey:property]) {
+            NSLog(@"%@", attribute);
+            [__attributedString addAttribute:[attribute objectForKey:@"type"]
                                        value:[attribute objectForKey:@"value"]
                                        range:NSRangeFromString([attribute objectForKey:@"range"])];
         }
+        
+        // Move attributes to appliedAttributes dictionary
+        [[self settingsAppliedAttributeForSettingsKey:property]
+            addObjectsFromArray:[self settingsAttributeForSettingsKey:property]];
+        [__attributesDictionary removeObjectForKey:property];
     }
 
-    return _cachedattributedString;
+    return __attributedString;
 }
 
 - (NSAttributedString*)plainAttributedString
 {
     return [[NSAttributedString alloc]
-            initWithAttributedString:__attributedString];
+            initWithAttributedString:__plainAttributedString];
 }
 
-# pragma mark - Color Methods
+# pragma mark - getters
+
+- (NSDictionary*)attributesDictionary
+{
+    return [NSDictionary dictionaryWithDictionary:__attributesDictionary];
+}
+
+
+- (NSDictionary*)appliedAttributesDictionary
+{
+    return [NSDictionary dictionaryWithDictionary:__appliedAttributesDictionary];
+}
+
+# pragma mark - AttributedString Mutator Methods
 
 - (void)setColor:(CGColorRef)color
          OnRange:(NSRange)range
       ForSetting:(NSString*)settingKey
 {    
-    NSMutableArray *settingAttributes = [_attributesDictionary objectForKey:settingKey];
-    
-    if (settingAttributes == nil) {
-        settingAttributes = [NSMutableArray array];
-    }
+    NSMutableArray *settingAttributes =
+        [self settingsAttributeForSettingsKey:settingKey];
 
     [settingAttributes addObject:[NSDictionary dictionaryWithObjectsAndKeys:
                                   (__bridge id)color, @"value",
                                   (id)kCTForegroundColorAttributeName, @"type",
                                   NSStringFromRange(range), @"range",
                                   nil]];
-    
-    [_attributesDictionary setValue:settingAttributes forKey:settingKey];
 }
 
 # pragma mark - Namespaced Attributes
 
 - (NSMutableArray*)settingsAttributeForSettingsKey:(NSString*)settingKey
 {
-    NSMutableArray *settingAttributes = [_attributesDictionary objectForKey:settingKey];
+    NSMutableArray *settingAttributes = [__attributesDictionary objectForKey:settingKey];
 
     if (settingAttributes == nil) {
         settingAttributes = [NSMutableArray array];
-        [_attributesDictionary setValue:settingAttributes forKey:settingKey];
+        [__attributesDictionary setValue:settingAttributes forKey:settingKey];
     }
 
     return settingAttributes;
+}
+
+- (NSMutableArray*)settingsAppliedAttributeForSettingsKey:(NSString*)settingKey
+{
+    NSMutableArray *settingAppliedAttributes = [__appliedAttributesDictionary objectForKey:settingKey];
+    
+    if (settingAppliedAttributes == nil) {
+        settingAppliedAttributes = [NSMutableArray array];
+        [__appliedAttributesDictionary setValue:settingAppliedAttributes forKey:settingKey];
+    }
+    
+    return settingAppliedAttributes;
 }
 
 # pragma mark - FontSize/Family Methods
@@ -153,9 +181,16 @@
     [__attributedString removeAttribute:(id)kCTFontAttributeName
                                   range:_stringRange];
     
+    [__plainAttributedString removeAttribute:(id)kCTFontAttributeName
+                                  range:_stringRange];
+    
     // update font to new property
     CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)_fontFamily, _fontSize, NULL);
     [__attributedString addAttribute:(id)kCTFontAttributeName
+                               value:(__bridge id)font
+                               range:_stringRange];
+
+    [__plainAttributedString addAttribute:(id)kCTFontAttributeName
                                value:(__bridge id)font
                                range:_stringRange];
 }
