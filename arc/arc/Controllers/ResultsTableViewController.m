@@ -14,15 +14,6 @@
 
 @implementation ResultsTableViewController
 
-- (id)initWithResultsArray:(NSArray*)resultsArray {
-    self = [super init];
-    
-    if (self) {
-        _resultsArray = resultsArray;
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
