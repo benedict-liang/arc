@@ -19,11 +19,14 @@
     __block NSDictionary *beginCMatches;
     __block NSDictionary *endCMatches;
     __block NSDictionary *pairMatches;
+    __block NSDictionary *contentNameMatches;
+    __block NSDictionary *overlapMatches;
 }
 @property NSDictionary* theme;
 @property (readonly) id<CodeViewDelegate> delegate;
 @property (readonly) id<File> currentFile;
 @property (readonly) NSString* content;
 @property (readonly) NSDictionary* bundle;
+@property NSArray* overlays;
 @property ArcAttributedString* finalOutput;
 @end
