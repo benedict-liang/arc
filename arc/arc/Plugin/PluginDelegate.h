@@ -52,4 +52,10 @@
                           ofFile:(id<File>)file
                        forValues:(NSDictionary *)properties
                         delegate:(id)delegate;
+
+// Optional method used to allow the plugin
+// to customise its Settings Pane cells.
+@optional
+- (void)customiseTableViewCell:(UITableViewCell **)cell options:(NSDictionary *)options;
+
 @end
