@@ -24,7 +24,6 @@
 @property CGFloat lineHeight;
 @property NSMutableArray *lines;
 @property NSMutableArray *plugins;
-@property BOOL isLoaded;
 
 - (void)loadFile;
 - (void)processFile;
@@ -42,7 +41,6 @@
 {
     self = [super init];
     if (self) {
-        _isLoaded = NO;
         _lines = [NSMutableArray array];
         _plugins = [NSMutableArray array];
         _appState = [ApplicationState sharedApplicationState];
@@ -94,7 +92,6 @@
     [self addSearchBarToTableViewTop];
     
     [self.view addSubview:_tableView];
-    _isLoaded = YES;
 }
 
 - (void)addSearchBarToTableViewTop
@@ -242,7 +239,6 @@
                 WithStyle:(NSDictionary *)style
 {
     // Temporary solution to resolve asyn mutation of background color
-    while (!_isLoaded);
     if ([file isEqual:_currentFile]) {
         _arcAttributedString = arcAttributedString;
         [self setStyle:style];
