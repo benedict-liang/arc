@@ -7,20 +7,17 @@
 //
 #import <CoreText/CoreText.h>
 #import "CodeViewController.h"
-#import "CodeViewMiddleware.h"
 #import "CodeLineCell.h"
+#import "ApplicationState.h"
 #import "ArcAttributedString.h"
 #import "FullTextSearch.h"
-
-// Middleware
-#import "BasicStyles.h"
-#import "SyntaxHighlight.h"
 
 @interface CodeViewController ()
 @property id<File> currentFile;
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) ApplicationState *state;
+@property (nonatomic, strong) ApplicationState *appState;
 @property (nonatomic, strong) ArcAttributedString *arcAttributedString;
+@property (nonatomic, strong) NSAttributedString *attributedString;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *toolbarTitle;
 @property (nonatomic, strong) UISearchBar *searchBar;
@@ -46,7 +43,7 @@
     if (self) {
         _lines = [NSMutableArray array];
         _plugins = [NSMutableArray array];
-        _state = [ApplicationState sharedApplicationState];
+        _appState = [ApplicationState sharedApplicationState];
         
         // Defaults
         _backgroundColor = [Utils colorWithHexString:@"FDF6E3"];
@@ -110,9 +107,30 @@
 
 - (void)refreshForSetting:(NSString *)setting
 {
-    id<File> tmp = _currentFile;
-    _currentFile = nil;
-    [self showFile:tmp];
+    [self execPluginsForSetting:setting];
+    [self generateLines];
+    [self renderFile];
+}
+
+- (void)execPluginsForSetting:(NSString *)setting
+{
+    NSDictionary *settings;
+    for (id<PluginDelegate> plugin in _plugins) {
+        NSArray *settingKeys = [plugin settingKeys];
+        if (setting == nil || [settingKeys indexOfObject:setting] != NSNotFound) {
+            settings = [_appState settingsForKeys:settingKeys];
+            if ([plugin respondsToSelector:
+                 @selector(execOnArcAttributedString:ofFile:forValues:delegate:)])
+            {
+                [plugin execOnArcAttributedString:_arcAttributedString
+                                           ofFile:_currentFile
+                                        forValues:settings
+                                         delegate:self];
+            }
+        }
+    }
+    
+    _attributedString = [_arcAttributedString attributedString];
 }
 
 - (void)showFile:(id<File>)file
@@ -135,24 +153,14 @@
 
 - (void)loadFile
 {
-    _arcAttributedString = [[ArcAttributedString alloc]
-                            initWithString:(NSString *)[_currentFile contents]];
+    _arcAttributedString =
+    [[ArcAttributedString alloc]
+     initWithString:(NSString *)[_currentFile contents]];
 }
 
 - (void)processFile
 {
-    NSDictionary *settings;
-    for (id<PluginDelegate> plugin in _plugins) {
-        settings = [_state settingsForKeys:[plugin settingKeys]];
-        if ([plugin respondsToSelector:
-             @selector(execOnArcAttributedString:ofFile:forValues:delegate:)])
-        {
-            [plugin execOnArcAttributedString:_arcAttributedString
-                                       ofFile:_currentFile
-                                    forValues:settings
-                                     delegate:self];
-        }
-    }
+    [self execPluginsForSetting:nil];
 }
 
 - (void)renderFile
@@ -181,7 +189,8 @@
     [self clearPreviousLayoutInformation];
     _lines = [NSMutableArray array];
     
-    CFAttributedStringRef ref = (CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.attributedString);
+    CFAttributedStringRef ref =
+        (CFAttributedStringRef)CFBridgingRetain(_attributedString);
     _frameSetter = CTFramesetterCreateWithAttributedString(ref);
     
     // Work out the geometry
@@ -208,7 +217,7 @@
     if ([_lines count] > 0) {
         CTLineRef line = CTLineCreateWithAttributedString(
               (__bridge CFAttributedStringRef)(
-                  [_arcAttributedString.attributedString attributedSubstringFromRange:
+                  [_attributedString attributedSubstringFromRange:
                       [[_lines objectAtIndex:0] rangeValue]]));
 
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
@@ -234,6 +243,7 @@
 {
     if ([file isEqual:_currentFile]) {
         _arcAttributedString = arcAttributedString;
+        _attributedString = _arcAttributedString.attributedString;
         [self setStyle:style];
         [_tableView reloadData];
     }
@@ -294,7 +304,7 @@
 
     CTLineRef lineRef = CTLineCreateWithAttributedString(
             (__bridge CFAttributedStringRef)(
-                [_arcAttributedString.attributedString attributedSubstringFromRange:
+                [_attributedString attributedSubstringFromRange:
                 [[_lines objectAtIndex:lineNumber] rangeValue]]));
 
     cell.line = lineRef;

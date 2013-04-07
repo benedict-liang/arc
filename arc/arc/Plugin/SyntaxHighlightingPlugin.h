@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "PluginDelegate.h"
-#import "CodeViewMiddleware.h"
 #import "ArcAttributedString.h"
 #import "TMBundleHeader.h"
 #import "CodeViewDelegate.h"

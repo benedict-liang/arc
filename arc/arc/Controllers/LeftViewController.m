@@ -62,8 +62,7 @@
     [self bootstrapSettingsView];
 
     // Show Documents By default
-//    [self showDocuments:nil];
-    [self showSettings:nil];
+    [self showDocuments:nil];
 }
 
 - (void)bootstrapSettingsView

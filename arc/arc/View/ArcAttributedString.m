@@ -13,74 +13,117 @@
 
 @interface ArcAttributedString ()
 @property (nonatomic, strong) NSMutableAttributedString *_attributedString;
-@property (nonatomic, strong) NSAttributedString *cachedAttributedString;
-@property (nonatomic, strong) NSMutableArray *attributes;
+@property (nonatomic, strong) NSMutableDictionary *attributesDictionary;
 @property (nonatomic, strong) NSString *string;
-@property (nonatomic, strong) NSString *fontFamily;
 @property (nonatomic) NSRange stringRange;
-@property (nonatomic)  int fontSize;
+
+// Font
+@property (nonatomic, strong) NSString *fontFamily;
+@property (nonatomic) int fontSize;
 - (void)updateFontProperties;
 @end
 
 @implementation ArcAttributedString
-@synthesize _attributedString = __attributedString;
-@synthesize cachedAttributedString = _cachedAttributedString;
-@synthesize attributes = _attributes;
-@synthesize stringRange = _stringRange;
-@synthesize fontFamily = _fontFamily;
-@synthesize fontSize = _fontSize;
 
 - (id)initWithString:(NSString*)string
 {
     self = [super init];
     if (self) {
-        // Get the font family and size from app state.
-        ApplicationState *appState = [ApplicationState sharedApplicationState];
+        _string = string;
+        _stringRange = NSMakeRange(0, _string.length);
         
-        _fontFamily = [appState settingForKey:KEY_FONT_FAMILY];
-        _fontSize = [appState settingForKey:KEY_FONT_SIZE];
-        [self setString:string];
-        _attributes = [NSMutableArray array];
         __attributedString = [[NSMutableAttributedString alloc]
                               initWithString:_string];
-        _cachedAttributedString = nil;
+        
+        // Used to store (buffer attributes)
+        _attributesDictionary = [NSMutableDictionary dictionary];
     }
     return self;
 }
-- (id)initWithArcAttributedString:(ArcAttributedString *)aas
+
+- (id)initWithArcAttributedString:(ArcAttributedString *)arcAttributedString
 {
     self = [super init];
     if (self) {
-        _fontFamily = [aas fontFamily];
-        _fontSize = [aas fontSize];
-        _attributes = [NSMutableArray array];
-        __attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:[aas attributedString]];
-        _cachedAttributedString = nil;
+        _string = [arcAttributedString string];
+        _stringRange = NSMakeRange(0, _string.length);
+        _fontFamily = [arcAttributedString fontFamily];
+        _fontSize = [arcAttributedString fontSize];
+        __attributedString = [[NSMutableAttributedString alloc]
+                              initWithAttributedString:[arcAttributedString attributedString]];
+        
+        // Used to store (buffer attributes)
+        _attributesDictionary = [NSMutableDictionary dictionary];
     }
     return self;
 }
 
-- (void)setString:(NSString *)string
+- (void)removeAttributesForSettingKey:(NSString*)settingKey
 {
-    _string = string;
-    _stringRange = NSMakeRange(0, _string.length);
+    for (NSDictionary *attribute in [_attributesDictionary objectForKey:settingKey]) {
+        [__attributedString removeAttribute:[attribute objectForKey:@"type"]
+                                      range:NSRangeFromString([attribute objectForKey:@"range"])];
+    }
 }
+
+- (NSAttributedString*)attributedString
+{
+    NSMutableAttributedString *copy =
+        [[NSMutableAttributedString alloc] initWithAttributedString:__attributedString];
+    
+    for (NSString* propertyAttributes in _attributesDictionary) {
+        for (NSDictionary* attribute in [_attributesDictionary objectForKey:propertyAttributes]) {
+            [copy addAttribute:[attribute objectForKey:@"type"]
+                                       value:[attribute objectForKey:@"value"]
+                                       range:NSRangeFromString([attribute objectForKey:@"range"])];
+        }
+    }
+    
+    return copy;
+}
+
+- (NSAttributedString*)plainAttributedString
+{
+    return [[NSAttributedString alloc]
+            initWithAttributedString:__attributedString];
+}
+
+# pragma mark - Color Methods
 
 - (void)setColor:(CGColorRef)color
-{
-    [__attributedString addAttribute:(id)kCTForegroundColorAttributeName
-                               value:(__bridge id)color
-                               range:_stringRange];
+         OnRange:(NSRange)range
+      ForSetting:(NSString*)settingKey
+{    
+    NSMutableArray *settingAttributes = [_attributesDictionary objectForKey:settingKey];
+    
+    if (settingAttributes == nil) {
+        settingAttributes = [NSMutableArray array];
+    }
+
+    [settingAttributes addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                                  (__bridge id)color, @"value",
+                                  (id)kCTForegroundColorAttributeName, @"type",
+                                  NSStringFromRange(range), @"range",
+                                  nil]];
+    
+    [_attributesDictionary setValue:settingAttributes forKey:settingKey];
 }
 
-- (void)setColor:(CGColorRef)color OnRange:(NSRange)range
+# pragma mark - Namespaced Attributes
+
+- (NSMutableArray*)settingsAttributeForSettingsKey:(NSString*)settingKey
 {
-    [_attributes addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-                           (__bridge id)color, @"value",
-                           (id)kCTForegroundColorAttributeName, @"type",
-                           NSStringFromRange(range), @"range",
-                           nil]];
+    NSMutableArray *settingAttributes = [_attributesDictionary objectForKey:settingKey];
+
+    if (settingAttributes == nil) {
+        settingAttributes = [NSMutableArray array];
+        [_attributesDictionary setValue:settingAttributes forKey:settingKey];
+    }
+
+    return settingAttributes;
 }
+
+# pragma mark - FontSize/Family Methods
 
 - (void)setFontSize:(int)fontSize
 {
@@ -97,35 +140,15 @@
 
 - (void)updateFontProperties
 {
+    // Remove old font property
+    [__attributedString removeAttribute:(id)kCTFontAttributeName
+                                  range:_stringRange];
+    
+    // update font to new property
     CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)_fontFamily, _fontSize, NULL);
     [__attributedString addAttribute:(id)kCTFontAttributeName
                                value:(__bridge id)font
                                range:_stringRange];
-}
-
-- (NSAttributedString*)plainAttributedString
-{
-    return [[NSAttributedString alloc] initWithAttributedString:__attributedString];
-}
-
-- (NSAttributedString*)attributedString
-{
-    if (_cachedAttributedString) {
-        return _cachedAttributedString;
-    }
-    
-    NSMutableAttributedString *tmp = [[NSMutableAttributedString alloc] initWithAttributedString:__attributedString];
-    
-    for (NSDictionary *prop in _attributes) {
-        [tmp addAttribute:[prop objectForKey:@"type"]
-                    value:[prop objectForKey:@"value"]
-                    range:NSRangeFromString([prop objectForKey:@"range"])];
-    }
-    
-    
-    
-    _cachedAttributedString = [[NSAttributedString alloc] initWithAttributedString:tmp];
-    return _cachedAttributedString;
 }
 
 @end

@@ -37,7 +37,6 @@
 		4C43F90316F86AA900159B29 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43F90216F86AA900159B29 /* Default@2x.png */; };
 		4C43F90516F86AA900159B29 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43F90416F86AA900159B29 /* Default-568h@2x.png */; };
 		4C43F90816F86AA900159B29 /* arc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F90616F86AA900159B29 /* arc.xcdatamodeld */; };
-		4C45551A17017005001C6F1D /* BasicStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C45551917017005001C6F1D /* BasicStyles.m */; };
 		4C8307EB17114CEF00F49C33 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8307EA17114CEF00F49C33 /* SettingCell.m */; };
 		4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C963C81170D8E96004FDACB /* CodeLineCell.m */; };
 		4C9E0619170F3AFC0000F783 /* arc72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E0618170F3AFC0000F783 /* arc72.png */; };
@@ -237,7 +236,6 @@
 		FC726086171152910068DD91 /* Monokai.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC726084171152910068DD91 /* Monokai.tmTheme */; };
 		FC726087171152910068DD91 /* Solarized (light).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC726085171152910068DD91 /* Solarized (light).tmTheme */; };
 		FCB0548017034DE6007832D7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FCB0547F17034DE6007832D7 /* README.md */; };
-		FCB0548417036010007832D7 /* SyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB0548317036010007832D7 /* SyntaxHighlight.m */; };
 		FCFB4DA2170F466200B25FDC /* BundleConf.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCFB4DA1170F466200B25FDC /* BundleConf.plist */; };
 /* End PBXBuildFile section */
 
@@ -300,9 +298,6 @@
 		4C43F90216F86AA900159B29 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4C43F90416F86AA900159B29 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4C43F90716F86AA900159B29 /* arc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = arc.xcdatamodel; sourceTree = "<group>"; };
-		4C45551717016F93001C6F1D /* CodeViewMiddleware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewMiddleware.h; sourceTree = "<group>"; };
-		4C45551817017005001C6F1D /* BasicStyles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicStyles.h; sourceTree = "<group>"; };
-		4C45551917017005001C6F1D /* BasicStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicStyles.m; sourceTree = "<group>"; };
 		4C8307E917114CEF00F49C33 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		4C8307EA17114CEF00F49C33 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		4C963C80170D8E96004FDACB /* CodeLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeLineCell.h; sourceTree = "<group>"; };
@@ -532,8 +527,6 @@
 		FC726084171152910068DD91 /* Monokai.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Monokai.tmTheme; sourceTree = "<group>"; };
 		FC726085171152910068DD91 /* Solarized (light).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Solarized (light).tmTheme"; sourceTree = "<group>"; };
 		FCB0547F17034DE6007832D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		FCB0548217036010007832D7 /* SyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlight.h; sourceTree = "<group>"; };
-		FCB0548317036010007832D7 /* SyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxHighlight.m; sourceTree = "<group>"; };
 		FCE8F95D1709806B00C08724 /* CodeViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeViewDelegate.h; sourceTree = "<group>"; };
 		FCFB4DA1170F466200B25FDC /* BundleConf.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BundleConf.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -703,7 +696,6 @@
 		4C45551617016F21001C6F1D /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				4CD47748171013A30054738D /* old */,
 				4CD477491710146B0054738D /* PluginDelegate.h */,
 				4CE2950C17101BA0003B012A /* SyntaxHighlightingPlugin.h */,
 				4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */,
@@ -810,19 +802,6 @@
 			);
 			name = Fonts;
 			path = Assets/Fonts;
-			sourceTree = "<group>";
-		};
-		4CD47748171013A30054738D /* old */ = {
-			isa = PBXGroup;
-			children = (
-				4C45551717016F93001C6F1D /* CodeViewMiddleware.h */,
-				4C45551817017005001C6F1D /* BasicStyles.h */,
-				4C45551917017005001C6F1D /* BasicStyles.m */,
-				FCB0548217036010007832D7 /* SyntaxHighlight.h */,
-				FCB0548317036010007832D7 /* SyntaxHighlight.m */,
-			);
-			name = old;
-			path = ../View/Middleware;
 			sourceTree = "<group>";
 		};
 		4CF6F0EC1706E05500EDDEDC /* Images */ = {
@@ -1358,9 +1337,7 @@
 				8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */,
 				8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */,
 				FC4B26CE16FF6E3800E1DC49 /* LeftViewController.m in Sources */,
-				4C45551A17017005001C6F1D /* BasicStyles.m in Sources */,
 				8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */,
-				FCB0548417036010007832D7 /* SyntaxHighlight.m in Sources */,
 				8F1510C9170468B100115E5E /* TMBundleThemeHandler.m in Sources */,
 				8F1510CC1704697900115E5E /* TMBundleGrammar.m in Sources */,
 				4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */,
