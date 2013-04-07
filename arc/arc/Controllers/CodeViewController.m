@@ -309,21 +309,21 @@
 
 - (void)showShowMasterViewButton:(UIBarButtonItem *)button
 {
+    UIBarButtonItem *searchButtonIcon = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
+                                                                                      target:self
+                                                                                      action:@selector(showSearchToolBar)];
     _toolbar.items = [NSArray arrayWithObjects:
                       button,
                       [Utils flexibleSpace],
                       _toolbarTitle,
                       [Utils flexibleSpace],
+                      searchButtonIcon,
                       nil];
 }
 
 - (void)hideShowMasterViewButton:(UIBarButtonItem *)button
 {
-    _toolbar.items = [NSArray arrayWithObjects:
-                      [Utils flexibleSpace],
-                      _toolbarTitle,
-                      [Utils flexibleSpace],
-                      nil];
+    [self setUpDefaultToolBar];
 }
 
 #pragma mark - Table view data source
