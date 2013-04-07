@@ -10,6 +10,12 @@
 
 @interface PluginUtilities : NSObject
 
+typedef enum {
+    kMCQSettingType,
+    kRangeSettingType,
+    kBoolSettingType
+} kSettingType;
+
 // Plugin Dictionary Keys
 extern NSString* const PLUGIN_TITLE;
 extern NSString* const PLUGIN_TYPE;

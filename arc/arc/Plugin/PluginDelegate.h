@@ -12,12 +12,6 @@
 #import "File.h"
 @protocol CodeViewDelegate;
 
-typedef enum {
-    kMCQSettingType,
-    kRangeSettingType,
-    kBoolSettingType
-} kSettingType;
-
 @protocol PluginDelegate <NSObject>
 // Returns an array of NSStrings corresponding to the
 // settings keys this plugin uses.
