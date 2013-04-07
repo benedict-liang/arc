@@ -93,7 +93,10 @@
     return results;
 }
 - (void)styleOnRange:(NSRange)range fcolor:(UIColor*)fcolor output:(ArcAttributedString*)output {
-    [output setColor:[fcolor CGColor] OnRange:range];
+    // tmp.
+    [output setColor:[fcolor CGColor]
+             OnRange:range
+          ForSetting:@"syntaxhighlighting"];
 }
 
 - (NSArray*)capturableScopes:(NSString*)name {

@@ -111,6 +111,7 @@
 - (void)refreshForSetting:(NSString *)setting
 {
     [self execPluginsForSetting:setting];
+    [self generateLines];
     [self renderFile];
 }
 

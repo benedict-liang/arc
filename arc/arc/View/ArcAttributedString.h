@@ -9,13 +9,18 @@
 #import <Foundation/Foundation.h>
 
 @interface ArcAttributedString : NSObject
+@property (nonatomic, readonly) NSString *string;
 @property (nonatomic, readonly) NSAttributedString *attributedString;
 @property (nonatomic, readonly) NSAttributedString *plainAttributedString;
 - (id)initWithString:(NSString*)string;
-- (id)initWithArcAttributedString:(ArcAttributedString*)aas;
+
+// to change
+- (id)initWithArcAttributedString:(ArcAttributedString*)arcAttributedString;
+
 // Properties
 - (void)setFontSize:(int)fontSize;
 - (void)setFontFamily:(NSString*)fontFamily;
-- (void)setColor:(CGColorRef)color;
-- (void)setColor:(CGColorRef)color OnRange:(NSRange)range;
+- (void)setColor:(CGColorRef)color
+         OnRange:(NSRange)range
+      ForSetting:(NSString*)settingKey;
 @end
