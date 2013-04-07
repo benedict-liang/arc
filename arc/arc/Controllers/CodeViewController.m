@@ -87,6 +87,7 @@
     
     // Set TableView's Delegate and DataSource
     _tableView.dataSource = self;
+    _tableView.delegate = self;
     _tableView.frame = CGRectMake(0, SIZE_TOOLBAR_HEIGHT,
                                   self.view.bounds.size.width,
                                   self.view.bounds.size.height - SIZE_TOOLBAR_HEIGHT);
@@ -295,8 +296,7 @@
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    // TODO.
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 #pragma mark - Search Bar delegate
