@@ -14,6 +14,8 @@
 #import "File.h"
 #import "SyntaxHighlight.h"
 
+// a SyntaxHighlight factory of sorts
+
 @interface SyntaxHighlightingPlugin : NSObject<PluginDelegate> {
  
 }

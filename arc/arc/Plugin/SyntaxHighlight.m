@@ -275,7 +275,7 @@
         NSString *str = [include substringFromIndex:1];
         
         if ([str isEqualToString:@"comment"]) {
-            NSLog(@"%@", [self repositoryRule:str]);
+           // NSLog(@"%@", [self repositoryRule:str]);
         }
         
         id rule = [self repositoryRule:str];
@@ -336,7 +336,7 @@
                                        scope:name
                                         dict:pairMatches];
                 if ([name isEqualToString:@"comment.line.double-slash.c++"]) {
-                    NSLog(@"%@",pairMatches);
+                   // NSLog(@"%@",pairMatches);
                 }
             }
             
