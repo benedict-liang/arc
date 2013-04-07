@@ -373,7 +373,9 @@
 
 - (void)updateView {
     if (self.delegate) {
-        [self.delegate mergeAndRenderWith:_finalOutput forFile:self.currentFile];
+        [self.delegate mergeAndRenderWith:_finalOutput
+                                  forFile:self.currentFile
+                                WithStyle:[_theme objectForKey:@"global"]];
     }
 }
 - (void)logs {
@@ -384,11 +386,22 @@
     NSLog(@"pairM: %@",pairMatches);
     
 }
-- (void)execOn:(ArcAttributedString *)arcAttributedString {
-    _finalOutput = arcAttributedString;
-    ArcAttributedString* output = arcAttributedString;
-    [self iterPatternsForRange:NSMakeRange(0, [_content length]) patterns:[_bundle objectForKey:@"patterns"] output:arcAttributedString];
+- (void)applyForeground:(ArcAttributedString*)output
+{
+    NSDictionary* global = [_theme objectForKey:@"global"];
+    NSLog(@"%@",global);
+    UIColor* fg = [global objectForKey:@"foreground"];
+    if (fg) {
+        [self styleOnRange:NSMakeRange(0, [_content length]) fcolor:fg output:output];
+        
+    }
+}
+- (void)execOn:(ArcAttributedString *)output {
+ 
+    [self applyForeground:output];
+    [self iterPatternsForRange:NSMakeRange(0, [_content length]) patterns:[_bundle objectForKey:@"patterns"] output:output];
     
+
     [self applyStylesTo:output withRanges:pairMatches];
     [self applyStylesTo:output withRanges:nameMatches];
     [self applyStylesTo:output withRanges:captureMatches];

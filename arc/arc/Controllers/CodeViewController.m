@@ -246,6 +246,7 @@
         _tableView.backgroundColor = bg;
     }
 }
+
 #pragma mark - Detail View Controller Delegate
 
 - (void)showShowMasterViewButton:(UIBarButtonItem *)button

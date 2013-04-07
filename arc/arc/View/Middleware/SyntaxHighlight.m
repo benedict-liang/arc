@@ -379,7 +379,7 @@
 
 - (void)updateView {
     if (self.delegate) {
-        [self.delegate mergeAndRenderWith:_finalOutput forFile:self.currentFile];
+    //    [self.delegate mergeAndRenderWith:_finalOutput forFile:self.currentFile];
     }
 }
 - (void)logs {
