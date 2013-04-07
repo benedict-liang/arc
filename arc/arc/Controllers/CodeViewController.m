@@ -271,7 +271,13 @@
 }
 
 - (void)hideSearchToolBar {
-    [self setUpDefaultToolBar];
+    if (UIDeviceOrientationIsLandscape(self.interfaceOrientation))
+    {
+        [self setUpDefaultToolBar];
+    }
+    else {
+        [self showShowMasterViewButton:_portraitButton];
+    }
 }
 
 // TODO: Remove once confirmed - search bar on top of code
