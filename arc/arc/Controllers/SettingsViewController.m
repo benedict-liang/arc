@@ -205,7 +205,7 @@
     slider.continuous = YES;
     NSString *settingKey = [properties objectForKey:@"sectionSettingKey"];
     [slider setValue:[[_appState settingForKey:settingKey] intValue]
-            animated:YES];
+            animated:NO];
     cell.settingKey = settingKey;
     cell.accessoryView = slider;
     cell.textLabel.text = [properties objectForKey:@"sectionHeading"];
