@@ -139,9 +139,8 @@
     
     // Update Current file
     _currentFile = file;
-    
     [self updateToolbarTitle];
-    
+
     [self loadFile];
     [self processFile];
     [self generateLines];
@@ -281,12 +280,14 @@
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
 {
     return [_lines count];
 }
 
-- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
+- (UITableViewCell*)tableView:(UITableView*)tableView
+        cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     static NSString *cellIdentifier = @"CodeLineCell";
     CodeLineCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -312,14 +313,16 @@
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [tableView deselectRowAtIndexPath:indexPath
+                             animated:NO];
 }
 
 #pragma mark - Search Bar delegate
 
 - (void)searchBarSearchButtonClicked:(UISearchBar*)searchBar {
     NSString *searchString = [searchBar text];
-    NSArray *searchResultRanges = [FullTextSearch searchForText:searchString inFile:_currentFile];
+    NSArray *searchResultRanges = [FullTextSearch searchForText:searchString
+                                                         inFile:_currentFile];
     // TODO: Check if searchResultRanges is nil before using the data
 
     // Hide keyboard after search button clicked
