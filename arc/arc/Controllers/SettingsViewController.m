@@ -91,10 +91,10 @@
                                forKey:SECTION_OPTIONS];
                     break;
                 case kRangeSettingType:
-                    [section setValue:[properties objectForKey:PLUGIN_RANGE_MAX]
-                               forKey:PLUGIN_RANGE_MAX];
-                    [section setValue:[properties objectForKey:PLUGIN_RANGE_MIN]
-                               forKey:PLUGIN_RANGE_MIN];
+                    [section setValue:[properties objectForKey:PLUGIN_OPTION_RANGE_MAX]
+                               forKey:PLUGIN_OPTION_RANGE_MAX];
+                    [section setValue:[properties objectForKey:PLUGIN_OPTION_RANGE_MIN]
+                               forKey:PLUGIN_OPTION_RANGE_MIN];
                     break;
                 case kBoolSettingType:
                     break;
@@ -179,7 +179,7 @@
     
     // Plugin values need to be comparable somehow
     // easiest option is to make them all strings.
-    NSString *value = [option objectForKey:PLUGIN_VALUE];
+    NSString *value = [option objectForKey:PLUGIN_OPTION_VALUE];
     NSString *settingKey = [properties objectForKey:SECTION_SETTING_KEY];
     
     BOOL isCurrentSettingThisRow = [[_appState settingForKey:settingKey] isEqualToString:value];
@@ -189,7 +189,7 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    cell.textLabel.text = [option objectForKey:PLUGIN_LABEL];
+    cell.textLabel.text = [option objectForKey:PLUGIN_OPTION_LABEL];
     
     // Allow the plugin to customise this cell, if applicable.
     id<PluginDelegate> plugin = [properties objectForKey:SECTION_PLUGIN_OBJECT];
@@ -217,8 +217,8 @@
     
     // Set slider appearance properties.
     [slider setBackgroundColor:[UIColor clearColor]];
-    slider.minimumValue = [[properties objectForKey:PLUGIN_RANGE_MIN] intValue];
-    slider.maximumValue = [[properties objectForKey:PLUGIN_RANGE_MAX] intValue];
+    slider.minimumValue = [[properties objectForKey:PLUGIN_OPTION_RANGE_MIN] intValue];
+    slider.maximumValue = [[properties objectForKey:PLUGIN_OPTION_RANGE_MAX] intValue];
     slider.continuous = YES;
     
     // Set the slider's position.
@@ -281,7 +281,7 @@
                                  objectForKey:SECTION_OPTIONS]
                                 objectAtIndex:indexPath.row];
         
-        NSString *value = [option objectForKey:PLUGIN_VALUE];
+        NSString *value = [option objectForKey:PLUGIN_OPTION_VALUE];
         NSString *settingKey = [sectionProperties objectForKey:SECTION_SETTING_KEY];
         
         // Unhighlight the row, and reload the table.

@@ -38,16 +38,16 @@
         
         _options = @[
                      @{
-                         PLUGIN_LABEL: @"Source Code Pro",
-                         PLUGIN_VALUE: _defaultFontFamily
+                         PLUGIN_OPTION_LABEL: @"Source Code Pro",
+                         PLUGIN_OPTION_VALUE: _defaultFontFamily
                          },
                      @{
-                         PLUGIN_LABEL: @"Inconsolata",
-                         PLUGIN_VALUE: @"Inconsolata"
+                         PLUGIN_OPTION_LABEL: @"Inconsolata",
+                         PLUGIN_OPTION_VALUE: @"Inconsolata"
                          },
                      @{
-                         PLUGIN_LABEL: @"Ubuntu Monospace",
-                         PLUGIN_VALUE: @"UbuntuMono-Regular"
+                         PLUGIN_OPTION_LABEL: @"Ubuntu Monospace",
+                         PLUGIN_OPTION_VALUE: @"UbuntuMono-Regular"
                          }
                      ];
         
@@ -84,7 +84,7 @@
 - (void)customiseTableViewCell:(UITableViewCell **)cell options:(NSDictionary *)options
 {
     // Get the font this cell represents.
-    NSString *fontValue = [options valueForKey:PLUGIN_VALUE];
+    NSString *fontValue = [options valueForKey:PLUGIN_OPTION_VALUE];
     
     UIFont *font = [UIFont fontWithName:fontValue size:[UIFont systemFontSize]];
     [[*cell textLabel] setFont:font];

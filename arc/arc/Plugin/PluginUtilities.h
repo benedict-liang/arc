@@ -20,10 +20,10 @@ typedef enum {
 extern NSString* const PLUGIN_TITLE;
 extern NSString* const PLUGIN_TYPE;
 extern NSString* const PLUGIN_OPTIONS;
-extern NSString* const PLUGIN_LABEL;
-extern NSString* const PLUGIN_VALUE;
-extern NSString* const PLUGIN_RANGE_MIN;
-extern NSString* const PLUGIN_RANGE_MAX;
+extern NSString* const PLUGIN_OPTION_LABEL;
+extern NSString* const PLUGIN_OPTION_VALUE;
+extern NSString* const PLUGIN_OPTION_RANGE_MIN;
+extern NSString* const PLUGIN_OPTION_RANGE_MAX;
 
 // Settings Pane Section Properties
 extern NSString* const SECTION_PLUGIN_OBJECT;
