@@ -17,7 +17,6 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ApplicationState *appState;
 @property (nonatomic, strong) ArcAttributedString *arcAttributedString;
-@property (nonatomic, strong) NSAttributedString *attributedString;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *toolbarTitle;
 @property (nonatomic, strong) UISearchBar *searchBar;
@@ -129,8 +128,6 @@
             }
         }
     }
-    
-    _attributedString = [_arcAttributedString attributedString];
 }
 
 - (void)showFile:(id<File>)file
@@ -190,7 +187,7 @@
     _lines = [NSMutableArray array];
     
     CFAttributedStringRef ref =
-        (CFAttributedStringRef)CFBridgingRetain(_attributedString);
+        (CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.attributedString);
     _frameSetter = CTFramesetterCreateWithAttributedString(ref);
     
     // Work out the geometry
@@ -217,7 +214,7 @@
     if ([_lines count] > 0) {
         CTLineRef line = CTLineCreateWithAttributedString(
               (__bridge CFAttributedStringRef)(
-                  [_attributedString attributedSubstringFromRange:
+                  [_arcAttributedString.attributedString attributedSubstringFromRange:
                       [[_lines objectAtIndex:0] rangeValue]]));
 
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
@@ -243,7 +240,6 @@
 {
     if ([file isEqual:_currentFile]) {
         _arcAttributedString = arcAttributedString;
-        _attributedString = _arcAttributedString.attributedString;
         [self setStyle:style];
         [_tableView reloadData];
     }
@@ -304,7 +300,7 @@
 
     CTLineRef lineRef = CTLineCreateWithAttributedString(
             (__bridge CFAttributedStringRef)(
-                [_attributedString attributedSubstringFromRange:
+                [_arcAttributedString.attributedString attributedSubstringFromRange:
                 [[_lines objectAtIndex:lineNumber] rangeValue]]));
 
     cell.line = lineRef;

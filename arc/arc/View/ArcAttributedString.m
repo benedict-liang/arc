@@ -13,6 +13,7 @@
 
 @interface ArcAttributedString ()
 @property (nonatomic, strong) NSMutableAttributedString *_attributedString;
+@property (nonatomic, strong) NSMutableAttributedString *cachedattributedString;
 @property (nonatomic, strong) NSMutableDictionary *attributesDictionary;
 @property (nonatomic, strong) NSString *string;
 @property (nonatomic) NSRange stringRange;
@@ -37,6 +38,8 @@
         
         // Used to store (buffer attributes)
         _attributesDictionary = [NSMutableDictionary dictionary];
+        
+        _cachedattributedString = nil;
     }
     return self;
 }
@@ -54,6 +57,8 @@
         
         // Used to store (buffer attributes)
         _attributesDictionary = [NSMutableDictionary dictionary];
+        
+        _cachedattributedString = nil;
     }
     return self;
 }
@@ -68,18 +73,22 @@
 
 - (NSAttributedString*)attributedString
 {
-    NSMutableAttributedString *copy =
+    if (_cachedattributedString != nil) {
+        return _cachedattributedString;
+    }
+    
+    _cachedattributedString =
         [[NSMutableAttributedString alloc] initWithAttributedString:__attributedString];
     
     for (NSString* propertyAttributes in _attributesDictionary) {
         for (NSDictionary* attribute in [_attributesDictionary objectForKey:propertyAttributes]) {
-            [copy addAttribute:[attribute objectForKey:@"type"]
+            [_cachedattributedString addAttribute:[attribute objectForKey:@"type"]
                                        value:[attribute objectForKey:@"value"]
                                        range:NSRangeFromString([attribute objectForKey:@"range"])];
         }
     }
-    
-    return copy;
+
+    return _cachedattributedString;
 }
 
 - (NSAttributedString*)plainAttributedString
