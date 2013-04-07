@@ -82,52 +82,10 @@
                                   self.view.bounds.size.width,
                                   self.view.bounds.size.height - SIZE_TOOLBAR_HEIGHT);
     
+    // TODO: Remove once confirmed - search bar on top of code
     //[self addSearchBarToTableViewTop];
     
     [self.view addSubview:_tableView];
-}
-
-- (void)setUpDefaultToolBar {
-    _toolbarTitle = [[UIBarButtonItem alloc] initWithTitle:[_currentFile name]
-                                                     style:UIBarButtonItemStylePlain
-                                                    target:nil
-                                                    action:nil];
-    UIBarButtonItem *searchButtonIcon = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
-                                                                                      target:self
-                                                                                      action:@selector(showSearchToolBar)];
-    [_toolbar setItems:[NSArray arrayWithObjects:
-                        [Utils flexibleSpace],
-                        _toolbarTitle,
-                        [Utils flexibleSpace],
-                        searchButtonIcon,
-                        nil]];
-}
-
-- (void)addSearchBarToTableViewTop
-{
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, SIZE_TOOLBAR_HEIGHT)];
-    _tableView.tableHeaderView = _searchBar;
-    _searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
-    _searchBar.delegate = (id<UISearchBarDelegate>)self;
-    
-    // Hides search bar upon load
-    _tableView.contentOffset = CGPointMake(0, SIZE_TOOLBAR_HEIGHT);
-}
-
-- (void)showSearchToolBar {
-    // Replace current toolbar with tool bar with search bar
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(_toolbar.frame.size.width - 250, 0, 200, SIZE_TOOLBAR_HEIGHT)];
-    _searchBar.delegate = (id<UISearchBarDelegate>)self;
-    
-    UIBarButtonItem *searchBarItem = [[UIBarButtonItem alloc] initWithCustomView:_searchBar];
-    UIBarButtonItem *doneBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                 target:self
-                                                                                 action:@selector(hideSearchToolBar)];
-    [_toolbar setItems:[NSArray arrayWithObjects:[Utils flexibleSpace], searchBarItem, doneBarItem, nil] animated:YES];
-}
-
-- (void)hideSearchToolBar {
-    [self setUpDefaultToolBar];
 }
 
 - (void)refreshForSetting:(NSString *)setting
@@ -270,6 +228,52 @@
             }
         }
     }
+}
+
+#pragma mark - Tool Bar Methods
+
+- (void)setUpDefaultToolBar {
+    _toolbarTitle = [[UIBarButtonItem alloc] initWithTitle:[_currentFile name]
+                                                     style:UIBarButtonItemStylePlain
+                                                    target:nil
+                                                    action:nil];
+    UIBarButtonItem *searchButtonIcon = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
+                                                                                      target:self
+                                                                                      action:@selector(showSearchToolBar)];
+    [_toolbar setItems:[NSArray arrayWithObjects:
+                        [Utils flexibleSpace],
+                        _toolbarTitle,
+                        [Utils flexibleSpace],
+                        searchButtonIcon,
+                        nil]];
+}
+
+- (void)showSearchToolBar {
+    // Replace current toolbar with tool bar with search bar
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(_toolbar.frame.size.width - 250, 0, 200, SIZE_TOOLBAR_HEIGHT)];
+    _searchBar.delegate = (id<UISearchBarDelegate>)self;
+    
+    UIBarButtonItem *searchBarItem = [[UIBarButtonItem alloc] initWithCustomView:_searchBar];
+    UIBarButtonItem *doneBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                 target:self
+                                                                                 action:@selector(hideSearchToolBar)];
+    [_toolbar setItems:[NSArray arrayWithObjects:[Utils flexibleSpace], searchBarItem, doneBarItem, nil] animated:YES];
+}
+
+- (void)hideSearchToolBar {
+    [self setUpDefaultToolBar];
+}
+
+// TODO: Remove once confirmed - search bar on top of code
+- (void)addSearchBarToTableViewTop
+{
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, SIZE_TOOLBAR_HEIGHT)];
+    _tableView.tableHeaderView = _searchBar;
+    _searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
+    _searchBar.delegate = (id<UISearchBarDelegate>)self;
+    
+    // Hides search bar upon load
+    _tableView.contentOffset = CGPointMake(0, SIZE_TOOLBAR_HEIGHT);
 }
 
 #pragma mark - Code View Delegate
