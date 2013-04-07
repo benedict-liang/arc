@@ -483,10 +483,10 @@
 - (void)applyForeground:(ArcAttributedString*)output
 {
     NSDictionary* global = [_theme objectForKey:@"global"];
-    UIColor* fg = [global objectForKey:@"foreground"];
-    if (fg) {
+    UIColor* foreground = [global objectForKey:@"foreground"];
+    if (foreground) {
         [self styleOnRange:NSMakeRange(0, [_content length])
-                    fcolor:fg
+                    fcolor:foreground
                     output:output];
     }
 }
