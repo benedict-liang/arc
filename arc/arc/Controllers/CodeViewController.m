@@ -11,6 +11,7 @@
 #import "ApplicationState.h"
 #import "ArcAttributedString.h"
 #import "FullTextSearch.h"
+#import "ResultsTableViewController.h"
 
 @interface CodeViewController ()
 @property id<File> currentFile;
@@ -20,7 +21,11 @@
 @property (nonatomic, strong) NSMutableDictionary *sharedObject;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *toolbarTitle;
+@property (nonatomic, strong) UIBarButtonItem *portraitButton;
+@property (nonatomic, strong) UIBarButtonItem *searchButtonIcon;
 @property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) UIPopoverController *resultsPopoverController;
+@property (nonatomic, strong) ResultsTableViewController *resultsViewController;
 @property CTFramesetterRef frameSetter;
 @property CGFloat lineHeight;
 @property NSMutableArray *lines;
@@ -153,7 +158,7 @@
     _lines = [NSMutableArray array];
     
     CFAttributedStringRef ref =
-    (CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.attributedString);
+    (CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.plainAttributedString);
     _frameSetter = CTFramesetterCreateWithAttributedString(ref);
     
     // Work out the geometry
@@ -177,10 +182,10 @@
     CGFloat asscent, descent, leading;
     if ([_lines count] > 0) {
         CTLineRef line = CTLineCreateWithAttributedString(
-                                                          (__bridge CFAttributedStringRef)(
-                                                                                           [_arcAttributedString.attributedString attributedSubstringFromRange:
-                                                                                            [[_lines objectAtIndex:0] rangeValue]]));
-        
+            (__bridge CFAttributedStringRef)(
+                [_arcAttributedString.attributedString attributedSubstringFromRange:
+                    [[_lines objectAtIndex:0] rangeValue]]));
+
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
         _lineHeight = asscent + descent + leading;
         _tableView.rowHeight = ceil(_lineHeight);
@@ -237,14 +242,14 @@
                                                      style:UIBarButtonItemStylePlain
                                                     target:nil
                                                     action:nil];
-    UIBarButtonItem *searchButtonIcon = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
+    _searchButtonIcon = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
                                                                                       target:self
                                                                                       action:@selector(showSearchToolBar)];
     [_toolbar setItems:[NSArray arrayWithObjects:
                         [Utils flexibleSpace],
                         _toolbarTitle,
                         [Utils flexibleSpace],
-                        searchButtonIcon,
+                        _searchButtonIcon,
                         nil]];
 }
 
@@ -258,10 +263,21 @@
                                                                                  target:self
                                                                                  action:@selector(hideSearchToolBar)];
     [_toolbar setItems:[NSArray arrayWithObjects:[Utils flexibleSpace], searchBarItem, doneBarItem, nil] animated:YES];
+    
+    // Initialize results tableview controller
+    _resultsViewController = [[ResultsTableViewController alloc] init];
+    _resultsPopoverController = [[UIPopoverController alloc] initWithContentViewController:_resultsViewController];
+    _resultsPopoverController.passthroughViews = [NSArray arrayWithObject:_searchBar];
 }
 
 - (void)hideSearchToolBar {
-    [self setUpDefaultToolBar];
+    if (UIDeviceOrientationIsLandscape(self.interfaceOrientation))
+    {
+        [self setUpDefaultToolBar];
+    }
+    else {
+        [self showShowMasterViewButton:_portraitButton];
+    }
 }
 
 // TODO: Remove once confirmed - search bar on top of code
@@ -306,16 +322,14 @@
                       [Utils flexibleSpace],
                       _toolbarTitle,
                       [Utils flexibleSpace],
+                      _searchButtonIcon,
                       nil];
+    _portraitButton = button;
 }
 
 - (void)hideShowMasterViewButton:(UIBarButtonItem *)button
 {
-    _toolbar.items = [NSArray arrayWithObjects:
-                      [Utils flexibleSpace],
-                      _toolbarTitle,
-                      [Utils flexibleSpace],
-                      nil];
+    [self setUpDefaultToolBar];
 }
 
 #pragma mark - Table view data source
@@ -372,6 +386,14 @@
     
     // Hide keyboard after search button clicked
     [searchBar resignFirstResponder];
+    
+    // Show results
+    _resultsViewController.resultsArray = searchResultRanges;
+    [_resultsViewController.tableView reloadData];
+    [_resultsPopoverController presentPopoverFromRect:[_searchBar bounds]
+                                              inView:_searchBar
+                            permittedArrowDirections:UIPopoverArrowDirectionAny
+                                            animated:YES];
 }
 
 @end

@@ -304,7 +304,7 @@
     NSString* name = [syntaxItem objectForKey:@"name"];
     NSRange brange = [self findFirstPattern:begin
                                       range:contentRange];
-    NSRange erange = NSMakeRange(0, 0);
+    NSRange erange;
     do {
         // NSLog(@"traversing while brange:%@ erange:%@", [NSValue value:&brange withObjCType:@encode(NSRange)], [NSValue value:&erange withObjCType:@encode(NSRange)]);
         // using longs because int went out of range as NSNotFound returns MAX_INT, which fucks arithmetic
