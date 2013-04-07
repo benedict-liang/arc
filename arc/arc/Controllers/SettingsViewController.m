@@ -206,12 +206,12 @@
     slider.minimumValue = (int) [[properties objectForKey:PLUGIN_RANGE_MIN] intValue];
     slider.maximumValue = (int) [[properties objectForKey:PLUGIN_RANGE_MAX] intValue];
     slider.continuous = YES;
-    NSString *settingKey = [properties objectForKey:@"sectionSettingKey"];
+    NSString *settingKey = [properties objectForKey:SECTION_SETTING_KEY];
     [slider setValue:[[_appState settingForKey:settingKey] intValue]
             animated:NO];
     cell.settingKey = settingKey;
     cell.accessoryView = slider;
-    cell.textLabel.text = [properties objectForKey:@"sectionHeading"];
+    cell.textLabel.text = [properties objectForKey:SECTION_HEADING];
     return cell;
 }
 
