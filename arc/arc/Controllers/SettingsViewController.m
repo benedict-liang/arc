@@ -79,6 +79,7 @@
             [section setValue:[properties objectForKey:PLUGIN_TYPE]
                        forKey:SECTION_TYPE];
             
+            // Set options depending on the type of the section.
             kSettingType type = [PluginUtilities settingTypeForNumber:[properties objectForKey:PLUGIN_TYPE]];
             switch (type) {
                 case kMCQSettingType:
@@ -110,8 +111,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSDictionary *sectionProperties = (NSDictionary*)[_settingOptions objectAtIndex:section];
-    kSettingType type = [PluginUtilities settingTypeForNumber:[sectionProperties objectForKey:SECTION_TYPE]];
     
+    kSettingType type = [PluginUtilities settingTypeForNumber:[sectionProperties objectForKey:SECTION_TYPE]];
     switch (type) {
         case kMCQSettingType:
             return [[sectionProperties objectForKey:SECTION_OPTIONS] count];
@@ -176,7 +177,9 @@
     // easiest option is to make them all strings.
     NSString *value = [option objectForKey:PLUGIN_VALUE];
     NSString *settingKey = [properties objectForKey:SECTION_SETTING_KEY];
-    if ([[_appState settingForKey:settingKey] isEqualToString:value]) {
+    
+    BOOL isCurrentSettingThisRow = [[_appState settingForKey:settingKey] isEqualToString:value];
+    if (isCurrentSettingThisRow) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -202,13 +205,18 @@
                action:@selector(rangeSettingsChanged:)
      forControlEvents:UIControlEventValueChanged];
     
+    // Set slider appearance properties.
     [slider setBackgroundColor:[UIColor clearColor]];
-    slider.minimumValue = (int) [[properties objectForKey:PLUGIN_RANGE_MIN] intValue];
-    slider.maximumValue = (int) [[properties objectForKey:PLUGIN_RANGE_MAX] intValue];
+    slider.minimumValue = [[properties objectForKey:PLUGIN_RANGE_MIN] intValue];
+    slider.maximumValue = [[properties objectForKey:PLUGIN_RANGE_MAX] intValue];
     slider.continuous = YES;
+    
+    // Set the slider's position.
     NSString *settingKey = [properties objectForKey:SECTION_SETTING_KEY];
     [slider setValue:[[_appState settingForKey:settingKey] intValue]
             animated:NO];
+    
+    // Setup the cell.
     cell.settingKey = settingKey;
     cell.accessoryView = slider;
     cell.textLabel.text = [properties objectForKey:SECTION_HEADING];
