@@ -242,6 +242,7 @@
                    forFile:(id<File>)file
                 WithStyle:(NSDictionary *)style
 {
+    // Temporary solution to resolve asyn mutation of background color
     while (!_isLoaded);
     if ([file isEqual:_currentFile]) {
         _arcAttributedString = arcAttributedString;
