@@ -230,13 +230,22 @@
 
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
                    forFile:(id<File>)file
+                WithStyle:(NSDictionary *)style
 {
     if ([file isEqual:_currentFile]) {
         _arcAttributedString = arcAttributedString;
+        [self setStyle:style];
         [_tableView reloadData];
     }
 }
 
+- (void)setStyle:(NSDictionary*)style {
+    UIColor *bg = [style objectForKey:@"background"];
+    if (bg) {
+        _backgroundColor = bg;
+        _tableView.backgroundColor = bg;
+    }
+}
 #pragma mark - Detail View Controller Delegate
 
 - (void)showShowMasterViewButton:(UIBarButtonItem *)button

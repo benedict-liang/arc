@@ -15,7 +15,8 @@
 - (void)showFile:(id<File>)file;
 - (void)refreshForSetting:(NSString*)setting;
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
-                   forFile:(id<File>)file;
+                   forFile:(id<File>)file
+                WithStyle:(NSDictionary*)style;
 
 
 // Register Plugin with CodeViewDelegate;
