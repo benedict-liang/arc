@@ -67,23 +67,23 @@
             
             // Section Setting Key
             [section setValue:setting
-                       forKey:@"sectionSettingKey"];
+                       forKey:SECTION_SETTING_KEY];
             
             NSDictionary *properties = [plugin propertiesFor:setting];
             
             // Section Heading
             [section setValue:[properties objectForKey:PLUGIN_TITLE]
-                       forKey:@"sectionHeading"];
+                       forKey:SECTION_HEADING];
             
             // TODO.
             // add utils method to make "casting"/comparing enums easier
             int type = [[properties objectForKey:PLUGIN_TYPE] intValue];
             [section setValue:[properties objectForKey:PLUGIN_TYPE]
-                       forKey:@"sectionType"];
+                       forKey:SECTION_TYPE];
 
             if (type == kMCQSettingType) {
                 [section setValue:[properties objectForKey:PLUGIN_OPTIONS]
-                           forKey:@"sectionOptions"];
+                           forKey:SECTION_OPTIONS];
             }
             
             if (type == kRangeSettingType) {
@@ -108,10 +108,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSDictionary *sectionProperties = (NSDictionary*)[_settingOptions objectAtIndex:section];
-    int type = [[sectionProperties objectForKey:@"sectionType"] intValue];
+    int type = [[sectionProperties objectForKey:SECTION_TYPE] intValue];
     
     if (type == kMCQSettingType) {
-        return [[sectionProperties objectForKey:@"sectionOptions"] count];
+        return [[sectionProperties objectForKey:SECTION_OPTIONS] count];
     } else {
         // Bool and range types have only one row.
         return 1;
@@ -123,9 +123,9 @@
     NSDictionary *sectionProperties =
         (NSDictionary*)[_settingOptions objectAtIndex:section];
     
-    int type = [[sectionProperties objectForKey:@"sectionType"] intValue];
+    int type = [[sectionProperties objectForKey:SECTION_TYPE] intValue];
     if (type == kMCQSettingType) {
-        return [sectionProperties objectForKey:@"sectionHeading"];
+        return [sectionProperties objectForKey:SECTION_HEADING];
     }
 
     // Other types of settings are single row items.
@@ -138,7 +138,7 @@
     NSDictionary *sectionProperties =
         (NSDictionary*)[_settingOptions objectAtIndex:indexPath.section];
 
-    int type = [[sectionProperties objectForKey:@"sectionType"] intValue];
+    int type = [[sectionProperties objectForKey:SECTION_TYPE] intValue];
     if (type == kMCQSettingType) {
         return [self mCQCellFromTableView:tableView
                            withProperties:sectionProperties
@@ -159,7 +159,7 @@
                    cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NSDictionary *option = [[properties
-                             objectForKey:@"sectionOptions"]
+                             objectForKey:SECTION_OPTIONS]
                             objectAtIndex:indexPath.row];
     
     static NSString *cellIdentifier = @"SettingsMCQCell";
@@ -172,7 +172,7 @@
     // Plugin values need to be comparable somehow
     // easiers is to make them all strings.
     NSString *value = [option objectForKey:PLUGIN_VALUE];
-    NSString *settingKey = [properties objectForKey:@"sectionSettingKey"];
+    NSString *settingKey = [properties objectForKey:SECTION_SETTING_KEY];
     if ([[_appState settingForKey:settingKey] isEqualToString:value]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
@@ -237,7 +237,7 @@
     }
     UISwitch *switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
     cell.accessoryView = switchview;
-    cell.textLabel.text = [properties objectForKey:@"sectionHeading"];
+    cell.textLabel.text = [properties objectForKey:SECTION_HEADING];
     return cell;
 }
 
@@ -249,14 +249,14 @@
     NSDictionary *sectionProperties =
         (NSDictionary*)[_settingOptions objectAtIndex:indexPath.section];
     
-    int type = [[sectionProperties objectForKey:@"sectionType"] intValue];
+    int type = [[sectionProperties objectForKey:SECTION_TYPE] intValue];
     if (type == kMCQSettingType) {
         NSDictionary *option = [[sectionProperties
-                                 objectForKey:@"sectionOptions"]
+                                 objectForKey:SECTION_OPTIONS]
                                     objectAtIndex:indexPath.row];
         
         NSString *value = [option objectForKey:PLUGIN_VALUE];
-        NSString *settingKey = [sectionProperties objectForKey:@"sectionSettingKey"];
+        NSString *settingKey = [sectionProperties objectForKey:SECTION_SETTING_KEY];
 
         // Unhighlight the row, and reload the table.
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
