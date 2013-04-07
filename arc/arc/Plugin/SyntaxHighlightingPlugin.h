@@ -29,6 +29,5 @@
 @property (readonly) NSString* content;
 @property (readonly) NSDictionary* bundle;
 @property NSArray* overlays;
-@property ArcAttributedString* finalOutput;
 
 @end
