@@ -27,8 +27,8 @@
         _properties = @{
                         PLUGIN_TITLE: @"Font Size",
                         PLUGIN_TYPE: [NSNumber numberWithInt:kRangeSettingType],
-                        PLUGIN_RANGE_MIN: [NSNumber numberWithInt:10],
-                        PLUGIN_RANGE_MAX: [NSNumber numberWithInt:70]
+                        PLUGIN_OPTION_RANGE_MIN: [NSNumber numberWithInt:10],
+                        PLUGIN_OPTION_RANGE_MAX: [NSNumber numberWithInt:70]
                         };
     }
     return self;
