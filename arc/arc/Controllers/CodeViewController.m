@@ -11,6 +11,7 @@
 #import "ApplicationState.h"
 #import "ArcAttributedString.h"
 #import "FullTextSearch.h"
+#import "ResultsTableViewController.h"
 
 @interface CodeViewController ()
 @property id<File> currentFile;
@@ -21,6 +22,8 @@
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *toolbarTitle;
 @property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) UIPopoverController *resultsPopoverController;
+@property (nonatomic, strong) ResultsTableViewController *resultsViewController;
 @property CTFramesetterRef frameSetter;
 @property CGFloat lineHeight;
 @property NSMutableArray *lines;
@@ -258,6 +261,11 @@
                                                                                  target:self
                                                                                  action:@selector(hideSearchToolBar)];
     [_toolbar setItems:[NSArray arrayWithObjects:[Utils flexibleSpace], searchBarItem, doneBarItem, nil] animated:YES];
+    
+    // Initialize results tableview controller
+    _resultsViewController = [[ResultsTableViewController alloc] init];
+    _resultsPopoverController = [[UIPopoverController alloc] initWithContentViewController:_resultsViewController];
+    _resultsPopoverController.passthroughViews = [NSArray arrayWithObject:_searchBar];
 }
 
 - (void)hideSearchToolBar {
@@ -372,6 +380,14 @@
     
     // Hide keyboard after search button clicked
     [searchBar resignFirstResponder];
+    
+    // Show results
+    _resultsViewController.resultsArray = searchResultRanges;
+    [_resultsViewController.tableView reloadData];
+    [_resultsPopoverController presentPopoverFromRect:[_searchBar bounds]
+                                              inView:_searchBar
+                            permittedArrowDirections:UIPopoverArrowDirectionAny
+                                            animated:YES];
 }
 
 @end
