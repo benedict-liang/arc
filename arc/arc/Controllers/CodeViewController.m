@@ -22,6 +22,8 @@
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *toolbarTitle;
 @property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) UIPopoverController *resultsPopoverController;
+@property (nonatomic, strong) ResultsTableViewController *resultsViewController;
 @property CTFramesetterRef frameSetter;
 @property CGFloat lineHeight;
 @property NSMutableArray *lines;
