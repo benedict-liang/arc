@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ArcAttributedString.h"
+#import "PluginUtilities.h"
 #import "File.h"
 @protocol CodeViewDelegate;
 
