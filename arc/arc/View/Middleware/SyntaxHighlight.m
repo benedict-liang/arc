@@ -54,7 +54,7 @@
     
     NSRegularExpression *regex = [NSRegularExpression
                                   regularExpressionWithPattern:p
-                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines | NSRegularExpressionAllowCommentsAndWhitespace
+                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines
                                   error:&error];
     
     if ((r.location + r.length <= [_content length]) && (r.length > 0) && (r.length <= [_content length])) {
@@ -71,8 +71,7 @@
     NSMutableArray* results = [[NSMutableArray alloc] init];
     NSRegularExpression *regex = [NSRegularExpression
                                   regularExpressionWithPattern:p
-                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines | NSRegularExpressionAllowCommentsAndWhitespace
-                                  error:&error];
+                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines                                  error:&error];
     
     
     
@@ -317,6 +316,9 @@
             //case name, match
             if (name && match) {
                 NSArray *a = [self foundPattern:match range:contentRange];
+                if ([name isEqualToString:@"comment.line.number-sign.python"]) {
+                    NSLog(@"%@",[self foundPattern:match range:contentRange]);
+                }
                 nameMatches = [self merge:@{name: a} withd2:nameMatches];
             }
             if (captures && match) {
@@ -390,7 +392,7 @@
     [self applyStylesTo:output withRanges:captureMatches];
     [self applyStylesTo:output withRanges:beginCMatches];
     [self applyStylesTo:output withRanges:endCMatches];
-    NSLog(@"%@",contentNameMatches);
+    //NSLog(@"%@",nameMatches);
    // [self logs];
     NSLog(@"Updating!");
     [self updateView];
