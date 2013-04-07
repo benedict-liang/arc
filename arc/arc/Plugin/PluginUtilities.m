@@ -17,4 +17,9 @@ NSString* const PLUGIN_OPTIONS = @"options";
 NSString* const PLUGIN_LABEL = @"label";
 NSString* const PLUGIN_VALUE = @"value";
 
+// Settings Pane Section Properties
+NSString* const SECTION_SETTING_KEY = @"sectionSettingKey";
+NSString* const SECTION_HEADING = @"sectionHeading";
+NSString* const SECTION_TYPE = @"sectionType";
+NSString* const SECTION_OPTIONS = @"sectionOptions";
 @end

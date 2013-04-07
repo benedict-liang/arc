@@ -17,4 +17,10 @@ extern NSString* const PLUGIN_OPTIONS;
 extern NSString* const PLUGIN_LABEL;
 extern NSString* const PLUGIN_VALUE;
 
+// Settings Pane Section Properties
+extern NSString* const SECTION_SETTING_KEY;
+extern NSString* const SECTION_HEADING;
+extern NSString* const SECTION_TYPE;
+extern NSString* const SECTION_OPTIONS;
+
 @end
