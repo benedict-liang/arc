@@ -16,6 +16,8 @@ extern NSString* const PLUGIN_TYPE;
 extern NSString* const PLUGIN_OPTIONS;
 extern NSString* const PLUGIN_LABEL;
 extern NSString* const PLUGIN_VALUE;
+extern NSString* const PLUGIN_RANGE_MIN;
+extern NSString* const PLUGIN_RANGE_MAX;
 
 // Settings Pane Section Properties
 extern NSString* const SECTION_SETTING_KEY;
