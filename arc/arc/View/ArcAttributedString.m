@@ -36,7 +36,7 @@
                               initWithString:_string];
         
         // Used to store (buffer attributes)
-        _attributesDictionary = [NSDictionary dictionary];
+        _attributesDictionary = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -49,6 +49,9 @@
         _fontSize = [arcAttributedString fontSize];
         __attributedString = [[NSMutableAttributedString alloc]
                               initWithAttributedString:[arcAttributedString attributedString]];
+        
+        // Used to store (buffer attributes)
+        _attributesDictionary = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -63,15 +66,18 @@
 
 - (NSAttributedString*)attributedString
 {
-    for (NSArray *propertyAttributes in _attributesDictionary) {
-        for (NSDictionary *attribute in propertyAttributes) {
-            [__attributedString addAttribute:[attribute objectForKey:@"type"]
+    NSMutableAttributedString *copy =
+        [[NSMutableAttributedString alloc] initWithAttributedString:__attributedString];
+    
+    for (NSString* propertyAttributes in _attributesDictionary) {
+        for (NSDictionary* attribute in [_attributesDictionary objectForKey:propertyAttributes]) {
+            [copy addAttribute:[attribute objectForKey:@"type"]
                                        value:[attribute objectForKey:@"value"]
                                        range:NSRangeFromString([attribute objectForKey:@"range"])];
         }
     }
     
-    return __attributedString;
+    return copy;
 }
 
 - (NSAttributedString*)plainAttributedString
@@ -85,13 +91,20 @@
 - (void)setColor:(CGColorRef)color
          OnRange:(NSRange)range
       ForSetting:(NSString*)settingKey
-{
-    NSMutableArray *settingAttributes = [self settingsAttributeForSettingsKey:settingKey];
+{    
+    NSMutableArray *settingAttributes = [_attributesDictionary objectForKey:settingKey];
+    
+    if (settingAttributes == nil) {
+        settingAttributes = [NSMutableArray array];
+    }
+
     [settingAttributes addObject:[NSDictionary dictionaryWithObjectsAndKeys:
                                   (__bridge id)color, @"value",
                                   (id)kCTForegroundColorAttributeName, @"type",
                                   NSStringFromRange(range), @"range",
                                   nil]];
+    
+    [_attributesDictionary setValue:settingAttributes forKey:settingKey];
 }
 
 # pragma mark - Namespaced Attributes
