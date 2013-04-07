@@ -10,6 +10,7 @@
 #import "SubViewControllerDelegate.h"
 #import "ApplicationState.h"
 #import "PluginDelegate.h"
+#import "SettingCell.h"
 
 @interface SettingsViewController : UIViewController <SubViewControllerDelegate,
     UITableViewDelegate, UITableViewDataSource>

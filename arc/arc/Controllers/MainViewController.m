@@ -33,7 +33,7 @@
         _plugins = [NSArray arrayWithObjects:
                     [[FontFamilyPlugin alloc] init],
                     [[FontSizePlugin alloc] init],
-                    [[SyntaxHighlightingPlugin alloc] init],
+//                    [[SyntaxHighlightingPlugin alloc] init],
                     nil];
         _appState = [ApplicationState sharedApplicationState];
     }

@@ -26,7 +26,9 @@
         _defaultFontSize = 14;
         _properties = @{
                         PLUGIN_TITLE: @"Font Size",
-                        PLUGIN_TYPE: [NSNumber numberWithInt:kRangeSettingType]
+                        PLUGIN_TYPE: [NSNumber numberWithInt:kRangeSettingType],
+                        PLUGIN_RANGE_MIN: [NSNumber numberWithInt:10],
+                        PLUGIN_RANGE_MAX: [NSNumber numberWithInt:70]
                         };
     }
     return self;
@@ -51,6 +53,7 @@
                         forValues:(NSDictionary *)properties
                          delegate:(id)delegate
 {
-    [arcAttributedString setFontSize:14];
+    [arcAttributedString setFontSize:
+     [[properties objectForKey:_fontSizeSettingsKey] intValue]];
 }
 @end
