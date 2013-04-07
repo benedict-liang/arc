@@ -43,7 +43,9 @@
 {
     // Return the number of rows in the section.
     return 0;
-
+    
+    // TODO: set row count
+//    return [_resultsArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
