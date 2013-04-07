@@ -190,6 +190,12 @@
     }
     
     cell.textLabel.text = [option objectForKey:PLUGIN_LABEL];
+    
+    // Allow the plugin to customise this cell, if applicable.
+    id<PluginDelegate> plugin = [properties objectForKey:SECTION_PLUGIN_OBJECT];
+    if ([plugin respondsToSelector:@selector(customiseTableViewCell:options:)]) {
+        [plugin customiseTableViewCell:&cell options:option];
+    }
     return cell;
 }
 
