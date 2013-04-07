@@ -30,6 +30,8 @@
         
         _currentFile = file;
         
+        _overlays = @[@"comment"];
+        
         _bundle = [TMBundleSyntaxParser plistForExt:[file extension]];
         
         _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
@@ -116,11 +118,14 @@
     return scopes;
 }
 
-- (void)applyStyleToScope:(NSString*)name range:(NSRange)range output:(ArcAttributedString*)o {
+- (void)applyStyleToScope:(NSString*)name range:(NSRange)range output:(ArcAttributedString*)o dict:(NSObject*)dict{
     
     NSArray* capturableScopes = [self capturableScopes:name];
     for (NSString *s in capturableScopes) {
         NSDictionary* style = [(NSDictionary*)[_theme objectForKey:@"scopes"] objectForKey:s];
+        if (![dict isEqual:(NSObject*)overlapMatches] && [_overlays containsObject:s]) {
+            overlapMatches = [self addRange:range scope:s dict:overlapMatches];
+        }
         UIColor *fg = nil;
         if (style) {
             fg = [style objectForKey:@"foreground"];
@@ -176,7 +181,7 @@
             for (NSValue *v in ranges) {
                 NSRange range;
                 [v getValue:&range];
-                [self applyStyleToScope:scope range:range output:output];
+                [self applyStyleToScope:scope range:range output:output dict:pairs];
             }
         }
     }
@@ -396,6 +401,7 @@
     [self applyStylesTo:output withRanges:beginCMatches];
     [self applyStylesTo:output withRanges:endCMatches];
     [self applyStylesTo:output withRanges:contentNameMatches];
+    [self applyStylesTo:output withRanges:overlapMatches];
     //NSLog(@"%@",pairMatches);
     //[self logs];
     //NSLog(@"Updating!");
