@@ -10,4 +10,7 @@
 
 @interface ResultsTableViewController : UITableViewController
 
+@property (strong, nonatomic) NSArray *resultsArray;
+
+
 @end
