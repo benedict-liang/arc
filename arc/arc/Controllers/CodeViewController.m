@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSMutableDictionary *sharedObject;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *toolbarTitle;
+@property (nonatomic, strong) UIBarButtonItem *searchButtonIcon;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UIPopoverController *resultsPopoverController;
 @property (nonatomic, strong) ResultsTableViewController *resultsViewController;
@@ -240,14 +241,14 @@
                                                      style:UIBarButtonItemStylePlain
                                                     target:nil
                                                     action:nil];
-    UIBarButtonItem *searchButtonIcon = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
+    _searchButtonIcon = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
                                                                                       target:self
                                                                                       action:@selector(showSearchToolBar)];
     [_toolbar setItems:[NSArray arrayWithObjects:
                         [Utils flexibleSpace],
                         _toolbarTitle,
                         [Utils flexibleSpace],
-                        searchButtonIcon,
+                        _searchButtonIcon,
                         nil]];
 }
 
@@ -309,15 +310,12 @@
 
 - (void)showShowMasterViewButton:(UIBarButtonItem *)button
 {
-    UIBarButtonItem *searchButtonIcon = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
-                                                                                      target:self
-                                                                                      action:@selector(showSearchToolBar)];
     _toolbar.items = [NSArray arrayWithObjects:
                       button,
                       [Utils flexibleSpace],
                       _toolbarTitle,
                       [Utils flexibleSpace],
-                      searchButtonIcon,
+                      _searchButtonIcon,
                       nil];
 }
 
