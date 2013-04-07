@@ -12,7 +12,7 @@
 
 + (NSDictionary*)produceStylesWithTheme:(NSURL *)url {
     //TODO manage theme selection
-    NSURL *testURL = [[NSBundle mainBundle] URLForResource:@"Solarized (light).tmTheme" withExtension:nil];
+    NSURL *testURL = [[NSBundle mainBundle] URLForResource:@"Monokai.tmTheme" withExtension:nil];
     NSDictionary* tmTheme = [NSDictionary dictionaryWithContentsOfURL:testURL];
     
     NSArray *settings = [tmTheme objectForKey:@"settings"];
