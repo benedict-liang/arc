@@ -506,11 +506,14 @@
     [self applyStylesTo:output withRanges:endCMatches];
     [self applyStylesTo:output withRanges:contentNameMatches];
     [self applyStylesTo:output withRanges:overlapMatches];
+    
     //NSLog(@"%@",pairMatches);
     //[self logs];
     //NSLog(@"Updating!");
+    
     [self updateView:output];
 }
+
 - (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString
                            ofFile:(id<File>)file
                         forValues:(NSDictionary *)properties
@@ -520,6 +523,9 @@
     [self setupState:file del:delegate];
     [self applyForeground:arcAttributedString];
     [self updateView:arcAttributedString];
+    
+    [dictionary setValue:[_theme objectForKey:@"global"]
+                  forKey:@"syntaxHighlightingPlugin"];
 
     if (self.bundle) {
         ArcAttributedString *copy =
@@ -527,6 +533,17 @@
         [self performSelectorInBackground:@selector(execOn:)
                                withObject:copy];
     }
+}
+
+- (void)execOnTableView:(UITableView *)tableView
+                 ofFile:(id<File>)file
+              forValues:(NSDictionary *)properties
+           sharedObject:(NSMutableDictionary *)dictionary
+               delegate:(id)delegate
+{
+    NSLog(@"%@", dictionary);
+    NSDictionary *style = [dictionary objectForKey:@"syntaxHighlightingPlugin"];
+    // set bg color here
 }
 
 - (NSDictionary*)propertiesFor:(NSString *)settingKey
