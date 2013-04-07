@@ -175,7 +175,8 @@
     _frameSetter = CTFramesetterCreateWithAttributedString(ref);
     
     // Work out the geometry
-    CGFloat boundsWidth = _tableView.bounds.size.width - 20*2 - 45;
+//    CGFloat boundsWidth = _tableView.bounds.size.width - 20*2 - 45;
+    CGFloat boundsWidth = MAXFLOAT;
     
     // Calculate the lines
     CFIndex start = 0;
@@ -330,6 +331,7 @@
                 [_arcAttributedString.attributedString attributedSubstringFromRange:
                 [[_lines objectAtIndex:lineNumber] rangeValue]]));
 
+    cell.lineNumber = lineNumber;
     cell.line = lineRef;
     [cell setNeedsDisplay];
     return cell;
