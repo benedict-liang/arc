@@ -94,7 +94,8 @@
     [self addFileToFileManager:fileManager name:@"home.html" docURL:documentsURL];
     [self addFileToFileManager:fileManager name:@"nav_gmaps_sample.js" docURL:documentsURL];
     [self addFileToFileManager:fileManager name:@"README.md" docURL:documentsURL];
-    
+    [self addFileToFileManager:fileManager name:@"base.rb" docURL:documentsURL];
+    [self addFileToFileManager:fileManager name:@"RequestBuilder.hs" docURL:documentsURL];
     // End of temporary code.
     
     // Create the DropBox account manager.

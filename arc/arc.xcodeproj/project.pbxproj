@@ -227,6 +227,8 @@
 		FC4B269E16F88CB800E1DC49 /* FolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B269D16F88CB800E1DC49 /* FolderViewController.m */; };
 		FC4B26CE16FF6E3800E1DC49 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */; };
 		FC72605A1710EAAF0068DD91 /* github.tmtheme in Resources */ = {isa = PBXBuildFile; fileRef = FC7260591710EAAF0068DD91 /* github.tmtheme */; };
+		FC726065171102660068DD91 /* base.rb in Resources */ = {isa = PBXBuildFile; fileRef = FC726064171102660068DD91 /* base.rb */; };
+		FC72606B171106C60068DD91 /* RequestBuilder.hs in Resources */ = {isa = PBXBuildFile; fileRef = FC72606A171106C60068DD91 /* RequestBuilder.hs */; };
 		FCB0548017034DE6007832D7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FCB0547F17034DE6007832D7 /* README.md */; };
 		FCB0548417036010007832D7 /* SyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB0548317036010007832D7 /* SyntaxHighlight.m */; };
 		FCFB4DA2170F466200B25FDC /* BundleConf.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCFB4DA1170F466200B25FDC /* BundleConf.plist */; };
@@ -506,6 +508,8 @@
 		FC4B26CC16FF6E3700E1DC49 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
 		FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 		FC7260591710EAAF0068DD91 /* github.tmtheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = github.tmtheme; sourceTree = "<group>"; };
+		FC726064171102660068DD91 /* base.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = base.rb; sourceTree = "<group>"; };
+		FC72606A171106C60068DD91 /* RequestBuilder.hs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RequestBuilder.hs; sourceTree = "<group>"; };
 		FCB0547F17034DE6007832D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		FCB0548217036010007832D7 /* SyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlight.h; sourceTree = "<group>"; };
 		FCB0548317036010007832D7 /* SyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxHighlight.m; sourceTree = "<group>"; };
@@ -640,6 +644,8 @@
 		4C43F8F516F86AA900159B29 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FC72606A171106C60068DD91 /* RequestBuilder.hs */,
+				FC726064171102660068DD91 /* base.rb */,
 				FC4A8528170EB47200463EDA /* twist.py */,
 				FCB0547F17034DE6007832D7 /* README.md */,
 				02B04FC91701608C00FE51CB /* GameObject.h */,
@@ -1250,6 +1256,8 @@
 				4C9E0619170F3AFC0000F783 /* arc72.png in Resources */,
 				4C9E061B170F3B1A0000F783 /* arc144.png in Resources */,
 				FC72605A1710EAAF0068DD91 /* github.tmtheme in Resources */,
+				FC726065171102660068DD91 /* base.rb in Resources */,
+				FC72606B171106C60068DD91 /* RequestBuilder.hs in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

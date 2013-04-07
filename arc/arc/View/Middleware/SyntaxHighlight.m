@@ -201,8 +201,8 @@
         [temp addObject:[NSValue value:&r withObjCType:@encode(NSRange)]];
         [res setObject:temp forKey:s];
     } else {
-        
-        [res setObject:@[[NSValue value:&r withObjCType:@encode(NSRange)]] forKey:s];
+        if (s)
+            [res setObject:@[[NSValue value:&r withObjCType:@encode(NSRange)]] forKey:s];
         
     }
     return res;
@@ -218,13 +218,16 @@
 }
 - (NSArray*)resolveInclude:(NSString*)include {
     
-    if ([include isEqualToString:@"$self"]) {
+    if ([include isEqualToString:@"$base"]) {
         //returns top most pattern
         return [_bundle objectForKey:@"patterns"];
     }
     else if ([include characterAtIndex:0] == '#') {
         // Get rule from repository
         NSString *str = [include substringFromIndex:1];
+        if ([str isEqualToString:@"comment"]) {
+            NSLog(@"%@", [self repositoryRule:str]);
+        }
         id rule = [self repositoryRule:str];
         if (rule)
             return [NSArray arrayWithObject:rule];
@@ -248,7 +251,7 @@
     NSString* name = [syntaxItem objectForKey:@"name"];
     NSRange brange = [self findFirstPattern:begin range:contentRange];
     NSRange erange = NSMakeRange(0, 0);
-    
+
     do
     {
        // NSLog(@"traversing while brange:%@ erange:%@", [NSValue value:&brange withObjCType:@encode(NSRange)], [NSValue value:&erange withObjCType:@encode(NSRange)]);
@@ -256,12 +259,12 @@
         long bEnds = brange.location + brange.length;
         if (contentRange.length > bEnds) {
             //HACK BELOW. BLAME TEXTMATE FOR THIS SHIT. IT MAKES COMMENTS WORK THOUGH
-            if ([self fixAnchor:end]) {
+            //if ([self fixAnchor:end]) {
                 //erange = NSMakeRange(bEnds, contentRange.length - bEnds);
-            } else {
+            //} else {
                 erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
                 
-            }
+            //}
         } else {
             //if bEnds > contentRange.length, skip
             break;
@@ -277,6 +280,9 @@
             if (name) {
                 
                 pairMatches = [self addRange:NSMakeRange(brange.location, eEnds - brange.location) scope:name dict:pairMatches];
+                if ([name isEqualToString:@"comment.line.double-slash.c++"]) {
+                    NSLog(@"%@",pairMatches);
+                }
             }
             if ([syntaxItem objectForKey:@"contentName"]) {
                 contentNameMatches = [self addRange:NSMakeRange(bEnds, eEnds - bEnds) scope:name dict:contentNameMatches];
@@ -316,9 +322,6 @@
             //case name, match
             if (name && match) {
                 NSArray *a = [self foundPattern:match range:contentRange];
-                if ([name isEqualToString:@"comment.line.number-sign.python"]) {
-                    NSLog(@"%@",[self foundPattern:match range:contentRange]);
-                }
                 nameMatches = [self merge:@{name: a} withd2:nameMatches];
             }
             if (captures && match) {
@@ -392,7 +395,7 @@
     [self applyStylesTo:output withRanges:captureMatches];
     [self applyStylesTo:output withRanges:beginCMatches];
     [self applyStylesTo:output withRanges:endCMatches];
-    //NSLog(@"%@",nameMatches);
+    //NSLog(@"%@",pairMatches);
    // [self logs];
     NSLog(@"Updating!");
     [self updateView];
