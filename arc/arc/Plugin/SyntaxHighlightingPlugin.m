@@ -25,16 +25,13 @@
     return self;
 }
 
-- (void)setupState:(id<File>)file del:(id)d {
-
-    _delegate = d;
-
+- (void)setupState:(id<File>)file
+               del:(id<CodeViewControllerDelegate>)delegate
+{
+    _delegate = delegate;
     _currentFile = file;
-    
     _overlays = @[@"comment"];
-    
     _bundle = [TMBundleSyntaxParser plistForExt:[file extension]];
-    
     _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
     
     if ([[file contents] isKindOfClass:[NSString class]]) {
@@ -42,7 +39,6 @@
     }
     
     //reset ranges
-    
     nameMatches = [NSDictionary dictionary];
     captureMatches = [NSDictionary dictionary];
     beginCMatches = [NSDictionary dictionary];
@@ -50,49 +46,67 @@
     pairMatches = [NSDictionary dictionary];
     contentNameMatches = [NSDictionary dictionary];
     overlapMatches = [NSDictionary dictionary];
-    
 }
 
-- (NSArray*)foundPattern:(NSString*)p range:(NSRange)r {
+- (NSArray*)foundPattern:(NSString*)pattern
+                   range:(NSRange)range
+{
     
-    return [self foundPattern:p capture:0 range:r];
+    return [self foundPattern:pattern
+                      capture:0
+                        range:range];
 }
 
-- (NSRange)findFirstPattern:(NSString*)p range:(NSRange)r {
+- (NSRange)findFirstPattern:(NSString*)pattern
+                      range:(NSRange)range
+{
     NSError *error = NULL;
-    
+
     NSRegularExpression *regex = [NSRegularExpression
-                                  regularExpressionWithPattern:p
+                                  regularExpressionWithPattern:pattern
                                   options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines
                                   error:&error];
     
-    if ((r.location + r.length <= [_content length]) && (r.length > 0) && (r.length <= [_content length])) {
+    if ((range.location + range.length <= [_content length]) &&
+        (range.length > 0) &&
+        (range.length <= [_content length]))
+    {
         //NSLog(@"findFirstPattern:   %d %d",r.location,r.length);
-        return [regex rangeOfFirstMatchInString:_content options:0 range:r];
+        return [regex rangeOfFirstMatchInString:_content
+                                        options:0
+                                          range:range];
     } else {
         //NSLog(@"index out of bounds in regex. findFirstPatten:%d %d",r.location,r.length);
         return NSMakeRange(NSNotFound, 0);
     }
     
 }
-- (NSArray*)foundPattern:(NSString*)p capture:(int)c range:(NSRange)r {
+- (NSArray*)foundPattern:(NSString*)pattern
+                 capture:(int)capture
+                   range:(NSRange)range
+{
     NSError *error = NULL;
     NSMutableArray* results = [[NSMutableArray alloc] init];
     NSRegularExpression *regex = [NSRegularExpression
-                                  regularExpressionWithPattern:p
-                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines                                  error:&error];
-    
-    
-    
-    if (r.location + r.length <= [_content length]) {
+                                  regularExpressionWithPattern:pattern
+                                  options:
+                                    NSRegularExpressionUseUnixLineSeparators |
+                                    NSRegularExpressionAnchorsMatchLines
+                                  error:&error];
+
+    if (range.location + range.length <= [_content length]) {
         
-        NSArray* matches = [regex matchesInString:_content options:0 range:r];
+        NSArray* matches = [regex matchesInString:_content
+                                          options:0
+                                            range:range];
+
         for (NSTextCheckingResult *match in matches) {
-            if (c < [match numberOfRanges]) {
-                NSRange range = [match rangeAtIndex:c];
+            if (capture < [match numberOfRanges]) {
+                NSRange range = [match rangeAtIndex:capture];
                 
                 if (range.location != NSNotFound) {
-                    NSValue* v = [NSValue value:&range withObjCType:@encode(NSRange)];
+                    NSValue* v = [NSValue value:&range
+                                   withObjCType:@encode(NSRange)];
                     [results addObject:v];
                 }
             }
@@ -100,19 +114,23 @@
         }
         
     } else {
-        NSLog(@"index error in capture:%d %d",r.location,r.length);
+        NSLog(@"index error in capture:%d %d", range.location, range.length);
     }
     
     return results;
 }
-- (void)styleOnRange:(NSRange)range fcolor:(UIColor*)fcolor output:(ArcAttributedString*)output {
-    // tmp.
+- (void)styleOnRange:(NSRange)range
+              fcolor:(UIColor*)fcolor
+              output:(ArcAttributedString*)output
+{
+    // tmp for setting argument.
     [output setColor:[fcolor CGColor]
              OnRange:range
           ForSetting:@"syntaxhighlighting"];
 }
 
-- (NSArray*)capturableScopes:(NSString*)name {
+- (NSArray*)capturableScopes:(NSString*)name
+{
     NSArray *splitScopes = [name componentsSeparatedByString:@"."];
     NSString *accum = nil;
     NSMutableArray *scopes = [NSMutableArray array];
@@ -128,7 +146,11 @@
     return scopes;
 }
 
-- (void)applyStyleToScope:(NSString*)name range:(NSRange)range output:(ArcAttributedString*)o dict:(NSObject*)dict{
+- (void)applyStyleToScope:(NSString*)name
+                    range:(NSRange)range
+                   output:(ArcAttributedString*)output
+                     dict:(NSObject*)dict
+{
     
     NSArray* capturableScopes = [self capturableScopes:name];
     for (NSString *s in capturableScopes) {
@@ -136,24 +158,30 @@
         if (![dict isEqual:(NSObject*)overlapMatches] && [_overlays containsObject:s]) {
             overlapMatches = [self addRange:range scope:s dict:overlapMatches];
         }
+
         UIColor *fg = nil;
         if (style) {
             fg = [style objectForKey:@"foreground"];
         }
         if (fg) {
-            [self styleOnRange:range fcolor:fg output:o];
+            [self styleOnRange:range
+                        fcolor:fg
+                        output:output];
         }
     }
 }
 
-- (NSDictionary*)findCaptures:(NSDictionary*)captures pattern:(NSString*)match range:(NSRange)r {
+- (NSDictionary*)findCaptures:(NSDictionary*)captures
+                      pattern:(NSString*)match
+                        range:(NSRange)range
+{
     
     // Original Code
     NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
     NSArray *captureM = nil;
     for (id k in captures) {
         int i = [k intValue];
-        captureM = [self foundPattern:match capture:i range:r];
+        captureM = [self foundPattern:match capture:i range:range];
         NSString* scope = [[captures objectForKey:k] objectForKey:@"name"];
         [dict setObject:captureM forKey:scope];
     }
@@ -184,79 +212,102 @@
     
     return dict;
 }
--(void)applyStylesTo:(ArcAttributedString*)output withRanges:(NSDictionary*)pairs {
+
+- (void)applyStylesTo:(ArcAttributedString*)output
+          withRanges:(NSDictionary*)pairs
+{
     if (pairs) {
         for (NSString* scope in pairs) {
             NSArray* ranges = [pairs objectForKey:scope];
             for (NSValue *v in ranges) {
                 NSRange range;
                 [v getValue:&range];
-                [self applyStyleToScope:scope range:range output:output dict:pairs];
+                [self applyStyleToScope:scope
+                                  range:range
+                                 output:output
+                                   dict:pairs];
             }
         }
     }
     
 }
--(NSDictionary*)merge:(NSDictionary*)d1 withd2:(NSDictionary*)d2 {
-    NSMutableDictionary* res = [[NSMutableDictionary alloc] initWithDictionary:d1];
+
+- (NSDictionary*)merge:(NSDictionary*)dictionary1
+               withd2:(NSDictionary*)dictionary2
+{
+    NSMutableDictionary* res =
+        [[NSMutableDictionary alloc] initWithDictionary:dictionary1];
     
-    for (id k in d2) {
-        [res setValue:[d2 objectForKey:k] forKey:k];
+    for (id k in dictionary2) {
+        [res setValue:[dictionary2 objectForKey:k]
+               forKey:k];
     }
+
     return res;
 }
-- (NSDictionary*) addRange:(NSRange)r scope:(NSString*)s dict:(NSDictionary*)d {
-    
-    
-    NSMutableDictionary* res = [NSMutableDictionary dictionaryWithDictionary:d];
-    NSArray* ranges = [res objectForKey:s];
+
+- (NSDictionary*) addRange:(NSRange)range scope:(NSString*)scope dict:(NSDictionary*)dict
+{
+    NSMutableDictionary* res =
+        [NSMutableDictionary dictionaryWithDictionary:dict];
+
+    NSArray* ranges = [res objectForKey:scope];
     if (ranges) {
         NSMutableArray* temp = [NSMutableArray arrayWithArray:ranges];
-        
-        [temp addObject:[NSValue value:&r withObjCType:@encode(NSRange)]];
-        [res setObject:temp forKey:s];
+        [temp addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
+        [res setObject:temp forKey:scope];
     } else {
-        if (s)
-            [res setObject:@[[NSValue value:&r withObjCType:@encode(NSRange)]] forKey:s];
-        
+        if (scope) {
+            [res setObject:@[[NSValue value:&range
+                               withObjCType:@encode(NSRange)]]
+                    forKey:scope];
+        }
     }
     return res;
 }
-- (id)repositoryRule:(NSString*)rule {
+
+- (id)repositoryRule:(NSString*)rule
+{
     NSDictionary* repo = [_bundle objectForKey:@"repository"];
     return [repo objectForKey:rule];
 }
-- (NSArray*)externalInclude:(NSString*)name {
-    
+
+- (NSArray*)externalInclude:(NSString*)name
+{
     NSDictionary *includedBundle = [TMBundleSyntaxParser plistByName:name];
     return [includedBundle objectForKey:@"patterns"];
 }
-- (NSArray*)resolveInclude:(NSString*)include {
-    
+
+- (NSArray*)resolveInclude:(NSString*)include
+{    
     if ([include isEqualToString:@"$base"]) {
         //returns top most pattern
         return [_bundle objectForKey:@"patterns"];
-    }
-    else if ([include characterAtIndex:0] == '#') {
+    } else if ([include characterAtIndex:0] == '#') {
         // Get rule from repository
         NSString *str = [include substringFromIndex:1];
+        
         if ([str isEqualToString:@"comment"]) {
             NSLog(@"%@", [self repositoryRule:str]);
         }
-        id rule = [self repositoryRule:str];
-        if (rule)
-            return [NSArray arrayWithObject:rule];
-        else
-            return nil;
         
-    }
-    else {
+        id rule = [self repositoryRule:str];
+        
+        if (rule) {
+            return [NSArray arrayWithObject:rule];
+        } else {
+            return nil;
+        }
+    } else {
         //TODO: find scope name of another language
         return [self externalInclude:include];
     }
     
 }
-- (void)processPairRange:(NSRange)contentRange item:(NSDictionary*)syntaxItem o:(ArcAttributedString*)output{
+- (void)processPairRange:(NSRange)contentRange
+                    item:(NSDictionary*)syntaxItem
+                  output:(ArcAttributedString*)output
+{
     /*
      Algo finds a begin match and an end match (from begin to content's end), reseting the next begin to after end, until no more matches are found or end > content
      Also applies nested patterns recursively
@@ -264,11 +315,10 @@
     NSString* begin = [syntaxItem objectForKey:@"begin"];
     NSString* end = [syntaxItem objectForKey:@"end"];
     NSString* name = [syntaxItem objectForKey:@"name"];
-    NSRange brange = [self findFirstPattern:begin range:contentRange];
+    NSRange brange = [self findFirstPattern:begin
+                                      range:contentRange];
     NSRange erange = NSMakeRange(0, 0);
-    
-    do
-    {
+    do {
         // NSLog(@"traversing while brange:%@ erange:%@", [NSValue value:&brange withObjCType:@encode(NSRange)], [NSValue value:&erange withObjCType:@encode(NSRange)]);
         // using longs because int went out of range as NSNotFound returns MAX_INT, which fucks arithmetic
         long bEnds = brange.location + brange.length;
@@ -277,8 +327,8 @@
             //if ([self fixAnchor:end]) {
             //erange = NSMakeRange(bEnds, contentRange.length - bEnds);
             //} else {
-            erange = [self findFirstPattern:end range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
-            
+            erange = [self findFirstPattern:end
+                                      range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
             //}
         } else {
             //if bEnds > contentRange.length, skip
@@ -289,34 +339,48 @@
         NSArray *embedPatterns = [syntaxItem objectForKey:@"patterns"];
         
         //if there are characters between begin and end, and brange and erange are valid results
-        if (eEnds > brange.location && brange.location != NSNotFound && erange.location != NSNotFound && eEnds - brange.location< contentRange.length)
-        {
-            
+        if (eEnds > brange.location &&
+            brange.location != NSNotFound &&
+            erange.location != NSNotFound &&
+            eEnds - brange.location< contentRange.length) {
+
             if (name) {
-                
-                pairMatches = [self addRange:NSMakeRange(brange.location, eEnds - brange.location) scope:name dict:pairMatches];
+                pairMatches = [self addRange:NSMakeRange(brange.location, eEnds - brange.location)
+                                       scope:name
+                                        dict:pairMatches];
                 if ([name isEqualToString:@"comment.line.double-slash.c++"]) {
                     NSLog(@"%@",pairMatches);
                 }
             }
+
             if ([syntaxItem objectForKey:@"contentName"]) {
-                contentNameMatches = [self addRange:NSMakeRange(bEnds, eEnds - bEnds) scope:name dict:contentNameMatches];
+                contentNameMatches = [self addRange:NSMakeRange(bEnds, eEnds - bEnds)
+                                              scope:name
+                                               dict:contentNameMatches];
             }
-            if (embedPatterns && contentRange.length < [_content length]) {
+            
+            if (embedPatterns &&
+                contentRange.length < [_content length]) {
                 //recursively apply iterPatterns to embedded patterns inclusive of begin and end
                 // [self logs];
                 // NSLog(@"recurring with %d %ld", brange.location, eEnds - brange.location);
-                
-                [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location) patterns:embedPatterns output:output];
+                [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location)
+                                  patterns:embedPatterns
+                                    output:output];
             }
-            
         }
-        brange = [self findFirstPattern:begin range:NSMakeRange(eEnds, contentRange.length - eEnds)];
-    }while ([self whileCondition:brange e:erange cr:contentRange]);
+
+        brange = [self findFirstPattern:begin
+                                  range:NSMakeRange(eEnds, contentRange.length - eEnds)];
+
+    } while ([self whileCondition:brange e:erange cr:contentRange]);
     
     
 }
--(void)iterPatternsForRange:(NSRange)contentRange patterns:(NSArray*)patterns output:(ArcAttributedString*)output {
+- (void)iterPatternsForRange:(NSRange)contentRange
+                    patterns:(NSArray*)patterns
+                      output:(ArcAttributedString*)output
+{
     //  NSLog(@"patterns: %@",patterns);
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_group_t group = dispatch_group_create();
@@ -336,40 +400,52 @@
             
             //case name, match
             if (name && match) {
-                NSArray *a = [self foundPattern:match range:contentRange];
-                nameMatches = [self merge:@{name: a} withd2:nameMatches];
+                NSArray *a = [self foundPattern:match
+                                          range:contentRange];
+                nameMatches = [self merge:@{name: a}
+                                   withd2:nameMatches];
             }
+            
             if (captures && match) {
-                captureMatches = [self merge:[self findCaptures:captures pattern:match range:contentRange] withd2:captureMatches];
+                captureMatches = [self merge:[self findCaptures:captures
+                                                        pattern:match
+                                                          range:contentRange]
+                                      withd2:captureMatches];
             }
+            
             if (beginCaptures && begin) {
-                beginCMatches = [self merge:[self findCaptures:beginCaptures pattern:begin range:contentRange] withd2:beginCMatches];
+                beginCMatches = [self merge:[self findCaptures:beginCaptures
+                                                       pattern:begin
+                                                         range:contentRange]
+                                     withd2:beginCMatches];
             }
+            
             if (endCaptures && end) {
-                endCMatches = [self merge:[self findCaptures:endCaptures pattern:end range:contentRange] withd2:endCMatches];
+                endCMatches = [self merge:[self findCaptures:endCaptures
+                                                     pattern:end
+                                                       range:contentRange]
+                                   withd2:endCMatches];
             }
             
             //matching blocks
             
-            if (begin && end)
-            {
-                [self processPairRange:contentRange item:syntaxItem o:output];
-                
+            if (begin && end) {
+                [self processPairRange:contentRange
+                                  item:syntaxItem
+                                output:output];
             }
-            if (include)
-            {
+            if (include) {
                 id includes = [self resolveInclude:include];
                 //NSLog(@"recurring for include: %@ with %d %d name:%@",includes, contentRange.location, contentRange.length, name);
-                if (contentRange.length <= [_content length] && includes) {
-                    [self iterPatternsForRange:contentRange patterns:includes output:output];
+                if (contentRange.length <= [_content length] &&
+                    includes) {
+                    [self iterPatternsForRange:contentRange
+                                      patterns:includes
+                                        output:output];
                 }
-                
             }
-            
-            
         });
     });
-    
     
     dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     
@@ -380,14 +456,16 @@
 {
     return brange.location != NSNotFound && erange.location + erange.length < contentRange.length && erange.location > 0 && !(NSEqualRanges(brange, NSMakeRange(0, 0)) && (NSEqualRanges(erange, NSMakeRange(0, 0)))) && (erange.location < contentRange.length - 1);
 }
-- (BOOL)fixAnchor:(NSString*)pattern {
+- (BOOL)fixAnchor:(NSString*)pattern
+{
     //return [pattern stringByReplacingOccurrencesOfString:@"\\G" withString:@"\uFFFF"];
     // TODO: pattern for \\z : @"$(?!\n)(?<!\n)"
     return ([pattern rangeOfString:@"\\G"].location != NSNotFound ||
             [pattern rangeOfString:@"\\A"].location != NSNotFound);
 }
 
-- (void)updateView:(ArcAttributedString*)output {
+- (void)updateView:(ArcAttributedString*)output
+{
     if (self.delegate) {
         [self.delegate mergeAndRenderWith:output
                                   forFile:self.currentFile
@@ -408,15 +486,19 @@
     NSLog(@"%@",global);
     UIColor* fg = [global objectForKey:@"foreground"];
     if (fg) {
-        [self styleOnRange:NSMakeRange(0, [_content length]) fcolor:fg output:output];
-        
+        [self styleOnRange:NSMakeRange(0, [_content length])
+                    fcolor:fg
+                    output:output];
     }
 }
-- (void)execOn:(ArcAttributedString *)output {
+
+- (void)execOn:(ArcAttributedString *)output
+{
  
     [self applyForeground:output];
-    [self iterPatternsForRange:NSMakeRange(0, [_content length]) patterns:[_bundle objectForKey:@"patterns"] output:output];
-    
+    [self iterPatternsForRange:NSMakeRange(0, [_content length])
+                      patterns:[_bundle objectForKey:@"patterns"]
+                        output:output];
 
     [self applyStylesTo:output withRanges:pairMatches];
     [self applyStylesTo:output withRanges:nameMatches];
@@ -430,27 +512,30 @@
     //NSLog(@"Updating!");
     [self updateView:output];
 }
-- (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString ofFile:(id<File>)file forValues:(NSDictionary *)properties delegate:(id)delegate {
-    
+- (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString
+                           ofFile:(id<File>)file
+                        forValues:(NSDictionary *)properties
+                         delegate:(id)delegate
+{
     [self setupState:file del:delegate];
-    
     if (self.bundle) {
-        
-        ArcAttributedString *copy = [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
-        
-        [self performSelectorInBackground:@selector(execOn:) withObject:copy];
+        ArcAttributedString *copy =
+            [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
+        [self performSelectorInBackground:@selector(execOn:)
+                               withObject:copy];
     }
 }
 
-- (NSDictionary*)propertiesFor:(NSString *)settingKey {
+- (NSDictionary*)propertiesFor:(NSString *)settingKey
+{
     return nil;
 }
 
-- (id<NSObject>)defaultValueFor:(NSString *)settingKey {
+- (id<NSObject>)defaultValueFor:(NSString *)settingKey
+{
     if ([settingKey isEqualToString:_colorSchemeSettingKey]) {
         return @"tmpval";
     }
-
     return nil;
 }
 @end
