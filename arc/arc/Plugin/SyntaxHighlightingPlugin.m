@@ -398,7 +398,7 @@
 }
 - (void)execOn:(ArcAttributedString *)output {
  
-    [self applyForeground:output];
+   // [self applyForeground:output];
     [self iterPatternsForRange:NSMakeRange(0, [_content length]) patterns:[_bundle objectForKey:@"patterns"] output:output];
     
 
