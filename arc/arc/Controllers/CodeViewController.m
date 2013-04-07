@@ -19,6 +19,7 @@
 @interface CodeViewController ()
 @property id<File> currentFile;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) ApplicationState *state;
 @property (nonatomic, strong) ArcAttributedString *arcAttributedString;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *toolbarTitle;
@@ -26,6 +27,7 @@
 @property CTFramesetterRef frameSetter;
 @property CGFloat lineHeight;
 @property NSMutableArray *lines;
+@property NSMutableArray *plugins;
 - (void)loadFile;
 - (void)processFile;
 - (void)renderFile;
@@ -43,6 +45,8 @@
     self = [super init];
     if (self) {
         _lines = [NSMutableArray array];
+        _plugins = [NSMutableArray array];
+        _state = [ApplicationState sharedApplicationState];
         
         // Defaults
         _backgroundColor = [Utils colorWithHexString:@"FDF6E3"];
@@ -136,12 +140,18 @@
 
 - (void)processFile
 {
-    [BasicStyles arcAttributedString:_arcAttributedString
-                              OfFile:_currentFile
-                            delegate:self];
-    [SyntaxHighlight arcAttributedString:_arcAttributedString
-                                  OfFile:_currentFile
-                                delegate:self];
+    NSDictionary *settings;
+    for (id<PluginDelegate> plugin in _plugins) {
+        settings = [_state settingsForKeys:[plugin settingKeys]];
+        if ([plugin respondsToSelector:
+             @selector(execOnArcAttributedString:ofFile:forValues:delegate:)])
+        {
+            [plugin execOnArcAttributedString:_arcAttributedString
+                                       ofFile:_currentFile
+                                    forValues:settings
+                                     delegate:self];
+        }
+    }
 }
 
 - (void)renderFile
@@ -209,6 +219,14 @@
 
 #pragma mark - Code View Delegate
 
+- (void)registerPlugin:(id<PluginDelegate>)plugin
+{
+    // Only register a plugin once.
+    if ([_plugins indexOfObject:plugin] == NSNotFound) {
+        [_plugins addObject:plugin];
+    }
+}
+
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
                    forFile:(id<File>)file
 {
@@ -217,7 +235,6 @@
         [_tableView reloadData];
     }
 }
-
 
 #pragma mark - Detail View Controller Delegate
 
@@ -278,7 +295,8 @@
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    NSLog(@"asdf");
+    // TODO.
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Search Bar delegate

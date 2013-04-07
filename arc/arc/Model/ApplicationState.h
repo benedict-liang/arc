@@ -10,6 +10,7 @@
 #import "File.h"
 #import "Folder.h"
 #import "RootFolder.h"
+#import "PluginDelegate.h"
 
 @interface ApplicationState : NSObject
 + (ApplicationState*)sharedApplicationState;
@@ -23,6 +24,10 @@
 // Font Dictionary
 @property (nonatomic, strong) NSDictionary* fonts;
 
+// Given an array of Setting Keys,
+// return a Dictionary with keys as settingKeys and
+// values as corresponding setting Values
+- (id)settingsForKeys:(NSArray *)settingKeys;
 
 // Given a key, returns the corresponding setting.
 - (id)settingForKey:(NSString *)key;
@@ -37,4 +42,5 @@
 // Returns a sample file.
 + (id<File>)getSampleFile;
 
+- (void)registerPlugin:(id<PluginDelegate>)plugin;
 @end

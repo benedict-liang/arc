@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SubViewControllerDelegate.h"
 #import "ApplicationState.h"
+#import "PluginDelegate.h"
 
-@interface SettingsViewController : UIViewController <SubViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface SettingsViewController : UIViewController <SubViewControllerDelegate,
+    UITableViewDelegate, UITableViewDataSource>
+- (void)registerPlugin:(id<PluginDelegate>)plugin;
 @end

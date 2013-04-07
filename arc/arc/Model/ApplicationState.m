@@ -9,7 +9,7 @@
 #import "ApplicationState.h"
 
 @interface ApplicationState ()
-@property (strong, nonatomic) NSMutableDictionary *_settings;
+@property (strong, nonatomic) NSMutableDictionary *settings;
 @end
 
 static ApplicationState *sharedApplicationState = nil;
@@ -30,7 +30,10 @@ static ApplicationState *sharedApplicationState = nil;
     if (self) {
         // Get the stored settings dictionary.
         NSMutableDictionary *storedState = [self retrieveSavedState];
-        __settings = [storedState valueForKey:KEY_SETTINGS_ROOT];
+        _settings = [storedState valueForKey:KEY_SETTINGS_ROOT];
+        if (_settings == nil) {
+            _settings = [NSMutableDictionary dictionary];
+        }
         
         // Restore application state.
         NSString *folderPath = [storedState valueForKey:KEY_CURRENT_FOLDER];
@@ -56,21 +59,30 @@ static ApplicationState *sharedApplicationState = nil;
 - (void)setCurrentFileOpened:(id<File>)currentFileOpened
 {
     _currentFileOpened = currentFileOpened;
-    [self setSetting:[currentFileOpened path] forKey:KEY_CURRENT_FILE];
+    [self setSetting:[currentFileOpened path]
+              forKey:KEY_CURRENT_FILE];
 }
 
 - (void)setCurrentFolderOpened:(id<Folder>)currentFolderOpened
 {
     _currentFolderOpened = currentFolderOpened;
-    [self setSetting:[currentFolderOpened path] forKey:KEY_CURRENT_FOLDER];
+    [self setSetting:[currentFolderOpened path]
+              forKey:KEY_CURRENT_FOLDER];
 }
 
 // Helper method to get the path of the state plist.
 - (NSString *)getStateDictionaryPath
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *documentsPath = [[fileManager URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil] path];
-    NSString *settingsPath = [documentsPath stringByAppendingPathComponent:FILE_APP_STATE];
+    NSString *documentsPath = [[fileManager URLForDirectory:NSDocumentDirectory
+                                                   inDomain:NSUserDomainMask
+                                          appropriateForURL:nil
+                                                     create:YES
+                                                      error:nil] path];
+    
+    NSString *settingsPath =
+    [documentsPath stringByAppendingPathComponent:FILE_APP_STATE];
+    
     return settingsPath;
 }
 
@@ -78,20 +90,35 @@ static ApplicationState *sharedApplicationState = nil;
 - (NSMutableDictionary *)retrieveSavedState
 {
     NSString *settingsPath = [self getStateDictionaryPath];
-    NSMutableDictionary *storedState = [NSMutableDictionary dictionaryWithContentsOfFile:settingsPath];
+    NSMutableDictionary *storedState =
+    [NSMutableDictionary dictionaryWithContentsOfFile:settingsPath];
     return storedState;
+}
+
+- (id)settingsForKeys:(NSArray *)settingKeys
+{
+    NSMutableDictionary *settingsDict = [NSMutableDictionary dictionary];
+    
+    for (NSString *settingKey in settingKeys) {
+        [settingsDict setObject:[self settingForKey:settingKey]
+                         forKey:settingKey];
+    }
+    
+    return settingsDict;
 }
 
 // Given a key, returns the corresponding setting.
 - (id)settingForKey:(NSString *)key
 {
-    return [__settings valueForKey:key];
+    return [_settings valueForKey:key];
 }
 
 // Updates the setting stored with the given key.
 - (void)setSetting:(id)value forKey:(NSString *)key
 {
-    [__settings setValue:value forKey:key];
+    [_settings setValue:value
+                 forKey:key];
+    
     [self saveStateToDisk];
 }
 
@@ -102,20 +129,36 @@ static ApplicationState *sharedApplicationState = nil;
     NSMutableDictionary *savedState = [[self retrieveSavedState] mutableCopy];
     
     // Set our application state.
-    [savedState setValue:[_currentFolderOpened path] forKey:KEY_CURRENT_FOLDER];
-    [savedState setValue:[_currentFileOpened path] forKey:KEY_CURRENT_FILE];
+    [savedState setValue:[_currentFolderOpened path]
+                  forKey:KEY_CURRENT_FOLDER];
+    
+    [savedState setValue:[_currentFileOpened path]
+                  forKey:KEY_CURRENT_FILE];
     
     // Save our settings.
-    [savedState setValue:__settings forKey:KEY_SETTINGS_ROOT];
+    [savedState setValue:_settings
+                  forKey:KEY_SETTINGS_ROOT];
     
     // Save the dictionary back to disk.
-    [savedState writeToFile:[self getStateDictionaryPath] atomically:YES];
+    [savedState writeToFile:[self getStateDictionaryPath]
+                 atomically:YES];
+}
+
+- (void)registerPlugin:(id<PluginDelegate>)plugin
+{
+    for (NSString *settingKey in [plugin settingKeys]) {
+        if ([_settings objectForKey:settingKey] == nil) {
+            [self setSetting:[plugin defaultValueFor:settingKey]
+                      forKey:settingKey];
+        }
+    }
 }
 
 // Returns a sample file.
 + (id<File>)getSampleFile
 {
-    return (id<File>)[[RootFolder sharedRootFolder] retrieveItemWithName:@"GameObject.h"];
+    return (id<File>)[[RootFolder sharedRootFolder]
+                      retrieveItemWithName:@"GameObject.h"];
 }
 
 @end

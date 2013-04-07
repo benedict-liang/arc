@@ -8,11 +8,20 @@
 
 #import "MainViewController.h"
 
+// Plugins
+#import "SyntaxHighlightingPlugin.h"
+#import "FontFamilyPlugin.h"
+#import "FontSizePlugin.h"
+
 @interface MainViewController ()
-@property CodeViewController *codeViewController;
-@property LeftViewController *leftViewController;
+@property (nonatomic, strong) CodeViewController *codeViewController;
+@property (nonatomic, strong) LeftViewController *leftViewController;
+@property (nonatomic, strong) ApplicationState *appState;
+@property NSArray *plugins;
 - (void)fileSelected:(id<File>)file;
 - (void)folderSelected:(id<Folder>)folder;
+- (void)registerPlugins;
+- (void)registerPlugin:(id<PluginDelegate>)plugin;
 @end
 
 @implementation MainViewController
@@ -21,9 +30,32 @@
 {
     self = [super init];
     if (self) {
-
+        _plugins = [NSArray arrayWithObjects:
+                    [[FontFamilyPlugin alloc] init],
+                    [[FontSizePlugin alloc] init],
+                    nil];
+        _appState = [ApplicationState sharedApplicationState];
     }
     return self;
+}
+
+- (void)registerPlugins
+{
+    for (id<PluginDelegate> plugin in _plugins) {
+        [self registerPlugin:plugin];
+    }
+}
+
+- (void)registerPlugin:(id<PluginDelegate>)plugin
+{
+    // Register Plugin with Application State
+    [_appState registerPlugin:plugin];
+    
+    // Register Plugin with SettingsViewControllerDelegate
+    [_leftViewController registerPlugin:plugin];
+    
+    // Register Plugin with CodeViewController
+    [_codeViewController registerPlugin:plugin];
 }
 
 - (void)viewDidLoad
@@ -32,6 +64,9 @@
 
     _leftViewController = [self.viewControllers objectAtIndex:0];
     _codeViewController = [self.viewControllers objectAtIndex:1];
+
+    // Not sure if this is the best place for this.
+    [self registerPlugins];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -44,7 +79,6 @@
     [self folderSelected:[appState currentFolderOpened]];
 }
 
-// tmp
 - (void)openIn:(id<File>)file
 {
     [_leftViewController navigateTo:(id<Folder>)[file parent]];

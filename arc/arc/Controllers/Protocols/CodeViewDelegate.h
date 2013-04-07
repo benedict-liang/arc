@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ArcAttributedString.h"
+#import "PluginDelegate.h"
 #import "File.h"
 
 @protocol CodeViewDelegate <NSObject>
@@ -15,6 +16,10 @@
 - (void)refreshForSetting:(NSString*)setting;
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
                    forFile:(id<File>)file;
+
+
+// Register Plugin with CodeViewDelegate;
+- (void)registerPlugin:(id<PluginDelegate>)plugin;
 
 # pragma mark - Code View Properties
 @property (nonatomic, strong) UIColor *backgroundColor;
