@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RangeSettingCell : UITableViewCell
-@property (nonatomic, readonly) UISlider *slider;
+@interface SettingCell : UITableViewCell
+@property (nonatomic, strong) NSString *settingKey;
 @end

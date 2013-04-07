@@ -53,6 +53,7 @@
                         forValues:(NSDictionary *)properties
                          delegate:(id)delegate
 {
-    [arcAttributedString setFontSize:14];
+    [arcAttributedString setFontSize:
+     [[properties objectForKey:_fontSizeSettingsKey] intValue]];
 }
 @end

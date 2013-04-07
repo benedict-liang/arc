@@ -124,7 +124,7 @@
         (NSDictionary*)[_settingOptions objectAtIndex:section];
     
     int type = [[sectionProperties objectForKey:@"sectionType"] intValue];
-    if (type == kMCQSettingType || type == kRangeSettingType) {
+    if (type == kMCQSettingType) {
         return [sectionProperties objectForKey:@"sectionHeading"];
     }
 
@@ -186,22 +186,44 @@
 - (UITableViewCell*)rangeCellFromTableView:(UITableView *)tableView
                             withProperties:(NSDictionary*)properties
 {
-    static NSString *cellIdentifier = @"SetingsRangeCell";
-    RangeSettingCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    static NSString *cellIdentifier = @"SettingsRangeCell";
+    SettingCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [[RangeSettingCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[SettingCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:cellIdentifier];
     }
     
-    UISlider *slider = cell.slider;
+    CGRect frame = CGRectMake(0.0, 0.0, 150.0, 10.0);
+    UISlider *slider = [[UISlider alloc] initWithFrame:frame];
+    [slider addTarget:self
+               action:@selector(rangeSettingsChanged:)
+     forControlEvents:UIControlEventValueChanged];
+
+    [slider setBackgroundColor:[UIColor clearColor]];
     slider.minimumValue = (int) [[properties objectForKey:PLUGIN_RANGE_MIN] intValue];
     slider.maximumValue = (int) [[properties objectForKey:PLUGIN_RANGE_MAX] intValue];
-    
+    slider.continuous = YES;
     NSString *settingKey = [properties objectForKey:@"sectionSettingKey"];
     [slider setValue:[[_appState settingForKey:settingKey] intValue]
             animated:YES];
-    
+    cell.settingKey = settingKey;
+    cell.accessoryView = slider;
+    cell.textLabel.text = [properties objectForKey:@"sectionHeading"];
     return cell;
+}
+
+- (void)rangeSettingsChanged:(id)sender
+{
+    UISlider *slider = (UISlider *) sender;
+    
+    int value = lroundf(slider.value);
+    [slider setValue:value animated:YES];
+    
+    SettingCell *cell = (SettingCell *) slider.superview;
+
+    [self updateSetting:[NSNumber numberWithInt:value]
+          forSettingKey:cell.settingKey
+        reloadTableData:NO];
 }
 
 - (UITableViewCell*)boolCellFromTableView:(UITableView *)tableView
@@ -236,16 +258,29 @@
         NSString *value = [option objectForKey:PLUGIN_VALUE];
         NSString *settingKey = [sectionProperties objectForKey:@"sectionSettingKey"];
 
-        // Update App State
-        [_appState setSetting:value forKey:settingKey];
-
-        
-        // Refresh the code view.
-        [self.delegate refreshCodeViewForSetting:settingKey];
-        
         // Unhighlight the row, and reload the table.
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        [tableView reloadData];
+        
+        [self updateSetting:value
+              forSettingKey:settingKey
+            reloadTableData:YES];
+    }
+
+}
+
+- (void)updateSetting:(id<NSObject>)value
+        forSettingKey:(NSString*)settingKey
+        reloadTableData:(Boolean)reloadData
+{
+    // Update App State
+    [_appState setSetting:value forKey:settingKey];
+    
+    // Refresh the code view.
+    [self.delegate refreshCodeViewForSetting:settingKey];
+    
+    if (reloadData) {
+        // Refresh tableView
+        [_tableView reloadData];
     }
 }
 
