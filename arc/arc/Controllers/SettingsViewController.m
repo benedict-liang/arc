@@ -41,7 +41,7 @@
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds
                                               style:UITableViewStyleGrouped];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
-    UIViewAutoresizingFlexibleWidth;
+        UIViewAutoresizingFlexibleWidth;
     
     // Set TableView's Delegate and DataSource
     _tableView.dataSource = self;
@@ -80,18 +80,22 @@
                        forKey:SECTION_TYPE];
             
             // Set options depending on the type of the section.
-            kSettingType type = [PluginUtilities settingTypeForNumber:[properties objectForKey:PLUGIN_TYPE]];
+            kSettingType type =
+                [PluginUtilities settingTypeForNumber:[properties objectForKey:PLUGIN_TYPE]];
+            
             switch (type) {
                 case kMCQSettingType:
                     [section setValue:[properties objectForKey:PLUGIN_OPTIONS]
                                forKey:SECTION_OPTIONS];
                     break;
+                    
                 case kRangeSettingType:
                     [section setValue:[properties objectForKey:PLUGIN_RANGE_MAX]
                                forKey:PLUGIN_RANGE_MAX];
                     [section setValue:[properties objectForKey:PLUGIN_RANGE_MIN]
                                forKey:PLUGIN_RANGE_MIN];
                     break;
+
                 case kBoolSettingType:
                     break;
             }
@@ -108,14 +112,20 @@
     return [_settingOptions count];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
 {
-    NSDictionary *sectionProperties = (NSDictionary*)[_settingOptions objectAtIndex:section];
+    NSDictionary *sectionProperties =
+        (NSDictionary*)[_settingOptions objectAtIndex:section];
     
-    kSettingType type = [PluginUtilities settingTypeForNumber:[sectionProperties objectForKey:SECTION_TYPE]];
+    kSettingType type =
+        [PluginUtilities settingTypeForNumber:
+            [sectionProperties objectForKey:SECTION_TYPE]];
+
     switch (type) {
         case kMCQSettingType:
             return [[sectionProperties objectForKey:SECTION_OPTIONS] count];
+
         default:
             // Other types have only one row.
             return 1;
@@ -125,9 +135,11 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSDictionary *sectionProperties =
-    (NSDictionary*)[_settingOptions objectAtIndex:section];
+        (NSDictionary*)[_settingOptions objectAtIndex:section];
     
-    kSettingType type = [PluginUtilities settingTypeForNumber:[sectionProperties objectForKey:SECTION_TYPE]];
+    kSettingType type =
+        [PluginUtilities settingTypeForNumber:[sectionProperties objectForKey:SECTION_TYPE]];
+
     switch (type) {
         case kMCQSettingType:
             return [sectionProperties objectForKey:SECTION_HEADING];
@@ -137,22 +149,29 @@
     }
 }
 
-- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
+- (UITableViewCell*)tableView:(UITableView*)tableView
+        cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NSDictionary *sectionProperties =
-    (NSDictionary*)[_settingOptions objectAtIndex:indexPath.section];
+        (NSDictionary*)[_settingOptions objectAtIndex:indexPath.section];
     
-    kSettingType type = [PluginUtilities settingTypeForNumber:[sectionProperties objectForKey:SECTION_TYPE]];
+    kSettingType type =
+        [PluginUtilities settingTypeForNumber:[sectionProperties objectForKey:SECTION_TYPE]];
+
     switch (type) {
         case kMCQSettingType:
             return [self mCQCellFromTableView:tableView
                                withProperties:sectionProperties
                         cellForRowAtIndexPath:indexPath];
+
         case kRangeSettingType:
             return [self rangeCellFromTableView:tableView
                                  withProperties:sectionProperties];
+
         case kBoolSettingType:
-            // TODO.
+            return [self boolCellFromTableView:tableView
+                                withProperties:sectionProperties];
+
         default:
             return nil;
     }
