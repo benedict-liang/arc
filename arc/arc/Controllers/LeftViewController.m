@@ -62,7 +62,8 @@
     [self bootstrapSettingsView];
 
     // Show Documents By default
-    [self showDocuments:nil];
+//    [self showDocuments:nil];
+    [self showSettings:nil];
 }
 
 - (void)bootstrapSettingsView
@@ -127,10 +128,9 @@
 
 - (void)navigateTo:(id<Folder>)folder
 {
-    if (_currentViewController != _documentsNavigationViewController) {
-        [self showDocuments:nil];
-    }
-    
+//    if (_currentViewController != _documentsNavigationViewController) {
+//        [self showDocuments:nil];
+//    }    
     
     if ([Utils isEqual:[folder parent] and:_currentFolder]) {
         // Normal Folder selected

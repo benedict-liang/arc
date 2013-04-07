@@ -85,6 +85,13 @@
                 [section setValue:[properties objectForKey:PLUGIN_OPTIONS]
                            forKey:@"sectionOptions"];
             }
+            
+            if (type == kRangeSettingType) {
+                [section setValue:[properties objectForKey:PLUGIN_RANGE_MAX]
+                           forKey:PLUGIN_RANGE_MAX];
+                [section setValue:[properties objectForKey:PLUGIN_RANGE_MIN]
+                           forKey:PLUGIN_RANGE_MIN];
+            }
 
             [_settingOptions addObject:section];
         }
@@ -117,7 +124,7 @@
         (NSDictionary*)[_settingOptions objectAtIndex:section];
     
     int type = [[sectionProperties objectForKey:@"sectionType"] intValue];
-    if (type == kMCQSettingType) {
+    if (type == kMCQSettingType || type == kRangeSettingType) {
         return [sectionProperties objectForKey:@"sectionHeading"];
     }
 
@@ -180,15 +187,20 @@
                             withProperties:(NSDictionary*)properties
 {
     static NSString *cellIdentifier = @"SetingsRangeCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    RangeSettingCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[RangeSettingCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:cellIdentifier];
     }
     
-    // TODO.
-
-    cell.textLabel.text = [properties objectForKey:@"sectionHeading"];
+    UISlider *slider = cell.slider;
+    slider.minimumValue = (int) [[properties objectForKey:PLUGIN_RANGE_MIN] intValue];
+    slider.maximumValue = (int) [[properties objectForKey:PLUGIN_RANGE_MAX] intValue];
+    
+    NSString *settingKey = [properties objectForKey:@"sectionSettingKey"];
+    [slider setValue:[[_appState settingForKey:settingKey] intValue]
+            animated:YES];
+    
     return cell;
 }
 
