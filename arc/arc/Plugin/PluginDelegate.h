@@ -38,20 +38,15 @@
 - (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString
                            ofFile:(id<File>)file
                         forValues:(NSDictionary *)properties
+                     sharedObject:(NSMutableDictionary *)dictionary
                          delegate:(id)delegate;
 
 @optional
 - (void)execOnTableView:(UITableView *)tableView
                  ofFile:(id<File>)file
               forValues:(NSDictionary *)properties
+           sharedObject:(NSMutableDictionary *)dictionary
                delegate:(id)delegate;
-
-// Last Resort
-@optional
-- (void)execOnCodeViewController:(id<CodeViewControllerDelegate>)codeView
-                          ofFile:(id<File>)file
-                       forValues:(NSDictionary *)properties
-                        delegate:(id)delegate;
 
 // Optional method used to allow the plugin
 // to customise its Settings Pane cells.

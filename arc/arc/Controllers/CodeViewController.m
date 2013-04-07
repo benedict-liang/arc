@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ApplicationState *appState;
 @property (nonatomic, strong) ArcAttributedString *arcAttributedString;
+@property (nonatomic, strong) NSMutableDictionary *sharedObject;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIBarButtonItem *toolbarTitle;
 @property (nonatomic, strong) UISearchBar *searchBar;
@@ -26,7 +27,6 @@
 @property NSMutableArray *plugins;
 
 - (void)loadFile;
-- (void)processFile;
 - (void)renderFile;
 - (void)clearPreviousLayoutInformation;
 - (void)generateLines;
@@ -47,6 +47,7 @@
         
         // Defaults
         _backgroundColor = [Utils colorWithHexString:@"FDF6E3"];
+        _sharedObject = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -127,15 +128,13 @@
 
 - (void)processFileForSetting:(NSString*)setting
 {
+    _sharedObject = [NSMutableDictionary dictionary];
+    
     [self preRenderPluginsForSetting:setting];
     [self generateLines];
     [self calcLineHeight];
     [self renderFile];
     [self postRenderPluginsForSetting:setting];
-    [self finalPluginsForSetting:setting];
-
-    // Not sure where this should go for now.
-    [self finalPluginsForSetting:nil];
 }
 
 - (void)loadFile
@@ -216,11 +215,12 @@
         if (setting == nil || [settingKeys indexOfObject:setting] != NSNotFound) {
             settings = [_appState settingsForKeys:settingKeys];
             if ([plugin respondsToSelector:
-                 @selector(execOnArcAttributedString:ofFile:forValues:delegate:)])
+                 @selector(execOnArcAttributedString:ofFile:forValues:sharedObject:delegate:)])
             {
                 [plugin execOnArcAttributedString:_arcAttributedString
                                            ofFile:_currentFile
                                         forValues:settings
+                                     sharedObject:_sharedObject
                                          delegate:self];
             }
         }
@@ -236,36 +236,17 @@
         if (setting == nil || [settingKeys indexOfObject:setting] != NSNotFound) {
             settings = [_appState settingsForKeys:settingKeys];
             if ([plugin respondsToSelector:
-                 @selector(execOnTableView:ofFile:forValues:delegate:)])
+                 @selector(execOnTableView:ofFile:forValues:sharedObject:delegate:)])
             {
                 [plugin execOnTableView:_tableView
                                  ofFile:_currentFile
                               forValues:settings
+                           sharedObject:_sharedObject
                                delegate:self];
             }
         }
     }
 }
-
-- (void)finalPluginsForSetting:(NSString *)setting
-{
-    NSDictionary *settings;
-    for (id<PluginDelegate> plugin in _plugins) {
-        NSArray *settingKeys = [plugin settingKeys];
-        if (setting == nil || [settingKeys indexOfObject:setting] != NSNotFound) {
-            settings = [_appState settingsForKeys:settingKeys];
-            if ([plugin respondsToSelector:
-                 @selector(execOnCodeViewController:ofFile:forValues:delegate:)])
-            {
-                [plugin execOnCodeViewController:self
-                                          ofFile:_currentFile
-                                       forValues:settings
-                                        delegate:self];
-            }
-        }
-    }
-}
-
 
 #pragma mark - Code View Delegate
 

@@ -51,6 +51,7 @@
 - (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString
                            ofFile:(id<File>)file
                         forValues:(NSDictionary *)properties
+                     sharedObject:(NSMutableDictionary *)dictionary
                          delegate:(id)delegate
 {
     [arcAttributedString setFontSize:
