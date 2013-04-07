@@ -41,7 +41,7 @@
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds
                                               style:UITableViewStyleGrouped];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
-        UIViewAutoresizingFlexibleWidth;
+    UIViewAutoresizingFlexibleWidth;
     
     // Set TableView's Delegate and DataSource
     _tableView.dataSource = self;
@@ -67,32 +67,34 @@
             
             // Section Setting Key
             [section setValue:setting
-                       forKey:@"sectionSettingKey"];
+                       forKey:SECTION_SETTING_KEY];
             
             NSDictionary *properties = [plugin propertiesFor:setting];
             
             // Section Heading
             [section setValue:[properties objectForKey:PLUGIN_TITLE]
-                       forKey:@"sectionHeading"];
+                       forKey:SECTION_HEADING];
             
-            // TODO.
-            // add utils method to make "casting"/comparing enums easier
-            int type = [[properties objectForKey:PLUGIN_TYPE] intValue];
+            // Section Type
             [section setValue:[properties objectForKey:PLUGIN_TYPE]
-                       forKey:@"sectionType"];
-
-            if (type == kMCQSettingType) {
-                [section setValue:[properties objectForKey:PLUGIN_OPTIONS]
-                           forKey:@"sectionOptions"];
+                       forKey:SECTION_TYPE];
+            
+            kSettingType type = [PluginUtilities settingTypeForNumber:[properties objectForKey:PLUGIN_TYPE]];
+            switch (type) {
+                case kMCQSettingType:
+                    [section setValue:[properties objectForKey:PLUGIN_OPTIONS]
+                               forKey:SECTION_OPTIONS];
+                    break;
+                case kRangeSettingType:
+                    [section setValue:[properties objectForKey:PLUGIN_RANGE_MAX]
+                               forKey:PLUGIN_RANGE_MAX];
+                    [section setValue:[properties objectForKey:PLUGIN_RANGE_MIN]
+                               forKey:PLUGIN_RANGE_MIN];
+                    break;
+                case kBoolSettingType:
+                    break;
             }
             
-            if (type == kRangeSettingType) {
-                [section setValue:[properties objectForKey:PLUGIN_RANGE_MAX]
-                           forKey:PLUGIN_RANGE_MAX];
-                [section setValue:[properties objectForKey:PLUGIN_RANGE_MIN]
-                           forKey:PLUGIN_RANGE_MIN];
-            }
-
             [_settingOptions addObject:section];
         }
     }
@@ -108,50 +110,51 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSDictionary *sectionProperties = (NSDictionary*)[_settingOptions objectAtIndex:section];
-    int type = [[sectionProperties objectForKey:@"sectionType"] intValue];
+    kSettingType type = [PluginUtilities settingTypeForNumber:[sectionProperties objectForKey:SECTION_TYPE]];
     
-    if (type == kMCQSettingType) {
-        return [[sectionProperties objectForKey:@"sectionOptions"] count];
-    } else {
-        // Bool and range types have only one row.
-        return 1;
+    switch (type) {
+        case kMCQSettingType:
+            return [[sectionProperties objectForKey:SECTION_OPTIONS] count];
+        default:
+            // Other types have only one row.
+            return 1;
     }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSDictionary *sectionProperties =
-        (NSDictionary*)[_settingOptions objectAtIndex:section];
+    (NSDictionary*)[_settingOptions objectAtIndex:section];
     
-    int type = [[sectionProperties objectForKey:@"sectionType"] intValue];
-    if (type == kMCQSettingType) {
-        return [sectionProperties objectForKey:@"sectionHeading"];
+    kSettingType type = [PluginUtilities settingTypeForNumber:[sectionProperties objectForKey:SECTION_TYPE]];
+    switch (type) {
+        case kMCQSettingType:
+            return [sectionProperties objectForKey:SECTION_HEADING];
+        default:
+            // Other types have no section heading.
+            return nil;
     }
-
-    // Other types of settings are single row items.
-    // no section heading required.
-    return nil;
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NSDictionary *sectionProperties =
-        (NSDictionary*)[_settingOptions objectAtIndex:indexPath.section];
-
-    int type = [[sectionProperties objectForKey:@"sectionType"] intValue];
-    if (type == kMCQSettingType) {
-        return [self mCQCellFromTableView:tableView
-                           withProperties:sectionProperties
-                    cellForRowAtIndexPath:indexPath];
-    } else if (type == kRangeSettingType) {
-        return [self rangeCellFromTableView:tableView
-                             withProperties:sectionProperties];
-    } else if (type == kBoolSettingType) {
-        // TODO.
-        return nil;
-    }
+    (NSDictionary*)[_settingOptions objectAtIndex:indexPath.section];
     
-    return nil;
+    kSettingType type = [PluginUtilities settingTypeForNumber:[sectionProperties objectForKey:SECTION_TYPE]];
+    switch (type) {
+        case kMCQSettingType:
+            return [self mCQCellFromTableView:tableView
+                               withProperties:sectionProperties
+                        cellForRowAtIndexPath:indexPath];
+        case kRangeSettingType:
+            return [self rangeCellFromTableView:tableView
+                                 withProperties:sectionProperties];
+        case kBoolSettingType:
+            // TODO.
+        default:
+            return nil;
+    }
 }
 
 - (UITableViewCell*)mCQCellFromTableView:(UITableView *)tableView
@@ -159,7 +162,7 @@
                    cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NSDictionary *option = [[properties
-                             objectForKey:@"sectionOptions"]
+                             objectForKey:SECTION_OPTIONS]
                             objectAtIndex:indexPath.row];
     
     static NSString *cellIdentifier = @"SettingsMCQCell";
@@ -170,9 +173,9 @@
     }
     
     // Plugin values need to be comparable somehow
-    // easiers is to make them all strings.
+    // easiest option is to make them all strings.
     NSString *value = [option objectForKey:PLUGIN_VALUE];
-    NSString *settingKey = [properties objectForKey:@"sectionSettingKey"];
+    NSString *settingKey = [properties objectForKey:SECTION_SETTING_KEY];
     if ([[_appState settingForKey:settingKey] isEqualToString:value]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
@@ -190,7 +193,7 @@
     SettingCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[SettingCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier:cellIdentifier];
+                                  reuseIdentifier:cellIdentifier];
     }
     
     CGRect frame = CGRectMake(0.0, 0.0, 150.0, 10.0);
@@ -198,17 +201,17 @@
     [slider addTarget:self
                action:@selector(rangeSettingsChanged:)
      forControlEvents:UIControlEventValueChanged];
-
+    
     [slider setBackgroundColor:[UIColor clearColor]];
     slider.minimumValue = (int) [[properties objectForKey:PLUGIN_RANGE_MIN] intValue];
     slider.maximumValue = (int) [[properties objectForKey:PLUGIN_RANGE_MAX] intValue];
     slider.continuous = YES;
-    NSString *settingKey = [properties objectForKey:@"sectionSettingKey"];
+    NSString *settingKey = [properties objectForKey:SECTION_SETTING_KEY];
     [slider setValue:[[_appState settingForKey:settingKey] intValue]
             animated:NO];
     cell.settingKey = settingKey;
     cell.accessoryView = slider;
-    cell.textLabel.text = [properties objectForKey:@"sectionHeading"];
+    cell.textLabel.text = [properties objectForKey:SECTION_HEADING];
     return cell;
 }
 
@@ -220,7 +223,7 @@
     [slider setValue:value animated:YES];
     
     SettingCell *cell = (SettingCell *) slider.superview;
-
+    
     [self updateSetting:[NSNumber numberWithInt:value]
           forSettingKey:cell.settingKey
         reloadTableData:NO];
@@ -237,7 +240,7 @@
     }
     UISwitch *switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
     cell.accessoryView = switchview;
-    cell.textLabel.text = [properties objectForKey:@"sectionHeading"];
+    cell.textLabel.text = [properties objectForKey:SECTION_HEADING];
     return cell;
 }
 
@@ -247,17 +250,17 @@
 {
     
     NSDictionary *sectionProperties =
-        (NSDictionary*)[_settingOptions objectAtIndex:indexPath.section];
+    (NSDictionary*)[_settingOptions objectAtIndex:indexPath.section];
     
-    int type = [[sectionProperties objectForKey:@"sectionType"] intValue];
+    int type = [[sectionProperties objectForKey:SECTION_TYPE] intValue];
     if (type == kMCQSettingType) {
         NSDictionary *option = [[sectionProperties
-                                 objectForKey:@"sectionOptions"]
-                                    objectAtIndex:indexPath.row];
+                                 objectForKey:SECTION_OPTIONS]
+                                objectAtIndex:indexPath.row];
         
         NSString *value = [option objectForKey:PLUGIN_VALUE];
-        NSString *settingKey = [sectionProperties objectForKey:@"sectionSettingKey"];
-
+        NSString *settingKey = [sectionProperties objectForKey:SECTION_SETTING_KEY];
+        
         // Unhighlight the row, and reload the table.
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
@@ -265,12 +268,12 @@
               forSettingKey:settingKey
             reloadTableData:YES];
     }
-
+    
 }
 
 - (void)updateSetting:(id<NSObject>)value
         forSettingKey:(NSString*)settingKey
-        reloadTableData:(Boolean)reloadData
+      reloadTableData:(Boolean)reloadData
 {
     // Update App State
     [_appState setSetting:value forKey:settingKey];

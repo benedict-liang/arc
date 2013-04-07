@@ -29,15 +29,6 @@ extern NSString* const KEY_FONT_SIZE;
 extern NSString* const KEY_LINE_NUMBERS;
 extern NSString* const KEY_WORD_WRAP;
 
-// Plugin Dictionary Keys
-extern NSString* const PLUGIN_TITLE;
-extern NSString* const PLUGIN_TYPE;
-extern NSString* const PLUGIN_OPTIONS;
-extern NSString* const PLUGIN_LABEL;
-extern NSString* const PLUGIN_VALUE;
-extern NSString* const PLUGIN_RANGE_MIN;
-extern NSString* const PLUGIN_RANGE_MAX;
-
 // Default Folder Names
 extern NSString* const FOLDER_EXTERNAL_APPLICATIONS;
 extern NSString* const FOLDER_ROOT;
