@@ -223,6 +223,7 @@
     return cell;
 }
 
+// Called when a slider's value has been changed.
 - (void)rangeSettingsChanged:(id)sender
 {
     UISlider *slider = (UISlider *) sender;
@@ -237,15 +238,19 @@
         reloadTableData:NO];
 }
 
+// Initialises a cell with a switch, used to handle
+// boolean settings.
 - (UITableViewCell*)boolCellFromTableView:(UITableView *)tableView
                            withProperties:(NSDictionary*)properties
 {
     static NSString *cellIdentifier = @"SettingsBoolCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:cellIdentifier];
     }
+    
     UISwitch *switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
     cell.accessoryView = switchview;
     cell.textLabel.text = [properties objectForKey:SECTION_HEADING];
