@@ -221,6 +221,7 @@
 		8F2F5B8217061445005AD37F /* nav_gmaps_sample.js in Resources */ = {isa = PBXBuildFile; fileRef = 8F2F5B8017061435005AD37F /* nav_gmaps_sample.js */; };
 		8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */; };
 		8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1416FDFDBE00B31A19 /* Utils.m */; };
+		8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F771E131711B900002E9914 /* ResultsTableViewController.m */; };
 		8F84790D17102A14006893D6 /* FullTextSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F84790C17102A14006893D6 /* FullTextSearch.m */; };
 		8FC7BD3F170F435900D0FA3A /* syntaxesFileList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8FC7BD3E170F435900D0FA3A /* syntaxesFileList.txt */; };
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
@@ -505,6 +506,8 @@
 		8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBundleSyntaxParser.m; sourceTree = "<group>"; };
 		8F5C5C1416FDFDBE00B31A19 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = General/Utils.m; sourceTree = "<group>"; };
 		8F5C5C1516FDFDBE00B31A19 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = General/Utils.h; sourceTree = "<group>"; };
+		8F771E121711B900002E9914 /* ResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsTableViewController.h; sourceTree = "<group>"; };
+		8F771E131711B900002E9914 /* ResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsTableViewController.m; sourceTree = "<group>"; };
 		8F84790B17102A14006893D6 /* FullTextSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullTextSearch.h; sourceTree = "<group>"; };
 		8F84790C17102A14006893D6 /* FullTextSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullTextSearch.m; sourceTree = "<group>"; };
 		8FC7BD3E170F435900D0FA3A /* syntaxesFileList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = syntaxesFileList.txt; sourceTree = "<group>"; };
@@ -1024,6 +1027,8 @@
 				FC4B269D16F88CB800E1DC49 /* FolderViewController.m */,
 				4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */,
 				4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */,
+				8F771E121711B900002E9914 /* ResultsTableViewController.h */,
+				8F771E131711B900002E9914 /* ResultsTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1357,6 +1362,7 @@
 				8F84790D17102A14006893D6 /* FullTextSearch.m in Sources */,
 				4C8307EB17114CEF00F49C33 /* SettingCell.m in Sources */,
 				02D55DB51711694900DD48D7 /* PluginUtilities.m in Sources */,
+				8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
