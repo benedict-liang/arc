@@ -10,4 +10,11 @@
 
 @interface PluginUtilities : NSObject
 
+// Plugin Dictionary Keys
+extern NSString* const PLUGIN_TITLE;
+extern NSString* const PLUGIN_TYPE;
+extern NSString* const PLUGIN_OPTIONS;
+extern NSString* const PLUGIN_LABEL;
+extern NSString* const PLUGIN_VALUE;
+
 @end

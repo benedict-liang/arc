@@ -10,4 +10,11 @@
 
 @implementation PluginUtilities
 
+// Plugin Dictionary Keys
+NSString* const PLUGIN_TITLE = @"title";
+NSString* const PLUGIN_TYPE = @"type";
+NSString* const PLUGIN_OPTIONS = @"options";
+NSString* const PLUGIN_LABEL = @"label";
+NSString* const PLUGIN_VALUE = @"value";
+
 @end
