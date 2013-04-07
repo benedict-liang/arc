@@ -392,12 +392,11 @@
     
     // Show results
     _resultsViewController.resultsArray = searchResultRanges;
-    [_resultsViewController reloadInputViews];
+    [_resultsViewController.tableView reloadData];
     [_resultsPopoverController presentPopoverFromRect:[_searchBar bounds]
                                               inView:_searchBar
                             permittedArrowDirections:UIPopoverArrowDirectionAny
                                             animated:YES];
-    
 }
 
 @end
