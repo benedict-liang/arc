@@ -65,6 +65,10 @@
         for (NSString *setting in [plugin settingKeys]) {
             NSMutableDictionary *section = [NSMutableDictionary dictionary];
             
+            // Reference to the plugin.
+            [section setValue:plugin
+                       forKey:SECTION_PLUGIN_OBJECT];
+            
             // Section Setting Key
             [section setValue:setting
                        forKey:SECTION_SETTING_KEY];
