@@ -45,6 +45,8 @@
 {
     self = [super init];
     if (self) {
+        _string = [arcAttributedString string];
+        _stringRange = NSMakeRange(0, _string.length);
         _fontFamily = [arcAttributedString fontFamily];
         _fontSize = [arcAttributedString fontSize];
         __attributedString = [[NSMutableAttributedString alloc]
