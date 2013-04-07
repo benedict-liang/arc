@@ -24,6 +24,7 @@
 @property CGFloat lineHeight;
 @property NSMutableArray *lines;
 @property NSMutableArray *plugins;
+
 - (void)loadFile;
 - (void)processFile;
 - (void)renderFile;
@@ -280,6 +281,7 @@
                    forFile:(id<File>)file
                 WithStyle:(NSDictionary *)style
 {
+    // Temporary solution to resolve asyn mutation of background color
     if ([file isEqual:_currentFile]) {
         _arcAttributedString = arcAttributedString;
         [self setStyle:style];

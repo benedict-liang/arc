@@ -483,7 +483,6 @@
 - (void)applyForeground:(ArcAttributedString*)output
 {
     NSDictionary* global = [_theme objectForKey:@"global"];
-    NSLog(@"%@",global);
     UIColor* fg = [global objectForKey:@"foreground"];
     if (fg) {
         [self styleOnRange:NSMakeRange(0, [_content length])
@@ -518,6 +517,9 @@
                          delegate:(id)delegate
 {
     [self setupState:file del:delegate];
+    [self applyForeground:arcAttributedString];
+    [self updateView:arcAttributedString];
+
     if (self.bundle) {
         ArcAttributedString *copy =
             [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
