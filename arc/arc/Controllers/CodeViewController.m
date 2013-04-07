@@ -24,6 +24,8 @@
 @property CGFloat lineHeight;
 @property NSMutableArray *lines;
 @property NSMutableArray *plugins;
+@property BOOL isLoaded;
+
 - (void)loadFile;
 - (void)processFile;
 - (void)renderFile;
@@ -40,6 +42,7 @@
 {
     self = [super init];
     if (self) {
+        _isLoaded = NO;
         _lines = [NSMutableArray array];
         _plugins = [NSMutableArray array];
         _appState = [ApplicationState sharedApplicationState];
@@ -91,6 +94,7 @@
     [self addSearchBarToTableViewTop];
     
     [self.view addSubview:_tableView];
+    _isLoaded = YES;
 }
 
 - (void)addSearchBarToTableViewTop
@@ -238,6 +242,7 @@
                    forFile:(id<File>)file
                 WithStyle:(NSDictionary *)style
 {
+    while (!_isLoaded);
     if ([file isEqual:_currentFile]) {
         _arcAttributedString = arcAttributedString;
         [self setStyle:style];

@@ -405,7 +405,6 @@
 - (void)applyForeground:(ArcAttributedString*)output
 {
     NSDictionary* global = [_theme objectForKey:@"global"];
-    NSLog(@"%@",global);
     UIColor* fg = [global objectForKey:@"foreground"];
     if (fg) {
         [self styleOnRange:NSMakeRange(0, [_content length]) fcolor:fg output:output];
@@ -433,7 +432,8 @@
 - (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString ofFile:(id<File>)file forValues:(NSDictionary *)properties delegate:(id)delegate {
     
     [self setupState:file del:delegate];
-    
+    [self applyForeground:arcAttributedString];
+    [self updateView:arcAttributedString];
     if (self.bundle) {
         
         ArcAttributedString *copy = [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
