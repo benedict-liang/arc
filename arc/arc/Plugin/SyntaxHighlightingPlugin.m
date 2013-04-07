@@ -521,8 +521,12 @@
                          delegate:(id)delegate
 {
     [self setupState:file del:delegate];
-    [self applyForeground:arcAttributedString];
-    [self updateView:arcAttributedString];
+
+    NSDictionary* global = [_theme objectForKey:@"global"];
+    UIColor* foreground = [global objectForKey:@"foreground"];
+    [arcAttributedString setColor:(__bridge CGColorRef)(foreground)
+                          OnRange:NSMakeRange(0, [(NSString*)[file contents] length])
+                       ForSetting:@"asdf"];
     
     [dictionary setValue:[_theme objectForKey:@"global"]
                   forKey:@"syntaxHighlightingPlugin"];
@@ -541,9 +545,8 @@
            sharedObject:(NSMutableDictionary *)dictionary
                delegate:(id)delegate
 {
-    NSLog(@"%@", dictionary);
     NSDictionary *style = [dictionary objectForKey:@"syntaxHighlightingPlugin"];
-    // set bg color here
+    tableView.backgroundColor = [style objectForKey:@"background"];
 }
 
 - (NSDictionary*)propertiesFor:(NSString *)settingKey

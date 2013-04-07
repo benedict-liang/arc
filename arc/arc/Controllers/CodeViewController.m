@@ -265,16 +265,7 @@
     // Temporary solution to resolve asyn mutation of background color
     if ([file isEqual:_currentFile]) {
         _arcAttributedString = arcAttributedString;
-        [self setStyle:style];
         [_tableView reloadData];
-    }
-}
-
-- (void)setStyle:(NSDictionary*)style {
-    UIColor *bg = [style objectForKey:@"background"];
-    if (bg) {
-        _backgroundColor = bg;
-        _tableView.backgroundColor = bg;
     }
 }
 
