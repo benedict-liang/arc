@@ -11,6 +11,7 @@
 #import "ApplicationState.h"
 #import "ArcAttributedString.h"
 #import "FullTextSearch.h"
+#import "ResultsTableViewController.h"
 
 @interface CodeViewController ()
 @property id<File> currentFile;
