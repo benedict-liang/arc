@@ -36,7 +36,7 @@
     
     NSDictionary* global = [_theme objectForKey:@"global"];
     UIColor* foreground = [global objectForKey:@"foreground"];
-    [arcAttributedString setColor:(__bridge CGColorRef)(foreground)
+    [arcAttributedString setColor:[foreground CGColor]
                           OnRange:NSMakeRange(0, [(NSString*)[file contents] length])
                        ForSetting:@"asdf"];
     
