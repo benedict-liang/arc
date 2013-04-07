@@ -81,5 +81,14 @@
     [arcAttributedString setFontFamily:fontFamily];
 }
 
+- (void)customiseTableViewCell:(UITableViewCell **)cell options:(NSDictionary *)options
+{
+    // Get the font this cell represents.
+    NSString *fontValue = [options valueForKey:PLUGIN_VALUE];
+    
+    UIFont *font = [UIFont fontWithName:fontValue size:[UIFont systemFontSize]];
+    [[*cell textLabel] setFont:font];
+}
+
 
 @end
