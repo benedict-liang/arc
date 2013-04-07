@@ -8,14 +8,27 @@
 
 #import "SyntaxHighlightingPlugin.h"
 
-@implementation SyntaxHighlightingPlugin
+@interface SyntaxHighlightingPlugin ()
+@property (nonatomic, strong) NSString* colorSchemeSettingKey;
+@end
 
+@implementation SyntaxHighlightingPlugin
 @synthesize settingKeys = _settingKeys;
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _colorSchemeSettingKey = @"colorScheme";
+        _settingKeys = [NSArray arrayWithObject:_colorSchemeSettingKey];
+    }
+    return self;
+}
+
 - (void)setupState:(id<File>)file del:(id)d {
-    
+
     _delegate = d;
-    
+
     _currentFile = file;
     
     _overlays = @[@"comment"];
@@ -432,7 +445,12 @@
 - (NSDictionary*)propertiesFor:(NSString *)settingKey {
     return nil;
 }
+
 - (id<NSObject>)defaultValueFor:(NSString *)settingKey {
+    if ([settingKey isEqualToString:_colorSchemeSettingKey]) {
+        return @"tmpval";
+    }
+
     return nil;
 }
 @end
