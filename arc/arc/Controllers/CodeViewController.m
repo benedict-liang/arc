@@ -110,9 +110,27 @@
 
 - (void)refreshForSetting:(NSString *)setting
 {
-    id<File> tmp = _currentFile;
-    _currentFile = nil;
-    [self showFile:tmp];
+    [self execPluginsForSetting:setting];
+    [self renderFile];
+}
+
+- (void)execPluginsForSetting:(NSString *)setting
+{
+    NSDictionary *settings;
+    for (id<PluginDelegate> plugin in _plugins) {
+        NSArray *settingKeys = [plugin settingKeys];
+        if (setting == nil || [settingKeys indexOfObject:setting] != NSNotFound) {
+            settings = [_state settingsForKeys:settingKeys];
+            if ([plugin respondsToSelector:
+                 @selector(execOnArcAttributedString:ofFile:forValues:delegate:)])
+            {
+                [plugin execOnArcAttributedString:_arcAttributedString
+                                           ofFile:_currentFile
+                                        forValues:settings
+                                         delegate:self];
+            }
+        }
+    }
 }
 
 - (void)showFile:(id<File>)file
@@ -135,24 +153,14 @@
 
 - (void)loadFile
 {
-    _arcAttributedString = [[ArcAttributedString alloc]
-                            initWithString:(NSString *)[_currentFile contents]];
+    _arcAttributedString =
+    [[ArcAttributedString alloc]
+     initWithString:(NSString *)[_currentFile contents]];
 }
 
 - (void)processFile
 {
-    NSDictionary *settings;
-    for (id<PluginDelegate> plugin in _plugins) {
-        settings = [_state settingsForKeys:[plugin settingKeys]];
-        if ([plugin respondsToSelector:
-             @selector(execOnArcAttributedString:ofFile:forValues:delegate:)])
-        {
-            [plugin execOnArcAttributedString:_arcAttributedString
-                                       ofFile:_currentFile
-                                    forValues:settings
-                                     delegate:self];
-        }
-    }
+    [self execPluginsForSetting:nil];
 }
 
 - (void)renderFile
@@ -181,7 +189,8 @@
     [self clearPreviousLayoutInformation];
     _lines = [NSMutableArray array];
     
-    CFAttributedStringRef ref = (CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.attributedString);
+    CFAttributedStringRef ref =
+        (CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.attributedString);
     _frameSetter = CTFramesetterCreateWithAttributedString(ref);
     
     // Work out the geometry
