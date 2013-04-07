@@ -11,7 +11,7 @@
 #import "PluginDelegate.h"
 #import "File.h"
 
-@protocol CodeViewDelegate <NSObject>
+@protocol CodeViewControllerDelegate <NSObject>
 - (void)showFile:(id<File>)file;
 - (void)refreshForSetting:(NSString*)setting;
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString

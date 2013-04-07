@@ -524,7 +524,7 @@
 		FC726084171152910068DD91 /* Monokai.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Monokai.tmTheme; sourceTree = "<group>"; };
 		FC726085171152910068DD91 /* Solarized (light).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Solarized (light).tmTheme"; sourceTree = "<group>"; };
 		FCB0547F17034DE6007832D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		FCE8F95D1709806B00C08724 /* CodeViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeViewDelegate.h; sourceTree = "<group>"; };
+		FCE8F95D1709806B00C08724 /* CodeViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeViewControllerDelegate.h; sourceTree = "<group>"; };
 		FCFB4DA1170F466200B25FDC /* BundleConf.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BundleConf.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -712,7 +712,7 @@
 				4CD06B2C16FDE92D00C9DED3 /* SubViewControllerDelegate.h */,
 				4CA4DE43170EA4C200A86109 /* MasterViewControllerDelegate.h */,
 				4CA4DE42170EA04400A86109 /* DetailViewControllerDelegate.h */,
-				FCE8F95D1709806B00C08724 /* CodeViewDelegate.h */,
+				FCE8F95D1709806B00C08724 /* CodeViewControllerDelegate.h */,
 				4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */,
 				4CE2951517104A4C003B012A /* SettingsViewDelegate.h */,
 			);

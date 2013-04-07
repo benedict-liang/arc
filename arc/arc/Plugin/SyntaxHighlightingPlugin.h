@@ -10,7 +10,7 @@
 #import "PluginDelegate.h"
 #import "ArcAttributedString.h"
 #import "TMBundleHeader.h"
-#import "CodeViewDelegate.h"
+#import "CodeViewControllerDelegate.h"
 #import "File.h"
 
 @interface SyntaxHighlightingPlugin : NSObject<PluginDelegate> {
@@ -23,7 +23,7 @@
     __block NSDictionary *overlapMatches;
 }
 @property NSDictionary* theme;
-@property (readonly) id<CodeViewDelegate> delegate;
+@property (readonly) id<CodeViewControllerDelegate> delegate;
 @property (readonly) id<File> currentFile;
 @property (readonly) NSString* content;
 @property (readonly) NSDictionary* bundle;
