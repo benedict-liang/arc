@@ -317,6 +317,12 @@
 
 - (void)showShowMasterViewButton:(UIBarButtonItem *)button
 {
+    // Customise the button.
+    UIImage *icon = [UIImage imageNamed:@"Reading Panel.png"];
+    [button setImage:icon];
+    [button setTitle:nil];
+    [button setWidth:30];
+    
     _toolbar.items = [NSArray arrayWithObjects:
                       button,
                       [Utils flexibleSpace],
