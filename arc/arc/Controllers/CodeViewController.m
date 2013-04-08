@@ -370,6 +370,7 @@
                                                          (__bridge CFAttributedStringRef)(attributedString));
     
     cell.line = lineRef;
+    cell.string = attributedString.string;
     
     // Additional code
     UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc]
