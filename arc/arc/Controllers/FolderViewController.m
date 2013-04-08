@@ -152,12 +152,7 @@ titleForHeaderInSection:(NSInteger)section {
     NSArray *currentSection = [_filesAndFolders objectAtIndex:indexPath.section];
     id<FileSystemObject> fileObject = [currentSection objectAtIndex:indexPath.row];
     
-    // Only DropBoxRootFolders cannot be edited.
-    if ([fileObject class] == [DropBoxRootFolder class]) {
-        return NO;
-    } else {
-        return YES;
-    }
+    return [fileObject isRemovable];
 }
 
 #pragma mark - Table view delegate
