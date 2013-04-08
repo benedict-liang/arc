@@ -178,11 +178,13 @@
     [_documentsNavigationViewController pushViewController:folderViewController
                                                   animated:animated];
     
+    // Settings Button
     UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:@"Settings"
                                                                        style:UIBarButtonItemStyleBordered
                                                                       target:self
                                                                       action:@selector(showSettings:)];
     
+    // DropBox Button
     UIImage *dropBoxIcon = [Utils scale:[UIImage imageNamed:@"dropbox.png"]
                                  toSize:CGSizeMake(SIZE_TOOLBAR_ICON_WIDTH, SIZE_TOOLBAR_ICON_WIDTH)];;
     UIBarButtonItem *dropboxButton = [[UIBarButtonItem alloc] initWithImage:dropBoxIcon
@@ -191,7 +193,11 @@
                                                                      target:self
                                                                      action:@selector(showDropBox:)];
     
+    // Edit Button
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:folderViewController action:@selector(toggleEdit:)];
+    
     [folderViewController setToolbarItems:[NSArray arrayWithObjects:
+                                           editButton,
                                            dropboxButton,
                                            [Utils flexibleSpace],
                                            settingsButton,
