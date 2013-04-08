@@ -23,6 +23,9 @@
 // The parent of this object.
 @property (weak, nonatomic) id<FileSystemObject> parent;
 
+// Whether or not this object can be removed.
+@property BOOL isRemovable;
+
 // Initialises this object with the given name, path, and parent.
 - (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent;
 
