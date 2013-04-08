@@ -183,10 +183,13 @@
                                                                       target:self
                                                                       action:@selector(showSettings:)];
     
-    UIBarButtonItem *dropboxButton = [[UIBarButtonItem alloc] initWithTitle:@"Dropbox"
+    UIImage *dropBoxIcon = [UIImage imageNamed:@"dropbox.png"];
+    UIBarButtonItem *dropboxButton = [[UIBarButtonItem alloc] initWithImage:dropBoxIcon
+                                                        landscapeImagePhone:dropBoxIcon
                                                                       style:UIBarButtonItemStyleBordered
                                                                      target:self
                                                                      action:@selector(showDropBox:)];
+    [dropboxButton setWidth:SIZE_TOOLBAR_ICON_WIDTH];
     
     [folderViewController setToolbarItems:[NSArray arrayWithObjects:
                                            dropboxButton,
