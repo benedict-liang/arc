@@ -47,6 +47,7 @@
     if (error) {
         NSLog(@"%@", error);
     }
+    [ourFile close];
     return  _contents;
 }
 
