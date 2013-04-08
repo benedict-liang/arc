@@ -146,6 +146,20 @@ titleForHeaderInSection:(NSInteger)section {
     return cell;
 }
 
+// Determines if the cell at the given index path can be edited.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *currentSection = [_filesAndFolders objectAtIndex:indexPath.section];
+    id<FileSystemObject> fileObject = [currentSection objectAtIndex:indexPath.row];
+    
+    // Only DropBoxRootFolders cannot be edited.
+    if ([fileObject class] == [DropBoxRootFolder class]) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 #pragma mark - Table view delegate
 
 // Triggered when the cell at the given index path is selected.
