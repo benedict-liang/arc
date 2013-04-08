@@ -12,6 +12,8 @@ static LocalRootFolder *sharedLocalRootFolder = nil;
 
 @implementation LocalRootFolder
 
+@synthesize isRemovable = _isRemovable;
+
 + (LocalRootFolder*)sharedLocalRootFolder
 {
     if (sharedLocalRootFolder == nil) {
@@ -26,7 +28,7 @@ static LocalRootFolder *sharedLocalRootFolder = nil;
     NSString *documentsPath = [[fileManager URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil] path];
     
     if (self = [super initWithName:FOLDER_ROOT path:documentsPath parent:nil]) {
-        
+        _isRemovable = NO;
     }
     return self;
 }

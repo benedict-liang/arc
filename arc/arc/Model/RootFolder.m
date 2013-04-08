@@ -17,7 +17,7 @@ static RootFolder *sharedRootFolder = nil;
 @implementation RootFolder
 
 // Synthesize properties from protocol.
-@synthesize name=_name, path=_path, parent=_parent;
+@synthesize name=_name, path=_path, parent=_parent, isRemovable=_isRemovable;
 
 + (RootFolder *)sharedRootFolder
 {
@@ -34,6 +34,7 @@ static RootFolder *sharedRootFolder = nil;
         _name = [localRoot name];
         _path = [localRoot path];
         _parent = nil;
+        _isRemovable = NO;
     }
     return self;
 }

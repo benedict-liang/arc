@@ -12,6 +12,8 @@ static DropBoxRootFolder *sharedDropBoxRootFolder = nil;
 
 @implementation DropBoxRootFolder
 
+@synthesize isRemovable=_isRemovable;
+
 + (DropBoxRootFolder *)sharedDropBoxRootFolder
 {
     if (sharedDropBoxRootFolder == nil) {
@@ -26,7 +28,7 @@ static DropBoxRootFolder *sharedDropBoxRootFolder = nil;
     NSString *ourPath = [rootPath stringValue];
     
     if (self = [super initWithName:FOLDER_DROPBOX_ROOT path:ourPath parent:[LocalRootFolder sharedLocalRootFolder]]) {
-        
+        _isRemovable = NO;
     }
     return self;
 }
