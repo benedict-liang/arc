@@ -363,11 +363,11 @@
     }
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     NSUInteger lineNumber = indexPath.row;
+    NSAttributedString *attributedString = [_arcAttributedString.attributedString attributedSubstringFromRange:
+                                            [[_lines objectAtIndex:lineNumber] rangeValue]];
     
     CTLineRef lineRef = CTLineCreateWithAttributedString(
-                                                         (__bridge CFAttributedStringRef)(
-                                                                                          [_arcAttributedString.attributedString attributedSubstringFromRange:
-                                                                                           [[_lines objectAtIndex:lineNumber] rangeValue]]));
+                                                         (__bridge CFAttributedStringRef)(attributedString));
     
     cell.line = lineRef;
     
