@@ -370,8 +370,20 @@
                                                                                            [[_lines objectAtIndex:lineNumber] rangeValue]]));
     
     cell.line = lineRef;
+    
+    // Additional code
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc]
+                                                      initWithTarget:self
+                                                      action:@selector(getTextLocation:)];
+    [cell addGestureRecognizer:longPressGesture];
+    
     [cell setNeedsDisplay];
     return cell;
+}
+
+- (void)getTextLocation:(UILongPressGestureRecognizer*)longPressGesture {
+    CGPoint pointOfTouch = [longPressGesture locationInView:[longPressGesture view]];
+    NSLog(@"point: %f, %f", pointOfTouch.x, pointOfTouch.y);
 }
 
 #pragma mark - Table view delegate
