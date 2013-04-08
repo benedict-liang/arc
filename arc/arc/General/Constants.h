@@ -13,6 +13,7 @@
 extern const float SIZE_LEFTBAR_WIDTH;
 extern const float SIZE_TOOLBAR_HEIGHT;
 extern const CGSize SIZE_POPOVER;
+extern const float SIZE_TOOLBAR_ICON_WIDTH;
 
 // Defaults
 extern const CGColorRef* DEFAULT_TEXT_COLOR;

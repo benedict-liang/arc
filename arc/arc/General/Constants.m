@@ -12,7 +12,7 @@
 const float SIZE_LEFTBAR_WIDTH = 200;
 const float SIZE_TOOLBAR_HEIGHT = 44;
 const CGSize SIZE_POPOVER = {200,300};
-
+const float SIZE_TOOLBAR_ICON_WIDTH = 30;
 // Defaults
 const CGColorRef* DEFAULT_TEXT_COLOR = {0};
 

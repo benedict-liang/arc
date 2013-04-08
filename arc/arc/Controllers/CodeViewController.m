@@ -321,7 +321,7 @@
     UIImage *icon = [UIImage imageNamed:@"Reading Panel.png"];
     [button setImage:icon];
     [button setTitle:nil];
-    [button setWidth:30];
+    [button setWidth:SIZE_TOOLBAR_ICON_WIDTH];
     
     _toolbar.items = [NSArray arrayWithObjects:
                       button,
