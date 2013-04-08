@@ -383,8 +383,14 @@
 }
 
 - (void)getTextLocation:(UILongPressGestureRecognizer*)longPressGesture {
-    CGPoint pointOfTouch = [longPressGesture locationInView:[longPressGesture view]];
+    CodeLineCell *cell = (CodeLineCell*)[longPressGesture view];
+    CGPoint pointOfTouch = [longPressGesture locationInView:cell];
     NSLog(@"point: %f, %f", pointOfTouch.x, pointOfTouch.y);
+    
+    CTLineRef line = cell.line;
+    NSString *cellString = cell.string;
+    CFIndex index = CTLineGetStringIndexForPosition(line, pointOfTouch);
+    int adjustedIndex = index - 2;
 }
 
 #pragma mark - Table view delegate
