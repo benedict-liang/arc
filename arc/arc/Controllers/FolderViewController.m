@@ -51,8 +51,11 @@
 {
     [super viewDidLoad];
     
-    // Hooks into UINavigationViewController
+    UIBarButtonItem *addFolderButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(triggerAddFolder)];
+    
+    // Set up the navigation bar.
     self.title = _folder.name;
+    self.navigationItem.rightBarButtonItem = addFolderButton;
 
     self.view.autoresizesSubviews = YES;
 
@@ -188,6 +191,12 @@ titleForHeaderInSection:(NSInteger)section {
             [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         }
     }
+}
+
+// Triggers when the user clicks the Add button.
+- (void)triggerAddFolder
+{
+    NSLog(@"%@", [_folder name]);
 }
 
 @end
