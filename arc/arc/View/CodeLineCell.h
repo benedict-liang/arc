@@ -13,4 +13,5 @@
 
 @interface CodeLineCell : UITableViewCell
 @property (nonatomic) CTLineRef line;
+@property (nonatomic) NSString *string;
 @end
