@@ -154,4 +154,12 @@ titleForHeaderInSection:(NSInteger)section {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark - Editing-related methods
+- (void)toggleEdit:(id)sender
+{
+    BOOL shouldTableEdit = !_tableView.editing;
+    [_tableView setEditing:shouldTableEdit animated:YES];
+}
+
+
 @end
