@@ -62,6 +62,10 @@ static RootFolder *sharedRootFolder = nil;
 // at that path.
 - (id<FileSystemObject>)objectAtPath:(NSString *)path
 {
+    if ([path isEqualToString:_path]) {
+        return self;
+    }
+    
     // If we have DropBox, check if it's in the DropBox folder.
     if ([[DBAccountManager sharedManager] linkedAccount]) {
         id<FileSystemObject> dropBoxObject = [[DropBoxRootFolder sharedDropBoxRootFolder] objectAtPath:path];
