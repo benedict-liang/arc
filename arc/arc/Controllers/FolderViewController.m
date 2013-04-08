@@ -87,17 +87,20 @@
 
 #pragma mark - Table view data source
 
+// Returns the number of sections in the table view.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return [_filesAndFolders count];
 }
 
+// Returns the number of rows in the given section.
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
     return [[_filesAndFolders objectAtIndex:section] count];
 }
 
+// Returns the header for the given section.
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {
     // Hide section title if section has zero rows
@@ -112,6 +115,7 @@ titleForHeaderInSection:(NSInteger)section {
     }
 }
 
+// Sets up a table cell for the given index path.
 - (UITableViewCell*)tableView:(UITableView*)tableView
         cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
@@ -144,6 +148,7 @@ titleForHeaderInSection:(NSInteger)section {
 
 #pragma mark - Table view delegate
 
+// Triggered when the cell at the given index path is selected.
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NSArray *section = [_filesAndFolders objectAtIndex:indexPath.section];
@@ -161,6 +166,7 @@ titleForHeaderInSection:(NSInteger)section {
     [_tableView setEditing:shouldTableEdit animated:YES];
 }
 
+// Triggers when the user confirms an edit operation on the cell at the given index path.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
