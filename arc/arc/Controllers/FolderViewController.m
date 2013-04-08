@@ -161,5 +161,18 @@ titleForHeaderInSection:(NSInteger)section {
     [_tableView setEditing:shouldTableEdit animated:YES];
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSArray *currentSection = [_filesAndFolders objectAtIndex:indexPath.section];
+        id<FileSystemObject> fileObject = [currentSection objectAtIndex:indexPath.row];
+        
+        // TODO: check if object is allowed to be deleted. This is probably in a data-source delegate.
+        if ([fileObject remove]) {
+            [(NSMutableArray *)[_filesAndFolders objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+    }
+}
 
 @end
