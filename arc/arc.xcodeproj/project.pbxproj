@@ -16,6 +16,7 @@
 		028B4900170E9D0600C0CEF6 /* UbuntuMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 028B48FF170E9D0600C0CEF6 /* UbuntuMono.ttf */; };
 		02A5198D170DC0CE007C038E /* Inconsolata.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02A5198C170DC0CE007C038E /* Inconsolata.ttf */; };
 		02B04FCA1701672700FE51CB /* GameObject.h in Resources */ = {isa = PBXBuildFile; fileRef = 02B04FC91701608C00FE51CB /* GameObject.h */; };
+		02CF20721712ACB8001A59E4 /* Reading Panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 02CF20711712ACB8001A59E4 /* Reading Panel.png */; };
 		02D2B73F17099E89002D22E7 /* RootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D2B73E17099E88002D22E7 /* RootFolder.m */; };
 		02D55DB51711694900DD48D7 /* PluginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D55DB41711694900DD48D7 /* PluginUtilities.m */; };
 		02E162CD170B02F400C9D23B /* appState.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02E162CC170B02F400C9D23B /* appState.plist */; };
@@ -263,6 +264,7 @@
 		028B48FF170E9D0600C0CEF6 /* UbuntuMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UbuntuMono.ttf; sourceTree = "<group>"; };
 		02A5198C170DC0CE007C038E /* Inconsolata.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inconsolata.ttf; sourceTree = "<group>"; };
 		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
+		02CF20711712ACB8001A59E4 /* Reading Panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reading Panel.png"; sourceTree = "<group>"; };
 		02D2B73D17099E88002D22E7 /* RootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootFolder.h; sourceTree = "<group>"; };
 		02D2B73E17099E88002D22E7 /* RootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootFolder.m; sourceTree = "<group>"; };
 		02D55DB31711694900DD48D7 /* PluginUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginUtilities.h; sourceTree = "<group>"; };
@@ -815,6 +817,7 @@
 		4CF6F0EC1706E05500EDDEDC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				02CF20711712ACB8001A59E4 /* Reading Panel.png */,
 				4C36137C170AC673009358B1 /* dropbox.png */,
 				4CF6F0F11706E29300EDDEDC /* folder.png */,
 				4CF6F0ED1706E08800EDDEDC /* file.png */,
@@ -1303,6 +1306,7 @@
 				FC72606F171114DA0068DD91 /* source.clojure.plist in Resources */,
 				FC726086171152910068DD91 /* Monokai.tmTheme in Resources */,
 				FC726087171152910068DD91 /* Solarized (light).tmTheme in Resources */,
+				02CF20721712ACB8001A59E4 /* Reading Panel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1368,7 +1372,7 @@
 				4C8307EB17114CEF00F49C33 /* SettingCell.m in Sources */,
 				02D55DB51711694900DD48D7 /* PluginUtilities.m in Sources */,
 				FC7260921711B4D70068DD91 /* SyntaxHighlight.m in Sources */,
-                8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */,
+				8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
