@@ -131,18 +131,31 @@ titleForHeaderInSection:(NSInteger)section {
     NSArray *section = [_filesAndFolders objectAtIndex:indexPath.section];
     id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
     
+    NSString *detailDescription;
     if ([[fileObject class] conformsToProtocol:@protocol(File)]) {
         id<File> file = (id<File>) fileObject;
         cell.imageView.image = [Utils scale:[UIImage imageNamed:@"file.png"]
                                      toSize:CGSizeMake(40, 40)];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ file", file.extension];
+        
+        // Determine the file size.
+        int fileSize = [file size];
+        int divisions = 0;
+        NSArray *prefixes = [NSArray arrayWithObjects:@"B", @"KB", @"MB", @"GB", @"TB", @"PB", nil];
+        while (fileSize > 1024 && divisions < [prefixes count]) {
+            fileSize /= 1024;
+            divisions++;
+        }
+        
+        detailDescription = [NSString stringWithFormat:@"%d %@", fileSize, [prefixes objectAtIndex:divisions]];
+        
     } else if ([[fileObject class] conformsToProtocol:@protocol(Folder)]) {
         cell.imageView.image = [Utils scale:[UIImage imageNamed:@"folder.png"]
                                      toSize:CGSizeMake(40, 40)];
-        cell.detailTextLabel.text = @"Folder";
+        detailDescription = [NSString stringWithFormat:@"%d objects", fileObject.size];
     }
-
-    cell.textLabel.text = fileObject.name;    
+    cell.detailTextLabel.text = detailDescription;
+    
+    cell.textLabel.text = fileObject.name;
     return cell;
 }
 

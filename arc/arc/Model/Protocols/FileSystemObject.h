@@ -32,6 +32,10 @@
 // Returns the contents of this object.
 - (id<NSObject>)contents;
 
+// Returns the size of this object.
+// Folders should return the number of objects within, Files their size in B.
+- (int)size;
+
 // Removes this object.
 // Returns YES if successful, NO otherwise.
 // If NO is returned, the state of the object or its contents is unstable.
