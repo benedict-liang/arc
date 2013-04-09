@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Folder.h"
 
-@interface CreateFolderViewController : UIViewController
+@interface CreateFolderViewController : UITableViewController
+
+@property (weak, nonatomic) id<Folder> folder;
 
 @end

@@ -16,6 +16,9 @@
 @property id<Folder> folder;
 @property UITableView *tableView;
 @property NSArray *filesAndFolders;
+
+@property CreateFolderViewController *createFolderController;
+@property UIPopoverController *addFolderPopoverController;
 @end
 
 @implementation FolderViewController
@@ -73,6 +76,10 @@
     _tableView.delegate = self;
     
     [self.view addSubview:_tableView];
+    
+    _createFolderController = [[CreateFolderViewController alloc] init];
+    [_createFolderController setFolder:_folder];
+//    [_createFolderController.tableView reloadData];
 }
 
 // Work Around to track back button action.
@@ -145,7 +152,7 @@ titleForHeaderInSection:(NSInteger)section {
         cell.detailTextLabel.text = @"Folder";
     }
 
-    cell.textLabel.text = fileObject.name;    
+    cell.textLabel.text = fileObject.name;
     return cell;
 }
 
@@ -195,7 +202,9 @@ titleForHeaderInSection:(NSInteger)section {
 // Triggers when the user clicks the Add button.
 - (void)triggerAddFolder
 {
-    NSLog(@"%@", [_folder name]);
+    _addFolderPopoverController = [[UIPopoverController alloc] initWithContentViewController:_createFolderController];
+    _addFolderPopoverController.passthroughViews = [NSArray arrayWithObject:_tableView];
+    [_addFolderPopoverController presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 @end

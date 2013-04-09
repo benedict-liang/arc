@@ -26,7 +26,7 @@
 		02E51AEB1709580400247AF5 /* DropBoxFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AEA1709580400247AF5 /* DropBoxFile.m */; };
 		02E51AEE1709581200247AF5 /* DropBoxFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AED1709581200247AF5 /* DropBoxFolder.m */; };
 		02E51AF11709582300247AF5 /* DropBoxRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AF01709582300247AF5 /* DropBoxRootFolder.m */; };
-		02F25A0C1713CF43000B6301 /* CreateFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F25A0B1713CF43000B6301 /* CreateFolderViewController.m */; };
+		02F25A121713E660000B6301 /* CreateFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F25A111713E660000B6301 /* CreateFolderViewController.m */; };
 		4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D0711705CA7800F4593B /* ArcAttributedString.m */; };
 		4C36137D170AC673009358B1 /* dropbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C36137C170AC673009358B1 /* dropbox.png */; };
 		4C43F8ED16F86AA900159B29 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
@@ -284,8 +284,8 @@
 		02E51AED1709581200247AF5 /* DropBoxFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxFolder.m; sourceTree = "<group>"; };
 		02E51AEF1709582300247AF5 /* DropBoxRootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxRootFolder.h; sourceTree = "<group>"; };
 		02E51AF01709582300247AF5 /* DropBoxRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxRootFolder.m; sourceTree = "<group>"; };
-		02F25A0A1713CF43000B6301 /* CreateFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFolderViewController.h; sourceTree = "<group>"; };
-		02F25A0B1713CF43000B6301 /* CreateFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateFolderViewController.m; sourceTree = "<group>"; };
+		02F25A101713E660000B6301 /* CreateFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFolderViewController.h; sourceTree = "<group>"; };
+		02F25A111713E660000B6301 /* CreateFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateFolderViewController.m; sourceTree = "<group>"; };
 		4C12D0701705CA7800F4593B /* ArcAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcAttributedString.h; sourceTree = "<group>"; };
 		4C12D0711705CA7800F4593B /* ArcAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcAttributedString.m; sourceTree = "<group>"; };
 		4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileNavigatorViewControllerDelegate.h; sourceTree = "<group>"; };
@@ -614,8 +614,8 @@
 			children = (
 				8F771E121711B900002E9914 /* ResultsTableViewController.h */,
 				8F771E131711B900002E9914 /* ResultsTableViewController.m */,
-				02F25A0A1713CF43000B6301 /* CreateFolderViewController.h */,
-				02F25A0B1713CF43000B6301 /* CreateFolderViewController.m */,
+				02F25A101713E660000B6301 /* CreateFolderViewController.h */,
+				02F25A111713E660000B6301 /* CreateFolderViewController.m */,
 			);
 			name = "Popup Controllers";
 			sourceTree = "<group>";
@@ -1386,7 +1386,7 @@
 				02D55DB51711694900DD48D7 /* PluginUtilities.m in Sources */,
 				FC7260921711B4D70068DD91 /* SyntaxHighlight.m in Sources */,
 				8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */,
-				02F25A0C1713CF43000B6301 /* CreateFolderViewController.m in Sources */,
+				02F25A121713E660000B6301 /* CreateFolderViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
