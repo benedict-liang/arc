@@ -55,6 +55,7 @@
     
     if (error) {
         NSLog(@"%@", error);
+        return 0;
     } else {
         NSNumber *fileSize = [fileProperties valueForKey:NSFileSize];
         return [fileSize intValue];
