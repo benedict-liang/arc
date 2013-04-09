@@ -140,12 +140,12 @@ titleForHeaderInSection:(NSInteger)section {
         // Determine the file size.
         int fileSize = [file size];
         int divisions = 0;
-        while (fileSize > 1024 && divisions < 3) {
+        NSArray *prefixes = [NSArray arrayWithObjects:@"B", @"KB", @"MB", @"GB", @"TB", @"PB", nil];
+        while (fileSize > 1024 && divisions < [prefixes count]) {
             fileSize /= 1024;
             divisions++;
         }
         
-        NSArray *prefixes = [NSArray arrayWithObjects:@"B", @"KB", @"MB", @"GB", nil];
         detailDescription = [NSString stringWithFormat:@"%d %@", fileSize, [prefixes objectAtIndex:divisions]];
         
     } else if ([[fileObject class] conformsToProtocol:@protocol(Folder)]) {
