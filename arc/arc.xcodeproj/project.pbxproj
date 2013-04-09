@@ -220,6 +220,7 @@
 		8F1BC26C170F1C1900D1D049 /* source.active4d.library.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1CD170F1C1900D1D049 /* source.active4d.library.plist */; };
 		8F1BC26D170F1C1900D1D049 /* source.actionscript.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1CE170F1C1900D1D049 /* source.actionscript.plist */; };
 		8F2F5B8217061445005AD37F /* nav_gmaps_sample.js in Resources */ = {isa = PBXBuildFile; fileRef = 8F2F5B8017061435005AD37F /* nav_gmaps_sample.js */; };
+		8F46CDA51713DFB10088DE10 /* SelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F46CDA41713DFB10088DE10 /* SelectionView.m */; };
 		8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */; };
 		8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1416FDFDBE00B31A19 /* Utils.m */; };
 		8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F771E131711B900002E9914 /* ResultsTableViewController.m */; };
@@ -505,6 +506,8 @@
 		8F1BC1CD170F1C1900D1D049 /* source.active4d.library.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.active4d.library.plist; sourceTree = "<group>"; };
 		8F1BC1CE170F1C1900D1D049 /* source.actionscript.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.actionscript.plist; sourceTree = "<group>"; };
 		8F2F5B8017061435005AD37F /* nav_gmaps_sample.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = nav_gmaps_sample.js; sourceTree = "<group>"; };
+		8F46CDA31713DFB10088DE10 /* SelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionView.h; sourceTree = "<group>"; };
+		8F46CDA41713DFB10088DE10 /* SelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionView.m; sourceTree = "<group>"; };
 		8F563F33170161C900EE5643 /* TMBundleSyntaxParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleSyntaxParser.h; sourceTree = "<group>"; };
 		8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBundleSyntaxParser.m; sourceTree = "<group>"; };
 		8F5C5C1416FDFDBE00B31A19 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = General/Utils.m; sourceTree = "<group>"; };
@@ -788,6 +791,8 @@
 				4C8307EA17114CEF00F49C33 /* SettingCell.m */,
 				4C12D0701705CA7800F4593B /* ArcAttributedString.h */,
 				4C12D0711705CA7800F4593B /* ArcAttributedString.m */,
+				8F46CDA31713DFB10088DE10 /* SelectionView.h */,
+				8F46CDA41713DFB10088DE10 /* SelectionView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1373,6 +1378,7 @@
 				02D55DB51711694900DD48D7 /* PluginUtilities.m in Sources */,
 				FC7260921711B4D70068DD91 /* SyntaxHighlight.m in Sources */,
 				8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */,
+				8F46CDA51713DFB10088DE10 /* SelectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

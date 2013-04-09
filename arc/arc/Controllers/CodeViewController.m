@@ -12,6 +12,7 @@
 #import "ArcAttributedString.h"
 #import "FullTextSearch.h"
 #import "ResultsTableViewController.h"
+#import "SelectionView.h"
 
 @interface CodeViewController ()
 @property id<File> currentFile;
@@ -383,14 +384,51 @@
 }
 
 - (void)getTextLocation:(UILongPressGestureRecognizer*)longPressGesture {
-    CodeLineCell *cell = (CodeLineCell*)[longPressGesture view];
-    CGPoint pointOfTouch = [longPressGesture locationInView:cell];
-    NSLog(@"point: %f, %f", pointOfTouch.x, pointOfTouch.y);
     
-    CTLineRef line = cell.line;
-    NSString *cellString = cell.string;
-    CFIndex index = CTLineGetStringIndexForPosition(line, pointOfTouch);
-    int adjustedIndex = index - 2;
+    if (longPressGesture.state == UIGestureRecognizerStateBegan) {
+        CodeLineCell *cell = (CodeLineCell*)[longPressGesture view];
+        CGPoint pointOfTouch = [longPressGesture locationInView:cell];
+        NSLog(@"point: %f, %f", pointOfTouch.x, pointOfTouch.y);
+        
+        CTLineRef line = cell.line;
+        NSString *cellString = cell.string;
+        CFIndex index = CTLineGetStringIndexForPosition(line, pointOfTouch);
+        int adjustedIndex = index - 2;
+        
+        CGRect rect = CGRectMake(pointOfTouch.x, 0, 20, cell.frame.size.height);
+        SelectionView *view = [[SelectionView alloc] initWithFrame:rect];
+        [cell addSubview:view];
+        [cell bringSubviewToFront:view];
+        
+        //    [view setNeedsDisplayInRect:rect];
+        
+        NSLog(@"%@", [cellString substringFromIndex:adjustedIndex]);
+    }
+    if (longPressGesture.state == UIGestureRecognizerStateEnded) {
+//        UIMenuItem* item1 = [[UIMenuItem alloc] initWithTitle:@"Copy" action:nil];//@selector(myMenuAction:)];
+//        UIMenuController *menuController = [UIMenuController sharedMenuController];
+//
+//        [menuController setTargetRect:longPressGesture.view.bounds inView:longPressGesture.view.sup];
+//        [menuController setMenuItems:[NSArray arrayWithObject:item1]];
+//        [menuController setMenuVisible:YES animated:YES];
+    }
+    
+    
+}
+
+#pragma mark - UIMenuController required methods
+- (BOOL)canBecomeFirstResponder {
+    // NOTE: This menu item will not show if this is not YES!
+    return YES;
+}
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    NSLog(@"canPerformAction");
+    // The selector(s) should match your UIMenuItem selector
+    if (action == @selector(customAction:)) {
+        return YES;
+    }
+    return NO;
 }
 
 #pragma mark - Table view delegate
