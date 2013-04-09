@@ -44,6 +44,22 @@
     return _contents;
 }
 
+// Returns the size of this object.
+// Folders should return the number of objects within, Files their size in B.
+- (int)size
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSError *error;
+    NSDictionary *fileProperties = [fileManager attributesOfItemAtPath:_path error:&error];
+    
+    if (error) {
+        NSLog(@"%@", error);
+    } else {
+        NSNumber *fileSize = [fileProperties valueForKey:NSFileSize];
+        return [fileSize intValue];
+    }
+}
 
 // Removes this object.
 // Returns YES if successful, NO otherwise.

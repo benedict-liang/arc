@@ -62,6 +62,13 @@
     return _contents;
 }
 
+// Returns the size of this object.
+// Folders should return the number of objects within, Files their size in B.
+- (int)size
+{
+    return [_contents count];
+}
+
 // Moves the given FileSystemObject to this Folder.
 // The given file must be of the same "type" as this Folder
 // (e.g. iOS file system, DropBox, etc.)
