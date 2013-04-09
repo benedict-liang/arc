@@ -87,17 +87,20 @@
 
 #pragma mark - Table view data source
 
+// Returns the number of sections in the table view.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return [_filesAndFolders count];
 }
 
+// Returns the number of rows in the given section.
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
     return [[_filesAndFolders objectAtIndex:section] count];
 }
 
+// Returns the header for the given section.
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {
     // Hide section title if section has zero rows
@@ -112,6 +115,7 @@ titleForHeaderInSection:(NSInteger)section {
     }
 }
 
+// Sets up a table cell for the given index path.
 - (UITableViewCell*)tableView:(UITableView*)tableView
         cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
@@ -142,8 +146,18 @@ titleForHeaderInSection:(NSInteger)section {
     return cell;
 }
 
+// Determines if the cell at the given index path can be edited.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *currentSection = [_filesAndFolders objectAtIndex:indexPath.section];
+    id<FileSystemObject> fileObject = [currentSection objectAtIndex:indexPath.row];
+    
+    return [fileObject isRemovable];
+}
+
 #pragma mark - Table view delegate
 
+// Triggered when the cell at the given index path is selected.
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NSArray *section = [_filesAndFolders objectAtIndex:indexPath.section];
@@ -152,6 +166,28 @@ titleForHeaderInSection:(NSInteger)section {
     
     // unhighlight TableViewCell
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - Editing-related methods
+- (void)toggleEdit:(id)sender
+{
+    BOOL shouldTableEdit = !_tableView.editing;
+    [_tableView setEditing:shouldTableEdit animated:YES];
+}
+
+// Triggers when the user confirms an edit operation on the cell at the given index path.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSArray *currentSection = [_filesAndFolders objectAtIndex:indexPath.section];
+        id<FileSystemObject> fileObject = [currentSection objectAtIndex:indexPath.row];
+        
+        // TODO: check if object is allowed to be deleted. This is probably in a data-source delegate.
+        if ([fileObject remove]) {
+            [(NSMutableArray *)[_filesAndFolders objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+    }
 }
 
 @end
