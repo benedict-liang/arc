@@ -7,6 +7,7 @@
 //
 
 #import "SelectionView.h"
+#import "CodeLineCell.h"
 
 @implementation SelectionView
 
@@ -16,9 +17,57 @@
     if (self) {
         // Initialization code
         self.backgroundColor = [UIColor clearColor];
+        [self createDragPoints];
         NSLog(@"init");
     }
     return self;
+}
+
+- (void)createDragPoints {
+    CGSize dragPointSize = CGSizeMake(5, self.frame.size.height + 3);
+    UIView *rightDragPoint = [[UIView alloc]
+                              initWithFrame:CGRectMake(self.frame.origin.x + self.frame.size.width - 2,
+                                                       -3,
+                                                       dragPointSize.width,
+                                                       dragPointSize.height)];
+    rightDragPoint.backgroundColor = [UIColor redColor];
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                                 action:@selector(moveRightDragPoint:)];
+    [rightDragPoint addGestureRecognizer:panGesture];
+    _rightDragPoint = rightDragPoint;
+}
+
+- (void)moveRightDragPoint:(UIPanGestureRecognizer*)panGesture {
+    CodeLineCell *cell = (CodeLineCell*)panGesture.view.superview;
+    CGPoint translation = [panGesture translationInView:cell];
+    
+    panGesture.view.center = CGPointMake(panGesture.view.center.x + translation.x, panGesture.view.center.y);
+    
+    [panGesture setTranslation:CGPointMake(0, 0) inView:cell];
+    
+    if ([panGesture state] == UIGestureRecognizerStateEnded) {
+        // Update selection rect
+        CGFloat originalX = self.frame.origin.x;
+        CGFloat newWidth = panGesture.view.center.x - originalX;
+        
+        [self updateSize:CGSizeMake(newWidth, self.frame.size.height)];
+        
+        // Update substring
+        [self updateSelectionSubstring:cell];
+        
+        [[NSNotificationCenter defaultCenter] postNotification:
+         [NSNotification notificationWithName:@"showCopyMenu" object:nil]];
+    }
+}
+
+- (void)updateSelectionSubstring:(CodeLineCell*)cell {
+    CGFloat startX = self.frame.origin.x;
+    CGFloat endX = startX + self.frame.size.width;
+    CTLineRef line = cell.line;
+    NSString *cellString = cell.string;
+    CFIndex startIndex = CTLineGetStringIndexForPosition(line, CGPointMake(startX, 0));
+    CFIndex endIndex = CTLineGetStringIndexForPosition(line, CGPointMake(endX, 0));
+    self.selectedString = [cellString substringWithRange:NSMakeRange(startIndex, endIndex - startIndex)];
 }
 
 - (void)updateSize:(CGSize)updatedSize {

@@ -421,59 +421,22 @@
                                  ascent + descent);
     
     if (longPressGesture.state == UIGestureRecognizerStateBegan) {
-        
-        NSLog(@"variables: (%f, %f), %f, %f, (%ld, %ld), %f", origin.x, origin.y,
-              ascent, descent,
-              strRange.location, strRange.length,
-              startOffset);
-        
         _selectionView = [[SelectionView alloc] initWithFrame:lineRect];
         [[_tableView cellForRowAtIndexPath:cell.indexPath] addSubview:_selectionView];
-        //[[_tableView cellForRowAtIndexPath:cell.indexPath] bringSubviewToFront:_selectionView];
+        [[_tableView cellForRowAtIndexPath:cell.indexPath] addSubview:_selectionView.rightDragPoint];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showCopyMenuForTextSelection) name:@"showCopyMenu" object:nil];
         
         CGFloat startX = lineRect.origin.x;
         CGFloat endX = lineRect.origin.x + lineRect.size.width;
         CFIndex startIndex = CTLineGetStringIndexForPosition(line, CGPointMake(startX, 0));
         CFIndex endIndex = CTLineGetStringIndexForPosition(line, CGPointMake(endX, 0));
         
-        NSLog(@"string selected: %@", [cellString substringWithRange:NSMakeRange(adjustedIndex, endIndex - startIndex)]);
         _selectionView.selectedString = [cellString substringWithRange:NSMakeRange(adjustedIndex, endIndex - startIndex)];
-        
-        
-        //        Basically you have to save all CTLine rects and origins using CTFrameGetLineOrigins(1), CTLineGetTypographicBounds(2), CTLineGetStringRange(3) and CTLineGetOffsetForStringIndex(4).
-        //
-        //        The line rect can be calculated using the origin(1), ascent(2), descent(2) and offset(3)(4) as shown bellow.
-        //
-        //        lineRect = CGRectMake(origin.x + offset,
-        //                              origin.y - descent,
-        //                              offset,
-        //                              ascent + descent);
     }
     if (longPressGesture.state == UIGestureRecognizerStateEnded) {
         [self showCopyMenuForTextSelection];
-        
-        CGSize dragPointSize = CGSizeMake(5, lineRect.size.height + 3);
-        UIView *rightDragPoint = [[UIView alloc]
-                                  initWithFrame:CGRectMake(lineRect.origin.x + lineRect.size.width - 2,
-                                                           -3,
-                                                           dragPointSize.width,
-                                                           dragPointSize.height)];
-        rightDragPoint.backgroundColor = [UIColor redColor];
-        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self
-                                                                                     action:@selector(moveRightDragPoint:)];
-        [rightDragPoint addGestureRecognizer:panGesture];
-        [[_tableView cellForRowAtIndexPath:cell.indexPath] addSubview:rightDragPoint];
     }
-}
-
-- (void)updateSelectionSubstring:(CodeLineCell*)cell {
-    CGFloat startX = _selectionView.frame.origin.x;
-    CGFloat endX = startX + _selectionView.frame.size.width;
-    CTLineRef line = cell.line;
-    NSString *cellString = cell.string;
-    CFIndex startIndex = CTLineGetStringIndexForPosition(line, CGPointMake(startX, 0));
-    CFIndex endIndex = CTLineGetStringIndexForPosition(line, CGPointMake(endX, 0));
-    _selectionView.selectedString = [cellString substringWithRange:NSMakeRange(startIndex, endIndex - startIndex)];
 }
 
 - (void)showCopyMenuForTextSelection {
@@ -493,29 +456,8 @@
     
     // Need to figure out when to remove from superview
     [_selectionView removeFromSuperview];
+    [_selectionView.rightDragPoint removeFromSuperview];
     _selectionView = nil;
-}
-
-- (void)moveRightDragPoint:(UIPanGestureRecognizer*)panGesture {
-    CodeLineCell *cell = (CodeLineCell*)panGesture.view.superview;
-    CGPoint translation = [panGesture translationInView:cell];
-    
-    panGesture.view.center = CGPointMake(panGesture.view.center.x + translation.x, panGesture.view.center.y);
-    
-    [panGesture setTranslation:CGPointMake(0, 0) inView:cell];
-
-    if ([panGesture state] == UIGestureRecognizerStateEnded) {
-        // Update selection rect
-        CGFloat originalX = _selectionView.frame.origin.x;
-        CGFloat newWidth = panGesture.view.center.x - originalX;
-        
-        [_selectionView updateSize:CGSizeMake(newWidth, _selectionView.frame.size.height)];
-        
-        // Update substring
-        [self updateSelectionSubstring:cell];
-        
-        [self showCopyMenuForTextSelection];
-    }
 }
 
 #pragma mark - UIMenuController required methods
