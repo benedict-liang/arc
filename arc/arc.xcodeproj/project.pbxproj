@@ -26,6 +26,7 @@
 		02E51AEB1709580400247AF5 /* DropBoxFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AEA1709580400247AF5 /* DropBoxFile.m */; };
 		02E51AEE1709581200247AF5 /* DropBoxFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AED1709581200247AF5 /* DropBoxFolder.m */; };
 		02E51AF11709582300247AF5 /* DropBoxRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AF01709582300247AF5 /* DropBoxRootFolder.m */; };
+		02F25A121713E660000B6301 /* CreateFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F25A111713E660000B6301 /* CreateFolderViewController.m */; };
 		4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D0711705CA7800F4593B /* ArcAttributedString.m */; };
 		4C1AF1181714FF8400A2D0D8 /* documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1AF1161714FF8400A2D0D8 /* documents.png */; };
 		4C1AF1191714FF8400A2D0D8 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1AF1171714FF8400A2D0D8 /* settings.png */; };
@@ -285,6 +286,8 @@
 		02E51AED1709581200247AF5 /* DropBoxFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxFolder.m; sourceTree = "<group>"; };
 		02E51AEF1709582300247AF5 /* DropBoxRootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxRootFolder.h; sourceTree = "<group>"; };
 		02E51AF01709582300247AF5 /* DropBoxRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxRootFolder.m; sourceTree = "<group>"; };
+		02F25A101713E660000B6301 /* CreateFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFolderViewController.h; sourceTree = "<group>"; };
+		02F25A111713E660000B6301 /* CreateFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateFolderViewController.m; sourceTree = "<group>"; };
 		4C12D0701705CA7800F4593B /* ArcAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcAttributedString.h; sourceTree = "<group>"; };
 		4C12D0711705CA7800F4593B /* ArcAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcAttributedString.m; sourceTree = "<group>"; };
 		4C1AF1161714FF8400A2D0D8 /* documents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = documents.png; sourceTree = "<group>"; };
@@ -609,6 +612,17 @@
 				02E51AF01709582300247AF5 /* DropBoxRootFolder.m */,
 			);
 			name = "DropBox Files";
+			sourceTree = "<group>";
+		};
+		02F25A091713CF0A000B6301 /* Popup Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8F771E121711B900002E9914 /* ResultsTableViewController.h */,
+				8F771E131711B900002E9914 /* ResultsTableViewController.m */,
+				02F25A101713E660000B6301 /* CreateFolderViewController.h */,
+				02F25A111713E660000B6301 /* CreateFolderViewController.m */,
+			);
+			name = "Popup Controllers";
 			sourceTree = "<group>";
 		};
 		4C43F8E016F86AA800159B29 = {
@@ -1032,6 +1046,7 @@
 		8FCA1D6616F86C7000C6AAFC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				02F25A091713CF0A000B6301 /* Popup Controllers */,
 				4CD06B2D16FDE97E00C9DED3 /* Protocols */,
 				8FCA1D6716F86C7000C6AAFC /* MainViewController.h */,
 				8FCA1D6816F86C7000C6AAFC /* MainViewController.m */,
@@ -1043,8 +1058,6 @@
 				FC4B269D16F88CB800E1DC49 /* FolderViewController.m */,
 				4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */,
 				4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */,
-				8F771E121711B900002E9914 /* ResultsTableViewController.h */,
-				8F771E131711B900002E9914 /* ResultsTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1383,6 +1396,7 @@
 				02D55DB51711694900DD48D7 /* PluginUtilities.m in Sources */,
 				FC7260921711B4D70068DD91 /* SyntaxHighlight.m in Sources */,
 				8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */,
+				02F25A121713E660000B6301 /* CreateFolderViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

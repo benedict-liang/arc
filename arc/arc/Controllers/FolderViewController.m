@@ -12,23 +12,18 @@
 #import "File.h"
 #import "Folder.h"
 
-typedef enum {
-    kNormalMode,
-    kEditMode
-} kFolderViewControllerMode;
-
 @interface FolderViewController ()
 @property id<Folder> folder;
 @property UITableView *tableView;
-@property kFolderViewControllerMode folderViewMode;
 @property NSArray *filesAndFolders;
 @property NSMutableArray *editSelection;
 
 // Edit/Normal Modes
-- (void)editMode:(id)sender;
-- (void)normalMode:(id)sender;
-- (void)showCancelButton;
-- (void)showEditButton;
+- (void)editMode;
+- (void)normalMode;
+@property CreateFolderViewController *createFolderController;
+@property UIPopoverController *addFolderPopoverController;
+@property UIBarButtonItem *addFolderButton;
 @end
 
 @implementation FolderViewController
@@ -40,7 +35,6 @@ typedef enum {
     self = [super init];
     if (self) {
         _folder = folder;
-        _folderViewMode = kNormalMode;
         [self sortFilesAndFolders];
     }
     return self;
@@ -72,8 +66,20 @@ typedef enum {
 {
     [super viewDidLoad];
     
-    // Hooks into UINavigationViewController
+    _addFolderButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                     target:self
+                                                                     action:@selector(triggerAddFolder)];
+    
+    // Set up the navigation bar.
     self.title = _folder.name;
+    
+    // Add the "edit" and "add folder" buttons.
+    self.navigationItem.rightBarButtonItems =
+        [NSArray arrayWithObjects:
+            self.editButtonItem,
+            _addFolderButton,
+            nil];
+
     self.view.autoresizesSubviews = YES;
 
     // Set Up TableView
@@ -91,8 +97,10 @@ typedef enum {
     _tableView.delegate = self;
     
     [self.view addSubview:_tableView];
-
-    [self normalMode:nil];
+    
+    _createFolderController = [[CreateFolderViewController alloc] init];
+    [_createFolderController setFolder:_folder];
+//    [_createFolderController.tableView reloadData];
 }
 
 // Work Around to track back button action.
@@ -188,14 +196,12 @@ titleForHeaderInSection:(NSInteger)section {
     NSArray *section = [_filesAndFolders objectAtIndex:indexPath.section];
     id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
     
-    // Editing mode
-    if (_folderViewMode == kEditMode) {
+    if (tableView.editing) {
+        // Editing mode
         [_editSelection addObject:fileObject];
         return;
-    }
-    
-    // Normal Mode
-    if (_folderViewMode == kNormalMode) {
+    } else {
+        // Normal mode
         [self.delegate fileObjectSelected:fileObject];
         [tableView deselectRowAtIndexPath:indexPath
                                  animated:YES];
@@ -208,56 +214,39 @@ titleForHeaderInSection:(NSInteger)section {
     NSArray *section = [_filesAndFolders objectAtIndex:indexPath.section];
     id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
     
-    // Editing mode
-    if (_folderViewMode == kEditMode) {
+    if (tableView.editing) {
+        // Editing mode
         [_editSelection removeObject:fileObject];
         return;
-    }
-    
-    // Normal Mode
-    if (_folderViewMode == kNormalMode) {
+    } else {
+        // Normal Mode
         // Do nothing.
     }
 }
 
 #pragma mark - Edit Related methods
-- (void)editMode:(id)sender
+- (void)setEditing:(BOOL)editing
+          animated:(BOOL)animated
+{
+    if (editing) {
+        [self editMode];
+    } else {
+        [self normalMode];
+    }
+    
+}
+
+- (void)editMode
 {
     _editSelection = [NSMutableArray array];
-    _folderViewMode = kEditMode;
     _tableView.allowsMultipleSelectionDuringEditing = YES;
-    [_tableView setEditing:YES animated:YES];
-    [self showCancelButton];
     [self.folderViewControllerDelegate enterEditMode];
 }
 
-- (void)showCancelButton
+- (void)normalMode
 {
-    UIBarButtonItem *cancelButton =
-    [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
-                                     style:UIBarButtonItemStyleBordered
-                                    target:self
-                                    action:@selector(normalMode:)];
-    self.navigationItem.rightBarButtonItem = cancelButton;
-}
-
-- (void)normalMode:(id)sender
-{
-    _folderViewMode = kNormalMode;
     _tableView.allowsMultipleSelectionDuringEditing = NO;
-    [_tableView setEditing:NO animated:YES];
-    [self showEditButton];
     [self.folderViewControllerDelegate exitEditMode];
-}
-
-- (void)showEditButton
-{
-    UIBarButtonItem *editButton =
-    [[UIBarButtonItem alloc] initWithTitle:@"Edit"
-                                     style:UIBarButtonItemStyleBordered
-                                    target:self
-                                    action:@selector(editMode:)];
-    self.navigationItem.rightBarButtonItem = editButton;
 }
 
 // Triggers when the user confirms an edit operation on the cell at the given index path.
@@ -269,11 +258,25 @@ titleForHeaderInSection:(NSInteger)section {
         NSArray *currentSection = [_filesAndFolders objectAtIndex:indexPath.section];
         id<FileSystemObject> fileObject = [currentSection objectAtIndex:indexPath.row];
         
-        // TODO: check if object is allowed to be deleted. This is probably in a data-source delegate.
         if ([fileObject remove]) {
             [(NSMutableArray *)[_filesAndFolders objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
             [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         }
+    }
+}
+
+// Triggers when the user clicks the Add button.
+- (void)triggerAddFolder
+{
+    if (!_addFolderPopoverController) {
+        _addFolderPopoverController = [[UIPopoverController alloc] initWithContentViewController:_createFolderController];
+    }
+    
+    // Toggle the visibility of the popover controller.
+    if (![_addFolderPopoverController isPopoverVisible]) {
+        [_addFolderPopoverController presentPopoverFromBarButtonItem:_addFolderButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    } else {
+        [_addFolderPopoverController dismissPopoverAnimated:YES];
     }
 }
 
