@@ -81,10 +81,12 @@
     
     SyntaxHighlight* cachedHighlighter = [_cache objectForKey:[file name]];
     
+    NSDictionary* themeCopy =  [TMBundleThemeHandler produceStylesWithTheme:themeName];
+    
     if (cachedHighlighter) {
         
         NSDictionary *syntaxOpts = @{
-        @"theme":_theme,
+        @"theme":themeCopy,
         @"attributedString":arcAttributedString
         };
         
@@ -97,7 +99,7 @@
             ArcAttributedString *copy =
             [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
             NSDictionary* syntaxOptions = @{
-                                            @"theme":_theme,
+                                            @"theme":themeCopy,
                                             @"attributedString":copy
                                             };
             
