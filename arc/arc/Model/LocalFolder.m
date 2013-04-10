@@ -66,7 +66,7 @@
 // Folders should return the number of objects within, Files their size in B.
 - (int)size
 {
-    return [_contents count];
+    return [[self contents] count];
 }
 
 // Moves the given FileSystemObject to this Folder.
