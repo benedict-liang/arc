@@ -19,4 +19,6 @@
 + (BOOL)isEqual:(id<FileSystemObject>)fileSystemObject1 and:(id<FileSystemObject>)fileSystemObject2;
 
 + (UIBarButtonItem *)flexibleSpace;
+
++ (NSString *)humanReadableFileSize:(float)fileSize;
 @end

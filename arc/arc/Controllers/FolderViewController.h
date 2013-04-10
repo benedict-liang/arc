@@ -14,6 +14,6 @@
 @interface FolderViewController : UIViewController <SubViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, readonly) id<Folder> folder;
 - (id)initWithFolder:(id<Folder>)folder;
-
 - (void)triggerAddFolder;
+- (void)refreshFolderContents;
 @end
