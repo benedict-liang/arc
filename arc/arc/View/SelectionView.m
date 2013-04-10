@@ -11,6 +11,8 @@
 
 @implementation SelectionView
 
+#pragma mark - Initialization
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -39,6 +41,8 @@
     [_rightDragPoint setClipsToBounds:NO];
 }
 
+#pragma mark - User Interaction Methods
+
 - (void)moveRightDragPoint:(UIPanGestureRecognizer*)panGesture {
     CodeLineCell *cell = (CodeLineCell*)panGesture.view.superview;
     CGPoint translation = [panGesture translationInView:cell];
@@ -62,6 +66,10 @@
     }
 }
 
+// TODO: LeftDragPoint
+
+#pragma mark - Update Methods
+
 - (void)updateSelectionSubstring:(CodeLineCell*)cell {
     CGFloat startX = self.frame.origin.x;
     CGFloat endX = startX + self.frame.size.width;
@@ -76,6 +84,8 @@
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, updatedSize.width, updatedSize.height);
     [self setNeedsDisplay];
 }
+
+#pragma mark - Misc Methods
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

@@ -385,6 +385,8 @@
     return cell;
 }
 
+#pragma mark - Text Selection + Copy and Paste
+
 - (void)getTextLocation:(UILongPressGestureRecognizer*)longPressGesture {
     
     CodeLineCell *cell = (CodeLineCell*)[longPressGesture view];
@@ -451,6 +453,13 @@
     [menuController setMenuVisible:YES animated:YES];
 }
 
+#pragma mark - UIMenuController methods
+
+- (BOOL)canBecomeFirstResponder {
+    // NOTE: This menu item will not show if this is not YES!
+    return YES;
+}
+
 - (void)copy:(id)sender {
     
     UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
@@ -461,12 +470,6 @@
     [_selectionView removeFromSuperview];
     [_selectionView.rightDragPoint removeFromSuperview];
     _selectionView = nil;
-}
-
-#pragma mark - UIMenuController required methods
-- (BOOL)canBecomeFirstResponder {
-    // NOTE: This menu item will not show if this is not YES!
-    return YES;
 }
 
 //- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
