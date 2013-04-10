@@ -53,6 +53,6 @@ task :theme do
 			puts cleaned_name(fname, THEME_DIR)
 		end
 	end
-	Plist::Emit.save_plist(global_themes, THEME_OUTPUT_FILE)
+	Plist::Emit.save_plist(Hash[global_themes.sort], THEME_OUTPUT_FILE)
 end
 #puts global_fileTypes["scm"]
