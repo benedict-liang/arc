@@ -138,19 +138,14 @@
                    output:(ArcAttributedString*)output
                      dict:(NSObject*)dict
                     theme:(NSDictionary*)theme
-               syntaxItem:(NSDictionary*)syntaxItem
+               capturableScopes:(NSArray*)cpS
 {
-    NSArray* capturableScopes;
-    if ([syntaxItem objectForKey:@"capturableScopes"]) {
-        capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
-    } else {
-        capturableScopes = [self capturableScopes:name];
-    }
-    
-    for (NSString *s in capturableScopes) {
+
+  
+    for (NSString *s in cpS) {
         NSDictionary* style = [(NSDictionary*)[theme objectForKey:@"scopes"] objectForKey:s];
         if (![dict isEqual:(NSObject*)overlapMatches] && [_overlays containsObject:s]) {
-            overlapMatches = [self addRange:range scope:s dict:overlapMatches];
+            overlapMatches = [self addRange:range scope:s dict:overlapMatches capturableScopes:@[s]];
         }
         
         UIColor *fg = nil;
@@ -217,7 +212,8 @@
 {
     if (pairs) {
         for (NSString* scope in pairs) {
-            NSArray* ranges = [pairs objectForKey:scope];
+            NSArray* ranges = [[pairs objectForKey:scope] objectForKey:@"ranges"];
+            NSArray* capturableScopes = [[pairs objectForKey:scope] objectForKey:@"capturableScopes"];
             for (NSValue *v in ranges) {
                 NSRange range;
                 [v getValue:&range];
@@ -225,7 +221,8 @@
                                   range:range
                                  output:output
                                    dict:pairs
-                                  theme:theme];
+                                  theme:theme
+                       capturableScopes:capturableScopes];
             }
         }
     }
@@ -246,20 +243,22 @@
     return res;
 }
 
-- (NSDictionary*) addRange:(NSRange)range scope:(NSString*)scope dict:(NSDictionary*)dict
+- (NSDictionary*) addRange:(NSRange)range scope:(NSString*)scope dict:(NSDictionary*)matchesStore capturableScopes:(NSArray*)cpS
 {
     NSMutableDictionary* res =
-    [NSMutableDictionary dictionaryWithDictionary:dict];
+    [NSMutableDictionary dictionaryWithDictionary:matchesStore];
     
-    NSArray* ranges = [res objectForKey:scope];
+    NSArray* ranges = [[res objectForKey:scope] objectForKey:@"ranges"];
     if (ranges) {
         NSMutableArray* temp = [NSMutableArray arrayWithArray:ranges];
         [temp addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
-        [res setObject:temp forKey:scope];
+        NSDictionary* vals = @{@"capturableScopes":cpS, @"ranges":temp};
+        [res setObject:vals forKey:scope];
     } else {
         if (scope) {
-            [res setObject:@[[NSValue value:&range
-                               withObjCType:@encode(NSRange)]]
+            NSDictionary* vals = @{@"capturableScopes":cpS, @"ranges":@[[NSValue value:&range
+                                                                          withObjCType:@encode(NSRange)]]};
+            [res setObject:vals
                     forKey:scope];
         }
     }
@@ -317,6 +316,7 @@
     NSString* name = [syntaxItem objectForKey:@"name"];
     NSRange brange = [self findFirstPattern:begin
                                       range:contentRange];
+    NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
     NSRange erange;
     do {
         // NSLog(@"traversing while brange:%@ erange:%@", [NSValue value:&brange withObjCType:@encode(NSRange)], [NSValue value:&erange withObjCType:@encode(NSRange)]);
@@ -347,7 +347,8 @@
             if (name) {
                 pairMatches = [self addRange:NSMakeRange(brange.location, eEnds - brange.location)
                                        scope:name
-                                        dict:pairMatches];
+                                        dict:pairMatches
+                            capturableScopes:capturableScopes];
                 if ([name isEqualToString:@"comment.line.double-slash.c++"]) {
                    // NSLog(@"%@",pairMatches);
                 }
@@ -356,7 +357,8 @@
             if ([syntaxItem objectForKey:@"contentName"]) {
                 contentNameMatches = [self addRange:NSMakeRange(bEnds, eEnds - bEnds)
                                               scope:name
-                                               dict:contentNameMatches];
+                                               dict:contentNameMatches
+                                   capturableScopes:capturableScopes];
             }
             
             if (embedPatterns &&
@@ -398,12 +400,12 @@
             NSDictionary *captures = [syntaxItem objectForKey:@"captures"];
             NSString *include = [syntaxItem objectForKey:@"include"];
             NSArray* embedPatterns = [syntaxItem objectForKey:@"patterns"];
-            
+            NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
             //case name, match
             if (name && match) {
                 NSArray *a = [self foundPattern:match
                                           range:contentRange];
-                nameMatches = [self merge:@{name: a}
+                nameMatches = [self merge:@{name: @{@"ranges":a, @"capturableScopes":capturableScopes}}
                                    withd2:nameMatches];
             }
             
