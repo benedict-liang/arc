@@ -409,14 +409,15 @@
     CFRange strRange = CTLineGetStringRange(line);
     
     // 4)
-    CGFloat offset = CTLineGetOffsetForStringIndex(line, index, NULL);
+    CGFloat startOffset = CTLineGetOffsetForStringIndex(line, index, NULL);
+    CGFloat endOffset = CTLineGetOffsetForStringIndex(line, index+3, NULL);
     
     
     // Finally
     CGPoint origin = lineOrigins[0];
-    CGRect lineRect = CGRectMake(origin.x + offset,
+    CGRect lineRect = CGRectMake(origin.x + startOffset,
                                  origin.y - descent,
-                                 60,
+                                 endOffset-startOffset,
                                  ascent + descent);
     
     if (longPressGesture.state == UIGestureRecognizerStateBegan) {
@@ -424,7 +425,7 @@
         NSLog(@"variables: (%f, %f), %f, %f, (%ld, %ld), %f", origin.x, origin.y,
               ascent, descent,
               strRange.location, strRange.length,
-              offset);
+              startOffset);
         
         _selectionView = [[SelectionView alloc] initWithFrame:lineRect];
         [[_tableView cellForRowAtIndexPath:cell.indexPath] addSubview:_selectionView];
