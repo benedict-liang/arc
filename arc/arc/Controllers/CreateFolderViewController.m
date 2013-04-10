@@ -59,7 +59,7 @@
         cell = [[UITableViewCell alloc] init];
     }
     
-    [cell addSubview:[[UITextField alloc] init]];
+    [cell.contentView addSubview:[[UITextField alloc] initWithFrame:CGRectMake(0, 0, 300, 100)]];
     
     return cell;
 }
