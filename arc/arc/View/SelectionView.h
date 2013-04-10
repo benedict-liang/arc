@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) NSString *selectedString;
 
+- (void)updateSize:(CGSize)updatedSize;
+
 @end

@@ -429,7 +429,7 @@
         
         _selectionView = [[SelectionView alloc] initWithFrame:lineRect];
         [[_tableView cellForRowAtIndexPath:cell.indexPath] addSubview:_selectionView];
-        [[_tableView cellForRowAtIndexPath:cell.indexPath] bringSubviewToFront:_selectionView];
+        //[[_tableView cellForRowAtIndexPath:cell.indexPath] bringSubviewToFront:_selectionView];
         
         CGFloat startX = lineRect.origin.x;
         CGFloat endX = lineRect.origin.x + lineRect.size.width;
@@ -450,13 +450,29 @@
         //                              ascent + descent);
     }
     if (longPressGesture.state == UIGestureRecognizerStateEnded) {
-        [_selectionView becomeFirstResponder];
-
-        UIMenuController *menuController = [UIMenuController sharedMenuController];
-        [menuController setTargetRect:_selectionView.frame inView:_selectionView.superview];
+        [self showCopyMenuForTextSelection];
         
-        [menuController setMenuVisible:YES animated:YES];
+        CGSize dragPointSize = CGSizeMake(5, lineRect.size.height + 3);
+        UIView *rightDragPoint = [[UIView alloc]
+                                  initWithFrame:CGRectMake(lineRect.origin.x + lineRect.size.width - 2,
+                                                           -3,
+                                                           dragPointSize.width,
+                                                           dragPointSize.height)];
+        rightDragPoint.backgroundColor = [UIColor redColor];
+        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                                     action:@selector(moveRightDragPoint:)];
+        [rightDragPoint addGestureRecognizer:panGesture];
+        [[_tableView cellForRowAtIndexPath:cell.indexPath] addSubview:rightDragPoint];
     }
+}
+
+- (void)showCopyMenuForTextSelection {
+    [_selectionView becomeFirstResponder];
+    
+    UIMenuController *menuController = [UIMenuController sharedMenuController];
+    [menuController setTargetRect:_selectionView.frame inView:_selectionView.superview];
+    
+    [menuController setMenuVisible:YES animated:YES];
 }
 
 - (void)copy:(id)sender {
@@ -470,7 +486,24 @@
     _selectionView = nil;
 }
 
+- (void)moveRightDragPoint:(UIPanGestureRecognizer*)panGesture {
+    CodeLineCell *cell = (CodeLineCell*)panGesture.view.superview;
+    CGPoint translation = [panGesture translationInView:cell];
+    
+    panGesture.view.center = CGPointMake(panGesture.view.center.x + translation.x, panGesture.view.center.y);
+    
+    [panGesture setTranslation:CGPointMake(0, 0) inView:cell];
 
+    if ([panGesture state] == UIGestureRecognizerStateEnded) {
+        // Update selection rect
+        CGFloat originalX = _selectionView.frame.origin.x;
+        CGFloat newWidth = panGesture.view.center.x - originalX;
+        
+        [_selectionView updateSize:CGSizeMake(newWidth, _selectionView.frame.size.height)];
+        
+        [self showCopyMenuForTextSelection];
+    }
+}
 
 #pragma mark - UIMenuController required methods
 - (BOOL)canBecomeFirstResponder {

@@ -21,6 +21,10 @@
     return self;
 }
 
+- (void)updateSize:(CGSize)updatedSize {
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, updatedSize.width, updatedSize.height);
+    [self setNeedsDisplay];
+}
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
