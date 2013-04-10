@@ -73,7 +73,7 @@
         
         
     } else {
-        SyntaxHighlight* sh = [[SyntaxHighlight alloc] initWithFile:file del:delegate theme:_theme];
+        SyntaxHighlight* sh = [[SyntaxHighlight alloc] initWithFile:file del:delegate];
         
         NSDictionary* global = [_theme objectForKey:@"global"];
         UIColor* foreground = [global objectForKey:@"foreground"];
@@ -87,8 +87,13 @@
         if (sh.bundle) {
             ArcAttributedString *copy =
             [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
+            NSDictionary* syntaxOptions = @{
+                                            @"theme":_theme,
+                                            @"attributedString":copy
+                                            };
+            
             [sh performSelectorInBackground:@selector(execOn:)
-                                 withObject:copy];
+                                 withObject:syntaxOptions];
             
             [_cache setObject:sh forKey:[file name]];
         }

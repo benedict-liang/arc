@@ -31,5 +31,6 @@
 @property NSArray* overlays;
 
 - (id)initWithFile:(id<File>)file del:(id<CodeViewControllerDelegate>)delegate;
+- (void)execOn:(NSDictionary*)options;
 
 @end
