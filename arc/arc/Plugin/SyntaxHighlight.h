@@ -33,5 +33,6 @@
 
 - (id)initWithFile:(id<File>)file del:(id<CodeViewControllerDelegate>)delegate;
 - (void)execOn:(NSDictionary*)options;
+- (void)reapplyWithOpts:(NSDictionary*)options;
 
 @end

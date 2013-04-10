@@ -69,20 +69,29 @@
 {
     NSString* themeName = [properties objectForKey:_colorSchemeSettingKey];
     _theme = [TMBundleThemeHandler produceStylesWithTheme:themeName];
-    if ([_cache objectForKey:[file name]]) {
+    
+    NSDictionary* global = [_theme objectForKey:@"global"];
+    UIColor* foreground = [global objectForKey:@"foreground"];
+    [arcAttributedString setColor:[foreground CGColor]
+                          OnRange:NSMakeRange(0, [(NSString*)[file contents] length])
+                       ForSetting:@"syntaxHighlight"];
+    
+    [dictionary setValue:[_theme objectForKey:@"global"]
+                  forKey:@"syntaxHighlightingPlugin"];
+    
+    SyntaxHighlight* cachedHighlighter = [_cache objectForKey:[file name]];
+    
+    if (cachedHighlighter) {
         
+        NSDictionary *syntaxOpts = @{
+        @"theme":_theme,
+        @"attributedString":arcAttributedString
+        };
+        
+        [cachedHighlighter performSelectorInBackground:@selector(reapplyWithOpts:) withObject:syntaxOpts];
         
     } else {
         SyntaxHighlight* sh = [[SyntaxHighlight alloc] initWithFile:file del:delegate];
-        
-        NSDictionary* global = [_theme objectForKey:@"global"];
-        UIColor* foreground = [global objectForKey:@"foreground"];
-        [arcAttributedString setColor:[foreground CGColor]
-                              OnRange:NSMakeRange(0, [(NSString*)[file contents] length])
-                           ForSetting:@"syntaxHighlight"];
-        
-        [dictionary setValue:[_theme objectForKey:@"global"]
-                      forKey:@"syntaxHighlightingPlugin"];
         
         if (sh.bundle) {
             ArcAttributedString *copy =

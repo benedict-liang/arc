@@ -518,10 +518,15 @@
 }
 
 - (void)reapplyWithOpts:(NSDictionary*)options {
-    ArcAttributedString *output = [options objectForKey:@"attributedString"];
-    NSDictionary* theme = [options objectForKey:@"theme"];
-    [self applyStylesTo:output withTheme:theme];
-    [self updateView:output withTheme:theme];
+    
+    while (!_isProcessed);
+    
+    if (_isProcessed) {
+        ArcAttributedString *output = [options objectForKey:@"attributedString"];
+        NSDictionary* theme = [options objectForKey:@"theme"];
+        [self applyStylesTo:output withTheme:theme];
+        [self updateView:output withTheme:theme];
+    }
 }
 
 
