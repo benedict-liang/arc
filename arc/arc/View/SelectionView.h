@@ -10,4 +10,6 @@
 
 @interface SelectionView : UIView
 
+@property (nonatomic, strong) NSString *selectedString;
+
 @end

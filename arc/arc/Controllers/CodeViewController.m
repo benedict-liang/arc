@@ -436,6 +436,7 @@
         CFIndex endIndex = CTLineGetStringIndexForPosition(line, CGPointMake(endX, 0));
         
         NSLog(@"string selected: %@", [cellString substringWithRange:NSMakeRange(adjustedIndex, endIndex - startIndex)]);
+        _selectionView.selectedString = [cellString substringWithRange:NSMakeRange(adjustedIndex, endIndex - startIndex)];
         
         
         //        Basically you have to save all CTLine rects and origins using CTFrameGetLineOrigins(1), CTLineGetTypographicBounds(2), CTLineGetStringRange(3) and CTLineGetOffsetForStringIndex(4).
@@ -458,7 +459,10 @@
 }
 
 - (void)copy:(id)sender {
-    NSLog(@"sender: %@", sender);
+    
+    UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
+    NSString *copiedString = _selectionView.selectedString;
+    [pasteBoard setString:copiedString];
     
     // Need to figure out when to remove from superview
     [_selectionView removeFromSuperview];
