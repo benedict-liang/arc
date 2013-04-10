@@ -71,7 +71,6 @@
     return [[fileSystemObject1 path] isEqualToString:[fileSystemObject2 path]];
 }
 
-
 + (UIBarButtonItem *)flexibleSpace
 {
     return [[UIBarButtonItem alloc]
@@ -79,4 +78,27 @@
                                  target:nil
                                  action:nil];
 }
+
++ (NSString *)humanReadableFileSize:(float)fileSize
+{
+        int divisions = 0;
+        NSArray *prefixes = [NSArray arrayWithObjects:
+            @"B", @"KB", @"MB", @"GB", @"TB", @"PB", nil];
+        while (fileSize > 1024 &&
+            divisions < [prefixes count]) {
+            fileSize /= 1024.0;
+            divisions++;
+        }
+
+        // Special Case
+        // 1.0, 2.0 (whole numbers)
+        if (fileSize == floorf(fileSize)){
+            return [NSString stringWithFormat:
+                    @"%.0f%@", fileSize, [prefixes objectAtIndex:divisions]];
+        }
+    
+        return [NSString stringWithFormat:
+            @"%.1f%@", fileSize, [prefixes objectAtIndex:divisions]];
+}
+
 @end

@@ -137,16 +137,8 @@ titleForHeaderInSection:(NSInteger)section {
         cell.imageView.image = [Utils scale:[UIImage imageNamed:@"file.png"]
                                      toSize:CGSizeMake(40, 40)];
         
-        // Determine the file size.
-        int fileSize = [file size];
-        int divisions = 0;
-        NSArray *prefixes = [NSArray arrayWithObjects:@"B", @"KB", @"MB", @"GB", @"TB", @"PB", nil];
-        while (fileSize > 1024 && divisions < [prefixes count]) {
-            fileSize /= 1024;
-            divisions++;
-        }
-        
-        detailDescription = [NSString stringWithFormat:@"%d %@", fileSize, [prefixes objectAtIndex:divisions]];
+        detailDescription = [NSString stringWithFormat:
+                             @"%@", [Utils humanReadableFileSize:[file size]]];
         
     } else if ([[fileObject class] conformsToProtocol:@protocol(Folder)]) {
         cell.imageView.image = [Utils scale:[UIImage imageNamed:@"folder.png"]
