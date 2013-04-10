@@ -29,7 +29,7 @@
 		4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D0711705CA7800F4593B /* ArcAttributedString.m */; };
 		4C1AF1181714FF8400A2D0D8 /* documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1AF1161714FF8400A2D0D8 /* documents.png */; };
 		4C1AF1191714FF8400A2D0D8 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1AF1171714FF8400A2D0D8 /* settings.png */; };
-		4C36137D170AC673009358B1 /* dropbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C36137C170AC673009358B1 /* dropbox.png */; };
+		4C1AF11B1715029100A2D0D8 /* dropbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1AF11A1715029100A2D0D8 /* dropbox.png */; };
 		4C43F8ED16F86AA900159B29 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
 		4C43F8EF16F86AA900159B29 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EE16F86AA900159B29 /* Foundation.framework */; };
 		4C43F8F116F86AA900159B29 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8F016F86AA900159B29 /* CoreGraphics.framework */; };
@@ -289,8 +289,8 @@
 		4C12D0711705CA7800F4593B /* ArcAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcAttributedString.m; sourceTree = "<group>"; };
 		4C1AF1161714FF8400A2D0D8 /* documents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = documents.png; sourceTree = "<group>"; };
 		4C1AF1171714FF8400A2D0D8 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		4C1AF11A1715029100A2D0D8 /* dropbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropbox.png; sourceTree = "<group>"; };
 		4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileNavigatorViewControllerDelegate.h; sourceTree = "<group>"; };
-		4C36137C170AC673009358B1 /* dropbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropbox.png; sourceTree = "<group>"; };
 		4C43F8E916F86AA900159B29 /* arc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C43F8EC16F86AA900159B29 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4C43F8EE16F86AA900159B29 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -821,10 +821,10 @@
 		4CF6F0EC1706E05500EDDEDC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4C1AF11A1715029100A2D0D8 /* dropbox.png */,
 				4C1AF1161714FF8400A2D0D8 /* documents.png */,
 				4C1AF1171714FF8400A2D0D8 /* settings.png */,
 				02CF20711712ACB8001A59E4 /* Reading Panel.png */,
-				4C36137C170AC673009358B1 /* dropbox.png */,
 				4CF6F0F11706E29300EDDEDC /* folder.png */,
 				4CF6F0ED1706E08800EDDEDC /* file.png */,
 			);
@@ -1138,7 +1138,6 @@
 				8F151051170443AC00115E5E /* home.html in Resources */,
 				4CF6F0EE1706E08800EDDEDC /* file.png in Resources */,
 				4CF6F0F21706E29300EDDEDC /* folder.png in Resources */,
-				4C36137D170AC673009358B1 /* dropbox.png in Resources */,
 				02E162CD170B02F400C9D23B /* appState.plist in Resources */,
 				02A5198D170DC0CE007C038E /* Inconsolata.ttf in Resources */,
 				FC4A8529170EB47200463EDA /* twist.py in Resources */,
@@ -1315,6 +1314,7 @@
 				02CF20721712ACB8001A59E4 /* Reading Panel.png in Resources */,
 				4C1AF1181714FF8400A2D0D8 /* documents.png in Resources */,
 				4C1AF1191714FF8400A2D0D8 /* settings.png in Resources */,
+				4C1AF11B1715029100A2D0D8 /* dropbox.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

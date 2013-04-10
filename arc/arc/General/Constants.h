@@ -45,4 +45,9 @@ extern NSString* const SYNTAXES_FILE_LIST;
 // Bundle Conf
 extern NSString* const BUNDLE_CONF;
 
+
+// Tabs
+extern const int TAB_DROPBOX;
+extern const int TAB_DOCUMENTS;
+extern const int TAB_SETTINGS;
 @end

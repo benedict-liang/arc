@@ -10,7 +10,6 @@
 #import "LeftViewController.h"
 #import "FolderViewController.h"
 #import "SettingsViewController.h"
-
 #import "RootFolder.h"
 
 @interface LeftViewController ()
@@ -53,56 +52,71 @@
         [[UITabBarItem alloc] initWithTitle:@"Document"
                                       image:[Utils scale:[UIImage imageNamed:@"documents.png"]
                                                   toSize:CGSizeMake(40, 30)]
-                                        tag:0];
+                                        tag:TAB_DOCUMENTS];
     _documentsNavigationViewController.toolbarHidden = YES;
     [self addChildViewController:_documentsNavigationViewController];
     
     // Settings View Controller
     _settingsNavigationViewController = [[UINavigationController alloc] init];
-    _settingsNavigationViewController.toolbarHidden = NO;
+    _settingsNavigationViewController.toolbarHidden = YES;
     _settingsNavigationViewController.tabBarItem =
         [[UITabBarItem alloc] initWithTitle:@"Setting"
                                       image:[Utils scale:[UIImage imageNamed:@"settings.png"]
                                                   toSize:CGSizeMake(30, 30)]
-                                        tag:0];
-    [self addChildViewController:_settingsNavigationViewController];
-    
+                                        tag:TAB_SETTINGS];
     // Actual Settings View
     [self bootstrapSettingsView];
+    [self addChildViewController:_settingsNavigationViewController];
 
+    // Dropbox
+    UIViewController *dropbox = [[UIViewController alloc] init];
+    dropbox.tabBarItem = [[UITabBarItem alloc]
+                          initWithTitle:@"Dropbox"
+                          image:[Utils scale:[UIImage imageNamed:@"dropbox.png"]
+                                      toSize:CGSizeMake(40, 40)]
+                          tag:TAB_DROPBOX];
+    
+    
+    
     _tabBarController = [[UITabBarController alloc] init];
     _tabBarController.delegate = self;
     _tabBarController.view.frame = self.view.bounds;
     _tabBarController.view.autoresizesSubviews = YES;
     [_tabBarController setViewControllers:[NSArray arrayWithObjects:
-                                       _documentsNavigationViewController,
-                                       _settingsNavigationViewController,
-                                       nil]];
-
+                                           _documentsNavigationViewController,
+                                           dropbox,
+                                           _settingsNavigationViewController,
+                                           nil]];
+    
     [self.view addSubview:_tabBarController.view];
 }
 
 - (void)bootstrapSettingsView
 {
     _settingsViewController = [[SettingsViewController alloc] init];
-    _settingsViewController.delegate = self.delegate;
-    UIBarButtonItem *button =
-    [[UIBarButtonItem alloc] initWithTitle:@"Documents"
-                                     style:UIBarButtonItemStyleBordered
-                                    target:self
-                                    action:@selector(showDocuments:)];
-    
-    [_settingsViewController setToolbarItems:[NSArray arrayWithObjects:
-                                              [Utils flexibleSpace],
-                                              button,
-                                              nil]
-                                    animated:YES];
-    
+    _settingsViewController.delegate = self.delegate;    
     [_settingsNavigationViewController pushViewController:_settingsViewController
                                                  animated:YES];
 }
 
 # pragma mark - UITabBarControllerDelegate
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController
+    shouldSelectViewController:(UIViewController *)viewController
+{
+    if (viewController.tabBarItem.tag == TAB_DROPBOX) {
+        [self showDropBox:nil];
+        return NO;
+    }  else {
+        return YES;
+    }
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController
+ didSelectViewController:(UIViewController *)viewController
+{
+    viewController.view.frame = tabBarController.view.bounds;
+}
 
 - (void)showSettings:(id)sender
 {
@@ -114,12 +128,6 @@
 {
     [self tabBarController:_tabBarController
    didSelectViewController:_documentsNavigationViewController];
-}
-
-- (void)tabBarController:(UITabBarController *)tabBarController
- didSelectViewController:(UIViewController *)viewController
-{
-    viewController.view.frame = tabBarController.view.bounds;
 }
 
 # pragma mark - SettingsViewDelegate Methods
@@ -193,28 +201,7 @@
     [_documentsNavigationViewController pushViewController:folderViewController
                                                   animated:animated];
 
-    // Settings Button
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:@"Settings"
-                                                                       style:UIBarButtonItemStyleBordered
-                                                                      target:self
-                                                                      action:@selector(showSettings:)];
-    
-    // DropBox Button
-    UIImage *dropBoxIcon = [Utils scale:[UIImage imageNamed:@"dropbox.png"]
-                                 toSize:CGSizeMake(SIZE_TOOLBAR_ICON_WIDTH, SIZE_TOOLBAR_ICON_WIDTH)];;
-    UIBarButtonItem *dropboxButton = [[UIBarButtonItem alloc] initWithImage:dropBoxIcon
-                                                        landscapeImagePhone:dropBoxIcon
-                                                                      style:UIBarButtonItemStyleBordered
-                                                                     target:self
-                                                                     action:@selector(showDropBox:)];
-    
-    [folderViewController setToolbarItems:[NSArray arrayWithObjects:
-                                           dropboxButton,
-                                           [Utils flexibleSpace],
-                                           settingsButton,
-                                           nil]
-                                 animated:animated];
-    
+    // tmp.
     // Edit Button
     UIBarButtonItem *editButton =
     [[UIBarButtonItem alloc] initWithTitle:@"Edit"
@@ -223,7 +210,6 @@
                                     action:@selector(toggleEdit:)];
     
     folderViewController.navigationItem.rightBarButtonItem = editButton;
-
 }
 
 - (void)pushFolderView:(id<Folder>)folder
