@@ -10,19 +10,42 @@
 
 @interface CreateFolderViewController ()
 
+@property UITextField *textField;
+
 @end
 
 @implementation CreateFolderViewController
 
+- (id)initWithDelegate:(id<CreateFolderViewControllerDelegate>)delegate
+{
+    if (self = [super init]) {
+        _delegate = delegate;
+    }
+    return self;
+}
+
 - (void)loadView
 {
-    [self setView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)]];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 50)];
+    [view setBackgroundColor:[UIColor whiteColor]];
+    [self setContentSizeForViewInPopover:[view frame].size];
+    [self setView:view];
     
-    UILabel *createFolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 100)];
+    UILabel *createFolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 250, 25)];
     [createFolderLabel setText:@"Enter folder name:"];
-    UITextField *folderNameField = [[UITextField alloc] initWithFrame:CGRectMake(0, 100, 300, 100)];
+    [createFolderLabel setFont:[UIFont boldSystemFontOfSize:17]];
+    _textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 25, 250, 25)];
+    [_textField setBorderStyle:UITextBorderStyleRoundedRect];
+    [_textField setDelegate:self];
     [[self view] addSubview:createFolderLabel];
-    [[self view] addSubview:folderNameField];
+    [[self view] addSubview:_textField];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSString *input = [_textField text];
+    [_delegate createFolderWithName:input];
+    return NO;
 }
 
 - (void)viewDidLoad

@@ -267,6 +267,7 @@
 		028B48FF170E9D0600C0CEF6 /* UbuntuMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UbuntuMono.ttf; sourceTree = "<group>"; };
 		02A5198C170DC0CE007C038E /* Inconsolata.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inconsolata.ttf; sourceTree = "<group>"; };
 		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
+		02C2E4841715594300C912E0 /* CreateFolderViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFolderViewControllerDelegate.h; sourceTree = "<group>"; };
 		02CF20711712ACB8001A59E4 /* Reading Panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reading Panel.png"; sourceTree = "<group>"; };
 		02D2B73D17099E88002D22E7 /* RootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootFolder.h; sourceTree = "<group>"; };
 		02D2B73E17099E88002D22E7 /* RootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootFolder.m; sourceTree = "<group>"; };
@@ -750,6 +751,7 @@
 				4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */,
 				4CE2951517104A4C003B012A /* SettingsViewDelegate.h */,
 				4C1AF11F1715119300A2D0D8 /* FolderViewControllerDelegate.h */,
+				02C2E4841715594300C912E0 /* CreateFolderViewControllerDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";

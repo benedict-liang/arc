@@ -102,9 +102,8 @@
     
     [self.view addSubview:_tableView];
     
-    _createFolderController = [[CreateFolderViewController alloc] init];
-    [_createFolderController setFolder:_folder];
-//    [_createFolderController.tableView reloadData];
+    // Create the add folder controller.
+    _createFolderController = [[CreateFolderViewController alloc] initWithDelegate:self];
     
     _editToolbar = [[UIToolbar alloc] init];
     _editToolbar.frame = CGRectMake(0, self.view.frame.size.height,
@@ -377,4 +376,10 @@ titleForHeaderInSection:(NSInteger)section {
     }
 }
 
+- (void)createFolderWithName:(NSString *)name
+{
+    [_folder createFolderWithName:name];
+    [self refreshFolderContents];
+    [_addFolderPopoverController dismissPopoverAnimated:YES];
+}
 @end
