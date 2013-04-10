@@ -228,10 +228,7 @@ titleForHeaderInSection:(NSInteger)section {
     _tableView.allowsMultipleSelectionDuringEditing = YES;
     [_tableView setEditing:YES animated:YES];
     [self showCancelButton];
-    
-    if (sender != nil) {
-        [self.folderViewControllerDelegate enterEditMode];
-    }
+    [self.folderViewControllerDelegate enterEditMode];
 }
 
 - (void)showCancelButton
@@ -250,10 +247,7 @@ titleForHeaderInSection:(NSInteger)section {
     _tableView.allowsMultipleSelectionDuringEditing = NO;
     [_tableView setEditing:NO animated:YES];
     [self showEditButton];
-    
-    if (sender != nil) {
-        [self.folderViewControllerDelegate exitEditMode];
-    }
+    [self.folderViewControllerDelegate exitEditMode];
 }
 
 - (void)showEditButton

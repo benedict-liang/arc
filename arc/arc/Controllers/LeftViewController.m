@@ -14,6 +14,7 @@
 
 @interface LeftViewController ()
 @property (nonatomic, strong) id<Folder> currentFolder;
+@property (nonatomic, strong) UIToolbar *editToolbar;
 @property (nonatomic, strong) UIViewController *currentViewController;
 @property (nonatomic, strong) UITabBarController *tabBarController;
 @property (nonatomic, strong) UINavigationController *documentsNavigationViewController;
@@ -214,12 +215,19 @@
 
 - (void)enterEditMode
 {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
     [self hideTabBar:_tabBarController];
+    [UIView commitAnimations];
 }
 
 - (void)exitEditMode
 {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
     [self showTabBar:_tabBarController];
+    [UIView commitAnimations];
+
 }
 
 # pragma mark - tmp code
@@ -227,9 +235,7 @@
 // http://stackoverflow.com/questions/5272290/how-to-hide-uitabbarcontroller
 
 - (void)hideTabBar:(UITabBarController *)tabbarcontroller
-{   
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
+{
     for (UIView *view in tabbarcontroller.view.subviews) {
         if([view isKindOfClass:[UITabBar class]]) {
             [view setFrame:CGRectMake(view.frame.origin.x,
@@ -241,14 +247,11 @@
             view.backgroundColor = [UIColor blackColor];
         }
     }
-    [UIView commitAnimations];
 }
 
 - (void)showTabBar:(UITabBarController *)tabbarcontroller
 {
-    float fHeight = tabbarcontroller.tabBar.frame.size.height;    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
+    float fHeight = tabbarcontroller.tabBar.frame.size.height;
     for (UIView *view in tabbarcontroller.view.subviews) {
         if([view isKindOfClass:[UITabBar class]]) {
             [view setFrame:CGRectMake(view.frame.origin.x,
@@ -262,8 +265,6 @@
                                       self.view.frame.size.height - fHeight)];
         }
     }
-
-    [UIView commitAnimations];
 }
 
 @end
