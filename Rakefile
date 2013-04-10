@@ -14,9 +14,50 @@ end
 def dirless_name(fname,dir)
 	return fname.split(dir)[1]
 end
+
+def capturable_scopes(scope)
+	return scope.split(".").reduce([]) do |accum, x|
+		if accum.empty?
+			accum << x
+		else
+			accum << accum.last + "." + x 			
+		end
+	end
+end
+
+def traverse_tree(node)
+	if node.class.name == "Hash"
+		if node['name']
+			puts "in name"
+			node['capturableScopes'] = capturable_scopes(node["name"])
+		end
+		if node['captures']
+			apply_array(node['captures'])
+		end
+		if node['patterns']
+			apply_array(node['patterns'])
+		end
+		if node['beginCaptures']
+			apply_array(node['beginCaptures'])
+		end
+		if node['endCaptures']
+			apply_array(node['endCaptures'])
+		end
+	elsif node.class.name == "Array"
+		apply_array(node)
+	end
+end
+
+def apply_array(arr)
+	arr.each do |node|
+		traverse_tree(node)
+	end
+end
+
 # task to generate BundleConfig.plist
 # Structure of object produce:
 #{'fileTypes':{fileType:[bundles]} , 'bundles':{bundleName:1}}
+desc "produces a config file for Bundles, assorting them by supported fileTypes"
 task :bundle do
 	global_fileTypes = {}
 	global_bundles = {}
@@ -44,6 +85,7 @@ task :bundle do
 	Plist::Emit.save_plist(global, OUTPUT_FILE)
 end
 
+desc "generates theme Config file from contents of THEME_DIR"
 task :theme do
 	global_themes = {}
 	tmThemes = Dir[THEME_DIR+"*.tmTheme"]
@@ -55,4 +97,10 @@ task :theme do
 	end
 	Plist::Emit.save_plist(Hash[global_themes.sort], THEME_OUTPUT_FILE)
 end
-#puts global_fileTypes["scm"]
+
+task :traverse do
+	files = Dir["*.plist"]
+	parsed = Plist::parse_xml(files[0])
+	traverse_tree(parsed)
+	Plist::Emit.save_plist(parsed, "test.plist")
+end
