@@ -102,6 +102,7 @@
     
     [self.view addSubview:_tableView];
     
+    // Create the add folder controller.
     _createFolderController = [[CreateFolderViewController alloc] init];
     [_createFolderController setFolder:_folder];
 //    [_createFolderController.tableView reloadData];

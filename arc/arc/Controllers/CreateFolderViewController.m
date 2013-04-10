@@ -16,11 +16,16 @@
 
 - (void)loadView
 {
-    [self setView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)]];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 50)];
+    [view setBackgroundColor:[UIColor whiteColor]];
+    [self setContentSizeForViewInPopover:[view frame].size];
+    [self setView:view];
     
-    UILabel *createFolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 100)];
+    UILabel *createFolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 250, 25)];
     [createFolderLabel setText:@"Enter folder name:"];
-    UITextField *folderNameField = [[UITextField alloc] initWithFrame:CGRectMake(0, 100, 300, 100)];
+    [createFolderLabel setFont:[UIFont boldSystemFontOfSize:17]];
+    UITextField *folderNameField = [[UITextField alloc] initWithFrame:CGRectMake(0, 25, 250, 25)];
+    [folderNameField setBorderStyle:UITextBorderStyleRoundedRect];
     [[self view] addSubview:createFolderLabel];
     [[self view] addSubview:folderNameField];
 }
