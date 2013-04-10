@@ -22,6 +22,7 @@
 {
     self = [super init];
     if (self) {
+        self.title = @"Settings";
         _settingOptions = [NSMutableArray array];
         _plugins = [NSMutableArray array];
         _appState = [ApplicationState sharedApplicationState];
@@ -33,7 +34,6 @@
 {
     [super viewDidLoad];
     self.view.autoresizesSubviews = YES;
-    self.title = @"Settings";
     
     [self generateSections];
     

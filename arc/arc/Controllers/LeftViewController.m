@@ -16,6 +16,7 @@
 @interface LeftViewController ()
 @property (nonatomic, strong) id<Folder> currentFolder;
 @property (nonatomic, strong) UIViewController *currentViewController;
+@property (nonatomic, strong) UITabBarController *tabBarController;
 @property (nonatomic, strong) UINavigationController *documentsNavigationViewController;
 @property (nonatomic, strong) UINavigationController *settingsNavigationViewController;
 @property (nonatomic, strong) SettingsViewController *settingsViewController;
@@ -31,8 +32,6 @@
     if (self) {
         self.view.autoresizesSubviews = YES;
         self.view.clipsToBounds = YES;
-        
-        // tmp.
         self.title = @"Documents";
     }
     return self;
@@ -46,23 +45,41 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    
+    [super viewDidLoad];    
+
     // File Navigator
     _documentsNavigationViewController = [[UINavigationController alloc] init];
-    _documentsNavigationViewController.toolbarHidden = NO;
+    _documentsNavigationViewController.tabBarItem =
+        [[UITabBarItem alloc] initWithTitle:@"Document"
+                                      image:[Utils scale:[UIImage imageNamed:@"documents.png"]
+                                                  toSize:CGSizeMake(40, 30)]
+                                        tag:0];
+    _documentsNavigationViewController.toolbarHidden = YES;
     [self addChildViewController:_documentsNavigationViewController];
     
     // Settings View Controller
     _settingsNavigationViewController = [[UINavigationController alloc] init];
     _settingsNavigationViewController.toolbarHidden = NO;
+    _settingsNavigationViewController.tabBarItem =
+        [[UITabBarItem alloc] initWithTitle:@"Setting"
+                                      image:[Utils scale:[UIImage imageNamed:@"settings.png"]
+                                                  toSize:CGSizeMake(30, 30)]
+                                        tag:0];
     [self addChildViewController:_settingsNavigationViewController];
     
     // Actual Settings View
     [self bootstrapSettingsView];
 
-    // Show Documents By default
-    [self showDocuments:nil];
+    _tabBarController = [[UITabBarController alloc] init];
+    _tabBarController.delegate = self;
+    _tabBarController.view.frame = self.view.bounds;
+    _tabBarController.view.autoresizesSubviews = YES;
+    [_tabBarController setViewControllers:[NSArray arrayWithObjects:
+                                       _documentsNavigationViewController,
+                                       _settingsNavigationViewController,
+                                       nil]];
+
+    [self.view addSubview:_tabBarController.view];
 }
 
 - (void)bootstrapSettingsView
@@ -85,34 +102,24 @@
                                                  animated:YES];
 }
 
-# pragma mark - Methods to Switch Between Document and Settings View
+# pragma mark - UITabBarControllerDelegate
 
 - (void)showSettings:(id)sender
 {
-    [self transitionToViewController:_settingsNavigationViewController
-                         withOptions:UIViewAnimationOptionTransitionFlipFromLeft];
+    [self tabBarController:_tabBarController
+   didSelectViewController:_settingsNavigationViewController];
 }
 
 - (void)showDocuments:(id)sender
 {
-    [self transitionToViewController:_documentsNavigationViewController
-                         withOptions:UIViewAnimationOptionTransitionFlipFromRight];
+    [self tabBarController:_tabBarController
+   didSelectViewController:_documentsNavigationViewController];
 }
 
-- (void)transitionToViewController:(UINavigationController *)nextViewController
-                       withOptions:(UIViewAnimationOptions)options
+- (void)tabBarController:(UITabBarController *)tabBarController
+ didSelectViewController:(UIViewController *)viewController
 {
-    nextViewController.view.frame = self.view.bounds;
-    [UIView transitionWithView:self.view
-                      duration:0.65f
-                       options:options
-                    animations:^{
-                        [_currentViewController.view removeFromSuperview];
-                        [self.view addSubview:nextViewController.view];
-                    }
-                    completion:^(BOOL finished){
-                        _currentViewController = nextViewController;
-                    }];
+    viewController.view.frame = tabBarController.view.bounds;
 }
 
 # pragma mark - SettingsViewDelegate Methods
