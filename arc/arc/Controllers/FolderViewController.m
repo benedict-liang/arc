@@ -228,6 +228,9 @@ titleForHeaderInSection:(NSInteger)section {
 - (void)setEditing:(BOOL)editing
           animated:(BOOL)animated
 {
+    NSLog(@"%d", editing);
+    _tableView.allowsMultipleSelectionDuringEditing = editing;
+    [_tableView setEditing:editing animated:animated];
     if (editing) {
         [self editMode];
     } else {
@@ -239,13 +242,11 @@ titleForHeaderInSection:(NSInteger)section {
 - (void)editMode
 {
     _editSelection = [NSMutableArray array];
-    _tableView.allowsMultipleSelectionDuringEditing = YES;
     [self.folderViewControllerDelegate enterEditMode];
 }
 
 - (void)normalMode
 {
-    _tableView.allowsMultipleSelectionDuringEditing = NO;
     [self.folderViewControllerDelegate exitEditMode];
 }
 
