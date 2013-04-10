@@ -34,10 +34,12 @@
     UILabel *createFolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 250, 25)];
     [createFolderLabel setText:@"Enter folder name:"];
     [createFolderLabel setFont:[UIFont boldSystemFontOfSize:17]];
-    UITextField *folderNameField = [[UITextField alloc] initWithFrame:CGRectMake(0, 25, 250, 25)];
-    [folderNameField setBorderStyle:UITextBorderStyleRoundedRect];
+    _textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 25, 250, 25)];
+    [_textField setBorderStyle:UITextBorderStyleRoundedRect];
+    [_textField setDelegate:self];
     [[self view] addSubview:createFolderLabel];
-    [[self view] addSubview:folderNameField];
+    [[self view] addSubview:_textField];
+
 }
 
 - (void)viewDidLoad
