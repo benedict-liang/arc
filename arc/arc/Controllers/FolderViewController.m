@@ -132,22 +132,22 @@ titleForHeaderInSection:(NSInteger)section {
     id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
     
     NSString *detailDescription;
+    UIImage *cellImage;
     if ([[fileObject class] conformsToProtocol:@protocol(File)]) {
-        id<File> file = (id<File>) fileObject;
-        cell.imageView.image = [Utils scale:[UIImage imageNamed:@"file.png"]
+        cellImage = [Utils scale:[UIImage imageNamed:@"file.png"]
                                      toSize:CGSizeMake(40, 40)];
-        
         detailDescription = [NSString stringWithFormat:
-                             @"%@", [Utils humanReadableFileSize:[file size]]];
-        
+                             @"%@", [Utils humanReadableFileSize:fileObject.size]];
     } else if ([[fileObject class] conformsToProtocol:@protocol(Folder)]) {
-        cell.imageView.image = [Utils scale:[UIImage imageNamed:@"folder.png"]
+        cellImage = [Utils scale:[UIImage imageNamed:@"folder.png"]
                                      toSize:CGSizeMake(40, 40)];
         detailDescription = [NSString stringWithFormat:@"%d objects", fileObject.size];
     }
-    cell.detailTextLabel.text = detailDescription;
-    
+
     cell.textLabel.text = fileObject.name;
+    cell.imageView.image = cellImage;
+    cell.detailTextLabel.text = detailDescription;
+
     return cell;
 }
 
