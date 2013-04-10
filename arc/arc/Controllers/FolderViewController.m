@@ -22,6 +22,7 @@ typedef enum {
 @property UITableView *tableView;
 @property kFolderViewControllerMode folderViewMode;
 @property NSArray *filesAndFolders;
+@property NSMutableArray *editSelection;
 
 // Edit/Normal Modes
 - (void)editMode:(id)sender;
@@ -32,6 +33,7 @@ typedef enum {
 
 @implementation FolderViewController
 @synthesize delegate = _delegate;
+@synthesize folderViewControllerDelegate = _folderViewControllerDelegate;
 
 - (id)initWithFolder:(id<Folder>)folder
 {
@@ -188,7 +190,7 @@ titleForHeaderInSection:(NSInteger)section {
     
     // Editing mode
     if (_folderViewMode == kEditMode) {
-        
+        [_editSelection addObject:fileObject];
         return;
     }
     
@@ -208,7 +210,7 @@ titleForHeaderInSection:(NSInteger)section {
     
     // Editing mode
     if (_folderViewMode == kEditMode) {
-        NSLog(@"asdf");
+        [_editSelection removeObject:fileObject];
         return;
     }
     
@@ -221,10 +223,15 @@ titleForHeaderInSection:(NSInteger)section {
 #pragma mark - Edit Related methods
 - (void)editMode:(id)sender
 {
+    _editSelection = [NSMutableArray array];
     _folderViewMode = kEditMode;
     _tableView.allowsMultipleSelectionDuringEditing = YES;
     [_tableView setEditing:YES animated:YES];
     [self showCancelButton];
+    
+    if (sender != nil) {
+        [self.folderViewControllerDelegate enterEditMode];
+    }
 }
 
 - (void)showCancelButton
@@ -243,6 +250,10 @@ titleForHeaderInSection:(NSInteger)section {
     _tableView.allowsMultipleSelectionDuringEditing = NO;
     [_tableView setEditing:NO animated:YES];
     [self showEditButton];
+    
+    if (sender != nil) {
+        [self.folderViewControllerDelegate exitEditMode];
+    }
 }
 
 - (void)showEditButton

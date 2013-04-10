@@ -53,12 +53,10 @@
                                       image:[Utils scale:[UIImage imageNamed:@"documents.png"]
                                                   toSize:CGSizeMake(40, 30)]
                                         tag:TAB_DOCUMENTS];
-    _documentsNavigationViewController.toolbarHidden = YES;
     [self addChildViewController:_documentsNavigationViewController];
     
     // Settings View Controller
     _settingsNavigationViewController = [[UINavigationController alloc] init];
-    _settingsNavigationViewController.toolbarHidden = YES;
     _settingsNavigationViewController.tabBarItem =
         [[UITabBarItem alloc] initWithTitle:@"Setting"
                                       image:[Utils scale:[UIImage imageNamed:@"settings.png"]
@@ -81,7 +79,7 @@
     _tabBarController = [[UITabBarController alloc] init];
     _tabBarController.delegate = self;
     _tabBarController.view.frame = self.view.bounds;
-    _tabBarController.view.autoresizesSubviews = YES;
+//    _tabBarController.view.autoresizesSubviews = YES;
     [_tabBarController setViewControllers:[NSArray arrayWithObjects:
                                            _documentsNavigationViewController,
                                            dropbox,
@@ -196,8 +194,8 @@
     // File Navigator View Controller
     FolderViewController *folderViewController =
         [[FolderViewController alloc] initWithFolder:folder];
+    folderViewController.folderViewControllerDelegate = self;
     folderViewController.delegate = self.delegate;
-    
     [_documentsNavigationViewController pushViewController:folderViewController
                                                   animated:animated];
 }
@@ -210,6 +208,62 @@
 - (void)showDropBox:(id)sender
 {
     [self.delegate dropboxAuthentication];
+}
+
+# pragma mark - Folder View Controller Delegate
+
+- (void)enterEditMode
+{
+    [self hideTabBar:_tabBarController];
+}
+
+- (void)exitEditMode
+{
+    [self showTabBar:_tabBarController];
+}
+
+# pragma mark - tmp code
+// copied from SO.
+// http://stackoverflow.com/questions/5272290/how-to-hide-uitabbarcontroller
+
+- (void)hideTabBar:(UITabBarController *)tabbarcontroller
+{   
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    for (UIView *view in tabbarcontroller.view.subviews) {
+        if([view isKindOfClass:[UITabBar class]]) {
+            [view setFrame:CGRectMake(view.frame.origin.x,
+                                      self.view.frame.size.height,
+                                      view.frame.size.width,
+                                      view.frame.size.height)];
+        } else {
+            [view setFrame:self.view.bounds];
+            view.backgroundColor = [UIColor blackColor];
+        }
+    }
+    [UIView commitAnimations];
+}
+
+- (void)showTabBar:(UITabBarController *)tabbarcontroller
+{
+    float fHeight = tabbarcontroller.tabBar.frame.size.height;    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    for (UIView *view in tabbarcontroller.view.subviews) {
+        if([view isKindOfClass:[UITabBar class]]) {
+            [view setFrame:CGRectMake(view.frame.origin.x,
+                                      self.view.frame.size.height - fHeight,
+                                      view.frame.size.width,
+                                      view.frame.size.height)];
+        } else {
+            [view setFrame:CGRectMake(view.frame.origin.x,
+                                      view.frame.origin.y,
+                                      view.frame.size.width,
+                                      self.view.frame.size.height - fHeight)];
+        }
+    }
+
+    [UIView commitAnimations];
 }
 
 @end

@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Folder.h"
 #import "SubViewControllerDelegate.h"
+#import "FolderViewControllerDelegate.h"
 
-@interface FolderViewController : UIViewController <SubViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface FolderViewController : UIViewController <SubViewControllerDelegate,
+    UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, readonly) id<Folder> folder;
+@property (nonatomic, weak) id<FolderViewControllerDelegate> folderViewControllerDelegate;
 - (id)initWithFolder:(id<Folder>)folder;
 - (void)refreshFolderContents;
 @end
