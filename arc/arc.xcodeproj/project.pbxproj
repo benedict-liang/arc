@@ -1505,7 +1505,6 @@
 				4C1AF1181714FF8400A2D0D8 /* documents.png in Resources */,
 				4C1AF1191714FF8400A2D0D8 /* settings.png in Resources */,
 				4C1AF11B1715029100A2D0D8 /* dropbox.png in Resources */,
-<<<<<<< HEAD
 				FC3C2E621715BF8100C40490 /* [ Argonaut ].tmTheme in Resources */,
 				FC3C2E631715BF8100C40490 /* All Hallow's Eve Custom.tmTheme in Resources */,
 				FC3C2E641715BF8100C40490 /* BBEdit.tmTheme in Resources */,
@@ -1563,9 +1562,7 @@
 				FC3C2E981715BF8100C40490 /* Vibrant Tango.tmTheme in Resources */,
 				FC3C2E991715BF8100C40490 /* zenburn.tmTheme in Resources */,
 				FC3C2E9C1715C1F400C40490 /* ThemeConf.plist in Resources */,
-=======
 				4C9137281715B9D900413C79 /* Solarized (dark).tmTheme in Resources */,
->>>>>>> 50ab7417eac0558ac0e296be6fda759e692db8bd
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
