@@ -2,48 +2,52 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Ruby</string>
+	</array>
 	<key>comment</key>
 	<string>
-		TODO: unresolved issues
-	
-		text:
-		&quot;p &lt;&lt; end
-		print me!
-		end&quot;
-		symptoms:
-		not recognized as a heredoc
-		solution:
-		there is no way to distinguish perfectly between the &lt;&lt; operator and the start
-		of a heredoc. Currently, we require assignment to recognize a heredoc. More
-		refinement is possible.
-		• Heredocs with indented terminators (&lt;&lt;-) are always distinguishable, however.
-		• Nested heredocs are not really supportable at present
-	
-		text:
-		print &lt;&lt;-'THERE' 
-		This is single quoted. 
-		The above used #{Time.now} 
-		THERE 
-		symtoms:
-		From Programming Ruby p306; should be a non-interpolated heredoc.
-		
-		text:
-		&quot;a\332a&quot;
-		symptoms:
-		'\332' is not recognized as slash3.. which should be octal 332.
-		solution:
-		plain regexp.. should be easy.
-	
-	    text:
-	    val?(a):p(b)
-	    val?'a':'b'
-	    symptoms:
-	    ':p' is recognized as a symbol.. its 2 things ':' and 'p'.
-	    :'b' has same problem.
-	    solution:
-	    ternary operator rule, precedence stuff, symbol rule.
-	    but also consider 'a.b?(:c)' ??
-	</string>
+					TODO: unresolved issues
+				
+					text:
+					&quot;p &lt;&lt; end
+					print me!
+					end&quot;
+					symptoms:
+					not recognized as a heredoc
+					solution:
+					there is no way to distinguish perfectly between the &lt;&lt; operator and the start
+					of a heredoc. Currently, we require assignment to recognize a heredoc. More
+					refinement is possible.
+					• Heredocs with indented terminators (&lt;&lt;-) are always distinguishable, however.
+					• Nested heredocs are not really supportable at present
+				
+					text:
+					print &lt;&lt;-'THERE' 
+					This is single quoted. 
+					The above used #{Time.now} 
+					THERE 
+					symtoms:
+					From Programming Ruby p306; should be a non-interpolated heredoc.
+					
+					text:
+					&quot;a\332a&quot;
+					symptoms:
+					'\332' is not recognized as slash3.. which should be octal 332.
+					solution:
+					plain regexp.. should be easy.
+				
+				    text:
+				    val?(a):p(b)
+				    val?'a':'b'
+				    symptoms:
+				    ':p' is recognized as a symbol.. its 2 things ':' and 'p'.
+				    :'b' has same problem.
+				    solution:
+				    ternary operator rule, precedence stuff, symbol rule.
+				    but also consider 'a.b?(:c)' ??
+				</string>
 	<key>fileTypes</key>
 	<array>
 		<string>rb</string>
@@ -59,40 +63,40 @@
 	<string>^#!/.*\bruby\b</string>
 	<key>foldingStartMarker</key>
 	<string>(?x)^
-		    (\s*+
-		        (module|class|def
-		        |unless|if
-		        |case
-		        |begin
-		        |for|while|until
-				 |^=begin
-		        |(  &quot;(\\.|[^&quot;])*+&quot;          # eat a double quoted string
-		         | '(\\.|[^'])*+'        # eat a single quoted string
-		         |   [^#&quot;']                # eat all but comments and strings
-		         )*
-		         (                        \s   (do|begin|case)
-		         | (?&lt;!\$)[-+=&amp;|*/~%^&lt;&gt;~] \s*+ (if|unless)
-		         )
-		        )\b
-		        (?! [^;]*+ ; .*? \bend\b )
-		    |(  &quot;(\\.|[^&quot;])*+&quot;              # eat a double quoted string
-		     | '(\\.|[^'])*+'            # eat a single quoted string
-		     |   [^#&quot;']                    # eat all but comments and strings
-		     )*
-		     ( \{ (?!  [^}]*+ \} )
-		     | \[ (?! [^\]]*+ \] )
-		     )
-		    ).*$
-		|   [#] .*? \(fold\) \s*+ $         # Sune’s special marker
-		</string>
+					    (\s*+
+					        (module|class|def
+					        |unless|if
+					        |case
+					        |begin
+					        |for|while|until
+							 |^=begin
+					        |(  &quot;(\\.|[^&quot;])*+&quot;          # eat a double quoted string
+					         | '(\\.|[^'])*+'        # eat a single quoted string
+					         |   [^#&quot;']                # eat all but comments and strings
+					         )*
+					         (                        \s   (do|begin|case)
+					         | (?&lt;!\$)[-+=&amp;|*/~%^&lt;&gt;~] \s*+ (if|unless)
+					         )
+					        )\b
+					        (?! [^;]*+ ; .*? \bend\b )
+					    |(  &quot;(\\.|[^&quot;])*+&quot;              # eat a double quoted string
+					     | '(\\.|[^'])*+'            # eat a single quoted string
+					     |   [^#&quot;']                    # eat all but comments and strings
+					     )*
+					     ( \{ (?!  [^}]*+ \} )
+					     | \[ (?! [^\]]*+ \] )
+					     )
+					    ).*$
+					|   [#] .*? \(fold\) \s*+ $         # Sune’s special marker
+					</string>
 	<key>foldingStopMarker</key>
 	<string>(?x)
-			(   (^|;) \s*+ end   \s*+ ([#].*)? $
-			|   (^|;) \s*+ end \. .* $
-			|   ^     \s*+ [}\]] \s*+ ([#].*)? $
-			|   [#] .*? \(end\) \s*+ $    # Sune’s special marker
-			|   ^=end
-			)</string>
+						(   (^|;) \s*+ end   \s*+ ([#].*)? $
+						|   (^|;) \s*+ end \. .* $
+						|   ^     \s*+ [}\]] \s*+ ([#].*)? $
+						|   [#] .*? \(end\) \s*+ $    # Sune’s special marker
+						|   ^=end
+						)</string>
 	<key>keyEquivalent</key>
 	<string>^~R</string>
 	<key>name</key>
@@ -100,35 +104,84 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.class</string>
+				<string>meta.class.ruby</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.class</string>
+						<string>keyword.control.class.ruby</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.class.ruby</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.class</string>
+						<string>entity.name.type.class.ruby</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.type.class.ruby</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.other</string>
+						<string>entity.other.inherited-class</string>
+						<string>entity.other.inherited-class.ruby</string>
+					</array>
 					<key>name</key>
 					<string>entity.other.inherited-class.ruby</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.inheritance</string>
+						<string>punctuation.separator.inheritance.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.inheritance.ruby</string>
 				</dict>
 				<key>6</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.object</string>
+						<string>variable.other.object.ruby</string>
+					</array>
 					<key>name</key>
 					<string>variable.other.object.ruby</string>
 				</dict>
 				<key>7</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.ruby</string>
 				</dict>
@@ -139,45 +192,114 @@
 			<string>meta.class.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.module</string>
+				<string>meta.module.ruby</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.module</string>
+						<string>keyword.control.module.ruby</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.module.ruby</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.module</string>
+						<string>entity.name.type.module.ruby</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.type.module.ruby</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.other</string>
+						<string>entity.other.inherited-class</string>
+						<string>entity.other.inherited-class.module</string>
+						<string>entity.other.inherited-class.module.first</string>
+						<string>entity.other.inherited-class.module.first.ruby</string>
+					</array>
 					<key>name</key>
 					<string>entity.other.inherited-class.module.first.ruby</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.inheritance</string>
+						<string>punctuation.separator.inheritance.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.inheritance.ruby</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.other</string>
+						<string>entity.other.inherited-class</string>
+						<string>entity.other.inherited-class.module</string>
+						<string>entity.other.inherited-class.module.second</string>
+						<string>entity.other.inherited-class.module.second.ruby</string>
+					</array>
 					<key>name</key>
 					<string>entity.other.inherited-class.module.second.ruby</string>
 				</dict>
 				<key>6</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.inheritance</string>
+						<string>punctuation.separator.inheritance.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.inheritance.ruby</string>
 				</dict>
 				<key>7</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.other</string>
+						<string>entity.other.inherited-class</string>
+						<string>entity.other.inherited-class.module</string>
+						<string>entity.other.inherited-class.module.third</string>
+						<string>entity.other.inherited-class.module.third.ruby</string>
+					</array>
 					<key>name</key>
 					<string>entity.other.inherited-class.module.third.ruby</string>
 				</dict>
 				<key>8</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.inheritance</string>
+						<string>punctuation.separator.inheritance.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.inheritance.ruby</string>
 				</dict>
@@ -188,6 +310,12 @@
 			<string>meta.module.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>invalid</string>
+				<string>invalid.deprecated</string>
+				<string>invalid.deprecated.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>else if is a common mistake carried over from other languages. it works if you put in a second end, but it’s never what you want.</string>
 			<key>match</key>
@@ -196,6 +324,12 @@
 			<string>invalid.deprecated.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>everything being a reserved word, not a value and needing a 'end' is a..</string>
 			<key>match</key>
@@ -204,6 +338,13 @@
 			<string>keyword.control.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.ruby</string>
+				<string>keyword.control.ruby.start-block</string>
+			</array>
 			<key>comment</key>
 			<string>contextual smart pair support for block parameters</string>
 			<key>match</key>
@@ -212,6 +353,13 @@
 			<string>keyword.control.ruby.start-block</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.syntax</string>
+				<string>meta.syntax.ruby</string>
+				<string>meta.syntax.ruby.start-block</string>
+			</array>
 			<key>comment</key>
 			<string>contextual smart pair support</string>
 			<key>match</key>
@@ -220,6 +368,13 @@
 			<string>meta.syntax.ruby.start-block</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.logical</string>
+				<string>keyword.operator.logical.ruby</string>
+			</array>
 			<key>comment</key>
 			<string> as above, just doesn't need a 'end' and does a logic operation</string>
 			<key>match</key>
@@ -228,6 +383,13 @@
 			<string>keyword.operator.logical.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.pseudo-method</string>
+				<string>keyword.control.pseudo-method.ruby</string>
+			</array>
 			<key>comment</key>
 			<string> just as above but being not a logical operation</string>
 			<key>match</key>
@@ -236,18 +398,37 @@
 			<string>keyword.control.pseudo-method.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.ruby</string>
+			</array>
 			<key>match</key>
 			<string>\b(nil|true|false)\b(?![?!])</string>
 			<key>name</key>
 			<string>constant.language.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.language</string>
+				<string>variable.language.ruby</string>
+			</array>
 			<key>match</key>
 			<string>\b(__(FILE|LINE)__|self)\b(?![?!])</string>
 			<key>name</key>
 			<string>variable.language.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.special-method</string>
+				<string>keyword.other.special-method.ruby</string>
+			</array>
 			<key>comment</key>
 			<string> everything being a method but having a special function is a..</string>
 			<key>match</key>
@@ -258,10 +439,23 @@
 		<dict>
 			<key>begin</key>
 			<string>\b(require)\b</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.require</string>
+				<string>meta.require.ruby</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.special-method</string>
+						<string>keyword.other.special-method.ruby</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.special-method.ruby</string>
 				</dict>
@@ -279,10 +473,25 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.readwrite</string>
+				<string>variable.other.readwrite.instance</string>
+				<string>variable.other.readwrite.instance.ruby</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.ruby</string>
 				</dict>
@@ -293,10 +502,25 @@
 			<string>variable.other.readwrite.instance.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.readwrite</string>
+				<string>variable.other.readwrite.class</string>
+				<string>variable.other.readwrite.class.ruby</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.ruby</string>
 				</dict>
@@ -307,10 +531,25 @@
 			<string>variable.other.readwrite.class.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.readwrite</string>
+				<string>variable.other.readwrite.global</string>
+				<string>variable.other.readwrite.global.ruby</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.ruby</string>
 				</dict>
@@ -321,10 +560,26 @@
 			<string>variable.other.readwrite.global.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.readwrite</string>
+				<string>variable.other.readwrite.global</string>
+				<string>variable.other.readwrite.global.pre-defined</string>
+				<string>variable.other.readwrite.global.pre-defined.ruby</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.ruby</string>
 				</dict>
@@ -335,6 +590,12 @@
 			<string>variable.other.readwrite.global.pre-defined.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.class</string>
+				<string>support.class.ruby</string>
+			</array>
 			<key>match</key>
 			<string>\b[A-Z][a-z]\w*(?=((\.|::)[A-Za-z]|\[))</string>
 			<key>name</key>
@@ -347,10 +608,23 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.constant</string>
+						<string>variable.other.constant.ruby</string>
+					</array>
 					<key>name</key>
 					<string>variable.other.constant.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.environment-variable</string>
+				<string>meta.environment-variable.ruby</string>
+			</array>
 			<key>end</key>
 			<string>\]</string>
 			<key>name</key>
@@ -364,6 +638,13 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.constant</string>
+				<string>variable.other.constant.ruby</string>
+			</array>
 			<key>match</key>
 			<string>\b[A-Z]\w*\b</string>
 			<key>name</key>
@@ -376,20 +657,49 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.def</string>
+						<string>keyword.control.def.ruby</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.def.ruby</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.ruby</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.ruby</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.method</string>
+				<string>meta.function.method.with-arguments</string>
+				<string>meta.function.method.with-arguments.ruby</string>
+			</array>
 			<key>comment</key>
 			<string> the method pattern comes from the symbol pattern, see there for a explaination</string>
 			<key>contentName</key>
@@ -400,6 +710,13 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.ruby</string>
 				</dict>
@@ -415,15 +732,37 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.method</string>
+				<string>meta.function.method.without-arguments</string>
+				<string>meta.function.method.without-arguments.ruby</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.def</string>
+						<string>keyword.control.def.ruby</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.def.ruby</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.ruby</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.ruby</string>
 				</dict>
@@ -436,6 +775,12 @@
 			<string>meta.function.method.without-arguments.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.ruby</string>
+			</array>
 			<key>match</key>
 			<string>\b(0[xX]\h(?&gt;_?\h)*|\d(?&gt;_?\d)*(\.(?![^[:space:][:digit:]])(?&gt;_?\d)*)?([eE][-+]?\d(?&gt;_?\d)*)?|0[bB][01]+)\b</string>
 			<key>name</key>
@@ -444,10 +789,25 @@
 		<dict>
 			<key>begin</key>
 			<string>:'</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.symbol</string>
+				<string>constant.other.symbol.single-quoted</string>
+				<string>constant.other.symbol.single-quoted.ruby</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.ruby</string>
 				</dict>
@@ -459,6 +819,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.ruby</string>
+					</array>
 					<key>match</key>
 					<string>\\['\\]</string>
 					<key>name</key>
@@ -469,10 +836,25 @@
 		<dict>
 			<key>begin</key>
 			<string>:&quot;</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.symbol</string>
+				<string>constant.other.symbol.double-quoted</string>
+				<string>constant.other.symbol.double-quoted.ruby</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.ruby</string>
 				</dict>
@@ -500,10 +882,25 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.single</string>
+				<string>string.quoted.single.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>single quoted string (does not allow interpolation)</string>
 			<key>end</key>
@@ -512,6 +909,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -521,6 +926,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.ruby</string>
+					</array>
 					<key>match</key>
 					<string>\\'|\\\\</string>
 					<key>name</key>
@@ -535,10 +947,25 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>double quoted string (allows for interpolation)</string>
 			<key>end</key>
@@ -547,6 +974,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -572,10 +1007,24 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>execute string (allows for interpolation)</string>
 			<key>end</key>
@@ -584,6 +1033,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -609,10 +1066,24 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>execute string (allow for interpolation)</string>
 			<key>end</key>
@@ -621,6 +1092,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -650,10 +1129,24 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>execute string (allow for interpolation)</string>
 			<key>end</key>
@@ -662,6 +1155,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -691,10 +1192,24 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>execute string (allow for interpolation)</string>
 			<key>end</key>
@@ -703,6 +1218,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -732,10 +1255,24 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>execute string (allow for interpolation)</string>
 			<key>end</key>
@@ -744,6 +1281,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -773,10 +1318,24 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>execute string (allow for interpolation)</string>
 			<key>end</key>
@@ -785,6 +1344,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -806,60 +1373,74 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-						   (?:
-						     ^                      # beginning of line
-						   | (?&lt;=                   # or look-behind on:
-						       [=&gt;~(?:\[,|&amp;]
-						     | (?:\s|;)when\s
-						     | (?:\s|;)or\s
-						     | (?:\s|;)and\s
-						     | (?:\s|;|\.)index\s
-						     | (?:\s|;|\.)scan\s
-						     | (?:\s|;|\.)sub\s
-						     | (?:\s|l|\.)sub!\s
-						     | (?:\s|;|\.)gsub\s
-						     | (?:\s|;|\.)gsub!\s
-						     | (?:\s|;|\.)match\s
-						     | (?:\s|;)if\s
-						     | (?:\s|;)elsif\s
-						     | (?:\s|;)while\s
-						     | (?:\s|;)unless\s
-						     )
-						   | (?&lt;=                  # or a look-behind with line anchor:
-						        ^when\s              # duplication necessary due to limits of regex
-						      | ^index\s
-						      | ^scan\s
-						      | ^sub\s
-						      | ^gsub\s
-						      | ^sub!\s
-						      | ^gsub!\s
-						      | ^match\s
-						      | ^if\s
-						      | ^elsif\s
-						      | ^while\s
-						      | ^unless\s
-						      )
-						   )
-						   \s*((/))(?![*+{}?])
-						</string>
+															   (?:
+															     ^                      # beginning of line
+															   | (?&lt;=                   # or look-behind on:
+															       [=&gt;~(?:\[,|&amp;]
+															     | (?:\s|;)when\s
+															     | (?:\s|;)or\s
+															     | (?:\s|;)and\s
+															     | (?:\s|;|\.)index\s
+															     | (?:\s|;|\.)scan\s
+															     | (?:\s|;|\.)sub\s
+															     | (?:\s|l|\.)sub!\s
+															     | (?:\s|;|\.)gsub\s
+															     | (?:\s|;|\.)gsub!\s
+															     | (?:\s|;|\.)match\s
+															     | (?:\s|;)if\s
+															     | (?:\s|;)elsif\s
+															     | (?:\s|;)while\s
+															     | (?:\s|;)unless\s
+															     )
+															   | (?&lt;=                  # or a look-behind with line anchor:
+															        ^when\s              # duplication necessary due to limits of regex
+															      | ^index\s
+															      | ^scan\s
+															      | ^sub\s
+															      | ^gsub\s
+															      | ^sub!\s
+															      | ^gsub!\s
+															      | ^match\s
+															      | ^if\s
+															      | ^elsif\s
+															      | ^while\s
+															      | ^unless\s
+															      )
+															   )
+															   \s*((/))(?![*+{}?])
+															</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.classic</string>
+						<string>string.regexp.classic.ruby</string>
+					</array>
 					<key>name</key>
 					<string>string.regexp.classic.ruby</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.ruby</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>regular expressions (normal)
-						we only start a regexp if the character before it (excluding whitespace)
-						is what we think is before a regexp
-						</string>
+															we only start a regexp if the character before it (excluding whitespace)
+															is what we think is before a regexp
+															</string>
 			<key>contentName</key>
 			<string>string.regexp.classic.ruby</string>
 			<key>end</key>
@@ -879,10 +1460,25 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.regexp</string>
+				<string>string.regexp.mod-r</string>
+				<string>string.regexp.mod-r.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>regular expressions (literal)</string>
 			<key>end</key>
@@ -891,6 +1487,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -916,10 +1520,25 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.regexp</string>
+				<string>string.regexp.mod-r</string>
+				<string>string.regexp.mod-r.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>regular expressions (literal)</string>
 			<key>end</key>
@@ -928,6 +1547,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -953,10 +1580,25 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.regexp</string>
+				<string>string.regexp.mod-r</string>
+				<string>string.regexp.mod-r.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>regular expressions (literal)</string>
 			<key>end</key>
@@ -965,6 +1607,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -990,10 +1640,25 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.regexp</string>
+				<string>string.regexp.mod-r</string>
+				<string>string.regexp.mod-r.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>regular expressions (literal)</string>
 			<key>end</key>
@@ -1002,6 +1667,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1027,10 +1700,25 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.regexp</string>
+				<string>string.regexp.mod-r</string>
+				<string>string.regexp.mod-r.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>regular expressions (literal)</string>
 			<key>end</key>
@@ -1039,6 +1727,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1060,10 +1756,27 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.literal</string>
+				<string>string.quoted.other.literal.upper</string>
+				<string>string.quoted.other.literal.upper.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>literal capable of interpolation ()</string>
 			<key>end</key>
@@ -1072,6 +1785,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1101,10 +1822,27 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.literal</string>
+				<string>string.quoted.other.literal.upper</string>
+				<string>string.quoted.other.literal.upper.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>literal capable of interpolation []</string>
 			<key>end</key>
@@ -1113,6 +1851,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1142,10 +1888,27 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.literal</string>
+				<string>string.quoted.other.literal.upper</string>
+				<string>string.quoted.other.literal.upper.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>literal capable of interpolation &lt;&gt;</string>
 			<key>end</key>
@@ -1154,6 +1917,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1183,10 +1954,26 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.ruby</string>
+				<string>string.quoted.double.ruby.mod</string>
+			</array>
 			<key>comment</key>
 			<string>literal capable of interpolation -- {}</string>
 			<key>end</key>
@@ -1195,6 +1982,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1224,10 +2019,27 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.literal</string>
+				<string>string.quoted.other.literal.upper</string>
+				<string>string.quoted.other.literal.upper.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>literal capable of interpolation -- wildcard</string>
 			<key>end</key>
@@ -1236,6 +2048,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1261,10 +2081,27 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.literal</string>
+				<string>string.quoted.other.literal.other</string>
+				<string>string.quoted.other.literal.other.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>literal capable of interpolation -- wildcard</string>
 			<key>end</key>
@@ -1273,6 +2110,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1298,10 +2143,27 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.literal</string>
+				<string>string.quoted.other.literal.lower</string>
+				<string>string.quoted.other.literal.lower.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>literal incapable of interpolation -- ()</string>
 			<key>end</key>
@@ -1310,6 +2172,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1319,6 +2189,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.ruby</string>
+					</array>
 					<key>match</key>
 					<string>\\\)|\\\\</string>
 					<key>name</key>
@@ -1337,10 +2214,27 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.literal</string>
+				<string>string.quoted.other.literal.lower</string>
+				<string>string.quoted.other.literal.lower.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>literal incapable of interpolation -- &lt;&gt;</string>
 			<key>end</key>
@@ -1349,6 +2243,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1358,6 +2260,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.ruby</string>
+					</array>
 					<key>match</key>
 					<string>\\\&gt;|\\\\</string>
 					<key>name</key>
@@ -1376,10 +2285,27 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.literal</string>
+				<string>string.quoted.other.literal.lower</string>
+				<string>string.quoted.other.literal.lower.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>literal incapable of interpolation -- []</string>
 			<key>end</key>
@@ -1388,6 +2314,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1397,6 +2331,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.ruby</string>
+					</array>
 					<key>match</key>
 					<string>\\\]|\\\\</string>
 					<key>name</key>
@@ -1415,10 +2356,27 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.literal</string>
+				<string>string.quoted.other.literal.lower</string>
+				<string>string.quoted.other.literal.lower.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>literal incapable of interpolation -- {}</string>
 			<key>end</key>
@@ -1427,6 +2385,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1436,6 +2402,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.ruby</string>
+					</array>
 					<key>match</key>
 					<string>\\\}|\\\\</string>
 					<key>name</key>
@@ -1454,10 +2427,27 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.literal</string>
+				<string>string.quoted.other.literal.lower</string>
+				<string>string.quoted.other.literal.lower.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>literal incapable of interpolation -- wildcard</string>
 			<key>end</key>
@@ -1466,6 +2456,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1483,10 +2481,24 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.symbol</string>
+				<string>constant.other.symbol.ruby</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.ruby</string>
 				</dict>
@@ -1501,10 +2513,24 @@
 		<dict>
 			<key>begin</key>
 			<string>^=begin</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.documentation</string>
+				<string>comment.block.documentation.ruby</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.ruby</string>
 				</dict>
@@ -1517,10 +2543,24 @@
 			<string>comment.block.documentation.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.number-sign</string>
+				<string>comment.line.number-sign.ruby</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.ruby</string>
 				</dict>
@@ -1531,31 +2571,37 @@
 			<string>comment.line.number-sign.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>
-						matches questionmark-letters.
-			
-						examples (1st alternation = hex):
-						?\x1     ?\x61
-			
-						examples (2nd alternation = octal):
-						?\0      ?\07     ?\017
-			
-						examples (3rd alternation = escaped):
-						?\n      ?\b
-			
-						examples (4th alternation = meta-ctrl):
-						?\C-a    ?\M-a    ?\C-\M-\C-\M-a
-			
-						examples (4th alternation = normal):
-						?a       ?A       ?0 
-						?*       ?&quot;       ?( 
-						?.       ?#
-						
-						
-						the negative lookbehind prevents against matching
-						p(42.tainted?)
-						</string>
+															matches questionmark-letters.
+												
+															examples (1st alternation = hex):
+															?\x1     ?\x61
+												
+															examples (2nd alternation = octal):
+															?\0      ?\07     ?\017
+												
+															examples (3rd alternation = escaped):
+															?\n      ?\b
+												
+															examples (4th alternation = meta-ctrl):
+															?\C-a    ?\M-a    ?\C-\M-\C-\M-a
+												
+															examples (4th alternation = normal):
+															?a       ?A       ?0 
+															?*       ?&quot;       ?( 
+															?.       ?#
+															
+															
+															the negative lookbehind prevents against matching
+															p(42.tainted?)
+															</string>
 			<key>match</key>
 			<string>(?&lt;!\w)\?(\\(x\h{1,2}(?!\h)\b|0[0-7]{0,2}(?![0-7])\b|[^x0MC])|(\\[MC]-)+\w|[^\s\\])</string>
 			<key>name</key>
@@ -1568,6 +2614,13 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.program-block</string>
+						<string>string.unquoted.program-block.ruby</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.program-block.ruby</string>
 				</dict>
@@ -1583,6 +2636,13 @@
 				<dict>
 					<key>begin</key>
 					<string>(?=&lt;?xml|&lt;(?i:html\b)|!DOCTYPE (?i:html\b))</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>text</string>
+						<string>text.html</string>
+						<string>text.html.embedded</string>
+						<string>text.html.embedded.ruby</string>
+					</array>
 					<key>end</key>
 					<string>(?=not)impossible</string>
 					<key>name</key>
@@ -1604,16 +2664,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.heredoc</string>
+				<string>string.unquoted.heredoc.ruby</string>
+			</array>
 			<key>end</key>
 			<string>^\1$</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1643,10 +2726,26 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.embedded</string>
+				<string>string.unquoted.embedded.html</string>
+				<string>string.unquoted.embedded.html.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>heredoc with embedded HTML and indented terminator</string>
 			<key>contentName</key>
@@ -1657,6 +2756,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1690,10 +2797,26 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.embedded</string>
+				<string>string.unquoted.embedded.ruby</string>
+				<string>string.unquoted.embedded.ruby.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>ruby code in heredoc, interpolated</string>
 			<key>end</key>
@@ -1702,6 +2825,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1735,10 +2866,25 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.heredoc</string>
+				<string>string.unquoted.heredoc.ruby</string>
+			</array>
 			<key>comment</key>
 			<string>heredoc with indented terminator</string>
 			<key>end</key>
@@ -1747,6 +2893,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1776,16 +2930,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.embedded</string>
+				<string>string.unquoted.embedded.c</string>
+				<string>string.unquoted.embedded.c.ruby</string>
+			</array>
 			<key>end</key>
 			<string>^\1$</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1819,16 +2997,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.embedded</string>
+				<string>string.unquoted.embedded.cplusplus</string>
+				<string>string.unquoted.embedded.cplusplus.ruby</string>
+			</array>
 			<key>end</key>
 			<string>^\1$</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1862,16 +3064,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.embedded</string>
+				<string>string.unquoted.embedded.css</string>
+				<string>string.unquoted.embedded.css.ruby</string>
+			</array>
 			<key>end</key>
 			<string>^\1$</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1905,16 +3131,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.embedded</string>
+				<string>string.unquoted.embedded.js</string>
+				<string>string.unquoted.embedded.js.ruby</string>
+			</array>
 			<key>end</key>
 			<string>^\1$</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1948,16 +3198,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.embedded</string>
+				<string>string.unquoted.embedded.shell</string>
+				<string>string.unquoted.embedded.shell.ruby</string>
+			</array>
 			<key>end</key>
 			<string>^\1$</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ruby</string>
 				</dict>
@@ -1991,10 +3265,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.method</string>
+						<string>punctuation.separator.method.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.method.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function-call</string>
+				<string>meta.function-call.method</string>
+				<string>meta.function-call.method.with-arguments</string>
+				<string>meta.function-call.method.with-arguments.ruby</string>
+			</array>
 			<key>end</key>
 			<string>(?&lt;=[a-zA-Z0-9_!?=])(?=\()</string>
 			<key>name</key>
@@ -2006,6 +3295,13 @@
 					<string>made this way to eventually support including #known_function_names</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.ruby</string>
+					</array>
 					<key>match</key>
 					<string>([a-zA-Z][a-zA-Z0-9_!?=]*)(?=[^a-zA-Z0-9_!?])</string>
 					<key>name</key>
@@ -2020,10 +3316,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.method</string>
+						<string>punctuation.separator.method.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.method.ruby</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function-call</string>
+				<string>meta.function-call.method</string>
+				<string>meta.function-call.method.without-arguments</string>
+				<string>meta.function-call.method.without-arguments.ruby</string>
+			</array>
 			<key>end</key>
 			<string>(?&lt;=[a-zA-Z0-9_!?])(?=[^a-zA-Z0-9_!?])</string>
 			<key>name</key>
@@ -2035,6 +3346,13 @@
 					<string>made this way to eventually support including #known_function_names</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.ruby</string>
+					</array>
 					<key>match</key>
 					<string>([a-zA-Z][a-zA-Z0-9_!?]*)(?=[^a-zA-Z0-9_!?])</string>
 					<key>name</key>
@@ -2045,6 +3363,12 @@
 		<dict>
 			<key>begin</key>
 			<string>(?=[a-zA-Z][a-zA-Z0-9_!?]+\()</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function-call</string>
+				<string>meta.function-call.ruby</string>
+			</array>
 			<key>end</key>
 			<string>(?=\()</string>
 			<key>name</key>
@@ -2056,6 +3380,13 @@
 					<string>eventually include #known_function_names</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.ruby</string>
+					</array>
 					<key>match</key>
 					<string>([a-zA-Z0-9_!?]+)(?=\()</string>
 					<key>name</key>
@@ -2070,6 +3401,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.variable</string>
+						<string>punctuation.separator.variable.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.variable.ruby</string>
 				</dict>
@@ -2079,12 +3417,26 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.block</string>
+						<string>variable.other.block.ruby</string>
+					</array>
 					<key>match</key>
 					<string>[_a-zA-Z][_a-zA-Z0-9]*</string>
 					<key>name</key>
 					<string>variable.other.block.ruby</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.variable</string>
+						<string>punctuation.separator.variable.ruby</string>
+					</array>
 					<key>match</key>
 					<string>,</string>
 					<key>name</key>
@@ -2093,90 +3445,195 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>punctuation</string>
+				<string>punctuation.separator</string>
+				<string>punctuation.separator.key-value</string>
+			</array>
 			<key>match</key>
 			<string>=&gt;</string>
 			<key>name</key>
 			<string>punctuation.separator.key-value</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.unary</string>
+				<string>keyword.operator.unary.ruby</string>
+			</array>
 			<key>match</key>
 			<string>\+@|-@</string>
 			<key>name</key>
 			<string>keyword.operator.unary.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.assignment</string>
+				<string>keyword.operator.assignment.augmented</string>
+				<string>keyword.operator.assignment.augmented.ruby</string>
+			</array>
 			<key>match</key>
 			<string>&lt;&lt;=|%=|&amp;=|\*=|\*\*=|\+=|\-=|\^=|\|{1,2}=|/=|&lt;&lt;</string>
 			<key>name</key>
 			<string>keyword.operator.assignment.augmented.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.comparison</string>
+				<string>keyword.operator.comparison.ruby</string>
+			</array>
 			<key>match</key>
 			<string>&lt;=&gt;|&lt;(?!&lt;|=)|&gt;(?!&lt;|=|&gt;)|&lt;=|&gt;=|===|==|=~|!=|!~|(?&lt;=[ \t])\?</string>
 			<key>name</key>
 			<string>keyword.operator.comparison.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.logical</string>
+				<string>keyword.operator.logical.ruby</string>
+			</array>
 			<key>match</key>
 			<string>(?&lt;=[ \t])!|\bnot\b|&amp;&amp;|\band\b|\|\||\bor\b|\^</string>
 			<key>name</key>
 			<string>keyword.operator.logical.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.arithmetic</string>
+				<string>keyword.operator.arithmetic.ruby</string>
+			</array>
 			<key>match</key>
 			<string>(%|&amp;|\*\*|\*|\+|\-|/)</string>
 			<key>name</key>
 			<string>keyword.operator.arithmetic.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.assignment</string>
+				<string>keyword.operator.assignment.ruby</string>
+			</array>
 			<key>match</key>
 			<string>=</string>
 			<key>name</key>
 			<string>keyword.operator.assignment.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.other</string>
+				<string>keyword.operator.other.ruby</string>
+			</array>
 			<key>match</key>
 			<string>\||~|&gt;&gt;</string>
 			<key>name</key>
 			<string>keyword.operator.other.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>punctuation</string>
+				<string>punctuation.separator</string>
+				<string>punctuation.separator.other</string>
+				<string>punctuation.separator.other.ruby</string>
+			</array>
 			<key>match</key>
 			<string>:</string>
 			<key>name</key>
 			<string>punctuation.separator.other.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>punctuation</string>
+				<string>punctuation.separator</string>
+				<string>punctuation.separator.statement</string>
+				<string>punctuation.separator.statement.ruby</string>
+			</array>
 			<key>match</key>
 			<string>\;</string>
 			<key>name</key>
 			<string>punctuation.separator.statement.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>punctuation</string>
+				<string>punctuation.separator</string>
+				<string>punctuation.separator.object</string>
+				<string>punctuation.separator.object.ruby</string>
+			</array>
 			<key>match</key>
 			<string>,</string>
 			<key>name</key>
 			<string>punctuation.separator.object.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>punctuation</string>
+				<string>punctuation.separator</string>
+				<string>punctuation.separator.method</string>
+				<string>punctuation.separator.method.ruby</string>
+			</array>
 			<key>match</key>
 			<string>\.|::</string>
 			<key>name</key>
 			<string>punctuation.separator.method.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>punctuation</string>
+				<string>punctuation.section</string>
+				<string>punctuation.section.scope</string>
+				<string>punctuation.section.scope.ruby</string>
+			</array>
 			<key>match</key>
 			<string>\{|\}</string>
 			<key>name</key>
 			<string>punctuation.section.scope.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>punctuation</string>
+				<string>punctuation.section</string>
+				<string>punctuation.section.array</string>
+				<string>punctuation.section.array.ruby</string>
+			</array>
 			<key>match</key>
 			<string>\[|\]</string>
 			<key>name</key>
 			<string>punctuation.section.array.ruby</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>punctuation</string>
+				<string>punctuation.section</string>
+				<string>punctuation.section.function</string>
+				<string>punctuation.section.function.ruby</string>
+			</array>
 			<key>match</key>
 			<string>\(|\)</string>
 			<key>name</key>
@@ -2187,6 +3644,13 @@
 	<dict>
 		<key>escaped_char</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.escape</string>
+				<string>constant.character.escape.ruby</string>
+			</array>
 			<key>match</key>
 			<string>\\(?:0\d{1,2}|x[\da-fA-F]{1,2}|.)</string>
 			<key>name</key>
@@ -2211,15 +3675,37 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>source</string>
+						<string>source.ruby</string>
+						<string>source.ruby.embedded</string>
+						<string>source.ruby.embedded.source</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.embedded</string>
+								<string>punctuation.section.embedded.ruby</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.embedded.ruby</string>
 						</dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>source</string>
+								<string>source.ruby</string>
+								<string>source.ruby.embedded</string>
+								<string>source.ruby.embedded.source</string>
+								<string>source.ruby.embedded.source.empty</string>
+							</array>
 							<key>name</key>
 							<string>source.ruby.embedded.source.empty</string>
 						</dict>
@@ -2232,10 +3718,24 @@
 				<dict>
 					<key>begin</key>
 					<string>#\{</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>source</string>
+						<string>source.ruby</string>
+						<string>source.ruby.embedded</string>
+						<string>source.ruby.embedded.source</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.embedded</string>
+								<string>punctuation.section.embedded.ruby</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.embedded.ruby</string>
 						</dict>
@@ -2257,10 +3757,25 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.readwrite</string>
+						<string>variable.other.readwrite.instance</string>
+						<string>variable.other.readwrite.instance.ruby</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.ruby</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.ruby</string>
 						</dict>
@@ -2271,10 +3786,25 @@
 					<string>variable.other.readwrite.instance.ruby</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.readwrite</string>
+						<string>variable.other.readwrite.class</string>
+						<string>variable.other.readwrite.class.ruby</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.ruby</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.ruby</string>
 						</dict>
@@ -2285,10 +3815,25 @@
 					<string>variable.other.readwrite.class.ruby</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.readwrite</string>
+						<string>variable.other.readwrite.global</string>
+						<string>variable.other.readwrite.global.ruby</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.ruby</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.ruby</string>
 						</dict>
@@ -2308,6 +3853,13 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.ruby</string>
 				</dict>
@@ -2330,6 +3882,13 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.ruby</string>
 				</dict>
@@ -2360,6 +3919,13 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.ruby</string>
 				</dict>
@@ -2386,6 +3952,13 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.ruby</string>
 				</dict>
@@ -2411,6 +3984,13 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.scope</string>
+								<string>punctuation.section.scope.ruby</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.scope.ruby</string>
 						</dict>
@@ -2439,6 +4019,13 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.ruby</string>
 				</dict>
@@ -2469,6 +4056,13 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.ruby</string>
 				</dict>
@@ -2495,6 +4089,13 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.ruby</string>
 				</dict>
@@ -2517,6 +4118,13 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.ruby</string>
 				</dict>
@@ -2547,6 +4155,13 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.ruby</string>
 				</dict>
@@ -2573,6 +4188,13 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.ruby</string>
 				</dict>
@@ -2595,6 +4217,13 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.ruby</string>
 				</dict>
@@ -2625,6 +4254,13 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.ruby</string>
 				</dict>
@@ -2656,15 +4292,36 @@
 					<string>#escaped_char</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.arbitrary-repitition</string>
+						<string>string.regexp.arbitrary-repitition.ruby</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.arbitrary-repitition</string>
+								<string>punctuation.definition.arbitrary-repitition.ruby</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.arbitrary-repitition.ruby</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.arbitrary-repitition</string>
+								<string>punctuation.definition.arbitrary-repitition.ruby</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.arbitrary-repitition.ruby</string>
 						</dict>
@@ -2677,10 +4334,24 @@
 				<dict>
 					<key>begin</key>
 					<string>\[(?:\^?\])?</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.character-class</string>
+						<string>string.regexp.character-class.ruby</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.character-class</string>
+								<string>punctuation.definition.character-class.ruby</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.character-class.ruby</string>
 						</dict>
@@ -2700,10 +4371,24 @@
 				<dict>
 					<key>begin</key>
 					<string>\(</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.group</string>
+						<string>string.regexp.group.ruby</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.group</string>
+								<string>punctuation.definition.group.ruby</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.group.ruby</string>
 						</dict>
@@ -2721,10 +4406,24 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.number-sign</string>
+						<string>comment.line.number-sign.ruby</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.ruby</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.ruby</string>
 						</dict>

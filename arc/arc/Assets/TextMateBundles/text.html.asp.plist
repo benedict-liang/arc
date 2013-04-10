@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>HTML (ASP)</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>asp</string>
@@ -23,16 +27,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.begin</string>
+						<string>punctuation.section.embedded.begin.asp</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.begin.asp</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>source</string>
+				<string>source.asp</string>
+				<string>source.asp.embedded</string>
+				<string>source.asp.embedded.html</string>
+			</array>
 			<key>end</key>
 			<string>%&gt;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.end</string>
+						<string>punctuation.section.embedded.end.asp</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.end.asp</string>
 				</dict>
@@ -42,10 +69,24 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.apostrophe</string>
+						<string>comment.line.apostrophe.asp</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.asp</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.asp</string>
 						</dict>

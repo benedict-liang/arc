@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Active4D Config</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>ini</string>
@@ -13,10 +17,24 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.double-slash</string>
+				<string>comment.line.double-slash.active4d-ini</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.active4d-ini</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.active4d-ini</string>
 				</dict>
@@ -27,10 +45,24 @@
 			<string>comment.line.double-slash.active4d-ini</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.backtick</string>
+				<string>comment.line.backtick.active4d-ini</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.active4d-ini</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.active4d-ini</string>
 				</dict>
@@ -41,10 +73,25 @@
 			<string>comment.line.backtick.active4d-ini</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.double-backslash</string>
+				<string>comment.line.double-backslash.continuation</string>
+				<string>comment.line.double-backslash.continuation.active4d-ini</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.active4d-ini</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.active4d-ini</string>
 				</dict>
@@ -57,10 +104,23 @@
 		<dict>
 			<key>begin</key>
 			<string>/\*</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.active4d-ini</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.active4d-ini</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.active4d-ini</string>
 				</dict>
@@ -77,16 +137,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.active4d-ini</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.active4d-ini</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.active4d-ini</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.active4d-ini</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.active4d-ini</string>
 				</dict>
@@ -102,18 +185,37 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.boolean</string>
+				<string>constant.language.boolean.active4d-ini</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i)(true|false|yes|no)\b</string>
 			<key>name</key>
 			<string>constant.language.boolean.active4d-ini</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.active4d-ini</string>
+			</array>
 			<key>match</key>
 			<string>=</string>
 			<key>name</key>
 			<string>keyword.operator.active4d-ini</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.constant</string>
+				<string>support.constant.active4d-ini</string>
+			</array>
 			<key>match</key>
 			<string>(?i)((\b(use sessions|use session cookies|session var name|session timeout|session purge interval|session cookie path|session cookie name|session cookie domain|serve nonexecutables|script timeout|safe script dirs|safe doc dirs|root|refresh interval|receive timeout|platform charset|parameter mode|output encoding|output charset|max request size|log level|lib extension|lib dirs|http error page|fusebox page|expires|executable extensions|error page|default page|content charset|client is web server|cache control|auto relate one|auto relate many|auto refresh libs|auto create vars)\b)|(\&lt;default\&gt;|\&lt;web\&gt;|\&lt;4d volume\&gt;|\&lt;boot volume\&gt;))</string>
 			<key>name</key>
@@ -124,6 +226,13 @@
 	<dict>
 		<key>escaped_char</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.escape</string>
+				<string>constant.character.escape.active4d-ini</string>
+			</array>
 			<key>match</key>
 			<string>\\.</string>
 			<key>name</key>

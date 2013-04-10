@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>OCamlyacc</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>mly</string>
@@ -23,16 +27,38 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.header</string>
+						<string>punctuation.section.header.begin</string>
+						<string>punctuation.section.header.begin.ocamlyacc</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.header.begin.ocamlyacc</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.header</string>
+				<string>meta.header.ocamlyacc</string>
+			</array>
 			<key>end</key>
 			<string>^\s*(%})</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.header</string>
+						<string>punctuation.section.header.end</string>
+						<string>punctuation.section.header.end.ocamlyacc</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.header.end.ocamlyacc</string>
 				</dict>
@@ -50,6 +76,12 @@
 		<dict>
 			<key>begin</key>
 			<string>(?&lt;=%})\s*$</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.declarations</string>
+				<string>meta.declarations.ocamlyacc</string>
+			</array>
 			<key>end</key>
 			<string>(?:^)(?=%%)</string>
 			<key>name</key>
@@ -73,16 +105,38 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.rules</string>
+						<string>punctuation.section.rules.begin</string>
+						<string>punctuation.section.rules.begin.ocamlyacc</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.rules.begin.ocamlyacc</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.rules</string>
+				<string>meta.rules.ocamlyacc</string>
+			</array>
 			<key>end</key>
 			<string>^\s*(%%)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.rules</string>
+						<string>punctuation.section.rules.end</string>
+						<string>punctuation.section.rules.end.ocamlyacc</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.rules.end.ocamlyacc</string>
 				</dict>
@@ -110,6 +164,13 @@
 			<string>#comments</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>invalid</string>
+				<string>invalid.illegal</string>
+				<string>invalid.illegal.unrecognized-character</string>
+				<string>invalid.illegal.unrecognized-character.ocaml</string>
+			</array>
 			<key>match</key>
 			<string>(’|‘|“|”)</string>
 			<key>name</key>
@@ -125,6 +186,12 @@
 				<dict>
 					<key>begin</key>
 					<string>/\*</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.block</string>
+						<string>comment.block.ocamlyacc</string>
+					</array>
 					<key>end</key>
 					<string>\*/</string>
 					<key>name</key>
@@ -140,6 +207,15 @@
 				<dict>
 					<key>begin</key>
 					<string>(?=[^\\])(&quot;)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.block</string>
+						<string>comment.block.string</string>
+						<string>comment.block.string.quoted</string>
+						<string>comment.block.string.quoted.double</string>
+						<string>comment.block.string.quoted.double.ocamlyacc</string>
+					</array>
 					<key>end</key>
 					<string>&quot;</string>
 					<key>name</key>
@@ -147,6 +223,16 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>comment</string>
+								<string>comment.block</string>
+								<string>comment.block.string</string>
+								<string>comment.block.string.constant</string>
+								<string>comment.block.string.constant.character</string>
+								<string>comment.block.string.constant.character.escape</string>
+								<string>comment.block.string.constant.character.escape.ocamlyacc</string>
+							</array>
 							<key>match</key>
 							<string>\\(x[a-fA-F0-9][a-fA-F0-9]|[0-2]\d\d|[bnrt'&quot;\\])</string>
 							<key>name</key>
@@ -167,15 +253,37 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.decorator</string>
+								<string>keyword.other.decorator.token</string>
+								<string>keyword.other.decorator.token.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.decorator.token.ocamlyacc</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.token</string>
+								<string>keyword.other.token.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.token.ocamlyacc</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.token</string>
+						<string>meta.token.declaration</string>
+						<string>meta.token.declaration.ocamlyacc</string>
+					</array>
 					<key>end</key>
 					<string>^\s*($|(^\s*(?=%)))</string>
 					<key>name</key>
@@ -187,6 +295,14 @@
 							<string>#symbol-types</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.token</string>
+								<string>entity.name.type.token.ocamlyacc</string>
+							</array>
 							<key>match</key>
 							<string>[A-Z][A-Za-z0-9_]*</string>
 							<key>name</key>
@@ -205,15 +321,39 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.decorator</string>
+								<string>keyword.other.decorator.token</string>
+								<string>keyword.other.decorator.token.associativity</string>
+								<string>keyword.other.decorator.token.associativity.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.decorator.token.associativity.ocamlyacc</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.token</string>
+								<string>keyword.other.token.associativity</string>
+								<string>keyword.other.token.associativity.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.token.associativity.ocamlyacc</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.token</string>
+						<string>meta.token.associativity</string>
+						<string>meta.token.associativity.ocamlyacc</string>
+					</array>
 					<key>end</key>
 					<string>(^\s*$)|(^\s*(?=%))</string>
 					<key>name</key>
@@ -221,12 +361,29 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.token</string>
+								<string>entity.name.type.token.ocamlyacc</string>
+							</array>
 							<key>match</key>
 							<string>[A-Z][A-Za-z0-9_]*</string>
 							<key>name</key>
 							<string>entity.name.type.token.ocamlyacc</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.function</string>
+								<string>entity.name.function.non-terminal</string>
+								<string>entity.name.function.non-terminal.reference</string>
+								<string>entity.name.function.non-terminal.reference.ocamlyacc</string>
+							</array>
 							<key>match</key>
 							<string>[a-z][A-Za-z0-9_]*</string>
 							<key>name</key>
@@ -245,15 +402,36 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.decorator</string>
+								<string>keyword.other.decorator.start-symbol</string>
+								<string>keyword.other.decorator.start-symbol.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.decorator.start-symbol.ocamlyacc</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.start-symbol</string>
+								<string>keyword.other.start-symbol.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.start-symbol.ocamlyacc</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.start-symbol</string>
+						<string>meta.start-symbol.ocamlyacc</string>
+					</array>
 					<key>end</key>
 					<string>(^\s*$)|(^\s*(?=%))</string>
 					<key>name</key>
@@ -261,6 +439,15 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.function</string>
+								<string>entity.name.function.non-terminal</string>
+								<string>entity.name.function.non-terminal.reference</string>
+								<string>entity.name.function.non-terminal.reference.ocamlyacc</string>
+							</array>
 							<key>match</key>
 							<string>[a-z][A-Za-z0-9_]*</string>
 							<key>name</key>
@@ -279,15 +466,36 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.decorator</string>
+								<string>keyword.other.decorator.symbol-type</string>
+								<string>keyword.other.decorator.symbol-type.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.decorator.symbol-type.ocamlyacc</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.symbol-type</string>
+								<string>keyword.other.symbol-type.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.symbol-type.ocamlyacc</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.symbol-type</string>
+						<string>meta.symbol-type.ocamlyacc</string>
+					</array>
 					<key>end</key>
 					<string>$\s*(?!%)</string>
 					<key>name</key>
@@ -299,12 +507,30 @@
 							<string>#symbol-types</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.token</string>
+								<string>entity.name.type.token.reference</string>
+								<string>entity.name.type.token.reference.ocamlyacc</string>
+							</array>
 							<key>match</key>
 							<string>[A-Z][A-Za-z0-9_]*</string>
 							<key>name</key>
 							<string>entity.name.type.token.reference.ocamlyacc</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.function</string>
+								<string>entity.name.function.non-terminal</string>
+								<string>entity.name.function.non-terminal.reference</string>
+								<string>entity.name.function.non-terminal.reference.ocamlyacc</string>
+							</array>
 							<key>match</key>
 							<string>[a-z][A-Za-z0-9_]*</string>
 							<key>name</key>
@@ -323,25 +549,64 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.precidence</string>
+						<string>meta.precidence.declaration</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.decorator</string>
+								<string>keyword.other.decorator.precedence</string>
+								<string>keyword.other.decorator.precedence.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.decorator.precedence.ocamlyacc</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.precedence</string>
+								<string>keyword.other.precedence.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.precedence.ocamlyacc</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.function</string>
+								<string>entity.name.function.non-terminal</string>
+								<string>entity.name.function.non-terminal.reference</string>
+								<string>entity.name.function.non-terminal.reference.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.function.non-terminal.reference.ocamlyacc</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.token</string>
+								<string>entity.name.type.token.reference</string>
+								<string>entity.name.type.token.reference.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.token.reference.ocamlyacc</string>
 						</dict>
@@ -358,12 +623,30 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.non-terminal</string>
+						<string>entity.name.function.non-terminal.reference</string>
+						<string>entity.name.function.non-terminal.reference.ocamlyacc</string>
+					</array>
 					<key>match</key>
 					<string>[a-z][a-zA-Z0-9_]*</string>
 					<key>name</key>
 					<string>entity.name.function.non-terminal.reference.ocamlyacc</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.token</string>
+						<string>entity.name.type.token.reference</string>
+						<string>entity.name.type.token.reference.ocamlyacc</string>
+					</array>
 					<key>match</key>
 					<string>[A-Z][a-zA-Z0-9_]*</string>
 					<key>name</key>
@@ -382,10 +665,23 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.rule</string>
+								<string>punctuation.separator.rule.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.rule.ocamlyacc</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.rule-match</string>
+						<string>meta.rule-match.ocaml</string>
+					</array>
 					<key>end</key>
 					<string>\s*(?=\||;)</string>
 					<key>name</key>
@@ -423,16 +719,37 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.function</string>
+								<string>entity.name.function.non-terminal</string>
+								<string>entity.name.function.non-terminal.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.function.non-terminal.ocamlyacc</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.non-terminal</string>
+						<string>meta.non-terminal.ocamlyacc</string>
+					</array>
 					<key>end</key>
 					<string>;</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.rule</string>
+								<string>punctuation.separator.rule.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.rule.ocamlyacc</string>
 						</dict>
@@ -460,16 +777,39 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.action</string>
+								<string>punctuation.definition.action.semantic</string>
+								<string>punctuation.definition.action.semantic.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.action.semantic.ocamlyacc</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.action</string>
+						<string>meta.action.semantic</string>
+						<string>meta.action.semantic.ocamlyacc</string>
+					</array>
 					<key>end</key>
 					<string>(})</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.action</string>
+								<string>punctuation.definition.action.semantic</string>
+								<string>punctuation.definition.action.semantic.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.action.semantic.ocamlyacc</string>
 						</dict>
@@ -497,16 +837,39 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.type-declaration</string>
+								<string>punctuation.definition.type-declaration.begin</string>
+								<string>punctuation.definition.type-declaration.begin.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.type-declaration.begin.ocamlyacc</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.token</string>
+						<string>meta.token.type-declaration</string>
+						<string>meta.token.type-declaration.ocamlyacc</string>
+					</array>
 					<key>end</key>
 					<string>&gt;</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.type-declaration</string>
+								<string>punctuation.definition.type-declaration.end</string>
+								<string>punctuation.definition.type-declaration.end.ocamlyacc</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.type-declaration.end.ocamlyacc</string>
 						</dict>

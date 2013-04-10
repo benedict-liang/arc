@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>NAnt Build File</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>build</string>
@@ -17,10 +21,23 @@
 		<dict>
 			<key>begin</key>
 			<string>&lt;!--</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.nant</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.nant</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.nant</string>
 				</dict>
@@ -33,15 +50,35 @@
 		<dict>
 			<key>begin</key>
 			<string>(&lt;/?)([-_a-zA-Z0-9:]+)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tag</string>
+				<string>meta.tag.nant</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.nant</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.nant</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.nant</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.nant</string>
 				</dict>
@@ -53,6 +90,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.other</string>
+						<string>entity.other.attribute-name</string>
+						<string>entity.other.attribute-name.nant</string>
+					</array>
 					<key>match</key>
 					<string> ([a-zA-Z-]+)</string>
 					<key>name</key>
@@ -65,16 +109,39 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.nant</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.nant</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.nant</string>
+					</array>
 					<key>end</key>
 					<string>&quot;</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.nant</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.nant</string>
 						</dict>
@@ -89,16 +156,39 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.nant</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.nant</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.single</string>
+						<string>string.quoted.single.nant</string>
+					</array>
 					<key>end</key>
 					<string>'</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.nant</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.nant</string>
 						</dict>
@@ -109,15 +199,36 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.entity</string>
+				<string>constant.character.entity.nant</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.nant</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.nant</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.nant</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.nant</string>
 				</dict>
@@ -128,6 +239,13 @@
 			<string>constant.character.entity.nant</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>invalid</string>
+				<string>invalid.illegal</string>
+				<string>invalid.illegal.bad-ampersand</string>
+				<string>invalid.illegal.bad-ampersand.nant</string>
+			</array>
 			<key>match</key>
 			<string>&amp;</string>
 			<key>name</key>

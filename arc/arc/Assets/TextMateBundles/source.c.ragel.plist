@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Ragel</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>rl</string>
@@ -9,9 +13,9 @@
 	</array>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-			 /\*\*(?!\*)
-			|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))
-		</string>
+						 /\*\*(?!\*)
+						|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))
+					</string>
 	<key>foldingStopMarker</key>
 	<string>(?&lt;!\*)\*\*/|^\s*\}</string>
 	<key>keyEquivalent</key>
@@ -23,10 +27,22 @@
 		<dict>
 			<key>begin</key>
 			<string>%%{</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>source</string>
+				<string>source.ragel</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.ragel</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.ragel</string>
 				</dict>
@@ -50,10 +66,22 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.ragel</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.ragel</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>source</string>
+				<string>source.ragel</string>
+			</array>
 			<key>end</key>
 			<string>$</string>
 			<key>name</key>
@@ -73,10 +101,23 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.ragel</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.ragel</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.ragel</string>
+			</array>
 			<key>end</key>
 			<string>$</string>
 			<key>name</key>
@@ -101,10 +142,25 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.action-reference</string>
+						<string>entity.name.type.action-reference.ragel</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.entity</string>
+								<string>punctuation.definition.entity.ragel</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.entity.ragel</string>
 						</dict>
@@ -127,10 +183,23 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.ragel</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.ragel</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.ragel</string>
+					</array>
 					<key>end</key>
 					<string>$\n?</string>
 					<key>name</key>
@@ -149,10 +218,22 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.embedded</string>
+								<string>punctuation.section.embedded.c</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.embedded.c</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>source</string>
+						<string>source.c</string>
+					</array>
 					<key>end</key>
 					<string>\}</string>
 					<key>name</key>
@@ -172,6 +253,12 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.ragel</string>
+					</array>
 					<key>match</key>
 					<string>\b(machine|action|context|include|variable|access|write|contained)\b</string>
 					<key>name</key>
@@ -184,6 +271,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.contatenation</string>
+						<string>keyword.operator.contatenation.ragel</string>
+					</array>
 					<key>match</key>
 					<string>(\:\&gt;\&gt;?|\&lt;\:)</string>
 					<key>name</key>
@@ -202,16 +296,39 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.ragel</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.ragel</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.character-class</string>
+						<string>string.regexp.character-class.ragel</string>
+					</array>
 					<key>end</key>
 					<string>\]\s*[*?]?</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.ragel</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.ragel</string>
 						</dict>
@@ -226,16 +343,39 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.ragel</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.ragel</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.classic</string>
+						<string>string.regexp.classic.ragel</string>
+					</array>
 					<key>end</key>
 					<string>\/\s*[*?]?</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.ragel</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.ragel</string>
 						</dict>
@@ -276,26 +416,62 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.action</string>
+								<string>keyword.other.action.ragel</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.action.ragel</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.action</string>
+								<string>entity.name.type.action.ragel</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.action.ragel</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.function</string>
+								<string>punctuation.section.function.ragel</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.function.ragel</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.action</string>
+						<string>meta.function.action.ragel</string>
+					</array>
 					<key>end</key>
 					<string>(})</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.function</string>
+								<string>punctuation.section.function.ragel</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.function.ragel</string>
 						</dict>
@@ -317,21 +493,49 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.machine-definition</string>
+								<string>entity.name.type.machine-definition.ragel</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.machine-definition.ragel</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.key-value</string>
+								<string>punctuation.separator.key-value.ragel</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.key-value.ragel</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.machine-definition</string>
+						<string>meta.machine-definition.ragel</string>
+					</array>
 					<key>end</key>
 					<string>(;)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.terminator</string>
+								<string>punctuation.terminator.machine-definition</string>
+								<string>punctuation.terminator.machine-definition.ragel</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.terminator.machine-definition.ragel</string>
 						</dict>
@@ -373,21 +577,49 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.machine-instantiation</string>
+								<string>entity.name.type.machine-instantiation.ragel</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.machine-instantiation.ragel</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.key-value</string>
+								<string>punctuation.separator.key-value.ragel</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.key-value.ragel</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.machine-instantiation</string>
+						<string>meta.machine-instantiation.ragel</string>
+					</array>
 					<key>end</key>
 					<string>;</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.terminator</string>
+								<string>punctuation.terminator.machine-instantiation</string>
+								<string>punctuation.terminator.machine-instantiation.ragel</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.terminator.machine-instantiation.ragel</string>
 						</dict>
@@ -423,6 +655,12 @@
 						<dict>
 							<key>begin</key>
 							<string>\|\*</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.ragel</string>
+								<string>meta.ragel.longest-match</string>
+							</array>
 							<key>end</key>
 							<string>\*\|</string>
 							<key>name</key>
@@ -450,16 +688,39 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.ragel</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.ragel</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.ragel</string>
+					</array>
 					<key>end</key>
 					<string>&quot;</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.ragel</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.ragel</string>
 						</dict>
@@ -485,16 +746,39 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.ragel</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.ragel</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.single</string>
+						<string>string.quoted.single.ragel</string>
+					</array>
 					<key>end</key>
 					<string>'</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.ragel</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.ragel</string>
 						</dict>
@@ -516,12 +800,26 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.ragel</string>
+					</array>
 					<key>match</key>
 					<string>\\(\\|[abefnprtv'&quot;?]|[0-3]\d{,2}|[4-7]\d?|x[a-fA-F0-9]{,2})</string>
 					<key>name</key>
 					<string>constant.character.escape.ragel</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.unknown-escape</string>
+						<string>invalid.illegal.unknown-escape.ragel</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -534,20 +832,34 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.placeholder</string>
+						<string>constant.other.placeholder.ragel</string>
+					</array>
 					<key>match</key>
 					<string>(?x)%
-											(\d+\$)?                             # field (argument #)
-											[#0\- +']*                           # flags
-											[,;:_]?                              # separator character (AltiVec)
-											((-?\d+)|\*(-?\d+\$)?)?              # minimum field width
-											(\.((-?\d+)|\*(-?\d+\$)?)?)?         # precision
-											(hh|h|ll|l|j|t|z|q|L|vh|vl|v|hv|hl)? # length modifier
-											[diouxXDOUeEfFgGaACcSspn%]           # conversion type
-										</string>
+																										(\d+\$)?                             # field (argument #)
+																										[#0\- +']*                           # flags
+																										[,;:_]?                              # separator character (AltiVec)
+																										((-?\d+)|\*(-?\d+\$)?)?              # minimum field width
+																										(\.((-?\d+)|\*(-?\d+\$)?)?)?         # precision
+																										(hh|h|ll|l|j|t|z|q|L|vh|vl|v|hv|hl)? # length modifier
+																										[diouxXDOUeEfFgGaACcSspn%]           # conversion type
+																									</string>
 					<key>name</key>
 					<string>constant.other.placeholder.ragel</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.placeholder</string>
+						<string>invalid.illegal.placeholder.ragel</string>
+					</array>
 					<key>match</key>
 					<string>%</string>
 					<key>name</key>

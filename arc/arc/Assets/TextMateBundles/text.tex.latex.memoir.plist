@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>LaTeX Memoir</string>
+	</array>
 	<key>fileTypes</key>
 	<array/>
 	<key>firstLineMatch</key>
@@ -19,30 +23,74 @@
 		<dict>
 			<key>begin</key>
 			<string>(?:\s*)((\\)begin)(\{)(framed|shaded|leftbar)(\})</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.memoir-fbox</string>
+				<string>meta.function.memoir-fbox.latex</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.be</string>
+						<string>support.function.be.latex</string>
+					</array>
 					<key>name</key>
 					<string>support.function.be.latex</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.latex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.function.latex</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.begin</string>
+						<string>punctuation.definition.arguments.begin.latex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.begin.latex</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.parameter</string>
+						<string>variable.parameter.function</string>
+						<string>variable.parameter.function.latex</string>
+					</array>
 					<key>name</key>
 					<string>variable.parameter.function.latex</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.end</string>
+						<string>punctuation.definition.arguments.end.latex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.end.latex</string>
 				</dict>
@@ -62,30 +110,74 @@
 		<dict>
 			<key>begin</key>
 			<string>(?:\s*)((\\)begin)(\{)((?:fboxv|boxedv|V)erbatim)(\})</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.memoir-verbatim</string>
+				<string>meta.function.memoir-verbatim.latex</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.be</string>
+						<string>support.function.be.latex</string>
+					</array>
 					<key>name</key>
 					<string>support.function.be.latex</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.latex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.function.latex</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.begin</string>
+						<string>punctuation.definition.arguments.begin.latex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.begin.latex</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.parameter</string>
+						<string>variable.parameter.function</string>
+						<string>variable.parameter.function.latex</string>
+					</array>
 					<key>name</key>
 					<string>variable.parameter.function.latex</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.end</string>
+						<string>punctuation.definition.arguments.end.latex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.end.latex</string>
 				</dict>
@@ -100,30 +192,74 @@
 		<dict>
 			<key>begin</key>
 			<string>(?:\s*)((\\)begin)(\{)(alltt)(\})</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.memoir-alltt</string>
+				<string>meta.function.memoir-alltt.latex</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.be</string>
+						<string>support.function.be.latex</string>
+					</array>
 					<key>name</key>
 					<string>support.function.be.latex</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.latex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.function.latex</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.begin</string>
+						<string>punctuation.definition.arguments.begin.latex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.begin.latex</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.parameter</string>
+						<string>variable.parameter.function</string>
+						<string>variable.parameter.function.latex</string>
+					</array>
 					<key>name</key>
 					<string>variable.parameter.function.latex</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.end</string>
+						<string>punctuation.definition.arguments.end.latex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.end.latex</string>
 				</dict>
@@ -137,10 +273,24 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.general</string>
+						<string>support.function.general.tex</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.function</string>
+								<string>punctuation.definition.function.tex</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.function.tex</string>
 						</dict>

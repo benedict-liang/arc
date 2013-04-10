@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Literate Haskell</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>lhs</string>
@@ -15,25 +19,63 @@
 		<dict>
 			<key>begin</key>
 			<string>^((\\)begin)({)code(})(\s*\n)?</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.embedded</string>
+				<string>meta.function.embedded.haskell</string>
+				<string>meta.function.embedded.haskell.latex</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.be</string>
+						<string>support.function.be.latex</string>
+					</array>
 					<key>name</key>
 					<string>support.function.be.latex</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.latex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.function.latex</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.begin</string>
+						<string>punctuation.definition.arguments.begin.latex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.begin.latex</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.end</string>
+						<string>punctuation.definition.arguments.end.latex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.end.latex</string>
 				</dict>

@@ -2,16 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Active4D</string>
+	</array>
 	<key>fileTypes</key>
 	<array/>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-			(^\s*(?i:if|while|for\ each|for|case\ of|repeat|method|save output)\b
-			)</string>
+						(^\s*(?i:if|while|for\ each|for|case\ of|repeat|method|save output)\b
+						)</string>
 	<key>foldingStopMarker</key>
 	<string>(?x)
-			(^\s*(?i:end\ (if|while|for\ each|for|case|method|save output)|until)\b
-			)</string>
+						(^\s*(?i:end\ (if|while|for\ each|for|case|method|save output)|until)\b
+						)</string>
 	<key>keyEquivalent</key>
 	<string>^~A</string>
 	<key>name</key>
@@ -19,10 +23,24 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.backtick</string>
+				<string>comment.line.backtick.active4d</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.active4d</string>
 				</dict>
@@ -33,10 +51,24 @@
 			<string>comment.line.backtick.active4d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.double-slash</string>
+				<string>comment.line.double-slash.active4d</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.active4d</string>
 				</dict>
@@ -47,10 +79,25 @@
 			<string>comment.line.double-slash.active4d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.double-backslash</string>
+				<string>comment.line.double-backslash.continuation</string>
+				<string>comment.line.double-backslash.continuation.active4d</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.active4d</string>
 				</dict>
@@ -63,10 +110,23 @@
 		<dict>
 			<key>begin</key>
 			<string>/\*</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.active4d</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.active4d</string>
 				</dict>
@@ -90,16 +150,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.active4d</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.active4d</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.active4d</string>
 				</dict>
@@ -121,16 +204,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.active4d</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.triple</string>
+				<string>string.quoted.triple.heredoc</string>
+				<string>string.quoted.triple.heredoc.active4d</string>
+			</array>
 			<key>end</key>
 			<string>&quot;&quot;&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.active4d</string>
 				</dict>
@@ -152,16 +259,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.active4d</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.quoted</string>
+				<string>string.interpolated.quoted.single</string>
+				<string>string.interpolated.quoted.single.active4d</string>
+			</array>
 			<key>end</key>
 			<string>'</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.active4d</string>
 				</dict>
@@ -183,16 +314,41 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.active4d</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.quoted</string>
+				<string>string.interpolated.quoted.triple</string>
+				<string>string.interpolated.quoted.triple.heredoc</string>
+				<string>string.interpolated.quoted.triple.heredoc.active4d</string>
+			</array>
 			<key>end</key>
 			<string>'''</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.active4d</string>
 				</dict>
@@ -208,22 +364,49 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.active4d</string>
+			</array>
 			<key>match</key>
 			<string>(?&lt;![[:alpha:]])[\-]?(?:0x[[:xdigit:]]{1,4}|\d+(\.\d+)?)(?![[:alpha:]])</string>
 			<key>name</key>
 			<string>constant.numeric.active4d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.boolean</string>
+				<string>constant.language.boolean.active4d</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i)(true|false)\b</string>
 			<key>name</key>
 			<string>constant.language.boolean.active4d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.local</string>
+				<string>variable.other.local.active4d</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.active4d</string>
 				</dict>
@@ -234,10 +417,24 @@
 			<string>variable.other.local.active4d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.interprocess</string>
+				<string>variable.other.interprocess.active4d</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.active4d</string>
 				</dict>
@@ -248,15 +445,36 @@
 			<string>variable.other.interprocess.active4d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.table-field</string>
+				<string>variable.other.table-field.active4d</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.active4d</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.active4d</string>
 				</dict>
@@ -267,15 +485,36 @@
 			<string>variable.other.table-field.active4d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.date</string>
+				<string>constant.other.date.active4d</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.active4d</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.active4d</string>
 				</dict>
@@ -286,15 +525,36 @@
 			<string>constant.other.date.active4d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.time</string>
+				<string>constant.other.time.active4d</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.active4d</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.active4d</string>
 				</dict>
@@ -305,15 +565,35 @@
 			<string>constant.other.time.active4d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.active4d</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.function</string>
+						<string>storage.type.function.active4d</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.function.active4d</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.active4d</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.active4d</string>
 				</dict>
@@ -332,30 +612,71 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.function</string>
+						<string>storage.type.function.active4d</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.function.active4d</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.active4d</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.active4d</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.entity</string>
+						<string>punctuation.definition.entity.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.entity.active4d</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.entity</string>
+						<string>punctuation.definition.entity.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.entity.active4d</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.active4d</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.active4d</string>
+			</array>
 			<key>comment</key>
 			<string>method definition with parameters</string>
 			<key>end</key>
@@ -364,6 +685,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.active4d</string>
 				</dict>
@@ -373,20 +701,47 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.parameter</string>
+						<string>variable.parameter.function</string>
+						<string>variable.parameter.function.active4d</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.operator</string>
+								<string>keyword.operator.active4d</string>
+							</array>
 							<key>name</key>
 							<string>keyword.operator.active4d</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.active4d</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.active4d</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.parameters</string>
+								<string>punctuation.separator.parameters.active4d</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.parameters.active4d</string>
 						</dict>
@@ -403,6 +758,13 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.key-value</string>
+								<string>punctuation.separator.key-value.active4d</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.key-value.active4d</string>
 						</dict>
@@ -413,6 +775,13 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.parameters</string>
+								<string>punctuation.separator.parameters.active4d</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.parameters.active4d</string>
 						</dict>
@@ -428,78 +797,108 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.active4d</string>
+			</array>
 			<key>match</key>
 			<string>(?x) (
-							:=
-						|	\+=	
-						|	\-=	
-						|	/=	
-						|	\\=	
-						|	\*=	
-						|	\%=	
-						|	\^=	
-						|	&amp;=	
-						|	\|=	
-						|	&lt;&lt;=	
-						|	&gt;&gt;=	
-						|	&gt;	
-						|	&lt;	
-						|	&gt;=	
-						|	&lt;=	
-						|	=	
-						|	=~	
-						|	\#	
-						|	\#~	
-						|	~	
-						|	!~	
-						|	\+
-						|	\+\+	
-						|	\-	
-						|	\-\-	
-						|	/	
-						|	\\	
-						|	\*
-						|	\*\+
-						|	\*/
-						|	%	
-						|	&amp;	
-						|	\|	
-						|	\^	
-						|	\^\|	
-						|	&lt;&lt;
-						|	&gt;&gt;
-						|	\?\+
-						|	\?\-
-						|	\?\?
-						|	\}
-						|	\{
-						|	;
-						|	\:
-						|	\]\]
-						|	\[\[
-						|	\-&gt;)</string>
+																:=
+															|	\+=	
+															|	\-=	
+															|	/=	
+															|	\\=	
+															|	\*=	
+															|	\%=	
+															|	\^=	
+															|	&amp;=	
+															|	\|=	
+															|	&lt;&lt;=	
+															|	&gt;&gt;=	
+															|	&gt;	
+															|	&lt;	
+															|	&gt;=	
+															|	&lt;=	
+															|	=	
+															|	=~	
+															|	\#	
+															|	\#~	
+															|	~	
+															|	!~	
+															|	\+
+															|	\+\+	
+															|	\-	
+															|	\-\-	
+															|	/	
+															|	\\	
+															|	\*
+															|	\*\+
+															|	\*/
+															|	%	
+															|	&amp;	
+															|	\|	
+															|	\^	
+															|	\^\|	
+															|	&lt;&lt;
+															|	&gt;&gt;
+															|	\?\+
+															|	\?\-
+															|	\?\?
+															|	\}
+															|	\{
+															|	;
+															|	\:
+															|	\]\]
+															|	\[\[
+															|	\-&gt;)</string>
 			<key>name</key>
 			<string>keyword.operator.active4d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.active4d</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i)(end (if|for each|for|while|case)|if|else|while|for each|for|case of|repeat|until|break|continue)\b</string>
 			<key>name</key>
 			<string>keyword.control.active4d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.active4d</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i)(end method|method|define|return|exit|self|import|require|global|throw)\b</string>
 			<key>name</key>
 			<string>keyword.other.active4d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.constant</string>
+				<string>support.constant.active4d</string>
+			</array>
 			<key>match</key>
 			<string>(?i)\b(Write Mode|Text without length|Text array|String array|Short|Real array|Read Mode|Read and Write|Pointer array|Picture array|No current record|New record|Month Day Year|MM DD YYYY Forced|MM DD YYYY|MAXTEXTLEN|MAXLONG|Longint array|Long|Line feed|Is Undefined|Is Time|Is Text|Is String Var|Is Real|Is Pointer|Is Picture|Is Longint|Is Integer|Is Date|Is Boolean|Is BLOB|Is Alpha Field|Into variable|Into set|Into named selection|Into current selection|Integer array|Hour Min Sec|Hour Min|HH MM SS|HH MM AM PM|HH MM|Get Pathname|Date array|Carriage return|Boolean array|Array 2D|Abbreviated|Abbr Month Day|A4D Parameter Mode Separate|A4D Parameter Mode Query|A4D Parameter Mode Form|A4D License Type Deployment|A4D Encoding Tags|A4D Encoding Quotes|A4D Encoding None|A4D Encoding HTML|A4D Encoding Extended|A4D Encoding Ampersand|A4D Encoding All|A4D Charset Win|A4D Charset Shift_JIS|A4D Charset Mac|A4D Charset ISO Latin1|A4D Charset GB2312)\b</string>
 			<key>name</key>
 			<string>support.constant.active4d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.active4d</string>
+			</array>
 			<key>comment</key>
 			<string>4D and Active4D commands</string>
 			<key>match</key>
@@ -508,6 +907,12 @@
 			<string>support.function.active4d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.active4d</string>
+			</array>
 			<key>comment</key>
 			<string>library methods</string>
 			<key>match</key>
@@ -516,6 +921,12 @@
 			<string>support.function.active4d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.variable</string>
+				<string>support.variable.active4d</string>
+			</array>
 			<key>match</key>
 			<string>(?i)\b(OK|Document|fusebox\.conf\.fuseaction)\b</string>
 			<key>name</key>
@@ -526,11 +937,23 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.class</string>
+						<string>support.class.active4d</string>
+					</array>
 					<key>name</key>
 					<string>support.class.active4d</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.active4d</string>
+					</array>
 					<key>name</key>
 					<string>support.function.active4d</string>
 				</dict>
@@ -543,6 +966,13 @@
 	<dict>
 		<key>escaped_char</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.escape</string>
+				<string>constant.character.escape.active4d</string>
+			</array>
 			<key>match</key>
 			<string>\\.</string>
 			<key>name</key>
@@ -552,6 +982,11 @@
 		<dict>
 			<key>begin</key>
 			<string>(?=^\s*&lt;fusedoc )</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>text</string>
+				<string>text.xml</string>
+			</array>
 			<key>end</key>
 			<string>(?&lt;=&lt;/fusedoc&gt;)</string>
 			<key>name</key>
@@ -572,16 +1007,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.active4d</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>source</string>
+				<string>source.interpolated</string>
+				<string>source.interpolated.active4d</string>
+			</array>
 			<key>end</key>
 			<string>`</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.active4d</string>
 				</dict>
@@ -598,6 +1055,14 @@
 		</dict>
 		<key>interpolated_collection_ref</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.interpolated</string>
+				<string>variable.other.interpolated.collection-ref</string>
+				<string>variable.other.interpolated.collection-ref.active4d</string>
+			</array>
 			<key>match</key>
 			<string>(_form|_query|_request|globals|session)({(&quot;.+?&quot;|\d+|\$[\w_]+)})+(\[\[\d+\]\])*</string>
 			<key>name</key>
@@ -631,6 +1096,14 @@
 		</dict>
 		<key>interpolated_table_field</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.interpolated</string>
+				<string>variable.other.interpolated.table-field</string>
+				<string>variable.other.interpolated.table-field.active4d</string>
+			</array>
 			<key>match</key>
 			<string>\[\w[\w_ ]*\][\w_]+(\[\[\d+\]\])*</string>
 			<key>name</key>
@@ -638,10 +1111,25 @@
 		</dict>
 		<key>interpolated_variable</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.interpolated</string>
+				<string>variable.other.interpolated.local</string>
+				<string>variable.other.interpolated.local.active4d</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.active4d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.active4d</string>
 				</dict>

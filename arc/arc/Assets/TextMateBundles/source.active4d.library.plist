@@ -2,20 +2,24 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Active4D Library</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>a4l</string>
 	</array>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-			(^\s*(?i:if|while|for\ each|for|case\ of|repeat|method)\b
-			|^\s*&lt;fusedoc\ fuse
-			)</string>
+						(^\s*(?i:if|while|for\ each|for|case\ of|repeat|method)\b
+						|^\s*&lt;fusedoc\ fuse
+						)</string>
 	<key>foldingStopMarker</key>
 	<string>(?x)
-			(^\s*(?i:end\ (if|while|for\ each|for|case|method)|until)\b
-			|^\s*&lt;/fusedoc&gt;
-			)</string>
+						(^\s*(?i:end\ (if|while|for\ each|for|case|method)|until)\b
+						|^\s*&lt;/fusedoc&gt;
+						)</string>
 	<key>keyEquivalent</key>
 	<string>^~A</string>
 	<key>name</key>
@@ -23,6 +27,12 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.active4d</string>
+			</array>
 			<key>match</key>
 			<string>(?i:end library|library)</string>
 			<key>name</key>

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>qmake Project file</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>pro</string>
@@ -16,15 +20,35 @@
 		<dict>
 			<key>begin</key>
 			<string>(TEMPLATE)\s*(=)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.other</string>
+				<string>markup.other.template</string>
+				<string>markup.other.template.qmake</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.language</string>
+						<string>variable.language.qmake</string>
+					</array>
 					<key>name</key>
 					<string>variable.language.qmake</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+						<string>punctuation.separator.key-value.qmake</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.key-value.qmake</string>
 				</dict>
@@ -36,6 +60,12 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.qmake</string>
+					</array>
 					<key>match</key>
 					<string>\b(app|lib|subdirs|vcapp|vclib)\b</string>
 					<key>name</key>
@@ -46,15 +76,35 @@
 		<dict>
 			<key>begin</key>
 			<string>(CONFIG)\s*(\+|\-)?(=)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.other</string>
+				<string>markup.other.config</string>
+				<string>markup.other.config.qmake</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.language</string>
+						<string>variable.language.qmake</string>
+					</array>
 					<key>name</key>
 					<string>variable.language.qmake</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+						<string>punctuation.separator.key-value.qmake</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.key-value.qmake</string>
 				</dict>
@@ -66,6 +116,12 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.qmake</string>
+					</array>
 					<key>match</key>
 					<string>\b(release|debug|warn_(on|off)|qt|opengl|thread|x11|windows|console|dll|staticlib|plugin|designer|uic3|no_lflags_merge|exceptions|rtti|stl|flat|app_bundle|no_batch|qtestlib|ppc|x86)\b</string>
 					<key>name</key>
@@ -76,15 +132,35 @@
 		<dict>
 			<key>begin</key>
 			<string>(QT)\s*(\+|\-)?(=)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.other</string>
+				<string>markup.other.qt</string>
+				<string>markup.other.qt.qmake</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.language</string>
+						<string>variable.language.qmake</string>
+					</array>
 					<key>name</key>
 					<string>variable.language.qmake</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+						<string>punctuation.separator.key-value.qmake</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.key-value.qmake</string>
 				</dict>
@@ -96,6 +172,12 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.qmake</string>
+					</array>
 					<key>match</key>
 					<string>\b(core|gui|network|opengl|sql|svg|xml|qt3support)\b</string>
 					<key>name</key>
@@ -104,6 +186,12 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.language</string>
+				<string>variable.language.qmake</string>
+			</array>
 			<key>match</key>
 			<string>\b(R(C(C_DIR|_FILE)|E(S_FILE|QUIRES))|M(OC_DIR|AKE(_MAKEFILE|FILE(_GENERATOR)?))|S(RCMOC|OURCES|UBDIRS)|HEADERS|YACC(SOURCES|IMPLS|OBJECTS)|CONFIG|T(RANSLATIONS|ARGET(_(EXT|\d+(\.\d+\.\d+)?))?)|INCLUDEPATH|OBJ(MOC|ECTS(_DIR)?)|D(SP_TEMPLATE|ISTFILES|E(STDIR(_TARGET)?|PENDPATH|F(_FILE|INES))|LLDESTDIR)|UI(C(IMPLS|OBJECTS)|_(SOURCES_DIR|HEADERS_DIR|DIR))|P(RE(COMPILED_HEADER|_TARGETDEPS)|OST_TARGETDEPS)|V(PATH|ER(SION|_(M(IN|AJ)|PAT)))|Q(MAKE(SPEC|_(RUN_C(XX(_IMP)?|C(_IMP)?)|MOC_SRC|C(XXFLAGS_(RELEASE|MT(_D(BG|LL(DBG)?))?|SHLIB|THREAD|DEBUG|WARN_O(N|FF))|FLAGS_(RELEASE|MT(_D(BG|LL(DBG)?))?|SHLIB|THREAD|DEBUG|WARN_O(N|FF))|LEAN)|TARGET|IN(CDIR(_(X|THREAD|OPENGL|QT))?|FO_PLIST)|UIC|P(RE_LINK|OST_LINK)|EXT(_(MOC|H|CPP|YACC|OBJ|UI|PRL|LEX)|ENSION_SHLIB)|Q(MAKE|T_DLL)|F(ILETAGS|AILED_REQUIREMENTS)|L(N_SHLIB|I(B(S(_(RT(MT)?|X|CONSOLE|THREAD|OPENGL(_QT)?|QT(_(OPENGL|DLL))?|WINDOWS))?|_FLAG|DIR(_(X|OPENGL|QT|FLAGS))?)|NK_SHLIB_CMD)|FLAGS(_(RELEASE|S(H(LIB|APP)|ONAME)|CONSOLE(_DLL)?|THREAD|DEBUG|PLUGIN|QT_DLL|WINDOWS(_DLL)?))?)|A(R_CMD|PP_(OR_DLL|FLAG))))?|T_THREAD)|FORMS|L(IBS|EX(SOURCES|IMPLS|OBJECTS)))\b</string>
 			<key>name</key>
@@ -112,15 +200,35 @@
 		<dict>
 			<key>begin</key>
 			<string>(\b([\w\d_]+\.[\w\d_]+|[A-Z_]+))?\s*(\+|\-)?(=)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.other</string>
+				<string>markup.other.assignment</string>
+				<string>markup.other.assignment.qmake</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.qmake</string>
+					</array>
 					<key>name</key>
 					<string>variable.other.qmake</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+						<string>punctuation.separator.key-value.qmake</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.key-value.qmake</string>
 				</dict>
@@ -132,10 +240,23 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.qmake</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.qmake</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.qmake</string>
 						</dict>
@@ -146,6 +267,13 @@
 					<string>variable.other.qmake</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.filename</string>
+						<string>constant.other.filename.qmake</string>
+					</array>
 					<key>match</key>
 					<string>[\w\d\/_\-\.\:]+</string>
 					<key>name</key>
@@ -158,16 +286,39 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.qmake</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.qmake</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.qmake</string>
+					</array>
 					<key>end</key>
 					<string>&quot;</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.qmake</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.qmake</string>
 						</dict>
@@ -182,16 +333,38 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.qmake</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.qmake</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.interpolated</string>
+						<string>string.interpolated.qmake</string>
+					</array>
 					<key>end</key>
 					<string>`</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.qmake</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.qmake</string>
 						</dict>
@@ -202,10 +375,24 @@
 				<dict>
 					<key>begin</key>
 					<string>(\\)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.other</string>
+						<string>markup.other.assignment</string>
+						<string>markup.other.assignment.continuation</string>
+						<string>markup.other.assignment.continuation.qmake</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.regexp</string>
+								<string>string.regexp.qmake</string>
+							</array>
 							<key>name</key>
 							<string>string.regexp.qmake</string>
 						</dict>
@@ -217,10 +404,24 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>comment</string>
+								<string>comment.line</string>
+								<string>comment.line.number-sign</string>
+								<string>comment.line.number-sign.qmake</string>
+							</array>
 							<key>captures</key>
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.comment</string>
+										<string>punctuation.definition.comment.qmake</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.comment.qmake</string>
 								</dict>
@@ -233,10 +434,24 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.number-sign</string>
+						<string>comment.line.number-sign.qmake</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.qmake</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.qmake</string>
 						</dict>
@@ -255,11 +470,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.qmake</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.qmake</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.qmake</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.qmake</string>
 				</dict>
@@ -274,22 +503,50 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.qmake</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.qmake</string>
 				</dict>
 			</dict>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.scope</string>
+				<string>keyword.other.scope.qmake</string>
+			</array>
 			<key>match</key>
 			<string>\b(unix|win32|mac|debug|release)\b</string>
 			<key>name</key>
 			<string>keyword.other.scope.qmake</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.number-sign</string>
+				<string>comment.line.number-sign.qmake</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.qmake</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.qmake</string>
 				</dict>

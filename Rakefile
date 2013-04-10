@@ -28,7 +28,6 @@ end
 def traverse_tree(node)
 	if node.class.name == "Hash"
 		if node['name']
-			puts "in name"
 			node['capturableScopes'] = capturable_scopes(node["name"])
 		end
 		if node['captures']
@@ -42,6 +41,9 @@ def traverse_tree(node)
 		end
 		if node['endCaptures']
 			apply_array(node['endCaptures'])
+		end
+		if node['repository']
+			apply_array(node['repository'].values)
 		end
 	elsif node.class.name == "Array"
 		apply_array(node)
@@ -99,8 +101,11 @@ task :theme do
 end
 
 task :traverse do
-	files = Dir["*.plist"]
-	parsed = Plist::parse_xml(files[0])
-	traverse_tree(parsed)
-	Plist::Emit.save_plist(parsed, "test.plist")
+	files = Dir[BUNDLE_DIR+"*.plist"]
+	files.each do |fname|
+		puts fname
+		parsed = Plist::parse_xml(fname)
+		traverse_tree(parsed)
+		Plist::Emit.save_plist(parsed,fname)
+	end
 end
