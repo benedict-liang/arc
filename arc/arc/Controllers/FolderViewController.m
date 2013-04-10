@@ -47,6 +47,12 @@
     _filesAndFolders = [NSArray arrayWithObjects:folders, files, nil];
 }
 
+- (void)refreshFolderContents
+{
+    [self sortFilesAndFolders];
+    [_tableView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
