@@ -501,7 +501,7 @@
     [self applyStylesTo:output withRanges:overlapMatches];
     
     //NSLog(@"%@",pairMatches);
-    [self logs];
+    //[self logs];
     //NSLog(@"Updating!");
     
     [self updateView:output];
