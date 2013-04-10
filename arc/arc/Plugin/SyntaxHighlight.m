@@ -138,9 +138,15 @@
                    output:(ArcAttributedString*)output
                      dict:(NSObject*)dict
                     theme:(NSDictionary*)theme
+               syntaxItem:(NSDictionary*)syntaxItem
 {
+    NSArray* capturableScopes;
+    if ([syntaxItem objectForKey:@"capturableScopes"]) {
+        capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
+    } else {
+        capturableScopes = [self capturableScopes:name];
+    }
     
-    NSArray* capturableScopes = [self capturableScopes:name];
     for (NSString *s in capturableScopes) {
         NSDictionary* style = [(NSDictionary*)[theme objectForKey:@"scopes"] objectForKey:s];
         if (![dict isEqual:(NSObject*)overlapMatches] && [_overlays containsObject:s]) {
@@ -170,8 +176,12 @@
     for (id k in captures) {
         int i = [k intValue];
         captureM = [self foundPattern:match capture:i range:range];
-        NSString* scope = [[captures objectForKey:k] objectForKey:@"name"];
-        [dict setObject:captureM forKey:scope];
+        NSDictionary* capturedSyntaxItem = [captures objectForKey:k];
+        NSString* scope = [capturedSyntaxItem objectForKey:@"name"];
+        NSArray* capturableScopes = [capturedSyntaxItem objectForKey:@"capturableScopes"];
+        NSDictionary *scopeData = @{@"ranges":captureM, @"capturableScopes":capturableScopes};
+        [dict setObject:scopeData forKey:scope];
+        
     }
     //    for (int i = 0; i < [captures count]; i++) {
     //        captureM = [self foundPattern:match capture:i range:r];
@@ -388,6 +398,7 @@
             NSDictionary *captures = [syntaxItem objectForKey:@"captures"];
             NSString *include = [syntaxItem objectForKey:@"include"];
             NSArray* embedPatterns = [syntaxItem objectForKey:@"patterns"];
+            
             //case name, match
             if (name && match) {
                 NSArray *a = [self foundPattern:match
