@@ -49,6 +49,12 @@
                         PLUGIN_OPTION_VALUE:themeFile}];
         
     }
+    
+    [opts sortUsingComparator:(NSComparator)^(id k1, id k2){
+        NSString* s1 = [(NSDictionary*) k1 objectForKey:PLUGIN_OPTION_LABEL];
+        NSString* s2 = [(NSDictionary*) k2 objectForKey:PLUGIN_OPTION_LABEL];
+        return [s1 compare:s2];
+    }];
     return opts;
 }
 
