@@ -228,8 +228,8 @@ titleForHeaderInSection:(NSInteger)section {
 - (void)setEditing:(BOOL)editing
           animated:(BOOL)animated
 {
-    NSLog(@"%d", editing);
     _tableView.allowsMultipleSelectionDuringEditing = editing;
+    [super setEditing:editing animated:animated];
     [_tableView setEditing:editing animated:animated];
     if (editing) {
         [self editMode];
