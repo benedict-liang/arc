@@ -287,6 +287,7 @@
 		FC3C2E971715BF8100C40490 /* Vibrant Ink.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E5F1715BF7F00C40490 /* Vibrant Ink.tmTheme */; };
 		FC3C2E981715BF8100C40490 /* Vibrant Tango.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E601715BF8100C40490 /* Vibrant Tango.tmTheme */; };
 		FC3C2E991715BF8100C40490 /* zenburn.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E611715BF8100C40490 /* zenburn.tmTheme */; };
+		FC3C2E9C1715C1F400C40490 /* ThemeConf.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E9B1715C1F400C40490 /* ThemeConf.plist */; };
 		FC4A8529170EB47200463EDA /* twist.py in Resources */ = {isa = PBXBuildFile; fileRef = FC4A8528170EB47200463EDA /* twist.py */; };
 		FC4B269E16F88CB800E1DC49 /* FolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B269D16F88CB800E1DC49 /* FolderViewController.m */; };
 		FC4B26CE16FF6E3800E1DC49 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */; };
@@ -642,6 +643,7 @@
 		FC3C2E5F1715BF7F00C40490 /* Vibrant Ink.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Vibrant Ink.tmTheme"; sourceTree = "<group>"; };
 		FC3C2E601715BF8100C40490 /* Vibrant Tango.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Vibrant Tango.tmTheme"; sourceTree = "<group>"; };
 		FC3C2E611715BF8100C40490 /* zenburn.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = zenburn.tmTheme; sourceTree = "<group>"; };
+		FC3C2E9B1715C1F400C40490 /* ThemeConf.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ThemeConf.plist; sourceTree = "<group>"; };
 		FC4A8528170EB47200463EDA /* twist.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = twist.py; sourceTree = "<group>"; };
 		FC4B269C16F88CB800E1DC49 /* FolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewController.h; sourceTree = "<group>"; };
 		FC4B269D16F88CB800E1DC49 /* FolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderViewController.m; sourceTree = "<group>"; };
@@ -1134,6 +1136,7 @@
 		8F563F32170161B600EE5643 /* TMBundleProcessing */ = {
 			isa = PBXGroup;
 			children = (
+				FC3C2E9B1715C1F400C40490 /* ThemeConf.plist */,
 				FCFB4DA1170F466200B25FDC /* BundleConf.plist */,
 				8F15104F1704410000115E5E /* TMBundleHeader.h */,
 				8F563F33170161C900EE5643 /* TMBundleSyntaxParser.h */,
@@ -1556,6 +1559,7 @@
 				FC3C2E971715BF8100C40490 /* Vibrant Ink.tmTheme in Resources */,
 				FC3C2E981715BF8100C40490 /* Vibrant Tango.tmTheme in Resources */,
 				FC3C2E991715BF8100C40490 /* zenburn.tmTheme in Resources */,
+				FC3C2E9C1715C1F400C40490 /* ThemeConf.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

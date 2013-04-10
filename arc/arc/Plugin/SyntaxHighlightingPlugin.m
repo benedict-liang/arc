@@ -32,21 +32,24 @@
         
         [_properties setValue:[NSNumber numberWithInt:kMCQSettingType]
                        forKey:PLUGIN_TYPE];
-        _options = @[
-                    @{
-        PLUGIN_OPTION_LABEL: @"Monokai",
-        PLUGIN_OPTION_VALUE: _defaultTheme
-                    },
-                    @{
-        PLUGIN_OPTION_LABEL : @"Solarized (light)",
-        PLUGIN_OPTION_VALUE: @"Solarized (light).tmTheme"
-                    }
         
-                    ];
+        _options = [SyntaxHighlightingPlugin generateOptions];
         
         [_properties setValue:_options forKey:PLUGIN_OPTIONS];
     }
     return self;
+}
++ (NSArray*)generateOptions {
+    NSURL* themeConf = [[NSBundle mainBundle] URLForResource:@"ThemeConf.plist" withExtension:nil];
+    NSDictionary* themes = [NSDictionary dictionaryWithContentsOfURL:themeConf];
+    NSMutableArray* opts = [NSMutableArray array];
+    for (NSString* themeName in themes) {
+        NSString* themeFile = [themes objectForKey:themeName];
+        [opts addObject:@{PLUGIN_OPTION_LABEL:themeName,
+                        PLUGIN_OPTION_VALUE:themeFile}];
+        
+    }
+    return opts;
 }
 
 - (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString
