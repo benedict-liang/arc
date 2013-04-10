@@ -275,7 +275,6 @@
 		FC3C2E8A1715BF8100C40490 /* RDark.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E521715BF7E00C40490 /* RDark.tmTheme */; };
 		FC3C2E8B1715BF8100C40490 /* Ryan Light.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E531715BF7E00C40490 /* Ryan Light.tmTheme */; };
 		FC3C2E8C1715BF8100C40490 /* Smoothy.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E541715BF7E00C40490 /* Smoothy.tmTheme */; };
-		FC3C2E8D1715BF8100C40490 /* Solarized%20(dark).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E551715BF7E00C40490 /* Solarized%20(dark).tmTheme */; };
 		FC3C2E8E1715BF8100C40490 /* Spectacular.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E561715BF7E00C40490 /* Spectacular.tmTheme */; };
 		FC3C2E8F1715BF8100C40490 /* Starlight.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E571715BF7E00C40490 /* Starlight.tmTheme */; };
 		FC3C2E901715BF8100C40490 /* Summer Camp Mod.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E581715BF7E00C40490 /* Summer Camp Mod.tmTheme */; };
@@ -632,7 +631,6 @@
 		FC3C2E521715BF7E00C40490 /* RDark.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RDark.tmTheme; sourceTree = "<group>"; };
 		FC3C2E531715BF7E00C40490 /* Ryan Light.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Ryan Light.tmTheme"; sourceTree = "<group>"; };
 		FC3C2E541715BF7E00C40490 /* Smoothy.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Smoothy.tmTheme; sourceTree = "<group>"; };
-		FC3C2E551715BF7E00C40490 /* Solarized%20(dark).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Solarized%20(dark).tmTheme"; sourceTree = "<group>"; };
 		FC3C2E561715BF7E00C40490 /* Spectacular.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Spectacular.tmTheme; sourceTree = "<group>"; };
 		FC3C2E571715BF7E00C40490 /* Starlight.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Starlight.tmTheme; sourceTree = "<group>"; };
 		FC3C2E581715BF7E00C40490 /* Summer Camp Mod.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Summer Camp Mod.tmTheme"; sourceTree = "<group>"; };
@@ -1548,7 +1546,6 @@
 				FC3C2E8A1715BF8100C40490 /* RDark.tmTheme in Resources */,
 				FC3C2E8B1715BF8100C40490 /* Ryan Light.tmTheme in Resources */,
 				FC3C2E8C1715BF8100C40490 /* Smoothy.tmTheme in Resources */,
-				FC3C2E8D1715BF8100C40490 /* Solarized%20(dark).tmTheme in Resources */,
 				FC3C2E8E1715BF8100C40490 /* Spectacular.tmTheme in Resources */,
 				FC3C2E8F1715BF8100C40490 /* Starlight.tmTheme in Resources */,
 				FC3C2E901715BF8100C40490 /* Summer Camp Mod.tmTheme in Resources */,
