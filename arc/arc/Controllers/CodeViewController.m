@@ -466,6 +466,16 @@
     }
 }
 
+- (void)updateSelectionSubstring:(CodeLineCell*)cell {
+    CGFloat startX = _selectionView.frame.origin.x;
+    CGFloat endX = startX + _selectionView.frame.size.width;
+    CTLineRef line = cell.line;
+    NSString *cellString = cell.string;
+    CFIndex startIndex = CTLineGetStringIndexForPosition(line, CGPointMake(startX, 0));
+    CFIndex endIndex = CTLineGetStringIndexForPosition(line, CGPointMake(endX, 0));
+    _selectionView.selectedString = [cellString substringWithRange:NSMakeRange(startIndex, endIndex - startIndex)];
+}
+
 - (void)showCopyMenuForTextSelection {
     [_selectionView becomeFirstResponder];
     
@@ -500,6 +510,9 @@
         CGFloat newWidth = panGesture.view.center.x - originalX;
         
         [_selectionView updateSize:CGSizeMake(newWidth, _selectionView.frame.size.height)];
+        
+        // Update substring
+        [self updateSelectionSubstring:cell];
         
         [self showCopyMenuForTextSelection];
     }
