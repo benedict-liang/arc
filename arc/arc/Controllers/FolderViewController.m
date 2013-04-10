@@ -67,10 +67,8 @@
     // Set up the navigation bar.
     self.title = _folder.name;
     
-    // Add the "add folder" button. (TEMP - move as needed to improve UX.)
-    NSMutableArray *rightButtonItems = [NSMutableArray arrayWithArray:self.navigationItem.rightBarButtonItems];
-    [rightButtonItems addObject:_addFolderButton];
-    self.navigationItem.rightBarButtonItems = rightButtonItems;
+    // Add the "edit" and "add folder" buttons.
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:self.editButtonItem, _addFolderButton, nil];
 
     self.view.autoresizesSubviews = YES;
 
@@ -196,10 +194,10 @@ titleForHeaderInSection:(NSInteger)section {
 }
 
 #pragma mark - Editing-related methods
-- (void)toggleEdit:(id)sender
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
-    BOOL shouldTableEdit = !_tableView.editing;
-    [_tableView setEditing:shouldTableEdit animated:YES];
+    [super setEditing:editing animated:animated];
+    [_tableView setEditing:editing animated:animated];
 }
 
 // Triggers when the user confirms an edit operation on the cell at the given index path.
