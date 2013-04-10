@@ -35,5 +35,10 @@
     CGContextFillRect(context, rect);
 }
 
+- (BOOL)canBecomeFirstResponder {
+    // NOTE: This menu item will not show if this is not YES!
+    return YES;
+}
+
 
 @end
