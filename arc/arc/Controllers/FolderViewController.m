@@ -16,10 +16,12 @@
 @property id<Folder> folder;
 @property UITableView *tableView;
 @property NSArray *filesAndFolders;
+
+// Edit Related Stuff
 @property NSMutableArray *editSelection;
 @property UIToolbar *editToolbar;
-
-// Edit/Normal Modes
+@property UIBarButtonItem *deleteButton;
+@property UIBarButtonItem *moveButton;
 - (void)editMode;
 - (void)normalMode;
 
@@ -107,6 +109,25 @@
     _editToolbar = [[UIToolbar alloc] init];
     _editToolbar.frame = CGRectMake(0, self.view.frame.size.height,
                                     self.view.frame.size.width, 44);
+    
+    _deleteButton =
+    [[UIBarButtonItem alloc] initWithTitle:@"Delete Item"
+                                     style:UIBarButtonItemStyleBordered
+                                    target:self
+                                    action:@selector(deleteItems:)];
+    _moveButton =
+    [[UIBarButtonItem alloc] initWithTitle:@"Move Item"
+                                     style:UIBarButtonItemStyleBordered
+                                    target:self
+                                    action:@selector(moveItems:)];
+    
+    _editToolbar.items = [NSArray arrayWithObjects:
+                          [Utils flexibleSpace],
+                          _deleteButton,
+                          _moveButton,
+                          [Utils flexibleSpace],
+                          nil];
+    
     [self.view addSubview:_editToolbar];
 }
 
@@ -205,7 +226,7 @@ titleForHeaderInSection:(NSInteger)section {
     
     if (tableView.editing) {
         // Editing mode
-        [_editSelection addObject:fileObject];
+        [_editSelection addObject:indexPath];
         [self editActionTriggeredAnimate:YES];
         return;
     } else {
@@ -224,7 +245,7 @@ titleForHeaderInSection:(NSInteger)section {
     
     if (tableView.editing) {
         // Editing mode
-        [_editSelection removeObject:fileObject];
+        [_editSelection removeObject:indexPath];
         [self editActionTriggeredAnimate:YES];
         return;
     } else {
@@ -263,7 +284,16 @@ titleForHeaderInSection:(NSInteger)section {
 
 - (void)editActionTriggeredAnimate:(BOOL)animate
 {
-    if ([_editSelection count] > 0) {
+    int count = [_editSelection count];
+    if (count > 0) {
+        if (count > 1) {
+            _deleteButton.title = @"Delete Items";
+            _moveButton.title = @"Move Items";
+        } else {
+            _deleteButton.title = @"Delete Item";
+            _moveButton.title = @"Move Item";
+        }
+        
         [self showEditToolbarAnimate:animate];
     } else {
         [self hideEditToolbarAnimate:animate];
@@ -298,6 +328,25 @@ titleForHeaderInSection:(NSInteger)section {
     [UIView setAnimationDuration:0.3];
     _editToolbar.frame = endState;
     [UIView commitAnimations];
+}
+
+- (void)deleteItems:(id)sender
+{
+    for (NSIndexPath *indexPath in _editSelection) {
+        NSArray *currentSection = [_filesAndFolders objectAtIndex:indexPath.section];
+        id<FileSystemObject> fileSystemObject = [currentSection objectAtIndex:indexPath.row];
+        [fileSystemObject remove];
+    }
+
+    [self sortFilesAndFolders];
+    [_tableView deleteRowsAtIndexPaths:_editSelection
+                      withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)moveItems:(id)sender
+{
+    // TODO.
+    NSLog(@"%@", _editSelection);
 }
 
 // Triggers when the user confirms an edit operation on the cell at the given index path.
