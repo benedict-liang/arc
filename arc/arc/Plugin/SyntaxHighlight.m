@@ -18,6 +18,7 @@
         _currentFile = file;
         _overlays = @[@"string",@"comment"];
         _bundle = [TMBundleSyntaxParser plistForExt:[file extension]];
+        _isProcessed = NO;
         
         if ([[file contents] isKindOfClass:[NSString class]]) {
             _content = (NSString*)[file contents];
@@ -481,12 +482,23 @@
                     output:output];
     }
 }
-- (void)execOn:(NSDictionary*)options 
+- (void)applyStylesTo:(ArcAttributedString*)output withTheme:(NSDictionary*)theme {
+    
+    [self applyForeground:output withTheme:theme];
+    [self applyStylesTo:output withRanges:pairMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:nameMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:captureMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:beginCMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:endCMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:contentNameMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:overlapMatches withTheme:theme];
+}
+- (void)execOn:(NSDictionary*)options
 {
     ArcAttributedString *output = [options objectForKey:@"attributedString"];
     NSDictionary* theme = [options objectForKey:@"theme"];
     
-    [self applyForeground:output withTheme:theme];
+    
     
     NSMutableArray* patterns = [NSMutableArray arrayWithArray:[_bundle objectForKey:@"patterns"]];
     NSDictionary* repo = [_bundle objectForKey:@"repository"];
@@ -497,18 +509,18 @@
                       patterns:patterns
                         output:output];
     
-    [self applyStylesTo:output withRanges:pairMatches withTheme:theme];
-    [self applyStylesTo:output withRanges:nameMatches withTheme:theme];
-    [self applyStylesTo:output withRanges:captureMatches withTheme:theme];
-    [self applyStylesTo:output withRanges:beginCMatches withTheme:theme];
-    [self applyStylesTo:output withRanges:endCMatches withTheme:theme];
-    [self applyStylesTo:output withRanges:contentNameMatches withTheme:theme];
-    [self applyStylesTo:output withRanges:overlapMatches withTheme:theme];
+    [self applyStylesTo:output withTheme:theme];
     
-    //NSLog(@"%@",pairMatches);
-    //[self logs];
-    //NSLog(@"Updating!");
+    [self updateView:output withTheme:theme];
     
+    _isProcessed = YES;
+    
+}
+
+- (void)reapplyWithOpts:(NSDictionary*)options {
+    ArcAttributedString *output = [options objectForKey:@"attributedString"];
+    NSDictionary* theme = [options objectForKey:@"theme"];
+    [self applyStylesTo:output withTheme:theme];
     [self updateView:output withTheme:theme];
 }
 

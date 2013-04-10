@@ -29,6 +29,7 @@
 @property (readonly) NSString* content;
 @property (readonly) NSDictionary* bundle;
 @property NSArray* overlays;
+@property BOOL isProcessed;
 
 - (id)initWithFile:(id<File>)file del:(id<CodeViewControllerDelegate>)delegate;
 - (void)execOn:(NSDictionary*)options;
