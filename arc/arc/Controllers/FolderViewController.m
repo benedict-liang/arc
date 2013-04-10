@@ -240,9 +240,6 @@ titleForHeaderInSection:(NSInteger)section {
 - (void)tableView:(UITableView *)tableView
     didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *section = [_filesAndFolders objectAtIndex:indexPath.section];
-    id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
-    
     if (tableView.editing) {
         // Editing mode
         [_editSelection removeObject:indexPath];
