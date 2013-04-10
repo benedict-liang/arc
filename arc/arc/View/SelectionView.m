@@ -24,10 +24,11 @@
 }
 
 - (void)createDragPoints {
-    CGSize dragPointSize = CGSizeMake(5, self.frame.size.height + 3);
+    CGFloat excessHeight = self.frame.size.height * 0.2;
+    CGSize dragPointSize = CGSizeMake(5, self.frame.size.height + excessHeight);
     UIView *rightDragPoint = [[UIView alloc]
                               initWithFrame:CGRectMake(self.frame.origin.x + self.frame.size.width - 2,
-                                                       -3,
+                                                       0,
                                                        dragPointSize.width,
                                                        dragPointSize.height)];
     rightDragPoint.backgroundColor = [UIColor redColor];
@@ -35,6 +36,7 @@
                                                                                  action:@selector(moveRightDragPoint:)];
     [rightDragPoint addGestureRecognizer:panGesture];
     _rightDragPoint = rightDragPoint;
+    [_rightDragPoint setClipsToBounds:NO];
 }
 
 - (void)moveRightDragPoint:(UIPanGestureRecognizer*)panGesture {

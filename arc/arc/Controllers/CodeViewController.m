@@ -393,7 +393,6 @@
     CTLineRef line = cell.line;
     NSString *cellString = cell.string;
     CFIndex index = CTLineGetStringIndexForPosition(line, pointOfTouch);
-    int adjustedIndex = index - 2;
     
     // 1)
     CGPathRef path = CGPathCreateWithRect(CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height), NULL);
@@ -406,7 +405,7 @@
     CTLineGetTypographicBounds(line, &ascent, &descent, NULL);
     
     // 3)
-    CFRange strRange = CTLineGetStringRange(line);
+    //CFRange strRange = CTLineGetStringRange(line);
     
     // 4)
     CGFloat startOffset = CTLineGetOffsetForStringIndex(line, index, NULL);
@@ -422,17 +421,21 @@
     
     if (longPressGesture.state == UIGestureRecognizerStateBegan) {
         _selectionView = [[SelectionView alloc] initWithFrame:lineRect];
-        [[_tableView cellForRowAtIndexPath:cell.indexPath] addSubview:_selectionView];
-        [[_tableView cellForRowAtIndexPath:cell.indexPath] addSubview:_selectionView.rightDragPoint];
+        CodeLineCell *cellAtIndexPath = (CodeLineCell*)[_tableView cellForRowAtIndexPath:cell.indexPath];
+        [cellAtIndexPath addSubview:_selectionView];
+        [cellAtIndexPath addSubview:_selectionView.rightDragPoint];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showCopyMenuForTextSelection) name:@"showCopyMenu" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(showCopyMenuForTextSelection)
+                                                     name:@"showCopyMenu"
+                                                   object:nil];
         
         CGFloat startX = lineRect.origin.x;
         CGFloat endX = lineRect.origin.x + lineRect.size.width;
         CFIndex startIndex = CTLineGetStringIndexForPosition(line, CGPointMake(startX, 0));
         CFIndex endIndex = CTLineGetStringIndexForPosition(line, CGPointMake(endX, 0));
         
-        _selectionView.selectedString = [cellString substringWithRange:NSMakeRange(adjustedIndex, endIndex - startIndex)];
+        _selectionView.selectedString = [cellString substringWithRange:NSMakeRange(startIndex, endIndex - startIndex)];
     }
     if (longPressGesture.state == UIGestureRecognizerStateEnded) {
         [self showCopyMenuForTextSelection];
