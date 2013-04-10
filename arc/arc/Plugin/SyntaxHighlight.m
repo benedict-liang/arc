@@ -16,7 +16,7 @@
     if (self) {
         _delegate = delegate;
         _currentFile = file;
-        _overlays = @[@"comment"];
+        _overlays = @[@"string",@"comment"];
         _bundle = [TMBundleSyntaxParser plistForExt:[file extension]];
         _theme = theme;
         
