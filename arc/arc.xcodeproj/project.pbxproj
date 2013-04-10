@@ -1558,8 +1558,8 @@
 				FC3C2E971715BF8100C40490 /* Vibrant Ink.tmTheme in Resources */,
 				FC3C2E981715BF8100C40490 /* Vibrant Tango.tmTheme in Resources */,
 				FC3C2E991715BF8100C40490 /* zenburn.tmTheme in Resources */,
-				FC3C2E9C1715C1F400C40490 /* ThemeConf.plist in Resources */,
 				4C9137281715B9D900413C79 /* Solarized (dark).tmTheme in Resources */,
+				FC3C2E9C1715C1F400C40490 /* ThemeConf.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
