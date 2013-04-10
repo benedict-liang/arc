@@ -31,6 +31,7 @@
 @property CGFloat lineHeight;
 @property NSMutableArray *lines;
 @property NSMutableArray *plugins;
+@property SelectionView *selectionView;
 
 - (void)loadFile;
 - (void)renderFile;
@@ -372,6 +373,7 @@
     
     cell.line = lineRef;
     cell.string = attributedString.string;
+    cell.indexPath = indexPath;
     
     // Additional code
     UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc]
@@ -385,47 +387,48 @@
 
 - (void)getTextLocation:(UILongPressGestureRecognizer*)longPressGesture {
     
+    CodeLineCell *cell = (CodeLineCell*)[longPressGesture view];
+    CGPoint pointOfTouch = [longPressGesture locationInView:cell];
+    
+    CTLineRef line = cell.line;
+    NSString *cellString = cell.string;
+    CFIndex index = CTLineGetStringIndexForPosition(line, pointOfTouch);
+    int adjustedIndex = index - 2;
+    
+    // 1)
+    CGPathRef path = CGPathCreateWithRect(CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height), NULL);
+    CTFrameRef frame = CTFramesetterCreateFrame(_frameSetter, CFRangeMake(0, 0), path, NULL);
+    CGPoint lineOrigins[3];
+    CTFrameGetLineOrigins(frame, CFRangeMake(0, 0), lineOrigins);
+    
+    // 2)
+    CGFloat ascent, descent;
+    CTLineGetTypographicBounds(line, &ascent, &descent, NULL);
+    
+    // 3)
+    CFRange strRange = CTLineGetStringRange(line);
+    
+    // 4)
+    CGFloat offset = CTLineGetOffsetForStringIndex(line, index, NULL);
+    
+    
+    // Finally
+    CGPoint origin = lineOrigins[0];
+    CGRect lineRect = CGRectMake(origin.x + offset,
+                                 origin.y - descent,
+                                 60,
+                                 ascent + descent);
+    
     if (longPressGesture.state == UIGestureRecognizerStateBegan) {
-        CodeLineCell *cell = (CodeLineCell*)[longPressGesture view];
-        CGPoint pointOfTouch = [longPressGesture locationInView:cell];
-        NSLog(@"point: %f, %f", pointOfTouch.x, pointOfTouch.y);
         
-        CTLineRef line = cell.line;
-        NSString *cellString = cell.string;
-        CFIndex index = CTLineGetStringIndexForPosition(line, pointOfTouch);
-        int adjustedIndex = index - 1;
-        
-        // 1)
-        CGPathRef path = CGPathCreateWithRect(CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height), NULL);
-        CTFrameRef frame = CTFramesetterCreateFrame(_frameSetter, CFRangeMake(0, 0), path, NULL);
-        CGPoint lineOrigins[3];
-        CTFrameGetLineOrigins(frame, CFRangeMake(0, 0), lineOrigins);
-        
-        // 2)
-        CGFloat ascent, descent;
-        CTLineGetTypographicBounds(line, &ascent, &descent, NULL);
-        
-        // 3)
-        CFRange strRange = CTLineGetStringRange(line);
-        
-        // 4)
-        CGFloat offset = CTLineGetOffsetForStringIndex(line, adjustedIndex, NULL);
-        
-        
-        // Finally
-        CGPoint origin = lineOrigins[0];
         NSLog(@"variables: (%f, %f), %f, %f, (%ld, %ld), %f", origin.x, origin.y,
               ascent, descent,
               strRange.location, strRange.length,
               offset);
-        CGRect lineRect = CGRectMake(origin.x + offset,
-                                     origin.y - descent,
-                                     60,
-                                     ascent + descent);
         
-        SelectionView *view = [[SelectionView alloc] initWithFrame:lineRect];
-        [cell addSubview:view];
-        [cell bringSubviewToFront:view];
+        _selectionView = [[SelectionView alloc] initWithFrame:lineRect];
+        [[_tableView cellForRowAtIndexPath:cell.indexPath] addSubview:_selectionView];
+        [[_tableView cellForRowAtIndexPath:cell.indexPath] bringSubviewToFront:_selectionView];
         
         CGFloat startX = lineRect.origin.x;
         CGFloat endX = lineRect.origin.x + lineRect.size.width;
@@ -445,10 +448,17 @@
         //                              ascent + descent);
     }
     if (longPressGesture.state == UIGestureRecognizerStateEnded) {
+        [_selectionView becomeFirstResponder];
+
+        UIMenuController *menuController = [UIMenuController sharedMenuController];
+        [menuController setTargetRect:_selectionView.frame inView:_selectionView.superview];
         
+        [menuController setMenuVisible:YES animated:YES];
     }
-    
-    
+}
+
+- (void)copy:(id)sender {
+    NSLog(@"sender: %@", sender);
 }
 
 #pragma mark - UIMenuController required methods
@@ -457,14 +467,14 @@
     return YES;
 }
 
-- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
-    NSLog(@"canPerformAction");
-    // The selector(s) should match your UIMenuItem selector
-    if (action == @selector(customAction:)) {
-        return YES;
-    }
-    return NO;
-}
+//- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+//    NSLog(@"canPerformAction");
+//    // The selector(s) should match your UIMenuItem selector
+//    if (action == @selector(copy:)) {
+//        return YES;
+//    }
+//    return NO;
+//}
 
 #pragma mark - Table view delegate
 
