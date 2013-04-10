@@ -12,10 +12,22 @@
 #import "File.h"
 #import "Folder.h"
 
+typedef enum {
+    kNormalMode,
+    kEditMode
+} kFolderViewControllerMode;
+
 @interface FolderViewController ()
 @property id<Folder> folder;
 @property UITableView *tableView;
+@property kFolderViewControllerMode folderViewMode;
 @property NSArray *filesAndFolders;
+
+// Edit/Normal Modes
+- (void)editMode:(id)sender;
+- (void)normalMode:(id)sender;
+- (void)showCancelButton;
+- (void)showEditButton;
 @end
 
 @implementation FolderViewController
@@ -26,6 +38,7 @@
     self = [super init];
     if (self) {
         _folder = folder;
+        _folderViewMode = kNormalMode;
         [self sortFilesAndFolders];
     }
     return self;
@@ -59,12 +72,12 @@
     
     // Hooks into UINavigationViewController
     self.title = _folder.name;
-
     self.view.autoresizesSubviews = YES;
 
     // Set Up TableView
-    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds
-                                              style:UITableViewStylePlain];
+    _tableView =
+        [[UITableView alloc] initWithFrame:self.view.bounds
+                                     style:UITableViewStylePlain];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
         UIViewAutoresizingFlexibleWidth;
 
@@ -76,6 +89,8 @@
     _tableView.delegate = self;
     
     [self.view addSubview:_tableView];
+
+    [self normalMode:nil];
 }
 
 // Work Around to track back button action.
@@ -113,12 +128,7 @@ titleForHeaderInSection:(NSInteger)section {
     if ([self tableView:tableView numberOfRowsInSection:section] == 0) {
         return nil;
     }
-
-    if (section == 0) {
-        return @"Folders";
-    } else {
-        return @"Files";
-    }
+    return section == 0 ? @"Folders" : @"Files";
 }
 
 // Sets up a table cell for the given index path.
@@ -158,7 +168,8 @@ titleForHeaderInSection:(NSInteger)section {
 }
 
 // Determines if the cell at the given index path can be edited.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (BOOL)tableView:(UITableView *)tableView
+    canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSArray *currentSection = [_filesAndFolders objectAtIndex:indexPath.section];
     id<FileSystemObject> fileObject = [currentSection objectAtIndex:indexPath.row];
@@ -169,25 +180,85 @@ titleForHeaderInSection:(NSInteger)section {
 #pragma mark - Table view delegate
 
 // Triggered when the cell at the given index path is selected.
-- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
+- (void)tableView:(UITableView*)tableView
+    didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NSArray *section = [_filesAndFolders objectAtIndex:indexPath.section];
     id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
-    [self.delegate fileObjectSelected:fileObject];
     
-    // unhighlight TableViewCell
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    // Editing mode
+    if (_folderViewMode == kEditMode) {
+        
+        return;
+    }
+    
+    // Normal Mode
+    if (_folderViewMode == kNormalMode) {
+        [self.delegate fileObjectSelected:fileObject];
+        [tableView deselectRowAtIndexPath:indexPath
+                                 animated:YES];
+    }
 }
 
-#pragma mark - Editing-related methods
-- (void)toggleEdit:(id)sender
+- (void)tableView:(UITableView *)tableView
+    didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BOOL shouldTableEdit = !_tableView.editing;
-    [_tableView setEditing:shouldTableEdit animated:YES];
+    NSArray *section = [_filesAndFolders objectAtIndex:indexPath.section];
+    id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
+    
+    // Editing mode
+    if (_folderViewMode == kEditMode) {
+        NSLog(@"asdf");
+        return;
+    }
+    
+    // Normal Mode
+    if (_folderViewMode == kNormalMode) {
+        // Do nothing.
+    }
+}
+
+#pragma mark - Edit Related methods
+- (void)editMode:(id)sender
+{
+    _folderViewMode = kEditMode;
+    _tableView.allowsMultipleSelectionDuringEditing = YES;
+    [_tableView setEditing:YES animated:YES];
+    [self showCancelButton];
+}
+
+- (void)showCancelButton
+{
+    UIBarButtonItem *cancelButton =
+    [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                     style:UIBarButtonItemStyleBordered
+                                    target:self
+                                    action:@selector(normalMode:)];
+    self.navigationItem.rightBarButtonItem = cancelButton;
+}
+
+- (void)normalMode:(id)sender
+{
+    _folderViewMode = kNormalMode;
+    _tableView.allowsMultipleSelectionDuringEditing = NO;
+    [_tableView setEditing:NO animated:YES];
+    [self showEditButton];
+}
+
+- (void)showEditButton
+{
+    UIBarButtonItem *editButton =
+    [[UIBarButtonItem alloc] initWithTitle:@"Edit"
+                                     style:UIBarButtonItemStyleBordered
+                                    target:self
+                                    action:@selector(editMode:)];
+    self.navigationItem.rightBarButtonItem = editButton;
 }
 
 // Triggers when the user confirms an edit operation on the cell at the given index path.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView
+    commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+     forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSArray *currentSection = [_filesAndFolders objectAtIndex:indexPath.section];

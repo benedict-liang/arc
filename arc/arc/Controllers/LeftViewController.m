@@ -200,16 +200,6 @@
     
     [_documentsNavigationViewController pushViewController:folderViewController
                                                   animated:animated];
-
-    // tmp.
-    // Edit Button
-    UIBarButtonItem *editButton =
-    [[UIBarButtonItem alloc] initWithTitle:@"Edit"
-                                     style:UIBarButtonItemStyleBordered
-                                    target:folderViewController
-                                    action:@selector(toggleEdit:)];
-    
-    folderViewController.navigationItem.rightBarButtonItem = editButton;
 }
 
 - (void)pushFolderView:(id<Folder>)folder
