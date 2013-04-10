@@ -68,25 +68,24 @@
                          delegate:(id)delegate
 {
     NSString* themeName = [properties objectForKey:_colorSchemeSettingKey];
-    _theme = [TMBundleThemeHandler produceStylesWithTheme:themeName];
+    _theme = themeName;
     
-    NSDictionary* global = [_theme objectForKey:@"global"];
+    NSDictionary* themeDictionary = [TMBundleThemeHandler produceStylesWithTheme:themeName];
+    NSDictionary* global = [themeDictionary objectForKey:@"global"];
     UIColor* foreground = [global objectForKey:@"foreground"];
     [arcAttributedString setColor:[foreground CGColor]
                           OnRange:NSMakeRange(0, [(NSString*)[file contents] length])
                        ForSetting:@"syntaxHighlight"];
     
-    [dictionary setValue:[_theme objectForKey:@"global"]
+    [dictionary setValue:[themeDictionary objectForKey:@"global"]
                   forKey:@"syntaxHighlightingPlugin"];
     
     SyntaxHighlight* cachedHighlighter = [_cache objectForKey:[file name]];
     
-    NSDictionary* themeCopy =  [TMBundleThemeHandler produceStylesWithTheme:themeName];
-    
     if (cachedHighlighter) {
         
         NSDictionary *syntaxOpts = @{
-        @"theme":themeCopy,
+        @"theme":themeName,
         @"attributedString":arcAttributedString
         };
         
@@ -99,7 +98,7 @@
             ArcAttributedString *copy =
             [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
             NSDictionary* syntaxOptions = @{
-                                            @"theme":themeCopy,
+                                            @"theme":themeName,
                                             @"attributedString":copy
                                             };
             

@@ -496,8 +496,8 @@
 - (void)execOn:(NSDictionary*)options
 {
     ArcAttributedString *output = [options objectForKey:@"attributedString"];
-    NSDictionary* theme = [options objectForKey:@"theme"];
-    
+    NSString* themeName = [options objectForKey:@"theme"];
+    NSDictionary* theme = [TMBundleThemeHandler produceStylesWithTheme:themeName];
     
     
     NSMutableArray* patterns = [NSMutableArray arrayWithArray:[_bundle objectForKey:@"patterns"]];
@@ -523,7 +523,8 @@
     
     if (_isProcessed) {
         ArcAttributedString *output = [options objectForKey:@"attributedString"];
-        NSDictionary* theme = [options objectForKey:@"theme"];
+        NSString* themeName = [options objectForKey:@"theme"];
+        NSDictionary* theme = [TMBundleThemeHandler produceStylesWithTheme:themeName];
         [self applyStylesTo:output withTheme:theme];
         [self updateView:output withTheme:theme];
     }
