@@ -39,7 +39,13 @@
     [_textField setDelegate:self];
     [[self view] addSubview:createFolderLabel];
     [[self view] addSubview:_textField];
+}
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSString *input = [_textField text];
+    [_delegate createFolderWithName:input];
+    return NO;
 }
 
 - (void)viewDidLoad
