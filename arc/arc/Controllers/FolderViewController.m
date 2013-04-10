@@ -19,6 +19,8 @@
 
 @property CreateFolderViewController *createFolderController;
 @property UIPopoverController *addFolderPopoverController;
+
+@property UIBarButtonItem *addFolderButton;
 @end
 
 @implementation FolderViewController
@@ -60,11 +62,15 @@
 {
     [super viewDidLoad];
     
-    UIBarButtonItem *addFolderButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(triggerAddFolder)];
+    _addFolderButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(triggerAddFolder)];
     
     // Set up the navigation bar.
     self.title = _folder.name;
-    self.navigationItem.rightBarButtonItem = addFolderButton;
+    
+    // Add the "add folder" button. (TEMP - move as needed to improve UX.)
+    NSMutableArray *rightButtonItems = [NSMutableArray arrayWithArray:self.navigationItem.rightBarButtonItems];
+    [rightButtonItems addObject:_addFolderButton];
+    self.navigationItem.rightBarButtonItems = rightButtonItems;
 
     self.view.autoresizesSubviews = YES;
 
@@ -213,9 +219,16 @@ titleForHeaderInSection:(NSInteger)section {
 // Triggers when the user clicks the Add button.
 - (void)triggerAddFolder
 {
-    _addFolderPopoverController = [[UIPopoverController alloc] initWithContentViewController:_createFolderController];
-    _addFolderPopoverController.passthroughViews = [NSArray arrayWithObject:_tableView];
-    [_addFolderPopoverController presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    if (!_addFolderPopoverController) {
+        _addFolderPopoverController = [[UIPopoverController alloc] initWithContentViewController:_createFolderController];
+    }
+    
+    // Toggle the visibility of the popover controller.
+    if (![_addFolderPopoverController isPopoverVisible]) {
+        [_addFolderPopoverController presentPopoverFromBarButtonItem:_addFolderButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    } else {
+        [_addFolderPopoverController dismissPopoverAnimated:YES];
+    }
 }
 
 @end
