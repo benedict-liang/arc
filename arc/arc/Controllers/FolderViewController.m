@@ -104,8 +104,6 @@
     
     // Create the add folder controller.
     _createFolderController = [[CreateFolderViewController alloc] init];
-    [_createFolderController setFolder:_folder];
-//    [_createFolderController.tableView reloadData];
     
     _editToolbar = [[UIToolbar alloc] init];
     _editToolbar.frame = CGRectMake(0, self.view.frame.size.height,
