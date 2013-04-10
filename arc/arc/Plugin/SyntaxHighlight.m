@@ -275,7 +275,7 @@
         NSString *str = [include substringFromIndex:1];
         
         if ([str isEqualToString:@"comment"]) {
-           // NSLog(@"%@", [self repositoryRule:str]);
+            NSLog(@"%@", [self repositoryRule:str]);
         }
         
         id rule = [self repositoryRule:str];
@@ -384,7 +384,7 @@
             NSDictionary *endCaptures = [syntaxItem objectForKey:@"endCaptures"];
             NSDictionary *captures = [syntaxItem objectForKey:@"captures"];
             NSString *include = [syntaxItem objectForKey:@"include"];
-            
+            NSArray* embedPatterns = [syntaxItem objectForKey:@"patterns"];
             //case name, match
             if (name && match) {
                 NSArray *a = [self foundPattern:match
@@ -420,6 +420,8 @@
                 [self processPairRange:contentRange
                                   item:syntaxItem
                                 output:output];
+            } else if (embedPatterns) {
+                [self iterPatternsForRange:contentRange patterns:embedPatterns output:output];
             }
             if (include) {
                 id includes = [self resolveInclude:include];
@@ -481,8 +483,13 @@
 {
     
     [self applyForeground:output];
+    NSMutableArray* patterns = [NSMutableArray arrayWithArray:[_bundle objectForKey:@"patterns"]];
+    NSDictionary* repo = [_bundle objectForKey:@"repository"];
+    for (id k in repo) {
+        [patterns addObject:[repo objectForKey:k]];
+    }
     [self iterPatternsForRange:NSMakeRange(0, [_content length])
-                      patterns:[_bundle objectForKey:@"patterns"]
+                      patterns:patterns
                         output:output];
     
     [self applyStylesTo:output withRanges:pairMatches];
@@ -494,7 +501,7 @@
     [self applyStylesTo:output withRanges:overlapMatches];
     
     //NSLog(@"%@",pairMatches);
-    //[self logs];
+    [self logs];
     //NSLog(@"Updating!");
     
     [self updateView:output];
