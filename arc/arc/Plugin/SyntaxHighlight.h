@@ -23,12 +23,13 @@
     __block NSDictionary *contentNameMatches;
     __block NSDictionary *overlapMatches;
 }
-@property (readonly) NSDictionary* theme;
+
 @property (readonly) id<CodeViewControllerDelegate> delegate;
 @property (readonly) id<File> currentFile;
 @property (readonly) NSString* content;
 @property (readonly) NSDictionary* bundle;
 @property NSArray* overlays;
 
-- (id)initWithFile:(id<File>)file del:(id<CodeViewControllerDelegate>)delegate theme:(NSDictionary*)theme;
+- (id)initWithFile:(id<File>)file del:(id<CodeViewControllerDelegate>)delegate;
+
 @end

@@ -10,7 +10,7 @@
 
 @implementation SyntaxHighlight
 
-- (id)initWithFile:(id<File>)file del:(id<CodeViewControllerDelegate>)delegate theme:(NSDictionary*)theme
+- (id)initWithFile:(id<File>)file del:(id<CodeViewControllerDelegate>)delegate
 {
     self = [super init];
     if (self) {
@@ -18,7 +18,6 @@
         _currentFile = file;
         _overlays = @[@"string",@"comment"];
         _bundle = [TMBundleSyntaxParser plistForExt:[file extension]];
-        _theme = theme;
         
         if ([[file contents] isKindOfClass:[NSString class]]) {
             _content = (NSString*)[file contents];
@@ -137,11 +136,12 @@
                     range:(NSRange)range
                    output:(ArcAttributedString*)output
                      dict:(NSObject*)dict
+                    theme:(NSDictionary*)theme
 {
     
     NSArray* capturableScopes = [self capturableScopes:name];
     for (NSString *s in capturableScopes) {
-        NSDictionary* style = [(NSDictionary*)[_theme objectForKey:@"scopes"] objectForKey:s];
+        NSDictionary* style = [(NSDictionary*)[theme objectForKey:@"scopes"] objectForKey:s];
         if (![dict isEqual:(NSObject*)overlapMatches] && [_overlays containsObject:s]) {
             overlapMatches = [self addRange:range scope:s dict:overlapMatches];
         }
@@ -202,6 +202,7 @@
 
 - (void)applyStylesTo:(ArcAttributedString*)output
            withRanges:(NSDictionary*)pairs
+            withTheme:(NSDictionary*)theme
 {
     if (pairs) {
         for (NSString* scope in pairs) {
@@ -212,7 +213,8 @@
                 [self applyStyleToScope:scope
                                   range:range
                                  output:output
-                                   dict:pairs];
+                                   dict:pairs
+                                  theme:theme];
             }
         }
     }
@@ -453,12 +455,12 @@
             [pattern rangeOfString:@"\\A"].location != NSNotFound);
 }
 
-- (void)updateView:(ArcAttributedString*)output
+- (void)updateView:(ArcAttributedString*)output withTheme:(NSDictionary*)theme
 {
     if (self.delegate) {
         [self.delegate mergeAndRenderWith:output
                                   forFile:self.currentFile
-                                WithStyle:[_theme objectForKey:@"global"]];
+                                WithStyle:[theme objectForKey:@"global"]];
     }
 }
 - (void)logs {
@@ -469,9 +471,9 @@
     NSLog(@"pairM: %@",pairMatches);
     
 }
-- (void)applyForeground:(ArcAttributedString*)output
+- (void)applyForeground:(ArcAttributedString*)output withTheme:(NSDictionary*)theme
 {
-    NSDictionary* global = [_theme objectForKey:@"global"];
+    NSDictionary* global = [theme objectForKey:@"global"];
     UIColor* foreground = [global objectForKey:@"foreground"];
     if (foreground) {
         [self styleOnRange:NSMakeRange(0, [_content length])
@@ -479,10 +481,13 @@
                     output:output];
     }
 }
-- (void)execOn:(ArcAttributedString *)output
+- (void)execOn:(NSDictionary*)options 
 {
+    ArcAttributedString *output = [options objectForKey:@"attributedString"];
+    NSDictionary* theme = [options objectForKey:@"theme"];
     
-    [self applyForeground:output];
+    [self applyForeground:output withTheme:theme];
+    
     NSMutableArray* patterns = [NSMutableArray arrayWithArray:[_bundle objectForKey:@"patterns"]];
     NSDictionary* repo = [_bundle objectForKey:@"repository"];
     for (id k in repo) {
@@ -492,19 +497,19 @@
                       patterns:patterns
                         output:output];
     
-    [self applyStylesTo:output withRanges:pairMatches];
-    [self applyStylesTo:output withRanges:nameMatches];
-    [self applyStylesTo:output withRanges:captureMatches];
-    [self applyStylesTo:output withRanges:beginCMatches];
-    [self applyStylesTo:output withRanges:endCMatches];
-    [self applyStylesTo:output withRanges:contentNameMatches];
-    [self applyStylesTo:output withRanges:overlapMatches];
+    [self applyStylesTo:output withRanges:pairMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:nameMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:captureMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:beginCMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:endCMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:contentNameMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:overlapMatches withTheme:theme];
     
     //NSLog(@"%@",pairMatches);
     //[self logs];
     //NSLog(@"Updating!");
     
-    [self updateView:output];
+    [self updateView:output withTheme:theme];
 }
 
 

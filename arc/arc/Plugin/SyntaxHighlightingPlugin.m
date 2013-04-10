@@ -37,6 +37,8 @@
 
         
         [_properties setValue:_options forKey:PLUGIN_OPTIONS];
+        
+        _cache = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -67,23 +69,31 @@
 {
     NSString* themeName = [properties objectForKey:_colorSchemeSettingKey];
     _theme = [TMBundleThemeHandler produceStylesWithTheme:themeName];
-    SyntaxHighlight* sh = [[SyntaxHighlight alloc] initWithFile:file del:delegate theme:_theme];
-    
-    NSDictionary* global = [_theme objectForKey:@"global"];
-    UIColor* foreground = [global objectForKey:@"foreground"];
-    [arcAttributedString setColor:[foreground CGColor]
-                          OnRange:NSMakeRange(0, [(NSString*)[file contents] length])
-                       ForSetting:@"syntaxHighlight"];
-    
-    [dictionary setValue:[_theme objectForKey:@"global"]
-                  forKey:@"syntaxHighlightingPlugin"];
-    
-    if (sh.bundle) {
-        ArcAttributedString *copy =
-        [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
-        [sh performSelectorInBackground:@selector(execOn:)
-                             withObject:copy];
+    if ([_cache objectForKey:[file name]]) {
+        
+        
+    } else {
+        SyntaxHighlight* sh = [[SyntaxHighlight alloc] initWithFile:file del:delegate theme:_theme];
+        
+        NSDictionary* global = [_theme objectForKey:@"global"];
+        UIColor* foreground = [global objectForKey:@"foreground"];
+        [arcAttributedString setColor:[foreground CGColor]
+                              OnRange:NSMakeRange(0, [(NSString*)[file contents] length])
+                           ForSetting:@"syntaxHighlight"];
+        
+        [dictionary setValue:[_theme objectForKey:@"global"]
+                      forKey:@"syntaxHighlightingPlugin"];
+        
+        if (sh.bundle) {
+            ArcAttributedString *copy =
+            [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
+            [sh performSelectorInBackground:@selector(execOn:)
+                                 withObject:copy];
+            
+            [_cache setObject:sh forKey:[file name]];
+        }
     }
+
 }
 
 - (void)execOnTableView:(UITableView *)tableView
