@@ -183,10 +183,10 @@
     CGFloat asscent, descent, leading;
     if ([_lines count] > 0) {
         CTLineRef line = CTLineCreateWithAttributedString(
-            (__bridge CFAttributedStringRef)(
-                [_arcAttributedString.attributedString attributedSubstringFromRange:
-                    [[_lines objectAtIndex:0] rangeValue]]));
-
+                                                          (__bridge CFAttributedStringRef)(
+                                                                                           [_arcAttributedString.attributedString attributedSubstringFromRange:
+                                                                                            [[_lines objectAtIndex:0] rangeValue]]));
+        
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
         _lineHeight = asscent + descent + leading;
         _tableView.rowHeight = ceil(_lineHeight);
@@ -244,8 +244,8 @@
                                                     target:nil
                                                     action:nil];
     _searchButtonIcon = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
-                                                                                      target:self
-                                                                                      action:@selector(showSearchToolBar)];
+                                                                      target:self
+                                                                      action:@selector(showSearchToolBar)];
     [_toolbar setItems:[NSArray arrayWithObjects:
                         [Utils flexibleSpace],
                         _toolbarTitle,
@@ -393,24 +393,59 @@
         CTLineRef line = cell.line;
         NSString *cellString = cell.string;
         CFIndex index = CTLineGetStringIndexForPosition(line, pointOfTouch);
-        int adjustedIndex = index - 2;
+        int adjustedIndex = index - 1;
         
-        CGRect rect = CGRectMake(pointOfTouch.x, 0, 20, cell.frame.size.height);
-        SelectionView *view = [[SelectionView alloc] initWithFrame:rect];
+        // 1)
+        CGPathRef path = CGPathCreateWithRect(CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height), NULL);
+        CTFrameRef frame = CTFramesetterCreateFrame(_frameSetter, CFRangeMake(0, 0), path, NULL);
+        CGPoint lineOrigins[3];
+        CTFrameGetLineOrigins(frame, CFRangeMake(0, 0), lineOrigins);
+        
+        // 2)
+        CGFloat ascent, descent;
+        CTLineGetTypographicBounds(line, &ascent, &descent, NULL);
+        
+        // 3)
+        CFRange strRange = CTLineGetStringRange(line);
+        
+        // 4)
+        CGFloat offset = CTLineGetOffsetForStringIndex(line, adjustedIndex, NULL);
+        
+        
+        // Finally
+        CGPoint origin = lineOrigins[0];
+        NSLog(@"variables: (%f, %f), %f, %f, (%ld, %ld), %f", origin.x, origin.y,
+              ascent, descent,
+              strRange.location, strRange.length,
+              offset);
+        CGRect lineRect = CGRectMake(origin.x + offset,
+                                     origin.y - descent,
+                                     60,
+                                     ascent + descent);
+        
+        SelectionView *view = [[SelectionView alloc] initWithFrame:lineRect];
         [cell addSubview:view];
         [cell bringSubviewToFront:view];
         
-        //    [view setNeedsDisplayInRect:rect];
+        CGFloat startX = lineRect.origin.x;
+        CGFloat endX = lineRect.origin.x + lineRect.size.width;
+        CFIndex startIndex = CTLineGetStringIndexForPosition(line, CGPointMake(startX, 0));
+        CFIndex endIndex = CTLineGetStringIndexForPosition(line, CGPointMake(endX, 0));
         
-        NSLog(@"%@", [cellString substringFromIndex:adjustedIndex]);
+        NSLog(@"string selected: %@", [cellString substringWithRange:NSMakeRange(adjustedIndex, endIndex - startIndex)]);
+        
+        
+        //        Basically you have to save all CTLine rects and origins using CTFrameGetLineOrigins(1), CTLineGetTypographicBounds(2), CTLineGetStringRange(3) and CTLineGetOffsetForStringIndex(4).
+        //
+        //        The line rect can be calculated using the origin(1), ascent(2), descent(2) and offset(3)(4) as shown bellow.
+        //
+        //        lineRect = CGRectMake(origin.x + offset,
+        //                              origin.y - descent,
+        //                              offset,
+        //                              ascent + descent);
     }
     if (longPressGesture.state == UIGestureRecognizerStateEnded) {
-//        UIMenuItem* item1 = [[UIMenuItem alloc] initWithTitle:@"Copy" action:nil];//@selector(myMenuAction:)];
-//        UIMenuController *menuController = [UIMenuController sharedMenuController];
-//
-//        [menuController setTargetRect:longPressGesture.view.bounds inView:longPressGesture.view.sup];
-//        [menuController setMenuItems:[NSArray arrayWithObject:item1]];
-//        [menuController setMenuVisible:YES animated:YES];
+        
     }
     
     
@@ -454,9 +489,9 @@
     _resultsViewController.resultsArray = searchResultRanges;
     [_resultsViewController.tableView reloadData];
     [_resultsPopoverController presentPopoverFromRect:[_searchBar bounds]
-                                              inView:_searchBar
-                            permittedArrowDirections:UIPopoverArrowDirectionAny
-                                            animated:YES];
+                                               inView:_searchBar
+                             permittedArrowDirections:UIPopoverArrowDirectionAny
+                                             animated:YES];
 }
 
 @end
