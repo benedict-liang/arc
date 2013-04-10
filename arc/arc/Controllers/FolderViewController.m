@@ -17,10 +17,12 @@
 @property UITableView *tableView;
 @property NSArray *filesAndFolders;
 @property NSMutableArray *editSelection;
+@property UIToolbar *editToolbar;
 
 // Edit/Normal Modes
 - (void)editMode;
 - (void)normalMode;
+
 @property CreateFolderViewController *createFolderController;
 @property UIPopoverController *addFolderPopoverController;
 @property UIBarButtonItem *addFolderButton;
@@ -101,6 +103,11 @@
     _createFolderController = [[CreateFolderViewController alloc] init];
     [_createFolderController setFolder:_folder];
 //    [_createFolderController.tableView reloadData];
+    
+    _editToolbar = [[UIToolbar alloc] init];
+    _editToolbar.frame = CGRectMake(0, self.view.frame.size.height,
+                                    self.view.frame.size.width, 44);
+    [self.view addSubview:_editToolbar];
 }
 
 // Work Around to track back button action.
@@ -199,6 +206,7 @@ titleForHeaderInSection:(NSInteger)section {
     if (tableView.editing) {
         // Editing mode
         [_editSelection addObject:fileObject];
+        [self editActionTriggeredAnimate:YES];
         return;
     } else {
         // Normal mode
@@ -217,6 +225,7 @@ titleForHeaderInSection:(NSInteger)section {
     if (tableView.editing) {
         // Editing mode
         [_editSelection removeObject:fileObject];
+        [self editActionTriggeredAnimate:YES];
         return;
     } else {
         // Normal Mode
@@ -236,18 +245,59 @@ titleForHeaderInSection:(NSInteger)section {
     } else {
         [self normalMode];
     }
-    
 }
 
 - (void)editMode
 {
     _editSelection = [NSMutableArray array];
-    [self.folderViewControllerDelegate enterEditMode];
+    [self.folderViewControllerDelegate folderViewController:self
+                                    DidEnterEditModeAnimate:YES];
 }
 
 - (void)normalMode
 {
-    [self.folderViewControllerDelegate exitEditMode];
+    _editSelection = [NSMutableArray array];
+    [self.folderViewControllerDelegate folderViewController:self
+                                    DidExitEditModeAnimate:YES];
+}
+
+- (void)editActionTriggeredAnimate:(BOOL)animate
+{
+    if ([_editSelection count] > 0) {
+        [self showEditToolbarAnimate:animate];
+    } else {
+        [self hideEditToolbarAnimate:animate];
+    }
+}
+
+- (void)showEditToolbarAnimate:(BOOL)animate
+{
+    CGRect endState = CGRectMake(0, self.view.frame.size.height - 44,
+                                    self.view.frame.size.width, 44);
+    if (!animate) {
+        _editToolbar.frame = endState;
+        return;
+    }
+
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    _editToolbar.frame = endState;
+    [UIView commitAnimations];
+}
+
+- (void)hideEditToolbarAnimate:(BOOL)animate
+{
+    CGRect endState = CGRectMake(0, self.view.frame.size.height,
+                                 self.view.frame.size.width, 44);
+    if (!animate) {
+        _editToolbar.frame = endState;
+        return;
+    }
+
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    _editToolbar.frame = endState;
+    [UIView commitAnimations];
 }
 
 // Triggers when the user confirms an edit operation on the cell at the given index path.

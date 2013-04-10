@@ -19,4 +19,5 @@
 - (id)initWithFolder:(id<Folder>)folder;
 - (void)triggerAddFolder;
 - (void)refreshFolderContents;
+- (void)editActionTriggeredAnimate:(BOOL)animate;
 @end

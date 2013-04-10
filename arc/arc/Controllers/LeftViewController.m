@@ -14,7 +14,6 @@
 
 @interface LeftViewController ()
 @property (nonatomic, strong) id<Folder> currentFolder;
-@property (nonatomic, strong) UIToolbar *editToolbar;
 @property (nonatomic, strong) UIViewController *currentViewController;
 @property (nonatomic, strong) UITabBarController *tabBarController;
 @property (nonatomic, strong) UINavigationController *documentsNavigationViewController;
@@ -213,21 +212,29 @@
 
 # pragma mark - Folder View Controller Delegate
 
-- (void)enterEditMode
+- (void)folderViewController:(FolderViewController*)folderviewController DidEnterEditModeAnimate:(BOOL)animate
 {
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
-    [self hideTabBar:_tabBarController];
-    [UIView commitAnimations];
+    [UIView animateWithDuration:0.3
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         [self hideTabBar:_tabBarController];
+                     }
+                     completion:^(BOOL finished){
+                         [folderviewController editActionTriggeredAnimate:NO];
+                     }];
 }
 
-- (void)exitEditMode
+- (void)folderViewController:(FolderViewController*)folderviewController DidExitEditModeAnimate:(BOOL)animate
 {
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
-    [self showTabBar:_tabBarController];
-    [UIView commitAnimations];
-
+    [folderviewController editActionTriggeredAnimate:NO];
+    [UIView animateWithDuration:0.3
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                        [self showTabBar:_tabBarController];
+                     }
+                     completion:^(BOOL finished){}];
 }
 
 # pragma mark - tmp code

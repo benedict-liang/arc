@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+@class FolderViewController;
 
 @protocol FolderViewControllerDelegate <NSObject>
-- (void)enterEditMode;
-- (void)exitEditMode;
+- (void)folderViewController:(FolderViewController*)folderviewController DidEnterEditModeAnimate:(BOOL)animate;
+- (void)folderViewController:(FolderViewController*)folderviewController DidExitEditModeAnimate:(BOOL)animate;
 @end
