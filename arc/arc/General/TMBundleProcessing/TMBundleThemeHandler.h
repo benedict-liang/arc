@@ -27,6 +27,6 @@
         }
     }
  */
-+ (NSDictionary*)produceStylesWithTheme:(NSURL*)url;
++ (NSDictionary*)produceStylesWithTheme:(NSString*)name;
 
 @end

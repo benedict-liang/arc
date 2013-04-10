@@ -10,9 +10,9 @@
 
 @implementation TMBundleThemeHandler
 
-+ (NSDictionary*)produceStylesWithTheme:(NSURL *)url {
++ (NSDictionary*)produceStylesWithTheme:(NSString*)name {
     //TODO manage theme selection
-    NSURL *testURL = [[NSBundle mainBundle] URLForResource:@"Monokai.tmTheme" withExtension:nil];
+    NSURL *testURL = [[NSBundle mainBundle] URLForResource:name withExtension:nil];
     NSDictionary* tmTheme = [NSDictionary dictionaryWithContentsOfURL:testURL];
     
     NSArray *settings = [tmTheme objectForKey:@"settings"];

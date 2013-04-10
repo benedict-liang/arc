@@ -10,6 +10,10 @@
 
 @interface SyntaxHighlightingPlugin ()
 @property (nonatomic, strong) NSString* colorSchemeSettingKey;
+// Dictionary describing fontFamilySetting
+@property NSMutableDictionary *properties;
+@property NSArray *options;
+@property NSString *defaultTheme;
 @end
 
 @implementation SyntaxHighlightingPlugin
@@ -20,8 +24,27 @@
     self = [super init];
     if (self) {
         _colorSchemeSettingKey = @"colorScheme";
+        _defaultTheme = @"Monokai.tmTheme";
         _settingKeys = [NSArray arrayWithObject:_colorSchemeSettingKey];
         _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
+        _properties = [NSMutableDictionary dictionary];
+        [_properties setValue:@"Color Theme" forKey:PLUGIN_TITLE];
+        
+        [_properties setValue:[NSNumber numberWithInt:kMCQSettingType]
+                       forKey:PLUGIN_TYPE];
+        _options = @[
+                    @{
+        PLUGIN_OPTION_LABEL: @"Monokai",
+        PLUGIN_OPTION_VALUE: _defaultTheme
+                    },
+                    @{
+        PLUGIN_OPTION_LABEL : @"Solarized (light)",
+        PLUGIN_OPTION_VALUE: @"Solarized (light).tmTheme"
+                    }
+        
+                    ];
+        
+        [_properties setValue:_options forKey:PLUGIN_OPTIONS];
     }
     return self;
 }
@@ -32,6 +55,8 @@
                      sharedObject:(NSMutableDictionary *)dictionary
                          delegate:(id)delegate
 {
+    NSString* themeName = [properties objectForKey:_colorSchemeSettingKey];
+    _theme = [TMBundleThemeHandler produceStylesWithTheme:themeName];
     SyntaxHighlight* sh = [[SyntaxHighlight alloc] initWithFile:file del:delegate theme:_theme];
     
     NSDictionary* global = [_theme objectForKey:@"global"];
@@ -63,13 +88,13 @@
 
 - (NSDictionary*)propertiesFor:(NSString *)settingKey
 {
-    return nil;
+    return [NSDictionary dictionaryWithDictionary:_properties];
 }
 
 - (id<NSObject>)defaultValueFor:(NSString *)settingKey
 {
     if ([settingKey isEqualToString:_colorSchemeSettingKey]) {
-        return @"tmpval";
+        return _defaultTheme;
     }
     return nil;
 }
