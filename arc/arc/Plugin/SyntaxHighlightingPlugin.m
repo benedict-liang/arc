@@ -28,12 +28,13 @@
         _settingKeys = [NSArray arrayWithObject:_colorSchemeSettingKey];
         _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
         _properties = [NSMutableDictionary dictionary];
-        [_properties setValue:@"Color Theme" forKey:PLUGIN_TITLE];
+        [_properties setValue:@"Color Schemes" forKey:PLUGIN_TITLE];
         
         [_properties setValue:[NSNumber numberWithInt:kMCQSettingType]
                        forKey:PLUGIN_TYPE];
         
         _options = [SyntaxHighlightingPlugin generateOptions];
+
         
         [_properties setValue:_options forKey:PLUGIN_OPTIONS];
     }
@@ -72,16 +73,16 @@
     UIColor* foreground = [global objectForKey:@"foreground"];
     [arcAttributedString setColor:[foreground CGColor]
                           OnRange:NSMakeRange(0, [(NSString*)[file contents] length])
-                       ForSetting:@"asdf"];
+                       ForSetting:@"syntaxHighlight"];
     
     [dictionary setValue:[_theme objectForKey:@"global"]
                   forKey:@"syntaxHighlightingPlugin"];
-
+    
     if (sh.bundle) {
         ArcAttributedString *copy =
-            [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
+        [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
         [sh performSelectorInBackground:@selector(execOn:)
-                               withObject:copy];
+                             withObject:copy];
     }
 }
 
