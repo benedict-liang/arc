@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Folder.h"
+#import "CreateFolderViewControllerDelegate.h"
 
-@interface CreateFolderViewController : UIViewController
+@interface CreateFolderViewController : UIViewController <UITextFieldDelegate>
 
-@property (weak, nonatomic) id<Folder> folder;
+@property (weak, nonatomic) id<CreateFolderViewControllerDelegate> delegate;
+
+- (id)initWithDelegate:(id<CreateFolderViewControllerDelegate>)delegate;
 
 @end

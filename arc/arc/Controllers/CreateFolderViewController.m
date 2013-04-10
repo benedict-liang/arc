@@ -10,9 +10,19 @@
 
 @interface CreateFolderViewController ()
 
+@property UITextField *textField;
+
 @end
 
 @implementation CreateFolderViewController
+
+- (id)initWithDelegate:(id<CreateFolderViewControllerDelegate>)delegate
+{
+    if (self = [super init]) {
+        _delegate = delegate;
+    }
+    return self;
+}
 
 - (void)loadView
 {
