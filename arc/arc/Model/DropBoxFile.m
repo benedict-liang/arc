@@ -52,6 +52,27 @@
     return  _contents;
 }
 
+// Returns the size of this object.
+// Folders should return the number of objects within, Files their size in B.
+- (int)size
+{
+    DBFilesystem *filesystem = [DBFilesystem sharedFilesystem];
+    DBPath *ourPath = [[DBPath alloc] initWithString:_path];
+    
+    DBError *error;
+    DBFileInfo *fileInfo = [filesystem fileInfoForPath:ourPath error:&error];
+    
+    if (error) {
+        NSLog(@"%@", error);
+    }
+    
+    if (fileInfo) {
+        return [fileInfo size];
+    } else {
+        return 0;
+    }
+}
+
 // Removes this object.
 // Returns YES if successful, NO otherwise.
 // If NO is returned, the state of the object or its contents is unstable.

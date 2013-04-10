@@ -26,8 +26,11 @@
 		02E51AEB1709580400247AF5 /* DropBoxFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AEA1709580400247AF5 /* DropBoxFile.m */; };
 		02E51AEE1709581200247AF5 /* DropBoxFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AED1709581200247AF5 /* DropBoxFolder.m */; };
 		02E51AF11709582300247AF5 /* DropBoxRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AF01709582300247AF5 /* DropBoxRootFolder.m */; };
+		02F25A121713E660000B6301 /* CreateFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F25A111713E660000B6301 /* CreateFolderViewController.m */; };
 		4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D0711705CA7800F4593B /* ArcAttributedString.m */; };
-		4C36137D170AC673009358B1 /* dropbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C36137C170AC673009358B1 /* dropbox.png */; };
+		4C1AF1181714FF8400A2D0D8 /* documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1AF1161714FF8400A2D0D8 /* documents.png */; };
+		4C1AF1191714FF8400A2D0D8 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1AF1171714FF8400A2D0D8 /* settings.png */; };
+		4C1AF11B1715029100A2D0D8 /* dropbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1AF11A1715029100A2D0D8 /* dropbox.png */; };
 		4C43F8ED16F86AA900159B29 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
 		4C43F8EF16F86AA900159B29 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EE16F86AA900159B29 /* Foundation.framework */; };
 		4C43F8F116F86AA900159B29 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8F016F86AA900159B29 /* CoreGraphics.framework */; };
@@ -283,10 +286,15 @@
 		02E51AED1709581200247AF5 /* DropBoxFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxFolder.m; sourceTree = "<group>"; };
 		02E51AEF1709582300247AF5 /* DropBoxRootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxRootFolder.h; sourceTree = "<group>"; };
 		02E51AF01709582300247AF5 /* DropBoxRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxRootFolder.m; sourceTree = "<group>"; };
+		02F25A101713E660000B6301 /* CreateFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFolderViewController.h; sourceTree = "<group>"; };
+		02F25A111713E660000B6301 /* CreateFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateFolderViewController.m; sourceTree = "<group>"; };
 		4C12D0701705CA7800F4593B /* ArcAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcAttributedString.h; sourceTree = "<group>"; };
 		4C12D0711705CA7800F4593B /* ArcAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcAttributedString.m; sourceTree = "<group>"; };
+		4C1AF1161714FF8400A2D0D8 /* documents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = documents.png; sourceTree = "<group>"; };
+		4C1AF1171714FF8400A2D0D8 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		4C1AF11A1715029100A2D0D8 /* dropbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropbox.png; sourceTree = "<group>"; };
+		4C1AF11F1715119300A2D0D8 /* FolderViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewControllerDelegate.h; sourceTree = "<group>"; };
 		4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileNavigatorViewControllerDelegate.h; sourceTree = "<group>"; };
-		4C36137C170AC673009358B1 /* dropbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropbox.png; sourceTree = "<group>"; };
 		4C43F8E916F86AA900159B29 /* arc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C43F8EC16F86AA900159B29 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4C43F8EE16F86AA900159B29 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -606,6 +614,17 @@
 			name = "DropBox Files";
 			sourceTree = "<group>";
 		};
+		02F25A091713CF0A000B6301 /* Popup Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8F771E121711B900002E9914 /* ResultsTableViewController.h */,
+				8F771E131711B900002E9914 /* ResultsTableViewController.m */,
+				02F25A101713E660000B6301 /* CreateFolderViewController.h */,
+				02F25A111713E660000B6301 /* CreateFolderViewController.m */,
+			);
+			name = "Popup Controllers";
+			sourceTree = "<group>";
+		};
 		4C43F8E016F86AA800159B29 = {
 			isa = PBXGroup;
 			children = (
@@ -730,6 +749,7 @@
 				FCE8F95D1709806B00C08724 /* CodeViewControllerDelegate.h */,
 				4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */,
 				4CE2951517104A4C003B012A /* SettingsViewDelegate.h */,
+				4C1AF11F1715119300A2D0D8 /* FolderViewControllerDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -817,8 +837,10 @@
 		4CF6F0EC1706E05500EDDEDC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4C1AF11A1715029100A2D0D8 /* dropbox.png */,
+				4C1AF1161714FF8400A2D0D8 /* documents.png */,
+				4C1AF1171714FF8400A2D0D8 /* settings.png */,
 				02CF20711712ACB8001A59E4 /* Reading Panel.png */,
-				4C36137C170AC673009358B1 /* dropbox.png */,
 				4CF6F0F11706E29300EDDEDC /* folder.png */,
 				4CF6F0ED1706E08800EDDEDC /* file.png */,
 			);
@@ -1024,6 +1046,7 @@
 		8FCA1D6616F86C7000C6AAFC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				02F25A091713CF0A000B6301 /* Popup Controllers */,
 				4CD06B2D16FDE97E00C9DED3 /* Protocols */,
 				8FCA1D6716F86C7000C6AAFC /* MainViewController.h */,
 				8FCA1D6816F86C7000C6AAFC /* MainViewController.m */,
@@ -1035,8 +1058,6 @@
 				FC4B269D16F88CB800E1DC49 /* FolderViewController.m */,
 				4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */,
 				4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */,
-				8F771E121711B900002E9914 /* ResultsTableViewController.h */,
-				8F771E131711B900002E9914 /* ResultsTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1132,7 +1153,6 @@
 				8F151051170443AC00115E5E /* home.html in Resources */,
 				4CF6F0EE1706E08800EDDEDC /* file.png in Resources */,
 				4CF6F0F21706E29300EDDEDC /* folder.png in Resources */,
-				4C36137D170AC673009358B1 /* dropbox.png in Resources */,
 				02E162CD170B02F400C9D23B /* appState.plist in Resources */,
 				02A5198D170DC0CE007C038E /* Inconsolata.ttf in Resources */,
 				FC4A8529170EB47200463EDA /* twist.py in Resources */,
@@ -1307,6 +1327,9 @@
 				FC726086171152910068DD91 /* Monokai.tmTheme in Resources */,
 				FC726087171152910068DD91 /* Solarized (light).tmTheme in Resources */,
 				02CF20721712ACB8001A59E4 /* Reading Panel.png in Resources */,
+				4C1AF1181714FF8400A2D0D8 /* documents.png in Resources */,
+				4C1AF1191714FF8400A2D0D8 /* settings.png in Resources */,
+				4C1AF11B1715029100A2D0D8 /* dropbox.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1373,6 +1396,7 @@
 				02D55DB51711694900DD48D7 /* PluginUtilities.m in Sources */,
 				FC7260921711B4D70068DD91 /* SyntaxHighlight.m in Sources */,
 				8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */,
+				02F25A121713E660000B6301 /* CreateFolderViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
