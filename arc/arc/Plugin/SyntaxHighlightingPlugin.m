@@ -86,7 +86,7 @@
         
         NSDictionary *syntaxOpts = @{
         @"theme":themeName,
-        @"attributedString":arcAttributedString
+        @"attributedString":[[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString]
         };
         
         [cachedHighlighter performSelectorInBackground:@selector(reapplyWithOpts:) withObject:syntaxOpts];
