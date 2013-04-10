@@ -80,7 +80,7 @@
     [dictionary setValue:[themeDictionary objectForKey:@"global"]
                   forKey:@"syntaxHighlightingPlugin"];
     
-    SyntaxHighlight* cachedHighlighter = [_cache objectForKey:[file name]];
+    SyntaxHighlight* cachedHighlighter = [_cache objectForKey:[file path]];
     
     if (cachedHighlighter) {
         
@@ -105,7 +105,7 @@
             [sh performSelectorInBackground:@selector(execOn:)
                                  withObject:syntaxOptions];
             
-            [_cache setObject:sh forKey:[file name]];
+            [_cache setObject:sh forKey:[file path]];
         }
     }
 
