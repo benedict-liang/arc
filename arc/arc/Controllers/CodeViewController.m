@@ -459,7 +459,13 @@
 
 - (void)copy:(id)sender {
     NSLog(@"sender: %@", sender);
+    
+    // Need to figure out when to remove from superview
+    [_selectionView removeFromSuperview];
+    _selectionView = nil;
 }
+
+
 
 #pragma mark - UIMenuController required methods
 - (BOOL)canBecomeFirstResponder {
