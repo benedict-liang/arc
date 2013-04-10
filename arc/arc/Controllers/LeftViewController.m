@@ -127,23 +127,28 @@
 
 - (void)navigateTo:(id<Folder>)folder
 {
-//    if (_currentViewController != _documentsNavigationViewController) {
-//        [self showDocuments:nil];
-//    }    
+    // Force Document View
+    if (_currentViewController != _documentsNavigationViewController) {
+        [self showDocuments:nil];
+    }
     
-    if ([Utils isEqual:[folder parent] and:_currentFolder]) {
+    if ([Utils isEqual:[folder parent]
+                   and:_currentFolder]) {
         // Normal Folder selected
         [self pushFolderView:folder];
-    } else if ([Utils isEqual:folder and:[_currentFolder parent]]) {
+    } else if ([Utils isEqual:folder
+                          and:[_currentFolder parent]]) {
         // Back Button.
-        // noop.
+        // Nothing to do. (handled by the navigationController)
     } else {
         // Jump to Folder.
+        // (no logical way to "animate" to folder"
         
         // Clear stack of folderViewController
         [_documentsNavigationViewController popToRootViewControllerAnimated:NO];
         
-        // Find path to root (excluding current folder and root)
+        // Find path to root
+        // (excluding current folder and root)
         id<Folder> current = folder;
         NSMutableArray *pathToRootFolder = [NSMutableArray array];
         while ([current parent]) {
@@ -151,8 +156,8 @@
             current = (id<Folder>)[current parent];
         }
         
-        // Push folderViewController onto the stack (w/o animation)
-        // reverse order.
+        // Push folderViewController onto the stack
+        // in reverse order. (w/o animation)
         id<Folder> parent;
         NSEnumerator *enumerator = [pathToRootFolder reverseObjectEnumerator];
         while (parent = [enumerator nextObject]) {
@@ -164,7 +169,6 @@
         [self pushFolderView:folder];
     }
     
-    
     // Update current folder.
     _currentFolder = folder;
 }
@@ -173,11 +177,12 @@
 {
     // File Navigator View Controller
     FolderViewController *folderViewController =
-    [[FolderViewController alloc] initWithFolder:folder];
+        [[FolderViewController alloc] initWithFolder:folder];
     folderViewController.delegate = self.delegate;
+    
     [_documentsNavigationViewController pushViewController:folderViewController
                                                   animated:animated];
-    
+
     // Settings Button
     UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:@"Settings"
                                                                        style:UIBarButtonItemStyleBordered
@@ -193,16 +198,22 @@
                                                                      target:self
                                                                      action:@selector(showDropBox:)];
     
-    // Edit Button
-    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:folderViewController action:@selector(toggleEdit:)];
-    
     [folderViewController setToolbarItems:[NSArray arrayWithObjects:
-                                           editButton,
                                            dropboxButton,
                                            [Utils flexibleSpace],
                                            settingsButton,
                                            nil]
                                  animated:animated];
+    
+    // Edit Button
+    UIBarButtonItem *editButton =
+    [[UIBarButtonItem alloc] initWithTitle:@"Edit"
+                                     style:UIBarButtonItemStyleBordered
+                                    target:folderViewController
+                                    action:@selector(toggleEdit:)];
+    
+    folderViewController.navigationItem.rightBarButtonItem = editButton;
+
 }
 
 - (void)pushFolderView:(id<Folder>)folder
