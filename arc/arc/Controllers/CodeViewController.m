@@ -13,6 +13,10 @@
 #import "FullTextSearch.h"
 #import "ResultsTableViewController.h"
 
+#define KEY_RANGE @"range"
+#define KEY_LINE_NUMBER @"lineNumber"
+#define KEY_LINE_START @"lineStart"
+
 @interface CodeViewController ()
 @property id<File> currentFile;
 @property (nonatomic, strong) UITableView *tableView;
@@ -148,7 +152,7 @@
         CFRelease(_frameSetter);
         _frameSetter = NULL;
     }
-    
+
     _lines = [NSMutableArray array];
 }
 
@@ -161,6 +165,15 @@
     (CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.plainAttributedString);
     _frameSetter = CTFramesetterCreateWithAttributedString(ref);
     
+//    // Find Logical Lines
+//    NSMutableArray *logicalLines =
+//    [[_arcAttributedString.string componentsSeparatedByCharactersInSet:
+//                                     [NSCharacterSet newlineCharacterSet]] mutableCopy];
+//
+//    for (NSString *line in logicalLines) {
+//        
+//    }
+    
     // Work out the geometry
     CGFloat boundsWidth = _tableView.bounds.size.width - 20*2 - 45;
     
@@ -168,11 +181,26 @@
     CFIndex start = 0;
     NSUInteger length = CFAttributedStringGetLength(ref);
     CFBridgingRelease(ref);
+
+    NSArray *keys = [NSArray arrayWithObjects:
+                     KEY_RANGE,
+                     KEY_LINE_NUMBER,
+                     KEY_LINE_START,
+                     nil];
+
+    int lineNumber = 0;
+    BOOL startOfLine = YES;
+
     while (start < length)
     {
         CTTypesetterRef typesetter = CTFramesetterGetTypesetter(_frameSetter);
         CFIndex count = CTTypesetterSuggestLineBreak(typesetter, start, boundsWidth);
-        [_lines addObject:[NSValue valueWithRange:NSMakeRange(start, count)]];
+        [_lines addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
+                                                               [NSValue valueWithRange:NSMakeRange(start, count)],
+                                                               [NSNumber numberWithInt:lineNumber],
+                                                               [NSNumber numberWithBool:startOfLine],
+                                                               nil]
+                                                       forKeys:keys]];
         start += count;
     }
 }
@@ -184,7 +212,7 @@
         CTLineRef line = CTLineCreateWithAttributedString(
             (__bridge CFAttributedStringRef)(
                 [_arcAttributedString.attributedString attributedSubstringFromRange:
-                    [[_lines objectAtIndex:0] rangeValue]]));
+                    [[[_lines objectAtIndex:0] objectForKey:KEY_RANGE] rangeValue]]));
 
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
         _lineHeight = asscent + descent + leading;
@@ -370,14 +398,16 @@
         cell = [[CodeLineCell alloc] initWithStyle:UITableViewCellStyleDefault
                                    reuseIdentifier:cellIdentifier];
     }
+
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     NSUInteger lineNumber = indexPath.row;
     
-    CTLineRef lineRef = CTLineCreateWithAttributedString(
-                                                         (__bridge CFAttributedStringRef)(
-                                                                                          [_arcAttributedString.attributedString attributedSubstringFromRange:
-                                                                                           [[_lines objectAtIndex:lineNumber] rangeValue]]));
-    
+    NSDictionary *lineObject = (NSDictionary *)[_lines objectAtIndex:lineNumber];
+
+    CTLineRef lineRef =
+    CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                     ([_arcAttributedString.attributedString attributedSubstringFromRange:
+                                       [[lineObject objectForKey:KEY_RANGE] rangeValue]]));
     cell.line = lineRef;
     [cell setNeedsDisplay];
     return cell;
