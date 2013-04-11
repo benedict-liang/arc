@@ -81,7 +81,7 @@
         [self back:dist];
         
         v.frame = CGRectMake(dist, 0,
-                             v.frame.size.width, v.frame.size.height);
+                             self.view.bounds.size.width - dist, v.frame.size.height);
         [gesture setTranslation:CGPointZero inView:self.view];
     }
     
@@ -100,7 +100,7 @@
                                  _left.transform = CGAffineTransformMakeScale(1, 1);
                              } else {
                                  gesture.view.frame = CGRectMake(0, 0,
-                                                                 gesture.view.frame.size.width,
+                                                                 self.view.bounds.size.width,
                                                                  gesture.view.frame.size.height);
                                  _left.transform = CGAffineTransformMakeScale(0.9, 0.9);
                              }
