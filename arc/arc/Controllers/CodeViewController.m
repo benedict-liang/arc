@@ -414,8 +414,6 @@
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
     NSDictionary *lineObject = (NSDictionary *)[_lines objectAtIndex:indexPath.row];
-    NSInteger lineNumber = [[lineObject objectForKey:KEY_LINE_NUMBER] integerValue];
-    cell.lineNumber = lineNumber;
 
     CTLineRef lineRef =
     CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
@@ -423,6 +421,11 @@
                                        [[lineObject objectForKey:KEY_RANGE] rangeValue]]));
 
     cell.line = lineRef;
+    NSInteger lineNumber = [[lineObject objectForKey:KEY_LINE_NUMBER] integerValue];
+    if ([[lineObject objectForKey:KEY_LINE_START] boolValue]) {
+        cell.lineNumber = lineNumber;
+    }
+
     [cell setNeedsDisplay];
     return cell;
 }

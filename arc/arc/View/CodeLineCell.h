@@ -12,6 +12,7 @@
 #import "CodeLine.h"
 
 @interface CodeLineCell : UITableViewCell
-@property (nonatomic) int lineNumber;
 @property (nonatomic) CTLineRef line;
+@property (nonatomic) BOOL showLineNumber;
+@property (nonatomic) int lineNumber;
 @end

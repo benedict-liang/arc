@@ -16,6 +16,7 @@
 @implementation CodeLineCell
 @synthesize line = _line;
 @synthesize lineNumber = _lineNumber;
+@synthesize showLineNumber = _showLineNumber;
 
 - (id)initWithStyle:(UITableViewCellStyle)style
     reuseIdentifier:(NSString *)reuseIdentifier
@@ -23,6 +24,8 @@
     self = [super initWithStyle:style
                 reuseIdentifier:reuseIdentifier];
     if (self) {
+        // defaults
+        _showLineNumber = YES;
     }
     return self;
 }
@@ -34,7 +37,7 @@
     }
     
     _lineNumberLabel = [[UILabel alloc] init];
-    _lineNumberLabel.text = [NSString stringWithFormat:@"%d",_lineNumber];
+    _lineNumberLabel.text = @"";
     [self.contentView addSubview:_lineNumberLabel];
     
     _line = line;
@@ -43,6 +46,12 @@
 
     self.contentView.backgroundColor = [UIColor clearColor];
     self.backgroundColor = [UIColor clearColor];
+}
+
+- (void)setLineNumber:(int)lineNumber
+{
+    _lineNumber = lineNumber;
+    _lineNumberLabel.text = [NSString stringWithFormat:@"%d", _lineNumber];
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
@@ -57,8 +66,13 @@
 - (void)layoutSubviews
 {
     self.contentView.frame = self.bounds;
-    _lineNumberLabel.frame = CGRectMake(0, 0, 30, self.contentView.bounds.size.height);
-    _codeLine.frame = CGRectMake(40, 0, self.contentView.bounds.size.width - 40, self.contentView.bounds.size.height);
+    _lineNumberLabel.frame =
+    CGRectMake(0, 0, 30, self.contentView.bounds.size.height);
+    
+    _codeLine.frame =
+    CGRectMake(40, 0,
+               self.contentView.bounds.size.width - 40,
+               self.contentView.bounds.size.height);
 }
 
 - (UIView*)backgroundView
