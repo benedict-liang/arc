@@ -191,7 +191,7 @@
                              objectForKey:SECTION_OPTIONS]
                             objectAtIndex:indexPath.row];
     
-    static NSString *cellIdentifier = @"SettingsMCQCell";
+    NSString *cellIdentifier = [properties objectForKey:SECTION_HEADING];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault

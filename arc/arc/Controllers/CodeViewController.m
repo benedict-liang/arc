@@ -470,15 +470,39 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar*)searchBar
 {
     NSString *searchString = [searchBar text];
-    NSArray *searchResultRanges = [FullTextSearch searchForText:searchString
+    NSArray *searchResultRangesArray = [FullTextSearch searchForText:searchString
                                                          inFile:_currentFile];
-    // TODO: Check if searchResultRanges is nil before using the data
+    NSMutableArray *searchLineNumber;
+    
+    if (searchResultRangesArray != nil) {
+        searchLineNumber = [[NSMutableArray alloc] init];
+        int lineIndex = 0;
+        
+        for (int i=0; i<[searchResultRangesArray count]; i++) {
+            NSRange searchResultRange = [[searchResultRangesArray objectAtIndex:i] rangeValue];
+            
+            for (int j=lineIndex; j<[_lines count]; j++) {
+                NSRange lineRange = [[_lines objectAtIndex:j] rangeValue];
+                NSRange rangeIntersectionResult = NSIntersectionRange(lineRange, searchResultRange);
+                
+                // Ranges intersect
+                if (rangeIntersectionResult.length != 0) {
+                    
+                    [searchLineNumber addObject:[NSNumber numberWithInt:j]];
+                    
+                    // Update current lineIndex
+                    lineIndex = j;
+                    break;
+                }
+            }
+        }
+    }
     
     // Hide keyboard after search button clicked
     [searchBar resignFirstResponder];
     
     // Show results
-    _resultsViewController.resultsArray = searchResultRanges;
+    _resultsViewController.resultsArray = [NSArray arrayWithArray:searchLineNumber];
     [_resultsViewController.tableView reloadData];
     [_resultsPopoverController presentPopoverFromRect:[_searchBar bounds]
                                               inView:_searchBar
