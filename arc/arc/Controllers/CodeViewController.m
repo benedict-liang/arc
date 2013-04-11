@@ -486,7 +486,7 @@
             NSRange searchResultRange = [[searchResultRangesArray objectAtIndex:i] rangeValue];
             
             for (int j=lineIndex; j<[_lines count]; j++) {
-                NSRange lineRange = [[_lines objectAtIndex:j] rangeValue];
+                NSRange lineRange = [[[_lines objectAtIndex:j] objectForKey:KEY_RANGE] rangeValue];
                 NSRange rangeIntersectionResult = NSIntersectionRange(lineRange, searchResultRange);
                 
                 // Ranges intersect
