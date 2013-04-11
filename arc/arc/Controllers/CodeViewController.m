@@ -388,24 +388,27 @@
     NSString *searchString = [searchBar text];
     NSArray *searchResultRangesArray = [FullTextSearch searchForText:searchString
                                                          inFile:_currentFile];
+    NSMutableArray *searchLineNumber;
     
-    NSMutableArray *searchLineNumber = [[NSMutableArray alloc] init];
-    int lineIndex = 0;
-    // TODO: Check if searchResultRanges is nil before using the data
-    for (int i=0; i<[searchResultRangesArray count]; i++) {
-        NSRange searchResultRange = [[searchResultRangesArray objectAtIndex:i] rangeValue];
-        for (int j=lineIndex; j<[_lines count]; j++) {
-            NSRange linesRange = [[_lines objectAtIndex:j] rangeValue];
-            NSRange intersectionResult = NSIntersectionRange(linesRange, searchResultRange);
-            
-            // Ranges intersect
-            if (intersectionResult.length != 0) {
+    if (searchResultRangesArray != nil) {
+        searchLineNumber = [[NSMutableArray alloc] init];
+        int lineIndex = 0;
+        // TODO: Check if searchResultRanges is nil before using the data
+        for (int i=0; i<[searchResultRangesArray count]; i++) {
+            NSRange searchResultRange = [[searchResultRangesArray objectAtIndex:i] rangeValue];
+            for (int j=lineIndex; j<[_lines count]; j++) {
+                NSRange linesRange = [[_lines objectAtIndex:j] rangeValue];
+                NSRange intersectionResult = NSIntersectionRange(linesRange, searchResultRange);
                 
-                [searchLineNumber addObject:[NSNumber numberWithInt:j]];
-                
-                // Update current lineIndex
-                lineIndex = j;
-                break;
+                // Ranges intersect
+                if (intersectionResult.length != 0) {
+                    
+                    [searchLineNumber addObject:[NSNumber numberWithInt:j]];
+                    
+                    // Update current lineIndex
+                    lineIndex = j;
+                    break;
+                }
             }
         }
     }
