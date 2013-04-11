@@ -14,7 +14,6 @@
 
 @interface LeftViewController ()
 @property (nonatomic, strong) id<Folder> currentFolder;
-@property (nonatomic) BOOL tabBarHidden;
 @property (nonatomic, strong) UITabBarController *tabBarController;
 @property (nonatomic, strong) UINavigationController *documentsNavigationViewController;
 @property (nonatomic, strong) UINavigationController *settingsNavigationViewController;
@@ -32,7 +31,6 @@
         self.view.autoresizesSubviews = YES;
         self.view.clipsToBounds = YES;
         self.title = @"Documents";
-        _tabBarHidden = NO;
     }
     return self;
 }
@@ -257,7 +255,6 @@ shouldSelectViewController:(UIViewController *)viewController
             view.backgroundColor = [UIColor blackColor];
         }
     }
-    _tabBarHidden = YES;
 }
 
 - (void)showTabBar:(UITabBarController *)tabbarcontroller
@@ -276,7 +273,6 @@ shouldSelectViewController:(UIViewController *)viewController
                                       self.view.frame.size.height - fHeight)];
         }
     }
-    _tabBarHidden = NO;
 }
 
 @end
