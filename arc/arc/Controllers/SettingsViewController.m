@@ -34,6 +34,8 @@
 {
     [super viewDidLoad];
     self.view.autoresizesSubviews = YES;
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleWidth;
     
     [self generateSections];
     
