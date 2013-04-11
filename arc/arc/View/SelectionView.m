@@ -57,7 +57,9 @@
         CGFloat newWidth = panGesture.view.center.x - originalX;
         
         [self updateSize:CGSizeMake(newWidth, self.frame.size.height)];
-        
+    }
+    
+    else if ([panGesture state] == UIGestureRecognizerStateEnded) {
         // Update substring
         [self updateSelectionSubstring:cell];
         
