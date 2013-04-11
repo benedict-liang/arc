@@ -449,8 +449,11 @@
 
     cell.line = lineRef;
     NSInteger lineNumber = [[lineObject objectForKey:KEY_LINE_NUMBER] integerValue];
-    if ([[lineObject objectForKey:KEY_LINE_START] boolValue]) {
-        cell.lineNumber = lineNumber;
+    
+    if (_lineNumbers) {
+        if ([[lineObject objectForKey:KEY_LINE_START] boolValue]) {
+            cell.lineNumber = lineNumber;
+        }
     }
 
     [cell setNeedsDisplay];

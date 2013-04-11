@@ -59,6 +59,7 @@
 		4CE2951117101C53003B012A /* FontSizePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE2951017101C53003B012A /* FontSizePlugin.m */; };
 		4CE2951417101C82003B012A /* FontFamilyPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE2951317101C82003B012A /* FontFamilyPlugin.m */; };
 		4CEADA041716AB0E00F4F619 /* threelines.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEADA031716AB0E00F4F619 /* threelines.png */; };
+		4CEADA071716ADBB00F4F619 /* LineNumberPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEADA061716ADBB00F4F619 /* LineNumberPlugin.m */; };
 		4CF6F0EE1706E08800EDDEDC /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0ED1706E08800EDDEDC /* file.png */; };
 		4CF6F0F21706E29300EDDEDC /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F11706E29300EDDEDC /* folder.png */; };
 		4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */; };
@@ -405,6 +406,8 @@
 		4CE2951517104A4C003B012A /* SettingsViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewDelegate.h; sourceTree = "<group>"; };
 		4CEADA011716814B00F4F619 /* CodeViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewDelegate.h; sourceTree = "<group>"; };
 		4CEADA031716AB0E00F4F619 /* threelines.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = threelines.png; sourceTree = "<group>"; };
+		4CEADA051716ADBB00F4F619 /* LineNumberPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineNumberPlugin.h; sourceTree = "<group>"; };
+		4CEADA061716ADBB00F4F619 /* LineNumberPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineNumberPlugin.m; sourceTree = "<group>"; };
 		4CF6F0ED1706E08800EDDEDC /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
 		4CF6F0F11706E29300EDDEDC /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
 		4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -847,6 +850,8 @@
 				4CE2951017101C53003B012A /* FontSizePlugin.m */,
 				4CE2951217101C82003B012A /* FontFamilyPlugin.h */,
 				4CE2951317101C82003B012A /* FontFamilyPlugin.m */,
+				4CEADA051716ADBB00F4F619 /* LineNumberPlugin.h */,
+				4CEADA061716ADBB00F4F619 /* LineNumberPlugin.m */,
 			);
 			name = Plugins;
 			path = Plugin;
@@ -1641,6 +1646,7 @@
 				FC7260921711B4D70068DD91 /* SyntaxHighlight.m in Sources */,
 				8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */,
 				02F25A121713E660000B6301 /* CreateFolderViewController.m in Sources */,
+				4CEADA071716ADBB00F4F619 /* LineNumberPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
