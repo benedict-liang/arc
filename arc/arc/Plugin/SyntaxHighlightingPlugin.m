@@ -65,7 +65,7 @@
                            ofFile:(id<File>)file
                         forValues:(NSDictionary *)properties
                      sharedObject:(NSMutableDictionary *)dictionary
-                         delegate:(id)delegate
+                         delegate:(id<CodeViewControllerDelegate>)delegate
 {
     NSString* themeName = [properties objectForKey:_colorSchemeSettingKey];
     _theme = themeName;
@@ -111,14 +111,14 @@
 
 }
 
-- (void)execOnTableView:(UITableView *)tableView
-                 ofFile:(id<File>)file
-              forValues:(NSDictionary *)properties
-           sharedObject:(NSMutableDictionary *)dictionary
-               delegate:(id)delegate
+- (void)execOnCodeView:(id<CodeViewDelegate>)codeView
+                ofFile:(id<File>)file
+             forValues:(NSDictionary *)properties
+          sharedObject:(NSMutableDictionary *)dictionary
+              delegate:(id<CodeViewControllerDelegate>)delegate
 {
     NSDictionary *style = [dictionary objectForKey:@"syntaxHighlightingPlugin"];
-    tableView.backgroundColor = [style objectForKey:@"background"];
+    codeView.backgroundColor = [style objectForKey:@"background"];
 }
 
 - (NSDictionary*)propertiesFor:(NSString *)settingKey

@@ -76,7 +76,7 @@
                            ofFile:(id<File>)file
                         forValues:(NSDictionary *)properties
                      sharedObject:(NSMutableDictionary *)dictionary
-                         delegate:(id)delegate
+                         delegate:(id<CodeViewControllerDelegate>)delegate
 {
     NSString *fontFamily = [properties objectForKey:_fontFamilySettingKey];
     [arcAttributedString setFontFamily:fontFamily];

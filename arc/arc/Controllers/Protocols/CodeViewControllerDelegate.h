@@ -18,11 +18,7 @@
                    forFile:(id<File>)file
                 WithStyle:(NSDictionary*)style;
 
-
 // Register Plugin with CodeViewDelegate;
 - (void)registerPlugin:(id<PluginDelegate>)plugin;
-
-# pragma mark - Code View Properties
-@property (nonatomic, strong) UIColor *backgroundColor;
 @end
 

@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "SubViewControllerDelegate.h"
 #import "CodeViewControllerDelegate.h"
+#import "CodeViewDelegate.h"
 #import "DetailViewControllerDelegate.h"
 #import "File.h"
 
 @interface CodeViewController : UIViewController<SubViewControllerDelegate,
-    CodeViewControllerDelegate, UITableViewDataSource,
-    UITableViewDelegate, DetailViewControllerDelegate,
-    UISearchDisplayDelegate>
+    CodeViewControllerDelegate, CodeViewDelegate,
+    UITableViewDataSource, UITableViewDelegate,
+    DetailViewControllerDelegate, UISearchDisplayDelegate>
 @end

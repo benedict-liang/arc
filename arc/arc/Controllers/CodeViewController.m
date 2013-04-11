@@ -192,6 +192,15 @@
     }
 }
 
+# pragma mark - Code View Delegate
+
+- (void)setBackgroundColor:(UIColor *)backgroundColor
+{
+    _backgroundColor = backgroundColor;
+    _tableView.backgroundColor = _backgroundColor;
+}
+
+
 #pragma mark - Execute Plugin Methods
 
 - (void)preRenderPluginsForSetting:(NSString *)setting
@@ -223,13 +232,13 @@
         if (setting == nil || [settingKeys indexOfObject:setting] != NSNotFound) {
             settings = [_appState settingsForKeys:settingKeys];
             if ([plugin respondsToSelector:
-                 @selector(execOnTableView:ofFile:forValues:sharedObject:delegate:)])
+                 @selector(execOnCodeView:ofFile:forValues:sharedObject:delegate:)])
             {
-                [plugin execOnTableView:_tableView
-                                 ofFile:_currentFile
-                              forValues:settings
-                           sharedObject:_sharedObject
-                               delegate:self];
+                [plugin execOnCodeView:self
+                                ofFile:_currentFile
+                             forValues:settings
+                          sharedObject:_sharedObject
+                              delegate:self];
             }
         }
     }

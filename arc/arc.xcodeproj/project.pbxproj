@@ -402,6 +402,7 @@
 		4CE2951217101C82003B012A /* FontFamilyPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontFamilyPlugin.h; sourceTree = "<group>"; };
 		4CE2951317101C82003B012A /* FontFamilyPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontFamilyPlugin.m; sourceTree = "<group>"; };
 		4CE2951517104A4C003B012A /* SettingsViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewDelegate.h; sourceTree = "<group>"; };
+		4CEADA011716814B00F4F619 /* CodeViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewDelegate.h; sourceTree = "<group>"; };
 		4CF6F0ED1706E08800EDDEDC /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
 		4CF6F0F11706E29300EDDEDC /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
 		4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -839,16 +840,13 @@
 			isa = PBXGroup;
 			children = (
 				4CD477491710146B0054738D /* PluginDelegate.h */,
-				4CE2950C17101BA0003B012A /* SyntaxHighlightingPlugin.h */,
-				4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */,
+				02D55DB31711694900DD48D7 /* PluginUtilities.h */,
+				02D55DB41711694900DD48D7 /* PluginUtilities.m */,
+				4CEADA02171681F000F4F619 /* SyntaxHighlighting */,
 				4CE2950F17101C53003B012A /* FontSizePlugin.h */,
 				4CE2951017101C53003B012A /* FontSizePlugin.m */,
 				4CE2951217101C82003B012A /* FontFamilyPlugin.h */,
 				4CE2951317101C82003B012A /* FontFamilyPlugin.m */,
-				02D55DB31711694900DD48D7 /* PluginUtilities.h */,
-				02D55DB41711694900DD48D7 /* PluginUtilities.m */,
-				FC7260901711B4D50068DD91 /* SyntaxHighlight.h */,
-				FC7260911711B4D60068DD91 /* SyntaxHighlight.m */,
 			);
 			name = Plugins;
 			path = Plugin;
@@ -862,6 +860,7 @@
 				4CA4DE43170EA4C200A86109 /* MasterViewControllerDelegate.h */,
 				4CA4DE42170EA04400A86109 /* DetailViewControllerDelegate.h */,
 				FCE8F95D1709806B00C08724 /* CodeViewControllerDelegate.h */,
+				4CEADA011716814B00F4F619 /* CodeViewDelegate.h */,
 				4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */,
 				4CE2951517104A4C003B012A /* SettingsViewDelegate.h */,
 				4C1AF11F1715119300A2D0D8 /* FolderViewControllerDelegate.h */,
@@ -948,6 +947,17 @@
 			);
 			name = Fonts;
 			path = Assets/Fonts;
+			sourceTree = "<group>";
+		};
+		4CEADA02171681F000F4F619 /* SyntaxHighlighting */ = {
+			isa = PBXGroup;
+			children = (
+				4CE2950C17101BA0003B012A /* SyntaxHighlightingPlugin.h */,
+				4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */,
+				FC7260901711B4D50068DD91 /* SyntaxHighlight.h */,
+				FC7260911711B4D60068DD91 /* SyntaxHighlight.m */,
+			);
+			name = SyntaxHighlighting;
 			sourceTree = "<group>";
 		};
 		4CF6F0EC1706E05500EDDEDC /* Images */ = {
