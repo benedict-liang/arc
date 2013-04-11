@@ -652,7 +652,6 @@
 		FC726064171102660068DD91 /* base.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = base.rb; sourceTree = "<group>"; };
 		FC72606A171106C60068DD91 /* RequestBuilder.hs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RequestBuilder.hs; sourceTree = "<group>"; };
 		FC72606C171113420068DD91 /* filter_routes.clj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = filter_routes.clj; sourceTree = "<group>"; };
-		FC72606E171114DA0068DD91 /* source.clojure.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.clojure.plist; sourceTree = "<group>"; };
 		FC726084171152910068DD91 /* Monokai.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Monokai.tmTheme; sourceTree = "<group>"; };
 		FC726085171152910068DD91 /* Solarized (light).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Solarized (light).tmTheme"; sourceTree = "<group>"; };
 		FC7260901711B4D50068DD91 /* SyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlight.h; sourceTree = "<group>"; };
@@ -976,7 +975,6 @@
 		8F563E53170160CD00EE5643 /* TextMateBundles */ = {
 			isa = PBXGroup;
 			children = (
-				FC72606E171114DA0068DD91 /* source.clojure.plist */,
 				8FC7BD3E170F435900D0FA3A /* syntaxesFileList.txt */,
 				8F1BC130170F1C0D00D1D049 /* text.xml.xsl.plist */,
 				8F1BC131170F1C0D00D1D049 /* text.xml.strict.plist */,
