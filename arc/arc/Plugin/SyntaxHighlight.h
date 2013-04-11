@@ -22,6 +22,7 @@
     __block NSDictionary *pairMatches;
     __block NSDictionary *contentNameMatches;
     __block NSDictionary *overlapMatches;
+    __block NSArray *foldRanges;
 }
 
 @property (readonly) id<CodeViewControllerDelegate> delegate;

@@ -543,5 +543,31 @@
     }
 }
 
+- (void)recurFoldsWithStart:(NSString*)foldStart
+                        end:(NSString*)foldEnd
+                      range:(NSRange)range
+               currentStart:(int)currentStart
+{
+    NSRange firstStartRange = [self findFirstPattern:foldStart range:range];
+    
+    NSRange firstEndRange = [self findFirstPattern:foldEnd range:range];
+    
+    
+    if (firstStartRange.location < firstEndRange.location) {
+        NSRange recurRange = NSMakeRange(firstStartRange.location+1, _content.length - firstStartRange.location -1);
+        
+        [self recurFoldsWithStart:foldStart end:foldEnd range:recurRange currentStart:firstStartRange.location];
+    
+    } else if (firstStartRange.location != NSNotFound || firstEndRange.location != NSNotFound){
+        NSLog(@"fin.");
+        return;
+              
+    } else if (firstEndRange.location < firstStartRange.location) {
+        NSRange recurRange = NSMakeRange(firstEndRange.location+1, _content.length - firstEndRange.location -1);
+        
+    }
+   
+    
+}
 
 @end
