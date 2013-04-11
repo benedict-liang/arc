@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSMutableArray *plugins;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ApplicationState *appState;
+@property (nonatomic, strong) NSMutableDictionary *pickerDictionary;
 @end
 
 @implementation SettingsViewController
@@ -24,6 +25,7 @@
     if (self) {
         self.title = @"Settings";
         _settingOptions = [NSMutableArray array];
+        _pickerDictionary = [NSMutableDictionary dictionary];
         _plugins = [NSMutableArray array];
         _appState = [ApplicationState sharedApplicationState];
     }
@@ -128,10 +130,14 @@
         [PluginUtilities settingTypeForNumber:
             [sectionProperties objectForKey:SECTION_TYPE]];
 
+    int rowNumber;
     switch (type) {
         case kMCQSettingType:
+            rowNumber = [[sectionProperties objectForKey:SECTION_OPTIONS] count];
+            if (rowNumber > 5) {
+                return 1; // We want to use a picker view for long sections.
+            }
             return [[sectionProperties objectForKey:SECTION_OPTIONS] count];
-
         default:
             // Other types have only one row.
             return 1;
@@ -187,10 +193,7 @@
                           withProperties:(NSDictionary*)properties
                    cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    NSDictionary *option = [[properties
-                             objectForKey:SECTION_OPTIONS]
-                            objectAtIndex:indexPath.row];
-    
+    // Init the cell.
     NSString *cellIdentifier = [properties objectForKey:SECTION_HEADING];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
@@ -198,24 +201,45 @@
                                       reuseIdentifier:cellIdentifier];
     }
     
-    // Plugin values need to be comparable somehow
-    // easiest option is to make them all strings.
-    NSString *value = [option objectForKey:PLUGIN_OPTION_VALUE];
-    NSString *settingKey = [properties objectForKey:SECTION_SETTING_KEY];
-    
-    BOOL isCurrentSettingThisRow = [[_appState settingForKey:settingKey] isEqualToString:value];
-    if (isCurrentSettingThisRow) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    if ([[properties objectForKey:SECTION_OPTIONS] count] > 5) {
+        // This is a long list. Use a single cell with a UIPickerView control.
+        UIPickerView *picker;
+        ViewPickerController *pickerController;
+        if ((pickerController = [_pickerDictionary valueForKey:SECTION_HEADING])) {
+            picker = [pickerController picker];
+        } else {
+            CGSize cellSize = [cell frame].size;
+            picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, cellSize.width, cellSize.height)];
+            pickerController = [[ViewPickerController alloc] initWithPicker:picker properties:properties delegate:self];
+            [_pickerDictionary setValue:pickerController forKey:[properties objectForKey:SECTION_HEADING]];
+        }
+        [cell.contentView addSubview:picker];
     } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
-    
-    cell.textLabel.text = [option objectForKey:PLUGIN_OPTION_LABEL];
-    
-    // Allow the plugin to customise this cell, if applicable.
-    id<PluginDelegate> plugin = [properties objectForKey:SECTION_PLUGIN_OBJECT];
-    if ([plugin respondsToSelector:@selector(customiseTableViewCell:options:)]) {
-        [plugin customiseTableViewCell:&cell options:option];
+        // Individual option corresponding to the row within this section.
+        NSDictionary *option = [[properties
+                                 objectForKey:SECTION_OPTIONS]
+                                objectAtIndex:indexPath.row];
+        
+        
+        // Plugin values need to be comparable somehow
+        // easiest option is to make them all strings.
+        NSString *value = [option objectForKey:PLUGIN_OPTION_VALUE];
+        NSString *settingKey = [properties objectForKey:SECTION_SETTING_KEY];
+        
+        BOOL isCurrentSettingThisRow = [[_appState settingForKey:settingKey] isEqualToString:value];
+        if (isCurrentSettingThisRow) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        
+        cell.textLabel.text = [option objectForKey:PLUGIN_OPTION_LABEL];
+        
+        // Allow the plugin to customise this cell, if applicable.
+        id<PluginDelegate> plugin = [properties objectForKey:SECTION_PLUGIN_OBJECT];
+        if ([plugin respondsToSelector:@selector(customiseTableViewCell:options:)]) {
+            [plugin customiseTableViewCell:&cell options:option];
+        }
     }
     return cell;
 }
@@ -297,7 +321,7 @@
     (NSDictionary*)[_settingOptions objectAtIndex:indexPath.section];
     
     int type = [[sectionProperties objectForKey:SECTION_TYPE] intValue];
-    if (type == kMCQSettingType) {
+    if (type == kMCQSettingType && [[sectionProperties objectForKey:SECTION_OPTIONS] count] < 5) {
         NSDictionary *option = [[sectionProperties
                                  objectForKey:SECTION_OPTIONS]
                                 objectAtIndex:indexPath.row];

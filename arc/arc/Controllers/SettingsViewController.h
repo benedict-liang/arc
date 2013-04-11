@@ -11,8 +11,10 @@
 #import "ApplicationState.h"
 #import "PluginDelegate.h"
 #import "SettingCell.h"
+#import "ViewPickerController.h"
+#import "ViewPickerControllerDelegate.h"
 
 @interface SettingsViewController : UIViewController <SubViewControllerDelegate,
-    UITableViewDelegate, UITableViewDataSource>
+    UITableViewDelegate, UITableViewDataSource, ViewPickerControllerDelegate>
 - (void)registerPlugin:(id<PluginDelegate>)plugin;
 @end
