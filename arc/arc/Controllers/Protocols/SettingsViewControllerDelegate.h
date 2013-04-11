@@ -1,5 +1,5 @@
 //
-//  ViewPickerControllerDelegate.h
+//  SettingsViewControllerDelegate.h
 //  arc
 //
 //  Created by Jerome Cheng on 11/4/13.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol ViewPickerControllerDelegate <NSObject>
+@protocol SettingsViewControllerDelegate <NSObject>
 
-- (void)pickerSelectedOption:(NSDictionary *)option;
+
 
 @end

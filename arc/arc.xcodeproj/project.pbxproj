@@ -13,7 +13,7 @@
 		026BC475170589B000A9AA5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC474170589B000A9AA5F /* Security.framework */; };
 		026BC477170589BD00A9AA5F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC476170589BD00A9AA5F /* SystemConfiguration.framework */; };
 		026BC479170589C600A9AA5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC478170589C600A9AA5F /* QuartzCore.framework */; };
-		027EE0321716932900302F07 /* ViewPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 027EE0311716932900302F07 /* ViewPickerController.m */; };
+		027EE0361716AAEC00302F07 /* LongSettingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 027EE0351716AAEC00302F07 /* LongSettingListViewController.m */; };
 		028B4900170E9D0600C0CEF6 /* UbuntuMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 028B48FF170E9D0600C0CEF6 /* UbuntuMono.ttf */; };
 		02A5198D170DC0CE007C038E /* Inconsolata.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02A5198C170DC0CE007C038E /* Inconsolata.ttf */; };
 		02B04FCA1701672700FE51CB /* GameObject.h in Resources */ = {isa = PBXBuildFile; fileRef = 02B04FC91701608C00FE51CB /* GameObject.h */; };
@@ -322,9 +322,9 @@
 		026BC474170589B000A9AA5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		026BC476170589BD00A9AA5F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		026BC478170589C600A9AA5F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		027EE0301716932900302F07 /* ViewPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPickerController.h; sourceTree = "<group>"; };
-		027EE0311716932900302F07 /* ViewPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPickerController.m; sourceTree = "<group>"; };
-		027EE033171693B100302F07 /* ViewPickerControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPickerControllerDelegate.h; sourceTree = "<group>"; };
+		027EE0341716AAEC00302F07 /* LongSettingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongSettingListViewController.h; sourceTree = "<group>"; };
+		027EE0351716AAEC00302F07 /* LongSettingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LongSettingListViewController.m; sourceTree = "<group>"; };
+		027EE0371716B0CB00302F07 /* SettingsViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewControllerDelegate.h; sourceTree = "<group>"; };
 		028B48FF170E9D0600C0CEF6 /* UbuntuMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UbuntuMono.ttf; sourceTree = "<group>"; };
 		02A5198C170DC0CE007C038E /* Inconsolata.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inconsolata.ttf; sourceTree = "<group>"; };
 		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
@@ -870,7 +870,7 @@
 				4CE2951517104A4C003B012A /* SettingsViewDelegate.h */,
 				4C1AF11F1715119300A2D0D8 /* FolderViewControllerDelegate.h */,
 				02C2E4841715594300C912E0 /* CreateFolderViewControllerDelegate.h */,
-				027EE033171693B100302F07 /* ViewPickerControllerDelegate.h */,
+				027EE0371716B0CB00302F07 /* SettingsViewControllerDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1180,8 +1180,8 @@
 				FC4B269D16F88CB800E1DC49 /* FolderViewController.m */,
 				4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */,
 				4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */,
-				027EE0301716932900302F07 /* ViewPickerController.h */,
-				027EE0311716932900302F07 /* ViewPickerController.m */,
+				027EE0341716AAEC00302F07 /* LongSettingListViewController.h */,
+				027EE0351716AAEC00302F07 /* LongSettingListViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1634,7 +1634,7 @@
 				FC7260921711B4D70068DD91 /* SyntaxHighlight.m in Sources */,
 				8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */,
 				02F25A121713E660000B6301 /* CreateFolderViewController.m in Sources */,
-				027EE0321716932900302F07 /* ViewPickerController.m in Sources */,
+				027EE0361716AAEC00302F07 /* LongSettingListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

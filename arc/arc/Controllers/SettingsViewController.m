@@ -13,7 +13,6 @@
 @property (nonatomic, strong) NSMutableArray *plugins;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ApplicationState *appState;
-@property (nonatomic, strong) NSMutableDictionary *pickerDictionary;
 @end
 
 @implementation SettingsViewController
@@ -25,7 +24,6 @@
     if (self) {
         self.title = @"Settings";
         _settingOptions = [NSMutableArray array];
-        _pickerDictionary = [NSMutableDictionary dictionary];
         _plugins = [NSMutableArray array];
         _appState = [ApplicationState sharedApplicationState];
     }
@@ -197,23 +195,30 @@
     NSString *cellIdentifier = [properties objectForKey:SECTION_HEADING];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        if ([[properties objectForKey:SECTION_OPTIONS] count] < 5) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:cellIdentifier];
+        } else {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
+                                          reuseIdentifier:cellIdentifier];
+        }
     }
     
+    NSString *settingKey = [properties objectForKey:SECTION_SETTING_KEY];
     if ([[properties objectForKey:SECTION_OPTIONS] count] > 5) {
-        // This is a long list. Use a single cell with a UIPickerView control.
-        UIPickerView *picker;
-        ViewPickerController *pickerController;
-        if ((pickerController = [_pickerDictionary valueForKey:SECTION_HEADING])) {
-            picker = [pickerController picker];
-        } else {
-            CGSize cellSize = [cell frame].size;
-            picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, cellSize.width, cellSize.height)];
-            pickerController = [[ViewPickerController alloc] initWithPicker:picker properties:properties delegate:self];
-            [_pickerDictionary setValue:pickerController forKey:[properties objectForKey:SECTION_HEADING]];
+        // This is a long list. Use a single cell with a link to a view
+        // with the rest of the items.
+        NSString *currentSettingKey = [_appState settingForKey:settingKey];
+        NSString *currentSetting;
+        for (NSDictionary *currentOption in [properties objectForKey:SECTION_OPTIONS]) {
+            if ([[currentOption objectForKey:PLUGIN_OPTION_VALUE] isEqualToString:currentSettingKey]) {
+                currentSetting = [currentOption objectForKey:PLUGIN_OPTION_LABEL];
+                break;
+            }
         }
-        [cell.contentView addSubview:picker];
+        cell.textLabel.text = @"Current Setting";
+        cell.detailTextLabel.text = currentSetting;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else {
         // Individual option corresponding to the row within this section.
         NSDictionary *option = [[properties
@@ -224,7 +229,6 @@
         // Plugin values need to be comparable somehow
         // easiest option is to make them all strings.
         NSString *value = [option objectForKey:PLUGIN_OPTION_VALUE];
-        NSString *settingKey = [properties objectForKey:SECTION_SETTING_KEY];
         
         BOOL isCurrentSettingThisRow = [[_appState settingForKey:settingKey] isEqualToString:value];
         if (isCurrentSettingThisRow) {

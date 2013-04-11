@@ -11,10 +11,11 @@
 #import "ApplicationState.h"
 #import "PluginDelegate.h"
 #import "SettingCell.h"
-#import "ViewPickerController.h"
-#import "ViewPickerControllerDelegate.h"
 
 @interface SettingsViewController : UIViewController <SubViewControllerDelegate,
-    UITableViewDelegate, UITableViewDataSource, ViewPickerControllerDelegate>
+    UITableViewDelegate, UITableViewDataSource>
 - (void)registerPlugin:(id<PluginDelegate>)plugin;
+- (void)updateSetting:(id<NSObject>)value
+        forSettingKey:(NSString*)settingKey
+      reloadTableData:(Boolean)reloadData;
 @end
