@@ -126,7 +126,8 @@
                           _moveButton,
                           [Utils flexibleSpace],
                           nil];
-    
+
+    _editToolbar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview:_editToolbar];
 }
 
