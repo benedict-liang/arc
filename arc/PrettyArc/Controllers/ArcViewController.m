@@ -12,6 +12,7 @@
 @interface ArcViewController ()
 @property BOOL animating;
 @property UIView *left;
+@property UIView *right;
 @end
 
 @implementation ArcViewController
@@ -28,24 +29,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Work Around
+    // iOS initial frame is unreliable.
+    [[UIApplication sharedApplication]
+     setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
+    
 	// Do any additional setup after loading the view.
-    _left = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.bounds.size.width)];
+    _left = [[UIView alloc] init];
     _left.layer.cornerRadius = 7;
     _left.layer.masksToBounds = YES;
-    _left.backgroundColor = [UIColor whiteColor];
+    // 031f39
+    _left.backgroundColor = [UIColor colorWithRed:3/255.0f green:31/255.0f blue:57/255.0f alpha:1];
     [self.view addSubview:_left];
-    
 
-    UIView *right = [[UIView alloc] initWithFrame:CGRectMake(320, 0, self.view.bounds.size.height - 320, self.view.bounds.size.width)];
-    right.layer.cornerRadius = 7;
-    right.layer.masksToBounds = NO;
-    right.backgroundColor = [UIColor whiteColor];
-    right.layer.shadowRadius = 5;
-    right.layer.shadowOpacity = 0.5;
-    [self.view addSubview:right];
+    _right = [[UIView alloc] init];
+    _right.layer.cornerRadius = 7;
+    _right.layer.masksToBounds = NO;
+    _right.backgroundColor = [UIColor whiteColor];
+    _right.layer.shadowRadius = 5;
+    _right.layer.shadowOpacity = 0.5;
+    [self.view addSubview:_right];
+    
+    [self autoLayout:[[UIApplication sharedApplication]statusBarOrientation]];
     
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
-    [right addGestureRecognizer:pan];
+    [_right addGestureRecognizer:pan];
 }
 
 - (void)pan:(UIPanGestureRecognizer *)gesture
@@ -107,6 +116,16 @@
     _left.transform = CGAffineTransformMakeScale(scale, scale);
 }
 
+- (void)autoLayout:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    NSLog(@"%@", NSStringFromCGRect(self.view.bounds));
+    _left.frame =
+    CGRectMake(0, 0, 320, self.view.bounds.size.height);
+    
+    _right.frame =
+    CGRectMake(320, 0, self.view.bounds.size.width - 320, self.view.bounds.size.height);
+}
+
 # pragma mark - Orientation Methods
 
 - (BOOL)shouldAutorotate
@@ -118,11 +137,7 @@
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
                                          duration:(NSTimeInterval)duration
 {
-    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
-        
-    } else {
-        
-    }
+    [self autoLayout:toInterfaceOrientation];
 }
 
 @end

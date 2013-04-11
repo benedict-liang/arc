@@ -21,7 +21,6 @@
     
     ArcViewController *arcViewController = [[ArcViewController alloc] init];
     [self.window setRootViewController:arcViewController];
-
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
     return YES;
