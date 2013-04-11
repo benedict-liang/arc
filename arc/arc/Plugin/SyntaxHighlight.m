@@ -525,12 +525,15 @@
     NSString* foldStart = [_bundle objectForKey:@"foldingStartMarker"];
     NSString* foldEnd = [_bundle objectForKey:@"foldingStopMarker"];
     
-    if (foldStart && foldEnd) {
-        [self recurFoldsWithStart:foldStart end:foldEnd range:NSMakeRange(0, _content.length) currentStart:-1];
-    }
-    NSLog(@"%@",foldRanges);
+
     
     [self applyStylesTo:output withTheme:theme];
+    
+    if (foldStart && foldEnd) {
+        [self recurFoldsWithStart:foldStart end:foldEnd range:NSMakeRange(0, _content.length) currentStart:-1];
+        [self testFolds:foldRanges output:output];
+    }
+    NSLog(@"%@",foldRanges);
     
     [self updateView:output withTheme:theme];
     
@@ -585,11 +588,21 @@
         NSRange recurRange = NSMakeRange(nextStart, _content.length - nextStart);
         if (currentStart != -1) {
             foldRanges = [self addFoldRange:NSMakeRange(currentStart, firstEndRange.location - currentStart) toArray:foldRanges];
+             
+        } else {
+            [self recurFoldsWithStart:foldStart end:foldEnd range:recurRange currentStart:currentStart];
         }
-        [self recurFoldsWithStart:foldStart end:foldEnd range:recurRange currentStart:currentStart];
+       
     }
    
     
+}
+-(void)testFolds:(NSArray*)ranges output:(ArcAttributedString*)output {
+    for (NSValue* v in ranges) {
+        NSRange r;
+        [v getValue:&r];
+        [self styleOnRange:r fcolor:[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0] output:output];
+    }
 }
 
 @end
