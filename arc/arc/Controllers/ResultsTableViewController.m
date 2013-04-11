@@ -56,8 +56,8 @@
     
     if (cell) {
         // TODO: This represents temporary data for results
-        NSRange *range = (__bridge NSRange*)[_resultsArray objectAtIndex:indexPath.row];
-        cell.textLabel.text = [NSString stringWithFormat:@"Line %@", range];
+        NSNumber *lineNumber = (NSNumber*)[_resultsArray objectAtIndex:indexPath.row];
+        cell.textLabel.text = [NSString stringWithFormat:@"Line %d", [lineNumber intValue]];
     }
     
     return cell;
