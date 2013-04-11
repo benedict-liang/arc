@@ -551,11 +551,11 @@
     }
 }
 
-- (void)addFoldRange:(NSRange)range toArray:(NSArray*)arr {
+- (NSArray*)addFoldRange:(NSRange)range toArray:(NSArray*)arr {
     
     NSMutableArray* temp = [NSMutableArray arrayWithArray:arr];
     [temp addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
-    arr = temp;
+    return temp;
 }
 
 - (void)recurFoldsWithStart:(NSString*)foldStart
@@ -572,17 +572,21 @@
         return;
         
     } else if (firstStartRange.location < firstEndRange.location) {
-        NSRange recurRange = NSMakeRange(firstStartRange.location+1, _content.length - firstStartRange.location -1);
+        int fStartEnds = firstStartRange.location + firstStartRange.length;
+        int nextStart = MIN(fStartEnds, firstEndRange.location);
+        NSRange recurRange = NSMakeRange(nextStart, _content.length - nextStart);
         
         [self recurFoldsWithStart:foldStart end:foldEnd range:recurRange currentStart:firstStartRange.location];
     
     }  else if (firstEndRange.location < firstStartRange.location) {
+        int fEndEnds = firstEndRange.location + firstEndRange.length;
+        int nextStart = MIN(fEndEnds, firstStartRange.location);
         
-        NSRange recurRange = NSMakeRange(firstEndRange.location+1, _content.length - firstEndRange.location -1);
+        NSRange recurRange = NSMakeRange(nextStart, _content.length - nextStart);
         if (currentStart != -1) {
-            [self addFoldRange:NSMakeRange(currentStart, firstEndRange.location) toArray:foldRanges];
+            foldRanges = [self addFoldRange:NSMakeRange(currentStart, firstEndRange.location - currentStart) toArray:foldRanges];
         }
-        [self recurFoldsWithStart:foldStart end:foldEnd range:recurRange currentStart:firstStartRange.location];
+        [self recurFoldsWithStart:foldStart end:foldEnd range:recurRange currentStart:currentStart];
     }
    
     
