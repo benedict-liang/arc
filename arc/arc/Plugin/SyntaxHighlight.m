@@ -522,6 +522,13 @@
                       patterns:patterns
                         output:output];
     
+    NSString* foldStart = [_bundle objectForKey:@"foldingStartMarker"];
+    NSString* foldEnd = [_bundle objectForKey:@"foldingStopMarker"];
+    
+    if (foldStart && foldEnd) {
+        [self recurFoldsWithStart:foldStart end:foldEnd range:NSMakeRange(0, _content.length) currentStart:-1];
+    }
+    NSLog(@"%@",foldRanges);
     
     [self applyStylesTo:output withTheme:theme];
     
@@ -572,9 +579,9 @@
     }  else if (firstEndRange.location < firstStartRange.location) {
         
         NSRange recurRange = NSMakeRange(firstEndRange.location+1, _content.length - firstEndRange.location -1);
-        
-        [self addFoldRange:NSMakeRange(currentStart, firstEndRange.location) toArray:foldRanges];
-        
+        if (currentStart != -1) {
+            [self addFoldRange:NSMakeRange(currentStart, firstEndRange.location) toArray:foldRanges];
+        }
         [self recurFoldsWithStart:foldStart end:foldEnd range:recurRange currentStart:firstStartRange.location];
     }
    
