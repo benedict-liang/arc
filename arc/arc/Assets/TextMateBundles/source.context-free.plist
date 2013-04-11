@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Context Free</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>cfdg</string>
@@ -48,6 +52,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.background</string>
+						<string>keyword.control.background.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.background.cfdg</string>
 				</dict>
@@ -58,11 +69,27 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.unordered-block</string>
+						<string>punctuation.section.unordered-block.end</string>
+						<string>punctuation.section.unordered-block.end.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.unordered-block.end.cfdg</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.ordered-block</string>
+						<string>punctuation.section.ordered-block.end</string>
+						<string>punctuation.section.ordered-block.end.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.ordered-block.end.cfdg</string>
 				</dict>
@@ -81,6 +108,13 @@
 		</dict>
 		<key>color-adjustment</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.color-adjustment</string>
+				<string>constant.language.color-adjustment.cfdg</string>
+			</array>
 			<key>match</key>
 			<string>\||\b(h(ue)?|sat(uration)?|b(rightness)?|a(lpha)?)\b</string>
 			<key>name</key>
@@ -97,6 +131,14 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.unordered-block</string>
+								<string>punctuation.section.unordered-block.begin</string>
+								<string>punctuation.section.unordered-block.begin.cfdg</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.unordered-block.begin.cfdg</string>
 						</dict>
@@ -126,6 +168,14 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.ordered-block</string>
+								<string>punctuation.section.ordered-block.begin</string>
+								<string>punctuation.section.ordered-block.begin.cfdg</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.ordered-block.begin.cfdg</string>
 						</dict>
@@ -161,10 +211,23 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.cfdg</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.cfdg</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.cfdg</string>
+					</array>
 					<key>end</key>
 					<string>$\n?</string>
 					<key>name</key>
@@ -177,16 +240,38 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.begin</string>
+								<string>punctuation.definition.comment.begin.cfdg</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.begin.cfdg</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.block</string>
+						<string>comment.block.cfdg</string>
+					</array>
 					<key>end</key>
 					<string>(\*/)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.end</string>
+								<string>punctuation.definition.comment.end.cfdg</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.end.cfdg</string>
 						</dict>
@@ -198,6 +283,13 @@
 		</dict>
 		<key>geometry-adjustment</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.geometry-adjustment</string>
+				<string>constant.language.geometry-adjustment.cfdg</string>
+			</array>
 			<key>match</key>
 			<string>\b(x|y|z|s(ize)?|r(ot(ate)?)?|f(lip)?|skew)\b</string>
 			<key>name</key>
@@ -209,11 +301,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.include</string>
+						<string>keyword.control.include.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.include.cfdg</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.file-name</string>
+						<string>string.unquoted.file-name.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.file-name.cfdg</string>
 				</dict>
@@ -229,11 +335,24 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>constant.numeric.cfdg</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.loop</string>
+						<string>keyword.operator.loop.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.loop.cfdg</string>
 				</dict>
@@ -244,11 +363,27 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.unordered-block</string>
+						<string>punctuation.section.unordered-block.end</string>
+						<string>punctuation.section.unordered-block.end.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.unordered-block.end.cfdg</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.ordered-block</string>
+						<string>punctuation.section.ordered-block.end</string>
+						<string>punctuation.section.ordered-block.end.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.ordered-block.end.cfdg</string>
 				</dict>
@@ -267,15 +402,35 @@
 		</dict>
 		<key>number</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.cfdg</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.sign</string>
+						<string>keyword.operator.sign.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.sign.cfdg</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.integer-float</string>
+						<string>punctuation.separator.integer-float.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.integer-float.cfdg</string>
 				</dict>
@@ -293,6 +448,14 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.rule</string>
+						<string>punctuation.section.rule.begin</string>
+						<string>punctuation.section.rule.begin.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.rule.begin.cfdg</string>
 				</dict>
@@ -323,21 +486,50 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.rule</string>
+						<string>keyword.control.rule.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.rule.cfdg</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.rule</string>
+						<string>entity.name.function.rule.definition</string>
+						<string>entity.name.function.rule.definition.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.rule.definition.cfdg</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>constant.numeric.cfdg</string>
 				</dict>
 				<key>7</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.integer-float</string>
+						<string>punctuation.separator.integer-float.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.integer-float.cfdg</string>
 				</dict>
@@ -348,6 +540,14 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.rule</string>
+						<string>punctuation.section.rule.end</string>
+						<string>punctuation.section.rule.end.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.rule.end.cfdg</string>
 				</dict>
@@ -375,6 +575,14 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.unordered-block</string>
+								<string>punctuation.section.unordered-block.begin</string>
+								<string>punctuation.section.unordered-block.begin.cfdg</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.unordered-block.begin.cfdg</string>
 						</dict>
@@ -408,6 +616,14 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.ordered-block</string>
+								<string>punctuation.section.ordered-block.begin</string>
+								<string>punctuation.section.ordered-block.begin.cfdg</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.ordered-block.begin.cfdg</string>
 						</dict>
@@ -444,6 +660,14 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.rule</string>
+						<string>entity.name.function.rule.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.rule.cfdg</string>
 				</dict>
@@ -454,11 +678,27 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.unordered-block</string>
+						<string>punctuation.section.unordered-block.end</string>
+						<string>punctuation.section.unordered-block.end.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.unordered-block.end.cfdg</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.ordered-block</string>
+						<string>punctuation.section.ordered-block.end</string>
+						<string>punctuation.section.ordered-block.end.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.ordered-block.end.cfdg</string>
 				</dict>
@@ -481,11 +721,26 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.startshape</string>
+						<string>keyword.control.startshape.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.startshape.cfdg</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.rule</string>
+						<string>entity.name.function.rule.cfdg</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.rule.cfdg</string>
 				</dict>

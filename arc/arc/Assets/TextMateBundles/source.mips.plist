@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>MIPS Assembler</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>s</string>
@@ -16,6 +20,13 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.pseudo</string>
+				<string>support.function.pseudo.mips</string>
+			</array>
 			<key>comment</key>
 			<string>ok actually this are instructions, but one also could call them funtions…</string>
 			<key>match</key>
@@ -24,28 +35,61 @@
 			<string>support.function.pseudo.mips</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.mips</string>
+			</array>
 			<key>match</key>
 			<string>\b(abs\.d|abs\.s|add|add\.d|add\.s|addi|addiu|addu|and|andi|bc1f|bc1t|beq|bgez|bgezal|bgtz|blez|bltz|bltzal|bne|break|c\.eq\.d|c\.eq\.s|c\.le\.d|c\.le\.s|c\.lt\.d|c\.lt\.s|ceil\.w\.d|ceil\.w\.s|clo|clz|cvt\.d\.s|cvt\.d\.w|cvt\.s\.d|cvt\.s\.w|cvt\.w\.d|cvt\.w\.s|div|div\.d|div\.s|divu|eret|floor\.w\.d|floor\.w\.s|j|jal|jalr|jr|lb|lbu|lh|lhu|ll|lui|lw|lwc1|lwl|lwr|madd|maddu|mfc0|mfc1|mfhi|mflo|mov\.d|mov\.s|movf|movf\.d|movf\.s|movn|movn\.d|movn\.s|movt|movt\.d|movt\.s|movz|movz\.d|movz\.s|msub|mtc0|mtc1|mthi|mtlo|mul|mul\.d|mul\.s|mult|multu|neg\.d|neg\.s|nop|nor|or|ori|round\.w\.d|round\.w\.s|sb|sc|sdc1|sh|sll|sllv|slt|slti|sltiu|sltu|sqrt\.d|sqrt\.s|sra|srav|srl|srlv|sub|sub\.d|sub\.s|subu|sw|swc1|swl|swr|syscall|teq|teqi|tge|tgei|tgeiu|tgeu|tlt|tlti|tltiu|tltu|trunc\.w\.d|trunc\.w\.s|xor|xori)\b</string>
 			<key>name</key>
 			<string>support.function.mips</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.type</string>
+				<string>storage.type.mips</string>
+			</array>
 			<key>match</key>
 			<string>\.(ascii|asciiz|byte|data|double|float|half|kdata|ktext|space|text|word|set\s*(noat|at))\b</string>
 			<key>name</key>
 			<string>storage.type.mips</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.modifier</string>
+				<string>storage.modifier.mips</string>
+			</array>
 			<key>match</key>
 			<string>\.(align|extern||globl)\b</string>
 			<key>name</key>
 			<string>storage.modifier.mips</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.label</string>
+				<string>meta.function.label.mips</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.label</string>
+						<string>entity.name.function.label.mips</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.label.mips</string>
 				</dict>
@@ -56,10 +100,26 @@
 			<string>meta.function.label.mips</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.register</string>
+				<string>variable.other.register.usable</string>
+				<string>variable.other.register.usable.by-number</string>
+				<string>variable.other.register.usable.by-number.mips</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.mips</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.mips</string>
 				</dict>
@@ -70,10 +130,26 @@
 			<string>variable.other.register.usable.by-number.mips</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.register</string>
+				<string>variable.other.register.usable</string>
+				<string>variable.other.register.usable.by-name</string>
+				<string>variable.other.register.usable.by-name.mips</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.mips</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.mips</string>
 				</dict>
@@ -84,10 +160,25 @@
 			<string>variable.other.register.usable.by-name.mips</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.register</string>
+				<string>variable.other.register.reserved</string>
+				<string>variable.other.register.reserved.mips</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.mips</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.mips</string>
 				</dict>
@@ -98,10 +189,26 @@
 			<string>variable.other.register.reserved.mips</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.register</string>
+				<string>variable.other.register.usable</string>
+				<string>variable.other.register.usable.floating-point</string>
+				<string>variable.other.register.usable.floating-point.mips</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.mips</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.mips</string>
 				</dict>
@@ -112,12 +219,26 @@
 			<string>variable.other.register.usable.floating-point.mips</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.float</string>
+				<string>constant.numeric.float.mips</string>
+			</array>
 			<key>match</key>
 			<string>\b\d+\.\d+\b</string>
 			<key>name</key>
 			<string>constant.numeric.float.mips</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.integer</string>
+				<string>constant.numeric.integer.mips</string>
+			</array>
 			<key>match</key>
 			<string>\b(\d+|0(x|X)[a-fA-F0-9]+)\b</string>
 			<key>name</key>
@@ -130,16 +251,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.mips</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.mips</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.mips</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.mips</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.mips</string>
 				</dict>
@@ -149,6 +293,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.mips</string>
+					</array>
 					<key>match</key>
 					<string>\\[rnt\\&quot;]</string>
 					<key>name</key>
@@ -157,10 +308,24 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.number-sign</string>
+				<string>comment.line.number-sign.mips</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.mips</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.mips</string>
 				</dict>

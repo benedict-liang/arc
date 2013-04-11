@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Release Notes</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>tmReleaseNotes</string>
@@ -11,20 +15,46 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.separator</string>
+				<string>meta.separator.release-notes</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.separator</string>
+						<string>punctuation.definition.separator.release-notes</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.separator.release-notes</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.toc-list</string>
+						<string>meta.toc-list.release-notes</string>
+					</array>
 					<key>name</key>
 					<string>meta.toc-list.release-notes</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.separator</string>
+						<string>punctuation.definition.separator.release-notes</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.separator.release-notes</string>
 				</dict>
@@ -44,6 +74,12 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.underline</string>
+						<string>markup.underline.link</string>
+					</array>
 					<key>match</key>
 					<string>(https?|ftp|mailto):\S+?(?=[)&gt;,.':;&quot;]*(\s|$)|$)</string>
 					<key>name</key>
@@ -54,21 +90,48 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.release-notes</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.release-notes</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.keyword</string>
+								<string>punctuation.definition.keyword.release-notes</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.keyword.release-notes</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.keyword</string>
+								<string>punctuation.definition.keyword.release-notes</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.keyword.release-notes</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.other</string>
+								<string>constant.other.bundle-name</string>
+								<string>constant.other.bundle-name.release-notes</string>
+							</array>
 							<key>name</key>
 							<string>constant.other.bundle-name.release-notes</string>
 						</dict>
@@ -77,15 +140,35 @@
 					<string>((\[)(?:NEW|FIXED|CHANGED|REMOVED|INFO)(\])) (?:(.+? bundle):)?</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.ticket</string>
+						<string>meta.ticket.release-notes</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.ticket</string>
+								<string>storage.type.ticket.release-notes</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.ticket.release-notes</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.numeric</string>
+								<string>constant.numeric.ticket</string>
+								<string>constant.numeric.ticket.release-notes</string>
+							</array>
 							<key>name</key>
 							<string>constant.numeric.ticket.release-notes</string>
 						</dict>
@@ -96,6 +179,12 @@
 					<string>meta.ticket.release-notes</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.word</string>
+						<string>meta.word.camel-case</string>
+					</array>
 					<key>comment</key>
 					<string>I do not want spell checking for CamelCase words. Since this is generally when quoting various API’s, I have deliberately used A-Z and a-z (ASCII) -- Allan</string>
 					<key>match</key>
@@ -108,6 +197,13 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.other</string>
+								<string>constant.other.committer-name</string>
+								<string>constant.other.committer-name.release-notes</string>
+							</array>
 							<key>name</key>
 							<string>constant.other.committer-name.release-notes</string>
 						</dict>

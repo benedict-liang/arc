@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Twiki</string>
+	</array>
 	<key>keyEquivalent</key>
 	<string>^~T</string>
 	<key>name</key>
@@ -15,16 +19,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.twiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.twiki</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.twiki</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.twiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.twiki</string>
 				</dict>
@@ -34,6 +61,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.twiki</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -42,15 +76,35 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.twiki</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heading</string>
+						<string>punctuation.definition.heading.twiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heading.twiki</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.twiki</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.twiki</string>
 				</dict>
@@ -63,25 +117,59 @@
 		<dict>
 			<key>begin</key>
 			<string>(&lt;)verbatim(&gt;)|(&lt;)pre(&gt;)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.raw</string>
+				<string>markup.raw.twiki</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.twiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.twiki</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.twiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.twiki</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.twiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.twiki</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.twiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.twiki</string>
 				</dict>
@@ -93,6 +181,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.twiki</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -101,6 +196,12 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.separator</string>
+				<string>meta.separator.twiki</string>
+			</array>
 			<key>match</key>
 			<string>^-{3,}$\n</string>
 			<key>name</key>
@@ -109,15 +210,38 @@
 		<dict>
 			<key>begin</key>
 			<string>^ {3}([a-zA-Z0-9]+: )</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.other</string>
+				<string>markup.other.def</string>
+				<string>markup.other.def.twiki</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.other</string>
+						<string>markup.other.def</string>
+						<string>markup.other.def.term</string>
+						<string>markup.other.def.term.twiki</string>
+					</array>
 					<key>name</key>
 					<string>markup.other.def.term.twiki</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.other</string>
+						<string>markup.other.def</string>
+						<string>markup.other.def.def</string>
+						<string>markup.other.def.def.twiki</string>
+					</array>
 					<key>name</key>
 					<string>markup.other.def.def.twiki</string>
 				</dict>
@@ -141,10 +265,24 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.table</string>
+						<string>punctuation.definition.table.twiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.table.twiki</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.other</string>
+				<string>markup.other.table</string>
+				<string>markup.other.table.twiki</string>
+			</array>
 			<key>end</key>
 			<string>^(?:\s*$|(?=\s*&gt;|[=-]{3,}$))</string>
 			<key>name</key>
@@ -164,10 +302,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.list_item</string>
+						<string>punctuation.definition.list_item.twiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.list_item.twiki</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.unnumbered</string>
+				<string>markup.list.unnumbered.1</string>
+				<string>markup.list.unnumbered.1.twiki</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -187,10 +340,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.list_item</string>
+						<string>punctuation.definition.list_item.twiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.list_item.twiki</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.unnumbered</string>
+				<string>markup.list.unnumbered.2</string>
+				<string>markup.list.unnumbered.2.twiki</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -210,10 +378,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.list_item</string>
+						<string>punctuation.definition.list_item.twiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.list_item.twiki</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.unnumbered</string>
+				<string>markup.list.unnumbered.3</string>
+				<string>markup.list.unnumbered.3.twiki</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -233,10 +416,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.list_item</string>
+						<string>punctuation.definition.list_item.twiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.list_item.twiki</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.unnumbered</string>
+				<string>markup.list.unnumbered.4</string>
+				<string>markup.list.unnumbered.4.twiki</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -256,10 +454,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.list_item</string>
+						<string>punctuation.definition.list_item.twiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.list_item.twiki</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.unnumbered</string>
+				<string>markup.list.unnumbered.5</string>
+				<string>markup.list.unnumbered.5.twiki</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -279,10 +492,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.list_item</string>
+						<string>punctuation.definition.list_item.twiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.list_item.twiki</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.unnumbered</string>
+				<string>markup.list.unnumbered.6</string>
+				<string>markup.list.unnumbered.6.twiki</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -298,6 +526,14 @@
 		<dict>
 			<key>begin</key>
 			<string>^ {3}\d</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.numbered</string>
+				<string>markup.list.numbered.1</string>
+				<string>markup.list.numbered.1.twiki</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -313,6 +549,14 @@
 		<dict>
 			<key>begin</key>
 			<string>^ {6}\d</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.numbered</string>
+				<string>markup.list.numbered.2</string>
+				<string>markup.list.numbered.2.twiki</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -328,6 +572,14 @@
 		<dict>
 			<key>begin</key>
 			<string>^ {9}\d</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.numbered</string>
+				<string>markup.list.numbered.3</string>
+				<string>markup.list.numbered.3.twiki</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -343,6 +595,14 @@
 		<dict>
 			<key>begin</key>
 			<string>^ {12}\d</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.numbered</string>
+				<string>markup.list.numbered.4</string>
+				<string>markup.list.numbered.4.twiki</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -358,6 +618,14 @@
 		<dict>
 			<key>begin</key>
 			<string>^ {15}\d</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.numbered</string>
+				<string>markup.list.numbered.5</string>
+				<string>markup.list.numbered.5.twiki</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -373,6 +641,14 @@
 		<dict>
 			<key>begin</key>
 			<string>^ {18}\d</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.numbered</string>
+				<string>markup.list.numbered.6</string>
+				<string>markup.list.numbered.6.twiki</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -388,6 +664,12 @@
 		<dict>
 			<key>begin</key>
 			<string>^(?=\S)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.paragraph</string>
+				<string>meta.paragraph.twiki</string>
+			</array>
 			<key>end</key>
 			<string>^\s*$</string>
 			<key>name</key>
@@ -412,15 +694,35 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.bold</string>
+						<string>markup.bold.twiki</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.bold</string>
+								<string>punctuation.definition.bold.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.bold.twiki</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.bold</string>
+								<string>punctuation.definition.bold.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.bold.twiki</string>
 						</dict>
@@ -435,31 +737,71 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>markup</string>
+								<string>markup.bold</string>
+								<string>markup.bold.twiki</string>
+							</array>
 							<key>name</key>
 							<string>markup.bold.twiki</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>markup</string>
+								<string>markup.italic</string>
+								<string>markup.italic.twiki</string>
+							</array>
 							<key>name</key>
 							<string>markup.italic.twiki</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.bold</string>
+								<string>punctuation.definition.bold.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.bold.twiki</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.italic</string>
+								<string>punctuation.definition.italic.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.italic.twiki</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.bold</string>
+								<string>punctuation.definition.bold.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.bold.twiki</string>
 						</dict>
 						<key>6</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.italic</string>
+								<string>punctuation.definition.italic.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.italic.twiki</string>
 						</dict>
@@ -468,15 +810,35 @@
 					<string>((((__))[\s\w :.\?']*((__))))</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.italic</string>
+						<string>markup.italic.twiki</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.italic</string>
+								<string>punctuation.definition.italic.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.italic.twiki</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.italic</string>
+								<string>punctuation.definition.italic.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.italic.twiki</string>
 						</dict>
@@ -491,31 +853,74 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>markup</string>
+								<string>markup.bold</string>
+								<string>markup.bold.twiki</string>
+							</array>
 							<key>name</key>
 							<string>markup.bold.twiki</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>markup</string>
+								<string>markup.raw</string>
+								<string>markup.raw.fixed</string>
+								<string>markup.raw.fixed.twiki</string>
+							</array>
 							<key>name</key>
 							<string>markup.raw.fixed.twiki</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.bold</string>
+								<string>punctuation.definition.bold.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.bold.twiki</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.raw</string>
+								<string>punctuation.definition.raw.fixed</string>
+								<string>punctuation.definition.raw.fixed.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.raw.fixed.twiki</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.bold</string>
+								<string>punctuation.definition.bold.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.bold.twiki</string>
 						</dict>
 						<key>6</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.raw</string>
+								<string>punctuation.definition.raw.fixed</string>
+								<string>punctuation.definition.raw.fixed.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.raw.fixed.twiki</string>
 						</dict>
@@ -524,15 +929,38 @@
 					<string>((((\=\=))[\s\w :.\?']*((\=\=))))</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.raw</string>
+						<string>markup.raw.fixed</string>
+						<string>markup.raw.fixed.twiki</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.raw</string>
+								<string>punctuation.definition.raw.fixed</string>
+								<string>punctuation.definition.raw.fixed.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.raw.fixed.twiki</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.raw</string>
+								<string>punctuation.definition.raw.fixed</string>
+								<string>punctuation.definition.raw.fixed.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.raw.fixed.twiki</string>
 						</dict>
@@ -543,15 +971,35 @@
 					<string>markup.raw.fixed.twiki</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.twiki</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.twiki</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.twiki</string>
 						</dict>
@@ -562,15 +1010,36 @@
 					<string>variable.other.twiki</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.entity</string>
+						<string>constant.character.entity.html</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.constant</string>
+								<string>punctuation.definition.constant.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.constant.twiki</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.constant</string>
+								<string>punctuation.definition.constant.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.constant.twiki</string>
 						</dict>
@@ -581,35 +1050,84 @@
 					<string>constant.character.entity.html</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.link</string>
+						<string>meta.link.inline</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.link</string>
+								<string>punctuation.definition.link.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.link.twiki</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>markup</string>
+								<string>markup.underline</string>
+								<string>markup.underline.link</string>
+								<string>markup.underline.link.twiki</string>
+							</array>
 							<key>name</key>
 							<string>markup.underline.link.twiki</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.link</string>
+								<string>punctuation.definition.link.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.link.twiki</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.link</string>
+								<string>punctuation.definition.link.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.link.twiki</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.other</string>
+								<string>string.other.link</string>
+								<string>string.other.link.title</string>
+								<string>string.other.link.title.twiki</string>
+							</array>
 							<key>name</key>
 							<string>string.other.link.title.twiki</string>
 						</dict>
 						<key>6</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.link</string>
+								<string>punctuation.definition.link.twiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.link.twiki</string>
 						</dict>
@@ -628,6 +1146,13 @@
 				<dict>
 					<key>begin</key>
 					<string>\G\s+\S</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.list</string>
+						<string>markup.list.unnumbered</string>
+						<string>markup.list.unnumbered.paragraph</string>
+					</array>
 					<key>end</key>
 					<string>^\s*$</string>
 					<key>name</key>
@@ -653,6 +1178,13 @@
 				<dict>
 					<key>begin</key>
 					<string>\G\s+\S</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.list</string>
+						<string>markup.list.numbered</string>
+						<string>markup.list.numbered.paragraph</string>
+					</array>
 					<key>end</key>
 					<string>^\s*$</string>
 					<key>name</key>

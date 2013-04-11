@@ -44,5 +44,10 @@ NSString* const SYNTAXES_FILE_LIST = @"syntaxesFileList.txt";
 // Bundle Conf
 NSString* const BUNDLE_CONF = @"BundleConf.plist";
 
+// Tabs
+const int TAB_DROPBOX = 0;
+const int TAB_DOCUMENTS = 1;
+const int TAB_SETTINGS = 2;
+
 @implementation Constants
 @end

@@ -26,8 +26,11 @@
 		02E51AEB1709580400247AF5 /* DropBoxFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AEA1709580400247AF5 /* DropBoxFile.m */; };
 		02E51AEE1709581200247AF5 /* DropBoxFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AED1709581200247AF5 /* DropBoxFolder.m */; };
 		02E51AF11709582300247AF5 /* DropBoxRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AF01709582300247AF5 /* DropBoxRootFolder.m */; };
+		02F25A121713E660000B6301 /* CreateFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F25A111713E660000B6301 /* CreateFolderViewController.m */; };
 		4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D0711705CA7800F4593B /* ArcAttributedString.m */; };
-		4C36137D170AC673009358B1 /* dropbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C36137C170AC673009358B1 /* dropbox.png */; };
+		4C1AF1181714FF8400A2D0D8 /* documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1AF1161714FF8400A2D0D8 /* documents.png */; };
+		4C1AF1191714FF8400A2D0D8 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1AF1171714FF8400A2D0D8 /* settings.png */; };
+		4C1AF11B1715029100A2D0D8 /* dropbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1AF11A1715029100A2D0D8 /* dropbox.png */; };
 		4C43F8ED16F86AA900159B29 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
 		4C43F8EF16F86AA900159B29 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EE16F86AA900159B29 /* Foundation.framework */; };
 		4C43F8F116F86AA900159B29 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8F016F86AA900159B29 /* CoreGraphics.framework */; };
@@ -39,6 +42,7 @@
 		4C43F90516F86AA900159B29 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43F90416F86AA900159B29 /* Default-568h@2x.png */; };
 		4C43F90816F86AA900159B29 /* arc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F90616F86AA900159B29 /* arc.xcdatamodeld */; };
 		4C8307EB17114CEF00F49C33 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8307EA17114CEF00F49C33 /* SettingCell.m */; };
+		4C9137281715B9D900413C79 /* Solarized (dark).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = 4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */; };
 		4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C963C81170D8E96004FDACB /* CodeLineCell.m */; };
 		4C9E0619170F3AFC0000F783 /* arc72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E0618170F3AFC0000F783 /* arc72.png */; };
 		4C9E061B170F3B1A0000F783 /* arc144.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E061A170F3B1A0000F783 /* arc144.png */; };
@@ -54,6 +58,7 @@
 		4CE2950E17101BA0003B012A /* SyntaxHighlightingPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */; };
 		4CE2951117101C53003B012A /* FontSizePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE2951017101C53003B012A /* FontSizePlugin.m */; };
 		4CE2951417101C82003B012A /* FontFamilyPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE2951317101C82003B012A /* FontFamilyPlugin.m */; };
+		4CEADA041716AB0E00F4F619 /* threelines.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEADA031716AB0E00F4F619 /* threelines.png */; };
 		4CF6F0EE1706E08800EDDEDC /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0ED1706E08800EDDEDC /* file.png */; };
 		4CF6F0F21706E29300EDDEDC /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F11706E29300EDDEDC /* folder.png */; };
 		4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */; };
@@ -229,6 +234,62 @@
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
 		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
 		8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */; };
+		FC3C2E621715BF8100C40490 /* [ Argonaut ].tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E2A1715BF7A00C40490 /* [ Argonaut ].tmTheme */; };
+		FC3C2E631715BF8100C40490 /* All Hallow's Eve Custom.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E2B1715BF7A00C40490 /* All Hallow's Eve Custom.tmTheme */; };
+		FC3C2E641715BF8100C40490 /* BBEdit.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E2C1715BF7A00C40490 /* BBEdit.tmTheme */; };
+		FC3C2E651715BF8100C40490 /* Black Pearl II.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E2D1715BF7A00C40490 /* Black Pearl II.tmTheme */; };
+		FC3C2E661715BF8100C40490 /* Black Pearl.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E2E1715BF7A00C40490 /* Black Pearl.tmTheme */; };
+		FC3C2E671715BF8100C40490 /* Blackboard Black.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E2F1715BF7A00C40490 /* Blackboard Black.tmTheme */; };
+		FC3C2E681715BF8100C40490 /* Bongzilla.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E301715BF7A00C40490 /* Bongzilla.tmTheme */; };
+		FC3C2E691715BF8100C40490 /* Clouds Midnight.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E311715BF7A00C40490 /* Clouds Midnight.tmTheme */; };
+		FC3C2E6A1715BF8100C40490 /* Clouds.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E321715BF7A00C40490 /* Clouds.tmTheme */; };
+		FC3C2E6B1715BF8100C40490 /* Coda.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E331715BF7A00C40490 /* Coda.tmTheme */; };
+		FC3C2E6C1715BF8100C40490 /* CSSEdit.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E341715BF7A00C40490 /* CSSEdit.tmTheme */; };
+		FC3C2E6D1715BF8100C40490 /* Django (Smoothy).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E351715BF7B00C40490 /* Django (Smoothy).tmTheme */; };
+		FC3C2E6E1715BF8100C40490 /* Django.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E361715BF7B00C40490 /* Django.tmTheme */; };
+		FC3C2E6F1715BF8100C40490 /* Emacs Strict.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E371715BF7B00C40490 /* Emacs Strict.tmTheme */; };
+		FC3C2E701715BF8100C40490 /* Espresso Tutti.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E381715BF7B00C40490 /* Espresso Tutti.tmTheme */; };
+		FC3C2E711715BF8100C40490 /* Espresso.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E391715BF7B00C40490 /* Espresso.tmTheme */; };
+		FC3C2E721715BF8100C40490 /* Fade to Grey.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E3A1715BF7B00C40490 /* Fade to Grey.tmTheme */; };
+		FC3C2E731715BF8100C40490 /* fake.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E3B1715BF7B00C40490 /* fake.tmTheme */; };
+		FC3C2E741715BF8100C40490 /* Fluidvision.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E3C1715BF7B00C40490 /* Fluidvision.tmTheme */; };
+		FC3C2E751715BF8100C40490 /* ForLaTeX.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E3D1715BF7B00C40490 /* ForLaTeX.tmTheme */; };
+		FC3C2E761715BF8100C40490 /* Freckle.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E3E1715BF7B00C40490 /* Freckle.tmTheme */; };
+		FC3C2E771715BF8100C40490 /* Friendship Bracelet.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E3F1715BF7C00C40490 /* Friendship Bracelet.tmTheme */; };
+		FC3C2E781715BF8100C40490 /* GitHub.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E401715BF7C00C40490 /* GitHub.tmTheme */; };
+		FC3C2E791715BF8100C40490 /* GlitterBomb.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E411715BF7C00C40490 /* GlitterBomb.tmTheme */; };
+		FC3C2E7A1715BF8100C40490 /* Happy happy joy joy 2.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E421715BF7C00C40490 /* Happy happy joy joy 2.tmTheme */; };
+		FC3C2E7B1715BF8100C40490 /* idleFingers.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E431715BF7C00C40490 /* idleFingers.tmTheme */; };
+		FC3C2E7C1715BF8100C40490 /* iLife 05.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E441715BF7C00C40490 /* iLife 05.tmTheme */; };
+		FC3C2E7D1715BF8100C40490 /* IR_Black.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E451715BF7C00C40490 /* IR_Black.tmTheme */; };
+		FC3C2E7E1715BF8100C40490 /* IR_White.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E461715BF7C00C40490 /* IR_White.tmTheme */; };
+		FC3C2E7F1715BF8100C40490 /* krTheme.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E471715BF7D00C40490 /* krTheme.tmTheme */; };
+		FC3C2E801715BF8100C40490 /* LAZY.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E481715BF7D00C40490 /* LAZY.tmTheme */; };
+		FC3C2E811715BF8100C40490 /* Lowlight.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E491715BF7D00C40490 /* Lowlight.tmTheme */; };
+		FC3C2E821715BF8100C40490 /* Merbivore Soft.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E4A1715BF7D00C40490 /* Merbivore Soft.tmTheme */; };
+		FC3C2E831715BF8100C40490 /* Merbivore.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E4B1715BF7D00C40490 /* Merbivore.tmTheme */; };
+		FC3C2E841715BF8100C40490 /* monoindustrial.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E4C1715BF7D00C40490 /* monoindustrial.tmTheme */; };
+		FC3C2E851715BF8100C40490 /* MultiMarkdown.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E4D1715BF7D00C40490 /* MultiMarkdown.tmTheme */; };
+		FC3C2E861715BF8100C40490 /* Pastie.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E4E1715BF7E00C40490 /* Pastie.tmTheme */; };
+		FC3C2E871715BF8100C40490 /* Putty.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E4F1715BF7E00C40490 /* Putty.tmTheme */; };
+		FC3C2E881715BF8100C40490 /* Rails Envy.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E501715BF7E00C40490 /* Rails Envy.tmTheme */; };
+		FC3C2E891715BF8100C40490 /* Railscasts.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E511715BF7E00C40490 /* Railscasts.tmTheme */; };
+		FC3C2E8A1715BF8100C40490 /* RDark.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E521715BF7E00C40490 /* RDark.tmTheme */; };
+		FC3C2E8B1715BF8100C40490 /* Ryan Light.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E531715BF7E00C40490 /* Ryan Light.tmTheme */; };
+		FC3C2E8C1715BF8100C40490 /* Smoothy.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E541715BF7E00C40490 /* Smoothy.tmTheme */; };
+		FC3C2E8E1715BF8100C40490 /* Spectacular.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E561715BF7E00C40490 /* Spectacular.tmTheme */; };
+		FC3C2E8F1715BF8100C40490 /* Starlight.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E571715BF7E00C40490 /* Starlight.tmTheme */; };
+		FC3C2E901715BF8100C40490 /* Summer Camp Mod.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E581715BF7E00C40490 /* Summer Camp Mod.tmTheme */; };
+		FC3C2E911715BF8100C40490 /* Summer Camp.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E591715BF7E00C40490 /* Summer Camp.tmTheme */; };
+		FC3C2E921715BF8100C40490 /* Swyphs II.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E5A1715BF7E00C40490 /* Swyphs II.tmTheme */; };
+		FC3C2E931715BF8100C40490 /* Tango.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E5B1715BF7E00C40490 /* Tango.tmTheme */; };
+		FC3C2E941715BF8100C40490 /* Text Ex Machina.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E5C1715BF7E00C40490 /* Text Ex Machina.tmTheme */; };
+		FC3C2E951715BF8100C40490 /* Tubster.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E5D1715BF7E00C40490 /* Tubster.tmTheme */; };
+		FC3C2E961715BF8100C40490 /* Vibrant Fin.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E5E1715BF7F00C40490 /* Vibrant Fin.tmTheme */; };
+		FC3C2E971715BF8100C40490 /* Vibrant Ink.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E5F1715BF7F00C40490 /* Vibrant Ink.tmTheme */; };
+		FC3C2E981715BF8100C40490 /* Vibrant Tango.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E601715BF8100C40490 /* Vibrant Tango.tmTheme */; };
+		FC3C2E991715BF8100C40490 /* zenburn.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E611715BF8100C40490 /* zenburn.tmTheme */; };
+		FC3C2E9C1715C1F400C40490 /* ThemeConf.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E9B1715C1F400C40490 /* ThemeConf.plist */; };
 		FC4A8529170EB47200463EDA /* twist.py in Resources */ = {isa = PBXBuildFile; fileRef = FC4A8528170EB47200463EDA /* twist.py */; };
 		FC4B269E16F88CB800E1DC49 /* FolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B269D16F88CB800E1DC49 /* FolderViewController.m */; };
 		FC4B26CE16FF6E3800E1DC49 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */; };
@@ -265,6 +326,7 @@
 		028B48FF170E9D0600C0CEF6 /* UbuntuMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UbuntuMono.ttf; sourceTree = "<group>"; };
 		02A5198C170DC0CE007C038E /* Inconsolata.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inconsolata.ttf; sourceTree = "<group>"; };
 		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
+		02C2E4841715594300C912E0 /* CreateFolderViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFolderViewControllerDelegate.h; sourceTree = "<group>"; };
 		02CF20711712ACB8001A59E4 /* Reading Panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reading Panel.png"; sourceTree = "<group>"; };
 		02D2B73D17099E88002D22E7 /* RootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootFolder.h; sourceTree = "<group>"; };
 		02D2B73E17099E88002D22E7 /* RootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootFolder.m; sourceTree = "<group>"; };
@@ -284,10 +346,15 @@
 		02E51AED1709581200247AF5 /* DropBoxFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxFolder.m; sourceTree = "<group>"; };
 		02E51AEF1709582300247AF5 /* DropBoxRootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxRootFolder.h; sourceTree = "<group>"; };
 		02E51AF01709582300247AF5 /* DropBoxRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxRootFolder.m; sourceTree = "<group>"; };
+		02F25A101713E660000B6301 /* CreateFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFolderViewController.h; sourceTree = "<group>"; };
+		02F25A111713E660000B6301 /* CreateFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateFolderViewController.m; sourceTree = "<group>"; };
 		4C12D0701705CA7800F4593B /* ArcAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcAttributedString.h; sourceTree = "<group>"; };
 		4C12D0711705CA7800F4593B /* ArcAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcAttributedString.m; sourceTree = "<group>"; };
+		4C1AF1161714FF8400A2D0D8 /* documents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = documents.png; sourceTree = "<group>"; };
+		4C1AF1171714FF8400A2D0D8 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		4C1AF11A1715029100A2D0D8 /* dropbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropbox.png; sourceTree = "<group>"; };
+		4C1AF11F1715119300A2D0D8 /* FolderViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewControllerDelegate.h; sourceTree = "<group>"; };
 		4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileNavigatorViewControllerDelegate.h; sourceTree = "<group>"; };
-		4C36137C170AC673009358B1 /* dropbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropbox.png; sourceTree = "<group>"; };
 		4C43F8E916F86AA900159B29 /* arc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C43F8EC16F86AA900159B29 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4C43F8EE16F86AA900159B29 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -305,6 +372,7 @@
 		4C43F90716F86AA900159B29 /* arc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = arc.xcdatamodel; sourceTree = "<group>"; };
 		4C8307E917114CEF00F49C33 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		4C8307EA17114CEF00F49C33 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
+		4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Solarized (dark).tmTheme"; sourceTree = "<group>"; };
 		4C963C80170D8E96004FDACB /* CodeLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeLineCell.h; sourceTree = "<group>"; };
 		4C963C81170D8E96004FDACB /* CodeLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeLineCell.m; sourceTree = "<group>"; };
 		4C9E0618170F3AFC0000F783 /* arc72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc72.png; sourceTree = SOURCE_ROOT; };
@@ -336,6 +404,8 @@
 		4CE2951217101C82003B012A /* FontFamilyPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontFamilyPlugin.h; sourceTree = "<group>"; };
 		4CE2951317101C82003B012A /* FontFamilyPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontFamilyPlugin.m; sourceTree = "<group>"; };
 		4CE2951517104A4C003B012A /* SettingsViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewDelegate.h; sourceTree = "<group>"; };
+		4CEADA011716814B00F4F619 /* CodeViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewDelegate.h; sourceTree = "<group>"; };
+		4CEADA031716AB0E00F4F619 /* threelines.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = threelines.png; sourceTree = "<group>"; };
 		4CF6F0ED1706E08800EDDEDC /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
 		4CF6F0F11706E29300EDDEDC /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
 		4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -524,6 +594,62 @@
 		8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewController.h; sourceTree = "<group>"; };
 		8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeViewController.m; sourceTree = "<group>"; };
 		8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewControllerDelegate.h; sourceTree = "<group>"; };
+		FC3C2E2A1715BF7A00C40490 /* [ Argonaut ].tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "[ Argonaut ].tmTheme"; sourceTree = "<group>"; };
+		FC3C2E2B1715BF7A00C40490 /* All Hallow's Eve Custom.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "All Hallow's Eve Custom.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E2C1715BF7A00C40490 /* BBEdit.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BBEdit.tmTheme; sourceTree = "<group>"; };
+		FC3C2E2D1715BF7A00C40490 /* Black Pearl II.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Black Pearl II.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E2E1715BF7A00C40490 /* Black Pearl.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Black Pearl.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E2F1715BF7A00C40490 /* Blackboard Black.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Blackboard Black.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E301715BF7A00C40490 /* Bongzilla.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Bongzilla.tmTheme; sourceTree = "<group>"; };
+		FC3C2E311715BF7A00C40490 /* Clouds Midnight.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Clouds Midnight.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E321715BF7A00C40490 /* Clouds.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Clouds.tmTheme; sourceTree = "<group>"; };
+		FC3C2E331715BF7A00C40490 /* Coda.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Coda.tmTheme; sourceTree = "<group>"; };
+		FC3C2E341715BF7A00C40490 /* CSSEdit.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CSSEdit.tmTheme; sourceTree = "<group>"; };
+		FC3C2E351715BF7B00C40490 /* Django (Smoothy).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Django (Smoothy).tmTheme"; sourceTree = "<group>"; };
+		FC3C2E361715BF7B00C40490 /* Django.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Django.tmTheme; sourceTree = "<group>"; };
+		FC3C2E371715BF7B00C40490 /* Emacs Strict.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Emacs Strict.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E381715BF7B00C40490 /* Espresso Tutti.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Espresso Tutti.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E391715BF7B00C40490 /* Espresso.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Espresso.tmTheme; sourceTree = "<group>"; };
+		FC3C2E3A1715BF7B00C40490 /* Fade to Grey.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Fade to Grey.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E3B1715BF7B00C40490 /* fake.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = fake.tmTheme; sourceTree = "<group>"; };
+		FC3C2E3C1715BF7B00C40490 /* Fluidvision.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Fluidvision.tmTheme; sourceTree = "<group>"; };
+		FC3C2E3D1715BF7B00C40490 /* ForLaTeX.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ForLaTeX.tmTheme; sourceTree = "<group>"; };
+		FC3C2E3E1715BF7B00C40490 /* Freckle.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Freckle.tmTheme; sourceTree = "<group>"; };
+		FC3C2E3F1715BF7C00C40490 /* Friendship Bracelet.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Friendship Bracelet.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E401715BF7C00C40490 /* GitHub.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = GitHub.tmTheme; sourceTree = "<group>"; };
+		FC3C2E411715BF7C00C40490 /* GlitterBomb.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = GlitterBomb.tmTheme; sourceTree = "<group>"; };
+		FC3C2E421715BF7C00C40490 /* Happy happy joy joy 2.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Happy happy joy joy 2.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E431715BF7C00C40490 /* idleFingers.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = idleFingers.tmTheme; sourceTree = "<group>"; };
+		FC3C2E441715BF7C00C40490 /* iLife 05.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "iLife 05.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E451715BF7C00C40490 /* IR_Black.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IR_Black.tmTheme; sourceTree = "<group>"; };
+		FC3C2E461715BF7C00C40490 /* IR_White.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = IR_White.tmTheme; sourceTree = "<group>"; };
+		FC3C2E471715BF7D00C40490 /* krTheme.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = krTheme.tmTheme; sourceTree = "<group>"; };
+		FC3C2E481715BF7D00C40490 /* LAZY.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LAZY.tmTheme; sourceTree = "<group>"; };
+		FC3C2E491715BF7D00C40490 /* Lowlight.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Lowlight.tmTheme; sourceTree = "<group>"; };
+		FC3C2E4A1715BF7D00C40490 /* Merbivore Soft.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Merbivore Soft.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E4B1715BF7D00C40490 /* Merbivore.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Merbivore.tmTheme; sourceTree = "<group>"; };
+		FC3C2E4C1715BF7D00C40490 /* monoindustrial.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = monoindustrial.tmTheme; sourceTree = "<group>"; };
+		FC3C2E4D1715BF7D00C40490 /* MultiMarkdown.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MultiMarkdown.tmTheme; sourceTree = "<group>"; };
+		FC3C2E4E1715BF7E00C40490 /* Pastie.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Pastie.tmTheme; sourceTree = "<group>"; };
+		FC3C2E4F1715BF7E00C40490 /* Putty.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Putty.tmTheme; sourceTree = "<group>"; };
+		FC3C2E501715BF7E00C40490 /* Rails Envy.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Rails Envy.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E511715BF7E00C40490 /* Railscasts.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Railscasts.tmTheme; sourceTree = "<group>"; };
+		FC3C2E521715BF7E00C40490 /* RDark.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RDark.tmTheme; sourceTree = "<group>"; };
+		FC3C2E531715BF7E00C40490 /* Ryan Light.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Ryan Light.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E541715BF7E00C40490 /* Smoothy.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Smoothy.tmTheme; sourceTree = "<group>"; };
+		FC3C2E561715BF7E00C40490 /* Spectacular.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Spectacular.tmTheme; sourceTree = "<group>"; };
+		FC3C2E571715BF7E00C40490 /* Starlight.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Starlight.tmTheme; sourceTree = "<group>"; };
+		FC3C2E581715BF7E00C40490 /* Summer Camp Mod.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Summer Camp Mod.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E591715BF7E00C40490 /* Summer Camp.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Summer Camp.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E5A1715BF7E00C40490 /* Swyphs II.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Swyphs II.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E5B1715BF7E00C40490 /* Tango.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Tango.tmTheme; sourceTree = "<group>"; };
+		FC3C2E5C1715BF7E00C40490 /* Text Ex Machina.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Text Ex Machina.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E5D1715BF7E00C40490 /* Tubster.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Tubster.tmTheme; sourceTree = "<group>"; };
+		FC3C2E5E1715BF7F00C40490 /* Vibrant Fin.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Vibrant Fin.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E5F1715BF7F00C40490 /* Vibrant Ink.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Vibrant Ink.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E601715BF8100C40490 /* Vibrant Tango.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Vibrant Tango.tmTheme"; sourceTree = "<group>"; };
+		FC3C2E611715BF8100C40490 /* zenburn.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = zenburn.tmTheme; sourceTree = "<group>"; };
+		FC3C2E9B1715C1F400C40490 /* ThemeConf.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ThemeConf.plist; sourceTree = "<group>"; };
 		FC4A8528170EB47200463EDA /* twist.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = twist.py; sourceTree = "<group>"; };
 		FC4B269C16F88CB800E1DC49 /* FolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewController.h; sourceTree = "<group>"; };
 		FC4B269D16F88CB800E1DC49 /* FolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderViewController.m; sourceTree = "<group>"; };
@@ -609,6 +735,17 @@
 			name = "DropBox Files";
 			sourceTree = "<group>";
 		};
+		02F25A091713CF0A000B6301 /* Popup Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8F771E121711B900002E9914 /* ResultsTableViewController.h */,
+				8F771E131711B900002E9914 /* ResultsTableViewController.m */,
+				02F25A101713E660000B6301 /* CreateFolderViewController.h */,
+				02F25A111713E660000B6301 /* CreateFolderViewController.m */,
+			);
+			name = "Popup Controllers";
+			sourceTree = "<group>";
+		};
 		4C43F8E016F86AA800159B29 = {
 			isa = PBXGroup;
 			children = (
@@ -657,8 +794,6 @@
 				4C43F90E16F86AC400159B29 /* Model */,
 				4CD06B8716FE122400C9DED3 /* View */,
 				4CD06B9016FE1A6900C9DED3 /* Assets */,
-				4C9E061A170F3B1A0000F783 /* arc144.png */,
-				4C9E0618170F3AFC0000F783 /* arc72.png */,
 				4C43F8FD16F86AA900159B29 /* AppDelegate.h */,
 				4C43F8FE16F86AA900159B29 /* AppDelegate.m */,
 				4C43F90616F86AA900159B29 /* arc.xcdatamodeld */,
@@ -708,16 +843,13 @@
 			isa = PBXGroup;
 			children = (
 				4CD477491710146B0054738D /* PluginDelegate.h */,
-				4CE2950C17101BA0003B012A /* SyntaxHighlightingPlugin.h */,
-				4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */,
+				02D55DB31711694900DD48D7 /* PluginUtilities.h */,
+				02D55DB41711694900DD48D7 /* PluginUtilities.m */,
+				4CEADA02171681F000F4F619 /* SyntaxHighlighting */,
 				4CE2950F17101C53003B012A /* FontSizePlugin.h */,
 				4CE2951017101C53003B012A /* FontSizePlugin.m */,
 				4CE2951217101C82003B012A /* FontFamilyPlugin.h */,
 				4CE2951317101C82003B012A /* FontFamilyPlugin.m */,
-				02D55DB31711694900DD48D7 /* PluginUtilities.h */,
-				02D55DB41711694900DD48D7 /* PluginUtilities.m */,
-				FC7260901711B4D50068DD91 /* SyntaxHighlight.h */,
-				FC7260911711B4D60068DD91 /* SyntaxHighlight.m */,
 			);
 			name = Plugins;
 			path = Plugin;
@@ -731,8 +863,11 @@
 				4CA4DE43170EA4C200A86109 /* MasterViewControllerDelegate.h */,
 				4CA4DE42170EA04400A86109 /* DetailViewControllerDelegate.h */,
 				FCE8F95D1709806B00C08724 /* CodeViewControllerDelegate.h */,
+				4CEADA011716814B00F4F619 /* CodeViewDelegate.h */,
 				4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */,
 				4CE2951517104A4C003B012A /* SettingsViewDelegate.h */,
+				4C1AF11F1715119300A2D0D8 /* FolderViewControllerDelegate.h */,
+				02C2E4841715594300C912E0 /* CreateFolderViewControllerDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -819,13 +954,29 @@
 			path = Assets/Fonts;
 			sourceTree = "<group>";
 		};
+		4CEADA02171681F000F4F619 /* SyntaxHighlighting */ = {
+			isa = PBXGroup;
+			children = (
+				4CE2950C17101BA0003B012A /* SyntaxHighlightingPlugin.h */,
+				4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */,
+				FC7260901711B4D50068DD91 /* SyntaxHighlight.h */,
+				FC7260911711B4D60068DD91 /* SyntaxHighlight.m */,
+			);
+			name = SyntaxHighlighting;
+			sourceTree = "<group>";
+		};
 		4CF6F0EC1706E05500EDDEDC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4C9E061A170F3B1A0000F783 /* arc144.png */,
+				4C9E0618170F3AFC0000F783 /* arc72.png */,
+				4C1AF11A1715029100A2D0D8 /* dropbox.png */,
+				4C1AF1161714FF8400A2D0D8 /* documents.png */,
+				4C1AF1171714FF8400A2D0D8 /* settings.png */,
 				02CF20711712ACB8001A59E4 /* Reading Panel.png */,
-				4C36137C170AC673009358B1 /* dropbox.png */,
 				4CF6F0F11706E29300EDDEDC /* folder.png */,
 				4CF6F0ED1706E08800EDDEDC /* file.png */,
+				4CEADA031716AB0E00F4F619 /* threelines.png */,
 			);
 			name = Images;
 			path = Assets/Images;
@@ -1003,6 +1154,7 @@
 		8F563F32170161B600EE5643 /* TMBundleProcessing */ = {
 			isa = PBXGroup;
 			children = (
+				FC3C2E9B1715C1F400C40490 /* ThemeConf.plist */,
 				FCFB4DA1170F466200B25FDC /* BundleConf.plist */,
 				8F15104F1704410000115E5E /* TMBundleHeader.h */,
 				8F563F33170161C900EE5643 /* TMBundleSyntaxParser.h */,
@@ -1029,6 +1181,7 @@
 		8FCA1D6616F86C7000C6AAFC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				02F25A091713CF0A000B6301 /* Popup Controllers */,
 				4CD06B2D16FDE97E00C9DED3 /* Protocols */,
 				8FCA1D6716F86C7000C6AAFC /* MainViewController.h */,
 				8FCA1D6816F86C7000C6AAFC /* MainViewController.m */,
@@ -1040,8 +1193,6 @@
 				FC4B269D16F88CB800E1DC49 /* FolderViewController.m */,
 				4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */,
 				4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */,
-				8F771E121711B900002E9914 /* ResultsTableViewController.h */,
-				8F771E131711B900002E9914 /* ResultsTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1049,6 +1200,62 @@
 		FC726083171152910068DD91 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
+				FC3C2E2A1715BF7A00C40490 /* [ Argonaut ].tmTheme */,
+				FC3C2E2B1715BF7A00C40490 /* All Hallow's Eve Custom.tmTheme */,
+				FC3C2E2C1715BF7A00C40490 /* BBEdit.tmTheme */,
+				FC3C2E2D1715BF7A00C40490 /* Black Pearl II.tmTheme */,
+				FC3C2E2E1715BF7A00C40490 /* Black Pearl.tmTheme */,
+				FC3C2E2F1715BF7A00C40490 /* Blackboard Black.tmTheme */,
+				FC3C2E301715BF7A00C40490 /* Bongzilla.tmTheme */,
+				FC3C2E311715BF7A00C40490 /* Clouds Midnight.tmTheme */,
+				FC3C2E321715BF7A00C40490 /* Clouds.tmTheme */,
+				FC3C2E331715BF7A00C40490 /* Coda.tmTheme */,
+				FC3C2E341715BF7A00C40490 /* CSSEdit.tmTheme */,
+				FC3C2E351715BF7B00C40490 /* Django (Smoothy).tmTheme */,
+				FC3C2E361715BF7B00C40490 /* Django.tmTheme */,
+				FC3C2E371715BF7B00C40490 /* Emacs Strict.tmTheme */,
+				FC3C2E381715BF7B00C40490 /* Espresso Tutti.tmTheme */,
+				FC3C2E391715BF7B00C40490 /* Espresso.tmTheme */,
+				FC3C2E3A1715BF7B00C40490 /* Fade to Grey.tmTheme */,
+				FC3C2E3B1715BF7B00C40490 /* fake.tmTheme */,
+				FC3C2E3C1715BF7B00C40490 /* Fluidvision.tmTheme */,
+				FC3C2E3D1715BF7B00C40490 /* ForLaTeX.tmTheme */,
+				FC3C2E3E1715BF7B00C40490 /* Freckle.tmTheme */,
+				FC3C2E3F1715BF7C00C40490 /* Friendship Bracelet.tmTheme */,
+				FC3C2E401715BF7C00C40490 /* GitHub.tmTheme */,
+				FC3C2E411715BF7C00C40490 /* GlitterBomb.tmTheme */,
+				FC3C2E421715BF7C00C40490 /* Happy happy joy joy 2.tmTheme */,
+				FC3C2E431715BF7C00C40490 /* idleFingers.tmTheme */,
+				FC3C2E441715BF7C00C40490 /* iLife 05.tmTheme */,
+				FC3C2E451715BF7C00C40490 /* IR_Black.tmTheme */,
+				FC3C2E461715BF7C00C40490 /* IR_White.tmTheme */,
+				FC3C2E471715BF7D00C40490 /* krTheme.tmTheme */,
+				FC3C2E481715BF7D00C40490 /* LAZY.tmTheme */,
+				FC3C2E491715BF7D00C40490 /* Lowlight.tmTheme */,
+				FC3C2E4A1715BF7D00C40490 /* Merbivore Soft.tmTheme */,
+				FC3C2E4B1715BF7D00C40490 /* Merbivore.tmTheme */,
+				FC3C2E4C1715BF7D00C40490 /* monoindustrial.tmTheme */,
+				FC3C2E4D1715BF7D00C40490 /* MultiMarkdown.tmTheme */,
+				FC3C2E4E1715BF7E00C40490 /* Pastie.tmTheme */,
+				FC3C2E4F1715BF7E00C40490 /* Putty.tmTheme */,
+				FC3C2E501715BF7E00C40490 /* Rails Envy.tmTheme */,
+				FC3C2E511715BF7E00C40490 /* Railscasts.tmTheme */,
+				FC3C2E521715BF7E00C40490 /* RDark.tmTheme */,
+				FC3C2E531715BF7E00C40490 /* Ryan Light.tmTheme */,
+				FC3C2E541715BF7E00C40490 /* Smoothy.tmTheme */,
+				FC3C2E561715BF7E00C40490 /* Spectacular.tmTheme */,
+				FC3C2E571715BF7E00C40490 /* Starlight.tmTheme */,
+				FC3C2E581715BF7E00C40490 /* Summer Camp Mod.tmTheme */,
+				FC3C2E591715BF7E00C40490 /* Summer Camp.tmTheme */,
+				FC3C2E5A1715BF7E00C40490 /* Swyphs II.tmTheme */,
+				FC3C2E5B1715BF7E00C40490 /* Tango.tmTheme */,
+				FC3C2E5C1715BF7E00C40490 /* Text Ex Machina.tmTheme */,
+				FC3C2E5D1715BF7E00C40490 /* Tubster.tmTheme */,
+				FC3C2E5E1715BF7F00C40490 /* Vibrant Fin.tmTheme */,
+				FC3C2E5F1715BF7F00C40490 /* Vibrant Ink.tmTheme */,
+				FC3C2E601715BF8100C40490 /* Vibrant Tango.tmTheme */,
+				FC3C2E611715BF8100C40490 /* zenburn.tmTheme */,
+				4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */,
 				FC726084171152910068DD91 /* Monokai.tmTheme */,
 				FC726085171152910068DD91 /* Solarized (light).tmTheme */,
 			);
@@ -1137,7 +1344,6 @@
 				8F151051170443AC00115E5E /* home.html in Resources */,
 				4CF6F0EE1706E08800EDDEDC /* file.png in Resources */,
 				4CF6F0F21706E29300EDDEDC /* folder.png in Resources */,
-				4C36137D170AC673009358B1 /* dropbox.png in Resources */,
 				02E162CD170B02F400C9D23B /* appState.plist in Resources */,
 				02A5198D170DC0CE007C038E /* Inconsolata.ttf in Resources */,
 				FC4A8529170EB47200463EDA /* twist.py in Resources */,
@@ -1312,6 +1518,67 @@
 				FC726086171152910068DD91 /* Monokai.tmTheme in Resources */,
 				FC726087171152910068DD91 /* Solarized (light).tmTheme in Resources */,
 				02CF20721712ACB8001A59E4 /* Reading Panel.png in Resources */,
+				4C1AF1181714FF8400A2D0D8 /* documents.png in Resources */,
+				4C1AF1191714FF8400A2D0D8 /* settings.png in Resources */,
+				4C1AF11B1715029100A2D0D8 /* dropbox.png in Resources */,
+				FC3C2E621715BF8100C40490 /* [ Argonaut ].tmTheme in Resources */,
+				FC3C2E631715BF8100C40490 /* All Hallow's Eve Custom.tmTheme in Resources */,
+				FC3C2E641715BF8100C40490 /* BBEdit.tmTheme in Resources */,
+				FC3C2E651715BF8100C40490 /* Black Pearl II.tmTheme in Resources */,
+				FC3C2E661715BF8100C40490 /* Black Pearl.tmTheme in Resources */,
+				FC3C2E671715BF8100C40490 /* Blackboard Black.tmTheme in Resources */,
+				FC3C2E681715BF8100C40490 /* Bongzilla.tmTheme in Resources */,
+				FC3C2E691715BF8100C40490 /* Clouds Midnight.tmTheme in Resources */,
+				FC3C2E6A1715BF8100C40490 /* Clouds.tmTheme in Resources */,
+				FC3C2E6B1715BF8100C40490 /* Coda.tmTheme in Resources */,
+				FC3C2E6C1715BF8100C40490 /* CSSEdit.tmTheme in Resources */,
+				FC3C2E6D1715BF8100C40490 /* Django (Smoothy).tmTheme in Resources */,
+				FC3C2E6E1715BF8100C40490 /* Django.tmTheme in Resources */,
+				FC3C2E6F1715BF8100C40490 /* Emacs Strict.tmTheme in Resources */,
+				FC3C2E701715BF8100C40490 /* Espresso Tutti.tmTheme in Resources */,
+				FC3C2E711715BF8100C40490 /* Espresso.tmTheme in Resources */,
+				FC3C2E721715BF8100C40490 /* Fade to Grey.tmTheme in Resources */,
+				FC3C2E731715BF8100C40490 /* fake.tmTheme in Resources */,
+				FC3C2E741715BF8100C40490 /* Fluidvision.tmTheme in Resources */,
+				FC3C2E751715BF8100C40490 /* ForLaTeX.tmTheme in Resources */,
+				FC3C2E761715BF8100C40490 /* Freckle.tmTheme in Resources */,
+				FC3C2E771715BF8100C40490 /* Friendship Bracelet.tmTheme in Resources */,
+				FC3C2E781715BF8100C40490 /* GitHub.tmTheme in Resources */,
+				FC3C2E791715BF8100C40490 /* GlitterBomb.tmTheme in Resources */,
+				FC3C2E7A1715BF8100C40490 /* Happy happy joy joy 2.tmTheme in Resources */,
+				FC3C2E7B1715BF8100C40490 /* idleFingers.tmTheme in Resources */,
+				FC3C2E7C1715BF8100C40490 /* iLife 05.tmTheme in Resources */,
+				FC3C2E7D1715BF8100C40490 /* IR_Black.tmTheme in Resources */,
+				FC3C2E7E1715BF8100C40490 /* IR_White.tmTheme in Resources */,
+				FC3C2E7F1715BF8100C40490 /* krTheme.tmTheme in Resources */,
+				FC3C2E801715BF8100C40490 /* LAZY.tmTheme in Resources */,
+				FC3C2E811715BF8100C40490 /* Lowlight.tmTheme in Resources */,
+				FC3C2E821715BF8100C40490 /* Merbivore Soft.tmTheme in Resources */,
+				FC3C2E831715BF8100C40490 /* Merbivore.tmTheme in Resources */,
+				FC3C2E841715BF8100C40490 /* monoindustrial.tmTheme in Resources */,
+				FC3C2E851715BF8100C40490 /* MultiMarkdown.tmTheme in Resources */,
+				FC3C2E861715BF8100C40490 /* Pastie.tmTheme in Resources */,
+				FC3C2E871715BF8100C40490 /* Putty.tmTheme in Resources */,
+				FC3C2E881715BF8100C40490 /* Rails Envy.tmTheme in Resources */,
+				FC3C2E891715BF8100C40490 /* Railscasts.tmTheme in Resources */,
+				FC3C2E8A1715BF8100C40490 /* RDark.tmTheme in Resources */,
+				FC3C2E8B1715BF8100C40490 /* Ryan Light.tmTheme in Resources */,
+				FC3C2E8C1715BF8100C40490 /* Smoothy.tmTheme in Resources */,
+				FC3C2E8E1715BF8100C40490 /* Spectacular.tmTheme in Resources */,
+				FC3C2E8F1715BF8100C40490 /* Starlight.tmTheme in Resources */,
+				FC3C2E901715BF8100C40490 /* Summer Camp Mod.tmTheme in Resources */,
+				FC3C2E911715BF8100C40490 /* Summer Camp.tmTheme in Resources */,
+				FC3C2E921715BF8100C40490 /* Swyphs II.tmTheme in Resources */,
+				FC3C2E931715BF8100C40490 /* Tango.tmTheme in Resources */,
+				FC3C2E941715BF8100C40490 /* Text Ex Machina.tmTheme in Resources */,
+				FC3C2E951715BF8100C40490 /* Tubster.tmTheme in Resources */,
+				FC3C2E961715BF8100C40490 /* Vibrant Fin.tmTheme in Resources */,
+				FC3C2E971715BF8100C40490 /* Vibrant Ink.tmTheme in Resources */,
+				FC3C2E981715BF8100C40490 /* Vibrant Tango.tmTheme in Resources */,
+				FC3C2E991715BF8100C40490 /* zenburn.tmTheme in Resources */,
+				4C9137281715B9D900413C79 /* Solarized (dark).tmTheme in Resources */,
+				FC3C2E9C1715C1F400C40490 /* ThemeConf.plist in Resources */,
+				4CEADA041716AB0E00F4F619 /* threelines.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1378,7 +1645,8 @@
 				02D55DB51711694900DD48D7 /* PluginUtilities.m in Sources */,
 				FC7260921711B4D70068DD91 /* SyntaxHighlight.m in Sources */,
 				8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */,
-				8F46CDA51713DFB10088DE10 /* SelectionView.m in Sources */,
+                02F25A121713E660000B6301 /* CreateFolderViewController.m in Sources */,
+                8F46CDA51713DFB10088DE10 /* SelectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

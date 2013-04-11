@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>MoinMoin</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>moinmoin</string>
@@ -13,15 +17,36 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.1</string>
+				<string>markup.heading.1.moinmoin</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heading</string>
+						<string>punctuation.definition.heading.moimoin</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heading.moimoin</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heading</string>
+						<string>punctuation.definition.heading.moimoin</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heading.moimoin</string>
 				</dict>
@@ -32,15 +57,36 @@
 			<string>markup.heading.1.moinmoin</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.2</string>
+				<string>markup.heading.2.moinmoin</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heading</string>
+						<string>punctuation.definition.heading.moimoin</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heading.moimoin</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heading</string>
+						<string>punctuation.definition.heading.moimoin</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heading.moimoin</string>
 				</dict>
@@ -51,15 +97,36 @@
 			<string>markup.heading.2.moinmoin</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.3</string>
+				<string>markup.heading.3.moinmoin</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heading</string>
+						<string>punctuation.definition.heading.moimoin</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heading.moimoin</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heading</string>
+						<string>punctuation.definition.heading.moimoin</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heading.moimoin</string>
 				</dict>
@@ -70,15 +137,36 @@
 			<string>markup.heading.3.moinmoin</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.4</string>
+				<string>markup.heading.4.moinmoin</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heading</string>
+						<string>punctuation.definition.heading.moimoin</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heading.moimoin</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heading</string>
+						<string>punctuation.definition.heading.moimoin</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heading.moimoin</string>
 				</dict>
@@ -89,15 +177,36 @@
 			<string>markup.heading.4.moinmoin</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.5</string>
+				<string>markup.heading.5.moinmoin</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heading</string>
+						<string>punctuation.definition.heading.moimoin</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heading.moimoin</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heading</string>
+						<string>punctuation.definition.heading.moimoin</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heading.moimoin</string>
 				</dict>
@@ -108,22 +217,48 @@
 			<string>markup.heading.5.moinmoin</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.separator</string>
+				<string>meta.separator.moinmoin</string>
+			</array>
 			<key>match</key>
 			<string>^\s*-----\s*\n</string>
 			<key>name</key>
 			<string>meta.separator.moinmoin</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.pragma</string>
+				<string>meta.pragma.moimoin</string>
+			</array>
 			<key>match</key>
 			<string>^#pragma.*</string>
 			<key>name</key>
 			<string>meta.pragma.moimoin</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.double-number-sign</string>
+				<string>comment.line.double-number-sign.moimoin</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.moimoin</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.moimoin</string>
 				</dict>
@@ -140,11 +275,26 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.list</string>
+						<string>markup.list.definition</string>
+						<string>markup.list.definition.term</string>
+						<string>markup.list.definition.term.moinmoin</string>
+					</array>
 					<key>name</key>
 					<string>markup.list.definition.term.moinmoin</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.definition</string>
+						<string>punctuation.separator.definition.moinmoin</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.definition.moinmoin</string>
 				</dict>
@@ -168,11 +318,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.list_item</string>
+						<string>punctuation.definition.list_item.moinmoin</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.list_item.moinmoin</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.list</string>
+						<string>markup.list.unnumbered</string>
+						<string>markup.list.unnumbered.moinmoin</string>
+					</array>
 					<key>name</key>
 					<string>markup.list.unnumbered.moinmoin</string>
 				</dict>
@@ -196,11 +360,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.list_item</string>
+						<string>punctuation.definition.list_item.moinmoin</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.list_item.moinmoin</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.list</string>
+						<string>markup.list.numbered</string>
+						<string>markup.list.numbered.moinmoin</string>
+					</array>
 					<key>name</key>
 					<string>markup.list.numbered.moinmoin</string>
 				</dict>
@@ -224,11 +402,27 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.table</string>
+						<string>punctuation.definition.table.column</string>
+						<string>punctuation.definition.table.column.moinmoin</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.table.column.moinmoin</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.table</string>
+						<string>punctuation.definition.table.column</string>
+						<string>punctuation.definition.table.column.moinmoin</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.table.column.moinmoin</string>
 				</dict>
@@ -248,6 +442,12 @@
 		<dict>
 			<key>begin</key>
 			<string>^\s*(?=\S)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.paragraph</string>
+				<string>meta.paragraph.moinmoin</string>
+			</array>
 			<key>end</key>
 			<string>\n</string>
 			<key>name</key>
@@ -270,10 +470,24 @@
 				<dict>
 					<key>begin</key>
 					<string>\{{3}(?!.*\}{3})</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.raw</string>
+						<string>markup.raw.block</string>
+						<string>markup.raw.block.moinmoin</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.raw</string>
+								<string>punctuation.definition.raw.moinmoin</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.raw.moinmoin</string>
 						</dict>
@@ -284,25 +498,60 @@
 					<string>markup.raw.block.moinmoin</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.raw</string>
+						<string>markup.raw.inline</string>
+						<string>markup.raw.inline.moinmoin</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.raw</string>
+								<string>punctuation.definition.raw.moinmoin</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.raw.moinmoin</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.raw</string>
+								<string>punctuation.definition.raw.moinmoin</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.raw.moinmoin</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.raw</string>
+								<string>punctuation.definition.raw.moinmoin</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.raw.moinmoin</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.raw</string>
+								<string>punctuation.definition.raw.moinmoin</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.raw.moinmoin</string>
 						</dict>
@@ -319,6 +568,13 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.italic</string>
+								<string>punctuation.definition.italic.moinmoin</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.italic.moinmoin</string>
 						</dict>
@@ -342,6 +598,13 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.bold</string>
+								<string>punctuation.definition.bold.moinmoin</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.bold.moinmoin</string>
 						</dict>
@@ -365,6 +628,13 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.italic</string>
+								<string>punctuation.definition.italic.moinmoin</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.italic.moinmoin</string>
 						</dict>
@@ -388,6 +658,13 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.underline</string>
+								<string>punctuation.definition.underline.moinmoin</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.underline.moinmoin</string>
 						</dict>
@@ -405,21 +682,49 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.underline</string>
+						<string>markup.underline.link</string>
+						<string>markup.underline.link.moinmoin</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;!\!)/?(?:[A-Z][a-z0-9]+[A-Z][a-z0-9]+[A-Za-z0-9]*)</string>
 					<key>name</key>
 					<string>markup.underline.link.moinmoin</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.underline</string>
+						<string>markup.underline.link</string>
+						<string>markup.underline.link.moinmoin</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.link</string>
+								<string>punctuation.definition.link.moinmoin</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.link.moinmoin</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.link</string>
+								<string>punctuation.definition.link.moinmoin</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.link.moinmoin</string>
 						</dict>
@@ -430,15 +735,36 @@
 					<string>markup.underline.link.moinmoin</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.underline</string>
+						<string>markup.underline.link</string>
+						<string>markup.underline.link.moinmoin</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.link</string>
+								<string>punctuation.definition.link.moinmoin</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.link.moinmoin</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.link</string>
+								<string>punctuation.definition.link.moinmoin</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.link.moinmoin</string>
 						</dict>
@@ -449,21 +775,49 @@
 					<string>markup.underline.link.moinmoin</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.underline</string>
+						<string>markup.underline.link</string>
+						<string>markup.underline.link.moinmoin</string>
+					</array>
 					<key>match</key>
 					<string>https?://\S+</string>
 					<key>name</key>
 					<string>markup.underline.link.moinmoin</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.underline</string>
+						<string>markup.underline.link</string>
+						<string>markup.underline.link.moinmoin</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.link</string>
+								<string>punctuation.definition.link.moinmoin</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.link.moinmoin</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.link</string>
+								<string>punctuation.definition.link.moinmoin</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.link.moinmoin</string>
 						</dict>
@@ -474,10 +828,24 @@
 					<string>markup.underline.link.moinmoin</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.underline</string>
+						<string>markup.underline.link</string>
+						<string>markup.underline.link.moinmoin</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.key-value</string>
+								<string>punctuation.separator.key-value.moinmoin</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.key-value.moinmoin</string>
 						</dict>
@@ -488,10 +856,25 @@
 					<string>markup.underline.link.moinmoin</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.table</string>
+						<string>meta.table.column</string>
+						<string>meta.table.column.moinmoin</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.table</string>
+								<string>punctuation.definition.table.column</string>
+								<string>punctuation.definition.table.column.moinmoin</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.table.column.moinmoin</string>
 						</dict>
@@ -502,10 +885,23 @@
 					<string>meta.table.column.moinmoin</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.macro</string>
+						<string>meta.macro.moinmoin</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.macro</string>
+								<string>punctuation.definition.macro.moinmoin</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.macro.moinmoin</string>
 						</dict>

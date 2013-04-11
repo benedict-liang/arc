@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>HTML (Django)</string>
+	</array>
 	<key>fileTypes</key>
 	<array/>
 	<key>foldingStartMarker</key>
@@ -23,6 +27,13 @@
 		<dict>
 			<key>begin</key>
 			<string>{% comment %}</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.django</string>
+				<string>comment.block.django.template</string>
+			</array>
 			<key>end</key>
 			<string>{% endcomment %}</string>
 			<key>name</key>
@@ -31,6 +42,13 @@
 		<dict>
 			<key>begin</key>
 			<string>{{</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.django</string>
+				<string>variable.other.django.template</string>
+			</array>
 			<key>end</key>
 			<string>}}</string>
 			<key>name</key>
@@ -39,10 +57,25 @@
 		<dict>
 			<key>begin</key>
 			<string>({%)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.scope</string>
+				<string>meta.scope.django</string>
+				<string>meta.scope.django.template</string>
+				<string>meta.scope.django.template.tag</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.other</string>
+						<string>entity.other.django</string>
+						<string>entity.other.django.tagbraces</string>
+					</array>
 					<key>name</key>
 					<string>entity.other.django.tagbraces</string>
 				</dict>
@@ -54,18 +87,39 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.django</string>
+						<string>keyword.control.django.template</string>
+					</array>
 					<key>match</key>
 					<string>\b(block|endblock|blocktrans|endblocktrans|plural|debug|extends|filter|firstof|for|endfor|if|include|else|endif|ifchanged|endifchanged|ifequal|endifequal|ifnotequal|endifnotequal|load|now|regroup|ssi|spaceless|templatetag|widthratio)\b</string>
 					<key>name</key>
 					<string>keyword.control.django.template</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.django</string>
+						<string>keyword.operator.django.template</string>
+					</array>
 					<key>match</key>
 					<string>\b(and|or|not|in|by|as)\b</string>
 					<key>name</key>
 					<string>keyword.operator.django.template</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.filter</string>
+						<string>support.function.filter.django</string>
+					</array>
 					<key>match</key>
 					<string>\|(add|addslashes|capfirst|center|cut|date|default|default_if_none|dictsort|dictsortreversed|divisibleby|escape|filesizeformat|first|fix_ampersands|floatformat|get_digit|join|length|length_is|linebreaks|linebreaksbr|linenumbers|ljust|lower|make_list|phone2numeric|pluralize|pprint|random|removetags|rjust|slice|slugify|stringformat|striptags|time|timesince|title|truncatewords|unordered_list|upper|urlencode|urlize|urlizetrunc|wordcount|wordwrap|yesno)\b</string>
 					<key>name</key>
@@ -74,12 +128,28 @@
 				<dict>
 					<key>begin</key>
 					<string>'|&quot;</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.other</string>
+						<string>string.other.django</string>
+						<string>string.other.django.template</string>
+						<string>string.other.django.template.tag</string>
+					</array>
 					<key>end</key>
 					<string>'|&quot;</string>
 					<key>name</key>
 					<string>string.other.django.template.tag</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.django</string>
+						<string>string.unquoted.django.template</string>
+						<string>string.unquoted.django.template.tag</string>
+					</array>
 					<key>match</key>
 					<string>[a-zA-Z_]+</string>
 					<key>name</key>

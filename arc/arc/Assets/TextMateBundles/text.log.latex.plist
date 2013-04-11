@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>LaTeX Log</string>
+	</array>
 	<key>firstLineMatch</key>
 	<string>This is (pdfe)?TeXk?, Version </string>
 	<key>foldingStartMarker</key>
@@ -13,54 +17,109 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>invalid</string>
+				<string>invalid.deprecated</string>
+			</array>
 			<key>match</key>
 			<string>.*Warning:</string>
 			<key>name</key>
 			<string>invalid.deprecated</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>invalid</string>
+				<string>invalid.deprecated</string>
+			</array>
 			<key>match</key>
 			<string>[^:]*:\d*:.*</string>
 			<key>name</key>
 			<string>invalid.deprecated</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>invalid</string>
+				<string>invalid.illegal</string>
+			</array>
 			<key>match</key>
 			<string>.*Error|^!.*</string>
 			<key>name</key>
 			<string>invalid.illegal</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>entity</string>
+				<string>entity.name</string>
+				<string>entity.name.function</string>
+			</array>
 			<key>match</key>
 			<string>.*\.sty</string>
 			<key>name</key>
 			<string>entity.name.function</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>entity</string>
+				<string>entity.name</string>
+				<string>entity.name.type</string>
+				<string>entity.name.type.class</string>
+			</array>
 			<key>match</key>
 			<string>.*\.cls</string>
 			<key>name</key>
 			<string>entity.name.type.class</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>entity</string>
+				<string>entity.name</string>
+				<string>entity.name.tag</string>
+				<string>entity.name.tag.configuration</string>
+			</array>
 			<key>match</key>
 			<string>.*\.cfg</string>
 			<key>name</key>
 			<string>entity.name.tag.configuration</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>entity</string>
+				<string>entity.name</string>
+				<string>entity.name.tag</string>
+				<string>entity.name.tag.definition</string>
+			</array>
 			<key>match</key>
 			<string>.*\.def</string>
 			<key>name</key>
 			<string>entity.name.tag.definition</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.documentation</string>
+			</array>
 			<key>match</key>
 			<string>.*Info.*</string>
 			<key>name</key>
 			<string>comment.block.documentation</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.log</string>
+				<string>meta.log.latex</string>
+				<string>meta.log.latex.fixme</string>
+			</array>
 			<key>match</key>
 			<string>.*FiXme:</string>
 			<key>name</key>
@@ -69,10 +128,24 @@
 		<dict>
 			<key>begin</key>
 			<string>(Overfull|Underfull)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.log</string>
+				<string>meta.log.latex</string>
+				<string>meta.log.latex.hyphenation</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.hyphenation</string>
+						<string>keyword.control.hyphenation.latex</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.hyphenation.latex</string>
 				</dict>
@@ -84,6 +157,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.parameter</string>
+						<string>variable.parameter.hyphenation</string>
+						<string>variable.parameter.hyphenation.latex2</string>
+					</array>
 					<key>match</key>
 					<string>[0-9]+\-\-[0-9]+</string>
 					<key>name</key>
@@ -98,16 +178,43 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.log</string>
+						<string>punctuation.definition.string.begin.log.latex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.log.latex</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.other</string>
+				<string>string.unquoted.other.filename</string>
+				<string>string.unquoted.other.filename.log</string>
+				<string>string.unquoted.other.filename.log.latex</string>
+			</array>
 			<key>end</key>
 			<string>(&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.log</string>
+						<string>punctuation.definition.string.end.log.latex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.log.latex</string>
 				</dict>
@@ -117,10 +224,25 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.with-arg</string>
+						<string>support.function.with-arg.latex</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.function</string>
+								<string>entity.name.function.filename</string>
+								<string>entity.name.function.filename.latex</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.function.filename.latex</string>
 						</dict>

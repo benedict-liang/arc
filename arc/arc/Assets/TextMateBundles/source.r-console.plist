@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>R Console</string>
+	</array>
 	<key>fileTypes</key>
 	<array/>
 	<key>keyEquivalent</key>
@@ -17,10 +21,24 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.r-console</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.r-console</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>source</string>
+				<string>source.r</string>
+				<string>source.r.embedded</string>
+				<string>source.r.embedded.r-console</string>
+			</array>
 			<key>end</key>
 			<string>\n|\z</string>
 			<key>name</key>

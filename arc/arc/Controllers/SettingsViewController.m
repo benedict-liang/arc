@@ -22,6 +22,7 @@
 {
     self = [super init];
     if (self) {
+        self.title = @"Settings";
         _settingOptions = [NSMutableArray array];
         _plugins = [NSMutableArray array];
         _appState = [ApplicationState sharedApplicationState];
@@ -33,7 +34,8 @@
 {
     [super viewDidLoad];
     self.view.autoresizesSubviews = YES;
-    self.title = @"Settings";
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleWidth;
     
     [self generateSections];
     
@@ -189,7 +191,7 @@
                              objectForKey:SECTION_OPTIONS]
                             objectAtIndex:indexPath.row];
     
-    static NSString *cellIdentifier = @"SettingsMCQCell";
+    NSString *cellIdentifier = [properties objectForKey:SECTION_HEADING];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault

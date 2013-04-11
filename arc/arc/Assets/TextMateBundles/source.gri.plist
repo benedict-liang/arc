@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Gri</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>gri</string>
@@ -17,20 +21,47 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.gri</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.gri</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.function.gri</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.gri</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.gri</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.gri</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.function.gri</string>
 				</dict>
@@ -47,10 +78,24 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.gri</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.gri</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.number-sign</string>
+				<string>comment.line.number-sign.gri</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -58,6 +103,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.continuation</string>
+						<string>punctuation.separator.continuation.gri</string>
+					</array>
 					<key>match</key>
 					<string>(?&gt;\\\s*\n)</string>
 					<key>name</key>
@@ -72,10 +124,24 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.gri</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.gri</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.double-slash</string>
+				<string>comment.line.double-slash.gri</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -83,6 +149,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.continuation</string>
+						<string>punctuation.separator.continuation.gri</string>
+					</array>
 					<key>match</key>
 					<string>(?&gt;\\\s*\n)</string>
 					<key>name</key>
@@ -91,30 +164,63 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.gri</string>
+			</array>
 			<key>match</key>
 			<string>\b(break|else|end|if|return|rpn|while)\b</string>
 			<key>name</key>
 			<string>keyword.control.gri</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.arithmetic</string>
+				<string>keyword.operator.arithmetic.gri</string>
+			</array>
 			<key>match</key>
 			<string>(\-|\+|\*|\/|%\/%|%%|\^)</string>
 			<key>name</key>
 			<string>keyword.operator.arithmetic.gri</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.assignment</string>
+				<string>keyword.operator.assignment.gri</string>
+			</array>
 			<key>match</key>
 			<string>(=|&lt;-)</string>
 			<key>name</key>
 			<string>keyword.operator.assignment.gri</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.comparison</string>
+				<string>keyword.operator.comparison.gri</string>
+			</array>
 			<key>match</key>
 			<string>(==|!=)</string>
 			<key>name</key>
 			<string>keyword.operator.comparison.gri</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.gri</string>
+			</array>
 			<key>match</key>
 			<string>\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)\b</string>
 			<key>name</key>
@@ -123,15 +229,37 @@
 		<dict>
 			<key>begin</key>
 			<string>(&lt;&lt; *&quot;)([^&quot;]*)(&quot;)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.heredoc</string>
+				<string>string.unquoted.heredoc.doublequote</string>
+				<string>string.unquoted.heredoc.doublequote.gri</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.gri</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.gri</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.gri</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.gri</string>
 				</dict>
@@ -142,10 +270,24 @@
 			<string>string.unquoted.heredoc.doublequote.gri</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.synonym</string>
+				<string>variable.other.synonym.gri</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.gri</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.gri</string>
 				</dict>
@@ -156,15 +298,36 @@
 			<string>variable.other.synonym.gri</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.variable</string>
+				<string>variable.other.variable.gri</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.gri</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.gri</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.gri</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.gri</string>
 				</dict>
@@ -175,15 +338,36 @@
 			<string>variable.other.variable.gri</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.variabledot</string>
+				<string>variable.other.variabledot.gri</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.gri</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.gri</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.gri</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.gri</string>
 				</dict>
@@ -200,16 +384,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.gri</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.gri</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.gri</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.gri</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.gri</string>
 				</dict>

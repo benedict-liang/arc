@@ -2,6 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Quake Style </string>
+		<string>Quake Style .cfg</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>cfg</string>
@@ -13,6 +18,12 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.quake3</string>
+			</array>
 			<key>comment</key>
 			<string>the 2nd part of the regex is just to capture binds to number-keys and prevent them from getting highlighted as values.</string>
 			<key>match</key>
@@ -21,6 +32,12 @@
 			<string>keyword.other.quake3</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.quake3</string>
+			</array>
 			<key>match</key>
 			<string>\b\d+(\.\d+)?\b</string>
 			<key>name</key>
@@ -33,16 +50,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.quake3</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.quake3</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.quake3</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.quake3</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.quake3</string>
 				</dict>
@@ -52,12 +92,26 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.quake3</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
 					<string>constant.character.escape.quake3</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.string-embedded</string>
+						<string>keyword.other.string-embedded.quake3</string>
+					</array>
 					<key>match</key>
 					<string>\b(set(a|u|s)?|bind|unbindall|vstr|exec|kill|say|say_team|quit|echo)\b</string>
 					<key>name</key>
@@ -66,10 +120,24 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.double-slash</string>
+				<string>comment.line.double-slash.quake3</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.quake3</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.quake3</string>
 				</dict>

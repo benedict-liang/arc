@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>SQL</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>sql</string>
@@ -19,20 +23,46 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.create</string>
+				<string>meta.create.sql</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.create</string>
+						<string>keyword.other.create.sql</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.create.sql</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.sql</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.sql</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.sql</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.sql</string>
 				</dict>
@@ -43,15 +73,34 @@
 			<string>meta.create.sql</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.drop</string>
+				<string>meta.drop.sql</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.create</string>
+						<string>keyword.other.create.sql</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.create.sql</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.sql</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.sql</string>
 				</dict>
@@ -62,25 +111,59 @@
 			<string>meta.drop.sql</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.drop</string>
+				<string>meta.drop.sql</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.create</string>
+						<string>keyword.other.create.sql</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.create.sql</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.table</string>
+						<string>keyword.other.table.sql</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.table.sql</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.sql</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.sql</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.cascade</string>
+						<string>keyword.other.cascade.sql</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.cascade.sql</string>
 				</dict>
@@ -91,15 +174,35 @@
 			<string>meta.drop.sql</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.alter</string>
+				<string>meta.alter.sql</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.create</string>
+						<string>keyword.other.create.sql</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.create.sql</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.table</string>
+						<string>keyword.other.table.sql</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.table.sql</string>
 				</dict>
@@ -114,152 +217,306 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.sql</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.sql</string>
 				</dict>
 				<key>10</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.sql</string>
+					</array>
 					<key>name</key>
 					<string>constant.numeric.sql</string>
 				</dict>
 				<key>11</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.sql</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.sql</string>
 				</dict>
 				<key>12</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.sql</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.sql</string>
 				</dict>
 				<key>13</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.sql</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.sql</string>
 				</dict>
 				<key>14</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.sql</string>
+					</array>
 					<key>name</key>
 					<string>constant.numeric.sql</string>
 				</dict>
 				<key>15</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.sql</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.sql</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.sql</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.sql</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.sql</string>
+					</array>
 					<key>name</key>
 					<string>constant.numeric.sql</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.sql</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.sql</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.sql</string>
+					</array>
 					<key>name</key>
 					<string>constant.numeric.sql</string>
 				</dict>
 				<key>6</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.sql</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.sql</string>
 				</dict>
 				<key>7</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.sql</string>
+					</array>
 					<key>name</key>
 					<string>constant.numeric.sql</string>
 				</dict>
 				<key>8</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.sql</string>
+					</array>
 					<key>name</key>
 					<string>constant.numeric.sql</string>
 				</dict>
 				<key>9</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.sql</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.sql</string>
 				</dict>
 			</dict>
 			<key>match</key>
 			<string>(?xi)
-			
-							# normal stuff, capture 1
-							 \b(bigint|bigserial|bit|boolean|box|bytea|cidr|circle|date|double\sprecision|inet|int|integer|line|lseg|macaddr|money|oid|path|point|polygon|real|serial|smallint|sysdate|text)\b
-			
-							# numeric suffix, capture 2 + 3i
-							|\b(bit\svarying|character\s(?:varying)?|tinyint|var\schar|float|interval)\((\d+)\)
-			
-							# optional numeric suffix, capture 4 + 5i
-							|\b(char|number|varchar\d?)\b(?:\((\d+)\))?
-			
-							# special case, capture 6 + 7i + 8i
-							|\b(numeric)\b(?:\((\d+),(\d+)\))?
-			
-							# special case, captures 9, 10i, 11
-							|\b(times)(?:\((\d+)\))(\swithoutstimeszone\b)?
-			
-							# special case, captures 12, 13, 14i, 15
-							|\b(timestamp)(?:(s)\((\d+)\)(\swithoutstimeszone\b)?)?
-			
-						</string>
+												
+																# normal stuff, capture 1
+																 \b(bigint|bigserial|bit|boolean|box|bytea|cidr|circle|date|double\sprecision|inet|int|integer|line|lseg|macaddr|money|oid|path|point|polygon|real|serial|smallint|sysdate|text)\b
+												
+																# numeric suffix, capture 2 + 3i
+																|\b(bit\svarying|character\s(?:varying)?|tinyint|var\schar|float|interval)\((\d+)\)
+												
+																# optional numeric suffix, capture 4 + 5i
+																|\b(char|number|varchar\d?)\b(?:\((\d+)\))?
+												
+																# special case, capture 6 + 7i + 8i
+																|\b(numeric)\b(?:\((\d+),(\d+)\))?
+												
+																# special case, captures 9, 10i, 11
+																|\b(times)(?:\((\d+)\))(\swithoutstimeszone\b)?
+												
+																# special case, captures 12, 13, 14i, 15
+																|\b(timestamp)(?:(s)\((\d+)\)(\swithoutstimeszone\b)?)?
+												
+															</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.modifier</string>
+				<string>storage.modifier.sql</string>
+			</array>
 			<key>match</key>
 			<string>(?i:\b((?:primary|foreign)\s+key|references|on\sdelete(\s+cascade)?|check|constraint)\b)</string>
 			<key>name</key>
 			<string>storage.modifier.sql</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.sql</string>
+			</array>
 			<key>match</key>
 			<string>\d+</string>
 			<key>name</key>
 			<string>constant.numeric.sql</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.DML</string>
+				<string>keyword.other.DML.sql</string>
+			</array>
 			<key>match</key>
 			<string>(?i:\b(select(\s+distinct)?|insert\s+(ignore\s+)?into|update|delete|from|set|where|group\sby|and|union(\s+all)?|having|order\sby|limit|(inner|cross)\s+join|straight_join|(left|right)(\s+outer)?\s+join|natural(\s+(left|right)(\s+outer)?)?\s+join)\b)</string>
 			<key>name</key>
 			<string>keyword.other.DML.sql</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.DDL</string>
+				<string>keyword.other.DDL.create</string>
+				<string>keyword.other.DDL.create.II</string>
+				<string>keyword.other.DDL.create.II.sql</string>
+			</array>
 			<key>match</key>
 			<string>(?i:\b(on\s+|(not\s+)?null)\b)</string>
 			<key>name</key>
 			<string>keyword.other.DDL.create.II.sql</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.DML</string>
+				<string>keyword.other.DML.II</string>
+				<string>keyword.other.DML.II.sql</string>
+			</array>
 			<key>match</key>
 			<string>(?i:\bvalues\b)</string>
 			<key>name</key>
 			<string>keyword.other.DML.II.sql</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.LUW</string>
+				<string>keyword.other.LUW.sql</string>
+			</array>
 			<key>match</key>
 			<string>(?i:\b(begin(\s+work)?|start\s+transaction|commit(\s+work)?|rollback(\s+work)?)\b)</string>
 			<key>name</key>
 			<string>keyword.other.LUW.sql</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.authorization</string>
+				<string>keyword.other.authorization.sql</string>
+			</array>
 			<key>match</key>
 			<string>(?i:\b(grant(\swith\sgrant\soption)?|revoke)\b)</string>
 			<key>name</key>
 			<string>keyword.other.authorization.sql</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.data-integrity</string>
+				<string>keyword.other.data-integrity.sql</string>
+			</array>
 			<key>match</key>
 			<string>(?i:\bin\b)</string>
 			<key>name</key>
 			<string>keyword.other.data-integrity.sql</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.object-comments</string>
+				<string>keyword.other.object-comments.sql</string>
+			</array>
 			<key>match</key>
 			<string>(?i:^\s*(comment\s+on\s+(table|column|aggregate|constraint|database|domain|function|index|operator|rule|schema|sequence|trigger|type|view))\s+.*?\s+(is)\s+)</string>
 			<key>name</key>
@@ -285,10 +542,24 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.double-dash</string>
+						<string>comment.line.double-dash.sql</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.sql</string>
 						</dict>
@@ -299,10 +570,24 @@
 					<string>comment.line.double-dash.sql</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.number-sign</string>
+						<string>comment.line.number-sign.sql</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.sql</string>
 						</dict>
@@ -315,10 +600,23 @@
 				<dict>
 					<key>begin</key>
 					<string>/\*</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.block</string>
+						<string>comment.block.c</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.sql</string>
 						</dict>
@@ -341,16 +639,38 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.sql</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.sql</string>
+					</array>
 					<key>end</key>
 					<string>/</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.sql</string>
 						</dict>
@@ -364,6 +684,14 @@
 							<string>#string_interpolation</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.character</string>
+								<string>constant.character.escape</string>
+								<string>constant.character.escape.slash</string>
+								<string>constant.character.escape.slash.sql</string>
+							</array>
 							<key>match</key>
 							<string>\\/</string>
 							<key>name</key>
@@ -378,10 +706,25 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.sql</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.modr</string>
+						<string>string.regexp.modr.sql</string>
+					</array>
 					<key>comment</key>
 					<string>We should probably handle nested bracket pairs!?! -- Allan</string>
 					<key>end</key>
@@ -390,6 +733,14 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.sql</string>
 						</dict>
@@ -408,6 +759,13 @@
 		</dict>
 		<key>string_escape</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.escape</string>
+				<string>constant.character.escape.sql</string>
+			</array>
 			<key>match</key>
 			<string>\\.</string>
 			<key>name</key>
@@ -415,10 +773,24 @@
 		</dict>
 		<key>string_interpolation</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.sql</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.sql</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.sql</string>
 				</dict>
@@ -433,15 +805,38 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.single</string>
+						<string>string.quoted.single.sql</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.sql</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.sql</string>
 						</dict>
@@ -460,16 +855,39 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.sql</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.single</string>
+						<string>string.quoted.single.sql</string>
+					</array>
 					<key>end</key>
 					<string>'</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.sql</string>
 						</dict>
@@ -485,15 +903,39 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.other</string>
+						<string>string.quoted.other.backtick</string>
+						<string>string.quoted.other.backtick.sql</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.sql</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.sql</string>
 						</dict>
@@ -512,16 +954,40 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.sql</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.other</string>
+						<string>string.quoted.other.backtick</string>
+						<string>string.quoted.other.backtick.sql</string>
+					</array>
 					<key>end</key>
 					<string>`</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.sql</string>
 						</dict>
@@ -537,15 +1003,38 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.sql</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.sql</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.sql</string>
 						</dict>
@@ -564,16 +1053,39 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.sql</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.sql</string>
+					</array>
 					<key>end</key>
 					<string>&quot;</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.sql</string>
 						</dict>
@@ -595,16 +1107,40 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.sql</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.other</string>
+						<string>string.other.quoted</string>
+						<string>string.other.quoted.brackets</string>
+						<string>string.other.quoted.brackets.sql</string>
+					</array>
 					<key>end</key>
 					<string>\}</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.sql</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.sql</string>
 						</dict>

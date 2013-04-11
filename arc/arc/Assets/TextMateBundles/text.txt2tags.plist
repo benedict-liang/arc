@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Txt2tags</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>t2t</string>
@@ -15,102 +19,220 @@
 		<dict>
 			<key>begin</key>
 			<string>^%%%\s*$</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.txt2tags</string>
+			</array>
 			<key>end</key>
 			<string>^%%%\s*$\n?</string>
 			<key>name</key>
 			<string>comment.block.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^\s*[_=-]{20,}\s*$\n?</string>
 			<key>name</key>
 			<string>string.unquoted.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.underline</string>
+				<string>markup.underline.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>__([^\s](|.*?[^\s])_*)__</string>
 			<key>name</key>
 			<string>markup.underline.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.bold</string>
+				<string>markup.bold.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>\*\*([^\s](|.*?[^\s])\**)\*\*</string>
 			<key>name</key>
 			<string>markup.bold.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.1</string>
+				<string>markup.heading.1.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^\s*={1}[^=](|.*[^=])={1}(\[[\w-]*\])?\s*$\n?</string>
 			<key>name</key>
 			<string>markup.heading.1.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.2</string>
+				<string>markup.heading.2.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^\s*={2}[^=](|.*[^=])={2}(\[[\w-]*\])?\s*$\n?</string>
 			<key>name</key>
 			<string>markup.heading.2.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.3</string>
+				<string>markup.heading.3.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^\s*={3}[^=](|.*[^=])={3}(\[[\w-]*\])?\s*$\n?</string>
 			<key>name</key>
 			<string>markup.heading.3.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.4</string>
+				<string>markup.heading.4.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^\s*={4}[^=](|.*[^=])={4}(\[[\w-]*\])?\s*$\n?</string>
 			<key>name</key>
 			<string>markup.heading.4.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.5</string>
+				<string>markup.heading.5.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^\s*={5}[^=](|.*[^=])={5}(\[[\w-]*\])?\s*$\n?</string>
 			<key>name</key>
 			<string>markup.heading.5.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.1</string>
+				<string>markup.heading.1.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^\s*\+{1}[^+](|.*[^+])\+{1}(\[[\w-]*\])?\s*$\n?</string>
 			<key>name</key>
 			<string>markup.heading.1.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.2</string>
+				<string>markup.heading.2.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^\s*\+{2}[^+](|.*[^+])\+{2}(\[[\w-]*\])?\s*$\n?</string>
 			<key>name</key>
 			<string>markup.heading.2.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.3</string>
+				<string>markup.heading.3.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^\s*\+{3}[^+](|.*[^+])\+{3}(\[[\w-]*\])?\s*$\n?</string>
 			<key>name</key>
 			<string>markup.heading.3.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.4</string>
+				<string>markup.heading.4.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^\s*\+{4}[^+](|.*[^+])\+{4}(\[[\w-]*\])?\s*$\n?</string>
 			<key>name</key>
 			<string>markup.heading.4.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.5</string>
+				<string>markup.heading.5.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^\s*\+{5}[^+](|.*[^+])\+{5}(\[[\w-]*\])?\s*$\n?</string>
 			<key>name</key>
 			<string>markup.heading.5.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.italic</string>
+				<string>markup.italic.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>//([^\s](|.*?[^\s])/*)//</string>
 			<key>name</key>
 			<string>markup.italic.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.raw</string>
+				<string>string.quoted.other.raw.inline</string>
+				<string>string.quoted.other.raw.inline.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>&quot;&quot;([^\s](|.*?[^\s])&quot;*)&quot;&quot;</string>
 			<key>name</key>
 			<string>string.quoted.other.raw.inline.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.raw</string>
+				<string>string.quoted.other.raw.line</string>
+				<string>string.quoted.other.raw.line.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^&quot;&quot;&quot; (?=.).*$\n?</string>
 			<key>name</key>
@@ -119,30 +241,66 @@
 		<dict>
 			<key>begin</key>
 			<string>^&quot;&quot;&quot;\s*$</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.raw</string>
+				<string>string.quoted.other.raw.block</string>
+				<string>string.quoted.other.raw.block.txt2tags</string>
+			</array>
 			<key>end</key>
 			<string>^&quot;&quot;&quot;\s*$\n?</string>
 			<key>name</key>
 			<string>string.quoted.other.raw.block.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.numbered</string>
+				<string>markup.list.numbered.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^ *\+ (?=[^ ])</string>
 			<key>name</key>
 			<string>markup.list.numbered.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.unnumbered</string>
+				<string>markup.list.unnumbered.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^ *- (?=[^ ])</string>
 			<key>name</key>
 			<string>markup.list.unnumbered.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.unnumbered</string>
+				<string>markup.list.unnumbered.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^ *: (?=.)</string>
 			<key>name</key>
 			<string>markup.list.unnumbered.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^( *)([-+:])\s*$</string>
 			<key>name</key>
@@ -151,72 +309,155 @@
 		<dict>
 			<key>begin</key>
 			<string>^```\s*$</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.raw</string>
+				<string>markup.raw.verb</string>
+				<string>markup.raw.verb.block</string>
+				<string>markup.raw.verb.block.txt2tags</string>
+			</array>
 			<key>end</key>
 			<string>^```\s*$\n?</string>
 			<key>name</key>
 			<string>markup.raw.verb.block.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.raw</string>
+				<string>markup.raw.verb</string>
+				<string>markup.raw.verb.line</string>
+				<string>markup.raw.verb.line.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^``` (?=.).*$\n?</string>
 			<key>name</key>
 			<string>markup.raw.verb.line.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.raw</string>
+				<string>markup.raw.verb</string>
+				<string>markup.raw.verb.inline</string>
+				<string>markup.raw.verb.inline.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>``([^\s](|.*?[^\s])`*)``</string>
 			<key>name</key>
 			<string>markup.raw.verb.inline.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>invalid</string>
+				<string>invalid.deprecated</string>
+				<string>invalid.deprecated.trailing-whitespace</string>
+				<string>invalid.deprecated.trailing-whitespace.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>\s+$</string>
 			<key>name</key>
 			<string>invalid.deprecated.trailing-whitespace.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>(?i)%%(date|mtime|infile|outfile)(\(.*?\))?|%%toc</string>
 			<key>name</key>
 			<string>string.interpolated.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>(?i)^%!\s*(target|encoding|style|options|include|includeconf|preproc|postproc|guicolors)\s*(\(\w*\))?\s*:.*</string>
 			<key>name</key>
 			<string>constant.character.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tag</string>
+				<string>meta.tag.image</string>
+				<string>meta.tag.image.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>\[[\w_,.+%$#@!?+~/-]+\.(png|jpe?g|gif|eps|bmp)\]</string>
 			<key>name</key>
 			<string>meta.tag.image.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tag</string>
+				<string>meta.tag.email</string>
+				<string>meta.tag.email.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>(?i)\b[A-Za-z0-9_.-]+@([A-Za-z0-9_-]+\.)+[A-Za-z]{2,4}\b(\?[A-Za-z0-9/%&amp;=+;.,$@*_-]+)?</string>
 			<key>name</key>
 			<string>meta.tag.email.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tag</string>
+				<string>meta.tag.url</string>
+				<string>meta.tag.url.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>(?i)\b((https?|ftp|news|telnet|gopher|wais)://([A-Za-z0-9_.-]+(:[^ @]*)?@)?|(www[23]?|ftp)\.)[A-Za-z0-9%._/~:,=$@&amp;+-]+\b/*(\?[A-Za-z0-9/%&amp;=+;.,$@*_-]+)?(#[A-Za-z0-9%._-]*)?</string>
 			<key>name</key>
 			<string>meta.tag.url.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tag</string>
+				<string>meta.tag.link</string>
+				<string>meta.tag.link.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>(?i)\[(\[[\w_,.+%$#@!?+~/-]+\.(png|jpe?g|gif|eps|bmp)\]|[^]]+) (((https?|ftp|news|telnet|gopher|wais)://([A-Za-z0-9_.-]+(:[^ @]*)?@)?|(www[23]?|ftp)\.)[A-Za-z0-9%._/~:,=$@&amp;+-]+\b/*(\?[A-Za-z0-9/%&amp;=+;.,$@*_-]+)?(#[A-Za-z0-9%._-]*)?|[A-Za-z0-9_.-]+@([A-Za-z0-9_-]+\.)+[A-Za-z]{2,4}\b(\?[A-Za-z0-9/%&amp;=+;.,$@*_-]+)?|[A-Za-z0-9%._/~:,=$@&amp;+-]+|[A-Za-z0-9%._/~:,=$@&amp;+-]*(#[A-Za-z0-9%._-]*))\]</string>
 			<key>name</key>
 			<string>meta.tag.link.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.quote</string>
+				<string>markup.quote.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^\t.*$\n?</string>
 			<key>name</key>
 			<string>markup.quote.txt2tags</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.txt2tags</string>
+			</array>
 			<key>match</key>
 			<string>^%.*$\n?</string>
 			<key>name</key>

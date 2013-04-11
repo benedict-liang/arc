@@ -2,6 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>svn-commit</string>
+		<string>svn-commit.tmp</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>svn-commit.tmp</string>
@@ -12,10 +17,23 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.bullet-point</string>
+				<string>meta.bullet-point.strong</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.item</string>
+						<string>punctuation.definition.item.subversion-commit</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.item.subversion-commit</string>
 				</dict>
@@ -26,10 +44,23 @@
 			<string>meta.bullet-point.strong</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.bullet-point</string>
+				<string>meta.bullet-point.light</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.item</string>
+						<string>punctuation.definition.item.subversion-commit</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.item.subversion-commit</string>
 				</dict>
@@ -40,10 +71,23 @@
 			<string>meta.bullet-point.light</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.bullet-point</string>
+				<string>meta.bullet-point.star</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.item</string>
+						<string>punctuation.definition.item.subversion-commit</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.item.subversion-commit</string>
 				</dict>
@@ -60,10 +104,23 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.separator</string>
+						<string>meta.separator.svn</string>
+					</array>
 					<key>name</key>
 					<string>meta.separator.svn</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.scope</string>
+				<string>meta.scope.changed-files</string>
+				<string>meta.scope.changed-files.svn</string>
+			</array>
 			<key>end</key>
 			<string>^--not gonna happen--$</string>
 			<key>name</key>
@@ -71,18 +128,36 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.inserted</string>
+						<string>markup.inserted.svn</string>
+					</array>
 					<key>match</key>
 					<string>^A\s+.*$\n?</string>
 					<key>name</key>
 					<string>markup.inserted.svn</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.changed</string>
+						<string>markup.changed.svn</string>
+					</array>
 					<key>match</key>
 					<string>^(M|.M)\s+.*$\n?</string>
 					<key>name</key>
 					<string>markup.changed.svn</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.deleted</string>
+						<string>markup.deleted.svn</string>
+					</array>
 					<key>match</key>
 					<string>^D\s+.*$\n?</string>
 					<key>name</key>

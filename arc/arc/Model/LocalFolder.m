@@ -45,15 +45,16 @@
         
         for (NSString *currentRelativePath in retrievedContents) {
             NSString *itemName = currentRelativePath;
+            NSString *readableName = [currentRelativePath stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             NSString *currentPath = [_path stringByAppendingPathComponent:itemName];
             
             id<FileSystemObject>retrievedObject;
             BOOL isCurrentPathDirectory;
             [fileManager fileExistsAtPath:currentPath isDirectory:&isCurrentPathDirectory];
             if (isCurrentPathDirectory) {
-                retrievedObject = [[LocalFolder alloc] initWithName:itemName path:currentPath parent:self];
+                retrievedObject = [[LocalFolder alloc] initWithName:readableName path:currentPath parent:self];
             } else {
-                retrievedObject = [[LocalFile alloc] initWithName:itemName path:currentPath parent:self];
+                retrievedObject = [[LocalFile alloc] initWithName:readableName path:currentPath parent:self];
             }
             [contents addObject:retrievedObject];
         }
@@ -66,7 +67,7 @@
 // Folders should return the number of objects within, Files their size in B.
 - (int)size
 {
-    return [_contents count];
+    return [[self contents] count];
 }
 
 // Moves the given FileSystemObject to this Folder.

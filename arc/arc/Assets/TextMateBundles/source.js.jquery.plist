@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>jQuery (JavaScript)</string>
+	</array>
 	<key>comment</key>
 	<string>jQuery Javascript Framework. By Jonathan Chaffer &amp; Karl Swedberg.</string>
 	<key>foldingStartMarker</key>
@@ -21,11 +25,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.class</string>
+						<string>support.class.js</string>
+						<string>support.class.js.jquery</string>
+					</array>
 					<key>name</key>
 					<string>support.class.js.jquery</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.class</string>
+						<string>punctuation.section.class.js</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.class.js</string>
 				</dict>
@@ -38,6 +56,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.class</string>
+						<string>punctuation.section.class.js</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.class.js</string>
 				</dict>
@@ -55,6 +80,14 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.selector</string>
+								<string>punctuation.definition.selector.begin</string>
+								<string>punctuation.definition.selector.begin.js</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.selector.begin.js</string>
 						</dict>
@@ -65,6 +98,14 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.selector</string>
+								<string>punctuation.definition.selector.end</string>
+								<string>punctuation.definition.selector.end.js</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.selector.end.js</string>
 						</dict>
@@ -84,6 +125,14 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.selector</string>
+								<string>punctuation.definition.selector.begin</string>
+								<string>punctuation.definition.selector.begin.js</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.selector.begin.js</string>
 						</dict>
@@ -94,6 +143,14 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.selector</string>
+								<string>punctuation.definition.selector.end</string>
+								<string>punctuation.definition.selector.end.js</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.selector.end.js</string>
 						</dict>
@@ -119,11 +176,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.js</string>
+						<string>support.function.js.jquery</string>
+					</array>
 					<key>name</key>
 					<string>support.function.js.jquery</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.function</string>
+						<string>punctuation.section.function.js</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.function.js</string>
 				</dict>
@@ -136,6 +207,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.function</string>
+						<string>punctuation.section.function.js</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.function.js</string>
 				</dict>
@@ -153,6 +231,14 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.selector</string>
+								<string>punctuation.definition.selector.begin</string>
+								<string>punctuation.definition.selector.begin.js</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.selector.begin.js</string>
 						</dict>
@@ -163,6 +249,14 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.selector</string>
+								<string>punctuation.definition.selector.end</string>
+								<string>punctuation.definition.selector.end.js</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.selector.end.js</string>
 						</dict>
@@ -182,6 +276,14 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.selector</string>
+								<string>punctuation.definition.selector.begin</string>
+								<string>punctuation.definition.selector.begin.js</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.selector.begin.js</string>
 						</dict>
@@ -192,6 +294,14 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.selector</string>
+								<string>punctuation.definition.selector.end</string>
+								<string>punctuation.definition.selector.end.js</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.selector.end.js</string>
 						</dict>
@@ -211,6 +321,13 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.js</string>
+				<string>support.function.js.jquery</string>
+			</array>
 			<key>match</key>
 			<string>\.(addClass|after|append|attr|background|before|bind|blur|change|click|color|css|dblclick|domManip|each|empty|end|error|extend|fadeIn|fadeOut|fadeTo|float|focus|get|height|hide|hover|href|html|id|init|keydown|keypress|keyup|left|length|load|mousedown|mousemove|mouseout|mouseover|mouseup|name|oneblur|onechange|oneclick|onedblclick|oneerror|onefocus|onekeydown|onekeypress|onekeyup|oneload|onemousedown|onemousemove|onemouseout|onemouseover|onemouseup|onereset|oneresize|onescroll|oneselect|onesubmit|oneunload|overflow|position|prepend|pushStack|ready|rel|removeClass|reset|resize|scroll|select|show|size|slideDown|slideUp|src|submit|text|title|toggle|toggleClass|top|trigger|unbind|unblur|unchange|unclick|undblclick|unerror|unfocus|unkeydown|unkeypress|unkeyup|unload|unmousedown|unmousemove|unmouseout|unmouseover|unmouseup|unreset|unresize|unscroll|unselect|unsubmit|ununload|val|width|wrap)\b</string>
 			<key>name</key>
@@ -227,6 +344,12 @@
 		<dict>
 			<key>begin</key>
 			<string>(?=\s*[.*#a-zA-Z])</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.selector</string>
+				<string>meta.selector.css</string>
+			</array>
 			<key>end</key>
 			<string>(?=[&quot;'])</string>
 			<key>name</key>
@@ -234,16 +357,38 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.css</string>
+					</array>
 					<key>match</key>
 					<string>\b(a|abbr|acronym|address|area|b|base|big|blockquote|body|br|button|caption|cite|code|col|colgroup|dd|del|dfn|div|dl|dt|em|fieldset|form|frame|frameset|(h[1-6])|head|hr|html|i|iframe|img|input|ins|kbd|label|legend|li|link|map|meta|noframes|noscript|object|ol|optgroup|option|p|param|pre|q|samp|script|select|small|span|strike|strong|style|sub|sup|table|tbody|td|textarea|tfoot|th|thead|title|tr|tt|ul|var)\b</string>
 					<key>name</key>
 					<string>entity.name.tag.css</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.other</string>
+						<string>entity.other.attribute-name</string>
+						<string>entity.other.attribute-name.class</string>
+						<string>entity.other.attribute-name.class.css</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.attribute-name</string>
+								<string>punctuation.definition.attribute-name.css</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.attribute-name.css</string>
 						</dict>
@@ -254,10 +399,25 @@
 					<string>entity.other.attribute-name.class.css</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.other</string>
+						<string>entity.other.attribute-name</string>
+						<string>entity.other.attribute-name.id</string>
+						<string>entity.other.attribute-name.id.css</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.attribute-name</string>
+								<string>punctuation.definition.attribute-name.css</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.attribute-name.css</string>
 						</dict>
@@ -268,16 +428,39 @@
 					<string>entity.other.attribute-name.id.css</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.wildcard</string>
+						<string>entity.name.tag.wildcard.css</string>
+					</array>
 					<key>match</key>
 					<string>\*</string>
 					<key>name</key>
 					<string>entity.name.tag.wildcard.css</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.other</string>
+						<string>entity.other.attribute-name</string>
+						<string>entity.other.attribute-name.pseudo-class</string>
+						<string>entity.other.attribute-name.pseudo-class.css</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.attribute-name</string>
+								<string>punctuation.definition.attribute-name.css</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.attribute-name.css</string>
 						</dict>
@@ -297,6 +480,13 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.js</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.js</string>
 				</dict>

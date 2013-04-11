@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Haml</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>haml</string>
@@ -18,10 +22,23 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.prolog</string>
+				<string>meta.prolog.haml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.prolog</string>
+						<string>punctuation.definition.prolog.haml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.prolog.haml</string>
 				</dict>
@@ -32,10 +49,24 @@
 			<string>meta.prolog.haml</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.slash</string>
+				<string>comment.line.slash.haml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.comment</string>
+						<string>punctuation.section.comment.haml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.comment.haml</string>
 				</dict>
@@ -52,10 +83,23 @@
 			<dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.comment</string>
+						<string>punctuation.section.comment.haml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.comment.haml</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.haml</string>
+			</array>
 			<key>end</key>
 			<string>^(?!\1  )</string>
 			<key>name</key>
@@ -75,16 +119,36 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.tag</string>
+						<string>meta.tag.haml</string>
+					</array>
 					<key>name</key>
 					<string>meta.tag.haml</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.haml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.haml</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.haml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.haml</string>
 				</dict>
@@ -94,12 +158,28 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.class</string>
+						<string>entity.name.tag.class.haml</string>
+					</array>
 					<key>match</key>
 					<string>\.[\w-]+</string>
 					<key>name</key>
 					<string>entity.name.tag.class.haml</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.id</string>
+						<string>entity.name.tag.id.haml</string>
+					</array>
 					<key>match</key>
 					<string>#[\w-]+</string>
 					<key>name</key>
@@ -108,6 +188,13 @@
 				<dict>
 					<key>begin</key>
 					<string>\{(?=.*\}|.*\|\s*$)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.section</string>
+						<string>meta.section.attributes</string>
+						<string>meta.section.attributes.haml</string>
+					</array>
 					<key>end</key>
 					<string>\}|$|^(?!.*\|\s*$)</string>
 					<key>name</key>
@@ -127,6 +214,13 @@
 				<dict>
 					<key>begin</key>
 					<string>\[(?=.*\]|.*\|\s*$)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.section</string>
+						<string>meta.section.object</string>
+						<string>meta.section.object.haml</string>
+					</array>
 					<key>end</key>
 					<string>\]|$|^(?!.*\|\s*$)</string>
 					<key>name</key>
@@ -148,6 +242,13 @@
 					<string>#rubyline</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.terminator</string>
+						<string>punctuation.terminator.tag</string>
+						<string>punctuation.terminator.tag.haml</string>
+					</array>
 					<key>match</key>
 					<string>/</string>
 					<key>name</key>
@@ -160,6 +261,12 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.escape</string>
+						<string>meta.escape.haml</string>
+					</array>
 					<key>name</key>
 					<string>meta.escape.haml</string>
 				</dict>
@@ -189,6 +296,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.continuation</string>
+						<string>punctuation.separator.continuation.haml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.continuation.haml</string>
 				</dict>
@@ -200,6 +314,13 @@
 		<dict>
 			<key>begin</key>
 			<string>=|-|~</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.line</string>
+				<string>meta.line.ruby</string>
+				<string>meta.line.ruby.haml</string>
+			</array>
 			<key>contentName</key>
 			<string>source.ruby.embedded.haml</string>
 			<key>end</key>
@@ -208,11 +329,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>source</string>
+						<string>source.ruby</string>
+						<string>source.ruby.embedded</string>
+						<string>source.ruby.embedded.html</string>
+					</array>
 					<key>name</key>
 					<string>source.ruby.embedded.html</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.ruby</string>
+						<string>keyword.control.ruby.start-block</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.ruby.start-block</string>
 				</dict>
@@ -222,6 +357,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.number-sign</string>
+						<string>comment.line.number-sign.ruby</string>
+					</array>
 					<key>comment</key>
 					<string>Hack to let ruby comments work in this context properly</string>
 					<key>match</key>

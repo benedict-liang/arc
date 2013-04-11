@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Fortran</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>f</string>
@@ -34,29 +38,56 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-			                (?: (?i:subroutine\s+) | (?i:function\s+) )
-			              	([A-Za-z_][A-Za-z0-9_:]+)
-			              	 \s*((\()(?=[^)\n]*))?
-			              </string>
+												                (?: (?i:subroutine\s+) | (?i:function\s+) )
+												              	([A-Za-z_][A-Za-z0-9_:]+)
+												              	 \s*((\()(?=[^)\n]*))?
+												              </string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.fortran</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.fortran</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.fortran</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.fortran</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.fortran</string>
+			</array>
 			<key>end</key>
 			<string>\)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.fortran</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.fortran</string>
 				</dict>
@@ -72,6 +103,12 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.fortran</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:(use|if|for|do|go\sto|then|else|function|end|enddo|endif|contains|assign|backspace|call|close|continue|endfile|inquire|open|print|read|return|rewind|stop|write))\b</string>
 			<key>name</key>
@@ -84,10 +121,25 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.fortran</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.fortran</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.c</string>
+				<string>comment.line.c.fortran</string>
+				<string>comment.line.c.fortran.punchcard-style</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -107,10 +159,25 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.fortran</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.fortran</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.asterisk</string>
+				<string>comment.line.asterisk.fortran</string>
+				<string>comment.line.asterisk.fortran.modern</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -130,10 +197,25 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.fortran</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.fortran</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.exclamation</string>
+				<string>comment.line.exclamation.fortran</string>
+				<string>comment.line.exclamation.fortran.modern</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -153,16 +235,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.fortran</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.fortran</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.single</string>
+				<string>string.quoted.single.fortran</string>
+			</array>
 			<key>end</key>
 			<string>'</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.fortran</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.fortran</string>
 				</dict>
@@ -172,6 +277,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.fortran</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -186,16 +298,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.fortran</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.fortran</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.fortran</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.fortran</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.fortran</string>
 				</dict>
@@ -205,6 +340,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.fortran</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -213,48 +355,98 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.type</string>
+				<string>storage.type.fortran</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:data|double|block\sdata|double\sprecision|type(?=\s*\()|entry|equivalence|integer|real|character|intrinsic|logical|parameter)\b</string>
 			<key>name</key>
 			<string>storage.type.fortran</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.modifier</string>
+				<string>storage.modifier.fortran</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:(private|public|external|format|implicit|common|intent|in|out|inout))\b</string>
 			<key>name</key>
 			<string>storage.modifier.fortran</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.fortran</string>
+				<string>keyword.other.fortran.90</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:(recursive|optional|interface|procedure|module|pointer|target))\b</string>
 			<key>name</key>
 			<string>keyword.other.fortran.90</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.fortran</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:(program|save|subroutine|function|module|none))\b</string>
 			<key>name</key>
 			<string>keyword.other.fortran</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.fortran</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:(r8|r4|TRUE|FALSE))\b</string>
 			<key>name</key>
 			<string>constant.language.fortran</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.fortran</string>
+			</array>
 			<key>match</key>
 			<string>(?i:(\.and\.|\.or\.|\.eq\.|\.lt\.|\.le\.|\.gt\.|\.ge\.|\.ne\.|\.not\.|\.eqv\.|\.neqv\.))</string>
 			<key>name</key>
 			<string>keyword.operator.fortran</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.fortran</string>
+				<string>keyword.operator.fortran.90</string>
+			</array>
 			<key>match</key>
 			<string>(\=\=|\/\=|\&gt;\=|\&gt;|\&lt;|\&lt;\=|\%|\=\&gt;|\=|\:\:)</string>
 			<key>name</key>
 			<string>keyword.operator.fortran.90</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.fortran</string>
+			</array>
 			<key>match</key>
 			<string>\b((0(x|X)[0-9a-fA-F]*)|([0-9\.]*_[ri][0-9]+)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\b</string>
 			<key>name</key>
@@ -263,13 +455,21 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-			        		^\s*\#\s*(define)\s+             # define
-			        		((?&lt;id&gt;[a-zA-Z_][a-zA-Z0-9_]*))  # macro name
-			        		\((
-			        			\s* \g&lt;id&gt; \s*              # first argument
-			        			(, \s* \g&lt;id&gt; \s*)*         # additional arguments
-			        		)\)
-			        	</string>
+												        		^\s*\#\s*(define)\s+             # define
+												        		((?&lt;id&gt;[a-zA-Z_][a-zA-Z0-9_]*))  # macro name
+												        		\((
+												        			\s* \g&lt;id&gt; \s*              # first argument
+												        			(, \s* \g&lt;id&gt; \s*)*         # additional arguments
+												        		)\)
+												        	</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tag</string>
+				<string>meta.tag.preprocessor</string>
+				<string>meta.tag.preprocessor.macro</string>
+				<string>meta.tag.preprocessor.macro.fortran</string>
+			</array>
 			<key>end</key>
 			<string>(?=(?://|/\*))|$</string>
 			<key>name</key>
@@ -282,15 +482,36 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.preprocessor</string>
+						<string>punctuation.definition.preprocessor.fortran</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.preprocessor.fortran</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.import</string>
+						<string>keyword.control.import.fortran</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.import.fortran</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.preprocessor</string>
+				<string>meta.preprocessor.include</string>
+				<string>meta.preprocessor.include.fortran</string>
+			</array>
 			<key>end</key>
 			<string>(?=(?://|/\*))|$</string>
 			<key>name</key>
@@ -308,16 +529,40 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.fortran</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.fortran</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.include</string>
+						<string>string.quoted.double.include.fortran</string>
+					</array>
 					<key>end</key>
 					<string>&quot;</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.fortran</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.fortran</string>
 						</dict>
@@ -332,16 +577,41 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.fortran</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.fortran</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.other</string>
+						<string>string.quoted.other.lt-gt</string>
+						<string>string.quoted.other.lt-gt.include</string>
+						<string>string.quoted.other.lt-gt.include.fortran</string>
+					</array>
 					<key>end</key>
 					<string>&gt;</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.fortran</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.fortran</string>
 						</dict>
@@ -354,6 +624,12 @@
 		<dict>
 			<key>begin</key>
 			<string>^\s*#\s*(define|defined|elif|else|if|ifdef|ifndef|line|pragma|undef|endif)\b</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.preprocessor</string>
+				<string>meta.preprocessor.fortran</string>
+			</array>
 			<key>end</key>
 			<string>(?=(?://|/\*))|$</string>
 			<key>name</key>
@@ -367,6 +643,13 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.non-executable</string>
+				<string>keyword.other.non-executable.fortran</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:(dimension|function))\b</string>
 			<key>name</key>

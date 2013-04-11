@@ -10,15 +10,15 @@
 
 @implementation SyntaxHighlight
 
-- (id)initWithFile:(id<File>)file del:(id<CodeViewControllerDelegate>)delegate theme:(NSDictionary*)theme
+- (id)initWithFile:(id<File>)file del:(id<CodeViewControllerDelegate>)delegate
 {
     self = [super init];
     if (self) {
         _delegate = delegate;
         _currentFile = file;
-        _overlays = @[@"comment"];
+        _overlays = @[@"string",@"comment"];
         _bundle = [TMBundleSyntaxParser plistForExt:[file extension]];
-        _theme = theme;
+        _isProcessed = NO;
         
         if ([[file contents] isKindOfClass:[NSString class]]) {
             _content = (NSString*)[file contents];
@@ -137,13 +137,15 @@
                     range:(NSRange)range
                    output:(ArcAttributedString*)output
                      dict:(NSObject*)dict
+                    theme:(NSDictionary*)theme
+               capturableScopes:(NSArray*)cpS
 {
-    
-    NSArray* capturableScopes = [self capturableScopes:name];
-    for (NSString *s in capturableScopes) {
-        NSDictionary* style = [(NSDictionary*)[_theme objectForKey:@"scopes"] objectForKey:s];
+
+  
+    for (NSString *s in cpS) {
+        NSDictionary* style = [(NSDictionary*)[theme objectForKey:@"scopes"] objectForKey:s];
         if (![dict isEqual:(NSObject*)overlapMatches] && [_overlays containsObject:s]) {
-            overlapMatches = [self addRange:range scope:s dict:overlapMatches];
+            overlapMatches = [self addRange:range scope:s dict:overlapMatches capturableScopes:@[s]];
         }
         
         UIColor *fg = nil;
@@ -169,8 +171,12 @@
     for (id k in captures) {
         int i = [k intValue];
         captureM = [self foundPattern:match capture:i range:range];
-        NSString* scope = [[captures objectForKey:k] objectForKey:@"name"];
-        [dict setObject:captureM forKey:scope];
+        NSDictionary* capturedSyntaxItem = [captures objectForKey:k];
+        NSString* scope = [capturedSyntaxItem objectForKey:@"name"];
+        NSArray* capturableScopes = [capturedSyntaxItem objectForKey:@"capturableScopes"];
+        NSDictionary *scopeData = @{@"ranges":captureM, @"capturableScopes":capturableScopes};
+        [dict setObject:scopeData forKey:scope];
+        
     }
     //    for (int i = 0; i < [captures count]; i++) {
     //        captureM = [self foundPattern:match capture:i range:r];
@@ -202,17 +208,21 @@
 
 - (void)applyStylesTo:(ArcAttributedString*)output
            withRanges:(NSDictionary*)pairs
+            withTheme:(NSDictionary*)theme
 {
     if (pairs) {
         for (NSString* scope in pairs) {
-            NSArray* ranges = [pairs objectForKey:scope];
+            NSArray* ranges = [[pairs objectForKey:scope] objectForKey:@"ranges"];
+            NSArray* capturableScopes = [[pairs objectForKey:scope] objectForKey:@"capturableScopes"];
             for (NSValue *v in ranges) {
                 NSRange range;
                 [v getValue:&range];
                 [self applyStyleToScope:scope
                                   range:range
                                  output:output
-                                   dict:pairs];
+                                   dict:pairs
+                                  theme:theme
+                       capturableScopes:capturableScopes];
             }
         }
     }
@@ -233,20 +243,22 @@
     return res;
 }
 
-- (NSDictionary*) addRange:(NSRange)range scope:(NSString*)scope dict:(NSDictionary*)dict
+- (NSDictionary*) addRange:(NSRange)range scope:(NSString*)scope dict:(NSDictionary*)matchesStore capturableScopes:(NSArray*)cpS
 {
     NSMutableDictionary* res =
-    [NSMutableDictionary dictionaryWithDictionary:dict];
+    [NSMutableDictionary dictionaryWithDictionary:matchesStore];
     
-    NSArray* ranges = [res objectForKey:scope];
+    NSArray* ranges = [[res objectForKey:scope] objectForKey:@"ranges"];
     if (ranges) {
         NSMutableArray* temp = [NSMutableArray arrayWithArray:ranges];
         [temp addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
-        [res setObject:temp forKey:scope];
+        NSDictionary* vals = @{@"capturableScopes":cpS, @"ranges":temp};
+        [res setObject:vals forKey:scope];
     } else {
         if (scope) {
-            [res setObject:@[[NSValue value:&range
-                               withObjCType:@encode(NSRange)]]
+            NSDictionary* vals = @{@"capturableScopes":cpS, @"ranges":@[[NSValue value:&range
+                                                                          withObjCType:@encode(NSRange)]]};
+            [res setObject:vals
                     forKey:scope];
         }
     }
@@ -304,6 +316,7 @@
     NSString* name = [syntaxItem objectForKey:@"name"];
     NSRange brange = [self findFirstPattern:begin
                                       range:contentRange];
+    NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
     NSRange erange;
     do {
         // NSLog(@"traversing while brange:%@ erange:%@", [NSValue value:&brange withObjCType:@encode(NSRange)], [NSValue value:&erange withObjCType:@encode(NSRange)]);
@@ -334,16 +347,18 @@
             if (name) {
                 pairMatches = [self addRange:NSMakeRange(brange.location, eEnds - brange.location)
                                        scope:name
-                                        dict:pairMatches];
+                                        dict:pairMatches
+                            capturableScopes:capturableScopes];
                 if ([name isEqualToString:@"comment.line.double-slash.c++"]) {
-                    NSLog(@"%@",pairMatches);
+                   // NSLog(@"%@",pairMatches);
                 }
             }
             
             if ([syntaxItem objectForKey:@"contentName"]) {
                 contentNameMatches = [self addRange:NSMakeRange(bEnds, eEnds - bEnds)
                                               scope:name
-                                               dict:contentNameMatches];
+                                               dict:contentNameMatches
+                                   capturableScopes:capturableScopes];
             }
             
             if (embedPatterns &&
@@ -384,12 +399,13 @@
             NSDictionary *endCaptures = [syntaxItem objectForKey:@"endCaptures"];
             NSDictionary *captures = [syntaxItem objectForKey:@"captures"];
             NSString *include = [syntaxItem objectForKey:@"include"];
-            
+            NSArray* embedPatterns = [syntaxItem objectForKey:@"patterns"];
+            NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
             //case name, match
             if (name && match) {
                 NSArray *a = [self foundPattern:match
                                           range:contentRange];
-                nameMatches = [self merge:@{name: a}
+                nameMatches = [self merge:@{name: @{@"ranges":a, @"capturableScopes":capturableScopes}}
                                    withd2:nameMatches];
             }
             
@@ -420,6 +436,8 @@
                 [self processPairRange:contentRange
                                   item:syntaxItem
                                 output:output];
+            } else if (embedPatterns) {
+                [self iterPatternsForRange:contentRange patterns:embedPatterns output:output];
             }
             if (include) {
                 id includes = [self resolveInclude:include];
@@ -451,12 +469,12 @@
             [pattern rangeOfString:@"\\A"].location != NSNotFound);
 }
 
-- (void)updateView:(ArcAttributedString*)output
+- (void)updateView:(ArcAttributedString*)output withTheme:(NSDictionary*)theme
 {
     if (self.delegate) {
         [self.delegate mergeAndRenderWith:output
                                   forFile:self.currentFile
-                                WithStyle:[_theme objectForKey:@"global"]];
+                                WithStyle:[theme objectForKey:@"global"]];
     }
 }
 - (void)logs {
@@ -467,9 +485,9 @@
     NSLog(@"pairM: %@",pairMatches);
     
 }
-- (void)applyForeground:(ArcAttributedString*)output
+- (void)applyForeground:(ArcAttributedString*)output withTheme:(NSDictionary*)theme
 {
-    NSDictionary* global = [_theme objectForKey:@"global"];
+    NSDictionary* global = [theme objectForKey:@"global"];
     UIColor* foreground = [global objectForKey:@"foreground"];
     if (foreground) {
         [self styleOnRange:NSMakeRange(0, [_content length])
@@ -477,27 +495,52 @@
                     output:output];
     }
 }
-- (void)execOn:(ArcAttributedString *)output
-{
+- (void)applyStylesTo:(ArcAttributedString*)output withTheme:(NSDictionary*)theme {
     
-    [self applyForeground:output];
+    [self applyForeground:output withTheme:theme];
+    [self applyStylesTo:output withRanges:pairMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:nameMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:captureMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:beginCMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:endCMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:contentNameMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:overlapMatches withTheme:theme];
+}
+- (void)execOn:(NSDictionary*)options
+{
+    ArcAttributedString *output = [options objectForKey:@"attributedString"];
+    NSString* themeName = [options objectForKey:@"theme"];
+    NSDictionary* theme = [TMBundleThemeHandler produceStylesWithTheme:themeName];
+    
+    
+    NSMutableArray* patterns = [NSMutableArray arrayWithArray:[_bundle objectForKey:@"patterns"]];
+    NSDictionary* repo = [_bundle objectForKey:@"repository"];
+    for (id k in repo) {
+        [patterns addObject:[repo objectForKey:k]];
+    }
     [self iterPatternsForRange:NSMakeRange(0, [_content length])
-                      patterns:[_bundle objectForKey:@"patterns"]
+                      patterns:patterns
                         output:output];
     
-    [self applyStylesTo:output withRanges:pairMatches];
-    [self applyStylesTo:output withRanges:nameMatches];
-    [self applyStylesTo:output withRanges:captureMatches];
-    [self applyStylesTo:output withRanges:beginCMatches];
-    [self applyStylesTo:output withRanges:endCMatches];
-    [self applyStylesTo:output withRanges:contentNameMatches];
-    [self applyStylesTo:output withRanges:overlapMatches];
+    [self applyStylesTo:output withTheme:theme];
     
-    //NSLog(@"%@",pairMatches);
-    //[self logs];
-    //NSLog(@"Updating!");
+    [self updateView:output withTheme:theme];
     
-    [self updateView:output];
+    _isProcessed = YES;
+    
+}
+
+- (void)reapplyWithOpts:(NSDictionary*)options {
+    
+    while (!_isProcessed);
+    
+    if (_isProcessed) {
+        ArcAttributedString *output = [options objectForKey:@"attributedString"];
+        NSString* themeName = [options objectForKey:@"theme"];
+        NSDictionary* theme = [TMBundleThemeHandler produceStylesWithTheme:themeName];
+        [self applyStylesTo:output withTheme:theme];
+        [self updateView:output withTheme:theme];
+    }
 }
 
 

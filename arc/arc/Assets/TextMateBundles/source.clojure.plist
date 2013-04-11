@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Clojure</string>
+	</array>
 	<key>comment</key>
 	<string>Symbol pattern : [a-zA-Z+!\-_?0-9*~#@'`/.$=]</string>
 	<key>fileTypes</key>
@@ -10,10 +14,10 @@
 	</array>
 	<key>foldingStartMarker</key>
 	<string>(?x)^ [ \t]* \(
-	  (?&lt;par&gt;
-	    ( [^()\n]++ | \( \g&lt;par&gt; \)? )*+
-	  )
-	$</string>
+				  (?&lt;par&gt;
+				    ( [^()\n]++ | \( \g&lt;par&gt; \)? )*+
+				  )
+				$</string>
 	<key>foldingStopMarker</key>
 	<string>^\s*$</string>
 	<key>keyEquivalent</key>
@@ -104,10 +108,26 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.vector</string>
+								<string>punctuation.definition.vector.begin</string>
+								<string>punctuation.definition.vector.begin.clojure</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.vector.begin.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.structure</string>
+						<string>meta.structure.binding</string>
+						<string>meta.structure.binding.vector</string>
+						<string>meta.structure.binding.vector.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\])</string>
 					<key>name</key>
@@ -117,6 +137,13 @@
 						<dict>
 							<key>begin</key>
 							<string>(?&lt;=\[)</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.parameters</string>
+								<string>meta.parameters.vector</string>
+								<string>meta.parameters.vector.clojure</string>
+							</array>
 							<key>comment</key>
 							<string>TODO: merge with parameters ??</string>
 							<key>end</key>
@@ -125,6 +152,14 @@
 							<dict>
 								<key>0</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.vector</string>
+										<string>punctuation.definition.vector.end</string>
+										<string>punctuation.definition.vector.end.clojure</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.vector.end.clojure</string>
 								</dict>
@@ -146,12 +181,26 @@
 									<string>#parameters_variable</string>
 								</dict>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>keyword</string>
+										<string>keyword.operator</string>
+										<string>keyword.operator.varargs</string>
+										<string>keyword.operator.varargs.clojure</string>
+									</array>
 									<key>match</key>
 									<string>\&amp;</string>
 									<key>name</key>
 									<string>keyword.operator.varargs.clojure</string>
 								</dict>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>keyword</string>
+										<string>keyword.operator</string>
+										<string>keyword.operator.symbolargs</string>
+										<string>keyword.operator.symbolargs.clojure</string>
+									</array>
 									<key>match</key>
 									<string>(:as)(?![a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
 									<key>name</key>
@@ -184,10 +233,26 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.map</string>
+								<string>punctuation.definition.map.begin</string>
+								<string>punctuation.definition.map.begin.clojure</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.map.begin.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.structure</string>
+						<string>meta.structure.binding</string>
+						<string>meta.structure.binding.map</string>
+						<string>meta.structure.binding.map.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\])</string>
 					<key>name</key>
@@ -197,6 +262,14 @@
 						<dict>
 							<key>begin</key>
 							<string>(?&lt;=\{)</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.function</string>
+								<string>meta.function.parameters</string>
+								<string>meta.function.parameters.map</string>
+								<string>meta.function.parameters.map.clojure</string>
+							</array>
 							<key>comment</key>
 							<string>TODO: merge with map ??</string>
 							<key>end</key>
@@ -205,6 +278,14 @@
 							<dict>
 								<key>0</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.map</string>
+										<string>punctuation.definition.map.end</string>
+										<string>punctuation.definition.map.end.clojure</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.map.end.clojure</string>
 								</dict>
@@ -226,6 +307,13 @@
 									<string>#parameters_variable</string>
 								</dict>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>keyword</string>
+										<string>keyword.operator</string>
+										<string>keyword.operator.symbolargs</string>
+										<string>keyword.operator.symbolargs.clojure</string>
+									</array>
 									<key>match</key>
 									<string>(:as|:or|:keys|:strs|:syms)(?![a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
 									<key>name</key>
@@ -258,10 +346,25 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.operator</string>
+								<string>keyword.operator.symbolargs</string>
+								<string>keyword.operator.symbolargs.clojure</string>
+							</array>
 							<key>name</key>
 							<string>keyword.operator.symbolargs.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.structure</string>
+						<string>meta.structure.binding</string>
+						<string>meta.structure.binding.symbolargs</string>
+						<string>meta.structure.binding.symbolargs.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\])</string>
 					<key>name</key>
@@ -277,6 +380,14 @@
 				<dict>
 					<key>begin</key>
 					<string>(?=[a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.structure</string>
+						<string>meta.structure.binding</string>
+						<string>meta.structure.binding.symbole</string>
+						<string>meta.structure.binding.symbole.clojure</string>
+					</array>
 					<key>comment</key>
 					<string>symbol matching</string>
 					<key>end</key>
@@ -288,6 +399,12 @@
 						<dict>
 							<key>begin</key>
 							<string>(?=[a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>variable</string>
+								<string>variable.parameter</string>
+								<string>variable.parameter.clojure</string>
+							</array>
 							<key>end</key>
 							<string>(?&lt;=[a-zA-Z+!\-_?0-9*~#@'`/.$=])(?![a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
 							<key>name</key>
@@ -330,6 +447,13 @@
 				<dict>
 					<key>begin</key>
 					<string>[^\s]</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.bindings</string>
+						<string>invalid.illegal.bindings.clojure</string>
+					</array>
 					<key>end</key>
 					<string>[^\]]</string>
 					<key>name</key>
@@ -362,10 +486,25 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.language</string>
+								<string>constant.language.clojure</string>
+							</array>
 							<key>name</key>
 							<string>constant.language.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.structure</string>
+						<string>meta.structure.binding_exp</string>
+						<string>meta.structure.binding_exp.constant</string>
+						<string>meta.structure.binding_exp.constant.language</string>
+						<string>meta.structure.binding_exp.constant.language.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\])</string>
 					<key>name</key>
@@ -381,6 +520,14 @@
 				<dict>
 					<key>begin</key>
 					<string>(?=#?\()</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.structure</string>
+						<string>meta.structure.binding_exp</string>
+						<string>meta.structure.binding_exp.sexp</string>
+						<string>meta.structure.binding_exp.sexp.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\])</string>
 					<key>name</key>
@@ -425,6 +572,14 @@
 				<dict>
 					<key>begin</key>
 					<string>(\[)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.structure</string>
+						<string>meta.structure.binding_exp</string>
+						<string>meta.structure.binding_exp.vector</string>
+						<string>meta.structure.binding_exp.vector.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\])</string>
 					<key>name</key>
@@ -438,10 +593,25 @@
 							<dict>
 								<key>0</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.vector</string>
+										<string>punctuation.definition.vector.begin</string>
+										<string>punctuation.definition.vector.begin.clojure</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.vector.begin.clojure</string>
 								</dict>
 							</dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.expression</string>
+								<string>meta.expression.vector</string>
+								<string>meta.expression.vector.clojure</string>
+							</array>
 							<key>comment</key>
 							<string>TODO: merge with vector</string>
 							<key>end</key>
@@ -450,6 +620,14 @@
 							<dict>
 								<key>0</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.vector</string>
+										<string>punctuation.definition.vector.end</string>
+										<string>punctuation.definition.vector.end.clojure</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.vector.end.clojure</string>
 								</dict>
@@ -473,6 +651,14 @@
 				<dict>
 					<key>begin</key>
 					<string>(\{)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.structure</string>
+						<string>meta.structure.binding_exp</string>
+						<string>meta.structure.binding_exp.map</string>
+						<string>meta.structure.binding_exp.map.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\])</string>
 					<key>name</key>
@@ -486,10 +672,25 @@
 							<dict>
 								<key>0</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.map</string>
+										<string>punctuation.definition.map.begin</string>
+										<string>punctuation.definition.map.begin.clojure</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.map.begin.clojure</string>
 								</dict>
 							</dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.expression</string>
+								<string>meta.expression.map</string>
+								<string>meta.expression.map.clojure</string>
+							</array>
 							<key>comment</key>
 							<string>TODO: merge with map</string>
 							<key>end</key>
@@ -498,6 +699,14 @@
 							<dict>
 								<key>0</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.map</string>
+										<string>punctuation.definition.map.end</string>
+										<string>punctuation.definition.map.end.clojure</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.map.end.clojure</string>
 								</dict>
@@ -521,6 +730,14 @@
 				<dict>
 					<key>begin</key>
 					<string>(?=#\{)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.structure</string>
+						<string>meta.structure.binding_exp</string>
+						<string>meta.structure.binding_exp.set</string>
+						<string>meta.structure.binding_exp.set.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\])</string>
 					<key>name</key>
@@ -539,7 +756,15 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?=")|(?=\\)|(?=\:)|(?=\#")</string>
+					<string>(?=&quot;)|(?=\\)|(?=\:)|(?=\#&quot;)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.structure</string>
+						<string>meta.structure.binding_exp</string>
+						<string>meta.structure.binding_exp.string</string>
+						<string>meta.structure.binding_exp.string.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\])</string>
 					<key>name</key>
@@ -559,6 +784,14 @@
 				<dict>
 					<key>begin</key>
 					<string>(?=[a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.structure</string>
+						<string>meta.structure.binding_exp</string>
+						<string>meta.structure.binding_exp.symbole</string>
+						<string>meta.structure.binding_exp.symbole.clojure</string>
+					</array>
 					<key>comment</key>
 					<string>symbol matching</string>
 					<key>end</key>
@@ -610,6 +843,13 @@
 				<dict>
 					<key>begin</key>
 					<string>[^\s]</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.bindings</string>
+						<string>invalid.illegal.bindings.clojure</string>
+					</array>
 					<key>end</key>
 					<string>[^\]]</string>
 					<key>name</key>
@@ -621,6 +861,13 @@
 		<dict>
 			<key>begin</key>
 			<string>\[</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.structure</string>
+				<string>meta.structure.bindings</string>
+				<string>meta.structure.bindings.clojure</string>
+			</array>
 			<key>comment</key>
 			<string>bindings followed by all</string>
 			<key>end</key>
@@ -662,10 +909,26 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.semicolon</string>
+						<string>comment.line.semicolon.double</string>
+						<string>comment.line.semicolon.double.banner</string>
+						<string>comment.line.semicolon.double.banner.clojure</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.clojure</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.clojure</string>
 						</dict>
@@ -676,10 +939,25 @@
 					<string>comment.line.semicolon.double.banner.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.semicolon</string>
+						<string>comment.line.semicolon.double</string>
+						<string>comment.line.semicolon.double.clojure</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.clojure</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.clojure</string>
 						</dict>
@@ -690,10 +968,25 @@
 					<string>comment.line.semicolon.double.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.semicolon</string>
+						<string>comment.line.semicolon.start</string>
+						<string>comment.line.semicolon.start.clojure</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.clojure</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.clojure</string>
 						</dict>
@@ -704,10 +997,24 @@
 					<string>comment.line.semicolon.start.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.semicolon</string>
+						<string>comment.line.semicolon.clojure</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.clojure</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.clojure</string>
 						</dict>
@@ -721,6 +1028,12 @@
 		</dict>
 		<key>expr</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.expr</string>
+				<string>meta.expr.clojure</string>
+			</array>
 			<key>name</key>
 			<string>meta.expr.clojure</string>
 			<key>patterns</key>
@@ -771,16 +1084,37 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.function</string>
+						<string>storage.type.function.type</string>
+						<string>storage.type.function.type.clojure</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.function.type.clojure</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.clojure</string>
+			</array>
 			<key>end</key>
 			<string>\)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.terminator</string>
+						<string>punctuation.terminator.function</string>
+						<string>punctuation.terminator.function.clojure</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.terminator.function.clojure</string>
 				</dict>
@@ -818,6 +1152,14 @@
 				<dict>
 					<key>begin</key>
 					<string>\(\s*(?=\[)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.body</string>
+						<string>meta.function.body.code</string>
+						<string>meta.function.body.code.clojure</string>
+					</array>
 					<key>end</key>
 					<string>\)</string>
 					<key>name</key>
@@ -833,6 +1175,13 @@
 				<dict>
 					<key>begin</key>
 					<string>(?=\[)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.body</string>
+						<string>meta.function.body.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\))</string>
 					<key>name</key>
@@ -853,21 +1202,43 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>"</string>
+					<string>&quot;</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.quoted</string>
+								<string>string.quoted.double</string>
+								<string>string.quoted.double.begin</string>
+								<string>string.quoted.double.begin.clojure</string>
+							</array>
 							<key>name</key>
 							<string>string.quoted.double.begin.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.docstring</string>
+						<string>string.docstring.clojure</string>
+					</array>
 					<key>end</key>
-					<string>"</string>
+					<string>&quot;</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.quoted</string>
+								<string>string.quoted.double</string>
+								<string>string.quoted.double.end</string>
+								<string>string.quoted.double.end.clojure</string>
+							</array>
 							<key>name</key>
 							<string>string.quoted.double.end.clojure</string>
 						</dict>
@@ -889,16 +1260,41 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>comment</string>
+								<string>comment.punctuation</string>
+								<string>comment.punctuation.definition</string>
+								<string>comment.punctuation.definition.metadata</string>
+								<string>comment.punctuation.definition.metadata.begin</string>
+								<string>comment.punctuation.definition.metadata.begin.clojure</string>
+							</array>
 							<key>name</key>
 							<string>comment.punctuation.definition.metadata.begin.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.metadata</string>
+						<string>meta.metadata.map</string>
+						<string>meta.metadata.map.clojure</string>
+					</array>
 					<key>end</key>
 					<string>\}</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>comment</string>
+								<string>comment.punctuation</string>
+								<string>comment.punctuation.definition</string>
+								<string>comment.punctuation.definition.metadata</string>
+								<string>comment.punctuation.definition.metadata.end</string>
+								<string>comment.punctuation.definition.metadata.end.clojure</string>
+							</array>
 							<key>name</key>
 							<string>comment.punctuation.definition.metadata.end.clojure</string>
 						</dict>
@@ -927,10 +1323,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.function</string>
+						<string>storage.type.function.type</string>
+						<string>storage.type.function.type.clojure</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.function.type.clojure</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.multi_method</string>
+				<string>meta.function.multi_method.clojure</string>
+			</array>
 			<key>end</key>
 			<string>\)</string>
 			<key>name</key>
@@ -951,6 +1362,14 @@
 						<dict>
 							<key>begin</key>
 							<string>(?=[a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.function</string>
+								<string>meta.function.multi_method</string>
+								<string>meta.function.multi_method.name</string>
+								<string>meta.function.multi_method.name.clojure</string>
+							</array>
 							<key>end</key>
 							<string>(?&lt;=[a-zA-Z+!\-_?0-9*~#@'`/.$=])(?![a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
 							<key>name</key>
@@ -989,10 +1408,25 @@
 									<dict>
 										<key>1</key>
 										<dict>
+											<key>capturableScopes</key>
+											<array>
+												<string>constant</string>
+												<string>constant.language</string>
+												<string>constant.language.clojure</string>
+											</array>
 											<key>name</key>
 											<string>constant.language.clojure</string>
 										</dict>
 									</dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>meta</string>
+										<string>meta.structure</string>
+										<string>meta.structure.multi_method_exp</string>
+										<string>meta.structure.multi_method_exp.constant</string>
+										<string>meta.structure.multi_method_exp.constant.language</string>
+										<string>meta.structure.multi_method_exp.constant.language.clojure</string>
+									</array>
 									<key>end</key>
 									<string>(?=\))</string>
 									<key>name</key>
@@ -1008,6 +1442,14 @@
 								<dict>
 									<key>begin</key>
 									<string>(?=#?\()</string>
+									<key>capturableScopes</key>
+									<array>
+										<string>meta</string>
+										<string>meta.structure</string>
+										<string>meta.structure.multi_method_exp</string>
+										<string>meta.structure.multi_method_exp.sexp</string>
+										<string>meta.structure.multi_method_exp.sexp.clojure</string>
+									</array>
 									<key>end</key>
 									<string>(?=\))</string>
 									<key>name</key>
@@ -1052,6 +1494,14 @@
 								<dict>
 									<key>begin</key>
 									<string>(\[)</string>
+									<key>capturableScopes</key>
+									<array>
+										<string>meta</string>
+										<string>meta.structure</string>
+										<string>meta.structure.multi_method_exp</string>
+										<string>meta.structure.multi_method_exp.vector</string>
+										<string>meta.structure.multi_method_exp.vector.clojure</string>
+									</array>
 									<key>end</key>
 									<string>(?=\))</string>
 									<key>name</key>
@@ -1065,10 +1515,25 @@
 											<dict>
 												<key>0</key>
 												<dict>
+													<key>capturableScopes</key>
+													<array>
+														<string>punctuation</string>
+														<string>punctuation.definition</string>
+														<string>punctuation.definition.vector</string>
+														<string>punctuation.definition.vector.begin</string>
+														<string>punctuation.definition.vector.begin.clojure</string>
+													</array>
 													<key>name</key>
 													<string>punctuation.definition.vector.begin.clojure</string>
 												</dict>
 											</dict>
+											<key>capturableScopes</key>
+											<array>
+												<string>meta</string>
+												<string>meta.expression</string>
+												<string>meta.expression.vector</string>
+												<string>meta.expression.vector.clojure</string>
+											</array>
 											<key>comment</key>
 											<string>TODO: merge with vector</string>
 											<key>end</key>
@@ -1077,6 +1542,14 @@
 											<dict>
 												<key>1</key>
 												<dict>
+													<key>capturableScopes</key>
+													<array>
+														<string>punctuation</string>
+														<string>punctuation.definition</string>
+														<string>punctuation.definition.vector</string>
+														<string>punctuation.definition.vector.end</string>
+														<string>punctuation.definition.vector.end.clojure</string>
+													</array>
 													<key>name</key>
 													<string>punctuation.definition.vector.end.clojure</string>
 												</dict>
@@ -1109,6 +1582,14 @@
 								<dict>
 									<key>begin</key>
 									<string>(\{)</string>
+									<key>capturableScopes</key>
+									<array>
+										<string>meta</string>
+										<string>meta.structure</string>
+										<string>meta.structure.multi_method_exp</string>
+										<string>meta.structure.multi_method_exp.map</string>
+										<string>meta.structure.multi_method_exp.map.clojure</string>
+									</array>
 									<key>end</key>
 									<string>(?=\))</string>
 									<key>name</key>
@@ -1122,10 +1603,25 @@
 											<dict>
 												<key>0</key>
 												<dict>
+													<key>capturableScopes</key>
+													<array>
+														<string>punctuation</string>
+														<string>punctuation.definition</string>
+														<string>punctuation.definition.map</string>
+														<string>punctuation.definition.map.begin</string>
+														<string>punctuation.definition.map.begin.clojure</string>
+													</array>
 													<key>name</key>
 													<string>punctuation.definition.map.begin.clojure</string>
 												</dict>
 											</dict>
+											<key>capturableScopes</key>
+											<array>
+												<string>meta</string>
+												<string>meta.expression</string>
+												<string>meta.expression.map</string>
+												<string>meta.expression.map.clojure</string>
+											</array>
 											<key>comment</key>
 											<string>TODO: merge with map</string>
 											<key>end</key>
@@ -1134,6 +1630,14 @@
 											<dict>
 												<key>0</key>
 												<dict>
+													<key>capturableScopes</key>
+													<array>
+														<string>punctuation</string>
+														<string>punctuation.definition</string>
+														<string>punctuation.definition.map</string>
+														<string>punctuation.definition.map.end</string>
+														<string>punctuation.definition.map.end.clojure</string>
+													</array>
 													<key>name</key>
 													<string>punctuation.definition.map.end.clojure</string>
 												</dict>
@@ -1157,6 +1661,14 @@
 								<dict>
 									<key>begin</key>
 									<string>(?=#\{)</string>
+									<key>capturableScopes</key>
+									<array>
+										<string>meta</string>
+										<string>meta.structure</string>
+										<string>meta.structure.multi_method_exp</string>
+										<string>meta.structure.multi_method_exp.set</string>
+										<string>meta.structure.multi_method_exp.set.clojure</string>
+									</array>
 									<key>end</key>
 									<string>(?=\))</string>
 									<key>name</key>
@@ -1175,7 +1687,15 @@
 								</dict>
 								<dict>
 									<key>begin</key>
-									<string>(?=")|(?=\\)|(?=\:)|(?=\#")</string>
+									<string>(?=&quot;)|(?=\\)|(?=\:)|(?=\#&quot;)</string>
+									<key>capturableScopes</key>
+									<array>
+										<string>meta</string>
+										<string>meta.structure</string>
+										<string>meta.structure.multi_method_exp</string>
+										<string>meta.structure.multi_method_exp.string</string>
+										<string>meta.structure.multi_method_exp.string.clojure</string>
+									</array>
 									<key>end</key>
 									<string>(?=\))</string>
 									<key>name</key>
@@ -1195,6 +1715,14 @@
 								<dict>
 									<key>begin</key>
 									<string>(?=[a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
+									<key>capturableScopes</key>
+									<array>
+										<string>meta</string>
+										<string>meta.structure</string>
+										<string>meta.structure.multi_method_exp</string>
+										<string>meta.structure.multi_method_exp.symbole</string>
+										<string>meta.structure.multi_method_exp.symbole.clojure</string>
+									</array>
 									<key>comment</key>
 									<string>symbol matching</string>
 									<key>end</key>
@@ -1261,6 +1789,13 @@
 		<dict>
 			<key>begin</key>
 			<string>(?=[a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>entity</string>
+				<string>entity.name</string>
+				<string>entity.name.function</string>
+				<string>entity.name.function.clojure</string>
+			</array>
 			<key>comment</key>
 			<string>symbol matching</string>
 			<key>end</key>
@@ -1284,6 +1819,14 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.operator</string>
+								<string>keyword.operator.prefix</string>
+								<string>keyword.operator.prefix.genclass</string>
+								<string>keyword.operator.prefix.genclass.clojure</string>
+							</array>
 							<key>name</key>
 							<string>keyword.operator.prefix.genclass.clojure</string>
 						</dict>
@@ -1319,10 +1862,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.other</string>
+								<string>support.other.keyword</string>
+								<string>support.other.keyword.genclass</string>
+								<string>support.other.keyword.genclass.clojure</string>
+							</array>
 							<key>name</key>
 							<string>support.other.keyword.genclass.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.other</string>
+						<string>meta.other.genclass</string>
+						<string>meta.other.genclass.extends</string>
+						<string>meta.other.genclass.extends.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?![a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
 					<key>name</key>
@@ -1342,10 +1901,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.other</string>
+								<string>support.other.keyword</string>
+								<string>support.other.keyword.genclass</string>
+								<string>support.other.keyword.genclass.clojure</string>
+							</array>
 							<key>name</key>
 							<string>support.other.keyword.genclass.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.other</string>
+						<string>meta.other.genclass</string>
+						<string>meta.other.genclass.implements</string>
+						<string>meta.other.genclass.implements.clojure</string>
+					</array>
 					<key>end</key>
 					<string>\]</string>
 					<key>name</key>
@@ -1369,10 +1944,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.other</string>
+								<string>support.other.keyword</string>
+								<string>support.other.keyword.genclass</string>
+								<string>support.other.keyword.genclass.clojure</string>
+							</array>
 							<key>name</key>
 							<string>support.other.keyword.genclass.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.other</string>
+						<string>meta.other.genclass</string>
+						<string>meta.other.genclass.constructors</string>
+						<string>meta.other.genclass.constructors.clojure</string>
+					</array>
 					<key>end</key>
 					<string>\}</string>
 					<key>name</key>
@@ -1382,6 +1973,15 @@
 						<dict>
 							<key>begin</key>
 							<string>\[</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.other</string>
+								<string>meta.other.genclass</string>
+								<string>meta.other.genclass.constructor</string>
+								<string>meta.other.genclass.constructor.signature</string>
+								<string>meta.other.genclass.constructor.signature.clojure</string>
+							</array>
 							<key>end</key>
 							<string>\]</string>
 							<key>name</key>
@@ -1391,6 +1991,13 @@
 								<dict>
 									<key>begin</key>
 									<string>(?=[a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
+									<key>capturableScopes</key>
+									<array>
+										<string>storage</string>
+										<string>storage.type</string>
+										<string>storage.type.java</string>
+										<string>storage.type.java.clojure</string>
+									</array>
 									<key>comment</key>
 									<string>TODO: make a rule java Class (storage)</string>
 									<key>end</key>
@@ -1424,10 +2031,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.other</string>
+								<string>support.other.keyword</string>
+								<string>support.other.keyword.genclass</string>
+								<string>support.other.keyword.genclass.clojure</string>
+							</array>
 							<key>name</key>
 							<string>support.other.keyword.genclass.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.other</string>
+						<string>meta.other.genclass</string>
+						<string>meta.other.genclass.exposes</string>
+						<string>meta.other.genclass.exposes.clojure</string>
+					</array>
 					<key>end</key>
 					<string>\}</string>
 					<key>name</key>
@@ -1437,6 +2060,15 @@
 						<dict>
 							<key>begin</key>
 							<string>\{</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.other</string>
+								<string>meta.other.genclass</string>
+								<string>meta.other.genclass.exposes</string>
+								<string>meta.other.genclass.exposes.get_set</string>
+								<string>meta.other.genclass.exposes.get_set.clojure</string>
+							</array>
 							<key>end</key>
 							<string>\}</string>
 							<key>name</key>
@@ -1444,6 +2076,14 @@
 							<key>patterns</key>
 							<array>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>support</string>
+										<string>support.other</string>
+										<string>support.other.keyword</string>
+										<string>support.other.keyword.genclass</string>
+										<string>support.other.keyword.genclass.clojure</string>
+									</array>
 									<key>match</key>
 									<string>:(get|set)</string>
 									<key>name</key>
@@ -1466,6 +2106,14 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.other</string>
+								<string>support.other.keyword</string>
+								<string>support.other.keyword.genclass</string>
+								<string>support.other.keyword.genclass.clojure</string>
+							</array>
 							<key>name</key>
 							<string>support.other.keyword.genclass.clojure</string>
 						</dict>
@@ -1494,10 +2142,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.other</string>
+								<string>support.other.keyword</string>
+								<string>support.other.keyword.genclass</string>
+								<string>support.other.keyword.genclass.clojure</string>
+							</array>
 							<key>name</key>
 							<string>support.other.keyword.genclass.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.other</string>
+						<string>meta.other.genclass</string>
+						<string>meta.other.genclass.name</string>
+						<string>meta.other.genclass.name.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?![a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
 					<key>name</key>
@@ -1507,6 +2171,13 @@
 						<dict>
 							<key>begin</key>
 							<string>(?=[a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.namespace</string>
+								<string>entity.name.namespace.clojure</string>
+							</array>
 							<key>end</key>
 							<string>(?![a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
 							<key>name</key>
@@ -1528,10 +2199,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.other</string>
+								<string>support.other.keyword</string>
+								<string>support.other.keyword.genclass</string>
+								<string>support.other.keyword.genclass.clojure</string>
+							</array>
 							<key>name</key>
 							<string>support.other.keyword.genclass.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.other</string>
+						<string>meta.other.genclass</string>
+						<string>meta.other.genclass.methods</string>
+						<string>meta.other.genclass.methods.clojure</string>
+					</array>
 					<key>end</key>
 					<string>\]</string>
 					<key>name</key>
@@ -1541,6 +2228,15 @@
 						<dict>
 							<key>begin</key>
 							<string>\[</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.other</string>
+								<string>meta.other.genclass</string>
+								<string>meta.other.genclass.method</string>
+								<string>meta.other.genclass.method.signature</string>
+								<string>meta.other.genclass.method.signature.clojure</string>
+							</array>
 							<key>end</key>
 							<string>\]</string>
 							<key>name</key>
@@ -1550,6 +2246,16 @@
 								<dict>
 									<key>begin</key>
 									<string>\[</string>
+									<key>capturableScopes</key>
+									<array>
+										<string>meta</string>
+										<string>meta.other</string>
+										<string>meta.other.genclass</string>
+										<string>meta.other.genclass.method</string>
+										<string>meta.other.genclass.method.args</string>
+										<string>meta.other.genclass.method.args.signature</string>
+										<string>meta.other.genclass.method.args.signature.clojure</string>
+									</array>
 									<key>end</key>
 									<string>\]</string>
 									<key>name</key>
@@ -1559,6 +2265,13 @@
 										<dict>
 											<key>begin</key>
 											<string>(?=[a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
+											<key>capturableScopes</key>
+											<array>
+												<string>storage</string>
+												<string>storage.type</string>
+												<string>storage.type.java</string>
+												<string>storage.type.java.clojure</string>
+											</array>
 											<key>comment</key>
 											<string>TODO: make a rule java Class (storage)</string>
 											<key>end</key>
@@ -1582,6 +2295,15 @@
 								<dict>
 									<key>begin</key>
 									<string>(?=[a-zA-Z+!\-_?0-9*~#@'`/.$=]+\s*])</string>
+									<key>capturableScopes</key>
+									<array>
+										<string>storage</string>
+										<string>storage.type</string>
+										<string>storage.type.java</string>
+										<string>storage.type.java.genclass</string>
+										<string>storage.type.java.genclass.return_type</string>
+										<string>storage.type.java.genclass.return_type.clojure</string>
+									</array>
 									<key>end</key>
 									<string>.|$</string>
 									<key>name</key>
@@ -1623,10 +2345,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.other</string>
+								<string>support.other.keyword</string>
+								<string>support.other.keyword.genclass</string>
+								<string>support.other.keyword.genclass.clojure</string>
+							</array>
 							<key>name</key>
 							<string>support.other.keyword.genclass.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.other</string>
+						<string>meta.other.genclass</string>
+						<string>meta.other.genclass.implements</string>
+						<string>meta.other.genclass.implements.clojure</string>
+					</array>
 					<key>end</key>
 					<string>\]</string>
 					<key>name</key>
@@ -1650,34 +2388,72 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;![*+!_?\-])\b((if-not|if|cond|do|let|loop|recur|throw|try|catch|finally|new|trampoline)\b|(set!|swap!|compare-and-set!))(?![*+!_?\-])</string>
 					<key>name</key>
 					<string>keyword.control.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;![*+!_?\-])\b(monitor-enter|monitor-exit|assoc|touch|drop|take|concat|prn|into|cons|first|flatten|rest|frest|rrest|second|lazy-cat|lazy-cons|conj|await|range|iterate)\b(?![*+!_?\-])</string>
 					<key>name</key>
 					<string>keyword.other.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;![*+!_?\-])\b(str|print(ln)?|eval|def|defmacro|defn|quote|var|fn|defmulti|defmethod|map|list|hash-map|vector|agent|declare|intern|macroexpand|macroexpand-1)\b(?![*+!_?\-])</string>
 					<key>name</key>
 					<string>storage.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.match</string>
+						<string>support.function.match.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;![*+!_?\-])\b(-&gt;|\.\.|amap|and|areduce|assert|binding|comment|cond|definline|(def[a-z\-]*)|defmatch|defmethod|defmulti|defn|defn-|defonce|defstruct|delay|doc|doseq|dosync|dotimes|doto|fn|for|if-let|lazy-cons|let|locking|loop|memfn|ns|or|prefer-method|proxy-super|proxy|refer-clojure|remove-method|sync|time|when-first|when-let|when-not|when|while|with-in-str|with-local-vars|with-open|with-out-str|with-precision|memoize)\b(?![*+!_?\-])</string>
 					<key>name</key>
 					<string>support.function.match.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.tester</string>
+						<string>support.function.tester.clojure</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.mark</string>
+								<string>keyword.other.mark.clojure</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.mark.clojure</string>
 						</dict>
@@ -1688,20 +2464,47 @@
 					<string>support.function.tester.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.clojure</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.mark</string>
+								<string>keyword.other.mark.clojure</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.mark.clojure</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.mark</string>
+								<string>keyword.other.mark.clojure</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.mark.clojure</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.mark</string>
+								<string>keyword.other.mark.clojure</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.mark.clojure</string>
 						</dict>
@@ -1712,24 +2515,48 @@
 					<string>support.function.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;![*+!_?\-])\b(zipper|zipmap|xml-zip|xml-seq|with-meta|vector-zip|vector|vec|var-set|var-get|vals|val|use|update-proxy|update-in|up|union|underive|unchecked-subtract|unchecked-negate|unchecked-multiply|unchecked-inc|unchecked-divide|unchecked-dec|unchecked-add|tree-seq|to-array-2d|to-array|test|take-while|take-nth|symbol|supers|subvec|subseq|subs|struct-map|struct|str|split-with|split-at|sorted-set|sorted-map-by|sorted-map|sort-by|sort|some|slurp|shutdown-agents|short|set-validator|set|seque|seq-zip|seq|send-off|send|select-keys|select|rsubseq|rseq|root|rights|right|rfirst|reverse|resultset-seq|resolve|require|replicate|replace|repeatedly|repeat|rename-keys|rename|remove-ns|remove|rem|refer|ref-set|ref|reduce|read-string|read-line|read|re-seq|re-pattern|re-matches|re-matcher|re-groups|re-find|rationalize|rand-int|rand|quot|pvec|psummary|psort|proxy-mappings|project|prn-str|println-str|println|printf|print-str|print|preduce|pr-str|pr|pop|pmin|pmax|pmap|pfilter-nils|pfilter-dupes|peek|pdistinct|path|partition|partial|parse|parents|par|pany|num|nthrest|nth|ns-unmap|ns-unalias|ns-resolve|ns-refers|ns-publics|ns-name|ns-map|ns-interns|ns-imports|ns-aliases|not=|not-empty|not|node|next|newline|namespace|name|min-key|min|meta|merge-with|merge|max-key|max|matchexpand-1|matchexpand|mapcat|map-invert|map|make-node|make-hierarchy|make-array|long-array|long|loaded-libs|load-string|load-reader|load-file|load|list*|list|line-seq|lefts|left|last|keyword|keys|key|join|iterator-seq|into-array|intersection|interpose|interleave|int-array|int|inspect-tree|inspect-table|insert-right|insert-left|insert-child|index|inc|in-ns|import|identity|hash-set|hash-map|hash|get-validator|get-proxy-class|get-in|get|gensym|gen-class|gen-interface|gen-and-save-class|gen-and-load-class|format|force|fnseq|flush|float-array|float|find-var|find-ns|find-doc|find|filter|file-seq|ffirst|eval|enumeration-seq|ensure|empty|edit|drop-while|drop-last|down|double-array|double|dorun|doall|distinct|dissoc|disj|difference|descendants|derive|deref|dec|cycle|create-struct|create-ns|count|construct-proxy|constantly|conj|complement|compare|comparator|comp|commute|clojure.set|clojure.parallel|clojure.inspector|clear-agent-errors|class|children|char|cast|cache-seq|byte|butlast|boolean|bit-xor|bit-test|bit-shift-right|bit-shift-left|bit-set|bit-or|bit-not|bit-flip|bit-clear|bit-and-not|bit-and|bigint|bigdec|bean|bases|await-for|assoc-in|aset-short|aset-long|aset-int|aset-float|aset-double|aset-char|aset-byte|aset-boolean|aset|array-map|apply|append-child|ancestors|alter-var-root|alter|all-ns|alias|alength|aget|agent-errors|agent|add-classpath|aclone|accessor|compile|longs|doubles|ints|floats|atom)\b(?![*+!_?\-])</string>
 					<key>name</key>
 					<string>support.function.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.language</string>
+						<string>constant.language.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;![*+!_?\-])\b(true|false|nil)\b(?![*+!_?\-])</string>
 					<key>name</key>
 					<string>constant.language.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.language</string>
+						<string>constant.language.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(\(\)|{}|\[\]|#{})</string>
 					<key>name</key>
 					<string>constant.language.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.modifier</string>
+						<string>storage.modifier.clojure</string>
+					</array>
 					<key>comment</key>
 					<string>TODO : clean this ?</string>
 					<key>match</key>
@@ -1738,6 +2565,12 @@
 					<string>storage.modifier.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.variable</string>
+						<string>support.variable.clojure</string>
+					</array>
 					<key>comment</key>
 					<string>TODO : clean this ?</string>
 					<key>match</key>
@@ -1746,6 +2579,13 @@
 					<string>support.variable.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.variable</string>
+						<string>support.variable.global</string>
+						<string>support.variable.global.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;![*+!_?\-])\*(agent|allow-unresolved-vars|command-line-args|compile-files|compile-path|err|file|flush-on-newline|in|macro-meta|math-context|ns|out|print-dup|print-length|print-level|print-meta|print-readably|proxy-classes|use-context-classloader|warn-on-reflection)\*(?![*+!_?\-])</string>
 					<key>name</key>
@@ -1764,10 +2604,25 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.function</string>
+								<string>storage.type.function.type</string>
+								<string>storage.type.function.type.clojure</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.function.type.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.lambda</string>
+						<string>meta.function.lambda.clojure</string>
+					</array>
 					<key>end</key>
 					<string>\)</string>
 					<key>name</key>
@@ -1795,10 +2650,25 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.function</string>
+								<string>storage.type.function.type</string>
+								<string>storage.type.function.type.clojure</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.function.type.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.lambda</string>
+						<string>meta.function.lambda.clojure</string>
+					</array>
 					<key>end</key>
 					<string>\)</string>
 					<key>name</key>
@@ -1825,10 +2695,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.function</string>
+						<string>storage.type.function.type</string>
+						<string>storage.type.function.type.clojure</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.function.type.clojure</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.macro</string>
+				<string>meta.function.macro.clojure</string>
+			</array>
 			<key>end</key>
 			<string>\)</string>
 			<key>name</key>
@@ -1865,16 +2750,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.map</string>
+						<string>punctuation.definition.map.begin</string>
+						<string>punctuation.definition.map.begin.clojure</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.map.begin.clojure</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.expression</string>
+				<string>meta.expression.map</string>
+				<string>meta.expression.map.clojure</string>
+			</array>
 			<key>end</key>
 			<string>(?&lt;!{)}</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.map</string>
+						<string>punctuation.definition.map.end</string>
+						<string>punctuation.definition.map.end.clojure</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.map.end.clojure</string>
 				</dict>
@@ -1900,16 +2808,41 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>comment</string>
+								<string>comment.punctuation</string>
+								<string>comment.punctuation.definition</string>
+								<string>comment.punctuation.definition.metadata</string>
+								<string>comment.punctuation.definition.metadata.begin</string>
+								<string>comment.punctuation.definition.metadata.begin.clojure</string>
+							</array>
 							<key>name</key>
 							<string>comment.punctuation.definition.metadata.begin.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.metadata</string>
+						<string>punctuation.metadata.map</string>
+						<string>punctuation.metadata.map.clojure</string>
+					</array>
 					<key>end</key>
 					<string>}</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>comment</string>
+								<string>comment.punctuation</string>
+								<string>comment.punctuation.definition</string>
+								<string>comment.punctuation.definition.metadata</string>
+								<string>comment.punctuation.definition.metadata.end</string>
+								<string>comment.punctuation.definition.metadata.end.clojure</string>
+							</array>
 							<key>name</key>
 							<string>comment.punctuation.definition.metadata.end.clojure</string>
 						</dict>
@@ -1926,21 +2859,45 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>#?\^"</string>
+					<string>#?\^&quot;</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>comment</string>
+								<string>comment.punctuation</string>
+								<string>comment.punctuation.definition</string>
+								<string>comment.punctuation.definition.metadata</string>
+								<string>comment.punctuation.definition.metadata.begin</string>
+								<string>comment.punctuation.definition.metadata.begin.clojure</string>
+							</array>
 							<key>name</key>
 							<string>comment.punctuation.definition.metadata.begin.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.metadata</string>
+						<string>string.metadata.clojure</string>
+					</array>
 					<key>end</key>
-					<string>"</string>
+					<string>&quot;</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>comment</string>
+								<string>comment.punctuation</string>
+								<string>comment.punctuation.definition</string>
+								<string>comment.punctuation.definition.metadata</string>
+								<string>comment.punctuation.definition.metadata.end</string>
+								<string>comment.punctuation.definition.metadata.end.clojure</string>
+							</array>
 							<key>name</key>
 							<string>comment.punctuation.definition.metadata.end.clojure</string>
 						</dict>
@@ -1949,15 +2906,38 @@
 					<string>string.metadata.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.metadata</string>
+						<string>punctuation.metadata.class</string>
+						<string>punctuation.metadata.class.clojure</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>comment</string>
+								<string>comment.punctuation</string>
+								<string>comment.punctuation.definition</string>
+								<string>comment.punctuation.definition.metadata</string>
+								<string>comment.punctuation.definition.metadata.begin</string>
+								<string>comment.punctuation.definition.metadata.begin.clojure</string>
+							</array>
 							<key>name</key>
 							<string>comment.punctuation.definition.metadata.begin.clojure</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.java</string>
+								<string>storage.type.java.clojure</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.java.clojure</string>
 						</dict>
@@ -1974,12 +2954,27 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.other</string>
+						<string>support.other.keyword</string>
+						<string>support.other.keyword.namespace</string>
+						<string>support.other.keyword.namespace.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(:tag|:doc|:arglists|:private|:macro|:name|:ns|:inline-arities|:inline|:line|:file)(?![a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
 					<key>name</key>
 					<string>support.other.keyword.namespace.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.java</string>
+						<string>storage.type.java.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;=:tag)\s+([a-zA-Z+!\-_?0-9*/.$=]+)</string>
 					<key>name</key>
@@ -1987,21 +2982,43 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?&lt;=:doc)\s+"</string>
+					<string>(?&lt;=:doc)\s+&quot;</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.quoted</string>
+								<string>string.quoted.double</string>
+								<string>string.quoted.double.begin</string>
+								<string>string.quoted.double.begin.clojure</string>
+							</array>
 							<key>name</key>
 							<string>string.quoted.double.begin.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.docstring</string>
+						<string>string.docstring.clojure</string>
+					</array>
 					<key>end</key>
-					<string>"</string>
+					<string>&quot;</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.quoted</string>
+								<string>string.quoted.double</string>
+								<string>string.quoted.double.end</string>
+								<string>string.quoted.double.end.clojure</string>
+							</array>
 							<key>name</key>
 							<string>string.quoted.double.end.clojure</string>
 						</dict>
@@ -2030,10 +3047,24 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.namespace</string>
+						<string>support.function.namespace.clojure</string>
+					</array>
 					<key>name</key>
 					<string>support.function.namespace.clojure</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.namespace</string>
+				<string>meta.function.namespace.clojure</string>
+			</array>
 			<key>end</key>
 			<string>\)</string>
 			<key>name</key>
@@ -2043,6 +3074,13 @@
 				<dict>
 					<key>begin</key>
 					<string>(?=[a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.namespace</string>
+						<string>entity.name.namespace.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?![a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
 					<key>name</key>
@@ -2066,6 +3104,14 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.other</string>
+						<string>support.other.keyword</string>
+						<string>support.other.keyword.namespace</string>
+						<string>support.other.keyword.namespace.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(:refer-clojure|:require|:use|:import|:load|:exclude|:as|:only)(?![a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
 					<key>name</key>
@@ -2078,10 +3124,25 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.other</string>
+								<string>support.other.keyword</string>
+								<string>support.other.keyword.genclass</string>
+								<string>support.other.keyword.genclass.clojure</string>
+							</array>
 							<key>name</key>
 							<string>support.other.keyword.genclass.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.genclass_form</string>
+						<string>meta.function.genclass_form.clojure</string>
+					</array>
 					<key>end</key>
 					<string>\)</string>
 					<key>name</key>
@@ -2135,10 +3196,26 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.float</string>
+						<string>constant.numeric.float.ratio</string>
+						<string>constant.numeric.float.ratio.clojure</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.operator</string>
+								<string>keyword.operator.arithmetic</string>
+								<string>keyword.operator.arithmetic.ratio</string>
+								<string>keyword.operator.arithmetic.ratio.clojure</string>
+							</array>
 							<key>name</key>
 							<string>keyword.operator.arithmetic.ratio.clojure</string>
 						</dict>
@@ -2149,32 +3226,78 @@
 					<string>constant.numeric.float.ratio.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.float</string>
+						<string>constant.numeric.float.clojure</string>
+					</array>
 					<key>match</key>
 					<string>[-+]?\b[0-9]+((\.[0-9]+([eE][-+]?[0-9]+)?)|((\.[0-9]+)?[eE][-+]?[0-9]+))?\b</string>
 					<key>name</key>
 					<string>constant.numeric.float.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.big_decimal</string>
+						<string>constant.numeric.big_decimal.clojure</string>
+					</array>
 					<key>match</key>
 					<string>[-+]?\b[0-9]+(((\.[0-9])?+([eE][-+]?[0-9]+)?)|((\.[0-9]+)?[eE][-+]?[0-9]+))[M]?\b</string>
 					<key>name</key>
 					<string>constant.numeric.big_decimal.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.octal</string>
+						<string>constant.numeric.integer.octal.clojure</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.operator</string>
+								<string>keyword.operator.arithmetic</string>
+								<string>keyword.operator.arithmetic.octal</string>
+								<string>keyword.operator.arithmetic.octal.clojure</string>
+							</array>
 							<key>name</key>
 							<string>keyword.operator.arithmetic.octal.clojure</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.integer</string>
+								<string>invalid.illegal.integer.octal</string>
+								<string>invalid.illegal.integer.octal.clojure</string>
+							</array>
 							<key>name</key>
 							<string>invalid.illegal.integer.octal.clojure</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.integer</string>
+								<string>invalid.illegal.integer.octal</string>
+								<string>invalid.illegal.integer.octal.clojure</string>
+							</array>
 							<key>name</key>
 							<string>invalid.illegal.integer.octal.clojure</string>
 						</dict>
@@ -2185,16 +3308,39 @@
 					<string>constant.numeric.integer.octal.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(-|\+)?\b[0-9]+\b</string>
 					<key>name</key>
 					<string>constant.numeric.integer.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.hexa</string>
+						<string>constant.numeric.integer.hexa.clojure</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.operator</string>
+								<string>keyword.operator.arithmetic</string>
+								<string>keyword.operator.arithmetic.hexa</string>
+								<string>keyword.operator.arithmetic.hexa.clojure</string>
+							</array>
 							<key>name</key>
 							<string>keyword.operator.arithmetic.hexa.clojure</string>
 						</dict>
@@ -2211,24 +3357,50 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;![a-zA-Z0-9*+!_?\-])(\*|/|\&lt;|\&lt;=|=|==|\&gt;|\&gt;=|-\&gt;)(?![a-zA-Z0-9*+!_?\-])</string>
 					<key>name</key>
 					<string>keyword.operator.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;![a-zA-Z0-9*+!_?\-])(-|\+)(?![a-zA-Z0-9*+!_?\-])</string>
 					<key>name</key>
 					<string>keyword.operator.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.class</string>
+						<string>keyword.operator.class.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;![a-zA-Z0-9*+!_?\-])(\.|\.\.)(?![a-zA-Z0-9*+!_?\-])</string>
 					<key>name</key>
 					<string>keyword.operator.class.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.parameter</string>
+						<string>variable.parameter.literal</string>
+						<string>variable.parameter.literal.clojure</string>
+					</array>
 					<key>match</key>
 					<string>%(\d+|&amp;)?</string>
 					<key>name</key>
@@ -2245,24 +3417,53 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.operator</string>
+						<string>keyword.control.operator.clojure</string>
+					</array>
 					<key>match</key>
 					<string>`|~@|~</string>
 					<key>name</key>
 					<string>keyword.control.operator.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.function</string>
+						<string>storage.type.function.type</string>
+						<string>storage.type.function.type.clojure</string>
+					</array>
 					<key>match</key>
 					<string>#'|@</string>
 					<key>name</key>
 					<string>storage.type.function.type.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.quote</string>
+					</array>
 					<key>match</key>
 					<string>'</string>
 					<key>name</key>
 					<string>constant.other.quote</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.metadata</string>
+						<string>constant.other.metadata.read</string>
+						<string>constant.other.metadata.read.clojure</string>
+					</array>
 					<key>match</key>
 					<string>\^</string>
 					<key>name</key>
@@ -2278,16 +3479,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.vector</string>
+						<string>punctuation.definition.vector.begin</string>
+						<string>punctuation.definition.vector.begin.clojure</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.vector.begin.clojure</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.parameters</string>
+				<string>meta.parameters.vector</string>
+				<string>meta.parameters.vector.clojure</string>
+			</array>
 			<key>end</key>
 			<string>\]</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.vector</string>
+						<string>punctuation.definition.vector.end</string>
+						<string>punctuation.definition.vector.end.clojure</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.vector.end.clojure</string>
 				</dict>
@@ -2297,12 +3521,26 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.varargs</string>
+						<string>keyword.operator.varargs.clojure</string>
+					</array>
 					<key>match</key>
 					<string>\&amp;</string>
 					<key>name</key>
 					<string>keyword.operator.varargs.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.symbolargs</string>
+						<string>keyword.operator.symbolargs.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(:as)(?![a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
 					<key>name</key>
@@ -2332,6 +3570,12 @@
 		</dict>
 		<key>parameters_body</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.body</string>
+			</array>
 			<key>name</key>
 			<string>meta.function.body</string>
 			<key>patterns</key>
@@ -2343,6 +3587,14 @@
 				<dict>
 					<key>begin</key>
 					<string>(?&lt;=\])</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.body</string>
+						<string>meta.function.body.code</string>
+						<string>meta.function.body.code.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\))</string>
 					<key>name</key>
@@ -2365,16 +3617,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.vector</string>
+						<string>punctuation.definition.vector.begin</string>
+						<string>punctuation.definition.vector.begin.clojure</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.vector.begin.clojure</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.parameters</string>
+				<string>meta.function.parameters.vector</string>
+				<string>meta.function.parameters.vector.clojure</string>
+			</array>
 			<key>end</key>
 			<string>\]</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.vector</string>
+						<string>punctuation.definition.vector.end</string>
+						<string>punctuation.definition.vector.end.clojure</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.vector.end.clojure</string>
 				</dict>
@@ -2384,12 +3660,26 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.varargs</string>
+						<string>keyword.operator.varargs.clojure</string>
+					</array>
 					<key>match</key>
 					<string>\&amp;</string>
 					<key>name</key>
 					<string>keyword.operator.varargs.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.symbolargs</string>
+						<string>keyword.operator.symbolargs.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(:as)(?![a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
 					<key>name</key>
@@ -2425,16 +3715,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.map</string>
+						<string>punctuation.definition.map.begin</string>
+						<string>punctuation.definition.map.begin.clojure</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.map.begin.clojure</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.parameters</string>
+				<string>meta.function.parameters.map</string>
+				<string>meta.function.parameters.map.clojure</string>
+			</array>
 			<key>end</key>
 			<string>\}</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.map</string>
+						<string>punctuation.definition.map.end</string>
+						<string>punctuation.definition.map.end.clojure</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.map.end.clojure</string>
 				</dict>
@@ -2448,6 +3762,13 @@
 					<string>#parameters_variable</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.symbolargs</string>
+						<string>keyword.operator.symbolargs.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(:as|:or|:keys|:strs|:syms)(?![a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
 					<key>name</key>
@@ -2471,6 +3792,12 @@
 		<dict>
 			<key>begin</key>
 			<string>(?=[a-zA-Z+!\-_?0-9*~@'`/.$=])</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.parameter</string>
+				<string>variable.parameter.clojure</string>
+			</array>
 			<key>comment</key>
 			<string>symbol matching TODO:operator number =&gt; error ?</string>
 			<key>end</key>
@@ -2505,16 +3832,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.set</string>
+						<string>punctuation.definition.set.begin</string>
+						<string>punctuation.definition.set.begin.clojure</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.set.begin.clojure</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.expression</string>
+				<string>meta.expression.set</string>
+				<string>meta.expression.set.clojure</string>
+			</array>
 			<key>end</key>
 			<string>}</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.set</string>
+						<string>punctuation.definition.set.end</string>
+						<string>punctuation.definition.set.end.clojure</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.set.end.clojure</string>
 				</dict>
@@ -2533,6 +3883,12 @@
 		<dict>
 			<key>begin</key>
 			<string>\((?!\))</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.sexpr</string>
+				<string>meta.sexpr.clojure</string>
+			</array>
 			<key>end</key>
 			<string>(?&lt;!\()\)</string>
 			<key>name</key>
@@ -2560,10 +3916,23 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.clojure</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.let_form</string>
+						<string>meta.function.let_form.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\))</string>
 					<key>name</key>
@@ -2583,10 +3952,24 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.variable</string>
+								<string>storage.type.variable.clojure</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.variable.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.def_form</string>
+						<string>meta.function.def_form.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\))</string>
 					<key>name</key>
@@ -2627,10 +4010,24 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.variable</string>
+								<string>storage.type.variable.clojure</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.variable.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.def_form</string>
+						<string>meta.function.def_form.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\))</string>
 					<key>name</key>
@@ -2675,15 +4072,36 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.tester</string>
+								<string>support.function.tester.clojure</string>
+							</array>
 							<key>name</key>
 							<string>support.function.tester.clojure</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.mark</string>
+								<string>keyword.other.mark.clojure</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.mark.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.isInstance_form</string>
+						<string>meta.function.isInstance_form.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\))</string>
 					<key>name</key>
@@ -2703,10 +4121,23 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.clojure</string>
+							</array>
 							<key>name</key>
 							<string>support.function.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.cast_form</string>
+						<string>meta.function.cast_form.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\))</string>
 					<key>name</key>
@@ -2726,10 +4157,23 @@
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.clojure</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.new_form</string>
+						<string>meta.function.new_form.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\))</string>
 					<key>name</key>
@@ -2739,6 +4183,13 @@
 						<dict>
 							<key>begin</key>
 							<string>(?=([a-z]+\.)*[A-Z][a-zA-Z]*(\$[A-Z][a-zA-Z]*)?)</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.java</string>
+								<string>storage.type.java.clojure</string>
+							</array>
 							<key>end</key>
 							<string>(?![a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
 							<key>name</key>
@@ -2777,10 +4228,23 @@
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.clojure</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.member_access_form</string>
+						<string>meta.function.member_access_form.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\))</string>
 					<key>name</key>
@@ -2790,6 +4254,13 @@
 						<dict>
 							<key>begin</key>
 							<string>(?=[a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.java</string>
+								<string>storage.type.java.clojure</string>
+							</array>
 							<key>end</key>
 							<string>(?![a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
 							<key>name</key>
@@ -2828,10 +4299,23 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.clojure</string>
+							</array>
 							<key>name</key>
 							<string>support.function.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.genclass_form</string>
+						<string>meta.function.genclass_form.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\))</string>
 					<key>name</key>
@@ -2851,10 +4335,23 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.clojure</string>
+							</array>
 							<key>name</key>
 							<string>support.function.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.geninterface_form</string>
+						<string>meta.function.geninterface_form.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\))</string>
 					<key>name</key>
@@ -2874,10 +4371,23 @@
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.clojure</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.catch_form</string>
+						<string>meta.function.catch_form.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\))</string>
 					<key>name</key>
@@ -2900,6 +4410,12 @@
 						<dict>
 							<key>begin</key>
 							<string>\s+(?=[a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>variable</string>
+								<string>variable.parameter</string>
+								<string>variable.parameter.clojure</string>
+							</array>
 							<key>end</key>
 							<string>(?![a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
 							<key>name</key>
@@ -2938,15 +4454,35 @@
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.clojure</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.clojure</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.mark</string>
+								<string>keyword.other.mark.clojure</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.mark.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.setvar_form</string>
+						<string>meta.function.setvar_form.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\))</string>
 					<key>name</key>
@@ -2956,6 +4492,12 @@
 						<dict>
 							<key>begin</key>
 							<string>(?=[a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>variable</string>
+								<string>variable.parameter</string>
+								<string>variable.parameter.clojure</string>
+							</array>
 							<key>end</key>
 							<string>(?![a-zA-Z+!\-_?0-9*~#@'`/.$=])</string>
 							<key>name</key>
@@ -2994,10 +4536,23 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.clojure</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.proxy_form</string>
+						<string>meta.function.proxy_form.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?=\))</string>
 					<key>name</key>
@@ -3029,6 +4584,15 @@
 										<dict>
 											<key>begin</key>
 											<string>(?=([a-z]+\.)*[A-Z][a-zA-Z]*)</string>
+											<key>capturableScopes</key>
+											<array>
+												<string>entity</string>
+												<string>entity.other</string>
+												<string>entity.other.inherited-class</string>
+												<string>entity.other.inherited-class.java</string>
+												<string>entity.other.inherited-class.java.proxy</string>
+												<string>entity.other.inherited-class.java.proxy.clojure</string>
+											</array>
 											<key>end</key>
 											<string>(?![a-zA-Z.])</string>
 											<key>name</key>
@@ -3061,6 +4625,14 @@
 										<dict>
 											<key>begin</key>
 											<string>(?=\[)</string>
+											<key>capturableScopes</key>
+											<array>
+												<string>meta</string>
+												<string>meta.function</string>
+												<string>meta.function.body</string>
+												<string>meta.function.body.proxy_form</string>
+												<string>meta.function.body.proxy_form.clojure</string>
+											</array>
 											<key>end</key>
 											<string>(?=\))</string>
 											<key>name</key>
@@ -3089,6 +4661,14 @@
 														<dict>
 															<key>begin</key>
 															<string>\(\s*</string>
+															<key>capturableScopes</key>
+															<array>
+																<string>meta</string>
+																<string>meta.function</string>
+																<string>meta.function.proxy</string>
+																<string>meta.function.proxy.method</string>
+																<string>meta.function.proxy.method.clojure</string>
+															</array>
 															<key>end</key>
 															<string>\)</string>
 															<key>name</key>
@@ -3127,21 +4707,44 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>"</string>
+					<string>&quot;</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.clojure</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.clojure</string>
+					</array>
 					<key>end</key>
-					<string>"</string>
+					<string>&quot;</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.clojure</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.clojure</string>
 						</dict>
@@ -3157,6 +4760,13 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.clojure</string>
+					</array>
 					<key>match</key>
 					<string>\\(u[0-9a-fA-F]{4}|newline|tab|space|backspace|formfeed|return|[^\s])</string>
 					<key>name</key>
@@ -3169,10 +4779,24 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.operator</string>
+								<string>keyword.operator.symbole</string>
+								<string>keyword.operator.symbole.clojure</string>
+							</array>
 							<key>name</key>
 							<string>keyword.operator.symbole.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.string</string>
+						<string>constant.string.symbole</string>
+						<string>constant.string.symbole.clojure</string>
+					</array>
 					<key>comment</key>
 					<string>. is OK in symbol ?</string>
 					<key>end</key>
@@ -3189,21 +4813,43 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>#"</string>
+					<string>#&quot;</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.clojure</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.clojure</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.clojure</string>
+					</array>
 					<key>end</key>
-					<string>"</string>
+					<string>&quot;</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.clojure</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.clojure</string>
 						</dict>
@@ -3222,16 +4868,31 @@
 		</dict>
 		<key>string_escape</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.escape</string>
+				<string>constant.character.escape.clojure</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.escape</string>
+						<string>invalid.illegal.escape.string</string>
+						<string>invalid.illegal.escape.string.clojure</string>
+					</array>
 					<key>name</key>
 					<string>invalid.illegal.escape.string.clojure</string>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>\\(u[0-9a-fA-F]{4}|b|t|n|f|r|"|'|\\|[0-3]?[0-7]{1,2}|(.))</string>
+			<string>\\(u[0-9a-fA-F]{4}|b|t|n|f|r|&quot;|'|\\|[0-3]?[0-7]{1,2}|(.))</string>
 			<key>name</key>
 			<string>constant.character.escape.clojure</string>
 		</dict>
@@ -3240,12 +4901,26 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.java</string>
+						<string>constant.other.java.clojure</string>
+					</array>
 					<key>match</key>
 					<string>\b[A-Z_]{2,}\b</string>
 					<key>name</key>
 					<string>constant.other.java.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>source</string>
+						<string>source.symbol</string>
+						<string>source.symbol.global</string>
+						<string>source.symbol.global.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;![a-zA-Z+!\-_?0-9*])\*[a-z\-]{2,}\*(?![a-zA-Z+!\-_?0-9*])</string>
 					<key>name</key>
@@ -3254,6 +4929,12 @@
 				<dict>
 					<key>begin</key>
 					<string>(?=[a-zA-Z+!\-_?0-9*=])</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>source</string>
+						<string>source.symbol</string>
+						<string>source.symbol.clojure</string>
+					</array>
 					<key>end</key>
 					<string>(?![a-zA-Z+!\-_?0-9*=])</string>
 					<key>name</key>
@@ -3263,6 +4944,13 @@
 						<dict>
 							<key>begin</key>
 							<string>[0-9]</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.symbol</string>
+								<string>invalid.illegal.symbol.clojure</string>
+							</array>
 							<key>end</key>
 							<string>(?![a-zA-Z+!\-_?0-9*=])</string>
 							<key>name</key>
@@ -3277,6 +4965,13 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>keyword</string>
+										<string>keyword.other</string>
+										<string>keyword.other.mark</string>
+										<string>keyword.other.mark.clojure</string>
+									</array>
 									<key>name</key>
 									<string>keyword.other.mark.clojure</string>
 								</dict>
@@ -3291,12 +4986,26 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.classpath</string>
+						<string>keyword.operator.classpath.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;=[a-zA-Z+!\-_?0-9*])\.(?=[a-zA-Z+!\-_?0-9*])</string>
 					<key>name</key>
 					<string>keyword.operator.classpath.clojure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.qualified</string>
+						<string>keyword.operator.qualified.clojure</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;=[a-zA-Z+!\-_?0-9*])(/|\$)(?=[a-zA-Z+!\-_?0-9*])</string>
 					<key>name</key>
@@ -3308,6 +5017,13 @@
 		<dict>
 			<key>begin</key>
 			<string>(?=([a-z]+\.)*[A-Z][a-zA-Z]*(\$[A-Z][a-zA-Z]*)?)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.type</string>
+				<string>storage.type.java</string>
+				<string>storage.type.java.clojure</string>
+			</array>
 			<key>comment</key>
 			<string>TODO : use it</string>
 			<key>end</key>
@@ -3362,6 +5078,14 @@
 		<dict>
 			<key>begin</key>
 			<string>(?=([a-z]+\.)*[A-Z][a-zA-Z]*(\$[A-Z][a-zA-Z]*)?)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>entity</string>
+				<string>entity.other</string>
+				<string>entity.other.inherited-class</string>
+				<string>entity.other.inherited-class.java</string>
+				<string>entity.other.inherited-class.java.clojure</string>
+			</array>
 			<key>end</key>
 			<string>(?![a-zA-Z.$])</string>
 			<key>name</key>
@@ -3382,16 +5106,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.vector</string>
+						<string>punctuation.definition.vector.begin</string>
+						<string>punctuation.definition.vector.begin.clojure</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.vector.begin.clojure</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.expression</string>
+				<string>meta.expression.vector</string>
+				<string>meta.expression.vector.clojure</string>
+			</array>
 			<key>end</key>
 			<string>(?&lt;!\[)\]</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.vector</string>
+						<string>punctuation.definition.vector.end</string>
+						<string>punctuation.definition.vector.end.clojure</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.vector.end.clojure</string>
 				</dict>

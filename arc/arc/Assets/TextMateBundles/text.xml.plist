@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>XML</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>xml</string>
@@ -26,15 +30,36 @@
 		<dict>
 			<key>begin</key>
 			<string>(&lt;\?)\s*([-_a-zA-Z0-9]+)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tag</string>
+				<string>meta.tag.preprocessor</string>
+				<string>meta.tag.preprocessor.xml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.xml</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.xml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.xml</string>
 				</dict>
@@ -46,6 +71,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.other</string>
+						<string>entity.other.attribute-name</string>
+						<string>entity.other.attribute-name.xml</string>
+					</array>
 					<key>match</key>
 					<string> ([a-zA-Z-]+)</string>
 					<key>name</key>
@@ -64,15 +96,38 @@
 		<dict>
 			<key>begin</key>
 			<string>(&lt;!)(DOCTYPE)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tag</string>
+				<string>meta.tag.sgml</string>
+				<string>meta.tag.sgml.doctype</string>
+				<string>meta.tag.sgml.doctype.xml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.xml</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.doctype</string>
+						<string>entity.name.tag.doctype.xml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.doctype.xml</string>
 				</dict>
@@ -90,16 +145,37 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.entity</string>
+								<string>entity.name.tag.entity.xml</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.entity.xml</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.entity</string>
+								<string>meta.entity.xml</string>
+							</array>
 							<key>name</key>
 							<string>meta.entity.xml</string>
 						</dict>
@@ -123,10 +199,23 @@
 		<dict>
 			<key>begin</key>
 			<string>&lt;[!%]--</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.xml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.xml</string>
 				</dict>
@@ -143,66 +232,161 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.xml</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.namespace</string>
+						<string>entity.name.tag.namespace.xml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.namespace.xml</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.xml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.xml</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.namespace</string>
+						<string>punctuation.separator.namespace.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.namespace.xml</string>
 				</dict>
 				<key>6</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.localname</string>
+						<string>entity.name.tag.localname.xml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.localname.xml</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tag</string>
+				<string>meta.tag.no-content</string>
+				<string>meta.tag.no-content.xml</string>
+			</array>
 			<key>end</key>
 			<string>(&gt;(&lt;))/(?:([-_a-zA-Z0-9]+)((:)))?([-_a-zA-Z0-9:]+)(&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.xml</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.scope</string>
+						<string>meta.scope.between-tag-pair</string>
+						<string>meta.scope.between-tag-pair.xml</string>
+					</array>
 					<key>name</key>
 					<string>meta.scope.between-tag-pair.xml</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.namespace</string>
+						<string>entity.name.tag.namespace.xml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.namespace.xml</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.xml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.xml</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.namespace</string>
+						<string>punctuation.separator.namespace.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.namespace.xml</string>
 				</dict>
 				<key>6</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.localname</string>
+						<string>entity.name.tag.localname.xml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.localname.xml</string>
 				</dict>
 				<key>7</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.xml</string>
 				</dict>
@@ -220,30 +404,73 @@
 		<dict>
 			<key>begin</key>
 			<string>(&lt;/?)(?:([-_a-zA-Z0-9]+)((:)))?([-_a-zA-Z0-9:]+)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tag</string>
+				<string>meta.tag.xml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.xml</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.namespace</string>
+						<string>entity.name.tag.namespace.xml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.namespace.xml</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.xml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.xml</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.namespace</string>
+						<string>punctuation.separator.namespace.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.namespace.xml</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.localname</string>
+						<string>entity.name.tag.localname.xml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.localname.xml</string>
 				</dict>
@@ -261,15 +488,36 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.entity</string>
+				<string>constant.character.entity.xml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.xml</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.xml</string>
 				</dict>
@@ -280,6 +528,13 @@
 			<string>constant.character.entity.xml</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>invalid</string>
+				<string>invalid.illegal</string>
+				<string>invalid.illegal.bad-ampersand</string>
+				<string>invalid.illegal.bad-ampersand.xml</string>
+			</array>
 			<key>match</key>
 			<string>&amp;</string>
 			<key>name</key>
@@ -292,16 +547,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.begin</string>
+						<string>punctuation.section.embedded.begin.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.begin.xml</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>source</string>
+				<string>source.java-props</string>
+				<string>source.java-props.embedded</string>
+				<string>source.java-props.embedded.xml</string>
+			</array>
 			<key>end</key>
 			<string>%&gt;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.end</string>
+						<string>punctuation.section.embedded.end.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.end.xml</string>
 				</dict>
@@ -311,6 +589,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.page-props</string>
+						<string>keyword.other.page-props.xml</string>
+					</array>
 					<key>match</key>
 					<string>page|include|taglib</string>
 					<key>name</key>
@@ -325,16 +610,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.begin</string>
+						<string>punctuation.section.embedded.begin.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.begin.xml</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>source</string>
+				<string>source.java</string>
+				<string>source.java.embedded</string>
+				<string>source.java.embedded.xml</string>
+			</array>
 			<key>end</key>
 			<string>(?!--)%&gt;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.end</string>
+						<string>punctuation.section.embedded.end.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.end.xml</string>
 				</dict>
@@ -356,16 +664,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.xml</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.cdata</string>
+				<string>string.unquoted.cdata.xml</string>
+			</array>
 			<key>end</key>
 			<string>]]&gt;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.xml</string>
 				</dict>
@@ -384,16 +715,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.xml</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.xml</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.xml</string>
 				</dict>
@@ -409,16 +763,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.xml</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.single</string>
+				<string>string.quoted.single.xml</string>
+			</array>
 			<key>end</key>
 			<string>'</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.xml</string>
 				</dict>
@@ -435,21 +812,51 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.other</string>
+								<string>entity.other.attribute-name</string>
+								<string>entity.other.attribute-name.namespace</string>
+								<string>entity.other.attribute-name.namespace.xml</string>
+							</array>
 							<key>name</key>
 							<string>entity.other.attribute-name.namespace.xml</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.other</string>
+								<string>entity.other.attribute-name</string>
+								<string>entity.other.attribute-name.xml</string>
+							</array>
 							<key>name</key>
 							<string>entity.other.attribute-name.xml</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.namespace</string>
+								<string>punctuation.separator.namespace.xml</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.namespace.xml</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.other</string>
+								<string>entity.other.attribute-name</string>
+								<string>entity.other.attribute-name.localname</string>
+								<string>entity.other.attribute-name.localname.xml</string>
+							</array>
 							<key>name</key>
 							<string>entity.other.attribute-name.localname.xml</string>
 						</dict>

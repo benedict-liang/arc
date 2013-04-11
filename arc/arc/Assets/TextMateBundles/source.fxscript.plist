@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>FXScript</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>fxscript</string>
@@ -19,10 +23,23 @@
 		<dict>
 			<key>begin</key>
 			<string>(^|(?&lt;=;)[ \t]*)on[ \t]+(\w+)[ \t]*(?=\([^\)]*\))</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.fxscript</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.fxscript</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.fxscript</string>
 				</dict>
@@ -45,11 +62,24 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>support</string>
+										<string>support.type</string>
+										<string>support.type.fxscript</string>
+									</array>
 									<key>name</key>
 									<string>support.type.fxscript</string>
 								</dict>
 								<key>2</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>variable</string>
+										<string>variable.parameter</string>
+										<string>variable.parameter.function</string>
+										<string>variable.parameter.function.fxscript</string>
+									</array>
 									<key>name</key>
 									<string>variable.parameter.function.fxscript</string>
 								</dict>
@@ -68,6 +98,13 @@
 		<dict>
 			<key>begin</key>
 			<string>(^|(?&lt;=;)[ \t]*)input[ \t]*</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.input-control</string>
+				<string>keyword.other.input-control.fxscript</string>
+			</array>
 			<key>comment</key>
 			<string>Input Controls</string>
 			<key>end</key>
@@ -85,16 +122,36 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>variable</string>
+								<string>variable.other</string>
+								<string>variable.other.global</string>
+								<string>variable.other.global.fxscript</string>
+							</array>
 							<key>name</key>
 							<string>variable.other.global.fxscript</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.quoted</string>
+								<string>string.quoted.double</string>
+								<string>string.quoted.double.fxscript</string>
+							</array>
 							<key>name</key>
 							<string>string.quoted.double.fxscript</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.type</string>
+								<string>support.type.fxscript</string>
+							</array>
 							<key>name</key>
 							<string>support.type.fxscript</string>
 						</dict>
@@ -105,6 +162,12 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.type</string>
+				<string>storage.type.fxscript</string>
+			</array>
 			<key>comment</key>
 			<string>Data Types</string>
 			<key>match</key>
@@ -113,28 +176,62 @@
 			<string>storage.type.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.fxscrpt</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:if|(end|else)( if)?|for|next|return|repeat( While| With (Counter|List)))\b</string>
 			<key>name</key>
 			<string>keyword.control.fxscrpt</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.definition-statements</string>
+				<string>keyword.other.definition-statements.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>/b(?i:AlphaType|EffectID|FullFrame|Group|InformationFlag|InvalEntireItem|KeyType|ProducesAlpha|QTEffect|RenderEachFrameWhenStill|WipeCode)/b</string>
 			<key>name</key>
 			<string>keyword.other.definition-statements.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.arithmetic</string>
+				<string>keyword.operator.arithmetic.fxscrpt</string>
+			</array>
 			<key>match</key>
 			<string>!|\$|%|&amp;|\*|\-\-|\-|\+\+|\+|~|==|=|!=|!==|&lt;=|&gt;=|&lt;|&gt;|!|&amp;&amp;|\|\||\?\:|\*=|/=|%=|\+=|\-=|&amp;=|\^=</string>
 			<key>name</key>
 			<string>keyword.operator.arithmetic.fxscrpt</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.double-slash</string>
+				<string>comment.line.double-slash.fxscript</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.fxscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.fxscript</string>
 				</dict>
@@ -145,66 +242,142 @@
 			<string>comment.line.double-slash.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.constant</string>
+				<string>support.constant.colorspace</string>
+				<string>support.constant.colorspace.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>(?i:kFormatRGB219|kFormatRGB255|kFormatYUV219)</string>
 			<key>name</key>
 			<string>support.constant.colorspace.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b[0-9]+(\.[0-9]*)?\b</string>
 			<key>name</key>
 			<string>constant.numeric.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.hex</string>
+				<string>constant.numeric.hex.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b0x([a-fA-F0-9]*)?\b</string>
 			<key>name</key>
 			<string>constant.numeric.hex.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.constant</string>
+				<string>support.constant.color</string>
+				<string>support.constant.color.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>(?i:kBlack|kBlue|kCyan|kGray|kGreen|kMagenta|kRed|kWhite|kYellow)</string>
 			<key>name</key>
 			<string>support.constant.color.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.constant</string>
+				<string>support.constant.formatting</string>
+				<string>support.constant.formatting.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>(?i:k16mm|k24fps|k25fps|k30df|k30fps|k35mm|k60df|k60fps|kFloat2|kFloat4|kFloat6|kInteger|kSize)</string>
 			<key>name</key>
 			<string>support.constant.formatting.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.constant</string>
+				<string>support.constant.general</string>
+				<string>support.constant.general.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>(?i:false|kAlpha|kNone|kUndefined|true)\b</string>
 			<key>name</key>
 			<string>support.constant.general.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.constant</string>
+				<string>support.constant.key</string>
+				<string>support.constant.key.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>(?i:kKeyAdd|kKeyDarken|kKeyDifference|kKeyHardLight|kKeyLighten|kKeyMultiply|kKeyNormal|kKeyOverlay|kKeyScreen|kKeySoftLight|kKeySubtract)</string>
 			<key>name</key>
 			<string>support.constant.key.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.constant</string>
+				<string>support.constant.formatting</string>
+				<string>support.constant.formatting.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>(?i:k16mm|k24fps|k25fps|k30df|k30fps|k35mm|k60df|k60fps|kFloat2|kFloat4|kFloat6|kInteger|kSize)</string>
 			<key>name</key>
 			<string>support.constant.formatting.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.variable</string>
+				<string>support.variable.predeclared</string>
+				<string>support.variable.predeclared.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:clip1|clip2|dest|duration|exposedBackground|fieldNumber|fieldprocessing|fps|frame|linearRamp|previewing|ratio|renderRes|RGBtoYUV|src1|src2|srcIsGap1|srcIsGap2|srcType1|srcType2|topfield|YUVtoRGB)\b</string>
 			<key>name</key>
 			<string>support.variable.predeclared.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.constant</string>
+				<string>support.constant.text</string>
+				<string>support.constant.text.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>(?i:kbold|kbolditalic|kcenterjustify|kitalic|kleftjustify|kplain|krightjustify)</string>
 			<key>name</key>
 			<string>support.constant.text.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.constant</string>
+				<string>support.constant.shapes</string>
+				<string>support.constant.shapes.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>(?i:kDiamond|kRound|kSquare)</string>
 			<key>name</key>
@@ -215,36 +388,99 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.color</string>
+						<string>entity.name.function.color.alpha</string>
+						<string>entity.name.function.color.alpha.fxscript</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.color.alpha.fxscript</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.color</string>
+						<string>entity.name.function.color.red</string>
+						<string>entity.name.function.color.red.fxscript</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.color.red.fxscript</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.color</string>
+						<string>entity.name.function.color.green</string>
+						<string>entity.name.function.color.green.fxscript</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.color.green.fxscript</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.color</string>
+						<string>entity.name.function.color.blue</string>
+						<string>entity.name.function.color.blue.fxscript</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.color.blue.fxscript</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.color</string>
+						<string>entity.name.function.color.luma</string>
+						<string>entity.name.function.color.luma.fxscript</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.color.luma.fxscript</string>
 				</dict>
 				<key>6</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.color</string>
+						<string>entity.name.function.color.chroma-u</string>
+						<string>entity.name.function.color.chroma-u.fxscript</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.color.chroma-u.fxscript</string>
 				</dict>
 				<key>7</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.color</string>
+						<string>entity.name.function.color.chroma-v</string>
+						<string>entity.name.function.color.chroma-v.fxscript</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.color.chroma-v.fxscript</string>
 				</dict>
@@ -259,16 +495,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.fxscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.fxscript</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.fxscript</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.fxscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.fxscript</string>
 				</dict>
@@ -278,6 +537,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.fxscript</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -286,108 +552,235 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.composite</string>
+				<string>support.function.composite.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:Add|AddOffset|Darken|Difference|ImageAnd|ImageOr|ImageXor|Invert|InvertChannel|Lighten|Matte|Multiply|Overlay|Screen|Subtract|UnMultiply)\b</string>
 			<key>name</key>
 			<string>support.function.composite.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.blit</string>
+				<string>support.function.blit.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:Blit|BlitRect|MaskCopy|MeshBlit|MeshBlit3D|PagePeel|RegionCopy)\b</string>
 			<key>name</key>
 			<string>support.function.blit.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.clip</string>
+				<string>support.function.clip.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:GetLimits|GetReelName|GetTimeCode|GetVideo)</string>
 			<key>name</key>
 			<string>support.function.clip.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.distort</string>
+				<string>support.function.distort.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:BumpMap|Cylinder|Displace|Fisheye|OffsetPixels|PondRipple|Ripple|Wave|Whirlpool)\b</string>
 			<key>name</key>
 			<string>support.function.distort.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.external</string>
+				<string>support.function.external.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:Filter|Generator|Transition)\b</string>
 			<key>name</key>
 			<string>support.function.external.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.geometry</string>
+				<string>support.function.geometry.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:AngleTo|AspectOf|BoundsOf|CenterOf|Convert2dto3d|convert3dto2d|DimensionsOf|DistTo|Grid|Interpolate|Mesh)\b</string>
 			<key>name</key>
 			<string>support.function.geometry.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.key</string>
+				<string>support.function.key.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:BGDiff|BlueScreen|GreenScreen|RGBColorKey|YUVColorKey)\b</string>
 			<key>name</key>
 			<string>support.function.key.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.math</string>
+				<string>support.function.math.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:Abs|Integer|Sign|Sqrt|Power)\b</string>
 			<key>name</key>
 			<string>support.function.math.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.parser</string>
+				<string>support.function.parser.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:BezToLevelMap|ChromaAngleKey)</string>
 			<key>name</key>
 			<string>support.function.parser.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.process</string>
+				<string>support.function.process.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:Blend|Blur|BlurChannel|Channel(Copy|Fill|Multiply)|ColorTransform|Convolve|Desaturate|Diffuse|DiffuseOffset|LevelMap|MotionBlur|RadialBlur)\b</string>
 			<key>name</key>
 			<string>support.function.process.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.shapes</string>
+				<string>support.function.shapes.process</string>
+				<string>support.function.shapes.process.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:CurveTo|DrawSoftDot|FillArc|FillOval|FillPoly|FillRegion|FrameArc|FrameOval|FramePoly|FrameRegion|Line|MakeRect|MakeRegion|OvalRegion|RegionIsEmpty)\b</string>
 			<key>name</key>
 			<string>support.function.shapes.process.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.string</string>
+				<string>support.function.string.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:ASCIIOf|ASCIIToSTring|CharsOf|CountTextLines|FindString|getTextLine|GetTimecodeStringFromClip|Length|NumToString|StringToNum)</string>
 			<key>name</key>
 			<string>support.function.string.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.text</string>
+				<string>support.function.text.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:DrawString|DrawStringPlain|MeasureString|MeasureStringPlain|ResetText|SetTextFont|SetTextJustify|SetTextSize|SetTextStyle)</string>
 			<key>name</key>
 			<string>support.function.text.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.transform</string>
+				<string>support.function.transform.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:Offset|Offset3d|Outset3d|Rotate|Rotate3d|Scale|Scale3d)\b</string>
 			<key>name</key>
 			<string>support.function.transform.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.undocumented</string>
+				<string>support.function.undocumented.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:getNativeAspect|getNativeSize|FilteredBlitRect|BlurChannel_alt)\b</string>
 			<key>name</key>
 			<string>support.function.undocumented.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.debug</string>
+				<string>support.function.debug.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:debugtext)\b</string>
 			<key>name</key>
 			<string>support.function.debug.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.utility</string>
+				<string>support.function.utility.fxscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:Assert|CircleLight|ColorOf|ConvertImage|GetConversionMatrix|GetPixelFormat|Highlight|MatrixConcat|PointTrack|Random(Noise|Seed|Table)?|SetPixelFormat|SysTime|Truncate)\b</string>
 			<key>name</key>
 			<string>support.function.utility.fxscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.joe</string>
+				<string>support.function.joe.fxscript</string>
+			</array>
 			<key>comment</key>
 			<string>Joe Maller’s personal FXScript Functions, these will be appearing on the FXScript Reference site someday.</string>
 			<key>match</key>

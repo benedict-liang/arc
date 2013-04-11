@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Mail</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>mail</string>
@@ -21,15 +25,34 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.mail</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.mail</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+						<string>punctuation.separator.key-value.mail</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.key-value.mail</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.header</string>
+				<string>meta.header.mail</string>
+			</array>
 			<key>contentName</key>
 			<string>entity.name.section.mail</string>
 			<key>end</key>
@@ -44,15 +67,34 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.mail</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.mail</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+						<string>punctuation.separator.key-value.mail</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.key-value.mail</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.header</string>
+				<string>meta.header.mail</string>
+			</array>
 			<key>end</key>
 			<string>^(?![ \t\v])</string>
 			<key>name</key>
@@ -80,6 +122,12 @@
 		<dict>
 			<key>begin</key>
 			<string>^(?![A-Za-z0-9]+:)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>text</string>
+				<string>text.html</string>
+				<string>text.html.markdown</string>
+			</array>
 			<key>end</key>
 			<string>^(?=not)possible$</string>
 			<key>name</key>
@@ -87,6 +135,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.separator</string>
+						<string>meta.separator.signature</string>
+						<string>meta.separator.signature.mail</string>
+					</array>
 					<key>match</key>
 					<string>^-- $\n</string>
 					<key>name</key>
@@ -133,6 +188,13 @@
 		</dict>
 		<key>atom</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.atom</string>
+				<string>string.unquoted.atom.mail</string>
+			</array>
 			<key>match</key>
 			<string>[^ \t\v\n()&lt;&gt;@,;:\\&quot;.\[\]]+</string>
 			<key>name</key>
@@ -142,10 +204,24 @@
 		<dict>
 			<key>begin</key>
 			<string>\(</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.parentheses</string>
+				<string>comment.line.parentheses.mail</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.mail</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.mail</string>
 				</dict>
@@ -170,6 +246,12 @@
 		<dict>
 			<key>begin</key>
 			<string>\[</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.domain-literal</string>
+				<string>meta.domain-literal.mail</string>
+			</array>
 			<key>end</key>
 			<string>\]</string>
 			<key>name</key>
@@ -204,15 +286,35 @@
 		</dict>
 		<key>encoded_text</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.encoded-text</string>
+				<string>meta.encoded-text.mail</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.charset</string>
+						<string>constant.other.charset.mail</string>
+					</array>
 					<key>name</key>
 					<string>constant.other.charset.mail</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.encoding</string>
+						<string>constant.other.encoding.mail</string>
+					</array>
 					<key>name</key>
 					<string>constant.other.encoding.mail</string>
 				</dict>
@@ -226,6 +328,12 @@
 		<dict>
 			<key>begin</key>
 			<string>:(?=.*;)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.group</string>
+				<string>meta.group.mail</string>
+			</array>
 			<key>comment</key>
 			<string>this is to group addresses, RFC822 says that these “must occur in  matched pairs,” but e.g. the date header uses : as a time separator.</string>
 			<key>end</key>
@@ -258,6 +366,13 @@
 		</dict>
 		<key>quote_pair</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.escape</string>
+				<string>constant.other.escape.mail</string>
+			</array>
 			<key>match</key>
 			<string>\\.</string>
 			<key>name</key>
@@ -267,10 +382,24 @@
 		<dict>
 			<key>begin</key>
 			<string>&lt;</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.reference</string>
+				<string>constant.other.reference.mail</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.mail</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.mail</string>
 				</dict>
@@ -307,16 +436,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.mail</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.mail</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.mail</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.mail</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.mail</string>
 				</dict>

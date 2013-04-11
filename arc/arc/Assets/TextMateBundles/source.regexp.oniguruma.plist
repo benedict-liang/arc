@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Regular Expressions (Oniguruma)</string>
+	</array>
 	<key>comment</key>
 	<string>Matches Oniguruma's Ruby regexp syntax (TextMate uses Oniguruma in Ruby mode).</string>
 	<key>fileTypes</key>
@@ -17,38 +21,90 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.anchor</string>
+				<string>keyword.control.anchor.regexp</string>
+			</array>
 			<key>match</key>
 			<string>\\[bBAZzG]|\^|\$</string>
 			<key>name</key>
 			<string>keyword.control.anchor.regexp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.numeric</string>
+				<string>constant.character.numeric.regexp</string>
+			</array>
 			<key>match</key>
 			<string>\\([0-7]{3}|\\x(\h\h|\{\h{,8}\}))</string>
 			<key>name</key>
 			<string>constant.character.numeric.regexp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.back-reference</string>
+				<string>keyword.other.back-reference.regexp</string>
+			</array>
 			<key>match</key>
 			<string>\\[1-9]\d*</string>
 			<key>name</key>
 			<string>keyword.other.back-reference.regexp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.back-reference</string>
+				<string>keyword.other.back-reference.named</string>
+				<string>keyword.other.back-reference.named.regexp</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.back-reference</string>
+						<string>keyword.other.back-reference.named</string>
+						<string>keyword.other.back-reference.named.regexp</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.back-reference.named.regexp</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.section</string>
+						<string>entity.name.section.back-reference</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.section.back-reference</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.back-reference</string>
+						<string>keyword.other.back-reference.named</string>
+						<string>keyword.other.back-reference.named.regexp</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.back-reference.named.regexp</string>
 				</dict>
@@ -59,18 +115,40 @@
 			<string>keyword.other.back-reference.named.regexp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.character-class</string>
+				<string>constant.other.character-class.posix</string>
+				<string>constant.other.character-class.posix.regexp</string>
+			</array>
 			<key>match</key>
 			<string>\[\:(\^)?(alnum|alpha|ascii|blank|cntrl|x?digit|graph|lower|print|punct|space|upper)\]</string>
 			<key>name</key>
 			<string>constant.other.character-class.posix.regexp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.quantifier</string>
+				<string>keyword.operator.quantifier.regexp</string>
+			</array>
 			<key>match</key>
 			<string>[?+*][?+]?|\{(\d+,\d+|\d+,|,\d+|\d+)\}\??</string>
 			<key>name</key>
 			<string>keyword.operator.quantifier.regexp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.or</string>
+				<string>keyword.operator.or.regexp</string>
+			</array>
 			<key>match</key>
 			<string>\|</string>
 			<key>name</key>
@@ -79,12 +157,25 @@
 		<dict>
 			<key>begin</key>
 			<string>\(\?\#</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.regexp</string>
+			</array>
 			<key>end</key>
 			<string>\)</string>
 			<key>name</key>
 			<string>comment.block.regexp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.number-sign</string>
+				<string>comment.line.number-sign.regexp</string>
+			</array>
 			<key>comment</key>
 			<string>We are restrictive in what we allow to go after the comment character to avoid false positives, since the availability of comments depend on regexp flags.</string>
 			<key>match</key>
@@ -93,6 +184,13 @@
 			<string>comment.line.number-sign.regexp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.option-toggle</string>
+				<string>keyword.other.option-toggle.regexp</string>
+			</array>
 			<key>match</key>
 			<string>\(\?[imx-]+\)</string>
 			<key>name</key>
@@ -105,36 +203,85 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.group</string>
+						<string>punctuation.definition.group.regexp</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.group.regexp</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.assertion</string>
+						<string>meta.assertion.look-ahead</string>
+						<string>meta.assertion.look-ahead.regexp</string>
+					</array>
 					<key>name</key>
 					<string>meta.assertion.look-ahead.regexp</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.assertion</string>
+						<string>meta.assertion.negative-look-ahead</string>
+						<string>meta.assertion.negative-look-ahead.regexp</string>
+					</array>
 					<key>name</key>
 					<string>meta.assertion.negative-look-ahead.regexp</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.assertion</string>
+						<string>meta.assertion.look-behind</string>
+						<string>meta.assertion.look-behind.regexp</string>
+					</array>
 					<key>name</key>
 					<string>meta.assertion.look-behind.regexp</string>
 				</dict>
 				<key>6</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.assertion</string>
+						<string>meta.assertion.negative-look-behind</string>
+						<string>meta.assertion.negative-look-behind.regexp</string>
+					</array>
 					<key>name</key>
 					<string>meta.assertion.negative-look-behind.regexp</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.group</string>
+				<string>meta.group.assertion</string>
+				<string>meta.group.assertion.regexp</string>
+			</array>
 			<key>end</key>
 			<string>(\))</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.group</string>
+						<string>punctuation.definition.group.regexp</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.group.regexp</string>
 				</dict>
@@ -156,36 +303,85 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.group</string>
+						<string>punctuation.definition.group.regexp</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.group.regexp</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.group-options</string>
+						<string>keyword.other.group-options.regexp</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.group-options.regexp</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.group-options</string>
+						<string>keyword.other.group-options.regexp</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.group-options.regexp</string>
 				</dict>
 				<key>6</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.section</string>
+						<string>entity.name.section.group</string>
+						<string>entity.name.section.group.regexp</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.section.group.regexp</string>
 				</dict>
 				<key>7</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.group-options</string>
+						<string>keyword.other.group-options.regexp</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.group-options.regexp</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.group</string>
+				<string>meta.group.regexp</string>
+			</array>
 			<key>end</key>
 			<string>(\))</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.group</string>
+						<string>punctuation.definition.group.regexp</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.group.regexp</string>
 				</dict>
@@ -212,12 +408,27 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.character-class</string>
+						<string>constant.character.character-class.regexp</string>
+					</array>
 					<key>match</key>
 					<string>\\[wWsSdDhH]|\.</string>
 					<key>name</key>
 					<string>constant.character.character-class.regexp</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.backslash</string>
+						<string>constant.character.escape.backslash.regexp</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -230,21 +441,50 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.character-class</string>
+								<string>punctuation.definition.character-class.regexp</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.character-class.regexp</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.operator</string>
+								<string>keyword.operator.negation</string>
+								<string>keyword.operator.negation.regexp</string>
+							</array>
 							<key>name</key>
 							<string>keyword.operator.negation.regexp</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.character-class</string>
+						<string>constant.other.character-class.set</string>
+						<string>constant.other.character-class.set.regexp</string>
+					</array>
 					<key>end</key>
 					<string>(\])</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.character-class</string>
+								<string>punctuation.definition.character-class.regexp</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.character-class.regexp</string>
 						</dict>
@@ -258,15 +498,39 @@
 							<string>#character-class</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.other</string>
+								<string>constant.other.character-class</string>
+								<string>constant.other.character-class.range</string>
+								<string>constant.other.character-class.range.regexp</string>
+							</array>
 							<key>captures</key>
 							<dict>
 								<key>2</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>constant</string>
+										<string>constant.character</string>
+										<string>constant.character.escape</string>
+										<string>constant.character.escape.backslash</string>
+										<string>constant.character.escape.backslash.regexp</string>
+									</array>
 									<key>name</key>
 									<string>constant.character.escape.backslash.regexp</string>
 								</dict>
 								<key>4</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>constant</string>
+										<string>constant.character</string>
+										<string>constant.character.escape</string>
+										<string>constant.character.escape.backslash</string>
+										<string>constant.character.escape.backslash.regexp</string>
+									</array>
 									<key>name</key>
 									<string>constant.character.escape.backslash.regexp</string>
 								</dict>
@@ -277,6 +541,13 @@
 							<string>constant.other.character-class.range.regexp</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.operator</string>
+								<string>keyword.operator.intersection</string>
+								<string>keyword.operator.intersection.regexp</string>
+							</array>
 							<key>match</key>
 							<string>&amp;&amp;</string>
 							<key>name</key>

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Smarty</string>
+	</array>
 	<key>fileTypes</key>
 	<array/>
 	<key>foldingStartMarker</key>
@@ -15,10 +19,23 @@
 		<dict>
 			<key>begin</key>
 			<string>(?&lt;=\{)\*</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.smarty</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.smarty</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.smarty</string>
 				</dict>
@@ -29,36 +46,75 @@
 			<string>comment.block.smarty</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.smarty</string>
+			</array>
 			<key>match</key>
 			<string>\b(if|else|elseif|foreach|foreachelse|section)\b</string>
 			<key>name</key>
 			<string>keyword.control.smarty</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.built-in</string>
+				<string>support.function.built-in.smarty</string>
+			</array>
 			<key>match</key>
 			<string>\b(capture|config_load|counter|cycle|debug|eval|fetch|include_php|include|insert|literal|math|strip|rdelim|ldelim|assign|html_[a-z_]*)\b</string>
 			<key>name</key>
 			<string>support.function.built-in.smarty</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.smarty</string>
+			</array>
 			<key>match</key>
 			<string>\b(and|or)\b</string>
 			<key>name</key>
 			<string>keyword.operator.smarty</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.other</string>
+				<string>keyword.operator.other.smarty</string>
+			</array>
 			<key>match</key>
 			<string>\b(eq|neq|gt|lt|gte|lte|is|not|even|odd|not|mod|div|by)\b</string>
 			<key>name</key>
 			<string>keyword.operator.other.smarty</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.variable-modifier</string>
+				<string>support.function.variable-modifier.smarty</string>
+			</array>
 			<key>match</key>
 			<string>\|(capitalize|cat|count_characters|count_paragraphs|count_sentences|count_words|date_format|default|escape|indent|lower|nl2br|regex_replace|replace|spacify|string_format|strip_tags|strip|truncate|upper|wordwrap)</string>
 			<key>name</key>
 			<string>support.function.variable-modifier.smarty</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.attribute</string>
+				<string>meta.attribute.smarty</string>
+			</array>
 			<key>match</key>
 			<string>\b[a-zA-Z]+=</string>
 			<key>name</key>
@@ -71,16 +127,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.smarty</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.smarty</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.single</string>
+				<string>string.quoted.single.smarty</string>
+			</array>
 			<key>end</key>
 			<string>'</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.smarty</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.smarty</string>
 				</dict>
@@ -90,6 +169,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.smarty</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -104,16 +190,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.smarty</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.smarty</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.smarty</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.smarty</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.smarty</string>
 				</dict>
@@ -123,6 +232,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.smarty</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -131,10 +247,24 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.global</string>
+				<string>variable.other.global.smarty</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.smarty</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.smarty</string>
 				</dict>
@@ -145,10 +275,23 @@
 			<string>variable.other.global.smarty</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.smarty</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.smarty</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.smarty</string>
 				</dict>
@@ -159,6 +302,12 @@
 			<string>variable.other.smarty</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.smarty</string>
+			</array>
 			<key>match</key>
 			<string>\b(TRUE|FALSE|true|false)\b</string>
 			<key>name</key>

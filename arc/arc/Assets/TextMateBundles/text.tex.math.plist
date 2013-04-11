@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>TeX Math</string>
+	</array>
 	<key>fileTypes</key>
 	<array/>
 	<key>foldingStartMarker</key>
@@ -13,10 +17,25 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.math</string>
+				<string>constant.character.math.tex</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.math</string>
+						<string>punctuation.definition.constant.math.tex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.math.tex</string>
 				</dict>
@@ -27,10 +46,25 @@
 			<string>constant.character.math.tex</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.math</string>
+				<string>constant.character.math.tex</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.math</string>
+						<string>punctuation.definition.constant.math.tex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.math.tex</string>
 				</dict>
@@ -41,10 +75,25 @@
 			<string>constant.character.math.tex</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.math</string>
+				<string>constant.other.math.tex</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.math</string>
+						<string>punctuation.definition.constant.math.tex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.math.tex</string>
 				</dict>
@@ -61,20 +110,53 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.sexpr</string>
+						<string>support.function.sexpr.math</string>
+						<string>support.function.sexpr.math.tex</string>
+					</array>
 					<key>name</key>
 					<string>support.function.sexpr.math.tex</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.math</string>
+						<string>punctuation.definition.function.math.tex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.function.math.tex</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.begin</string>
+						<string>punctuation.section.embedded.begin.math</string>
+						<string>punctuation.section.embedded.begin.math.tex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.begin.math.tex</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.sexpr</string>
+				<string>meta.function.sexpr.math</string>
+				<string>meta.function.sexpr.math.tex</string>
+			</array>
 			<key>contentName</key>
 			<string>source.r.embedded.math.tex</string>
 			<key>end</key>
@@ -83,6 +165,15 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.end</string>
+						<string>punctuation.section.embedded.end.math</string>
+						<string>punctuation.section.embedded.end.math.tex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.end.math.tex</string>
 				</dict>
@@ -98,10 +189,26 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.general</string>
+				<string>constant.other.general.math</string>
+				<string>constant.other.general.math.tex</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.math</string>
+						<string>punctuation.definition.constant.math.tex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.math.tex</string>
 				</dict>
@@ -112,12 +219,27 @@
 			<string>constant.other.general.math.tex</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.math</string>
+				<string>constant.numeric.math.tex</string>
+			</array>
 			<key>match</key>
 			<string>(([0-9]*[\.][0-9]+)|[0-9]+)</string>
 			<key>name</key>
 			<string>constant.numeric.math.tex</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.placeholder</string>
+				<string>meta.placeholder.greek</string>
+				<string>meta.placeholder.greek.math</string>
+				<string>meta.placeholder.greek.math.tex</string>
+			</array>
 			<key>match</key>
 			<string>«press a-z and space for greek letter»[a-zA-Z]*</string>
 			<key>name</key>

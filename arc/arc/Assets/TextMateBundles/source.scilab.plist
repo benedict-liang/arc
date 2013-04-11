@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Scilab</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>sce</string>
@@ -20,18 +24,37 @@
 		<dict>
 			<key>begin</key>
 			<string>//</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.double-slash</string>
+				<string>comment.line.double-slash.scilab</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
 			<string>comment.line.double-slash.scilab</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.scilab</string>
+			</array>
 			<key>match</key>
 			<string>\b(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?\b</string>
 			<key>name</key>
 			<string>constant.numeric.scilab</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.constant</string>
+				<string>support.constant.scilab</string>
+			</array>
 			<key>match</key>
 			<string>(%inf|%i|%pi|%eps|%e|%nan|%s|%t|%f)\b</string>
 			<key>name</key>
@@ -40,6 +63,13 @@
 		<dict>
 			<key>begin</key>
 			<string>&quot;</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.scilab</string>
+			</array>
 			<key>end</key>
 			<string>&quot;(?!&quot;)</string>
 			<key>name</key>
@@ -47,6 +77,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.scilab</string>
+					</array>
 					<key>match</key>
 					<string>''|&quot;&quot;</string>
 					<key>name</key>
@@ -57,6 +94,13 @@
 		<dict>
 			<key>begin</key>
 			<string>(?&lt;![\w\]\)])'</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.single</string>
+				<string>string.quoted.single.scilab</string>
+			</array>
 			<key>end</key>
 			<string>'(?!')</string>
 			<key>name</key>
@@ -64,6 +108,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.scilab</string>
+					</array>
 					<key>match</key>
 					<string>''|&quot;&quot;</string>
 					<key>name</key>
@@ -76,11 +127,24 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.scilab</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.scilab</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.scilab</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.scilab</string>
 				</dict>
@@ -89,12 +153,25 @@
 			<string>\b(function)\s+(?:[^=]+=\s*)?(\w+)(?:\s*\(.*\))?</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.scilab</string>
+			</array>
 			<key>match</key>
 			<string>\b(if|then|else|elseif|while|for|function|end|endfunction|return|select|case|break|global)\b</string>
 			<key>name</key>
 			<string>keyword.control.scilab</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>punctuation</string>
+				<string>punctuation.separator</string>
+				<string>punctuation.separator.continuation</string>
+				<string>punctuation.separator.continuation.scilab</string>
+			</array>
 			<key>match</key>
 			<string>\.\.\.\s*$</string>
 			<key>name</key>

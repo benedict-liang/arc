@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Installer Distribution Script</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>dist</string>
@@ -19,25 +23,59 @@
 		<dict>
 			<key>begin</key>
 			<string>((&lt;)(script)(&gt;))</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>source</string>
+				<string>source.js</string>
+				<string>source.js.embedded</string>
+				<string>source.js.embedded.apple-dist</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.tag</string>
+						<string>meta.tag.xml</string>
+					</array>
 					<key>name</key>
 					<string>meta.tag.xml</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.xml</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.xml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.xml</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.xml</string>
 				</dict>
@@ -51,6 +89,12 @@
 				<dict>
 					<key>begin</key>
 					<string>\bsystem\b</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.class</string>
+						<string>support.class.apple-dist</string>
+					</array>
 					<key>end</key>
 					<string>(?=(\(|\s))|$</string>
 					<key>name</key>
@@ -58,6 +102,12 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.apple-dist</string>
+							</array>
 							<key>match</key>
 							<string>\b(compareVersions|defaults|gestalt|localizedString(WithFormat)?|localizedStandardString(WithFormat)?|log|propertiesOf|run(Once)?|sysctl|users\.desktopSessionsCount|version)\b</string>
 							<key>name</key>
@@ -66,6 +116,12 @@
 						<dict>
 							<key>begin</key>
 							<string>\b(applications)\b</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.apple-dist</string>
+							</array>
 							<key>end</key>
 							<string>(?=(\(|\s))|$</string>
 							<key>name</key>
@@ -73,6 +129,12 @@
 							<key>patterns</key>
 							<array>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>support</string>
+										<string>support.variable</string>
+										<string>support.variable.apple-dist</string>
+									</array>
 									<key>match</key>
 									<string>\b(fromPID|fromIdentifier|all)\b</string>
 									<key>name</key>
@@ -83,6 +145,12 @@
 						<dict>
 							<key>begin</key>
 							<string>\b(files)\b</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.apple-dist</string>
+							</array>
 							<key>end</key>
 							<string>(?=(\(|\s))|$</string>
 							<key>name</key>
@@ -90,6 +158,12 @@
 							<key>patterns</key>
 							<array>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>support</string>
+										<string>support.variable</string>
+										<string>support.variable.apple-dist</string>
+									</array>
 									<key>match</key>
 									<string>\b(fileExistsAtPath|plistAtPath|bundleAtPath)\b</string>
 									<key>name</key>
@@ -100,6 +174,12 @@
 						<dict>
 							<key>begin</key>
 							<string>\b(ioregistry)\b</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.apple-dist</string>
+							</array>
 							<key>end</key>
 							<string>(?=(\(|\s))|$</string>
 							<key>name</key>
@@ -107,6 +187,12 @@
 							<key>patterns</key>
 							<array>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>support</string>
+										<string>support.variable</string>
+										<string>support.variable.apple-dist</string>
+									</array>
 									<key>match</key>
 									<string>\b(fromPath|matching(Class|Name)|(children|parents)Of)\b</string>
 									<key>name</key>
@@ -119,6 +205,12 @@
 				<dict>
 					<key>begin</key>
 					<string>\b(choices)\b</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.class</string>
+						<string>support.class.apple-dist</string>
+					</array>
 					<key>end</key>
 					<string>(?=(\(|\s))|$</string>
 					<key>name</key>
@@ -126,6 +218,12 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.variable</string>
+								<string>support.variable.apple-dist</string>
+							</array>
 							<key>match</key>
 							<string>\b(.*)\.(bundle|customLocation(AllowAlternateVolumes)?|description(-mime-type)?|(start_)?enabled|id|(start_)?selected|tooltip|(start_)?visible|title|packages|packageUpgradeAction)\b</string>
 							<key>name</key>
@@ -136,6 +234,12 @@
 				<dict>
 					<key>begin</key>
 					<string>\bmy\b</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.class</string>
+						<string>support.class.apple-dist</string>
+					</array>
 					<key>end</key>
 					<string>(?=(\(|\s))|$</string>
 					<key>name</key>
@@ -145,6 +249,12 @@
 						<dict>
 							<key>begin</key>
 							<string>\b(choice)\b</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.apple-dist</string>
+							</array>
 							<key>end</key>
 							<string>(?=(\(|\s))|$</string>
 							<key>name</key>
@@ -152,6 +262,12 @@
 							<key>patterns</key>
 							<array>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>support</string>
+										<string>support.variable</string>
+										<string>support.variable.apple-dist</string>
+									</array>
 									<key>match</key>
 									<string>\b(bundle|customLocation(AllowAlternateVolumes)?|description(-mime-type)?|(start_)?enabled|id|(start_)?selected|tooltip|(start_)?visible|title|packages|packageUpgradeAction)\b</string>
 									<key>name</key>
@@ -162,6 +278,12 @@
 						<dict>
 							<key>begin</key>
 							<string>\b(result)\b</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.apple-dist</string>
+							</array>
 							<key>end</key>
 							<string>(?=(\(|\s))|$</string>
 							<key>name</key>
@@ -169,6 +291,12 @@
 							<key>patterns</key>
 							<array>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>support</string>
+										<string>support.variable</string>
+										<string>support.variable.apple-dist</string>
+									</array>
 									<key>match</key>
 									<string>\b(type|title|message)\b</string>
 									<key>name</key>
@@ -179,6 +307,12 @@
 						<dict>
 							<key>begin</key>
 							<string>\b(target)\b</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.apple-dist</string>
+							</array>
 							<key>end</key>
 							<string>(?=(\(|\s))|$</string>
 							<key>name</key>
@@ -186,6 +320,12 @@
 							<key>patterns</key>
 							<array>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>support</string>
+										<string>support.variable</string>
+										<string>support.variable.apple-dist</string>
+									</array>
 									<key>match</key>
 									<string>\b(mountpoint|availableKilobytes|systemVersion|receiptForIdentifier)\b</string>
 									<key>name</key>

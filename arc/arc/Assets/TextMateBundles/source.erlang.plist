@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Erlang</string>
+	</array>
 	<key>comment</key>
 	<string>The recognition of function definitions and compiler directives (such as module, record and macro definitions) requires that each of the aforementioned constructs must be the first string inside a line (except for whitespace).  Also, the function/module/record/macro names must be given unquoted.  -- desp</string>
 	<key>fileTypes</key>
@@ -61,16 +65,41 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.symbol</string>
+								<string>punctuation.definition.symbol.begin</string>
+								<string>punctuation.definition.symbol.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.symbol.begin.erlang</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.symbol</string>
+						<string>constant.other.symbol.quoted</string>
+						<string>constant.other.symbol.quoted.single</string>
+						<string>constant.other.symbol.quoted.single.erlang</string>
+					</array>
 					<key>end</key>
 					<string>(')</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.symbol</string>
+								<string>punctuation.definition.symbol.end</string>
+								<string>punctuation.definition.symbol.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.symbol.end.erlang</string>
 						</dict>
@@ -80,15 +109,37 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.other</string>
+								<string>constant.other.symbol</string>
+								<string>constant.other.symbol.escape</string>
+								<string>constant.other.symbol.escape.erlang</string>
+							</array>
 							<key>captures</key>
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.escape</string>
+										<string>punctuation.definition.escape.erlang</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.escape.erlang</string>
 								</dict>
 								<key>3</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.escape</string>
+										<string>punctuation.definition.escape.erlang</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.escape.erlang</string>
 								</dict>
@@ -99,6 +150,13 @@
 							<string>constant.other.symbol.escape.erlang</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.atom</string>
+								<string>invalid.illegal.atom.erlang</string>
+							</array>
 							<key>match</key>
 							<string>\\\^?.?</string>
 							<key>name</key>
@@ -107,6 +165,14 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.symbol</string>
+						<string>constant.other.symbol.unquoted</string>
+						<string>constant.other.symbol.unquoted.erlang</string>
+					</array>
 					<key>match</key>
 					<string>[a-z][a-zA-Z\d@_]*+</string>
 					<key>name</key>
@@ -122,16 +188,39 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.binary</string>
+						<string>punctuation.definition.binary.begin</string>
+						<string>punctuation.definition.binary.begin.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.binary.begin.erlang</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.structure</string>
+				<string>meta.structure.binary</string>
+				<string>meta.structure.binary.erlang</string>
+			</array>
 			<key>end</key>
 			<string>(&gt;&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.binary</string>
+						<string>punctuation.definition.binary.end</string>
+						<string>punctuation.definition.binary.end.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.binary.end.erlang</string>
 				</dict>
@@ -145,11 +234,25 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.binary</string>
+								<string>punctuation.separator.binary.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.binary.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.value-size</string>
+								<string>punctuation.separator.value-size.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.value-size.erlang</string>
 						</dict>
@@ -172,25 +275,59 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.character</string>
+								<string>punctuation.definition.character.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.character.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.character</string>
+								<string>constant.character.escape</string>
+								<string>constant.character.escape.erlang</string>
+							</array>
 							<key>name</key>
 							<string>constant.character.escape.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.escape</string>
+								<string>punctuation.definition.escape.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.escape.erlang</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.escape</string>
+								<string>punctuation.definition.escape.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.escape.erlang</string>
 						</dict>
@@ -201,16 +338,36 @@
 					<string>constant.character.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.character</string>
+						<string>invalid.illegal.character.erlang</string>
+					</array>
 					<key>match</key>
 					<string>\$\\\^?.?</string>
 					<key>name</key>
 					<string>invalid.illegal.character.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.character</string>
+								<string>punctuation.definition.character.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.character.erlang</string>
 						</dict>
@@ -221,6 +378,13 @@
 					<string>constant.character.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.character</string>
+						<string>invalid.illegal.character.erlang</string>
+					</array>
 					<key>match</key>
 					<string>\$.?</string>
 					<key>name</key>
@@ -236,10 +400,23 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.erlang</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.erlang</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -256,41 +433,104 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.directive</string>
+								<string>punctuation.section.directive.begin</string>
+								<string>punctuation.section.directive.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.directive.begin.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.directive</string>
+								<string>keyword.control.directive.define</string>
+								<string>keyword.control.directive.define.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.directive.define.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.begin</string>
+								<string>punctuation.definition.parameters.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.begin.erlang</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.function</string>
+								<string>entity.name.function.macro</string>
+								<string>entity.name.function.macro.definition</string>
+								<string>entity.name.function.macro.definition.erlang</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.function.macro.definition.erlang</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.parameters</string>
+								<string>punctuation.separator.parameters.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.parameters.erlang</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.directive</string>
+						<string>meta.directive.define</string>
+						<string>meta.directive.define.erlang</string>
+					</array>
 					<key>end</key>
 					<string>(\))\s*+(\.)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.end</string>
+								<string>punctuation.definition.parameters.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.end.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.directive</string>
+								<string>punctuation.section.directive.end</string>
+								<string>punctuation.section.directive.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.directive.end.erlang</string>
 						</dict>
@@ -308,17 +548,40 @@
 				<dict>
 					<key>begin</key>
 					<string>(?=^\s*+-\s*+define\s*+\(\s*+[a-zA-Z\d@_]++\s*+\()</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.directive</string>
+						<string>meta.directive.define</string>
+						<string>meta.directive.define.erlang</string>
+					</array>
 					<key>end</key>
 					<string>(\))\s*+(\.)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.end</string>
+								<string>punctuation.definition.parameters.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.end.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.directive</string>
+								<string>punctuation.section.directive.end</string>
+								<string>punctuation.section.directive.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.directive.end.erlang</string>
 						</dict>
@@ -334,26 +597,67 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.section</string>
+										<string>punctuation.section.directive</string>
+										<string>punctuation.section.directive.begin</string>
+										<string>punctuation.section.directive.begin.erlang</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.section.directive.begin.erlang</string>
 								</dict>
 								<key>2</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>keyword</string>
+										<string>keyword.control</string>
+										<string>keyword.control.directive</string>
+										<string>keyword.control.directive.define</string>
+										<string>keyword.control.directive.define.erlang</string>
+									</array>
 									<key>name</key>
 									<string>keyword.control.directive.define.erlang</string>
 								</dict>
 								<key>3</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.parameters</string>
+										<string>punctuation.definition.parameters.begin</string>
+										<string>punctuation.definition.parameters.begin.erlang</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.parameters.begin.erlang</string>
 								</dict>
 								<key>4</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>entity</string>
+										<string>entity.name</string>
+										<string>entity.name.function</string>
+										<string>entity.name.function.macro</string>
+										<string>entity.name.function.macro.definition</string>
+										<string>entity.name.function.macro.definition.erlang</string>
+									</array>
 									<key>name</key>
 									<string>entity.name.function.macro.definition.erlang</string>
 								</dict>
 								<key>5</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.parameters</string>
+										<string>punctuation.definition.parameters.begin</string>
+										<string>punctuation.definition.parameters.begin.erlang</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.parameters.begin.erlang</string>
 								</dict>
@@ -364,11 +668,26 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.parameters</string>
+										<string>punctuation.definition.parameters.end</string>
+										<string>punctuation.definition.parameters.end.erlang</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.parameters.end.erlang</string>
 								</dict>
 								<key>2</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.separator</string>
+										<string>punctuation.separator.parameters</string>
+										<string>punctuation.separator.parameters.erlang</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.separator.parameters.erlang</string>
 								</dict>
@@ -376,6 +695,13 @@
 							<key>patterns</key>
 							<array>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.separator</string>
+										<string>punctuation.separator.parameters</string>
+										<string>punctuation.separator.parameters.erlang</string>
+									</array>
 									<key>match</key>
 									<string>,</string>
 									<key>name</key>
@@ -388,6 +714,13 @@
 							</array>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.define</string>
+								<string>punctuation.separator.define.erlang</string>
+							</array>
 							<key>match</key>
 							<string>\|\||\||:|;|,|\.|-&gt;</string>
 							<key>name</key>
@@ -412,31 +745,76 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.directive</string>
+								<string>punctuation.section.directive.begin</string>
+								<string>punctuation.section.directive.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.directive.begin.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.directive</string>
+								<string>keyword.control.directive.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.directive.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.begin</string>
+								<string>punctuation.definition.parameters.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.begin.erlang</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.directive</string>
+						<string>meta.directive.erlang</string>
+					</array>
 					<key>end</key>
 					<string>(\))\s*+(\.)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.end</string>
+								<string>punctuation.definition.parameters.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.end.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.directive</string>
+								<string>punctuation.section.directive.end</string>
+								<string>punctuation.section.directive.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.directive.end.erlang</string>
 						</dict>
@@ -452,20 +830,49 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.directive</string>
+						<string>meta.directive.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.directive</string>
+								<string>punctuation.section.directive.begin</string>
+								<string>punctuation.section.directive.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.directive.begin.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.directive</string>
+								<string>keyword.control.directive.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.directive.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.directive</string>
+								<string>punctuation.section.directive.end</string>
+								<string>punctuation.section.directive.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.directive.end.erlang</string>
 						</dict>
@@ -562,16 +969,37 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.if</string>
+								<string>keyword.control.if.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.if.erlang</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.expression</string>
+						<string>meta.expression.if</string>
+						<string>meta.expression.if.erlang</string>
+					</array>
 					<key>end</key>
 					<string>\b(end)\b</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.end</string>
+								<string>keyword.control.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.end.erlang</string>
 						</dict>
@@ -597,16 +1025,37 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.case</string>
+								<string>keyword.control.case.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.case.erlang</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.expression</string>
+						<string>meta.expression.case</string>
+						<string>meta.expression.case.erlang</string>
+					</array>
 					<key>end</key>
 					<string>\b(end)\b</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.end</string>
+								<string>keyword.control.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.end.erlang</string>
 						</dict>
@@ -632,16 +1081,37 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.receive</string>
+								<string>keyword.control.receive.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.receive.erlang</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.expression</string>
+						<string>meta.expression.receive</string>
+						<string>meta.expression.receive.erlang</string>
+					</array>
 					<key>end</key>
 					<string>\b(end)\b</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.end</string>
+								<string>keyword.control.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.end.erlang</string>
 						</dict>
@@ -665,26 +1135,63 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.fun</string>
+								<string>keyword.control.fun.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.fun.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.class</string>
+								<string>entity.name.type.class.module</string>
+								<string>entity.name.type.class.module.erlang</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.class.module.erlang</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.module-function</string>
+								<string>punctuation.separator.module-function.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.module-function.erlang</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.function</string>
+								<string>entity.name.function.erlang</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.function.erlang</string>
 						</dict>
 						<key>6</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.function-arity</string>
+								<string>punctuation.separator.function-arity.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.function-arity.erlang</string>
 						</dict>
@@ -699,16 +1206,37 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.fun</string>
+								<string>keyword.control.fun.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.fun.erlang</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.expression</string>
+						<string>meta.expression.fun</string>
+						<string>meta.expression.fun.erlang</string>
+					</array>
 					<key>end</key>
 					<string>\b(end)\b</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.end</string>
+								<string>keyword.control.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.end.erlang</string>
 						</dict>
@@ -726,6 +1254,13 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.separator</string>
+										<string>punctuation.separator.clauses</string>
+										<string>punctuation.separator.clauses.erlang</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.separator.clauses.erlang</string>
 								</dict>
@@ -751,16 +1286,37 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.try</string>
+								<string>keyword.control.try.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.try.erlang</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.expression</string>
+						<string>meta.expression.try</string>
+						<string>meta.expression.try.erlang</string>
+					</array>
 					<key>end</key>
 					<string>\b(end)\b</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.end</string>
+								<string>keyword.control.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.end.erlang</string>
 						</dict>
@@ -786,16 +1342,37 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.begin</string>
+								<string>keyword.control.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.begin.erlang</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.expression</string>
+						<string>meta.expression.begin</string>
+						<string>meta.expression.begin.erlang</string>
+					</array>
 					<key>end</key>
 					<string>\b(end)\b</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.end</string>
+								<string>keyword.control.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.end.erlang</string>
 						</dict>
@@ -821,16 +1398,37 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.query</string>
+								<string>keyword.control.query.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.query.erlang</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.expression</string>
+						<string>meta.expression.query</string>
+						<string>meta.expression.query.erlang</string>
+					</array>
 					<key>end</key>
 					<string>\b(end)\b</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.end</string>
+								<string>keyword.control.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.end.erlang</string>
 						</dict>
@@ -855,16 +1453,37 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.definition</string>
+						<string>entity.name.function.definition.erlang</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.definition.erlang</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.erlang</string>
+			</array>
 			<key>end</key>
 			<string>(\.)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.terminator</string>
+						<string>punctuation.terminator.function</string>
+						<string>punctuation.terminator.function.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.terminator.function.erlang</string>
 				</dict>
@@ -882,6 +1501,13 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.clauses</string>
+								<string>punctuation.separator.clauses.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.clauses.erlang</string>
 						</dict>
@@ -899,6 +1525,13 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.function</string>
+								<string>entity.name.function.erlang</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.function.erlang</string>
 						</dict>
@@ -916,12 +1549,26 @@
 		<dict>
 			<key>begin</key>
 			<string>(?=[a-z][a-zA-Z\d@_]*+\s*+(\(|:\s*+[a-z][a-zA-Z\d@_]*+\s*+\())</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function-call</string>
+				<string>meta.function-call.erlang</string>
+			</array>
 			<key>end</key>
 			<string>(\))</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.end</string>
+						<string>punctuation.definition.parameters.end.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.end.erlang</string>
 				</dict>
@@ -937,21 +1584,53 @@
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.class</string>
+								<string>entity.name.type.class.module</string>
+								<string>entity.name.type.class.module.erlang</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.class.module.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.module-function</string>
+								<string>punctuation.separator.module-function.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.module-function.erlang</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.function</string>
+								<string>entity.name.function.guard</string>
+								<string>entity.name.function.guard.erlang</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.function.guard.erlang</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.begin</string>
+								<string>punctuation.definition.parameters.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.begin.erlang</string>
 						</dict>
@@ -961,6 +1640,13 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.parameters</string>
+								<string>punctuation.separator.parameters.erlang</string>
+							</array>
 							<key>match</key>
 							<string>,</string>
 							<key>name</key>
@@ -979,21 +1665,52 @@
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.class</string>
+								<string>entity.name.type.class.module</string>
+								<string>entity.name.type.class.module.erlang</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.class.module.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.module-function</string>
+								<string>punctuation.separator.module-function.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.module-function.erlang</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.function</string>
+								<string>entity.name.function.erlang</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.function.erlang</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.begin</string>
+								<string>punctuation.definition.parameters.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.begin.erlang</string>
 						</dict>
@@ -1003,6 +1720,13 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.parameters</string>
+								<string>punctuation.separator.parameters.erlang</string>
+							</array>
 							<key>match</key>
 							<string>,</string>
 							<key>name</key>
@@ -1027,41 +1751,104 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.directive</string>
+								<string>punctuation.section.directive.begin</string>
+								<string>punctuation.section.directive.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.directive.begin.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.directive</string>
+								<string>keyword.control.directive.import</string>
+								<string>keyword.control.directive.import.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.directive.import.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.begin</string>
+								<string>punctuation.definition.parameters.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.begin.erlang</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.class</string>
+								<string>entity.name.type.class.module</string>
+								<string>entity.name.type.class.module.erlang</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.class.module.erlang</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.parameters</string>
+								<string>punctuation.separator.parameters.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.parameters.erlang</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.directive</string>
+						<string>meta.directive.import</string>
+						<string>meta.directive.import.erlang</string>
+					</array>
 					<key>end</key>
 					<string>(\))\s*+(\.)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.end</string>
+								<string>punctuation.definition.parameters.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.end.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.directive</string>
+								<string>punctuation.section.directive.end</string>
+								<string>punctuation.section.directive.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.directive.end.erlang</string>
 						</dict>
@@ -1083,31 +1870,78 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.directive</string>
+								<string>punctuation.section.directive.begin</string>
+								<string>punctuation.section.directive.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.directive.begin.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.directive</string>
+								<string>keyword.control.directive.export</string>
+								<string>keyword.control.directive.export.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.directive.export.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.begin</string>
+								<string>punctuation.definition.parameters.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.begin.erlang</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.directive</string>
+						<string>meta.directive.export</string>
+						<string>meta.directive.export.erlang</string>
+					</array>
 					<key>end</key>
 					<string>(\))\s*+(\.)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.end</string>
+								<string>punctuation.definition.parameters.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.end.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.directive</string>
+								<string>punctuation.section.directive.end</string>
+								<string>punctuation.section.directive.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.directive.end.erlang</string>
 						</dict>
@@ -1130,16 +1964,37 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.clause-head-body</string>
+						<string>punctuation.separator.clause-head-body.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.clause-head-body.erlang</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.clauses</string>
+						<string>punctuation.separator.clauses.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.clauses.erlang</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.expressions</string>
+						<string>punctuation.separator.expressions.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.expressions.erlang</string>
 				</dict>
@@ -1155,16 +2010,40 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.list</string>
+						<string>punctuation.definition.list.begin</string>
+						<string>punctuation.definition.list.begin.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.list.begin.erlang</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.structure</string>
+				<string>meta.structure.list</string>
+				<string>meta.structure.list.function</string>
+				<string>meta.structure.list.function.erlang</string>
+			</array>
 			<key>end</key>
 			<string>(\])</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.list</string>
+						<string>punctuation.definition.list.end</string>
+						<string>punctuation.definition.list.end.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.list.end.erlang</string>
 				</dict>
@@ -1180,11 +2059,25 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.function</string>
+								<string>entity.name.function.erlang</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.function.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.function-arity</string>
+								<string>punctuation.separator.function-arity.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.function-arity.erlang</string>
 						</dict>
@@ -1195,6 +2088,13 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.list</string>
+								<string>punctuation.separator.list.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.list.erlang</string>
 						</dict>
@@ -1226,6 +2126,13 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.clause-head-body</string>
+								<string>punctuation.separator.clause-head-body.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.clause-head-body.erlang</string>
 						</dict>
@@ -1239,6 +2146,14 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.parameters</string>
+										<string>punctuation.definition.parameters.begin</string>
+										<string>punctuation.definition.parameters.begin.erlang</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.parameters.begin.erlang</string>
 								</dict>
@@ -1249,6 +2164,14 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.parameters</string>
+										<string>punctuation.definition.parameters.end</string>
+										<string>punctuation.definition.parameters.end.erlang</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.parameters.end.erlang</string>
 								</dict>
@@ -1256,6 +2179,13 @@
 							<key>patterns</key>
 							<array>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.separator</string>
+										<string>punctuation.separator.parameters</string>
+										<string>punctuation.separator.parameters.erlang</string>
+									</array>
 									<key>match</key>
 									<string>,</string>
 									<key>name</key>
@@ -1268,6 +2198,13 @@
 							</array>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.guards</string>
+								<string>punctuation.separator.guards.erlang</string>
+							</array>
 							<key>match</key>
 							<string>,|;</string>
 							<key>name</key>
@@ -1280,6 +2217,13 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.expressions</string>
+						<string>punctuation.separator.expressions.erlang</string>
+					</array>
 					<key>match</key>
 					<string>,</string>
 					<key>name</key>
@@ -1299,10 +2243,26 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.class</string>
+						<string>punctuation.definition.class.record</string>
+						<string>punctuation.definition.class.record.begin</string>
+						<string>punctuation.definition.class.record.begin.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.class.record.begin.erlang</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.structure</string>
+				<string>meta.structure.record</string>
+				<string>meta.structure.record.erlang</string>
+			</array>
 			<key>end</key>
 			<string>(?=\})</string>
 			<key>name</key>
@@ -1316,16 +2276,38 @@
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>variable</string>
+								<string>variable.other</string>
+								<string>variable.other.field</string>
+								<string>variable.other.field.erlang</string>
+							</array>
 							<key>name</key>
 							<string>variable.other.field.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>variable</string>
+								<string>variable.language</string>
+								<string>variable.language.omitted</string>
+								<string>variable.language.omitted.field</string>
+								<string>variable.language.omitted.field.erlang</string>
+							</array>
 							<key>name</key>
 							<string>variable.language.omitted.field.erlang</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.operator</string>
+								<string>keyword.operator.assignment</string>
+								<string>keyword.operator.assignment.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.operator.assignment.erlang</string>
 						</dict>
@@ -1336,6 +2318,14 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.class</string>
+								<string>punctuation.separator.class.record</string>
+								<string>punctuation.separator.class.record.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.class.record.erlang</string>
 						</dict>
@@ -1353,11 +2343,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>variable</string>
+								<string>variable.other</string>
+								<string>variable.other.field</string>
+								<string>variable.other.field.erlang</string>
+							</array>
 							<key>name</key>
 							<string>variable.other.field.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.class</string>
+								<string>punctuation.separator.class.record</string>
+								<string>punctuation.separator.class.record.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.class.record.erlang</string>
 						</dict>
@@ -1379,6 +2384,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.value-type</string>
+						<string>punctuation.separator.value-type.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.value-type.erlang</string>
 				</dict>
@@ -1392,26 +2404,60 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.erlang</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.modifier</string>
+								<string>storage.modifier.signedness</string>
+								<string>storage.modifier.signedness.erlang</string>
+							</array>
 							<key>name</key>
 							<string>storage.modifier.signedness.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.modifier</string>
+								<string>storage.modifier.endianness</string>
+								<string>storage.modifier.endianness.erlang</string>
+							</array>
 							<key>name</key>
 							<string>storage.modifier.endianness.erlang</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.modifier</string>
+								<string>storage.modifier.unit</string>
+								<string>storage.modifier.unit.erlang</string>
+							</array>
 							<key>name</key>
 							<string>storage.modifier.unit.erlang</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.type-specifiers</string>
+								<string>punctuation.separator.type-specifiers.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.type-specifiers.erlang</string>
 						</dict>
@@ -1423,6 +2469,12 @@
 		</dict>
 		<key>keyword</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.erlang</string>
+			</array>
 			<key>match</key>
 			<string>\b(after|begin|case|catch|cond|end|fun|if|let|of|query|try|receive|when)\b</string>
 			<key>name</key>
@@ -1436,16 +2488,39 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.list</string>
+						<string>punctuation.definition.list.begin</string>
+						<string>punctuation.definition.list.begin.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.list.begin.erlang</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.structure</string>
+				<string>meta.structure.list</string>
+				<string>meta.structure.list.erlang</string>
+			</array>
 			<key>end</key>
 			<string>(\])</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.list</string>
+						<string>punctuation.definition.list.end</string>
+						<string>punctuation.definition.list.end.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.list.end.erlang</string>
 				</dict>
@@ -1455,6 +2530,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.list</string>
+						<string>punctuation.separator.list.erlang</string>
+					</array>
 					<key>match</key>
 					<string>\||\|\||,</string>
 					<key>name</key>
@@ -1471,35 +2553,90 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.directive</string>
+						<string>meta.directive.ifdef</string>
+						<string>meta.directive.ifdef.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.directive</string>
+								<string>punctuation.section.directive.begin</string>
+								<string>punctuation.section.directive.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.directive.begin.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.directive</string>
+								<string>keyword.control.directive.ifdef</string>
+								<string>keyword.control.directive.ifdef.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.directive.ifdef.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.begin</string>
+								<string>punctuation.definition.parameters.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.begin.erlang</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.function</string>
+								<string>entity.name.function.macro</string>
+								<string>entity.name.function.macro.erlang</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.function.macro.erlang</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.end</string>
+								<string>punctuation.definition.parameters.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.end.erlang</string>
 						</dict>
 						<key>6</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.directive</string>
+								<string>punctuation.section.directive.end</string>
+								<string>punctuation.section.directive.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.directive.end.erlang</string>
 						</dict>
@@ -1510,35 +2647,90 @@
 					<string>meta.directive.ifdef.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.directive</string>
+						<string>meta.directive.ifndef</string>
+						<string>meta.directive.ifndef.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.directive</string>
+								<string>punctuation.section.directive.begin</string>
+								<string>punctuation.section.directive.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.directive.begin.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.directive</string>
+								<string>keyword.control.directive.ifndef</string>
+								<string>keyword.control.directive.ifndef.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.directive.ifndef.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.begin</string>
+								<string>punctuation.definition.parameters.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.begin.erlang</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.function</string>
+								<string>entity.name.function.macro</string>
+								<string>entity.name.function.macro.erlang</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.function.macro.erlang</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.end</string>
+								<string>punctuation.definition.parameters.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.end.erlang</string>
 						</dict>
 						<key>6</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.directive</string>
+								<string>punctuation.section.directive.end</string>
+								<string>punctuation.section.directive.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.directive.end.erlang</string>
 						</dict>
@@ -1549,35 +2741,90 @@
 					<string>meta.directive.ifndef.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.directive</string>
+						<string>meta.directive.undef</string>
+						<string>meta.directive.undef.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.directive</string>
+								<string>punctuation.section.directive.begin</string>
+								<string>punctuation.section.directive.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.directive.begin.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.directive</string>
+								<string>keyword.control.directive.undef</string>
+								<string>keyword.control.directive.undef.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.directive.undef.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.begin</string>
+								<string>punctuation.definition.parameters.begin.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.begin.erlang</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.function</string>
+								<string>entity.name.function.macro</string>
+								<string>entity.name.function.macro.erlang</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.function.macro.erlang</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.end</string>
+								<string>punctuation.definition.parameters.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.end.erlang</string>
 						</dict>
 						<key>6</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.directive</string>
+								<string>punctuation.section.directive.end</string>
+								<string>punctuation.section.directive.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.directive.end.erlang</string>
 						</dict>
@@ -1591,15 +2838,36 @@
 		</dict>
 		<key>macro-usage</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.macro-usage</string>
+				<string>meta.macro-usage.erlang</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.macro</string>
+						<string>keyword.operator.macro.erlang</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.macro.erlang</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.macro</string>
+						<string>entity.name.function.macro.erlang</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.macro.erlang</string>
 				</dict>
@@ -1611,35 +2879,92 @@
 		</dict>
 		<key>module-directive</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.directive</string>
+				<string>meta.directive.module</string>
+				<string>meta.directive.module.erlang</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.directive</string>
+						<string>punctuation.section.directive.begin</string>
+						<string>punctuation.section.directive.begin.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.directive.begin.erlang</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.directive</string>
+						<string>keyword.control.directive.module</string>
+						<string>keyword.control.directive.module.erlang</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.directive.module.erlang</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.begin</string>
+						<string>punctuation.definition.parameters.begin.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.begin.erlang</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.class</string>
+						<string>entity.name.type.class.module</string>
+						<string>entity.name.type.class.module.definition</string>
+						<string>entity.name.type.class.module.definition.erlang</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.type.class.module.definition.erlang</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.end</string>
+						<string>punctuation.definition.parameters.end.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.end.erlang</string>
 				</dict>
 				<key>6</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.directive</string>
+						<string>punctuation.section.directive.end</string>
+						<string>punctuation.section.directive.end.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.directive.end.erlang</string>
 				</dict>
@@ -1658,15 +2983,36 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.float</string>
+						<string>constant.numeric.float.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.integer-float</string>
+								<string>punctuation.separator.integer-float.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.integer-float.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.float-exponent</string>
+								<string>punctuation.separator.float-exponent.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.float-exponent.erlang</string>
 						</dict>
@@ -1677,10 +3023,25 @@
 					<string>constant.numeric.float.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.binary</string>
+						<string>constant.numeric.integer.binary.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1691,10 +3052,25 @@
 					<string>constant.numeric.integer.binary.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-3</string>
+						<string>constant.numeric.integer.base-3.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1705,10 +3081,25 @@
 					<string>constant.numeric.integer.base-3.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-4</string>
+						<string>constant.numeric.integer.base-4.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1719,10 +3110,25 @@
 					<string>constant.numeric.integer.base-4.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-5</string>
+						<string>constant.numeric.integer.base-5.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1733,10 +3139,25 @@
 					<string>constant.numeric.integer.base-5.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-6</string>
+						<string>constant.numeric.integer.base-6.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1747,10 +3168,25 @@
 					<string>constant.numeric.integer.base-6.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-7</string>
+						<string>constant.numeric.integer.base-7.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1761,10 +3197,25 @@
 					<string>constant.numeric.integer.base-7.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.octal</string>
+						<string>constant.numeric.integer.octal.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1775,10 +3226,25 @@
 					<string>constant.numeric.integer.octal.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-9</string>
+						<string>constant.numeric.integer.base-9.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1789,10 +3255,25 @@
 					<string>constant.numeric.integer.base-9.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.decimal</string>
+						<string>constant.numeric.integer.decimal.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1803,10 +3284,25 @@
 					<string>constant.numeric.integer.decimal.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-11</string>
+						<string>constant.numeric.integer.base-11.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1817,10 +3313,25 @@
 					<string>constant.numeric.integer.base-11.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-12</string>
+						<string>constant.numeric.integer.base-12.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1831,10 +3342,25 @@
 					<string>constant.numeric.integer.base-12.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-13</string>
+						<string>constant.numeric.integer.base-13.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1845,10 +3371,25 @@
 					<string>constant.numeric.integer.base-13.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-14</string>
+						<string>constant.numeric.integer.base-14.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1859,10 +3400,25 @@
 					<string>constant.numeric.integer.base-14.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-15</string>
+						<string>constant.numeric.integer.base-15.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1873,10 +3429,25 @@
 					<string>constant.numeric.integer.base-15.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.hexadecimal</string>
+						<string>constant.numeric.integer.hexadecimal.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1887,10 +3458,25 @@
 					<string>constant.numeric.integer.hexadecimal.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-17</string>
+						<string>constant.numeric.integer.base-17.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1901,10 +3487,25 @@
 					<string>constant.numeric.integer.base-17.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-18</string>
+						<string>constant.numeric.integer.base-18.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1915,10 +3516,25 @@
 					<string>constant.numeric.integer.base-18.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-19</string>
+						<string>constant.numeric.integer.base-19.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1929,10 +3545,25 @@
 					<string>constant.numeric.integer.base-19.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-20</string>
+						<string>constant.numeric.integer.base-20.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1943,10 +3574,25 @@
 					<string>constant.numeric.integer.base-20.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-21</string>
+						<string>constant.numeric.integer.base-21.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1957,10 +3603,25 @@
 					<string>constant.numeric.integer.base-21.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-22</string>
+						<string>constant.numeric.integer.base-22.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1971,10 +3632,25 @@
 					<string>constant.numeric.integer.base-22.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-23</string>
+						<string>constant.numeric.integer.base-23.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1985,10 +3661,25 @@
 					<string>constant.numeric.integer.base-23.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-24</string>
+						<string>constant.numeric.integer.base-24.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -1999,10 +3690,25 @@
 					<string>constant.numeric.integer.base-24.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-25</string>
+						<string>constant.numeric.integer.base-25.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -2013,10 +3719,25 @@
 					<string>constant.numeric.integer.base-25.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-26</string>
+						<string>constant.numeric.integer.base-26.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -2027,10 +3748,25 @@
 					<string>constant.numeric.integer.base-26.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-27</string>
+						<string>constant.numeric.integer.base-27.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -2041,10 +3777,25 @@
 					<string>constant.numeric.integer.base-27.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-28</string>
+						<string>constant.numeric.integer.base-28.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -2055,10 +3806,25 @@
 					<string>constant.numeric.integer.base-28.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-29</string>
+						<string>constant.numeric.integer.base-29.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -2069,10 +3835,25 @@
 					<string>constant.numeric.integer.base-29.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-30</string>
+						<string>constant.numeric.integer.base-30.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -2083,10 +3864,25 @@
 					<string>constant.numeric.integer.base-30.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-31</string>
+						<string>constant.numeric.integer.base-31.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -2097,10 +3893,25 @@
 					<string>constant.numeric.integer.base-31.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-32</string>
+						<string>constant.numeric.integer.base-32.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -2111,10 +3922,25 @@
 					<string>constant.numeric.integer.base-32.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-33</string>
+						<string>constant.numeric.integer.base-33.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -2125,10 +3951,25 @@
 					<string>constant.numeric.integer.base-33.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-34</string>
+						<string>constant.numeric.integer.base-34.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -2139,10 +3980,25 @@
 					<string>constant.numeric.integer.base-34.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-35</string>
+						<string>constant.numeric.integer.base-35.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -2153,10 +4009,25 @@
 					<string>constant.numeric.integer.base-35.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.base-36</string>
+						<string>constant.numeric.integer.base-36.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.base-integer</string>
+								<string>punctuation.separator.base-integer.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.base-integer.erlang</string>
 						</dict>
@@ -2167,12 +4038,27 @@
 					<string>constant.numeric.integer.base-36.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.integer</string>
+						<string>invalid.illegal.integer.erlang</string>
+					</array>
 					<key>match</key>
 					<string>\d++#[\da-zA-Z]++</string>
 					<key>name</key>
 					<string>invalid.illegal.integer.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.integer</string>
+						<string>constant.numeric.integer.decimal</string>
+						<string>constant.numeric.integer.decimal.erlang</string>
+					</array>
 					<key>match</key>
 					<string>\d++</string>
 					<key>name</key>
@@ -2188,16 +4074,38 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.expression</string>
+						<string>punctuation.section.expression.begin</string>
+						<string>punctuation.section.expression.begin.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.expression.begin.erlang</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.expression</string>
+				<string>meta.expression.parenthesized</string>
+			</array>
 			<key>end</key>
 			<string>(\))</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.expression</string>
+						<string>punctuation.section.expression.end</string>
+						<string>punctuation.section.expression.end.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.expression.end.erlang</string>
 				</dict>
@@ -2220,51 +4128,131 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.directive</string>
+						<string>punctuation.section.directive.begin</string>
+						<string>punctuation.section.directive.begin.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.directive.begin.erlang</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.directive</string>
+						<string>keyword.control.directive.import</string>
+						<string>keyword.control.directive.import.erlang</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.directive.import.erlang</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.begin</string>
+						<string>punctuation.definition.parameters.begin.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.begin.erlang</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.class</string>
+						<string>entity.name.type.class.record</string>
+						<string>entity.name.type.class.record.definition</string>
+						<string>entity.name.type.class.record.definition.erlang</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.type.class.record.definition.erlang</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.parameters</string>
+						<string>punctuation.separator.parameters.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.parameters.erlang</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.directive</string>
+				<string>meta.directive.record</string>
+				<string>meta.directive.record.erlang</string>
+			</array>
 			<key>end</key>
 			<string>((\}))\s*+(\))\s*+(\.)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.structure</string>
+						<string>meta.structure.record</string>
+						<string>meta.structure.record.erlang</string>
+					</array>
 					<key>name</key>
 					<string>meta.structure.record.erlang</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.class</string>
+						<string>punctuation.definition.class.record</string>
+						<string>punctuation.definition.class.record.end</string>
+						<string>punctuation.definition.class.record.end.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.class.record.end.erlang</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.end</string>
+						<string>punctuation.definition.parameters.end.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.end.erlang</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.directive</string>
+						<string>punctuation.section.directive.end</string>
+						<string>punctuation.section.directive.end.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.directive.end.erlang</string>
 				</dict>
@@ -2284,25 +4272,61 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.record-usage</string>
+						<string>meta.record-usage.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.operator</string>
+								<string>keyword.operator.record</string>
+								<string>keyword.operator.record.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.operator.record.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.class</string>
+								<string>entity.name.type.class.record</string>
+								<string>entity.name.type.class.record.erlang</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.class.record.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.record-field</string>
+								<string>punctuation.separator.record-field.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.record-field.erlang</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>variable</string>
+								<string>variable.other</string>
+								<string>variable.other.field</string>
+								<string>variable.other.field.erlang</string>
+							</array>
 							<key>name</key>
 							<string>variable.other.field.erlang</string>
 						</dict>
@@ -2319,26 +4343,64 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.operator</string>
+								<string>keyword.operator.record</string>
+								<string>keyword.operator.record.erlang</string>
+							</array>
 							<key>name</key>
 							<string>keyword.operator.record.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.class</string>
+								<string>entity.name.type.class.record</string>
+								<string>entity.name.type.class.record.erlang</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.class.record.erlang</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.record-usage</string>
+						<string>meta.record-usage.erlang</string>
+					</array>
 					<key>end</key>
 					<string>((\}))</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.structure</string>
+								<string>meta.structure.record</string>
+								<string>meta.structure.record.erlang</string>
+							</array>
 							<key>name</key>
 							<string>meta.structure.record.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.class</string>
+								<string>punctuation.definition.class.record</string>
+								<string>punctuation.definition.class.record.end</string>
+								<string>punctuation.definition.class.record.end.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.class.record.end.erlang</string>
 						</dict>
@@ -2363,16 +4425,39 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.erlang</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.erlang</string>
+			</array>
 			<key>end</key>
 			<string>(&quot;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.erlang</string>
 				</dict>
@@ -2382,15 +4467,36 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.escape</string>
+								<string>punctuation.definition.escape.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.escape.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.escape</string>
+								<string>punctuation.definition.escape.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.escape.erlang</string>
 						</dict>
@@ -2401,46 +4507,109 @@
 					<string>constant.character.escape.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.string</string>
+						<string>invalid.illegal.string.erlang</string>
+					</array>
 					<key>match</key>
 					<string>\\\^?.?</string>
 					<key>name</key>
 					<string>invalid.illegal.string.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.placeholder</string>
+						<string>constant.other.placeholder.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.placeholder</string>
+								<string>punctuation.definition.placeholder.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.placeholder.erlang</string>
 						</dict>
 						<key>10</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.placeholder-parts</string>
+								<string>punctuation.separator.placeholder-parts.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.placeholder-parts.erlang</string>
 						</dict>
 						<key>12</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.placeholder-parts</string>
+								<string>punctuation.separator.placeholder-parts.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.placeholder-parts.erlang</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.placeholder-parts</string>
+								<string>punctuation.separator.placeholder-parts.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.placeholder-parts.erlang</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.placeholder-parts</string>
+								<string>punctuation.separator.placeholder-parts.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.placeholder-parts.erlang</string>
 						</dict>
 						<key>6</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.placeholder-parts</string>
+								<string>punctuation.separator.placeholder-parts.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.placeholder-parts.erlang</string>
 						</dict>
 						<key>8</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.placeholder-parts</string>
+								<string>punctuation.separator.placeholder-parts.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.placeholder-parts.erlang</string>
 						</dict>
@@ -2451,15 +4620,36 @@
 					<string>constant.other.placeholder.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.placeholder</string>
+						<string>constant.other.placeholder.erlang</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.placeholder</string>
+								<string>punctuation.definition.placeholder.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.placeholder.erlang</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.placeholder-parts</string>
+								<string>punctuation.separator.placeholder-parts.erlang</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.placeholder-parts.erlang</string>
 						</dict>
@@ -2470,6 +4660,13 @@
 					<string>constant.other.placeholder.erlang</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.string</string>
+						<string>invalid.illegal.string.erlang</string>
+					</array>
 					<key>match</key>
 					<string>~.?</string>
 					<key>name</key>
@@ -2479,6 +4676,13 @@
 		</dict>
 		<key>symbolic-operator</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.symbolic</string>
+				<string>keyword.operator.symbolic.erlang</string>
+			</array>
 			<key>match</key>
 			<string>\+\+|\+|--|-|\*|/=|/|=/=|=:=|==|=&lt;|=|&lt;-|&lt;|&gt;=|&gt;|!</string>
 			<key>name</key>
@@ -2486,6 +4690,13 @@
 		</dict>
 		<key>textual-operator</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.textual</string>
+				<string>keyword.operator.textual.erlang</string>
+			</array>
 			<key>match</key>
 			<string>\b(andalso|band|and|bxor|xor|bor|orelse|or|bnot|not|bsl|bsr|div|rem)\b</string>
 			<key>name</key>
@@ -2499,16 +4710,39 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tuple</string>
+						<string>punctuation.definition.tuple.begin</string>
+						<string>punctuation.definition.tuple.begin.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tuple.begin.erlang</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.structure</string>
+				<string>meta.structure.tuple</string>
+				<string>meta.structure.tuple.erlang</string>
+			</array>
 			<key>end</key>
 			<string>(\})</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tuple</string>
+						<string>punctuation.definition.tuple.end</string>
+						<string>punctuation.definition.tuple.end.erlang</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tuple.end.erlang</string>
 				</dict>
@@ -2518,6 +4752,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.tuple</string>
+						<string>punctuation.separator.tuple.erlang</string>
+					</array>
 					<key>match</key>
 					<string>,</string>
 					<key>name</key>
@@ -2535,11 +4776,24 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.erlang</string>
+					</array>
 					<key>name</key>
 					<string>variable.other.erlang</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.language</string>
+						<string>variable.language.omitted</string>
+						<string>variable.language.omitted.erlang</string>
+					</array>
 					<key>name</key>
 					<string>variable.language.omitted.erlang</string>
 				</dict>

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Blog — HTML</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>blog.html</string>
@@ -10,18 +14,18 @@
 	<string>^Type: Blog Post \(HTML\)</string>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-			(&lt;(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)\b.*?&gt;
-			|&lt;!--(?!.*--\s*&gt;)
-			|\{\{?(if|foreach|capture|literal|foreach|php|section|strip)
-			|\{\s*($|\?&gt;\s*$|//|/\*(.*\*/\s*$|(?!.*?\*/)))
-			)</string>
+						(&lt;(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)\b.*?&gt;
+						|&lt;!--(?!.*--\s*&gt;)
+						|\{\{?(if|foreach|capture|literal|foreach|php|section|strip)
+						|\{\s*($|\?&gt;\s*$|//|/\*(.*\*/\s*$|(?!.*?\*/)))
+						)</string>
 	<key>foldingStopMarker</key>
 	<string>(?x)
-			(&lt;/(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)&gt;
-			|^(?!.*?&lt;!--).*?--\s*&gt;
-			|\{\{?/(if|foreach|capture|literal|foreach|php|section|strip)
-			|^[^{]*\}
-			)</string>
+						(&lt;/(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)&gt;
+						|^(?!.*?&lt;!--).*?--\s*&gt;
+						|\{\{?/(if|foreach|capture|literal|foreach|php|section|strip)
+						|^[^{]*\}
+						)</string>
 	<key>keyEquivalent</key>
 	<string>^~B</string>
 	<key>name</key>
@@ -29,20 +33,45 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.header</string>
+				<string>meta.header.blog</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.blog</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.blog</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+						<string>punctuation.separator.key-value.blog</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.key-value.blog</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.blog</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.blog</string>
 				</dict>
@@ -53,6 +82,14 @@
 			<string>meta.header.blog</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>invalid</string>
+				<string>invalid.illegal</string>
+				<string>invalid.illegal.meta</string>
+				<string>invalid.illegal.meta.header</string>
+				<string>invalid.illegal.meta.header.blog</string>
+			</array>
 			<key>match</key>
 			<string>^([A-Za-z0-9]+):\s*(.*)$\n?</string>
 			<key>name</key>
@@ -61,6 +98,11 @@
 		<dict>
 			<key>begin</key>
 			<string>^(?![A-Za-z0-9]+:)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>text</string>
+				<string>text.html</string>
+			</array>
 			<key>end</key>
 			<string>^(?=not)possible$</string>
 			<key>name</key>
@@ -68,6 +110,12 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.separator</string>
+						<string>meta.separator.blog</string>
+					</array>
 					<key>match</key>
 					<string>^✂-[✂-]+$\n</string>
 					<key>name</key>
