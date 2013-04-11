@@ -293,14 +293,17 @@
 
 #pragma mark - Tool Bar Methods
 
-- (void)setUpDefaultToolBar {
+- (void)setUpDefaultToolBar
+{
     _toolbarTitle = [[UIBarButtonItem alloc] initWithTitle:[_currentFile name]
                                                      style:UIBarButtonItemStylePlain
                                                     target:nil
                                                     action:nil];
-    _searchButtonIcon = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
-                                                                                      target:self
-                                                                                      action:@selector(showSearchToolBar)];
+    _searchButtonIcon =
+    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
+                                                  target:self
+                                                  action:@selector(showSearchToolBar)];
+
     [_toolbar setItems:[NSArray arrayWithObjects:
                         [Utils flexibleSpace],
                         _toolbarTitle,
@@ -309,24 +312,38 @@
                         nil]];
 }
 
-- (void)showSearchToolBar {
+- (void)showSearchToolBar
+{
     // Replace current toolbar with tool bar with search bar
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(_toolbar.frame.size.width - 250, 0, 200, SIZE_TOOLBAR_HEIGHT)];
-    _searchBar.delegate = (id<UISearchBarDelegate>)self;
-    
+    _searchBar = [[UISearchBar alloc] initWithFrame:
+                  CGRectMake(_toolbar.frame.size.width - 250, 0, 200, SIZE_TOOLBAR_HEIGHT)];
+    _searchBar.delegate = (id<UISearchBarDelegate>) self;
     UIBarButtonItem *searchBarItem = [[UIBarButtonItem alloc] initWithCustomView:_searchBar];
-    UIBarButtonItem *doneBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                 target:self
-                                                                                 action:@selector(hideSearchToolBar)];
-    [_toolbar setItems:[NSArray arrayWithObjects:_toolbarTitle, [Utils flexibleSpace], searchBarItem, doneBarItem, nil] animated:YES];
+    
+    UIBarButtonItem *doneBarItem =
+    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                  target:self
+                                                  action:@selector(hideSearchToolBar)];
+    [_toolbar setItems:[NSArray arrayWithObjects:
+                        _toolbarTitle,
+                        [Utils flexibleSpace],
+                        searchBarItem,
+                        doneBarItem,
+                        nil]
+              animated:YES];
     
     // Initialize results tableview controller
     _resultsViewController = [[ResultsTableViewController alloc] init];
-    _resultsPopoverController = [[UIPopoverController alloc] initWithContentViewController:_resultsViewController];
-    _resultsPopoverController.passthroughViews = [NSArray arrayWithObject:_searchBar];
+    
+    _resultsPopoverController =
+    [[UIPopoverController alloc] initWithContentViewController:_resultsViewController];
+    
+    _resultsPopoverController.passthroughViews =
+        [NSArray arrayWithObject:_searchBar];
 }
 
-- (void)hideSearchToolBar {
+- (void)hideSearchToolBar
+{
     if (UIDeviceOrientationIsLandscape(self.interfaceOrientation))
     {
         [self setUpDefaultToolBar];
@@ -439,7 +456,8 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
+- (void)tableView:(UITableView*)tableView
+    didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath
                              animated:NO];
@@ -447,7 +465,8 @@
 
 #pragma mark - Search Bar delegate
 
-- (void)searchBarSearchButtonClicked:(UISearchBar*)searchBar {
+- (void)searchBarSearchButtonClicked:(UISearchBar*)searchBar
+{
     NSString *searchString = [searchBar text];
     NSArray *searchResultRanges = [FullTextSearch searchForText:searchString
                                                          inFile:_currentFile];
