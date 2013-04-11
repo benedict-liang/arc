@@ -165,45 +165,56 @@
     (CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.plainAttributedString);
     _frameSetter = CTFramesetterCreateWithAttributedString(ref);
     
-//    // Find Logical Lines
-//    NSMutableArray *logicalLines =
-//    [[_arcAttributedString.string componentsSeparatedByCharactersInSet:
-//                                     [NSCharacterSet newlineCharacterSet]] mutableCopy];
-//
-//    for (NSString *line in logicalLines) {
-//        
-//    }
-    
-    // Work out the geometry
-//    CGFloat boundsWidth = _tableView.bounds.size.width - 20*2 - 45;
-    CGFloat boundsWidth = MAXFLOAT;
-    
-    // Calculate the lines
-    CFIndex start = 0;
-    NSUInteger length = CFAttributedStringGetLength(ref);
-    CFBridgingRelease(ref);
-
     NSArray *keys = [NSArray arrayWithObjects:
                      KEY_RANGE,
                      KEY_LINE_NUMBER,
                      KEY_LINE_START,
                      nil];
+    
+    // Split into Logical Lines
+    CGFloat boundsWidth = MAXFLOAT;
+    NSMutableDictionary *lineStarts = [NSMutableDictionary dictionary];
 
-    int lineNumber = 0;
-    BOOL startOfLine = YES;
-
+    // Calculate the lineStarts
+    int start = 0;
+    NSUInteger length = CFAttributedStringGetLength(ref);
+    CFBridgingRelease(ref);
     while (start < length)
     {
+        [lineStarts setValue:[NSNumber numberWithBool:YES]
+                      forKey:[NSString stringWithFormat:@"%d", start]];
         CTTypesetterRef typesetter = CTFramesetterGetTypesetter(_frameSetter);
         CFIndex count = CTTypesetterSuggestLineBreak(typesetter, start, boundsWidth);
+        start += count;
+    }
+    
+    // Split Lines to it bounds
+    CGFloat actualBoundsWidth = _tableView.bounds.size.width - 20*2 - 45;
+    
+    // Calculate the lines
+    start = 0;    
+    int lineNumber = 0;
+    BOOL startOfLine;
+    while (start < length)
+    {
+        if ([lineStarts objectForKey:[NSString stringWithFormat:@"%d", start]]) {
+            lineNumber++;
+            startOfLine = YES;
+        } else {
+            startOfLine = NO;
+        }
+        
+        CTTypesetterRef typesetter = CTFramesetterGetTypesetter(_frameSetter);
+        CFIndex count = CTTypesetterSuggestLineBreak(typesetter, start, actualBoundsWidth);
         [_lines addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
                                                                [NSValue valueWithRange:NSMakeRange(start, count)],
                                                                [NSNumber numberWithInt:lineNumber],
                                                                [NSNumber numberWithBool:startOfLine],
                                                                nil]
-                                                       forKeys:keys]];
+                                                      forKeys:keys]];
         start += count;
     }
+    
 }
 
 - (void)calcLineHeight
@@ -401,10 +412,9 @@
     }
 
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    NSUInteger lineNumber = indexPath.row;
     
-    NSDictionary *lineObject = (NSDictionary *)[_lines objectAtIndex:lineNumber];
-
+    NSDictionary *lineObject = (NSDictionary *)[_lines objectAtIndex:indexPath.row];
+    NSInteger lineNumber = [[lineObject objectForKey:KEY_LINE_NUMBER] integerValue];
     cell.lineNumber = lineNumber;
 
     CTLineRef lineRef =
