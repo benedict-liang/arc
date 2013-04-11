@@ -112,7 +112,6 @@
 - (void)showFile:(id<File>)file
 {
     if ([file isEqual:_currentFile]) {
-        [_tableView reloadData];
         return;
     }
     
@@ -133,6 +132,7 @@
     [self calcLineHeight];
     [self renderFile];
     [self postRenderPluginsForSetting:setting];
+
 }
 
 - (void)loadFile
@@ -241,6 +241,7 @@
 
 # pragma mark - Code View Delegate
 
+// Strange That this works.
 - (void)setBackgroundColor:(UIColor *)backgroundColor
 {
     _backgroundColor = backgroundColor;
@@ -435,10 +436,11 @@
                                    reuseIdentifier:cellIdentifier];
     }
 
+    [cell setForegroundColor:_foregroundColor];
+    [cell setFontFamily:_fontFamily FontSize:_fontSize];
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
     NSDictionary *lineObject = (NSDictionary *)[_lines objectAtIndex:indexPath.row];
-
     CTLineRef lineRef =
     CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                      ([_arcAttributedString.attributedString attributedSubstringFromRange:

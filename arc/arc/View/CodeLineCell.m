@@ -9,12 +9,16 @@
 #import "CodeLineCell.h"
 
 @interface CodeLineCell ()
+@property (nonatomic, strong) UIColor *foregroundColor;
+@property (nonatomic, strong) NSString *fontFamily;
+@property (nonatomic) int fontSize;
 @property (nonatomic, strong) CodeLine *codeLine;
 @property (nonatomic, strong) UILabel *lineNumberLabel;
 @end
 
 @implementation CodeLineCell
 @synthesize line = _line;
+@synthesize lineNumberWidth = _lineNumberWidth;
 @synthesize lineNumber = _lineNumber;
 @synthesize showLineNumber = _showLineNumber;
 
@@ -25,9 +29,21 @@
                 reuseIdentifier:reuseIdentifier];
     if (self) {
         // defaults
+        _lineNumberWidth = 30;
         _showLineNumber = YES;
     }
     return self;
+}
+
+- (void)setForegroundColor:(UIColor*)foregroundColor
+{
+    _foregroundColor = foregroundColor;
+}
+
+- (void)setFontFamily:(NSString*)fontFamily FontSize:(int)fontSize
+{
+    _fontFamily = fontFamily;
+    _fontSize = fontSize;
 }
 
 - (void)setLine:(CTLineRef)line
@@ -37,7 +53,12 @@
     }
     
     _lineNumberLabel = [[UILabel alloc] init];
+    _lineNumberLabel.backgroundColor = [UIColor clearColor];
     _lineNumberLabel.text = @"";
+    _lineNumberLabel.textColor = _foregroundColor;
+    _lineNumberLabel.font = [UIFont fontWithName:_fontFamily
+                                            size:_fontSize];
+    _lineNumberLabel.textAlignment = NSTextAlignmentRight;
     [self.contentView addSubview:_lineNumberLabel];
     
     _line = line;
@@ -67,11 +88,11 @@
 {
     self.contentView.frame = self.bounds;
     _lineNumberLabel.frame =
-    CGRectMake(0, 0, 30, self.contentView.bounds.size.height);
+    CGRectMake(0, 0, _lineNumberWidth, self.contentView.bounds.size.height);
     
     _codeLine.frame =
-    CGRectMake(40, 0,
-               self.contentView.bounds.size.width - 40,
+    CGRectMake(_lineNumberWidth, 0,
+               self.contentView.bounds.size.width - _lineNumberWidth,
                self.contentView.bounds.size.height);
 }
 
