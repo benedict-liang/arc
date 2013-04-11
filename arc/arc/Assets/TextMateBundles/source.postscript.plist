@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Postscript</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>ps</string>
@@ -26,16 +30,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.postscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.postscript</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.other</string>
+				<string>string.other.postscript</string>
+			</array>
 			<key>end</key>
 			<string>\)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.postscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.postscript</string>
 				</dict>
@@ -51,15 +77,35 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.Document-Structuring-Comment</string>
+				<string>meta.Document-Structuring-Comment.postscript</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.DSC</string>
+						<string>keyword.other.DSC.postscript</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.DSC.postscript</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.DSC</string>
+						<string>string.unquoted.DSC.postscript</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.DSC.postscript</string>
 				</dict>
@@ -70,10 +116,24 @@
 			<string>meta.Document-Structuring-Comment.postscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.percentage</string>
+				<string>comment.line.percentage.postscript</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.postscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.postscript</string>
 				</dict>
@@ -86,10 +146,23 @@
 		<dict>
 			<key>begin</key>
 			<string>\&lt;\&lt;</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.dictionary</string>
+				<string>meta.dictionary.postscript</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.dictionary</string>
+						<string>punctuation.definition.dictionary.postscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.dictionary.postscript</string>
 				</dict>
@@ -109,10 +182,23 @@
 		<dict>
 			<key>begin</key>
 			<string>\[</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.array</string>
+				<string>meta.array.postscript</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.array</string>
+						<string>punctuation.definition.array.postscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.array.postscript</string>
 				</dict>
@@ -132,10 +218,23 @@
 		<dict>
 			<key>begin</key>
 			<string>{</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.procedure</string>
+				<string>meta.procedure.postscript</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.procedure</string>
+						<string>punctuation.definition.procedure.postscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.procedure.postscript</string>
 				</dict>
@@ -159,16 +258,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.postscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.postscript</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.other</string>
+				<string>string.other.base85</string>
+				<string>string.other.base85.postscript</string>
+			</array>
 			<key>end</key>
 			<string>\~\&gt;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.postscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.postscript</string>
 				</dict>
@@ -182,6 +304,14 @@
 					<string>[!-z\s]+</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.base85</string>
+						<string>invalid.illegal.base85.char</string>
+						<string>invalid.illegal.base85.char.postscript</string>
+					</array>
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
@@ -196,16 +326,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.postscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.postscript</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.other</string>
+				<string>string.other.hexadecimal</string>
+				<string>string.other.hexadecimal.postscript</string>
+			</array>
 			<key>end</key>
 			<string>\&gt;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.postscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.postscript</string>
 				</dict>
@@ -219,6 +372,14 @@
 					<string>[0-9A-Fa-f\s]+</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.hexadecimal</string>
+						<string>invalid.illegal.hexadecimal.char</string>
+						<string>invalid.illegal.hexadecimal.char.postscript</string>
+					</array>
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
@@ -227,6 +388,13 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.radix</string>
+				<string>constant.numeric.radix.postscript</string>
+			</array>
 			<key>comment</key>
 			<string>well, not really, but short of listing rules for all bases from 2-36 best we can do</string>
 			<key>match</key>
@@ -235,36 +403,75 @@
 			<string>constant.numeric.radix.postscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.postscript</string>
+			</array>
 			<key>match</key>
 			<string>(\-|\+)?\d+(\.\d*)?([eE](\-|\+)?\d+)?</string>
 			<key>name</key>
 			<string>constant.numeric.postscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.postscript</string>
+			</array>
 			<key>match</key>
 			<string>(\-|\+)?\.\d+([eE](\-|\+)?\d+)?</string>
 			<key>name</key>
 			<string>constant.numeric.postscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.postscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(abs|add|aload|anchorsearch|and|arc|arcn|arct|arcto|array|ashow|astore|atan|awidthshow|begin|bind|bitshift|bytesavailable|cachestatus|ceiling|charpath|clear|cleartomark|cleardictstack|clip|clippath|closefile|closepath|colorimage|concat|concatmatrix|condition|configurationerror|copy|copypage|cos|count|countdictstack|countexecstack|counttomark|cshow|currentblackgeneration|currentcacheparams|currentcmykcolor|currentcolor|currentcolorrendering|currentcolorscreen|currentcolorspace|currentcolortransfer|currentcontext|currentdash|currentdevparams|currentdict|currentfile|currentflat|currentfont|currentglobal|currentgray|currentgstate|currenthalftone|currenthalftonephase|currenthsbcolor|currentlinecap|currentlinejoin|currentlinewidth|currentmatrix|currentmiterlimit|currentobjectformat|currentpacking|currentpagedevice|currentpoint|currentrgbcolor|currentscreen|currentshared|currentstrokeadjust|currentsystemparams|currenttransfer|currentundercolorremoval|currentuserparams|curveto|cvi|cvlit|cvn|cvr|cvrs|cvs|cvx|def|defaultmatrix|definefont|defineresource|defineusername|defineuserobject|deletefile|detach|deviceinfo|dict|dictfull|dictstack|dictstackoverflow|dictstackunderflow|div|dtransform|dup|echo|eexec|end|eoclip|eofill|eoviewclip|eq|erasepage|errordict|exch|exec|execform|execstack|execstackoverflow|execuserobject|executeonly|executive|exit|exp|false|file|filenameforall|fileposition|fill|filter|findencoding|findfont|findresource|flattenpath|floor|flush|flushfile|FontDirectory|for|forall|fork|ge|get|getinterval|globaldict|GlobalFontDirectory|glyphshow|grestore|grestoreall|gsave|gstate|gt|handleerror|identmatrix|idiv|idtransform|if|ifelse|image|imagemask|index|ineofill|infill|initclip|initgraphics|initmatrix|initviewclip|instroke|internaldict|interrupt|inueofill|inufill|inustroke|invalidaccess|invalidcontext|invalidexit|invalidfileaccess|invalidfont|invalidid|invalidrestore|invertmatrix|ioerror|ISOLatin1Encoding|itransform|join|kshow|known|languagelevel|le|length|limitcheck|lineto|ln|load|lock|log|loop|lt|makefont|makepattern|mark|matrix|maxlength|mod|monitor|moveto|mul|ne|neg|newpath|noaccess|nocurrentpoint|not|notify|null|nulldevice|or|packedarray|pathbbox|pathforall|pop|print|printobject|product|prompt|pstack|put|putinterval|quit|rand|rangecheck|rcurveto|read|readhexstring|readline|readonly|readstring|realtime|rectclip|rectfill|rectstroke|rectviewclip|renamefile|repeat|resetfile|resourceforall|resourcestatus|restore|reversepath|revision|rlineto|rmoveto|roll|rootfont|rotate|round|rrand|run|save|scale|scalefont|scheck|search|selectfont|serialnumber|setbbox|setblackgeneration|setcachedevice|setcachedevice2|setcachelimit|setcacheparams|setcharwidth|setcmykcolor|setcolor|setcolorrendering|setcolorscreen|setcolorspace|setcolortransfer|setdash|setdevparams|setfileposition|setflat|setfont|setglobal|setgray|setgstate|sethalftone|sethalftonephase|sethsbcolor|setlinecap|setlinejoin|setlinewidth|setmatrix|setmiterlimit|setobjectformat|setoverprint|setpacking|setpagedevice|setpattern|setrgbcolor|setscreen|setshared|setstrokeadjust|setsystemparams|settransfer|setucacheparams|setundercolorremoval|setuserparams|setvmthreshold|shareddict|show|showpage|sin|sqrt|srand|stack|stackoverflow|stackunderflow|StandardEncoding|start|startjob|status|statusdict|stop|stopped|store|string|stringwidth|stroke|strokepath|sub|syntaxerror|systemdict|timeout|transform|translate|true|truncate|type|typecheck|token|uappend|ucache|ucachestatus|ueofill|ufill|undef|undefined|undefinedfilename|undefineresource|undefinedresult|undefinefont|undefineresource|undefinedresource|undefineuserobject|unmatchedmark|unregistered|upath|userdict|UserObjects|usertime|ustroke|ustrokepath|version|viewclip|viewclippath|VMerror|vmreclaim|vmstatus|wait|wcheck|where|widthshow|write|writehexstring|writeobject|writestring|wtranslation|xcheck|xor|xshow|xyshow|yield|yshow)\b</string>
 			<key>name</key>
 			<string>keyword.operator.postscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.immediately-evaluated</string>
+				<string>variable.other.immediately-evaluated.postscript</string>
+			</array>
 			<key>match</key>
 			<string>//[^\(\)\&lt;\&gt;\[\]\{\}\/\%\s]+</string>
 			<key>name</key>
 			<string>variable.other.immediately-evaluated.postscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.literal</string>
+				<string>variable.other.literal.postscript</string>
+			</array>
 			<key>match</key>
 			<string>/[^\(\)\&lt;\&gt;\[\]\{\}\/\%\s]+</string>
 			<key>name</key>
 			<string>variable.other.literal.postscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.name</string>
+				<string>variable.other.name.postscript</string>
+			</array>
 			<key>comment</key>
 			<string>stuff like 22@ff will show as number 22 followed by name @ff, but should be name 22@ff!</string>
 			<key>match</key>
@@ -280,18 +487,40 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.octal</string>
+						<string>constant.numeric.octal.postscript</string>
+					</array>
 					<key>match</key>
 					<string>\\[0-7]{1,3}</string>
 					<key>name</key>
 					<string>constant.numeric.octal.postscript</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.postscript</string>
+					</array>
 					<key>match</key>
 					<string>\\(\\|[nrtbf\(\)]|[0-7]{1,3}|\r?\n)</string>
 					<key>name</key>
 					<string>constant.character.escape.postscript</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.unknown-escape</string>
+						<string>invalid.illegal.unknown-escape.postscript</string>
+						<string>invalid.illegal.unknown-escape.postscript.ignored</string>
+					</array>
 					<key>match</key>
 					<string>\\</string>
 					<key>name</key>

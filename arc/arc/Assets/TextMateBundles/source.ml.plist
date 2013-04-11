@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Standard ML</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>sml</string>
@@ -20,10 +24,23 @@
 		<dict>
 			<key>begin</key>
 			<string>\(\*</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.ml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.ml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.ml</string>
 				</dict>
@@ -34,6 +51,12 @@
 			<string>comment.block.ml</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.ml</string>
+			</array>
 			<key>match</key>
 			<string>\b(val|datatype|struct|as|let|in|abstype|local|where|case|of|fn|raise|exception|handle|ref|infix)\b</string>
 			<key>name</key>
@@ -42,15 +65,36 @@
 		<dict>
 			<key>begin</key>
 			<string>\b(sig)\b</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.module</string>
+				<string>meta.module.sigdec</string>
+				<string>meta.module.sigdec.ml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.delimiter</string>
+						<string>keyword.other.delimiter.ml</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.delimiter.ml</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.delimiter</string>
+						<string>keyword.other.delimiter.ml</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.delimiter.ml</string>
 				</dict>
@@ -68,21 +112,48 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.ml</string>
+			</array>
 			<key>match</key>
 			<string>\b(if|then|else)\b</string>
 			<key>name</key>
 			<string>keyword.control.ml</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.definition</string>
+				<string>meta.definition.fun</string>
+				<string>meta.definition.fun.ml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.fun</string>
+						<string>keyword.control.fun.ml</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.fun.ml</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.ml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.ml</string>
 				</dict>
@@ -99,16 +170,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.ml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.ml</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.ml</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.ml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.ml</string>
 				</dict>
@@ -118,6 +212,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.ml</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -126,15 +227,35 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.ml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.ml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.ml</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.ml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.ml</string>
 				</dict>
@@ -145,12 +266,25 @@
 			<string>constant.character.ml</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.ml</string>
+			</array>
 			<key>match</key>
 			<string>\b\d*\.?\d+\b</string>
 			<key>name</key>
 			<string>constant.numeric.ml</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.logical</string>
+				<string>keyword.operator.logical.ml</string>
+			</array>
 			<key>match</key>
 			<string>\b(andalso|orelse|not)\b</string>
 			<key>name</key>
@@ -159,17 +293,40 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)\b
-								(functor|structure|signature|funsig)\s+
-								(\w+)\s* # identifier</string>
+																	(functor|structure|signature|funsig)\s+
+																	(\w+)\s* # identifier</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.module</string>
+				<string>meta.module.dec</string>
+				<string>meta.module.dec.ml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.module</string>
+						<string>storage.type.module.binder</string>
+						<string>storage.type.module.binder.ml</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.module.binder.ml</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.module</string>
+						<string>entity.name.type.module.ml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.type.module.ml</string>
 				</dict>
@@ -180,12 +337,25 @@
 			<string>meta.module.dec.ml</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.module</string>
+				<string>keyword.other.module.ml</string>
+			</array>
 			<key>match</key>
 			<string>\b(open)\b</string>
 			<key>name</key>
 			<string>keyword.other.module.ml</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.ml</string>
+			</array>
 			<key>match</key>
 			<string>\b(nil|true|false|NONE|SOME)\b</string>
 			<key>name</key>
@@ -194,15 +364,35 @@
 		<dict>
 			<key>begin</key>
 			<string>^\s*(type|eqtype) .* =</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.typeabbrev</string>
+				<string>meta.typeabbrev.ml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.typeabbrev</string>
+						<string>keyword.other.typeabbrev.ml</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.typeabbrev.ml</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.typename</string>
+						<string>variable.other.typename.ml</string>
+					</array>
 					<key>name</key>
 					<string>variable.other.typename.ml</string>
 				</dict>
@@ -214,6 +404,12 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.typeexp</string>
+						<string>meta.typeexp.ml</string>
+					</array>
 					<key>match</key>
 					<string>(([a-zA-Z0-9\.\* ]|(\-&gt;))*)</string>
 					<key>name</key>
@@ -222,10 +418,24 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.type</string>
+				<string>meta.type.ascription</string>
+				<string>meta.type.ascription.ml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.type</string>
+						<string>constant.other.type.ml</string>
+					</array>
 					<key>name</key>
 					<string>constant.other.type.ml</string>
 				</dict>
@@ -245,10 +455,23 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.spec</string>
+						<string>meta.spec.ml</string>
+						<string>meta.spec.ml.type</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.ml</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.ml</string>
 						</dict>
@@ -259,10 +482,23 @@
 					<string>meta.spec.ml.type</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.spec</string>
+						<string>meta.spec.ml</string>
+						<string>meta.spec.ml.datatype</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.ml</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.ml</string>
 						</dict>
@@ -273,10 +509,23 @@
 					<string>meta.spec.ml.datatype</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.spec</string>
+						<string>meta.spec.ml</string>
+						<string>meta.spec.ml.val</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.ml</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.ml</string>
 						</dict>
@@ -287,10 +536,23 @@
 					<string>meta.spec.ml.val</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.spec</string>
+						<string>meta.spec.ml</string>
+						<string>meta.spec.ml.structure</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.ml</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.ml</string>
 						</dict>
@@ -301,10 +563,23 @@
 					<string>meta.spec.ml.structure</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.spec</string>
+						<string>meta.spec.ml</string>
+						<string>meta.spec.ml.include</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.ml</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.ml</string>
 						</dict>

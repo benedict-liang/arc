@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Graphviz (DOT)</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>dot</string>
@@ -18,24 +22,54 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.type</string>
+				<string>storage.type.dot</string>
+			</array>
 			<key>match</key>
 			<string>\b(node|edge|graph|digraph|subgraph|strict)\b</string>
 			<key>name</key>
 			<string>storage.type.dot</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.constant</string>
+				<string>support.constant.attribute</string>
+				<string>support.constant.attribute.node</string>
+				<string>support.constant.attribute.node.dot</string>
+			</array>
 			<key>match</key>
 			<string>\b(bottomlabel|color|comment|distortion|fillcolor|fixedsize|fontcolor|fontname|fontsize|group|height|label|layer|orientation|peripheries|regular|shape|shapefile|sides|skew|style|toplabel|URL|width|z)\b</string>
 			<key>name</key>
 			<string>support.constant.attribute.node.dot</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.constant</string>
+				<string>support.constant.attribute</string>
+				<string>support.constant.attribute.edge</string>
+				<string>support.constant.attribute.edge.dot</string>
+			</array>
 			<key>match</key>
 			<string>\b(arrowhead|arrowsize|arrowtail|color|comment|constraint|decorate|dir|fontcolor|fontname|fontsize|headlabel|headport|headURL|label|labelangle|labeldistance|labelfloat|labelcolor|labelfontname|labelfontsize|layer|lhead|ltail|minlen|samehead|sametail|style|taillabel|tailport|tailURL|weight)\b</string>
 			<key>name</key>
 			<string>support.constant.attribute.edge.dot</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.constant</string>
+				<string>support.constant.attribute</string>
+				<string>support.constant.attribute.graph</string>
+				<string>support.constant.attribute.graph.dot</string>
+			</array>
 			<key>match</key>
 			<string>\b(bgcolor|center|clusterrank|color|comment|compound|concentrate|fillcolor|fontname|fontpath|fontsize|label|labeljust|labelloc|layers|margin|mclimit|nodesep|nslimit|nslimit1|ordering|orientation|page|pagedir|quantum|rank|rankdir|ranksep|ratio|remincross|rotate|samplepoints|searchsize|size|style|URL)\b</string>
 			<key>name</key>
@@ -48,16 +82,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.dot</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.dot</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.dot</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.dot</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.dot</string>
 				</dict>
@@ -67,6 +124,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.dot</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -75,10 +139,24 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.double-slash</string>
+				<string>comment.line.double-slash.dot</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.dot</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.dot</string>
 				</dict>
@@ -89,10 +167,24 @@
 			<string>comment.line.double-slash.dot</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.number-sign</string>
+				<string>comment.line.number-sign.dot</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.dot</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.dot</string>
 				</dict>
@@ -105,10 +197,23 @@
 		<dict>
 			<key>begin</key>
 			<string>/\*</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.dot</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.dot</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.dot</string>
 				</dict>

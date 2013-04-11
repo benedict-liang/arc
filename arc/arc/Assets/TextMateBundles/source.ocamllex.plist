@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>OCamllex</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>mll</string>
@@ -23,16 +27,40 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.ocaml</string>
+						<string>punctuation.section.embedded.ocaml.begin</string>
+						<string>punctuation.section.embedded.ocaml.begin.ocamllex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.ocaml.begin.ocamllex</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.embedded</string>
+				<string>meta.embedded.ocaml</string>
+			</array>
 			<key>end</key>
 			<string>^\s*(})</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.ocaml</string>
+						<string>punctuation.section.embedded.ocaml.end</string>
+						<string>punctuation.section.embedded.ocaml.end.ocamllex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.ocaml.end.ocamllex</string>
 				</dict>
@@ -54,15 +82,37 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.pattern-definition</string>
+						<string>keyword.other.pattern-definition.ocamllex</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.pattern-definition.ocamllex</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.pattern</string>
+						<string>entity.name.type.pattern.stupid-goddamn-hack</string>
+						<string>entity.name.type.pattern.stupid-goddamn-hack.ocamllex</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.type.pattern.stupid-goddamn-hack.ocamllex</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.pattern-definition</string>
+				<string>meta.pattern-definition.ocaml</string>
+			</array>
 			<key>end</key>
 			<string>^(?:\s*let)|(?:\s*(rule|$))</string>
 			<key>name</key>
@@ -82,36 +132,82 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.ocamllex</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.ocamllex</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.entrypoint</string>
+						<string>entity.name.function.entrypoint.ocamllex</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.entrypoint.ocamllex</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.ocamllex</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.ocamllex</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.ocamllex</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.ocamllex</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.match-pattern</string>
+						<string>punctuation.separator.match-pattern.ocamllex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.match-pattern.ocamllex</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.pattern-match</string>
+				<string>meta.pattern-match.ocaml</string>
+			</array>
 			<key>end</key>
 			<string>(?:^\s*((and)\b|(?=\|)|$))</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.entry-definition</string>
+						<string>keyword.other.entry-definition.ocamllex</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.entry-definition.ocamllex</string>
 				</dict>
@@ -139,6 +235,13 @@
 			<string>#comments</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.symbol</string>
+				<string>keyword.operator.symbol.ocamllex</string>
+			</array>
 			<key>match</key>
 			<string>=</string>
 			<key>name</key>
@@ -147,6 +250,12 @@
 		<dict>
 			<key>begin</key>
 			<string>\(</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.paren-group</string>
+				<string>meta.paren-group.ocamllex</string>
+			</array>
 			<key>end</key>
 			<string>\)</string>
 			<key>name</key>
@@ -160,6 +269,13 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>invalid</string>
+				<string>invalid.illegal</string>
+				<string>invalid.illegal.unrecognized-character</string>
+				<string>invalid.illegal.unrecognized-character.ocamllex</string>
+			</array>
 			<key>match</key>
 			<string>(’|‘|“|”)</string>
 			<key>name</key>
@@ -179,16 +295,38 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.action</string>
+								<string>punctuation.definition.action.begin</string>
+								<string>punctuation.definition.action.begin.ocamllex</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.action.begin.ocamllex</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.action</string>
+						<string>meta.action.ocamllex</string>
+					</array>
 					<key>end</key>
 					<string>(})</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.action</string>
+								<string>punctuation.definition.action.end</string>
+								<string>punctuation.definition.action.end.ocamllex</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.action.end.ocamllex</string>
 						</dict>
@@ -210,15 +348,37 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.ocamllex</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.char</string>
+								<string>punctuation.definition.char.begin</string>
+								<string>punctuation.definition.char.begin.ocamllex</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.char.begin.ocamllex</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.char</string>
+								<string>punctuation.definition.char.end</string>
+								<string>punctuation.definition.char.end.ocamllex</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.char.end.ocamllex</string>
 						</dict>
@@ -235,15 +395,35 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.block</string>
+						<string>comment.block.ocaml</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>comment</string>
+								<string>comment.block</string>
+								<string>comment.block.empty</string>
+								<string>comment.block.empty.ocaml</string>
+							</array>
 							<key>name</key>
 							<string>comment.block.empty.ocaml</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>comment</string>
+								<string>comment.block</string>
+								<string>comment.block.empty</string>
+								<string>comment.block.empty.ocaml</string>
+							</array>
 							<key>name</key>
 							<string>comment.block.empty.ocaml</string>
 						</dict>
@@ -256,6 +436,12 @@
 				<dict>
 					<key>begin</key>
 					<string>\(\*</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.block</string>
+						<string>comment.block.ocaml</string>
+					</array>
 					<key>end</key>
 					<string>\*\)</string>
 					<key>name</key>
@@ -271,6 +457,15 @@
 				<dict>
 					<key>begin</key>
 					<string>(?=[^\\])(&quot;)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.block</string>
+						<string>comment.block.string</string>
+						<string>comment.block.string.quoted</string>
+						<string>comment.block.string.quoted.double</string>
+						<string>comment.block.string.quoted.double.ocaml</string>
+					</array>
 					<key>end</key>
 					<string>&quot;</string>
 					<key>name</key>
@@ -278,6 +473,16 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>comment</string>
+								<string>comment.block</string>
+								<string>comment.block.string</string>
+								<string>comment.block.string.constant</string>
+								<string>comment.block.string.constant.character</string>
+								<string>comment.block.string.constant.character.escape</string>
+								<string>comment.block.string.constant.character.escape.ocaml</string>
+							</array>
 							<key>match</key>
 							<string>\\(x[a-fA-F0-9][a-fA-F0-9]|[0-2]\d\d|[bnrt'&quot;\\])</string>
 							<key>name</key>
@@ -298,16 +503,39 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.sub-pattern</string>
+								<string>punctuation.definition.sub-pattern.begin</string>
+								<string>punctuation.definition.sub-pattern.begin.ocamllex</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.sub-pattern.begin.ocamllex</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.pattern</string>
+						<string>meta.pattern.sub-pattern</string>
+						<string>meta.pattern.sub-pattern.ocamllex</string>
+					</array>
 					<key>end</key>
 					<string>(\))</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.sub-pattern</string>
+								<string>punctuation.definition.sub-pattern.end</string>
+								<string>punctuation.definition.sub-pattern.end.ocamllex</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.sub-pattern.end.ocamllex</string>
 						</dict>
@@ -323,24 +551,55 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.pattern</string>
+						<string>entity.name.type.pattern.reference</string>
+						<string>entity.name.type.pattern.reference.stupid-goddamn-hack</string>
+						<string>entity.name.type.pattern.reference.stupid-goddamn-hack.ocamllex</string>
+					</array>
 					<key>match</key>
 					<string>[a-z][a-zA-Z0-9'_]</string>
 					<key>name</key>
 					<string>entity.name.type.pattern.reference.stupid-goddamn-hack.ocamllex</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.pattern</string>
+						<string>keyword.other.pattern.ocamllex</string>
+					</array>
 					<key>match</key>
 					<string>\bas\b</string>
 					<key>name</key>
 					<string>keyword.other.pattern.ocamllex</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.language</string>
+						<string>constant.language.eof</string>
+						<string>constant.language.eof.ocamllex</string>
+					</array>
 					<key>match</key>
 					<string>eof</string>
 					<key>name</key>
 					<string>constant.language.eof.ocamllex</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.language</string>
+						<string>constant.language.universal-match</string>
+						<string>constant.language.universal-match.ocamllex</string>
+					</array>
 					<key>match</key>
 					<string>_</string>
 					<key>name</key>
@@ -353,21 +612,52 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.character-class</string>
+								<string>punctuation.definition.character-class.begin</string>
+								<string>punctuation.definition.character-class.begin.ocamllex</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.character-class.begin.ocamllex</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.character-class</string>
+								<string>punctuation.definition.character-class.negation</string>
+								<string>punctuation.definition.character-class.negation.ocamllex</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.character-class.negation.ocamllex</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.pattern</string>
+						<string>meta.pattern.character-class</string>
+						<string>meta.pattern.character-class.ocamllex</string>
+					</array>
 					<key>end</key>
 					<string>(])(?!\')</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.character-class</string>
+								<string>punctuation.definition.character-class.end</string>
+								<string>punctuation.definition.character-class.end.ocamllex</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.character-class.end.ocamllex</string>
 						</dict>
@@ -377,6 +667,14 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.character-class</string>
+								<string>punctuation.separator.character-class.range</string>
+								<string>punctuation.separator.character-class.range.ocamllex</string>
+							</array>
 							<key>match</key>
 							<string>-</string>
 							<key>name</key>
@@ -389,12 +687,28 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.pattern</string>
+						<string>keyword.operator.pattern.modifier</string>
+						<string>keyword.operator.pattern.modifier.ocamllex</string>
+					</array>
 					<key>match</key>
 					<string>\*|\+|\?</string>
 					<key>name</key>
 					<string>keyword.operator.pattern.modifier.ocamllex</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.pattern</string>
+						<string>keyword.operator.pattern.alternation</string>
+						<string>keyword.operator.pattern.alternation.ocamllex</string>
+					</array>
 					<key>match</key>
 					<string>\|</string>
 					<key>name</key>
@@ -421,16 +735,39 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.ocaml</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.ocaml</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.ocamllex</string>
+					</array>
 					<key>end</key>
 					<string>(&quot;)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.ocaml</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.ocaml</string>
 						</dict>
@@ -440,24 +777,56 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.string</string>
+								<string>punctuation.separator.string.ignore-eol</string>
+								<string>punctuation.separator.string.ignore-eol.ocaml</string>
+							</array>
 							<key>match</key>
 							<string>\\$[ \t]*</string>
 							<key>name</key>
 							<string>punctuation.separator.string.ignore-eol.ocaml</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.character</string>
+								<string>constant.character.string</string>
+								<string>constant.character.string.escape</string>
+								<string>constant.character.string.escape.ocaml</string>
+							</array>
 							<key>match</key>
 							<string>\\(x[a-fA-F0-9][a-fA-F0-9]|[0-2]\d\d|[bnrt'&quot;\\])</string>
 							<key>name</key>
 							<string>constant.character.string.escape.ocaml</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.character</string>
+								<string>constant.character.regexp</string>
+								<string>constant.character.regexp.escape</string>
+								<string>constant.character.regexp.escape.ocaml</string>
+							</array>
 							<key>match</key>
 							<string>\\[\|\(\)1-9$^.*+?\[\]]</string>
 							<key>name</key>
 							<string>constant.character.regexp.escape.ocaml</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.character</string>
+								<string>invalid.illegal.character.string</string>
+								<string>invalid.illegal.character.string.escape</string>
+							</array>
 							<key>match</key>
 							<string>\\(?!(x[a-fA-F0-9][a-fA-F0-9]|[0-2]\d\d|[bnrt'&quot;\\]|[\|\(\)1-9$^.*+?\[\]]|$[ \t]*))(?:.)</string>
 							<key>name</key>

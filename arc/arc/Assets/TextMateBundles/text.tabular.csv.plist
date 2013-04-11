@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>CSV</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>csv</string>
@@ -30,15 +34,22 @@
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.field</string>
+								<string>punctuation.definition.field.csv</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.field.csv</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>
-											this field uses &quot;s and is thus able to enclose
-											newlines or commas
-										</string>
+																										this field uses &quot;s and is thus able to enclose
+																										newlines or commas
+																									</string>
 					<key>contentName</key>
 					<string>meta.tabular.field.quoted.csv</string>
 					<key>end</key>
@@ -47,11 +58,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.field</string>
+								<string>punctuation.definition.field.csv</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.field.csv</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.tabular</string>
+								<string>punctuation.separator.tabular.field</string>
+								<string>punctuation.separator.tabular.field.csv</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.tabular.field.csv</string>
 						</dict>
@@ -59,6 +85,14 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.character</string>
+								<string>constant.character.escape</string>
+								<string>constant.character.escape.straight-quote</string>
+								<string>constant.character.escape.straight-quote.csv</string>
+							</array>
 							<key>match</key>
 							<string>&quot;&quot;</string>
 							<key>name</key>
@@ -77,12 +111,28 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.tabular</string>
+								<string>punctuation.separator.tabular.field</string>
+								<string>punctuation.separator.tabular.field.csv</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.tabular.field.csv</string>
 						</dict>
 					</dict>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.tabular</string>
+						<string>punctuation.separator.tabular.field</string>
+						<string>punctuation.separator.tabular.field.csv</string>
+					</array>
 					<key>match</key>
 					<string>,</string>
 					<key>name</key>
@@ -94,6 +144,14 @@
 		<dict>
 			<key>begin</key>
 			<string>^(?!$)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tabular</string>
+				<string>meta.tabular.row</string>
+				<string>meta.tabular.row.header</string>
+				<string>meta.tabular.row.header.csv</string>
+			</array>
 			<key>end</key>
 			<string>$</string>
 			<key>name</key>
@@ -110,6 +168,13 @@
 		<dict>
 			<key>begin</key>
 			<string>^(?!$)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tabular</string>
+				<string>meta.tabular.row</string>
+				<string>meta.tabular.row.csv</string>
+			</array>
 			<key>end</key>
 			<string>$</string>
 			<key>name</key>
@@ -126,6 +191,13 @@
 		<dict>
 			<key>begin</key>
 			<string>^</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tabular</string>
+				<string>meta.tabular.table</string>
+				<string>meta.tabular.table.csv</string>
+			</array>
 			<key>end</key>
 			<string>^$not possible$^</string>
 			<key>name</key>
@@ -143,14 +215,22 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.table</string>
+								<string>punctuation.separator.table.row</string>
+								<string>punctuation.separator.table.row.csv</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.table.row.csv</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>
-											everything after the first row is not a header
-										</string>
+																										everything after the first row is not a header
+																									</string>
 					<key>end</key>
 					<string>^$not possible$^</string>
 					<key>patterns</key>
@@ -160,6 +240,14 @@
 							<string>#row</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.table</string>
+								<string>punctuation.separator.table.row</string>
+								<string>punctuation.separator.table.row.csv</string>
+							</array>
 							<key>match</key>
 							<string>\n</string>
 							<key>name</key>

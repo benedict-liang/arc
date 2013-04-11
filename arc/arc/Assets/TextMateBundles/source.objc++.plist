@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Objective-C++</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>mm</string>
@@ -10,10 +14,10 @@
 	</array>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-			 /\*\*(?!\*)
-			|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))
-			|^@(interface|protocol|implementation)\b
-		</string>
+						 /\*\*(?!\*)
+						|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))
+						|^@(interface|protocol|implementation)\b
+					</string>
 	<key>foldingStopMarker</key>
 	<string>(?&lt;!\*)\*\*/|^\s*\}|^@end\b</string>
 	<key>keyEquivalent</key>

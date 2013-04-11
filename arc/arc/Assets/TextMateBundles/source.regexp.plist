@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Regular Expression</string>
+	</array>
 	<key>comment</key>
 	<string>Matches Oniguruma's Ruby regexp syntax (TextMate uses Oniguruma in Ruby mode).</string>
 	<key>fileTypes</key>
@@ -19,12 +23,25 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.regexp</string>
+			</array>
 			<key>match</key>
 			<string>\|</string>
 			<key>name</key>
 			<string>keyword.operator.regexp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.anchors</string>
+				<string>keyword.control.anchors.regexp</string>
+			</array>
 			<key>match</key>
 			<string>\\[bBAZzG^$]</string>
 			<key>name</key>
@@ -41,6 +58,13 @@
 		<dict>
 			<key>begin</key>
 			<string>\[(?:\^?\])?</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.set</string>
+				<string>keyword.control.set.regexp</string>
+			</array>
 			<key>end</key>
 			<string>\]</string>
 			<key>name</key>
@@ -56,12 +80,26 @@
 					<string>#escaped_char</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.range</string>
+						<string>constant.other.range.regexp</string>
+					</array>
 					<key>match</key>
 					<string>.-.</string>
 					<key>name</key>
 					<string>constant.other.range.regexp</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.intersection</string>
+						<string>keyword.operator.intersection.regexp</string>
+					</array>
 					<key>match</key>
 					<string>.&amp;&amp;.</string>
 					<key>name</key>
@@ -72,6 +110,12 @@
 		<dict>
 			<key>begin</key>
 			<string>\(</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.regexp</string>
+				<string>string.regexp.group</string>
+			</array>
 			<key>end</key>
 			<string>\)</string>
 			<key>name</key>
@@ -83,12 +127,26 @@
 					<string>source.regexp</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.assertion</string>
+						<string>constant.other.assertion.regexp</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;=\()\?(&lt;[=!]|&gt;|=|:|!)</string>
 					<key>name</key>
 					<string>constant.other.assertion.regexp</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.number-sign</string>
+						<string>comment.line.number-sign.regexp</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;=\()\?#</string>
 					<key>name</key>
@@ -97,18 +155,39 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.backref-and-recursion</string>
+				<string>keyword.other.backref-and-recursion.regexp</string>
+			</array>
 			<key>match</key>
 			<string>\\(\n\d+|\k\w+|(?&lt;!\|)\g\w+)</string>
 			<key>name</key>
 			<string>keyword.other.backref-and-recursion.regexp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.escape</string>
+				<string>constant.character.escape.regexp</string>
+			</array>
 			<key>match</key>
 			<string>\\([tvnrbfae]|[0-8]{3}|x\H\H\{7\H{7}\}|x\H\H|c\d+|C-\d+|M-\d+|M-\\C-\d+)</string>
 			<key>name</key>
 			<string>constant.character.escape.regexp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.quantifier</string>
+				<string>keyword.operator.quantifier.regexp</string>
+			</array>
 			<key>match</key>
 			<string>((?&lt;!\()[?*+][?+]?)|\{\d*,\d*\}</string>
 			<key>name</key>
@@ -119,6 +198,13 @@
 	<dict>
 		<key>character_class</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.character-class</string>
+				<string>keyword.control.character-class.regexp</string>
+			</array>
 			<key>match</key>
 			<string>\\[wWsSdDhH]</string>
 			<key>name</key>
@@ -126,6 +212,13 @@
 		</dict>
 		<key>escaped_char</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.escape</string>
+				<string>constant.character.escape.regexp</string>
+			</array>
 			<key>comment</key>
 			<string>escaped character</string>
 			<key>match</key>

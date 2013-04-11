@@ -17,7 +17,7 @@ static RootFolder *sharedRootFolder = nil;
 @implementation RootFolder
 
 // Synthesize properties from protocol.
-@synthesize name=_name, path=_path, parent=_parent;
+@synthesize name=_name, path=_path, parent=_parent, isRemovable=_isRemovable;
 
 + (RootFolder *)sharedRootFolder
 {
@@ -34,6 +34,7 @@ static RootFolder *sharedRootFolder = nil;
         _name = [localRoot name];
         _path = [localRoot path];
         _parent = nil;
+        _isRemovable = NO;
     }
     return self;
 }
@@ -51,6 +52,13 @@ static RootFolder *sharedRootFolder = nil;
     return _contents;
 }
 
+// Returns the size of this object.
+// Folders should return the number of objects within, Files their size in B.
+- (int)size
+{
+    return [_contents count];
+}
+
 // Initialises this object with the given name, path, and parent.
 - (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent
 {
@@ -62,6 +70,10 @@ static RootFolder *sharedRootFolder = nil;
 // at that path.
 - (id<FileSystemObject>)objectAtPath:(NSString *)path
 {
+    if ([path isEqualToString:_path]) {
+        return self;
+    }
+    
     // If we have DropBox, check if it's in the DropBox folder.
     if ([[DBAccountManager sharedManager] linkedAccount]) {
         id<FileSystemObject> dropBoxObject = [[DropBoxRootFolder sharedDropBoxRootFolder] objectAtPath:path];

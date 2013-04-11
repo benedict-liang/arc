@@ -12,7 +12,7 @@
 const float SIZE_LEFTBAR_WIDTH = 200;
 const float SIZE_TOOLBAR_HEIGHT = 44;
 const CGSize SIZE_POPOVER = {200,300};
-
+const float SIZE_TOOLBAR_ICON_WIDTH = 30;
 // Defaults
 const CGColorRef* DEFAULT_TEXT_COLOR = {0};
 
@@ -43,6 +43,11 @@ NSString* const SYNTAXES_FILE_LIST = @"syntaxesFileList.txt";
 
 // Bundle Conf
 NSString* const BUNDLE_CONF = @"BundleConf.plist";
+
+// Tabs
+const int TAB_DROPBOX = 0;
+const int TAB_DOCUMENTS = 1;
+const int TAB_SETTINGS = 2;
 
 @implementation Constants
 @end

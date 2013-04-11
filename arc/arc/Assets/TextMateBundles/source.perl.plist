@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Perl</string>
+	</array>
 	<key>comment</key>
 	<string></string>
 	<key>fileTypes</key>
@@ -31,10 +35,24 @@
 		<dict>
 			<key>begin</key>
 			<string>^=</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.documentation</string>
+				<string>comment.block.documentation.perl</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.perl</string>
 				</dict>
@@ -61,16 +79,37 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.compile</string>
+						<string>string.regexp.compile.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.regexp.compile.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.regexp-option</string>
+						<string>keyword.control.regexp-option.perl</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.regexp-option.perl</string>
 				</dict>
@@ -80,15 +119,36 @@
 				<dict>
 					<key>begin</key>
 					<string>(qr)\s*\{</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.compile</string>
+						<string>string.regexp.compile.nested_braces</string>
+						<string>string.regexp.compile.nested_braces.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.perl</string>
+							</array>
 							<key>name</key>
 							<string>support.function.perl</string>
 						</dict>
@@ -116,15 +176,36 @@
 				<dict>
 					<key>begin</key>
 					<string>(qr)\s*\[</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.compile</string>
+						<string>string.regexp.compile.nested_brackets</string>
+						<string>string.regexp.compile.nested_brackets.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.perl</string>
+							</array>
 							<key>name</key>
 							<string>support.function.perl</string>
 						</dict>
@@ -152,15 +233,36 @@
 				<dict>
 					<key>begin</key>
 					<string>(qr)\s*&lt;</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.compile</string>
+						<string>string.regexp.compile.nested_ltgt</string>
+						<string>string.regexp.compile.nested_ltgt.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.perl</string>
+							</array>
 							<key>name</key>
 							<string>support.function.perl</string>
 						</dict>
@@ -188,15 +290,36 @@
 				<dict>
 					<key>begin</key>
 					<string>(qr)\s*\(</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.compile</string>
+						<string>string.regexp.compile.nested_parens</string>
+						<string>string.regexp.compile.nested_parens.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.perl</string>
+							</array>
 							<key>name</key>
 							<string>support.function.perl</string>
 						</dict>
@@ -224,15 +347,36 @@
 				<dict>
 					<key>begin</key>
 					<string>(qr)\s*\'</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.compile</string>
+						<string>string.regexp.compile.single-quote</string>
+						<string>string.regexp.compile.single-quote.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.perl</string>
+							</array>
 							<key>name</key>
 							<string>support.function.perl</string>
 						</dict>
@@ -252,15 +396,36 @@
 				<dict>
 					<key>begin</key>
 					<string>(qr)\s*([^\s\w\'\{\[\(\&lt;])</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.compile</string>
+						<string>string.regexp.compile.simple-delimiter</string>
+						<string>string.regexp.compile.simple-delimiter.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.perl</string>
+							</array>
 							<key>name</key>
 							<string>support.function.perl</string>
 						</dict>
@@ -300,16 +465,37 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.replace</string>
+						<string>string.regexp.replace.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.regexp.replace.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.regexp-option</string>
+						<string>keyword.control.regexp-option.perl</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.regexp-option.perl</string>
 				</dict>
@@ -319,15 +505,35 @@
 				<dict>
 					<key>begin</key>
 					<string>(s)\s*\{</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.nested_braces</string>
+						<string>string.regexp.nested_braces.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.perl</string>
+							</array>
 							<key>name</key>
 							<string>support.function.perl</string>
 						</dict>
@@ -351,15 +557,35 @@
 				<dict>
 					<key>begin</key>
 					<string>(s)\s*\[</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.nested_brackets</string>
+						<string>string.regexp.nested_brackets.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.perl</string>
+							</array>
 							<key>name</key>
 							<string>support.function.perl</string>
 						</dict>
@@ -383,15 +609,35 @@
 				<dict>
 					<key>begin</key>
 					<string>(s)\s*&lt;</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.nested_ltgt</string>
+						<string>string.regexp.nested_ltgt.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.perl</string>
+							</array>
 							<key>name</key>
 							<string>support.function.perl</string>
 						</dict>
@@ -415,15 +661,35 @@
 				<dict>
 					<key>begin</key>
 					<string>(s)\s*\(</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.nested_parens</string>
+						<string>string.regexp.nested_parens.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.perl</string>
+							</array>
 							<key>name</key>
 							<string>support.function.perl</string>
 						</dict>
@@ -447,10 +713,25 @@
 				<dict>
 					<key>begin</key>
 					<string>\{</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.format</string>
+						<string>string.regexp.format.nested_braces</string>
+						<string>string.regexp.format.nested_braces.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
@@ -478,10 +759,25 @@
 				<dict>
 					<key>begin</key>
 					<string>\[</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.format</string>
+						<string>string.regexp.format.nested_brackets</string>
+						<string>string.regexp.format.nested_brackets.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
@@ -509,10 +805,25 @@
 				<dict>
 					<key>begin</key>
 					<string>&lt;</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.format</string>
+						<string>string.regexp.format.nested_ltgt</string>
+						<string>string.regexp.format.nested_ltgt.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
@@ -540,10 +851,25 @@
 				<dict>
 					<key>begin</key>
 					<string>\(</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.format</string>
+						<string>string.regexp.format.nested_parens</string>
+						<string>string.regexp.format.nested_parens.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
@@ -571,10 +897,25 @@
 				<dict>
 					<key>begin</key>
 					<string>'</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.format</string>
+						<string>string.regexp.format.single_quote</string>
+						<string>string.regexp.format.single_quote.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
@@ -586,6 +927,13 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.character</string>
+								<string>constant.character.escape</string>
+								<string>constant.character.escape.perl</string>
+							</array>
 							<key>match</key>
 							<string>\\['\\]</string>
 							<key>name</key>
@@ -596,10 +944,25 @@
 				<dict>
 					<key>begin</key>
 					<string>([^\s\w\[({&lt;;])</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.format</string>
+						<string>string.regexp.format.simple_delimiter</string>
+						<string>string.regexp.format.simple_delimiter.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
@@ -637,16 +1000,37 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.replace</string>
+						<string>string.regexp.replace.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.regexp.replace.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.regexp-option</string>
+						<string>keyword.control.regexp-option.perl</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.regexp-option.perl</string>
 				</dict>
@@ -656,15 +1040,36 @@
 				<dict>
 					<key>begin</key>
 					<string>(s\s*)([^\s\w\[({&lt;])</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.replaceXXX</string>
+						<string>string.regexp.replaceXXX.simple_delimiter</string>
+						<string>string.regexp.replaceXXX.simple_delimiter.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.perl</string>
+							</array>
 							<key>name</key>
 							<string>support.function.perl</string>
 						</dict>
@@ -684,10 +1089,26 @@
 				<dict>
 					<key>begin</key>
 					<string>'</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.replaceXXX</string>
+						<string>string.regexp.replaceXXX.format</string>
+						<string>string.regexp.replaceXXX.format.single_quote</string>
+						<string>string.regexp.replaceXXX.format.single_quote.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
@@ -699,6 +1120,14 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.character</string>
+								<string>constant.character.escape</string>
+								<string>constant.character.escape.perl</string>
+								<string>constant.character.escape.perl.perl</string>
+							</array>
 							<key>match</key>
 							<string>\\['\\]</string>
 							<key>name</key>
@@ -709,10 +1138,26 @@
 				<dict>
 					<key>begin</key>
 					<string>([^\s\w\[({&lt;])</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.replaceXXX</string>
+						<string>string.regexp.replaceXXX.format</string>
+						<string>string.regexp.replaceXXX.format.simple_delimiter</string>
+						<string>string.regexp.replaceXXX.format.simple_delimiter.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
@@ -746,16 +1191,37 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.replace</string>
+						<string>string.regexp.replace.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.regexp.replace.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.regexp-option</string>
+						<string>keyword.control.regexp-option.perl</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.regexp-option.perl</string>
 				</dict>
@@ -765,15 +1231,37 @@
 				<dict>
 					<key>begin</key>
 					<string>(s)\s*(.)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.replace</string>
+						<string>string.regexp.replace.extended</string>
+						<string>string.regexp.replace.extended.simple_delimiter</string>
+						<string>string.regexp.replace.extended.simple_delimiter.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.perl</string>
+							</array>
 							<key>name</key>
 							<string>support.function.perl</string>
 						</dict>
@@ -793,10 +1281,26 @@
 				<dict>
 					<key>begin</key>
 					<string>'</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.replace</string>
+						<string>string.regexp.replace.extended</string>
+						<string>string.regexp.replace.extended.simple_delimiter</string>
+						<string>string.regexp.replace.extended.simple_delimiter.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
@@ -816,10 +1320,26 @@
 				<dict>
 					<key>begin</key>
 					<string>(.)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.replace</string>
+						<string>string.regexp.replace.extended</string>
+						<string>string.regexp.replace.extended.simple_delimiter</string>
+						<string>string.regexp.replace.extended.simple_delimiter.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.perl</string>
 						</dict>
@@ -843,27 +1363,62 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.key</string>
+				<string>constant.other.key.perl</string>
+			</array>
 			<key>match</key>
 			<string>\b\w+\s*(?==&gt;)</string>
 			<key>name</key>
 			<string>constant.other.key.perl</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.bareword</string>
+				<string>constant.other.bareword.perl</string>
+			</array>
 			<key>match</key>
 			<string>(?&lt;={)\s*\w+\s*(?=})</string>
 			<key>name</key>
 			<string>constant.other.bareword.perl</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.regexp</string>
+				<string>string.regexp.find</string>
+				<string>string.regexp.find.perl</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
@@ -876,10 +1431,25 @@
 		<dict>
 			<key>begin</key>
 			<string>(?&lt;!\\)(\~\s*\/)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.regexp</string>
+				<string>string.regexp.find</string>
+				<string>string.regexp.find.extended</string>
+				<string>string.regexp.find.extended.perl</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
@@ -890,6 +1460,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.regexp-option</string>
+						<string>keyword.control.regexp-option.perl</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.regexp-option.perl</string>
 				</dict>
@@ -909,25 +1486,59 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.class</string>
+				<string>meta.class.perl</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.perl</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.class</string>
+						<string>entity.name.type.class.perl</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.type.class.perl</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.number-sign</string>
+						<string>comment.line.number-sign.perl</string>
+					</array>
 					<key>name</key>
 					<string>comment.line.number-sign.perl</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.perl</string>
 				</dict>
@@ -938,20 +1549,47 @@
 			<string>meta.class.perl</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.perl</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.sub</string>
+						<string>storage.type.sub.perl</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.sub.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.perl</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.perl</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.method</string>
+						<string>storage.type.method.perl</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.method.perl</string>
 				</dict>
@@ -962,20 +1600,47 @@
 			<string>meta.function.perl</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.perl</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.perl</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.perl</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.parameter</string>
+						<string>variable.parameter.function</string>
+						<string>variable.parameter.function.perl</string>
+					</array>
 					<key>name</key>
 					<string>variable.parameter.function.perl</string>
 				</dict>
@@ -988,6 +1653,11 @@
 		<dict>
 			<key>begin</key>
 			<string>^(?=(\t| {4}))</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.leading-tabs</string>
+			</array>
 			<key>end</key>
 			<string>(?=[^\t\s])</string>
 			<key>name</key>
@@ -999,11 +1669,21 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.odd-tab</string>
+							</array>
 							<key>name</key>
 							<string>meta.odd-tab</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.even-tab</string>
+							</array>
 							<key>name</key>
 							<string>meta.even-tab</string>
 						</dict>
@@ -1014,20 +1694,47 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.regexp</string>
+				<string>string.regexp.find-m</string>
+				<string>string.regexp.find-m.perl</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.perl</string>
+					</array>
 					<key>name</key>
 					<string>support.function.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
@@ -1044,16 +1751,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.regexp</string>
+				<string>string.regexp.find-m-paren</string>
+				<string>string.regexp.find-m-paren.perl</string>
+			</array>
 			<key>end</key>
 			<string>\)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -1083,16 +1813,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.regexp</string>
+				<string>string.regexp.find-m-brace</string>
+				<string>string.regexp.find-m-brace.perl</string>
+			</array>
 			<key>end</key>
 			<string>\}</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -1122,16 +1875,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.regexp</string>
+				<string>string.regexp.find-m-bracket</string>
+				<string>string.regexp.find-m-bracket.perl</string>
+			</array>
 			<key>end</key>
 			<string>\]</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -1161,16 +1937,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.regexp</string>
+				<string>string.regexp.find-m-ltgt</string>
+				<string>string.regexp.find-m-ltgt.perl</string>
+			</array>
 			<key>end</key>
 			<string>\&gt;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -1194,25 +1993,59 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.regexp</string>
+				<string>string.regexp.replace</string>
+				<string>string.regexp.replace.perl</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.perl</string>
+					</array>
 					<key>name</key>
 					<string>support.function.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>8</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
@@ -1223,36 +2056,75 @@
 			<string>string.regexp.replace.perl</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.perl</string>
+			</array>
 			<key>match</key>
 			<string>\b(__FILE__|__LINE__|__PACKAGE__)\b</string>
 			<key>name</key>
 			<string>constant.language.perl</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.perl</string>
+			</array>
 			<key>match</key>
 			<string>\b(continue|die|do|else|elsif|exit|for|foreach|goto|if|last|next|redo|return|select|unless|until|wait|while|switch|case|package|require|use|eval)\b</string>
 			<key>name</key>
 			<string>keyword.control.perl</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.modifier</string>
+				<string>storage.modifier.perl</string>
+			</array>
 			<key>match</key>
 			<string>\b(my|our|local)\b</string>
 			<key>name</key>
 			<string>storage.modifier.perl</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.filetest</string>
+				<string>keyword.operator.filetest.perl</string>
+			</array>
 			<key>match</key>
 			<string>(?&lt;!\w)\-[rwx0RWXOezsfdlpSbctugkTBMAC]\b</string>
 			<key>name</key>
 			<string>keyword.operator.filetest.perl</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.logical</string>
+				<string>keyword.operator.logical.perl</string>
+			</array>
 			<key>match</key>
 			<string>\b(and|or|xor|as)\b</string>
 			<key>name</key>
 			<string>keyword.operator.logical.perl</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.comparison</string>
+				<string>keyword.operator.comparison.perl</string>
+			</array>
 			<key>match</key>
 			<string>(&lt;=&gt;| =&gt;|-&gt;)</string>
 			<key>name</key>
@@ -1265,16 +2137,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.doublequote</string>
+						<string>string.unquoted.heredoc.doublequote.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.doublequote.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1306,16 +2200,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.doublequote</string>
+						<string>string.unquoted.heredoc.doublequote.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.doublequote.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1347,16 +2263,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.doublequote</string>
+						<string>string.unquoted.heredoc.doublequote.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.doublequote.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1388,16 +2326,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.doublequote</string>
+						<string>string.unquoted.heredoc.doublequote.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.doublequote.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1429,16 +2389,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.doublequote</string>
+						<string>string.unquoted.heredoc.doublequote.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.doublequote.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1470,16 +2452,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.doublequote</string>
+						<string>string.unquoted.heredoc.doublequote.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.doublequote.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1511,16 +2515,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.doublequote</string>
+						<string>string.unquoted.heredoc.doublequote.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.doublequote.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1548,16 +2574,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.quote</string>
+						<string>string.unquoted.heredoc.quote.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.quote.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1581,16 +2629,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.quote</string>
+						<string>string.unquoted.heredoc.quote.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.quote.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1614,16 +2684,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.quote</string>
+						<string>string.unquoted.heredoc.quote.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.quote.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1647,16 +2739,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.quote</string>
+						<string>string.unquoted.heredoc.quote.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.quote.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1680,16 +2794,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.quote</string>
+						<string>string.unquoted.heredoc.quote.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.quote.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1713,16 +2849,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.quote</string>
+						<string>string.unquoted.heredoc.quote.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.quote.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1746,16 +2904,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.quote</string>
+						<string>string.unquoted.heredoc.quote.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.quote.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1772,16 +2952,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.backtick</string>
+						<string>string.unquoted.heredoc.backtick.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.backtick.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1809,16 +3011,37 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1850,16 +3073,37 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1891,16 +3135,37 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1932,16 +3197,37 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -1973,16 +3259,37 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.perl</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.heredoc</string>
+						<string>string.unquoted.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.heredoc.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heredoc</string>
+						<string>punctuation.definition.heredoc.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heredoc.perl</string>
 				</dict>
@@ -2010,16 +3317,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.qq</string>
+				<string>string.quoted.other.qq.perl</string>
+			</array>
 			<key>end</key>
 			<string>\1</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2045,16 +3376,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.qx</string>
+				<string>string.interpolated.qx.perl</string>
+			</array>
 			<key>end</key>
 			<string>\1</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2080,16 +3434,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.qx</string>
+				<string>string.interpolated.qx.single-quote</string>
+				<string>string.interpolated.qx.single-quote.perl</string>
+			</array>
 			<key>end</key>
 			<string>'</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2111,16 +3489,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.perl</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2146,16 +3547,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.q</string>
+				<string>string.quoted.other.q.perl</string>
+			</array>
 			<key>end</key>
 			<string>\1</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2177,16 +3602,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.single</string>
+				<string>string.quoted.single.perl</string>
+			</array>
 			<key>end</key>
 			<string>'</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2196,6 +3644,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.perl</string>
+					</array>
 					<key>match</key>
 					<string>\\['\\]</string>
 					<key>name</key>
@@ -2210,16 +3665,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.perl</string>
+			</array>
 			<key>end</key>
 			<string>`</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2245,16 +3722,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.qq-paren</string>
+				<string>string.quoted.other.qq-paren.perl</string>
+			</array>
 			<key>end</key>
 			<string>\)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2284,16 +3785,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.qq-brace</string>
+				<string>string.quoted.other.qq-brace.perl</string>
+			</array>
 			<key>end</key>
 			<string>\}</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2323,16 +3848,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.qq-bracket</string>
+				<string>string.quoted.other.qq-bracket.perl</string>
+			</array>
 			<key>end</key>
 			<string>\]</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2362,16 +3911,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.qq-ltgt</string>
+				<string>string.quoted.other.qq-ltgt.perl</string>
+			</array>
 			<key>end</key>
 			<string>\&gt;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2401,16 +3974,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.qx-paren</string>
+				<string>string.interpolated.qx-paren.perl</string>
+			</array>
 			<key>end</key>
 			<string>\)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2440,16 +4036,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.qx-brace</string>
+				<string>string.interpolated.qx-brace.perl</string>
+			</array>
 			<key>end</key>
 			<string>\}</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2479,16 +4098,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.qx-bracket</string>
+				<string>string.interpolated.qx-bracket.perl</string>
+			</array>
 			<key>end</key>
 			<string>\]</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2518,16 +4160,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.qx-ltgt</string>
+				<string>string.interpolated.qx-ltgt.perl</string>
+			</array>
 			<key>end</key>
 			<string>\&gt;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2557,16 +4222,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.q-paren</string>
+				<string>string.quoted.other.q-paren.perl</string>
+			</array>
 			<key>end</key>
 			<string>\)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2592,16 +4281,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.q-brace</string>
+				<string>string.quoted.other.q-brace.perl</string>
+			</array>
 			<key>end</key>
 			<string>\}</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2627,16 +4340,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.q-bracket</string>
+				<string>string.quoted.other.q-bracket.perl</string>
+			</array>
 			<key>end</key>
 			<string>\]</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2662,16 +4399,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.q-ltgt</string>
+				<string>string.quoted.other.q-ltgt.perl</string>
+			</array>
 			<key>end</key>
 			<string>\&gt;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2697,16 +4458,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.program-block</string>
+				<string>string.unquoted.program-block.perl</string>
+			</array>
 			<key>end</key>
 			<string>$</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.perl</string>
 				</dict>
@@ -2721,15 +4505,35 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.perl</string>
+					</array>
 					<key>name</key>
 					<string>support.function.perl</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.format</string>
+						<string>entity.name.function.format.perl</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.format.perl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.format</string>
+				<string>meta.format.perl</string>
+			</array>
 			<key>end</key>
 			<string>^\.\s*$</string>
 			<key>name</key>
@@ -2747,6 +4551,12 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.perl</string>
+			</array>
 			<key>match</key>
 			<string>\b(ARGV|DATA|ENV|SIG|STDERR|STDIN|STDOUT|atan2|bind|binmode|bless|caller|chdir|chmod|chomp|chop|chown|chr|chroot|close|closedir|cmp|connect|cos|crypt|dbmclose|dbmopen|defined|delete|dump|each|endgrent|endhostent|endnetent|endprotoent|endpwent|endservent|eof|eq|eval|exec|exists|exp|fcntl|fileno|flock|fork|format|formline|ge|getc|getgrent|getgrgid|getgrnam|gethostbyaddr|gethostbyname|gethostent|getlogin|getnetbyaddr|getnetbyname|getnetent|getpeername|getpgrp|getppid|getpriority|getprotobyname|getprotobynumber|getprotoent|getpwent|getpwnam|getpwuid|getservbyname|getservbyport|getservent|getsockname|getsockopt|glob|gmtime|grep|gt|hex|import|index|int|ioctl|join|keys|kill|lc|lcfirst|le|length|link|listen|local|localtime|log|lstat|lt|m|map|mkdir|msgctl|msgget|msgrcv|msgsnd|ne|no|oct|open|opendir|ord|pack|pipe|pop|pos|print|printf|push|q|qq|quotemeta|qw|qx|rand|read|readdir|readlink|recv|ref|rename|reset|reverse|rewinddir|rindex|rmdir|s|scalar|seek|seekdir|semctl|semget|semop|send|setgrent|sethostent|setnetent|setpgrp|setpriority|setprotoent|setpwent|setservent|setsockopt|shift|shmctl|shmget|shmread|shmwrite|shutdown|sin|sleep|socket|socketpair|sort|splice|split|sprintf|sqrt|srand|stat|study|substr|symlink|syscall|sysopen|sysread|system|syswrite|tell|telldir|tie|tied|time|times|tr|truncate|uc|ucfirst|umask|undef|unlink|unpack|unshift|untie|utime|values|vec|waitpid|wantarray|warn|write|y|q|qw|qq|qx)\b</string>
 			<key>name</key>
@@ -2757,6 +4567,13 @@
 	<dict>
 		<key>escaped_char</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.escape</string>
+				<string>constant.character.escape.perl</string>
+			</array>
 			<key>match</key>
 			<string>\\.</string>
 			<key>name</key>
@@ -2767,15 +4584,36 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.comment</string>
+						<string>meta.comment.full-line</string>
+						<string>meta.comment.full-line.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>comment</string>
+								<string>comment.line</string>
+								<string>comment.line.number-sign</string>
+								<string>comment.line.number-sign.perl</string>
+							</array>
 							<key>name</key>
 							<string>comment.line.number-sign.perl</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.perl</string>
 						</dict>
@@ -2786,10 +4624,24 @@
 					<string>meta.comment.full-line.perl</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.number-sign</string>
+						<string>comment.line.number-sign.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.perl</string>
 						</dict>
@@ -2809,6 +4661,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.perl</string>
 				</dict>
@@ -2835,6 +4694,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.perl</string>
 				</dict>
@@ -2865,6 +4731,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.perl</string>
 				</dict>
@@ -2891,6 +4764,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.perl</string>
 				</dict>
@@ -2921,6 +4801,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.perl</string>
 				</dict>
@@ -2943,6 +4830,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.perl</string>
 				</dict>
@@ -2969,6 +4863,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.perl</string>
 				</dict>
@@ -2995,6 +4896,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.scope</string>
+						<string>punctuation.section.scope.perl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.scope.perl</string>
 				</dict>
@@ -3022,10 +4930,25 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.regexp</string>
+						<string>variable.other.regexp.match</string>
+						<string>variable.other.regexp.match.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.perl</string>
 						</dict>
@@ -3036,10 +4959,25 @@
 					<string>variable.other.regexp.match.perl</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.regexp</string>
+						<string>variable.other.regexp.pre-match</string>
+						<string>variable.other.regexp.pre-match.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.perl</string>
 						</dict>
@@ -3050,10 +4988,25 @@
 					<string>variable.other.regexp.pre-match.perl</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.regexp</string>
+						<string>variable.other.regexp.post-match</string>
+						<string>variable.other.regexp.post-match.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.perl</string>
 						</dict>
@@ -3064,10 +5017,25 @@
 					<string>variable.other.regexp.post-match.perl</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.regexp</string>
+						<string>variable.other.regexp.last-paren-match</string>
+						<string>variable.other.regexp.last-paren-match.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.perl</string>
 						</dict>
@@ -3078,10 +5046,25 @@
 					<string>variable.other.regexp.last-paren-match.perl</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.readwrite</string>
+						<string>variable.other.readwrite.list-separator</string>
+						<string>variable.other.readwrite.list-separator.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.perl</string>
 						</dict>
@@ -3092,10 +5075,25 @@
 					<string>variable.other.readwrite.list-separator.perl</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.predefined</string>
+						<string>variable.other.predefined.program-name</string>
+						<string>variable.other.predefined.program-name.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.perl</string>
 						</dict>
@@ -3106,10 +5104,24 @@
 					<string>variable.other.predefined.program-name.perl</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.predefined</string>
+						<string>variable.other.predefined.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.perl</string>
 						</dict>
@@ -3120,10 +5132,24 @@
 					<string>variable.other.predefined.perl</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.subpattern</string>
+						<string>variable.other.subpattern.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.perl</string>
 						</dict>
@@ -3134,10 +5160,25 @@
 					<string>variable.other.subpattern.perl</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.readwrite</string>
+						<string>variable.other.readwrite.global</string>
+						<string>variable.other.readwrite.global.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.perl</string>
 						</dict>
@@ -3148,15 +5189,37 @@
 					<string>variable.other.readwrite.global.perl</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.readwrite</string>
+						<string>variable.other.readwrite.global</string>
+						<string>variable.other.readwrite.global.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.perl</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.perl</string>
 						</dict>
@@ -3167,10 +5230,26 @@
 					<string>variable.other.readwrite.global.perl</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.readwrite</string>
+						<string>variable.other.readwrite.global</string>
+						<string>variable.other.readwrite.global.special</string>
+						<string>variable.other.readwrite.global.special.perl</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.perl</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.perl</string>
 						</dict>

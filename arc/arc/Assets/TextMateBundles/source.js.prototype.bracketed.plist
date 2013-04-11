@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Prototype &amp; Script</string>
+		<string>Prototype &amp; Script.aculo</string>
+		<string>Prototype &amp; Script.aculo.us (JavaScript) Bracketed</string>
+	</array>
 	<key>comment</key>
 	<string>This is a wrapper for and adds nested bracket scopes to Prototype &amp; Script.aculo.us (JavaScript). It also allow for embedded ruby source. By Thomas Aylott</string>
 	<key>foldingStartMarker</key>
@@ -21,16 +27,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.begin</string>
+						<string>punctuation.section.embedded.begin.js</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.begin.js</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.source</string>
+				<string>meta.source.embedded</string>
+				<string>meta.source.embedded.return-value</string>
+			</array>
 			<key>end</key>
 			<string>%&gt;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.end</string>
+						<string>punctuation.section.embedded.end.js</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.end.js</string>
 				</dict>
@@ -42,6 +71,14 @@
 				<dict>
 					<key>begin</key>
 					<string>(?&lt;=&lt;%=)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>source</string>
+						<string>source.ruby</string>
+						<string>source.ruby.rails</string>
+						<string>source.ruby.rails.embedded</string>
+						<string>source.ruby.rails.embedded.html</string>
+					</array>
 					<key>end</key>
 					<string>(?=%&gt;)</string>
 					<key>name</key>
@@ -63,16 +100,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.begin</string>
+						<string>punctuation.section.embedded.begin.js</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.begin.js</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.source</string>
+				<string>meta.source.embedded</string>
+			</array>
 			<key>end</key>
 			<string>%&gt;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.end</string>
+						<string>punctuation.section.embedded.end.js</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.end.js</string>
 				</dict>
@@ -84,6 +143,14 @@
 				<dict>
 					<key>begin</key>
 					<string>(?&lt;=&lt;%)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>source</string>
+						<string>source.ruby</string>
+						<string>source.ruby.rails</string>
+						<string>source.ruby.rails.embedded</string>
+						<string>source.ruby.rails.embedded.html</string>
+					</array>
 					<key>end</key>
 					<string>(?=%&gt;)</string>
 					<key>name</key>
@@ -120,10 +187,24 @@
 				<dict>
 					<key>begin</key>
 					<string>/\*(?=@)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.block</string>
+						<string>comment.block.conditional</string>
+						<string>comment.block.conditional.js</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.js</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.js</string>
 						</dict>
@@ -141,10 +222,24 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.conditional</string>
+						<string>keyword.control.conditional.js</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.keyword</string>
+								<string>punctuation.definition.keyword.js</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.keyword.js</string>
 						</dict>
@@ -155,10 +250,24 @@
 					<string>keyword.control.conditional.js</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.conditional</string>
+						<string>keyword.operator.conditional.js</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.keyword</string>
+								<string>punctuation.definition.keyword.js</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.keyword.js</string>
 						</dict>
@@ -169,10 +278,24 @@
 					<string>keyword.operator.conditional.js</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.conditional</string>
+						<string>variable.other.conditional.js</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.js</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.js</string>
 						</dict>
@@ -191,15 +314,41 @@
 				<dict>
 					<key>begin</key>
 					<string>(?&lt;=\))\s*+(\{)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.group</string>
+						<string>meta.group.braces</string>
+						<string>meta.group.braces.curly</string>
+						<string>meta.group.braces.curly.function</string>
+						<string>meta.group.braces.curly.function.js</string>
+						<string>meta.group.braces.curly.function.js.prototype</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.function</string>
+								<string>punctuation.section.function.js</string>
+								<string>punctuation.section.function.js.prototype</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.function.js.prototype</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.objects</string>
+								<string>punctuation.separator.objects.js</string>
+								<string>punctuation.separator.objects.js.prototype</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.objects.js.prototype</string>
 						</dict>
@@ -219,15 +368,37 @@
 				<dict>
 					<key>begin</key>
 					<string>(\{)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.group</string>
+						<string>meta.group.braces</string>
+						<string>meta.group.braces.curly</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.scope</string>
+								<string>punctuation.section.scope.js</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.scope.js</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.objects</string>
+								<string>punctuation.separator.objects.js</string>
+								<string>punctuation.separator.objects.js.prototype</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.objects.js.prototype</string>
 						</dict>
@@ -243,6 +414,15 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>invalid</string>
+										<string>invalid.illegal</string>
+										<string>invalid.illegal.delimiter</string>
+										<string>invalid.illegal.delimiter.object</string>
+										<string>invalid.illegal.delimiter.object.comma</string>
+										<string>invalid.illegal.delimiter.object.comma.js</string>
+									</array>
 									<key>name</key>
 									<string>invalid.illegal.delimiter.object.comma.js</string>
 								</dict>
@@ -255,26 +435,67 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>string</string>
+										<string>string.quoted</string>
+										<string>string.quoted.double</string>
+										<string>string.quoted.double.js</string>
+										<string>string.quoted.double.js.prototype</string>
+									</array>
 									<key>name</key>
 									<string>string.quoted.double.js.prototype</string>
 								</dict>
 								<key>2</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.string</string>
+										<string>punctuation.definition.string.js</string>
+										<string>punctuation.definition.string.js.prototype</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.string.js.prototype</string>
 								</dict>
 								<key>3</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>constant</string>
+										<string>constant.other</string>
+										<string>constant.other.object</string>
+										<string>constant.other.object.key</string>
+										<string>constant.other.object.key.js</string>
+										<string>constant.other.object.key.js.prototype</string>
+									</array>
 									<key>name</key>
 									<string>constant.other.object.key.js.prototype</string>
 								</dict>
 								<key>4</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.string</string>
+										<string>punctuation.definition.string.js</string>
+										<string>punctuation.definition.string.js.prototype</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.string.js.prototype</string>
 								</dict>
 								<key>5</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.separator</string>
+										<string>punctuation.separator.objects</string>
+										<string>punctuation.separator.objects.js</string>
+										<string>punctuation.separator.objects.js.prototype</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.separator.objects.js.prototype</string>
 								</dict>
@@ -287,26 +508,67 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>string</string>
+										<string>string.quoted</string>
+										<string>string.quoted.single</string>
+										<string>string.quoted.single.js</string>
+										<string>string.quoted.single.js.prototype</string>
+									</array>
 									<key>name</key>
 									<string>string.quoted.single.js.prototype</string>
 								</dict>
 								<key>2</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.string</string>
+										<string>punctuation.definition.string.js</string>
+										<string>punctuation.definition.string.js.prototype</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.string.js.prototype</string>
 								</dict>
 								<key>3</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>constant</string>
+										<string>constant.other</string>
+										<string>constant.other.object</string>
+										<string>constant.other.object.key</string>
+										<string>constant.other.object.key.js</string>
+										<string>constant.other.object.key.js.prototype</string>
+									</array>
 									<key>name</key>
 									<string>constant.other.object.key.js.prototype</string>
 								</dict>
 								<key>4</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.string</string>
+										<string>punctuation.definition.string.js</string>
+										<string>punctuation.definition.string.js.prototype</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.string.js.prototype</string>
 								</dict>
 								<key>5</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.separator</string>
+										<string>punctuation.separator.objects</string>
+										<string>punctuation.separator.objects.js</string>
+										<string>punctuation.separator.objects.js.prototype</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.separator.objects.js.prototype</string>
 								</dict>
@@ -319,11 +581,28 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>constant</string>
+										<string>constant.other</string>
+										<string>constant.other.object</string>
+										<string>constant.other.object.key</string>
+										<string>constant.other.object.key.js</string>
+										<string>constant.other.object.key.js.prototype</string>
+									</array>
 									<key>name</key>
 									<string>constant.other.object.key.js.prototype</string>
 								</dict>
 								<key>2</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.separator</string>
+										<string>punctuation.separator.objects</string>
+										<string>punctuation.separator.objects.js</string>
+										<string>punctuation.separator.objects.js.prototype</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.separator.objects.js.prototype</string>
 								</dict>
@@ -340,10 +619,24 @@
 				<dict>
 					<key>begin</key>
 					<string>(\()(?!\))</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.group</string>
+						<string>meta.group.braces</string>
+						<string>meta.group.braces.round</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.scope</string>
+								<string>punctuation.section.scope.js</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.scope.js</string>
 						</dict>
@@ -363,10 +656,24 @@
 				<dict>
 					<key>begin</key>
 					<string>(\[)(?!\])</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.group</string>
+						<string>meta.group.braces</string>
+						<string>meta.group.braces.square</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.scope</string>
+								<string>punctuation.section.scope.js</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.scope.js</string>
 						</dict>

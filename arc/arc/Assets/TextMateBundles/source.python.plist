@@ -2,12 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Python</string>
+	</array>
 	<key>comment</key>
 	<string>
-		todo:
-			list comprehension / generator comprehension scope.
-			
-		</string>
+					todo:
+						list comprehension / generator comprehension scope.
+						
+					</string>
 	<key>fileTypes</key>
 	<array>
 		<string>py</string>
@@ -31,10 +35,24 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.number-sign</string>
+				<string>comment.line.number-sign.python</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.python</string>
 				</dict>
@@ -45,60 +63,139 @@
 			<string>comment.line.number-sign.python</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.integer</string>
+				<string>constant.numeric.integer.long</string>
+				<string>constant.numeric.integer.long.hexadecimal</string>
+				<string>constant.numeric.integer.long.hexadecimal.python</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:(0x\h*)L)</string>
 			<key>name</key>
 			<string>constant.numeric.integer.long.hexadecimal.python</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.integer</string>
+				<string>constant.numeric.integer.hexadecimal</string>
+				<string>constant.numeric.integer.hexadecimal.python</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:(0x\h*))</string>
 			<key>name</key>
 			<string>constant.numeric.integer.hexadecimal.python</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.integer</string>
+				<string>constant.numeric.integer.long</string>
+				<string>constant.numeric.integer.long.octal</string>
+				<string>constant.numeric.integer.long.octal.python</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:(0[0-7]+)L)</string>
 			<key>name</key>
 			<string>constant.numeric.integer.long.octal.python</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.integer</string>
+				<string>constant.numeric.integer.octal</string>
+				<string>constant.numeric.integer.octal.python</string>
+			</array>
 			<key>match</key>
 			<string>\b(0[0-7]+)</string>
 			<key>name</key>
 			<string>constant.numeric.integer.octal.python</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.complex</string>
+				<string>constant.numeric.complex.python</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:(((\d+(\.(?=[^a-zA-Z_])\d*)?|(?&lt;=[^0-9a-zA-Z_])\.\d+)(e[\-\+]?\d+)?))J)</string>
 			<key>name</key>
 			<string>constant.numeric.complex.python</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.float</string>
+				<string>constant.numeric.float.python</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:(\d+\.\d*(e[\-\+]?\d+)?))(?=[^a-zA-Z_])</string>
 			<key>name</key>
 			<string>constant.numeric.float.python</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.float</string>
+				<string>constant.numeric.float.python</string>
+			</array>
 			<key>match</key>
 			<string>(?&lt;=[^0-9a-zA-Z_])(?i:(\.\d+(e[\-\+]?\d+)?))</string>
 			<key>name</key>
 			<string>constant.numeric.float.python</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.float</string>
+				<string>constant.numeric.float.python</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:(\d+e[\-\+]?\d+))</string>
 			<key>name</key>
 			<string>constant.numeric.float.python</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.integer</string>
+				<string>constant.numeric.integer.long</string>
+				<string>constant.numeric.integer.long.decimal</string>
+				<string>constant.numeric.integer.long.decimal.python</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:([1-9]+[0-9]*|0)L)</string>
 			<key>name</key>
 			<string>constant.numeric.integer.long.decimal.python</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.integer</string>
+				<string>constant.numeric.integer.decimal</string>
+				<string>constant.numeric.integer.decimal.python</string>
+			</array>
 			<key>match</key>
 			<string>\b([1-9]+[0-9]*|0)</string>
 			<key>name</key>
@@ -109,6 +206,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.modifier</string>
+						<string>storage.modifier.global</string>
+						<string>storage.modifier.global.python</string>
+					</array>
 					<key>name</key>
 					<string>storage.modifier.global.python</string>
 				</dict>
@@ -121,11 +225,26 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.import</string>
+						<string>keyword.control.import.python</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.import.python</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.import</string>
+						<string>keyword.control.import.from</string>
+						<string>keyword.control.import.from.python</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.import.from.python</string>
 				</dict>
@@ -134,6 +253,13 @@
 			<string>\b(?:(import)|(from))\b</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.flow</string>
+				<string>keyword.control.flow.python</string>
+			</array>
 			<key>comment</key>
 			<string>keywords that delimit flow blocks</string>
 			<key>match</key>
@@ -142,6 +268,13 @@
 			<string>keyword.control.flow.python</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.flow</string>
+				<string>keyword.control.flow.python</string>
+			</array>
 			<key>comment</key>
 			<string>keywords that alter flow from within a block</string>
 			<key>match</key>
@@ -150,6 +283,13 @@
 			<string>keyword.control.flow.python</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.logical</string>
+				<string>keyword.operator.logical.python</string>
+			</array>
 			<key>comment</key>
 			<string>keyword operators that evaluate to True or False</string>
 			<key>match</key>
@@ -162,6 +302,12 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.python</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.python</string>
 				</dict>
@@ -172,24 +318,53 @@
 			<string>\b(as|assert|del|exec|print)\b</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.assignment</string>
+				<string>keyword.operator.assignment.augmented</string>
+				<string>keyword.operator.assignment.augmented.python</string>
+			</array>
 			<key>match</key>
 			<string>\+\=|-\=|\*\=|/\=|//\=|%\=|&amp;\=|\|\=|\^\=|&gt;&gt;\=|&lt;&lt;\=|\*\*\=</string>
 			<key>name</key>
 			<string>keyword.operator.assignment.augmented.python</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.arithmetic</string>
+				<string>keyword.operator.arithmetic.python</string>
+			</array>
 			<key>match</key>
 			<string>\+|\-|\*|\*\*|/|//|%|&lt;&lt;|&gt;&gt;|&amp;|\||\^|~</string>
 			<key>name</key>
 			<string>keyword.operator.arithmetic.python</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.comparison</string>
+				<string>keyword.operator.comparison.python</string>
+			</array>
 			<key>match</key>
 			<string>&lt;|&gt;|&lt;\=|&gt;\=|\=\=|!\=|&lt;&gt;</string>
 			<key>name</key>
 			<string>keyword.operator.comparison.python</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.assignment</string>
+				<string>keyword.operator.assignment.python</string>
+			</array>
 			<key>match</key>
 			<string>\=</string>
 			<key>name</key>
@@ -202,10 +377,24 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.class</string>
+						<string>storage.type.class.python</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.class.python</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.class</string>
+				<string>meta.class.old-style</string>
+				<string>meta.class.old-style.python</string>
+			</array>
 			<key>contentName</key>
 			<string>entity.name.type.class.python</string>
 			<key>end</key>
@@ -214,6 +403,14 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.class</string>
+						<string>punctuation.section.class.begin</string>
+						<string>punctuation.section.class.begin.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.class.begin.python</string>
 				</dict>
@@ -235,26 +432,62 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.class</string>
+						<string>storage.type.class.python</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.class.python</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.class</string>
+				<string>meta.class.python</string>
+			</array>
 			<key>end</key>
 			<string>(\))\s*(?:(\:)|(.*$\n?))</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.inheritance</string>
+						<string>punctuation.definition.inheritance.end</string>
+						<string>punctuation.definition.inheritance.end.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.inheritance.end.python</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.class</string>
+						<string>punctuation.section.class.begin</string>
+						<string>punctuation.section.class.begin.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.class.begin.python</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.missing-section-begin</string>
+						<string>invalid.illegal.missing-section-begin.python</string>
+					</array>
 					<key>name</key>
 					<string>invalid.illegal.missing-section-begin.python</string>
 				</dict>
@@ -285,6 +518,14 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.inheritance</string>
+								<string>punctuation.definition.inheritance.begin</string>
+								<string>punctuation.definition.inheritance.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.inheritance.begin.python</string>
 						</dict>
@@ -306,6 +547,13 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.separator</string>
+										<string>punctuation.separator.inheritance</string>
+										<string>punctuation.separator.inheritance.python</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.separator.inheritance.python</string>
 								</dict>
@@ -329,21 +577,49 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.class</string>
+						<string>storage.type.class.python</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.class.python</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.class</string>
+				<string>meta.class.python</string>
+			</array>
 			<key>end</key>
 			<string>(\()|\s*($\n?|#.*$\n?)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.inheritance</string>
+						<string>punctuation.definition.inheritance.begin</string>
+						<string>punctuation.definition.inheritance.begin.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.inheritance.begin.python</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.missing-inheritance</string>
+						<string>invalid.illegal.missing-inheritance.python</string>
+					</array>
 					<key>name</key>
 					<string>invalid.illegal.missing-inheritance.python</string>
 				</dict>
@@ -376,26 +652,62 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.function</string>
+						<string>storage.type.function.python</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.function.python</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.python</string>
+			</array>
 			<key>end</key>
 			<string>(\))\s*(?:(\:)|(.*$\n?))</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.end</string>
+						<string>punctuation.definition.parameters.end.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.end.python</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.function</string>
+						<string>punctuation.section.function.begin</string>
+						<string>punctuation.section.function.begin.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.function.begin.python</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.missing-section-begin</string>
+						<string>invalid.illegal.missing-section-begin.python</string>
+					</array>
 					<key>name</key>
 					<string>invalid.illegal.missing-section-begin.python</string>
 				</dict>
@@ -426,6 +738,14 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.begin</string>
+								<string>punctuation.definition.parameters.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.begin.python</string>
 						</dict>
@@ -445,11 +765,25 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>variable</string>
+										<string>variable.parameter</string>
+										<string>variable.parameter.function</string>
+										<string>variable.parameter.function.python</string>
+									</array>
 									<key>name</key>
 									<string>variable.parameter.function.python</string>
 								</dict>
 								<key>2</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.separator</string>
+										<string>punctuation.separator.parameters</string>
+										<string>punctuation.separator.parameters.python</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.separator.parameters.python</string>
 								</dict>
@@ -468,21 +802,49 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.function</string>
+						<string>storage.type.function.python</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.function.python</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.python</string>
+			</array>
 			<key>end</key>
 			<string>(\()|\s*($\n?|#.*$\n?)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.begin</string>
+						<string>punctuation.definition.parameters.begin.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.begin.python</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.missing-parameters</string>
+						<string>invalid.illegal.missing-parameters.python</string>
+					</array>
 					<key>name</key>
 					<string>invalid.illegal.missing-parameters.python</string>
 				</dict>
@@ -511,6 +873,13 @@
 		<dict>
 			<key>begin</key>
 			<string>^\s*(?=@\s*[A-Za-z_][A-Za-z0-9_]*(?:\.[a-zA-Z_][a-zA-Z_0-9]*)*\s*\()</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.decorator</string>
+				<string>meta.function.decorator.python</string>
+			</array>
 			<key>comment</key>
 			<string>a decorator may be a function call which returns a decorator.</string>
 			<key>end</key>
@@ -519,6 +888,14 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.end</string>
+						<string>punctuation.definition.arguments.end.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.end.python</string>
 				</dict>
@@ -534,6 +911,13 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.decorator</string>
+								<string>punctuation.definition.decorator.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.decorator.python</string>
 						</dict>
@@ -557,6 +941,14 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.arguments</string>
+								<string>punctuation.definition.arguments.begin</string>
+								<string>punctuation.definition.arguments.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.arguments.begin.python</string>
 						</dict>
@@ -582,6 +974,13 @@
 		<dict>
 			<key>begin</key>
 			<string>^\s*(?=@\s*[A-Za-z_][A-Za-z0-9_]*(?:\.[a-zA-Z_][a-zA-Z_0-9]*)*)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.decorator</string>
+				<string>meta.function.decorator.python</string>
+			</array>
 			<key>contentName</key>
 			<string>entity.name.function.decorator.python</string>
 			<key>end</key>
@@ -597,6 +996,13 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.decorator</string>
+								<string>punctuation.definition.decorator.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.decorator.python</string>
 						</dict>
@@ -620,10 +1026,24 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.begin</string>
+						<string>punctuation.definition.arguments.begin.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.begin.python</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function-call</string>
+				<string>meta.function-call.python</string>
+			</array>
 			<key>contentName</key>
 			<string>meta.function-call.arguments.python</string>
 			<key>end</key>
@@ -632,6 +1052,14 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.end</string>
+						<string>punctuation.definition.arguments.end.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.end.python</string>
 				</dict>
@@ -653,12 +1081,26 @@
 		<dict>
 			<key>begin</key>
 			<string>(?=[A-Za-z_][A-Za-z0-9_]*(?:\.[a-zA-Z_][a-zA-Z_0-9]*)*\s*\()</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function-call</string>
+				<string>meta.function-call.python</string>
+			</array>
 			<key>end</key>
 			<string>(\))</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.end</string>
+						<string>punctuation.definition.arguments.end.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.end.python</string>
 				</dict>
@@ -687,6 +1129,14 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.arguments</string>
+								<string>punctuation.definition.arguments.begin</string>
+								<string>punctuation.definition.arguments.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.arguments.begin.python</string>
 						</dict>
@@ -712,6 +1162,12 @@
 		<dict>
 			<key>begin</key>
 			<string>(?=[A-Za-z_][A-Za-z0-9_]*(?:\.[a-zA-Z_][a-zA-Z_0-9]*)*\s*\[)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.item-access</string>
+				<string>meta.item-access.python</string>
+			</array>
 			<key>end</key>
 			<string>(\])</string>
 			<key>name</key>
@@ -738,6 +1194,14 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.arguments</string>
+								<string>punctuation.definition.arguments.begin</string>
+								<string>punctuation.definition.arguments.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.arguments.begin.python</string>
 						</dict>
@@ -750,6 +1214,14 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.arguments</string>
+								<string>punctuation.definition.arguments.end</string>
+								<string>punctuation.definition.arguments.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.arguments.end.python</string>
 						</dict>
@@ -771,10 +1243,24 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.begin</string>
+						<string>punctuation.definition.arguments.begin.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.begin.python</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.item-access</string>
+				<string>meta.item-access.python</string>
+			</array>
 			<key>contentName</key>
 			<string>meta.item-access.arguments.python</string>
 			<key>end</key>
@@ -783,6 +1269,14 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.end</string>
+						<string>punctuation.definition.arguments.end.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.end.python</string>
 				</dict>
@@ -802,6 +1296,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.function</string>
+						<string>storage.type.function.python</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.function.python</string>
 				</dict>
@@ -814,6 +1315,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.class</string>
+						<string>storage.type.class.python</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.class.python</string>
 				</dict>
@@ -830,6 +1338,12 @@
 			<string>#language_variables</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.python</string>
+			</array>
 			<key>match</key>
 			<string>\b(None|True|False|Ellipsis|NotImplemented)\b</string>
 			<key>name</key>
@@ -865,16 +1379,38 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.list</string>
+						<string>punctuation.definition.list.begin</string>
+						<string>punctuation.definition.list.begin.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.list.begin.python</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.empty-list</string>
+						<string>meta.empty-list.python</string>
+					</array>
 					<key>name</key>
 					<string>meta.empty-list.python</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.list</string>
+						<string>punctuation.definition.list.end</string>
+						<string>punctuation.definition.list.end.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.list.end.python</string>
 				</dict>
@@ -889,16 +1425,39 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.list</string>
+						<string>punctuation.definition.list.begin</string>
+						<string>punctuation.definition.list.begin.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.list.begin.python</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.structure</string>
+				<string>meta.structure.list</string>
+				<string>meta.structure.list.python</string>
+			</array>
 			<key>end</key>
 			<string>(\])</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.list</string>
+						<string>punctuation.definition.list.end</string>
+						<string>punctuation.definition.list.end.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.list.end.python</string>
 				</dict>
@@ -918,6 +1477,13 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.list</string>
+								<string>punctuation.separator.list.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.list.python</string>
 						</dict>
@@ -933,20 +1499,49 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.structure</string>
+				<string>meta.structure.tuple</string>
+				<string>meta.structure.tuple.python</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tuple</string>
+						<string>punctuation.definition.tuple.begin</string>
+						<string>punctuation.definition.tuple.begin.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tuple.begin.python</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.empty-tuple</string>
+						<string>meta.empty-tuple.python</string>
+					</array>
 					<key>name</key>
 					<string>meta.empty-tuple.python</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tuple</string>
+						<string>punctuation.definition.tuple.end</string>
+						<string>punctuation.definition.tuple.end.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tuple.end.python</string>
 				</dict>
@@ -957,20 +1552,49 @@
 			<string>meta.structure.tuple.python</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.structure</string>
+				<string>meta.structure.dictionary</string>
+				<string>meta.structure.dictionary.python</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.dictionary</string>
+						<string>punctuation.definition.dictionary.begin</string>
+						<string>punctuation.definition.dictionary.begin.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.dictionary.begin.python</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.empty-dictionary</string>
+						<string>meta.empty-dictionary.python</string>
+					</array>
 					<key>name</key>
 					<string>meta.empty-dictionary.python</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.dictionary</string>
+						<string>punctuation.definition.dictionary.end</string>
+						<string>punctuation.definition.dictionary.end.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.dictionary.end.python</string>
 				</dict>
@@ -987,16 +1611,39 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.dictionary</string>
+						<string>punctuation.definition.dictionary.begin</string>
+						<string>punctuation.definition.dictionary.begin.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.dictionary.begin.python</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.structure</string>
+				<string>meta.structure.dictionary</string>
+				<string>meta.structure.dictionary.python</string>
+			</array>
 			<key>end</key>
 			<string>(\})</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.dictionary</string>
+						<string>punctuation.definition.dictionary.end</string>
+						<string>punctuation.definition.dictionary.end.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.dictionary.end.python</string>
 				</dict>
@@ -1016,6 +1663,14 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.valuepair</string>
+								<string>punctuation.separator.valuepair.dictionary</string>
+								<string>punctuation.separator.valuepair.dictionary.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.valuepair.dictionary.python</string>
 						</dict>
@@ -1039,6 +1694,13 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.dictionary</string>
+								<string>punctuation.separator.dictionary.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.dictionary.python</string>
 						</dict>
@@ -1058,6 +1720,13 @@
 	<dict>
 		<key>builtin_exceptions</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.type</string>
+				<string>support.type.exception</string>
+				<string>support.type.exception.python</string>
+			</array>
 			<key>match</key>
 			<string>(?x)\b((Arithmetic|Assertion|Attribute|EOF|Environment|FloatingPoint|IO|Import|Indentation|Index|Key|Lookup|Memory|Name|OS|Overflow|NotImplemented|Reference|Runtime|Standard|Syntax|System|Tab|Type|UnboundLocal|Unicode(Translate|Encode|Decode)?|Value|ZeroDivision)Error|(Deprecation|Future|Overflow|PendingDeprecation|Runtime|Syntax|User)?Warning|KeyboardInterrupt|NotImplemented|StopIteration|SystemExit|(Base)?Exception)\b</string>
 			<key>name</key>
@@ -1065,30 +1734,50 @@
 		</dict>
 		<key>builtin_functions</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.builtin</string>
+				<string>support.function.builtin.python</string>
+			</array>
 			<key>match</key>
 			<string>(?x)\b(
-			                __import__|all|abs|any|apply|callable|chr|cmp|coerce|compile|delattr|dir|
-			                divmod|eval|execfile|filter|getattr|globals|hasattr|hash|hex|id|
-			                input|intern|isinstance|issubclass|iter|len|locals|map|max|min|oct|
-			                ord|pow|range|raw_input|reduce|reload|repr|round|setattr|sorted|
-			                sum|unichr|vars|zip
-						)\b</string>
+												                __import__|all|abs|any|apply|callable|chr|cmp|coerce|compile|delattr|dir|
+												                divmod|eval|execfile|filter|getattr|globals|hasattr|hash|hex|id|
+												                input|intern|isinstance|issubclass|iter|len|locals|map|max|min|oct|
+												                ord|pow|range|raw_input|reduce|reload|repr|round|setattr|sorted|
+												                sum|unichr|vars|zip
+															)\b</string>
 			<key>name</key>
 			<string>support.function.builtin.python</string>
 		</dict>
 		<key>builtin_types</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.type</string>
+				<string>support.type.python</string>
+			</array>
 			<key>match</key>
 			<string>(?x)\b(
-							basestring|bool|buffer|classmethod|complex|dict|enumerate|file|
-							float|frozenset|int|list|long|object|open|property|reversed|set|
-							slice|staticmethod|str|super|tuple|type|unicode|xrange
-						)\b</string>
+																basestring|bool|buffer|classmethod|complex|dict|enumerate|file|
+																float|frozenset|int|list|long|object|open|property|reversed|set|
+																slice|staticmethod|str|super|tuple|type|unicode|xrange
+															)\b</string>
 			<key>name</key>
 			<string>support.type.python</string>
 		</dict>
 		<key>constant_placeholder</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.placeholder</string>
+				<string>constant.other.placeholder.python</string>
+			</array>
 			<key>match</key>
 			<string>(?i:%(\([a-z_]+\))?#?0?\-?[ ]?\+?([0-9]*|\*)(\.([0-9]*|\*))?[hL]?[a-z%])</string>
 			<key>name</key>
@@ -1101,6 +1790,12 @@
 				<dict>
 					<key>begin</key>
 					<string>^\s*(?=[uU]?[rR]?&quot;&quot;&quot;)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.block</string>
+						<string>comment.block.python</string>
+					</array>
 					<key>end</key>
 					<string>(?&lt;=&quot;&quot;&quot;)</string>
 					<key>name</key>
@@ -1116,6 +1811,12 @@
 				<dict>
 					<key>begin</key>
 					<string>^\s*(?=[uU]?[rR]?''')</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.block</string>
+						<string>comment.block.python</string>
+					</array>
 					<key>end</key>
 					<string>(?&lt;=''')</string>
 					<key>name</key>
@@ -1244,66 +1945,170 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.hex</string>
+						<string>constant.character.escape.hex.python</string>
+					</array>
 					<key>name</key>
 					<string>constant.character.escape.hex.python</string>
 				</dict>
 				<key>10</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.linefeed</string>
+						<string>constant.character.escape.linefeed.python</string>
+					</array>
 					<key>name</key>
 					<string>constant.character.escape.linefeed.python</string>
 				</dict>
 				<key>11</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.return</string>
+						<string>constant.character.escape.return.python</string>
+					</array>
 					<key>name</key>
 					<string>constant.character.escape.return.python</string>
 				</dict>
 				<key>12</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.tab</string>
+						<string>constant.character.escape.tab.python</string>
+					</array>
 					<key>name</key>
 					<string>constant.character.escape.tab.python</string>
 				</dict>
 				<key>13</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.vertical-tab</string>
+						<string>constant.character.escape.vertical-tab.python</string>
+					</array>
 					<key>name</key>
 					<string>constant.character.escape.vertical-tab.python</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.octal</string>
+						<string>constant.character.escape.octal.python</string>
+					</array>
 					<key>name</key>
 					<string>constant.character.escape.octal.python</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.newline</string>
+						<string>constant.character.escape.newline.python</string>
+					</array>
 					<key>name</key>
 					<string>constant.character.escape.newline.python</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.backlash</string>
+						<string>constant.character.escape.backlash.python</string>
+					</array>
 					<key>name</key>
 					<string>constant.character.escape.backlash.python</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.double-quote</string>
+						<string>constant.character.escape.double-quote.python</string>
+					</array>
 					<key>name</key>
 					<string>constant.character.escape.double-quote.python</string>
 				</dict>
 				<key>6</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.single-quote</string>
+						<string>constant.character.escape.single-quote.python</string>
+					</array>
 					<key>name</key>
 					<string>constant.character.escape.single-quote.python</string>
 				</dict>
 				<key>7</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.bell</string>
+						<string>constant.character.escape.bell.python</string>
+					</array>
 					<key>name</key>
 					<string>constant.character.escape.bell.python</string>
 				</dict>
 				<key>8</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.backspace</string>
+						<string>constant.character.escape.backspace.python</string>
+					</array>
 					<key>name</key>
 					<string>constant.character.escape.backspace.python</string>
 				</dict>
 				<key>9</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.formfeed</string>
+						<string>constant.character.escape.formfeed.python</string>
+					</array>
 					<key>name</key>
 					<string>constant.character.escape.formfeed.python</string>
 				</dict>
@@ -1317,16 +2122,43 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.unicode</string>
+						<string>constant.character.escape.unicode.16-bit-hex</string>
+						<string>constant.character.escape.unicode.16-bit-hex.python</string>
+					</array>
 					<key>name</key>
 					<string>constant.character.escape.unicode.16-bit-hex.python</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.unicode</string>
+						<string>constant.character.escape.unicode.32-bit-hex</string>
+						<string>constant.character.escape.unicode.32-bit-hex.python</string>
+					</array>
 					<key>name</key>
 					<string>constant.character.escape.unicode.32-bit-hex.python</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.unicode</string>
+						<string>constant.character.escape.unicode.name</string>
+						<string>constant.character.escape.unicode.name.python</string>
+					</array>
 					<key>name</key>
 					<string>constant.character.escape.unicode.name.python</string>
 				</dict>
@@ -1371,6 +2203,13 @@
 		</dict>
 		<key>illegal_names</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>invalid</string>
+				<string>invalid.illegal</string>
+				<string>invalid.illegal.name</string>
+				<string>invalid.illegal.name.python</string>
+			</array>
 			<key>match</key>
 			<string>\b(and|as|assert|break|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|not|or|pass|print|raise|return|try|while|with|yield)\b</string>
 			<key>name</key>
@@ -1384,11 +2223,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.parameter</string>
+						<string>variable.parameter.function</string>
+						<string>variable.parameter.function.python</string>
+					</array>
 					<key>name</key>
 					<string>variable.parameter.function.python</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.assignment</string>
+						<string>keyword.operator.assignment.python</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.assignment.python</string>
 				</dict>
@@ -1399,6 +2252,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.parameters</string>
+						<string>punctuation.separator.parameters.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.parameters.python</string>
 				</dict>
@@ -1413,6 +2273,12 @@
 		</dict>
 		<key>language_variables</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.language</string>
+				<string>variable.language.python</string>
+			</array>
 			<key>match</key>
 			<string>\b(self|cls)\b</string>
 			<key>name</key>
@@ -1424,11 +2290,26 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.continuation</string>
+						<string>punctuation.separator.continuation.line</string>
+						<string>punctuation.separator.continuation.line.python</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.continuation.line.python</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.unexpected-text</string>
+						<string>invalid.illegal.unexpected-text.python</string>
+					</array>
 					<key>name</key>
 					<string>invalid.illegal.unexpected-text.python</string>
 				</dict>
@@ -1438,25 +2319,39 @@
 		</dict>
 		<key>magic_function_names</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.magic</string>
+				<string>support.function.magic.python</string>
+			</array>
 			<key>comment</key>
 			<string>these methods have magic interpretation by python and are generally called indirectly through syntactic constructs</string>
 			<key>match</key>
 			<string>(?x)\b(__(?:
-									abs|add|and|call|cmp|coerce|complex|contains|del|delattr|
-									delete|delitem|delslice|div|divmod|enter|eq|exit|float|
-									floordiv|ge|get|getattr|getattribute|getitem|getslice|gt|
-									hash|hex|iadd|iand|idiv|ifloordiv|ilshift|imod|imul|init|
-									int|invert|ior|ipow|irshift|isub|iter|itruediv|ixor|le|len|
-									long|lshift|lt|mod|mul|ne|neg|new|nonzero|oct|or|pos|pow|
-									radd|rand|rdiv|rdivmod|repr|rfloordiv|rlshift|rmod|rmul|ror|
-									rpow|rrshift|rshift|rsub|rtruediv|rxor|set|setattr|setitem|
-									setslice|str|sub|truediv|unicode|xor
-								)__)\b</string>
+																		abs|add|and|call|cmp|coerce|complex|contains|del|delattr|
+																		delete|delitem|delslice|div|divmod|enter|eq|exit|float|
+																		floordiv|ge|get|getattr|getattribute|getitem|getslice|gt|
+																		hash|hex|iadd|iand|idiv|ifloordiv|ilshift|imod|imul|init|
+																		int|invert|ior|ipow|irshift|isub|iter|itruediv|ixor|le|len|
+																		long|lshift|lt|mod|mul|ne|neg|new|nonzero|oct|or|pos|pow|
+																		radd|rand|rdiv|rdivmod|repr|rfloordiv|rlshift|rmod|rmul|ror|
+																		rpow|rrshift|rshift|rsub|rtruediv|rxor|set|setattr|setitem|
+																		setslice|str|sub|truediv|unicode|xor
+																	)__)\b</string>
 			<key>name</key>
 			<string>support.function.magic.python</string>
 		</dict>
 		<key>magic_variable_names</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.variable</string>
+				<string>support.variable.magic</string>
+				<string>support.variable.magic.python</string>
+			</array>
 			<key>comment</key>
 			<string>magic variables which a class/module may have.</string>
 			<key>match</key>
@@ -1475,15 +2370,39 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.string</string>
+								<string>storage.type.string.python</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.string.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.python</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.block</string>
+						<string>string.quoted.double.block.unicode-raw</string>
+						<string>string.quoted.double.block.unicode-raw.python</string>
+					</array>
 					<key>comment</key>
 					<string>single quoted unicode-raw string</string>
 					<key>end</key>
@@ -1492,11 +2411,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.empty-string</string>
+								<string>meta.empty-string.double</string>
+								<string>meta.empty-string.double.python</string>
+							</array>
 							<key>name</key>
 							<string>meta.empty-string.double.python</string>
 						</dict>
@@ -1530,15 +2464,39 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.string</string>
+								<string>storage.type.string.python</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.string.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.python</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.block</string>
+						<string>string.quoted.double.block.raw</string>
+						<string>string.quoted.double.block.raw.python</string>
+					</array>
 					<key>comment</key>
 					<string>double quoted raw string</string>
 					<key>end</key>
@@ -1547,11 +2505,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.empty-string</string>
+								<string>meta.empty-string.double</string>
+								<string>meta.empty-string.double.python</string>
+							</array>
 							<key>name</key>
 							<string>meta.empty-string.double.python</string>
 						</dict>
@@ -1581,15 +2554,39 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.string</string>
+								<string>storage.type.string.python</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.string.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.python</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.block</string>
+						<string>string.quoted.double.block.unicode</string>
+						<string>string.quoted.double.block.unicode.python</string>
+					</array>
 					<key>comment</key>
 					<string>double quoted unicode string</string>
 					<key>end</key>
@@ -1598,11 +2595,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.empty-string</string>
+								<string>meta.empty-string.double</string>
+								<string>meta.empty-string.double.python</string>
+							</array>
 							<key>name</key>
 							<string>meta.empty-string.double.python</string>
 						</dict>
@@ -1632,15 +2644,39 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.string</string>
+								<string>storage.type.string.python</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.string.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.python</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.single-line</string>
+						<string>string.quoted.double.single-line.unicode-raw</string>
+						<string>string.quoted.double.single-line.unicode-raw.python</string>
+					</array>
 					<key>comment</key>
 					<string>double-quoted raw string</string>
 					<key>end</key>
@@ -1649,16 +2685,38 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.empty-string</string>
+								<string>meta.empty-string.double</string>
+								<string>meta.empty-string.double.python</string>
+							</array>
 							<key>name</key>
 							<string>meta.empty-string.double.python</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.unclosed-string</string>
+								<string>invalid.illegal.unclosed-string.python</string>
+							</array>
 							<key>name</key>
 							<string>invalid.illegal.unclosed-string.python</string>
 						</dict>
@@ -1692,15 +2750,39 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.string</string>
+								<string>storage.type.string.python</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.string.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.python</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.single-line</string>
+						<string>string.quoted.double.single-line.raw</string>
+						<string>string.quoted.double.single-line.raw.python</string>
+					</array>
 					<key>comment</key>
 					<string>double-quoted raw string</string>
 					<key>end</key>
@@ -1709,16 +2791,38 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.empty-string</string>
+								<string>meta.empty-string.double</string>
+								<string>meta.empty-string.double.python</string>
+							</array>
 							<key>name</key>
 							<string>meta.empty-string.double.python</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.unclosed-string</string>
+								<string>invalid.illegal.unclosed-string.python</string>
+							</array>
 							<key>name</key>
 							<string>invalid.illegal.unclosed-string.python</string>
 						</dict>
@@ -1748,15 +2852,39 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.string</string>
+								<string>storage.type.string.python</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.string.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.python</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.single-line</string>
+						<string>string.quoted.double.single-line.raw</string>
+						<string>string.quoted.double.single-line.raw.python</string>
+					</array>
 					<key>comment</key>
 					<string>double-quoted raw string</string>
 					<key>end</key>
@@ -1765,16 +2893,38 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.empty-string</string>
+								<string>meta.empty-string.double</string>
+								<string>meta.empty-string.double.python</string>
+							</array>
 							<key>name</key>
 							<string>meta.empty-string.double.python</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.unclosed-string</string>
+								<string>invalid.illegal.unclosed-string.python</string>
+							</array>
 							<key>name</key>
 							<string>invalid.illegal.unclosed-string.python</string>
 						</dict>
@@ -1804,15 +2954,39 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.string</string>
+								<string>storage.type.string.python</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.string.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.python</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.single-line</string>
+						<string>string.quoted.double.single-line.unicode</string>
+						<string>string.quoted.double.single-line.unicode.python</string>
+					</array>
 					<key>comment</key>
 					<string>double quoted unicode string</string>
 					<key>end</key>
@@ -1821,16 +2995,38 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.empty-string</string>
+								<string>meta.empty-string.double</string>
+								<string>meta.empty-string.double.python</string>
+							</array>
 							<key>name</key>
 							<string>meta.empty-string.double.python</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.unclosed-string</string>
+								<string>invalid.illegal.unclosed-string.python</string>
+							</array>
 							<key>name</key>
 							<string>invalid.illegal.unclosed-string.python</string>
 						</dict>
@@ -1860,10 +3056,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.python</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.block</string>
+						<string>string.quoted.double.block.python</string>
+					</array>
 					<key>comment</key>
 					<string>double quoted string</string>
 					<key>end</key>
@@ -1872,11 +3084,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.empty-string</string>
+								<string>meta.empty-string.double</string>
+								<string>meta.empty-string.double.python</string>
+							</array>
 							<key>name</key>
 							<string>meta.empty-string.double.python</string>
 						</dict>
@@ -1902,10 +3129,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.python</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.single-line</string>
+						<string>string.quoted.double.single-line.python</string>
+					</array>
 					<key>comment</key>
 					<string>double quoted string</string>
 					<key>end</key>
@@ -1914,16 +3157,38 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.empty-string</string>
+								<string>meta.empty-string.double</string>
+								<string>meta.empty-string.double.python</string>
+							</array>
 							<key>name</key>
 							<string>meta.empty-string.double.python</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.unclosed-string</string>
+								<string>invalid.illegal.unclosed-string.python</string>
+							</array>
 							<key>name</key>
 							<string>invalid.illegal.unclosed-string.python</string>
 						</dict>
@@ -1949,20 +3214,51 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.single</string>
+						<string>string.quoted.single.single-line</string>
+						<string>string.quoted.single.single-line.python</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.python</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.empty-string</string>
+								<string>meta.empty-string.single</string>
+								<string>meta.empty-string.single.python</string>
+							</array>
 							<key>name</key>
 							<string>meta.empty-string.single.python</string>
 						</dict>
@@ -1979,15 +3275,39 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.string</string>
+								<string>storage.type.string.python</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.string.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.python</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.single</string>
+						<string>string.quoted.single.block</string>
+						<string>string.quoted.single.block.unicode-raw</string>
+						<string>string.quoted.single.block.unicode-raw.python</string>
+					</array>
 					<key>comment</key>
 					<string>single quoted unicode-raw string</string>
 					<key>end</key>
@@ -1996,11 +3316,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.empty-string</string>
+								<string>meta.empty-string.single</string>
+								<string>meta.empty-string.single.python</string>
+							</array>
 							<key>name</key>
 							<string>meta.empty-string.single.python</string>
 						</dict>
@@ -2034,15 +3369,39 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.string</string>
+								<string>storage.type.string.python</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.string.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.python</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.single</string>
+						<string>string.quoted.single.block</string>
+						<string>string.quoted.single.block.raw</string>
+						<string>string.quoted.single.block.raw.python</string>
+					</array>
 					<key>comment</key>
 					<string>single quoted raw string</string>
 					<key>end</key>
@@ -2051,11 +3410,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.empty-string</string>
+								<string>meta.empty-string.single</string>
+								<string>meta.empty-string.single.python</string>
+							</array>
 							<key>name</key>
 							<string>meta.empty-string.single.python</string>
 						</dict>
@@ -2085,15 +3459,39 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.string</string>
+								<string>storage.type.string.python</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.string.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.python</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.single</string>
+						<string>string.quoted.single.block</string>
+						<string>string.quoted.single.block.unicode</string>
+						<string>string.quoted.single.block.unicode.python</string>
+					</array>
 					<key>comment</key>
 					<string>single quoted unicode string</string>
 					<key>end</key>
@@ -2102,11 +3500,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.empty-string</string>
+								<string>meta.empty-string.single</string>
+								<string>meta.empty-string.single.python</string>
+							</array>
 							<key>name</key>
 							<string>meta.empty-string.single.python</string>
 						</dict>
@@ -2136,15 +3549,39 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.string</string>
+								<string>storage.type.string.python</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.string.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.python</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.single</string>
+						<string>string.quoted.single.single-line</string>
+						<string>string.quoted.single.single-line.unicode-raw</string>
+						<string>string.quoted.single.single-line.unicode-raw.python</string>
+					</array>
 					<key>comment</key>
 					<string>single quoted raw string</string>
 					<key>end</key>
@@ -2153,11 +3590,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.unclosed-string</string>
+								<string>invalid.illegal.unclosed-string.python</string>
+							</array>
 							<key>name</key>
 							<string>invalid.illegal.unclosed-string.python</string>
 						</dict>
@@ -2191,15 +3643,39 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.string</string>
+								<string>storage.type.string.python</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.string.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.python</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.single</string>
+						<string>string.quoted.single.single-line</string>
+						<string>string.quoted.single.single-line.raw</string>
+						<string>string.quoted.single.single-line.raw.python</string>
+					</array>
 					<key>comment</key>
 					<string>single quoted raw string</string>
 					<key>end</key>
@@ -2208,11 +3684,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.unclosed-string</string>
+								<string>invalid.illegal.unclosed-string.python</string>
+							</array>
 							<key>name</key>
 							<string>invalid.illegal.unclosed-string.python</string>
 						</dict>
@@ -2242,15 +3733,39 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.string</string>
+								<string>storage.type.string.python</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.string.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.python</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.single</string>
+						<string>string.quoted.single.single-line</string>
+						<string>string.quoted.single.single-line.unicode</string>
+						<string>string.quoted.single.single-line.unicode.python</string>
+					</array>
 					<key>comment</key>
 					<string>single quoted unicode string</string>
 					<key>end</key>
@@ -2259,11 +3774,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.unclosed-string</string>
+								<string>invalid.illegal.unclosed-string.python</string>
+							</array>
 							<key>name</key>
 							<string>invalid.illegal.unclosed-string.python</string>
 						</dict>
@@ -2293,10 +3823,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.python</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.single</string>
+						<string>string.quoted.single.block</string>
+						<string>string.quoted.single.block.python</string>
+					</array>
 					<key>comment</key>
 					<string>single quoted string</string>
 					<key>end</key>
@@ -2305,11 +3851,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.empty-string</string>
+								<string>meta.empty-string.single</string>
+								<string>meta.empty-string.single.python</string>
+							</array>
 							<key>name</key>
 							<string>meta.empty-string.single.python</string>
 						</dict>
@@ -2335,10 +3896,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.python</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.single</string>
+						<string>string.quoted.single.single-line</string>
+						<string>string.quoted.single.single-line.python</string>
+					</array>
 					<key>comment</key>
 					<string>single quoted string</string>
 					<key>end</key>
@@ -2347,11 +3924,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.python</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.python</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.unclosed-string</string>
+								<string>invalid.illegal.unclosed-string.python</string>
+							</array>
 							<key>name</key>
 							<string>invalid.illegal.unclosed-string.python</string>
 						</dict>

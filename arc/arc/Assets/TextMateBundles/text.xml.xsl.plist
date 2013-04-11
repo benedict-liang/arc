@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>XSL</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>xsl</string>
@@ -20,30 +24,74 @@
 		<dict>
 			<key>begin</key>
 			<string>(&lt;)(xsl)((:))(template)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tag</string>
+				<string>meta.tag.xml</string>
+				<string>meta.tag.xml.template</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.xml</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.namespace</string>
+						<string>entity.name.tag.namespace.xml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.namespace.xml</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.xml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.xml</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.namespace</string>
+						<string>punctuation.separator.namespace.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.namespace.xml</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.localname</string>
+						<string>entity.name.tag.localname.xml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.localname.xml</string>
 				</dict>
@@ -59,21 +107,51 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.other</string>
+								<string>entity.other.attribute-name</string>
+								<string>entity.other.attribute-name.namespace</string>
+								<string>entity.other.attribute-name.namespace.xml</string>
+							</array>
 							<key>name</key>
 							<string>entity.other.attribute-name.namespace.xml</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.other</string>
+								<string>entity.other.attribute-name</string>
+								<string>entity.other.attribute-name.xml</string>
+							</array>
 							<key>name</key>
 							<string>entity.other.attribute-name.xml</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.namespace</string>
+								<string>punctuation.separator.namespace.xml</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.namespace.xml</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.other</string>
+								<string>entity.other.attribute-name</string>
+								<string>entity.other.attribute-name.localname</string>
+								<string>entity.other.attribute-name.localname.xml</string>
+							</array>
 							<key>name</key>
 							<string>entity.other.attribute-name.localname.xml</string>
 						</dict>
@@ -106,16 +184,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.xml</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.xml</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.xml</string>
 				</dict>
@@ -131,16 +232,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.xml</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.single</string>
+				<string>string.quoted.single.xml</string>
+			</array>
 			<key>end</key>
 			<string>'</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.xml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.xml</string>
 				</dict>

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Strings File</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>strings</string>
@@ -13,10 +17,23 @@
 		<dict>
 			<key>begin</key>
 			<string>/\*</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.strings</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.strings</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.strings</string>
 				</dict>
@@ -33,16 +50,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.strings</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.strings</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.strings</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.strings</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.strings</string>
 				</dict>
@@ -52,32 +92,60 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.strings</string>
+					</array>
 					<key>match</key>
 					<string>\\(\\|[abefnrtv'&quot;?]|[0-3]\d{,2}|[4-7]\d?|x[a-zA-Z0-9]+)</string>
 					<key>name</key>
 					<string>constant.character.escape.strings</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.unknown-escape</string>
+						<string>invalid.illegal.unknown-escape.strings</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
 					<string>invalid.illegal.unknown-escape.strings</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.placeholder</string>
+						<string>constant.other.placeholder.strings</string>
+					</array>
 					<key>match</key>
 					<string>(?x)%
-											(\d+\$)?                             # field (argument #)
-											[#0\- +']*                           # flags
-											[,;:_]?                              # separator character (AltiVec)
-											((-?\d+)|\*(-?\d+\$)?)?              # minimum field width
-											(\.((-?\d+)|\*(-?\d+\$)?)?)?         # precision
-											(hh|h|ll|l|j|t|z|q|L|vh|vl|v|hv|hl)? # length modifier
-											[@diouxXDOUeEfFgGaACcSspn%]          # conversion type
-										</string>
+																										(\d+\$)?                             # field (argument #)
+																										[#0\- +']*                           # flags
+																										[,;:_]?                              # separator character (AltiVec)
+																										((-?\d+)|\*(-?\d+\$)?)?              # minimum field width
+																										(\.((-?\d+)|\*(-?\d+\$)?)?)?         # precision
+																										(hh|h|ll|l|j|t|z|q|L|vh|vl|v|hv|hl)? # length modifier
+																										[@diouxXDOUeEfFgGaACcSspn%]          # conversion type
+																									</string>
 					<key>name</key>
 					<string>constant.other.placeholder.strings</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.placeholder</string>
+						<string>invalid.illegal.placeholder.c</string>
+					</array>
 					<key>match</key>
 					<string>%</string>
 					<key>name</key>

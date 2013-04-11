@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Prolog</string>
+	</array>
 	<key>fileTypes</key>
 	<array/>
 	<key>foldingStartMarker</key>
@@ -21,16 +25,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.prolog</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.prolog</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.single</string>
+				<string>string.quoted.single.prolog</string>
+			</array>
 			<key>end</key>
 			<string>'</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.prolog</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.prolog</string>
 				</dict>
@@ -40,12 +67,27 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.prolog</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
 					<string>constant.character.escape.prolog</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.quote</string>
+						<string>constant.character.escape.quote.prolog</string>
+					</array>
 					<key>match</key>
 					<string>''</string>
 					<key>name</key>
@@ -54,10 +96,24 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.percent</string>
+				<string>comment.line.percent.prolog</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.prolog</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.prolog</string>
 				</dict>
@@ -68,24 +124,44 @@
 			<string>comment.line.percent.prolog</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.definition</string>
+				<string>keyword.operator.definition.prolog</string>
+			</array>
 			<key>match</key>
 			<string>:-</string>
 			<key>name</key>
 			<string>keyword.operator.definition.prolog</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.prolog</string>
+			</array>
 			<key>match</key>
 			<string>\b[A-Z][a-zA-Z0-9_]*\b</string>
 			<key>name</key>
 			<string>variable.other.prolog</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.symbol</string>
+				<string>constant.other.symbol.prolog</string>
+			</array>
 			<key>comment</key>
 			<string>
-						I changed this from entity to storage.type, but have no idea what it is -- Allan
-						And I changed this to constant.other.symbol after glancing over the docs,
-						    might still be wrong.  -- Infininight
-						</string>
+															I changed this from entity to storage.type, but have no idea what it is -- Allan
+															And I changed this to constant.other.symbol after glancing over the docs,
+															    might still be wrong.  -- Infininight
+															</string>
 			<key>match</key>
 			<string>\b[a-z][a-zA-Z0-9_]*\b</string>
 			<key>name</key>

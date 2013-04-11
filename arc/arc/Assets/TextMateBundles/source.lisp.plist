@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Lisp</string>
+	</array>
 	<key>comment</key>
 	<string></string>
 	<key>fileTypes</key>
@@ -23,10 +27,24 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.semicolon</string>
+				<string>comment.line.semicolon.lisp</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.lisp</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.lisp</string>
 				</dict>
@@ -37,15 +55,35 @@
 			<string>comment.line.semicolon.lisp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.lisp</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.function-type</string>
+						<string>storage.type.function-type.lisp</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.function-type.lisp</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.lisp</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.lisp</string>
 				</dict>
@@ -56,10 +94,23 @@
 			<string>meta.function.lisp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.lisp</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.lisp</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.constant.lisp</string>
 				</dict>
@@ -70,15 +121,36 @@
 			<string>constant.character.lisp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.global</string>
+				<string>variable.other.global.lisp</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.lisp</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.lisp</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.lisp</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.lisp</string>
 				</dict>
@@ -89,30 +161,60 @@
 			<string>variable.other.global.lisp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.lisp</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:case|do|let|loop|if|else|when)\b</string>
 			<key>name</key>
 			<string>keyword.control.lisp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.lisp</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:eq|neq|and|or)\b</string>
 			<key>name</key>
 			<string>keyword.operator.lisp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.lisp</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:null|nil)\b</string>
 			<key>name</key>
 			<string>constant.language.lisp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.lisp</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:cons|car|cdr|cond|lambda|format|setq|setf|quote|eval|append|list|listp|memberp|t|load|progn)\b</string>
 			<key>name</key>
 			<string>support.function.lisp</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.lisp</string>
+			</array>
 			<key>match</key>
 			<string>\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\b</string>
 			<key>name</key>
@@ -125,16 +227,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.lisp</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.lisp</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.lisp</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.lisp</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.lisp</string>
 				</dict>
@@ -144,6 +269,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.lisp</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>

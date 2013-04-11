@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>SSH Config</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>ssh_config</string>
@@ -13,6 +17,12 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.ssh-config</string>
+			</array>
 			<key>match</key>
 			<string>\b(AddressFamily|B(atchMode|indAddress)|C(hallengeResponseAuthentication|heckHostIP|iphers?|learAllForwardings|ompression(Level)?|onnect(Timeout|ionAttempts))|DynamicForward|E(nableSSHKeysign|scapeChar)|Forward(Agent|X11(Trusted)?)|G(SSAPI(Authentication|DelegateCredentials)|atewayPorts|lobalKnownHostsFile)|Host(KeyAlgorithms|KeyAlias|Name|basedAuthentication)|Identit(iesOnly|yFile)|L(ocalForward|ogLevel)|MACs|N(oHostAuthenticationForLocalhost|umberOfPasswordPrompts)|P(asswordAuthentication|ort|referredAuthentications|rotocol|roxyCommand|ubkeyAuthentication)|R(SAAuthentication|emoteForward|hostsRSAAuthentication)|S(erverAliveCountMax|erverAliveInterval|martcardDevice|trictHostKeyChecking)|TCPKeepAlive|U(sePrivilegedPort|ser(KnownHostsFile)?)|VerifyHostKeyDNS|XAuthLocation)\b</string>
 			<key>name</key>
@@ -23,21 +33,49 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.number-sign</string>
+						<string>comment.line.number-sign.ssh-config</string>
+					</array>
 					<key>name</key>
 					<string>comment.line.number-sign.ssh-config</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.ssh-config</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.ssh-config</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.double-slash</string>
+						<string>comment.line.double-slash.ssh-config</string>
+					</array>
 					<key>name</key>
 					<string>comment.line.double-slash.ssh-config</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.ssh-config</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.ssh-config</string>
 				</dict>
@@ -50,16 +88,35 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.ssh-config</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.ssh-config</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.section</string>
+						<string>entity.name.section.ssh-config</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.section.ssh-config</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.toc-list</string>
+						<string>meta.toc-list.ssh-config</string>
+					</array>
 					<key>name</key>
 					<string>meta.toc-list.ssh-config</string>
 				</dict>
@@ -68,12 +125,24 @@
 			<string>(?:^| |\t)(Host)\s+((.*))$</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.ssh-config</string>
+			</array>
 			<key>match</key>
 			<string>\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b</string>
 			<key>name</key>
 			<string>constant.numeric.ssh-config</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.ssh-config</string>
+			</array>
 			<key>match</key>
 			<string>\b[0-9]+\b</string>
 			<key>name</key>

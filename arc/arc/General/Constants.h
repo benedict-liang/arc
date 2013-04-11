@@ -13,6 +13,7 @@
 extern const float SIZE_LEFTBAR_WIDTH;
 extern const float SIZE_TOOLBAR_HEIGHT;
 extern const CGSize SIZE_POPOVER;
+extern const float SIZE_TOOLBAR_ICON_WIDTH;
 
 // Defaults
 extern const CGColorRef* DEFAULT_TEXT_COLOR;
@@ -44,4 +45,9 @@ extern NSString* const SYNTAXES_FILE_LIST;
 // Bundle Conf
 extern NSString* const BUNDLE_CONF;
 
+
+// Tabs
+extern const int TAB_DROPBOX;
+extern const int TAB_DOCUMENTS;
+extern const int TAB_SETTINGS;
 @end

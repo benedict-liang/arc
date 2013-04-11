@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>CoffeeScript</string>
+	</array>
 	<key>comment</key>
 	<string>CoffeeScript Syntax: version 1</string>
 	<key>fileTypes</key>
@@ -20,15 +24,36 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.inline</string>
+				<string>meta.inline.function</string>
+				<string>meta.inline.function.coffee</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.parameter</string>
+						<string>variable.parameter.function</string>
+						<string>variable.parameter.function.coffee</string>
+					</array>
 					<key>name</key>
 					<string>variable.parameter.function.coffee</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.function</string>
+						<string>storage.type.function.coffee</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.function.coffee</string>
 				</dict>
@@ -41,15 +66,37 @@
 			<string>meta.inline.function.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.class</string>
+				<string>meta.class.instance</string>
+				<string>meta.class.instance.constructor</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.new</string>
+						<string>keyword.operator.new.coffee</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.new.coffee</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.instance</string>
+						<string>entity.name.type.instance.coffee</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.type.instance.coffee</string>
 				</dict>
@@ -66,16 +113,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.coffee</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.coffee</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.heredoc</string>
+				<string>string.quoted.heredoc.coffee</string>
+			</array>
 			<key>end</key>
 			<string>'''</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.coffee</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.coffee</string>
 				</dict>
@@ -90,16 +160,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.coffee</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.coffee</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.heredoc</string>
+				<string>string.quoted.double.heredoc.coffee</string>
+			</array>
 			<key>end</key>
 			<string>&quot;&quot;&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.coffee</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.coffee</string>
 				</dict>
@@ -109,6 +203,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.coffee</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -127,16 +228,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.coffee</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.coffee</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.script</string>
+				<string>string.quoted.script.coffee</string>
+			</array>
 			<key>end</key>
 			<string>`</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.coffee</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.coffee</string>
 				</dict>
@@ -146,6 +270,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.coffee</string>
+					</array>
 					<key>match</key>
 					<string>\\(x\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]|37[0-7]?|[4-7][0-7]?|.)</string>
 					<key>name</key>
@@ -156,10 +287,23 @@
 		<dict>
 			<key>begin</key>
 			<string>###(?!#)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.coffee</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.coffee</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.coffee</string>
 				</dict>
@@ -170,10 +314,23 @@
 			<string>comment.block.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.coffee</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.coffee</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.coffee</string>
 				</dict>
@@ -186,6 +343,12 @@
 		<dict>
 			<key>begin</key>
 			<string>/{3}</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.regexp</string>
+				<string>string.regexp.coffee</string>
+			</array>
 			<key>end</key>
 			<string>/{3}[imgy]{0,4}</string>
 			<key>name</key>
@@ -203,38 +366,80 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.regexp</string>
+				<string>string.regexp.coffee</string>
+			</array>
 			<key>match</key>
 			<string>/(?![\s/*+{}?]).*?[^\\]/[igmy]{0,4}(?![a-zA-Z0-9])</string>
 			<key>name</key>
 			<string>string.regexp.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.coffee</string>
+			</array>
 			<key>match</key>
 			<string>\b(?&lt;!\.)(break|by|catch|continue|else|finally|for|in|of|if|return|switch|then|throw|try|unless|when|while|until|loop|(?&lt;=for)\s+own)(?!\s*:)\b</string>
 			<key>name</key>
 			<string>keyword.control.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.coffee</string>
+			</array>
 			<key>match</key>
 			<string>and=|or=|!|%|&amp;|\^|\*|\/|\-\-|\-|\+\+|\+|~|===|==|=|!=|!==|&lt;=|&gt;=|&lt;&lt;=|&gt;&gt;=|&gt;&gt;&gt;=|&lt;&gt;|&lt;|&gt;|!|&amp;&amp;|\?|\||\|\||\:|\*=|(?&lt;!\()/=|%=|\+=|\-=|&amp;=|\^=|\b(instanceof|new|delete|typeof|and|or|is|isnt|not)\b</string>
 			<key>name</key>
 			<string>keyword.operator.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.assignment</string>
+				<string>variable.assignment.coffee</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.assignment</string>
+						<string>variable.assignment.coffee</string>
+					</array>
 					<key>name</key>
 					<string>variable.assignment.coffee</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.key-value</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.coffee</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.coffee</string>
 				</dict>
@@ -251,16 +456,36 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.coffee</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.coffee</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.variable</string>
+				<string>meta.variable.assignment</string>
+				<string>meta.variable.assignment.destructured</string>
+				<string>meta.variable.assignment.destructured.coffee</string>
+			</array>
 			<key>end</key>
 			<string>([\]\}]\s*[:=])</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.coffee</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.coffee</string>
 				</dict>
@@ -292,10 +517,23 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.coffee</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.coffee</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.coffee</string>
 				</dict>
@@ -306,55 +544,126 @@
 			<string>meta.function.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.type</string>
+				<string>storage.type.function</string>
+				<string>storage.type.function.coffee</string>
+			</array>
 			<key>match</key>
 			<string>(=|-)&gt;</string>
 			<key>name</key>
 			<string>storage.type.function.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.boolean</string>
+				<string>constant.language.boolean.true</string>
+				<string>constant.language.boolean.true.coffee</string>
+			</array>
 			<key>match</key>
 			<string>\b(?&lt;!\.)(true|on|yes)(?!\s*[:=])\b</string>
 			<key>name</key>
 			<string>constant.language.boolean.true.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.boolean</string>
+				<string>constant.language.boolean.false</string>
+				<string>constant.language.boolean.false.coffee</string>
+			</array>
 			<key>match</key>
 			<string>\b(?&lt;!\.)(false|off|no)(?!\s*[:=])\b</string>
 			<key>name</key>
 			<string>constant.language.boolean.false.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.null</string>
+				<string>constant.language.null.coffee</string>
+			</array>
 			<key>match</key>
 			<string>\b(?&lt;!\.)null(?!\s*[:=])\b</string>
 			<key>name</key>
 			<string>constant.language.null.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.language</string>
+				<string>variable.language.coffee</string>
+			</array>
 			<key>match</key>
 			<string>\b(?&lt;!\.)(super|this|extends)(?!\s*[:=])\b</string>
 			<key>name</key>
 			<string>variable.language.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.class</string>
+				<string>meta.class.coffee</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.class</string>
+						<string>storage.type.class.coffee</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.class.coffee</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.class</string>
+						<string>entity.name.type.class.coffee</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.type.class.coffee</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.other</string>
+						<string>entity.other.inherited-class</string>
+						<string>entity.other.inherited-class.coffee</string>
+					</array>
 					<key>name</key>
 					<string>entity.other.inherited-class.coffee</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.inheritance</string>
+						<string>keyword.control.inheritance.coffee</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.inheritance.coffee</string>
 				</dict>
@@ -365,48 +674,104 @@
 			<string>meta.class.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.coffee</string>
+			</array>
 			<key>match</key>
 			<string>\b(debugger|\\)\b</string>
 			<key>name</key>
 			<string>keyword.other.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.coffee</string>
+			</array>
 			<key>match</key>
 			<string>\b(Infinity|NaN|undefined)\b</string>
 			<key>name</key>
 			<string>constant.language.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>punctuation</string>
+				<string>punctuation.terminator</string>
+				<string>punctuation.terminator.statement</string>
+				<string>punctuation.terminator.statement.coffee</string>
+			</array>
 			<key>match</key>
 			<string>\;</string>
 			<key>name</key>
 			<string>punctuation.terminator.statement.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.delimiter</string>
+				<string>meta.delimiter.object</string>
+				<string>meta.delimiter.object.comma</string>
+				<string>meta.delimiter.object.comma.coffee</string>
+			</array>
 			<key>match</key>
 			<string>,[ |	]*</string>
 			<key>name</key>
 			<string>meta.delimiter.object.comma.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.delimiter</string>
+				<string>meta.delimiter.method</string>
+				<string>meta.delimiter.method.period</string>
+				<string>meta.delimiter.method.period.coffee</string>
+			</array>
 			<key>match</key>
 			<string>\.</string>
 			<key>name</key>
 			<string>meta.delimiter.method.period.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.brace</string>
+				<string>meta.brace.curly</string>
+				<string>meta.brace.curly.coffee</string>
+			</array>
 			<key>match</key>
 			<string>\{|\}</string>
 			<key>name</key>
 			<string>meta.brace.curly.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.brace</string>
+				<string>meta.brace.round</string>
+				<string>meta.brace.round.coffee</string>
+			</array>
 			<key>match</key>
 			<string>\(|\)</string>
 			<key>name</key>
 			<string>meta.brace.round.coffee</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.brace</string>
+				<string>meta.brace.square</string>
+				<string>meta.brace.square.coffee</string>
+			</array>
 			<key>match</key>
 			<string>\[|\]\s*</string>
 			<key>name</key>
@@ -442,16 +807,39 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.coffee</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.coffee</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.coffee</string>
+					</array>
 					<key>end</key>
 					<string>&quot;</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.coffee</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.coffee</string>
 						</dict>
@@ -461,6 +849,13 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.character</string>
+								<string>constant.character.escape</string>
+								<string>constant.character.escape.coffee</string>
+							</array>
 							<key>match</key>
 							<string>\\(x\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]|37[0-7]?|[4-7][0-7]?|.)</string>
 							<key>name</key>
@@ -479,10 +874,23 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.coffee</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.coffee</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.coffee</string>
 						</dict>
@@ -499,6 +907,14 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.readwrite</string>
+						<string>variable.other.readwrite.instance</string>
+						<string>variable.other.readwrite.instance.coffee</string>
+					</array>
 					<key>match</key>
 					<string>(@)([a-zA-Z_\$]\w*)?</string>
 					<key>name</key>
@@ -513,10 +929,24 @@
 				<dict>
 					<key>begin</key>
 					<string>\#\{</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>source</string>
+						<string>source.coffee</string>
+						<string>source.coffee.embedded</string>
+						<string>source.coffee.embedded.source</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.embedded</string>
+								<string>punctuation.section.embedded.coffee</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.embedded.coffee</string>
 						</dict>
@@ -540,6 +970,12 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.coffee</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;!\$)\b((0(x|X)[0-9a-fA-F]+)|([0-9]+(\.[0-9]+)?(e[+\-]?[0-9]+)?))\b</string>
 					<key>name</key>
@@ -558,16 +994,39 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.coffee</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.coffee</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.single</string>
+						<string>string.quoted.single.coffee</string>
+					</array>
 					<key>end</key>
 					<string>'</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.coffee</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.coffee</string>
 						</dict>
@@ -577,6 +1036,13 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.character</string>
+								<string>constant.character.escape</string>
+								<string>constant.character.escape.coffee</string>
+							</array>
 							<key>match</key>
 							<string>\\(x\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)</string>
 							<key>name</key>
@@ -591,10 +1057,22 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.assignment</string>
+						<string>variable.assignment.coffee</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>variable</string>
+								<string>variable.assignment</string>
+								<string>variable.assignment.coffee</string>
+							</array>
 							<key>name</key>
 							<string>variable.assignment.coffee</string>
 						</dict>

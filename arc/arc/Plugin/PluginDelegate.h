@@ -10,6 +10,7 @@
 #import "ArcAttributedString.h"
 #import "PluginUtilities.h"
 #import "File.h"
+@protocol CodeViewDelegate;
 @protocol CodeViewControllerDelegate;
 
 @protocol PluginDelegate <NSObject>
@@ -39,14 +40,14 @@
                            ofFile:(id<File>)file
                         forValues:(NSDictionary *)properties
                      sharedObject:(NSMutableDictionary *)dictionary
-                         delegate:(id)delegate;
+                         delegate:(id<CodeViewControllerDelegate>)delegate;
 
 @optional
-- (void)execOnTableView:(UITableView *)tableView
-                 ofFile:(id<File>)file
-              forValues:(NSDictionary *)properties
-           sharedObject:(NSMutableDictionary *)dictionary
-               delegate:(id)delegate;
+- (void)execOnCodeView:(id<CodeViewDelegate>)codeView
+                ofFile:(id<File>)file
+             forValues:(NSDictionary *)properties
+          sharedObject:(NSMutableDictionary *)dictionary
+              delegate:(id<CodeViewControllerDelegate>)delegate;
 
 // Optional method used to allow the plugin
 // to customise its Settings Pane cells.

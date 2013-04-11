@@ -23,11 +23,18 @@
 // The parent of this object.
 @property (weak, nonatomic) id<FileSystemObject> parent;
 
+// Whether or not this object can be removed.
+@property BOOL isRemovable;
+
 // Initialises this object with the given name, path, and parent.
 - (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent;
 
 // Returns the contents of this object.
 - (id<NSObject>)contents;
+
+// Returns the size of this object.
+// Folders should return the number of objects within, Files their size in B.
+- (int)size;
 
 // Removes this object.
 // Returns YES if successful, NO otherwise.

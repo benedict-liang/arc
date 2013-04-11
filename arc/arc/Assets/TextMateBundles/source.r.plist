@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>R</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>R</string>
@@ -21,10 +25,24 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.number-sign</string>
+				<string>comment.line.number-sign.r</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.r</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.r</string>
 				</dict>
@@ -35,60 +53,125 @@
 			<string>comment.line.number-sign.r</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.type</string>
+				<string>storage.type.r</string>
+			</array>
 			<key>match</key>
 			<string>\b(logical|numeric|character|complex|matrix|array|data\.frame|list|factor)(?=\s*\()</string>
 			<key>name</key>
 			<string>storage.type.r</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.r</string>
+			</array>
 			<key>match</key>
 			<string>\b(function|if|break|next|repeat|else|for|return|switch|while|in|invisible)\b</string>
 			<key>name</key>
 			<string>keyword.control.r</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.r</string>
+			</array>
 			<key>match</key>
 			<string>\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\b</string>
 			<key>name</key>
 			<string>constant.numeric.r</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.r</string>
+			</array>
 			<key>match</key>
 			<string>\b(TRUE|FALSE|NULL|NA|Inf|NaN)\b</string>
 			<key>name</key>
 			<string>constant.language.r</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.constant</string>
+				<string>support.constant.misc</string>
+				<string>support.constant.misc.r</string>
+			</array>
 			<key>match</key>
 			<string>\b(pi|letters|LETTERS|month\.abb|month\.name)\b</string>
 			<key>name</key>
 			<string>support.constant.misc.r</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.arithmetic</string>
+				<string>keyword.operator.arithmetic.r</string>
+			</array>
 			<key>match</key>
 			<string>(\-|\+|\*|\/|%\/%|%%|%\*%|%in%|%o%|%x%|\^)</string>
 			<key>name</key>
 			<string>keyword.operator.arithmetic.r</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.assignment</string>
+				<string>keyword.operator.assignment.r</string>
+			</array>
 			<key>match</key>
 			<string>(=|&lt;-|&lt;&lt;-|-&gt;|-&gt;&gt;)</string>
 			<key>name</key>
 			<string>keyword.operator.assignment.r</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.comparison</string>
+				<string>keyword.operator.comparison.r</string>
+			</array>
 			<key>match</key>
 			<string>(==|!=|&lt;&gt;|&lt;|&gt;|&lt;=|&gt;=)</string>
 			<key>name</key>
 			<string>keyword.operator.comparison.r</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.logical</string>
+				<string>keyword.operator.logical.r</string>
+			</array>
 			<key>match</key>
 			<string>(!|&amp;{1,2}|[|]{1,2})</string>
 			<key>name</key>
 			<string>keyword.operator.logical.r</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.r</string>
+			</array>
 			<key>match</key>
 			<string>(\.\.\.|\$|:|\~)</string>
 			<key>name</key>
@@ -101,16 +184,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.r</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.r</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.r</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.r</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.r</string>
 				</dict>
@@ -120,6 +226,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.r</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -134,16 +247,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.r</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.r</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.single</string>
+				<string>string.quoted.single.r</string>
+			</array>
 			<key>end</key>
 			<string>'</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.r</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.r</string>
 				</dict>
@@ -153,6 +289,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.r</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -161,20 +304,46 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.r</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.r</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.r</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.assignment</string>
+						<string>keyword.operator.assignment.r</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.assignment.r</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.r</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.r</string>
 				</dict>
@@ -193,11 +362,24 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.parameter</string>
+						<string>variable.parameter.r</string>
+					</array>
 					<key>name</key>
 					<string>variable.parameter.r</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.assignment</string>
+						<string>keyword.operator.assignment.r</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.assignment.r</string>
 				</dict>
@@ -206,6 +388,12 @@
 			<string>([a-zA-Z._][a-zA-Z0-9._]*)\s*(=)(?=[^=])</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.r</string>
+			</array>
 			<key>match</key>
 			<string>\b([a-zA-Z._][a-zA-Z0-9._]*)\b</string>
 			<key>name</key>

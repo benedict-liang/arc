@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>TSV</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>tsv</string>
@@ -34,12 +38,28 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.tabular</string>
+								<string>punctuation.separator.tabular.field</string>
+								<string>punctuation.separator.tabular.field.tsv</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.tabular.field.tsv</string>
 						</dict>
 					</dict>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.tabular</string>
+						<string>punctuation.separator.tabular.field</string>
+						<string>punctuation.separator.tabular.field.tsv</string>
+					</array>
 					<key>match</key>
 					<string>\t</string>
 					<key>name</key>
@@ -51,6 +71,14 @@
 		<dict>
 			<key>begin</key>
 			<string>^(?!$)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tabular</string>
+				<string>meta.tabular.row</string>
+				<string>meta.tabular.row.header</string>
+				<string>meta.tabular.row.header.tsv</string>
+			</array>
 			<key>end</key>
 			<string>$</string>
 			<key>name</key>
@@ -67,6 +95,13 @@
 		<dict>
 			<key>begin</key>
 			<string>^(?!$)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tabular</string>
+				<string>meta.tabular.row</string>
+				<string>meta.tabular.row.tsv</string>
+			</array>
 			<key>end</key>
 			<string>$</string>
 			<key>name</key>
@@ -83,6 +118,13 @@
 		<dict>
 			<key>begin</key>
 			<string>^</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tabular</string>
+				<string>meta.tabular.table</string>
+				<string>meta.tabular.table.tsv</string>
+			</array>
 			<key>end</key>
 			<string>^$not possible$^</string>
 			<key>name</key>
@@ -100,14 +142,22 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.table</string>
+								<string>punctuation.separator.table.row</string>
+								<string>punctuation.separator.table.row.tsv</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.table.row.tsv</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>
-											everything after the first row is not a header
-										</string>
+																										everything after the first row is not a header
+																									</string>
 					<key>end</key>
 					<string>^$not possible$^</string>
 					<key>patterns</key>
@@ -117,6 +167,14 @@
 							<string>#row</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.table</string>
+								<string>punctuation.separator.table.row</string>
+								<string>punctuation.separator.table.row.tsv</string>
+							</array>
 							<key>match</key>
 							<string>\n</string>
 							<key>name</key>

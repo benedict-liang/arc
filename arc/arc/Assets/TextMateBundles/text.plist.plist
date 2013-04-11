@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Property List</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>plist</string>
@@ -20,28 +24,28 @@
 	</array>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-								(
-									(^|=|=[ ]|\s\s|\t)				# Openstep foldings
-									(\{|\()(?!.*(\)|\}))			# spaces before them to 
-																	# limit false positives
-								  | (
-										^\s*
-										(
-											&lt;[^!?%/](?!.+?(/&gt;
-										  | &lt;/.+?&gt;))
-										  | &lt;[!%]--(?!.+?--%?&gt;)
-										)
-									)
-								)
-							 </string>
+											(
+												(^|=|=[ ]|\s\s|\t)				# Openstep foldings
+												(\{|\()(?!.*(\)|\}))			# spaces before them to 
+																				# limit false positives
+											  | (
+													^\s*
+													(
+														&lt;[^!?%/](?!.+?(/&gt;
+													  | &lt;/.+?&gt;))
+													  | &lt;[!%]--(?!.+?--%?&gt;)
+													)
+												)
+											)
+										 </string>
 	<key>foldingStopMarker</key>
 	<string>(?x)
-								(
-									(\}|\))(,|;)?					# Openstep foldings
-									.*$								# limit false positives
-								  | (^\s*(&lt;/[^&gt;]+&gt;|/&gt;|--&gt;)\s*$)		# XML						
-								)
-							</string>
+											(
+												(\}|\))(,|;)?					# Openstep foldings
+												.*$								# limit false positives
+											  | (^\s*(&lt;/[^&gt;]+&gt;|/&gt;|--&gt;)\s*$)		# XML						
+											)
+										</string>
 	<key>keyEquivalent</key>
 	<string>^~P</string>
 	<key>name</key>
@@ -51,6 +55,12 @@
 		<dict>
 			<key>begin</key>
 			<string>xml|plist</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>text</string>
+				<string>text.xml</string>
+				<string>text.xml.plist</string>
+			</array>
 			<key>comment</key>
 			<string>This gives us the proper scope for the xml or plist snippet.</string>
 			<key>end</key>
@@ -61,6 +71,12 @@
 		<dict>
 			<key>begin</key>
 			<string>^bplist00</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>source</string>
+				<string>source.plist</string>
+				<string>source.plist.binary</string>
+			</array>
 			<key>comment</key>
 			<string>This gives us the proper scope for the convert plist command.</string>
 			<key>end</key>
@@ -71,6 +87,12 @@
 		<dict>
 			<key>begin</key>
 			<string>(?=\s*(&lt;\?xml|&lt;!DOCTYPE\s*plist))</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>text</string>
+				<string>text.xml</string>
+				<string>text.xml.plist</string>
+			</array>
 			<key>end</key>
 			<string>\Z(?!\n)</string>
 			<key>name</key>
@@ -86,6 +108,11 @@
 		<dict>
 			<key>begin</key>
 			<string>(?=\s*({|\(|//|/\*))</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>source</string>
+				<string>source.plist</string>
+			</array>
 			<key>end</key>
 			<string>\Z(?!\n)</string>
 			<key>name</key>
@@ -127,10 +154,24 @@
 		<dict>
 			<key>begin</key>
 			<string>(\()</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.group</string>
+				<string>meta.group.array</string>
+				<string>meta.group.array.plist</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.array</string>
+						<string>punctuation.section.array.plist</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.array.plist</string>
 				</dict>
@@ -165,6 +206,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.array</string>
+						<string>punctuation.separator.array.plist</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.array.plist</string>
 				</dict>
@@ -215,10 +263,23 @@
 				<dict>
 					<key>begin</key>
 					<string>/\*</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.block</string>
+						<string>comment.block.plist</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.plist</string>
 						</dict>
@@ -229,10 +290,24 @@
 					<string>comment.block.plist</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.double-slash</string>
+						<string>comment.line.double-slash.plist</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.plist</string>
 						</dict>
@@ -252,21 +327,48 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.data</string>
+						<string>punctuation.definition.data.plist</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.data.plist</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.binary-data</string>
+				<string>meta.binary-data.plist</string>
+			</array>
 			<key>end</key>
 			<string>(=?)\s*?(&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.terminator</string>
+						<string>punctuation.terminator.data</string>
+						<string>punctuation.terminator.data.plist</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.terminator.data.plist</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.data</string>
+						<string>punctuation.definition.data.plist</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.data.plist</string>
 				</dict>
@@ -276,12 +378,26 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.base64</string>
+						<string>constant.numeric.base64.plist</string>
+					</array>
 					<key>match</key>
 					<string>[A-Za-z0-9+/]</string>
 					<key>name</key>
 					<string>constant.numeric.base64.plist</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.invalid-character</string>
+						<string>invalid.illegal.invalid-character.plist</string>
+					</array>
 					<key>match</key>
 					<string>[^ \n]</string>
 					<key>name</key>
@@ -293,10 +409,24 @@
 		<dict>
 			<key>begin</key>
 			<string>(\{)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.group</string>
+				<string>meta.group.dictionary</string>
+				<string>meta.group.dictionary.plist</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.dictionary</string>
+						<string>punctuation.section.dictionary.plist</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.dictionary.plist</string>
 				</dict>
@@ -328,22 +458,50 @@
 				<dict>
 					<key>begin</key>
 					<string>(?=([-a-zA-Z0-9_.]+)|(&quot;|'))</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.rule</string>
+						<string>meta.rule.named</string>
+						<string>meta.rule.named.plist</string>
+					</array>
 					<key>end</key>
 					<string>((?&lt;=\));)|((?&lt;=\});)|(;)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.terminator</string>
+								<string>punctuation.terminator.array</string>
+								<string>punctuation.terminator.array.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.terminator.array.plist</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.terminator</string>
+								<string>punctuation.terminator.dictionary</string>
+								<string>punctuation.terminator.dictionary.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.terminator.dictionary.plist</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.terminator</string>
+								<string>punctuation.terminator.rule</string>
+								<string>punctuation.terminator.rule.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.terminator.rule.plist</string>
 						</dict>
@@ -353,6 +511,13 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.other</string>
+								<string>constant.other.key</string>
+								<string>constant.other.key.plist</string>
+							</array>
 							<key>match</key>
 							<string>[-a-zA-Z0-9_.]+</string>
 							<key>name</key>
@@ -363,7 +528,7 @@
 							<string>(?&lt;=('|&quot;|[-a-zA-Z0-9_.]))(?!=)|\s</string>
 							<key>comment</key>
 							<string>Mark anything between the name and the =
-																	as invalid.</string>
+																																						as invalid.</string>
 							<key>end</key>
 							<string>(?==)</string>
 							<key>patterns</key>
@@ -381,16 +546,39 @@
 							<dict>
 								<key>0</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.string</string>
+										<string>punctuation.definition.string.begin</string>
+										<string>punctuation.definition.string.begin.plist</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.string.begin.plist</string>
 								</dict>
 							</dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.other</string>
+								<string>constant.other.key</string>
+								<string>constant.other.key.plist</string>
+							</array>
 							<key>end</key>
 							<string>(\1)</string>
 							<key>endCaptures</key>
 							<dict>
 								<key>0</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.string</string>
+										<string>punctuation.definition.string.end</string>
+										<string>punctuation.definition.string.end.plist</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.string.end.plist</string>
 								</dict>
@@ -412,6 +600,13 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.separator</string>
+										<string>punctuation.separator.key-value</string>
+										<string>punctuation.separator.key-value.plist</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.separator.key-value.plist</string>
 								</dict>
@@ -462,6 +657,13 @@
 		</dict>
 		<key>openstep_stray-char</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>invalid</string>
+				<string>invalid.illegal</string>
+				<string>invalid.illegal.character-not-allowed-here</string>
+				<string>invalid.illegal.character-not-allowed-here.plist</string>
+			</array>
 			<key>match</key>
 			<string>[^\s\n]</string>
 			<key>name</key>
@@ -478,16 +680,39 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.plist</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.single</string>
+						<string>string.quoted.single.plist</string>
+					</array>
 					<key>end</key>
 					<string>'</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.plist</string>
 						</dict>
@@ -509,16 +734,39 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.plist</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.plist</string>
+					</array>
 					<key>end</key>
 					<string>&quot;</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.plist</string>
 						</dict>
@@ -534,12 +782,24 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.plist</string>
+					</array>
 					<key>match</key>
 					<string>[-+]?\d+(\.\d*)?(E[-+]\d+)?(?!\w)</string>
 					<key>name</key>
 					<string>constant.numeric.plist</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.plist</string>
+					</array>
 					<key>match</key>
 					<string>[-a-zA-Z0-9_.]+</string>
 					<key>name</key>
@@ -549,6 +809,13 @@
 		</dict>
 		<key>openstep_string-contents</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.escape</string>
+				<string>constant.character.escape.plist</string>
+			</array>
 			<key>match</key>
 			<string>\\([uU](\h{4}|\h{2})|\d{1,3}|.)</string>
 			<key>name</key>
@@ -565,26 +832,67 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.plist</string>
+								<string>meta.tag.plist.xml</string>
+								<string>meta.tag.plist.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.plist.xml.plist</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
@@ -600,45 +908,122 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>entity</string>
+										<string>entity.other</string>
+										<string>entity.other.attribute-name</string>
+										<string>entity.other.attribute-name.version</string>
+										<string>entity.other.attribute-name.version.xml</string>
+										<string>entity.other.attribute-name.version.xml.plist</string>
+									</array>
 									<key>name</key>
 									<string>entity.other.attribute-name.version.xml.plist</string>
 								</dict>
 								<key>2</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.separator</string>
+										<string>punctuation.separator.key-value</string>
+										<string>punctuation.separator.key-value.xml</string>
+										<string>punctuation.separator.key-value.xml.plist</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.separator.key-value.xml.plist</string>
 								</dict>
 								<key>3</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>string</string>
+										<string>string.quoted</string>
+										<string>string.quoted.double</string>
+										<string>string.quoted.double.xml</string>
+										<string>string.quoted.double.xml.plist</string>
+									</array>
 									<key>name</key>
 									<string>string.quoted.double.xml.plist</string>
 								</dict>
 								<key>4</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.string</string>
+										<string>punctuation.definition.string.begin</string>
+										<string>punctuation.definition.string.begin.xml</string>
+										<string>punctuation.definition.string.begin.xml.plist</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.string.begin.xml.plist</string>
 								</dict>
 								<key>5</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.string</string>
+										<string>punctuation.definition.string.end</string>
+										<string>punctuation.definition.string.end.xml</string>
+										<string>punctuation.definition.string.end.xml.plist</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.string.end.xml.plist</string>
 								</dict>
 								<key>6</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>string</string>
+										<string>string.quoted</string>
+										<string>string.quoted.single</string>
+										<string>string.quoted.single.xml</string>
+										<string>string.quoted.single.xml.plist</string>
+									</array>
 									<key>name</key>
 									<string>string.quoted.single.xml.plist</string>
 								</dict>
 								<key>7</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.string</string>
+										<string>punctuation.definition.string.begin</string>
+										<string>punctuation.definition.string.begin.xml</string>
+										<string>punctuation.definition.string.begin.xml.plist</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.string.begin.xml.plist</string>
 								</dict>
 								<key>8</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.string</string>
+										<string>punctuation.definition.string.end</string>
+										<string>punctuation.definition.string.end.xml</string>
+										<string>punctuation.definition.string.end.xml.plist</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.string.end.xml.plist</string>
 								</dict>
 							</dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.plist</string>
+								<string>meta.tag.plist.xml</string>
+								<string>meta.tag.plist.xml.plist</string>
+							</array>
 							<key>end</key>
 							<string>(?=&gt;)</string>
 							<key>name</key>
@@ -649,16 +1034,40 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>meta</string>
+										<string>meta.tag</string>
+										<string>meta.tag.plist</string>
+										<string>meta.tag.plist.xml</string>
+										<string>meta.tag.plist.xml.plist</string>
+									</array>
 									<key>name</key>
 									<string>meta.tag.plist.xml.plist</string>
 								</dict>
 								<key>2</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.tag</string>
+										<string>punctuation.definition.tag.xml</string>
+										<string>punctuation.definition.tag.xml.plist</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.tag.xml.plist</string>
 								</dict>
 								<key>3</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>meta</string>
+										<string>meta.scope</string>
+										<string>meta.scope.between-tag-pair</string>
+										<string>meta.scope.between-tag-pair.xml</string>
+										<string>meta.scope.between-tag-pair.xml.plist</string>
+									</array>
 									<key>name</key>
 									<string>meta.scope.between-tag-pair.xml.plist</string>
 								</dict>
@@ -675,11 +1084,27 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>meta</string>
+										<string>meta.tag</string>
+										<string>meta.tag.plist</string>
+										<string>meta.tag.plist.xml</string>
+										<string>meta.tag.plist.xml.plist</string>
+									</array>
 									<key>name</key>
 									<string>meta.tag.plist.xml.plist</string>
 								</dict>
 								<key>2</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.tag</string>
+										<string>punctuation.definition.tag.xml</string>
+										<string>punctuation.definition.tag.xml.plist</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.tag.xml.plist</string>
 								</dict>
@@ -690,11 +1115,27 @@
 							<dict>
 								<key>0</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>meta</string>
+										<string>meta.tag</string>
+										<string>meta.tag.plist</string>
+										<string>meta.tag.plist.xml</string>
+										<string>meta.tag.plist.xml.plist</string>
+									</array>
 									<key>name</key>
 									<string>meta.tag.plist.xml.plist</string>
 								</dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.tag</string>
+										<string>punctuation.definition.tag.xml</string>
+										<string>punctuation.definition.tag.xml.plist</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.tag.xml.plist</string>
 								</dict>
@@ -731,10 +1172,25 @@
 		<dict>
 			<key>begin</key>
 			<string>&lt;!--</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.xml</string>
+				<string>comment.block.xml.plist</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.xml</string>
+						<string>punctuation.definition.comment.xml.plist</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.xml.plist</string>
 				</dict>
@@ -746,6 +1202,14 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.double-dash-not-allowed</string>
+						<string>invalid.illegal.double-dash-not-allowed.xml</string>
+						<string>invalid.illegal.double-dash-not-allowed.xml.plist</string>
+					</array>
 					<key>match</key>
 					<string>-(?=--&gt;)|--</string>
 					<key>name</key>
@@ -758,12 +1222,28 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.entity</string>
+						<string>constant.character.entity.xml</string>
+						<string>constant.character.entity.xml.plist</string>
+					</array>
 					<key>match</key>
 					<string>&amp;([a-zA-Z0-9_-]+|#[0-9]+|#x[0-9a-fA-F]+);</string>
 					<key>name</key>
 					<string>constant.character.entity.xml.plist</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.bad-ampersand</string>
+						<string>invalid.illegal.bad-ampersand.xml</string>
+						<string>invalid.illegal.bad-ampersand.xml.plist</string>
+					</array>
 					<key>match</key>
 					<string>&amp;</string>
 					<key>name</key>
@@ -777,21 +1257,53 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.tag</string>
+						<string>meta.tag.boolean</string>
+						<string>meta.tag.boolean.xml</string>
+						<string>meta.tag.boolean.xml.plist</string>
+					</array>
 					<key>name</key>
 					<string>meta.tag.boolean.xml.plist</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.xml</string>
+						<string>punctuation.definition.tag.xml.plist</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.xml.plist</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.tag-not-recognized</string>
+						<string>invalid.illegal.tag-not-recognized.xml</string>
+						<string>invalid.illegal.tag-not-recognized.xml.plist</string>
+					</array>
 					<key>name</key>
 					<string>invalid.illegal.tag-not-recognized.xml.plist</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.xml</string>
+						<string>punctuation.definition.tag.xml.plist</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.xml.plist</string>
 				</dict>
@@ -803,6 +1315,14 @@
 		</dict>
 		<key>xml_stray-char</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>invalid</string>
+				<string>invalid.illegal</string>
+				<string>invalid.illegal.character-data-not-allowed-here</string>
+				<string>invalid.illegal.character-data-not-allowed-here.xml</string>
+				<string>invalid.illegal.character-data-not-allowed-here.xml.plist</string>
+			</array>
 			<key>match</key>
 			<string>\S</string>
 			<key>name</key>
@@ -817,56 +1337,146 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.dict</string>
+								<string>meta.tag.dict.xml</string>
+								<string>meta.tag.dict.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.dict.xml.plist</string>
 						</dict>
 						<key>10</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>11</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>6</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.dict</string>
+								<string>meta.tag.dict.xml</string>
+								<string>meta.tag.dict.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.dict.xml.plist</string>
 						</dict>
 						<key>7</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>8</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.scope</string>
+								<string>meta.scope.between-tag-pair</string>
+								<string>meta.scope.between-tag-pair.xml</string>
+								<string>meta.scope.between-tag-pair.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.scope.between-tag-pair.xml.plist</string>
 						</dict>
 						<key>9</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
@@ -881,56 +1491,146 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.array</string>
+								<string>meta.tag.array.xml</string>
+								<string>meta.tag.array.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.array.xml.plist</string>
 						</dict>
 						<key>10</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>11</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>6</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.array</string>
+								<string>meta.tag.array.xml</string>
+								<string>meta.tag.array.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.array.xml.plist</string>
 						</dict>
 						<key>7</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>8</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.scope</string>
+								<string>meta.scope.between-tag-pair</string>
+								<string>meta.scope.between-tag-pair.xml</string>
+								<string>meta.scope.between-tag-pair.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.scope.between-tag-pair.xml.plist</string>
 						</dict>
 						<key>9</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
@@ -945,56 +1645,146 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.string</string>
+								<string>meta.tag.string.xml</string>
+								<string>meta.tag.string.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.string.xml.plist</string>
 						</dict>
 						<key>10</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>11</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>6</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.string</string>
+								<string>meta.tag.string.xml</string>
+								<string>meta.tag.string.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.string.xml.plist</string>
 						</dict>
 						<key>7</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>8</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.scope</string>
+								<string>meta.scope.between-tag-pair</string>
+								<string>meta.scope.between-tag-pair.xml</string>
+								<string>meta.scope.between-tag-pair.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.scope.between-tag-pair.xml.plist</string>
 						</dict>
 						<key>9</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
@@ -1011,26 +1801,67 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.key</string>
+								<string>meta.tag.key.xml</string>
+								<string>meta.tag.key.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.key.xml.plist</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
@@ -1050,6 +1881,13 @@
 							<dict>
 								<key>0</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.constant</string>
+										<string>punctuation.definition.constant.xml</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.constant.xml</string>
 								</dict>
@@ -1064,26 +1902,67 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.dict</string>
+								<string>meta.tag.dict.xml</string>
+								<string>meta.tag.dict.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.dict.xml.plist</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
@@ -1098,26 +1977,67 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.array</string>
+								<string>meta.tag.array.xml</string>
+								<string>meta.tag.array.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.array.xml.plist</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
@@ -1132,26 +2052,67 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.string</string>
+								<string>meta.tag.string.xml</string>
+								<string>meta.tag.string.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.string.xml.plist</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
@@ -1166,26 +2127,67 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.key</string>
+								<string>meta.tag.key.xml</string>
+								<string>meta.tag.key.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.key.xml.plist</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
@@ -1202,26 +2204,67 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.dict</string>
+								<string>meta.tag.dict.xml</string>
+								<string>meta.tag.dict.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.dict.xml.plist</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
@@ -1245,26 +2288,67 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.array</string>
+								<string>meta.tag.array.xml</string>
+								<string>meta.tag.array.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.array.xml.plist</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
@@ -1288,26 +2372,67 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.string</string>
+								<string>meta.tag.string.xml</string>
+								<string>meta.tag.string.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.string.xml.plist</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
@@ -1327,10 +2452,24 @@
 						<dict>
 							<key>begin</key>
 							<string>&lt;!\[CDATA\[</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.unquoted</string>
+								<string>string.unquoted.cdata</string>
+								<string>string.unquoted.cdata.xml</string>
+							</array>
 							<key>captures</key>
 							<dict>
 								<key>0</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.string</string>
+										<string>punctuation.definition.string.xml</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.string.xml</string>
 								</dict>
@@ -1349,26 +2488,67 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.real</string>
+								<string>meta.tag.real.xml</string>
+								<string>meta.tag.real.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.real.xml.plist</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
@@ -1386,11 +2566,26 @@
 							<dict>
 								<key>0</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.constant</string>
+										<string>punctuation.definition.constant.xml</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.constant.xml</string>
 								</dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>constant</string>
+										<string>constant.numeric</string>
+										<string>constant.numeric.real</string>
+										<string>constant.numeric.real.xml</string>
+										<string>constant.numeric.real.xml.plist</string>
+									</array>
 									<key>name</key>
 									<string>constant.numeric.real.xml.plist</string>
 								</dict>
@@ -1400,12 +2595,28 @@
 							<key>patterns</key>
 							<array>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>constant</string>
+										<string>constant.numeric</string>
+										<string>constant.numeric.real</string>
+										<string>constant.numeric.real.xml</string>
+										<string>constant.numeric.real.xml.plist</string>
+									</array>
 									<key>match</key>
 									<string>[-+]?\d+(\.\d*)?(E[-+]\d+)?</string>
 									<key>name</key>
 									<string>constant.numeric.real.xml.plist</string>
 								</dict>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>invalid</string>
+										<string>invalid.illegal</string>
+										<string>invalid.illegal.not-a-number</string>
+										<string>invalid.illegal.not-a-number.xml</string>
+										<string>invalid.illegal.not-a-number.xml.plist</string>
+									</array>
 									<key>match</key>
 									<string>.</string>
 									<key>name</key>
@@ -1414,12 +2625,28 @@
 							</array>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.numeric</string>
+								<string>constant.numeric.real</string>
+								<string>constant.numeric.real.xml</string>
+								<string>constant.numeric.real.xml.plist</string>
+							</array>
 							<key>match</key>
 							<string>[-+]?\d+(\.\d*)?(E[-+]\d+)?</string>
 							<key>name</key>
 							<string>constant.numeric.real.xml.plist</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.not-a-number</string>
+								<string>invalid.illegal.not-a-number.xml</string>
+								<string>invalid.illegal.not-a-number.xml.plist</string>
+							</array>
 							<key>match</key>
 							<string>.</string>
 							<key>name</key>
@@ -1434,26 +2661,67 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.integer</string>
+								<string>meta.tag.integer.xml</string>
+								<string>meta.tag.integer.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.integer.xml.plist</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
@@ -1465,12 +2733,28 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.numeric</string>
+								<string>constant.numeric.integer</string>
+								<string>constant.numeric.integer.xml</string>
+								<string>constant.numeric.integer.xml.plist</string>
+							</array>
 							<key>match</key>
 							<string>[-+]?\d+</string>
 							<key>name</key>
 							<string>constant.numeric.integer.xml.plist</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.not-a-number</string>
+								<string>invalid.illegal.not-a-number.xml</string>
+								<string>invalid.illegal.not-a-number.xml.plist</string>
+							</array>
 							<key>match</key>
 							<string>.</string>
 							<key>name</key>
@@ -1483,26 +2767,67 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.boolean</string>
+								<string>meta.tag.boolean.xml</string>
+								<string>meta.tag.boolean.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.boolean.xml.plist</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
@@ -1519,26 +2844,67 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.data</string>
+								<string>meta.tag.data.xml</string>
+								<string>meta.tag.data.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.data.xml.plist</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
@@ -1550,18 +2916,42 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.numeric</string>
+								<string>constant.numeric.base64</string>
+								<string>constant.numeric.base64.xml</string>
+								<string>constant.numeric.base64.xml.plist</string>
+							</array>
 							<key>match</key>
 							<string>[A-Za-z0-9+/]</string>
 							<key>name</key>
 							<string>constant.numeric.base64.xml.plist</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.numeric</string>
+								<string>constant.numeric.base64</string>
+								<string>constant.numeric.base64.xml</string>
+								<string>constant.numeric.base64.xml.plist</string>
+							</array>
 							<key>match</key>
 							<string>=</string>
 							<key>name</key>
 							<string>constant.numeric.base64.xml.plist</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.invalid-character</string>
+								<string>invalid.illegal.invalid-character.xml</string>
+								<string>invalid.illegal.invalid-character.xml.plist</string>
+							</array>
 							<key>match</key>
 							<string>[^ \n\t]</string>
 							<key>name</key>
@@ -1576,26 +2966,67 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.date</string>
+								<string>meta.tag.date.xml</string>
+								<string>meta.tag.date.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.date.xml.plist</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.xml</string>
+								<string>entity.name.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.xml.plist</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.localname</string>
+								<string>entity.name.tag.localname.xml</string>
+								<string>entity.name.tag.localname.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.localname.xml.plist</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.xml</string>
+								<string>punctuation.definition.tag.xml.plist</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.xml.plist</string>
 						</dict>
@@ -1607,21 +3038,29 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.other</string>
+								<string>constant.other.date</string>
+								<string>constant.other.date.xml</string>
+								<string>constant.other.date.xml.plist</string>
+							</array>
 							<key>match</key>
 							<string>(?x)
-																	[0-9]{4}						# Year
-																	-								# Divider
-																	(0[1-9]|1[012])					# Month
-																	-								# Divider
-																	(?!00|3[2-9])[0-3][0-9]			# Day
-																	T								# Separator
-																	(?!2[5-9])[0-2][0-9]			# Hour
-																	:								# Divider
-																	[0-5][0-9]						# Minute
-																	:								# Divider
-																	(?!6[1-9])[0-6][0-9]			# Second
-																	Z								# Zulu
-																</string>
+																																						[0-9]{4}						# Year
+																																						-								# Divider
+																																						(0[1-9]|1[012])					# Month
+																																						-								# Divider
+																																						(?!00|3[2-9])[0-3][0-9]			# Day
+																																						T								# Separator
+																																						(?!2[5-9])[0-2][0-9]			# Hour
+																																						:								# Divider
+																																						[0-5][0-9]						# Minute
+																																						:								# Divider
+																																						(?!6[1-9])[0-6][0-9]			# Second
+																																						Z								# Zulu
+																																					</string>
 							<key>name</key>
 							<string>constant.other.date.xml.plist</string>
 						</dict>

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>SWeave</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>Snw</string>
@@ -28,16 +32,39 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.begin</string>
+						<string>punctuation.definition.parameters.begin.sweave</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.begin.sweave</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.block</string>
+				<string>meta.block.parameters</string>
+				<string>meta.block.parameters.sweave</string>
+			</array>
 			<key>end</key>
 			<string>(&gt;&gt;)(?==)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.end</string>
+						<string>punctuation.definition.parameters.end.sweave</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.end.sweave</string>
 				</dict>
@@ -47,30 +74,71 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.parameter</string>
+						<string>meta.parameter.sweave</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.name-of-parameter</string>
+								<string>keyword.other.name-of-parameter.sweave</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.name-of-parameter.sweave</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.key-value</string>
+								<string>punctuation.separator.key-value.sweave</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.key-value.sweave</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.language</string>
+								<string>constant.language.boolean</string>
+								<string>constant.language.boolean.sweave</string>
+							</array>
 							<key>name</key>
 							<string>constant.language.boolean.sweave</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.language</string>
+								<string>constant.language.results</string>
+								<string>constant.language.results.sweave</string>
+							</array>
 							<key>name</key>
 							<string>constant.language.results.sweave</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.unquoted</string>
+								<string>string.unquoted.label</string>
+								<string>string.unquoted.label.sweave</string>
+							</array>
 							<key>name</key>
 							<string>string.unquoted.label.sweave</string>
 						</dict>
@@ -81,12 +149,26 @@
 					<string>meta.parameter.sweave</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.label</string>
+						<string>string.unquoted.label.sweave</string>
+					</array>
 					<key>match</key>
 					<string>[\w.]+</string>
 					<key>name</key>
 					<string>string.unquoted.label.sweave</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.parameters</string>
+						<string>punctuation.separator.parameters.sweave</string>
+					</array>
 					<key>match</key>
 					<string>,</string>
 					<key>name</key>
@@ -101,15 +183,37 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.begin</string>
+						<string>punctuation.section.embedded.begin.sweave</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.begin.sweave</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.other</string>
+						<string>comment.line.other.sweave</string>
+					</array>
 					<key>name</key>
 					<string>comment.line.other.sweave</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.block</string>
+				<string>meta.block.code</string>
+				<string>meta.block.code.sweave</string>
+			</array>
 			<key>contentName</key>
 			<string>source.r.embedded.sweave</string>
 			<key>end</key>
@@ -118,11 +222,26 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.end</string>
+						<string>punctuation.section.embedded.end.sweave</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.end.sweave</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.other</string>
+						<string>comment.line.other.sweave</string>
+					</array>
 					<key>name</key>
 					<string>comment.line.other.sweave</string>
 				</dict>
@@ -132,6 +251,12 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.sweave</string>
+					</array>
 					<key>match</key>
 					<string>^\s+@.*\n?</string>
 					<key>name</key>
@@ -144,6 +269,12 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>invalid</string>
+				<string>invalid.illegal</string>
+				<string>invalid.illegal.sweave</string>
+			</array>
 			<key>match</key>
 			<string>^\s+&lt;&lt;.*\n?</string>
 			<key>name</key>
@@ -152,15 +283,38 @@
 		<dict>
 			<key>begin</key>
 			<string>^\\begin(\{)Scode(\})</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.block</string>
+				<string>meta.block.source</string>
+				<string>meta.block.source.r</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.begin</string>
+						<string>punctuation.definition.arguments.begin.latex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.begin.latex</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.end</string>
+						<string>punctuation.definition.arguments.end.latex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.end.latex</string>
 				</dict>
@@ -186,16 +340,39 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.begin</string>
+						<string>punctuation.definition.arguments.begin.latex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.begin.latex</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>source</string>
+				<string>source.r</string>
+				<string>source.r.embedded</string>
+				<string>source.r.embedded.sweave</string>
+			</array>
 			<key>end</key>
 			<string>(\})</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.end</string>
+						<string>punctuation.definition.arguments.end.latex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.end.latex</string>
 				</dict>
