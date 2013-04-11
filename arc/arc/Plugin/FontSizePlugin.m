@@ -57,4 +57,14 @@
     [arcAttributedString setFontSize:
      [[properties objectForKey:_fontSizeSettingsKey] intValue]];
 }
+
+- (void)execOnCodeView:(id<CodeViewDelegate>)codeView
+                ofFile:(id<File>)file
+             forValues:(NSDictionary *)properties
+          sharedObject:(NSMutableDictionary *)dictionary
+              delegate:(id<CodeViewControllerDelegate>)delegate
+{
+    codeView.fontSize = [[properties objectForKey:_fontSizeSettingsKey] intValue];
+}
+
 @end

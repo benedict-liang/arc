@@ -10,6 +10,7 @@
 
 @protocol CodeViewDelegate <NSObject>
 @property (nonatomic, strong) UIColor *backgroundColor;
+@property (nonatomic, strong) UIColor *foregroundColor;
 @property (nonatomic, strong) NSString *fontFamily;
 @property (nonatomic) int fontSize;
 @property (nonatomic) BOOL lineNumbers;

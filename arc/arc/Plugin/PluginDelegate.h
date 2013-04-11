@@ -10,7 +10,7 @@
 #import "ArcAttributedString.h"
 #import "PluginUtilities.h"
 #import "File.h"
-@protocol CodeViewDelegate;
+#import "CodeViewDelegate.h"
 @protocol CodeViewControllerDelegate;
 
 @protocol PluginDelegate <NSObject>

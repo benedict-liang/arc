@@ -44,7 +44,14 @@
 
 @implementation CodeViewController
 @synthesize delegate = _delegate;
+
+// Code View Delegate Properties
 @synthesize backgroundColor = _backgroundColor;
+@synthesize foregroundColor = _foregroundColor;
+@synthesize fontFamily = _fontFamily;
+@synthesize fontSize = _fontSize;
+@synthesize lineNumbers = _lineNumbers;
+@synthesize wordWrap = _wordWrap;
 
 - (id)init
 {

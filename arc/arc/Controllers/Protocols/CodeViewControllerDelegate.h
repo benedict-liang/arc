@@ -14,11 +14,9 @@
 @protocol CodeViewControllerDelegate <NSObject>
 - (void)showFile:(id<File>)file;
 - (void)refreshForSetting:(NSString*)setting;
+- (void)registerPlugin:(id<PluginDelegate>)plugin;
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
                    forFile:(id<File>)file
                 WithStyle:(NSDictionary*)style;
-
-// Register Plugin with CodeViewDelegate;
-- (void)registerPlugin:(id<PluginDelegate>)plugin;
 @end
 

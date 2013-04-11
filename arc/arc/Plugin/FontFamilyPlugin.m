@@ -82,6 +82,16 @@
     [arcAttributedString setFontFamily:fontFamily];
 }
 
+- (void)execOnCodeView:(id<CodeViewDelegate>)codeView
+                ofFile:(id<File>)file
+             forValues:(NSDictionary *)properties
+          sharedObject:(NSMutableDictionary *)dictionary
+              delegate:(id<CodeViewControllerDelegate>)delegate
+{
+    NSString *fontFamily = [properties objectForKey:_fontFamilySettingKey];
+    [codeView setFontFamily:fontFamily];
+}
+
 - (void)customiseTableViewCell:(UITableViewCell **)cell options:(NSDictionary *)options
 {
     // Get the font this cell represents.

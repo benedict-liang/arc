@@ -119,6 +119,7 @@
 {
     NSDictionary *style = [dictionary objectForKey:@"syntaxHighlightingPlugin"];
     codeView.backgroundColor = [style objectForKey:@"background"];
+    codeView.foregroundColor = [style objectForKey:@"foreground"];
 }
 
 - (NSDictionary*)propertiesFor:(NSString *)settingKey
