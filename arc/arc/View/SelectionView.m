@@ -51,7 +51,7 @@
     
     [panGesture setTranslation:CGPointMake(0, 0) inView:cell];
     
-    if ([panGesture state] == UIGestureRecognizerStateEnded) {
+    if ([panGesture state] == UIGestureRecognizerStateChanged) {
         // Update selection rect
         CGFloat originalX = self.frame.origin.x;
         CGFloat newWidth = panGesture.view.center.x - originalX;
