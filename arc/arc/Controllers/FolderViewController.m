@@ -126,7 +126,8 @@
                           _moveButton,
                           [Utils flexibleSpace],
                           nil];
-    
+
+    _editToolbar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview:_editToolbar];
 }
 
@@ -194,7 +195,14 @@ titleForHeaderInSection:(NSInteger)section {
     } else if ([[fileObject class] conformsToProtocol:@protocol(Folder)]) {
         cellImage = [Utils scale:[UIImage imageNamed:@"folder.png"]
                                      toSize:CGSizeMake(40, 40)];
-        detailDescription = [NSString stringWithFormat:@"%d objects", fileObject.size];
+        
+        if (fileObject.size == 0) {
+            detailDescription = @"Empty Folder";
+        } else if (fileObject.size == 1) {
+            detailDescription = [NSString stringWithFormat:@"%d item", fileObject.size];
+        } else {
+            detailDescription = [NSString stringWithFormat:@"%d items", fileObject.size];
+        }
     }
 
     cell.textLabel.text = fileObject.name;

@@ -137,11 +137,13 @@
 
 - (NSMutableArray*)settingsAttributeForSettingsKey:(NSString*)settingKey
 {
-    NSMutableArray *settingAttributes = [__attributesDictionary objectForKey:settingKey];
+    NSMutableArray *settingAttributes =
+    [__attributesDictionary objectForKey:settingKey];
 
     if (settingAttributes == nil) {
         settingAttributes = [NSMutableArray array];
-        [__attributesDictionary setValue:settingAttributes forKey:settingKey];
+        [__attributesDictionary setValue:settingAttributes
+                                  forKey:settingKey];
     }
 
     return settingAttributes;
@@ -149,11 +151,13 @@
 
 - (NSMutableArray*)settingsAppliedAttributeForSettingsKey:(NSString*)settingKey
 {
-    NSMutableArray *settingAppliedAttributes = [__appliedAttributesDictionary objectForKey:settingKey];
+    NSMutableArray *settingAppliedAttributes =
+    [__appliedAttributesDictionary objectForKey:settingKey];
     
     if (settingAppliedAttributes == nil) {
         settingAppliedAttributes = [NSMutableArray array];
-        [__appliedAttributesDictionary setValue:settingAppliedAttributes forKey:settingKey];
+        [__appliedAttributesDictionary setValue:settingAppliedAttributes
+                                         forKey:settingKey];
     }
     
     return settingAppliedAttributes;
@@ -184,7 +188,9 @@
                                   range:_stringRange];
     
     // update font to new property
-    CTFontRef font = CTFontCreateWithName((__bridge CFStringRef)_fontFamily, _fontSize, NULL);
+    CTFontRef font =
+    CTFontCreateWithName((__bridge CFStringRef)_fontFamily, _fontSize, NULL);
+    
     [__attributedString addAttribute:(id)kCTFontAttributeName
                                value:(__bridge id)font
                                range:_stringRange];

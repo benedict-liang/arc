@@ -14,7 +14,6 @@
 
 @interface LeftViewController ()
 @property (nonatomic, strong) id<Folder> currentFolder;
-@property (nonatomic, strong) UIViewController *currentViewController;
 @property (nonatomic, strong) UITabBarController *tabBarController;
 @property (nonatomic, strong) UINavigationController *documentsNavigationViewController;
 @property (nonatomic, strong) UINavigationController *settingsNavigationViewController;
@@ -53,10 +52,12 @@
                                       image:[Utils scale:[UIImage imageNamed:@"documents.png"]
                                                   toSize:CGSizeMake(40, 30)]
                                         tag:TAB_DOCUMENTS];
+    _documentsNavigationViewController.view.autoresizesSubviews = YES;
     [self addChildViewController:_documentsNavigationViewController];
     
     // Settings View Controller
     _settingsNavigationViewController = [[UINavigationController alloc] init];
+    _settingsNavigationViewController.view.autoresizesSubviews = YES;
     _settingsNavigationViewController.tabBarItem =
         [[UITabBarItem alloc] initWithTitle:@"Setting"
                                       image:[Utils scale:[UIImage imageNamed:@"settings.png"]
@@ -79,7 +80,7 @@
     _tabBarController = [[UITabBarController alloc] init];
     _tabBarController.delegate = self;
     _tabBarController.view.frame = self.view.bounds;
-//    _tabBarController.view.autoresizesSubviews = YES;
+    _tabBarController.view.autoresizesSubviews = YES;
     [_tabBarController setViewControllers:[NSArray arrayWithObjects:
                                            _documentsNavigationViewController,
                                            dropbox,
@@ -97,37 +98,6 @@
                                                  animated:YES];
 }
 
-# pragma mark - UITabBarControllerDelegate
-
-- (BOOL)tabBarController:(UITabBarController *)tabBarController
-    shouldSelectViewController:(UIViewController *)viewController
-{
-    if (viewController.tabBarItem.tag == TAB_DROPBOX) {
-        [self showDropBox:nil];
-        return NO;
-    }  else {
-        return YES;
-    }
-}
-
-- (void)tabBarController:(UITabBarController *)tabBarController
- didSelectViewController:(UIViewController *)viewController
-{
-    viewController.view.frame = tabBarController.view.bounds;
-}
-
-- (void)showSettings:(id)sender
-{
-    [self tabBarController:_tabBarController
-   didSelectViewController:_settingsNavigationViewController];
-}
-
-- (void)showDocuments:(id)sender
-{
-    [self tabBarController:_tabBarController
-   didSelectViewController:_documentsNavigationViewController];
-}
-
 # pragma mark - SettingsViewDelegate Methods
 
 - (void)registerPlugin:(id<PluginDelegate>)plugin
@@ -141,9 +111,7 @@
 - (void)navigateTo:(id<Folder>)folder
 {
     // Force Document View
-    if (_currentViewController != _documentsNavigationViewController) {
-        [self showDocuments:nil];
-    }
+    [self showDocuments:nil];
     
     if ([Utils isEqual:[folder parent]
                    and:_currentFolder]) {
@@ -189,7 +157,8 @@
     _currentFolder = folder;
 }
 
-- (void)pushFolderView:(id<Folder>)folder animated:(BOOL)animated
+- (void)pushFolderView:(id<Folder>)folder
+              animated:(BOOL)animated
 {
     // File Navigator View Controller
     FolderViewController *folderViewController =
@@ -210,9 +179,41 @@
     [self.delegate dropboxAuthentication];
 }
 
+# pragma mark - UITabBarControllerDelegate
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController
+shouldSelectViewController:(UIViewController *)viewController
+{
+    if (viewController.tabBarItem.tag == TAB_DROPBOX) {
+        [self showDropBox:nil];
+        return NO;
+    }  else {
+        return YES;
+    }
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController
+ didSelectViewController:(UIViewController *)viewController
+{
+
+}
+
+- (void)showSettings:(id)sender
+{
+    [self tabBarController:_tabBarController
+   didSelectViewController:_settingsNavigationViewController];
+}
+
+- (void)showDocuments:(id)sender
+{
+    [self tabBarController:_tabBarController
+   didSelectViewController:_documentsNavigationViewController];
+}
+
 # pragma mark - Folder View Controller Delegate
 
-- (void)folderViewController:(FolderViewController*)folderviewController DidEnterEditModeAnimate:(BOOL)animate
+- (void)folderViewController:(FolderViewController*)folderviewController
+     DidEnterEditModeAnimate:(BOOL)animate
 {
     [UIView animateWithDuration:0.3
                           delay:0
@@ -259,7 +260,7 @@
 - (void)showTabBar:(UITabBarController *)tabbarcontroller
 {
     float fHeight = tabbarcontroller.tabBar.frame.size.height;
-    for (UIView *view in tabbarcontroller.view.subviews) {
+    for (UIView *view in tabbarcontroller.view.subviews) {        
         if([view isKindOfClass:[UITabBar class]]) {
             [view setFrame:CGRectMake(view.frame.origin.x,
                                       self.view.frame.size.height - fHeight,
