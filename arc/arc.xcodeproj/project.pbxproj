@@ -60,6 +60,21 @@
 		4CE2951417101C82003B012A /* FontFamilyPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE2951317101C82003B012A /* FontFamilyPlugin.m */; };
 		4CEADA041716AB0E00F4F619 /* threelines.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEADA031716AB0E00F4F619 /* threelines.png */; };
 		4CEADA071716ADBB00F4F619 /* LineNumberPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEADA061716ADBB00F4F619 /* LineNumberPlugin.m */; };
+		4CEADA0D1716F3EF00F4F619 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
+		4CEADA0E1716F3EF00F4F619 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EE16F86AA900159B29 /* Foundation.framework */; };
+		4CEADA0F1716F3EF00F4F619 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8F016F86AA900159B29 /* CoreGraphics.framework */; };
+		4CEADA101716F3EF00F4F619 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8F216F86AA900159B29 /* CoreData.framework */; };
+		4CEADA161716F3EF00F4F619 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CEADA141716F3EF00F4F619 /* InfoPlist.strings */; };
+		4CEADA181716F3EF00F4F619 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEADA171716F3EF00F4F619 /* main.m */; };
+		4CEADA1C1716F3EF00F4F619 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEADA1B1716F3EF00F4F619 /* AppDelegate.m */; };
+		4CEADA1E1716F3EF00F4F619 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEADA1D1716F3EF00F4F619 /* Default.png */; };
+		4CEADA201716F3EF00F4F619 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEADA1F1716F3EF00F4F619 /* Default@2x.png */; };
+		4CEADA221716F3EF00F4F619 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEADA211716F3EF00F4F619 /* Default-568h@2x.png */; };
+		4CEADA251716F3EF00F4F619 /* PrettyArc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CEADA231716F3EF00F4F619 /* PrettyArc.xcdatamodeld */; };
+		4CEADA2C1716F43E00F4F619 /* ArcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEADA2B1716F43E00F4F619 /* ArcViewController.m */; };
+		4CEADA301716F63700F4F619 /* ArcView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEADA2F1716F63700F4F619 /* ArcView.m */; };
+		4CEADA311716F69A00F4F619 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC478170589C600A9AA5F /* QuartzCore.framework */; };
+		4CEADA341716F6D400F4F619 /* ArcShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEADA331716F6D400F4F619 /* ArcShadowView.m */; };
 		4CF6F0EE1706E08800EDDEDC /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0ED1706E08800EDDEDC /* file.png */; };
 		4CF6F0F21706E29300EDDEDC /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F11706E29300EDDEDC /* folder.png */; };
 		4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */; };
@@ -408,6 +423,23 @@
 		4CEADA031716AB0E00F4F619 /* threelines.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = threelines.png; sourceTree = "<group>"; };
 		4CEADA051716ADBB00F4F619 /* LineNumberPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineNumberPlugin.h; sourceTree = "<group>"; };
 		4CEADA061716ADBB00F4F619 /* LineNumberPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineNumberPlugin.m; sourceTree = "<group>"; };
+		4CEADA0C1716F3EF00F4F619 /* PrettyArc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrettyArc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CEADA131716F3EF00F4F619 /* PrettyArc-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PrettyArc-Info.plist"; sourceTree = "<group>"; };
+		4CEADA151716F3EF00F4F619 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4CEADA171716F3EF00F4F619 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4CEADA191716F3EF00F4F619 /* PrettyArc-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PrettyArc-Prefix.pch"; sourceTree = "<group>"; };
+		4CEADA1A1716F3EF00F4F619 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4CEADA1B1716F3EF00F4F619 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4CEADA1D1716F3EF00F4F619 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4CEADA1F1716F3EF00F4F619 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		4CEADA211716F3EF00F4F619 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		4CEADA241716F3EF00F4F619 /* PrettyArc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PrettyArc.xcdatamodel; sourceTree = "<group>"; };
+		4CEADA2A1716F43E00F4F619 /* ArcViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArcViewController.h; path = Controllers/ArcViewController.h; sourceTree = "<group>"; };
+		4CEADA2B1716F43E00F4F619 /* ArcViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArcViewController.m; path = Controllers/ArcViewController.m; sourceTree = "<group>"; };
+		4CEADA2E1716F63700F4F619 /* ArcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcView.h; sourceTree = "<group>"; };
+		4CEADA2F1716F63700F4F619 /* ArcView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcView.m; sourceTree = "<group>"; };
+		4CEADA321716F6D400F4F619 /* ArcShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcShadowView.h; sourceTree = "<group>"; };
+		4CEADA331716F6D400F4F619 /* ArcShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcShadowView.m; sourceTree = "<group>"; };
 		4CF6F0ED1706E08800EDDEDC /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
 		4CF6F0F11706E29300EDDEDC /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
 		4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -696,6 +728,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4CEADA091716F3EF00F4F619 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CEADA311716F69A00F4F619 /* QuartzCore.framework in Frameworks */,
+				4CEADA0D1716F3EF00F4F619 /* UIKit.framework in Frameworks */,
+				4CEADA0E1716F3EF00F4F619 /* Foundation.framework in Frameworks */,
+				4CEADA0F1716F3EF00F4F619 /* CoreGraphics.framework in Frameworks */,
+				4CEADA101716F3EF00F4F619 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -751,6 +795,7 @@
 			children = (
 				4C43F8F416F86AA900159B29 /* arc */,
 				4CD06B6F16FDEEC100C9DED3 /* arcTests */,
+				4CEADA111716F3EF00F4F619 /* PrettyArc */,
 				4C43F8EB16F86AA900159B29 /* Frameworks */,
 				4C43F8EA16F86AA900159B29 /* Products */,
 			);
@@ -761,6 +806,7 @@
 			children = (
 				4C43F8E916F86AA900159B29 /* arc.app */,
 				4CD06B6B16FDEEC100C9DED3 /* arcTests.octest */,
+				4CEADA0C1716F3EF00F4F619 /* PrettyArc.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -963,6 +1009,53 @@
 				FC7260911711B4D60068DD91 /* SyntaxHighlight.m */,
 			);
 			name = SyntaxHighlighting;
+			sourceTree = "<group>";
+		};
+		4CEADA111716F3EF00F4F619 /* PrettyArc */ = {
+			isa = PBXGroup;
+			children = (
+				4CEADA2D1716F61F00F4F619 /* Views */,
+				4CEADA291716F41700F4F619 /* Controllers */,
+				4CEADA121716F3EF00F4F619 /* Supporting Files */,
+				4CEADA1A1716F3EF00F4F619 /* AppDelegate.h */,
+				4CEADA1B1716F3EF00F4F619 /* AppDelegate.m */,
+			);
+			path = PrettyArc;
+			sourceTree = "<group>";
+		};
+		4CEADA121716F3EF00F4F619 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4CEADA231716F3EF00F4F619 /* PrettyArc.xcdatamodeld */,
+				4CEADA131716F3EF00F4F619 /* PrettyArc-Info.plist */,
+				4CEADA141716F3EF00F4F619 /* InfoPlist.strings */,
+				4CEADA171716F3EF00F4F619 /* main.m */,
+				4CEADA191716F3EF00F4F619 /* PrettyArc-Prefix.pch */,
+				4CEADA1D1716F3EF00F4F619 /* Default.png */,
+				4CEADA1F1716F3EF00F4F619 /* Default@2x.png */,
+				4CEADA211716F3EF00F4F619 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4CEADA291716F41700F4F619 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4CEADA2A1716F43E00F4F619 /* ArcViewController.h */,
+				4CEADA2B1716F43E00F4F619 /* ArcViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		4CEADA2D1716F61F00F4F619 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4CEADA2E1716F63700F4F619 /* ArcView.h */,
+				4CEADA2F1716F63700F4F619 /* ArcView.m */,
+				4CEADA321716F6D400F4F619 /* ArcShadowView.h */,
+				4CEADA331716F6D400F4F619 /* ArcShadowView.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		4CF6F0EC1706E05500EDDEDC /* Images */ = {
@@ -1302,6 +1395,23 @@
 			productReference = 4CD06B6B16FDEEC100C9DED3 /* arcTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		4CEADA0B1716F3EF00F4F619 /* PrettyArc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CEADA281716F3EF00F4F619 /* Build configuration list for PBXNativeTarget "PrettyArc" */;
+			buildPhases = (
+				4CEADA081716F3EF00F4F619 /* Sources */,
+				4CEADA091716F3EF00F4F619 /* Frameworks */,
+				4CEADA0A1716F3EF00F4F619 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PrettyArc;
+			productName = PrettyArc;
+			productReference = 4CEADA0C1716F3EF00F4F619 /* PrettyArc.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1325,6 +1435,7 @@
 			targets = (
 				4C43F8E816F86AA900159B29 /* arc */,
 				4CD06B6A16FDEEC100C9DED3 /* arcTests */,
+				4CEADA0B1716F3EF00F4F619 /* PrettyArc */,
 			);
 		};
 /* End PBXProject section */
@@ -1590,6 +1701,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4CEADA0A1716F3EF00F4F619 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CEADA161716F3EF00F4F619 /* InfoPlist.strings in Resources */,
+				4CEADA1E1716F3EF00F4F619 /* Default.png in Resources */,
+				4CEADA201716F3EF00F4F619 /* Default@2x.png in Resources */,
+				4CEADA221716F3EF00F4F619 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1659,6 +1781,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4CEADA081716F3EF00F4F619 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CEADA181716F3EF00F4F619 /* main.m in Sources */,
+				4CEADA1C1716F3EF00F4F619 /* AppDelegate.m in Sources */,
+				4CEADA251716F3EF00F4F619 /* PrettyArc.xcdatamodeld in Sources */,
+				4CEADA2C1716F43E00F4F619 /* ArcViewController.m in Sources */,
+				4CEADA301716F63700F4F619 /* ArcView.m in Sources */,
+				4CEADA341716F6D400F4F619 /* ArcShadowView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1682,6 +1817,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				4CD06B7316FDEEC100C9DED3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4CEADA141716F3EF00F4F619 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CEADA151716F3EF00F4F619 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1813,6 +1956,38 @@
 			};
 			name = Release;
 		};
+		4CEADA261716F3EF00F4F619 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PrettyArc/PrettyArc-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PrettyArc/PrettyArc-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4CEADA271716F3EF00F4F619 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PrettyArc/PrettyArc-Prefix.pch";
+				INFOPLIST_FILE = "PrettyArc/PrettyArc-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1843,6 +2018,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		4CEADA281716F3EF00F4F619 /* Build configuration list for PBXNativeTarget "PrettyArc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CEADA261716F3EF00F4F619 /* Debug */,
+				4CEADA271716F3EF00F4F619 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
@@ -1853,6 +2036,16 @@
 			);
 			currentVersion = 4C43F90716F86AA900159B29 /* arc.xcdatamodel */;
 			path = arc.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		4CEADA231716F3EF00F4F619 /* PrettyArc.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4CEADA241716F3EF00F4F619 /* PrettyArc.xcdatamodel */,
+			);
+			currentVersion = 4CEADA241716F3EF00F4F619 /* PrettyArc.xcdatamodel */;
+			path = PrettyArc.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -4,13 +4,27 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ArcSplitViewController.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>PrettyArc.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>arc.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
 		<key>arcTests.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
@@ -33,6 +47,11 @@
 			<true/>
 		</dict>
 		<key>4CD06B6A16FDEEC100C9DED3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4CEADA0B1716F3EF00F4F619</key>
 		<dict>
 			<key>primary</key>
 			<true/>
