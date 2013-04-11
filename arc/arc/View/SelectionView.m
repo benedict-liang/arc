@@ -61,12 +61,34 @@
         // Update substring
         [self updateSelectionSubstring:cell];
         
-        [[NSNotificationCenter defaultCenter] postNotification:
-         [NSNotification notificationWithName:@"showCopyMenu" object:nil]];
+        [self showCopyMenuForTextSelection];
     }
 }
 
 // TODO: LeftDragPoint
+
+#pragma mark - Copy and Paste Methods
+
+- (void)showCopyMenuForTextSelection {
+    [self becomeFirstResponder];
+    
+    UIMenuController *menuController = [UIMenuController sharedMenuController];
+    [menuController setTargetRect:self.frame inView:self.superview];
+    
+    [menuController setMenuVisible:YES animated:YES];
+}
+
+- (void)copy:(id)sender {
+    
+    UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
+    NSString *copiedString = _selectedString;
+    [pasteBoard setString:copiedString];
+    
+    // Need to figure out when to remove from superview
+    [self removeFromSuperview];
+    [_rightDragPoint removeFromSuperview];
+}
+
 
 #pragma mark - Update Methods
 

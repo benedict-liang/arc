@@ -440,17 +440,8 @@
         _selectionView.selectedString = [cellString substringWithRange:NSMakeRange(startIndex, endIndex - startIndex)];
     }
     if (longPressGesture.state == UIGestureRecognizerStateEnded) {
-        [self showCopyMenuForTextSelection];
+        
     }
-}
-
-- (void)showCopyMenuForTextSelection {
-    [_selectionView becomeFirstResponder];
-    
-    UIMenuController *menuController = [UIMenuController sharedMenuController];
-    [menuController setTargetRect:_selectionView.frame inView:_selectionView.superview];
-    
-    [menuController setMenuVisible:YES animated:YES];
 }
 
 #pragma mark - UIMenuController methods
@@ -460,17 +451,7 @@
     return YES;
 }
 
-- (void)copy:(id)sender {
-    
-    UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
-    NSString *copiedString = _selectionView.selectedString;
-    [pasteBoard setString:copiedString];
-    
-    // Need to figure out when to remove from superview
-    [_selectionView removeFromSuperview];
-    [_selectionView.rightDragPoint removeFromSuperview];
-    _selectionView = nil;
-}
+
 
 //- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
 //    NSLog(@"canPerformAction");
