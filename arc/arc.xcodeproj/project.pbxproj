@@ -294,7 +294,6 @@
 		FC726065171102660068DD91 /* base.rb in Resources */ = {isa = PBXBuildFile; fileRef = FC726064171102660068DD91 /* base.rb */; };
 		FC72606B171106C60068DD91 /* RequestBuilder.hs in Resources */ = {isa = PBXBuildFile; fileRef = FC72606A171106C60068DD91 /* RequestBuilder.hs */; };
 		FC72606D171113420068DD91 /* filter_routes.clj in Resources */ = {isa = PBXBuildFile; fileRef = FC72606C171113420068DD91 /* filter_routes.clj */; };
-		FC72606F171114DA0068DD91 /* source.clojure.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC72606E171114DA0068DD91 /* source.clojure.plist */; };
 		FC726086171152910068DD91 /* Monokai.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC726084171152910068DD91 /* Monokai.tmTheme */; };
 		FC726087171152910068DD91 /* Solarized (light).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC726085171152910068DD91 /* Solarized (light).tmTheme */; };
 		FC7260921711B4D70068DD91 /* SyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7260911711B4D60068DD91 /* SyntaxHighlight.m */; };
@@ -1496,7 +1495,6 @@
 				FC726065171102660068DD91 /* base.rb in Resources */,
 				FC72606B171106C60068DD91 /* RequestBuilder.hs in Resources */,
 				FC72606D171113420068DD91 /* filter_routes.clj in Resources */,
-				FC72606F171114DA0068DD91 /* source.clojure.plist in Resources */,
 				FC726086171152910068DD91 /* Monokai.tmTheme in Resources */,
 				FC726087171152910068DD91 /* Solarized (light).tmTheme in Resources */,
 				02CF20721712ACB8001A59E4 /* Reading Panel.png in Resources */,
