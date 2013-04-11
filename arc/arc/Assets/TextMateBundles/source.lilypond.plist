@@ -2,14 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Lilypond</string>
+	</array>
 	<key>comment</key>
 	<string>
-			This bundle is, as can easily be seen, far from complete,
-			but it should still be as useful as the Lilypond.app pyobjc
-			application, which has no syntax coloring, no way to do
-			snippets, and pretty much no interesting functionality at
-			all, other than a &quot;Run&quot; menu option. :)
-		</string>
+						This bundle is, as can easily be seen, far from complete,
+						but it should still be as useful as the Lilypond.app pyobjc
+						application, which has no syntax coloring, no way to do
+						snippets, and pretty much no interesting functionality at
+						all, other than a &quot;Run&quot; menu option. :)
+					</string>
 	<key>fileTypes</key>
 	<array>
 		<string>ly</string>
@@ -59,10 +63,23 @@
 				<dict>
 					<key>begin</key>
 					<string>%{</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.block</string>
+						<string>comment.block.lilypond</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.lilypond</string>
 						</dict>
@@ -79,10 +96,23 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.lilypond</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.lilypond</string>
+					</array>
 					<key>end</key>
 					<string>$\n?</string>
 					<key>name</key>
@@ -92,85 +122,164 @@
 		</dict>
 		<key>f_clef</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.element</string>
+				<string>meta.element.clef</string>
+				<string>meta.element.clef.lilypond</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.element</string>
+						<string>support.function.element.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>support.function.element.lilypond</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.function.lilypond</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.lilypond</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.language</string>
+						<string>constant.language.clef-name</string>
+						<string>constant.language.clef-name.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>constant.language.clef-name.lilypond</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.modifier</string>
+						<string>constant.other.modifier.clef</string>
+						<string>constant.other.modifier.clef.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>constant.other.modifier.clef.lilypond</string>
 				</dict>
 				<key>6</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.fixme</string>
+						<string>meta.fixme.unknown-clef-name</string>
+						<string>meta.fixme.unknown-clef-name.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>meta.fixme.unknown-clef-name.lilypond</string>
 				</dict>
 				<key>7</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.modifier</string>
+						<string>constant.other.modifier.clef</string>
+						<string>constant.other.modifier.clef.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>constant.other.modifier.clef.lilypond</string>
 				</dict>
 				<key>8</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.lilypond</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>
-							This looks something like:   \clef mezzosoprano_8
-							Or maybe:                    \clef neomensural-c3^15
-						</string>
+																This looks something like:   \clef mezzosoprano_8
+																Or maybe:                    \clef neomensural-c3^15
+															</string>
 			<key>match</key>
 			<string>(?x)
-							((\\) clef) \s+  # backslash + &quot;clef&quot; + spaces (groups 1-2)
-							(?:
-							  (&quot;?)	# beginning quotes (group 3)
-							  ( (?: # group 4
-								  treble | violin | G | french |                    # G clefs
-							      alto | C | tenor | (?:mezzo)?soprano | baritone | # C clefs
-							      (?:sub)?bass | F | varbaritone |                  # F clefs
-							      percussion | tab | # percussion / tablature clefs
-			                      
-						          (?:neo)?mensural-c[1-4] | mensural-[fg] | 		# Ancient clefs
-							      petrucci-(?: [fg] | c[1-5] ) |
-							      (?: vaticana | medicaea | hufnagel ) - (?: do[1-3] | fa[12] ) |
-							      hufnagel-do-fa
-							    )
-							    ([_^](?:8|15)?)? # optionally shift 1-2 octaves ↑/↓ (group 5)
-							  ) |
-							  ( (?:\w+) ([_^](?:8|15))? ) # unknown clef name (groups 6-7)
-							  (\3) # closing quotes (group 8)
-							)?
-						</string>
+																((\\) clef) \s+  # backslash + &quot;clef&quot; + spaces (groups 1-2)
+																(?:
+																  (&quot;?)	# beginning quotes (group 3)
+																  ( (?: # group 4
+																	  treble | violin | G | french |                    # G clefs
+																      alto | C | tenor | (?:mezzo)?soprano | baritone | # C clefs
+																      (?:sub)?bass | F | varbaritone |                  # F clefs
+																      percussion | tab | # percussion / tablature clefs
+												                      
+															          (?:neo)?mensural-c[1-4] | mensural-[fg] | 		# Ancient clefs
+																      petrucci-(?: [fg] | c[1-5] ) |
+																      (?: vaticana | medicaea | hufnagel ) - (?: do[1-3] | fa[12] ) |
+																      hufnagel-do-fa
+																    )
+																    ([_^](?:8|15)?)? # optionally shift 1-2 octaves ↑/↓ (group 5)
+																  ) |
+																  ( (?:\w+) ([_^](?:8|15))? ) # unknown clef name (groups 6-7)
+																  (\3) # closing quotes (group 8)
+																)?
+															</string>
 			<key>name</key>
 			<string>meta.element.clef.lilypond</string>
 		</dict>
 		<key>f_generic</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.general</string>
+				<string>support.function.general.lilypond</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.function.lilypond</string>
 				</dict>
@@ -182,6 +291,13 @@
 		</dict>
 		<key>f_key-signature</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.element</string>
+				<string>meta.element.key-signature</string>
+				<string>meta.element.key-signature.lilypond</string>
+			</array>
 			<key>comment</key>
 			<string>FIXME</string>
 			<key>name</key>
@@ -189,48 +305,89 @@
 		</dict>
 		<key>f_keywords</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.lilypond</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.function.lilypond</string>
 				</dict>
 			</dict>
 			<key>match</key>
 			<string>(?x)
-							(?: (\\)
-							    (?: set | new | override | revert)
-							)
-						</string>
+																(?: (\\)
+																    (?: set | new | override | revert)
+																)
+															</string>
 			<key>name</key>
 			<string>keyword.control.lilypond</string>
 		</dict>
 		<key>f_time-signature</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.element</string>
+				<string>meta.element.time-signature</string>
+				<string>meta.element.time-signature.lilypond</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.element</string>
+						<string>support.function.element.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>support.function.element.lilypond</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.function.lilypond</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.time-signature</string>
+						<string>constant.numeric.time-signature.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>constant.numeric.time-signature.lilypond</string>
 				</dict>
 			</dict>
 			<key>match</key>
 			<string>(?x)
-							((\\) time) \s+ # backslash + &quot;time&quot; + spaces (groups 1-2)
-							([1-9][0-9]*/[1-9][0-9]*)?
-						</string>
+																((\\) time) \s+ # backslash + &quot;time&quot; + spaces (groups 1-2)
+																([1-9][0-9]*/[1-9][0-9]*)?
+															</string>
 			<key>name</key>
 			<string>meta.element.time-signature.lilypond</string>
 		</dict>
@@ -268,26 +425,63 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.section</string>
+						<string>support.function.section.header</string>
+						<string>support.function.section.header.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>support.function.section.header.lilypond</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.function.lilypond</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.group</string>
+						<string>punctuation.section.group.begin</string>
+						<string>punctuation.section.group.begin.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.group.begin.lilypond</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.header</string>
+				<string>meta.header.lilypond</string>
+			</array>
 			<key>end</key>
 			<string>}</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.group</string>
+						<string>punctuation.section.group.end</string>
+						<string>punctuation.section.group.end.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.group.end.lilypond</string>
 				</dict>
@@ -313,29 +507,51 @@
 					<string>#g_markup</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+						<string>punctuation.separator.key-value.lilypond</string>
+					</array>
 					<key>match</key>
 					<string>=</string>
 					<key>name</key>
 					<string>punctuation.separator.key-value.lilypond</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.constant</string>
+						<string>support.constant.header</string>
+						<string>support.constant.header.lilypond</string>
+					</array>
 					<key>match</key>
 					<string>(?x)
-											dedication | title | subtitle | subsubtitle | poet |
-											composer | meter | opus | arranger | instrument |
-											piece | breakbefore | copyright | tagline | enteredby
-										</string>
+																										dedication | title | subtitle | subsubtitle | poet |
+																										composer | meter | opus | arranger | instrument |
+																										piece | breakbefore | copyright | tagline | enteredby
+																									</string>
 					<key>name</key>
 					<string>support.constant.header.lilypond</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.constant</string>
+						<string>support.constant.header</string>
+						<string>support.constant.header.mutopia</string>
+						<string>support.constant.header.mutopia.lilypond</string>
+					</array>
 					<key>match</key>
 					<string>(?x)
-											mutopiatitle | mutopiacomposer | mutopiapoet |
-											mutopiaopus | mutopiainstrument | date | source |
-											style | maintainer | maintainerEmail |
-											maintainerWeb | lastupdated
-										</string>
+																										mutopiatitle | mutopiacomposer | mutopiapoet |
+																										mutopiaopus | mutopiainstrument | date | source |
+																										style | maintainer | maintainerEmail |
+																										maintainerWeb | lastupdated
+																									</string>
 					<key>name</key>
 					<string>support.constant.header.mutopia.lilypond</string>
 				</dict>
@@ -349,16 +565,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.group</string>
+						<string>punctuation.section.group.begin</string>
+						<string>punctuation.section.group.begin.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.group.begin.lilypond</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.group</string>
+				<string>meta.group.lilypond</string>
+			</array>
 			<key>end</key>
 			<string>}</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.group</string>
+						<string>punctuation.section.group.end</string>
+						<string>punctuation.section.group.end.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.group.end.lilypond</string>
 				</dict>
@@ -393,22 +631,44 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-							((\\) markup) \s+ # backslash + &quot;markup&quot; + spaces
-							(?={)
-						</string>
+																((\\) markup) \s+ # backslash + &quot;markup&quot; + spaces
+																(?={)
+															</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.element</string>
+						<string>support.function.element.markup</string>
+						<string>support.function.element.markup.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>support.function.element.markup.lilypond</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.markup</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.function.markup</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.element</string>
+				<string>meta.element.markup</string>
+				<string>meta.element.markup.lilypond</string>
+			</array>
 			<key>end</key>
 			<string>(?&lt;=})</string>
 			<key>name</key>
@@ -429,16 +689,37 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.section</string>
+						<string>support.function.section.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>support.function.section.lilypond</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.function.lilypond</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.pitch</string>
+						<string>storage.type.pitch.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.pitch.lilypond</string>
 				</dict>
@@ -461,16 +742,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.system</string>
+						<string>punctuation.section.system.begin</string>
+						<string>punctuation.section.system.begin.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.system.begin.lilypond</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.system</string>
+				<string>meta.system.lilypond</string>
+			</array>
 			<key>end</key>
 			<string>&gt;&gt;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.system</string>
+						<string>punctuation.section.system.end</string>
+						<string>punctuation.section.system.end.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.system.end.lilypond</string>
 				</dict>
@@ -493,16 +796,37 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.section</string>
+						<string>support.function.section.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>support.function.section.lilypond</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.function.lilypond</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.fraction</string>
+						<string>constant.numeric.fraction.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>constant.numeric.fraction.lilypond</string>
 				</dict>
@@ -525,16 +849,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.group</string>
+						<string>punctuation.section.group.begin</string>
+						<string>punctuation.section.group.begin.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.group.begin.lilypond</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.music-expression</string>
+				<string>meta.music-expression.lilypond</string>
+			</array>
 			<key>end</key>
 			<string>}</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.group</string>
+						<string>punctuation.section.group.end</string>
+						<string>punctuation.section.group.end.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.group.end.lilypond</string>
 				</dict>
@@ -606,60 +952,105 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.modifier</string>
+						<string>storage.modifier.articulation</string>
+						<string>storage.modifier.articulation.accent</string>
+						<string>storage.modifier.articulation.accent.lilypond</string>
+					</array>
 					<key>match</key>
 					<string>(?x)
-											([_^-])
-											(?:[.&gt;^+_-])
-										</string>
+																										([_^-])
+																										(?:[.&gt;^+_-])
+																									</string>
 					<key>name</key>
 					<string>storage.modifier.articulation.accent.lilypond</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.modifier</string>
+						<string>storage.modifier.articulation</string>
+						<string>storage.modifier.articulation.named</string>
+						<string>storage.modifier.articulation.named.lilypond</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.function</string>
+								<string>punctuation.definition.function.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.function.lilypond</string>
 						</dict>
 					</dict>
 					<key>match</key>
 					<string>(?x)
-											(\\)
-											(?: accent | markato | staccatissimo |		       # basic accents
-												espressivo | staccato | tenuto | portato | 
-												(?:up|down)bow | flageolet | thumb |
-												[lr](?:heel|toe) | open | stopped |
-												(?:reverse)?turn | trill |
-												prall(?: prall | mordent | down | up)? |       # pralls
-												(?: up | down | line ) prall |                 # and
-												(?: up | down )? mordent |                     # mordents
-												signumcongruentiae |
-												(?: (?:very)? long | short)?fermata(Markup)? | # fermatas
-												segno | (?:var)?coda 
-											)
-										</string>
+																										(\\)
+																										(?: accent | markato | staccatissimo |		       # basic accents
+																											espressivo | staccato | tenuto | portato | 
+																											(?:up|down)bow | flageolet | thumb |
+																											[lr](?:heel|toe) | open | stopped |
+																											(?:reverse)?turn | trill |
+																											prall(?: prall | mordent | down | up)? |       # pralls
+																											(?: up | down | line ) prall |                 # and
+																											(?: up | down )? mordent |                     # mordents
+																											signumcongruentiae |
+																											(?: (?:very)? long | short)?fermata(Markup)? | # fermatas
+																											segno | (?:var)?coda 
+																										)
+																									</string>
 					<key>name</key>
 					<string>storage.modifier.articulation.named.lilypond</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.modifier</string>
+						<string>storage.modifier.articulation</string>
+						<string>storage.modifier.articulation.dynamics</string>
+						<string>storage.modifier.articulation.dynamics.lilypond</string>
+					</array>
 					<key>match</key>
 					<string>(?x)
-											(\\) # backslash
-											p{1,5} | m[pf] | f{1,4} | fp | # forte, piano, etc.
-											sff? | spp? | [sr]fz | 
-											&lt; | &gt; | ! | espressivo         # (de)crescendo
-										</string>
+																										(\\) # backslash
+																										p{1,5} | m[pf] | f{1,4} | fp | # forte, piano, etc.
+																										sff? | spp? | [sr]fz | 
+																										&lt; | &gt; | ! | espressivo         # (de)crescendo
+																									</string>
 					<key>name</key>
 					<string>storage.modifier.articulation.dynamics.lilypond</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.modifier</string>
+						<string>storage.modifier.beam</string>
+						<string>storage.modifier.beam.lilypond</string>
+					</array>
 					<key>match</key>
 					<string>\[|\]</string>
 					<key>name</key>
 					<string>storage.modifier.beam.lilypond</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.modifier</string>
+						<string>storage.modifier.slur</string>
+						<string>storage.modifier.slur.lilypond</string>
+					</array>
 					<key>match</key>
 					<string>\(|\)</string>
 					<key>name</key>
@@ -671,92 +1062,148 @@
 		<dict>
 			<key>comment</key>
 			<string>
-							This section includes the rules for notes, rests, and chords
-						</string>
+																This section includes the rules for notes, rests, and chords
+															</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
 					<string>(?x)\b
-										    (						  # (group 1)
-											  ( [a-h]                 # Pitch (group 2)
-											    ( (?:i[sh]){1,2} |    #   - sharp (group 3)
-											      (?:e[sh]|s){1,2}    #   - flat
-											    )?
-										        ([!?])?               # Cautionary accidental (group 4)
-										        ('+|,+)?             # Octave (group 5)
-											  )
-											  ( ( ((\\)breve)|        # Duration (groups 6-9)
-											      64|32|16|8|4|2|1
-											    )
-											    (\.)?                 # Augmentation dot (group 10)
-												((\*)(\d+(?:/\d+)?))? # Scaling duration (groups 11-13)
-											  )?
-											)(?![a-z])	# do not follow a note with a letter
-										</string>
+																									    (						  # (group 1)
+																										  ( [a-h]                 # Pitch (group 2)
+																										    ( (?:i[sh]){1,2} |    #   - sharp (group 3)
+																										      (?:e[sh]|s){1,2}    #   - flat
+																										    )?
+																									        ([!?])?               # Cautionary accidental (group 4)
+																									        ('+|,+)?             # Octave (group 5)
+																										  )
+																										  ( ( ((\\)breve)|        # Duration (groups 6-9)
+																										      64|32|16|8|4|2|1
+																										    )
+																										    (\.)?                 # Augmentation dot (group 10)
+																											((\*)(\d+(?:/\d+)?))? # Scaling duration (groups 11-13)
+																										  )?
+																										)(?![a-z])	# do not follow a note with a letter
+																									</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>12</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.operator</string>
+								<string>keyword.operator.duration-scale</string>
+								<string>keyword.operator.duration-scale.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>keyword.operator.duration-scale.lilypond</string>
 						</dict>
 						<key>13</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.numeric</string>
+								<string>constant.numeric.fraction</string>
+								<string>constant.numeric.fraction.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>constant.numeric.fraction.lilypond</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.pitch</string>
+								<string>storage.type.pitch.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.pitch.lilypond</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.note-modifier</string>
+								<string>meta.note-modifier.cautionary-accidental</string>
+								<string>meta.note-modifier.cautionary-accidental.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>meta.note-modifier.cautionary-accidental.lilypond</string>
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.note-modifier</string>
+								<string>meta.note-modifier.octave</string>
+								<string>meta.note-modifier.octave.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>meta.note-modifier.octave.lilypond</string>
 						</dict>
 						<key>6</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.duration</string>
+								<string>storage.type.duration.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.duration.lilypond</string>
 						</dict>
 						<key>9</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.function</string>
+								<string>punctuation.definition.function.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.function.lilypond</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.element</string>
+						<string>meta.element.note</string>
+						<string>meta.element.note.lilypond</string>
+					</array>
 					<key>comment</key>
 					<string>
-											This rule handles notes, including the pitch, the
-											duration, and any articulations drawn along with
-											the note.
-											
-											This rule gets a whole lot uglier if we want to
-											support multilingual note names.  If so, the rule
-											goes something like:
-											
-											(?x)
-												\b( # Basic Pitches
-												  [a-h]  # Dutch/English/etc.                         
-												  (?: (iss?|s|sharp|x)(iss?|s|sharp|x|ih) | # sharp / flat
-													  (ess?|s|flat|f)(ess?|s|flat|f|eh)
-												  )? |
-												  (?: do|re|mi|fa|sol|la|si) # Italian/Spanish
-												  (?: ss?|dd?bb?) # sharp/flat
-												)
-											...
-										</string>
+																										This rule handles notes, including the pitch, the
+																										duration, and any articulations drawn along with
+																										the note.
+																										
+																										This rule gets a whole lot uglier if we want to
+																										support multilingual note names.  If so, the rule
+																										goes something like:
+																										
+																										(?x)
+																											\b( # Basic Pitches
+																											  [a-h]  # Dutch/English/etc.                         
+																											  (?: (iss?|s|sharp|x)(iss?|s|sharp|x|ih) | # sharp / flat
+																												  (ess?|s|flat|f)(ess?|s|flat|f|eh)
+																											  )? |
+																											  (?: do|re|mi|fa|sol|la|si) # Italian/Spanish
+																											  (?: ss?|dd?bb?) # sharp/flat
+																											)
+																										...
+																									</string>
 					<key>end</key>
 					<string>(?x)
-											(?= [ }~a-z] ) # End when we encounter a space or }
-										</string>
+																										(?= [ }~a-z] ) # End when we encounter a space or }
+																									</string>
 					<key>name</key>
 					<string>meta.element.note.lilypond</string>
 					<key>patterns</key>
@@ -770,44 +1217,88 @@
 				<dict>
 					<key>begin</key>
 					<string>(?x)\b
-											(r) # (group 1)
-											( ( (\\)breve|       # Duration (groups 2-4)
-											    64|32|16|8|4|2|1
-											  )
-											  (\.)?                 # Augmentation dot (group 5)
-											  ((\*)(\d+(?:/\d+)?))? # Scaling duration (groups 6-8)
-											
-											)?
-											(?![a-z])	# do not follow a note with a letter
-										</string>
+																										(r) # (group 1)
+																										( ( (\\)breve|       # Duration (groups 2-4)
+																										    64|32|16|8|4|2|1
+																										  )
+																										  (\.)?                 # Augmentation dot (group 5)
+																										  ((\*)(\d+(?:/\d+)?))? # Scaling duration (groups 6-8)
+																										
+																										)?
+																										(?![a-z])	# do not follow a note with a letter
+																									</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.pause</string>
+								<string>storage.type.pause.rest</string>
+								<string>storage.type.pause.rest.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.pause.rest.lilypond</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.duration</string>
+								<string>storage.type.duration.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.duration.lilypond</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.function</string>
+								<string>punctuation.definition.function.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.function.lilypond</string>
 						</dict>
 						<key>6</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.operator</string>
+								<string>keyword.operator.duration-scale</string>
+								<string>keyword.operator.duration-scale.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>keyword.operator.duration-scale.lilypond</string>
 						</dict>
 						<key>8</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.numeric</string>
+								<string>constant.numeric.fraction</string>
+								<string>constant.numeric.fraction.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>constant.numeric.fraction.lilypond</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.element</string>
+						<string>meta.element.pause</string>
+						<string>meta.element.pause.rest</string>
+						<string>meta.element.pause.rest.lilypond</string>
+					</array>
 					<key>end</key>
 					<string>(?=[ }~a-z])</string>
 					<key>name</key>
@@ -823,44 +1314,88 @@
 				<dict>
 					<key>begin</key>
 					<string>(?x)\b
-											(s) # (group 1)
-											( ( (\\)breve|       # Duration (groups 2-4)
-											    64|32|16|8|4|2|1
-											  )
-											  (\.)?                 # Augmentation dot (group 5)
-											  ((\*)(\d+(?:/\d+)?))? # Scaling duration (groups 6-8)
-											
-											)?
-											(?![a-z])	# do not follow a note with a letter
-										</string>
+																										(s) # (group 1)
+																										( ( (\\)breve|       # Duration (groups 2-4)
+																										    64|32|16|8|4|2|1
+																										  )
+																										  (\.)?                 # Augmentation dot (group 5)
+																										  ((\*)(\d+(?:/\d+)?))? # Scaling duration (groups 6-8)
+																										
+																										)?
+																										(?![a-z])	# do not follow a note with a letter
+																									</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.pause</string>
+								<string>storage.type.pause.skip</string>
+								<string>storage.type.pause.skip.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.pause.skip.lilypond</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.duration</string>
+								<string>storage.type.duration.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.duration.lilypond</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.function</string>
+								<string>punctuation.definition.function.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.function.lilypond</string>
 						</dict>
 						<key>6</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.operator</string>
+								<string>keyword.operator.duration-scale</string>
+								<string>keyword.operator.duration-scale.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>keyword.operator.duration-scale.lilypond</string>
 						</dict>
 						<key>8</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.numeric</string>
+								<string>constant.numeric.fraction</string>
+								<string>constant.numeric.fraction.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>constant.numeric.fraction.lilypond</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.element</string>
+						<string>meta.element.pause</string>
+						<string>meta.element.pause.skip</string>
+						<string>meta.element.pause.skip.lilypond</string>
+					</array>
 					<key>end</key>
 					<string>(?=[ }~a-z])</string>
 					<key>name</key>
@@ -874,20 +1409,50 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.element</string>
+						<string>meta.element.pause</string>
+						<string>meta.element.pause.skip</string>
+						<string>meta.element.pause.skip.lilypond</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.pause</string>
+								<string>storage.type.pause.skip</string>
+								<string>storage.type.pause.skip.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.pause.skip.lilypond</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.function</string>
+								<string>punctuation.definition.function.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.function.lilypond</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.duration</string>
+								<string>storage.type.duration.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.duration.lilypond</string>
 						</dict>
@@ -904,37 +1469,72 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.chord</string>
+								<string>punctuation.definition.chord.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.chord.lilypond</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.element</string>
+						<string>meta.element.chord</string>
+						<string>meta.element.chord.lilypond</string>
+					</array>
 					<key>comment</key>
 					<string>
-											Lilypond chords look like:    &lt; a b c &gt;
-										</string>
+																										Lilypond chords look like:    &lt; a b c &gt;
+																									</string>
 					<key>end</key>
 					<string>(?x)
-											(&gt;)
-											( ( ((\\)breve)|        # Duration (groups 2-4)
-											    64|32|16|8|4|2|1
-											  )
-											  (\.)?                  # Augmentation dot (group 5)
-											)?
-										</string>
+																										(&gt;)
+																										( ( ((\\)breve)|        # Duration (groups 2-4)
+																										    64|32|16|8|4|2|1
+																										  )
+																										  (\.)?                  # Augmentation dot (group 5)
+																										)?
+																									</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.chord</string>
+								<string>punctuation.definition.chord.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.chord.lilypond</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.duration</string>
+								<string>storage.type.duration.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.duration.lilypond</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.function</string>
+								<string>punctuation.definition.function.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.function.lilypond</string>
 						</dict>
@@ -948,44 +1548,72 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>storage</string>
+										<string>storage.type</string>
+										<string>storage.type.pitch</string>
+										<string>storage.type.pitch.lilypond</string>
+									</array>
 									<key>name</key>
 									<string>storage.type.pitch.lilypond</string>
 								</dict>
 								<key>3</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>meta</string>
+										<string>meta.note-modifier</string>
+										<string>meta.note-modifier.cautionary-accidental</string>
+										<string>meta.note-modifier.cautionary-accidental.lilypond</string>
+									</array>
 									<key>name</key>
 									<string>meta.note-modifier.cautionary-accidental.lilypond</string>
 								</dict>
 								<key>4</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>meta</string>
+										<string>meta.note-modifier</string>
+										<string>meta.note-modifier.octave</string>
+										<string>meta.note-modifier.octave.lilypond</string>
+									</array>
 									<key>name</key>
 									<string>meta.note-modifier.octave.lilypond</string>
 								</dict>
 							</dict>
 							<key>match</key>
 							<string>(?x)\b
-															  ( [a-h]                 # Pitch (group 1)
-															    ( (?:i[sh]){1,2} |    #   - sharp (group 2)
-															      (?:e[sh]|s){1,2}    #   - flat
-															    )?
-														        ([!?])?               # Cautionary accidental (group 3)
-														        ('+|,+)?             # Octave (group 4)
-															  )
-														</string>
+																																				  ( [a-h]                 # Pitch (group 1)
+																																				    ( (?:i[sh]){1,2} |    #   - sharp (group 2)
+																																				      (?:e[sh]|s){1,2}    #   - flat
+																																				    )?
+																																			        ([!?])?               # Cautionary accidental (group 3)
+																																			        ('+|,+)?             # Octave (group 4)
+																																				  )
+																																			</string>
 						</dict>
 					</array>
 				</dict>
 				<dict>
 					<key>begin</key>
 					<string>(?&lt;=&gt;)(?&lt;!-&gt;)(?!\s)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.element</string>
+						<string>meta.element.chord</string>
+						<string>meta.element.chord.lilypond</string>
+					</array>
 					<key>comment</key>
 					<string>
-											This rule attaches stuff to the end of a chord
-											
-											Therefore it begins after the &gt; which ends a chord,
-											and does not end after a &gt; which ends a chord.
-											(to avoid infinite loops)
-										</string>
+																										This rule attaches stuff to the end of a chord
+																										
+																										Therefore it begins after the &gt; which ends a chord,
+																										and does not end after a &gt; which ends a chord.
+																										(to avoid infinite loops)
+																									</string>
 					<key>end</key>
 					<string>(?=[ }~a-z])(?&lt;![^-]&gt;)</string>
 					<key>name</key>
@@ -999,16 +1627,37 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.tie</string>
+						<string>storage.type.tie.lilypond</string>
+					</array>
 					<key>match</key>
 					<string>~</string>
 					<key>name</key>
 					<string>storage.type.tie.lilypond</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.breath-mark</string>
+						<string>storage.type.breath-mark.lilypond</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.function</string>
+								<string>punctuation.definition.function.lilypond</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.function.lilypond</string>
 						</dict>
@@ -1028,18 +1677,26 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.scheme</string>
+						<string>punctuation.section.embedded.scheme.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.scheme.lilypond</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>
-							Lilypond source can embed scheme code to do things more
-							flexibly than allowed by the basic language.
-			
-							We need to make sure to match after a \n, as included
-							by some s-expressions in the scheme grammar.
-						</string>
+																Lilypond source can embed scheme code to do things more
+																flexibly than allowed by the basic language.
+												
+																We need to make sure to match after a \n, as included
+																by some s-expressions in the scheme grammar.
+															</string>
 			<key>contentName</key>
 			<string>source.scheme.embedded.lilypond</string>
 			<key>end</key>
@@ -1056,10 +1713,24 @@
 		<dict>
 			<key>begin</key>
 			<string>&quot;</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.lilypond</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.lilypond</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.lilypond</string>
 				</dict>
@@ -1071,6 +1742,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.lilypond</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>

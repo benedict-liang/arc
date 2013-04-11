@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Haskell</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>hs</string>
@@ -13,15 +17,37 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>entity</string>
+				<string>entity.name</string>
+				<string>entity.name.function</string>
+				<string>entity.name.function.infix</string>
+				<string>entity.name.function.infix.haskell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.entity</string>
+						<string>punctuation.definition.entity.haskell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.entity.haskell</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.entity</string>
+						<string>punctuation.definition.entity.haskell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.entity.haskell</string>
 				</dict>
@@ -32,40 +58,85 @@
 			<string>entity.name.function.infix.haskell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.haskell</string>
+			</array>
 			<key>match</key>
 			<string>\b(otherwise|module|where|import|data|type|case|of|let|in|instance|deriving|class|newtype|default|hiding|as)\b</string>
 			<key>name</key>
 			<string>keyword.other.haskell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>punctuation</string>
+				<string>punctuation.separator</string>
+				<string>punctuation.separator.equal-sign</string>
+				<string>punctuation.separator.equal-sign.haskell</string>
+			</array>
 			<key>match</key>
 			<string>(?&lt;![&lt;=&gt;/])=(?![=])</string>
 			<key>name</key>
 			<string>punctuation.separator.equal-sign.haskell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>punctuation</string>
+				<string>punctuation.separator</string>
+				<string>punctuation.separator.pipe-sign</string>
+				<string>punctuation.separator.pipe-sign.haskell</string>
+			</array>
 			<key>match</key>
 			<string>(?&lt;!\|)\|(?!(\||[\(\),_a-zA-Z0-9\s]*&lt;-))</string>
 			<key>name</key>
 			<string>punctuation.separator.pipe-sign.haskell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.haskell</string>
+			</array>
 			<key>match</key>
 			<string>\b(infixl|infixr)\b</string>
 			<key>name</key>
 			<string>keyword.operator.haskell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.haskell</string>
+			</array>
 			<key>match</key>
 			<string>\b(do|if|then|else)\b</string>
 			<key>name</key>
 			<string>keyword.control.haskell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.preprocessor</string>
+				<string>meta.preprocessor.haskell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.preprocessor</string>
+						<string>punctuation.definition.preprocessor.haskell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.preprocessor.haskell</string>
 				</dict>
@@ -82,16 +153,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.haskell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.haskell</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.haskell</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.haskell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.haskell</string>
 				</dict>
@@ -101,6 +195,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.haskell</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -115,16 +216,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.haskell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.haskell</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.single</string>
+				<string>string.quoted.single.haskell</string>
+			</array>
 			<key>end</key>
 			<string>'</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.haskell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.haskell</string>
 				</dict>
@@ -134,6 +258,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.haskell</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -148,15 +279,36 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.haskell</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.haskell</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.double-colon</string>
+						<string>punctuation.separator.double-colon.haskell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.double-colon.haskell</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.type-declaration</string>
+				<string>meta.function.type-declaration.haskell</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -164,24 +316,51 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.arrow</string>
+						<string>punctuation.separator.arrow.haskell</string>
+					</array>
 					<key>match</key>
 					<string>-&gt;</string>
 					<key>name</key>
 					<string>punctuation.separator.arrow.haskell</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.big-arrow</string>
+						<string>punctuation.separator.big-arrow.haskell</string>
+					</array>
 					<key>match</key>
 					<string>=&gt;</string>
 					<key>name</key>
 					<string>punctuation.separator.big-arrow.haskell</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.generic-type</string>
+						<string>variable.other.generic-type.haskell</string>
+					</array>
 					<key>match</key>
 					<string>\b[a-z][a-zA-Z0-9,()_]*\b</string>
 					<key>name</key>
 					<string>variable.other.generic-type.haskell</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.haskell</string>
+					</array>
 					<key>match</key>
 					<string>\b[A-Z][a-zA-Z0-9,()_]*\b</string>
 					<key>name</key>
@@ -190,16 +369,36 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.haskell</string>
+			</array>
 			<key>match</key>
 			<string>\b[A-Z]\w*\b</string>
 			<key>name</key>
 			<string>constant.other.haskell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.double-dash</string>
+				<string>comment.line.double-dash.haskell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.haskell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.haskell</string>
 				</dict>
@@ -212,10 +411,23 @@
 		<dict>
 			<key>begin</key>
 			<string>{-</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.haskell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.haskell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.haskell</string>
 				</dict>
@@ -226,12 +438,29 @@
 			<string>comment.block.haskell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>entity</string>
+				<string>entity.name</string>
+				<string>entity.name.function</string>
+				<string>entity.name.function.builtin</string>
+				<string>entity.name.function.builtin.prelude</string>
+				<string>entity.name.function.builtin.prelude.haskell</string>
+			</array>
 			<key>match</key>
 			<string>\b(abs|acos|acosh|all|and|any|appendFile|applyM|asTypeOf|asin|asinh|atan|atan2|atanh|break|catch|ceiling|compare|concat|concatMap|const|cos|cosh|curry|cycle|decodeFloat|div|divMod|drop|dropWhile|elem|encodeFloat|enumFrom|enumFromThen|enumFromThenTo|enumFromTo|error|even|exp|exponent|fail|filter|flip|floatDigits|floatRadix|floatRange|floor|fmap|foldl|foldl1|foldr|foldr1|fromEnum|fromInteger|fromIntegral|fromRational|fst|gcd|getChar|getContents|getLine|head|id|init|interact|ioError|isDenormalized|isIEEE|isInfinite|isNaN|isNegativeZero|iterate|last|lcm|length|lex|lines|log|logBase|lookup|map|mapM|mapM_|max|maxBound|maximum|maybe|min|minBound|minimum|mod|negate|not|notElem|null|odd|or|otherwise|pi|pred|print|product|properFraction|putChar|putStr|putStrLn|quot|quotRem|read|readFile|readIO|readList|readLn|readParen|reads|readsPrec|realToFrac|recip|rem|repeat|replicate|return|reverse|round|scaleFloat|scanl|scanl1|scanr|scanr1|seq|sequence|sequence_|show|showChar|showList|showParen|showString|shows|showsPrec|significand|signum|sin|sinh|snd|span|splitAt|sqrt|subtract|succ|sum|tail|take|takeWhile|tan|tanh|toEnum|toInteger|toRational|truncate|uncurry|undefined|unlines|until|unwords|unzip|unzip3|userError|words|writeFile|zip|zip3|zipWith|zipWith3)\b</string>
 			<key>name</key>
 			<string>entity.name.function.builtin.prelude.haskell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>entity</string>
+				<string>entity.name</string>
+				<string>entity.name.function</string>
+				<string>entity.name.function.infix</string>
+				<string>entity.name.function.infix.haskell</string>
+			</array>
 			<key>match</key>
 			<string>\([|!%$+\-.,=&lt;/&gt;]+\)</string>
 			<key>name</key>

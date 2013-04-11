@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>YAML</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>yaml</string>
@@ -28,25 +32,60 @@
 			<dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.entry</string>
+						<string>punctuation.definition.entry.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.entry.yaml</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.entry</string>
+						<string>punctuation.definition.entry.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.entry.yaml</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.yaml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.yaml</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+						<string>punctuation.separator.key-value.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.key-value.yaml</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.block</string>
+				<string>string.unquoted.block.yaml</string>
+			</array>
 			<key>end</key>
 			<string>^(?!^\1)|^(?=\1(-|\w+\s*:)|#)</string>
 			<key>name</key>
@@ -60,25 +99,59 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.yaml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.entry</string>
+						<string>punctuation.definition.entry.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.entry.yaml</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.yaml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.yaml</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+						<string>punctuation.separator.key-value.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.key-value.yaml</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.entry</string>
+						<string>punctuation.definition.entry.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.entry.yaml</string>
 				</dict>
@@ -89,30 +162,70 @@
 			<string>constant.numeric.yaml</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.yaml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.entry</string>
+						<string>punctuation.definition.entry.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.entry.yaml</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.yaml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.yaml</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+						<string>punctuation.separator.key-value.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.key-value.yaml</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.entry</string>
+						<string>punctuation.definition.entry.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.entry.yaml</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.yaml</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.yaml</string>
 				</dict>
@@ -123,25 +236,60 @@
 			<string>string.unquoted.yaml</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.date</string>
+				<string>constant.other.date.yaml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.entry</string>
+						<string>punctuation.definition.entry.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.entry.yaml</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.yaml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.yaml</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+						<string>punctuation.separator.key-value.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.key-value.yaml</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.entry</string>
+						<string>punctuation.definition.entry.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.entry.yaml</string>
 				</dict>
@@ -152,25 +300,59 @@
 			<string>constant.other.date.yaml</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tag</string>
+				<string>meta.tag.yaml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.yaml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.yaml</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+						<string>punctuation.separator.key-value.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.key-value.yaml</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.omap</string>
+						<string>keyword.other.omap.yaml</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.omap.yaml</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.keyword</string>
+						<string>punctuation.definition.keyword.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.keyword.yaml</string>
 				</dict>
@@ -181,10 +363,23 @@
 			<string>meta.tag.yaml</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.yaml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.yaml</string>
 				</dict>
@@ -201,16 +396,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.yaml</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.yaml</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.yaml</string>
 				</dict>
@@ -236,16 +454,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.yaml</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.single</string>
+				<string>string.quoted.single.yaml</string>
+			</array>
 			<key>end</key>
 			<string>'</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.yaml</string>
 				</dict>
@@ -271,16 +512,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.yaml</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.yaml</string>
+			</array>
 			<key>end</key>
 			<string>`</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.yaml</string>
 				</dict>
@@ -300,20 +563,48 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.merge-key</string>
+				<string>keyword.operator.merge-key.yaml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.yaml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.yaml</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.merge-key</string>
+						<string>keyword.operator.merge-key.yaml</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.merge-key.yaml</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.keyword</string>
+						<string>punctuation.definition.keyword.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.keyword.yaml</string>
 				</dict>
@@ -324,6 +615,13 @@
 			<string>keyword.operator.merge-key.yaml</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>invalid</string>
+				<string>invalid.deprecated</string>
+				<string>invalid.deprecated.trailing-whitespace</string>
+				<string>invalid.deprecated.trailing-whitespace.yaml</string>
+			</array>
 			<key>disabled</key>
 			<string>1</string>
 			<key>match</key>
@@ -332,10 +630,24 @@
 			<string>invalid.deprecated.trailing-whitespace.yaml</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.number-sign</string>
+				<string>comment.line.number-sign.yaml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.yaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.yaml</string>
 				</dict>
@@ -346,6 +658,12 @@
 			<string>comment.line.number-sign.yaml</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.symbol</string>
+			</array>
 			<key>match</key>
 			<string>-</string>
 			<key>name</key>
@@ -354,6 +672,12 @@
 		<dict>
 			<key>begin</key>
 			<string>^(?=\t)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.leading-tabs</string>
+				<string>meta.leading-tabs.yaml</string>
+			</array>
 			<key>end</key>
 			<string>(?=[^\t])</string>
 			<key>name</key>
@@ -365,11 +689,21 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.odd-tab</string>
+							</array>
 							<key>name</key>
 							<string>meta.odd-tab</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.even-tab</string>
+							</array>
 							<key>name</key>
 							<string>meta.even-tab</string>
 						</dict>
@@ -386,10 +720,25 @@
 		<dict>
 			<key>begin</key>
 			<string>&lt;%+(?!&gt;)=?</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>source</string>
+				<string>source.ruby</string>
+				<string>source.ruby.rails</string>
+				<string>source.ruby.rails.embedded</string>
+				<string>source.ruby.rails.embedded.html</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.ruby</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.ruby</string>
 				</dict>
@@ -401,10 +750,24 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.number-sign</string>
+						<string>comment.line.number-sign.ruby</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.ruby</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.comment.ruby</string>
 						</dict>
@@ -422,6 +785,13 @@
 		</dict>
 		<key>escaped_char</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.escape</string>
+				<string>constant.character.escape.yaml</string>
+			</array>
 			<key>match</key>
 			<string>\\.</string>
 			<key>name</key>

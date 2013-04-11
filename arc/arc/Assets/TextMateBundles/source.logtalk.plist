@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Logtalk</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>lgt</string>
@@ -20,10 +24,23 @@
 		<dict>
 			<key>begin</key>
 			<string>/\*</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.logtalk</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.logtalk</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.logtalk</string>
 				</dict>
@@ -34,10 +51,24 @@
 			<string>comment.block.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.percentage</string>
+				<string>comment.line.percentage.logtalk</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.logtalk</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.logtalk</string>
 				</dict>
@@ -52,16 +83,38 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.opening</string>
+						<string>storage.type.opening.logtalk</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.opening.logtalk</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.storage</string>
+						<string>punctuation.definition.storage.type</string>
+						<string>punctuation.definition.storage.type.logtalk</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.storage.type.logtalk</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.logtalk</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.type.logtalk</string>
 				</dict>
@@ -70,10 +123,25 @@
 			<string>((:-)\s+(object|protocol|category|module))(?:\()([^(,)]+)</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.type</string>
+				<string>storage.type.closing</string>
+				<string>storage.type.closing.logtalk</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.storage</string>
+						<string>punctuation.definition.storage.type</string>
+						<string>punctuation.definition.storage.type.logtalk</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.storage.type.logtalk</string>
 				</dict>
@@ -84,16 +152,38 @@
 			<string>storage.type.closing.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.type</string>
+				<string>storage.type.relations</string>
+				<string>storage.type.relations.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(extends|i(nstantiates|mp(orts|lements))|specializes)(?=[(])</string>
 			<key>name</key>
 			<string>storage.type.relations.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.modifier</string>
+				<string>storage.modifier.others</string>
+				<string>storage.modifier.others.logtalk</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.storage</string>
+						<string>punctuation.definition.storage.modifier</string>
+						<string>punctuation.definition.storage.modifier.logtalk</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.storage.modifier.logtalk</string>
 				</dict>
@@ -104,10 +194,25 @@
 			<string>storage.modifier.others.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.modifier</string>
+				<string>storage.modifier.others</string>
+				<string>storage.modifier.others.logtalk</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.storage</string>
+						<string>punctuation.definition.storage.modifier</string>
+						<string>punctuation.definition.storage.modifier.logtalk</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.storage.modifier.logtalk</string>
 				</dict>
@@ -118,10 +223,25 @@
 			<string>storage.modifier.others.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.modifier</string>
+				<string>storage.modifier.others</string>
+				<string>storage.modifier.others.logtalk</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.storage</string>
+						<string>punctuation.definition.storage.modifier</string>
+						<string>punctuation.definition.storage.modifier.logtalk</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.storage.modifier.logtalk</string>
 				</dict>
@@ -132,204 +252,443 @@
 			<string>storage.modifier.others.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.message-sending</string>
+				<string>keyword.operator.message-sending.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>(::|\^\^)</string>
 			<key>name</key>
 			<string>keyword.operator.message-sending.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.mode</string>
+				<string>keyword.operator.mode.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>(\?|@)</string>
 			<key>name</key>
 			<string>keyword.operator.mode.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.comparison</string>
+				<string>keyword.operator.comparison.term</string>
+				<string>keyword.operator.comparison.term.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>(@=&lt;|@&lt;|@&gt;|@&gt;=|==|\\==)</string>
 			<key>name</key>
 			<string>keyword.operator.comparison.term.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.comparison</string>
+				<string>keyword.operator.comparison.arithmetic</string>
+				<string>keyword.operator.comparison.arithmetic.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>(=&lt;|&lt;|&gt;|&gt;=|=:=|=\\=)</string>
 			<key>name</key>
 			<string>keyword.operator.comparison.arithmetic.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.bitwise</string>
+				<string>keyword.operator.bitwise.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>(&lt;&lt;|&gt;&gt;|/\\|\\/|\\)</string>
 			<key>name</key>
 			<string>keyword.operator.bitwise.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.evaluable</string>
+				<string>keyword.operator.evaluable.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(mod|rem)\b</string>
 			<key>name</key>
 			<string>keyword.operator.evaluable.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.evaluable</string>
+				<string>keyword.operator.evaluable.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>(\*\*|\+|-|\*|/|//)</string>
 			<key>name</key>
 			<string>keyword.operator.evaluable.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.misc</string>
+				<string>keyword.operator.misc.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>(:-|!|\\+|,|;|--&gt;|-&gt;|=|\=|\.|=\.\.|\bis\b)</string>
 			<key>name</key>
 			<string>keyword.operator.misc.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.control</string>
+				<string>support.function.control.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(true|fail|repeat)\b(?![()])</string>
 			<key>name</key>
 			<string>support.function.control.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.control</string>
+				<string>support.function.control.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(ca(ll|tch)|throw|once)(?=[(])</string>
 			<key>name</key>
 			<string>support.function.control.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.chars-and-bytes-io</string>
+				<string>support.function.chars-and-bytes-io.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b((get|peek|put)_(char|code|byte)|nl)(?=[(])</string>
 			<key>name</key>
 			<string>support.function.chars-and-bytes-io.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.chars-and-bytes-io</string>
+				<string>support.function.chars-and-bytes-io.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\bnl\b</string>
 			<key>name</key>
 			<string>support.function.chars-and-bytes-io.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.atom-term-processing</string>
+				<string>support.function.atom-term-processing.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(atom_(length|c(hars|o(ncat|des)))|sub_atom|char_code|number_c(hars|odes))(?=[(])</string>
 			<key>name</key>
 			<string>support.function.atom-term-processing.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.term-testing</string>
+				<string>support.function.term-testing.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(var|atom|integer|float|atomic|compound|n(onvar|umber))(?=[(])</string>
 			<key>name</key>
 			<string>support.function.term-testing.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.term-io</string>
+				<string>support.function.term-io.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(read_term|read|write|write(q|_(canonical|term))|op|current_op|char_conversion|current_char_conversion)(?=[(])</string>
 			<key>name</key>
 			<string>support.function.term-io.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.term-creation-and-decomposition</string>
+				<string>support.function.term-creation-and-decomposition.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(arg|copy_term|functor)(?=[(])</string>
 			<key>name</key>
 			<string>support.function.term-creation-and-decomposition.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.term-unification</string>
+				<string>support.function.term-unification.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(unify_with_occurs_check)(?=[(])</string>
 			<key>name</key>
 			<string>support.function.term-unification.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.stream-selection-and-control</string>
+				<string>support.function.stream-selection-and-control.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b((set|current)_(in|out)put|open|close|flush_output|stream_property|at_end_of_stream|set_stream_position)(?=[(])</string>
 			<key>name</key>
 			<string>support.function.stream-selection-and-control.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.stream-selection-and-control</string>
+				<string>support.function.stream-selection-and-control.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(flush_output|at_end_of_stream)\b(?![()])</string>
 			<key>name</key>
 			<string>support.function.stream-selection-and-control.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.prolog-flags</string>
+				<string>support.function.prolog-flags.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b((set|current)_prolog_flag)(?=[(])</string>
 			<key>name</key>
 			<string>support.function.prolog-flags.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.compiling-and-loading</string>
+				<string>support.function.compiling-and-loading.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(logtalk_(compile|l(ibrary_path|oad)))(?=[(])</string>
 			<key>name</key>
 			<string>support.function.compiling-and-loading.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.event-handling</string>
+				<string>support.function.event-handling.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b((abolish|define)_events|current_event)(?=[(])</string>
 			<key>name</key>
 			<string>support.function.event-handling.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.implementation-defined-hooks</string>
+				<string>support.function.implementation-defined-hooks.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b((current|set)_logtalk_flag|halt)(?=[(])</string>
 			<key>name</key>
 			<string>support.function.implementation-defined-hooks.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.implementation-defined-hooks</string>
+				<string>support.function.implementation-defined-hooks.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(halt)\b</string>
 			<key>name</key>
 			<string>support.function.implementation-defined-hooks.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.entity-creation-and-abolishing</string>
+				<string>support.function.entity-creation-and-abolishing.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b((c(reate|urrent)|abolish)_(object|protocol|category))(?=[(])</string>
 			<key>name</key>
 			<string>support.function.entity-creation-and-abolishing.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.reflection</string>
+				<string>support.function.reflection.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b((object|protocol|category)_property|extends_(object|protocol)|imp(orts_category|lements_protocol)|(instantiates|specializes)_class)(?=[(])</string>
 			<key>name</key>
 			<string>support.function.reflection.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b((for|retract)all)(?=[(])</string>
 			<key>name</key>
 			<string>support.function.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.execution-context</string>
+				<string>support.function.execution-context.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(parameter|se(lf|nder)|this)(?=[(])</string>
 			<key>name</key>
 			<string>support.function.execution-context.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.database</string>
+				<string>support.function.database.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(a(bolish|ssert(a|z))|clause|retract|retractall)(?=[(])</string>
 			<key>name</key>
 			<string>support.function.database.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.all-solutions</string>
+				<string>support.function.all-solutions.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b((bag|set)of|f(ind|or)all)(?=[(])</string>
 			<key>name</key>
 			<string>support.function.all-solutions.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.multi-threading</string>
+				<string>support.function.multi-threading.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(threaded_(call|exit))(?=[(])</string>
 			<key>name</key>
 			<string>support.function.multi-threading.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.reflection</string>
+				<string>support.function.reflection.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(current_predicate|predicate_property)(?=[(])</string>
 			<key>name</key>
 			<string>support.function.reflection.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.event-handler</string>
+				<string>support.function.event-handler.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(before|after)(?=[(])</string>
 			<key>name</key>
 			<string>support.function.event-handler.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.grammar-rule</string>
+				<string>support.function.grammar-rule.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(expand_term|term_expansion|phrase)(?=[(])</string>
 			<key>name</key>
@@ -342,16 +701,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.logtalk</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.logtalk</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.single</string>
+				<string>string.quoted.single.logtalk</string>
+			</array>
 			<key>end</key>
 			<string>'</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.logtalk</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.logtalk</string>
 				</dict>
@@ -361,6 +743,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.logtalk</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -375,16 +764,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.logtalk</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.logtalk</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.logtalk</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.logtalk</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.logtalk</string>
 				</dict>
@@ -394,6 +806,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.logtalk</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -402,24 +821,48 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(0b[0-1]+|0o[0-7]+|0x\h+)\b</string>
 			<key>name</key>
 			<string>constant.numeric.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(0'.|0''|0'&quot;)</string>
 			<key>name</key>
 			<string>constant.numeric.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b(\d+\.?\d*((e|E)(\+|-)?\d+)?)\b</string>
 			<key>name</key>
 			<string>constant.numeric.logtalk</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.logtalk</string>
+			</array>
 			<key>match</key>
 			<string>\b([A-Z_][A-Za-z0-9_]*)\b</string>
 			<key>name</key>

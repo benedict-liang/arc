@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>GTD</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>gtd</string>
@@ -13,42 +17,86 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.other</string>
+				<string>markup.other.pagename</string>
+			</array>
 			<key>match</key>
 			<string>[A-Z][a-z]+([A-Z][a-z]*)+</string>
 			<key>name</key>
 			<string>markup.other.pagename</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.gtd</string>
+			</array>
 			<key>match</key>
 			<string>^-\s{2}\S+\s</string>
 			<key>name</key>
 			<string>string.unquoted.gtd</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>entity</string>
+				<string>entity.name</string>
+				<string>entity.name.tag</string>
+				<string>entity.name.tag.gtd</string>
+			</array>
 			<key>match</key>
 			<string>^&lt;-\s\S+\s</string>
 			<key>name</key>
 			<string>entity.name.tag.gtd</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.gtd</string>
+			</array>
 			<key>match</key>
 			<string>^-&gt;\s\S+\s</string>
 			<key>name</key>
 			<string>constant.language.gtd</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.language</string>
+				<string>variable.language.gtd</string>
+			</array>
 			<key>match</key>
 			<string>^\+\s{2}\S+\s</string>
 			<key>name</key>
 			<string>variable.language.gtd</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.gtd</string>
+			</array>
 			<key>match</key>
 			<string>^\^\s{2}\S+\s</string>
 			<key>name</key>
 			<string>comment.line.gtd</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.class</string>
+				<string>support.class.exception</string>
+				<string>support.class.exception.gtd</string>
+			</array>
 			<key>match</key>
 			<string>^\!\s{2}\S+\s</string>
 			<key>name</key>

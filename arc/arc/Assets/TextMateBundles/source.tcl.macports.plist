@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>MacPorts Portfile</string>
+	</array>
 	<key>fileTypes</key>
 	<array/>
 	<key>foldingStartMarker</key>
@@ -19,6 +23,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.tcl</string>
+						<string>keyword.other.tcl.macports</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.tcl.macports</string>
 				</dict>
@@ -34,6 +45,13 @@
 					<string>$base</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.tcl</string>
+						<string>keyword.other.tcl.macports</string>
+					</array>
 					<key>match</key>
 					<string>^\s*ruby\.setup(?!\S)</string>
 					<key>name</key>
@@ -48,6 +66,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.tcl</string>
+						<string>keyword.other.tcl.macports</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.tcl.macports</string>
 				</dict>
@@ -63,6 +88,13 @@
 					<string>$base</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.tcl</string>
+						<string>keyword.other.tcl.macports</string>
+					</array>
 					<key>match</key>
 					<string>^\s*perl5\.setup(?!\S)</string>
 					<key>name</key>
@@ -75,6 +107,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.tcl</string>
+						<string>keyword.other.tcl.macports</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.tcl.macports</string>
 				</dict>
@@ -89,6 +128,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.tcl</string>
+						<string>keyword.other.tcl.macports</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.tcl.macports</string>
 				</dict>
@@ -103,6 +149,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.tcl</string>
+						<string>keyword.other.tcl.macports</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.tcl.macports</string>
 				</dict>
@@ -117,6 +170,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.tcl</string>
+						<string>keyword.other.tcl.macports</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.tcl.macports</string>
 				</dict>
@@ -133,6 +193,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.tcl</string>
+						<string>keyword.other.tcl.macports</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.tcl.macports</string>
 				</dict>
@@ -170,10 +237,25 @@
 		<dict>
 			<key>begin</key>
 			<string>^(variant)(?!\S)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.variant</string>
+				<string>meta.variant.tcl</string>
+				<string>meta.variant.tcl.macports</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.variant</string>
+						<string>keyword.other.variant.tcl</string>
+						<string>keyword.other.variant.tcl.macports</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.variant.tcl.macports</string>
 				</dict>
@@ -185,12 +267,29 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.variant</string>
+						<string>keyword.other.variant.tcl</string>
+						<string>keyword.other.variant.tcl.macports</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;=\s)(?:provides|requires|conflicts)(?!\S)</string>
 					<key>name</key>
 					<string>keyword.other.variant.tcl.macports</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.variant</string>
+						<string>entity.name.function.variant.tcl</string>
+						<string>entity.name.function.variant.tcl.macports</string>
+					</array>
 					<key>match</key>
 					<string>(?&lt;=\s)([\w-]+)</string>
 					<key>name</key>
@@ -203,6 +302,14 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.section</string>
+								<string>punctuation.section.variant</string>
+								<string>punctuation.section.variant.tcl</string>
+								<string>punctuation.section.variant.tcl.macports</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.section.variant.tcl.macports</string>
 						</dict>
@@ -213,6 +320,14 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.terminator</string>
+								<string>punctuation.terminator.variant</string>
+								<string>punctuation.terminator.variant.tcl</string>
+								<string>punctuation.terminator.variant.tcl.macports</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.terminator.variant.tcl.macports</string>
 						</dict>
@@ -234,26 +349,71 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.variant</string>
+						<string>keyword.other.variant.platform</string>
+						<string>keyword.other.variant.platform.tcl</string>
+						<string>keyword.other.variant.platform.tcl.macports</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.variant.platform.tcl.macports</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.variant</string>
+						<string>entity.name.function.variant.platform</string>
+						<string>entity.name.function.variant.platform.tcl</string>
+						<string>entity.name.function.variant.platform.tcl.macports</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.variant.platform.tcl.macports</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.variant</string>
+						<string>punctuation.section.variant.platform</string>
+						<string>punctuation.section.variant.platform.tcl</string>
+						<string>punctuation.section.variant.platform.tcl.macports</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.variant.platform.tcl.macports</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.variant</string>
+				<string>meta.variant.platform</string>
+				<string>meta.variant.platform.tcl</string>
+				<string>meta.variant.platform.tcl.macports</string>
+			</array>
 			<key>end</key>
 			<string>(\})</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.terminator</string>
+						<string>punctuation.terminator.variant</string>
+						<string>punctuation.terminator.variant.platform</string>
+						<string>punctuation.terminator.variant.platform.tcl</string>
+						<string>punctuation.terminator.variant.platform.tcl.macports</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.terminator.variant.platform.tcl.macports</string>
 				</dict>
@@ -269,6 +429,13 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.tcl</string>
+				<string>keyword.other.tcl.macports</string>
+			</array>
 			<key>match</key>
 			<string>(?&lt;=^|[\[{;])\s*(adduser|addgroup|dirSize|binaryInPath|archiveTypeIsSupported|variant_isset|xinstall|system|reinplace|flock|readdir|strsed|mkstemp|mktemp|existsuser|existsgroup|nextuid|nextgid|md5|find|filemap|rpm-vercomp|rmd160|sha1|compat|umask|sudo|mkfifo|unixsocketpair|mkchannelfromfd|pipe|curl|readline|rl_history|getuid|geteuid|setuid|seteuid|name_to_uid|uid_to_name|ldelete|delete|include)\b</string>
 			<key>name</key>
@@ -293,6 +460,12 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.tcl</string>
+					</array>
 					<key>name</key>
 					<string>invalid.illegal.tcl</string>
 				</dict>
@@ -321,6 +494,12 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.tcl</string>
+					</array>
 					<key>name</key>
 					<string>invalid.illegal.tcl</string>
 				</dict>
@@ -328,6 +507,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.tcl</string>
+					</array>
 					<key>match</key>
 					<string>\\[{}\n]</string>
 					<key>name</key>
@@ -347,10 +533,24 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.begin</string>
+						<string>punctuation.section.embedded.begin.tcl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.begin.tcl</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>source</string>
+				<string>source.tcl</string>
+				<string>source.tcl.embedded</string>
+			</array>
 			<key>comment</key>
 			<string>imported from Tcl grammar</string>
 			<key>end</key>
@@ -359,6 +559,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.end</string>
+						<string>punctuation.section.embedded.end.tcl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.end.tcl</string>
 				</dict>
@@ -375,6 +583,13 @@
 		</dict>
 		<key>escape</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.escape</string>
+				<string>constant.character.escape.tcl</string>
+			</array>
 			<key>comment</key>
 			<string>imported from Tcl grammar</string>
 			<key>match</key>
@@ -393,6 +608,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.tcl</string>
+					</array>
 					<key>match</key>
 					<string>\\[{}\n]</string>
 					<key>name</key>
@@ -410,6 +632,13 @@
 			<integer>1</integer>
 			<key>begin</key>
 			<string>(?:^|(?&lt;=\s))(?=&quot;)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.tcl</string>
+			</array>
 			<key>comment</key>
 			<string>imported from Tcl grammar</string>
 			<key>end</key>
@@ -426,10 +655,23 @@
 		</dict>
 		<key>variable</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.tcl</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.tcl</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.tcl</string>
 				</dict>

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>F-Script</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>fscript</string>
@@ -17,16 +21,38 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.dummy</string>
+				<string>meta.dummy.symbol</string>
+				<string>meta.dummy.symbol.ignore</string>
+				<string>meta.dummy.symbol.ignore.fscript</string>
+			</array>
 			<key>match</key>
 			<string>(:|\w):</string>
 			<key>name</key>
 			<string>meta.dummy.symbol.ignore.fscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.symbol</string>
+				<string>constant.other.symbol.fscript</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.symbol</string>
+						<string>punctuation.definition.symbol.fscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.symbol.fscript</string>
 				</dict>
@@ -37,32 +63,74 @@
 			<string>constant.other.symbol.fscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.fscript</string>
+			</array>
 			<key>match</key>
 			<string>\b((([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)\b</string>
 			<key>name</key>
 			<string>constant.numeric.fscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.block</string>
+				<string>constant.other.block.compact</string>
+				<string>constant.other.block.compact.fscript</string>
+			</array>
 			<key>match</key>
 			<string>#([[:lower:]]|_|[+=\-/!%&amp;*|&gt;&lt;~?])(\w|[+=\-/!%&amp;*|&gt;&lt;~?:])*</string>
 			<key>name</key>
 			<string>constant.other.block.compact.fscript</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.block</string>
+				<string>meta.block.empty</string>
+				<string>meta.block.empty.fscript</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.block</string>
+						<string>punctuation.section.block.fscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.block.fscript</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.parameter</string>
+						<string>variable.parameter.block</string>
+						<string>variable.parameter.block.fscript</string>
+					</array>
 					<key>name</key>
 					<string>variable.parameter.block.fscript</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.block</string>
+						<string>punctuation.section.block.fscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.block.fscript</string>
 				</dict>
@@ -79,21 +147,48 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.block</string>
+						<string>punctuation.section.block.fscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.block.fscript</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.parameter</string>
+						<string>variable.parameter.block</string>
+						<string>variable.parameter.block.fscript</string>
+					</array>
 					<key>name</key>
 					<string>variable.parameter.block.fscript</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.block</string>
+				<string>meta.block.fscript</string>
+			</array>
 			<key>end</key>
 			<string>\]</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.block</string>
+						<string>punctuation.section.block.fscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.block.fscript</string>
 				</dict>
@@ -103,6 +198,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.block</string>
+						<string>meta.block.header</string>
+						<string>meta.block.header.fscript</string>
+					</array>
 					<key>match</key>
 					<string>\s+</string>
 					<key>name</key>
@@ -111,10 +213,24 @@
 				<dict>
 					<key>begin</key>
 					<string>(?:\|(\s*(?:\w+\s+)*\w+\s*)?\||(?=[^\s|]))</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.block</string>
+						<string>meta.block.content</string>
+						<string>meta.block.content.fscript</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>variable</string>
+								<string>variable.other</string>
+								<string>variable.other.local</string>
+								<string>variable.other.local.fscript</string>
+							</array>
 							<key>name</key>
 							<string>variable.other.local.fscript</string>
 						</dict>
@@ -134,6 +250,12 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.fscript</string>
+			</array>
 			<key>match</key>
 			<string>\b(true|YES|false|NO|sys|nil)\b</string>
 			<key>name</key>
@@ -144,6 +266,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.fscript</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.fscript</string>
 				</dict>
@@ -160,16 +289,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.begin</string>
+						<string>punctuation.definition.comment.begin.fscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.begin.fscript</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.quotes</string>
+				<string>comment.block.quotes.fscript</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.end</string>
+						<string>punctuation.definition.comment.end.fscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.end.fscript</string>
 				</dict>
@@ -184,16 +336,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.fscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.fscript</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.single</string>
+				<string>string.quoted.single.fscript</string>
+			</array>
 			<key>end</key>
 			<string>'</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.fscript</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.fscript</string>
 				</dict>
@@ -203,6 +378,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.fscript</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>

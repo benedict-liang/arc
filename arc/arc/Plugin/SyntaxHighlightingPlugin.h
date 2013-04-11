@@ -21,5 +21,6 @@
 }
 
 @property (readonly) id<CodeViewControllerDelegate> delegate;
-@property NSDictionary* theme;
+@property NSString* theme;
+@property NSMutableDictionary* cache;
 @end

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>GTDalt</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>gtd</string>
@@ -24,36 +28,91 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.line</string>
+						<string>meta.line.project</string>
+						<string>meta.line.project.begin</string>
+						<string>meta.line.project.begin.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>meta.line.project.begin.gtdalt</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.project</string>
+						<string>keyword.control.project.begin</string>
+						<string>keyword.control.project.begin.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.project.begin.gtdalt</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.section</string>
+						<string>entity.name.section.project</string>
+						<string>entity.name.section.project.title</string>
+						<string>entity.name.section.project.title.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.section.project.title.gtdalt</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.project</string>
+						<string>meta.project.newline</string>
+						<string>meta.project.newline.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>meta.project.newline.gtdalt</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.project</string>
+				<string>meta.project.begin</string>
+				<string>meta.project.begin.gtdalt</string>
+			</array>
 			<key>end</key>
 			<string>^\s*(end)\s*</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.line</string>
+						<string>meta.line.project</string>
+						<string>meta.line.project.end</string>
+						<string>meta.line.project.end.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>meta.line.project.end.gtdalt</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.project</string>
+						<string>keyword.control.project.end</string>
+						<string>keyword.control.project.end.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.project.end.gtdalt</string>
 				</dict>
@@ -69,15 +128,38 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.action</string>
+				<string>meta.action.only-context</string>
+				<string>meta.action.only-context.gtdalt</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.context</string>
+						<string>storage.type.context.action</string>
+						<string>storage.type.context.action.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.context.action.gtdalt</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.context</string>
+						<string>punctuation.definition.context.action</string>
+						<string>punctuation.definition.context.action.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.context.action.gtdalt</string>
 				</dict>
@@ -94,15 +176,37 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.context</string>
+						<string>storage.type.context.action</string>
+						<string>storage.type.context.action.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.context.action.gtdalt</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.context</string>
+						<string>punctuation.definition.context.action</string>
+						<string>punctuation.definition.context.action.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.context.action.gtdalt</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.action</string>
+				<string>meta.action.gtdalt</string>
+			</array>
 			<key>end</key>
 			<string>\n|$</string>
 			<key>name</key>
@@ -124,35 +228,89 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.action</string>
+				<string>meta.action.completed</string>
+				<string>meta.action.completed.gtdalt</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.number-sign</string>
+						<string>comment.line.number-sign.action</string>
+						<string>comment.line.number-sign.action.completed</string>
+						<string>comment.line.number-sign.action.completed.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>comment.line.number-sign.action.completed.gtdalt</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.completed</string>
+						<string>punctuation.definition.completed.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.completed.gtdalt</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.completed</string>
+						<string>punctuation.definition.completed.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.completed.gtdalt</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.other</string>
+						<string>string.quoted.other.timestamp</string>
+						<string>string.quoted.other.timestamp.action</string>
+						<string>string.quoted.other.timestamp.action.completed</string>
+						<string>string.quoted.other.timestamp.action.completed.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>string.quoted.other.timestamp.action.completed.gtdalt</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.date</string>
+						<string>punctuation.definition.date.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.date.gtdalt</string>
 				</dict>
 				<key>6</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.date</string>
+						<string>punctuation.definition.date.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.date.gtdalt</string>
 				</dict>
@@ -169,20 +327,49 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.other</string>
+						<string>support.other.note</string>
+						<string>support.other.note.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>support.other.note.gtdalt</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.note</string>
+						<string>punctuation.definition.note.note</string>
+						<string>punctuation.definition.note.note.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.note.note.gtdalt</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.note</string>
+						<string>punctuation.definition.note.note</string>
+						<string>punctuation.definition.note.note.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.note.note.gtdalt</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.note</string>
+				<string>meta.note.gtdalt</string>
+			</array>
 			<key>end</key>
 			<string>\n|$</string>
 			<key>name</key>
@@ -196,40 +383,105 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.action</string>
+				<string>meta.action.archived</string>
+				<string>meta.action.archived.gtdalt</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.archived</string>
+						<string>punctuation.separator.archived.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.archived.gtdalt</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.other</string>
+						<string>string.quoted.other.timestamp</string>
+						<string>string.quoted.other.timestamp.action</string>
+						<string>string.quoted.other.timestamp.action.archived</string>
+						<string>string.quoted.other.timestamp.action.archived.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>string.quoted.other.timestamp.action.archived.gtdalt</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.archived</string>
+						<string>punctuation.separator.archived.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.archived.gtdalt</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.other</string>
+						<string>support.other.project</string>
+						<string>support.other.project.action</string>
+						<string>support.other.project.action.archived</string>
+						<string>support.other.project.action.archived.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>support.other.project.action.archived.gtdalt</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.archived</string>
+						<string>punctuation.separator.archived.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.archived.gtdalt</string>
 				</dict>
 				<key>6</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.context</string>
+						<string>storage.type.context.action</string>
+						<string>storage.type.context.action.archived</string>
+						<string>storage.type.context.action.archived.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>storage.type.context.action.archived.gtdalt</string>
 				</dict>
 				<key>7</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.slash</string>
+						<string>comment.line.slash.action</string>
+						<string>comment.line.slash.action.archived</string>
+						<string>comment.line.slash.action.archived.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>comment.line.slash.action.archived.gtdalt</string>
 				</dict>
@@ -240,25 +492,64 @@
 			<string>meta.action.archived.gtdalt</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.project</string>
+				<string>meta.project.archived</string>
+				<string>meta.project.archived.gtdalt</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.archived</string>
+						<string>punctuation.separator.archived.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.archived.gtdalt</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.other</string>
+						<string>string.quoted.other.timestamp</string>
+						<string>string.quoted.other.timestamp.project</string>
+						<string>string.quoted.other.timestamp.project.archived</string>
+						<string>string.quoted.other.timestamp.project.archived.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>string.quoted.other.timestamp.project.archived.gtdalt</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.archived</string>
+						<string>punctuation.separator.archived.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.archived.gtdalt</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.other</string>
+						<string>support.other.project</string>
+						<string>support.other.project.archived</string>
+						<string>support.other.project.archived.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>support.other.project.archived.gtdalt</string>
 				</dict>
@@ -269,10 +560,25 @@
 			<string>meta.project.archived.gtdalt</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.number-sign</string>
+				<string>comment.line.number-sign.generic</string>
+				<string>comment.line.number-sign.generic.gtdalt</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.gtdalt</string>
 				</dict>
@@ -291,26 +597,64 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.due</string>
+						<string>keyword.operator.due.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.due.gtdalt</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+						<string>punctuation.separator.key-value.due</string>
+						<string>punctuation.separator.key-value.due.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.key-value.due.gtdalt</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.other</string>
+						<string>string.quoted.other.timestamp</string>
+						<string>string.quoted.other.timestamp.due</string>
+						<string>string.quoted.other.timestamp.due.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>string.quoted.other.timestamp.due.gtdalt</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.due</string>
+						<string>punctuation.definition.due.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.due.gtdalt</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.due</string>
+						<string>punctuation.definition.due.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.due.gtdalt</string>
 				</dict>
@@ -324,16 +668,37 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.link</string>
+						<string>punctuation.definition.link.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.link.gtdalt</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.underline</string>
+						<string>markup.underline.link</string>
+						<string>markup.underline.link.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>markup.underline.link.gtdalt</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.link</string>
+						<string>punctuation.definition.link.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.link.gtdalt</string>
 				</dict>
@@ -343,15 +708,36 @@
 		</dict>
 		<key>note</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.other</string>
+				<string>support.other.note</string>
+				<string>support.other.note.gtdalt</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.note</string>
+						<string>punctuation.definition.note.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.note.gtdalt</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.note</string>
+						<string>punctuation.definition.note.gtdalt</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.note.gtdalt</string>
 				</dict>
@@ -363,6 +749,13 @@
 		</dict>
 		<key>title</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.other</string>
+				<string>constant.other.title</string>
+				<string>constant.other.title.gtdalt</string>
+			</array>
 			<key>match</key>
 			<string>\S+(?:\s+\S+)*?(?=\s*(?:\[\d+\]|(?:due|at|from):|$))</string>
 			<key>name</key>

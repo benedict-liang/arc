@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>CM</string>
+	</array>
 	<key>comment</key>
 	<string>CM is the SML Compilation Manager, a sophisticated make that determines dependencies for you.</string>
 	<key>fileTypes</key>
@@ -19,10 +23,23 @@
 		<dict>
 			<key>begin</key>
 			<string>\(\*</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.cm</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.cm</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.cm</string>
 				</dict>
@@ -33,6 +50,12 @@
 			<string>comment.block.cm</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.cm</string>
+			</array>
 			<key>match</key>
 			<string>\b(Library|is|Group|structure|signature|functor)\b</string>
 			<key>name</key>
@@ -41,15 +64,35 @@
 		<dict>
 			<key>begin</key>
 			<string>^\s*(#(if).*)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.directive</string>
+				<string>meta.directive.cm</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.preprocessor</string>
+						<string>meta.preprocessor.cm</string>
+					</array>
 					<key>name</key>
 					<string>meta.preprocessor.cm</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.import</string>
+						<string>keyword.control.import.if</string>
+						<string>keyword.control.import.if.cm</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.import.if.cm</string>
 				</dict>
@@ -62,6 +105,13 @@
 		<dict>
 			<key>begin</key>
 			<string>&quot;</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.cm</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>name</key>
@@ -69,6 +119,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.cm</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>

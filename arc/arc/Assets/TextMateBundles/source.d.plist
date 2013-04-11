@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>D</string>
+	</array>
 	<key>comment</key>
 	<string>D language</string>
 	<key>fileTypes</key>
@@ -21,108 +25,229 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.external</string>
+				<string>keyword.other.external.d</string>
+			</array>
 			<key>match</key>
 			<string>\b(import|package|module|extern)\b</string>
 			<key>name</key>
 			<string>keyword.other.external.d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.conditional</string>
+				<string>keyword.control.conditional.d</string>
+			</array>
 			<key>match</key>
 			<string>\b(if|else|switch|iftype)\b</string>
 			<key>name</key>
 			<string>keyword.control.conditional.d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.branch</string>
+				<string>keyword.control.branch.d</string>
+			</array>
 			<key>match</key>
 			<string>\b(goto|break|continue)\b</string>
 			<key>name</key>
 			<string>keyword.control.branch.d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.repeat</string>
+				<string>keyword.control.repeat.d</string>
+			</array>
 			<key>match</key>
 			<string>\b(while|for|do|foreach)\b</string>
 			<key>name</key>
 			<string>keyword.control.repeat.d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.repeat</string>
+				<string>keyword.control.repeat.d</string>
+			</array>
 			<key>match</key>
 			<string>\b(while|for|do|foreach)\b</string>
 			<key>name</key>
 			<string>keyword.control.repeat.d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.boolean</string>
+				<string>constant.language.boolean.d</string>
+			</array>
 			<key>match</key>
 			<string>\b(true|false)\b</string>
 			<key>name</key>
 			<string>constant.language.boolean.d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.d</string>
+			</array>
 			<key>match</key>
 			<string>\b(__FILE__|__LINE__|__DATE__|__TIME__|__TIMESTAMP__|null)\b</string>
 			<key>name</key>
 			<string>constant.language.d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.type</string>
+				<string>storage.type.typedef</string>
+				<string>storage.type.typedef.d</string>
+			</array>
 			<key>match</key>
 			<string>\b(alias|typedef)\b</string>
 			<key>name</key>
 			<string>storage.type.typedef.d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.type</string>
+				<string>storage.type.structure</string>
+				<string>storage.type.structure.d</string>
+			</array>
 			<key>match</key>
 			<string>\b(template|interface|class|enum|struct|union)\b</string>
 			<key>name</key>
 			<string>storage.type.structure.d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.d</string>
+			</array>
 			<key>match</key>
 			<string>\b(new|delete|typeof|typeid|cast|align|is|this|super)\b</string>
 			<key>name</key>
 			<string>keyword.operator.d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.overload</string>
+				<string>keyword.operator.overload.d</string>
+			</array>
 			<key>match</key>
 			<string>\b(opNeg|opCom|opPostInc|opPostDec|opCast|opAdd|opSub|opSub_r|opMul|opDiv|opDiv_r|opMod|opMod_r|opAnd|opOr|opXor|opShl|opShl_r|opShr|opShr_r|opUShr|opUShr_r|opCat|opCat_r|opEquals|opEquals|opCmp|opCmp|opCmp|opCmp|opAddAssign|opSubAssign|opMulAssign|opDivAssign|opModAssign|opAndAssign|opOrAssign|opXorAssign|opShlAssign|opShrAssign|opUShrAssign|opCatAssign|opIndex|opIndexAssign|opCall|opSlice|opSliceAssign|opPos|opAdd_r|opMul_r|opAnd_r|opOr_r|opXor_r)\b</string>
 			<key>name</key>
 			<string>keyword.operator.overload.d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.type</string>
+				<string>storage.type.d</string>
+			</array>
 			<key>match</key>
 			<string>\b(ushort|int|uint|long|ulong|float|void|byte|ubyte|double|bit|char|wchar|ucent|cent|short|bool|dchar|real|ireal|ifloat|idouble|creal|cfloat|cdouble)\b</string>
 			<key>name</key>
 			<string>storage.type.d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.debug</string>
+				<string>keyword.other.debug.d</string>
+			</array>
 			<key>match</key>
 			<string>\b(deprecated|unittest)\b</string>
 			<key>name</key>
 			<string>keyword.other.debug.d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.exception</string>
+				<string>keyword.control.exception.d</string>
+			</array>
 			<key>match</key>
 			<string>\b(throw|try|catch|finally)\b</string>
 			<key>name</key>
 			<string>keyword.control.exception.d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.modifier</string>
+				<string>storage.modifier.d</string>
+			</array>
 			<key>match</key>
 			<string>\b(public|protected|private|export)\b</string>
 			<key>name</key>
 			<string>storage.modifier.d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.statement</string>
+				<string>keyword.control.statement.d</string>
+			</array>
 			<key>match</key>
 			<string>\b(version|debug|return|with|invariant|body|scope|in|out|inout|asm|mixin|function|delegate)\b</string>
 			<key>name</key>
 			<string>keyword.control.statement.d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.modifier</string>
+				<string>storage.modifier.d</string>
+			</array>
 			<key>match</key>
 			<string>\b(auto|static|override|final|const|abstract|volatile|synchronized)\b</string>
 			<key>name</key>
 			<string>storage.modifier.d</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.pragma</string>
+				<string>keyword.control.pragma.d</string>
+			</array>
 			<key>match</key>
 			<string>\b(pragma)\b</string>
 			<key>name</key>
@@ -135,14 +260,21 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.embedded</string>
+						<string>punctuation.section.embedded.mips</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.embedded.mips</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>This rule is broken and never gets called anyhow since asm
-								   is matched above this. If fixed the scopes here should be
-								   redone as well. -msheets</string>
+																	   is matched above this. If fixed the scopes here should be
+																	   redone as well. -msheets</string>
 			<key>end</key>
 			<string>(})</string>
 			<key>patterns</key>
@@ -156,10 +288,24 @@
 		<dict>
 			<key>begin</key>
 			<string>/\+</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.nested</string>
+				<string>comment.block.nested.d</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.d</string>
 				</dict>
@@ -179,10 +325,23 @@
 		<dict>
 			<key>begin</key>
 			<string>/\*</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.d</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.d</string>
 				</dict>
@@ -199,10 +358,24 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.d</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.double-slash</string>
+				<string>comment.line.double-slash.d</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -210,6 +383,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.continuation</string>
+						<string>punctuation.separator.continuation.d</string>
+					</array>
 					<key>match</key>
 					<string>(?&gt;\\\s*\n)</string>
 					<key>name</key>
@@ -218,6 +398,12 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.c</string>
+			</array>
 			<key>match</key>
 			<string>\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\b</string>
 			<key>name</key>
@@ -230,16 +416,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.d</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.c</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.d</string>
 				</dict>
@@ -265,16 +474,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.d</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.single</string>
+				<string>string.quoted.single.c</string>
+			</array>
 			<key>end</key>
 			<string>'</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.d</string>
 				</dict>
@@ -290,18 +522,39 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.type</string>
+				<string>support.type.sys-types</string>
+				<string>support.type.sys-types.c</string>
+			</array>
 			<key>match</key>
 			<string>\b(u_char|u_short|u_int|u_long|ushort|uint|u_quad_t|quad_t|qaddr_t|caddr_t|daddr_t|dev_t|fixpt_t|blkcnt_t|blksize_t|gid_t|in_addr_t|in_port_t|ino_t|key_t|mode_t|nlink_t|id_t|pid_t|off_t|segsz_t|swblk_t|uid_t|id_t|clock_t|size_t|ssize_t|time_t|useconds_t|suseconds_t)\b</string>
 			<key>name</key>
 			<string>support.type.sys-types.c</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.type</string>
+				<string>support.type.pthread</string>
+				<string>support.type.pthread.c</string>
+			</array>
 			<key>match</key>
 			<string>\b(pthread_attr_t|pthread_cond_t|pthread_condattr_t|pthread_mutex_t|pthread_mutexattr_t|pthread_once_t|pthread_rwlock_t|pthread_rwlockattr_t|pthread_t|pthread_key_t)\b</string>
 			<key>name</key>
 			<string>support.type.pthread.c</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.type</string>
+				<string>support.type.stdint</string>
+				<string>support.type.stdint.c</string>
+			</array>
 			<key>match</key>
 			<string>\b(int8_t|int16_t|int32_t|int64_t|uint8_t|uint16_t|uint32_t|uint64_t|int_least8_t|int_least16_t|int_least32_t|int_least64_t|uint_least8_t|uint_least16_t|uint_least32_t|uint_least64_t|int_fast8_t|int_fast16_t|int_fast32_t|int_fast64_t|uint_fast8_t|uint_fast16_t|uint_fast32_t|uint_fast64_t|intptr_t|uintptr_t|intmax_t|intmax_t|uintmax_t|uintmax_t)\b</string>
 			<key>name</key>
@@ -318,6 +571,13 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.d</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.d</string>
 				</dict>
@@ -337,12 +597,26 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.c</string>
+					</array>
 					<key>match</key>
 					<string>\\(\\|[abefnprtv'&quot;?]|[0-3]\d{,2}|[4-7]\d?|x[a-zA-Z0-9]+)</string>
 					<key>name</key>
 					<string>constant.character.escape.c</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.unknown-escape</string>
+						<string>invalid.illegal.unknown-escape.c</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -355,20 +629,34 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.placeholder</string>
+						<string>constant.other.placeholder.c</string>
+					</array>
 					<key>match</key>
 					<string>(?x)%
-											(\d+\$)?                             # field (argument #)
-											[#0\- +']*                           # flags
-											[,;:_]?                              # separator character (AltiVec)
-											((-?\d+)|\*(-?\d+\$)?)?              # minimum field width
-											(\.((-?\d+)|\*(-?\d+\$)?)?)?         # precision
-											(hh|h|ll|l|j|t|z|q|L|vh|vl|v|hv|hl)? # length modifier
-											[diouxXDOUeEfFgGaACcSspn%]           # conversion type
-										</string>
+																										(\d+\$)?                             # field (argument #)
+																										[#0\- +']*                           # flags
+																										[,;:_]?                              # separator character (AltiVec)
+																										((-?\d+)|\*(-?\d+\$)?)?              # minimum field width
+																										(\.((-?\d+)|\*(-?\d+\$)?)?)?         # precision
+																										(hh|h|ll|l|j|t|z|q|L|vh|vl|v|hv|hl)? # length modifier
+																										[diouxXDOUeEfFgGaACcSspn%]           # conversion type
+																									</string>
 					<key>name</key>
 					<string>constant.other.placeholder.c</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.placeholder</string>
+						<string>invalid.illegal.placeholder.c</string>
+					</array>
 					<key>match</key>
 					<string>%</string>
 					<key>name</key>

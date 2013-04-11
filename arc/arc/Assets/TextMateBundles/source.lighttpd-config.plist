@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Lighttpd</string>
+	</array>
 	<key>foldingStartMarker</key>
 	<string>(\{|\()\s*$</string>
 	<key>foldingStopMarker</key>
@@ -13,10 +17,24 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.number-sign</string>
+				<string>comment.line.number-sign.lighttpd-config</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.lighttpd-config</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.lighttpd-config</string>
 				</dict>
@@ -31,21 +49,50 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+						<string>punctuation.separator.key-value.lighttpd-config</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.key-value.lighttpd-config</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.regexp</string>
+						<string>string.regexp.lighttpd-config</string>
+					</array>
 					<key>name</key>
 					<string>string.regexp.lighttpd-config</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.lighttpd-config</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.lighttpd-config</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.lighttpd-config</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.lighttpd-config</string>
 				</dict>
@@ -58,11 +105,24 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+						<string>punctuation.separator.key-value.lighttpd-config</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.key-value.lighttpd-config</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.numeric</string>
+						<string>constant.numeric.lighttpd-config</string>
+					</array>
 					<key>name</key>
 					<string>constant.numeric.lighttpd-config</string>
 				</dict>
@@ -71,6 +131,13 @@
 			<string>(=&gt;?)\s*([0-9]+)</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>punctuation</string>
+				<string>punctuation.separator</string>
+				<string>punctuation.separator.key-value</string>
+				<string>punctuation.separator.key-value.lighttpd-config</string>
+			</array>
 			<key>match</key>
 			<string>=|\+=|==|!=|=~|!~|=&gt;</string>
 			<key>name</key>
@@ -83,16 +150,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.lighttpd-config</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.lighttpd-config</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.lighttpd-config</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.lighttpd-config</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.lighttpd-config</string>
 				</dict>
@@ -102,6 +192,14 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.quote</string>
+						<string>constant.character.escape.quote.lighttpd-config</string>
+					</array>
 					<key>match</key>
 					<string>&quot;&quot;</string>
 					<key>name</key>
@@ -110,10 +208,23 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.language</string>
+				<string>variable.language.lighttpd-config</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.variable</string>
+						<string>punctuation.definition.variable.lighttpd-config</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.variable.lighttpd-config</string>
 				</dict>
@@ -124,6 +235,13 @@
 			<string>variable.language.lighttpd-config</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.constant</string>
+				<string>support.constant.name</string>
+				<string>support.constant.name.lighttpd-config</string>
+			</array>
 			<key>match</key>
 			<string>^\s*[a-zA-Z][0-9a-zA-Z.-]*</string>
 			<key>name</key>
@@ -134,6 +252,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.semicolon-at-end-of-line</string>
+						<string>invalid.illegal.semicolon-at-end-of-line.lighttpd-config</string>
+					</array>
 					<key>name</key>
 					<string>invalid.illegal.semicolon-at-end-of-line.lighttpd-config</string>
 				</dict>

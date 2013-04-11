@@ -812,7 +812,6 @@
 			<string>source.c++.qt.plist</string>
 			<string>source.c.plist</string>
 			<string>source.objc++.plist</string>
-			<string>source.c++.plist</string>
 		</array>
 		<key>h++</key>
 		<array>

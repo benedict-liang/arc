@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Eiffel</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>e</string>
@@ -17,10 +21,24 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.double-dash</string>
+				<string>comment.line.double-dash.eiffel</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.eiffel</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.eiffel</string>
 				</dict>
@@ -31,18 +49,36 @@
 			<string>comment.line.double-dash.eiffel</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.eiffel</string>
+			</array>
 			<key>match</key>
 			<string>\b(Indexing|indexing|deferred|expanded|class|inherit|rename|as|export|undefine|redefine|select|all|create|creation|feature|prefix|infix|separate|frozen|obsolete|local|is|unique|do|once|external|alias|require|ensure|invariant|variant|rescue|retry|like|check|if|else|elseif|then|inspect|when|from|loop|until|debug|not|or|and|xor|implies|old|end)\b</string>
 			<key>name</key>
 			<string>keyword.control.eiffel</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.eiffel</string>
+			</array>
 			<key>match</key>
 			<string>[a-zA-Z_]+</string>
 			<key>name</key>
 			<string>variable.other.eiffel</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.eiffel</string>
+			</array>
 			<key>match</key>
 			<string>\b(True|true|False|false|Void|void|Result|result)\b</string>
 			<key>name</key>
@@ -51,6 +87,12 @@
 		<dict>
 			<key>begin</key>
 			<string>feature</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.features</string>
+				<string>meta.features.eiffel</string>
+			</array>
 			<key>end</key>
 			<string>end</string>
 			<key>name</key>
@@ -59,6 +101,12 @@
 		<dict>
 			<key>begin</key>
 			<string>(do|once)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.effective_routine_body</string>
+				<string>meta.effective_routine_body.eiffel</string>
+			</array>
 			<key>end</key>
 			<string>(ensure|end)</string>
 			<key>name</key>
@@ -67,6 +115,12 @@
 		<dict>
 			<key>begin</key>
 			<string>rescue</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.rescue</string>
+				<string>meta.rescue.eiffel</string>
+			</array>
 			<key>end</key>
 			<string>end</string>
 			<key>name</key>
@@ -79,16 +133,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.eiffel</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.eiffel</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.eiffel</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.eiffel</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.eiffel</string>
 				</dict>
@@ -98,6 +175,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.eiffel</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -106,12 +190,24 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.eiffel</string>
+			</array>
 			<key>match</key>
 			<string>[0-9]+</string>
 			<key>name</key>
 			<string>constant.numeric.eiffel</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.modifier</string>
+				<string>storage.modifier.eiffel</string>
+			</array>
 			<key>match</key>
 			<string>\b(deferred|expanded)\b</string>
 			<key>name</key>
@@ -120,13 +216,26 @@
 		<dict>
 			<key>begin</key>
 			<string>^\s*
-								((?:\b(deferred|expanded)\b\s*)*) # modifier
-								(class)\s+
-								(\w+)\s* # identifier</string>
+																	((?:\b(deferred|expanded)\b\s*)*) # modifier
+																	(class)\s+
+																	(\w+)\s* # identifier</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.definition</string>
+				<string>meta.definition.class</string>
+				<string>meta.definition.class.eiffel</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.modifier</string>
+						<string>storage.modifier.eiffel</string>
+					</array>
 					<key>name</key>
 					<string>storage.modifier.eiffel</string>
 				</dict>
@@ -140,10 +249,24 @@
 				<dict>
 					<key>begin</key>
 					<string>\b(extends)\b\s+</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.definition</string>
+						<string>meta.definition.class</string>
+						<string>meta.definition.class.extends</string>
+						<string>meta.definition.class.extends.java</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.modifier</string>
+								<string>storage.modifier.java</string>
+							</array>
 							<key>name</key>
 							<string>storage.modifier.java</string>
 						</dict>
@@ -163,10 +286,24 @@
 				<dict>
 					<key>begin</key>
 					<string>\b(implements)\b\s+</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.definition</string>
+						<string>meta.definition.class</string>
+						<string>meta.definition.class.implements</string>
+						<string>meta.definition.class.implements.java</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.modifier</string>
+								<string>storage.modifier.java</string>
+							</array>
 							<key>name</key>
 							<string>storage.modifier.java</string>
 						</dict>

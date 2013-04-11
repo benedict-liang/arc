@@ -28,25 +28,37 @@
         _settingKeys = [NSArray arrayWithObject:_colorSchemeSettingKey];
         _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
         _properties = [NSMutableDictionary dictionary];
-        [_properties setValue:@"Color Theme" forKey:PLUGIN_TITLE];
+        [_properties setValue:@"Color Schemes" forKey:PLUGIN_TITLE];
         
         [_properties setValue:[NSNumber numberWithInt:kMCQSettingType]
                        forKey:PLUGIN_TYPE];
-        _options = @[
-                    @{
-        PLUGIN_OPTION_LABEL: @"Monokai",
-        PLUGIN_OPTION_VALUE: _defaultTheme
-                    },
-                    @{
-        PLUGIN_OPTION_LABEL : @"Solarized (light)",
-        PLUGIN_OPTION_VALUE: @"Solarized (light).tmTheme"
-                    }
         
-                    ];
+        _options = [SyntaxHighlightingPlugin generateOptions];
+
         
         [_properties setValue:_options forKey:PLUGIN_OPTIONS];
+        
+        _cache = [NSMutableDictionary dictionary];
     }
     return self;
+}
++ (NSArray*)generateOptions {
+    NSURL* themeConf = [[NSBundle mainBundle] URLForResource:@"ThemeConf.plist" withExtension:nil];
+    NSDictionary* themes = [NSDictionary dictionaryWithContentsOfURL:themeConf];
+    NSMutableArray* opts = [NSMutableArray array];
+    for (NSString* themeName in themes) {
+        NSString* themeFile = [themes objectForKey:themeName];
+        [opts addObject:@{PLUGIN_OPTION_LABEL:themeName,
+                        PLUGIN_OPTION_VALUE:themeFile}];
+        
+    }
+    
+    [opts sortUsingComparator:(NSComparator)^(id k1, id k2){
+        NSString* s1 = [(NSDictionary*) k1 objectForKey:PLUGIN_OPTION_LABEL];
+        NSString* s2 = [(NSDictionary*) k2 objectForKey:PLUGIN_OPTION_LABEL];
+        return [s1 compare:s2];
+    }];
+    return opts;
 }
 
 - (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString
@@ -56,24 +68,47 @@
                          delegate:(id)delegate
 {
     NSString* themeName = [properties objectForKey:_colorSchemeSettingKey];
-    _theme = [TMBundleThemeHandler produceStylesWithTheme:themeName];
-    SyntaxHighlight* sh = [[SyntaxHighlight alloc] initWithFile:file del:delegate theme:_theme];
+    _theme = themeName;
     
-    NSDictionary* global = [_theme objectForKey:@"global"];
+    NSDictionary* themeDictionary = [TMBundleThemeHandler produceStylesWithTheme:themeName];
+    NSDictionary* global = [themeDictionary objectForKey:@"global"];
     UIColor* foreground = [global objectForKey:@"foreground"];
     [arcAttributedString setColor:[foreground CGColor]
                           OnRange:NSMakeRange(0, [(NSString*)[file contents] length])
-                       ForSetting:@"asdf"];
+                       ForSetting:@"syntaxHighlight"];
     
-    [dictionary setValue:[_theme objectForKey:@"global"]
+    [dictionary setValue:[themeDictionary objectForKey:@"global"]
                   forKey:@"syntaxHighlightingPlugin"];
-
-    if (sh.bundle) {
-        ArcAttributedString *copy =
+    
+    SyntaxHighlight* cachedHighlighter = [_cache objectForKey:[file path]];
+    
+    if (cachedHighlighter) {
+        
+        NSDictionary *syntaxOpts = @{
+        @"theme":themeName,
+        @"attributedString":[[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString]
+        };
+        
+        [cachedHighlighter performSelectorInBackground:@selector(reapplyWithOpts:) withObject:syntaxOpts];
+        
+    } else {
+        SyntaxHighlight* sh = [[SyntaxHighlight alloc] initWithFile:file del:delegate];
+        
+        if (sh.bundle) {
+            ArcAttributedString *copy =
             [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
-        [sh performSelectorInBackground:@selector(execOn:)
-                               withObject:copy];
+            NSDictionary* syntaxOptions = @{
+                                            @"theme":themeName,
+                                            @"attributedString":copy
+                                            };
+            
+            [sh performSelectorInBackground:@selector(execOn:)
+                                 withObject:syntaxOptions];
+            
+            [_cache setObject:sh forKey:[file path]];
+        }
     }
+
 }
 
 - (void)execOnTableView:(UITableView *)tableView

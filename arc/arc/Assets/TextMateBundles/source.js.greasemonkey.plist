@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Greasemonkey</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>user.js</string>
@@ -19,12 +23,24 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.class</string>
+				<string>support.class.greasemonkey</string>
+			</array>
 			<key>match</key>
 			<string>\bunsafeWindow\b</string>
 			<key>name</key>
 			<string>support.class.greasemonkey</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.greasemonkey</string>
+			</array>
 			<key>match</key>
 			<string>\bGM_(registerMenuCommand|xmlhttpRequest|setValue|getValue|log|openInTab|addStyle)\b(?=\()</string>
 			<key>name</key>
@@ -33,6 +49,12 @@
 		<dict>
 			<key>begin</key>
 			<string>// ==UserScript==</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.header</string>
+				<string>meta.header.greasemonkey</string>
+			</array>
 			<key>end</key>
 			<string>// ==/UserScript==\s*</string>
 			<key>name</key>
@@ -40,15 +62,34 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.directive</string>
+						<string>meta.directive.standard</string>
+						<string>meta.directive.standard.greasemonkey</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.greasemonkey</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.greasemonkey</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.unquoted</string>
+								<string>string.unquoted.greasemonkey</string>
+							</array>
 							<key>name</key>
 							<string>string.unquoted.greasemonkey</string>
 						</dict>
@@ -59,15 +100,34 @@
 					<string>meta.directive.standard.greasemonkey</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.directive</string>
+						<string>meta.directive.nonstandard</string>
+						<string>meta.directive.nonstandard.greasemonkey</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.other</string>
+								<string>keyword.other.greasemonkey</string>
+							</array>
 							<key>name</key>
 							<string>keyword.other.greasemonkey</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.unquoted</string>
+								<string>string.unquoted.greasemonkey</string>
+							</array>
 							<key>name</key>
 							<string>string.unquoted.greasemonkey</string>
 						</dict>

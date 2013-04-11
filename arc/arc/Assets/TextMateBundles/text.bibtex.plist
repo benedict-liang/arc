@@ -2,11 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>BibTeX</string>
+	</array>
 	<key>comment</key>
 	<string>Grammar based on description from http://artis.imag.fr/~Xavier.Decoret/resources/xdkbibtex/bibtex_summary.html#comment
-		
-		TODO: Does not support @preamble
-		</string>
+					
+					TODO: Does not support @preamble
+					</string>
 	<key>fileTypes</key>
 	<array>
 		<string>bib</string>
@@ -26,10 +30,24 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.bibtex</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.at-sign</string>
+				<string>comment.line.at-sign.bibtex</string>
+			</array>
 			<key>end</key>
 			<string>$\n?</string>
 			<key>name</key>
@@ -42,31 +60,74 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.string-constant</string>
+						<string>keyword.other.string-constant.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.string-constant.bibtex</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.keyword</string>
+						<string>punctuation.definition.keyword.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.keyword.bibtex</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.string-constant</string>
+						<string>punctuation.section.string-constant.begin</string>
+						<string>punctuation.section.string-constant.begin.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.string-constant.begin.bibtex</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>variable.other.bibtex</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.string-constant</string>
+				<string>meta.string-constant.braces</string>
+				<string>meta.string-constant.braces.bibtex</string>
+			</array>
 			<key>end</key>
 			<string>\}</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.string-constant</string>
+						<string>punctuation.section.string-constant.end</string>
+						<string>punctuation.section.string-constant.end.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.string-constant.end.bibtex</string>
 				</dict>
@@ -88,31 +149,74 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.string-constant</string>
+						<string>keyword.other.string-constant.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.string-constant.bibtex</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.keyword</string>
+						<string>punctuation.definition.keyword.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.keyword.bibtex</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.string-constant</string>
+						<string>punctuation.section.string-constant.begin</string>
+						<string>punctuation.section.string-constant.begin.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.string-constant.begin.bibtex</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>variable.other.bibtex</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.string-constant</string>
+				<string>meta.string-constant.parenthesis</string>
+				<string>meta.string-constant.parenthesis.bibtex</string>
+			</array>
 			<key>end</key>
 			<string>\)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.string-constant</string>
+						<string>punctuation.section.string-constant.end</string>
+						<string>punctuation.section.string-constant.end.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.string-constant.end.bibtex</string>
 				</dict>
@@ -134,31 +238,76 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.entry-type</string>
+						<string>keyword.other.entry-type.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.entry-type.bibtex</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.keyword</string>
+						<string>punctuation.definition.keyword.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.keyword.bibtex</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.entry</string>
+						<string>punctuation.section.entry.begin</string>
+						<string>punctuation.section.entry.begin.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.entry.begin.bibtex</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.entry-key</string>
+						<string>entity.name.type.entry-key.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.type.entry-key.bibtex</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.entry</string>
+				<string>meta.entry.braces</string>
+				<string>meta.entry.braces.bibtex</string>
+			</array>
 			<key>end</key>
 			<string>\}</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.entry</string>
+						<string>punctuation.section.entry.end</string>
+						<string>punctuation.section.entry.end.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.entry.end.bibtex</string>
 				</dict>
@@ -174,15 +323,35 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.unquoted</string>
+								<string>string.unquoted.key</string>
+								<string>string.unquoted.key.bibtex</string>
+							</array>
 							<key>name</key>
 							<string>string.unquoted.key.bibtex</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.key-value</string>
+								<string>punctuation.separator.key-value.bibtex</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.key-value.bibtex</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.key-assignment</string>
+						<string>meta.key-assignment.bibtex</string>
+					</array>
 					<key>end</key>
 					<string>(?=[,}])</string>
 					<key>name</key>
@@ -208,31 +377,76 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.entry-type</string>
+						<string>keyword.other.entry-type.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.entry-type.bibtex</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.keyword</string>
+						<string>punctuation.definition.keyword.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.keyword.bibtex</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.entry</string>
+						<string>punctuation.section.entry.begin</string>
+						<string>punctuation.section.entry.begin.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.entry.begin.bibtex</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.entry-key</string>
+						<string>entity.name.type.entry-key.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.type.entry-key.bibtex</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.entry</string>
+				<string>meta.entry.parenthesis</string>
+				<string>meta.entry.parenthesis.bibtex</string>
+			</array>
 			<key>end</key>
 			<string>\)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.section</string>
+						<string>punctuation.section.entry</string>
+						<string>punctuation.section.entry.end</string>
+						<string>punctuation.section.entry.end.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.section.entry.end.bibtex</string>
 				</dict>
@@ -248,15 +462,35 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.unquoted</string>
+								<string>string.unquoted.key</string>
+								<string>string.unquoted.key.bibtex</string>
+							</array>
 							<key>name</key>
 							<string>string.unquoted.key.bibtex</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.key-value</string>
+								<string>punctuation.separator.key-value.bibtex</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.key-value.bibtex</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.key-assignment</string>
+						<string>meta.key-assignment.bibtex</string>
+					</array>
 					<key>end</key>
 					<string>(?=[,)])</string>
 					<key>name</key>
@@ -278,6 +512,12 @@
 		<dict>
 			<key>begin</key>
 			<string>[^@\n]</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.bibtex</string>
+			</array>
 			<key>end</key>
 			<string>(?=@)</string>
 			<key>name</key>
@@ -288,6 +528,12 @@
 	<dict>
 		<key>integer</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.bibtex</string>
+			</array>
 			<key>match</key>
 			<string>\d+</string>
 			<key>name</key>
@@ -301,6 +547,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.group</string>
+						<string>punctuation.definition.group.begin</string>
+						<string>punctuation.definition.group.begin.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.group.begin.bibtex</string>
 				</dict>
@@ -311,6 +565,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.group</string>
+						<string>punctuation.definition.group.end</string>
+						<string>punctuation.definition.group.end.bibtex</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.group.end.bibtex</string>
 				</dict>
@@ -334,16 +596,39 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.bibtex</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.bibtex</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.bibtex</string>
+					</array>
 					<key>end</key>
 					<string>&quot;</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.bibtex</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.bibtex</string>
 						</dict>
@@ -365,16 +650,40 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.bibtex</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.bibtex</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.other</string>
+						<string>string.quoted.other.braces</string>
+						<string>string.quoted.other.braces.bibtex</string>
+					</array>
 					<key>end</key>
 					<string>\}</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.bibtex</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.bibtex</string>
 						</dict>
@@ -384,6 +693,13 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.at-sign</string>
+								<string>invalid.illegal.at-sign.bibtex</string>
+							</array>
 							<key>match</key>
 							<string>@</string>
 							<key>name</key>

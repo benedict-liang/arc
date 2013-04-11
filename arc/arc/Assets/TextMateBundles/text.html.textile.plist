@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Textile</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>textile</string>
@@ -17,20 +21,49 @@
 		<dict>
 			<key>begin</key>
 			<string>(^h[1-6]([&lt;&gt;=()]+)?)(\([^)]*\)|{[^}]*})*(\.)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.textile</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.heading</string>
+						<string>entity.name.tag.heading.textile</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.heading.textile</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.textile</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.type.textile</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.heading</string>
+						<string>entity.name.tag.heading.textile</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.heading.textile</string>
 				</dict>
@@ -54,20 +87,49 @@
 		<dict>
 			<key>begin</key>
 			<string>(^bq([&lt;&gt;=()]+)?)(\([^)]*\)|{[^}]*})*(\.)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.quote</string>
+				<string>markup.quote.textile</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.blockquote</string>
+						<string>entity.name.tag.blockquote.textile</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.blockquote.textile</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.textile</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.type.textile</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.blockquote</string>
+						<string>entity.name.tag.blockquote.textile</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.blockquote.textile</string>
 				</dict>
@@ -91,20 +153,50 @@
 		<dict>
 			<key>begin</key>
 			<string>(^fn[0-9]+([&lt;&gt;=()]+)?)(\([^)]*\)|{[^}]*})*(\.)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.other</string>
+				<string>markup.other.footnote</string>
+				<string>markup.other.footnote.textile</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.footnote</string>
+						<string>entity.name.tag.footnote.textile</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.footnote.textile</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.textile</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.type.textile</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.footnote</string>
+						<string>entity.name.tag.footnote.textile</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.footnote.textile</string>
 				</dict>
@@ -128,20 +220,50 @@
 		<dict>
 			<key>begin</key>
 			<string>(^table([&lt;&gt;=()]+)?)(\([^)]*\)|{[^}]*})*(\.)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.other</string>
+				<string>markup.other.table</string>
+				<string>markup.other.table.textile</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.footnote</string>
+						<string>entity.name.tag.footnote.textile</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.footnote.textile</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.textile</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.type.textile</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.footnote</string>
+						<string>entity.name.tag.footnote.textile</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.footnote.textile</string>
 				</dict>
@@ -165,6 +287,12 @@
 		<dict>
 			<key>begin</key>
 			<string>^(?=\S)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.paragraph</string>
+				<string>meta.paragraph.textile</string>
+			</array>
 			<key>end</key>
 			<string>^$</string>
 			<key>name</key>
@@ -172,20 +300,51 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.section</string>
+						<string>entity.name.section.paragraph</string>
+						<string>entity.name.section.paragraph.textile</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.paragraph</string>
+								<string>entity.name.tag.paragraph.textile</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.paragraph.textile</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.textile</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.textile</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.tag</string>
+								<string>entity.name.tag.paragraph</string>
+								<string>entity.name.tag.paragraph.textile</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.tag.paragraph.textile</string>
 						</dict>
@@ -219,6 +378,12 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>text</string>
+						<string>text.html</string>
+						<string>text.html.textile</string>
+					</array>
 					<key>comment</key>
 					<string>&amp; is handled automagically by textile, so we match it to avoid text.html.basic from flagging it</string>
 					<key>match</key>
@@ -227,10 +392,24 @@
 					<string>text.html.textile</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.list</string>
+						<string>markup.list.unnumbered</string>
+						<string>markup.list.unnumbered.textile</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.textile</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.textile</string>
 						</dict>
@@ -241,10 +420,24 @@
 					<string>markup.list.unnumbered.textile</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.list</string>
+						<string>markup.list.numbered</string>
+						<string>markup.list.numbered.textile</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.textile</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.textile</string>
 						</dict>
@@ -255,143 +448,251 @@
 					<string>markup.list.numbered.textile</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.link</string>
+						<string>meta.link.reference</string>
+						<string>meta.link.reference.textile</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.other</string>
+								<string>string.other.link</string>
+								<string>string.other.link.title</string>
+								<string>string.other.link.title.textile</string>
+							</array>
 							<key>name</key>
 							<string>string.other.link.title.textile</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.other</string>
+								<string>string.other.link</string>
+								<string>string.other.link.description</string>
+								<string>string.other.link.description.title</string>
+								<string>string.other.link.description.title.textile</string>
+							</array>
 							<key>name</key>
 							<string>string.other.link.description.title.textile</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.other</string>
+								<string>constant.other.reference</string>
+								<string>constant.other.reference.link</string>
+								<string>constant.other.reference.link.textile</string>
+							</array>
 							<key>name</key>
 							<string>constant.other.reference.link.textile</string>
 						</dict>
 					</dict>
 					<key>match</key>
 					<string>(?x)
-													&quot;								# Start name, etc
-														(?:							# Attributes
-															# I swear, this is how the language is defined,
-															# couldnt make it up if I tried.
-															(?:\([^)]+\))?(?:\{[^}]+\})?(?:\[[^\]]+\])?
-																# Class, Style, Lang
-														  | (?:\{[^}]+\})?(?:\[[^\]]+\])?(?:\([^)]+\))?
-																# Style, Lang, Class
-														  | (?:\[[^\]]+\])?(?:\{[^}]+\})?(?:\([^)]+\))?
-																# Lang, Style, Class
-														)?
-														([^&quot;]+?)					# Link name
-														\s?							# Optional whitespace
-														(?:\(([^)]+?)\))?
-													&quot;:								# End name
-													(\w[-\w_]*)						# Linkref
-													(?=[^\w\/;]*?(&lt;|\s|$))			# Catch closing punctuation
-																					#  and end of meta.link
-										</string>
+																												&quot;								# Start name, etc
+																													(?:							# Attributes
+																														# I swear, this is how the language is defined,
+																														# couldnt make it up if I tried.
+																														(?:\([^)]+\))?(?:\{[^}]+\})?(?:\[[^\]]+\])?
+																															# Class, Style, Lang
+																													  | (?:\{[^}]+\})?(?:\[[^\]]+\])?(?:\([^)]+\))?
+																															# Style, Lang, Class
+																													  | (?:\[[^\]]+\])?(?:\{[^}]+\})?(?:\([^)]+\))?
+																															# Lang, Style, Class
+																													)?
+																													([^&quot;]+?)					# Link name
+																													\s?							# Optional whitespace
+																													(?:\(([^)]+?)\))?
+																												&quot;:								# End name
+																												(\w[-\w_]*)						# Linkref
+																												(?=[^\w\/;]*?(&lt;|\s|$))			# Catch closing punctuation
+																																				#  and end of meta.link
+																									</string>
 					<key>name</key>
 					<string>meta.link.reference.textile</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.link</string>
+						<string>meta.link.inline</string>
+						<string>meta.link.inline.textile</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.other</string>
+								<string>string.other.link</string>
+								<string>string.other.link.title</string>
+								<string>string.other.link.title.textile</string>
+							</array>
 							<key>name</key>
 							<string>string.other.link.title.textile</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.other</string>
+								<string>string.other.link</string>
+								<string>string.other.link.description</string>
+								<string>string.other.link.description.title</string>
+								<string>string.other.link.description.title.textile</string>
+							</array>
 							<key>name</key>
 							<string>string.other.link.description.title.textile</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>markup</string>
+								<string>markup.underline</string>
+								<string>markup.underline.link</string>
+								<string>markup.underline.link.textile</string>
+							</array>
 							<key>name</key>
 							<string>markup.underline.link.textile</string>
 						</dict>
 					</dict>
 					<key>match</key>
 					<string>(?x)
-													&quot;								# Start name, etc
-														(?:							# Attributes
-															# I swear, this is how the language is defined,
-															# couldnt make it up if I tried.
-															(?:\([^)]+\))?(?:\{[^}]+\})?(?:\[[^\]]+\])?
-																# Class, Style, Lang
-														  | (?:\{[^}]+\})?(?:\[[^\]]+\])?(?:\([^)]+\))?
-																# Style, Lang, Class
-														  | (?:\[[^\]]+\])?(?:\{[^}]+\})?(?:\([^)]+\))?
-																# Lang, Style, Class
-														)?
-														([^&quot;]+?)					# Link name
-														\s?							# Optional whitespace
-														(?:\(([^)]+?)\))?
-													&quot;:								# End Name
-													(\S*?(?:\w|\/|;))				# URL
-													(?=[^\w\/;]*?(&lt;|\s|$))			# Catch closing punctuation
-																					#  and end of meta.link
-										</string>
+																												&quot;								# Start name, etc
+																													(?:							# Attributes
+																														# I swear, this is how the language is defined,
+																														# couldnt make it up if I tried.
+																														(?:\([^)]+\))?(?:\{[^}]+\})?(?:\[[^\]]+\])?
+																															# Class, Style, Lang
+																													  | (?:\{[^}]+\})?(?:\[[^\]]+\])?(?:\([^)]+\))?
+																															# Style, Lang, Class
+																													  | (?:\[[^\]]+\])?(?:\{[^}]+\})?(?:\([^)]+\))?
+																															# Lang, Style, Class
+																													)?
+																													([^&quot;]+?)					# Link name
+																													\s?							# Optional whitespace
+																													(?:\(([^)]+?)\))?
+																												&quot;:								# End Name
+																												(\S*?(?:\w|\/|;))				# URL
+																												(?=[^\w\/;]*?(&lt;|\s|$))			# Catch closing punctuation
+																																				#  and end of meta.link
+																									</string>
 					<key>name</key>
 					<string>meta.link.inline.textile</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.image</string>
+						<string>meta.image.inline</string>
+						<string>meta.image.inline.textile</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>markup</string>
+								<string>markup.underline</string>
+								<string>markup.underline.link</string>
+								<string>markup.underline.link.image</string>
+								<string>markup.underline.link.image.textile</string>
+							</array>
 							<key>name</key>
 							<string>markup.underline.link.image.textile</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.other</string>
+								<string>string.other.link</string>
+								<string>string.other.link.description</string>
+								<string>string.other.link.description.textile</string>
+							</array>
 							<key>name</key>
 							<string>string.other.link.description.textile</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>markup</string>
+								<string>markup.underline</string>
+								<string>markup.underline.link</string>
+								<string>markup.underline.link.textile</string>
+							</array>
 							<key>name</key>
 							<string>markup.underline.link.textile</string>
 						</dict>
 					</dict>
 					<key>match</key>
 					<string>(?x)
-													\!										# Open image
-													(\&lt;|\=|\&gt;)?								# Optional alignment
-													(?:										# Attributes
-														# I swear, this is how the language is defined,
-														# couldnt make it up if I tried.
-														(?:\([^)]+\))?(?:\{[^}]+\})?(?:\[[^\]]+\])?
-															# Class, Style, Lang
-													  | (?:\{[^}]+\})?(?:\[[^\]]+\])?(?:\([^)]+\))?
-															# Style, Lang, Class
-													  | (?:\[[^\]]+\])?(?:\{[^}]+\})?(?:\([^)]+\))?
-															# Lang, Style, Class
-													)?
-													(?:\.[ ])?            					# Optional
-													([^\s(!]+?)         					# Image URL
-													\s?                						# Optional space
-													(?:\(((?:[^\(\)]|\([^\)]+\))+?)\))?   	# Optional title
-													\!										# Close image
-													(?:
-														:
-														(\S*?(?:\w|\/|;))					# URL
-														(?=[^\w\/;]*?(&lt;|\s|$))				# Catch closing punctuation
-													)?
-										</string>
+																												\!										# Open image
+																												(\&lt;|\=|\&gt;)?								# Optional alignment
+																												(?:										# Attributes
+																													# I swear, this is how the language is defined,
+																													# couldnt make it up if I tried.
+																													(?:\([^)]+\))?(?:\{[^}]+\})?(?:\[[^\]]+\])?
+																														# Class, Style, Lang
+																												  | (?:\{[^}]+\})?(?:\[[^\]]+\])?(?:\([^)]+\))?
+																														# Style, Lang, Class
+																												  | (?:\[[^\]]+\])?(?:\{[^}]+\})?(?:\([^)]+\))?
+																														# Lang, Style, Class
+																												)?
+																												(?:\.[ ])?            					# Optional
+																												([^\s(!]+?)         					# Image URL
+																												\s?                						# Optional space
+																												(?:\(((?:[^\(\)]|\([^\)]+\))+?)\))?   	# Optional title
+																												\!										# Close image
+																												(?:
+																													:
+																													(\S*?(?:\w|\/|;))					# URL
+																													(?=[^\w\/;]*?(&lt;|\s|$))				# Catch closing punctuation
+																												)?
+																									</string>
 					<key>name</key>
 					<string>meta.image.inline.textile</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.other</string>
+						<string>markup.other.table</string>
+						<string>markup.other.table.cell</string>
+						<string>markup.other.table.cell.textile</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.textile</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.textile</string>
 						</dict>
@@ -402,10 +703,23 @@
 					<string>markup.other.table.cell.textile</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.bold</string>
+						<string>markup.bold.textile</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.textile</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.textile</string>
 						</dict>
@@ -416,10 +730,23 @@
 					<string>markup.bold.textile</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.deleted</string>
+						<string>markup.deleted.textile</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.textile</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.textile</string>
 						</dict>
@@ -430,10 +757,23 @@
 					<string>markup.deleted.textile</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.inserted</string>
+						<string>markup.inserted.textile</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.textile</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.textile</string>
 						</dict>
@@ -444,10 +784,23 @@
 					<string>markup.inserted.textile</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.italic</string>
+						<string>markup.italic.textile</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.textile</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.textile</string>
 						</dict>
@@ -458,10 +811,24 @@
 					<string>markup.italic.textile</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.italic</string>
+						<string>markup.italic.phrasemodifiers</string>
+						<string>markup.italic.phrasemodifiers.textile</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.textile</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.textile</string>
 						</dict>
@@ -472,6 +839,13 @@
 					<string>markup.italic.phrasemodifiers.textile</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.textile</string>
+					</array>
 					<key>comment</key>
 					<string>Footnotes</string>
 					<key>match</key>

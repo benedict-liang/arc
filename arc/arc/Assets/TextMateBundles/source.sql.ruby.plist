@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>SQL (Rails)</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>erbsql</string>
@@ -19,6 +23,14 @@
 		<dict>
 			<key>begin</key>
 			<string>&lt;%+(?!&gt;)=?</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>source</string>
+				<string>source.ruby</string>
+				<string>source.ruby.rails</string>
+				<string>source.ruby.rails.embedded</string>
+				<string>source.ruby.rails.embedded.sql</string>
+			</array>
 			<key>end</key>
 			<string>%&gt;</string>
 			<key>name</key>
@@ -26,6 +38,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.number-sign</string>
+						<string>comment.line.number-sign.ruby</string>
+					</array>
 					<key>match</key>
 					<string>#.*?(?=%&gt;)</string>
 					<key>name</key>

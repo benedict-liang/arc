@@ -2,33 +2,37 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>JSON</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>json</string>
 	</array>
 	<key>foldingStartMarker</key>
 	<string>(?x:       # turn on extended mode
-	                          ^        # a line beginning with
-	                          \s*      # some optional space
-	                          [{\[]    # the start of an object or array
-	                          (?!      # but not followed by
-	                            .*     # whatever
-	                            [}\]]  # and the close of an object or array
-	                            ,?     # an optional comma
-	                            \s*    # some optional space
-	                            $      # at the end of the line
-	                          )
-	                          |        # ...or...
-	                          [{\[]    # the start of an object or array
-	                          \s*      # some optional space
-	                          $        # at the end of the line
-	                        )</string>
+				                          ^        # a line beginning with
+				                          \s*      # some optional space
+				                          [{\[]    # the start of an object or array
+				                          (?!      # but not followed by
+				                            .*     # whatever
+				                            [}\]]  # and the close of an object or array
+				                            ,?     # an optional comma
+				                            \s*    # some optional space
+				                            $      # at the end of the line
+				                          )
+				                          |        # ...or...
+				                          [{\[]    # the start of an object or array
+				                          \s*      # some optional space
+				                          $        # at the end of the line
+				                        )</string>
 	<key>foldingStopMarker</key>
 	<string>(?x:     # turn on extended mode
-	                         ^      # a line beginning with
-	                         \s*    # some optional space
-	                         [}\]]  # and the close of an object or array
-	                       )</string>
+				                         ^      # a line beginning with
+				                         \s*    # some optional space
+				                         [}\]]  # and the close of an object or array
+				                       )</string>
 	<key>keyEquivalent</key>
 	<string>^~J</string>
 	<key>name</key>
@@ -50,16 +54,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.array</string>
+						<string>punctuation.definition.array.begin</string>
+						<string>punctuation.definition.array.begin.json</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.array.begin.json</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.structure</string>
+				<string>meta.structure.array</string>
+				<string>meta.structure.array.json</string>
+			</array>
 			<key>end</key>
 			<string>\]</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.array</string>
+						<string>punctuation.definition.array.end</string>
+						<string>punctuation.definition.array.end.json</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.array.end.json</string>
 				</dict>
@@ -73,12 +100,26 @@
 					<string>#value</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.array</string>
+						<string>punctuation.separator.array.json</string>
+					</array>
 					<key>match</key>
 					<string>,</string>
 					<key>name</key>
 					<string>punctuation.separator.array.json</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.expected-array-separator</string>
+						<string>invalid.illegal.expected-array-separator.json</string>
+					</array>
 					<key>match</key>
 					<string>[^\s\]]</string>
 					<key>name</key>
@@ -88,6 +129,12 @@
 		</dict>
 		<key>constant</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.language</string>
+				<string>constant.language.json</string>
+			</array>
 			<key>match</key>
 			<string>\b(?:true|false|null)\b</string>
 			<key>name</key>
@@ -95,27 +142,33 @@
 		</dict>
 		<key>number</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.json</string>
+			</array>
 			<key>comment</key>
 			<string>handles integer and decimal numbers</string>
 			<key>match</key>
 			<string>(?x:         # turn on extended mode
-			                 -?         # an optional minus
-			                 (?:
-			                   0        # a zero
-			                   |        # ...or...
-			                   [1-9]    # a 1-9 character
-			                   \d*      # followed by zero or more digits
-			                 )
-			                 (?:
-			                   \.       # a period
-			                   \d+      # followed by one or more digits
-			                   (?:
-			                     [eE]   # an e character
-			                     [+-]?  # followed by an option +/-
-			                     \d+    # followed by one or more digits
-			                   )?       # make exponent optional
-			                 )?         # make decimal portion optional
-			               )</string>
+												                 -?         # an optional minus
+												                 (?:
+												                   0        # a zero
+												                   |        # ...or...
+												                   [1-9]    # a 1-9 character
+												                   \d*      # followed by zero or more digits
+												                 )
+												                 (?:
+												                   \.       # a period
+												                   \d+      # followed by one or more digits
+												                   (?:
+												                     [eE]   # an e character
+												                     [+-]?  # followed by an option +/-
+												                     \d+    # followed by one or more digits
+												                   )?       # make exponent optional
+												                 )?         # make decimal portion optional
+												               )</string>
 			<key>name</key>
 			<string>constant.numeric.json</string>
 		</dict>
@@ -127,10 +180,25 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.dictionary</string>
+						<string>punctuation.definition.dictionary.begin</string>
+						<string>punctuation.definition.dictionary.begin.json</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.dictionary.begin.json</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.structure</string>
+				<string>meta.structure.dictionary</string>
+				<string>meta.structure.dictionary.json</string>
+			</array>
 			<key>comment</key>
 			<string>a JSON object</string>
 			<key>end</key>
@@ -139,6 +207,14 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.dictionary</string>
+						<string>punctuation.definition.dictionary.end</string>
+						<string>punctuation.definition.dictionary.end.json</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.dictionary.end.json</string>
 				</dict>
@@ -160,16 +236,40 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.dictionary</string>
+								<string>punctuation.separator.dictionary.key-value</string>
+								<string>punctuation.separator.dictionary.key-value.json</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.dictionary.key-value.json</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.structure</string>
+						<string>meta.structure.dictionary</string>
+						<string>meta.structure.dictionary.value</string>
+						<string>meta.structure.dictionary.value.json</string>
+					</array>
 					<key>end</key>
 					<string>(,)|(?=\})</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.dictionary</string>
+								<string>punctuation.separator.dictionary.pair</string>
+								<string>punctuation.separator.dictionary.pair.json</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.dictionary.pair.json</string>
 						</dict>
@@ -185,6 +285,13 @@
 							<string>#value</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.expected-dictionary-separator</string>
+								<string>invalid.illegal.expected-dictionary-separator.json</string>
+							</array>
 							<key>match</key>
 							<string>[^\s,]</string>
 							<key>name</key>
@@ -193,6 +300,13 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.expected-dictionary-separator</string>
+						<string>invalid.illegal.expected-dictionary-separator.json</string>
+					</array>
 					<key>match</key>
 					<string>[^\s\}]</string>
 					<key>name</key>
@@ -208,16 +322,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.json</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.json</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.json</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.json</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.json</string>
 				</dict>
@@ -227,20 +364,34 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.json</string>
+					</array>
 					<key>match</key>
 					<string>(?x:                # turn on extended mode
-					                     \\                # a literal backslash
-					                     (?:               # ...followed by...
-					                       [&quot;\\/bfnrt]     # one of these characters
-					                       |               # ...or...
-					                       u               # a u
-					                       [0-9a-fA-F]{4}  # and four hex digits
-					                     )
-					                   )</string>
+																				                     \\                # a literal backslash
+																				                     (?:               # ...followed by...
+																				                       [&quot;\\/bfnrt]     # one of these characters
+																				                       |               # ...or...
+																				                       u               # a u
+																				                       [0-9a-fA-F]{4}  # and four hex digits
+																				                     )
+																				                   )</string>
 					<key>name</key>
 					<string>constant.character.escape.json</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.unrecognized-string-escape</string>
+						<string>invalid.illegal.unrecognized-string-escape.json</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>

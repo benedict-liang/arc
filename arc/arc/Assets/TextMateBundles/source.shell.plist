@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Shell Script (Bash)</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>sh</string>
@@ -25,18 +29,38 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.shell</string>
+			</array>
 			<key>match</key>
 			<string>\b(time)\b</string>
 			<key>name</key>
 			<string>support.function.shell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.list</string>
+				<string>keyword.operator.list.shell</string>
+			</array>
 			<key>match</key>
 			<string>;|&amp;&amp;|&amp;|\|\|</string>
 			<key>name</key>
 			<string>keyword.operator.list.shell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.pipe</string>
+				<string>keyword.operator.pipe.shell</string>
+			</array>
 			<key>match</key>
 			<string>[|!]</string>
 			<key>name</key>
@@ -45,10 +69,24 @@
 		<dict>
 			<key>begin</key>
 			<string>(\[{2})</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.scope</string>
+				<string>meta.scope.logical-expression</string>
+				<string>meta.scope.logical-expression.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.logical-expression</string>
+						<string>punctuation.definition.logical-expression.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.logical-expression.shell</string>
 				</dict>
@@ -60,6 +98,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.logical</string>
+						<string>keyword.operator.logical.shell</string>
+					</array>
 					<key>comment</key>
 					<string>do we want a special rule for ( expr )?</string>
 					<key>match</key>
@@ -76,10 +121,24 @@
 		<dict>
 			<key>begin</key>
 			<string>(\({2})</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.scope</string>
+				<string>meta.scope.expression</string>
+				<string>meta.scope.expression.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.expression</string>
+						<string>punctuation.definition.expression.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.expression.shell</string>
 				</dict>
@@ -99,10 +158,24 @@
 		<dict>
 			<key>begin</key>
 			<string>(\()</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.scope</string>
+				<string>meta.scope.subshell</string>
+				<string>meta.scope.subshell.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.subshell</string>
+						<string>punctuation.definition.subshell.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.subshell.shell</string>
 				</dict>
@@ -122,10 +195,24 @@
 		<dict>
 			<key>begin</key>
 			<string>(?&lt;=\s|^)(\{)(?=\s|$)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.scope</string>
+				<string>meta.scope.group</string>
+				<string>meta.scope.group.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.group</string>
+						<string>punctuation.definition.group.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.group.shell</string>
 				</dict>
@@ -143,6 +230,13 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.escape</string>
+				<string>constant.character.escape.shell</string>
+			</array>
 			<key>match</key>
 			<string>\\.</string>
 			<key>name</key>
@@ -155,16 +249,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.shell</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.single</string>
+				<string>string.quoted.single.shell</string>
+			</array>
 			<key>end</key>
 			<string>'</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.shell</string>
 				</dict>
@@ -179,16 +296,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.shell</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.shell</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.shell</string>
 				</dict>
@@ -198,6 +338,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.shell</string>
+					</array>
 					<key>match</key>
 					<string>\\[\$`&quot;\\\n]</string>
 					<key>name</key>
@@ -220,16 +367,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.shell</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.single</string>
+				<string>string.quoted.single.dollar</string>
+				<string>string.quoted.single.dollar.shell</string>
+			</array>
 			<key>end</key>
 			<string>'</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.shell</string>
 				</dict>
@@ -239,24 +410,56 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.ansi-c</string>
+						<string>constant.character.escape.ansi-c.shell</string>
+					</array>
 					<key>match</key>
 					<string>\\(a|b|e|f|n|r|t|v|\\|')</string>
 					<key>name</key>
 					<string>constant.character.escape.ansi-c.shell</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.octal</string>
+						<string>constant.character.escape.octal.shell</string>
+					</array>
 					<key>match</key>
 					<string>\\[0-9]{3}</string>
 					<key>name</key>
 					<string>constant.character.escape.octal.shell</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.hex</string>
+						<string>constant.character.escape.hex.shell</string>
+					</array>
 					<key>match</key>
 					<string>\\x[0-9a-fA-F]{2}</string>
 					<key>name</key>
 					<string>constant.character.escape.hex.shell</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.control-char</string>
+						<string>constant.character.escape.control-char.shell</string>
+					</array>
 					<key>match</key>
 					<string>\\c.</string>
 					<key>name</key>
@@ -265,6 +468,13 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.tilde</string>
+				<string>keyword.operator.tilde.shell</string>
+			</array>
 			<key>match</key>
 			<string>(?&lt;=\s|:|=|^)~</string>
 			<key>name</key>
@@ -285,16 +495,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.shell</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.other</string>
+				<string>string.other.math</string>
+				<string>string.other.math.shell</string>
+			</array>
 			<key>end</key>
 			<string>\){2}</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.shell</string>
 				</dict>
@@ -309,16 +542,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.shell</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.interpolated</string>
+				<string>string.interpolated.process-substitution</string>
+				<string>string.interpolated.process-substitution.shell</string>
+			</array>
 			<key>end</key>
 			<string>\)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.shell</string>
 				</dict>
@@ -333,19 +589,49 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.heredoc</string>
+						<string>keyword.operator.heredoc.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.heredoc.shell</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.heredoc</string>
+				<string>string.unquoted.heredoc.no-indent</string>
+				<string>string.unquoted.heredoc.no-indent.ruby</string>
+				<string>string.unquoted.heredoc.no-indent.ruby.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.shell</string>
 				</dict>
@@ -358,6 +644,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
@@ -379,19 +672,48 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.heredoc</string>
+						<string>keyword.operator.heredoc.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.heredoc.shell</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.heredoc</string>
+				<string>string.unquoted.heredoc.ruby</string>
+				<string>string.unquoted.heredoc.ruby.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.shell</string>
 				</dict>
@@ -404,6 +726,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
@@ -425,19 +754,49 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.heredoc</string>
+						<string>keyword.operator.heredoc.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.heredoc.shell</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.heredoc</string>
+				<string>string.unquoted.heredoc.no-indent</string>
+				<string>string.unquoted.heredoc.no-indent.applescript</string>
+				<string>string.unquoted.heredoc.no-indent.applescript.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.shell</string>
 				</dict>
@@ -450,6 +809,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
@@ -471,19 +837,48 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.heredoc</string>
+						<string>keyword.operator.heredoc.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.heredoc.shell</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.heredoc</string>
+				<string>string.unquoted.heredoc.applescript</string>
+				<string>string.unquoted.heredoc.applescript.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.shell</string>
 				</dict>
@@ -496,6 +891,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
@@ -517,19 +919,49 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.heredoc</string>
+						<string>keyword.operator.heredoc.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.heredoc.shell</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.heredoc</string>
+				<string>string.unquoted.heredoc.no-indent</string>
+				<string>string.unquoted.heredoc.no-indent.html</string>
+				<string>string.unquoted.heredoc.no-indent.html.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.shell</string>
 				</dict>
@@ -542,6 +974,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
@@ -563,19 +1002,48 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.heredoc</string>
+						<string>keyword.operator.heredoc.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.heredoc.shell</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.heredoc</string>
+				<string>string.unquoted.heredoc.html</string>
+				<string>string.unquoted.heredoc.html.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.shell</string>
 				</dict>
@@ -588,6 +1056,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
@@ -609,19 +1084,49 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.heredoc</string>
+						<string>keyword.operator.heredoc.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.heredoc.shell</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.heredoc</string>
+				<string>string.unquoted.heredoc.no-indent</string>
+				<string>string.unquoted.heredoc.no-indent.markdown</string>
+				<string>string.unquoted.heredoc.no-indent.markdown.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.shell</string>
 				</dict>
@@ -634,6 +1139,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
@@ -655,19 +1167,48 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.heredoc</string>
+						<string>keyword.operator.heredoc.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.heredoc.shell</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.heredoc</string>
+				<string>string.unquoted.heredoc.markdown</string>
+				<string>string.unquoted.heredoc.markdown.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.shell</string>
 				</dict>
@@ -680,6 +1221,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
@@ -701,19 +1249,48 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.heredoc</string>
+						<string>keyword.operator.heredoc.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.heredoc.shell</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.heredoc</string>
+				<string>string.unquoted.heredoc.no-indent</string>
+				<string>string.unquoted.heredoc.no-indent.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.shell</string>
 				</dict>
@@ -724,6 +1301,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
@@ -738,19 +1322,47 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.heredoc</string>
+						<string>keyword.operator.heredoc.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.heredoc.shell</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.unquoted</string>
+				<string>string.unquoted.heredoc</string>
+				<string>string.unquoted.heredoc.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.shell</string>
 				</dict>
@@ -761,6 +1373,13 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heredoc-token</string>
+						<string>keyword.control.heredoc-token.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heredoc-token.shell</string>
 				</dict>
@@ -769,25 +1388,62 @@
 			<string>string.unquoted.heredoc.shell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.herestring</string>
+				<string>meta.herestring.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.herestring</string>
+						<string>keyword.operator.herestring.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.herestring.shell</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.single</string>
+						<string>string.quoted.single.herestring</string>
+						<string>string.quoted.single.herestring.shell</string>
+					</array>
 					<key>name</key>
 					<string>string.quoted.single.herestring.shell</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.shell</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.shell</string>
 				</dict>
@@ -798,25 +1454,62 @@
 			<string>meta.herestring.shell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.herestring</string>
+				<string>meta.herestring.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.herestring</string>
+						<string>keyword.operator.herestring.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.herestring.shell</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.herestring</string>
+						<string>string.quoted.double.herestring.shell</string>
+					</array>
 					<key>name</key>
 					<string>string.quoted.double.herestring.shell</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.shell</string>
 				</dict>
 				<key>6</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.shell</string>
 				</dict>
@@ -827,15 +1520,35 @@
 			<string>meta.herestring.shell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.herestring</string>
+				<string>meta.herestring.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.herestring</string>
+						<string>keyword.operator.herestring.shell</string>
+					</array>
 					<key>name</key>
 					<string>keyword.operator.herestring.shell</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.herestring</string>
+						<string>string.unquoted.herestring.shell</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.herestring.shell</string>
 				</dict>
@@ -846,6 +1559,13 @@
 			<string>meta.herestring.shell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.redirect</string>
+				<string>keyword.operator.redirect.shell</string>
+			</array>
 			<key>comment</key>
 			<string>valid: &amp;&gt;word &gt;&amp;word &gt;word [n]&gt;&amp;[n] [n]&lt;word [n]&gt;word [n]&gt;&gt;word [n]&lt;&amp;word (last one is duplicate)</string>
 			<key>match</key>
@@ -854,10 +1574,24 @@
 			<string>keyword.operator.redirect.shell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.number-sign</string>
+				<string>comment.line.number-sign.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.shell</string>
 				</dict>
@@ -868,15 +1602,35 @@
 			<string>comment.line.number-sign.shell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.shell</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.shell</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.shell</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.shell</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.arguments.shell</string>
 				</dict>
@@ -887,12 +1641,24 @@
 			<string>meta.function.shell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.shell</string>
+			</array>
 			<key>match</key>
 			<string>\b(?:if|then|else|elif|fi|for|in|do|done|select|case|continue|esac|while|until)\b</string>
 			<key>name</key>
 			<string>keyword.control.shell</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.modifier</string>
+				<string>storage.modifier.shell</string>
+			</array>
 			<key>match</key>
 			<string>\b(?:export)\b</string>
 			<key>name</key>
@@ -912,16 +1678,39 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.shell</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.shell</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.interpolated</string>
+						<string>string.interpolated.backtick</string>
+						<string>string.interpolated.backtick.shell</string>
+					</array>
 					<key>end</key>
 					<string>`</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.shell</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.shell</string>
 						</dict>
@@ -931,6 +1720,13 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.character</string>
+								<string>constant.character.escape</string>
+								<string>constant.character.escape.shell</string>
+							</array>
 							<key>match</key>
 							<string>\\[`\\$]</string>
 							<key>name</key>
@@ -945,16 +1741,39 @@
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.begin</string>
+								<string>punctuation.definition.string.begin.shell</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.begin.shell</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.interpolated</string>
+						<string>string.interpolated.dollar</string>
+						<string>string.interpolated.dollar.shell</string>
+					</array>
 					<key>end</key>
 					<string>\)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.string</string>
+								<string>punctuation.definition.string.end</string>
+								<string>punctuation.definition.string.end.shell</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.string.end.shell</string>
 						</dict>
@@ -976,10 +1795,24 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.special</string>
+						<string>variable.other.special.shell</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.shell</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.shell</string>
 						</dict>
@@ -990,10 +1823,24 @@
 					<string>variable.other.special.shell</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.positional</string>
+						<string>variable.other.positional.shell</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.shell</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.shell</string>
 						</dict>
@@ -1004,10 +1851,24 @@
 					<string>variable.other.positional.shell</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.normal</string>
+						<string>variable.other.normal.shell</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.shell</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.shell</string>
 						</dict>
@@ -1020,10 +1881,24 @@
 				<dict>
 					<key>begin</key>
 					<string>\$\{</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.other</string>
+						<string>variable.other.bracket</string>
+						<string>variable.other.bracket.shell</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.variable</string>
+								<string>punctuation.definition.variable.shell</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.variable.shell</string>
 						</dict>

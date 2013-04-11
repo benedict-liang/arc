@@ -4,6 +4,10 @@
 <dict>
 	<key>bundleUUID</key>
 	<string>1A09BE0B-E81A-4CB7-AF69-AFC845162D1F</string>
+	<key>capturableScopes</key>
+	<array>
+		<string>ColdFusion</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>cfm</string>
@@ -12,14 +16,14 @@
 	</array>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-			(&lt;(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl|cfloop|cfif|cfswitch|cfcomponent)\b.*?&gt;
-			|&lt;!---(?!.*---\s*&gt;)
-			)</string>
+						(&lt;(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl|cfloop|cfif|cfswitch|cfcomponent)\b.*?&gt;
+						|&lt;!---(?!.*---\s*&gt;)
+						)</string>
 	<key>foldingStopMarker</key>
 	<string>(?x)
-			(&lt;/(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl|cfloop|cfif|cfswitch|cfcomponent)&gt;
-			|^(?!.*?&lt;!---).*?---\s*&gt;
-			)</string>
+						(&lt;/(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl|cfloop|cfif|cfswitch|cfcomponent)&gt;
+						|^(?!.*?&lt;!---).*?---\s*&gt;
+						)</string>
 	<key>keyEquivalent</key>
 	<string>^~@c</string>
 	<key>name</key>
@@ -29,10 +33,25 @@
 		<dict>
 			<key>begin</key>
 			<string>(?:^\s+)?&lt;((?i:cfoutput))\b(?![^&gt;]*/&gt;)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tag</string>
+				<string>meta.tag.cfoutput</string>
+				<string>meta.tag.cfoutput.cfml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.cfoutput</string>
+						<string>entity.name.tag.cfoutput.cfml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.cfoutput.cfml</string>
 				</dict>
@@ -50,6 +69,13 @@
 				<dict>
 					<key>begin</key>
 					<string>(?&lt;=&gt;)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.scope</string>
+						<string>meta.scope.output</string>
+						<string>meta.scope.output.cfml</string>
+					</array>
 					<key>end</key>
 					<string>(?=&lt;/(?i:cfoutput))</string>
 					<key>name</key>
@@ -67,10 +93,25 @@
 		<dict>
 			<key>begin</key>
 			<string>(?:^\s+)?&lt;((?i:cfquery))\b(?![^&gt;]*/&gt;)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tag</string>
+				<string>meta.tag.cfquery</string>
+				<string>meta.tag.cfquery.cfml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.cfquery</string>
+						<string>entity.name.tag.cfquery.cfml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.cfquery.cfml</string>
 				</dict>
@@ -88,6 +129,12 @@
 				<dict>
 					<key>begin</key>
 					<string>(?&lt;=&gt;)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>source</string>
+						<string>source.sql</string>
+						<string>source.sql.embedded</string>
+					</array>
 					<key>end</key>
 					<string>(?=&lt;/(?i:cfquery))</string>
 					<key>name</key>
@@ -109,10 +156,24 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.tag</string>
+						<string>entity.name.tag.cfml</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.tag.cfml</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.tag</string>
+				<string>meta.tag.any</string>
+				<string>meta.tag.any.cfml</string>
+			</array>
 			<key>end</key>
 			<string>&gt;</string>
 			<key>name</key>
@@ -140,6 +201,12 @@
 		<dict>
 			<key>begin</key>
 			<string>&lt;!---</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.cfml</string>
+			</array>
 			<key>end</key>
 			<string>---&gt;</string>
 			<key>name</key>
@@ -162,12 +229,26 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.entity</string>
+						<string>constant.character.entity.html</string>
+					</array>
 					<key>match</key>
 					<string>&amp;([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+);</string>
 					<key>name</key>
 					<string>constant.character.entity.html</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.bad-ampersand</string>
+						<string>invalid.illegal.bad-ampersand.html</string>
+					</array>
 					<key>match</key>
 					<string>&amp;</string>
 					<key>name</key>
@@ -179,6 +260,13 @@
 		<dict>
 			<key>begin</key>
 			<string>&quot;</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.cfml</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>name</key>
@@ -199,6 +287,13 @@
 		<dict>
 			<key>begin</key>
 			<string>'</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.single</string>
+				<string>string.quoted.single.cfml</string>
+			</array>
 			<key>end</key>
 			<string>'</string>
 			<key>name</key>
@@ -217,6 +312,13 @@
 		</dict>
 		<key>tag-generic-attribute</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>entity</string>
+				<string>entity.other</string>
+				<string>entity.other.attribute-name</string>
+				<string>entity.other.attribute-name.cfml</string>
+			</array>
 			<key>match</key>
 			<string>\b([a-zA-Z\-:]+)</string>
 			<key>name</key>
@@ -226,10 +328,25 @@
 		<dict>
 			<key>begin</key>
 			<string>\b(id)\b\s*=</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.attribute-with-value</string>
+				<string>meta.attribute-with-value.id</string>
+				<string>meta.attribute-with-value.id.cfml</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.other</string>
+						<string>entity.other.attribute-name</string>
+						<string>entity.other.attribute-name.id</string>
+						<string>entity.other.attribute-name.id.html</string>
+					</array>
 					<key>name</key>
 					<string>entity.other.attribute-name.id.html</string>
 				</dict>
@@ -243,6 +360,13 @@
 				<dict>
 					<key>begin</key>
 					<string>&quot;</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.double</string>
+						<string>string.quoted.double.cfml</string>
+					</array>
 					<key>contentName</key>
 					<string>meta.toc-list.id.cfml</string>
 					<key>end</key>
@@ -264,6 +388,13 @@
 				<dict>
 					<key>begin</key>
 					<string>'</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.single</string>
+						<string>string.quoted.single.cfml</string>
+					</array>
 					<key>contentName</key>
 					<string>meta.toc-list.id.cfml</string>
 					<key>end</key>

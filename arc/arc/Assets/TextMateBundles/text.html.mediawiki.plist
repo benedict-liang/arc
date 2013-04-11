@@ -2,63 +2,67 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Mediawiki</string>
+	</array>
 	<key>comment</key>
 	<string>
-			This language grammar tries to handle Mediawiki syntax.  Mediawiki
-			syntax is a mess.  This grammar will likely never quite work right.
-			This is unsurprising as Mediawiki itself has never quite worked right.
-			
-					--Jacob
-			
-			TODO: lots of fixes still to do:
-			
-			 1. Add a bunch of HTML tags.  See the #block and #style sections.
-			 3. Correctly scope all the parser functions and their contents.
-			    This on will be complicated, as there are several: expr, if, etc.
-			 4. This is probably the biggest one: get all the lists to scope
-			    correctly by type of list.  Right now we just scope every list
-			    as a list, and do not worry about what happens beyond that.
-			    Eventually we want to do numbered and unnumbered separately, etc.
-			 5. Get some kind of folding by heading.  Maybe it should just fold
-			    to the next header, no matter which level it is.  Then we can
-			    make a contents just by folding everything.  Not completely sure
-				this is possible with current TM folding.
-			 7. Make sure that illegal things are correctly scoped illegal.
-			    This is non-trivial, and has several parts
-			    
-			      - Bold/italic are based on brain-dead heuristics.  I want to
-			        be stricter than Mediawiki on this one.  Also, we should
-			        scope as illegal when for instance a new heading starts
-			        before an italic has been closed.
-			      - Templates... these will be pretty tough to do, as they can
-			        be so flexible.
-			      - 
-			
-			 9. &lt;timeline&gt;&lt;/timeline&gt; tag.  I am really not sure this one is
-			    worth trying to do
-			10. Figure out a better scope for meta.function-call.  Infininight
-			    suggests entity.name.function.call, to be paralleled by
-			    entity.name.function.definition.  I am not completly sure I like
-			    that solution, but it is probably better than meta.function-call
-			
-			
-			TODO items not closely related to the grammar:
-			
-			 2. Add a drop command for links/images, add keyboard shortcuts for
-			    them too
-			 3. Make sure all the preference items are sorted out, for instance
-			    smart typing pairs, indent patterns, etc.
-			 4. Commands to do bold/italic, and maybe things like big/small 
-			 5. 
-			
-			FINISHED:
-			 2. Add support for LaTeX math mode inside of &lt;math&gt;&lt;/math&gt; tags.
-			 1. Add a command for new list item.  This one is trivial
-			 6. Get the symbol list working on headings.  Trivial.
-			 8. &lt;gallery&gt;&lt;/gallery&gt; tag.  This one adds some complication, but
-			    is worth supporting.
-			 
-		</string>
+						This language grammar tries to handle Mediawiki syntax.  Mediawiki
+						syntax is a mess.  This grammar will likely never quite work right.
+						This is unsurprising as Mediawiki itself has never quite worked right.
+						
+								--Jacob
+						
+						TODO: lots of fixes still to do:
+						
+						 1. Add a bunch of HTML tags.  See the #block and #style sections.
+						 3. Correctly scope all the parser functions and their contents.
+						    This on will be complicated, as there are several: expr, if, etc.
+						 4. This is probably the biggest one: get all the lists to scope
+						    correctly by type of list.  Right now we just scope every list
+						    as a list, and do not worry about what happens beyond that.
+						    Eventually we want to do numbered and unnumbered separately, etc.
+						 5. Get some kind of folding by heading.  Maybe it should just fold
+						    to the next header, no matter which level it is.  Then we can
+						    make a contents just by folding everything.  Not completely sure
+							this is possible with current TM folding.
+						 7. Make sure that illegal things are correctly scoped illegal.
+						    This is non-trivial, and has several parts
+						    
+						      - Bold/italic are based on brain-dead heuristics.  I want to
+						        be stricter than Mediawiki on this one.  Also, we should
+						        scope as illegal when for instance a new heading starts
+						        before an italic has been closed.
+						      - Templates... these will be pretty tough to do, as they can
+						        be so flexible.
+						      - 
+						
+						 9. &lt;timeline&gt;&lt;/timeline&gt; tag.  I am really not sure this one is
+						    worth trying to do
+						10. Figure out a better scope for meta.function-call.  Infininight
+						    suggests entity.name.function.call, to be paralleled by
+						    entity.name.function.definition.  I am not completly sure I like
+						    that solution, but it is probably better than meta.function-call
+						
+						
+						TODO items not closely related to the grammar:
+						
+						 2. Add a drop command for links/images, add keyboard shortcuts for
+						    them too
+						 3. Make sure all the preference items are sorted out, for instance
+						    smart typing pairs, indent patterns, etc.
+						 4. Commands to do bold/italic, and maybe things like big/small 
+						 5. 
+						
+						FINISHED:
+						 2. Add support for LaTeX math mode inside of &lt;math&gt;&lt;/math&gt; tags.
+						 1. Add a command for new list item.  This one is trivial
+						 6. Get the symbol list working on headings.  Trivial.
+						 8. &lt;gallery&gt;&lt;/gallery&gt; tag.  This one adds some complication, but
+						    is worth supporting.
+						 
+					</string>
 	<key>fileTypes</key>
 	<array>
 		<string>mediawiki</string>
@@ -97,10 +101,23 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.redirect</string>
+								<string>keyword.control.redirect.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>keyword.control.redirect.mediawiki</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.redirect</string>
+						<string>meta.redirect.mediawiki</string>
+					</array>
 					<key>end</key>
 					<string>\n</string>
 					<key>name</key>
@@ -114,6 +131,12 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.heading</string>
+						<string>markup.heading.mediawiki</string>
+					</array>
 					<key>match</key>
 					<string>^=+\s*$</string>
 					<key>name</key>
@@ -122,12 +145,18 @@
 				<dict>
 					<key>begin</key>
 					<string>^(=+)(?=.*\1\s*$)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.heading</string>
+						<string>markup.heading.mediawiki</string>
+					</array>
 					<key>comment</key>
 					<string>
-											This matches lines which begin and end with some
-										    number of “=” marks.  If they are mismatched, then
-										    interior “=” marks will be treated as invalid.
-									    </string>
+																										This matches lines which begin and end with some
+																									    number of “=” marks.  If they are mismatched, then
+																									    interior “=” marks will be treated as invalid.
+																								    </string>
 					<key>end</key>
 					<string>\1\s*$\n?</string>
 					<key>name</key>
@@ -135,6 +164,13 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.extra-equals-sign</string>
+								<string>invalid.illegal.extra-equals-sign.mediawiki</string>
+							</array>
 							<key>match</key>
 							<string>(?&lt;=^=|^==|^===|^====|^=====|^======)=+|=(?==*\s*$)</string>
 							<key>name</key>
@@ -147,11 +183,17 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.separator</string>
+						<string>meta.separator.mediawiki</string>
+					</array>
 					<key>comment</key>
 					<string>
-											A separator is made up of 4 or more -s alone on a
-											line by themselves.
-										</string>
+																										A separator is made up of 4 or more -s alone on a
+																										line by themselves.
+																									</string>
 					<key>match</key>
 					<string>^-{4,}[ \t]*($\n)?</string>
 					<key>name</key>
@@ -160,12 +202,19 @@
 				<dict>
 					<key>begin</key>
 					<string>^ (?=\s*\S)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.raw</string>
+						<string>markup.raw.block</string>
+						<string>markup.raw.block.mediawiki</string>
+					</array>
 					<key>comment</key>
 					<string>
-											Code blocks start with one space.  Wiki text and
-											html are still interpreted in MediaWiki, unlike in
-											mediawiki.
-										</string>
+																										Code blocks start with one space.  Wiki text and
+																										html are still interpreted in MediaWiki, unlike in
+																										mediawiki.
+																									</string>
 					<key>end</key>
 					<string>^(?=[^ ])</string>
 					<key>name</key>
@@ -181,22 +230,28 @@
 				<dict>
 					<key>begin</key>
 					<string>^([#*:;])</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.list</string>
+						<string>markup.list.mediawiki</string>
+					</array>
 					<key>comment</key>
 					<string>
-											This is preliminary.  Eventually it would be nice
-											to scope each type of list differently, and even to
-											do scopes of nested lists.  There are 4 main things
-											which will be scoped as lists:
-											
-											  - numbered lists (#)
-											  - unnumbered lists (*)
-											  - definition lists (; :)
-											  - indented paragraphs, as used on talk pages (:)
-											
-											this last one might not even be scoped as a list in
-											the ideal case.  It is fine as a list for now,
-											however.
-										</string>
+																										This is preliminary.  Eventually it would be nice
+																										to scope each type of list differently, and even to
+																										do scopes of nested lists.  There are 4 main things
+																										which will be scoped as lists:
+																										
+																										  - numbered lists (#)
+																										  - unnumbered lists (*)
+																										  - definition lists (; :)
+																										  - indented paragraphs, as used on talk pages (:)
+																										
+																										this last one might not even be scoped as a list in
+																										the ideal case.  It is fine as a list for now,
+																										however.
+																									</string>
 					<key>end</key>
 					<string>^(?!\1)</string>
 					<key>name</key>
@@ -220,11 +275,17 @@
 				<dict>
 					<key>begin</key>
 					<string>^(?![\t ;*#:=]|----|$)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.paragraph</string>
+						<string>meta.paragraph.mediawiki</string>
+					</array>
 					<key>comment</key>
 					<string>
-											Anything that is not a code block, list, header, etc.
-											is a paragraph.
-										</string>
+																										Anything that is not a code block, list, header, etc.
+																										is a paragraph.
+																									</string>
 					<key>end</key>
 					<string>^(?:\s*$|(?=[;*#:=]|----))</string>
 					<key>name</key>
@@ -243,15 +304,15 @@
 		<dict>
 			<key>comment</key>
 			<string>
-							The available block HTML tags supported are:
-							
-							  * blockquote, center, pre, div, hr, p
-							  * tables: table, th, tr, td, caption
-							  * lists: ul, ol, li
-							  * definition lists: dl, dt, dd
-							  * headers: h1, h2, h3, h4, h5, h6
-							  * br
-						</string>
+																The available block HTML tags supported are:
+																
+																  * blockquote, center, pre, div, hr, p
+																  * tables: table, th, tr, td, caption
+																  * lists: ul, ol, li
+																  * definition lists: dl, dt, dd
+																  * headers: h1, h2, h3, h4, h5, h6
+																  * br
+															</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -261,6 +322,14 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.inline</string>
+								<string>meta.tag.inline.math</string>
+								<string>meta.tag.inline.math.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.inline.math.mediawiki</string>
 						</dict>
@@ -284,6 +353,14 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.inline</string>
+								<string>meta.tag.inline.ref</string>
+								<string>meta.tag.inline.ref.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.inline.ref.mediawiki</string>
 						</dict>
@@ -307,6 +384,14 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.inline</string>
+								<string>meta.tag.inline.ref</string>
+								<string>meta.tag.inline.ref.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.inline.ref.mediawiki</string>
 						</dict>
@@ -320,30 +405,60 @@
 						<dict>
 							<key>begin</key>
 							<string>(?x)
-															^(?!\s*\n)				# not an empty line
-															( [ ]*(((i|I)mage)(:))  # spaces, image, colon
-															  ([^\[\]|]+)           # anything
-															  (?&lt;!\s)[ ]*           # spaces
-															)?
-														</string>
+																																				^(?!\s*\n)				# not an empty line
+																																				( [ ]*(((i|I)mage)(:))  # spaces, image, colon
+																																				  ([^\[\]|]+)           # anything
+																																				  (?&lt;!\s)[ ]*           # spaces
+																																				)?
+																																			</string>
 							<key>beginCaptures</key>
 							<dict>
 								<key>3</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>constant</string>
+										<string>constant.other</string>
+										<string>constant.other.namespace</string>
+										<string>constant.other.namespace.image</string>
+										<string>constant.other.namespace.image.mediawiki</string>
+									</array>
 									<key>name</key>
 									<string>constant.other.namespace.image.mediawiki</string>
 								</dict>
 								<key>5</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.fix_this_later</string>
+										<string>punctuation.fix_this_later.colon</string>
+										<string>punctuation.fix_this_later.colon.mediawiki</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.fix_this_later.colon.mediawiki</string>
 								</dict>
 								<key>6</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>constant</string>
+										<string>constant.other</string>
+										<string>constant.other.wiki-link</string>
+										<string>constant.other.wiki-link.image</string>
+										<string>constant.other.wiki-link.image.mediawiki</string>
+									</array>
 									<key>name</key>
 									<string>constant.other.wiki-link.image.mediawiki</string>
 								</dict>
 							</dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.item</string>
+								<string>meta.item.gallery</string>
+								<string>meta.item.gallery.mediawiki</string>
+							</array>
 							<key>end</key>
 							<string>\n</string>
 							<key>name</key>
@@ -357,6 +472,13 @@
 									<dict>
 										<key>1</key>
 										<dict>
+											<key>capturableScopes</key>
+											<array>
+												<string>punctuation</string>
+												<string>punctuation.fix_this_later</string>
+												<string>punctuation.fix_this_later.pipe</string>
+												<string>punctuation.fix_this_later.pipe.mediawiki</string>
+											</array>
 											<key>name</key>
 											<string>punctuation.fix_this_later.pipe.mediawiki</string>
 										</dict>
@@ -374,6 +496,13 @@
 									</array>
 								</dict>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.fix_this_later</string>
+										<string>punctuation.fix_this_later.pipe</string>
+										<string>punctuation.fix_this_later.pipe.mediawiki</string>
+									</array>
 									<key>match</key>
 									<string>\|</string>
 									<key>name</key>
@@ -392,6 +521,13 @@
 				<dict>
 					<key>begin</key>
 					<string>&lt;!--</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.block</string>
+						<string>comment.block.html</string>
+						<string>comment.block.html.mediawiki</string>
+					</array>
 					<key>end</key>
 					<string>--\s*&gt;</string>
 					<key>name</key>
@@ -399,6 +535,14 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.bad-comments-or-CDATA</string>
+								<string>invalid.illegal.bad-comments-or-CDATA.html</string>
+								<string>invalid.illegal.bad-comments-or-CDATA.html.mediawiki</string>
+							</array>
 							<key>match</key>
 							<string>--</string>
 							<key>name</key>
@@ -412,18 +556,34 @@
 		<dict>
 			<key>comment</key>
 			<string>
-							Mediawiki supports Unicode, so these should not usually be
-							necessary, but they do show up on pages from time to time.
-						</string>
+																Mediawiki supports Unicode, so these should not usually be
+																necessary, but they do show up on pages from time to time.
+															</string>
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.entity</string>
+						<string>constant.character.entity.html</string>
+						<string>constant.character.entity.html.mediawiki</string>
+					</array>
 					<key>match</key>
 					<string>&amp;([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+);</string>
 					<key>name</key>
 					<string>constant.character.entity.html.mediawiki</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>invalid</string>
+						<string>invalid.illegal</string>
+						<string>invalid.illegal.bad-ampersand</string>
+						<string>invalid.illegal.bad-ampersand.html</string>
+						<string>invalid.illegal.bad-ampersand.html.mediawiki</string>
+					</array>
 					<key>match</key>
 					<string>&amp;</string>
 					<key>name</key>
@@ -440,11 +600,25 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.other</string>
+								<string>constant.other.date-time</string>
+								<string>constant.other.date-time.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>constant.other.date-time.mediawiki</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.too-many-tildes</string>
+								<string>invalid.illegal.too-many-tildes.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>invalid.illegal.too-many-tildes.mediawiki</string>
 						</dict>
@@ -453,6 +627,13 @@
 					<string>(~~~~~)(~{0,2})(?!~)</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.signature</string>
+						<string>constant.other.signature.mediawiki</string>
+					</array>
 					<key>comment</key>
 					<string>3 ~s for sig, 4 for sig + timestamp</string>
 					<key>match</key>
@@ -491,49 +672,102 @@
 					<integer>1</integer>
 					<key>begin</key>
 					<string>(?x:
-											(\[\[)                         # opening brackets
-											  ( [ ]*(((i|I)mage)(:))       # spaces, image, colon
-											    ([^\[\]|]+)                # anything
-											    (?&lt;!\s)[ ]*                # spaces
-											  )
-										)</string>
+																										(\[\[)                         # opening brackets
+																										  ( [ ]*(((i|I)mage)(:))       # spaces, image, colon
+																										    ([^\[\]|]+)                # anything
+																										    (?&lt;!\s)[ ]*                # spaces
+																										  )
+																									)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.fix_this_later</string>
+								<string>punctuation.fix_this_later.brackets</string>
+								<string>punctuation.fix_this_later.brackets.mediwiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.fix_this_later.brackets.mediwiki</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.other</string>
+								<string>constant.other.namespace</string>
+								<string>constant.other.namespace.image</string>
+								<string>constant.other.namespace.image.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>constant.other.namespace.image.mediawiki</string>
 						</dict>
 						<key>6</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.fix_this_later</string>
+								<string>punctuation.fix_this_later.colon</string>
+								<string>punctuation.fix_this_later.colon.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.fix_this_later.colon.mediawiki</string>
 						</dict>
 						<key>7</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.other</string>
+								<string>constant.other.wiki-link</string>
+								<string>constant.other.wiki-link.image</string>
+								<string>constant.other.wiki-link.image.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>constant.other.wiki-link.image.mediawiki</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.image</string>
+						<string>meta.image.wiki</string>
+						<string>meta.image.wiki.mediawiki</string>
+					</array>
 					<key>end</key>
 					<string>(?x:
-											  ((\|)[ ]*( [^\[\]|]+ )[ ]*)? # pipe, spaces, anything, spaces
-											(\]\])                         # closing brackets
-										)</string>
+																										  ((\|)[ ]*( [^\[\]|]+ )[ ]*)? # pipe, spaces, anything, spaces
+																										(\]\])                         # closing brackets
+																									)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.fix_this_later</string>
+								<string>punctuation.fix_this_later.pipe</string>
+								<string>punctuation.fix_this_later.pipe.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.fix_this_later.pipe.mediawiki</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.other</string>
+								<string>string.other.title</string>
+								<string>string.other.title.link</string>
+								<string>string.other.title.link.wiki-link</string>
+								<string>string.other.title.link.wiki-link.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>string.other.title.link.wiki-link.mediawiki</string>
 						</dict>
@@ -547,40 +781,85 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.fix_this_later</string>
+										<string>punctuation.fix_this_later.pipe</string>
+										<string>punctuation.fix_this_later.pipe.mediawiki</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.fix_this_later.pipe.mediawiki</string>
 								</dict>
 								<key>2</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>keyword</string>
+										<string>keyword.control</string>
+										<string>keyword.control.image</string>
+										<string>keyword.control.image.formatting</string>
+										<string>keyword.control.image.formatting.mediawiki</string>
+									</array>
 									<key>name</key>
 									<string>keyword.control.image.formatting.mediawiki</string>
 								</dict>
 								<key>3</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>keyword</string>
+										<string>keyword.control</string>
+										<string>keyword.control.image</string>
+										<string>keyword.control.image.alignment</string>
+										<string>keyword.control.image.alignment.mediawiki</string>
+									</array>
 									<key>name</key>
 									<string>keyword.control.image.alignment.mediawiki</string>
 								</dict>
 								<key>4</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>constant</string>
+										<string>constant.numeric</string>
+										<string>constant.numeric.image</string>
+										<string>constant.numeric.image.width</string>
+										<string>constant.numeric.image.width.mediawiki</string>
+									</array>
 									<key>name</key>
 									<string>constant.numeric.image.width.mediawiki</string>
 								</dict>
 								<key>5</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>constant</string>
+										<string>constant.other</string>
+										<string>constant.other.unit</string>
+										<string>constant.other.unit.mediawiki</string>
+									</array>
 									<key>name</key>
 									<string>constant.other.unit.mediawiki</string>
 								</dict>
 							</dict>
 							<key>match</key>
 							<string>(?x)
-															(\|)[ ]*
-															( (thumb|thumbnail|frame)
-															 |(right|left|center|none)
-															 |([0-9]+)(px)
-															)[ ]*
-														</string>
+																																				(\|)[ ]*
+																																				( (thumb|thumbnail|frame)
+																																				 |(right|left|center|none)
+																																				 |([0-9]+)(px)
+																																				)[ ]*
+																																			</string>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.fix_this_later</string>
+								<string>punctuation.fix_this_later.pipe</string>
+								<string>punctuation.fix_this_later.pipe.mediawiki</string>
+							</array>
 							<key>match</key>
 							<string>\|</string>
 							<key>name</key>
@@ -595,56 +874,115 @@
 				<dict>
 					<key>begin</key>
 					<string>(?x:
-											(\[\[)                       # opening brackets
-											  (:)?                       # colon to suppress image or category?
-											  ((\s+):[^\[\]]*(?=\]\]))?  # a colon after spaces is invalid
-											  [ ]*                       # spaces
-											  ( (([^\[\]|]+)(:))?        # namespace
-											    ([^\[\]|]+)(?&lt;!\s)[ ]*   # link name
-											  )?
-										)</string>
+																										(\[\[)                       # opening brackets
+																										  (:)?                       # colon to suppress image or category?
+																										  ((\s+):[^\[\]]*(?=\]\]))?  # a colon after spaces is invalid
+																										  [ ]*                       # spaces
+																										  ( (([^\[\]|]+)(:))?        # namespace
+																										    ([^\[\]|]+)(?&lt;!\s)[ ]*   # link name
+																										  )?
+																									)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.fix_this_later</string>
+								<string>punctuation.fix_this_later.brackets</string>
+								<string>punctuation.fix_this_later.brackets.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.fix_this_later.brackets.mediawiki</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.operator</string>
+								<string>keyword.operator.wiki-link</string>
+								<string>keyword.operator.wiki-link.suppress-image-or-category</string>
+								<string>keyword.operator.wiki-link.suppress-image-or-category.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>keyword.operator.wiki-link.suppress-image-or-category.mediawiki</string>
 						</dict>
 						<key>4</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>invalid</string>
+								<string>invalid.illegal</string>
+								<string>invalid.illegal.whitespace</string>
+								<string>invalid.illegal.whitespace.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>invalid.illegal.whitespace.mediawiki</string>
 						</dict>
 						<key>7</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.other</string>
+								<string>constant.other.namespace</string>
+								<string>constant.other.namespace.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>constant.other.namespace.mediawiki</string>
 						</dict>
 						<key>8</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.fix_this_later</string>
+								<string>punctuation.fix_this_later.colon</string>
+								<string>punctuation.fix_this_later.colon.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.fix_this_later.colon.mediawiki</string>
 						</dict>
 						<key>9</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>constant</string>
+								<string>constant.other</string>
+								<string>constant.other.wiki-link</string>
+								<string>constant.other.wiki-link.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>constant.other.wiki-link.mediawiki</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.link</string>
+						<string>meta.link.wiki</string>
+						<string>meta.link.wiki.mediawiki</string>
+					</array>
 					<key>end</key>
 					<string>(?x:
-											  (\|[ ]*([^\[\]|]+)[ ]*)?     # pipe, spaces, anything, spaces
-											(\]\])                         # closing brackets
-										)</string>
+																										  (\|[ ]*([^\[\]|]+)[ ]*)?     # pipe, spaces, anything, spaces
+																										(\]\])                         # closing brackets
+																									)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>string</string>
+								<string>string.other</string>
+								<string>string.other.title</string>
+								<string>string.other.title.link</string>
+								<string>string.other.title.link.wiki-link</string>
+								<string>string.other.title.link.wiki-link.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>string.other.title.link.wiki-link.mediawiki</string>
 						</dict>
@@ -666,10 +1004,26 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>markup</string>
+								<string>markup.underline</string>
+								<string>markup.underline.link</string>
+								<string>markup.underline.link.external</string>
+								<string>markup.underline.link.external.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>markup.underline.link.external.mediawiki</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.link</string>
+						<string>meta.link.inline</string>
+						<string>meta.link.inline.external</string>
+						<string>meta.link.inline.external.mediawiki</string>
+					</array>
 					<key>contentName</key>
 					<string>string.other.title.link.external.mediawiki</string>
 					<key>end</key>
@@ -685,6 +1039,14 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.underline</string>
+						<string>markup.underline.link</string>
+						<string>markup.underline.link.external</string>
+						<string>markup.underline.link.external.mediawiki</string>
+					</array>
 					<key>match</key>
 					<string>((https?|ftp|file)://|mailto:)[-:@a-zA-Z0-9_.~%+/?=&amp;#]+(?&lt;![.?:])</string>
 					<key>name</key>
@@ -696,27 +1058,33 @@
 		<dict>
 			<key>comment</key>
 			<string>
-							TODO: We still need to add:
-			
-							  * font
-							  * ruby, rb, rp, rt
-							  * cite
-							
-							inline tags to this section, and make sure that the other
-							tags can accept attributes in the tag opening, etc.  The
-							current implementation is intended to be naive, but covering
-							the majority of uses in mediawiki code.
-							
-							We also need to add mediawiki-specific tags:
-							
-							  * nowiki, noinclude, includeonly
-							
-						</string>
+																TODO: We still need to add:
+												
+																  * font
+																  * ruby, rb, rp, rt
+																  * cite
+																
+																inline tags to this section, and make sure that the other
+																tags can accept attributes in the tag opening, etc.  The
+																current implementation is intended to be naive, but covering
+																the majority of uses in mediawiki code.
+																
+																We also need to add mediawiki-specific tags:
+																
+																  * nowiki, noinclude, includeonly
+																
+															</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
 					<string>'''</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.bold</string>
+						<string>markup.bold.mediawiki</string>
+					</array>
 					<key>end</key>
 					<string>'''</string>
 					<key>name</key>
@@ -732,6 +1100,12 @@
 				<dict>
 					<key>begin</key>
 					<string>''</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.italic</string>
+						<string>markup.italic.mediawiki</string>
+					</array>
 					<key>end</key>
 					<string>''(?!'[^'])</string>
 					<key>name</key>
@@ -751,6 +1125,15 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.inline</string>
+								<string>meta.tag.inline.bold</string>
+								<string>meta.tag.inline.bold.html</string>
+								<string>meta.tag.inline.bold.html.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.inline.bold.html.mediawiki</string>
 						</dict>
@@ -774,6 +1157,15 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.inline</string>
+								<string>meta.tag.inline.italic</string>
+								<string>meta.tag.inline.italic.html</string>
+								<string>meta.tag.inline.italic.html.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.inline.italic.html.mediawiki</string>
 						</dict>
@@ -797,6 +1189,15 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.inline</string>
+								<string>meta.tag.inline.strikethrough</string>
+								<string>meta.tag.inline.strikethrough.html</string>
+								<string>meta.tag.inline.strikethrough.html.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.inline.strikethrough.html.mediawiki</string>
 						</dict>
@@ -820,6 +1221,15 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.inline</string>
+								<string>meta.tag.inline.underline</string>
+								<string>meta.tag.inline.underline.html</string>
+								<string>meta.tag.inline.underline.html.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.inline.underline.html.mediawiki</string>
 						</dict>
@@ -843,6 +1253,15 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.inline</string>
+								<string>meta.tag.inline.raw</string>
+								<string>meta.tag.inline.raw.html</string>
+								<string>meta.tag.inline.raw.html.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.inline.raw.html.mediawiki</string>
 						</dict>
@@ -866,6 +1285,15 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.inline</string>
+								<string>meta.tag.inline.any</string>
+								<string>meta.tag.inline.any.html</string>
+								<string>meta.tag.inline.any.html.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.inline.any.html.mediawiki</string>
 						</dict>
@@ -891,6 +1319,12 @@
 				<dict>
 					<key>begin</key>
 					<string>'''</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.bold</string>
+						<string>markup.bold.mediawiki</string>
+					</array>
 					<key>end</key>
 					<string>'''</string>
 					<key>name</key>
@@ -906,6 +1340,12 @@
 				<dict>
 					<key>begin</key>
 					<string>''</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.italic</string>
+						<string>markup.italic.mediawiki</string>
+					</array>
 					<key>end</key>
 					<string>''</string>
 					<key>name</key>
@@ -925,6 +1365,15 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.inline</string>
+								<string>meta.tag.inline.bold</string>
+								<string>meta.tag.inline.bold.html</string>
+								<string>meta.tag.inline.bold.html.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.inline.bold.html.mediawiki</string>
 						</dict>
@@ -948,6 +1397,15 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.inline</string>
+								<string>meta.tag.inline.italic</string>
+								<string>meta.tag.inline.italic.html</string>
+								<string>meta.tag.inline.italic.html.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.inline.italic.html.mediawiki</string>
 						</dict>
@@ -971,6 +1429,15 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.inline</string>
+								<string>meta.tag.inline.strikethrough</string>
+								<string>meta.tag.inline.strikethrough.html</string>
+								<string>meta.tag.inline.strikethrough.html.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.inline.strikethrough.html.mediawiki</string>
 						</dict>
@@ -994,6 +1461,15 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.inline</string>
+								<string>meta.tag.inline.underline</string>
+								<string>meta.tag.inline.underline.html</string>
+								<string>meta.tag.inline.underline.html.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.inline.underline.html.mediawiki</string>
 						</dict>
@@ -1017,6 +1493,15 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.inline</string>
+								<string>meta.tag.inline.raw</string>
+								<string>meta.tag.inline.raw.html</string>
+								<string>meta.tag.inline.raw.html.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.inline.raw.html.mediawiki</string>
 						</dict>
@@ -1040,6 +1525,15 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.tag</string>
+								<string>meta.tag.inline</string>
+								<string>meta.tag.inline.any</string>
+								<string>meta.tag.inline.any.html</string>
+								<string>meta.tag.inline.any.html.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>meta.tag.inline.any.html.mediawiki</string>
 						</dict>
@@ -1069,12 +1563,19 @@
 				<dict>
 					<key>begin</key>
 					<string>^{\|</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.other</string>
+						<string>markup.other.table</string>
+						<string>markup.other.table.mediawiki</string>
+					</array>
 					<key>comment</key>
 					<string>
-											we are going to have to add the styling capabilities
-											to this section eventually.  It is complicated,
-											though, so I am putting it off.
-										</string>
+																										we are going to have to add the styling capabilities
+																										to this section eventually.  It is complicated,
+																										though, so I am putting it off.
+																									</string>
 					<key>end</key>
 					<string>^\|}</string>
 					<key>name</key>
@@ -1084,12 +1585,20 @@
 						<dict>
 							<key>begin</key>
 							<string>^\|-</string>
+							<key>capturableScopes</key>
+							<array>
+								<string>markup</string>
+								<string>markup.other</string>
+								<string>markup.other.table</string>
+								<string>markup.other.table.row</string>
+								<string>markup.other.table.row.mediawiki</string>
+							</array>
 							<key>comment</key>
 							<string>
-															hopefully we can allow selection of a whole
-															table row, and possibly later allow things
-															like moving a whole row up/down, etc.
-														</string>
+																																				hopefully we can allow selection of a whole
+																																				table row, and possibly later allow things
+																																				like moving a whole row up/down, etc.
+																																			</string>
 							<key>end</key>
 							<string>^(?=\|-|\|})</string>
 							<key>name</key>
@@ -1114,15 +1623,29 @@
 		<dict>
 			<key>comment</key>
 			<string>
-							This repository item covers templates and parser functions.
-						</string>
+																This repository item covers templates and parser functions.
+															</string>
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.template-parameter</string>
+						<string>meta.template-parameter.mediawiki</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>variable</string>
+								<string>variable.parameter</string>
+								<string>variable.parameter.template</string>
+								<string>variable.parameter.template.numeric</string>
+								<string>variable.parameter.template.numeric.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>variable.parameter.template.numeric.mediawiki</string>
 						</dict>
@@ -1133,10 +1656,24 @@
 					<string>meta.template-parameter.mediawiki</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.template-parameter</string>
+						<string>meta.template-parameter.mediawiki</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>variable</string>
+								<string>variable.parameter</string>
+								<string>variable.parameter.template</string>
+								<string>variable.parameter.template.named</string>
+								<string>variable.parameter.template.named.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>variable.parameter.template.named.mediawiki</string>
 						</dict>
@@ -1153,25 +1690,53 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.fix_this_later</string>
+								<string>punctuation.fix_this_later.template</string>
+								<string>punctuation.fix_this_later.template.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.fix_this_later.template.mediawiki</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.function-call</string>
+								<string>meta.function-call.template</string>
+								<string>meta.function-call.template.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>meta.function-call.template.mediawiki</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.template</string>
+						<string>meta.template.parser-function</string>
+						<string>meta.template.parser-function.mediawiki</string>
+					</array>
 					<key>comment</key>
 					<string>
-											Why oh why did mediawiki have to add these??
-										</string>
+																										Why oh why did mediawiki have to add these??
+																									</string>
 					<key>end</key>
 					<string>(}})</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.fix_this_later</string>
+								<string>punctuation.fix_this_later.template</string>
+								<string>punctuation.fix_this_later.template.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.fix_this_later.template.mediawiki</string>
 						</dict>
@@ -1193,28 +1758,55 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.fix_this_later</string>
+								<string>punctuation.fix_this_later.template</string>
+								<string>punctuation.fix_this_later.template.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.fix_this_later.template.mediawiki</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.function-call</string>
+								<string>meta.function-call.template</string>
+								<string>meta.function-call.template.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>meta.function-call.template.mediawiki</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.template</string>
+						<string>meta.template.mediawiki</string>
+					</array>
 					<key>comment</key>
 					<string>
-											I am not sure I really like the scope of
-											meta.function-call for templates, but it seems like
-											the closest thing to what a template is really doing,
-											with parameters, etc.
-										</string>
+																										I am not sure I really like the scope of
+																										meta.function-call for templates, but it seems like
+																										the closest thing to what a template is really doing,
+																										with parameters, etc.
+																									</string>
 					<key>end</key>
 					<string>(}})</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.fix_this_later</string>
+								<string>punctuation.fix_this_later.template</string>
+								<string>punctuation.fix_this_later.template.mediawiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.fix_this_later.template.mediawiki</string>
 						</dict>
@@ -1234,11 +1826,25 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.fix_this_later</string>
+										<string>punctuation.fix_this_later.pipe</string>
+										<string>punctuation.fix_this_later.pipe.mediawiki</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.fix_this_later.pipe.mediawiki</string>
 								</dict>
 								<key>2</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.fix_this_later</string>
+										<string>punctuation.fix_this_later.equals-sign</string>
+										<string>punctuation.fix_this_later.equals-sign.mediawiki</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.fix_this_later.equals-sign.mediawiki</string>
 								</dict>
@@ -1255,16 +1861,37 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.fix_this_later</string>
+										<string>punctuation.fix_this_later.pipe</string>
+										<string>punctuation.fix_this_later.pipe.mediawiki</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.fix_this_later.pipe.mediawiki</string>
 								</dict>
 								<key>2</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>variable</string>
+										<string>variable.parameter</string>
+										<string>variable.parameter.template</string>
+										<string>variable.parameter.template.mediawiki</string>
+									</array>
 									<key>name</key>
 									<string>variable.parameter.template.mediawiki</string>
 								</dict>
 								<key>3</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.fix_this_later</string>
+										<string>punctuation.fix_this_later.equals-sign</string>
+										<string>punctuation.fix_this_later.equals-sign.mediawiki</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.fix_this_later.equals-sign.mediawiki</string>
 								</dict>
@@ -1282,6 +1909,13 @@
 							</array>
 						</dict>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.fix_this_later</string>
+								<string>punctuation.fix_this_later.pipe</string>
+								<string>punctuation.fix_this_later.pipe.mediawiki</string>
+							</array>
 							<key>match</key>
 							<string>\|</string>
 							<key>name</key>

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>C++</string>
+	</array>
 	<key>comment</key>
 	<string>I don&amp;apos;t think anyone uses .hp. .cp tends to be paired with .h. (I could be wrong. :) -- chris</string>
 	<key>fileTypes</key>
@@ -21,9 +25,9 @@
 	<string>-\*- C\+\+ -\*-</string>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-			 /\*\*(?!\*)
-			|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))
-		</string>
+						 /\*\*(?!\*)
+						|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))
+					</string>
 	<key>foldingStopMarker</key>
 	<string>(?&lt;!\*)\*\*/|^\s*\}</string>
 	<key>keyEquivalent</key>
@@ -41,30 +45,62 @@
 			<string>source.c</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.modifier</string>
+				<string>storage.modifier.c++</string>
+			</array>
 			<key>match</key>
 			<string>\b(friend|explicit|virtual)\b</string>
 			<key>name</key>
 			<string>storage.modifier.c++</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.modifier</string>
+				<string>storage.modifier.c++</string>
+			</array>
 			<key>match</key>
 			<string>\b(private:|protected:|public:)</string>
 			<key>name</key>
 			<string>storage.modifier.c++</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.c++</string>
+			</array>
 			<key>match</key>
 			<string>\b(catch|operator|try|throw|using)\b</string>
 			<key>name</key>
 			<string>keyword.control.c++</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.c++</string>
+			</array>
 			<key>match</key>
 			<string>\bdelete\b(\s*\[\])?|\bnew\b(?!\])</string>
 			<key>name</key>
 			<string>keyword.control.c++</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.other</string>
+				<string>variable.other.readwrite</string>
+				<string>variable.other.readwrite.member</string>
+				<string>variable.other.readwrite.member.c++</string>
+			</array>
 			<key>comment</key>
 			<string>common C++ instance var naming idiom -- fMemberName</string>
 			<key>match</key>
@@ -73,36 +109,74 @@
 			<string>variable.other.readwrite.member.c++</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>variable</string>
+				<string>variable.language</string>
+				<string>variable.language.c++</string>
+			</array>
 			<key>match</key>
 			<string>\b(this)\b</string>
 			<key>name</key>
 			<string>variable.language.c++</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.type</string>
+				<string>storage.type.template</string>
+				<string>storage.type.template.c++</string>
+			</array>
 			<key>match</key>
 			<string>\btemplate\b\s*</string>
 			<key>name</key>
 			<string>storage.type.template.c++</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.cast</string>
+				<string>keyword.operator.cast.c++</string>
+			</array>
 			<key>match</key>
 			<string>\b(const_cast|dynamic_cast|reinterpret_cast|static_cast)\b\s*</string>
 			<key>name</key>
 			<string>keyword.operator.cast.c++</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.c++</string>
+			</array>
 			<key>match</key>
 			<string>\b(and|and_eq|bitand|bitor|compl|not|not_eq|or|or_eq|typeid|xor|xor_eq)\b</string>
 			<key>name</key>
 			<string>keyword.operator.c++</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.type</string>
+				<string>storage.type.c++</string>
+			</array>
 			<key>match</key>
 			<string>\b(class|wchar_t)\b</string>
 			<key>name</key>
 			<string>storage.type.c++</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.modifier</string>
+				<string>storage.modifier.c++</string>
+			</array>
 			<key>match</key>
 			<string>\b(export|mutable|typename)\b</string>
 			<key>name</key>
@@ -111,31 +185,59 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-			    				(?:  ^                                 # begin-of-line
-			    				  |  (?: (?&lt;!else|new|=) )             #  or word + space before name
-			    				)
-			    				((?:[A-Za-z_][A-Za-z0-9_]*::)*+~[A-Za-z_][A-Za-z0-9_]*) # actual name
-			    				 \s*(\()                           # start bracket or end-of-line
-			    			</string>
+												    				(?:  ^                                 # begin-of-line
+												    				  |  (?: (?&lt;!else|new|=) )             #  or word + space before name
+												    				)
+												    				((?:[A-Za-z_][A-Za-z0-9_]*::)*+~[A-Za-z_][A-Za-z0-9_]*) # actual name
+												    				 \s*(\()                           # start bracket or end-of-line
+												    			</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.c++</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.c++</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.c</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.c</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.destructor</string>
+				<string>meta.function.destructor.c++</string>
+			</array>
 			<key>end</key>
 			<string>\)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.c</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.c</string>
 				</dict>
@@ -153,31 +255,60 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-			    				(?:  ^                                 # begin-of-line
-			    				  |  (?: (?&lt;!else|new|=) )             #  or word + space before name
-			    				)
-			    				((?:[A-Za-z_][A-Za-z0-9_]*::)*+~[A-Za-z_][A-Za-z0-9_]*) # actual name
-			    				 \s*(\()                           # terminating semi-colon
-			    			</string>
+												    				(?:  ^                                 # begin-of-line
+												    				  |  (?: (?&lt;!else|new|=) )             #  or word + space before name
+												    				)
+												    				((?:[A-Za-z_][A-Za-z0-9_]*::)*+~[A-Za-z_][A-Za-z0-9_]*) # actual name
+												    				 \s*(\()                           # terminating semi-colon
+												    			</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.c++</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.function.c++</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.c</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.c</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.destructor</string>
+				<string>meta.function.destructor.prototype</string>
+				<string>meta.function.destructor.prototype.c++</string>
+			</array>
 			<key>end</key>
 			<string>\)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.c</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.parameters.c</string>
 				</dict>
@@ -199,6 +330,12 @@
 		<dict>
 			<key>begin</key>
 			<string>&lt;</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.angle-brackets</string>
+				<string>meta.angle-brackets.c++</string>
+			</array>
 			<key>end</key>
 			<string>&gt;</string>
 			<key>name</key>
@@ -219,6 +356,12 @@
 		<dict>
 			<key>begin</key>
 			<string>\{</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.block</string>
+				<string>meta.block.c++</string>
+			</array>
 			<key>end</key>
 			<string>\}</string>
 			<key>name</key>
@@ -226,25 +369,45 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function-call</string>
+						<string>meta.function-call.c</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>support</string>
+								<string>support.function</string>
+								<string>support.function.any-method</string>
+								<string>support.function.any-method.c</string>
+							</array>
 							<key>name</key>
 							<string>support.function.any-method.c</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.c</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.c</string>
 						</dict>
 					</dict>
 					<key>match</key>
 					<string>(?x)
-					    				(
-					    					(?!while|for|do|if|else|switch|catch|enumerate|return|r?iterate)(?: \b[A-Za-z_][A-Za-z0-9_]*+\b | :: )*+                  # actual name
-					    				)
-					    				 \s*(\()</string>
+																				    				(
+																				    					(?!while|for|do|if|else|switch|catch|enumerate|return|r?iterate)(?: \b[A-Za-z_][A-Za-z0-9_]*+\b | :: )*+                  # actual name
+																				    				)
+																				    				 \s*(\()</string>
 					<key>name</key>
 					<string>meta.function-call.c</string>
 				</dict>
@@ -261,29 +424,57 @@
 				<dict>
 					<key>begin</key>
 					<string>(?x)
-					    				(?:  ^\s*)                             # begin-of-line
-					    				((?!while|for|do|if|else|switch|catch|enumerate|r?iterate)[A-Za-z_][A-Za-z0-9_:]*) # actual name
-					    				 \s*(\()                            # start bracket or end-of-line
-					    			</string>
+																				    				(?:  ^\s*)                             # begin-of-line
+																				    				((?!while|for|do|if|else|switch|catch|enumerate|r?iterate)[A-Za-z_][A-Za-z0-9_:]*) # actual name
+																				    				 \s*(\()                            # start bracket or end-of-line
+																				    			</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.function</string>
+								<string>entity.name.function.c++</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.function.c++</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.c</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.c</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.constructor</string>
+						<string>meta.function.constructor.c++</string>
+					</array>
 					<key>end</key>
 					<string>\)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.c</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.c</string>
 						</dict>
@@ -301,18 +492,33 @@
 				<dict>
 					<key>begin</key>
 					<string>(?x)
-					    				(:)                            # begin-of-line
-					    				((?=\s*[A-Za-z_][A-Za-z0-9_:]* # actual name
-					    				 \s*(\()))                      # start bracket or end-of-line
-					    			</string>
+																				    				(:)                            # begin-of-line
+																				    				((?=\s*[A-Za-z_][A-Za-z0-9_:]* # actual name
+																				    				 \s*(\()))                      # start bracket or end-of-line
+																				    			</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.parameters</string>
+								<string>punctuation.definition.parameters.c</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.parameters.c</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.function</string>
+						<string>meta.function.constructor</string>
+						<string>meta.function.constructor.initializer-list</string>
+						<string>meta.function.constructor.initializer-list.c++</string>
+					</array>
 					<key>end</key>
 					<string>(?=\{)</string>
 					<key>name</key>
@@ -338,15 +544,34 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.c++</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.c++</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.c++</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.c++</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.namespace-block</string>
+						<string>meta.namespace-block.c++</string>
+					</array>
 					<key>end</key>
 					<string>(?&lt;=\})|(?=(;|,|\(|\)|&gt;|\[|\]|=))</string>
 					<key>name</key>
@@ -360,6 +585,13 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.scope</string>
+										<string>punctuation.definition.scope.c++</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.scope.c++</string>
 								</dict>
@@ -370,6 +602,13 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.invalid</string>
+										<string>punctuation.definition.invalid.c++</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.invalid.c++</string>
 								</dict>
@@ -403,15 +642,34 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.type</string>
+								<string>storage.type.c++</string>
+							</array>
 							<key>name</key>
 							<string>storage.type.c++</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.type</string>
+								<string>entity.name.type.c++</string>
+							</array>
 							<key>name</key>
 							<string>entity.name.type.c++</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.class-struct-block</string>
+						<string>meta.class-struct-block.c++</string>
+					</array>
 					<key>end</key>
 					<string>(?&lt;=\})|(?=(;|,|\(|\)|&gt;|\[|\]|=))</string>
 					<key>name</key>
@@ -429,6 +687,13 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.scope</string>
+										<string>punctuation.definition.scope.c++</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.scope.c++</string>
 								</dict>
@@ -439,11 +704,25 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>punctuation</string>
+										<string>punctuation.definition</string>
+										<string>punctuation.definition.invalid</string>
+										<string>punctuation.definition.invalid.c++</string>
+									</array>
 									<key>name</key>
 									<string>punctuation.definition.invalid.c++</string>
 								</dict>
 								<key>2</key>
 								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>invalid</string>
+										<string>invalid.illegal</string>
+										<string>invalid.illegal.you-forgot-semicolon</string>
+										<string>invalid.illegal.you-forgot-semicolon.c++</string>
+									</array>
 									<key>name</key>
 									<string>invalid.illegal.you-forgot-semicolon.c++</string>
 								</dict>
@@ -477,10 +756,22 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>storage</string>
+								<string>storage.modifier</string>
+								<string>storage.modifier.c++</string>
+							</array>
 							<key>name</key>
 							<string>storage.modifier.c++</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.extern-block</string>
+						<string>meta.extern-block.c++</string>
+					</array>
 					<key>end</key>
 					<string>(?&lt;=\})|(?=\w)</string>
 					<key>name</key>

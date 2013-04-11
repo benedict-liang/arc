@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Rez</string>
+	</array>
 	<key>comment</key>
 	<string>Rez. Legacy Mac OS source code frequently contains Rez files. – chris@cjack.com</string>
 	<key>fileTypes</key>
@@ -21,10 +25,23 @@
 		<dict>
 			<key>begin</key>
 			<string>/\*</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.rez</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.rez</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.rez</string>
 				</dict>
@@ -35,10 +52,24 @@
 			<string>comment.block.rez</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.double-slash</string>
+				<string>comment.line.double-slash.rez</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.rez</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.rez</string>
 				</dict>
@@ -49,6 +80,12 @@
 			<string>comment.line.double-slash.rez</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.rez</string>
+			</array>
 			<key>comment</key>
 			<string>Note that Xcode gets case sensitivity wrong (last checked Xcode 2.0). I'm not sure built-in functions are case-insensitive, though, so we might too.</string>
 			<key>match</key>
@@ -57,22 +94,49 @@
 			<string>keyword.control.rez</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>storage</string>
+				<string>storage.type</string>
+				<string>storage.type.rez</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:(align|array|binary|bit|bitstring|boolean|byte|case|char|cstring|decimal|enum|fill|hex|integer|key|literal|long|longint|nibble|octal|point|pstring|rect|string|switch|unsigned|wide|word|wstring))\b</string>
 			<key>name</key>
 			<string>storage.type.rez</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.attributes</string>
+				<string>keyword.other.attributes.rez</string>
+			</array>
 			<key>match</key>
 			<string>\b(?i:(appheap|locked|nonpurgeable|purgeable|sysheap|unlocked))\b</string>
 			<key>name</key>
 			<string>keyword.other.attributes.rez</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.built-in</string>
+				<string>support.function.built-in.rez</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.rez</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.function.rez</string>
 				</dict>
@@ -83,6 +147,12 @@
 			<string>support.function.built-in.rez</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.numeric</string>
+				<string>constant.numeric.rez</string>
+			</array>
 			<key>match</key>
 			<string>\b(((0(x|X|B)|\$)[0-9a-fA-F]*)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)\b</string>
 			<key>name</key>
@@ -95,16 +165,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.rez</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.rez</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.rez</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.rez</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.rez</string>
 				</dict>
@@ -126,16 +219,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.rez</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.rez</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.single</string>
+				<string>string.quoted.single.rez</string>
+			</array>
 			<key>end</key>
 			<string>'</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.rez</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.rez</string>
 				</dict>
@@ -157,16 +273,40 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.rez</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.rez</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.other</string>
+				<string>string.quoted.other.hex</string>
+				<string>string.quoted.other.hex.rez</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.rez</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.rez</string>
 				</dict>
@@ -182,15 +322,35 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.preprocessor</string>
+				<string>meta.preprocessor.rez</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.preprocessor</string>
+						<string>punctuation.definition.preprocessor.rez</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.preprocessor.rez</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.import</string>
+						<string>keyword.control.import.rez</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.import.rez</string>
 				</dict>
@@ -205,6 +365,13 @@
 	<dict>
 		<key>escaped_char</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.escape</string>
+				<string>constant.character.escape.rez</string>
+			</array>
 			<key>match</key>
 			<string>\\.</string>
 			<key>name</key>

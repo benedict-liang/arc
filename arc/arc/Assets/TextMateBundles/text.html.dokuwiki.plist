@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>DokuWiki</string>
+	</array>
 	<key>fileTypes</key>
 	<array/>
 	<key>firstLineMatch</key>
@@ -29,16 +33,39 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.dokuwiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.dokuwiki</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>string</string>
+				<string>string.quoted</string>
+				<string>string.quoted.double</string>
+				<string>string.quoted.double.dokuwiki</string>
+			</array>
 			<key>end</key>
 			<string>&quot;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.dokuwiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.dokuwiki</string>
 				</dict>
@@ -48,6 +75,13 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.character</string>
+						<string>constant.character.escape</string>
+						<string>constant.character.escape.dokuwiki</string>
+					</array>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
@@ -58,10 +92,24 @@
 		<dict>
 			<key>begin</key>
 			<string>\(\(</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.documentation</string>
+				<string>comment.block.documentation.dokuwiki</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.dokuwiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.dokuwiki</string>
 				</dict>
@@ -72,15 +120,35 @@
 			<string>comment.block.documentation.dokuwiki</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.dokuwiki</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heading</string>
+						<string>punctuation.definition.heading.dokuwiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heading.dokuwiki</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.heading</string>
+						<string>punctuation.definition.heading.dokuwiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.heading.dokuwiki</string>
 				</dict>
@@ -91,24 +159,51 @@
 			<string>markup.heading.dokuwiki</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.notoc</string>
+				<string>keyword.other.notoc.dokuwiki</string>
+			</array>
 			<key>match</key>
 			<string>~~NOTOC~~</string>
 			<key>name</key>
 			<string>keyword.other.notoc.dokuwiki</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.nocache</string>
+				<string>keyword.other.nocache.dokuwiki</string>
+			</array>
 			<key>match</key>
 			<string>~~NOCACHE~~</string>
 			<key>name</key>
 			<string>keyword.other.nocache.dokuwiki</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.separator</string>
+				<string>meta.separator.dokuwiki</string>
+			</array>
 			<key>match</key>
 			<string>^\s*-{4,}\s*$</string>
 			<key>name</key>
 			<string>meta.separator.dokuwiki</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.other</string>
+				<string>markup.other.paragraph</string>
+				<string>markup.other.paragraph.dokuwiki</string>
+			</array>
 			<key>match</key>
 			<string>\\\\\s</string>
 			<key>name</key>
@@ -117,10 +212,24 @@
 		<dict>
 			<key>begin</key>
 			<string>^((\t+)|( {2,}))(\*)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.unnumbered</string>
+				<string>markup.list.unnumbered.dokuwiki</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.list_item</string>
+						<string>punctuation.definition.list_item.dokuwiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.list_item.dokuwiki</string>
 				</dict>
@@ -140,10 +249,24 @@
 		<dict>
 			<key>begin</key>
 			<string>^((\t+)|( {2,}))(-)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.numbered</string>
+				<string>markup.list.numbered.dokuwiki</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.list_item</string>
+						<string>punctuation.definition.list_item.dokuwiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.list_item.dokuwiki</string>
 				</dict>
@@ -167,10 +290,24 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.table</string>
+						<string>punctuation.definition.table.dokuwiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.table.dokuwiki</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.other</string>
+				<string>markup.other.table</string>
+				<string>markup.other.table.dokuwiki</string>
+			</array>
 			<key>end</key>
 			<string>$</string>
 			<key>name</key>
@@ -186,15 +323,35 @@
 		<dict>
 			<key>begin</key>
 			<string>(\&lt;)(file|nowiki)(\&gt;)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.raw</string>
+				<string>markup.raw.dokuwiki</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.dokuwiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.dokuwiki</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.dokuwiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.dokuwiki</string>
 				</dict>
@@ -207,10 +364,23 @@
 		<dict>
 			<key>begin</key>
 			<string>(%%|\'\')</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.raw</string>
+				<string>markup.raw.dokuwiki</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.raw</string>
+						<string>punctuation.definition.raw.dokuwiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.raw.dokuwiki</string>
 				</dict>
@@ -227,11 +397,25 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.dokuwiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.dokuwiki</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.dokuwiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.dokuwiki</string>
 				</dict>
@@ -247,6 +431,12 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.raw</string>
+				<string>markup.raw.dokuwiki</string>
+			</array>
 			<key>match</key>
 			<string>^((\s\s)|(\t))[^\*\-].*$</string>
 			<key>name</key>
@@ -255,15 +445,35 @@
 		<dict>
 			<key>begin</key>
 			<string>(\&lt;)(sub|sup|del)(\&gt;)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.other</string>
+				<string>markup.other.dokuwiki</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.dokuwiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.dokuwiki</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.dokuwiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.dokuwiki</string>
 				</dict>
@@ -283,15 +493,35 @@
 		<dict>
 			<key>begin</key>
 			<string>(&lt;)code(?:\s+[^&gt;]*)?(&gt;)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.raw</string>
+				<string>markup.raw.dokuwiki</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.dokuwiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.dokuwiki</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.dokuwiki</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.tag.dokuwiki</string>
 				</dict>
@@ -311,10 +541,23 @@
 				<dict>
 					<key>begin</key>
 					<string>\*\*</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.bold</string>
+						<string>markup.bold.dokuwiki</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.bold</string>
+								<string>punctuation.definition.bold.dokuwiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.bold.dokuwiki</string>
 						</dict>
@@ -334,10 +577,23 @@
 				<dict>
 					<key>begin</key>
 					<string>//</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.italic</string>
+						<string>markup.italic.dokuwiki</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.italic</string>
+								<string>punctuation.definition.italic.dokuwiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.italic.dokuwiki</string>
 						</dict>
@@ -357,10 +613,23 @@
 				<dict>
 					<key>begin</key>
 					<string>__</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.underline</string>
+						<string>markup.underline.dokuwiki</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.underline</string>
+								<string>punctuation.definition.underline.dokuwiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.underline.dokuwiki</string>
 						</dict>
@@ -378,20 +647,48 @@
 					</array>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.image</string>
+						<string>meta.image.inline</string>
+						<string>meta.image.inline.dokuwiki</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.image</string>
+								<string>punctuation.definition.image.dokuwiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.image.dokuwiki</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>markup</string>
+								<string>markup.underline</string>
+								<string>markup.underline.link</string>
+								<string>markup.underline.link.dokuwiki</string>
+							</array>
 							<key>name</key>
 							<string>markup.underline.link.dokuwiki</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.image</string>
+								<string>punctuation.definition.image.dokuwiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.image.dokuwiki</string>
 						</dict>
@@ -402,20 +699,47 @@
 					<string>meta.image.inline.dokuwiki</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.link</string>
+						<string>meta.link.dokuwiki</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.link</string>
+								<string>punctuation.definition.link.dokuwiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.link.dokuwiki</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>markup</string>
+								<string>markup.underline</string>
+								<string>markup.underline.link</string>
+								<string>markup.underline.link.dokuwiki</string>
+							</array>
 							<key>name</key>
 							<string>markup.underline.link.dokuwiki</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.link</string>
+								<string>punctuation.definition.link.dokuwiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.link.dokuwiki</string>
 						</dict>
@@ -430,16 +754,38 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.link</string>
+								<string>punctuation.definition.link.dokuwiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.link.dokuwiki</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>markup</string>
+								<string>markup.underline</string>
+								<string>markup.underline.link</string>
+								<string>markup.underline.link.interwiki</string>
+								<string>markup.underline.link.interwiki.dokuwiki</string>
+							</array>
 							<key>name</key>
 							<string>markup.underline.link.interwiki.dokuwiki</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.link</string>
+								<string>punctuation.definition.link.dokuwiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.link.dokuwiki</string>
 						</dict>
@@ -452,6 +798,13 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>markup</string>
+								<string>markup.underline</string>
+								<string>markup.underline.link</string>
+								<string>markup.underline.link.dokuwiki</string>
+							</array>
 							<key>name</key>
 							<string>markup.underline.link.dokuwiki</string>
 						</dict>
@@ -460,20 +813,48 @@
 					<string>((https?|telnet|gopher|wais|ftp|ed2k|irc)://[\w/\#~:.?+=&amp;%@!\-;,]+?(?=[.:?\-;,]*[^\w/\#~:.?+=&amp;%@!\-;,]))</string>
 				</dict>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.link</string>
+						<string>meta.link.email</string>
+						<string>meta.link.email.dokuwiki</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.link</string>
+								<string>punctuation.definition.link.dokuwiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.link.dokuwiki</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>markup</string>
+								<string>markup.underline</string>
+								<string>markup.underline.link</string>
+								<string>markup.underline.link.dokuwiki</string>
+							</array>
 							<key>name</key>
 							<string>markup.underline.link.dokuwiki</string>
 						</dict>
 						<key>3</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.link</string>
+								<string>punctuation.definition.link.dokuwiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.link.dokuwiki</string>
 						</dict>
@@ -494,6 +875,13 @@
 					<integer>1</integer>
 					<key>begin</key>
 					<string>(?:^\s*)(?=&lt;\?(?i:php|=)?(?!.*\?&gt;))</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>source</string>
+						<string>source.php</string>
+						<string>source.php.embedded</string>
+						<string>source.php.embedded.dokuwiki</string>
+					</array>
 					<key>comment</key>
 					<string>match only multi-line PHP with leading whitespace</string>
 					<key>end</key>
@@ -513,6 +901,13 @@
 					<integer>1</integer>
 					<key>begin</key>
 					<string>(?=&lt;\?(?i:php|=)?)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>source</string>
+						<string>source.php</string>
+						<string>source.php.embedded</string>
+						<string>source.php.embedded.dokuwiki</string>
+					</array>
 					<key>end</key>
 					<string>(?&lt;=\?&gt;)</string>
 					<key>name</key>
@@ -530,15 +925,36 @@
 					<integer>1</integer>
 					<key>begin</key>
 					<string>(&lt;)php(&gt;)</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>source</string>
+						<string>source.php</string>
+						<string>source.php.embedded</string>
+						<string>source.php.embedded.dokuwiki</string>
+					</array>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.dokuwiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.dokuwiki</string>
 						</dict>
 						<key>2</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.tag</string>
+								<string>punctuation.definition.tag.dokuwiki</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.tag.dokuwiki</string>
 						</dict>

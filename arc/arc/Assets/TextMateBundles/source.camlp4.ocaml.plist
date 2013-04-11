@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>camlp4</string>
+	</array>
 	<key>foldingStartMarker</key>
 	<string>(\bEXTEND\B)</string>
 	<key>foldingStopMarker</key>
@@ -17,16 +21,36 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.camlp4-stream</string>
+						<string>punctuation.definition.camlp4-stream.ocaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.camlp4-stream.ocaml</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.camlp4-stream</string>
+				<string>meta.camlp4-stream.ocaml</string>
+			</array>
 			<key>end</key>
 			<string>(?=&gt;])</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.camlp4-stream</string>
+						<string>punctuation.definition.camlp4-stream.ocaml</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.camlp4-stream.ocaml</string>
 				</dict>
@@ -42,12 +66,26 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>punctuation</string>
+				<string>punctuation.definition</string>
+				<string>punctuation.definition.camlp4-stream</string>
+				<string>punctuation.definition.camlp4-stream.ocaml</string>
+			</array>
 			<key>match</key>
 			<string>\[&lt;|&gt;]</string>
 			<key>name</key>
 			<string>punctuation.definition.camlp4-stream.ocaml</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.camlp4</string>
+				<string>keyword.other.camlp4.ocaml</string>
+			</array>
 			<key>match</key>
 			<string>\bparser\b|&lt;(&lt;|:)|&gt;&gt;|\$(:|\${0,1})</string>
 			<key>name</key>
@@ -67,16 +105,38 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.camlp4</string>
+								<string>punctuation.definition.camlp4.simple-element</string>
+								<string>punctuation.definition.camlp4.simple-element.ocaml</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.definition.camlp4.simple-element.ocaml</string>
 						</dict>
 					</dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>meta</string>
+						<string>meta.camlp4-stream</string>
+						<string>meta.camlp4-stream.element</string>
+						<string>meta.camlp4-stream.element.ocaml</string>
+					</array>
 					<key>end</key>
 					<string>(;)(?=\s*')|(?=\s*&gt;])</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.separator</string>
+								<string>punctuation.separator.camlp4</string>
+								<string>punctuation.separator.camlp4.ocaml</string>
+							</array>
 							<key>name</key>
 							<string>punctuation.separator.camlp4.ocaml</string>
 						</dict>

@@ -2,22 +2,26 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>S5 Slide Show</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>s5</string>
 	</array>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-			(&lt;(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)\b.*?&gt;
-			|&lt;!--(?!.*--&gt;)
-			|\{\s*($|\?&gt;\s*$|//|/\*(.*\*/\s*$|(?!.*?\*/)))
-			)</string>
+						(&lt;(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)\b.*?&gt;
+						|&lt;!--(?!.*--&gt;)
+						|\{\s*($|\?&gt;\s*$|//|/\*(.*\*/\s*$|(?!.*?\*/)))
+						)</string>
 	<key>foldingStopMarker</key>
 	<string>(?x)
-			(&lt;/(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)&gt;
-			|^\s*--&gt;
-			|(^|\s)\}
-			)</string>
+						(&lt;/(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)&gt;
+						|^\s*--&gt;
+						|(^|\s)\}
+						)</string>
 	<key>keyEquivalent</key>
 	<string>^~S</string>
 	<key>name</key>
@@ -25,20 +29,45 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.header</string>
+				<string>meta.header.s5</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.s5</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.s5</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+						<string>punctuation.separator.key-value.s5</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.key-value.s5</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.s5</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.s5</string>
 				</dict>
@@ -62,15 +91,22 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.separator</string>
+								<string>meta.separator.handout</string>
+								<string>meta.separator.handout.s5</string>
+							</array>
 							<key>name</key>
 							<string>meta.separator.handout.s5</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>
-											name = 'meta.separator.handout.s5';
-											match = '(^_{10}$)';
-										</string>
+																										name = 'meta.separator.handout.s5';
+																										match = '(^_{10}$)';
+																									</string>
 					<key>contentName</key>
 					<string>text.html.markdown.handout.s5</string>
 					<key>end</key>
@@ -90,15 +126,22 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.separator</string>
+								<string>meta.separator.notes</string>
+								<string>meta.separator.notes.s5</string>
+							</array>
 							<key>name</key>
 							<string>meta.separator.notes.s5</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>
-											name = 'meta.separator.notes.s5';
-											match = '(^#{10}$)';
-										</string>
+																										name = 'meta.separator.notes.s5';
+																										match = '(^#{10}$)';
+																									</string>
 					<key>contentName</key>
 					<string>text.html.markdown.notes.s5</string>
 					<key>end</key>
@@ -118,15 +161,22 @@
 					<dict>
 						<key>1</key>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>meta</string>
+								<string>meta.separator</string>
+								<string>meta.separator.slide</string>
+								<string>meta.separator.slide.s5</string>
+							</array>
 							<key>name</key>
 							<string>meta.separator.slide.s5</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>
-											name = 'meta.separator.slide.s5';
-											match = '^((✂-{6})+$\n)';
-										</string>
+																										name = 'meta.separator.slide.s5';
+																										match = '^((✂-{6})+$\n)';
+																									</string>
 					<key>contentName</key>
 					<string>text.html.markdown.slide.s5</string>
 					<key>end</key>

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>Setext</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>etx</string>
@@ -20,20 +24,45 @@
 			<string>#inline</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.header</string>
+				<string>meta.header.setext</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.other</string>
+						<string>keyword.other.setext</string>
+					</array>
 					<key>name</key>
 					<string>keyword.other.setext</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.separator</string>
+						<string>punctuation.separator.key-value</string>
+						<string>punctuation.separator.key-value.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.separator.key-value.setext</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.setext</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.setext</string>
 				</dict>
@@ -44,12 +73,26 @@
 			<string>meta.header.setext</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.1</string>
+				<string>markup.heading.1.setext</string>
+			</array>
 			<key>match</key>
 			<string>^={3,}\s*$\n?</string>
 			<key>name</key>
 			<string>markup.heading.1.setext</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.2</string>
+				<string>markup.heading.2.setext</string>
+			</array>
 			<key>match</key>
 			<string>^-{3,}\s*$\n?</string>
 			<key>name</key>
@@ -58,10 +101,23 @@
 		<dict>
 			<key>begin</key>
 			<string>^(&gt;)\s</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.quote</string>
+				<string>markup.quote.setext</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.quote</string>
+						<string>punctuation.definition.quote.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.quote.setext</string>
 				</dict>
@@ -81,10 +137,24 @@
 		<dict>
 			<key>begin</key>
 			<string>^([*])\s</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.other</string>
+				<string>markup.other.bullet</string>
+				<string>markup.other.bullet.setext</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.bullet</string>
+						<string>punctuation.definition.bullet.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.bullet.setext</string>
 				</dict>
@@ -108,16 +178,38 @@
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.raw</string>
+						<string>punctuation.definition.raw.begin</string>
+						<string>punctuation.definition.raw.begin.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.raw.begin.setext</string>
 				</dict>
 			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.raw</string>
+				<string>markup.raw.setext</string>
+			</array>
 			<key>end</key>
 			<string>`</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.raw</string>
+						<string>punctuation.definition.raw.end</string>
+						<string>punctuation.definition.raw.end.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.raw.end.setext</string>
 				</dict>
@@ -126,35 +218,88 @@
 			<string>markup.raw.setext</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.note</string>
+				<string>meta.note.def</string>
+				<string>meta.note.def.setext</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.note</string>
+						<string>punctuation.definition.note.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.note.setext</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.reference</string>
+						<string>constant.other.reference.note</string>
+						<string>constant.other.reference.note.setext</string>
+					</array>
 					<key>name</key>
 					<string>constant.other.reference.note.setext</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.reference</string>
+						<string>punctuation.definition.reference.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.reference.setext</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.quoted</string>
+						<string>string.quoted.other</string>
+						<string>string.quoted.other.note</string>
+						<string>string.quoted.other.note.setext</string>
+					</array>
 					<key>name</key>
 					<string>string.quoted.other.note.setext</string>
 				</dict>
 				<key>5</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.begin</string>
+						<string>punctuation.definition.string.begin.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.begin.setext</string>
 				</dict>
 				<key>7</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.string</string>
+						<string>punctuation.definition.string.end</string>
+						<string>punctuation.definition.string.end.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.string.end.setext</string>
 				</dict>
@@ -165,25 +310,62 @@
 			<string>meta.note.def.setext</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.link</string>
+				<string>meta.link.reference</string>
+				<string>meta.link.reference.def</string>
+				<string>meta.link.reference.def.setext</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.reference</string>
+						<string>punctuation.definition.reference.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.reference.setext</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.reference</string>
+						<string>constant.other.reference.link</string>
+						<string>constant.other.reference.link.setext</string>
+					</array>
 					<key>name</key>
 					<string>constant.other.reference.link.setext</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.reference</string>
+						<string>punctuation.definition.reference.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.reference.setext</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.underline</string>
+						<string>markup.underline.link</string>
+						<string>markup.underline.link.setext</string>
+					</array>
 					<key>name</key>
 					<string>markup.underline.link.setext</string>
 				</dict>
@@ -194,10 +376,24 @@
 			<string>meta.link.reference.def.setext</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.double-dot</string>
+				<string>comment.line.double-dot.setext</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.setext</string>
 				</dict>
@@ -210,10 +406,24 @@
 		<dict>
 			<key>begin</key>
 			<string>^(\.{2})$</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.block</string>
+				<string>comment.block.logical_end_of_text</string>
+				<string>comment.block.logical_end_of_text.setext</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.comment.setext</string>
 				</dict>
@@ -228,15 +438,35 @@
 	<dict>
 		<key>bold</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.bold</string>
+				<string>markup.bold.setext</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.bold</string>
+						<string>punctuation.definition.bold.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.bold.setext</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.bold</string>
+						<string>punctuation.definition.bold.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.bold.setext</string>
 				</dict>
@@ -248,10 +478,24 @@
 		</dict>
 		<key>doc_separator</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.separator</string>
+				<string>meta.separator.document</string>
+				<string>meta.separator.document.setext</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.separator</string>
+						<string>punctuation.definition.separator.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.separator.setext</string>
 				</dict>
@@ -263,15 +507,37 @@
 		</dict>
 		<key>hotword</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.link</string>
+				<string>meta.link.reference</string>
+				<string>meta.link.reference.setext</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.reference</string>
+						<string>constant.other.reference.link</string>
+						<string>constant.other.reference.link.setext</string>
+					</array>
 					<key>name</key>
 					<string>constant.other.reference.link.setext</string>
 				</dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.reference</string>
+						<string>punctuation.definition.reference.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.reference.setext</string>
 				</dict>
@@ -313,15 +579,35 @@
 		</dict>
 		<key>italic</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.italic</string>
+				<string>markup.italic.setext</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.italic</string>
+						<string>punctuation.definition.italic.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.italic.setext</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.italic</string>
+						<string>punctuation.definition.italic.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.italic.setext</string>
 				</dict>
@@ -337,16 +623,37 @@
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.link</string>
+						<string>punctuation.definition.link.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.link.setext</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.underline</string>
+						<string>markup.underline.link</string>
+						<string>markup.underline.link.setext</string>
+					</array>
 					<key>name</key>
 					<string>markup.underline.link.setext</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.link</string>
+						<string>punctuation.definition.link.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.link.setext</string>
 				</dict>
@@ -358,25 +665,59 @@
 		</dict>
 		<key>underline</key>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.underline</string>
+				<string>markup.underline.setext</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.underline</string>
+						<string>punctuation.definition.underline.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.underline.setext</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.underline</string>
+						<string>punctuation.definition.underline.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.underline.setext</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.underline</string>
+						<string>punctuation.definition.underline.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.underline.setext</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.underline</string>
+						<string>punctuation.definition.underline.setext</string>
+					</array>
 					<key>name</key>
 					<string>punctuation.definition.underline.setext</string>
 				</dict>

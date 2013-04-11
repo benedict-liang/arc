@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>capturableScopes</key>
+	<array>
+		<string>PmWiki</string>
+	</array>
 	<key>fileTypes</key>
 	<array>
 		<string>pmwiki</string>
@@ -13,18 +17,39 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.line-break</string>
+				<string>keyword.control.line-break.pmwiki</string>
+			</array>
 			<key>match</key>
 			<string>\\\\$</string>
 			<key>name</key>
 			<string>keyword.control.line-break.pmwiki</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.line-break</string>
+				<string>keyword.control.line-break.pmwiki</string>
+			</array>
 			<key>match</key>
 			<string>\[\[&lt;&lt;\]\]</string>
 			<key>name</key>
 			<string>keyword.control.line-break.pmwiki</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.control</string>
+				<string>keyword.control.continue-line</string>
+				<string>keyword.control.continue-line.pmwiki</string>
+			</array>
 			<key>match</key>
 			<string>\\$</string>
 			<key>name</key>
@@ -33,6 +58,13 @@
 		<dict>
 			<key>begin</key>
 			<string>^\s+</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.raw</string>
+				<string>markup.raw.monospace</string>
+				<string>markup.raw.monospace.pmwiki</string>
+			</array>
 			<key>end</key>
 			<string>$</string>
 			<key>name</key>
@@ -48,10 +80,23 @@
 		<dict>
 			<key>begin</key>
 			<string>^(-+&gt;)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.indented-paragraph</string>
+				<string>meta.indented-paragraph.pmwiki</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.indented-paragraph</string>
+						<string>keyword.control.indented-paragraph.pmwiki</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.indented-paragraph.pmwiki</string>
 				</dict>
@@ -71,10 +116,23 @@
 		<dict>
 			<key>begin</key>
 			<string>^(!+)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.heading</string>
+				<string>markup.heading.pmwiki</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.heading</string>
+						<string>keyword.control.heading.pmwiki</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.heading.pmwiki</string>
 				</dict>
@@ -87,10 +145,24 @@
 		<dict>
 			<key>begin</key>
 			<string>^(\*+)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.unnumbered</string>
+				<string>markup.list.unnumbered.pmwiki</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.bullet-list</string>
+						<string>keyword.control.bullet-list.pmwiki</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.bullet-list.pmwiki</string>
 				</dict>
@@ -110,10 +182,24 @@
 		<dict>
 			<key>begin</key>
 			<string>^(#+)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.list</string>
+				<string>markup.list.numbered</string>
+				<string>markup.list.numbered.pmwiki</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.number-list</string>
+						<string>keyword.control.number-list.pmwiki</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.number-list.pmwiki</string>
 				</dict>
@@ -131,25 +217,60 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.term-definition</string>
+				<string>meta.term-definition.pmwiki</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.term-definition</string>
+						<string>keyword.control.term-definition.pmwiki</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.term-definition.pmwiki</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.type</string>
+						<string>entity.name.type.term</string>
+						<string>entity.name.type.term.pmwiki</string>
+					</array>
 					<key>name</key>
 					<string>entity.name.type.term.pmwiki</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.term-definition</string>
+						<string>keyword.control.term-definition.pmwiki</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.term-definition.pmwiki</string>
 				</dict>
 				<key>4</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.unquoted</string>
+						<string>string.unquoted.definition</string>
+						<string>string.unquoted.definition.pmwiki</string>
+					</array>
 					<key>name</key>
 					<string>string.unquoted.definition.pmwiki</string>
 				</dict>
@@ -160,6 +281,12 @@
 			<string>meta.term-definition.pmwiki</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.separator</string>
+				<string>meta.separator.pmwiki</string>
+			</array>
 			<key>match</key>
 			<string>^-{4,}.*$</string>
 			<key>name</key>
@@ -168,6 +295,13 @@
 		<dict>
 			<key>begin</key>
 			<string>''</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.italic</string>
+				<string>markup.italic.emphasis</string>
+				<string>markup.italic.emphasis.pmwiki</string>
+			</array>
 			<key>end</key>
 			<string>''(?!')</string>
 			<key>name</key>
@@ -183,6 +317,13 @@
 		<dict>
 			<key>begin</key>
 			<string>'''</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.bold</string>
+				<string>markup.bold.strong</string>
+				<string>markup.bold.strong.pmwiki</string>
+			</array>
 			<key>end</key>
 			<string>'''</string>
 			<key>name</key>
@@ -198,6 +339,13 @@
 		<dict>
 			<key>begin</key>
 			<string>@@</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.raw</string>
+				<string>markup.raw.monospace</string>
+				<string>markup.raw.monospace.pmwiki</string>
+			</array>
 			<key>end</key>
 			<string>@@</string>
 			<key>name</key>
@@ -213,6 +361,13 @@
 		<dict>
 			<key>begin</key>
 			<string>\[\+</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.style</string>
+				<string>meta.style.larger</string>
+				<string>meta.style.larger.pmwiki</string>
+			</array>
 			<key>end</key>
 			<string>\+\]</string>
 			<key>name</key>
@@ -228,6 +383,13 @@
 		<dict>
 			<key>begin</key>
 			<string>\[-</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.style</string>
+				<string>meta.style.smaller</string>
+				<string>meta.style.smaller.pmwiki</string>
+			</array>
 			<key>end</key>
 			<string>-\]</string>
 			<key>name</key>
@@ -241,12 +403,24 @@
 			</array>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.normal-word</string>
+				<string>meta.normal-word.pmwiki</string>
+			</array>
 			<key>match</key>
 			<string>`\w+</string>
 			<key>name</key>
 			<string>meta.normal-word.pmwiki</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.underline</string>
+				<string>markup.underline.pmwiki</string>
+			</array>
 			<key>match</key>
 			<string>\b\\u\w+\\u\w+</string>
 			<key>name</key>
@@ -255,6 +429,13 @@
 		<dict>
 			<key>begin</key>
 			<string>\[\[#</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.link</string>
+				<string>meta.link.inline</string>
+				<string>meta.link.inline.pmwiki</string>
+			</array>
 			<key>contentName</key>
 			<string>string.other.link.title.pmwiki</string>
 			<key>end</key>
@@ -263,20 +444,49 @@
 			<string>meta.link.inline.pmwiki</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.link</string>
+				<string>meta.link.inline</string>
+				<string>meta.link.inline.pmwiki</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.underline</string>
+						<string>markup.underline.link</string>
+						<string>markup.underline.link.pmwiki</string>
+					</array>
 					<key>name</key>
 					<string>markup.underline.link.pmwiki</string>
 				</dict>
 				<key>2</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.link</string>
+						<string>keyword.control.link.pmwiki</string>
+					</array>
 					<key>name</key>
 					<string>keyword.control.link.pmwiki</string>
 				</dict>
 				<key>3</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>string</string>
+						<string>string.other</string>
+						<string>string.other.link</string>
+						<string>string.other.link.title</string>
+						<string>string.other.link.title.pmwiki</string>
+					</array>
 					<key>name</key>
 					<string>string.other.link.title.pmwiki</string>
 				</dict>
@@ -287,10 +497,24 @@
 			<string>meta.link.inline.pmwiki</string>
 		</dict>
 		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.link</string>
+				<string>meta.link.inline</string>
+				<string>meta.link.inline.pmwiki</string>
+			</array>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.underline</string>
+						<string>markup.underline.link</string>
+						<string>markup.underline.link.pmwiki</string>
+					</array>
 					<key>name</key>
 					<string>markup.underline.link.pmwiki</string>
 				</dict>
@@ -303,6 +527,13 @@
 		<dict>
 			<key>begin</key>
 			<string>\[=</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>markup</string>
+				<string>markup.raw</string>
+				<string>markup.raw.verbatim-text</string>
+				<string>markup.raw.verbatim-text.pmwiki</string>
+			</array>
 			<key>end</key>
 			<string>=\]</string>
 			<key>name</key>
