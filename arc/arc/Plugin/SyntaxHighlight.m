@@ -522,6 +522,7 @@
                       patterns:patterns
                         output:output];
     
+    
     [self applyStylesTo:output withTheme:theme];
     
     [self updateView:output withTheme:theme];
@@ -543,6 +544,13 @@
     }
 }
 
+- (void)addFoldRange:(NSRange)range toArray:(NSArray*)arr {
+    
+    NSMutableArray* temp = [NSMutableArray arrayWithArray:arr];
+    [temp addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
+    arr = temp;
+}
+
 - (void)recurFoldsWithStart:(NSString*)foldStart
                         end:(NSString*)foldEnd
                       range:(NSRange)range
@@ -552,19 +560,22 @@
     
     NSRange firstEndRange = [self findFirstPattern:foldEnd range:range];
     
-    
-    if (firstStartRange.location < firstEndRange.location) {
+    if (firstStartRange.location == NSNotFound || firstEndRange.location == NSNotFound){
+        NSLog(@"fin.");
+        return;
+        
+    } else if (firstStartRange.location < firstEndRange.location) {
         NSRange recurRange = NSMakeRange(firstStartRange.location+1, _content.length - firstStartRange.location -1);
         
         [self recurFoldsWithStart:foldStart end:foldEnd range:recurRange currentStart:firstStartRange.location];
     
-    } else if (firstStartRange.location != NSNotFound || firstEndRange.location != NSNotFound){
-        NSLog(@"fin.");
-        return;
-              
-    } else if (firstEndRange.location < firstStartRange.location) {
+    }  else if (firstEndRange.location < firstStartRange.location) {
+        
         NSRange recurRange = NSMakeRange(firstEndRange.location+1, _content.length - firstEndRange.location -1);
         
+        [self addFoldRange:NSMakeRange(currentStart, firstEndRange.location) toArray:foldRanges];
+        
+        [self recurFoldsWithStart:foldStart end:foldEnd range:recurRange currentStart:firstStartRange.location];
     }
    
     
