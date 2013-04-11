@@ -117,10 +117,9 @@
 {
     // Drawing code
     CGContextRef context = UIGraphicsGetCurrentContext();
-    //CGColorRef darkColor = [[UIColor colorWithRed:21.0/255.0 green:92.0/255.0 blue:136.0/255.0 alpha:1.0] CGColor];
-    CGColorRef darkColor = [[UIColor blueColor] CGColor];
-    darkColor = CGColorCreateCopyWithAlpha(darkColor, 0.5);
-    CGContextSetFillColorWithColor(context, darkColor);
+    CGColorRef blueHighlightColor = [[UIColor blueColor] CGColor];
+    blueHighlightColor = CGColorCreateCopyWithAlpha(blueHighlightColor, 0.5);
+    CGContextSetFillColorWithColor(context, blueHighlightColor);
     CGContextFillRect(context, rect);
 }
 
