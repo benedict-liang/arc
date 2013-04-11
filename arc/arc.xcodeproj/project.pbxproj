@@ -72,9 +72,7 @@
 		4CEADA221716F3EF00F4F619 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEADA211716F3EF00F4F619 /* Default-568h@2x.png */; };
 		4CEADA251716F3EF00F4F619 /* PrettyArc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CEADA231716F3EF00F4F619 /* PrettyArc.xcdatamodeld */; };
 		4CEADA2C1716F43E00F4F619 /* ArcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEADA2B1716F43E00F4F619 /* ArcViewController.m */; };
-		4CEADA301716F63700F4F619 /* ArcView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEADA2F1716F63700F4F619 /* ArcView.m */; };
 		4CEADA311716F69A00F4F619 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC478170589C600A9AA5F /* QuartzCore.framework */; };
-		4CEADA341716F6D400F4F619 /* ArcShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEADA331716F6D400F4F619 /* ArcShadowView.m */; };
 		4CF6F0EE1706E08800EDDEDC /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0ED1706E08800EDDEDC /* file.png */; };
 		4CF6F0F21706E29300EDDEDC /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F11706E29300EDDEDC /* folder.png */; };
 		4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */; };
@@ -436,10 +434,6 @@
 		4CEADA241716F3EF00F4F619 /* PrettyArc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PrettyArc.xcdatamodel; sourceTree = "<group>"; };
 		4CEADA2A1716F43E00F4F619 /* ArcViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArcViewController.h; path = Controllers/ArcViewController.h; sourceTree = "<group>"; };
 		4CEADA2B1716F43E00F4F619 /* ArcViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArcViewController.m; path = Controllers/ArcViewController.m; sourceTree = "<group>"; };
-		4CEADA2E1716F63700F4F619 /* ArcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcView.h; sourceTree = "<group>"; };
-		4CEADA2F1716F63700F4F619 /* ArcView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcView.m; sourceTree = "<group>"; };
-		4CEADA321716F6D400F4F619 /* ArcShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcShadowView.h; sourceTree = "<group>"; };
-		4CEADA331716F6D400F4F619 /* ArcShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcShadowView.m; sourceTree = "<group>"; };
 		4CF6F0ED1706E08800EDDEDC /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
 		4CF6F0F11706E29300EDDEDC /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
 		4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -1050,10 +1044,6 @@
 		4CEADA2D1716F61F00F4F619 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4CEADA2E1716F63700F4F619 /* ArcView.h */,
-				4CEADA2F1716F63700F4F619 /* ArcView.m */,
-				4CEADA321716F6D400F4F619 /* ArcShadowView.h */,
-				4CEADA331716F6D400F4F619 /* ArcShadowView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1789,8 +1779,6 @@
 				4CEADA1C1716F3EF00F4F619 /* AppDelegate.m in Sources */,
 				4CEADA251716F3EF00F4F619 /* PrettyArc.xcdatamodeld in Sources */,
 				4CEADA2C1716F43E00F4F619 /* ArcViewController.m in Sources */,
-				4CEADA301716F63700F4F619 /* ArcView.m in Sources */,
-				4CEADA341716F6D400F4F619 /* ArcShadowView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
