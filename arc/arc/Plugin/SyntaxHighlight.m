@@ -69,6 +69,32 @@
     }
     
 }
+- (NSRange)findFirstPattern:(NSString*)pattern
+                      range:(NSRange)range
+                    content:(NSString*)content
+{
+    NSError *error = NULL;
+    
+    NSRegularExpression *regex = [NSRegularExpression
+                                  regularExpressionWithPattern:pattern
+                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines
+                                  error:&error];
+    
+    if ((range.location + range.length <= [content length]) &&
+        (range.length > 0) &&
+        (range.length <= [content length]))
+    {
+        //NSLog(@"findFirstPattern:   %d %d",r.location,r.length);
+        return [regex rangeOfFirstMatchInString:content
+                                        options:0
+                                          range:range];
+    } else {
+        //NSLog(@"index out of bounds in regex. findFirstPatten:%d %d",r.location,r.length);
+        return NSMakeRange(NSNotFound, 0);
+    }
+    
+}
+
 - (NSArray*)foundPattern:(NSString*)pattern
                  capture:(int)capture
                    range:(NSRange)range
@@ -566,14 +592,20 @@
                         end:(NSString*)foldEnd
                       range:(NSRange)range
                currentStart:(int)currentStart
+                   curIndex:(int)curIndex
+                      
 {
-    NSRange firstStartRange = [self findFirstPattern:foldStart range:range];
+    NSRange firstStartRange = [self findFirstPattern:foldStart range:range content:[_splitContent objectAtIndex:curIndex]];
     
     NSRange firstEndRange = [self findFirstPattern:foldEnd range:range];
     
-    if (firstStartRange.location == NSNotFound || firstEndRange.location == NSNotFound){
+    if (curIndex >= _splitContent.count) {
         NSLog(@"fin.");
         return;
+    }
+    else if (firstStartRange.location == NSNotFound || firstEndRange.location == NSNotFound){
+
+        [self recurFoldsWithStart:foldStart end:foldEnd range:range currentStart:currentStart curIndex:curIndex+1];
         
     } else if (firstStartRange.location < firstEndRange.location) {
         int fStartEnds = firstStartRange.location + firstStartRange.length;
@@ -582,7 +614,7 @@
         NSRange recurRange = NSMakeRange(fStartEnds, _content.length - nextStart);
         NSLog(@"starting block..");
         [self recurFoldsWithStart:foldStart end:foldEnd range:recurRange currentStart:firstStartRange.location];
-    
+        
     }  else if (firstEndRange.location < firstStartRange.location) {
         int fEndEnds = firstEndRange.location + firstEndRange.length;
         int nextStart = MIN(fEndEnds, firstStartRange.location);
@@ -595,10 +627,10 @@
         } else {
             [self recurFoldsWithStart:foldStart end:foldEnd range:recurRange currentStart:currentStart];
         }
-       
+        
     }
-   
-    
+
+        
 }
 -(void)testFolds:(NSArray*)ranges output:(ArcAttributedString*)output {
     BOOL flag = YES;
