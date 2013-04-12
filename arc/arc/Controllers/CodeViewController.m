@@ -30,10 +30,13 @@
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UIPopoverController *resultsPopoverController;
 @property (nonatomic, strong) ResultsTableViewController *resultsViewController;
-@property CTFramesetterRef frameSetter;
 @property CGFloat lineHeight;
-@property NSMutableArray *lines;
 @property NSMutableArray *plugins;
+
+// Line Processing
+@property NSMutableArray *lines;
+@property int cursor;
+@property CTFramesetterRef frameSetter;
 
 - (void)loadFile;
 - (void)renderFile;
@@ -164,12 +167,12 @@
     }
 
     _lines = [NSMutableArray array];
+    _cursor = 0;
 }
 
 - (void)generateLines
 {
     [self clearPreviousLayoutInformation];
-    _lines = [NSMutableArray array];
     
     CFAttributedStringRef ref =
     (CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.plainAttributedString);
@@ -188,12 +191,13 @@
     // Calculate the lineStarts
     int start = 0;
     NSUInteger length = CFAttributedStringGetLength(ref);
+
     CFBridgingRelease(ref);
+    CTTypesetterRef typesetter = CTFramesetterGetTypesetter(_frameSetter);
     while (start < length)
     {
         [lineStarts setValue:[NSNumber numberWithBool:YES]
                       forKey:[NSString stringWithFormat:@"%d", start]];
-        CTTypesetterRef typesetter = CTFramesetterGetTypesetter(_frameSetter);
         CFIndex count = CTTypesetterSuggestLineBreak(typesetter, start, boundsWidth);
         start += count;
     }
@@ -213,8 +217,7 @@
         } else {
             startOfLine = NO;
         }
-        
-        CTTypesetterRef typesetter = CTFramesetterGetTypesetter(_frameSetter);
+
         CFIndex count = CTTypesetterSuggestLineBreak(typesetter, start, actualBoundsWidth);
         [_lines addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
                                                                [NSValue valueWithRange:NSMakeRange(start, count)],
