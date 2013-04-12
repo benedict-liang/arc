@@ -119,38 +119,32 @@
 
 # pragma mark - AttributedString Mutator Methods
 
-- (void)setColor:(CGColorRef)color
-         OnRange:(NSRange)range
-      ForSetting:(NSString*)settingKey
-{    
+- (void)setForegroundColor:(UIColor *)color
+                   OnRange:(NSRange)range
+                ForSetting:(NSString*)settingKey
+{
     NSMutableArray *settingAttributes =
-        [self settingsAttributeForSettingsKey:settingKey];
-
+    [self settingsAttributeForSettingsKey:settingKey];
+    
     [settingAttributes addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-                                  (__bridge id)color, @"value",
+                                  color, @"value",
                                   NSForegroundColorAttributeName, @"type",
                                   NSStringFromRange(range), @"range",
                                   nil]];
 }
 
-- (void)setBackgroundColor:(NSRange)range
+- (void)setBackgroundColor:(UIColor *)color
+                   OnRange:(NSRange)range
+                ForSetting:(NSString *)settingKey
 {
-    [__attributedString addAttribute:NSBackgroundColorAttributeName
-                               value:[UIColor greenColor] range:range];
-
-//    [self setColor:[UIColor yellowColor].CGColor
-//           OnRange:range
-//        ForSetting:@"asdf"];
-
-//    NSMutableArray *settingAttributes =
-//    [self settingsAttributeForSettingsKey:@"bg"];
-//    
-//    [settingAttributes addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-//                                  (__bridge id)[UIColor yellowColor].CGColor, @"value",
-//                                  (id)NSBackgroundColorAttributeName, @"type",
-//                                  NSStringFromRange(range), @"range",
-//                                  nil]];
+    NSMutableArray *settingAttributes =
+    [self settingsAttributeForSettingsKey:settingKey];
     
+    [settingAttributes addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                                  color, @"value",
+                                  NSBackgroundColorAttributeName, @"type",
+                                  NSStringFromRange(range), @"range",
+                                  nil]];
 }
 
 # pragma mark - Namespaced Attributes

@@ -500,7 +500,10 @@
         }
     }
     
-    [_arcAttributedString setBackgroundColor:[[searchResultRangesArray objectAtIndex:0] rangeValue]];
+    [_arcAttributedString removeAttributesForSettingKey:@"search"];
+    [_arcAttributedString setBackgroundColor:[UIColor yellowColor]
+                                     OnRange:[[searchResultRangesArray objectAtIndex:0] rangeValue]
+                                  ForSetting:@"search"];
     
     // Hide keyboard after search button clicked
     [searchBar resignFirstResponder];
@@ -514,7 +517,6 @@
                                             animated:YES];
     
     [_tableView reloadData];
-//    [self processFileForSetting:nil];
 }
 
 @end
