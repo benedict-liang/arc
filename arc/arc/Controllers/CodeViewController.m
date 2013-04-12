@@ -13,6 +13,10 @@
 #import "FullTextSearch.h"
 #import "ResultsTableViewController.h"
 
+#define KEY_RANGE @"range"
+#define KEY_LINE_NUMBER @"lineNumber"
+#define KEY_LINE_START @"lineStart"
+
 @interface CodeViewController ()
 @property id<File> currentFile;
 @property (nonatomic, strong) UITableView *tableView;
@@ -40,7 +44,14 @@
 
 @implementation CodeViewController
 @synthesize delegate = _delegate;
+
+// Code View Delegate Properties
 @synthesize backgroundColor = _backgroundColor;
+@synthesize foregroundColor = _foregroundColor;
+@synthesize fontFamily = _fontFamily;
+@synthesize fontSize = _fontSize;
+@synthesize lineNumbers = _lineNumbers;
+@synthesize wordWrap = _wordWrap;
 
 - (id)init
 {
@@ -101,7 +112,6 @@
 - (void)showFile:(id<File>)file
 {
     if ([file isEqual:_currentFile]) {
-        [_tableView reloadData];
         return;
     }
     
@@ -122,6 +132,7 @@
     [self calcLineHeight];
     [self renderFile];
     [self postRenderPluginsForSetting:setting];
+
 }
 
 - (void)loadFile
@@ -148,7 +159,7 @@
         CFRelease(_frameSetter);
         _frameSetter = NULL;
     }
-    
+
     _lines = [NSMutableArray array];
 }
 
@@ -161,20 +172,56 @@
     (CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.plainAttributedString);
     _frameSetter = CTFramesetterCreateWithAttributedString(ref);
     
-    // Work out the geometry
-    CGFloat boundsWidth = _tableView.bounds.size.width - 20*2 - 45;
+    NSArray *keys = [NSArray arrayWithObjects:
+                     KEY_RANGE,
+                     KEY_LINE_NUMBER,
+                     KEY_LINE_START,
+                     nil];
     
-    // Calculate the lines
-    CFIndex start = 0;
+    // Split into Logical Lines
+    CGFloat boundsWidth = MAXFLOAT;
+    NSMutableDictionary *lineStarts = [NSMutableDictionary dictionary];
+
+    // Calculate the lineStarts
+    int start = 0;
     NSUInteger length = CFAttributedStringGetLength(ref);
     CFBridgingRelease(ref);
     while (start < length)
     {
+        [lineStarts setValue:[NSNumber numberWithBool:YES]
+                      forKey:[NSString stringWithFormat:@"%d", start]];
         CTTypesetterRef typesetter = CTFramesetterGetTypesetter(_frameSetter);
         CFIndex count = CTTypesetterSuggestLineBreak(typesetter, start, boundsWidth);
-        [_lines addObject:[NSValue valueWithRange:NSMakeRange(start, count)]];
         start += count;
     }
+    
+    // Split Lines to it bounds
+    CGFloat actualBoundsWidth = _tableView.bounds.size.width - 20*2 - 45;
+    
+    // Calculate the lines
+    start = 0;    
+    int lineNumber = 0;
+    BOOL startOfLine;
+    while (start < length)
+    {
+        if ([lineStarts objectForKey:[NSString stringWithFormat:@"%d", start]]) {
+            lineNumber++;
+            startOfLine = YES;
+        } else {
+            startOfLine = NO;
+        }
+        
+        CTTypesetterRef typesetter = CTFramesetterGetTypesetter(_frameSetter);
+        CFIndex count = CTTypesetterSuggestLineBreak(typesetter, start, actualBoundsWidth);
+        [_lines addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
+                                                               [NSValue valueWithRange:NSMakeRange(start, count)],
+                                                               [NSNumber numberWithInt:lineNumber],
+                                                               [NSNumber numberWithBool:startOfLine],
+                                                               nil]
+                                                      forKeys:keys]];
+        start += count;
+    }
+    
 }
 
 - (void)calcLineHeight
@@ -184,13 +231,23 @@
         CTLineRef line = CTLineCreateWithAttributedString(
             (__bridge CFAttributedStringRef)(
                 [_arcAttributedString.attributedString attributedSubstringFromRange:
-                    [[_lines objectAtIndex:0] rangeValue]]));
+                    [[[_lines objectAtIndex:0] objectForKey:KEY_RANGE] rangeValue]]));
 
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
         _lineHeight = asscent + descent + leading;
         _tableView.rowHeight = ceil(_lineHeight);
     }
 }
+
+# pragma mark - Code View Delegate
+
+// Strange That this works.
+- (void)setBackgroundColor:(UIColor *)backgroundColor
+{
+    _backgroundColor = backgroundColor;
+    _tableView.backgroundColor = _backgroundColor;
+}
+
 
 #pragma mark - Execute Plugin Methods
 
@@ -223,13 +280,13 @@
         if (setting == nil || [settingKeys indexOfObject:setting] != NSNotFound) {
             settings = [_appState settingsForKeys:settingKeys];
             if ([plugin respondsToSelector:
-                 @selector(execOnTableView:ofFile:forValues:sharedObject:delegate:)])
+                 @selector(execOnCodeView:ofFile:forValues:sharedObject:delegate:)])
             {
-                [plugin execOnTableView:_tableView
-                                 ofFile:_currentFile
-                              forValues:settings
-                           sharedObject:_sharedObject
-                               delegate:self];
+                [plugin execOnCodeView:self
+                                ofFile:_currentFile
+                             forValues:settings
+                          sharedObject:_sharedObject
+                              delegate:self];
             }
         }
     }
@@ -237,14 +294,17 @@
 
 #pragma mark - Tool Bar Methods
 
-- (void)setUpDefaultToolBar {
+- (void)setUpDefaultToolBar
+{
     _toolbarTitle = [[UIBarButtonItem alloc] initWithTitle:[_currentFile name]
                                                      style:UIBarButtonItemStylePlain
                                                     target:nil
                                                     action:nil];
-    _searchButtonIcon = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
-                                                                                      target:self
-                                                                                      action:@selector(showSearchToolBar)];
+    _searchButtonIcon =
+    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
+                                                  target:self
+                                                  action:@selector(showSearchToolBar)];
+
     [_toolbar setItems:[NSArray arrayWithObjects:
                         [Utils flexibleSpace],
                         _toolbarTitle,
@@ -253,24 +313,38 @@
                         nil]];
 }
 
-- (void)showSearchToolBar {
+- (void)showSearchToolBar
+{
     // Replace current toolbar with tool bar with search bar
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(_toolbar.frame.size.width - 250, 0, 200, SIZE_TOOLBAR_HEIGHT)];
-    _searchBar.delegate = (id<UISearchBarDelegate>)self;
-    
+    _searchBar = [[UISearchBar alloc] initWithFrame:
+                  CGRectMake(_toolbar.frame.size.width - 250, 0, 200, SIZE_TOOLBAR_HEIGHT)];
+    _searchBar.delegate = (id<UISearchBarDelegate>) self;
     UIBarButtonItem *searchBarItem = [[UIBarButtonItem alloc] initWithCustomView:_searchBar];
-    UIBarButtonItem *doneBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                 target:self
-                                                                                 action:@selector(hideSearchToolBar)];
-    [_toolbar setItems:[NSArray arrayWithObjects:_toolbarTitle, [Utils flexibleSpace], searchBarItem, doneBarItem, nil] animated:YES];
+    
+    UIBarButtonItem *doneBarItem =
+    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                  target:self
+                                                  action:@selector(hideSearchToolBar)];
+    [_toolbar setItems:[NSArray arrayWithObjects:
+                        _toolbarTitle,
+                        [Utils flexibleSpace],
+                        searchBarItem,
+                        doneBarItem,
+                        nil]
+              animated:YES];
     
     // Initialize results tableview controller
     _resultsViewController = [[ResultsTableViewController alloc] init];
-    _resultsPopoverController = [[UIPopoverController alloc] initWithContentViewController:_resultsViewController];
-    _resultsPopoverController.passthroughViews = [NSArray arrayWithObject:_searchBar];
+    
+    _resultsPopoverController =
+    [[UIPopoverController alloc] initWithContentViewController:_resultsViewController];
+    
+    _resultsPopoverController.passthroughViews =
+        [NSArray arrayWithObject:_searchBar];
 }
 
-- (void)hideSearchToolBar {
+- (void)hideSearchToolBar
+{
     if (UIDeviceOrientationIsLandscape(self.interfaceOrientation))
     {
         [self setUpDefaultToolBar];
@@ -318,9 +392,10 @@
 - (void)showShowMasterViewButton:(UIBarButtonItem *)button
 {
     // Customise the button.
-    UIImage *icon = [Utils scale:[UIImage imageNamed:@"Reading Panel.png"]
-                          toSize:CGSizeMake(SIZE_TOOLBAR_ICON_WIDTH, SIZE_TOOLBAR_ICON_WIDTH)];
+    UIImage *icon = [Utils scale:[UIImage imageNamed:@"threelines.png"]
+                          toSize:CGSizeMake(40, SIZE_TOOLBAR_ICON_WIDTH)];
     [button setImage:icon];
+    [button setStyle:UIBarButtonItemStylePlain];
     [button setTitle:nil];
     
     _toolbar.items = [NSArray arrayWithObjects:
@@ -361,22 +436,34 @@
         cell = [[CodeLineCell alloc] initWithStyle:UITableViewCellStyleDefault
                                    reuseIdentifier:cellIdentifier];
     }
+
+    [cell setForegroundColor:_foregroundColor];
+    [cell setFontFamily:_fontFamily FontSize:_fontSize];
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    NSUInteger lineNumber = indexPath.row;
     
-    CTLineRef lineRef = CTLineCreateWithAttributedString(
-                                                         (__bridge CFAttributedStringRef)(
-                                                                                          [_arcAttributedString.attributedString attributedSubstringFromRange:
-                                                                                           [[_lines objectAtIndex:lineNumber] rangeValue]]));
-    
+    NSDictionary *lineObject = (NSDictionary *)[_lines objectAtIndex:indexPath.row];
+    CTLineRef lineRef =
+    CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                     ([_arcAttributedString.attributedString attributedSubstringFromRange:
+                                       [[lineObject objectForKey:KEY_RANGE] rangeValue]]));
+
     cell.line = lineRef;
+    NSInteger lineNumber = [[lineObject objectForKey:KEY_LINE_NUMBER] integerValue];
+    
+    if (_lineNumbers) {
+        if ([[lineObject objectForKey:KEY_LINE_START] boolValue]) {
+            cell.lineNumber = lineNumber;
+        }
+    }
+
     [cell setNeedsDisplay];
     return cell;
 }
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
+- (void)tableView:(UITableView*)tableView
+    didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath
                              animated:NO];
@@ -384,17 +471,42 @@
 
 #pragma mark - Search Bar delegate
 
-- (void)searchBarSearchButtonClicked:(UISearchBar*)searchBar {
+- (void)searchBarSearchButtonClicked:(UISearchBar*)searchBar
+{
     NSString *searchString = [searchBar text];
-    NSArray *searchResultRanges = [FullTextSearch searchForText:searchString
+    NSArray *searchResultRangesArray = [FullTextSearch searchForText:searchString
                                                          inFile:_currentFile];
-    // TODO: Check if searchResultRanges is nil before using the data
+    NSMutableArray *searchLineNumber;
+    
+    if (searchResultRangesArray != nil) {
+        searchLineNumber = [[NSMutableArray alloc] init];
+        int lineIndex = 0;
+        
+        for (int i=0; i<[searchResultRangesArray count]; i++) {
+            NSRange searchResultRange = [[searchResultRangesArray objectAtIndex:i] rangeValue];
+            
+            for (int j=lineIndex; j<[_lines count]; j++) {
+                NSRange lineRange = [[[_lines objectAtIndex:j] objectForKey:KEY_RANGE] rangeValue];
+                NSRange rangeIntersectionResult = NSIntersectionRange(lineRange, searchResultRange);
+                
+                // Ranges intersect
+                if (rangeIntersectionResult.length != 0) {
+                    
+                    [searchLineNumber addObject:[NSNumber numberWithInt:j]];
+                    
+                    // Update current lineIndex
+                    lineIndex = j;
+                    break;
+                }
+            }
+        }
+    }
     
     // Hide keyboard after search button clicked
     [searchBar resignFirstResponder];
     
     // Show results
-    _resultsViewController.resultsArray = searchResultRanges;
+    _resultsViewController.resultsArray = [NSArray arrayWithArray:searchLineNumber];
     [_resultsViewController.tableView reloadData];
     [_resultsPopoverController presentPopoverFromRect:[_searchBar bounds]
                                               inView:_searchBar

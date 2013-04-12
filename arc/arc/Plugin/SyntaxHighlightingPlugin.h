@@ -10,6 +10,7 @@
 #import "PluginDelegate.h"
 #import "ArcAttributedString.h"
 #import "TMBundleHeader.h"
+#import "CodeViewDelegate.h"
 #import "CodeViewControllerDelegate.h"
 #import "File.h"
 #import "SyntaxHighlight.h"

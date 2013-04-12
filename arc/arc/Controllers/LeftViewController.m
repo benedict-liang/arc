@@ -74,9 +74,7 @@
                           image:[Utils scale:[UIImage imageNamed:@"dropbox.png"]
                                       toSize:CGSizeMake(40, 40)]
                           tag:TAB_DROPBOX];
-    
-    
-    
+
     _tabBarController = [[UITabBarController alloc] init];
     _tabBarController.delegate = self;
     _tabBarController.view.frame = self.view.bounds;

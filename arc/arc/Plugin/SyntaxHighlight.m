@@ -454,7 +454,7 @@
     
     dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     
-    dispatch_release(group);
+    //dispatch_release(group);
     
 }
 - (BOOL)whileCondition:(NSRange)brange e:(NSRange)erange cr:(NSRange)contentRange

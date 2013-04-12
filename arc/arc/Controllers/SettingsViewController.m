@@ -303,17 +303,37 @@
                            withProperties:(NSDictionary*)properties
 {
     static NSString *cellIdentifier = @"SettingsBoolCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    SettingCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[SettingCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:cellIdentifier];
     }
     
     UISwitch *switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
+    
+    [switchview addTarget:self
+                   action:@selector(boolSettingsChanged:)
+         forControlEvents:UIControlEventValueChanged];
+    
+    NSString *settingKey = [properties objectForKey:SECTION_SETTING_KEY];
+    [switchview setOn:[[_appState settingForKey:settingKey] boolValue]];
+    cell.settingKey = settingKey;
+    
     cell.accessoryView = switchview;
     cell.textLabel.text = [properties objectForKey:SECTION_HEADING];
     return cell;
+}
+
+// Called when a slider's value has been changed.
+- (void)boolSettingsChanged:(id)sender
+{
+    UISwitch *switchview = (UISwitch *)sender;
+
+    SettingCell *cell = (SettingCell *)switchview.superview;
+    [self updateSetting:[NSNumber numberWithBool:switchview.on]
+          forSettingKey:cell.settingKey
+        reloadTableData:YES];
 }
 
 #pragma mark - Table view delegate
