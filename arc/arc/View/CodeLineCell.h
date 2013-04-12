@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <CoreText/CoreText.h>
-#import "CodeLine.h"
 
 @interface CodeLineCell : UITableViewCell
 @property (nonatomic, strong) NSAttributedString *line;
