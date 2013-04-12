@@ -119,6 +119,9 @@
     _currentFile = file;
     [self updateToolbarTitle];
     
+    // Reset table view scroll position
+    [_tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+    
     [self loadFile];
     [self processFileForSetting:nil];
 }
