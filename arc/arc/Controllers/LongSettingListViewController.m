@@ -67,8 +67,16 @@
     }
     
     NSDictionary *currentOption = [_options objectAtIndex:indexPath.row];
-    
     cell.textLabel.text = [currentOption valueForKey:PLUGIN_OPTION_LABEL];
+    
+    // Check if the option is currently selected.
+    NSString *currentSettingValue = [[ApplicationState sharedApplicationState] settingForKey:[_properties valueForKey:SECTION_SETTING_KEY]];
+    NSString *currentOptionValue = [currentOption valueForKey:PLUGIN_OPTION_VALUE];
+    if ([currentOptionValue isEqualToString:currentSettingValue]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     return cell;
 }
