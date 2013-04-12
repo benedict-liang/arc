@@ -341,6 +341,7 @@
     
     _resultsPopoverController.passthroughViews =
         [NSArray arrayWithObject:_searchBar];
+    [_searchBar becomeFirstResponder];
 }
 
 - (void)hideSearchToolBar
