@@ -72,10 +72,11 @@
     
     NSDictionary* themeDictionary = [TMBundleThemeHandler produceStylesWithTheme:themeName];
     NSDictionary* global = [themeDictionary objectForKey:@"global"];
-    UIColor* foreground = [global objectForKey:@"foreground"];
-    [arcAttributedString setColor:[foreground CGColor]
-                          OnRange:NSMakeRange(0, [(NSString*)[file contents] length])
-                       ForSetting:@"syntaxHighlight"];
+    
+    [arcAttributedString setForegroundColor:[global objectForKey:@"foreground"]
+                                    OnRange:arcAttributedString.stringRange
+                                 ForSetting:@"foreground"];
+    
     
     [dictionary setValue:[themeDictionary objectForKey:@"global"]
                   forKey:@"syntaxHighlightingPlugin"];

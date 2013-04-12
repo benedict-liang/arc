@@ -443,10 +443,8 @@
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
     NSDictionary *lineObject = (NSDictionary *)[_lines objectAtIndex:indexPath.row];
-    CTLineRef lineRef =
-    CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
-                                     ([_arcAttributedString.attributedString attributedSubstringFromRange:
-                                       [[lineObject objectForKey:KEY_RANGE] rangeValue]]));
+    NSAttributedString *lineRef = [_arcAttributedString.attributedString attributedSubstringFromRange:
+                                   [[lineObject objectForKey:KEY_RANGE] rangeValue]];
 
     cell.line = lineRef;
     NSInteger lineNumber = [[lineObject objectForKey:KEY_LINE_NUMBER] integerValue];
@@ -503,7 +501,10 @@
         }
     }
     
-    [_arcAttributedString setBackgroundColor:[[searchResultRangesArray objectAtIndex:0] rangeValue]];
+    [_arcAttributedString removeAttributesForSettingKey:@"search"];
+    [_arcAttributedString setBackgroundColor:[UIColor yellowColor]
+                                     OnRange:[[searchResultRangesArray objectAtIndex:0] rangeValue]
+                                  ForSetting:@"search"];
     
     // Hide keyboard after search button clicked
     [searchBar resignFirstResponder];

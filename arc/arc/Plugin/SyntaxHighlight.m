@@ -111,9 +111,9 @@
               output:(ArcAttributedString*)output
 {
     // tmp for setting argument.
-    [output setColor:[fcolor CGColor]
-             OnRange:range
-          ForSetting:@"syntaxhighlighting"];
+    [output setForegroundColor:fcolor
+                       OnRange:range
+                    ForSetting:@"sh"];
 }
 
 - (NSArray*)capturableScopes:(NSString*)name
