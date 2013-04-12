@@ -7,7 +7,6 @@
 //
 
 #import "ArcViewController.h"
-#import "ArcShadowView.h"
 
 @interface ArcViewController ()
 @property BOOL animating;
