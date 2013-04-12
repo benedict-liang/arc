@@ -128,17 +128,20 @@
 
     [settingAttributes addObject:[NSDictionary dictionaryWithObjectsAndKeys:
                                   (__bridge id)color, @"value",
-                                  (id)kCTForegroundColorAttributeName, @"type",
+                                  NSForegroundColorAttributeName, @"type",
                                   NSStringFromRange(range), @"range",
                                   nil]];
 }
 
-- (void)setBackgroundColor:(NSRange)range {
-    NSLog(@"init: %@", [__attributedString attributesAtIndex:0 effectiveRange:&range]);
-    [__attributedString addAttribute:NSBackgroundColorAttributeName value:[UIColor greenColor] range:range];
-    NSLog(@"after: %@", [__attributedString attributesAtIndex:0 effectiveRange:&range]);
+- (void)setBackgroundColor:(NSRange)range
+{
+    [__attributedString addAttribute:NSBackgroundColorAttributeName
+                               value:[UIColor greenColor] range:range];
 
-    // tmp
+//    [self setColor:[UIColor yellowColor].CGColor
+//           OnRange:range
+//        ForSetting:@"asdf"];
+
 //    NSMutableArray *settingAttributes =
 //    [self settingsAttributeForSettingsKey:@"bg"];
 //    
@@ -198,22 +201,21 @@
 - (void)updateFontProperties
 {
     // Remove old font property
-    [__attributedString removeAttribute:(id)kCTFontAttributeName
+    [__attributedString removeAttribute:NSFontAttributeName
                                   range:_stringRange];
     
-    [__plainAttributedString removeAttribute:(id)kCTFontAttributeName
+    [__plainAttributedString removeAttribute:NSFontAttributeName
                                   range:_stringRange];
     
     // update font to new property
-    CTFontRef font =
-    CTFontCreateWithName((__bridge CFStringRef)_fontFamily, _fontSize, NULL);
+    UIFont *font = [UIFont fontWithName:_fontFamily size:_fontSize];
     
-    [__attributedString addAttribute:(id)kCTFontAttributeName
-                               value:(__bridge id)font
+    [__attributedString addAttribute:NSFontAttributeName
+                               value:font
                                range:_stringRange];
 
-    [__plainAttributedString addAttribute:(id)kCTFontAttributeName
-                               value:(__bridge id)font
+    [__plainAttributedString addAttribute:NSFontAttributeName
+                               value:font
                                range:_stringRange];
 }
 

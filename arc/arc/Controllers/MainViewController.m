@@ -35,7 +35,7 @@
                     [[FontFamilyPlugin alloc] init],
                     [[FontSizePlugin alloc] init],
                     [[LineNumberPlugin alloc] init],
-                    [[SyntaxHighlightingPlugin alloc] init],
+//                    [[SyntaxHighlightingPlugin alloc] init],
                     nil];
         _appState = [ApplicationState sharedApplicationState];
     }
