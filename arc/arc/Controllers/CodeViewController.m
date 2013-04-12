@@ -34,6 +34,7 @@
 @property CGFloat lineHeight;
 @property NSMutableArray *lines;
 @property NSMutableArray *plugins;
+@property UIColor *selectionColor;
 
 - (void)loadFile;
 - (void)renderFile;
