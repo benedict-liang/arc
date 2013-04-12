@@ -52,6 +52,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     NSString *input = [_textField text];
+    [_textField setText:@""];
     [_delegate createFolderWithName:input];
     return NO;
 }
