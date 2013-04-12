@@ -353,9 +353,7 @@
         NSString *value = [option objectForKey:PLUGIN_OPTION_VALUE];
         NSString *settingKey = [sectionProperties objectForKey:SECTION_SETTING_KEY];
         
-        // Unhighlight the row, and reload the table.
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        
+        // Reload the table.
         [self updateSetting:value
               forSettingKey:settingKey
             reloadTableData:YES];
@@ -364,7 +362,7 @@
         LongSettingListViewController *listController = [[LongSettingListViewController alloc] initWithProperties:sectionProperties delegate:self];
         [self.navigationController pushViewController:listController animated:YES];
     }
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)updateSetting:(id<NSObject>)value
