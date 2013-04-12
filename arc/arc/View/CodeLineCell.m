@@ -95,8 +95,8 @@
     CGRectMake(0, 0, _lineNumberWidth, self.contentView.bounds.size.height);
 
     _codeLine.frame =
-    CGRectMake(_lineNumberWidth, 0,
-               self.contentView.bounds.size.width - _lineNumberWidth,
+    CGRectMake(_lineNumberWidth + 10, 0,
+               self.contentView.bounds.size.width - _lineNumberWidth - 10,
                self.contentView.bounds.size.height);
     
     [_codeLine sizeToFit];

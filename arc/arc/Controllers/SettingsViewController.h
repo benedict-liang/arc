@@ -11,8 +11,11 @@
 #import "ApplicationState.h"
 #import "PluginDelegate.h"
 #import "SettingCell.h"
+#import "LongSettingListViewController.h"
+#import "LongSettingListViewControllerDelegate.h"
 
 @interface SettingsViewController : UIViewController <SubViewControllerDelegate,
-    UITableViewDelegate, UITableViewDataSource>
+    UITableViewDelegate, UITableViewDataSource, LongSettingListViewControllerDelegate>
 - (void)registerPlugin:(id<PluginDelegate>)plugin;
+
 @end
