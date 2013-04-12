@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "PluginDelegate.h"
+#import "ApplicationState.h"
+#import "LongSettingListViewControllerDelegate.h"
 
 @interface LongSettingListViewController : UITableViewController
 
-@property (weak, nonatomic) id delegate;
+@property (weak, nonatomic) id<LongSettingListViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSDictionary *properties;
 
 - (id)initWithProperties:(NSDictionary *)properties delegate:(id)delegate;
