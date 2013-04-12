@@ -10,4 +10,8 @@
 
 @protocol LongSettingListViewControllerDelegate <NSObject>
 
+- (void)updateSetting:(id<NSObject>)value
+        forSettingKey:(NSString*)settingKey
+      reloadTableData:(Boolean)reloadData;
+
 @end
