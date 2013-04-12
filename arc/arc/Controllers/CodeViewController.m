@@ -36,7 +36,7 @@
 // Line Processing
 @property NSMutableArray *lines;
 @property int cursor;
-@property CTFramesetterRef frameSetter;
+@property CTTypesetterRef typesetter;
 
 - (void)loadFile;
 - (void)renderFile;
@@ -161,9 +161,9 @@
 
 - (void)clearPreviousLayoutInformation
 {
-    if (_frameSetter != NULL) {
-        CFRelease(_frameSetter);
-        _frameSetter = NULL;
+    if (_typesetter != NULL) {
+        CFRelease(_typesetter);
+        _typesetter = NULL;
     }
 
     _lines = [NSMutableArray array];
@@ -173,10 +173,6 @@
 - (void)generateLines
 {
     [self clearPreviousLayoutInformation];
-    
-    CFAttributedStringRef ref =
-    (CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.plainAttributedString);
-    _frameSetter = CTFramesetterCreateWithAttributedString(ref);
     
     NSArray *keys = [NSArray arrayWithObjects:
                      KEY_RANGE,
@@ -190,15 +186,15 @@
 
     // Calculate the lineStarts
     int start = 0;
-    NSUInteger length = CFAttributedStringGetLength(ref);
+    int length = _arcAttributedString.string.length;
 
-    CFBridgingRelease(ref);
-    CTTypesetterRef typesetter = CTFramesetterGetTypesetter(_frameSetter);
+    _typesetter = CTTypesetterCreateWithAttributedString((CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.plainAttributedString));
+
     while (start < length)
     {
-        [lineStarts setValue:[NSNumber numberWithBool:YES]
-                      forKey:[NSString stringWithFormat:@"%d", start]];
-        CFIndex count = CTTypesetterSuggestLineBreak(typesetter, start, boundsWidth);
+        [lineStarts setObject:[NSNumber numberWithBool:YES]
+                       forKey:[NSNumber numberWithInt:start]];
+        CFIndex count = CTTypesetterSuggestLineBreak(_typesetter, start, boundsWidth);
         start += count;
     }
     
@@ -211,14 +207,14 @@
     BOOL startOfLine;
     while (start < length)
     {
-        if ([lineStarts objectForKey:[NSString stringWithFormat:@"%d", start]]) {
+        if ([lineStarts objectForKey:[NSNumber numberWithInt:start]]) {
             lineNumber++;
             startOfLine = YES;
         } else {
             startOfLine = NO;
         }
 
-        CFIndex count = CTTypesetterSuggestLineBreak(typesetter, start, actualBoundsWidth);
+        CFIndex count = CTTypesetterSuggestLineBreak(_typesetter, start, actualBoundsWidth);
         [_lines addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
                                                                [NSValue valueWithRange:NSMakeRange(start, count)],
                                                                [NSNumber numberWithInt:lineNumber],
