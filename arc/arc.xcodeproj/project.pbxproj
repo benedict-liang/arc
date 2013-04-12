@@ -339,7 +339,7 @@
 		026BC478170589C600A9AA5F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		027EE0341716AAEC00302F07 /* LongSettingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongSettingListViewController.h; sourceTree = "<group>"; };
 		027EE0351716AAEC00302F07 /* LongSettingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LongSettingListViewController.m; sourceTree = "<group>"; };
-		027EE0371716B0CB00302F07 /* SettingsViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewControllerDelegate.h; sourceTree = "<group>"; };
+		027EE0381717FD7800302F07 /* LongSettingListViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongSettingListViewControllerDelegate.h; sourceTree = "<group>"; };
 		028B48FF170E9D0600C0CEF6 /* UbuntuMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UbuntuMono.ttf; sourceTree = "<group>"; };
 		02A5198C170DC0CE007C038E /* Inconsolata.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inconsolata.ttf; sourceTree = "<group>"; };
 		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
@@ -914,7 +914,7 @@
 				4CE2951517104A4C003B012A /* SettingsViewDelegate.h */,
 				4C1AF11F1715119300A2D0D8 /* FolderViewControllerDelegate.h */,
 				02C2E4841715594300C912E0 /* CreateFolderViewControllerDelegate.h */,
-				027EE0371716B0CB00302F07 /* SettingsViewControllerDelegate.h */,
+				027EE0381717FD7800302F07 /* LongSettingListViewControllerDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -2021,6 +2021,7 @@
 				4CEADA271716F3EF00F4F619 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
