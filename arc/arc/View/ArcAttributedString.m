@@ -133,6 +133,23 @@
                                   nil]];
 }
 
+- (void)setBackgroundColor:(NSRange)range {
+    NSLog(@"init: %@", [__attributedString attributesAtIndex:0 effectiveRange:&range]);
+    [__attributedString addAttribute:NSBackgroundColorAttributeName value:[UIColor greenColor] range:range];
+    NSLog(@"after: %@", [__attributedString attributesAtIndex:0 effectiveRange:&range]);
+
+    // tmp
+//    NSMutableArray *settingAttributes =
+//    [self settingsAttributeForSettingsKey:@"bg"];
+//    
+//    [settingAttributes addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+//                                  (__bridge id)[UIColor yellowColor].CGColor, @"value",
+//                                  (id)NSBackgroundColorAttributeName, @"type",
+//                                  NSStringFromRange(range), @"range",
+//                                  nil]];
+    
+}
+
 # pragma mark - Namespaced Attributes
 
 - (NSMutableArray*)settingsAttributeForSettingsKey:(NSString*)settingKey

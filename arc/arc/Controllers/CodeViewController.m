@@ -341,6 +341,7 @@
     
     _resultsPopoverController.passthroughViews =
         [NSArray arrayWithObject:_searchBar];
+    [_searchBar becomeFirstResponder];
 }
 
 - (void)hideSearchToolBar
@@ -392,9 +393,10 @@
 - (void)showShowMasterViewButton:(UIBarButtonItem *)button
 {
     // Customise the button.
-    UIImage *icon = [Utils scale:[UIImage imageNamed:@"Reading Panel.png"]
-                          toSize:CGSizeMake(SIZE_TOOLBAR_ICON_WIDTH, SIZE_TOOLBAR_ICON_WIDTH)];
+    UIImage *icon = [Utils scale:[UIImage imageNamed:@"threelines.png"]
+                          toSize:CGSizeMake(40, SIZE_TOOLBAR_ICON_WIDTH)];
     [button setImage:icon];
+    [button setStyle:UIBarButtonItemStylePlain];
     [button setTitle:nil];
     
     _toolbar.items = [NSArray arrayWithObjects:
@@ -448,8 +450,11 @@
 
     cell.line = lineRef;
     NSInteger lineNumber = [[lineObject objectForKey:KEY_LINE_NUMBER] integerValue];
-    if ([[lineObject objectForKey:KEY_LINE_START] boolValue]) {
-        cell.lineNumber = lineNumber;
+    
+    if (_lineNumbers) {
+        if ([[lineObject objectForKey:KEY_LINE_START] boolValue]) {
+            cell.lineNumber = lineNumber;
+        }
     }
 
     [cell setNeedsDisplay];
@@ -482,7 +487,7 @@
             NSRange searchResultRange = [[searchResultRangesArray objectAtIndex:i] rangeValue];
             
             for (int j=lineIndex; j<[_lines count]; j++) {
-                NSRange lineRange = [[_lines objectAtIndex:j] rangeValue];
+                NSRange lineRange = [[[_lines objectAtIndex:j] objectForKey:KEY_RANGE] rangeValue];
                 NSRange rangeIntersectionResult = NSIntersectionRange(lineRange, searchResultRange);
                 
                 // Ranges intersect
@@ -498,6 +503,8 @@
         }
     }
     
+    [_arcAttributedString setBackgroundColor:[[searchResultRangesArray objectAtIndex:0] rangeValue]];
+    
     // Hide keyboard after search button clicked
     [searchBar resignFirstResponder];
     
@@ -508,6 +515,8 @@
                                               inView:_searchBar
                             permittedArrowDirections:UIPopoverArrowDirectionAny
                                             animated:YES];
+    
+    [_tableView reloadData];
 }
 
 @end
