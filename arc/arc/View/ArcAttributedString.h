@@ -33,6 +33,8 @@
          OnRange:(NSRange)range
       ForSetting:(NSString*)settingKey;
 
+- (void)setBackgroundColor:(NSRange)range;
+
 // Remove Attributes based on settings Key
 - (void)removeAttributesForSettingKey:(NSString*)settingKey;
 @end

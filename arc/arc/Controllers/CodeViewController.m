@@ -502,6 +502,8 @@
         }
     }
     
+    [_arcAttributedString setBackgroundColor:[[searchResultRangesArray objectAtIndex:0] rangeValue]];
+    
     // Hide keyboard after search button clicked
     [searchBar resignFirstResponder];
     
@@ -512,6 +514,8 @@
                                               inView:_searchBar
                             permittedArrowDirections:UIPopoverArrowDirectionAny
                                             animated:YES];
+    
+    [_tableView reloadData];
 }
 
 @end
