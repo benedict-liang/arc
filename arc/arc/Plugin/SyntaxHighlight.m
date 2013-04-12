@@ -22,6 +22,7 @@
         
         if ([[file contents] isKindOfClass:[NSString class]]) {
             _content = (NSString*)[file contents];
+            _splitContent = [_content componentsSeparatedByString:@"\n"];
         }
         
         //reset ranges
@@ -577,8 +578,9 @@
     } else if (firstStartRange.location < firstEndRange.location) {
         int fStartEnds = firstStartRange.location + firstStartRange.length;
         int nextStart = MIN(fStartEnds, firstEndRange.location);
-        NSRange recurRange = NSMakeRange(nextStart, _content.length - nextStart);
         
+        NSRange recurRange = NSMakeRange(fStartEnds, _content.length - nextStart);
+        NSLog(@"starting block..");
         [self recurFoldsWithStart:foldStart end:foldEnd range:recurRange currentStart:firstStartRange.location];
     
     }  else if (firstEndRange.location < firstStartRange.location) {
@@ -587,8 +589,9 @@
         
         NSRange recurRange = NSMakeRange(nextStart, _content.length - nextStart);
         if (currentStart != -1) {
+            NSLog(@"ending block..");
             foldRanges = [self addFoldRange:NSMakeRange(currentStart, firstEndRange.location - currentStart) toArray:foldRanges];
-             
+            [self recurFoldsWithStart:foldStart end:foldEnd range:recurRange currentStart:currentStart];
         } else {
             [self recurFoldsWithStart:foldStart end:foldEnd range:recurRange currentStart:currentStart];
         }
@@ -598,10 +601,18 @@
     
 }
 -(void)testFolds:(NSArray*)ranges output:(ArcAttributedString*)output {
+    BOOL flag = YES;
     for (NSValue* v in ranges) {
         NSRange r;
         [v getValue:&r];
-        [self styleOnRange:r fcolor:[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0] output:output];
+        if (flag) {
+            flag = !flag;
+            [self styleOnRange:r fcolor:[UIColor redColor] output:output];
+        } else {
+            flag = !flag;
+            [self styleOnRange:r fcolor:[UIColor greenColor] output:output];
+        }
+    
     }
 }
 

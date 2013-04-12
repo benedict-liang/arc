@@ -29,6 +29,7 @@
 @property (readonly) id<File> currentFile;
 @property (readonly) NSString* content;
 @property (readonly) NSDictionary* bundle;
+@property (readonly) NSArray* splitContent;
 @property NSArray* overlays;
 @property BOOL isProcessed;
 
