@@ -43,10 +43,16 @@
     _okButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [_okButton setTitle:@"OK" forState:UIControlStateNormal];
     [_okButton setFrame:CGRectMake(6, 68, 238, 45)];
+    [_okButton addTarget:self action:@selector(okButtonPressed) forControlEvents:UIControlEventTouchDown];
 
     [[self view] addSubview:createFolderLabel];
     [[self view] addSubview:_textField];
     [[self view] addSubview:_okButton];
+}
+
+- (void)okButtonPressed
+{
+    [self textFieldShouldReturn:_textField];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
