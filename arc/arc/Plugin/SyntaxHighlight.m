@@ -45,16 +45,14 @@
                         range:range];
 }
 
-- (NSRange)findFirstPattern:(NSString*)pattern
+- (NSRange)findFirstPattern:(NSRegularExpression *)regex
                       range:(NSRange)range
 {
-    NSError *error = NULL;
-    
-    NSRegularExpression *regex = [NSRegularExpression
-                                  regularExpressionWithPattern:pattern
-                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines
-                                  error:&error];
-    
+//    NSError *error = NULL;
+//    NSRegularExpression *regex = [NSRegularExpression
+//                                  regularExpressionWithPattern:pattern
+//                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines
+//                                  error:&error];    
     if ((range.location + range.length <= [_content length]) &&
         (range.length > 0) &&
         (range.length <= [_content length]))
@@ -316,7 +314,20 @@
     NSString* begin = [syntaxItem objectForKey:@"begin"];
     NSString* end = [syntaxItem objectForKey:@"end"];
     NSString* name = [syntaxItem objectForKey:@"name"];
-    NSRange brange = [self findFirstPattern:begin
+    
+    NSError *error = NULL;
+    NSRegularExpression *beginRegex = [NSRegularExpression
+                                  regularExpressionWithPattern:begin
+                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines
+                                  error:&error];
+
+    NSRegularExpression *endRegex = [NSRegularExpression
+                                  regularExpressionWithPattern:end
+                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines
+                                  error:&error];
+
+    
+    NSRange brange = [self findFirstPattern:beginRegex
                                       range:contentRange];
     NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
     NSRange erange;
@@ -329,7 +340,7 @@
             //if ([self fixAnchor:end]) {
             //erange = NSMakeRange(bEnds, contentRange.length - bEnds);
             //} else {
-            erange = [self findFirstPattern:end
+            erange = [self findFirstPattern:endRegex
                                       range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
             //}
         } else {
@@ -374,7 +385,7 @@
             }
         }
         
-        brange = [self findFirstPattern:begin
+        brange = [self findFirstPattern:beginRegex
                                   range:NSMakeRange(eEnds, contentRange.length - eEnds)];
         
     } while ([self whileCondition:brange e:erange cr:contentRange]);
