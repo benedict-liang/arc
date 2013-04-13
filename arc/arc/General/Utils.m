@@ -114,10 +114,10 @@
         int r2Ends = r2.location + r2.length;
         //r1 dominates
         if (r1.location < r2.location && r1Ends > r2Ends) {
-            return NSOrderedDescending;
+            return NSOrderedAscending;
             //r2 dominates
         } else if (r1.location > r2.location && r1Ends < r2Ends) {
-            return NSOrderedAscending;
+            return NSOrderedDescending;
         } else {
             //don't care about other cases
             return NSOrderedSame;

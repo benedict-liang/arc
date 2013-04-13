@@ -552,7 +552,7 @@
     NSString* foldStart = [_bundle objectForKey:@"foldingStartMarker"];
     NSString* foldEnd = [_bundle objectForKey:@"foldingStopMarker"];
     
-
+    
     
     [self applyStylesTo:output withTheme:theme];
     
@@ -560,6 +560,7 @@
         [self foldsWithStart:foldStart end:foldEnd];
         [self testFolds:foldRanges output:output];
         NSLog(@"%@",foldRanges);
+        NSLog(@"%@",[Utils sortRanges:foldRanges]);
     }
     
     
