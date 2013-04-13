@@ -627,14 +627,15 @@
  
         
         } else {
-//            if (startRange.location > endRange.location) {
-//                NSLog(@"end");
-//                if (stack.count > 0) {
-//                    int s = [(NSNumber*)[stack lastObject] intValue];
-//                    [stack removeLastObject];
-//                    [self addFoldRange:NSMakeRange(s, endRange.location+offset) toArray:foldRanges];
-//                }
-//            }
+            if (startRange.location > endRange.location) {
+//                NSLog(@"end %d",endRange.location+offset);
+//                int s = [(NSNumber*)[stack lastObject] intValue];
+//                [stack removeLastObject];
+//                NSRange r =NSMakeRange(s, endRange.location+offset - s);
+//                foldRanges = [self addFoldRange:r toArray:foldRanges];
+//                _foldEnds = [self addFoldRange:NSMakeRange(endRange.location+offset, endRange.length) toArray:_foldEnds];
+//
+            }
         }
         offset += lineContent.length+1;
     }
