@@ -476,13 +476,6 @@
         // Should only consider point.x
         CGPoint point = [gesture locationInView:gesture.view];
         
-        // TODO: Get location of touch of tableviewcell in TableView (global)
-        NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
-        CGRect cellRect = [_tableView rectForRowAtIndexPath:indexPath];
-        NSLog(@"rect origin: (%f, %f), size: (%f, %f)", cellRect.origin.x, cellRect.origin.y,
-              cellRect.size.height, cellRect.size.width);
-        
-        
         // TODO: Get global range of selected string (check width of line numbers)
         CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                              (attributedString));
@@ -491,6 +484,14 @@
         [_arcAttributedString setBackgroundColor:[UIColor blueColor]
                                          OnRange:selectedRange
                                       ForSetting:@"copyAndPaste"];
+        
+        // TODO: Get location of touch of tableviewcell in TableView (global)
+        NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+        CGRect cellRect = [_tableView rectForRowAtIndexPath:indexPath];
+        NSLog(@"rect origin: (%f, %f), size: (%f, %f)", cellRect.origin.x, cellRect.origin.y,
+              cellRect.size.height, cellRect.size.width);
+        CTFrameRef frameRef = CTFramesetterCreateWithAttributedString(line);
+        
         [_tableView reloadData];
     }
     if ([gesture state] == UIGestureRecognizerStateEnded) {
