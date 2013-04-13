@@ -49,7 +49,27 @@
 }
 
 - (void)moveRightDragPoint:(UIPanGestureRecognizer*)gesture {
+    UITableView *tableView = (UITableView*)gesture.view.superview;
+    CGPoint translation = [gesture translationInView:tableView];
     
+    gesture.view.center = CGPointMake(gesture.view.center.x + translation.x, gesture.view.center.y);
+    
+    [gesture setTranslation:CGPointMake(0, 0) inView:tableView];
+    [tableView reloadData];
+    if ([gesture state] == UIGestureRecognizerStateChanged) {
+        // Update selection rect
+//        CGFloat originalX = self.frame.origin.x;
+//        CGFloat newWidth = gesture.view.center.x - originalX;
+//        
+//        [self updateSize:CGSizeMake(newWidth, self.frame.size.height)];
+    }
+    
+    else if ([gesture state] == UIGestureRecognizerStateEnded) {
+        // Update substring
+//        [self updateSelectionSubstring:cell];
+//        
+//        [self showCopyMenuForTextSelection];
+    }
 }
 
 - (void)viewDidLoad

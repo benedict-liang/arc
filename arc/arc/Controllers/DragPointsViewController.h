@@ -16,4 +16,7 @@
 @property (nonatomic, strong) DragPointImageView *leftDragPoint;
 @property (nonatomic, strong) DragPointImageView *rightDragPoint;
 
+- (void)moveLeftDragPoint:(UIPanGestureRecognizer*)gesture;
+- (void)moveRightDragPoint:(UIPanGestureRecognizer*)gesture;
+
 @end

@@ -31,6 +31,7 @@
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UIPopoverController *resultsPopoverController;
 @property (nonatomic, strong) ResultsTableViewController *resultsViewController;
+@property (nonatomic, strong) DragPointsViewController *dragPointVC;
 @property CGFloat lineHeight;
 @property NSMutableArray *plugins;
 
@@ -505,10 +506,10 @@
               selectedRect.size.height, selectedRect.size.width);
     
         // TODO: Add drag points subview in CodeViewController
-        DragPointsViewController *dragPointVC = [[DragPointsViewController alloc] initWithSelectedTextRect:selectedRect
+        _dragPointVC = [[DragPointsViewController alloc] initWithSelectedTextRect:selectedRect
                                                                                                  andOffset:lineNumberWidth];
-        [_tableView addSubview:dragPointVC.leftDragPoint];
-        [_tableView addSubview:dragPointVC.rightDragPoint];
+        [_tableView addSubview:_dragPointVC.leftDragPoint];
+        [_tableView addSubview:_dragPointVC.rightDragPoint];
         
         [_tableView reloadData];
     }
