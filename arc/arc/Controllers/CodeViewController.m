@@ -490,7 +490,13 @@
         CGRect cellRect = [_tableView rectForRowAtIndexPath:indexPath];
         NSLog(@"rect origin: (%f, %f), size: (%f, %f)", cellRect.origin.x, cellRect.origin.y,
               cellRect.size.height, cellRect.size.width);
-        CTFrameRef frameRef = CTFramesetterCreateWithAttributedString(line);
+        CGFloat startOffset = CTLineGetOffsetForStringIndex(lineRef, index, NULL);
+        CGFloat endOffset = CTLineGetOffsetForStringIndex(lineRef, index+3, NULL);
+
+        CGRect selectedRect = CGRectMake(cellRect.origin.x + startOffset, cellRect.origin.y,
+                                        endOffset - startOffset, cellRect.size.height);
+        NSLog(@"new rect origin: (%f, %f), size: (%f, %f)", selectedRect.origin.x, selectedRect.origin.y,
+              selectedRect.size.height, selectedRect.size.width);
         
         [_tableView reloadData];
     }
