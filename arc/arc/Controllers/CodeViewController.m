@@ -12,6 +12,7 @@
 #import "ArcAttributedString.h"
 #import "FullTextSearch.h"
 #import "ResultsTableViewController.h"
+#import "DragPointImageView.h"
 
 #define KEY_RANGE @"range"
 #define KEY_LINE_NUMBER @"lineNumber"
@@ -472,6 +473,7 @@
         CodeLineCell *cell = (CodeLineCell*)gesture.view;
         NSAttributedString *attributedString = cell.line;
         NSRange cellStringRange = cell.stringRange;
+        int lineNumberWidth = cell.lineNumberWidth;
         
         // Should only consider point.x
         CGPoint point = [gesture locationInView:gesture.view];
@@ -480,10 +482,14 @@
         CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                              (attributedString));
         CFIndex index = CTLineGetStringIndexForPosition(lineRef, point);
+
+        // TODO: Apply background color for index
         NSRange selectedRange = NSMakeRange(cellStringRange.location + index, 3);
         [_arcAttributedString setBackgroundColor:[UIColor blueColor]
                                          OnRange:selectedRange
                                       ForSetting:@"copyAndPaste"];
+        NSLog(@"selected text: %@", [_arcAttributedString.attributedString.string substringWithRange:selectedRange]);
+        
         
         // TODO: Get location of touch of tableviewcell in TableView (global)
         NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
@@ -497,6 +503,11 @@
                                         endOffset - startOffset, cellRect.size.height);
         NSLog(@"new rect origin: (%f, %f), size: (%f, %f)", selectedRect.origin.x, selectedRect.origin.y,
               selectedRect.size.height, selectedRect.size.width);
+    
+        // TODO: Add drag points subview in CodeViewController
+        CGRect leftDragPointFrame = CGRectMake(selectedRect.origin.x + lineNumberWidth, selectedRect.origin.y, 20, selectedRect.size.height);
+        DragPointImageView *leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame];
+        [_tableView addSubview:leftDragPoint];
         
         [_tableView reloadData];
     }
@@ -588,8 +599,6 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 
 
 // TODO: Get relevant object from _line
-// TODO: Add drag points subview in CodeViewController
-// TODO: Apply background color for index
 // TODO: Move drag points and update background color range
 
 
