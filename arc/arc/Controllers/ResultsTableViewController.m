@@ -7,6 +7,7 @@
 //
 
 #import "ResultsTableViewController.h"
+#import "SearchResultCell.h"
 
 @interface ResultsTableViewController ()
 
