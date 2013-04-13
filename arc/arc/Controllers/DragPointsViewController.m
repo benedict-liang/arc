@@ -44,6 +44,8 @@
     return self;
 }
 
+// TODO: Move drag points and update background color range
+
 - (void)moveLeftDragPoint:(UIPanGestureRecognizer*)gesture {
     
 }
@@ -55,7 +57,7 @@
     gesture.view.center = CGPointMake(gesture.view.center.x + translation.x, gesture.view.center.y);
     
     [gesture setTranslation:CGPointMake(0, 0) inView:tableView];
-    [tableView reloadData];
+//    [tableView reloadData];
     if ([gesture state] == UIGestureRecognizerStateChanged) {
         // Update selection rect
 //        CGFloat originalX = self.frame.origin.x;

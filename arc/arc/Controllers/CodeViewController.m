@@ -601,7 +601,6 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 
 
 // TODO: Get relevant object from _line
-// TODO: Move drag points and update background color range
 
 
 @end
