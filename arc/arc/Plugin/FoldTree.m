@@ -47,4 +47,12 @@
 
     }
 }
+-(NSString*)description {
+    NSMutableString* str = [NSMutableString stringWithFormat:@"Node: %@ children=> \n",[NSValue value:&_contentRange withObjCType:@encode(NSRange)]];
+    for (FoldTree* subTree in _children) {
+        [str appendString:[subTree description]];
+    }
+    return str;
+}
+
 @end
