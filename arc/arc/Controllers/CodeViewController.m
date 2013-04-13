@@ -101,9 +101,6 @@
                                   self.view.bounds.size.width,
                                   self.view.bounds.size.height - SIZE_TOOLBAR_HEIGHT);
     
-    // TODO: Remove once confirmed - search bar on top of code
-    //[self addSearchBarToTableViewTop];
-    
     [self.view addSubview:_tableView];
 }
 
@@ -358,18 +355,6 @@
     else {
         [self showShowMasterViewButton:_portraitButton];
     }
-}
-
-// TODO: Remove once confirmed - search bar on top of code
-- (void)addSearchBarToTableViewTop
-{
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, SIZE_TOOLBAR_HEIGHT)];
-    _tableView.tableHeaderView = _searchBar;
-    _searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
-    _searchBar.delegate = (id<UISearchBarDelegate>)self;
-    
-    // Hides search bar upon load
-    _tableView.contentOffset = CGPointMake(0, SIZE_TOOLBAR_HEIGHT);
 }
 
 #pragma mark - Code View Delegate
