@@ -188,8 +188,8 @@
     int start = 0;
     int length = _arcAttributedString.string.length;
 
-    _typesetter = CTTypesetterCreateWithAttributedString((CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.plainAttributedString));
-
+    _typesetter = CTTypesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_arcAttributedString.plainAttributedString);
+    
     while (start < length)
     {
         [lineStarts setObject:[NSNumber numberWithBool:YES]
