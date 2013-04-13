@@ -70,6 +70,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
+    SearchResultCell *cell = (SearchResultCell*)[tableView cellForRowAtIndexPath:indexPath];
+    int lineNumber = cell.lineNumber;
+    
+    [_codeViewController scrollToLineNumber:lineNumber];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

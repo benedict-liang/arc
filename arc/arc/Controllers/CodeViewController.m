@@ -378,6 +378,10 @@
     }
 }
 
+- (void)scrollToLineNumber:(int)lineNumber {
+    
+}
+
 #pragma mark - Detail View Controller Delegate
 
 - (void)showShowMasterViewButton:(UIBarButtonItem *)button
