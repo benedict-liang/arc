@@ -34,7 +34,11 @@
                                                                                           action:@selector(moveLeftDragPoint:)];
         UIPanGestureRecognizer *rightPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self
                                                                                      action:@selector(moveRightDragPoint:)];
+        [_leftDragPoint addGestureRecognizer:leftPanGesture];
+        [_rightDragPoint addGestureRecognizer:rightPanGesture];
         
+        _leftDragPoint.userInteractionEnabled = YES;
+        _rightDragPoint.userInteractionEnabled = YES;
     }
     
     return self;
