@@ -439,6 +439,7 @@
 		4CF6F0F11706E29300EDDEDC /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
 		4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		840B6454D395361AD2F521B2 /* CloudServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudServiceManager.h; sourceTree = "<group>"; };
 		8F15104F1704410000115E5E /* TMBundleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleHeader.h; sourceTree = "<group>"; };
 		8F151050170443AC00115E5E /* home.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = home.html; sourceTree = "<group>"; };
 		8F1510C7170468B000115E5E /* TMBundleThemeHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleThemeHandler.h; sourceTree = "<group>"; };
@@ -876,6 +877,7 @@
 				026BC47A1705913200A9AA5F /* Local Files */,
 				02D2B73D17099E88002D22E7 /* RootFolder.h */,
 				02D2B73E17099E88002D22E7 /* RootFolder.m */,
+				840B636342E49333F3D17563 /* Cloud */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1063,6 +1065,22 @@
 			);
 			name = Images;
 			path = Assets/Images;
+			sourceTree = "<group>";
+		};
+		840B636342E49333F3D17563 /* Cloud */ = {
+			isa = PBXGroup;
+			children = (
+				840B65C878A6C7146123E560 /* Protocols */,
+			);
+			path = Cloud;
+			sourceTree = "<group>";
+		};
+		840B65C878A6C7146123E560 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				840B6454D395361AD2F521B2 /* CloudServiceManager.h */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		8F563E53170160CD00EE5643 /* TextMateBundles */ = {
