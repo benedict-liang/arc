@@ -475,26 +475,8 @@
     
     if (searchResultRangesArray != nil) {
         searchLineNumberArray = [[NSMutableArray alloc] init];
-        int lineIndex = 0;
-        
-        for (int i=0; i<[searchResultRangesArray count]; i++) {
-            NSRange searchResultRange = [[searchResultRangesArray objectAtIndex:i] rangeValue];
-            
-            for (int j=lineIndex; j<[_lines count]; j++) {
-                NSRange lineRange = [[[_lines objectAtIndex:j] objectForKey:KEY_RANGE] rangeValue];
-                NSRange rangeIntersectionResult = NSIntersectionRange(lineRange, searchResultRange);
-                
-                // Ranges intersect
-                if (rangeIntersectionResult.length != 0) {
-                    
-                    [searchLineNumberArray addObject:[NSNumber numberWithInt:j]];
-                    
-                    // Update current lineIndex
-                    lineIndex = j;
-                    break;
-                }
-            }
-        }
+        [self getSearchResultLineNumbers:searchLineNumberArray
+                        withResultsArray:searchResultRangesArray];
     }
     
     [_arcAttributedString removeAttributesForSettingKey:@"search"];
@@ -517,6 +499,31 @@
                                             animated:YES];
     
     [_tableView reloadData];
+}
+
+- (void)getSearchResultLineNumbers:(NSMutableArray *)searchLineNumberArray
+           withResultsArray:(NSArray *)resultsArray
+{
+    int lineIndex = 0;
+    
+    for (int i=0; i<[resultsArray count]; i++) {
+        NSRange searchResultRange = [[resultsArray objectAtIndex:i] rangeValue];
+        
+        for (int j=lineIndex; j<[_lines count]; j++) {
+            NSRange lineRange = [[[_lines objectAtIndex:j] objectForKey:KEY_RANGE] rangeValue];
+            NSRange rangeIntersectionResult = NSIntersectionRange(lineRange, searchResultRange);
+            
+            // Ranges intersect
+            if (rangeIntersectionResult.length != 0) {
+                
+                [searchLineNumberArray addObject:[NSNumber numberWithInt:j]];
+                
+                // Update current lineIndex
+                lineIndex = j;
+                break;
+            }
+        }
+    }
 }
 
 @end
