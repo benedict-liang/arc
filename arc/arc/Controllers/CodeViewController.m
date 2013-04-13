@@ -471,14 +471,17 @@
     
     if ([gesture state] == UIGestureRecognizerStateBegan) {
         CodeLineCell *cell = (CodeLineCell*)gesture.view;
+        NSAttributedString *attributedString = cell.line;
+        NSRange cellStringRange = cell.stringRange;
         
         // Should only consider point.x
         CGPoint point = [gesture locationInView:gesture.view];
-        NSAttributedString *attributedString = cell.line;
         CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)(attributedString));
         CFIndex index = CTLineGetStringIndexForPosition(lineRef, point);
         
-        //NSLog(@"cell range start: %@", cell.lin)
+        
+        // TODO: Get global range of selected string
+        NSLog(@"String selected: %@", [_arcAttributedString.attributedString.string substringWithRange:NSMakeRange(cellStringRange.location + index, 3)]);
     }
     if ([gesture state] == UIGestureRecognizerStateEnded) {
         //[_tableView reloadData];
