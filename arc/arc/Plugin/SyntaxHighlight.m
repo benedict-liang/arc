@@ -10,9 +10,11 @@
 
 @interface SyntaxHighlight ()
 @property BOOL isAlive;
+@property BOOL matchesDone;
 @end
 
 @implementation SyntaxHighlight
+@synthesize factory = _factory;
 
 - (id)initWithFile:(id<File>)file andDelegate:(id<CodeViewControllerDelegate>)delegate
 {
@@ -24,7 +26,7 @@
         _bundle = [TMBundleSyntaxParser plistForExt:[file extension]];
         
         _isAlive = YES;
-        _isProcessed = NO;
+        _matchesDone = NO;
         
         if ([[file contents] isKindOfClass:[NSString class]]) {
             _content = (NSString*)[file contents];
@@ -143,14 +145,14 @@
     for (NSString *s in cpS) {
         NSDictionary* style = [(NSDictionary*)[theme objectForKey:@"scopes"] objectForKey:s];
         if (![dict isEqual:(NSObject*)overlapMatches] && [_overlays containsObject:s]) {
-            overlapMatches = [self addRange:range scope:s dict:overlapMatches capturableScopes:@[s]];
+            overlapMatches = [self addRange:range
+                                      scope:s
+                                       dict:overlapMatches
+                           capturableScopes:@[s]];
         }
         
-        UIColor *fg = nil;
         if (style) {
-            fg = [style objectForKey:@"foreground"];
-        }
-        if (fg) {
+            UIColor *fg = [style objectForKey:@"foreground"];
             [self styleOnRange:range
                         fcolor:fg
                         output:output];
@@ -447,14 +449,18 @@
     });
     
     dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-    
-    //dispatch_release(group);
-    
 }
+
 - (BOOL)whileCondition:(NSRange)brange e:(NSRange)erange cr:(NSRange)contentRange
 {
-    return brange.location != NSNotFound && erange.location + erange.length < contentRange.length && erange.location > 0 && !(NSEqualRanges(brange, NSMakeRange(0, 0)) && (NSEqualRanges(erange, NSMakeRange(0, 0)))) && (erange.location < contentRange.length - 1);
+    return (brange.location != NSNotFound &&
+            erange.location + erange.length < contentRange.length &&
+            erange.location > 0 &&
+            !(NSEqualRanges(brange, NSMakeRange(0, 0)) &&
+              (NSEqualRanges(erange, NSMakeRange(0, 0)))) &&
+            (erange.location < contentRange.length - 1));
 }
+
 - (BOOL)fixAnchor:(NSString*)pattern
 {
     //return [pattern stringByReplacingOccurrencesOfString:@"\\G" withString:@"\uFFFF"];
@@ -463,14 +469,16 @@
             [pattern rangeOfString:@"\\A"].location != NSNotFound);
 }
 
-- (void)updateView:(ArcAttributedString*)output withTheme:(NSDictionary*)theme
+- (void)updateView:(ArcAttributedString*)output
+         withTheme:(NSDictionary*)theme
 {
     if (self.delegate) {
         [self.delegate mergeAndRenderWith:output
-                                  forFile:self.currentFile
+                                  forFile:_currentFile
                                 WithStyle:[theme objectForKey:@"global"]];
     }
 }
+
 - (void)logs
 {
     NSLog(@"nameMatches: %@",nameMatches);
@@ -478,8 +486,8 @@
     NSLog(@"beginM: %@",beginCMatches);
     NSLog(@"endM: %@",endCMatches);
     NSLog(@"pairM: %@",pairMatches);
-    
 }
+
 - (void)applyForeground:(ArcAttributedString*)output withTheme:(NSDictionary*)theme
 {
     NSDictionary* global = [theme objectForKey:@"global"];
@@ -490,8 +498,12 @@
                     output:output];
     }
 }
-- (void)applyStylesTo:(ArcAttributedString*)output withTheme:(NSDictionary*)theme
+
+- (void)applyStylesTo:(ArcAttributedString*)output
+            withTheme:(NSDictionary*)theme
 {
+    [output removeAttributesForSettingKey:@"sh"];
+    [self applyForeground:output withTheme:theme];
     [self applyStylesTo:output withRanges:pairMatches withTheme:theme];
     [self applyStylesTo:output withRanges:nameMatches withTheme:theme];
     [self applyStylesTo:output withRanges:captureMatches withTheme:theme];
@@ -500,47 +512,37 @@
     [self applyStylesTo:output withRanges:contentNameMatches withTheme:theme];
     [self applyStylesTo:output withRanges:overlapMatches withTheme:theme];
 }
+
 - (void)execOn:(NSDictionary*)options
 {
     _isAlive = YES;
-
     ArcAttributedString *output = [options objectForKey:@"attributedString"];
     NSDictionary* theme = [options objectForKey:@"theme"];
 
-    NSMutableArray* patterns = [NSMutableArray arrayWithArray:[_bundle objectForKey:@"patterns"]];
-    NSDictionary* repo = [_bundle objectForKey:@"repository"];
-    for (id k in repo) {
-        [patterns addObject:[repo objectForKey:k]];
+    if (!_matchesDone) {
+        NSMutableArray* patterns = [NSMutableArray arrayWithArray:[_bundle objectForKey:@"patterns"]];
+        NSDictionary* repo = [_bundle objectForKey:@"repository"];
+        for (id k in repo) {
+            [patterns addObject:[repo objectForKey:k]];
+        }
+        
+        [self iterPatternsForRange:NSMakeRange(0, [_content length])
+                          patterns:patterns
+                            output:output];
     }
-
-    [self iterPatternsForRange:NSMakeRange(0, [_content length])
-                      patterns:patterns
-                        output:output];
     
+    // tell SH factory to remove self from thread pool.
+    _matchesDone = YES;
+    [_factory removeFromThreadPool:self];
+
     [self applyStylesTo:output withTheme:theme];
-
     [self updateView:output withTheme:theme];
-    
-    _isProcessed = YES;    
 }
 
 - (void)kill
 {
     _isAlive = NO;
+    _matchesDone = NO;
 }
-
-- (void)reapplyWithOpts:(NSDictionary*)options
-{
-    while (!_isProcessed);
-    
-    if (_isProcessed) {
-        ArcAttributedString *output = [options objectForKey:@"attributedString"];
-        NSDictionary* theme = [options objectForKey:@"theme"];
-
-        [self applyStylesTo:output withTheme:theme];
-        [self updateView:output withTheme:theme];
-    }
-}
-
 
 @end
