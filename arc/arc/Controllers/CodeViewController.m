@@ -102,6 +102,16 @@
                                   self.view.bounds.size.height - SIZE_TOOLBAR_HEIGHT);
     
     [self.view addSubview:_tableView];
+    
+    // TODO: Long Press Gesture
+    UILongPressGestureRecognizer *longPressGesture =
+    [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                  action:@selector(selectText:)];
+    [_tableView addGestureRecognizer:longPressGesture];
+}
+
+- (void)selectText:(UILongPressGestureRecognizer*)gesture {
+    NSLog(@"long press");
 }
 
 - (void)refreshForSetting:(NSString *)setting
@@ -135,7 +145,7 @@
     [self calcLineHeight];
     [self renderFile];
     [self postRenderPluginsForSetting:setting];
-
+    
 }
 
 - (void)loadFile
@@ -162,7 +172,7 @@
         CFRelease(_typesetter);
         _typesetter = NULL;
     }
-
+    
     _lines = [NSMutableArray array];
     _cursor = 0;
 }
@@ -180,11 +190,11 @@
     // Split into Logical Lines
     CGFloat boundsWidth = MAXFLOAT;
     NSMutableDictionary *lineStarts = [NSMutableDictionary dictionary];
-
+    
     // Calculate the lineStarts
     int start = 0;
     int length = _arcAttributedString.string.length;
-
+    
     _typesetter = CTTypesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_arcAttributedString.plainAttributedString);
     
     while (start < length)
@@ -199,7 +209,7 @@
     CGFloat actualBoundsWidth = _tableView.bounds.size.width - 20*2 - 45;
     
     // Calculate the lines
-    start = 0;    
+    start = 0;
     int lineNumber = 0;
     BOOL startOfLine;
     while (start < length)
@@ -210,7 +220,7 @@
         } else {
             startOfLine = NO;
         }
-
+        
         CFIndex count = CTTypesetterSuggestLineBreak(_typesetter, start, actualBoundsWidth);
         [_lines addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
                                                                [NSValue valueWithRange:NSMakeRange(start, count)],
@@ -228,10 +238,10 @@
     CGFloat asscent, descent, leading;
     if ([_lines count] > 0) {
         CTLineRef line = CTLineCreateWithAttributedString(
-            (__bridge CFAttributedStringRef)(
-                [_arcAttributedString.attributedString attributedSubstringFromRange:
-                    [[[_lines objectAtIndex:0] objectForKey:KEY_RANGE] rangeValue]]));
-
+                                                          (__bridge CFAttributedStringRef)(
+                                                                                           [_arcAttributedString.attributedString attributedSubstringFromRange:
+                                                                                            [[[_lines objectAtIndex:0] objectForKey:KEY_RANGE] rangeValue]]));
+        
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
         _lineHeight = asscent + descent + leading;
         _tableView.rowHeight = ceil(_lineHeight);
@@ -303,7 +313,7 @@
     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
                                                   target:self
                                                   action:@selector(showSearchToolBar)];
-
+    
     [_toolbar setItems:[NSArray arrayWithObjects:
                         [Utils flexibleSpace],
                         _toolbarTitle,
@@ -340,7 +350,7 @@
     [[UIPopoverController alloc] initWithContentViewController:_resultsViewController];
     
     _resultsPopoverController.passthroughViews =
-        [NSArray arrayWithObject:_searchBar];
+    [NSArray arrayWithObject:_searchBar];
     [_searchBar becomeFirstResponder];
 }
 
@@ -433,7 +443,7 @@
         cell = [[CodeLineCell alloc] initWithStyle:UITableViewCellStyleDefault
                                    reuseIdentifier:cellIdentifier];
     }
-
+    
     [cell setForegroundColor:_foregroundColor];
     [cell setFontFamily:_fontFamily FontSize:_fontSize];
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -441,7 +451,7 @@
     NSDictionary *lineObject = (NSDictionary *)[_lines objectAtIndex:indexPath.row];
     NSAttributedString *lineRef = [_arcAttributedString.attributedString attributedSubstringFromRange:
                                    [[lineObject objectForKey:KEY_RANGE] rangeValue]];
-
+    
     cell.line = lineRef;
     NSInteger lineNumber = [[lineObject objectForKey:KEY_LINE_NUMBER] integerValue];
     
@@ -450,7 +460,7 @@
             cell.lineNumber = lineNumber;
         }
     }
-
+    
     [cell setNeedsDisplay];
     return cell;
 }
@@ -458,7 +468,7 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView*)tableView
-    didSelectRowAtIndexPath:(NSIndexPath*)indexPath
+didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath
                              animated:NO];
@@ -470,7 +480,7 @@
 {
     NSString *searchString = [searchBar text];
     NSArray *searchResultRangesArray = [FullTextSearch searchForText:searchString
-                                                         inFile:_currentFile];
+                                                              inFile:_currentFile];
     NSMutableArray *searchLineNumberArray;
     
     if (searchResultRangesArray != nil) {
@@ -490,15 +500,15 @@
     _resultsViewController.resultsArray = [NSArray arrayWithArray:searchLineNumberArray];
     [_resultsViewController.tableView reloadData];
     [_resultsPopoverController presentPopoverFromRect:[_searchBar bounds]
-                                              inView:_searchBar
-                            permittedArrowDirections:UIPopoverArrowDirectionAny
-                                            animated:YES];
+                                               inView:_searchBar
+                             permittedArrowDirections:UIPopoverArrowDirectionAny
+                                             animated:YES];
     
     [_tableView reloadData];
 }
 
 - (void)getSearchResultLineNumbers:(NSMutableArray *)searchLineNumberArray
-           withResultsArray:(NSArray *)resultsArray
+                  withResultsArray:(NSArray *)resultsArray
 {
     int lineIndex = 0;
     
@@ -525,7 +535,7 @@
 - (void)applyBackgroundToAttributedStringForRanges:(NSArray *)rangesArray
                                          withColor:(UIColor*)color
 
-{    
+{
     for (NSValue *range in rangesArray) {
         [_arcAttributedString setBackgroundColor:color
                                          OnRange:[range rangeValue]
@@ -535,7 +545,7 @@
 
 // TODO: Implement Copy and Paste
 
-// TODO: Long Press Gesture
+
 // TODO: Get location of touch of tableviewcell in TableView (global)
 // TODO: Get relevant object from _line
 // TODO: Add drag points subview in CodeViewController
