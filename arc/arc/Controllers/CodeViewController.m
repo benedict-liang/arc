@@ -533,4 +533,14 @@
     }
 }
 
+// TODO: Implement Copy and Paste
+
+// TODO: Long Press Gesture
+// TODO: Get location of touch of tableviewcell in TableView (global)
+// TODO: Get relevant object from _line
+// TODO: Add drag points subview in CodeViewController
+// TODO: Apply background color for index
+// TODO: Move drag points and update background color range
+
+
 @end
