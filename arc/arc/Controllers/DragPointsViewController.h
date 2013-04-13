@@ -10,4 +10,8 @@
 
 @interface DragPointsViewController : UIViewController
 
+- (id)initWithSelectedTextRect:(CGRect)selectedTextRect;
+
+
+
 @end
