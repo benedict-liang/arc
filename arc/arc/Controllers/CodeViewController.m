@@ -458,7 +458,7 @@
     UILongPressGestureRecognizer *longPressGesture =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                   action:@selector(selectText:)];
-    [_tableView addGestureRecognizer:longPressGesture];
+    [cell addGestureRecognizer:longPressGesture];
     
     [cell setNeedsDisplay];
     return cell;
