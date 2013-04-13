@@ -135,7 +135,10 @@
     [self calcLineHeight];
     [self renderFile];
     [self postRenderPluginsForSetting:setting];
-    
+    //    NSArray *a = [_arcAttributedString.appliedAttributesDictionary objectForKey:@"sh"];
+    //    if (a) {
+    //        NSLog(@"%d", (int)[a count]);
+    //    }
 }
 
 - (void)loadFile

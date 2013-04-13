@@ -11,6 +11,7 @@
 #import "TMBundleHeader.h"
 #import "CodeViewControllerDelegate.h"
 #import "File.h"
+#import "SyntaxHighlightingPluginDelegate.h"
 
 //Immutable class. Holds thread local state
 
@@ -24,15 +25,14 @@
     __block NSDictionary *overlapMatches;
 }
 
-@property (readonly) id<CodeViewControllerDelegate> delegate;
-@property (readonly) id<File> currentFile;
-@property (readonly) NSString* content;
-@property (readonly) NSDictionary* bundle;
-@property NSArray* overlays;
-@property BOOL isProcessed;
-
-- (id)initWithFile:(id<File>)file andDelegate:(id<CodeViewControllerDelegate>)delegate;
+@property (nonatomic, readonly) id<CodeViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<SyntaxHighlightingPluginDelegate> factory;
+@property (nonatomic, readonly) id<File> currentFile;
+@property (nonatomic, readonly) NSString* content;
+@property (nonatomic, readonly) NSDictionary* bundle;
+@property (nonatomic, strong) NSArray* overlays;
+- (id)initWithFile:(id<File>)file
+       andDelegate:(id<CodeViewControllerDelegate>)delegate;
 - (void)execOn:(NSDictionary*)options;
-- (void)reapplyWithOpts:(NSDictionary*)options;
 - (void)kill;
 @end

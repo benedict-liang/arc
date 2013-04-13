@@ -19,6 +19,7 @@
 
 @implementation SyntaxHighlightingPlugin
 @synthesize settingKeys = _settingKeys;
+@synthesize delegate = _delegate;
 @synthesize cache = _cache;
 @synthesize theme = _theme;
 
@@ -85,48 +86,46 @@
     [dictionary setValue:[themeDictionary objectForKey:@"global"]
                   forKey:@"syntaxHighlightingPlugin"];
     
-
-    SyntaxHighlight* cachedHighlighter = [_cache objectForKey:[file path]];
     
     // Kill all thread pool
     for (SyntaxHighlight *thread in _threadPool) {
         [thread kill];
     }
     [_threadPool removeAllObjects];
-    
-    if (cachedHighlighter) {
-        NSDictionary *syntaxOpts = @{
-                                     @"theme":themeDictionary,
-                                     @"attributedString":
-                                         [[ArcAttributedString alloc]
-                                          initWithArcAttributedString:arcAttributedString]
-                                     };
-        [cachedHighlighter performSelectorInBackground:@selector(reapplyWithOpts:)
-                                            withObject:syntaxOpts];
-    } else {
-        SyntaxHighlight* sh = [[SyntaxHighlight alloc] initWithFile:file
-                                                        andDelegate:delegate];
 
-        if (sh.bundle) {
-            ArcAttributedString *copy =
-            [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
+    SyntaxHighlight* sh = [_cache objectForKey:[file path]];
+    if (!sh) {
+        sh = [[SyntaxHighlight alloc] initWithFile:file
+                                       andDelegate:delegate];
 
-            NSDictionary* syntaxOptions = @{
-                                            @"theme":themeDictionary,
-                                            @"attributedString":copy
-                                            };
-            
-            [sh performSelectorInBackground:@selector(execOn:)
-                                 withObject:syntaxOptions];
+        // give sh object a reference to the factory
+        // to enable it to remove itself from the thread pool
+        sh.factory = self;
 
-            // add object to the thread pool
-            [_threadPool addObject:sh];
-            
-            // disable cache temporarily
-            // [_cache setObject:sh forKey:[file path]];
-        }
+        // add to cache
+        // [_cache setObject:sh forKey:[file path]];
     }
+    
+    if (sh.bundle) {
+        // add object to the thread pool
+        [_threadPool addObject:sh];
+        
+        ArcAttributedString *copy =
+        [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
+        
+        NSDictionary* syntaxOptions = @{
+                                        @"theme":themeDictionary,
+                                        @"attributedString":copy
+                                        };
 
+        [sh performSelectorInBackground:@selector(execOn:)
+                             withObject:syntaxOptions];
+    }
+}
+
+- (void)removeFromThreadPool:(SyntaxHighlight *)sh
+{
+    [_threadPool removeObject:sh];
 }
 
 - (void)execOnCodeView:(id<CodeViewDelegate>)codeView
