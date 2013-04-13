@@ -9,7 +9,7 @@
 @protocol CloudServiceManager <NSObject>
 
 // Returns the singleton service manager for this particular service.
-- (id<CloudServiceManager>)sharedServiceManager;
++ (id<CloudServiceManager>)sharedServiceManager;
 
 // Takes in a ViewController and an optional delegate.
 // Triggers the cloud service's login procedure.
