@@ -511,8 +511,6 @@
 }
 - (void)applyStylesTo:(ArcAttributedString*)output withTheme:(NSDictionary*)theme
 {
-    
-    [self applyForeground:output withTheme:theme];
     [self applyStylesTo:output withRanges:pairMatches withTheme:theme];
     [self applyStylesTo:output withRanges:nameMatches withTheme:theme];
     [self applyStylesTo:output withRanges:captureMatches withTheme:theme];
