@@ -8,9 +8,13 @@
 
 #import "SyntaxHighlight.h"
 
+@interface SyntaxHighlight ()
+@property BOOL isAlive;
+@end
+
 @implementation SyntaxHighlight
 
-- (id)initWithFile:(id<File>)file del:(id<CodeViewControllerDelegate>)delegate
+- (id)initWithFile:(id<File>)file andDelegate:(id<CodeViewControllerDelegate>)delegate
 {
     self = [super init];
     if (self) {
@@ -18,6 +22,8 @@
         _currentFile = file;
         _overlays = @[@"string",@"comment"];
         _bundle = [TMBundleSyntaxParser plistForExt:[file extension]];
+        
+        _isAlive = YES;
         _isProcessed = NO;
         
         if ([[file contents] isKindOfClass:[NSString class]]) {
@@ -377,63 +383,64 @@
     
     dispatch_apply([patterns count], queue, ^(size_t i){
         dispatch_group_async(group, queue, ^{
-            NSDictionary* syntaxItem = [patterns objectAtIndex:i];
-            NSString *name = [syntaxItem objectForKey:@"name"];
-            NSString *match = [syntaxItem objectForKey:@"match"];
-            NSString *begin = [syntaxItem objectForKey:@"begin"];
-            NSDictionary *beginCaptures = [syntaxItem objectForKey:@"beginCaptures"];
-            NSString *end = [syntaxItem objectForKey:@"end"];
-            NSDictionary *endCaptures = [syntaxItem objectForKey:@"endCaptures"];
-            NSDictionary *captures = [syntaxItem objectForKey:@"captures"];
-            NSString *include = [syntaxItem objectForKey:@"include"];
-            NSArray* embedPatterns = [syntaxItem objectForKey:@"patterns"];
-            NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
-            //case name, match
-            if (name && match) {
-                NSArray *a = [self foundPattern:match
-                                          range:contentRange];
-                nameMatches = [self merge:@{name: @{@"ranges":a, @"capturableScopes":capturableScopes}}
-                                   withd2:nameMatches];
-            }
-            
-            if (captures && match) {
-                captureMatches = [self merge:[self findCaptures:captures
-                                                        pattern:match
-                                                          range:contentRange]
-                                      withd2:captureMatches];
-            }
-            
-            if (beginCaptures && begin) {
-                beginCMatches = [self merge:[self findCaptures:beginCaptures
-                                                       pattern:begin
-                                                         range:contentRange]
-                                     withd2:beginCMatches];
-            }
-            
-            if (endCaptures && end) {
-                endCMatches = [self merge:[self findCaptures:endCaptures
-                                                     pattern:end
-                                                       range:contentRange]
-                                   withd2:endCMatches];
-            }
-            
-            //matching blocks
-            
-            if (begin && end) {
-                [self processPairRange:contentRange
-                                  item:syntaxItem
-                                output:output];
-            } else if (embedPatterns) {
-                [self iterPatternsForRange:contentRange patterns:embedPatterns output:output];
-            }
-            if (include) {
-                id includes = [self resolveInclude:include];
-                //NSLog(@"recurring for include: %@ with %d %d name:%@",includes, contentRange.location, contentRange.length, name);
-                if (contentRange.length <= [_content length] &&
-                    includes) {
-                    [self iterPatternsForRange:contentRange
-                                      patterns:includes
-                                        output:output];
+            if (_isAlive) {
+                NSDictionary* syntaxItem = [patterns objectAtIndex:i];
+                NSString *name = [syntaxItem objectForKey:@"name"];
+                NSString *match = [syntaxItem objectForKey:@"match"];
+                NSString *begin = [syntaxItem objectForKey:@"begin"];
+                NSDictionary *beginCaptures = [syntaxItem objectForKey:@"beginCaptures"];
+                NSString *end = [syntaxItem objectForKey:@"end"];
+                NSDictionary *endCaptures = [syntaxItem objectForKey:@"endCaptures"];
+                NSDictionary *captures = [syntaxItem objectForKey:@"captures"];
+                NSString *include = [syntaxItem objectForKey:@"include"];
+                NSArray* embedPatterns = [syntaxItem objectForKey:@"patterns"];
+                NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
+                //case name, match
+                if (name && match) {
+                    NSArray *a = [self foundPattern:match
+                                              range:contentRange];
+                    nameMatches = [self merge:@{name: @{@"ranges":a, @"capturableScopes":capturableScopes}}
+                                       withd2:nameMatches];
+                }
+                
+                if (captures && match) {
+                    captureMatches = [self merge:[self findCaptures:captures
+                                                            pattern:match
+                                                              range:contentRange]
+                                          withd2:captureMatches];
+                }
+                
+                if (beginCaptures && begin) {
+                    beginCMatches = [self merge:[self findCaptures:beginCaptures
+                                                           pattern:begin
+                                                             range:contentRange]
+                                         withd2:beginCMatches];
+                }
+                
+                if (endCaptures && end) {
+                    endCMatches = [self merge:[self findCaptures:endCaptures
+                                                         pattern:end
+                                                           range:contentRange]
+                                       withd2:endCMatches];
+                }
+                
+                //matching blocks
+                if (begin && end) {
+                    [self processPairRange:contentRange
+                                      item:syntaxItem
+                                    output:output];
+                } else if (embedPatterns) {
+                    [self iterPatternsForRange:contentRange patterns:embedPatterns output:output];
+                }
+                if (include) {
+                    id includes = [self resolveInclude:include];
+                    //NSLog(@"recurring for include: %@ with %d %d name:%@",includes, contentRange.location, contentRange.length, name);
+                    if (contentRange.length <= [_content length] &&
+                        includes) {
+                        [self iterPatternsForRange:contentRange
+                                          patterns:includes
+                                            output:output];
+                    }
                 }
             }
         });
@@ -485,8 +492,6 @@
 }
 - (void)applyStylesTo:(ArcAttributedString*)output withTheme:(NSDictionary*)theme
 {
-    
-    [self applyForeground:output withTheme:theme];
     [self applyStylesTo:output withRanges:pairMatches withTheme:theme];
     [self applyStylesTo:output withRanges:nameMatches withTheme:theme];
     [self applyStylesTo:output withRanges:captureMatches withTheme:theme];
@@ -497,9 +502,10 @@
 }
 - (void)execOn:(NSDictionary*)options
 {
+    _isAlive = YES;
+
     ArcAttributedString *output = [options objectForKey:@"attributedString"];
-    NSString* themeName = [options objectForKey:@"theme"];
-    NSDictionary* theme = [TMBundleThemeHandler produceStylesWithTheme:themeName];
+    NSDictionary* theme = [options objectForKey:@"theme"];
 
     NSMutableArray* patterns = [NSMutableArray arrayWithArray:[_bundle objectForKey:@"patterns"]];
     NSDictionary* repo = [_bundle objectForKey:@"repository"];
@@ -512,22 +518,25 @@
                         output:output];
     
     [self applyStylesTo:output withTheme:theme];
-    
+
     [self updateView:output withTheme:theme];
     
-    _isProcessed = YES;
-    
+    _isProcessed = YES;    
+}
+
+- (void)kill
+{
+    _isAlive = NO;
 }
 
 - (void)reapplyWithOpts:(NSDictionary*)options
 {
-    
     while (!_isProcessed);
     
     if (_isProcessed) {
         ArcAttributedString *output = [options objectForKey:@"attributedString"];
-        NSString* themeName = [options objectForKey:@"theme"];
-        NSDictionary* theme = [TMBundleThemeHandler produceStylesWithTheme:themeName];
+        NSDictionary* theme = [options objectForKey:@"theme"];
+
         [self applyStylesTo:output withTheme:theme];
         [self updateView:output withTheme:theme];
     }

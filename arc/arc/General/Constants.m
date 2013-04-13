@@ -29,6 +29,9 @@ NSString* const KEY_FONT_SIZE = @"fontSize";
 NSString* const KEY_LINE_NUMBERS = @"lineNumbers";
 NSString* const KEY_WORD_WRAP = @"wordWrap";
 
+// Values
+const int THRESHOLD_LONG_SETTING_LIST = 5;
+
 // Default Folder Names
 NSString* const FOLDER_EXTERNAL_APPLICATIONS = @"External Applications";
 NSString* const FOLDER_ROOT = @"Documents";

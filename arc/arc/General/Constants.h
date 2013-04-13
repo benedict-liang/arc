@@ -30,6 +30,9 @@ extern NSString* const KEY_FONT_SIZE;
 extern NSString* const KEY_LINE_NUMBERS;
 extern NSString* const KEY_WORD_WRAP;
 
+// Values
+extern const int THRESHOLD_LONG_SETTING_LIST;
+
 // Default Folder Names
 extern NSString* const FOLDER_EXTERNAL_APPLICATIONS;
 extern NSString* const FOLDER_ROOT;

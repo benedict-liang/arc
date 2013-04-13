@@ -14,6 +14,7 @@
 // Dictionary describing fontFamilySetting
 @property NSDictionary *properties;
 @property NSString *defaultTheme;
+@property NSMutableArray *threadPool;
 @end
 
 @implementation SyntaxHighlightingPlugin
@@ -35,10 +36,12 @@
                         PLUGIN_OPTIONS:[SyntaxHighlightingPlugin generateOptions]
                         };
 
+        _threadPool = [NSMutableArray array];
         _cache = [NSMutableDictionary dictionary];
     }
     return self;
 }
+
 + (NSArray*)generateOptions {
     NSURL* themeConf = [[NSBundle mainBundle] URLForResource:@"ThemeConf.plist"
                                                withExtension:nil];
@@ -68,47 +71,59 @@
                      sharedObject:(NSMutableDictionary *)dictionary
                          delegate:(id<CodeViewControllerDelegate>)delegate
 {
-    NSString* themeName = [properties objectForKey:_colorSchemeSettingKey];
-    _theme = themeName;
-    
-    NSDictionary* themeDictionary = [TMBundleThemeHandler produceStylesWithTheme:themeName];
+    _theme = [properties objectForKey:_colorSchemeSettingKey];
+    NSDictionary* themeDictionary = [TMBundleThemeHandler produceStylesWithTheme:_theme];
     NSDictionary* global = [themeDictionary objectForKey:@"global"];
     
+    // Set Foreground color
+    [arcAttributedString removeAttributesForSettingKey:@"foreground"];
     [arcAttributedString setForegroundColor:[global objectForKey:@"foreground"]
                                     OnRange:arcAttributedString.stringRange
                                  ForSetting:@"foreground"];
-    
-    
+
+
     [dictionary setValue:[themeDictionary objectForKey:@"global"]
                   forKey:@"syntaxHighlightingPlugin"];
     
+
     SyntaxHighlight* cachedHighlighter = [_cache objectForKey:[file path]];
     
+    // Kill all thread pool
+    for (SyntaxHighlight *thread in _threadPool) {
+        [thread kill];
+    }
+    [_threadPool removeAllObjects];
+    
     if (cachedHighlighter) {
-        
         NSDictionary *syntaxOpts = @{
-                                     @"theme":themeName,
+                                     @"theme":themeDictionary,
                                      @"attributedString":
-                                         [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString]
-        };
-        
-        [cachedHighlighter performSelectorInBackground:@selector(reapplyWithOpts:) withObject:syntaxOpts];
-        
+                                         [[ArcAttributedString alloc]
+                                          initWithArcAttributedString:arcAttributedString]
+                                     };
+        [cachedHighlighter performSelectorInBackground:@selector(reapplyWithOpts:)
+                                            withObject:syntaxOpts];
     } else {
-        SyntaxHighlight* sh = [[SyntaxHighlight alloc] initWithFile:file del:delegate];
-        
+        SyntaxHighlight* sh = [[SyntaxHighlight alloc] initWithFile:file
+                                                        andDelegate:delegate];
+
         if (sh.bundle) {
             ArcAttributedString *copy =
             [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
+
             NSDictionary* syntaxOptions = @{
-                                            @"theme":themeName,
+                                            @"theme":themeDictionary,
                                             @"attributedString":copy
                                             };
             
             [sh performSelectorInBackground:@selector(execOn:)
                                  withObject:syntaxOptions];
+
+            // add object to the thread pool
+            [_threadPool addObject:sh];
             
-            [_cache setObject:sh forKey:[file path]];
+            // disable cache temporarily
+            // [_cache setObject:sh forKey:[file path]];
         }
     }
 
