@@ -38,6 +38,8 @@ extern NSString* const FOLDER_DROPBOX_ROOT;
 // API Keys
 extern NSString* const CLOUD_DROPBOX_KEY;
 extern NSString* const CLOUD_DROPBOX_SECRET;
+extern NSString* const CLOUD_SKYDRIVE_KEY;
+extern NSString* const CLOUD_SKYDRIVE_SECRET;
 
 // Syntaxes File List
 extern NSString* const SYNTAXES_FILE_LIST;
