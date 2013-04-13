@@ -10,4 +10,6 @@
 
 @interface SearchResultCell : UITableViewCell
 
+@property (nonatomic) int lineNumber;
+
 @end
