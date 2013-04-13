@@ -442,10 +442,12 @@
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
     NSDictionary *lineObject = (NSDictionary *)[_lines objectAtIndex:indexPath.row];
+    NSRange stringRange = [[lineObject objectForKey:KEY_RANGE] rangeValue];
     NSAttributedString *lineRef = [_arcAttributedString.attributedString attributedSubstringFromRange:
-                                   [[lineObject objectForKey:KEY_RANGE] rangeValue]];
+                                   stringRange];
     
     cell.line = lineRef;
+    cell.stringRange = stringRange;
     NSInteger lineNumber = [[lineObject objectForKey:KEY_LINE_NUMBER] integerValue];
     
     if (_lineNumbers) {
@@ -468,8 +470,18 @@
     // TODO: Get location of touch of tableviewcell in TableView (global)
     
     if ([gesture state] == UIGestureRecognizerStateBegan) {
+        CodeLineCell *cell = (CodeLineCell*)gesture.view;
+        
+        // Should only consider point.x
         CGPoint point = [gesture locationInView:gesture.view];
-        NSLog(@"point: (%f, %f)", point.x, point.y);
+        NSAttributedString *attributedString = cell.line;
+        CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)(attributedString));
+        CFIndex index = CTLineGetStringIndexForPosition(lineRef, point);
+        
+        //NSLog(@"cell range start: %@", cell.lin)
+    }
+    if ([gesture state] == UIGestureRecognizerStateEnded) {
+        //[_tableView reloadData];
     }
 }
 
