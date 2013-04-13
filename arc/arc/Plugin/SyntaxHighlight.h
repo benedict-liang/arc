@@ -31,8 +31,8 @@
 @property NSArray* overlays;
 @property BOOL isProcessed;
 
-- (id)initWithFile:(id<File>)file del:(id<CodeViewControllerDelegate>)delegate;
+- (id)initWithFile:(id<File>)file andDelegate:(id<CodeViewControllerDelegate>)delegate;
 - (void)execOn:(NSDictionary*)options;
 - (void)reapplyWithOpts:(NSDictionary*)options;
-
+- (void)kill;
 @end
