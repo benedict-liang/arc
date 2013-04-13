@@ -76,6 +76,7 @@
 		4CF6F0EE1706E08800EDDEDC /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0ED1706E08800EDDEDC /* file.png */; };
 		4CF6F0F21706E29300EDDEDC /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F11706E29300EDDEDC /* folder.png */; };
 		4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */; };
+		840B6680091FC720B53CA8F3 /* LiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */; };
 		8F151051170443AC00115E5E /* home.html in Resources */ = {isa = PBXBuildFile; fileRef = 8F151050170443AC00115E5E /* home.html */; };
 		8F1510C9170468B100115E5E /* TMBundleThemeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510C8170468B100115E5E /* TMBundleThemeHandler.m */; };
 		8F1510CC1704697900115E5E /* TMBundleGrammar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510CB1704697900115E5E /* TMBundleGrammar.m */; };
@@ -440,6 +441,7 @@
 		4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		840B6454D395361AD2F521B2 /* CloudServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudServiceManager.h; sourceTree = "<group>"; };
+		840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LiveSDK.framework; path = /Users/Jerome/Desktop/arc/arc/arc/LiveSDK.framework; sourceTree = "<absolute>"; };
 		8F15104F1704410000115E5E /* TMBundleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleHeader.h; sourceTree = "<group>"; };
 		8F151050170443AC00115E5E /* home.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = home.html; sourceTree = "<group>"; };
 		8F1510C7170468B000115E5E /* TMBundleThemeHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleThemeHandler.h; sourceTree = "<group>"; };
@@ -711,6 +713,7 @@
 				026BC475170589B000A9AA5F /* Security.framework in Frameworks */,
 				4C43F8F316F86AA900159B29 /* CoreData.framework in Frameworks */,
 				026BC4711705895500A9AA5F /* Dropbox.framework in Frameworks */,
+				840B6680091FC720B53CA8F3 /* LiveSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -823,6 +826,7 @@
 				4C43F8F216F86AA900159B29 /* CoreData.framework */,
 				4CD06B3B16FDEDA600C9DED3 /* SenTestingKit.framework */,
 				4CD06B3F16FDEDA600C9DED3 /* Other Frameworks */,
+				840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1902,6 +1906,9 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/arc\"",
+					"\"${PROJECT_DIR}/../../../Downloads/LiveSDK.framework/Versions/5.0.3380.0913\"/**",
+					"\"${PROJECT_DIR}/../../../Downloads\"/**",
+					"\"${PROJECT_DIR}/arc\"/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
@@ -1918,6 +1925,9 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/arc\"",
+					"\"${PROJECT_DIR}/../../../Downloads/LiveSDK.framework/Versions/5.0.3380.0913\"/**",
+					"\"${PROJECT_DIR}/../../../Downloads\"/**",
+					"\"${PROJECT_DIR}/arc\"/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
