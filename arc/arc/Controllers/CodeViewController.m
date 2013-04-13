@@ -102,16 +102,6 @@
                                   self.view.bounds.size.height - SIZE_TOOLBAR_HEIGHT);
     
     [self.view addSubview:_tableView];
-    
-    // TODO: Long Press Gesture
-    UILongPressGestureRecognizer *longPressGesture =
-    [[UILongPressGestureRecognizer alloc] initWithTarget:self
-                                                  action:@selector(selectText:)];
-    [_tableView addGestureRecognizer:longPressGesture];
-}
-
-- (void)selectText:(UILongPressGestureRecognizer*)gesture {
-    NSLog(@"long press");
 }
 
 - (void)refreshForSetting:(NSString *)setting
@@ -461,8 +451,23 @@
         }
     }
     
+    // TODO: Long Press Gesture
+    UILongPressGestureRecognizer *longPressGesture =
+    [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                  action:@selector(selectText:)];
+    [_tableView addGestureRecognizer:longPressGesture];
+    
     [cell setNeedsDisplay];
     return cell;
+}
+
+- (void)selectText:(UILongPressGestureRecognizer*)gesture {
+    // TODO: Get location of touch of tableviewcell in TableView (global)
+    
+    if ([gesture state] == UIGestureRecognizerStateBegan) {
+        CGPoint point = [gesture locationInView:gesture.view];
+        NSLog(@"point: (%f, %f)", point.x, point.y);
+    }
 }
 
 #pragma mark - Table view delegate
@@ -546,7 +551,7 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 // TODO: Implement Copy and Paste
 
 
-// TODO: Get location of touch of tableviewcell in TableView (global)
+
 // TODO: Get relevant object from _line
 // TODO: Add drag points subview in CodeViewController
 // TODO: Apply background color for index
