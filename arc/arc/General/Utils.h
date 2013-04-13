@@ -24,4 +24,6 @@
 
 + (NSArray*)sortRanges:(NSArray*)ranges;
 
++ (BOOL)isSubsetOf:(NSRange)ro arg:(NSRange)ri 
+
 @end

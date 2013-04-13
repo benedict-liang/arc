@@ -125,5 +125,8 @@
     }];
     return sortedRanges;
 }
++ (BOOL)isSubsetOf:(NSRange)ro arg:(NSRange)ri {
+    return ro.location <= ri.location && (ro.location+ro.length) >= (ri.location+ri.length);
+}
 
 @end
