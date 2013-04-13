@@ -345,22 +345,24 @@
     (NSDictionary*)[_settingOptions objectAtIndex:indexPath.section];
     
     int type = [[sectionProperties objectForKey:SECTION_TYPE] intValue];
-    if (type == kMCQSettingType && [[sectionProperties objectForKey:SECTION_OPTIONS] count] < 5) {
-        NSDictionary *option = [[sectionProperties
-                                 objectForKey:SECTION_OPTIONS]
-                                objectAtIndex:indexPath.row];
-        
-        NSString *value = [option objectForKey:PLUGIN_OPTION_VALUE];
-        NSString *settingKey = [sectionProperties objectForKey:SECTION_SETTING_KEY];
-        
-        // Reload the table.
-        [self updateSetting:value
-              forSettingKey:settingKey
-            reloadTableData:YES];
-    } else {
-        // Link to the long settings list.
-        LongSettingListViewController *listController = [[LongSettingListViewController alloc] initWithProperties:sectionProperties delegate:self];
-        [self.navigationController pushViewController:listController animated:YES];
+    if (type == kMCQSettingType) {
+        if ([[sectionProperties objectForKey:SECTION_OPTIONS] count] < 5) {
+            NSDictionary *option = [[sectionProperties
+                    objectForKey:SECTION_OPTIONS]
+                    objectAtIndex:indexPath.row];
+
+            NSString *value = [option objectForKey:PLUGIN_OPTION_VALUE];
+            NSString *settingKey = [sectionProperties objectForKey:SECTION_SETTING_KEY];
+
+            // Reload the table.
+            [self updateSetting:value
+                  forSettingKey:settingKey
+                reloadTableData:YES];
+        } else  {
+            // Link to the long settings list.
+            LongSettingListViewController *listController = [[LongSettingListViewController alloc] initWithProperties:sectionProperties delegate:self];
+            [self.navigationController pushViewController:listController animated:YES];
+        }
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -371,10 +373,10 @@
 {
     // Update App State
     [_appState setSetting:value forKey:settingKey];
-    
+
     // Refresh the code view.
     [self.delegate refreshCodeViewForSetting:settingKey];
-    
+
     if (reloadData) {
         // Refresh tableView
         [_tableView reloadData];
