@@ -464,10 +464,10 @@
     NSString *searchString = [searchBar text];
     NSArray *searchResultRangesArray = [FullTextSearch searchForText:searchString
                                                          inFile:_currentFile];
-    NSMutableArray *searchLineNumber;
+    NSMutableArray *searchLineNumberArray;
     
     if (searchResultRangesArray != nil) {
-        searchLineNumber = [[NSMutableArray alloc] init];
+        searchLineNumberArray = [[NSMutableArray alloc] init];
         int lineIndex = 0;
         
         for (int i=0; i<[searchResultRangesArray count]; i++) {
@@ -480,7 +480,7 @@
                 // Ranges intersect
                 if (rangeIntersectionResult.length != 0) {
                     
-                    [searchLineNumber addObject:[NSNumber numberWithInt:j]];
+                    [searchLineNumberArray addObject:[NSNumber numberWithInt:j]];
                     
                     // Update current lineIndex
                     lineIndex = j;
@@ -502,7 +502,7 @@
     [searchBar resignFirstResponder];
     
     // Show results
-    _resultsViewController.resultsArray = [NSArray arrayWithArray:searchLineNumber];
+    _resultsViewController.resultsArray = [NSArray arrayWithArray:searchLineNumberArray];
     [_resultsViewController.tableView reloadData];
     [_resultsPopoverController presentPopoverFromRect:[_searchBar bounds]
                                               inView:_searchBar
