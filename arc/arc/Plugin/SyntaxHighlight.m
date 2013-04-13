@@ -444,7 +444,6 @@
             }
             
             //matching blocks
-            
             if (begin && end) {
                 [self processPairRange:contentRange
                                   item:syntaxItem
