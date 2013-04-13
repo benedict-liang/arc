@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "Utils.h"
 
-@interface FoldTree : NSObject
+@interface FoldTree : NSObject <NSCopying>
 
 @property NSMutableArray* children;
 @property NSRange contentRange;
 @property NSString* foldStart;
 @property NSString* foldEnd;
+
+- (id)initWithContentRange:(NSRange)range ranges:(NSArray*)ranges;
 
 @end

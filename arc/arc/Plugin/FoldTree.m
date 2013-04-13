@@ -14,6 +14,7 @@
 {
     if (self = [super init]) {
         _contentRange = range;
+        _children = [NSMutableArray array];
         [self consWithSorted:sa];
     }
     return self;
@@ -28,31 +29,49 @@
     NSMutableArray *accum = [NSMutableArray array];
     NSRange r;
     NSRange elder;
-    [(NSValue*)[sortedRanges objectAtIndex:0] getValue:&elder];
+    NSLog(@"sortedRanges: %@",sortedRanges);
+    if (sortedRanges.count > 0) {
+        [(NSValue*)[sortedRanges objectAtIndex:0] getValue:&elder];
+        
+        for (NSValue* v in sortedRanges) {
+            
+            [v getValue:&r];
+            if (NSEqualRanges(r, elder)) {
+                // do nothing
+            }
+            else if ([Utils isSubsetOf:elder arg:r]) {
+                [accum  addObject:v];
+            }
+            else {
+            
+                FoldTree* subTree = [[FoldTree alloc] initWithContentRange:elder sortedRanges:[FoldTree rangeArrayCopy:accum]];
+                [_children addObject:subTree];
+                elder = r;
+                [accum removeAllObjects];
+            }
+            
+        }
     
-    for (NSValue* v in sortedRanges) {
-        [v getValue:&r];
-        if (NSEqualRanges(r, elder)) {
-            // do nothing
-        }
-        else if ([Utils isSubsetOf:elder arg:r]) {
-            [accum  addObject:v];
-        }
-        else {
-            FoldTree* subTree = [[FoldTree alloc] initWithContentRange:elder sortedRanges:accum];
-            [_children addObject:subTree];
-            elder = r;
-            [accum removeAllObjects];
-        }
-
     }
 }
+
 -(NSString*)description {
-    NSMutableString* str = [NSMutableString stringWithFormat:@"Node: %@ children=> \n",[NSValue value:&_contentRange withObjCType:@encode(NSRange)]];
+    NSMutableString* str = [NSMutableString stringWithFormat:@"Node: %@ children=> { \n",[NSValue value:&_contentRange withObjCType:@encode(NSRange)]];
     for (FoldTree* subTree in _children) {
         [str appendString:[subTree description]];
     }
+    [str appendString:@" } \n"];
     return str;
 }
 
++(NSArray*)rangeArrayCopy:(NSArray*)arr {
+    NSMutableArray *tmp = [NSMutableArray array];
+    for (NSValue *v in arr) {
+        NSRange range;
+        [v getValue:&range];
+        NSValue *m = [NSValue value:&range withObjCType:@encode(NSRange)];
+        [tmp addObject:m];
+    }
+    return tmp;
+}
 @end

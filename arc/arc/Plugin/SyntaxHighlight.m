@@ -560,7 +560,9 @@
         [self foldsWithStart:foldStart end:foldEnd];
         [self testFolds:foldRanges output:output];
         NSLog(@"%@",foldRanges);
-        NSLog(@"%@",[Utils sortRanges:foldRanges]);
+        FoldTree *tree = [[FoldTree alloc] initWithContentRange:NSMakeRange(0, _content.length) ranges:foldRanges];
+        
+        NSLog(@"%@",[tree description]);
     }
     
     
