@@ -35,4 +35,7 @@
 
 // Remove Attributes based on settings Key
 - (void)removeAttributesForSettingKey:(NSString*)settingKey;
+
+- (ArcAttributedString*)arcStringWithRemovedRanges:(NSArray*)ranges;
+
 @end

@@ -200,4 +200,35 @@
                                range:_stringRange];
 }
 
+- (ArcAttributedString*)arcStringWithRemovedRanges:(NSArray *)ranges {
+    
+    //ASSUMES: ranges are either non intersecting, or subsets
+    //Above holds true for foldable code blocks
+    
+    NSMutableArray* sortedRanges = [NSMutableArray arrayWithArray:ranges];
+    [sortedRanges sortUsingComparator:^NSComparisonResult(NSValue* v1, NSValue* v2){
+        NSRange r1;
+        NSRange r2;
+        [v1 getValue:&r1];
+        [v2 getValue:&r2];
+        int r1Ends = r1.location + r1.length;
+        int r2Ends = r2.location + r2.length;
+        //r1 dominates
+        if (r1.location < r2.location && r1Ends > r2Ends) {
+            return NSOrderedDescending;
+        //r2 dominates
+        } else if (r1.location > r2.location && r1Ends < r2Ends) {
+            return NSOrderedAscending;
+        } else {
+        //don't care about other cases
+            return NSOrderedSame;
+        }
+    }];
+    NSMutableString* accum = [NSMutableString string];
+    NSRange range;
+    for (NSValue* value in sortedRanges) {
+        [value getValue:&range];
+        
+    }
+}
 @end
