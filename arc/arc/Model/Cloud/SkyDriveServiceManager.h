@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CloudServiceManager.h"
-#import <LiveSDK>
+#import <LiveSDK/LiveConnectClient.h>
 
 @interface SkyDriveServiceManager : NSObject <CloudServiceManager>
 @end
