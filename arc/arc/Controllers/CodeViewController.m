@@ -348,6 +348,9 @@
 
 - (void)hideSearchToolBar
 {
+    [_arcAttributedString removeAttributesForSettingKey:@"search"];
+    [_tableView reloadData];
+    
     if (UIDeviceOrientationIsLandscape(self.interfaceOrientation))
     {
         [self setUpDefaultToolBar];
