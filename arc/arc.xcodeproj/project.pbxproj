@@ -245,6 +245,7 @@
 		8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F771E131711B900002E9914 /* ResultsTableViewController.m */; };
 		8F84790D17102A14006893D6 /* FullTextSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F84790C17102A14006893D6 /* FullTextSearch.m */; };
 		8FC1B4E91719D8E0002939D8 /* DragPointImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC1B4E81719D8E0002939D8 /* DragPointImageView.m */; };
+		8FC1B4EC1719DBCE002939D8 /* DragPointsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC1B4EB1719DBCE002939D8 /* DragPointsViewController.m */; };
 		8FC7BD3F170F435900D0FA3A /* syntaxesFileList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8FC7BD3E170F435900D0FA3A /* syntaxesFileList.txt */; };
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
 		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
@@ -620,6 +621,8 @@
 		8F84790C17102A14006893D6 /* FullTextSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullTextSearch.m; sourceTree = "<group>"; };
 		8FC1B4E71719D8E0002939D8 /* DragPointImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragPointImageView.h; sourceTree = "<group>"; };
 		8FC1B4E81719D8E0002939D8 /* DragPointImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragPointImageView.m; sourceTree = "<group>"; };
+		8FC1B4EA1719DBCE002939D8 /* DragPointsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragPointsViewController.h; sourceTree = "<group>"; };
+		8FC1B4EB1719DBCE002939D8 /* DragPointsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragPointsViewController.m; sourceTree = "<group>"; };
 		8FC7BD3E170F435900D0FA3A /* syntaxesFileList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = syntaxesFileList.txt; sourceTree = "<group>"; };
 		8FCA1D6716F86C7000C6AAFC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		8FCA1D6816F86C7000C6AAFC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -1290,6 +1293,8 @@
 				4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */,
 				027EE0341716AAEC00302F07 /* LongSettingListViewController.h */,
 				027EE0351716AAEC00302F07 /* LongSettingListViewController.m */,
+				8FC1B4EA1719DBCE002939D8 /* DragPointsViewController.h */,
+				8FC1B4EB1719DBCE002939D8 /* DragPointsViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1775,6 +1780,7 @@
 				4CEADA071716ADBB00F4F619 /* LineNumberPlugin.m in Sources */,
 				8F7066B317199B1F00E8C64E /* SearchResultCell.m in Sources */,
 				8FC1B4E91719D8E0002939D8 /* DragPointImageView.m in Sources */,
+				8FC1B4EC1719DBCE002939D8 /* DragPointsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
