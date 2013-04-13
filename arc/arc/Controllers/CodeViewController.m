@@ -479,6 +479,7 @@
                         withResultsArray:searchResultRangesArray];
     }
     
+    [_arcAttributedString removeAttributesForSettingKey:@"search"];
     [self applyBackgroundToAttributedStringForRanges:searchResultRangesArray
                                            withColor:[UIColor yellowColor]];
     
@@ -524,9 +525,7 @@
 - (void)applyBackgroundToAttributedStringForRanges:(NSArray *)rangesArray
                                          withColor:(UIColor*)color
 
-{
-    [_arcAttributedString removeAttributesForSettingKey:@"search"];
-    
+{    
     for (NSValue *range in rangesArray) {
         [_arcAttributedString setBackgroundColor:color
                                          OnRange:[range rangeValue]
