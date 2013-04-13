@@ -57,8 +57,9 @@
     
     if (cell) {
         NSNumber *lineNumber = (NSNumber*)[_resultsArray objectAtIndex:indexPath.row];
-        cell.textLabel.text = [NSString stringWithFormat:@"Line %d", [lineNumber intValue]];
+        
         cell.lineNumber = [lineNumber intValue];
+        cell.textLabel.text = [NSString stringWithFormat:@"Line %d", cell.lineNumber];
     }
     
     return cell;
