@@ -467,7 +467,6 @@
 }
 
 - (void)selectText:(UILongPressGestureRecognizer*)gesture {
-    // TODO: Get location of touch of tableviewcell in TableView (global)
     
     if ([gesture state] == UIGestureRecognizerStateBegan) {
         CodeLineCell *cell = (CodeLineCell*)gesture.view;
@@ -476,12 +475,18 @@
         
         // Should only consider point.x
         CGPoint point = [gesture locationInView:gesture.view];
-        CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
-                                                             (attributedString));
-        CFIndex index = CTLineGetStringIndexForPosition(lineRef, point);
+        
+        // TODO: Get location of touch of tableviewcell in TableView (global)
+        NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+        CGRect cellRect = [_tableView rectForRowAtIndexPath:indexPath];
+        NSLog(@"rect origin: (%f, %f), size: (%f, %f)", cellRect.origin.x, cellRect.origin.y,
+              cellRect.size.height, cellRect.size.width);
         
         
         // TODO: Get global range of selected string (check width of line numbers)
+        CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                                             (attributedString));
+        CFIndex index = CTLineGetStringIndexForPosition(lineRef, point);
         NSRange selectedRange = NSMakeRange(cellStringRange.location + index, 3);
         [_arcAttributedString setBackgroundColor:[UIColor blueColor]
                                          OnRange:selectedRange
