@@ -53,12 +53,7 @@
 
 - (NSRange)findFirstPattern:(NSRegularExpression *)regex
                       range:(NSRange)range
-{
-//    NSError *error = NULL;
-//    NSRegularExpression *regex = [NSRegularExpression
-//                                  regularExpressionWithPattern:pattern
-//                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines
-//                                  error:&error];    
+{   
     if ((range.location + range.length <= [_content length]) &&
         (range.length > 0) &&
         (range.length <= [_content length]))
@@ -181,31 +176,7 @@
         [dict setObject:scopeData forKey:scope];
         
     }
-    //    for (int i = 0; i < [captures count]; i++) {
-    //        captureM = [self foundPattern:match capture:i range:r];
-    //        [captures objectForKey:]
-    //        [dict setObject:captureM forKey:[captures objectForKey:[NSString stringWithFormat:@"%d",i]]];
-    //    }
-    
-    //    NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
-    //    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
-    //    dispatch_semaphore_t array_sema = dispatch_semaphore_create(1);
-    //    dispatch_group_t group = dispatch_group_create();
-    //
-    //    dispatch_apply([captures count], queue, ^(size_t i){
-    //        dispatch_group_async(group, queue, ^ {
-    //            NSArray *patternMatches = [self foundPattern:match capture:i range:r];
-    //            dispatch_semaphore_wait(array_sema, DISPATCH_TIME_FOREVER);
-    //
-    //            [dict setObject:patternMatches forKey:[captures objectAtIndex:i]];
-    //
-    //            dispatch_semaphore_signal(array_sema);
-    //        });
-    //    });
-    //    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
-    //    dispatch_release(group);
-    //
-    
+
     return dict;
 }
 
@@ -314,7 +285,8 @@
                   output:(ArcAttributedString*)output
 {
     /*
-     Algo finds a begin match and an end match (from begin to content's end), reseting the next begin to after end, until no more matches are found or end > content
+     Algo finds a begin match and an end match (from begin to content's end),
+     reseting the next begin to after end, until no more matches are found or end > content
      Also applies nested patterns recursively
      */
     NSString* begin = [syntaxItem objectForKey:@"begin"];
@@ -338,7 +310,9 @@
     NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
     NSRange erange;
     do {
-        // NSLog(@"traversing while brange:%@ erange:%@", [NSValue value:&brange withObjCType:@encode(NSRange)], [NSValue value:&erange withObjCType:@encode(NSRange)]);
+        // NSLog(@"traversing while brange:%@ erange:%@",
+        // [NSValue value:&brange withObjCType:@encode(NSRange)],
+        // [NSValue value:&erange withObjCType:@encode(NSRange)]);
         // using longs because int went out of range as NSNotFound returns MAX_INT, which fucks arithmetic
         long bEnds = brange.location + brange.length;
         if (contentRange.length > bEnds) {
