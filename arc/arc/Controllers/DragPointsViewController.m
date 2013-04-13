@@ -30,9 +30,22 @@
                                                selectedTextRect.size.height);
         _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame];
         
+        UIPanGestureRecognizer *leftPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                                          action:@selector(moveLeftDragPoint:)];
+        UIPanGestureRecognizer *rightPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                                     action:@selector(moveRightDragPoint:)];
+        
     }
     
     return self;
+}
+
+- (void)moveLeftDragPoint:(UIPanGestureRecognizer*)gesture {
+    
+}
+
+- (void)moveRightDragPoint:(UIPanGestureRecognizer*)gesture {
+    
 }
 
 - (void)viewDidLoad
