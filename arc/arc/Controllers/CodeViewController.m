@@ -486,9 +486,10 @@
         [_arcAttributedString setBackgroundColor:[UIColor blueColor]
                                          OnRange:selectedRange
                                       ForSetting:@"copyAndPaste"];
+        [_tableView reloadData];
     }
     if ([gesture state] == UIGestureRecognizerStateEnded) {
-        [_tableView reloadData];
+
     }
 }
 
