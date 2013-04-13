@@ -11,7 +11,7 @@
 #import "TMBundleHeader.h"
 #import "CodeViewControllerDelegate.h"
 #import "File.h"
-
+#import "Utils.h"
 //Immutable class. Holds thread local state
 
 @interface SyntaxHighlight : NSObject {

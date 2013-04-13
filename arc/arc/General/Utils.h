@@ -21,4 +21,7 @@
 + (UIBarButtonItem *)flexibleSpace;
 
 + (NSString *)humanReadableFileSize:(float)fileSize;
+
++ (NSArray*)sortRanges:(NSArray*)ranges;
+
 @end
