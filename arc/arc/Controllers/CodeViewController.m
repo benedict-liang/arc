@@ -480,11 +480,13 @@
         CFIndex index = CTLineGetStringIndexForPosition(lineRef, point);
         
         
-        // TODO: Get global range of selected string
+        // TODO: Get global range of selected string (check width of line numbers)
+        NSRange selectedRange = NSMakeRange(cellStringRange.location + index, 3);
         NSLog(@"String selected: %@", [_arcAttributedString.attributedString.string substringWithRange:NSMakeRange(cellStringRange.location + index, 3)]);
+        [_arcAttributedString setBackgroundColor:[UIColor blueColor] OnRange:selectedRange ForSetting:@"copyAndPaste"];
     }
     if ([gesture state] == UIGestureRecognizerStateEnded) {
-        //[_tableView reloadData];
+        [_tableView reloadData];
     }
 }
 
