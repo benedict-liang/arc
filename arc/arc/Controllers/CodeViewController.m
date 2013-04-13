@@ -114,7 +114,7 @@
 
 - (void)showFile:(id<File>)file
 {
-    if ([file isEqual:_currentFile]) {
+    if ([[file path] isEqual:[_currentFile path]]) {
         return;
     }
     
@@ -383,7 +383,6 @@
                    forFile:(id<File>)file
                  WithStyle:(NSDictionary *)style
 {
-    // Temporary solution to resolve asyn mutation of background color
     if ([[file path] isEqual:[_currentFile path]]) {
         _arcAttributedString = arcAttributedString;
         [_tableView reloadData];

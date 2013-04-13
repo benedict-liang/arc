@@ -35,6 +35,7 @@
     }
     return self;
 }
+
 - (NSArray*)foundPattern:(NSString*)pattern
                    range:(NSRange)range
 {
@@ -58,16 +59,14 @@
         (range.length > 0) &&
         (range.length <= [_content length]))
     {
-        //NSLog(@"findFirstPattern:   %d %d",r.location,r.length);
         return [regex rangeOfFirstMatchInString:_content
                                         options:0
                                           range:range];
     } else {
-        //NSLog(@"index out of bounds in regex. findFirstPatten:%d %d",r.location,r.length);
         return NSMakeRange(NSNotFound, 0);
     }
-    
 }
+
 - (NSArray*)foundPattern:(NSString*)pattern
                  capture:(int)capture
                    range:(NSRange)range
@@ -106,11 +105,11 @@
     
     return results;
 }
+
 - (void)styleOnRange:(NSRange)range
               fcolor:(UIColor*)fcolor
               output:(ArcAttributedString*)output
 {
-    // tmp for setting argument.
     [output setForegroundColor:fcolor
                        OnRange:range
                     ForSetting:@"sh"];
@@ -243,7 +242,10 @@
     return res;
 }
 
-- (NSDictionary*) addRange:(NSRange)range scope:(NSString*)scope dict:(NSDictionary*)matchesStore capturableScopes:(NSArray*)cpS
+- (NSDictionary*) addRange:(NSRange)range
+                     scope:(NSString*)scope
+                      dict:(NSDictionary*)matchesStore
+          capturableScopes:(NSArray*)cpS
 {
     NSMutableDictionary* res =
     [NSMutableDictionary dictionaryWithDictionary:matchesStore];
@@ -477,7 +479,8 @@
                                 WithStyle:[theme objectForKey:@"global"]];
     }
 }
-- (void)logs {
+- (void)logs
+{
     NSLog(@"nameMatches: %@",nameMatches);
     NSLog(@"captureM: %@",captureMatches);
     NSLog(@"beginM: %@",beginCMatches);
@@ -495,7 +498,8 @@
                     output:output];
     }
 }
-- (void)applyStylesTo:(ArcAttributedString*)output withTheme:(NSDictionary*)theme {
+- (void)applyStylesTo:(ArcAttributedString*)output withTheme:(NSDictionary*)theme
+{
     
     [self applyForeground:output withTheme:theme];
     [self applyStylesTo:output withRanges:pairMatches withTheme:theme];
@@ -511,13 +515,13 @@
     ArcAttributedString *output = [options objectForKey:@"attributedString"];
     NSString* themeName = [options objectForKey:@"theme"];
     NSDictionary* theme = [TMBundleThemeHandler produceStylesWithTheme:themeName];
-    
-    
+
     NSMutableArray* patterns = [NSMutableArray arrayWithArray:[_bundle objectForKey:@"patterns"]];
     NSDictionary* repo = [_bundle objectForKey:@"repository"];
     for (id k in repo) {
         [patterns addObject:[repo objectForKey:k]];
     }
+
     [self iterPatternsForRange:NSMakeRange(0, [_content length])
                       patterns:patterns
                         output:output];
@@ -530,7 +534,8 @@
     
 }
 
-- (void)reapplyWithOpts:(NSDictionary*)options {
+- (void)reapplyWithOpts:(NSDictionary*)options
+{
     
     while (!_isProcessed);
     

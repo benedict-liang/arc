@@ -10,14 +10,16 @@
 
 @interface SyntaxHighlightingPlugin ()
 @property (nonatomic, strong) NSString* colorSchemeSettingKey;
+
 // Dictionary describing fontFamilySetting
-@property NSMutableDictionary *properties;
-@property NSArray *options;
+@property NSDictionary *properties;
 @property NSString *defaultTheme;
 @end
 
 @implementation SyntaxHighlightingPlugin
 @synthesize settingKeys = _settingKeys;
+@synthesize cache = _cache;
+@synthesize theme = _theme;
 
 - (id)init
 {
@@ -26,30 +28,29 @@
         _colorSchemeSettingKey = @"colorScheme";
         _defaultTheme = @"Monokai.tmTheme";
         _settingKeys = [NSArray arrayWithObject:_colorSchemeSettingKey];
-        _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
-        _properties = [NSMutableDictionary dictionary];
-        [_properties setValue:@"Color Schemes" forKey:PLUGIN_TITLE];
-        
-        [_properties setValue:[NSNumber numberWithInt:kMCQSettingType]
-                       forKey:PLUGIN_TYPE];
-        
-        _options = [SyntaxHighlightingPlugin generateOptions];
+        _theme = (NSString *)[TMBundleThemeHandler produceStylesWithTheme:nil];
+        _properties = @{
+                        PLUGIN_TITLE: @"Color Schemes",
+                        PLUGIN_TYPE: [NSNumber numberWithInt:kMCQSettingType],
+                        PLUGIN_OPTIONS:[SyntaxHighlightingPlugin generateOptions]
+                        };
 
-        
-        [_properties setValue:_options forKey:PLUGIN_OPTIONS];
-        
         _cache = [NSMutableDictionary dictionary];
     }
     return self;
 }
 + (NSArray*)generateOptions {
-    NSURL* themeConf = [[NSBundle mainBundle] URLForResource:@"ThemeConf.plist" withExtension:nil];
+    NSURL* themeConf = [[NSBundle mainBundle] URLForResource:@"ThemeConf.plist"
+                                               withExtension:nil];
     NSDictionary* themes = [NSDictionary dictionaryWithContentsOfURL:themeConf];
     NSMutableArray* opts = [NSMutableArray array];
     for (NSString* themeName in themes) {
         NSString* themeFile = [themes objectForKey:themeName];
-        [opts addObject:@{PLUGIN_OPTION_LABEL:themeName,
-                        PLUGIN_OPTION_VALUE:themeFile}];
+        [opts addObject:
+         @{
+            PLUGIN_OPTION_LABEL:themeName,
+            PLUGIN_OPTION_VALUE:themeFile
+         }];
         
     }
     
@@ -86,8 +87,9 @@
     if (cachedHighlighter) {
         
         NSDictionary *syntaxOpts = @{
-        @"theme":themeName,
-        @"attributedString":[[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString]
+                                     @"theme":themeName,
+                                     @"attributedString":
+                                         [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString]
         };
         
         [cachedHighlighter performSelectorInBackground:@selector(reapplyWithOpts:) withObject:syntaxOpts];
