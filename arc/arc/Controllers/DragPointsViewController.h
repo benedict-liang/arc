@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DragPointImageView.h"
 
 @interface DragPointsViewController : UIViewController
 
-- (id)initWithSelectedTextRect:(CGRect)selectedTextRect;
+- (id)initWithSelectedTextRect:(CGRect)selectedTextRect andOffset:(int)offset;
 
-
+@property (nonatomic, strong) DragPointImageView *leftDragPoint;
+@property (nonatomic, strong) DragPointImageView *rightDragPoint;
 
 @end

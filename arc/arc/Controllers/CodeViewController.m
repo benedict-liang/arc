@@ -12,7 +12,7 @@
 #import "ArcAttributedString.h"
 #import "FullTextSearch.h"
 #import "ResultsTableViewController.h"
-#import "DragPointImageView.h"
+#import "DragPointsViewController.h"
 
 #define KEY_RANGE @"range"
 #define KEY_LINE_NUMBER @"lineNumber"
@@ -505,9 +505,10 @@
               selectedRect.size.height, selectedRect.size.width);
     
         // TODO: Add drag points subview in CodeViewController
-        CGRect leftDragPointFrame = CGRectMake(selectedRect.origin.x + lineNumberWidth, selectedRect.origin.y, 20, selectedRect.size.height);
-        DragPointImageView *leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame];
-        [_tableView addSubview:leftDragPoint];
+        DragPointsViewController *dragPointVC = [[DragPointsViewController alloc] initWithSelectedTextRect:selectedRect
+                                                                                                 andOffset:lineNumberWidth];
+        [_tableView addSubview:dragPointVC.leftDragPoint];
+        [_tableView addSubview:dragPointVC.rightDragPoint];
         
         [_tableView reloadData];
     }
