@@ -12,7 +12,8 @@
 @property (nonatomic, strong) UIColor *foregroundColor;
 @property (nonatomic, strong) NSString *fontFamily;
 @property (nonatomic) int fontSize;
-@property (nonatomic, strong) CodeLine *codeLine;
+//@property (nonatomic, strong) CodeLine *codeLine;
+@property (nonatomic, strong) UILabel *codeLine;
 @property (nonatomic, strong) UILabel *lineNumberLabel;
 @end
 
@@ -46,7 +47,7 @@
     _fontSize = fontSize;
 }
 
-- (void)setLine:(CTLineRef)line
+- (void)setLine:(NSAttributedString *)line
 {
     for (UIView *view in self.contentView.subviews) {
         [view removeFromSuperview];
@@ -62,7 +63,10 @@
     [self.contentView addSubview:_lineNumberLabel];
     
     _line = line;
-    _codeLine = [[CodeLine alloc] initWithLine:_line];
+    _codeLine = [[UILabel alloc] init];
+    _codeLine.attributedText = _line;
+    _codeLine.numberOfLines = 1;
+    
     [self.contentView addSubview:_codeLine];
 
     self.contentView.backgroundColor = [UIColor clearColor];
@@ -89,11 +93,13 @@
     self.contentView.frame = self.bounds;
     _lineNumberLabel.frame =
     CGRectMake(0, 0, _lineNumberWidth, self.contentView.bounds.size.height);
-    
+
     _codeLine.frame =
-    CGRectMake(_lineNumberWidth, 0,
-               self.contentView.bounds.size.width - _lineNumberWidth,
+    CGRectMake(_lineNumberWidth + 10, 0,
+               self.contentView.bounds.size.width - _lineNumberWidth - 10,
                self.contentView.bounds.size.height);
+    
+    [_codeLine sizeToFit];
 }
 
 - (UIView*)backgroundView

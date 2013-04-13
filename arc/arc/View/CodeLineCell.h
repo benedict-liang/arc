@@ -9,11 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <CoreText/CoreText.h>
-#import "CodeLine.h"
 
 @interface CodeLineCell : UITableViewCell
-@property (nonatomic) CTLineRef line;
-@property (nonatomic) NSString *string;
+@property (nonatomic, strong) NSAttributedString *line;
 @property (nonatomic) NSIndexPath *indexPath;
 @property (nonatomic) BOOL showLineNumber;
 @property (nonatomic) int lineNumber;

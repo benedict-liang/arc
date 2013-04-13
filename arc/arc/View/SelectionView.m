@@ -97,11 +97,13 @@
 - (void)updateSelectionSubstring:(CodeLineCell*)cell {
     CGFloat startX = self.frame.origin.x;
     CGFloat endX = startX + self.frame.size.width;
-    CTLineRef line = cell.line;
-    NSString *cellString = cell.string;
-    CFIndex startIndex = CTLineGetStringIndexForPosition(line, CGPointMake(startX, 0));
-    CFIndex endIndex = CTLineGetStringIndexForPosition(line, CGPointMake(endX, 0));
-    self.selectedString = [cellString substringWithRange:NSMakeRange(startIndex, endIndex - startIndex)];
+
+    NSAttributedString *line = cell.line;
+    CTLineRef lineref = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)(line));
+
+    CFIndex startIndex = CTLineGetStringIndexForPosition(lineref, CGPointMake(startX, 0));
+    CFIndex endIndex = CTLineGetStringIndexForPosition(lineref, CGPointMake(endX, 0));
+    self.selectedString = [line.string substringWithRange:NSMakeRange(startIndex, endIndex - startIndex)];
 }
 
 - (void)updateSize:(CGSize)updatedSize {

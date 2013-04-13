@@ -12,7 +12,8 @@
 #import "SyntaxHighlightingPlugin.h"
 #import "FontFamilyPlugin.h"
 #import "FontSizePlugin.h"
-#import "SyntaxHighlightingPlugin.h"
+#import "LineNumberPlugin.h"
+
 @interface MainViewController ()
 @property (nonatomic, strong) CodeViewController *codeViewController;
 @property (nonatomic, strong) LeftViewController *leftViewController;
@@ -33,6 +34,7 @@
         _plugins = [NSArray arrayWithObjects:
                     [[FontFamilyPlugin alloc] init],
                     [[FontSizePlugin alloc] init],
+                    [[LineNumberPlugin alloc] init],
                     [[SyntaxHighlightingPlugin alloc] init],
                     nil];
         _appState = [ApplicationState sharedApplicationState];

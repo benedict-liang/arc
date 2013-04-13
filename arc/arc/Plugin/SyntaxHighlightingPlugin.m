@@ -10,14 +10,18 @@
 
 @interface SyntaxHighlightingPlugin ()
 @property (nonatomic, strong) NSString* colorSchemeSettingKey;
+
 // Dictionary describing fontFamilySetting
-@property NSMutableDictionary *properties;
-@property NSArray *options;
+@property NSDictionary *properties;
 @property NSString *defaultTheme;
+@property NSMutableArray *threadPool;
 @end
 
 @implementation SyntaxHighlightingPlugin
 @synthesize settingKeys = _settingKeys;
+@synthesize delegate = _delegate;
+@synthesize cache = _cache;
+@synthesize theme = _theme;
 
 - (id)init
 {
@@ -26,30 +30,31 @@
         _colorSchemeSettingKey = @"colorScheme";
         _defaultTheme = @"Monokai.tmTheme";
         _settingKeys = [NSArray arrayWithObject:_colorSchemeSettingKey];
-        _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
-        _properties = [NSMutableDictionary dictionary];
-        [_properties setValue:@"Color Schemes" forKey:PLUGIN_TITLE];
-        
-        [_properties setValue:[NSNumber numberWithInt:kMCQSettingType]
-                       forKey:PLUGIN_TYPE];
-        
-        _options = [SyntaxHighlightingPlugin generateOptions];
+        _theme = (NSString *)[TMBundleThemeHandler produceStylesWithTheme:nil];
+        _properties = @{
+                        PLUGIN_TITLE: @"Color Schemes",
+                        PLUGIN_TYPE: [NSNumber numberWithInt:kMCQSettingType],
+                        PLUGIN_OPTIONS:[SyntaxHighlightingPlugin generateOptions]
+                        };
 
-        
-        [_properties setValue:_options forKey:PLUGIN_OPTIONS];
-        
+        _threadPool = [NSMutableArray array];
         _cache = [NSMutableDictionary dictionary];
     }
     return self;
 }
+
 + (NSArray*)generateOptions {
-    NSURL* themeConf = [[NSBundle mainBundle] URLForResource:@"ThemeConf.plist" withExtension:nil];
+    NSURL* themeConf = [[NSBundle mainBundle] URLForResource:@"ThemeConf.plist"
+                                               withExtension:nil];
     NSDictionary* themes = [NSDictionary dictionaryWithContentsOfURL:themeConf];
     NSMutableArray* opts = [NSMutableArray array];
     for (NSString* themeName in themes) {
         NSString* themeFile = [themes objectForKey:themeName];
-        [opts addObject:@{PLUGIN_OPTION_LABEL:themeName,
-                        PLUGIN_OPTION_VALUE:themeFile}];
+        [opts addObject:
+         @{
+            PLUGIN_OPTION_LABEL:themeName,
+            PLUGIN_OPTION_VALUE:themeFile
+         }];
         
     }
     
@@ -67,48 +72,60 @@
                      sharedObject:(NSMutableDictionary *)dictionary
                          delegate:(id<CodeViewControllerDelegate>)delegate
 {
-    NSString* themeName = [properties objectForKey:_colorSchemeSettingKey];
-    _theme = themeName;
-    
-    NSDictionary* themeDictionary = [TMBundleThemeHandler produceStylesWithTheme:themeName];
+    _theme = [properties objectForKey:_colorSchemeSettingKey];
+    NSDictionary* themeDictionary = [TMBundleThemeHandler produceStylesWithTheme:_theme];
     NSDictionary* global = [themeDictionary objectForKey:@"global"];
-    UIColor* foreground = [global objectForKey:@"foreground"];
-    [arcAttributedString setColor:[foreground CGColor]
-                          OnRange:NSMakeRange(0, [(NSString*)[file contents] length])
-                       ForSetting:@"syntaxHighlight"];
     
+    // Set Foreground color
+    [arcAttributedString removeAttributesForSettingKey:@"foreground"];
+    [arcAttributedString setForegroundColor:[global objectForKey:@"foreground"]
+                                    OnRange:arcAttributedString.stringRange
+                                 ForSetting:@"foreground"];
+
+
     [dictionary setValue:[themeDictionary objectForKey:@"global"]
                   forKey:@"syntaxHighlightingPlugin"];
     
-    SyntaxHighlight* cachedHighlighter = [_cache objectForKey:[file path]];
     
-    if (cachedHighlighter) {
-        
-        NSDictionary *syntaxOpts = @{
-        @"theme":themeName,
-        @"attributedString":[[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString]
-        };
-        
-        [cachedHighlighter performSelectorInBackground:@selector(reapplyWithOpts:) withObject:syntaxOpts];
-        
-    } else {
-        SyntaxHighlight* sh = [[SyntaxHighlight alloc] initWithFile:file del:delegate];
-        
-        if (sh.bundle) {
-            ArcAttributedString *copy =
-            [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
-            NSDictionary* syntaxOptions = @{
-                                            @"theme":themeName,
-                                            @"attributedString":copy
-                                            };
-            
-            [sh performSelectorInBackground:@selector(execOn:)
-                                 withObject:syntaxOptions];
-            
-            [_cache setObject:sh forKey:[file path]];
-        }
+    // Kill all thread pool
+    for (SyntaxHighlight *thread in _threadPool) {
+        [thread kill];
     }
+    [_threadPool removeAllObjects];
 
+    SyntaxHighlight* sh = [_cache objectForKey:[file path]];
+    if (!sh) {
+        sh = [[SyntaxHighlight alloc] initWithFile:file
+                                       andDelegate:delegate];
+
+        // give sh object a reference to the factory
+        // to enable it to remove itself from the thread pool
+        sh.factory = self;
+
+        // add to cache
+        // [_cache setObject:sh forKey:[file path]];
+    }
+    
+    if (sh.bundle) {
+        // add object to the thread pool
+        [_threadPool addObject:sh];
+        
+        ArcAttributedString *copy =
+        [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
+        
+        NSDictionary* syntaxOptions = @{
+                                        @"theme":themeDictionary,
+                                        @"attributedString":copy
+                                        };
+
+        [sh performSelectorInBackground:@selector(execOn:)
+                             withObject:syntaxOptions];
+    }
+}
+
+- (void)removeFromThreadPool:(SyntaxHighlight *)sh
+{
+    [_threadPool removeObject:sh];
 }
 
 - (void)execOnCodeView:(id<CodeViewDelegate>)codeView
