@@ -26,7 +26,6 @@
         _colorSchemeSettingKey = @"colorScheme";
         _defaultTheme = @"Monokai.tmTheme";
         _settingKeys = [NSArray arrayWithObject:_colorSchemeSettingKey];
-        _theme = [TMBundleThemeHandler produceStylesWithTheme:nil];
         _properties = [NSMutableDictionary dictionary];
         [_properties setValue:@"Color Schemes" forKey:PLUGIN_TITLE];
         
@@ -68,7 +67,6 @@
                          delegate:(id<CodeViewControllerDelegate>)delegate
 {
     NSString* themeName = [properties objectForKey:_colorSchemeSettingKey];
-    _theme = themeName;
     
     NSDictionary* themeDictionary = [TMBundleThemeHandler produceStylesWithTheme:themeName];
     NSDictionary* global = [themeDictionary objectForKey:@"global"];
