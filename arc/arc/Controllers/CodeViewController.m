@@ -479,13 +479,8 @@
                         withResultsArray:searchResultRangesArray];
     }
     
-    [_arcAttributedString removeAttributesForSettingKey:@"search"];
-
-    for (NSValue *range in searchResultRangesArray) {
-        [_arcAttributedString setBackgroundColor:[UIColor yellowColor]
-                                         OnRange:[range rangeValue]
-                                      ForSetting:@"search"];
-    }
+    [self applyBackgroundToAttributedStringForRanges:searchResultRangesArray
+                                           withColor:[UIColor yellowColor]];
     
     // Hide keyboard after search button clicked
     [searchBar resignFirstResponder];
@@ -523,6 +518,19 @@
                 break;
             }
         }
+    }
+}
+
+- (void)applyBackgroundToAttributedStringForRanges:(NSArray *)rangesArray
+                                         withColor:(UIColor*)color
+
+{
+    [_arcAttributedString removeAttributesForSettingKey:@"search"];
+    
+    for (NSValue *range in rangesArray) {
+        [_arcAttributedString setBackgroundColor:color
+                                         OnRange:[range rangeValue]
+                                      ForSetting:@"search"];
     }
 }
 
