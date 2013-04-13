@@ -379,7 +379,9 @@
 }
 
 - (void)scrollToLineNumber:(int)lineNumber {
-    
+    // TODO: Naive implementation
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lineNumber inSection:0];
+    [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
 
 #pragma mark - Detail View Controller Delegate
