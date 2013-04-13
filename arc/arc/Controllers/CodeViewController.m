@@ -334,6 +334,7 @@
     
     // Initialize results tableview controller
     _resultsViewController = [[ResultsTableViewController alloc] init];
+    _resultsViewController.codeViewController = self;
     
     _resultsPopoverController =
     [[UIPopoverController alloc] initWithContentViewController:_resultsViewController];
