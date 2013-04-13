@@ -557,10 +557,11 @@
     [self applyStylesTo:output withTheme:theme];
     
     if (foldStart && foldEnd) {
-        [self recurFoldsWithStart:foldStart end:foldEnd range:NSMakeRange(0, _content.length) currentStart:-1];
+        [self foldsWithStart:foldStart end:foldEnd];
         [self testFolds:foldRanges output:output];
+        NSLog(@"%@",foldRanges);
     }
-    NSLog(@"%@",foldRanges);
+    
     
     [self updateView:output withTheme:theme];
     
@@ -582,54 +583,59 @@
 }
 
 - (NSArray*)addFoldRange:(NSRange)range toArray:(NSArray*)arr {
+    if (range.location + range.length < _content.length) {
+        NSMutableArray* temp = [NSMutableArray arrayWithArray:arr];
+        [temp addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
+        return temp;
+    } else {
+        NSLog(@"fold range out of bounds");
+        return arr;
+    }
     
-    NSMutableArray* temp = [NSMutableArray arrayWithArray:arr];
-    [temp addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
-    return temp;
 }
 
-- (void)recurFoldsWithStart:(NSString*)foldStart
+- (void)foldsWithStart:(NSString*)foldStart
                         end:(NSString*)foldEnd
-                      range:(NSRange)range
-               currentStart:(int)currentStart
-                   curIndex:(int)curIndex
-                      
 {
-    NSRange firstStartRange = [self findFirstPattern:foldStart range:range content:[_splitContent objectAtIndex:curIndex]];
-    
-    NSRange firstEndRange = [self findFirstPattern:foldEnd range:range];
-    
-    if (curIndex >= _splitContent.count) {
-        NSLog(@"fin.");
-        return;
-    }
-    else if (firstStartRange.location == NSNotFound || firstEndRange.location == NSNotFound){
+    int curI = 0;
+    NSMutableArray* stack = [NSMutableArray array];
+    NSRange startRange;
+    NSRange endRange;
+    int offset = 0;
+    while (curI < _splitContent.count) {
+        NSString* lineContent = [_splitContent objectAtIndex:curI];
+        
+        startRange = [self findFirstPattern:foldStart range:NSMakeRange(0, lineContent.length) content:lineContent];
+        endRange = [self findFirstPattern:foldEnd range:NSMakeRange(0, lineContent.length) content:lineContent];
+        curI++;
+        if (startRange.location == NSNotFound && endRange.location == NSNotFound) {
+            
+        } else if (endRange.location == NSNotFound) {
+            NSLog(@"begin... %d",startRange.location+offset);
+            [stack addObject:[NSNumber numberWithInt:startRange.location+offset]];
+        } else if (startRange.location == NSNotFound) {
 
-        [self recurFoldsWithStart:foldStart end:foldEnd range:range currentStart:currentStart curIndex:curIndex+1];
+            if (stack.count > 0) {
+                NSLog(@"end %d",endRange.location+offset);
+                int s = [(NSNumber*)[stack lastObject] intValue];
+                [stack removeLastObject];
+                NSRange r =NSMakeRange(s, endRange.location+offset);
+                foldRanges = [self addFoldRange:r toArray:foldRanges];
+            }
+ 
         
-    } else if (firstStartRange.location < firstEndRange.location) {
-        int fStartEnds = firstStartRange.location + firstStartRange.length;
-        int nextStart = MIN(fStartEnds, firstEndRange.location);
-        
-        NSRange recurRange = NSMakeRange(fStartEnds, _content.length - nextStart);
-        NSLog(@"starting block..");
-        [self recurFoldsWithStart:foldStart end:foldEnd range:recurRange currentStart:firstStartRange.location];
-        
-    }  else if (firstEndRange.location < firstStartRange.location) {
-        int fEndEnds = firstEndRange.location + firstEndRange.length;
-        int nextStart = MIN(fEndEnds, firstStartRange.location);
-        
-        NSRange recurRange = NSMakeRange(nextStart, _content.length - nextStart);
-        if (currentStart != -1) {
-            NSLog(@"ending block..");
-            foldRanges = [self addFoldRange:NSMakeRange(currentStart, firstEndRange.location - currentStart) toArray:foldRanges];
-            [self recurFoldsWithStart:foldStart end:foldEnd range:recurRange currentStart:currentStart];
         } else {
-            [self recurFoldsWithStart:foldStart end:foldEnd range:recurRange currentStart:currentStart];
+//            if (startRange.location > endRange.location) {
+//                NSLog(@"end");
+//                if (stack.count > 0) {
+//                    int s = [(NSNumber*)[stack lastObject] intValue];
+//                    [stack removeLastObject];
+//                    [self addFoldRange:NSMakeRange(s, endRange.location+offset) toArray:foldRanges];
+//                }
+//            }
         }
-        
+        offset += lineContent.length;
     }
-
         
 }
 -(void)testFolds:(NSArray*)ranges output:(ArcAttributedString*)output {
