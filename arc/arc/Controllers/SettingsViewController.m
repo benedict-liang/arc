@@ -132,7 +132,7 @@
     switch (type) {
         case kMCQSettingType:
             rowNumber = [[sectionProperties objectForKey:SECTION_OPTIONS] count];
-            if (rowNumber > 5) {
+            if (rowNumber > THRESHOLD_LONG_SETTING_LIST) {
                 return 1; // We want to use a picker view for long sections.
             }
             return [[sectionProperties objectForKey:SECTION_OPTIONS] count];
@@ -195,7 +195,7 @@
     NSString *cellIdentifier = [properties objectForKey:SECTION_HEADING];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        if ([[properties objectForKey:SECTION_OPTIONS] count] < 5) {
+        if ([[properties objectForKey:SECTION_OPTIONS] count] < THRESHOLD_LONG_SETTING_LIST) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:cellIdentifier];
         } else {
@@ -205,7 +205,7 @@
     }
     
     NSString *settingKey = [properties objectForKey:SECTION_SETTING_KEY];
-    if ([[properties objectForKey:SECTION_OPTIONS] count] > 5) {
+    if ([[properties objectForKey:SECTION_OPTIONS] count] > THRESHOLD_LONG_SETTING_LIST) {
         // This is a long list. Use a single cell with a link to a view
         // with the rest of the items.
         NSString *currentSettingKey = [_appState settingForKey:settingKey];
@@ -345,22 +345,24 @@
     (NSDictionary*)[_settingOptions objectAtIndex:indexPath.section];
     
     int type = [[sectionProperties objectForKey:SECTION_TYPE] intValue];
-    if (type == kMCQSettingType && [[sectionProperties objectForKey:SECTION_OPTIONS] count] < 5) {
-        NSDictionary *option = [[sectionProperties
-                                 objectForKey:SECTION_OPTIONS]
-                                objectAtIndex:indexPath.row];
-        
-        NSString *value = [option objectForKey:PLUGIN_OPTION_VALUE];
-        NSString *settingKey = [sectionProperties objectForKey:SECTION_SETTING_KEY];
-        
-        // Reload the table.
-        [self updateSetting:value
-              forSettingKey:settingKey
-            reloadTableData:YES];
-    } else {
-        // Link to the long settings list.
-        LongSettingListViewController *listController = [[LongSettingListViewController alloc] initWithProperties:sectionProperties delegate:self];
-        [self.navigationController pushViewController:listController animated:YES];
+    if (type == kMCQSettingType) {
+        if ([[sectionProperties objectForKey:SECTION_OPTIONS] count] < THRESHOLD_LONG_SETTING_LIST) {
+            NSDictionary *option = [[sectionProperties
+                    objectForKey:SECTION_OPTIONS]
+                    objectAtIndex:indexPath.row];
+
+            NSString *value = [option objectForKey:PLUGIN_OPTION_VALUE];
+            NSString *settingKey = [sectionProperties objectForKey:SECTION_SETTING_KEY];
+
+            // Reload the table.
+            [self updateSetting:value
+                  forSettingKey:settingKey
+                reloadTableData:YES];
+        } else  {
+            // Link to the long settings list.
+            LongSettingListViewController *listController = [[LongSettingListViewController alloc] initWithProperties:sectionProperties delegate:self];
+            [self.navigationController pushViewController:listController animated:YES];
+        }
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -371,10 +373,10 @@
 {
     // Update App State
     [_appState setSetting:value forKey:settingKey];
-    
+
     // Refresh the code view.
     [self.delegate refreshCodeViewForSetting:settingKey];
-    
+
     if (reloadData) {
         // Refresh tableView
         [_tableView reloadData];

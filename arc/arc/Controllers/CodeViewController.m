@@ -101,9 +101,6 @@
                                   self.view.bounds.size.width,
                                   self.view.bounds.size.height - SIZE_TOOLBAR_HEIGHT);
     
-    // TODO: Remove once confirmed - search bar on top of code
-    //[self addSearchBarToTableViewTop];
-    
     [self.view addSubview:_tableView];
 }
 
@@ -192,8 +189,8 @@
     int start = 0;
     int length = _arcAttributedString.string.length;
 
-    _typesetter = CTTypesetterCreateWithAttributedString((CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.plainAttributedString));
-
+    _typesetter = CTTypesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_arcAttributedString.plainAttributedString);
+    
     while (start < length)
     {
         [lineStarts setObject:[NSNumber numberWithBool:YES]
@@ -341,6 +338,7 @@
     
     // Initialize results tableview controller
     _resultsViewController = [[ResultsTableViewController alloc] init];
+    _resultsViewController.codeViewController = self;
     
     _resultsPopoverController =
     [[UIPopoverController alloc] initWithContentViewController:_resultsViewController];
@@ -352,6 +350,9 @@
 
 - (void)hideSearchToolBar
 {
+    [_arcAttributedString removeAttributesForSettingKey:@"search"];
+    [_tableView reloadData];
+    
     if (UIDeviceOrientationIsLandscape(self.interfaceOrientation))
     {
         [self setUpDefaultToolBar];
@@ -359,18 +360,6 @@
     else {
         [self showShowMasterViewButton:_portraitButton];
     }
-}
-
-// TODO: Remove once confirmed - search bar on top of code
-- (void)addSearchBarToTableViewTop
-{
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, SIZE_TOOLBAR_HEIGHT)];
-    _tableView.tableHeaderView = _searchBar;
-    _searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
-    _searchBar.delegate = (id<UISearchBarDelegate>)self;
-    
-    // Hides search bar upon load
-    _tableView.contentOffset = CGPointMake(0, SIZE_TOOLBAR_HEIGHT);
 }
 
 #pragma mark - Code View Delegate
@@ -391,6 +380,12 @@
         _arcAttributedString = arcAttributedString;
         [_tableView reloadData];
     }
+}
+
+- (void)scrollToLineNumber:(int)lineNumber {
+    // TODO: Naive implementation
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lineNumber inSection:0];
+    [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
 
 #pragma mark - Detail View Controller Delegate
@@ -480,45 +475,23 @@
     NSString *searchString = [searchBar text];
     NSArray *searchResultRangesArray = [FullTextSearch searchForText:searchString
                                                          inFile:_currentFile];
-    NSMutableArray *searchLineNumber;
+    NSMutableArray *searchLineNumberArray;
     
     if (searchResultRangesArray != nil) {
-        searchLineNumber = [[NSMutableArray alloc] init];
-        int lineIndex = 0;
-        
-        for (int i=0; i<[searchResultRangesArray count]; i++) {
-            NSRange searchResultRange = [[searchResultRangesArray objectAtIndex:i] rangeValue];
-            
-            for (int j=lineIndex; j<[_lines count]; j++) {
-                NSRange lineRange = [[[_lines objectAtIndex:j] objectForKey:KEY_RANGE] rangeValue];
-                NSRange rangeIntersectionResult = NSIntersectionRange(lineRange, searchResultRange);
-                
-                // Ranges intersect
-                if (rangeIntersectionResult.length != 0) {
-                    
-                    [searchLineNumber addObject:[NSNumber numberWithInt:j]];
-                    
-                    // Update current lineIndex
-                    lineIndex = j;
-                    break;
-                }
-            }
-        }
+        searchLineNumberArray = [[NSMutableArray alloc] init];
+        [self getSearchResultLineNumbers:searchLineNumberArray
+                        withResultsArray:searchResultRangesArray];
     }
     
     [_arcAttributedString removeAttributesForSettingKey:@"search"];
-
-    for (NSValue *range in searchResultRangesArray) {
-        [_arcAttributedString setBackgroundColor:[UIColor yellowColor]
-                                         OnRange:[range rangeValue]
-                                      ForSetting:@"search"];
-    }
+    [self applyBackgroundToAttributedStringForRanges:searchResultRangesArray
+                                           withColor:[UIColor yellowColor]];
     
     // Hide keyboard after search button clicked
     [searchBar resignFirstResponder];
     
     // Show results
-    _resultsViewController.resultsArray = [NSArray arrayWithArray:searchLineNumber];
+    _resultsViewController.resultsArray = [NSArray arrayWithArray:searchLineNumberArray];
     [_resultsViewController.tableView reloadData];
     [_resultsPopoverController presentPopoverFromRect:[_searchBar bounds]
                                               inView:_searchBar
@@ -526,6 +499,42 @@
                                             animated:YES];
     
     [_tableView reloadData];
+}
+
+- (void)getSearchResultLineNumbers:(NSMutableArray *)searchLineNumberArray
+           withResultsArray:(NSArray *)resultsArray
+{
+    int lineIndex = 0;
+    
+    for (int i=0; i<[resultsArray count]; i++) {
+        NSRange searchResultRange = [[resultsArray objectAtIndex:i] rangeValue];
+        
+        for (int j=lineIndex; j<[_lines count]; j++) {
+            NSRange lineRange = [[[_lines objectAtIndex:j] objectForKey:KEY_RANGE] rangeValue];
+            NSRange rangeIntersectionResult = NSIntersectionRange(lineRange, searchResultRange);
+            
+            // Ranges intersect
+            if (rangeIntersectionResult.length != 0) {
+                
+                [searchLineNumberArray addObject:[NSNumber numberWithInt:j]];
+                
+                // Update current lineIndex
+                lineIndex = j;
+                break;
+            }
+        }
+    }
+}
+
+- (void)applyBackgroundToAttributedStringForRanges:(NSArray *)rangesArray
+                                         withColor:(UIColor*)color
+
+{    
+    for (NSValue *range in rangesArray) {
+        [_arcAttributedString setBackgroundColor:color
+                                         OnRange:[range rangeValue]
+                                      ForSetting:@"search"];
+    }
 }
 
 @end

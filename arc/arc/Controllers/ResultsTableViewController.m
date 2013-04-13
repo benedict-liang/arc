@@ -7,6 +7,7 @@
 //
 
 #import "ResultsTableViewController.h"
+#import "SearchResultCell.h"
 
 @interface ResultsTableViewController ()
 
@@ -48,16 +49,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    SearchResultCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc] init];
+        cell = [[SearchResultCell alloc] init];
     }
     
     if (cell) {
-        // TODO: This represents temporary data for results
         NSNumber *lineNumber = (NSNumber*)[_resultsArray objectAtIndex:indexPath.row];
-        cell.textLabel.text = [NSString stringWithFormat:@"Line %d", [lineNumber intValue]];
+        
+        cell.lineNumber = [lineNumber intValue];
+        cell.textLabel.text = [NSString stringWithFormat:@"Line %d", cell.lineNumber];
     }
     
     return cell;
@@ -67,13 +69,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+
+    SearchResultCell *cell = (SearchResultCell*)[tableView cellForRowAtIndexPath:indexPath];
+    int lineNumber = cell.lineNumber;
+    
+    [_codeViewController scrollToLineNumber:lineNumber];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
