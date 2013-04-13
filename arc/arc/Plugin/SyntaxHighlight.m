@@ -613,14 +613,16 @@
         } else if (endRange.location == NSNotFound) {
             NSLog(@"begin... %d",startRange.location+offset);
             [stack addObject:[NSNumber numberWithInt:startRange.location+offset]];
+            _foldStarts = [self addFoldRange:NSMakeRange(startRange.location+offset, startRange.length) toArray:_foldStarts];
         } else if (startRange.location == NSNotFound) {
 
             if (stack.count > 0) {
                 NSLog(@"end %d",endRange.location+offset);
                 int s = [(NSNumber*)[stack lastObject] intValue];
                 [stack removeLastObject];
-                NSRange r =NSMakeRange(s, endRange.location+offset);
+                NSRange r =NSMakeRange(s, endRange.location+offset - s);
                 foldRanges = [self addFoldRange:r toArray:foldRanges];
+                _foldEnds = [self addFoldRange:NSMakeRange(endRange.location+offset, endRange.length) toArray:_foldEnds];
             }
  
         
@@ -634,23 +636,24 @@
 //                }
 //            }
         }
-        offset += lineContent.length;
+        offset += lineContent.length+1;
     }
         
 }
 -(void)testFolds:(NSArray*)ranges output:(ArcAttributedString*)output {
-    BOOL flag = YES;
-    for (NSValue* v in ranges) {
+ 
+    NSLog(@"_foldStarts: %@",_foldStarts);
+    for (NSValue* v in _foldStarts) {
         NSRange r;
         [v getValue:&r];
-        if (flag) {
-            flag = !flag;
-            [self styleOnRange:r fcolor:[UIColor redColor] output:output];
-        } else {
-            flag = !flag;
-            [self styleOnRange:r fcolor:[UIColor greenColor] output:output];
-        }
+        [self styleOnRange:r fcolor:[UIColor redColor] output:output];
+    }
     
+    NSLog(@"_foldEnds: %@",_foldEnds);
+    for (NSValue*v in _foldEnds) {
+        NSRange r;
+        [v getValue:&r];
+        [self styleOnRange:r fcolor:[UIColor greenColor] output:output];
     }
 }
 
