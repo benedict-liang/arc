@@ -93,7 +93,41 @@
 // -> Always leave at least 1 character in between them
 
 - (void)moveLeftDragPointHorizontal:(UIPanGestureRecognizer*)gesture {
-
+    if ([gesture state] == UIGestureRecognizerStateBegan) {
+        [self calculateRectValues];
+    }
+    
+    if ([gesture state] == UIGestureRecognizerStateChanged) {
+        
+        // Set thresholds
+        CGFloat forwardDifference = _nextFirstCharacterCoordinates.x - _firstCharacterCoordinates.x;
+        CGFloat backwardDifference = _firstCharacterCoordinates.x - _previousFirstCharacterCoordinates.x;
+        CGFloat forwardThreshold = forwardDifference / 2;
+        CGFloat backwardThreshold = - backwardDifference / 2;
+        
+        CGPoint translation = [gesture translationInView:_tableView];
+        BOOL selectionDidChange = NO;
+        
+        // Select forward
+        if (translation.x > forwardThreshold) {
+            [self updateFirstCharacterValues:_nextFirstCharacterCoordinates];
+            selectionDidChange = YES;
+        }
+        
+        // Select backward
+        if (translation.x < backwardThreshold) {
+            [self updateFirstCharacterValues:_previousFirstCharacterCoordinates];
+            selectionDidChange = YES;
+        }
+        
+        if (selectionDidChange) {
+            gesture.view.center = CGPointMake(_firstCharacterCoordinates.x, gesture.view.center.y);
+            [gesture setTranslation:CGPointMake(0, 0)
+                             inView:_tableView];
+            CGPoint startPointInRow = CGPointMake(gesture.view.center.x, 0);
+            [self updateBackgroundColorForLeftDragPoint:startPointInRow];
+        }
+    }
 }
 
 - (void)moveLeftDragPointVertical:(UIPanGestureRecognizer*)gesture {
@@ -301,7 +335,6 @@
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                          (cell.line));
-    // FIXME: Left drag point still off by 1 index
     startPoint = CGPointMake(startPoint.x - _lineNumberWidthOffSet, startPoint.y);
     CFIndex index = CTLineGetStringIndexForPosition(lineRef, startPoint);
     int startLocation = cell.stringRange.location + index;
@@ -313,11 +346,18 @@
     [_tableView reloadData];
 }
 
+- (void)updateFirstCharacterValues:(CGPoint)firstCharacterCoordinates {
+    _firstCharacterCoordinates = firstCharacterCoordinates;
+    
+    // Reset prev and next last character coordinates
+    [self setFirstCharacterCoordinates:_firstCharacterCoordinates];
+}
+
 - (void)updateLastCharacterValues:(CGPoint)lastCharacterCoordinates {
     _lastCharacterCoordinates = lastCharacterCoordinates;
     
     // Reset prev and next last character coordinates
-    [self setLastCharacterCoordinates:lastCharacterCoordinates];
+    [self setLastCharacterCoordinates:_lastCharacterCoordinates];
 }
 
 #pragma mark - Calculations for character/row rects
