@@ -331,8 +331,7 @@
     _firstCharacterCoordinates = CGPointMake(_leftDragPoint.center.x, 0);
     _lastCharacterCoordinates = CGPointMake(_rightDragPoint.center.x, 0);
     
-    
-    // TODO: Apply to first character too
+    [self setFirstCharacterCoordinates:_firstCharacterCoordinates];
     [self setLastCharacterCoordinates:_lastCharacterCoordinates];
 }
 
