@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Folder.h"
+#import "GoogleDriveServiceManager.h"
+#import "CloudFolderDelegate.h"
 
-@interface GoogleDriveFolder : NSObject
+@interface GoogleDriveFolder : NSObject <Folder>
+
+@property (weak, nonatomic) id<CloudFolderDelegate>delegate;
+
++ (GoogleDriveFolder *)getRoot;
 
 @end
