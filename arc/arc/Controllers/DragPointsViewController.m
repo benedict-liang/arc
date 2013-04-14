@@ -22,6 +22,7 @@
 @property (nonatomic) CGPoint firstCharacterCoordinates;
 @property (nonatomic) CGPoint lastCharacterCoordinates;
 
+@property (nonatomic) CGPoint previousLastCharacterCoordinates;
 @property (nonatomic) CGPoint nextLastCharacterCoordinates;
 
 @end
@@ -185,6 +186,14 @@
     else {
         _nextLastCharacterCoordinates = CGPointMake(NAN, NAN);
     }
+    
+    if (index != 0) {
+        CGFloat offset = CTLineGetOffsetForStringIndex(bottomLineRef, index - 1, NULL);
+        _previousLastCharacterCoordinates = CGPointMake(offset, 0);
+    }
+    else {
+        _nextLastCharacterCoordinates = CGPointMake(NAN, NAN);
+    }
 }
 
 #pragma mark - Calculations for character/row rects
@@ -208,6 +217,14 @@
     if (index < stringRangeForBottomRow.length) {
         CGFloat offset = CTLineGetOffsetForStringIndex(bottomLineRef, index + 1, NULL);
         _nextLastCharacterCoordinates = CGPointMake(offset, 0);
+    }
+    else {
+        _nextLastCharacterCoordinates = CGPointMake(NAN, NAN);
+    }
+    
+    if (index != 0) {
+        CGFloat offset = CTLineGetOffsetForStringIndex(bottomLineRef, index - 1, NULL);
+        _previousLastCharacterCoordinates = CGPointMake(offset, 0);
     }
     else {
         _nextLastCharacterCoordinates = CGPointMake(NAN, NAN);
