@@ -79,31 +79,31 @@
     }
     
     if ([gesture state] == UIGestureRecognizerStateChanged) {
-        CGPoint translation = [gesture translationInView:_tableView];        
-        BOOL selectionDidChange = NO;
         
+        // Set thresholds
         CGFloat forwardDifference = _nextLastCharacterCoordinates.x - _lastCharacterCoordinates.x;
         CGFloat backwardDifference = _lastCharacterCoordinates.x - _previousLastCharacterCoordinates.x;
         CGFloat forwardThreshold = forwardDifference / 2;
         CGFloat backwardThreshold = - backwardDifference / 2;
         
+        CGPoint translation = [gesture translationInView:_tableView];
+        BOOL selectionDidChange = NO;
+        
         // Select forward
         if (translation.x > forwardThreshold) {
             [self updateLastCharacterValues:_nextLastCharacterCoordinates];
-            gesture.view.center = CGPointMake(_lastCharacterCoordinates.x, gesture.view.center.y);
-            [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
             selectionDidChange = YES;
         }
         
         // Select backward
         if (translation.x < backwardThreshold) {
             [self updateLastCharacterValues:_previousLastCharacterCoordinates];
-            gesture.view.center = CGPointMake(_lastCharacterCoordinates.x, gesture.view.center.y);
-            [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
             selectionDidChange = YES;
         }
         
         if (selectionDidChange) {
+            gesture.view.center = CGPointMake(_lastCharacterCoordinates.x, gesture.view.center.y);
+            [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
             CGPoint endPointInRow = CGPointMake(gesture.view.center.x, 0);
             [self updateBackgroundColorForRightDragPoint:endPointInRow];
         }
@@ -119,33 +119,45 @@
     }
     
     if ([gesture state] == UIGestureRecognizerStateChanged) {
-        CGPoint translation = [gesture translationInView:_tableView];
+        
+        // Set thresholds
         CGFloat cellHeight = _bottomRowCellRect.size.height;
         CGFloat threshold = cellHeight / 4;
+        
+        // Checks if cells are within visible range
+        NSArray *visibleCells = _tableView.visibleCells;
+        NSIndexPath *previousCellIndexPath = [NSIndexPath indexPathForRow:_bottomIndexPath.row-1
+                                                                inSection:0];
+        UITableViewCell *nextBottomCell = [_tableView cellForRowAtIndexPath:_nextBottomRowIndexPath];
+        UITableViewCell *previousBottomCell = [_tableView cellForRowAtIndexPath:previousCellIndexPath];
+        
+        
+        CGPoint translation = [gesture translationInView:_tableView];
         BOOL selectionDidChange = NO;
         
-        NSArray *visibleCells = _tableView.visibleCells;
-        UITableViewCell *nextBottomCell = [_tableView cellForRowAtIndexPath:_nextBottomRowIndexPath];
         
         // Selecting downwards
-        if (translation.y > threshold && [visibleCells containsObject:nextBottomCell]) {
+        if (translation.y > threshold &&
+            [visibleCells containsObject:nextBottomCell]) {
+            
             [self updateBottomRectValuesWithBottomIndexPath:_nextBottomRowIndexPath];
-            gesture.view.center = CGPointMake(gesture.view.center.x, _bottomRowCellRect.origin.y + cellHeight/2);
-            [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
             selectionDidChange = YES;
         }
         
         // Selecting upwards
-        if (translation.y < -threshold && (_topIndexPath.row != _bottomIndexPath.row)) {
-            [self updateBottomRectValuesWithBottomIndexPath:
-             [NSIndexPath indexPathForRow:_bottomIndexPath.row-1
-                                inSection:0]];
-            gesture.view.center = CGPointMake(gesture.view.center.x, _bottomRowCellRect.origin.y + cellHeight/2);
-            [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
+        if (translation.y < -threshold &&
+            (_topIndexPath.row != _bottomIndexPath.row) &&
+            [visibleCells containsObject:previousBottomCell]) {
+            
+            [self updateBottomRectValuesWithBottomIndexPath:previousCellIndexPath];
             selectionDidChange = YES;
         }
         
         if (selectionDidChange) {
+            gesture.view.center = CGPointMake(gesture.view.center.x,
+                                              _bottomRowCellRect.origin.y + cellHeight/2);
+            [gesture setTranslation:CGPointMake(0, 0)
+                             inView:_tableView];
             CGPoint endPointInRow = CGPointMake(gesture.view.center.x, 0);
             [self updateBackgroundColorForRightDragPoint:endPointInRow];
         }
