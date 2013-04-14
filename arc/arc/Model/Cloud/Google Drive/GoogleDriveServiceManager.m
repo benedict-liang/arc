@@ -8,14 +8,14 @@
 
 #import "GoogleDriveServiceManager.h"
 
-@interface GoogleDriveServiceManager ()
-@property BOOL isLoggedIn;
-@end
-
-
 static GoogleDriveServiceManager *sharedServiceManager = nil;
 
 @implementation GoogleDriveServiceManager
+
+- (BOOL)isLoggedIn
+{
+    return [((GTMOAuth2Authentication *)_driveService.authorizer) canAuthorize];
+}
 
 // Returns the singleton service manager for this particular service.
 + (id<CloudServiceManager>)sharedServiceManager
@@ -34,9 +34,28 @@ static GoogleDriveServiceManager *sharedServiceManager = nil;
                                     authForGoogleFromKeychainForName:GOOGLE_KEYCHAIN_NAME
                                     clientID:CLOUD_GOOGLE_ID
                                     clientSecret:CLOUD_GOOGLE_SECRET];
-        _isLoggedIn = [((GTMOAuth2Authentication *)_driveService.authorizer) canAuthorize];
     }
     return self;
+}
+
+
+// Takes in a ViewController.
+// Triggers the cloud service's login procedure.
+- (void)loginWithViewController:(UIViewController *)controller
+{
+    GTMOAuth2ViewControllerTouch *loginController = [[GTMOAuth2ViewControllerTouch alloc]
+                                                     initWithScope:kGTLAuthScopeDriveReadonly clientID:CLOUD_GOOGLE_ID clientSecret:CLOUD_GOOGLE_SECRET keychainItemName:GOOGLE_KEYCHAIN_NAME delegate:self finishedSelector:@selector(viewController:finishedWithAuth:error:)];
+    [[controller navigationController] pushViewController:loginController animated:YES];
+}
+
+// Handle authentication from Drive.
+- (void)viewController:(GTMOAuth2ViewControllerTouch *)viewController
+      finishedWithAuth:(GTMOAuth2Authentication *)authResult
+                 error:(NSError *)error
+{
+    if (!error) {
+        _driveService.authorizer = authResult;
+    }
 }
 
 @end
