@@ -10,4 +10,5 @@
 #import <LiveSDK/LiveConnectClient.h>
 
 @interface SkyDriveServiceManager : NSObject <CloudServiceManager, LiveAuthDelegate>
+@property (strong, nonatomic) LiveConnectClient *liveClient;
 @end

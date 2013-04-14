@@ -8,7 +8,6 @@
 #import "SkyDriveServiceManager.h"
 
 @interface SkyDriveServiceManager ()
-@property (strong, nonatomic) LiveConnectClient *liveClient;
 @property BOOL isLoggedIn;
 @end
 
