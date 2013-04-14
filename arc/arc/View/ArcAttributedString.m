@@ -215,10 +215,23 @@
 }
 - (ArcAttributedString*)arcStringWithRemovedRange:(NSRange)range {
     int rangeEnds = range.location + range.length;
+    
     NSMutableString* str = [NSMutableString stringWithString:[_string substringToIndex:range.location]];
     [str appendString:[_string substringFromIndex:rangeEnds]];
+    
+    ArcAttributedString* removedArcString = [[ArcAttributedString alloc] initWithString:str];
+    NSMutableDictionary* removedAttributesDictionary = [NSMutableDictionary dictionary];
+    
     for (NSString *property in __attributesDictionary) {
-        
+        for (NSDictionary* attribute in [__attributesDictionary objectForKey:property]) {
+            NSRange originalRange = NSRangeFromString([attribute objectForKey:@"range"]);
+            
+            
+            [__attributedString addAttribute:[attribute objectForKey:@"type"]
+                                       value:[attribute objectForKey:@"value"]
+                                       range:NSRangeFromString([attribute objectForKey:@"range"])];
+        }
+ 
     }
 }
 @end
