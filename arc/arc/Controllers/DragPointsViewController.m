@@ -76,6 +76,7 @@
         
         CGFloat cellHeight = _currentBottomRowCellRect.size.height;
         CGFloat quarterDistance = cellHeight / 4;
+        BOOL selectionDidChange = NO;
         
         // y-direction changed
         // => get cell for position
@@ -83,7 +84,20 @@
             [self updateBottomRectValuesWithBottomIndexPath:_nextBottomRowIndexPath];
             gesture.view.center = CGPointMake(gesture.view.center.x, _currentBottomRowCellRect.origin.y + cellHeight/2);
             [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
-            
+            selectionDidChange = YES;
+        }
+        
+        // Needs to resolve for right < left
+        if (translation.y < -quarterDistance) {
+            [self updateBottomRectValuesWithBottomIndexPath:
+             [NSIndexPath indexPathForRow:_bottomIndexPath.row-1
+                                inSection:0]];
+            gesture.view.center = CGPointMake(gesture.view.center.x, _currentBottomRowCellRect.origin.y + cellHeight/2);
+            [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
+            selectionDidChange = YES;
+        }
+        
+        if (selectionDidChange) {
             CGPoint endPointInRow = CGPointMake(gesture.view.center.x, 0);
             CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
             CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
@@ -95,15 +109,6 @@
                                                    WithRange:_selectedTextRange
                                                   forSetting:@"copyAndPaste"];
             [_tableView reloadData];
-        }
-        
-        // Needs to resolve for right < left
-        if (translation.y < -quarterDistance) {
-            [self updateBottomRectValuesWithBottomIndexPath:
-             [NSIndexPath indexPathForRow:_bottomIndexPath.row-1
-                                inSection:0]];
-            gesture.view.center = CGPointMake(gesture.view.center.x, _currentBottomRowCellRect.origin.y + cellHeight/2);
-            [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
         }
     }
     

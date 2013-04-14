@@ -302,6 +302,7 @@
                           WithRange:(NSRange)range
                          forSetting:(NSString*)setting
 {
+    [_arcAttributedString removeAttributesForSettingKey:setting];
     [_arcAttributedString setBackgroundColor:color
                                      OnRange:range
                                   ForSetting:setting];
