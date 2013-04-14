@@ -104,19 +104,14 @@
         CGFloat backwardDifference = _firstCharacterCoordinates.x - _previousFirstCharacterCoordinates.x;
         CGFloat forwardThreshold = forwardDifference / 2;
         CGFloat backwardThreshold = - backwardDifference / 2;
-        
-        BOOL isOverlappingDragPoints = NO;
-        if ((_topIndexPath.row == _bottomIndexPath.row) &&
-            (_lastCharacterCoordinates.x - _firstCharacterCoordinates.x) < forwardDifference * 2) {
-            isOverlappingDragPoints = YES;
-        }
+        BOOL isDragPointsOverlapping = [self isDragPointsOverlapping:forwardDifference];
         
         CGPoint translation = [gesture translationInView:_tableView];
         BOOL selectionDidChange = NO;
         
         // Select forward
         if (translation.x > forwardThreshold &&
-            !isOverlappingDragPoints) {
+            !isDragPointsOverlapping) {
             [self updateFirstCharacterValues:_nextFirstCharacterCoordinates];
             selectionDidChange = YES;
         }
@@ -208,12 +203,7 @@
         CGFloat backwardDifference = _lastCharacterCoordinates.x - _previousLastCharacterCoordinates.x;
         CGFloat forwardThreshold = forwardDifference / 2;
         CGFloat backwardThreshold = - backwardDifference / 2;
-        
-        BOOL isOverlappingDragPoints = NO;
-        if ((_topIndexPath.row == _bottomIndexPath.row) &&
-            (_lastCharacterCoordinates.x - _firstCharacterCoordinates.x) < forwardDifference * 2) {
-            isOverlappingDragPoints = YES;
-        }
+        BOOL isDragPointsOverlapping = [self isDragPointsOverlapping:forwardDifference];
         
         CGPoint translation = [gesture translationInView:_tableView];
         BOOL selectionDidChange = NO;
@@ -226,7 +216,7 @@
         
         // Select backward
         if (translation.x < backwardThreshold &&
-            !isOverlappingDragPoints) {
+            !isDragPointsOverlapping) {
             [self updateLastCharacterValues:_previousLastCharacterCoordinates];
             selectionDidChange = YES;
         }
@@ -461,6 +451,12 @@
     else {
         _nextLastCharacterCoordinates = CGPointMake(NAN, NAN);
     }
+}
+
+- (BOOL)isDragPointsOverlapping:(CGFloat)characterWidth {
+    return
+    (_topIndexPath.row == _bottomIndexPath.row) &&
+    ((_lastCharacterCoordinates.x - _firstCharacterCoordinates.x) < characterWidth * 2);
 }
 
 #pragma mark - UIGestureRecognizerDelegate Methods
