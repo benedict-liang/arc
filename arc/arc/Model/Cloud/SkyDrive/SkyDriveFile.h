@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "File.h"
 
-@interface SkyDriveFile : NSObject
+@interface SkyDriveFile : NSObject <File>
 
 @end

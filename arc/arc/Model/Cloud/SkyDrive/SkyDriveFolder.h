@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "Folder.h"
 #import "SkyDriveServiceManager.h"
+#import "SkyDriveFile.h"
 
 @interface SkyDriveFolder : NSObject <Folder, LiveOperationDelegate>
 
