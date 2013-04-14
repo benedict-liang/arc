@@ -391,10 +391,6 @@
 
 - (void)showCopyMenuForTextSelection {
     
-    if ([self becomeFirstResponder]) {
-        NSLog(@"is first responder");
-    }
-    
     UIMenuController *menuController = [UIMenuController sharedMenuController];
     UIMenuItem *copyMenuItem = [[UIMenuItem alloc] initWithTitle:@"copy" action:@selector(copyString:)];
     [menuController setMenuItems:[NSArray arrayWithObject:copyMenuItem]];
