@@ -75,13 +75,13 @@
         CGPoint translation = [gesture translationInView:_tableView];        
         BOOL selectionDidChange = NO;
         
-        CGFloat difference = _nextLastCharacterCoordinates.x - _lastCharacterCoordinates.x;
+        CGFloat forwardDifference = _nextLastCharacterCoordinates.x - _lastCharacterCoordinates.x;
         
         // x-direction changed
         // => get string index
         
         // TODO: Assume within range of line
-        if (translation.x > difference / 2) {
+        if (translation.x > forwardDifference / 2) {
             [self updateLastCharacterValues:_nextLastCharacterCoordinates];
             gesture.view.center = CGPointMake(_lastCharacterCoordinates.x, gesture.view.center.y);
             [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
