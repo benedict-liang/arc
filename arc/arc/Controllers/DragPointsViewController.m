@@ -332,6 +332,7 @@
     int startLocation = cell.stringRange.location + index;
     int newRangeLength = _selectedTextRange.length + _selectedTextRange.location - startLocation;
     _selectedTextRange = NSMakeRange(startLocation, newRangeLength);
+    [_codeViewController removeBackgroundColorForSetting:@"copyAndPaste"];
     [_codeViewController setBackgroundColorForString:[UIColor blueColor]
                                            WithRange:_selectedTextRange
                                           forSetting:@"copyAndPaste"];
@@ -348,6 +349,7 @@
     CFIndex index = CTLineGetStringIndexForPosition(lineRef, endPoint);
     int endLocation = cell.stringRange.location + index - 1;
     _selectedTextRange = NSMakeRange(_selectedTextRange.location, endLocation - _selectedTextRange.location);
+    [_codeViewController removeBackgroundColorForSetting:@"copyAndPaste"];
     [_codeViewController setBackgroundColorForString:[UIColor blueColor]
                                            WithRange:_selectedTextRange
                                           forSetting:@"copyAndPaste"];
@@ -492,7 +494,16 @@
 }
 
 - (void)copyString:(id)sender {
-    NSLog(@"copied string: %@", [_codeViewController getStringForRange:_selectedTextRange]);
+    UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
+    NSString *copiedString = [_codeViewController getStringForRange:_selectedTextRange];
+    [pasteBoard setString:copiedString];
+    
+    // Need to figure out when to remove from superview
+    [_rightDragPoint removeFromSuperview];
+    [_leftDragPoint removeFromSuperview];
+    [self.view removeFromSuperview];
+    [_codeViewController removeBackgroundColorForSetting:@"copyAndPaste"];
+    self = nil;
 }
 
 - (void)viewDidLoad
