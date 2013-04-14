@@ -213,6 +213,42 @@
                                range:_stringRange];
     
 }
+- (NSArray*)rangesFromTransformWithAttribRange:(NSRange)attribRange removedRange:(NSRange)rmRange
+{
+    NSRange newAttribRange = {NSNotFound,0};
+    NSRange newAttribRange1 = {NSNotFound, 0};
+    NSArray* res = nil;
+    
+    //check if attribRange intersects range
+    
+    if ([Utils isSubsetOf:rmRange arg:attribRange]) {
+        //do nothing.
+    }
+    else if ([Utils isIntersectingWith:rmRange And:attribRange]) {
+        // if intersecting keep attribRange /\ !rmRange
+        NSArray* cleanedRangeArray = [Utils rangeDifferenceBetween:attribRange And:rmRange];
+        
+        newAttribRange = NSRangeFromString([cleanedRangeArray objectAtIndex:0]);
+        
+        if (cleanedRangeArray.count == 2) {
+            newAttribRange1 = NSRangeFromString([cleanedRangeArray objectAtIndex:1]);
+            res = @[NSStringFromRange(newAttribRange), NSStringFromRange(newAttribRange1)];
+        } else {
+            res = @[NSStringFromRange(newAttribRange)];
+        }
+        
+    } else {
+        res = @[NSStringFromRange(attribRange)];
+    }
+    NSMutableArray* postTranslateRes = [NSMutableArray array];
+    for (NSString* rs in res) {
+        NSRange range = NSRangeFromString(rs);
+        NSRange translatedRange = NSMakeRange(range.location - rmRange.length, range.length);
+        [postTranslateRes addObject:NSStringFromRange(translatedRange)];
+    }
+    
+    return postTranslateRes;
+}
 - (ArcAttributedString*)arcStringWithRemovedRange:(NSRange)range {
     int rangeEnds = range.location + range.length;
     
@@ -221,35 +257,23 @@
     [str appendString:[_string substringFromIndex:rangeEnds]];
     
     // create arcString from str
-    ArcAttributedString* removedArcString = [[ArcAttributedString alloc] initWithString:str];
-    NSMutableDictionary* removedAttributesDictionary = [NSMutableDictionary dictionary];
+    ArcAttributedString* rmArcString = [[ArcAttributedString alloc] initWithString:str];
+    NSMutableDictionary* rmArcStringAttribDictionary = [NSMutableDictionary dictionary];
     
     // iterate through attributes and transform attributes for the new ranges
     for (NSString *property in __attributesDictionary) {
-        
+        NSMutableArray *attributes = [NSMutableArray array];
         for (NSDictionary* attribute in [__attributesDictionary objectForKey:property]) {
             NSRange attribRange = NSRangeFromString([attribute objectForKey:@"range"]);
-            
-            //check if attribRange intersects range
-            if ([Utils isSubsetOf:range arg:attribRange]) {
-                //do nothing.
+            NSArray* transformedRanges = [self rangesFromTransformWithAttribRange:attribRange removedRange:range];
+            for (NSString* rs in transformedRanges) {
+                NSMutableDictionary* newAttrib = [NSMutableDictionary dictionaryWithDictionary:attribute];
+                [newAttrib setObject:rs forKey:@"range"];
+                [attributes addObject:newAttrib];
             }
-            else if ([Utils isIntersectingWith:range And:attribRange]) {
-                
-                NSArray* cleanedRangeArray = [Utils rangeDifferenceBetween:attribRange And:range];
-                
-            
-            } else {
-                
-            }
-            
-            [__attributedString addAttribute:[attribute objectForKey:@"type"]
-                                       value:[attribute objectForKey:@"value"]
-                                       range:NSRangeFromString([attribute objectForKey:@"range"])];
         }
- 
+        [rmArcStringAttribDictionary setObject:attributes forKey:property];
     }
-    
-    return removedArcString;
+    return rmArcString;
 }
 @end
