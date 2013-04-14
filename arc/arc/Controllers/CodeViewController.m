@@ -290,7 +290,6 @@
 
 - (void)scrollToLineNumber:(int)lineNumber
 {
-    // TODO: Naive implementation
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lineNumber
                                                 inSection:0];
     [_tableView scrollToRowAtIndexPath:indexPath
@@ -308,6 +307,9 @@
                                   ForSetting:setting];
 }
 
+- (NSString*)getStringForRange:(NSRange)range {
+    return [_arcAttributedString.attributedString.string substringWithRange:range];
+}
 
 #pragma mark - Execute Plugin Methods
 

@@ -22,6 +22,7 @@
 - (void)setBackgroundColorForString:(UIColor*)color
                           WithRange:(NSRange)range
                          forSetting:(NSString*)setting;
+- (NSString*)getStringForRange:(NSRange)range;
 
 @end
 
