@@ -364,6 +364,29 @@
 
 #pragma mark - Helper Methods
 
+- (void)setFirstCharacterCoordinates:(CGPoint)firstCharacterCoordinates {
+    CodeLineCell *topCell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
+    CTLineRef topLineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                                            (topCell.line));
+    CFRange stringRangeForTopRow = CTLineGetStringRange(topLineRef);
+    CFIndex index = CTLineGetStringIndexForPosition(topLineRef, _firstCharacterCoordinates);
+    if (index < stringRangeForTopRow.length) {
+        CGFloat offset = CTLineGetOffsetForStringIndex(topLineRef, index + 1, NULL);
+        _nextFirstCharacterCoordinates = CGPointMake(offset, 0);
+    }
+    else {
+        _nextFirstCharacterCoordinates = CGPointMake(NAN, NAN);
+    }
+    
+    if (index != 0) {
+        CGFloat offset = CTLineGetOffsetForStringIndex(topLineRef, index - 1, NULL);
+        _previousFirstCharacterCoordinates = CGPointMake(offset, 0);
+    }
+    else {
+        _previousFirstCharacterCoordinates = CGPointMake(NAN, NAN);
+    }
+}
+
 - (void)setLastCharacterCoordinates:(CGPoint)lastCharacterCoordinates {
     CodeLineCell *bottomCell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
     CTLineRef bottomLineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
