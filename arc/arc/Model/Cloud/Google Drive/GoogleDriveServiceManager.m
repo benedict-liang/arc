@@ -31,7 +31,7 @@ static GoogleDriveServiceManager *sharedServiceManager = nil;
     if (self = [super init]) {
         _driveService = [[GTLServiceDrive alloc] init];
         _driveService.authorizer = [GTMOAuth2ViewControllerTouch
-                                    authForGoogleFromKeychainForName:@"arc"
+                                    authForGoogleFromKeychainForName:GOOGLE_KEYCHAIN_NAME
                                     clientID:CLOUD_GOOGLE_ID
                                     clientSecret:CLOUD_GOOGLE_SECRET];
         _isLoggedIn = [((GTMOAuth2Authentication *)_driveService.authorizer) canAuthorize];
