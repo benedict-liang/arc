@@ -122,37 +122,17 @@
     }
 }
 
-- (void)moveRightDragPointHorizontal:(UIPanGestureRecognizer*)gesture {
-    UITableView *tableView = (UITableView*)gesture.view.superview;
-    CGPoint translation = [gesture translationInView:tableView];
-    
-    gesture.view.center = CGPointMake(gesture.view.center.x + translation.x, gesture.view.center.y);
-    
-    [gesture setTranslation:CGPointMake(0, 0) inView:tableView];
-//    [tableView reloadData];
-    if ([gesture state] == UIGestureRecognizerStateChanged) {
-        // Update selection rect
-//        CGFloat originalX = self.frame.origin.x;
-//        CGFloat newWidth = gesture.view.center.x - originalX;
-//        
-//        [self updateSize:CGSizeMake(newWidth, self.frame.size.height)];
-    }
-    
-    else if ([gesture state] == UIGestureRecognizerStateEnded) {
-        // Update substring
-//        [self updateSelectionSubstring:cell];
-//        
-//        [self showCopyMenuForTextSelection];
-    }
+- (void)calculateRectValues {
+    [self calculateRectValuesForRows];
 }
 
-- (void)calculateRectValues {
-    _currentTopRowCellRect = [_tableView rectForRowAtIndexPath:_topIndexPath];
-    _currentBottomRowCellRect = [_tableView rectForRowAtIndexPath:_bottomIndexPath];
+- (void)calculateRectValuesForRows {
+    _topRowCellRect = [_tableView rectForRowAtIndexPath:_topIndexPath];
+    _bottomRowCellRect = [_tableView rectForRowAtIndexPath:_bottomIndexPath];
     
     int topRow = _topIndexPath.row;
     int bottomRow = _bottomIndexPath.row;
-
+    
     if (topRow - 1 >= 0) {
         _nextTopRowIndexPath = [NSIndexPath indexPathForRow:(topRow - 1) inSection:0];
         _nextTopRowCellRect = [_tableView rectForRowAtIndexPath:_nextTopRowIndexPath];
