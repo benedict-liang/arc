@@ -574,8 +574,11 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
     }
     
     [_arcAttributedString removeAttributesForSettingKey:@"search"];
-    [self applyBackgroundToAttributedStringForRanges:searchResultRangesArray
-                                           withColor:[UIColor yellowColor]];
+    for (NSValue *range in searchResultRangesArray) {
+        [self setBackgroundColorForString:[UIColor yellowColor]
+                                WithRange:[range rangeValue]
+                               forSetting:@"copyAndPaste"];
+    }
     
     // Hide keyboard after search button clicked
     [searchBar resignFirstResponder];
@@ -613,17 +616,6 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
                 break;
             }
         }
-    }
-}
-
-- (void)applyBackgroundToAttributedStringForRanges:(NSArray *)rangesArray
-                                         withColor:(UIColor*)color
-
-{
-    for (NSValue *range in rangesArray) {
-        [_arcAttributedString setBackgroundColor:color
-                                         OnRange:[range rangeValue]
-                                      ForSetting:@"search"];
     }
 }
 
