@@ -316,7 +316,13 @@
 }
 
 - (void)updateBackgroundColorForLeftDragPoint:(CGPoint)startPoint {
-    int startLocation = [self getCharacterCoordinates:startPoint];
+    
+    CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
+    CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                                         (cell.line));
+    startPoint = CGPointMake(startPoint.x - _lineNumberWidthOffSet, startPoint.y);
+    CFIndex index = CTLineGetStringIndexForPosition(lineRef, startPoint);
+    int startLocation = cell.stringRange.location + index;
     
     int newRangeLength = _selectedTextRange.length + _selectedTextRange.location - startLocation;
     _selectedTextRange = NSMakeRange(startLocation, newRangeLength);
@@ -325,9 +331,15 @@
 }
 
 - (void)updateBackgroundColorForRightDragPoint:(CGPoint)endPoint {
-    int endLocation = [self getCharacterCoordinates:endPoint];
+    CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
+    CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                                         (cell.line));
+    endPoint = CGPointMake(endPoint.x - _lineNumberWidthOffSet, endPoint.y);
+    CFIndex index = CTLineGetStringIndexForPosition(lineRef, endPoint);
+    int endLocation = cell.stringRange.location + index;
     
-    _selectedTextRange = NSMakeRange(_selectedTextRange.location, endLocation - _selectedTextRange.location);
+    int newRangeLength = endLocation - _selectedTextRange.location;
+    _selectedTextRange = NSMakeRange(_selectedTextRange.location, newRangeLength);
     
     [self applyBackgroundColorWithSelectedTextRange];
 }
@@ -449,16 +461,6 @@
     else {
         _nextLastCharacterCoordinates = CGPointMake(NAN, NAN);
     }
-}
-
-- (int)getCharacterCoordinates:(CGPoint)point {
-    CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
-    CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
-                                                         (cell.line));
-    point = CGPointMake(point.x - _lineNumberWidthOffSet, point.y);
-    CFIndex index = CTLineGetStringIndexForPosition(lineRef, point);
-    int coordinates = cell.stringRange.location + index;
-    return coordinates;
 }
 
 - (void)applyBackgroundColorWithSelectedTextRange {
