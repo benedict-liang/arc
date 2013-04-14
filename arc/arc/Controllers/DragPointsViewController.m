@@ -21,6 +21,10 @@
 @property (nonatomic, strong) NSIndexPath *nextBottomRowIndexPath;
 @property (nonatomic, strong) NSIndexPath *nextTopRowIndexPath;
 
+// Character coordinates
+// Convention to follow:
+// ______|previous|current|next|__________
+
 @property (nonatomic) CGPoint firstCharacterCoordinates;
 @property (nonatomic) CGPoint lastCharacterCoordinates;
 
