@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		020C104E171A666500603229 /* SkyDriveFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C104D171A666500603229 /* SkyDriveFile.m */; };
 		026AC54716FF104D001E03E5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7F16FDF61C00C9DED3 /* Constants.m */; };
 		026BC4711705895500A9AA5F /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC4701705895500A9AA5F /* Dropbox.framework */; };
 		026BC473170589A700A9AA5F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC472170589A700A9AA5F /* CFNetwork.framework */; };
@@ -331,6 +332,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		020C104C171A666500603229 /* SkyDriveFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveFile.h; sourceTree = "<group>"; };
+		020C104D171A666500603229 /* SkyDriveFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveFile.m; sourceTree = "<group>"; };
 		025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		0260B50A1709286E0091B012 /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Folder.h; path = Protocols/Folder.h; sourceTree = "<group>"; };
 		0260B50B170928820091B012 /* FileSystemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystemObject.h; path = Protocols/FileSystemObject.h; sourceTree = "<group>"; };
@@ -1099,8 +1102,10 @@
 			children = (
 				840B6D541756B41E6BF42859 /* SkyDriveServiceManager.h */,
 				840B67A71EB5C59B9BCEF1A2 /* SkyDriveServiceManager.m */,
-				840B6B4068D4462DD00C7BE0 /* SkyDriveFolder.m */,
 				840B6733BB2064AE23C5FDF7 /* SkyDriveFolder.h */,
+				840B6B4068D4462DD00C7BE0 /* SkyDriveFolder.m */,
+				020C104C171A666500603229 /* SkyDriveFile.h */,
+				020C104D171A666500603229 /* SkyDriveFile.m */,
 			);
 			path = SkyDrive;
 			sourceTree = "<group>";
@@ -1803,6 +1808,7 @@
 				4CEADA071716ADBB00F4F619 /* LineNumberPlugin.m in Sources */,
 				840B6CE8D86D8BAA0E3CD4BC /* SkyDriveServiceManager.m in Sources */,
 				840B640FE8BA225B6750F377 /* SkyDriveFolder.m in Sources */,
+				020C104E171A666500603229 /* SkyDriveFile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
