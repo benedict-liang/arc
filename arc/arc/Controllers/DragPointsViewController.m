@@ -503,7 +503,8 @@
     [_leftDragPoint removeFromSuperview];
     [self.view removeFromSuperview];
     [_codeViewController removeBackgroundColorForSetting:@"copyAndPaste"];
-    self = nil;
+    [_tableView reloadData];
+//    self = nil;
 }
 
 - (void)viewDidLoad
