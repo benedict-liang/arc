@@ -9,6 +9,8 @@
 #import "DragPointsViewController.h"
 #import "CodeLineCell.h"
 
+#define KEY_COPY_SETTINGS @"copyAndPaste"
+
 @interface DragPointsViewController ()
 
 @property (nonatomic) int lineNumberWidthOffSet;
@@ -332,10 +334,10 @@
     int startLocation = cell.stringRange.location + index;
     int newRangeLength = _selectedTextRange.length + _selectedTextRange.location - startLocation;
     _selectedTextRange = NSMakeRange(startLocation, newRangeLength);
-    [_codeViewController removeBackgroundColorForSetting:@"copyAndPaste"];
+    [_codeViewController removeBackgroundColorForSetting:KEY_COPY_SETTINGS];
     [_codeViewController setBackgroundColorForString:[UIColor blueColor]
                                            WithRange:_selectedTextRange
-                                          forSetting:@"copyAndPaste"];
+                                          forSetting:KEY_COPY_SETTINGS];
     [_tableView reloadData];
 }
 
@@ -349,10 +351,10 @@
     CFIndex index = CTLineGetStringIndexForPosition(lineRef, endPoint);
     int endLocation = cell.stringRange.location + index - 1;
     _selectedTextRange = NSMakeRange(_selectedTextRange.location, endLocation - _selectedTextRange.location);
-    [_codeViewController removeBackgroundColorForSetting:@"copyAndPaste"];
+    [_codeViewController removeBackgroundColorForSetting:KEY_COPY_SETTINGS];
     [_codeViewController setBackgroundColorForString:[UIColor blueColor]
                                            WithRange:_selectedTextRange
-                                          forSetting:@"copyAndPaste"];
+                                          forSetting:KEY_COPY_SETTINGS];
     [_tableView reloadData];
 }
 
@@ -502,9 +504,8 @@
     [_rightDragPoint removeFromSuperview];
     [_leftDragPoint removeFromSuperview];
     [self.view removeFromSuperview];
-    [_codeViewController removeBackgroundColorForSetting:@"copyAndPaste"];
+    [_codeViewController removeBackgroundColorForSetting:KEY_COPY_SETTINGS];
     [_tableView reloadData];
-//    self = nil;
 }
 
 - (void)viewDidLoad
