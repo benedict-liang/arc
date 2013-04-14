@@ -68,12 +68,6 @@
     
     if ([gesture state] == UIGestureRecognizerStateChanged) {
         CGPoint translation = [gesture translationInView:_tableView];
-        
-        if (((_topIndexPath.row == _bottomIndexPath.row) && (translation.y > 0)) ||
-            (_topIndexPath.row != _bottomIndexPath.row)) {
-//            NSLog(@"translation: %f", translation.y);
-        }
-        
         CGFloat cellHeight = _currentBottomRowCellRect.size.height;
         CGFloat quarterDistance = cellHeight / 4;
         BOOL selectionDidChange = NO;
