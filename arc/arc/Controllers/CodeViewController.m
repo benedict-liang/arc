@@ -36,9 +36,10 @@
 @property NSMutableArray *plugins;
 
 // Line Processing
-@property NSMutableArray *lines;
-@property int cursor;
-@property CTTypesetterRef typesetter;
+@property (nonatomic) BOOL linesGenerated;
+@property (nonatomic) NSMutableArray *lines;
+@property (nonatomic) int cursor;
+@property (nonatomic) CTTypesetterRef typesetter;
 
 - (void)loadFile;
 - (void)renderFile;
@@ -106,11 +107,6 @@
     [self.view addSubview:_tableView];
 }
 
-- (void)refreshForSetting:(NSString *)setting
-{
-    [self processFileForSetting:setting];
-}
-
 - (void)showFile:(id<File>)file
 {
     if ([[file path] isEqual:[_currentFile path]]) {
@@ -119,28 +115,21 @@
     
     // Update Current file
     _currentFile = file;
-    [self updateToolbarTitle];
+    _toolbarTitle.title = [_currentFile name];
     
     // Reset table view scroll position
     [_tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     
     [self loadFile];
-    [self processFileForSetting:nil];
-}
-
-- (void)processFileForSetting:(NSString*)setting
-{
-    _sharedObject = [NSMutableDictionary dictionary];
     
-    [self preRenderPluginsForSetting:setting];
+    _sharedObject = [NSMutableDictionary dictionary];
+    _linesGenerated = NO;
+
+    [self preRenderPluginsForSetting:nil];
     [self generateLines];
     [self calcLineHeight];
     [self renderFile];
-    [self postRenderPluginsForSetting:setting];
-    //    NSArray *a = [_arcAttributedString.appliedAttributesDictionary objectForKey:@"sh"];
-    //    if (a) {
-    //        NSLog(@"%d", (int)[a count]);
-    //    }
+    [self postRenderPluginsForSetting:nil];
 }
 
 - (void)loadFile
@@ -156,10 +145,36 @@
     [_tableView reloadData];
 }
 
-- (void)updateToolbarTitle
+# pragma mark - Change of settings
+
+- (void)refreshForSetting:(NSString *)setting
 {
-    _toolbarTitle.title = [_currentFile name];
+    id<PluginDelegate> plugin = [self findPluginForSettingKey:setting];
+
+    if ([plugin settingKeyAffectsBounds:setting]) {
+        _linesGenerated = NO;
+        [self preRenderPluginsForSetting:setting];
+        [self generateLines];
+        [self calcLineHeight];
+    } else {
+        [self preRenderPluginsForSetting:setting];
+    }
+    
+    [self renderFile];
+    [self postRenderPluginsForSetting:setting];
 }
+
+- (id<PluginDelegate>)findPluginForSettingKey:(NSString *)settingKey
+{
+    for (id<PluginDelegate> plugin in _plugins) {
+        if ([[plugin settingKeys] indexOfObject:settingKey] != NSNotFound) {
+            return plugin;
+        }
+    }
+    return nil;
+}
+
+# pragma mark - Lines Generation (Code Layout)
 
 - (void)clearPreviousLayoutInformation
 {
@@ -225,6 +240,7 @@
                                                       forKeys:keys]];
         start += count;
     }
+    _linesGenerated = YES;
     
 }
 
@@ -236,7 +252,7 @@
                                                           (__bridge CFAttributedStringRef)(
                                                                                            [_arcAttributedString.attributedString attributedSubstringFromRange:
                                                                                             [[[_lines objectAtIndex:0] objectForKey:KEY_RANGE] rangeValue]]));
-        
+
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
         _lineHeight = asscent + descent + leading;
         _tableView.rowHeight = ceil(_lineHeight);
@@ -250,6 +266,36 @@
 {
     _backgroundColor = backgroundColor;
     _tableView.backgroundColor = _backgroundColor;
+}
+
+- (void)registerPlugin:(id<PluginDelegate>)plugin
+{
+    // Only register a plugin once.
+    if ([_plugins indexOfObject:plugin] == NSNotFound) {
+        [_plugins addObject:plugin];
+    }
+}
+
+- (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
+                   forFile:(id<File>)file
+                 WithStyle:(NSDictionary *)style
+{
+    if ([[file path] isEqual:[_currentFile path]]) {
+        _arcAttributedString = arcAttributedString;
+        
+        while (!_linesGenerated);
+        [self renderFile];
+    }
+}
+
+- (void)scrollToLineNumber:(int)lineNumber
+{
+    // TODO: Naive implementation
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lineNumber
+                                                inSection:0];
+    [_tableView scrollToRowAtIndexPath:indexPath
+                      atScrollPosition:UITableViewScrollPositionMiddle
+                              animated:YES];
 }
 
 
@@ -361,32 +407,6 @@
     else {
         [self showShowMasterViewButton:_portraitButton];
     }
-}
-
-#pragma mark - Code View Delegate
-
-- (void)registerPlugin:(id<PluginDelegate>)plugin
-{
-    // Only register a plugin once.
-    if ([_plugins indexOfObject:plugin] == NSNotFound) {
-        [_plugins addObject:plugin];
-    }
-}
-
-- (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
-                   forFile:(id<File>)file
-                 WithStyle:(NSDictionary *)style
-{
-    if ([[file path] isEqual:[_currentFile path]]) {
-        _arcAttributedString = arcAttributedString;
-        [_tableView reloadData];
-    }
-}
-
-- (void)scrollToLineNumber:(int)lineNumber {
-    // TODO: Naive implementation
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lineNumber inSection:0];
-    [_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
 
 #pragma mark - Detail View Controller Delegate
