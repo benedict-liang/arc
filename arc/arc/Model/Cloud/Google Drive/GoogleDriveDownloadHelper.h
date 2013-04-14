@@ -7,7 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GoogleDriveFile.h"
+#import "LocalFolder.h"
 
+// This class is used to act as a handler for downloading
+// Google Drive files. It acts as a delegate for a download
+// operation, and creates a file on the local file system
+// when the download is complete.
 @interface GoogleDriveDownloadHelper : NSObject
+
+- (id)initWithFile:(GoogleDriveFile *)file Folder:(LocalFolder *)folder;
+- (void)dataRetrieved:(NSData *)data error:(NSError *)error;
 
 @end
