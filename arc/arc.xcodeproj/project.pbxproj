@@ -13,6 +13,7 @@
 		020C1283171A95C800603229 /* GTLDrive_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C1281171A95C800603229 /* GTLDrive_Sources.m */; };
 		020C1285171A962F00603229 /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 020C1284171A962F00603229 /* GTMOAuth2ViewTouch.xib */; };
 		020C1288171A9A5B00603229 /* GoogleDriveServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C1287171A9A5B00603229 /* GoogleDriveServiceManager.m */; };
+		020C128B171AAB2500603229 /* GoogleDriveFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C128A171AAB2400603229 /* GoogleDriveFolder.m */; };
 		026AC54716FF104D001E03E5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7F16FDF61C00C9DED3 /* Constants.m */; };
 		026BC4711705895500A9AA5F /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC4701705895500A9AA5F /* Dropbox.framework */; };
 		026BC473170589A700A9AA5F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC472170589A700A9AA5F /* CFNetwork.framework */; };
@@ -378,6 +379,8 @@
 		020C1284171A962F00603229 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = "Model/Cloud/Google Drive/Source/OAuth2/Touch/GTMOAuth2ViewTouch.xib"; sourceTree = "<group>"; };
 		020C1286171A9A5A00603229 /* GoogleDriveServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleDriveServiceManager.h; sourceTree = "<group>"; };
 		020C1287171A9A5B00603229 /* GoogleDriveServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveServiceManager.m; sourceTree = "<group>"; };
+		020C1289171AAB2300603229 /* GoogleDriveFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleDriveFolder.h; sourceTree = "<group>"; };
+		020C128A171AAB2400603229 /* GoogleDriveFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveFolder.m; sourceTree = "<group>"; };
 		025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		0260B50A1709286E0091B012 /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Folder.h; path = Protocols/Folder.h; sourceTree = "<group>"; };
 		0260B50B170928820091B012 /* FileSystemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystemObject.h; path = Protocols/FileSystemObject.h; sourceTree = "<group>"; };
@@ -826,6 +829,8 @@
 				020C127D171A959F00603229 /* Library */,
 				020C1286171A9A5A00603229 /* GoogleDriveServiceManager.h */,
 				020C1287171A9A5B00603229 /* GoogleDriveServiceManager.m */,
+				020C1289171AAB2300603229 /* GoogleDriveFolder.h */,
+				020C128A171AAB2400603229 /* GoogleDriveFolder.m */,
 			);
 			path = "Google Drive";
 			sourceTree = "<group>";
@@ -1951,6 +1956,7 @@
 				020C1051171A6DB000603229 /* SkyDriveDownloadHelper.m in Sources */,
 				020C1283171A95C800603229 /* GTLDrive_Sources.m in Sources */,
 				020C1288171A9A5B00603229 /* GoogleDriveServiceManager.m in Sources */,
+				020C128B171AAB2500603229 /* GoogleDriveFolder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
