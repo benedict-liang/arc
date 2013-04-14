@@ -115,6 +115,7 @@
     
     if ([gesture state] == UIGestureRecognizerStateBegan) {
         [self calculateRectValues];
+        _tableView.scrollEnabled = NO;
     }
     
     if ([gesture state] == UIGestureRecognizerStateChanged) {
@@ -123,11 +124,11 @@
         CGFloat threshold = cellHeight / 4;
         BOOL selectionDidChange = NO;
         
-        // TODO: Prevent vertical selection for non-visible rows
-        // NSArray *indexPathsArray = [_tableView indexPathsForVisibleRows];
+        NSArray *visibleCells = _tableView.visibleCells;
+        UITableViewCell *nextBottomCell = [_tableView cellForRowAtIndexPath:_nextBottomRowIndexPath];
         
         // Selecting downwards
-        if (translation.y > threshold) {
+        if (translation.y > threshold && [visibleCells containsObject:nextBottomCell]) {
             [self updateBottomRectValuesWithBottomIndexPath:_nextBottomRowIndexPath];
             gesture.view.center = CGPointMake(gesture.view.center.x, _bottomRowCellRect.origin.y + cellHeight/2);
             [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
@@ -148,6 +149,10 @@
             CGPoint endPointInRow = CGPointMake(gesture.view.center.x, 0);
             [self updateBackgroundColorForRightDragPoint:endPointInRow];
         }
+    }
+    
+    if ([gesture state] == UIGestureRecognizerStateEnded) {
+        _tableView.scrollEnabled = YES;
     }
 }
 
