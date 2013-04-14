@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4C43F8E816F86AA900159B29"
-            BuildableName = "arc.app"
+            BuildableName = "(arc).app"
             BlueprintName = "arc"
             ReferencedContainer = "container:arc.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4C43F8E816F86AA900159B29"
-            BuildableName = "arc.app"
+            BuildableName = "(arc).app"
             BlueprintName = "arc"
             ReferencedContainer = "container:arc.xcodeproj">
          </BuildableReference>

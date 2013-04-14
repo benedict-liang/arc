@@ -7,6 +7,10 @@
 
 #import <Foundation/Foundation.h>
 #import "Folder.h"
+#import "SkyDriveServiceManager.h"
 
-@interface SkyDriveFolder : NSObject <Folder>
+@interface SkyDriveFolder : NSObject <Folder, LiveOperationDelegate>
+
+//@property (weak, nonatomic) id<CloudFolderDelegate> delegate;
+
 @end

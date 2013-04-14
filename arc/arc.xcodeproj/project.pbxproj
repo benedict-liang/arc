@@ -374,7 +374,7 @@
 		4C1AF11A1715029100A2D0D8 /* dropbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropbox.png; sourceTree = "<group>"; };
 		4C1AF11F1715119300A2D0D8 /* FolderViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewControllerDelegate.h; sourceTree = "<group>"; };
 		4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileNavigatorViewControllerDelegate.h; sourceTree = "<group>"; };
-		4C43F8E916F86AA900159B29 /* arc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C43F8E916F86AA900159B29 /* (arc).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "(arc).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C43F8EC16F86AA900159B29 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4C43F8EE16F86AA900159B29 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4C43F8F016F86AA900159B29 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -809,7 +809,7 @@
 		4C43F8EA16F86AA900159B29 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C43F8E916F86AA900159B29 /* arc.app */,
+				4C43F8E916F86AA900159B29 /* (arc).app */,
 				4CD06B6B16FDEEC100C9DED3 /* arcTests.octest */,
 				4CEADA0C1716F3EF00F4F619 /* PrettyArc.app */,
 			);
@@ -1405,7 +1405,7 @@
 			);
 			name = arc;
 			productName = arc;
-			productReference = 4C43F8E916F86AA900159B29 /* arc.app */;
+			productReference = 4C43F8E916F86AA900159B29 /* (arc).app */;
 			productType = "com.apple.product-type.application";
 		};
 		4CD06B6A16FDEEC100C9DED3 /* arcTests */ = {

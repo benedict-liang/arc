@@ -9,6 +9,8 @@
 #import "CloudServiceManager.h"
 #import <LiveSDK/LiveConnectClient.h>
 
+typedef enum { kFolderListing, kFileInfo } kSkyDriveOperations;
+
 @interface SkyDriveServiceManager : NSObject <CloudServiceManager, LiveAuthDelegate>
 @property (strong, nonatomic) LiveConnectClient *liveClient;
 @end
