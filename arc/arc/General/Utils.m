@@ -129,4 +129,9 @@
     return ro.location <= ri.location && (ro.location+ro.length) >= (ri.location+ri.length);
 }
 
++ (BOOL)isIntersectionWith:(NSRange)r1 arg:(NSRange)r2 {
+    return (r1.location <= (r2.location + r2.length) && (r1.location + r2.length) >= r2.location) ||
+    (r2.location <= (r1.location + r1.length) && (r2.location + r2.length) >= r1.location);
+}
+
 @end

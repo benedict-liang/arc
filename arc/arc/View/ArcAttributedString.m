@@ -211,5 +211,14 @@
     [__plainAttributedString addAttribute:NSFontAttributeName
                                value:font
                                range:_stringRange];
+    
+}
+- (ArcAttributedString*)arcStringWithRemovedRange:(NSRange)range {
+    int rangeEnds = range.location + range.length;
+    NSMutableString* str = [NSMutableString stringWithString:[_string substringToIndex:range.location]];
+    [str appendString:[_string substringFromIndex:rangeEnds]];
+    for (NSString *property in __attributesDictionary) {
+        
+    }
 }
 @end
