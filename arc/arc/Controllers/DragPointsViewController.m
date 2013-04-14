@@ -81,6 +81,7 @@
         _rightDragPoint.userInteractionEnabled = YES;
         
         _lineNumberWidthOffSet = offset;
+        self.view = [[UIView alloc] initWithFrame:CGRectMake(40, 100, 400, 50)];
     }
     
     return self;
@@ -411,9 +412,14 @@
 #pragma mark - UIMenuController Methods
 
 - (void)showCopyMenuForTextSelection {
-    [self becomeFirstResponder];
+    
+    if ([self becomeFirstResponder]) {
+        NSLog(@"is first responder");
+    }
     
     UIMenuController *menuController = [UIMenuController sharedMenuController];
+    UIMenuItem *copyMenuItem = [[UIMenuItem alloc] initWithTitle:@"copy" action:@selector(copyString:)];
+    [menuController setMenuItems:[NSArray arrayWithObject:copyMenuItem]];
     [menuController setTargetRect:_topRowCellRect inView:_tableView];
     
     [menuController setMenuVisible:YES animated:YES];
@@ -483,6 +489,16 @@
 - (BOOL)canBecomeFirstResponder {
     // NOTE: This menu item will not show if this is not YES!
     return YES;
+}
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    //NSLog(@"canPerformAction");
+    // The selector(s) should match your UIMenuItem selector
+    if (action == @selector(copyString:)) {
+        
+        return YES;
+    }
+    return NO;
 }
 
 - (void)viewDidLoad

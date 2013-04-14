@@ -540,9 +540,10 @@
         _dragPointVC.codeViewController = self;
         _dragPointVC.selectedTextRange = selectedRange;
         
+        [_tableView addSubview:_dragPointVC.view];
         [_tableView addSubview:_dragPointVC.leftDragPoint];
         [_tableView addSubview:_dragPointVC.rightDragPoint];
-        
+
         [_tableView reloadData];
     }
     if ([gesture state] == UIGestureRecognizerStateEnded) {
@@ -618,6 +619,11 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
             }
         }
     }
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
 }
 
 // TODO: Implement Copy and Paste
