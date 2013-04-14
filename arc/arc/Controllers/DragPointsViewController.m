@@ -47,10 +47,16 @@
         
         UIPanGestureRecognizer *leftPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self
                                                                                          action:@selector(moveLeftDragPoint:)];
-        UIPanGestureRecognizer *rightPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self
-                                                                                          action:@selector(moveRightDragPoint:)];
+        UIPanGestureRecognizer *rightPanGestureHorizontal = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                                          action:@selector(moveRightDragPointHorizontal:)];
+        UIPanGestureRecognizer *rightPanGestureVertical = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                                          action:@selector(moveRightDragPointVertical:)];
         [_leftDragPoint addGestureRecognizer:leftPanGesture];
-        [_rightDragPoint addGestureRecognizer:rightPanGesture];
+        
+        [rightPanGestureHorizontal setDelegate:self];
+        [rightPanGestureVertical setDelegate:self];
+        [_rightDragPoint addGestureRecognizer:rightPanGestureHorizontal];
+        [_rightDragPoint addGestureRecognizer:rightPanGestureVertical];
         
         _leftDragPoint.userInteractionEnabled = YES;
         _rightDragPoint.userInteractionEnabled = YES;
@@ -66,7 +72,7 @@
     
 }
 
-- (void)moveRightDragPoint:(UIPanGestureRecognizer*)gesture {
+- (void)moveRightDragPointHorizontal:(UIPanGestureRecognizer*)gesture {
     
     if ([gesture state] == UIGestureRecognizerStateBegan) {
         [self calculateRectValues];
@@ -248,6 +254,12 @@
     }
 }
 
+#pragma mark - UIGestureRecognizerDelegate Methods
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
+}
 
 - (void)viewDidLoad
 {
