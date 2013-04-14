@@ -12,9 +12,12 @@
 
 @interface CodeLineCell : UITableViewCell
 @property (nonatomic, strong) NSAttributedString *line;
+@property (nonatomic) NSIndexPath *indexPath;
 @property (nonatomic) BOOL showLineNumber;
 @property (nonatomic) int lineNumber;
 @property (nonatomic) int lineNumberWidth;
+
 - (void)setForegroundColor:(UIColor*)foregroundColor;
 - (void)setFontFamily:(NSString*)fontFamily FontSize:(int)fontSize;
+
 @end

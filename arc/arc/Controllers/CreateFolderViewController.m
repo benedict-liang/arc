@@ -11,6 +11,8 @@
 @interface CreateFolderViewController ()
 
 @property UITextField *textField;
+@property UIButton *okButton;
+
 
 @end
 
@@ -26,24 +28,37 @@
 
 - (void)loadView
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 50)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 119)];
     [view setBackgroundColor:[UIColor whiteColor]];
     [self setContentSizeForViewInPopover:[view frame].size];
     [self setView:view];
     
-    UILabel *createFolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 250, 25)];
+    UILabel *createFolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, 6, 238, 25)];
     [createFolderLabel setText:@"Enter folder name:"];
     [createFolderLabel setFont:[UIFont boldSystemFontOfSize:17]];
-    _textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 25, 250, 25)];
+    _textField = [[UITextField alloc] initWithFrame:CGRectMake(6, 37, 238, 25)];
     [_textField setBorderStyle:UITextBorderStyleRoundedRect];
     [_textField setDelegate:self];
+
+    _okButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [_okButton setTitle:@"OK" forState:UIControlStateNormal];
+    [_okButton setFrame:CGRectMake(6, 68, 238, 45)];
+    [_okButton addTarget:self action:@selector(okButtonPressed) forControlEvents:UIControlEventTouchDown];
+
     [[self view] addSubview:createFolderLabel];
     [[self view] addSubview:_textField];
+    [[self view] addSubview:_okButton];
+}
+
+- (void)okButtonPressed
+{
+    [self textFieldShouldReturn:_textField];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     NSString *input = [_textField text];
+    [_textField setText:@""];
     [_delegate createFolderWithName:input];
     return NO;
 }
@@ -51,6 +66,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [_textField becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning

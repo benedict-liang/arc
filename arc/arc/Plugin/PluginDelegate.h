@@ -30,6 +30,9 @@
 // }
 - (NSDictionary *)propertiesFor:(NSString *)settingKey;
 
+// Declares if settingKey change requires a recalculation of layout
+- (BOOL)settingKeyAffectsBounds:(NSString *)settingKey;
+
 // Returns the default value for the given setting key.
 - (id<NSObject>)defaultValueFor:(NSString *)settingKey;
 

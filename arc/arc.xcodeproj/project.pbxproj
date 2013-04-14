@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		020C104E171A666500603229 /* SkyDriveFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C104D171A666500603229 /* SkyDriveFile.m */; };
+		020C1051171A6DB000603229 /* SkyDriveDownloadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C1050171A6DB000603229 /* SkyDriveDownloadHelper.m */; };
 		026AC54716FF104D001E03E5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7F16FDF61C00C9DED3 /* Constants.m */; };
 		026BC4711705895500A9AA5F /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC4701705895500A9AA5F /* Dropbox.framework */; };
 		026BC473170589A700A9AA5F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC472170589A700A9AA5F /* CFNetwork.framework */; };
@@ -76,6 +78,9 @@
 		4CF6F0EE1706E08800EDDEDC /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0ED1706E08800EDDEDC /* file.png */; };
 		4CF6F0F21706E29300EDDEDC /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F11706E29300EDDEDC /* folder.png */; };
 		4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */; };
+		840B640FE8BA225B6750F377 /* SkyDriveFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B6B4068D4462DD00C7BE0 /* SkyDriveFolder.m */; };
+		840B6680091FC720B53CA8F3 /* LiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */; };
+		840B6CE8D86D8BAA0E3CD4BC /* SkyDriveServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B67A71EB5C59B9BCEF1A2 /* SkyDriveServiceManager.m */; };
 		8F151051170443AC00115E5E /* home.html in Resources */ = {isa = PBXBuildFile; fileRef = 8F151050170443AC00115E5E /* home.html */; };
 		8F1510C9170468B100115E5E /* TMBundleThemeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510C8170468B100115E5E /* TMBundleThemeHandler.m */; };
 		8F1510CC1704697900115E5E /* TMBundleGrammar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510CB1704697900115E5E /* TMBundleGrammar.m */; };
@@ -241,8 +246,10 @@
 		8F2F5B8217061445005AD37F /* nav_gmaps_sample.js in Resources */ = {isa = PBXBuildFile; fileRef = 8F2F5B8017061435005AD37F /* nav_gmaps_sample.js */; };
 		8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */; };
 		8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1416FDFDBE00B31A19 /* Utils.m */; };
+		8F7066B317199B1F00E8C64E /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7066B217199B1F00E8C64E /* SearchResultCell.m */; };
 		8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F771E131711B900002E9914 /* ResultsTableViewController.m */; };
 		8F84790D17102A14006893D6 /* FullTextSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F84790C17102A14006893D6 /* FullTextSearch.m */; };
+		8FC1B4E61719CE2F002939D8 /* SelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F46CDA41713DFB10088DE10 /* SelectionView.m */; };
 		8FC7BD3F170F435900D0FA3A /* syntaxesFileList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8FC7BD3E170F435900D0FA3A /* syntaxesFileList.txt */; };
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
 		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
@@ -327,6 +334,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		020C104C171A666500603229 /* SkyDriveFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveFile.h; sourceTree = "<group>"; };
+		020C104D171A666500603229 /* SkyDriveFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveFile.m; sourceTree = "<group>"; };
+		020C104F171A6DB000603229 /* SkyDriveDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveDownloadHelper.h; sourceTree = "<group>"; };
+		020C1050171A6DB000603229 /* SkyDriveDownloadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveDownloadHelper.m; sourceTree = "<group>"; };
+		020C1053171A77E200603229 /* CloudFolderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudFolderDelegate.h; sourceTree = "<group>"; };
 		025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		0260B50A1709286E0091B012 /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Folder.h; path = Protocols/Folder.h; sourceTree = "<group>"; };
 		0260B50B170928820091B012 /* FileSystemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystemObject.h; path = Protocols/FileSystemObject.h; sourceTree = "<group>"; };
@@ -370,7 +382,7 @@
 		4C1AF11A1715029100A2D0D8 /* dropbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropbox.png; sourceTree = "<group>"; };
 		4C1AF11F1715119300A2D0D8 /* FolderViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewControllerDelegate.h; sourceTree = "<group>"; };
 		4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileNavigatorViewControllerDelegate.h; sourceTree = "<group>"; };
-		4C43F8E916F86AA900159B29 /* arc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C43F8E916F86AA900159B29 /* (arc).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "(arc).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C43F8EC16F86AA900159B29 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4C43F8EE16F86AA900159B29 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4C43F8F016F86AA900159B29 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -390,6 +402,7 @@
 		4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Solarized (dark).tmTheme"; sourceTree = "<group>"; };
 		4C963C80170D8E96004FDACB /* CodeLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeLineCell.h; sourceTree = "<group>"; };
 		4C963C81170D8E96004FDACB /* CodeLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeLineCell.m; sourceTree = "<group>"; };
+		4C9DC9021719B64A00142E70 /* SyntaxHighlightingPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlightingPluginDelegate.h; sourceTree = "<group>"; };
 		4C9E0618170F3AFC0000F783 /* arc72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc72.png; sourceTree = SOURCE_ROOT; };
 		4C9E061A170F3B1A0000F783 /* arc144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc144.png; sourceTree = SOURCE_ROOT; };
 		4CA4DE42170EA04400A86109 /* DetailViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewControllerDelegate.h; sourceTree = "<group>"; };
@@ -409,7 +422,6 @@
 		4CD06B7F16FDF61C00C9DED3 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = General/Constants.m; sourceTree = "<group>"; };
 		4CD06B8416FE0FC900C9DED3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		4CD06B8E16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
-		4CD477491710146B0054738D /* PluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginDelegate.h; path = arc/Plugin/PluginDelegate.h; sourceTree = SOURCE_ROOT; };
 		4CE2950C17101BA0003B012A /* SyntaxHighlightingPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlightingPlugin.h; sourceTree = "<group>"; };
 		4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxHighlightingPlugin.m; sourceTree = "<group>"; };
 		4CE2950F17101C53003B012A /* FontSizePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontSizePlugin.h; sourceTree = "<group>"; };
@@ -438,6 +450,13 @@
 		4CF6F0F11706E29300EDDEDC /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
 		4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		840B6454D395361AD2F521B2 /* CloudServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudServiceManager.h; sourceTree = "<group>"; };
+		840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LiveSDK.framework; path = /Users/Jerome/Desktop/arc/arc/arc/LiveSDK.framework; sourceTree = "<absolute>"; };
+		840B6733BB2064AE23C5FDF7 /* SkyDriveFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveFolder.h; sourceTree = "<group>"; };
+		840B67A71EB5C59B9BCEF1A2 /* SkyDriveServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveServiceManager.m; sourceTree = "<group>"; };
+		840B67E300617A8810E2F3F5 /* PluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginDelegate.h; path = Plugin/PluginDelegate.h; sourceTree = "<group>"; };
+		840B6B4068D4462DD00C7BE0 /* SkyDriveFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveFolder.m; sourceTree = "<group>"; };
+		840B6D541756B41E6BF42859 /* SkyDriveServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveServiceManager.h; sourceTree = "<group>"; };
 		8F15104F1704410000115E5E /* TMBundleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleHeader.h; sourceTree = "<group>"; };
 		8F151050170443AC00115E5E /* home.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = home.html; sourceTree = "<group>"; };
 		8F1510C7170468B000115E5E /* TMBundleThemeHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleThemeHandler.h; sourceTree = "<group>"; };
@@ -604,10 +623,14 @@
 		8F1BC1CD170F1C1900D1D049 /* source.active4d.library.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.active4d.library.plist; sourceTree = "<group>"; };
 		8F1BC1CE170F1C1900D1D049 /* source.actionscript.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.actionscript.plist; sourceTree = "<group>"; };
 		8F2F5B8017061435005AD37F /* nav_gmaps_sample.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = nav_gmaps_sample.js; sourceTree = "<group>"; };
+		8F46CDA31713DFB10088DE10 /* SelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionView.h; sourceTree = "<group>"; };
+		8F46CDA41713DFB10088DE10 /* SelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionView.m; sourceTree = "<group>"; };
 		8F563F33170161C900EE5643 /* TMBundleSyntaxParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleSyntaxParser.h; sourceTree = "<group>"; };
 		8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBundleSyntaxParser.m; sourceTree = "<group>"; };
 		8F5C5C1416FDFDBE00B31A19 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = General/Utils.m; sourceTree = "<group>"; };
 		8F5C5C1516FDFDBE00B31A19 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = General/Utils.h; sourceTree = "<group>"; };
+		8F7066B117199B1F00E8C64E /* SearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultCell.h; sourceTree = "<group>"; };
+		8F7066B217199B1F00E8C64E /* SearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
 		8F771E121711B900002E9914 /* ResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsTableViewController.h; sourceTree = "<group>"; };
 		8F771E131711B900002E9914 /* ResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsTableViewController.m; sourceTree = "<group>"; };
 		8F84790B17102A14006893D6 /* FullTextSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullTextSearch.h; sourceTree = "<group>"; };
@@ -708,6 +731,7 @@
 				026BC475170589B000A9AA5F /* Security.framework in Frameworks */,
 				4C43F8F316F86AA900159B29 /* CoreData.framework in Frameworks */,
 				026BC4711705895500A9AA5F /* Dropbox.framework in Frameworks */,
+				840B6680091FC720B53CA8F3 /* LiveSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,6 +760,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		020C1052171A77C700603229 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				020C1053171A77E200603229 /* CloudFolderDelegate.h */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
 		0260B508170921C10091B012 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -797,7 +829,7 @@
 		4C43F8EA16F86AA900159B29 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C43F8E916F86AA900159B29 /* arc.app */,
+				4C43F8E916F86AA900159B29 /* (arc).app */,
 				4CD06B6B16FDEEC100C9DED3 /* arcTests.octest */,
 				4CEADA0C1716F3EF00F4F619 /* PrettyArc.app */,
 			);
@@ -820,6 +852,7 @@
 				4C43F8F216F86AA900159B29 /* CoreData.framework */,
 				4CD06B3B16FDEDA600C9DED3 /* SenTestingKit.framework */,
 				4CD06B3F16FDEDA600C9DED3 /* Other Frameworks */,
+				840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -874,6 +907,7 @@
 				026BC47A1705913200A9AA5F /* Local Files */,
 				02D2B73D17099E88002D22E7 /* RootFolder.h */,
 				02D2B73E17099E88002D22E7 /* RootFolder.m */,
+				840B636342E49333F3D17563 /* Cloud */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -881,7 +915,6 @@
 		4C45551617016F21001C6F1D /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				4CD477491710146B0054738D /* PluginDelegate.h */,
 				02D55DB31711694900DD48D7 /* PluginUtilities.h */,
 				02D55DB41711694900DD48D7 /* PluginUtilities.m */,
 				4CEADA02171681F000F4F619 /* SyntaxHighlighting */,
@@ -953,6 +986,7 @@
 				8F5C5C1416FDFDBE00B31A19 /* Utils.m */,
 				4CD06B7E16FDF61C00C9DED3 /* Constants.h */,
 				4CD06B7F16FDF61C00C9DED3 /* Constants.m */,
+				840B67E300617A8810E2F3F5 /* PluginDelegate.h */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -966,6 +1000,10 @@
 				4C8307EA17114CEF00F49C33 /* SettingCell.m */,
 				4C12D0701705CA7800F4593B /* ArcAttributedString.h */,
 				4C12D0711705CA7800F4593B /* ArcAttributedString.m */,
+				8F46CDA31713DFB10088DE10 /* SelectionView.h */,
+				8F46CDA41713DFB10088DE10 /* SelectionView.m */,
+				8F7066B117199B1F00E8C64E /* SearchResultCell.h */,
+				8F7066B217199B1F00E8C64E /* SearchResultCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -995,6 +1033,7 @@
 		4CEADA02171681F000F4F619 /* SyntaxHighlighting */ = {
 			isa = PBXGroup;
 			children = (
+				4C9DC9021719B64A00142E70 /* SyntaxHighlightingPluginDelegate.h */,
 				4CE2950C17101BA0003B012A /* SyntaxHighlightingPlugin.h */,
 				4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */,
 				FC7260901711B4D50068DD91 /* SyntaxHighlight.h */,
@@ -1061,6 +1100,39 @@
 			);
 			name = Images;
 			path = Assets/Images;
+			sourceTree = "<group>";
+		};
+		840B636342E49333F3D17563 /* Cloud */ = {
+			isa = PBXGroup;
+			children = (
+				020C1052171A77C700603229 /* Delegates */,
+				840B65C878A6C7146123E560 /* Protocols */,
+				840B6BB5A0E39DE20D887CA8 /* SkyDrive */,
+			);
+			path = Cloud;
+			sourceTree = "<group>";
+		};
+		840B65C878A6C7146123E560 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				840B6454D395361AD2F521B2 /* CloudServiceManager.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		840B6BB5A0E39DE20D887CA8 /* SkyDrive */ = {
+			isa = PBXGroup;
+			children = (
+				840B6D541756B41E6BF42859 /* SkyDriveServiceManager.h */,
+				840B67A71EB5C59B9BCEF1A2 /* SkyDriveServiceManager.m */,
+				840B6733BB2064AE23C5FDF7 /* SkyDriveFolder.h */,
+				840B6B4068D4462DD00C7BE0 /* SkyDriveFolder.m */,
+				020C104C171A666500603229 /* SkyDriveFile.h */,
+				020C104D171A666500603229 /* SkyDriveFile.m */,
+				020C104F171A6DB000603229 /* SkyDriveDownloadHelper.h */,
+				020C1050171A6DB000603229 /* SkyDriveDownloadHelper.m */,
+			);
+			path = SkyDrive;
 			sourceTree = "<group>";
 		};
 		8F563E53170160CD00EE5643 /* TextMateBundles */ = {
@@ -1362,7 +1434,7 @@
 			);
 			name = arc;
 			productName = arc;
-			productReference = 4C43F8E916F86AA900159B29 /* arc.app */;
+			productReference = 4C43F8E916F86AA900159B29 /* (arc).app */;
 			productType = "com.apple.product-type.application";
 		};
 		4CD06B6A16FDEEC100C9DED3 /* arcTests */ = {
@@ -1757,6 +1829,12 @@
 				02F25A121713E660000B6301 /* CreateFolderViewController.m in Sources */,
 				027EE0361716AAEC00302F07 /* LongSettingListViewController.m in Sources */,
 				4CEADA071716ADBB00F4F619 /* LineNumberPlugin.m in Sources */,
+				8F7066B317199B1F00E8C64E /* SearchResultCell.m in Sources */,
+				8FC1B4E61719CE2F002939D8 /* SelectionView.m in Sources */,
+				840B6CE8D86D8BAA0E3CD4BC /* SkyDriveServiceManager.m in Sources */,
+				840B640FE8BA225B6750F377 /* SkyDriveFolder.m in Sources */,
+				020C104E171A666500603229 /* SkyDriveFile.m in Sources */,
+				020C1051171A6DB000603229 /* SkyDriveDownloadHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1880,12 +1958,15 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/arc\"",
+					"\"${PROJECT_DIR}/../../../Downloads/LiveSDK.framework/Versions/5.0.3380.0913\"/**",
+					"\"${PROJECT_DIR}/../../../Downloads\"/**",
+					"\"${PROJECT_DIR}/arc\"/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
 				INFOPLIST_FILE = "arc/arc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "(arc)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1896,12 +1977,15 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/arc\"",
+					"\"${PROJECT_DIR}/../../../Downloads/LiveSDK.framework/Versions/5.0.3380.0913\"/**",
+					"\"${PROJECT_DIR}/../../../Downloads\"/**",
+					"\"${PROJECT_DIR}/arc\"/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
 				INFOPLIST_FILE = "arc/arc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "(arc)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

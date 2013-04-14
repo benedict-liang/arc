@@ -30,6 +30,9 @@ extern NSString* const KEY_FONT_SIZE;
 extern NSString* const KEY_LINE_NUMBERS;
 extern NSString* const KEY_WORD_WRAP;
 
+// Values
+extern const int THRESHOLD_LONG_SETTING_LIST;
+
 // Default Folder Names
 extern NSString* const FOLDER_EXTERNAL_APPLICATIONS;
 extern NSString* const FOLDER_ROOT;
@@ -38,6 +41,12 @@ extern NSString* const FOLDER_DROPBOX_ROOT;
 // API Keys
 extern NSString* const CLOUD_DROPBOX_KEY;
 extern NSString* const CLOUD_DROPBOX_SECRET;
+extern NSString* const CLOUD_SKYDRIVE_KEY;
+extern NSString* const CLOUD_SKYDRIVE_SECRET;
+
+// SkyDrive scopes
+extern NSString* const SKYDRIVE_SCOPE_SIGNIN;
+extern NSString* const SKYDRIVE_SCOPE_READ_ACCESS;
 
 // Syntaxes File List
 extern NSString* const SYNTAXES_FILE_LIST;

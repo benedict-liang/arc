@@ -23,7 +23,6 @@
 //
 // Attributed String Mutators
 //
-
 // Font{Size, Family}
 - (void)setFontSize:(int)fontSize;
 - (void)setFontFamily:(NSString*)fontFamily;

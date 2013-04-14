@@ -56,10 +56,22 @@
     return self;
 }
 
+- (BOOL)settingKeyAffectsBounds:(NSString *)settingKey
+{
+    if ([settingKey isEqualToString:_fontFamilySettingKey]) {
+        return YES;
+    }
+    return NO;
+}
+
 // Returns an NSDictionary of properties for this plugin.
 - (NSDictionary *)propertiesFor:(NSString *)settingKey
 {
-    return [NSDictionary dictionaryWithDictionary:_properties];
+    if ([settingKey isEqualToString:_fontFamilySettingKey]) {
+        return [NSDictionary dictionaryWithDictionary:_properties];
+    }
+    return nil;
+
 }
 
 // Returns the default value for the given setting key.
@@ -68,7 +80,6 @@
     if ([settingKey isEqualToString:_fontFamilySettingKey]) {
         return _defaultFontFamily;
     }
-    
     return nil;
 }
 

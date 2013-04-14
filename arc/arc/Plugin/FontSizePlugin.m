@@ -42,10 +42,21 @@
     return nil;
 }
 
+- (BOOL)settingKeyAffectsBounds:(NSString *)settingKey
+{
+    if ([settingKey isEqualToString:_fontSizeSettingsKey]) {
+        return YES;
+    }
+    return NO;
+}
+
 // Returns the default value for the given setting key.
 - (id<NSObject>)defaultValueFor:(NSString *)settingKey
 {
-    return [NSNumber numberWithInt:_defaultFontSize];
+    if ([settingKey isEqualToString:_fontSizeSettingsKey]) {
+        return [NSNumber numberWithInt:_defaultFontSize];
+    }
+    return nil;
 }
 
 - (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString

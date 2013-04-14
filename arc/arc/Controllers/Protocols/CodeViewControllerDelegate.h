@@ -13,6 +13,7 @@
 
 @protocol CodeViewControllerDelegate <NSObject>
 - (void)showFile:(id<File>)file;
+- (void)scrollToLineNumber:(int)lineNumber;
 - (void)refreshForSetting:(NSString*)setting;
 - (void)registerPlugin:(id<PluginDelegate>)plugin;
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
