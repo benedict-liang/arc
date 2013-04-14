@@ -149,8 +149,8 @@
         NSRange res1 = NSMakeRange(r1.location, r2.location - r1.location);
         int nextBegin = r2.location + r2.length+1;
         NSRange res2 = NSMakeRange(nextBegin, r1.location + r1.length - nextBegin);
-        return @[[NSValue value:&res1 withObjCType:@encode(NSRange)],
-                 [NSValue value:&res2 withObjCType:@encode(NSRange)]];
+        return @[NSStringFromRange(res1),
+                 NSStringFromRange(res2)];
     }
     if ([Utils isSubsetOf:r2 arg:r1]) {
         return nil;
@@ -159,14 +159,14 @@
         if (r1.location > r2.location) {
             int newR1Start = r2.location+r2.length+1;
             NSRange res = NSMakeRange(newR1Start, r1.location + r1.length - newR1Start);
-            return @[[NSValue value:&res withObjCType:@encode(NSRange)]];
+            return @[NSStringFromRange(res)];
         } else {
             int newR1End = r2.location - 1;
             NSRange res = NSMakeRange(r1.location, newR1End - r1.location);
-            return @[[NSValue value:&res withObjCType:@encode(NSRange)]];
+            return @[NSStringFromRange(res)];
         }
     } else {
-        return @[[NSValue value:&r1 withObjCType:@encode(NSRange)]];
+        return @[NSStringFromRange(r1)];
     }
 }
 @end
