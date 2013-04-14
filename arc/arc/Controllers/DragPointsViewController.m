@@ -74,7 +74,8 @@
         
         // y-direction changed
         // => get cell for position
-        if (gesture.view.center.y > (_currentBottomRowCellRect.origin.y + midDistance)) {
+        CGFloat bottomThreshold = (_currentBottomRowCellRect.origin.y + midDistance);
+        if (gesture.view.center.y > bottomThreshold) {
             gesture.view.center = CGPointMake(gesture.view.center.x, _nextBottomRowCellRect.origin.y + _nextBottomRowCellRect.size.height/2);
             NSLog(@"Moved a line");
 //            [self updateRectValues];
