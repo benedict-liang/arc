@@ -41,6 +41,8 @@ NSString* const FOLDER_DROPBOX_ROOT = @"DropBox";
 NSString* const CLOUD_DROPBOX_KEY = @"q591oqy8n4yxgt1";
 NSString* const CLOUD_DROPBOX_SECRET = @"kkb1vzgnah76zmr";
 NSString* const CLOUD_SKYDRIVE_KEY = @"00000000480F0B47";
+NSString* const CLOUD_GOOGLE_ID = @"53087368546.apps.googleusercontent.com";
+NSString* const CLOUD_GOOGLE_SECRET = @"7j820ouQmOBleXqrfk8U3lkU";
 
 // SkyDrive scopes
 NSString* const SKYDRIVE_SCOPE_SIGNIN = @"wl.signin";
