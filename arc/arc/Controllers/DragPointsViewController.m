@@ -24,6 +24,9 @@
 @property (nonatomic) CGPoint firstCharacterCoordinates;
 @property (nonatomic) CGPoint lastCharacterCoordinates;
 
+@property (nonatomic) CGPoint previousFirstCharacterCoordinates;
+@property (nonatomic) CGPoint nextFirstCharacterCoordinates;
+
 @property (nonatomic) CGPoint previousLastCharacterCoordinates;
 @property (nonatomic) CGPoint nextLastCharacterCoordinates;
 
