@@ -283,6 +283,9 @@
     // iterate through attributes and transform attributes for the new ranges
     [self produceAttributes:rmArcStringAttribDictionary From:__attributesDictionary WithRemovedRange:range];
     
+    [self produceAttributes:rmArcStringAttribDictionary From:__appliedAttributesDictionary WithRemovedRange:range];
+    
+    rmArcString._attributesDictionary = rmArcStringAttribDictionary;
     return rmArcString;
 }
 @end
