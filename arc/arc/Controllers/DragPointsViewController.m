@@ -67,25 +67,33 @@
     
     if ([gesture state] == UIGestureRecognizerStateChanged) {
         CGPoint translation = [gesture translationInView:_tableView];
-        gesture.view.center = CGPointMake(gesture.view.center.x, gesture.view.center.y + translation.y);
-        [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
         
-        int midDistance = _nextBottomRowCellRect.origin.y - _currentBottomRowCellRect.origin.y;
+        if (((_topIndexPath.row == _bottomIndexPath.row) && (translation.y > 0)) ||
+            (_topIndexPath.row != _bottomIndexPath.row)) {
+//            NSLog(@"translation: %f", translation.y);
+        }
+        
+        CGFloat cellHeight = _currentBottomRowCellRect.size.height;
+        CGFloat quarterDistance = cellHeight / 4;
         
         // y-direction changed
         // => get cell for position
-        CGFloat bottomThreshold = (_currentBottomRowCellRect.origin.y + midDistance);
-        if (gesture.view.center.y > bottomThreshold) {
-            gesture.view.center = CGPointMake(gesture.view.center.x, _nextBottomRowCellRect.origin.y + _nextBottomRowCellRect.size.height/2);
-            NSLog(@"Moved a line");
-//            [self updateRectValues];
+        if (translation.y > quarterDistance) {
+            [self updateBottomRectValuesWithBottomIndexPath:_nextBottomRowIndexPath];
+            gesture.view.center = CGPointMake(gesture.view.center.x, _currentBottomRowCellRect.origin.y + cellHeight/2);
+            [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
         }
         
-        // Update selection rect
-        //        CGFloat originalX = self.frame.origin.x;
-        //        CGFloat newWidth = gesture.view.center.x - originalX;
-        //
-        //        [self updateSize:CGSizeMake(newWidth, self.frame.size.height)];
+        // Nees to resolve for right < left
+        if (translation.y < -quarterDistance) {
+            [self updateBottomRectValuesWithBottomIndexPath:
+             [NSIndexPath indexPathForRow:_bottomIndexPath.row-1
+                                inSection:0]];
+            gesture.view.center = CGPointMake(gesture.view.center.x, _currentBottomRowCellRect.origin.y + cellHeight/2);
+            [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
+        }
+
+
     }
     
     else if ([gesture state] == UIGestureRecognizerStateEnded) {
@@ -93,6 +101,22 @@
         //        [self updateSelectionSubstring:cell];
         //
         //        [self showCopyMenuForTextSelection];
+    }
+}
+
+- (void)updateBottomRectValuesWithBottomIndexPath:(NSIndexPath*)bottomIndexPath {
+    _bottomIndexPath = [NSIndexPath indexPathForRow:bottomIndexPath.row inSection:0];
+    _currentBottomRowCellRect = [_tableView rectForRowAtIndexPath:bottomIndexPath];
+    
+    int bottomRow = _bottomIndexPath.row;
+    
+    if (bottomRow + 1 < [_tableView numberOfRowsInSection:0]) {
+        _nextBottomRowIndexPath = [NSIndexPath indexPathForRow:(bottomRow + 1) inSection:0];
+        _nextBottomRowCellRect = [_tableView rectForRowAtIndexPath:_nextBottomRowIndexPath];
+    }
+    else {
+        _nextBottomRowIndexPath = nil;
+        _nextBottomRowCellRect = CGRectNull;
     }
 }
 
