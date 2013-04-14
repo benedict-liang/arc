@@ -66,7 +66,7 @@
         UIPanGestureRecognizer *rightPanGestureVertical = [[UIPanGestureRecognizer alloc]
                                                            initWithTarget:self
                                                            action:@selector(moveRightDragPointVertical:)];
-
+        
         [leftPanGestureHorizontal setDelegate:self];
         [leftPanGestureVertical setDelegate:self];
         [_leftDragPoint addGestureRecognizer:leftPanGestureHorizontal];
@@ -105,11 +105,18 @@
         CGFloat forwardThreshold = forwardDifference / 2;
         CGFloat backwardThreshold = - backwardDifference / 2;
         
+        BOOL isOverlappingDragPoints = NO;
+        if ((_topIndexPath.row == _bottomIndexPath.row) &&
+            (_lastCharacterCoordinates.x - _firstCharacterCoordinates.x) < forwardDifference * 2) {
+            isOverlappingDragPoints = YES;
+        }
+        
         CGPoint translation = [gesture translationInView:_tableView];
         BOOL selectionDidChange = NO;
         
         // Select forward
-        if (translation.x > forwardThreshold) {
+        if (translation.x > forwardThreshold &&
+            !isOverlappingDragPoints) {
             [self updateFirstCharacterValues:_nextFirstCharacterCoordinates];
             selectionDidChange = YES;
         }
@@ -202,6 +209,12 @@
         CGFloat forwardThreshold = forwardDifference / 2;
         CGFloat backwardThreshold = - backwardDifference / 2;
         
+        BOOL isOverlappingDragPoints = NO;
+        if ((_topIndexPath.row == _bottomIndexPath.row) &&
+            (_lastCharacterCoordinates.x - _firstCharacterCoordinates.x) < forwardDifference * 2) {
+            isOverlappingDragPoints = YES;
+        }
+        
         CGPoint translation = [gesture translationInView:_tableView];
         BOOL selectionDidChange = NO;
         
@@ -212,7 +225,8 @@
         }
         
         // Select backward
-        if (translation.x < backwardThreshold) {
+        if (translation.x < backwardThreshold &&
+            !isOverlappingDragPoints) {
             [self updateLastCharacterValues:_previousLastCharacterCoordinates];
             selectionDidChange = YES;
         }
