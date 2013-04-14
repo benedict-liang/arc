@@ -72,7 +72,8 @@
 #pragma mark - Drag Points
 
 // TODO: Move drag points and update background color range
-// TODO: Set boundary conditions
+// TODO: Set boundary conditions - Prevent left and right drag points from colliding
+// -> Always leave at least 1 character in between them
 
 - (void)moveLeftDragPointVertical:(UIPanGestureRecognizer*)gesture {
     
