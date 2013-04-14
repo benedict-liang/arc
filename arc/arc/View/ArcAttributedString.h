@@ -23,15 +23,18 @@
 //
 // Attributed String Mutators
 //
-
 // Font{Size, Family}
 - (void)setFontSize:(int)fontSize;
 - (void)setFontFamily:(NSString*)fontFamily;
 
 // Color
-- (void)setColor:(CGColorRef)color
+- (void)setForegroundColor:(UIColor *)color
          OnRange:(NSRange)range
       ForSetting:(NSString*)settingKey;
+
+- (void)setBackgroundColor:(UIColor *)color
+                   OnRange:(NSRange)range
+                ForSetting:(NSString *)settingKey;
 
 // Remove Attributes based on settings Key
 - (void)removeAttributesForSettingKey:(NSString*)settingKey;

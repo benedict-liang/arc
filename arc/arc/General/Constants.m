@@ -29,6 +29,9 @@ NSString* const KEY_FONT_SIZE = @"fontSize";
 NSString* const KEY_LINE_NUMBERS = @"lineNumbers";
 NSString* const KEY_WORD_WRAP = @"wordWrap";
 
+// Values
+const int THRESHOLD_LONG_SETTING_LIST = 5;
+
 // Default Folder Names
 NSString* const FOLDER_EXTERNAL_APPLICATIONS = @"External Applications";
 NSString* const FOLDER_ROOT = @"Documents";
@@ -37,6 +40,12 @@ NSString* const FOLDER_DROPBOX_ROOT = @"DropBox";
 // API Keys
 NSString* const CLOUD_DROPBOX_KEY = @"q591oqy8n4yxgt1";
 NSString* const CLOUD_DROPBOX_SECRET = @"kkb1vzgnah76zmr";
+NSString* const CLOUD_SKYDRIVE_KEY = @"00000000480F0B47";
+NSString* const CLOUD_SKYDRIVE_SECRET = @"LJv3JNgZK037xFdLrDFwHnFRWb-TJFN1";
+
+// SkyDrive scopes
+NSString* const SKYDRIVE_SCOPE_SIGNIN = @"wl.signin";
+NSString* const SKYDRIVE_SCOPE_READ_ACCESS = @"wl.skydrive";
 
 // Syntaxes File List
 NSString* const SYNTAXES_FILE_LIST = @"syntaxesFileList.txt";

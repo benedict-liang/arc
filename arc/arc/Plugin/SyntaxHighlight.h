@@ -13,6 +13,8 @@
 #import "File.h"
 #import "Utils.h"
 #import "FoldTree.h"
+#import "SyntaxHighlightingPluginDelegate.h"
+
 //Immutable class. Holds thread local state
 
 @interface SyntaxHighlight : NSObject {
@@ -26,19 +28,20 @@
     __block NSArray *foldRanges;
 }
 
-@property (readonly) id<CodeViewControllerDelegate> delegate;
-@property (readonly) id<File> currentFile;
-@property (readonly) NSString* content;
-@property (readonly) NSDictionary* bundle;
+
+@property (nonatomic, readonly) id<CodeViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<SyntaxHighlightingPluginDelegate> factory;
+@property (nonatomic, readonly) id<File> currentFile;
+@property (nonatomic, readonly) NSString* content;
+@property (nonatomic, readonly) NSDictionary* bundle;
+@property (nonatomic, strong) NSArray* overlays;
 @property (readonly) NSArray* splitContent;
-@property NSArray* overlays;
-@property BOOL isProcessed;
 
 @property NSArray* foldStarts;
 @property NSArray* foldEnds;
+- (id)initWithFile:(id<File>)file
+       andDelegate:(id<CodeViewControllerDelegate>)delegate;
 
-- (id)initWithFile:(id<File>)file del:(id<CodeViewControllerDelegate>)delegate;
 - (void)execOn:(NSDictionary*)options;
-- (void)reapplyWithOpts:(NSDictionary*)options;
-
+- (void)kill;
 @end

@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CodeViewController.h"
 
 @interface ResultsTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSArray *resultsArray;
-
+@property (strong, nonatomic) CodeViewController *codeViewController;
 
 @end

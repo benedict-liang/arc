@@ -59,7 +59,7 @@
 
 //maps "#FDF5E3" to UIColor. only applies to keys specified in colorKeys
 +(NSDictionary*)mapHexStrToUIColor:(NSDictionary*)dict {
-    NSArray *colorKeys = @[@"foreground", @"background"];
+    NSArray *colorKeys = @[@"foreground", @"background",@"selection"];
     NSMutableDictionary* res = [[NSMutableDictionary alloc] init];
     for (NSString *k in dict) {
         if ([colorKeys containsObject:k]) {

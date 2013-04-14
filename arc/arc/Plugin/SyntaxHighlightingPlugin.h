@@ -14,13 +14,12 @@
 #import "CodeViewControllerDelegate.h"
 #import "File.h"
 #import "SyntaxHighlight.h"
+#import "SyntaxHighlightingPluginDelegate.h"
 
-// a SyntaxHighlight factory of sorts. creates immutable SyntaxHighlight objects when called by protocol, which operate on their own threads.
-
-@interface SyntaxHighlightingPlugin : NSObject<PluginDelegate> {
- 
-}
-
+// SyntaxHighlight Factory
+// creates immutable SyntaxHighlight objects when called by protocol,
+// which operate on their own threads.
+@interface SyntaxHighlightingPlugin : NSObject<PluginDelegate, SyntaxHighlightingPluginDelegate>
 @property (readonly) id<CodeViewControllerDelegate> delegate;
 @property NSMutableDictionary* cache;
 @end

@@ -119,16 +119,30 @@
 
 # pragma mark - AttributedString Mutator Methods
 
-- (void)setColor:(CGColorRef)color
-         OnRange:(NSRange)range
-      ForSetting:(NSString*)settingKey
-{    
+- (void)setForegroundColor:(UIColor *)color
+                   OnRange:(NSRange)range
+                ForSetting:(NSString*)settingKey
+{
     NSMutableArray *settingAttributes =
-        [self settingsAttributeForSettingsKey:settingKey];
-
+    [self settingsAttributeForSettingsKey:settingKey];
+    
     [settingAttributes addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-                                  (__bridge id)color, @"value",
-                                  (id)kCTForegroundColorAttributeName, @"type",
+                                  color, @"value",
+                                  NSForegroundColorAttributeName, @"type",
+                                  NSStringFromRange(range), @"range",
+                                  nil]];
+}
+
+- (void)setBackgroundColor:(UIColor *)color
+                   OnRange:(NSRange)range
+                ForSetting:(NSString *)settingKey
+{
+    NSMutableArray *settingAttributes =
+    [self settingsAttributeForSettingsKey:settingKey];
+    
+    [settingAttributes addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                                  color, @"value",
+                                  NSBackgroundColorAttributeName, @"type",
                                   NSStringFromRange(range), @"range",
                                   nil]];
 }
@@ -181,22 +195,21 @@
 - (void)updateFontProperties
 {
     // Remove old font property
-    [__attributedString removeAttribute:(id)kCTFontAttributeName
+    [__attributedString removeAttribute:NSFontAttributeName
                                   range:_stringRange];
     
-    [__plainAttributedString removeAttribute:(id)kCTFontAttributeName
+    [__plainAttributedString removeAttribute:NSFontAttributeName
                                   range:_stringRange];
     
     // update font to new property
-    CTFontRef font =
-    CTFontCreateWithName((__bridge CFStringRef)_fontFamily, _fontSize, NULL);
+    UIFont *font = [UIFont fontWithName:_fontFamily size:_fontSize];
     
-    [__attributedString addAttribute:(id)kCTFontAttributeName
-                               value:(__bridge id)font
+    [__attributedString addAttribute:NSFontAttributeName
+                               value:font
                                range:_stringRange];
 
-    [__plainAttributedString addAttribute:(id)kCTFontAttributeName
-                               value:(__bridge id)font
+    [__plainAttributedString addAttribute:NSFontAttributeName
+                               value:font
                                range:_stringRange];
 }
 @end

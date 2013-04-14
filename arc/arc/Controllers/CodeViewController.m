@@ -12,6 +12,7 @@
 #import "ArcAttributedString.h"
 #import "FullTextSearch.h"
 #import "ResultsTableViewController.h"
+#import "SelectionView.h"
 
 #define KEY_RANGE @"range"
 #define KEY_LINE_NUMBER @"lineNumber"
@@ -30,10 +31,16 @@
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UIPopoverController *resultsPopoverController;
 @property (nonatomic, strong) ResultsTableViewController *resultsViewController;
-@property CTFramesetterRef frameSetter;
-@property CGFloat lineHeight;
-@property NSMutableArray *lines;
-@property NSMutableArray *plugins;
+@property (nonatomic) CGFloat lineHeight;
+@property (nonatomic) NSMutableArray *plugins;
+@property (nonatomic) SelectionView *selectionView;
+
+// Line Processing
+@property (nonatomic) BOOL linesGenerated;
+@property (nonatomic) NSMutableArray *lines;
+@property (nonatomic) int cursor;
+@property (nonatomic) CTTypesetterRef typesetter;
+
 
 - (void)loadFile;
 - (void)renderFile;
@@ -98,41 +105,32 @@
                                   self.view.bounds.size.width,
                                   self.view.bounds.size.height - SIZE_TOOLBAR_HEIGHT);
     
-    // TODO: Remove once confirmed - search bar on top of code
-    //[self addSearchBarToTableViewTop];
-    
     [self.view addSubview:_tableView];
-}
-
-- (void)refreshForSetting:(NSString *)setting
-{
-    [self processFileForSetting:setting];
 }
 
 - (void)showFile:(id<File>)file
 {
-    if ([file isEqual:_currentFile]) {
+    if ([[file path] isEqual:[_currentFile path]]) {
         return;
     }
     
     // Update Current file
     _currentFile = file;
-    [self updateToolbarTitle];
+    _toolbarTitle.title = [_currentFile name];
+    
+    // Reset table view scroll position
+    [_tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     
     [self loadFile];
-    [self processFileForSetting:nil];
-}
-
-- (void)processFileForSetting:(NSString*)setting
-{
-    _sharedObject = [NSMutableDictionary dictionary];
     
-    [self preRenderPluginsForSetting:setting];
+    _sharedObject = [NSMutableDictionary dictionary];
+    _linesGenerated = NO;
+
+    [self preRenderPluginsForSetting:nil];
     [self generateLines];
     [self calcLineHeight];
     [self renderFile];
-    [self postRenderPluginsForSetting:setting];
-
+    [self postRenderPluginsForSetting:nil];
 }
 
 - (void)loadFile
@@ -148,29 +146,51 @@
     [_tableView reloadData];
 }
 
-- (void)updateToolbarTitle
+# pragma mark - Change of settings
+
+- (void)refreshForSetting:(NSString *)setting
 {
-    _toolbarTitle.title = [_currentFile name];
+    id<PluginDelegate> plugin = [self findPluginForSettingKey:setting];
+
+    if ([plugin settingKeyAffectsBounds:setting]) {
+        _linesGenerated = NO;
+        [self preRenderPluginsForSetting:setting];
+        [self generateLines];
+        [self calcLineHeight];
+    } else {
+        [self preRenderPluginsForSetting:setting];
+    }
+    
+    [self renderFile];
+    [self postRenderPluginsForSetting:setting];
 }
+
+- (id<PluginDelegate>)findPluginForSettingKey:(NSString *)settingKey
+{
+    for (id<PluginDelegate> plugin in _plugins) {
+        if ([[plugin settingKeys] indexOfObject:settingKey] != NSNotFound) {
+            return plugin;
+        }
+    }
+    return nil;
+}
+
+# pragma mark - Lines Generation (Code Layout)
 
 - (void)clearPreviousLayoutInformation
 {
-    if (_frameSetter != NULL) {
-        CFRelease(_frameSetter);
-        _frameSetter = NULL;
+    if (_typesetter != NULL) {
+        CFRelease(_typesetter);
+        _typesetter = NULL;
     }
-
+    
     _lines = [NSMutableArray array];
+    _cursor = 0;
 }
 
 - (void)generateLines
 {
     [self clearPreviousLayoutInformation];
-    _lines = [NSMutableArray array];
-    
-    CFAttributedStringRef ref =
-    (CFAttributedStringRef)CFBridgingRetain(_arcAttributedString.plainAttributedString);
-    _frameSetter = CTFramesetterCreateWithAttributedString(ref);
     
     NSArray *keys = [NSArray arrayWithObjects:
                      KEY_RANGE,
@@ -184,14 +204,15 @@
 
     // Calculate the lineStarts
     int start = 0;
-    NSUInteger length = CFAttributedStringGetLength(ref);
-    CFBridgingRelease(ref);
+    int length = _arcAttributedString.string.length;
+
+    _typesetter = CTTypesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_arcAttributedString.plainAttributedString);
+    
     while (start < length)
     {
-        [lineStarts setValue:[NSNumber numberWithBool:YES]
-                      forKey:[NSString stringWithFormat:@"%d", start]];
-        CTTypesetterRef typesetter = CTFramesetterGetTypesetter(_frameSetter);
-        CFIndex count = CTTypesetterSuggestLineBreak(typesetter, start, boundsWidth);
+        [lineStarts setObject:[NSNumber numberWithBool:YES]
+                       forKey:[NSNumber numberWithInt:start]];
+        CFIndex count = CTTypesetterSuggestLineBreak(_typesetter, start, boundsWidth);
         start += count;
     }
     
@@ -204,15 +225,14 @@
     BOOL startOfLine;
     while (start < length)
     {
-        if ([lineStarts objectForKey:[NSString stringWithFormat:@"%d", start]]) {
+        if ([lineStarts objectForKey:[NSNumber numberWithInt:start]]) {
             lineNumber++;
             startOfLine = YES;
         } else {
             startOfLine = NO;
         }
-        
-        CTTypesetterRef typesetter = CTFramesetterGetTypesetter(_frameSetter);
-        CFIndex count = CTTypesetterSuggestLineBreak(typesetter, start, actualBoundsWidth);
+
+        CFIndex count = CTTypesetterSuggestLineBreak(_typesetter, start, actualBoundsWidth);
         [_lines addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
                                                                [NSValue valueWithRange:NSMakeRange(start, count)],
                                                                [NSNumber numberWithInt:lineNumber],
@@ -221,6 +241,7 @@
                                                       forKeys:keys]];
         start += count;
     }
+    _linesGenerated = YES;
     
 }
 
@@ -229,10 +250,9 @@
     CGFloat asscent, descent, leading;
     if ([_lines count] > 0) {
         CTLineRef line = CTLineCreateWithAttributedString(
-            (__bridge CFAttributedStringRef)(
-                [_arcAttributedString.attributedString attributedSubstringFromRange:
-                    [[[_lines objectAtIndex:0] objectForKey:KEY_RANGE] rangeValue]]));
-
+                                                          (__bridge CFAttributedStringRef)(
+                                                                                           [_arcAttributedString.attributedString attributedSubstringFromRange:
+                                                                                            [[[_lines objectAtIndex:0] objectForKey:KEY_RANGE] rangeValue]]));
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
         _lineHeight = asscent + descent + leading;
         _tableView.rowHeight = ceil(_lineHeight);
@@ -246,6 +266,36 @@
 {
     _backgroundColor = backgroundColor;
     _tableView.backgroundColor = _backgroundColor;
+}
+
+- (void)registerPlugin:(id<PluginDelegate>)plugin
+{
+    // Only register a plugin once.
+    if ([_plugins indexOfObject:plugin] == NSNotFound) {
+        [_plugins addObject:plugin];
+    }
+}
+
+- (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
+                   forFile:(id<File>)file
+                 WithStyle:(NSDictionary *)style
+{
+    if ([[file path] isEqual:[_currentFile path]]) {
+        _arcAttributedString = arcAttributedString;
+        
+        while (!_linesGenerated);
+        [self renderFile];
+    }
+}
+
+- (void)scrollToLineNumber:(int)lineNumber
+{
+    // TODO: Naive implementation
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lineNumber
+                                                inSection:0];
+    [_tableView scrollToRowAtIndexPath:indexPath
+                      atScrollPosition:UITableViewScrollPositionMiddle
+                              animated:YES];
 }
 
 
@@ -335,16 +385,21 @@
     
     // Initialize results tableview controller
     _resultsViewController = [[ResultsTableViewController alloc] init];
+    _resultsViewController.codeViewController = self;
     
     _resultsPopoverController =
     [[UIPopoverController alloc] initWithContentViewController:_resultsViewController];
     
     _resultsPopoverController.passthroughViews =
         [NSArray arrayWithObject:_searchBar];
+    [_searchBar becomeFirstResponder];
 }
 
 - (void)hideSearchToolBar
 {
+    [_arcAttributedString removeAttributesForSettingKey:@"search"];
+    [_tableView reloadData];
+    
     if (UIDeviceOrientationIsLandscape(self.interfaceOrientation))
     {
         [self setUpDefaultToolBar];
@@ -354,47 +409,15 @@
     }
 }
 
-// TODO: Remove once confirmed - search bar on top of code
-- (void)addSearchBarToTableViewTop
-{
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, SIZE_TOOLBAR_HEIGHT)];
-    _tableView.tableHeaderView = _searchBar;
-    _searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
-    _searchBar.delegate = (id<UISearchBarDelegate>)self;
-    
-    // Hides search bar upon load
-    _tableView.contentOffset = CGPointMake(0, SIZE_TOOLBAR_HEIGHT);
-}
-
-#pragma mark - Code View Delegate
-
-- (void)registerPlugin:(id<PluginDelegate>)plugin
-{
-    // Only register a plugin once.
-    if ([_plugins indexOfObject:plugin] == NSNotFound) {
-        [_plugins addObject:plugin];
-    }
-}
-
-- (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
-                   forFile:(id<File>)file
-                 WithStyle:(NSDictionary *)style
-{
-    // Temporary solution to resolve asyn mutation of background color
-    if ([[file path] isEqual:[_currentFile path]]) {
-        _arcAttributedString = arcAttributedString;
-        [_tableView reloadData];
-    }
-}
-
 #pragma mark - Detail View Controller Delegate
 
 - (void)showShowMasterViewButton:(UIBarButtonItem *)button
 {
     // Customise the button.
-    UIImage *icon = [Utils scale:[UIImage imageNamed:@"Reading Panel.png"]
-                          toSize:CGSizeMake(SIZE_TOOLBAR_ICON_WIDTH, SIZE_TOOLBAR_ICON_WIDTH)];
+    UIImage *icon = [Utils scale:[UIImage imageNamed:@"threelines.png"]
+                          toSize:CGSizeMake(40, SIZE_TOOLBAR_ICON_WIDTH)];
     [button setImage:icon];
+    [button setStyle:UIBarButtonItemStylePlain];
     [button setTitle:nil];
     
     _toolbar.items = [NSArray arrayWithObjects:
@@ -441,19 +464,96 @@
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
     NSDictionary *lineObject = (NSDictionary *)[_lines objectAtIndex:indexPath.row];
-    CTLineRef lineRef =
-    CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
-                                     ([_arcAttributedString.attributedString attributedSubstringFromRange:
-                                       [[lineObject objectForKey:KEY_RANGE] rangeValue]]));
+    NSAttributedString *lineRef = [_arcAttributedString.attributedString attributedSubstringFromRange:
+                                   [[lineObject objectForKey:KEY_RANGE] rangeValue]];
 
     cell.line = lineRef;
+    cell.indexPath = indexPath;
+    
+    // Additional code
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc]
+                                                      initWithTarget:self
+                                                      action:@selector(getTextLocation:)];
+    [cell addGestureRecognizer:longPressGesture];
+    
     NSInteger lineNumber = [[lineObject objectForKey:KEY_LINE_NUMBER] integerValue];
-    if ([[lineObject objectForKey:KEY_LINE_START] boolValue]) {
-        cell.lineNumber = lineNumber;
+    
+    if (_lineNumbers) {
+        if ([[lineObject objectForKey:KEY_LINE_START] boolValue]) {
+            cell.lineNumber = lineNumber;
+        }
     }
 
     [cell setNeedsDisplay];
     return cell;
+}
+
+#pragma mark - Text Selection + Copy and Paste
+
+- (void)getTextLocation:(UILongPressGestureRecognizer*)longPressGesture
+{
+    CodeLineCell *cell = (CodeLineCell*)[longPressGesture view];
+    CGPoint pointOfTouch = [longPressGesture locationInView:cell];
+    
+    NSAttributedString *line = cell.line;
+    CTLineRef lineref = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)(line));
+    CFIndex index = CTLineGetStringIndexForPosition(lineref, pointOfTouch);
+    
+    // 1)
+    CTFramesetterRef frameSetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)(cell.line));
+    CGPathRef path = CGPathCreateWithRect(CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height), NULL);
+    CTFrameRef frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, 0), path, NULL);
+    CGPoint lineOrigins[3];
+    CTFrameGetLineOrigins(frame, CFRangeMake(0, 0), lineOrigins);
+    
+    // 2)
+    CGFloat ascent, descent;
+    CTLineGetTypographicBounds(lineref, &ascent, &descent, NULL);
+    
+    // 3)
+    //CFRange strRange = CTLineGetStringRange(line);
+    
+    // 4)
+    CGFloat startOffset = CTLineGetOffsetForStringIndex(lineref, index, NULL);
+    CGFloat endOffset = CTLineGetOffsetForStringIndex(lineref, index+3, NULL);
+    
+    
+    // Finally
+    CGPoint origin = lineOrigins[0];
+    CGRect lineRect = CGRectMake(origin.x + startOffset,
+                                 origin.y - descent,
+                                 endOffset-startOffset,
+                                 ascent + descent);
+    
+    if (longPressGesture.state == UIGestureRecognizerStateBegan) {
+        _selectionView = [[SelectionView alloc] initWithFrame:lineRect];
+        CodeLineCell *cellAtIndexPath = (CodeLineCell*)[_tableView cellForRowAtIndexPath:cell.indexPath];
+        [cellAtIndexPath addSubview:_selectionView];
+        [cellAtIndexPath addSubview:_selectionView.rightDragPoint];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(showCopyMenuForTextSelection)
+                                                     name:@"showCopyMenu"
+                                                   object:nil];
+        
+        CGFloat startX = lineRect.origin.x;
+        CGFloat endX = lineRect.origin.x + lineRect.size.width;
+        CFIndex startIndex = CTLineGetStringIndexForPosition(lineref, CGPointMake(startX, 0));
+        CFIndex endIndex = CTLineGetStringIndexForPosition(lineref, CGPointMake(endX, 0));
+        
+        _selectionView.selectedString = [line.string substringWithRange:NSMakeRange(startIndex, endIndex - startIndex)];
+    }
+    if (longPressGesture.state == UIGestureRecognizerStateEnded) {
+        
+    }
+}
+
+#pragma mark - UIMenuController methods
+
+- (BOOL)canBecomeFirstResponder
+{
+    // NOTE: This menu item will not show if this is not YES!
+    return YES;
 }
 
 #pragma mark - Table view delegate
@@ -472,42 +572,66 @@
     NSString *searchString = [searchBar text];
     NSArray *searchResultRangesArray = [FullTextSearch searchForText:searchString
                                                          inFile:_currentFile];
-    NSMutableArray *searchLineNumber;
+    NSMutableArray *searchLineNumberArray;
     
     if (searchResultRangesArray != nil) {
-        searchLineNumber = [[NSMutableArray alloc] init];
-        int lineIndex = 0;
-        
-        for (int i=0; i<[searchResultRangesArray count]; i++) {
-            NSRange searchResultRange = [[searchResultRangesArray objectAtIndex:i] rangeValue];
-            
-            for (int j=lineIndex; j<[_lines count]; j++) {
-                NSRange lineRange = [[_lines objectAtIndex:j] rangeValue];
-                NSRange rangeIntersectionResult = NSIntersectionRange(lineRange, searchResultRange);
-                
-                // Ranges intersect
-                if (rangeIntersectionResult.length != 0) {
-                    
-                    [searchLineNumber addObject:[NSNumber numberWithInt:j]];
-                    
-                    // Update current lineIndex
-                    lineIndex = j;
-                    break;
-                }
-            }
-        }
+        searchLineNumberArray = [[NSMutableArray alloc] init];
+        [self getSearchResultLineNumbers:searchLineNumberArray
+                        withResultsArray:searchResultRangesArray];
     }
+    
+    [_arcAttributedString removeAttributesForSettingKey:@"search"];
+    [self applyBackgroundToAttributedStringForRanges:searchResultRangesArray
+                                           withColor:[UIColor yellowColor]];
     
     // Hide keyboard after search button clicked
     [searchBar resignFirstResponder];
     
     // Show results
-    _resultsViewController.resultsArray = [NSArray arrayWithArray:searchLineNumber];
+    _resultsViewController.resultsArray = [NSArray arrayWithArray:searchLineNumberArray];
     [_resultsViewController.tableView reloadData];
     [_resultsPopoverController presentPopoverFromRect:[_searchBar bounds]
-                                              inView:_searchBar
-                            permittedArrowDirections:UIPopoverArrowDirectionAny
-                                            animated:YES];
+                                               inView:_searchBar
+                             permittedArrowDirections:UIPopoverArrowDirectionAny
+                                             animated:YES];
+    
+    [_tableView reloadData];
+}
+
+- (void)getSearchResultLineNumbers:(NSMutableArray *)searchLineNumberArray
+                  withResultsArray:(NSArray *)resultsArray
+{
+    int lineIndex = 0;
+    
+    for (int i=0; i<[resultsArray count]; i++) {
+        NSRange searchResultRange = [[resultsArray objectAtIndex:i] rangeValue];
+        
+        for (int j=lineIndex; j<[_lines count]; j++) {
+            NSRange lineRange = [[[_lines objectAtIndex:j] objectForKey:KEY_RANGE] rangeValue];
+            NSRange rangeIntersectionResult = NSIntersectionRange(lineRange, searchResultRange);
+            
+            // Ranges intersect
+            if (rangeIntersectionResult.length != 0) {
+                
+                [searchLineNumberArray addObject:[NSNumber numberWithInt:j]];
+                
+                // Update current lineIndex
+                lineIndex = j;
+                break;
+            }
+        }
+    }
+}
+
+- (void)applyBackgroundToAttributedStringForRanges:(NSArray *)rangesArray
+                                         withColor:(UIColor*)color
+
+{
+    for (NSValue *range in rangesArray) {
+        [_arcAttributedString setBackgroundColor:color
+                                         OnRange:[range rangeValue]
+                                      ForSetting:@"search"];
+    }
 }
 
 @end
