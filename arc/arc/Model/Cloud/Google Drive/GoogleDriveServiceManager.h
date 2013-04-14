@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CloudServiceManager.h"
+#import "GTLDrive.h"
+#import "GTMOAuth2ViewControllerTouch.h"
 
-@interface GoogleDriveServiceManager : NSObject
+@interface GoogleDriveServiceManager : NSObject <CloudServiceManager>
+
+@property (strong, nonatomic) GTLServiceDrive *driveService;
 
 @end
