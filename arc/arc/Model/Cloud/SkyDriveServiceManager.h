@@ -9,5 +9,5 @@
 #import "CloudServiceManager.h"
 #import <LiveSDK/LiveConnectClient.h>
 
-@interface SkyDriveServiceManager : NSObject <CloudServiceManager>
+@interface SkyDriveServiceManager : NSObject <CloudServiceManager, LiveAuthDelegate>
 @end
