@@ -10,6 +10,7 @@
 #import "CloudServiceManager.h"
 #import "GTLDrive.h"
 #import "GTMOAuth2ViewControllerTouch.h"
+#import "GoogleDriveDownloadHelper.h"
 
 @interface GoogleDriveServiceManager : NSObject <CloudServiceManager>
 

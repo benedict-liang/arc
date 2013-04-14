@@ -58,4 +58,16 @@ static GoogleDriveServiceManager *sharedServiceManager = nil;
     }
 }
 
+// Takes in a File object (representing a file on the cloud service), and a LocalFolder.
+// Downloads the file and stores it in the LocalFolder.
+- (void)downloadFile:(id<File>)file toFolder:(LocalFolder *)folder
+{
+    if ([self isLoggedIn]) {
+        GTMHTTPFetcher *httpFetcher = [[_driveService fetcherService] fetcherWithURLString:[file path]];
+        GoogleDriveDownloadHelper *helper = [[GoogleDriveDownloadHelper alloc] initWithFile:file Folder:folder];
+        
+        [httpFetcher beginFetchWithDelegate:helper didFinishSelector:@selector(dataRetrieved:error:)];
+    }
+}
+
 @end
