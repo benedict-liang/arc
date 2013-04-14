@@ -32,6 +32,14 @@
     return self;
 }
 
+- (BOOL)settingKeyAffectsBounds:(NSString *)settingKey
+{
+    if ([settingKey isEqualToString:_lineNumberSettingsKey]) {
+        return YES;
+    }
+    return NO;
+}
+
 - (NSDictionary *)propertiesFor:(NSString *)settingKey
 {
     if ([settingKey isEqualToString:_lineNumberSettingsKey]) {
@@ -43,7 +51,10 @@
 // Returns the default value for the given setting key.
 - (id<NSObject>)defaultValueFor:(NSString *)settingKey
 {
-    return [NSNumber numberWithBool:_defaultSetting];
+    if ([settingKey isEqualToString:_lineNumberSettingsKey]) {
+        return [NSNumber numberWithBool:_defaultSetting];
+    }
+    return nil;
 }
 
 //- (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString

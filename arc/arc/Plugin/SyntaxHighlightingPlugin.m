@@ -103,7 +103,7 @@
         sh.factory = self;
 
         // add to cache
-        // [_cache setObject:sh forKey:[file path]];
+        [_cache setObject:sh forKey:[file path]];
     }
     
     if (sh.bundle) {
@@ -139,9 +139,20 @@
     codeView.foregroundColor = [style objectForKey:@"foreground"];
 }
 
+- (BOOL)settingKeyAffectsBounds:(NSString *)settingKey
+{
+    if ([settingKey isEqualToString:_colorSchemeSettingKey]) {
+        return NO;
+    }
+    return NO;
+}
+
 - (NSDictionary*)propertiesFor:(NSString *)settingKey
 {
-    return [NSDictionary dictionaryWithDictionary:_properties];
+    if ([settingKey isEqualToString:_colorSchemeSettingKey]) {
+        return [NSDictionary dictionaryWithDictionary:_properties];
+    }
+    return nil;
 }
 
 - (id<NSObject>)defaultValueFor:(NSString *)settingKey

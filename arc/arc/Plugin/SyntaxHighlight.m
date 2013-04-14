@@ -503,7 +503,6 @@
             withTheme:(NSDictionary*)theme
 {
     [output removeAttributesForSettingKey:@"sh"];
-    [self applyForeground:output withTheme:theme];
     [self applyStylesTo:output withRanges:pairMatches withTheme:theme];
     [self applyStylesTo:output withRanges:nameMatches withTheme:theme];
     [self applyStylesTo:output withRanges:captureMatches withTheme:theme];
@@ -518,6 +517,7 @@
     _isAlive = YES;
     ArcAttributedString *output = [options objectForKey:@"attributedString"];
     NSDictionary* theme = [options objectForKey:@"theme"];
+    overlapMatches = [NSDictionary dictionary];
 
     if (!_matchesDone) {
         NSMutableArray* patterns = [NSMutableArray arrayWithArray:[_bundle objectForKey:@"patterns"]];
@@ -529,12 +529,13 @@
         [self iterPatternsForRange:NSMakeRange(0, [_content length])
                           patterns:patterns
                             output:output];
+    
+        _matchesDone = YES;
     }
     
     // tell SH factory to remove self from thread pool.
-    _matchesDone = YES;
     [_factory removeFromThreadPool:self];
-
+    
     [self applyStylesTo:output withTheme:theme];
     [self updateView:output withTheme:theme];
 }
