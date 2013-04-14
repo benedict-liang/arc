@@ -178,26 +178,7 @@
     _lastCharacterCoordinates = lastCharacterCoordinates;
     
     // Reset prev and next last character coordinates
-    CodeLineCell *bottomCell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
-    CTLineRef bottomLineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
-                                                               (bottomCell.line));
-    CFRange stringRangeForBottomRow = CTLineGetStringRange(bottomLineRef);
-    CFIndex index = CTLineGetStringIndexForPosition(bottomLineRef, _lastCharacterCoordinates);
-    if (index < stringRangeForBottomRow.length) {
-        CGFloat offset = CTLineGetOffsetForStringIndex(bottomLineRef, index + 1, NULL);
-        _nextLastCharacterCoordinates = CGPointMake(offset, 0);
-    }
-    else {
-        _nextLastCharacterCoordinates = CGPointMake(NAN, NAN);
-    }
-    
-    if (index != 0) {
-        CGFloat offset = CTLineGetOffsetForStringIndex(bottomLineRef, index - 1, NULL);
-        _previousLastCharacterCoordinates = CGPointMake(offset, 0);
-    }
-    else {
-        _nextLastCharacterCoordinates = CGPointMake(NAN, NAN);
-    }
+    [self setLastCharacterCoordinates:lastCharacterCoordinates];
 }
 
 #pragma mark - Calculations for character/row rects
@@ -213,26 +194,7 @@
     
     
     // TODO: Apply to first character too
-    CodeLineCell *bottomCell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
-    CTLineRef bottomLineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
-                                                         (bottomCell.line));
-    CFRange stringRangeForBottomRow = CTLineGetStringRange(bottomLineRef);
-    CFIndex index = CTLineGetStringIndexForPosition(bottomLineRef, _lastCharacterCoordinates);
-    if (index < stringRangeForBottomRow.length) {
-        CGFloat offset = CTLineGetOffsetForStringIndex(bottomLineRef, index + 1, NULL);
-        _nextLastCharacterCoordinates = CGPointMake(offset, 0);
-    }
-    else {
-        _nextLastCharacterCoordinates = CGPointMake(NAN, NAN);
-    }
-    
-    if (index != 0) {
-        CGFloat offset = CTLineGetOffsetForStringIndex(bottomLineRef, index - 1, NULL);
-        _previousLastCharacterCoordinates = CGPointMake(offset, 0);
-    }
-    else {
-        _nextLastCharacterCoordinates = CGPointMake(NAN, NAN);
-    }
+    [self setLastCharacterCoordinates:_lastCharacterCoordinates];
 }
 
 - (void)calculateRectValuesForRows {
@@ -260,6 +222,32 @@
         _nextBottomRowCellRect = CGRectNull;
     }
 }
+
+#pragma mark - Helper Methods
+
+- (void)setLastCharacterCoordinates:(CGPoint)lastCharacterCoordinates {
+    CodeLineCell *bottomCell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
+    CTLineRef bottomLineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                                               (bottomCell.line));
+    CFRange stringRangeForBottomRow = CTLineGetStringRange(bottomLineRef);
+    CFIndex index = CTLineGetStringIndexForPosition(bottomLineRef, _lastCharacterCoordinates);
+    if (index < stringRangeForBottomRow.length) {
+        CGFloat offset = CTLineGetOffsetForStringIndex(bottomLineRef, index + 1, NULL);
+        _nextLastCharacterCoordinates = CGPointMake(offset, 0);
+    }
+    else {
+        _nextLastCharacterCoordinates = CGPointMake(NAN, NAN);
+    }
+    
+    if (index != 0) {
+        CGFloat offset = CTLineGetOffsetForStringIndex(bottomLineRef, index - 1, NULL);
+        _previousLastCharacterCoordinates = CGPointMake(offset, 0);
+    }
+    else {
+        _nextLastCharacterCoordinates = CGPointMake(NAN, NAN);
+    }
+}
+
 
 - (void)viewDidLoad
 {
