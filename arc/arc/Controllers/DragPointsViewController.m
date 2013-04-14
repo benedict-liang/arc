@@ -87,8 +87,7 @@
             selectionDidChange = YES;
         }
         
-        // Needs to resolve for right < left
-        if (translation.y < -quarterDistance) {
+        if (translation.y < -quarterDistance && (_topIndexPath.row != _bottomIndexPath.row)) {
             [self updateBottomRectValuesWithBottomIndexPath:
              [NSIndexPath indexPathForRow:_bottomIndexPath.row-1
                                 inSection:0]];
@@ -103,17 +102,13 @@
             CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                                  (cell.line));
             CFIndex index = CTLineGetStringIndexForPosition(lineRef, endPointInRow);
-            int endLocation = cell.stringRange.location + index;
+            int endLocation = cell.stringRange.location + index - 1;
             _selectedTextRange = NSMakeRange(_selectedTextRange.location, endLocation - _selectedTextRange.location);
             [_codeViewController setBackgroundColorForString:[UIColor blueColor]
                                                    WithRange:_selectedTextRange
                                                   forSetting:@"copyAndPaste"];
             [_tableView reloadData];
         }
-    }
-    
-    else if ([gesture state] == UIGestureRecognizerStateEnded) {
-
     }
 }
 
