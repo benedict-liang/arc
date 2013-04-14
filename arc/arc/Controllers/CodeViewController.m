@@ -493,7 +493,7 @@
         }
     }
     
-    // TODO: Long Press Gesture
+    // Long Press Gesture for text selection
     UILongPressGestureRecognizer *longPressGesture =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                   action:@selector(selectText:)];
@@ -514,20 +514,18 @@
         // Should only consider point.x
         CGPoint point = [gesture locationInView:gesture.view];
         
-        // TODO: Get global range of selected string (check width of line numbers)
+        // Get global range of selected string (check width of line numbers)
         CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                              (attributedString));
         CFIndex index = CTLineGetStringIndexForPosition(lineRef, point);
 
-        // TODO: Apply background color for index
+        // Apply background color for index
         NSRange selectedRange = NSMakeRange(cellStringRange.location + index, 3);
         [self setBackgroundColorForString:[UIColor blueColor]
                                 WithRange:selectedRange
                                forSetting:@"copyAndPaste"];
-        NSLog(@"selected text: %@", [_arcAttributedString.attributedString.string substringWithRange:selectedRange]);
         
-        
-        // TODO: Get location of touch of tableviewcell in TableView (global)
+        // Get location of touch of tableviewcell in TableView (global)
         NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
         CGRect cellRect = [_tableView rectForRowAtIndexPath:indexPath];
         CGFloat startOffset = CTLineGetOffsetForStringIndex(lineRef, index, NULL);
@@ -536,7 +534,7 @@
         CGRect selectedRect = CGRectMake(cellRect.origin.x + startOffset, cellRect.origin.y,
                                         endOffset - startOffset, cellRect.size.height);
     
-        // TODO: Add drag points subview in CodeViewController
+        // Add drag points subview in CodeViewController
         _dragPointVC = [[DragPointsViewController alloc] initWithSelectedTextRect:selectedRect
                                                                         andOffset:lineNumberWidth];
         _dragPointVC.topIndexPath = indexPath;
@@ -584,7 +582,7 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
     for (NSValue *range in searchResultRangesArray) {
         [self setBackgroundColorForString:[UIColor yellowColor]
                                 WithRange:[range rangeValue]
-                               forSetting:@"copyAndPaste"];
+                               forSetting:@"search"];
     }
     
     // Hide keyboard after search button clicked
@@ -630,12 +628,5 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     return YES;
 }
-
-// TODO: Implement Copy and Paste
-
-
-
-// TODO: Get relevant object from _line
-
 
 @end
