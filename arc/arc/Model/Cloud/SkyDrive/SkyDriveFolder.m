@@ -117,7 +117,7 @@
             } else {
                 // Do nothing. This is audio, a photo, or a video.
             }
-            
+            [_delegate folderContentsUpdated:self];
         }
             break;
     }

@@ -9,9 +9,10 @@
 #import "Folder.h"
 #import "SkyDriveServiceManager.h"
 #import "SkyDriveFile.h"
+#import "CloudFolderDelegate.h"
 
 @interface SkyDriveFolder : NSObject <Folder, LiveOperationDelegate>
 
-//@property (weak, nonatomic) id<CloudFolderDelegate> delegate;
+@property (weak, nonatomic) id<CloudFolderDelegate> delegate;
 
 @end
