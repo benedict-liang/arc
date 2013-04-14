@@ -100,16 +100,7 @@
         
         if (selectionDidChange) {
             CGPoint endPointInRow = CGPointMake(gesture.view.center.x, 0);
-            CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
-            CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
-                                                                 (cell.line));
-            CFIndex index = CTLineGetStringIndexForPosition(lineRef, endPointInRow);
-            int endLocation = cell.stringRange.location + index - 1;
-            _selectedTextRange = NSMakeRange(_selectedTextRange.location, endLocation - _selectedTextRange.location);
-            [_codeViewController setBackgroundColorForString:[UIColor blueColor]
-                                                   WithRange:_selectedTextRange
-                                                  forSetting:@"copyAndPaste"];
-            [_tableView reloadData];
+            [self updateBackgroundColorForRightDragPoint:endPointInRow];
         }
     }
 }
@@ -147,18 +138,22 @@
         
         if (selectionDidChange) {
             CGPoint endPointInRow = CGPointMake(gesture.view.center.x, 0);
-            CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
-            CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
-                                                                 (cell.line));
-            CFIndex index = CTLineGetStringIndexForPosition(lineRef, endPointInRow);
-            int endLocation = cell.stringRange.location + index - 1;
-            _selectedTextRange = NSMakeRange(_selectedTextRange.location, endLocation - _selectedTextRange.location);
-            [_codeViewController setBackgroundColorForString:[UIColor blueColor]
-                                                   WithRange:_selectedTextRange
-                                                  forSetting:@"copyAndPaste"];
-            [_tableView reloadData];
+            [self updateBackgroundColorForRightDragPoint:endPointInRow];
         }
     }
+}
+
+- (void)updateBackgroundColorForRightDragPoint:(CGPoint)endPoint {
+    CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
+    CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                                         (cell.line));
+    CFIndex index = CTLineGetStringIndexForPosition(lineRef, endPoint);
+    int endLocation = cell.stringRange.location + index - 1;
+    _selectedTextRange = NSMakeRange(_selectedTextRange.location, endLocation - _selectedTextRange.location);
+    [_codeViewController setBackgroundColorForString:[UIColor blueColor]
+                                           WithRange:_selectedTextRange
+                                          forSetting:@"copyAndPaste"];
+    [_tableView reloadData];
 }
 
 #pragma mark - Update Values
