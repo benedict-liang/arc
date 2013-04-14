@@ -78,19 +78,20 @@
         
         CGFloat forwardDifference = _nextLastCharacterCoordinates.x - _lastCharacterCoordinates.x;
         CGFloat backwardDifference = _lastCharacterCoordinates.x - _previousLastCharacterCoordinates.x;
-        
+        CGFloat forwardThreshold = forwardDifference / 2;
+        CGFloat backwardThreshold = - backwardDifference / 2;
         // x-direction changed
         // => get string index
         
         // TODO: Assume within range of line
-        if (translation.x > (forwardDifference / 2)) {
+        if (translation.x > forwardThreshold) {
             [self updateLastCharacterValues:_nextLastCharacterCoordinates];
             gesture.view.center = CGPointMake(_lastCharacterCoordinates.x, gesture.view.center.y);
             [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
             selectionDidChange = YES;
         }
         
-        if (translation.x < -(backwardDifference / 2)) {
+        if (translation.x < backwardThreshold) {
             [self updateLastCharacterValues:_previousLastCharacterCoordinates];
             gesture.view.center = CGPointMake(_lastCharacterCoordinates.x, gesture.view.center.y);
             [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
@@ -123,19 +124,19 @@
     if ([gesture state] == UIGestureRecognizerStateChanged) {
         CGPoint translation = [gesture translationInView:_tableView];
         CGFloat cellHeight = _bottomRowCellRect.size.height;
-        CGFloat quarterDistance = cellHeight / 4;
+        CGFloat threshold = cellHeight / 4;
         BOOL selectionDidChange = NO;
         
         // y-direction changed
         // => get cell for position
-        if (translation.y > quarterDistance) {
+        if (translation.y > threshold) {
             [self updateBottomRectValuesWithBottomIndexPath:_nextBottomRowIndexPath];
             gesture.view.center = CGPointMake(gesture.view.center.x, _bottomRowCellRect.origin.y + cellHeight/2);
             [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
             selectionDidChange = YES;
         }
         
-        if (translation.y < -quarterDistance && (_topIndexPath.row != _bottomIndexPath.row)) {
+        if (translation.y < -threshold && (_topIndexPath.row != _bottomIndexPath.row)) {
             [self updateBottomRectValuesWithBottomIndexPath:
              [NSIndexPath indexPathForRow:_bottomIndexPath.row-1
                                 inSection:0]];
