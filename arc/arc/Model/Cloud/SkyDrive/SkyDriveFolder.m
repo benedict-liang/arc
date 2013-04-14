@@ -13,9 +13,13 @@
 
 @end
 
-
 @implementation SkyDriveFolder
 @synthesize name = _name, path = _path, parent = _parent, isRemovable = _isRemovable;
+
++ (SkyDriveFolder *)getRoot
+{
+    return [[SkyDriveFolder alloc] initWithName:@"SkyDrive Documents" path:@"me/skydrive" parent:nil];
+}
 
 - (id <NSObject>)contents
 {

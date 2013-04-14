@@ -15,4 +15,6 @@
 
 @property (weak, nonatomic) id<CloudFolderDelegate> delegate;
 
++ (SkyDriveFolder *)getRoot;
+
 @end
