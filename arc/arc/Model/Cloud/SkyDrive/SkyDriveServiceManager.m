@@ -52,10 +52,9 @@ static SkyDriveServiceManager *sharedServiceManager = nil;
     _isLoggedIn = NO;
 }
 
-// Takes in a path on the file service, and a LocalFolder.
-// Downloads the file at that path and stores it in the LocalFolder.
-// Returns YES if successful, NO otherwise.
-- (BOOL)downloadFileAtPath:(NSString *)path toFolder:(LocalFolder *)folder
+// Takes in a File object (representing a file on the cloud service), and a LocalFolder.
+// Downloads the file and stores it in the LocalFolder.
+- (void)downloadFile:(id<File>)file toFolder:(LocalFolder *)folder
 {
     if (_isLoggedIn) {
         // Get file details.
