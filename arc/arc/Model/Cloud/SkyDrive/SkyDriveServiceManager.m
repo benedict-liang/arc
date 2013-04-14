@@ -54,7 +54,7 @@ static SkyDriveServiceManager *sharedServiceManager = nil;
 
 // Takes in a File object (representing a file on the cloud service), and a LocalFolder.
 // Downloads the file and stores it in the LocalFolder.
-- (void)downloadFile:(id<File>)file toFolder:(LocalFolder *)folder
+- (void)downloadFile:(SkyDriveFile *)file toFolder:(LocalFolder *)folder
 {
     if (_isLoggedIn) {
         SkyDriveDownloadHelper *helper = [[SkyDriveDownloadHelper alloc] initWithFile:file Folder:folder];
