@@ -11,13 +11,18 @@
 
 @interface DragPointsViewController ()
 
-@property (nonatomic) CGRect currentBottomRowCellRect;
-@property (nonatomic) CGRect currentTopRowCellRect;
+@property (nonatomic) CGRect bottomRowCellRect;
+@property (nonatomic) CGRect topRowCellRect;
 
 @property (nonatomic) CGRect nextBottomRowCellRect;
 @property (nonatomic) CGRect nextTopRowCellRect;
 @property (nonatomic, strong) NSIndexPath *nextBottomRowIndexPath;
 @property (nonatomic, strong) NSIndexPath *nextTopRowIndexPath;
+
+@property (nonatomic) CGPoint firstCharacterCoordinates;
+@property (nonatomic) CGPoint lastCharacterCoordinates;
+
+@property (nonatomic) CGPoint nextLastCharacterCoordinates;
 
 @end
 
@@ -34,15 +39,15 @@
         _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame];
         
         CGRect rightDragPointFrame = CGRectMake(selectedTextRect.origin.x + selectedTextRect.size.width + offset,
-                                               selectedTextRect.origin.y,
-                                               20,
-                                               selectedTextRect.size.height);
+                                                selectedTextRect.origin.y,
+                                                20,
+                                                selectedTextRect.size.height);
         _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame];
         
         UIPanGestureRecognizer *leftPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self
-                                                                                          action:@selector(moveLeftDragPoint:)];
+                                                                                         action:@selector(moveLeftDragPoint:)];
         UIPanGestureRecognizer *rightPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self
-                                                                                     action:@selector(moveRightDragPoint:)];
+                                                                                          action:@selector(moveRightDragPoint:)];
         [_leftDragPoint addGestureRecognizer:leftPanGesture];
         [_rightDragPoint addGestureRecognizer:rightPanGesture];
         
@@ -67,25 +72,18 @@
     }
     
     if ([gesture state] == UIGestureRecognizerStateChanged) {
-        CGPoint translation = [gesture translationInView:_tableView];
-        CGFloat cellHeight = _currentBottomRowCellRect.size.height;
-        CGFloat quarterDistance = cellHeight / 4;
+        CGPoint translation = [gesture translationInView:_tableView];        
         BOOL selectionDidChange = NO;
         
-        // y-direction changed
-        // => get cell for position
-        if (translation.y > quarterDistance) {
-            [self updateBottomRectValuesWithBottomIndexPath:_nextBottomRowIndexPath];
-            gesture.view.center = CGPointMake(gesture.view.center.x, _currentBottomRowCellRect.origin.y + cellHeight/2);
-            [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
-            selectionDidChange = YES;
-        }
+        CGFloat difference = _nextLastCharacterCoordinates.x - _lastCharacterCoordinates.x;
         
-        if (translation.y < -quarterDistance && (_topIndexPath.row != _bottomIndexPath.row)) {
-            [self updateBottomRectValuesWithBottomIndexPath:
-             [NSIndexPath indexPathForRow:_bottomIndexPath.row-1
-                                inSection:0]];
-            gesture.view.center = CGPointMake(gesture.view.center.x, _currentBottomRowCellRect.origin.y + cellHeight/2);
+        // x-direction changed
+        // => get string index
+        
+        // TODO: Assume within range of line
+        if (translation.x > difference / 2) {
+            [self updateLastCharacterValues:_nextLastCharacterCoordinates];
+            gesture.view.center = CGPointMake(_lastCharacterCoordinates.x, gesture.view.center.y);
             [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
             selectionDidChange = YES;
         }
@@ -106,9 +104,58 @@
     }
 }
 
+
+- (void)moveRightDragPointVertical:(UIPanGestureRecognizer*)gesture {
+    
+    if ([gesture state] == UIGestureRecognizerStateBegan) {
+        [self calculateRectValues];
+    }
+    
+    if ([gesture state] == UIGestureRecognizerStateChanged) {
+        CGPoint translation = [gesture translationInView:_tableView];
+        CGFloat cellHeight = _bottomRowCellRect.size.height;
+        CGFloat quarterDistance = cellHeight / 4;
+        BOOL selectionDidChange = NO;
+        
+        // y-direction changed
+        // => get cell for position
+        if (translation.y > quarterDistance) {
+            [self updateBottomRectValuesWithBottomIndexPath:_nextBottomRowIndexPath];
+            gesture.view.center = CGPointMake(gesture.view.center.x, _bottomRowCellRect.origin.y + cellHeight/2);
+            [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
+            selectionDidChange = YES;
+        }
+        
+        if (translation.y < -quarterDistance && (_topIndexPath.row != _bottomIndexPath.row)) {
+            [self updateBottomRectValuesWithBottomIndexPath:
+             [NSIndexPath indexPathForRow:_bottomIndexPath.row-1
+                                inSection:0]];
+            gesture.view.center = CGPointMake(gesture.view.center.x, _bottomRowCellRect.origin.y + cellHeight/2);
+            [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
+            selectionDidChange = YES;
+        }
+        
+        if (selectionDidChange) {
+            CGPoint endPointInRow = CGPointMake(gesture.view.center.x, 0);
+            CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
+            CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                                                 (cell.line));
+            CFIndex index = CTLineGetStringIndexForPosition(lineRef, endPointInRow);
+            int endLocation = cell.stringRange.location + index - 1;
+            _selectedTextRange = NSMakeRange(_selectedTextRange.location, endLocation - _selectedTextRange.location);
+            [_codeViewController setBackgroundColorForString:[UIColor blueColor]
+                                                   WithRange:_selectedTextRange
+                                                  forSetting:@"copyAndPaste"];
+            [_tableView reloadData];
+        }
+    }
+}
+
+#pragma mark - Update Values
+
 - (void)updateBottomRectValuesWithBottomIndexPath:(NSIndexPath*)bottomIndexPath {
     _bottomIndexPath = [NSIndexPath indexPathForRow:bottomIndexPath.row inSection:0];
-    _currentBottomRowCellRect = [_tableView rectForRowAtIndexPath:bottomIndexPath];
+    _bottomRowCellRect = [_tableView rectForRowAtIndexPath:bottomIndexPath];
     
     int bottomRow = _bottomIndexPath.row;
     
@@ -122,8 +169,49 @@
     }
 }
 
+- (void)updateLastCharacterValues:(CGPoint)lastCharacterCoordinates {
+    _lastCharacterCoordinates = lastCharacterCoordinates;
+    
+    // Reset prev and next last character coordinates
+    CodeLineCell *bottomCell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
+    CTLineRef bottomLineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                                               (bottomCell.line));
+    CFRange stringRangeForBottomRow = CTLineGetStringRange(bottomLineRef);
+    CFIndex index = CTLineGetStringIndexForPosition(bottomLineRef, _lastCharacterCoordinates);
+    if (index < stringRangeForBottomRow.length) {
+        CGFloat offset = CTLineGetOffsetForStringIndex(bottomLineRef, index + 1, NULL);
+        _nextLastCharacterCoordinates = CGPointMake(offset, 0);
+    }
+    else {
+        _nextLastCharacterCoordinates = CGPointMake(NAN, NAN);
+    }
+}
+
+#pragma mark - Calculations for character/row rects
+
 - (void)calculateRectValues {
     [self calculateRectValuesForRows];
+    [self calculateRectValuesForCharacters];
+}
+
+- (void)calculateRectValuesForCharacters {
+    _firstCharacterCoordinates = CGPointMake(_leftDragPoint.center.x, 0);
+    _lastCharacterCoordinates = CGPointMake(_rightDragPoint.center.x, 0);
+    
+    
+    // TODO: Apply to first character too
+    CodeLineCell *bottomCell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
+    CTLineRef bottomLineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                                         (bottomCell.line));
+    CFRange stringRangeForBottomRow = CTLineGetStringRange(bottomLineRef);
+    CFIndex index = CTLineGetStringIndexForPosition(bottomLineRef, _lastCharacterCoordinates);
+    if (index < stringRangeForBottomRow.length) {
+        CGFloat offset = CTLineGetOffsetForStringIndex(bottomLineRef, index + 1, NULL);
+        _nextLastCharacterCoordinates = CGPointMake(offset, 0);
+    }
+    else {
+        _nextLastCharacterCoordinates = CGPointMake(NAN, NAN);
+    }
 }
 
 - (void)calculateRectValuesForRows {
