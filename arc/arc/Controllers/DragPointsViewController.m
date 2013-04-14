@@ -94,9 +94,8 @@
 // -> Always leave at least 1 character in between them
 
 - (void)moveLeftDragPointHorizontal:(UIPanGestureRecognizer*)gesture {
-    if ([gesture state] == UIGestureRecognizerStateBegan) {
-        [self calculateRectValues];
-    }
+    
+    [self defaultDragPointGestureRecognizerSetup:gesture];
     
     if ([gesture state] == UIGestureRecognizerStateChanged) {
         
@@ -134,10 +133,8 @@
 }
 
 - (void)moveLeftDragPointVertical:(UIPanGestureRecognizer*)gesture {
-    if ([gesture state] == UIGestureRecognizerStateBegan) {
-        [self calculateRectValues];
-        _tableView.scrollEnabled = NO;
-    }
+    
+    [self defaultDragPointGestureRecognizerSetup:gesture];
     
     if ([gesture state] == UIGestureRecognizerStateChanged) {
         
@@ -164,7 +161,6 @@
             selectionDidChange = YES;
         }
         
-        
         // Selecting downwards
         if (translation.y > threshold &&
             (_topIndexPath.row != _bottomIndexPath.row) &&
@@ -173,8 +169,6 @@
             [self updateTopRectValuesWithTopIndexPath:previousCellIndexPath];
             selectionDidChange = YES;
         }
-        
-        
         
         if (selectionDidChange) {
             gesture.view.center = CGPointMake(gesture.view.center.x,
@@ -185,18 +179,11 @@
             [self updateBackgroundColorForLeftDragPoint:startPointInRow];
         }
     }
-    
-    if ([gesture state] == UIGestureRecognizerStateEnded) {
-        _tableView.scrollEnabled = YES;
-        [self showCopyMenuForTextSelection];
-    }
 }
 
 - (void)moveRightDragPointHorizontal:(UIPanGestureRecognizer*)gesture {
     
-    if ([gesture state] == UIGestureRecognizerStateBegan) {
-        [self calculateRectValues];
-    }
+    [self defaultDragPointGestureRecognizerSetup:gesture];
     
     if ([gesture state] == UIGestureRecognizerStateChanged) {
         
@@ -234,10 +221,7 @@
 
 - (void)moveRightDragPointVertical:(UIPanGestureRecognizer*)gesture {
     
-    if ([gesture state] == UIGestureRecognizerStateBegan) {
-        [self calculateRectValues];
-        _tableView.scrollEnabled = NO;
-    }
+    [self defaultDragPointGestureRecognizerSetup:gesture];
     
     if ([gesture state] == UIGestureRecognizerStateChanged) {
         
@@ -283,9 +267,17 @@
             [self updateBackgroundColorForRightDragPoint:endPointInRow];
         }
     }
+}
+
+- (void)defaultDragPointGestureRecognizerSetup:(UIPanGestureRecognizer*)gesture {
+    if ([gesture state] == UIGestureRecognizerStateBegan) {
+        [self calculateRectValues];
+        _tableView.scrollEnabled = NO;
+    }
     
     if ([gesture state] == UIGestureRecognizerStateEnded) {
         _tableView.scrollEnabled = YES;
+        [self showCopyMenuForTextSelection];
     }
 }
 
