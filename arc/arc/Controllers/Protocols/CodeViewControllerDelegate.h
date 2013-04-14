@@ -25,5 +25,9 @@
                           WithRange:(NSRange)range
                          forSetting:(NSString*)setting;
 
+// TODO: Need to apply this somewhere else, but this works
+// fine for prototyping
+- (void)dismissTextSelectionViews;
+
 @end
 

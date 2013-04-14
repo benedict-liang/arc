@@ -487,15 +487,18 @@
     NSString *copiedString = [_codeViewController getStringForRange:_selectedTextRange];
     [pasteBoard setString:copiedString];
     
-    // Need to figure out when to remove from superview
-    [_rightDragPoint removeFromSuperview];
-    [_leftDragPoint removeFromSuperview];
-    [self.view removeFromSuperview];
-    [_codeViewController removeBackgroundColorForSetting:KEY_COPY_SETTINGS];
-    [_tableView reloadData];
+    [_codeViewController dismissTextSelectionViews];
 }
 
 #pragma mark - Misc Methods
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    CGPoint locationPoint = [[touches anyObject] locationInView:_tableView];
+    UIView* viewYouWishToObtain = [_tableView hitTest:locationPoint withEvent:event];
+    if (viewYouWishToObtain != _leftDragPoint || viewYouWishToObtain != _rightDragPoint) {
+        [_codeViewController dismissTextSelectionViews];
+    }
+}
 
 - (BOOL)canBecomeFirstResponder {
     // NOTE: This menu item will not show if this is not YES!

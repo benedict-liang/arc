@@ -507,7 +507,7 @@
     
     if ([gesture state] == UIGestureRecognizerStateBegan) {
         if (_dragPointVC != nil) {
-            [self resetTextSelectionViews];
+            [self dismissTextSelectionViews];
         }
         
         CodeLineCell *cell = (CodeLineCell*)gesture.view;
@@ -558,12 +558,18 @@
     }
 }
 
-- (void)resetTextSelectionViews {
-    [self removeBackgroundColorForSetting:@"copyAndPaste"];
-    
-    [_dragPointVC.leftDragPoint removeFromSuperview];
-    [_dragPointVC.rightDragPoint removeFromSuperview];
-    [_dragPointVC.view removeFromSuperview];
+- (void)dismissTextSelectionViews {
+    if (_dragPointVC != nil) {
+        
+        [self removeBackgroundColorForSetting:@"copyAndPaste"];
+        [_dragPointVC.leftDragPoint removeFromSuperview];
+        [_dragPointVC.rightDragPoint removeFromSuperview];
+        [_dragPointVC.view removeFromSuperview];
+        
+        _dragPointVC = nil;
+        
+        [_tableView reloadData];
+    }
 }
 
 #pragma mark - Table view delegate
