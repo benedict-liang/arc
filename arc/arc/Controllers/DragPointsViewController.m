@@ -45,13 +45,17 @@
                                                 selectedTextRect.size.height);
         _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame];
         
-        UIPanGestureRecognizer *leftPanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self
-                                                                                         action:@selector(moveLeftDragPoint:)];
-        UIPanGestureRecognizer *rightPanGestureHorizontal = [[UIPanGestureRecognizer alloc] initWithTarget:self
-                                                                                          action:@selector(moveRightDragPointHorizontal:)];
-        UIPanGestureRecognizer *rightPanGestureVertical = [[UIPanGestureRecognizer alloc] initWithTarget:self
-                                                                                          action:@selector(moveRightDragPointVertical:)];
-        [_leftDragPoint addGestureRecognizer:leftPanGesture];
+        UIPanGestureRecognizer *leftPanGestureVertical = [[UIPanGestureRecognizer alloc]
+                                                          initWithTarget:self
+                                                          action:@selector(moveLeftDragPointVertical:)];
+        UIPanGestureRecognizer *rightPanGestureHorizontal = [[UIPanGestureRecognizer alloc]
+                                                             initWithTarget:self
+                                                             action:@selector(moveRightDragPointHorizontal:)];
+        UIPanGestureRecognizer *rightPanGestureVertical = [[UIPanGestureRecognizer alloc]
+                                                           initWithTarget:self
+                                                           action:@selector(moveRightDragPointVertical:)];
+        
+        [_leftDragPoint addGestureRecognizer:leftPanGestureVertical];
         
         [rightPanGestureHorizontal setDelegate:self];
         [rightPanGestureVertical setDelegate:self];
@@ -65,10 +69,12 @@
     return self;
 }
 
+#pragma mark - Drag Points
+
 // TODO: Move drag points and update background color range
 // TODO: Set boundary conditions
 
-- (void)moveLeftDragPoint:(UIPanGestureRecognizer*)gesture {
+- (void)moveLeftDragPointVertical:(UIPanGestureRecognizer*)gesture {
     
 }
 
