@@ -527,7 +527,11 @@
     
         // TODO: Add drag points subview in CodeViewController
         _dragPointVC = [[DragPointsViewController alloc] initWithSelectedTextRect:selectedRect
-                                                                                                 andOffset:lineNumberWidth];
+                                                                        andOffset:lineNumberWidth];
+        _dragPointVC.topIndexPath = indexPath;
+        _dragPointVC.bottomIndexPath = indexPath;
+        _dragPointVC.tableView = _tableView;
+        
         [_tableView addSubview:_dragPointVC.leftDragPoint];
         [_tableView addSubview:_dragPointVC.rightDragPoint];
         

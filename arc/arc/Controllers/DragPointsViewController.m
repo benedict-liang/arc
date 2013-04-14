@@ -10,6 +10,14 @@
 
 @interface DragPointsViewController ()
 
+@property (nonatomic) CGRect currentBottomRowCellRect;
+@property (nonatomic) CGRect currentTopRowCellRect;
+
+@property (nonatomic) CGRect nextBottomRowCellRect;
+@property (nonatomic) CGRect nextTopRowCellRect;
+@property (nonatomic, strong) NSIndexPath *nextBottomRowIndexPath;
+@property (nonatomic, strong) NSIndexPath *nextTopRowIndexPath;
+
 @end
 
 @implementation DragPointsViewController
