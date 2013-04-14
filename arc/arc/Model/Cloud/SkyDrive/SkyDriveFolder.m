@@ -7,51 +7,67 @@
 
 #import "SkyDriveFolder.h"
 
+@interface SkyDriveFolder ()
+
+@property (strong, nonatomic) NSMutableArray *contents;
+
+@end
+
 
 @implementation SkyDriveFolder
+@synthesize name = _name, path = _path, parent = _parent, isRemovable = _isRemovable;
+
 - (id <NSObject>)contents
 {
-    return nil;
+    return _contents;
 }
 
 - (id <FileSystemObject>)objectAtPath:(NSString *)path
 {
-    return nil;
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"SkyDriveFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
 }
 
 - (BOOL)takeFileSystemObject:(id <FileSystemObject>)target
 {
-    return NO;
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"SkyDriveFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
 }
 
 - (id <FileSystemObject>)retrieveItemWithName:(NSString *)name
 {
-    return nil;
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"SkyDriveFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
 }
 
 - (id <Folder>)createFolderWithName:(NSString *)name
 {
-    return nil;
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"SkyDriveFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
 }
 
 - (BOOL)rename:(NSString *)name
 {
-    return NO;
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"SkyDriveFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
 }
 
 - (int)size
 {
-    return 0;
+    return [_contents count];
 }
 
 - (BOOL)remove
 {
-    return NO;
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"SkyDriveFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
 }
 
 - (id)initWithName:(NSString *)name path:(NSString *)path parent:(id <FileSystemObject>)parent
 {
-    return nil;
+    if (self = [super init]) {
+        _name = name;
+        _path = path;
+        _parent = parent;
+        _isRemovable = NO;
+
+        _contents = [NSMutableArray array];
+    }
+    return self;
 }
 
 

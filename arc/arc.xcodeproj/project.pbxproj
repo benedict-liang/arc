@@ -76,8 +76,9 @@
 		4CF6F0EE1706E08800EDDEDC /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0ED1706E08800EDDEDC /* file.png */; };
 		4CF6F0F21706E29300EDDEDC /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F11706E29300EDDEDC /* folder.png */; };
 		4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */; };
-		840B65835AD6F51ADC1FC18D /* SkyDriveServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B65B94A105A6418DCA935 /* SkyDriveServiceManager.m */; };
+		840B640FE8BA225B6750F377 /* SkyDriveFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B6B4068D4462DD00C7BE0 /* SkyDriveFolder.m */; };
 		840B6680091FC720B53CA8F3 /* LiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */; };
+		840B6CE8D86D8BAA0E3CD4BC /* SkyDriveServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B67A71EB5C59B9BCEF1A2 /* SkyDriveServiceManager.m */; };
 		8F151051170443AC00115E5E /* home.html in Resources */ = {isa = PBXBuildFile; fileRef = 8F151050170443AC00115E5E /* home.html */; };
 		8F1510C9170468B100115E5E /* TMBundleThemeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510C8170468B100115E5E /* TMBundleThemeHandler.m */; };
 		8F1510CC1704697900115E5E /* TMBundleGrammar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510CB1704697900115E5E /* TMBundleGrammar.m */; };
@@ -441,10 +442,12 @@
 		4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		840B6454D395361AD2F521B2 /* CloudServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudServiceManager.h; sourceTree = "<group>"; };
-		840B65B94A105A6418DCA935 /* SkyDriveServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveServiceManager.m; sourceTree = "<group>"; };
 		840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LiveSDK.framework; path = /Users/Jerome/Desktop/arc/arc/arc/LiveSDK.framework; sourceTree = "<absolute>"; };
+		840B6733BB2064AE23C5FDF7 /* SkyDriveFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveFolder.h; sourceTree = "<group>"; };
+		840B67A71EB5C59B9BCEF1A2 /* SkyDriveServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveServiceManager.m; sourceTree = "<group>"; };
 		840B67E300617A8810E2F3F5 /* PluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginDelegate.h; path = Plugin/PluginDelegate.h; sourceTree = "<group>"; };
-		840B6F0F11A9349B3AE9E569 /* SkyDriveServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveServiceManager.h; sourceTree = "<group>"; };
+		840B6B4068D4462DD00C7BE0 /* SkyDriveFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveFolder.m; sourceTree = "<group>"; };
+		840B6D541756B41E6BF42859 /* SkyDriveServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveServiceManager.h; sourceTree = "<group>"; };
 		8F15104F1704410000115E5E /* TMBundleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleHeader.h; sourceTree = "<group>"; };
 		8F151050170443AC00115E5E /* home.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = home.html; sourceTree = "<group>"; };
 		8F1510C7170468B000115E5E /* TMBundleThemeHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleThemeHandler.h; sourceTree = "<group>"; };
@@ -1078,8 +1081,7 @@
 			isa = PBXGroup;
 			children = (
 				840B65C878A6C7146123E560 /* Protocols */,
-				840B65B94A105A6418DCA935 /* SkyDriveServiceManager.m */,
-				840B6F0F11A9349B3AE9E569 /* SkyDriveServiceManager.h */,
+				840B6BB5A0E39DE20D887CA8 /* SkyDrive */,
 			);
 			path = Cloud;
 			sourceTree = "<group>";
@@ -1090,6 +1092,17 @@
 				840B6454D395361AD2F521B2 /* CloudServiceManager.h */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		840B6BB5A0E39DE20D887CA8 /* SkyDrive */ = {
+			isa = PBXGroup;
+			children = (
+				840B6D541756B41E6BF42859 /* SkyDriveServiceManager.h */,
+				840B67A71EB5C59B9BCEF1A2 /* SkyDriveServiceManager.m */,
+				840B6B4068D4462DD00C7BE0 /* SkyDriveFolder.m */,
+				840B6733BB2064AE23C5FDF7 /* SkyDriveFolder.h */,
+			);
+			path = SkyDrive;
 			sourceTree = "<group>";
 		};
 		8F563E53170160CD00EE5643 /* TextMateBundles */ = {
@@ -1788,7 +1801,8 @@
 				02F25A121713E660000B6301 /* CreateFolderViewController.m in Sources */,
 				027EE0361716AAEC00302F07 /* LongSettingListViewController.m in Sources */,
 				4CEADA071716ADBB00F4F619 /* LineNumberPlugin.m in Sources */,
-				840B65835AD6F51ADC1FC18D /* SkyDriveServiceManager.m in Sources */,
+				840B6CE8D86D8BAA0E3CD4BC /* SkyDriveServiceManager.m in Sources */,
+				840B640FE8BA225B6750F377 /* SkyDriveFolder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
