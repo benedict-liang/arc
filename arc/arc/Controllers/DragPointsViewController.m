@@ -491,14 +491,8 @@
     return YES;
 }
 
-- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
-    //NSLog(@"canPerformAction");
-    // The selector(s) should match your UIMenuItem selector
-    if (action == @selector(copyString:)) {
-        
-        return YES;
-    }
-    return NO;
+- (void)copyString:(id)sender {
+    NSLog(@"copied string: %@", [_codeViewController getStringForRange:_selectedTextRange]);
 }
 
 - (void)viewDidLoad
