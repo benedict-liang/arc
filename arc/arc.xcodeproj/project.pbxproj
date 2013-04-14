@@ -15,6 +15,7 @@
 		020C1288171A9A5B00603229 /* GoogleDriveServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C1287171A9A5B00603229 /* GoogleDriveServiceManager.m */; };
 		020C128B171AAB2500603229 /* GoogleDriveFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C128A171AAB2400603229 /* GoogleDriveFolder.m */; };
 		020C128E171ABACD00603229 /* GoogleDriveFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C128D171ABACC00603229 /* GoogleDriveFile.m */; };
+		020C1291171AC14900603229 /* GoogleDriveDownloadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C1290171AC14600603229 /* GoogleDriveDownloadHelper.m */; };
 		026AC54716FF104D001E03E5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7F16FDF61C00C9DED3 /* Constants.m */; };
 		026BC4711705895500A9AA5F /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC4701705895500A9AA5F /* Dropbox.framework */; };
 		026BC473170589A700A9AA5F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC472170589A700A9AA5F /* CFNetwork.framework */; };
@@ -384,6 +385,8 @@
 		020C128A171AAB2400603229 /* GoogleDriveFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveFolder.m; sourceTree = "<group>"; };
 		020C128C171ABACA00603229 /* GoogleDriveFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleDriveFile.h; sourceTree = "<group>"; };
 		020C128D171ABACC00603229 /* GoogleDriveFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveFile.m; sourceTree = "<group>"; };
+		020C128F171AC14500603229 /* GoogleDriveDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleDriveDownloadHelper.h; sourceTree = "<group>"; };
+		020C1290171AC14600603229 /* GoogleDriveDownloadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveDownloadHelper.m; sourceTree = "<group>"; };
 		025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		0260B50A1709286E0091B012 /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Folder.h; path = Protocols/Folder.h; sourceTree = "<group>"; };
 		0260B50B170928820091B012 /* FileSystemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystemObject.h; path = Protocols/FileSystemObject.h; sourceTree = "<group>"; };
@@ -836,6 +839,8 @@
 				020C128A171AAB2400603229 /* GoogleDriveFolder.m */,
 				020C128C171ABACA00603229 /* GoogleDriveFile.h */,
 				020C128D171ABACC00603229 /* GoogleDriveFile.m */,
+				020C128F171AC14500603229 /* GoogleDriveDownloadHelper.h */,
+				020C1290171AC14600603229 /* GoogleDriveDownloadHelper.m */,
 			);
 			path = "Google Drive";
 			sourceTree = "<group>";
@@ -1963,6 +1968,7 @@
 				020C1288171A9A5B00603229 /* GoogleDriveServiceManager.m in Sources */,
 				020C128B171AAB2500603229 /* GoogleDriveFolder.m in Sources */,
 				020C128E171ABACD00603229 /* GoogleDriveFile.m in Sources */,
+				020C1291171AC14900603229 /* GoogleDriveDownloadHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
