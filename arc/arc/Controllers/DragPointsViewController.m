@@ -90,7 +90,6 @@
 
 #pragma mark - Drag Points
 
-// TODO: Move drag points and update background color range
 // TODO: Set boundary conditions - Prevent left and right drag points from colliding
 // -> Always leave at least 1 character in between them
 
@@ -491,11 +490,6 @@
     return YES;
 }
 
-- (BOOL)canBecomeFirstResponder {
-    // NOTE: This menu item will not show if this is not YES!
-    return YES;
-}
-
 - (void)copyString:(id)sender {
     UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
     NSString *copiedString = [_codeViewController getStringForRange:_selectedTextRange];
@@ -507,6 +501,13 @@
     [self.view removeFromSuperview];
     [_codeViewController removeBackgroundColorForSetting:KEY_COPY_SETTINGS];
     [_tableView reloadData];
+}
+
+#pragma mark - Misc Methods
+
+- (BOOL)canBecomeFirstResponder {
+    // NOTE: This menu item will not show if this is not YES!
+    return YES;
 }
 
 - (void)viewDidLoad
