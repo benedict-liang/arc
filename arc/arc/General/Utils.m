@@ -129,7 +129,7 @@
     return ro.location <= ri.location && (ro.location+ro.length) >= (ri.location+ri.length);
 }
 
-+ (BOOL)isIntersectionWith:(NSRange)r1 And:(NSRange)r2 {
++ (BOOL)isIntersectingWith:(NSRange)r1 And:(NSRange)r2 {
     return (r1.location <= (r2.location + r2.length) && (r1.location + r2.length) >= r2.location) ||
     (r2.location <= (r1.location + r1.length) && (r2.location + r2.length) >= r1.location);
 }
@@ -155,7 +155,7 @@
     if ([Utils isSubsetOf:r2 arg:r1]) {
         return nil;
     }
-    if ([Utils isIntersectionWith:r1 And:r2]) {
+    if ([Utils isIntersectingWith:r1 And:r2]) {
         if (r1.location > r2.location) {
             int newR1Start = r2.location+r2.length+1;
             NSRange res = NSMakeRange(newR1Start, r1.location + r1.length - newR1Start);

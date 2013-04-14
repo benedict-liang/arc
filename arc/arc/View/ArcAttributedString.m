@@ -216,16 +216,32 @@
 - (ArcAttributedString*)arcStringWithRemovedRange:(NSRange)range {
     int rangeEnds = range.location + range.length;
     
+    // create str not including range.
     NSMutableString* str = [NSMutableString stringWithString:[_string substringToIndex:range.location]];
     [str appendString:[_string substringFromIndex:rangeEnds]];
     
+    // create arcString from str
     ArcAttributedString* removedArcString = [[ArcAttributedString alloc] initWithString:str];
     NSMutableDictionary* removedAttributesDictionary = [NSMutableDictionary dictionary];
     
+    // iterate through attributes and transform attributes for the new ranges
     for (NSString *property in __attributesDictionary) {
+        
         for (NSDictionary* attribute in [__attributesDictionary objectForKey:property]) {
-            NSRange originalRange = NSRangeFromString([attribute objectForKey:@"range"]);
+            NSRange attribRange = NSRangeFromString([attribute objectForKey:@"range"]);
             
+            //check if attribRange intersects range
+            if ([Utils isSubsetOf:range arg:attribRange]) {
+                //do nothing.
+            }
+            else if ([Utils isIntersectingWith:range And:attribRange]) {
+                
+                NSArray* cleanedRangeArray = [Utils rangeDifferenceBetween:attribRange And:range];
+                
+            
+            } else {
+                
+            }
             
             [__attributedString addAttribute:[attribute objectForKey:@"type"]
                                        value:[attribute objectForKey:@"value"]
@@ -233,5 +249,7 @@
         }
  
     }
+    
+    return removedArcString;
 }
 @end

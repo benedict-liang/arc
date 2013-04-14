@@ -26,4 +26,8 @@
 
 + (BOOL)isSubsetOf:(NSRange)ro arg:(NSRange)ri;
 
++ (BOOL)isIntersectingWith:(NSRange)r1 And:(NSRange)r2;
+
++ (NSArray*)rangeDifferenceBetween:(NSRange)r1 And:(NSRange)r2;
+
 @end
