@@ -53,12 +53,49 @@
 }
 
 // TODO: Move drag points and update background color range
+// TODO: Set boundary conditions
 
 - (void)moveLeftDragPoint:(UIPanGestureRecognizer*)gesture {
     
 }
 
 - (void)moveRightDragPoint:(UIPanGestureRecognizer*)gesture {
+    
+    if ([gesture state] == UIGestureRecognizerStateBegan) {
+        [self calculateRectValues];
+    }
+    
+    if ([gesture state] == UIGestureRecognizerStateChanged) {
+        CGPoint translation = [gesture translationInView:_tableView];
+        gesture.view.center = CGPointMake(gesture.view.center.x, gesture.view.center.y + translation.y);
+        [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
+        
+        int midDistance = _nextBottomRowCellRect.origin.y - _currentBottomRowCellRect.origin.y;
+        
+        // y-direction changed
+        // => get cell for position
+        if (gesture.view.center.y > (_currentBottomRowCellRect.origin.y + midDistance)) {
+            gesture.view.center = CGPointMake(gesture.view.center.x, _nextBottomRowCellRect.origin.y + _nextBottomRowCellRect.size.height/2);
+            NSLog(@"Moved a line");
+//            [self updateRectValues];
+        }
+        
+        // Update selection rect
+        //        CGFloat originalX = self.frame.origin.x;
+        //        CGFloat newWidth = gesture.view.center.x - originalX;
+        //
+        //        [self updateSize:CGSizeMake(newWidth, self.frame.size.height)];
+    }
+    
+    else if ([gesture state] == UIGestureRecognizerStateEnded) {
+        // Update substring
+        //        [self updateSelectionSubstring:cell];
+        //
+        //        [self showCopyMenuForTextSelection];
+    }
+}
+
+- (void)moveRightDragPointHorizontal:(UIPanGestureRecognizer*)gesture {
     UITableView *tableView = (UITableView*)gesture.view.superview;
     CGPoint translation = [gesture translationInView:tableView];
     
@@ -82,10 +119,35 @@
     }
 }
 
+- (void)calculateRectValues {
+    _currentTopRowCellRect = [_tableView rectForRowAtIndexPath:_topIndexPath];
+    _currentBottomRowCellRect = [_tableView rectForRowAtIndexPath:_bottomIndexPath];
+    
+    int topRow = _topIndexPath.row;
+    int bottomRow = _bottomIndexPath.row;
+
+    if (topRow - 1 >= 0) {
+        _nextTopRowIndexPath = [NSIndexPath indexPathForRow:(topRow - 1) inSection:0];
+        _nextTopRowCellRect = [_tableView rectForRowAtIndexPath:_nextTopRowIndexPath];
+    }
+    else {
+        _nextTopRowIndexPath = nil;
+        _nextTopRowCellRect = CGRectNull;
+    }
+    
+    if (bottomRow + 1 < [_tableView numberOfRowsInSection:0]) {
+        _nextBottomRowIndexPath = [NSIndexPath indexPathForRow:(bottomRow + 1) inSection:0];
+        _nextBottomRowCellRect = [_tableView rectForRowAtIndexPath:_nextBottomRowIndexPath];
+    }
+    else {
+        _nextBottomRowIndexPath = nil;
+        _nextBottomRowCellRect = CGRectNull;
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
