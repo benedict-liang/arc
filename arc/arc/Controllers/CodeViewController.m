@@ -298,6 +298,15 @@
                               animated:YES];
 }
 
+- (void)setBackgroundColorForString:(UIColor*)color
+                          WithRange:(NSRange)range
+                         forSetting:(NSString*)setting
+{
+    [_arcAttributedString setBackgroundColor:color
+                                     OnRange:range
+                                  ForSetting:setting];
+}
+
 
 #pragma mark - Execute Plugin Methods
 
@@ -506,9 +515,9 @@
 
         // TODO: Apply background color for index
         NSRange selectedRange = NSMakeRange(cellStringRange.location + index, 3);
-        [_arcAttributedString setBackgroundColor:[UIColor blueColor]
-                                         OnRange:selectedRange
-                                      ForSetting:@"copyAndPaste"];
+        [self setBackgroundColorForString:[UIColor blueColor]
+                                WithRange:selectedRange
+                               forSetting:@"copyAndPaste"];
         NSLog(@"selected text: %@", [_arcAttributedString.attributedString.string substringWithRange:selectedRange]);
         
         
@@ -527,6 +536,8 @@
         _dragPointVC.topIndexPath = indexPath;
         _dragPointVC.bottomIndexPath = indexPath;
         _dragPointVC.tableView = _tableView;
+        _dragPointVC.codeViewController = self;
+        _dragPointVC.selectedTextRange = selectedRange;
         
         [_tableView addSubview:_dragPointVC.leftDragPoint];
         [_tableView addSubview:_dragPointVC.rightDragPoint];

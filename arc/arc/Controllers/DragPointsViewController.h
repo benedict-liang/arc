@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DragPointImageView.h"
+#import "CodeViewController.h"
 
 @interface DragPointsViewController : UIViewController
 
@@ -16,6 +17,9 @@
 @property (nonatomic, strong) NSIndexPath *topIndexPath;
 @property (nonatomic, strong) NSIndexPath *bottomIndexPath;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) CodeViewController *codeViewController;
+@property (nonatomic) NSRange selectedTextRange;
+
 - (id)initWithSelectedTextRect:(CGRect)selectedTextRect andOffset:(int)offset;
 
 // TODO: Set private if possible

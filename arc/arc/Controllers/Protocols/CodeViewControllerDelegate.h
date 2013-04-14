@@ -19,5 +19,9 @@
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
                    forFile:(id<File>)file
                 WithStyle:(NSDictionary*)style;
+- (void)setBackgroundColorForString:(UIColor*)color
+                          WithRange:(NSRange)range
+                         forSetting:(NSString*)setting;
+
 @end
 

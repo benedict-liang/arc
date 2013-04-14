@@ -7,6 +7,7 @@
 //
 
 #import "DragPointsViewController.h"
+#import "CodeLineCell.h"
 
 @interface DragPointsViewController ()
 
@@ -82,9 +83,21 @@
             [self updateBottomRectValuesWithBottomIndexPath:_nextBottomRowIndexPath];
             gesture.view.center = CGPointMake(gesture.view.center.x, _currentBottomRowCellRect.origin.y + cellHeight/2);
             [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
+            
+            CGPoint endPointInRow = CGPointMake(gesture.view.center.x, 0);
+            CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
+            CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                                                 (cell.line));
+            CFIndex index = CTLineGetStringIndexForPosition(lineRef, endPointInRow);
+            int endLocation = cell.stringRange.location + index;
+            _selectedTextRange = NSMakeRange(_selectedTextRange.location, endLocation - _selectedTextRange.location);
+            [_codeViewController setBackgroundColorForString:[UIColor blueColor]
+                                                   WithRange:_selectedTextRange
+                                                  forSetting:@"copyAndPaste"];
+            [_tableView reloadData];
         }
         
-        // Nees to resolve for right < left
+        // Needs to resolve for right < left
         if (translation.y < -quarterDistance) {
             [self updateBottomRectValuesWithBottomIndexPath:
              [NSIndexPath indexPathForRow:_bottomIndexPath.row-1
@@ -92,15 +105,10 @@
             gesture.view.center = CGPointMake(gesture.view.center.x, _currentBottomRowCellRect.origin.y + cellHeight/2);
             [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
         }
-
-
     }
     
     else if ([gesture state] == UIGestureRecognizerStateEnded) {
-        // Update substring
-        //        [self updateSelectionSubstring:cell];
-        //
-        //        [self showCopyMenuForTextSelection];
+
     }
 }
 
