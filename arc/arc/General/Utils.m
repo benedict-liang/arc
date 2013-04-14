@@ -129,9 +129,44 @@
     return ro.location <= ri.location && (ro.location+ro.length) >= (ri.location+ri.length);
 }
 
-+ (BOOL)isIntersectionWith:(NSRange)r1 arg:(NSRange)r2 {
++ (BOOL)isIntersectionWith:(NSRange)r1 And:(NSRange)r2 {
     return (r1.location <= (r2.location + r2.length) && (r1.location + r2.length) >= r2.location) ||
     (r2.location <= (r1.location + r1.length) && (r2.location + r2.length) >= r1.location);
 }
 
++ (NSRange)maxRangeByLocation:(NSRange)r1 And:(NSRange)r2 {
+    if (r1.location > r2.location) {
+        return r1;
+    } else {
+        return r2;
+    }
+}
+// returns a range of r1 - intersection(r1,r2) .
+// returns nil if r1 is a subset of r2
++ (NSArray*)rangeDifferenceBetween:(NSRange)r1 And:(NSRange)r2 {
+    if ([Utils isSubsetOf:r1 arg:r2]) {
+        
+        NSRange res1 = NSMakeRange(r1.location, r2.location - r1.location);
+        int nextBegin = r2.location + r2.length+1;
+        NSRange res2 = NSMakeRange(nextBegin, r1.location + r1.length - nextBegin);
+        return @[[NSValue value:&res1 withObjCType:@encode(NSRange)],
+                 [NSValue value:&res2 withObjCType:@encode(NSRange)]];
+    }
+    if ([Utils isSubsetOf:r2 arg:r1]) {
+        return nil;
+    }
+    if ([Utils isIntersectionWith:r1 And:r2]) {
+        if (r1.location > r2.location) {
+            int newR1Start = r2.location+r2.length+1;
+            NSRange res = NSMakeRange(newR1Start, r1.location + r1.length - newR1Start);
+            return @[[NSValue value:&res withObjCType:@encode(NSRange)]];
+        } else {
+            int newR1End = r2.location - 1;
+            NSRange res = NSMakeRange(r1.location, newR1End - r1.location);
+            return @[[NSValue value:&res withObjCType:@encode(NSRange)]];
+        }
+    } else {
+        return @[[NSValue value:&r1 withObjCType:@encode(NSRange)]];
+    }
+}
 @end
