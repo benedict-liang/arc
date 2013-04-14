@@ -11,6 +11,8 @@
 
 @interface DragPointsViewController ()
 
+@property (nonatomic) int lineNumberWidthOffSet;
+
 @property (nonatomic) CGRect bottomRowCellRect;
 @property (nonatomic) CGRect topRowCellRect;
 
@@ -64,6 +66,8 @@
         
         _leftDragPoint.userInteractionEnabled = YES;
         _rightDragPoint.userInteractionEnabled = YES;
+        
+        _lineNumberWidthOffSet = offset;
     }
     
     return self;
@@ -267,6 +271,7 @@
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                          (cell.line));
+    endPoint = CGPointMake(endPoint.x - _lineNumberWidthOffSet, endPoint.y);
     CFIndex index = CTLineGetStringIndexForPosition(lineRef, endPoint);
     int endLocation = cell.stringRange.location + index - 1;
     _selectedTextRange = NSMakeRange(_selectedTextRange.location, endLocation - _selectedTextRange.location);
@@ -280,6 +285,8 @@
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                          (cell.line));
+    // FIXME: Left drag point still off by 1 index
+    startPoint = CGPointMake(startPoint.x - _lineNumberWidthOffSet, startPoint.y);
     CFIndex index = CTLineGetStringIndexForPosition(lineRef, startPoint);
     int startLocation = cell.stringRange.location + index;
     int newRangeLength = _selectedTextRange.length + _selectedTextRange.location - startLocation;
