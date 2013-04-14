@@ -83,7 +83,6 @@
         _rightDragPoint.userInteractionEnabled = YES;
         
         _lineNumberWidthOffSet = offset;
-        self.view = [[UIView alloc] initWithFrame:CGRectMake(40, 100, 400, 50)];
     }
     
     return self;
@@ -329,7 +328,9 @@
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                          (cell.line));
+    
     startPoint = CGPointMake(startPoint.x - _lineNumberWidthOffSet, startPoint.y);
+    
     CFIndex index = CTLineGetStringIndexForPosition(lineRef, startPoint);
     int startLocation = cell.stringRange.location + index;
     int newRangeLength = _selectedTextRange.length + _selectedTextRange.location - startLocation;
@@ -346,10 +347,11 @@
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                          (cell.line));
     
-    // FIXME: Alright on smaller fonts, error on bigger fonts, and vice-versa.
+    
     endPoint = CGPointMake(endPoint.x - _lineNumberWidthOffSet, endPoint.y);
+    
     CFIndex index = CTLineGetStringIndexForPosition(lineRef, endPoint);
-    int endLocation = cell.stringRange.location + index - 1;
+    int endLocation = cell.stringRange.location + index;
     _selectedTextRange = NSMakeRange(_selectedTextRange.location, endLocation - _selectedTextRange.location);
     [_codeViewController removeBackgroundColorForSetting:KEY_COPY_SETTINGS];
     [_codeViewController setBackgroundColorForString:[UIColor blueColor]

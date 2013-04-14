@@ -506,6 +506,10 @@
 - (void)selectText:(UILongPressGestureRecognizer*)gesture {
     
     if ([gesture state] == UIGestureRecognizerStateBegan) {
+        if (_dragPointVC != nil) {
+            [self resetTextSelectionViews];
+        }
+        
         CodeLineCell *cell = (CodeLineCell*)gesture.view;
         NSAttributedString *attributedString = cell.line;
         NSRange cellStringRange = cell.stringRange;
@@ -552,6 +556,14 @@
     if ([gesture state] == UIGestureRecognizerStateEnded) {
 
     }
+}
+
+- (void)resetTextSelectionViews {
+    [self removeBackgroundColorForSetting:@"copyAndPaste"];
+    
+    [_dragPointVC.leftDragPoint removeFromSuperview];
+    [_dragPointVC.rightDragPoint removeFromSuperview];
+    [_dragPointVC.view removeFromSuperview];
 }
 
 #pragma mark - Table view delegate
