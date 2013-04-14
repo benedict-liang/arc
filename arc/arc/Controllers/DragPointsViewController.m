@@ -321,20 +321,6 @@
     }
 }
 
-- (void)updateBackgroundColorForRightDragPoint:(CGPoint)endPoint {
-    CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
-    CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
-                                                         (cell.line));
-    endPoint = CGPointMake(endPoint.x - _lineNumberWidthOffSet, endPoint.y);
-    CFIndex index = CTLineGetStringIndexForPosition(lineRef, endPoint);
-    int endLocation = cell.stringRange.location + index - 1;
-    _selectedTextRange = NSMakeRange(_selectedTextRange.location, endLocation - _selectedTextRange.location);
-    [_codeViewController setBackgroundColorForString:[UIColor blueColor]
-                                           WithRange:_selectedTextRange
-                                          forSetting:@"copyAndPaste"];
-    [_tableView reloadData];
-}
-
 - (void)updateBackgroundColorForLeftDragPoint:(CGPoint)startPoint {
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
@@ -344,6 +330,22 @@
     int startLocation = cell.stringRange.location + index;
     int newRangeLength = _selectedTextRange.length + _selectedTextRange.location - startLocation;
     _selectedTextRange = NSMakeRange(startLocation, newRangeLength);
+    [_codeViewController setBackgroundColorForString:[UIColor blueColor]
+                                           WithRange:_selectedTextRange
+                                          forSetting:@"copyAndPaste"];
+    [_tableView reloadData];
+}
+
+- (void)updateBackgroundColorForRightDragPoint:(CGPoint)endPoint {
+    CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
+    CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                                         (cell.line));
+    
+    // FIXME: Alright on smaller fonts, error on bigger fonts, and vice-versa.
+    endPoint = CGPointMake(endPoint.x - _lineNumberWidthOffSet, endPoint.y);
+    CFIndex index = CTLineGetStringIndexForPosition(lineRef, endPoint);
+    int endLocation = cell.stringRange.location + index - 1;
+    _selectedTextRange = NSMakeRange(_selectedTextRange.location, endLocation - _selectedTextRange.location);
     [_codeViewController setBackgroundColorForString:[UIColor blueColor]
                                            WithRange:_selectedTextRange
                                           forSetting:@"copyAndPaste"];
