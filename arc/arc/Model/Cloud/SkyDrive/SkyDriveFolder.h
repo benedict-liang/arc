@@ -6,7 +6,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import "Folder.h"
 
-
-@interface SkyDriveFolder : NSObject
+@interface SkyDriveFolder : NSObject <Folder>
 @end
