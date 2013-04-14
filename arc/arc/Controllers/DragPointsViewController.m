@@ -187,6 +187,7 @@
     
     if ([gesture state] == UIGestureRecognizerStateEnded) {
         _tableView.scrollEnabled = YES;
+        [self showCopyMenuForTextSelection];
     }
 }
 
@@ -407,6 +408,17 @@
     }
 }
 
+#pragma mark - UIMenuController Methods
+
+- (void)showCopyMenuForTextSelection {
+    [self becomeFirstResponder];
+    
+    UIMenuController *menuController = [UIMenuController sharedMenuController];
+    [menuController setTargetRect:_topRowCellRect inView:_tableView];
+    
+    [menuController setMenuVisible:YES animated:YES];
+}
+
 #pragma mark - Helper Methods
 
 - (void)setFirstCharacterCoordinates:(CGPoint)firstCharacterCoordinates {
@@ -465,6 +477,11 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
+    return YES;
+}
+
+- (BOOL)canBecomeFirstResponder {
+    // NOTE: This menu item will not show if this is not YES!
     return YES;
 }
 
