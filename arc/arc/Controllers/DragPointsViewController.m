@@ -76,7 +76,61 @@
 // -> Always leave at least 1 character in between them
 
 - (void)moveLeftDragPointVertical:(UIPanGestureRecognizer*)gesture {
+    if ([gesture state] == UIGestureRecognizerStateBegan) {
+        [self calculateRectValues];
+        _tableView.scrollEnabled = NO;
+    }
     
+    if ([gesture state] == UIGestureRecognizerStateChanged) {
+        
+        // Set thresholds
+        CGFloat cellHeight = _topRowCellRect.size.height;
+        CGFloat threshold = cellHeight / 4;
+        
+        // Checks if cells are within visible range
+        NSArray *visibleCells = _tableView.visibleCells;
+        NSIndexPath *previousCellIndexPath = [NSIndexPath indexPathForRow:_topIndexPath.row+1
+                                                                inSection:0];
+        UITableViewCell *nextTopCell = [_tableView cellForRowAtIndexPath:_nextTopRowIndexPath];
+        UITableViewCell *previousTopCell = [_tableView cellForRowAtIndexPath:previousCellIndexPath];
+        
+        
+        CGPoint translation = [gesture translationInView:_tableView];
+        BOOL selectionDidChange = NO;
+        
+        // Selecting upwards
+        if (translation.y < -threshold &&
+            [visibleCells containsObject:nextTopCell]) {
+            
+            [self updateTopRectValuesWithTopIndexPath:_nextTopRowIndexPath];
+            selectionDidChange = YES;
+        }
+        
+        
+        // Selecting downwards
+        if (translation.y > threshold &&
+            (_topIndexPath.row != _bottomIndexPath.row) &&
+            [visibleCells containsObject:previousTopCell]) {
+            
+            [self updateTopRectValuesWithTopIndexPath:previousCellIndexPath];
+            selectionDidChange = YES;
+        }
+        
+        
+        
+        if (selectionDidChange) {
+            gesture.view.center = CGPointMake(gesture.view.center.x,
+                                              _topRowCellRect.origin.y + cellHeight/2);
+            [gesture setTranslation:CGPointMake(0, 0)
+                             inView:_tableView];
+            CGPoint startPointInRow = CGPointMake(gesture.view.center.x, 0);
+            [self updateBackgroundColorForLeftDragPoint:startPointInRow];
+        }
+    }
+    
+    if ([gesture state] == UIGestureRecognizerStateEnded) {
+        _tableView.scrollEnabled = YES;
+    }
 }
 
 - (void)moveRightDragPointHorizontal:(UIPanGestureRecognizer*)gesture {
@@ -175,19 +229,6 @@
     }
 }
 
-- (void)updateBackgroundColorForRightDragPoint:(CGPoint)endPoint {
-    CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
-    CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
-                                                         (cell.line));
-    CFIndex index = CTLineGetStringIndexForPosition(lineRef, endPoint);
-    int endLocation = cell.stringRange.location + index - 1;
-    _selectedTextRange = NSMakeRange(_selectedTextRange.location, endLocation - _selectedTextRange.location);
-    [_codeViewController setBackgroundColorForString:[UIColor blueColor]
-                                           WithRange:_selectedTextRange
-                                          forSetting:@"copyAndPaste"];
-    [_tableView reloadData];
-}
-
 #pragma mark - Update Values
 
 - (void)updateBottomRectValuesWithBottomIndexPath:(NSIndexPath*)bottomIndexPath {
@@ -204,6 +245,49 @@
         _nextBottomRowIndexPath = nil;
         _nextBottomRowCellRect = CGRectNull;
     }
+}
+
+- (void)updateTopRectValuesWithTopIndexPath:(NSIndexPath*)topIndexPath {
+    _topIndexPath = [NSIndexPath indexPathForRow:topIndexPath.row inSection:0];
+    _topRowCellRect = [_tableView rectForRowAtIndexPath:topIndexPath];
+    
+    int topRow = _topIndexPath.row;
+    
+    if (topRow - 1 >= 0) {
+        _nextTopRowIndexPath = [NSIndexPath indexPathForRow:(topRow - 1) inSection:0];
+        _nextTopRowCellRect = [_tableView rectForRowAtIndexPath:_nextTopRowIndexPath];
+    }
+    else {
+        _nextTopRowIndexPath = nil;
+        _nextTopRowCellRect = CGRectNull;
+    }
+}
+
+- (void)updateBackgroundColorForRightDragPoint:(CGPoint)endPoint {
+    CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
+    CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                                         (cell.line));
+    CFIndex index = CTLineGetStringIndexForPosition(lineRef, endPoint);
+    int endLocation = cell.stringRange.location + index - 1;
+    _selectedTextRange = NSMakeRange(_selectedTextRange.location, endLocation - _selectedTextRange.location);
+    [_codeViewController setBackgroundColorForString:[UIColor blueColor]
+                                           WithRange:_selectedTextRange
+                                          forSetting:@"copyAndPaste"];
+    [_tableView reloadData];
+}
+
+- (void)updateBackgroundColorForLeftDragPoint:(CGPoint)startPoint {
+    CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
+    CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                                         (cell.line));
+    CFIndex index = CTLineGetStringIndexForPosition(lineRef, startPoint);
+    int startLocation = cell.stringRange.location + index;
+    int newRangeLength = _selectedTextRange.length + _selectedTextRange.location - startLocation;
+    _selectedTextRange = NSMakeRange(startLocation, newRangeLength);
+    [_codeViewController setBackgroundColorForString:[UIColor blueColor]
+                                           WithRange:_selectedTextRange
+                                          forSetting:@"copyAndPaste"];
+    [_tableView reloadData];
 }
 
 - (void)updateLastCharacterValues:(CGPoint)lastCharacterCoordinates {
