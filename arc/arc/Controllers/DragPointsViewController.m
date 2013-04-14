@@ -77,13 +77,21 @@
         BOOL selectionDidChange = NO;
         
         CGFloat forwardDifference = _nextLastCharacterCoordinates.x - _lastCharacterCoordinates.x;
+        CGFloat backwardDifference = _lastCharacterCoordinates.x - _previousLastCharacterCoordinates.x;
         
         // x-direction changed
         // => get string index
         
         // TODO: Assume within range of line
-        if (translation.x > forwardDifference / 2) {
+        if (translation.x > (forwardDifference / 2)) {
             [self updateLastCharacterValues:_nextLastCharacterCoordinates];
+            gesture.view.center = CGPointMake(_lastCharacterCoordinates.x, gesture.view.center.y);
+            [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
+            selectionDidChange = YES;
+        }
+        
+        if (translation.x < -(backwardDifference / 2)) {
+            [self updateLastCharacterValues:_previousLastCharacterCoordinates];
             gesture.view.center = CGPointMake(_lastCharacterCoordinates.x, gesture.view.center.y);
             [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
             selectionDidChange = YES;
