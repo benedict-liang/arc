@@ -86,10 +86,8 @@
         CGFloat backwardDifference = _lastCharacterCoordinates.x - _previousLastCharacterCoordinates.x;
         CGFloat forwardThreshold = forwardDifference / 2;
         CGFloat backwardThreshold = - backwardDifference / 2;
-        // x-direction changed
-        // => get string index
         
-        // TODO: Assume within range of line
+        // Select forward
         if (translation.x > forwardThreshold) {
             [self updateLastCharacterValues:_nextLastCharacterCoordinates];
             gesture.view.center = CGPointMake(_lastCharacterCoordinates.x, gesture.view.center.y);
@@ -97,6 +95,7 @@
             selectionDidChange = YES;
         }
         
+        // Select backward
         if (translation.x < backwardThreshold) {
             [self updateLastCharacterValues:_previousLastCharacterCoordinates];
             gesture.view.center = CGPointMake(_lastCharacterCoordinates.x, gesture.view.center.y);
@@ -124,8 +123,10 @@
         CGFloat threshold = cellHeight / 4;
         BOOL selectionDidChange = NO;
         
-        // y-direction changed
-        // => get cell for position
+        // TODO: Prevent vertical selection for non-visible rows
+        // NSArray *indexPathsArray = [_tableView indexPathsForVisibleRows];
+        
+        // Selecting downwards
         if (translation.y > threshold) {
             [self updateBottomRectValuesWithBottomIndexPath:_nextBottomRowIndexPath];
             gesture.view.center = CGPointMake(gesture.view.center.x, _bottomRowCellRect.origin.y + cellHeight/2);
@@ -133,6 +134,7 @@
             selectionDidChange = YES;
         }
         
+        // Selecting upwards
         if (translation.y < -threshold && (_topIndexPath.row != _bottomIndexPath.row)) {
             [self updateBottomRectValuesWithBottomIndexPath:
              [NSIndexPath indexPathForRow:_bottomIndexPath.row-1
