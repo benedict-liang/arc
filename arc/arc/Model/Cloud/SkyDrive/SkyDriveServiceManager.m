@@ -57,16 +57,9 @@ static SkyDriveServiceManager *sharedServiceManager = nil;
 - (void)downloadFile:(id<File>)file toFolder:(LocalFolder *)folder
 {
     if (_isLoggedIn) {
-        // Get file details.
-
-
-        LiveDownloadOperation *operation = [_liveClient downloadFromPath:path delegate:nil];
-        NSData *receivedData = [operation data];
-
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-//        [fileManager createFileAtPath:[folder path] contents:<#(NSData *)data#> attributes:<#(NSDictionary *)attr#>]
+        SkyDriveDownloadHelper *helper = [[SkyDriveDownloadHelper alloc] initWithFile:file Folder:folder];
+        [_liveClient downloadFromPath:[file path] delegate:helper];
     }
-    return NO;
 }
 
 @end

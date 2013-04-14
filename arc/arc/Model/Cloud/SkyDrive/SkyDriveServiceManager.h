@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "CloudServiceManager.h"
 #import <LiveSDK/LiveConnectClient.h>
+#import "SkyDriveDownloadHelper.h"
 
 typedef enum { kFolderListing, kFileInfo } kSkyDriveOperations;
 
