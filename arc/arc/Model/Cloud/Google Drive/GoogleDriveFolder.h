@@ -10,6 +10,7 @@
 #import "Folder.h"
 #import "GoogleDriveServiceManager.h"
 #import "CloudFolderDelegate.h"
+#import "GoogleDriveFile.h"
 
 @interface GoogleDriveFolder : NSObject <Folder>
 
