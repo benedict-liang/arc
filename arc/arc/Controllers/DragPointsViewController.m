@@ -47,6 +47,9 @@
                                                 selectedTextRect.size.height);
         _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame];
         
+        UIPanGestureRecognizer *leftPanGestureHorizontal = [[UIPanGestureRecognizer alloc]
+                                                            initWithTarget:self
+                                                            action:@selector(moveLeftDragPointHorizontal:)];
         UIPanGestureRecognizer *leftPanGestureVertical = [[UIPanGestureRecognizer alloc]
                                                           initWithTarget:self
                                                           action:@selector(moveLeftDragPointVertical:)];
@@ -56,7 +59,10 @@
         UIPanGestureRecognizer *rightPanGestureVertical = [[UIPanGestureRecognizer alloc]
                                                            initWithTarget:self
                                                            action:@selector(moveRightDragPointVertical:)];
-        
+
+        [leftPanGestureHorizontal setDelegate:self];
+        [leftPanGestureVertical setDelegate:self];
+        [_leftDragPoint addGestureRecognizer:leftPanGestureHorizontal];
         [_leftDragPoint addGestureRecognizer:leftPanGestureVertical];
         
         [rightPanGestureHorizontal setDelegate:self];
@@ -78,6 +84,10 @@
 // TODO: Move drag points and update background color range
 // TODO: Set boundary conditions - Prevent left and right drag points from colliding
 // -> Always leave at least 1 character in between them
+
+- (void)moveLeftDragPointHorizontal:(UIPanGestureRecognizer*)gesture {
+
+}
 
 - (void)moveLeftDragPointVertical:(UIPanGestureRecognizer*)gesture {
     if ([gesture state] == UIGestureRecognizerStateBegan) {
@@ -174,7 +184,6 @@
         }
     }
 }
-
 
 - (void)moveRightDragPointVertical:(UIPanGestureRecognizer*)gesture {
     
