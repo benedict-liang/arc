@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Utils.h"
 
-@interface FoldTree : NSObject <NSCopying>
+@interface FoldTree : NSObject
 
 @property NSMutableArray* children;
 @property NSRange contentRange;
