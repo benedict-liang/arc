@@ -325,6 +325,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		020C10DD171A935300603229 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 020C10D6171A935200603229 /* GTL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F38F6A60B66E91D00B24B81;
+			remoteInfo = GTLFramework;
+		};
+		020C10DF171A935300603229 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 020C10D6171A935200603229 /* GTL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F12027C11A4CA2F00BEB470;
+			remoteInfo = GTLTouchStaticLib;
+		};
+		020C10E1171A935300603229 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 020C10D6171A935200603229 /* GTL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F12027D11A4CA2F00BEB470;
+			remoteInfo = GTLUnitTests;
+		};
+		020C10E3171A935300603229 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 020C10D6171A935200603229 /* GTL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F1AD9020B71603F00DC0485;
+			remoteInfo = DevelopmentTestTool;
+		};
 		0234361C16FDFA0700B0D7AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4C43F8E116F86AA800159B29 /* Project object */;
@@ -340,6 +368,7 @@
 		020C104F171A6DB000603229 /* SkyDriveDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveDownloadHelper.h; sourceTree = "<group>"; };
 		020C1050171A6DB000603229 /* SkyDriveDownloadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveDownloadHelper.m; sourceTree = "<group>"; };
 		020C1053171A77E200603229 /* CloudFolderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudFolderDelegate.h; sourceTree = "<group>"; };
+		020C10D6171A935200603229 /* GTL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTL.xcodeproj; path = "arc/Model/Cloud/Google Drive/Source/GTL.xcodeproj"; sourceTree = "<group>"; };
 		025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		0260B50A1709286E0091B012 /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Folder.h; path = Protocols/Folder.h; sourceTree = "<group>"; };
 		0260B50B170928820091B012 /* FileSystemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystemObject.h; path = Protocols/FileSystemObject.h; sourceTree = "<group>"; };
@@ -770,11 +799,15 @@
 			name = Delegates;
 			sourceTree = "<group>";
 		};
-		020C1057171A86A200603229 /* Google Drive */ = {
+		020C10D7171A935200603229 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				020C10DE171A935300603229 /* GTL.framework */,
+				020C10E0171A935300603229 /* libGTLTouchStaticLib.a */,
+				020C10E2171A935300603229 /* GTLUnitTests.octest */,
+				020C10E4171A935300603229 /* DevelopmentTestTool */,
 			);
-			path = "Google Drive";
+			name = Products;
 			sourceTree = "<group>";
 		};
 		0260B508170921C10091B012 /* Protocols */ = {
@@ -827,6 +860,7 @@
 		4C43F8E016F86AA800159B29 = {
 			isa = PBXGroup;
 			children = (
+				020C10D6171A935200603229 /* GTL.xcodeproj */,
 				4C43F8F416F86AA900159B29 /* arc */,
 				4CD06B6F16FDEEC100C9DED3 /* arcTests */,
 				4CEADA111716F3EF00F4F619 /* PrettyArc */,
@@ -1116,7 +1150,6 @@
 			children = (
 				020C1052171A77C700603229 /* Delegates */,
 				840B65C878A6C7146123E560 /* Protocols */,
-				020C1057171A86A200603229 /* Google Drive */,
 				840B6BB5A0E39DE20D887CA8 /* SkyDrive */,
 			);
 			path = Cloud;
@@ -1503,6 +1536,12 @@
 			mainGroup = 4C43F8E016F86AA800159B29;
 			productRefGroup = 4C43F8EA16F86AA900159B29 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 020C10D7171A935200603229 /* Products */;
+					ProjectRef = 020C10D6171A935200603229 /* GTL.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4C43F8E816F86AA900159B29 /* arc */,
@@ -1511,6 +1550,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		020C10DE171A935300603229 /* GTL.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GTL.framework;
+			remoteRef = 020C10DD171A935300603229 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		020C10E0171A935300603229 /* libGTLTouchStaticLib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGTLTouchStaticLib.a;
+			remoteRef = 020C10DF171A935300603229 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		020C10E2171A935300603229 /* GTLUnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GTLUnitTests.octest;
+			remoteRef = 020C10E1171A935300603229 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		020C10E4171A935300603229 /* DevelopmentTestTool */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = DevelopmentTestTool;
+			remoteRef = 020C10E3171A935300603229 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4C43F8E716F86AA900159B29 /* Resources */ = {
@@ -1978,6 +2048,10 @@
 				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
 				INFOPLIST_FILE = "arc/arc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "(arc)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1997,6 +2071,10 @@
 				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
 				INFOPLIST_FILE = "arc/arc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "(arc)";
 				WRAPPER_EXTENSION = app;
 			};
