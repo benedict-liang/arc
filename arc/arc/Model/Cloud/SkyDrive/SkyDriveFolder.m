@@ -18,7 +18,7 @@
 
 + (SkyDriveFolder *)getRoot
 {
-    return [[SkyDriveFolder alloc] initWithName:@"SkyDrive Documents" path:@"me/skydrive" parent:nil];
+    return [[SkyDriveFolder alloc] initWithName:@"SkyDrive" path:@"me/skydrive" parent:nil];
 }
 
 - (id <NSObject>)contents
