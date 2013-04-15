@@ -28,6 +28,9 @@
 @property CreateFolderViewController *createFolderController;
 @property UIPopoverController *addFolderPopoverController;
 @property UIBarButtonItem *addItemButton;
+
+// Cloud Controllers
+@property SkyDriveServiceManager *skyDriveManager;
 @end
 
 @implementation FolderViewController
@@ -133,6 +136,9 @@
 
     _editToolbar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview:_editToolbar];
+    
+    // Set up the cloud controllers.
+    _skyDriveManager = (SkyDriveServiceManager *)[SkyDriveServiceManager sharedServiceManager];
 }
 
 // Work Around to track back button action.
@@ -437,12 +443,10 @@ titleForHeaderInSection:(NSInteger)section {
             [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
             break;
         case 1: {
-            SkyDriveServiceManager *serviceManager = (SkyDriveServiceManager *)[SkyDriveServiceManager sharedServiceManager];
-            
-            if (![serviceManager isLoggedIn]) {
-                [serviceManager loginWithViewController:self];
+            if (![_skyDriveManager isLoggedIn]) {
+                [_skyDriveManager loginWithViewController:self];
             } else {
-                CloudPickerViewController *pickerController = [[CloudPickerViewController alloc] initWithCloudFolder:[SkyDriveFolder getRoot] targetFolder:_folder serviceManager:[SkyDriveServiceManager sharedServiceManager]];
+                CloudPickerViewController *pickerController = [[CloudPickerViewController alloc] initWithCloudFolder:[SkyDriveFolder getRoot] targetFolder:_folder serviceManager:_skyDriveManager];
                 [self presentViewController:pickerController animated:YES completion:nil];
             }
         }
