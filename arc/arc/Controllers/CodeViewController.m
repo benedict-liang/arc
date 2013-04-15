@@ -657,6 +657,8 @@
 - (void)swapArcAttributedStringWith:(ArcAttributedString*)newArcString {
     _buffer = _arcAttributedString;
     _arcAttributedString = newArcString;
+    [self generateLines];
+    [self calcLineHeight];
     [self renderFile];
 }
 - (CFIndex)indexOfStringAtGesture:(UIGestureRecognizer*)gesture {
