@@ -37,6 +37,7 @@
 		02E51AEB1709580400247AF5 /* DropBoxFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AEA1709580400247AF5 /* DropBoxFile.m */; };
 		02E51AEE1709581200247AF5 /* DropBoxFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AED1709581200247AF5 /* DropBoxFolder.m */; };
 		02E51AF11709582300247AF5 /* DropBoxRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AF01709582300247AF5 /* DropBoxRootFolder.m */; };
+		02E7A4A8171BD80E00E22752 /* LiveSDK.framework in Resources */ = {isa = PBXBuildFile; fileRef = 840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */; };
 		02F25A121713E660000B6301 /* CreateFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F25A111713E660000B6301 /* CreateFolderViewController.m */; };
 		4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D0711705CA7800F4593B /* ArcAttributedString.m */; };
 		4C1AF1181714FF8400A2D0D8 /* documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1AF1161714FF8400A2D0D8 /* documents.png */; };
@@ -429,6 +430,7 @@
 		02E51AED1709581200247AF5 /* DropBoxFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxFolder.m; sourceTree = "<group>"; };
 		02E51AEF1709582300247AF5 /* DropBoxRootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxRootFolder.h; sourceTree = "<group>"; };
 		02E51AF01709582300247AF5 /* DropBoxRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxRootFolder.m; sourceTree = "<group>"; };
+		02E7A4A3171BCFC600E22752 /* CloudFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudFile.h; sourceTree = "<group>"; };
 		02F25A101713E660000B6301 /* CreateFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFolderViewController.h; sourceTree = "<group>"; };
 		02F25A111713E660000B6301 /* CreateFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateFolderViewController.m; sourceTree = "<group>"; };
 		4C12D0701705CA7800F4593B /* ArcAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcAttributedString.h; sourceTree = "<group>"; };
@@ -1226,6 +1228,7 @@
 			children = (
 				840B6454D395361AD2F521B2 /* CloudServiceManager.h */,
 				02A00794171BBF650099FE61 /* CloudFolder.h */,
+				02E7A4A3171BCFC600E22752 /* CloudFile.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1658,6 +1661,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02E7A4A8171BD80E00E22752 /* LiveSDK.framework in Resources */,
 				02B04FCA1701672700FE51CB /* GameObject.h in Resources */,
 				8F2F5B8217061445005AD37F /* nav_gmaps_sample.js in Resources */,
 				4C43F90116F86AA900159B29 /* Default.png in Resources */,
