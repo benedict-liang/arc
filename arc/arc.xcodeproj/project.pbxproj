@@ -467,9 +467,6 @@
 		4CA4DE43170EA4C200A86109 /* MasterViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewControllerDelegate.h; sourceTree = "<group>"; };
 		4CD06B2C16FDE92D00C9DED3 /* SubViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubViewControllerDelegate.h; sourceTree = "<group>"; };
 		4CD06B3B16FDEDA600C9DED3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		4CD06B4016FDEDA600C9DED3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		4CD06B4116FDEDA600C9DED3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		4CD06B4216FDEDA600C9DED3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4CD06B6B16FDEEC100C9DED3 /* arcTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = arcTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD06B7116FDEEC100C9DED3 /* arcTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "arcTests-Info.plist"; sourceTree = "<group>"; };
 		4CD06B7316FDEEC100C9DED3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -513,7 +510,7 @@
 		4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		840B6454D395361AD2F521B2 /* CloudServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudServiceManager.h; sourceTree = "<group>"; };
-		840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LiveSDK.framework; path = /Users/Jerome/Desktop/arc/arc/arc/LiveSDK.framework; sourceTree = "<absolute>"; };
+		840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LiveSDK.framework; path = /Users/michael/Dropbox/Projects/arc/arc/arc/LiveSDK.framework; sourceTree = "<absolute>"; };
 		840B6733BB2064AE23C5FDF7 /* SkyDriveFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveFolder.h; sourceTree = "<group>"; };
 		840B67A71EB5C59B9BCEF1A2 /* SkyDriveServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveServiceManager.m; sourceTree = "<group>"; };
 		840B67E300617A8810E2F3F5 /* PluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginDelegate.h; path = Plugin/PluginDelegate.h; sourceTree = "<group>"; };
@@ -1055,9 +1052,6 @@
 		4CD06B3F16FDEDA600C9DED3 /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4CD06B4016FDEDA600C9DED3 /* AppKit.framework */,
-				4CD06B4116FDEDA600C9DED3 /* CoreData.framework */,
-				4CD06B4216FDEDA600C9DED3 /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
 			sourceTree = "<group>";
