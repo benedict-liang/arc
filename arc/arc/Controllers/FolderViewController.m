@@ -444,7 +444,7 @@ titleForHeaderInSection:(NSInteger)section {
             }
             if ([serviceManager isLoggedIn]) {
                 CloudPickerViewController *pickerController = [[CloudPickerViewController alloc] initWithCloudFolder:[SkyDriveFolder getRoot] targetFolder:_folder serviceManager:[SkyDriveServiceManager sharedServiceManager]];
-                [self presentViewController:pickerController animated:YES completion:nil];
+                [self.navigationController pushViewController:pickerController animated:YES];
             }
         }
             break;

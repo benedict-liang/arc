@@ -28,7 +28,6 @@
         _serviceManager = serviceManager;
         [folder setDelegate:self];
         [folder updateContents];
-        [self separateFilesAndFolders];
     }
     return self;
 }
@@ -60,8 +59,7 @@
     [super viewDidLoad];
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    self.title = [_folder name];
+    self.navigationItem.title = [_folder name];
 }
 
 - (void)didReceiveMemoryWarning
