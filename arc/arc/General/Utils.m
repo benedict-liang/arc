@@ -102,9 +102,8 @@
             @"%.1f%@", fileSize, [prefixes objectAtIndex:divisions]];
 }
 
-+ (UIImage *)imageWithColor:(UIColor *)color
++ (UIImage *)imageSized:(CGRect)rect withColor:(UIColor *)color
 {
-    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -115,6 +114,12 @@
     UIGraphicsEndImageContext();
     
     return image;
+}
+
++ (UIImage *)imageWithColor:(UIColor *)color
+{
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    return [[self class] imageSized:rect withColor:color];
 }
 
 @end

@@ -116,6 +116,26 @@
     [[UINavigationBar appearance] setBackgroundImage: [Utils imageWithColor:
                                                        [Utils colorWithHexString:@"272821"]]
                                        forBarMetrics:UIBarMetricsDefault];
+    
+    [[UIBarButtonItem appearance] setBackgroundImage:[Utils imageWithColor:[Utils colorWithHexString:@"151512"]]
+                                                      forState:UIControlStateNormal
+                                                    barMetrics:UIBarMetricsDefault];
+    
+    [[UIBarButtonItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                          [UIColor whiteColor], UITextAttributeTextColor,
+                                                          [UIColor colorWithRed:0 green:0 blue:0 alpha:0], UITextAttributeTextShadowColor,
+                                                          [NSValue valueWithUIOffset:UIOffsetMake(0, 0)], UITextAttributeTextShadowOffset,
+                                                          [UIFont fontWithName:@"Helvetica Neue" size:0.0], UITextAttributeFont,
+                                                          nil]
+                                                forState:UIControlStateNormal];
+    
+    // TODO
+    // make back button arrow shaped.
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[[Utils imageSized:CGRectMake(0, 0, 36, 36)
+                                                                       withColor:[Utils colorWithHexString:@"151512"]]
+                                                                resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)]
+                                                      forState:UIControlStateNormal
+                                                    barMetrics:UIBarMetricsDefault];
     //
     
     
