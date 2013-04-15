@@ -108,6 +108,7 @@
     if (!error) {
         NSString *fileName = [file title];
         NSString *filePath = [file downloadUrl];
+        NSNumber *fileSize = [file fileSize];
         
         if ([[fileName pathExtension] isEqualToString:@""]) {
             // No extension means this is a folder.
@@ -116,7 +117,7 @@
             [_contents addObject:newFolder];
         } else {
             // There is a file extension. This must be a file.
-            GoogleDriveFile *newFile = [[GoogleDriveFile alloc] initWithName:fileName path:filePath parent:self];
+            GoogleDriveFile *newFile = [[GoogleDriveFile alloc] initWithName:fileName identifier:filePath size:[fileSize floatValue]];
             [_contents addObject:newFile];
         }
         [_delegate folderContentsUpdated:self];
