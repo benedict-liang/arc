@@ -70,9 +70,38 @@
 
 - (void)removeAttributesForSettingKey:(NSString*)settingKey
 {
-    for (ArcAttribute *attribute in [__appliedAttributesDictionary objectForKey:settingKey]) {
-        [__attributedString removeAttribute:attribute.type
-                                      range:attribute.range];
+    NSUInteger *toRemove = 0;
+    NSUInteger *toRemain = 0;
+    for (NSString *sKey in __appliedAttributesDictionary) {
+        if ([sKey isEqualToString:settingKey]) {
+            toRemove += [[self settingsAppliedAttributeForSettingsKey:sKey] count];
+        } else {
+            toRemain += [[self settingsAppliedAttributeForSettingsKey:sKey] count];
+        }
+    }
+    
+    if (toRemove > toRemain) {
+        __attributedString = [__plainAttributedString mutableCopy];
+        for (NSString *sKey in __appliedAttributesDictionary) {
+            if ([sKey isEqualToString:settingKey]) {
+                continue;
+            }
+
+            for (ArcAttribute *attribute in [__attributesDictionary objectForKey:sKey]) {
+                if (!attribute.value) {
+                    continue;
+                }
+                
+                [__attributedString addAttribute:attribute.type
+                                           value:attribute.value
+                                           range:attribute.range];
+            }            
+        }
+    } else {
+        for (ArcAttribute *attribute in [__appliedAttributesDictionary objectForKey:settingKey]) {
+            [__attributedString removeAttribute:attribute.type
+                                          range:attribute.range];
+        }
     }
     
     // remove object from dictionary
