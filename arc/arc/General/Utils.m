@@ -169,4 +169,7 @@
         return @[NSStringFromRange(r1)];
     }
 }
++ (BOOL)isContainedByRange:(NSRange)range Index:(CFIndex)index {
+    return range.location <= index && index <= (range.location + range.length);
+}
 @end
