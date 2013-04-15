@@ -30,6 +30,6 @@
 
 + (NSArray*)rangeDifferenceBetween:(NSRange)r1 And:(NSRange)r2;
 
-+ (BOOL)isContainedByRange:(NSRange)range Index:(CFIndex)index
++ (BOOL)isContainedByRange:(NSRange)range Index:(CFIndex)index;
 
 @end

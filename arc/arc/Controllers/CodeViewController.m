@@ -649,8 +649,9 @@
 
 #pragma mark - Folding UI Gesture 
 - (void)foldForGesture:(UIGestureRecognizer*)gesture {
-    CFIndex i = [self indexOfStringAtGesture:gesture];
-    
+    CFIndex index = [self indexOfStringAtGesture:gesture];
+    NSRange subtractRange = [_foldTree lowestNodeWithIndex:index];
+    NSLog(@"%@",[NSValue value:&subtractRange withObjCType:@encode(NSRange)]);
 }
 - (CFIndex)indexOfStringAtGesture:(UIGestureRecognizer*)gesture {
     CodeLineCell *cell = (CodeLineCell*)[gesture view];
