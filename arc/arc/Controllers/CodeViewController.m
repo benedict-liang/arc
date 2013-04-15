@@ -285,26 +285,10 @@
                    AndTree:(FoldTree *)foldTree
 {
     if ([[file path] isEqual:[_currentFile path]]) {
-        //_arcAttributedString = arcAttributedString;
+        _arcAttributedString = arcAttributedString;
         _foldTree = foldTree;
-
         while (!_linesGenerated);
         [self renderFile];
-        
-        if (_testFold) {
-            NSRange test = [(FoldTree*)[_foldTree.children objectAtIndex:0] contentRange];
-            NSString* cutContent = [[arcAttributedString arcStringWithRemovedRange:test] string];
-            NSLog(@"%@",cutContent);
-            _arcAttributedString = [arcAttributedString arcStringWithRemovedRange:test];
-            //[self refreshForSetting:@"colorScheme"];
-            _linesGenerated = NO;
-           // [self preRenderPluginsForSetting:nil];
-            [self generateLines];
-            [self calcLineHeight];
-            [self renderFile];
-            //[self postRenderPluginsForSetting:nil];
-            _testFold = NO;
-        }
     }
 }
 
