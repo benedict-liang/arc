@@ -114,6 +114,11 @@
     }
 }
 
+- (id<FileSystemObject>)currentfile
+{
+    return [_appState currentFileOpened];
+}
+
 // Shows the file using the CodeViewController
 - (void)fileSelected:(id<File>)file
 {

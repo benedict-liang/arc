@@ -15,6 +15,7 @@
 
 #pragma mark - Triggered by LeftBarViewController
 - (void)fileObjectSelected:(id<FileSystemObject>)fileSystemObject;
+- (id<FileSystemObject>)currentfile;
 
 // TODO, refactor these methods
 #pragma mark - Others
