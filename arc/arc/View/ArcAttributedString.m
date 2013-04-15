@@ -249,7 +249,11 @@
     NSMutableArray* postTranslateRes = [NSMutableArray array];
     for (NSString* rs in res) {
         NSRange range = NSRangeFromString(rs);
-        NSRange translatedRange = NSMakeRange(range.location - rmRange.length, range.length);
+        NSRange translatedRange = range;
+        if (range.location >= rmRange.location) {
+            translatedRange = NSMakeRange(range.location - rmRange.length, range.length);
+        }
+        
         [postTranslateRes addObject:NSStringFromRange(translatedRange)];
     }
     
