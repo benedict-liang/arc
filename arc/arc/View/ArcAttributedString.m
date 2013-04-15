@@ -248,6 +248,9 @@
                                range:_stringRange];
     
 }
+
+#pragma mark - methods used by folding. Deprecated right now
+
 - (NSArray*)rangesFromTransformWithAttribRange:(NSRange)attribRange removedRange:(NSRange)rmRange
 {
     NSRange newAttribRange = {NSNotFound,0};
