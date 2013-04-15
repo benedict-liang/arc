@@ -560,12 +560,11 @@
         _matchesDone = YES;
     }
     
+    [self applyStylesTo:output withTheme:theme];
+    
+    // folds. temporarily here
     NSString* foldStart = [_bundle objectForKey:@"foldingStartMarker"];
     NSString* foldEnd = [_bundle objectForKey:@"foldingStopMarker"];
-    
-    
-    
-    [self applyStylesTo:output withTheme:theme];
     
     if (foldStart && foldEnd) {
         [self foldsWithStart:foldStart end:foldEnd];
@@ -619,7 +618,7 @@
             
         } else if (endRange.location == NSNotFound) {
             NSLog(@"begin... %d",startRange.location+offset);
-            [stack addObject:[NSNumber numberWithInt:startRange.location+offset]];
+            [stack addObject:[NSNumber numberWithInt:startRange.location+offset+startRange.length]];
             _foldStarts = [self addFoldRange:NSMakeRange(startRange.location+offset, startRange.length) toArray:_foldStarts];
         } else if (startRange.location == NSNotFound) {
 
@@ -665,6 +664,13 @@
         [v getValue:&r];
         [self styleOnRange:r fcolor:[UIColor greenColor] output:output];
     }
+    
+    for (NSValue*v in foldRanges) {
+        NSRange r;
+        [v getValue:&r];
+        [self styleOnRange:r fcolor:[UIColor yellowColor] output:output];
+    }
+    
 }
 
 @end
