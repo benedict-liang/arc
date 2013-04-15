@@ -17,5 +17,5 @@
 @property NSString* foldEnd;
 
 - (id)initWithContentRange:(NSRange)range ranges:(NSArray*)ranges;
-
+-(NSRange)lowestNodeWithIndex:(CFIndex)index;
 @end

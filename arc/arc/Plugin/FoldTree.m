@@ -76,5 +76,20 @@
     return tmp;
 }
 
--(NSRange)leafWithIndex:()
+-(NSRange)lowestNodeWithIndex:(CFIndex)index {
+    if ([Utils isContainedByRange:_contentRange Index:index]) {
+            NSRange leafRange = _contentRange;
+            for (FoldTree* subTree in _children) {
+                NSRange childRange = [subTree lowestNodeWithIndex:index];
+                if (childRange.location!= NSNotFound) {
+                    leafRange = childRange;
+                }
+            }
+            return leafRange;
+
+    } else {
+        return NSMakeRange(NSNotFound, 0);
+    }
+}
+
 @end
