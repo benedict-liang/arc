@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ArcAttribute.h"
 
 @interface ArcAttributedString : NSObject
 @property (nonatomic, readonly) NSString *string;

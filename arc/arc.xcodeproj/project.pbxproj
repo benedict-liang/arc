@@ -53,6 +53,7 @@
 		4C43F90316F86AA900159B29 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43F90216F86AA900159B29 /* Default@2x.png */; };
 		4C43F90516F86AA900159B29 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43F90416F86AA900159B29 /* Default-568h@2x.png */; };
 		4C43F90816F86AA900159B29 /* arc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F90616F86AA900159B29 /* arc.xcdatamodeld */; };
+		4C5E51EA171BEB480041BB2B /* ArcAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E51E9171BEB480041BB2B /* ArcAttribute.m */; };
 		4C8307EB17114CEF00F49C33 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8307EA17114CEF00F49C33 /* SettingCell.m */; };
 		4C9137281715B9D900413C79 /* Solarized (dark).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = 4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */; };
 		4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C963C81170D8E96004FDACB /* CodeLineCell.m */; };
@@ -455,6 +456,8 @@
 		4C43F90216F86AA900159B29 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4C43F90416F86AA900159B29 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4C43F90716F86AA900159B29 /* arc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = arc.xcdatamodel; sourceTree = "<group>"; };
+		4C5E51E8171BEB480041BB2B /* ArcAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcAttribute.h; sourceTree = "<group>"; };
+		4C5E51E9171BEB480041BB2B /* ArcAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcAttribute.m; sourceTree = "<group>"; };
 		4C8307E917114CEF00F49C33 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		4C8307EA17114CEF00F49C33 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Solarized (dark).tmTheme"; sourceTree = "<group>"; };
@@ -1031,6 +1034,17 @@
 			path = Plugin;
 			sourceTree = "<group>";
 		};
+		4C5E51E7171BEB290041BB2B /* ArcAttributedString */ = {
+			isa = PBXGroup;
+			children = (
+				4C12D0701705CA7800F4593B /* ArcAttributedString.h */,
+				4C12D0711705CA7800F4593B /* ArcAttributedString.m */,
+				4C5E51E8171BEB480041BB2B /* ArcAttribute.h */,
+				4C5E51E9171BEB480041BB2B /* ArcAttribute.m */,
+			);
+			name = ArcAttributedString;
+			sourceTree = "<group>";
+		};
 		4CD06B2D16FDE97E00C9DED3 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -1093,12 +1107,11 @@
 		4CD06B8716FE122400C9DED3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4C5E51E7171BEB290041BB2B /* ArcAttributedString */,
 				4C963C80170D8E96004FDACB /* CodeLineCell.h */,
 				4C963C81170D8E96004FDACB /* CodeLineCell.m */,
 				4C8307E917114CEF00F49C33 /* SettingCell.h */,
 				4C8307EA17114CEF00F49C33 /* SettingCell.m */,
-				4C12D0701705CA7800F4593B /* ArcAttributedString.h */,
-				4C12D0711705CA7800F4593B /* ArcAttributedString.m */,
 				8F7066B117199B1F00E8C64E /* SearchResultCell.h */,
 				8F7066B217199B1F00E8C64E /* SearchResultCell.m */,
 				8FC1B4E71719D8E0002939D8 /* DragPointImageView.h */,
@@ -1995,6 +2008,7 @@
 				020C128E171ABACD00603229 /* GoogleDriveFile.m in Sources */,
 				020C1291171AC14900603229 /* GoogleDriveDownloadHelper.m in Sources */,
 				02A0078F171BBC6E0099FE61 /* CloudPickerViewController.m in Sources */,
+				4C5E51EA171BEB480041BB2B /* ArcAttribute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
