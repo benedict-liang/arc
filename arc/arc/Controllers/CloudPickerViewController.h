@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CloudFolder.h"
+#import "CloudServiceManager.h"
+#import "CloudFolderDelegate.h"
 
-@interface CloudPickerViewController : UITableViewController
+@interface CloudPickerViewController : UITableViewController <CloudFolderDelegate>
+
+- (id)initWithCloudFolder:(id<CloudFolder>)folder targetFolder:(LocalFolder *)target serviceManager:(id<CloudServiceManager>)serviceManager;
 
 @end
