@@ -60,7 +60,7 @@ static SkyDriveServiceManager *sharedServiceManager = nil;
 {
     if (_isLoggedIn) {
         SkyDriveDownloadHelper *helper = [[SkyDriveDownloadHelper alloc] initWithFile:file Folder:folder];
-        [_liveClient downloadFromPath:[file path] delegate:helper];
+        [_liveClient downloadFromPath:[file identifier] delegate:helper];
     }
 }
 

@@ -104,15 +104,14 @@
         case kFileInfo: {
             NSString *type = [[operation userState] valueForKey:@"retrievedType"];
             NSString *name = [result valueForKey:@"name"];
-            NSString *path = [result valueForKey:@"id"];
+            NSString *identifier = [result valueForKey:@"id"];
             
             if ([type isEqualToString:@"file"]) {
                 NSString *size = [result valueForKey:@"size"];
-                SkyDriveFile *newFile = [[SkyDriveFile alloc] initWithName:name path:path parent:self];
-                [newFile setFileSize:size];
+                SkyDriveFile *newFile = [[SkyDriveFile alloc] initWithName:name identifier:identifier size:[size floatValue]];
                 _contents = [_contents arrayByAddingObject:newFile];
             } else if ([type isEqualToString:@"folder"]) {
-                SkyDriveFolder *newFolder = [[SkyDriveFolder alloc] initWithName:name path:path parent:self];
+                SkyDriveFolder *newFolder = [[SkyDriveFolder alloc] initWithName:name path:identifier parent:self];
                 _contents = [_contents arrayByAddingObject:newFolder];
             } else {
                 // Do nothing. This is audio, a photo, or a video.
