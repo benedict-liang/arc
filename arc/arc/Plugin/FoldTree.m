@@ -75,4 +75,6 @@
     }
     return tmp;
 }
+
+-(NSRange)leafWithIndex:()
 @end

@@ -287,6 +287,7 @@
     if ([[file path] isEqual:[_currentFile path]]) {
         _arcAttributedString = arcAttributedString;
         _foldTree = foldTree;
+        
         while (!_linesGenerated);
         [self renderFile];
     }
@@ -480,6 +481,14 @@
                                                       action:@selector(getTextLocation:)];
     [cell addGestureRecognizer:longPressGesture];
     
+    UITapGestureRecognizer *doubleTapGesture =
+    [[UITapGestureRecognizer alloc]
+    initWithTarget:self
+            action:@selector(foldForGesture:)];
+    
+    doubleTapGesture.numberOfTapsRequired = 2;
+    
+    [cell addGestureRecognizer:doubleTapGesture];
     NSInteger lineNumber = [[lineObject objectForKey:KEY_LINE_NUMBER] integerValue];
     
     if (_lineNumbers) {
@@ -636,6 +645,29 @@
                                          OnRange:[range rangeValue]
                                       ForSetting:@"search"];
     }
+}
+
+#pragma mark - Folding UI Gesture 
+- (void)foldForGesture:(UIGestureRecognizer*)gesture {
+    CFIndex i = [self indexOfStringAtGesture:gesture];
+    
+}
+- (CFIndex)indexOfStringAtGesture:(UIGestureRecognizer*)gesture {
+    CodeLineCell *cell = (CodeLineCell*)[gesture view];
+
+    NSIndexPath* cellIndex = [(UITableView*)cell.superview indexPathForCell:cell];
+    NSDictionary* lineDict = [_lines objectAtIndex:cellIndex.row];
+    CGPoint pointOfTouch = [gesture locationInView:cell];
+    
+    NSAttributedString *line = cell.line;
+    CTLineRef lineref = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)(line));
+    CFIndex subIndex = CTLineGetStringIndexForPosition(lineref, pointOfTouch);
+    
+    NSRange cellRange;
+    [(NSValue*)[lineDict objectForKey:KEY_RANGE] getValue:&cellRange];
+    CFIndex selectedIndex =  cellRange.location + subIndex;
+     NSLog(@"cellIndex: %@, range:%@ selectedIndex:%ld",cellIndex,[lineDict objectForKey:KEY_RANGE], selectedIndex);
+    return selectedIndex;
 }
 
 @end
