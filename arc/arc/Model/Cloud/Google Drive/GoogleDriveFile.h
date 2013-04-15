@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "File.h"
+#import "CloudFile.h"
 
-@interface GoogleDriveFile : NSObject <File>
+@interface GoogleDriveFile : NSObject <CloudFile>
 
 @end

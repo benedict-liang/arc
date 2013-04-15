@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "File.h"
 
-@protocol CloudFile <NSObject>
-
+@protocol CloudFile <NSObject, File>
+@property (strong, nonatomic) NSString *fileSize;
 @end
