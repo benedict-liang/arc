@@ -396,8 +396,17 @@ titleForHeaderInSection:(NSInteger)section {
         case 0:
             [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
             break;
-        case 1:
-            NSLog(@"SkyDrive");
+        case 1: {
+            SkyDriveServiceManager *serviceManager = [SkyDriveServiceManager sharedServiceManager];
+            
+            if (![serviceManager isLoggedIn]) {
+                [serviceManager loginWithViewController:self];
+            }
+            if ([serviceManager isLoggedIn]) {
+                CloudPickerViewController *pickerController = [[CloudPickerViewController alloc] initWithCloudFolder:[SkyDriveFolder getRoot] targetFolder:_folder serviceManager:[SkyDriveServiceManager sharedServiceManager]];
+                [self presentViewController:pickerController animated:YES completion:nil];
+            }
+        }
             break;
         case 2:
             NSLog(@"Google Drive");
