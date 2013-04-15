@@ -210,8 +210,12 @@ titleForHeaderInSection:(NSInteger)section {
     }
 
     cell.textLabel.text = fileObject.name;
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:17];
+    
     cell.imageView.image = cellImage;
+
     cell.detailTextLabel.text = detailDescription;
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
 
     return cell;
 }

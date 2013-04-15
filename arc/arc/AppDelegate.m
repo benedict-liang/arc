@@ -149,8 +149,7 @@
                                                 [Utils colorWithHexString:@"191919"]]
                             forToolbarPosition:UIToolbarPositionAny
                                     barMetrics:UIBarMetricsDefault];
-    //
-    
+    // ====
     
     // Create Window Object
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
