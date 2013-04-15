@@ -112,6 +112,13 @@
         [DBFilesystem setSharedFilesystem:dbFilesystem];
     }
     
+    // tmp
+    [[UINavigationBar appearance] setBackgroundImage: [Utils imageWithColor:
+                                                       [Utils colorWithHexString:@"272821"]]
+                                       forBarMetrics:UIBarMetricsDefault];
+    //
+    
+    
     // Create Window Object
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     

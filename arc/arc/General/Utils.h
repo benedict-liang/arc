@@ -21,4 +21,6 @@
 + (UIBarButtonItem *)flexibleSpace;
 
 + (NSString *)humanReadableFileSize:(float)fileSize;
+
++ (UIImage *)imageWithColor:(UIColor *)color;
 @end
