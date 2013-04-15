@@ -502,7 +502,8 @@
     if (self.delegate) {
         [self.delegate mergeAndRenderWith:output
                                   forFile:_currentFile
-                                WithStyle:[theme objectForKey:@"global"]];
+                                WithStyle:[theme objectForKey:@"global"]
+                                  AndTree:_foldTree];
     }
 }
 
@@ -570,9 +571,9 @@
         [self foldsWithStart:foldStart end:foldEnd];
         [self testFolds:foldRanges output:output];
         NSLog(@"%@",foldRanges);
-        FoldTree *tree = [[FoldTree alloc] initWithContentRange:NSMakeRange(0, _content.length) ranges:foldRanges];
+        _foldTree = [[FoldTree alloc] initWithContentRange:NSMakeRange(0, _content.length) ranges:foldRanges];
         
-        NSLog(@"%@",[tree description]);
+        NSLog(@"%@",[_foldTree description]);
     }
     
     

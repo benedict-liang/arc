@@ -36,7 +36,7 @@
 @property (nonatomic, readonly) NSDictionary* bundle;
 @property (nonatomic, strong) NSArray* overlays;
 @property (readonly) NSArray* splitContent;
-
+@property FoldTree* foldTree;
 @property NSArray* foldStarts;
 @property NSArray* foldEnds;
 - (id)initWithFile:(id<File>)file

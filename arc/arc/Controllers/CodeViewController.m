@@ -41,6 +41,7 @@
 @property (nonatomic) int cursor;
 @property (nonatomic) CTTypesetterRef typesetter;
 
+@property FoldTree* foldTree;
 
 - (void)loadFile;
 - (void)renderFile;
@@ -279,10 +280,15 @@
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
                    forFile:(id<File>)file
                  WithStyle:(NSDictionary *)style
+                   AndTree:(FoldTree *)foldTree
 {
     if ([[file path] isEqual:[_currentFile path]]) {
         _arcAttributedString = arcAttributedString;
-        
+        _foldTree = foldTree;
+        NSRange test = [(FoldTree*)[_foldTree.children objectAtIndex:0] contentRange];
+        NSString* cutContent = [[arcAttributedString arcStringWithRemovedRange:test] string];
+        NSLog(@"%@",cutContent);
+        _arcAttributedString = [arcAttributedString arcStringWithRemovedRange:test];
         while (!_linesGenerated);
         [self renderFile];
     }

@@ -10,6 +10,7 @@
 #import "ArcAttributedString.h"
 #import "PluginDelegate.h"
 #import "File.h"
+#import "FoldTree.h"
 
 @protocol CodeViewControllerDelegate <NSObject>
 - (void)showFile:(id<File>)file;
@@ -18,6 +19,7 @@
 - (void)registerPlugin:(id<PluginDelegate>)plugin;
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
                    forFile:(id<File>)file
-                WithStyle:(NSDictionary*)style;
+                 WithStyle:(NSDictionary*)style
+                   AndTree:(FoldTree*)foldTree;
 @end
 
