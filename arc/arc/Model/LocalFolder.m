@@ -8,10 +8,6 @@
 
 #import "LocalFolder.h"
 
-@interface LocalFolder ()
-@property (nonatomic) NSArray *contents;
-@end
-
 @implementation LocalFolder
 
 // Synthesize properties from protocol.
@@ -58,8 +54,7 @@
             }
             [contents addObject:retrievedObject];
         }
-        _contents = contents;
-        return _contents;
+        return contents;
     }
 }
 
@@ -67,7 +62,7 @@
 // Folders should return the number of objects within, Files their size in B.
 - (int)size
 {
-    return [[self contents] count];
+    return [(NSArray *)[self contents] count];
 }
 
 // Moves the given FileSystemObject to this Folder.
