@@ -2117,17 +2117,24 @@
 		4C43F90C16F86AA900159B29 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "\"./arc\"/**";
+				ARCHS = armv7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"./arc\"/**",
+					"$(inherited)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
 				INFOPLIST_FILE = "arc/arc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-v";
 				"OTHER_LDFLAGS[arch=*]" = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "(arc)";
 				USER_HEADER_SEARCH_PATHS = "\"./arc/Model/Cloud/Google\\ Drive/Source\"/**";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2135,7 +2142,11 @@
 		4C43F90D16F86AA900159B29 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "\"./arc\"/**";
+				ARCHS = armv7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"./arc\"/**",
+					"$(inherited)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
 				INFOPLIST_FILE = "arc/arc-Info.plist";
@@ -2146,6 +2157,7 @@
 				);
 				PRODUCT_NAME = "(arc)";
 				USER_HEADER_SEARCH_PATHS = "\"./arc/Model/Cloud/Google\\ Drive/Source\"/**";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
