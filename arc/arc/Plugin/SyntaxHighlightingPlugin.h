@@ -20,7 +20,7 @@
 // creates immutable SyntaxHighlight objects when called by protocol,
 // which operate on their own threads.
 @interface SyntaxHighlightingPlugin : NSObject<PluginDelegate, SyntaxHighlightingPluginDelegate>
-@property (readonly) id<CodeViewControllerDelegate> delegate;
-@property NSString* theme;
-@property NSMutableDictionary* cache;
+@property (nonatomic, readonly) id<CodeViewControllerDelegate> delegate;
+@property (nonatomic, strong) NSString* theme;
+@property (nonatomic, strong) NSCache* cache;
 @end

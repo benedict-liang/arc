@@ -93,7 +93,7 @@
                                               style:UITableViewStylePlain];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
     UIViewAutoresizingFlexibleWidth;
-    _tableView.backgroundColor = _backgroundColor;
+    _tableView.backgroundColor = [UIColor clearColor];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.autoresizesSubviews = YES;
     
@@ -250,7 +250,7 @@
     if ([_lines count] > 0) {
         CTLineRef line = CTLineCreateWithAttributedString(
                                                           (__bridge CFAttributedStringRef)(
-                                                                                           [_arcAttributedString.attributedString attributedSubstringFromRange:
+                                                                                           [_arcAttributedString.plainAttributedString attributedSubstringFromRange:
                                                                                             [[[_lines objectAtIndex:0] objectForKey:KEY_RANGE] rangeValue]]));
 
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
@@ -265,7 +265,7 @@
 - (void)setBackgroundColor:(UIColor *)backgroundColor
 {
     _backgroundColor = backgroundColor;
-    _tableView.backgroundColor = _backgroundColor;
+    self.view.backgroundColor = _backgroundColor;
 }
 
 - (void)registerPlugin:(id<PluginDelegate>)plugin
@@ -491,6 +491,11 @@
         if ([[lineObject objectForKey:KEY_LINE_START] boolValue]) {
             cell.lineNumber = lineNumber;
         }
+    }
+
+    // Remove Gesture Recognizers
+    for (UIGestureRecognizer *g in [cell gestureRecognizers]) {
+        [cell removeGestureRecognizer:g];
     }
     
     // Long Press Gesture for text selection
