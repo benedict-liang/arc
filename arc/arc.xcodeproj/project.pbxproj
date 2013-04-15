@@ -54,6 +54,7 @@
 		4C43F90516F86AA900159B29 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C43F90416F86AA900159B29 /* Default-568h@2x.png */; };
 		4C43F90816F86AA900159B29 /* arc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F90616F86AA900159B29 /* arc.xcdatamodeld */; };
 		4C5E51EA171BEB480041BB2B /* ArcAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E51E9171BEB480041BB2B /* ArcAttribute.m */; };
+		4C5E51EF171BFB1E0041BB2B /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E51EE171BFB1E0041BB2B /* Theme.m */; };
 		4C8307EB17114CEF00F49C33 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8307EA17114CEF00F49C33 /* SettingCell.m */; };
 		4C9137281715B9D900413C79 /* Solarized (dark).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = 4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */; };
 		4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C963C81170D8E96004FDACB /* CodeLineCell.m */; };
@@ -458,6 +459,8 @@
 		4C43F90716F86AA900159B29 /* arc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = arc.xcdatamodel; sourceTree = "<group>"; };
 		4C5E51E8171BEB480041BB2B /* ArcAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcAttribute.h; sourceTree = "<group>"; };
 		4C5E51E9171BEB480041BB2B /* ArcAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcAttribute.m; sourceTree = "<group>"; };
+		4C5E51ED171BFB1D0041BB2B /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
+		4C5E51EE171BFB1E0041BB2B /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
 		4C8307E917114CEF00F49C33 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		4C8307EA17114CEF00F49C33 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Solarized (dark).tmTheme"; sourceTree = "<group>"; };
@@ -1436,6 +1439,8 @@
 				8F1510C8170468B100115E5E /* TMBundleThemeHandler.m */,
 				8F1510CA1704697900115E5E /* TMBundleGrammar.h */,
 				8F1510CB1704697900115E5E /* TMBundleGrammar.m */,
+				4C5E51ED171BFB1D0041BB2B /* Theme.h */,
+				4C5E51EE171BFB1E0041BB2B /* Theme.m */,
 			);
 			name = TMBundleProcessing;
 			path = General/TMBundleProcessing;
@@ -2009,6 +2014,7 @@
 				020C1291171AC14900603229 /* GoogleDriveDownloadHelper.m in Sources */,
 				02A0078F171BBC6E0099FE61 /* CloudPickerViewController.m in Sources */,
 				4C5E51EA171BEB480041BB2B /* ArcAttribute.m in Sources */,
+				4C5E51EF171BFB1E0041BB2B /* Theme.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
