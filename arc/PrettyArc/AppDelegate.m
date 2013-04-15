@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "ArcViewController.h"
+#import "MasterViewController.h"
+#import "DetailViewController.h"
 
 @implementation AppDelegate
 
@@ -20,6 +22,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     ArcViewController *arcViewController = [[ArcViewController alloc] init];
+    arcViewController.masterViewController = [[MasterViewController alloc] init];
+    arcViewController.detailViewController = [[DetailViewController alloc] init];
+    
     [self.window setRootViewController:arcViewController];
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];

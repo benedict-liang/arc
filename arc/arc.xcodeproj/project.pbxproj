@@ -67,6 +67,8 @@
 		4CE2950E17101BA0003B012A /* SyntaxHighlightingPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */; };
 		4CE2951117101C53003B012A /* FontSizePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE2951017101C53003B012A /* FontSizePlugin.m */; };
 		4CE2951417101C82003B012A /* FontFamilyPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE2951317101C82003B012A /* FontFamilyPlugin.m */; };
+		4CE9A3EF171BB21400705AEA /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE9A3EC171BB21400705AEA /* MasterViewController.m */; };
+		4CE9A3F0171BB21400705AEA /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE9A3EE171BB21400705AEA /* DetailViewController.m */; };
 		4CEADA041716AB0E00F4F619 /* threelines.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEADA031716AB0E00F4F619 /* threelines.png */; };
 		4CEADA071716ADBB00F4F619 /* LineNumberPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEADA061716ADBB00F4F619 /* LineNumberPlugin.m */; };
 		4CEADA0D1716F3EF00F4F619 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
@@ -479,6 +481,10 @@
 		4CE2951217101C82003B012A /* FontFamilyPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontFamilyPlugin.h; sourceTree = "<group>"; };
 		4CE2951317101C82003B012A /* FontFamilyPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontFamilyPlugin.m; sourceTree = "<group>"; };
 		4CE2951517104A4C003B012A /* SettingsViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewDelegate.h; sourceTree = "<group>"; };
+		4CE9A3EB171BB21400705AEA /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasterViewController.h; path = Controllers/MasterViewController.h; sourceTree = "<group>"; };
+		4CE9A3EC171BB21400705AEA /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewController.m; path = Controllers/MasterViewController.m; sourceTree = "<group>"; };
+		4CE9A3ED171BB21400705AEA /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = Controllers/DetailViewController.h; sourceTree = "<group>"; };
+		4CE9A3EE171BB21400705AEA /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = Controllers/DetailViewController.m; sourceTree = "<group>"; };
 		4CEADA011716814B00F4F619 /* CodeViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewDelegate.h; sourceTree = "<group>"; };
 		4CEADA031716AB0E00F4F619 /* threelines.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = threelines.png; sourceTree = "<group>"; };
 		4CEADA051716ADBB00F4F619 /* LineNumberPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineNumberPlugin.h; sourceTree = "<group>"; };
@@ -1165,6 +1171,10 @@
 		4CEADA291716F41700F4F619 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4CE9A3EB171BB21400705AEA /* MasterViewController.h */,
+				4CE9A3EC171BB21400705AEA /* MasterViewController.m */,
+				4CE9A3ED171BB21400705AEA /* DetailViewController.h */,
+				4CE9A3EE171BB21400705AEA /* DetailViewController.m */,
 				4CEADA2A1716F43E00F4F619 /* ArcViewController.h */,
 				4CEADA2B1716F43E00F4F619 /* ArcViewController.m */,
 			);
@@ -1999,6 +2009,8 @@
 				4CEADA1C1716F3EF00F4F619 /* AppDelegate.m in Sources */,
 				4CEADA251716F3EF00F4F619 /* PrettyArc.xcdatamodeld in Sources */,
 				4CEADA2C1716F43E00F4F619 /* ArcViewController.m in Sources */,
+				4CE9A3EF171BB21400705AEA /* MasterViewController.m in Sources */,
+				4CE9A3F0171BB21400705AEA /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2099,13 +2111,7 @@
 		4C43F90C16F86AA900159B29 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/arc\"",
-					"\"${PROJECT_DIR}/../../../Downloads/LiveSDK.framework/Versions/5.0.3380.0913\"/**",
-					"\"${PROJECT_DIR}/../../../Downloads\"/**",
-					"\"${PROJECT_DIR}/arc\"/**",
-				);
+				FRAMEWORK_SEARCH_PATHS = "\"./arc\"/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
 				INFOPLIST_FILE = "arc/arc-Info.plist";
@@ -2123,13 +2129,7 @@
 		4C43F90D16F86AA900159B29 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/arc\"",
-					"\"${PROJECT_DIR}/../../../Downloads/LiveSDK.framework/Versions/5.0.3380.0913\"/**",
-					"\"${PROJECT_DIR}/../../../Downloads\"/**",
-					"\"${PROJECT_DIR}/arc\"/**",
-				);
+				FRAMEWORK_SEARCH_PATHS = "\"./arc\"/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
 				INFOPLIST_FILE = "arc/arc-Info.plist";
