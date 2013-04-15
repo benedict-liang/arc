@@ -9,29 +9,59 @@
 #import "CloudPickerViewController.h"
 
 @interface CloudPickerViewController ()
+// TableView-related properties.
+@property NSArray *segregatedContents;
 
+// Download-related properties.
+@property (strong, nonatomic) id<CloudFolder> folder;
+@property (weak, nonatomic) id<CloudServiceManager>serviceManager;
+@property (weak, nonatomic) LocalFolder *target;
 @end
 
 @implementation CloudPickerViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithCloudFolder:(id<CloudFolder>)folder targetFolder:(LocalFolder *)target serviceManager:(id<CloudServiceManager>)serviceManager
 {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+    if (self = [super init]) {
+        _folder = folder;
+        _target = target;
+        _serviceManager = serviceManager;
+        [folder setDelegate:self];
+        [folder updateContents];
+        [self separateFilesAndFolders];
     }
     return self;
+}
+
+- (void)separateFilesAndFolders
+{
+    NSMutableArray *folders = [NSMutableArray array];
+    NSMutableArray *files = [NSMutableArray array];
+    NSArray *fileObjects = (NSArray*)[_folder contents];
+    
+    for (id<FileSystemObject> fileSystemObject in fileObjects) {
+        if ([[fileSystemObject class] conformsToProtocol:@protocol(File)]) {
+            [files addObject:fileSystemObject];
+        } else if ([[fileSystemObject class] conformsToProtocol:@protocol(Folder) ]) {
+            [folders addObject:fileSystemObject];
+        }
+    }
+    _segregatedContents = [NSArray arrayWithObjects:folders, files, nil];
+}
+
+- (void)folderContentsUpdated:(id<Folder>)sender
+{
+    [self separateFilesAndFolders];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.title = [_folder name];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,26 +72,58 @@
 
 #pragma mark - Table view data source
 
+// Returns the number of sections in the table.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return [_segregatedContents count];
 }
 
+// Returns the number of rows in the given section.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [[_segregatedContents objectAtIndex:section] count];
 }
 
+// Returns the header for the given section.
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    // Hide section title if section has zero rows
+    if ([self tableView:tableView numberOfRowsInSection:section] == 0) {
+        return nil;
+    }
+    return section == 0 ? @"Folders" : @"Files";
+}
+
+// Set up the cell at the given index path.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *cellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                      reuseIdentifier:cellIdentifier];
+    }
+    
+    NSString *detailDescription;
+    UIImage *cellImage;
+    
+    NSArray *section = [_segregatedContents objectAtIndex:indexPath.section];
+    id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
+    
+    if ([[fileObject class] conformsToProtocol:@protocol(File)]) {
+        cellImage = [Utils scale:[UIImage imageNamed:@"file.png"]
+                          toSize:CGSizeMake(40, 40)];
+        detailDescription = [(id<CloudFile>)fileObject fileSize];
+    } else if ([[fileObject class] conformsToProtocol:@protocol(Folder)]) {
+        cellImage = [Utils scale:[UIImage imageNamed:@"folder.png"]
+                          toSize:CGSizeMake(40, 40)];
+    }
+    
+    cell.textLabel.text = fileObject.name;
+    cell.imageView.image = cellImage;
+    cell.detailTextLabel.text = detailDescription;
+
     
     return cell;
 }

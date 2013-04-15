@@ -9,7 +9,7 @@
 
 @interface SkyDriveFolder ()
 
-@property (strong, nonatomic) NSMutableArray *contents;
+@property (strong, atomic) NSArray *contents;
 
 @end
 
@@ -19,11 +19,6 @@
 + (id<CloudFolder>)getRoot
 {
     return [[SkyDriveFolder alloc] initWithName:@"SkyDrive" path:@"me/skydrive" parent:nil];
-}
-
-- (id <NSObject>)contents
-{
-    return _contents;
 }
 
 - (id <FileSystemObject>)objectAtPath:(NSString *)path
@@ -70,7 +65,6 @@
         _isRemovable = NO;
 
         _contents = [NSMutableArray array];
-        [self updateContents];
     }
     return self;
 }
@@ -113,11 +107,13 @@
             NSString *path = [result valueForKey:@"id"];
             
             if ([type isEqualToString:@"file"]) {
+                NSString *size = [result valueForKey:@"size"];
                 SkyDriveFile *newFile = [[SkyDriveFile alloc] initWithName:name path:path parent:self];
-                [_contents addObject:newFile];
+                [newFile setFileSize:size];
+                _contents = [_contents arrayByAddingObject:newFile];
             } else if ([type isEqualToString:@"folder"]) {
                 SkyDriveFolder *newFolder = [[SkyDriveFolder alloc] initWithName:name path:path parent:self];
-                [_contents addObject:newFolder];
+                _contents = [_contents arrayByAddingObject:newFolder];
             } else {
                 // Do nothing. This is audio, a photo, or a video.
             }

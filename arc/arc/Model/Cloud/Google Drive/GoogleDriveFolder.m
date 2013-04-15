@@ -71,7 +71,6 @@
         _isRemovable = NO;
         
         _contents = [NSMutableArray array];
-        [self updateContents];
     }
     return self;
 }

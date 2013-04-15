@@ -32,6 +32,11 @@
         // defaults
         _lineNumberWidth = 30;
         _showLineNumber = YES;
+        
+        _lineNumberLabel = [[UILabel alloc] init];
+        [self.contentView addSubview:_lineNumberLabel];
+        _codeLine = [[UILabel alloc] init];
+        [self.contentView addSubview:_codeLine];
     }
     return self;
 }
@@ -48,26 +53,18 @@
 }
 
 - (void)setLine:(NSAttributedString *)line
-{
-    for (UIView *view in self.contentView.subviews) {
-        [view removeFromSuperview];
-    }
-    
-    _lineNumberLabel = [[UILabel alloc] init];
+{    
     _lineNumberLabel.backgroundColor = [UIColor clearColor];
     _lineNumberLabel.text = @"";
     _lineNumberLabel.textColor = _foregroundColor;
     _lineNumberLabel.font = [UIFont fontWithName:_fontFamily
                                             size:_fontSize];
     _lineNumberLabel.textAlignment = NSTextAlignmentRight;
-    [self.contentView addSubview:_lineNumberLabel];
-    
+
     _line = line;
-    _codeLine = [[UILabel alloc] init];
+
     _codeLine.attributedText = _line;
     _codeLine.numberOfLines = 1;
-    
-    [self.contentView addSubview:_codeLine];
 
     self.contentView.backgroundColor = [UIColor clearColor];
     self.backgroundColor = [UIColor clearColor];

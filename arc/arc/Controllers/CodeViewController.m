@@ -94,7 +94,7 @@
                                               style:UITableViewStylePlain];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
     UIViewAutoresizingFlexibleWidth;
-    _tableView.backgroundColor = _backgroundColor;
+    _tableView.backgroundColor = [UIColor clearColor];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.autoresizesSubviews = YES;
     
@@ -208,8 +208,7 @@
     
     _typesetter = CTTypesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_arcAttributedString.plainAttributedString);
     
-    while (start < length)
-    {
+    while (start < length) {
         [lineStarts setObject:[NSNumber numberWithBool:YES]
                        forKey:[NSNumber numberWithInt:start]];
         CFIndex count = CTTypesetterSuggestLineBreak(_typesetter, start, boundsWidth);
@@ -223,8 +222,7 @@
     start = 0;
     int lineNumber = 0;
     BOOL startOfLine;
-    while (start < length)
-    {
+    while (start < length) {
         if ([lineStarts objectForKey:[NSNumber numberWithInt:start]]) {
             lineNumber++;
             startOfLine = YES;
@@ -251,7 +249,7 @@
     if ([_lines count] > 0) {
         CTLineRef line = CTLineCreateWithAttributedString(
                                                           (__bridge CFAttributedStringRef)(
-                                                                                           [_arcAttributedString.attributedString attributedSubstringFromRange:
+                                                                                           [_arcAttributedString.plainAttributedString attributedSubstringFromRange:
                                                                                             [[[_lines objectAtIndex:0] objectForKey:KEY_RANGE] rangeValue]]));
 
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
@@ -266,7 +264,7 @@
 - (void)setBackgroundColor:(UIColor *)backgroundColor
 {
     _backgroundColor = backgroundColor;
-    _tableView.backgroundColor = _backgroundColor;
+    self.view.backgroundColor = _backgroundColor;
 }
 
 - (void)registerPlugin:(id<PluginDelegate>)plugin
@@ -284,7 +282,10 @@
     if ([[file path] isEqual:[_currentFile path]]) {
         _arcAttributedString = arcAttributedString;
         
-        while (!_linesGenerated);
+        if (!_linesGenerated) {
+            [self generateLines];
+        }
+        
         [self renderFile];
     }
 }
@@ -492,6 +493,11 @@
         if ([[lineObject objectForKey:KEY_LINE_START] boolValue]) {
             cell.lineNumber = lineNumber;
         }
+    }
+
+    // Remove Gesture Recognizers
+    for (UIGestureRecognizer *g in [cell gestureRecognizers]) {
+        [cell removeGestureRecognizer:g];
     }
     
     // Long Press Gesture for text selection

@@ -10,7 +10,8 @@
 
 @implementation TMBundleThemeHandler
 
-+ (NSDictionary*)produceStylesWithTheme:(NSString*)name {
++ (NSDictionary*)produceStylesWithTheme:(NSString*)name
+{
     //TODO manage theme selection
     NSURL *testURL = [[NSBundle mainBundle] URLForResource:name withExtension:nil];
     NSDictionary* tmTheme = [NSDictionary dictionaryWithContentsOfURL:testURL];
@@ -25,7 +26,6 @@
     NSMutableDictionary *scopes = [[NSMutableDictionary alloc] init];
     
     [styles setValue:global forKey:@"global"];
-    
     
     for (int i= 1; i < settings.count; i++) {
         NSDictionary* asetting = [settings objectAtIndex:i];
@@ -43,10 +43,12 @@
         }
     }
     [styles setValue:scopes forKey:@"scopes"];
-    //NSLog(@"%@",styles);
+
     return styles;
 }
-+(NSDictionary*)filterEmptyStringVals:(NSDictionary*)dict {
+
++ (NSDictionary*)filterEmptyStringVals:(NSDictionary*)dict
+{
     NSMutableDictionary* res = [[NSMutableDictionary alloc] init];
     for (id k in dict) {
         NSString *v = [dict objectForKey:k];
@@ -58,17 +60,15 @@
 }
 
 //maps "#FDF5E3" to UIColor. only applies to keys specified in colorKeys
-+(NSDictionary*)mapHexStrToUIColor:(NSDictionary*)dict {
-    NSArray *colorKeys = @[@"foreground", @"background",@"selection"];
++ (NSDictionary*)mapHexStrToUIColor:(NSDictionary*)dict
+{
+    NSArray *colorKeys = @[@"foreground", @"background"];
     NSMutableDictionary* res = [[NSMutableDictionary alloc] init];
     for (NSString *k in dict) {
         if ([colorKeys containsObject:k]) {
             NSString *hexStr = [dict objectForKey:k];
-            unsigned rgb;
-            NSScanner *scanner = [NSScanner scannerWithString:hexStr];
-            [scanner setScanLocation:1];
-            [scanner scanHexInt:&rgb];
-            [res setValue:UIColorFromRGB(rgb) forKey:k];
+            [res setValue:[Utils colorWithHexString:hexStr]
+                   forKey:k];
         } else {
             [res setValue:[dict objectForKey:k] forKey:k];
         }

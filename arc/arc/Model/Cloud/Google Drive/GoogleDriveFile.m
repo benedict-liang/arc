@@ -9,7 +9,7 @@
 #import "GoogleDriveFile.h"
 
 @implementation GoogleDriveFile
-@synthesize name=_name, path=_path, parent=_parent, isRemovable=_isRemovable, extension=_extension;
+@synthesize name=_name, path=_path, parent=_parent, isRemovable=_isRemovable, extension=_extension, fileSize=_fileSize;
 
 // Initialises this object with the given name, path, and parent.
 - (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent

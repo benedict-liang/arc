@@ -98,7 +98,7 @@
         UIViewAutoresizingFlexibleWidth;
 
     // TableView Row Height
-    _tableView.rowHeight = 60;
+    _tableView.rowHeight = 55;
     
     // Set TableView's Delegate and DataSource
     _tableView.dataSource = self;
@@ -193,12 +193,11 @@ titleForHeaderInSection:(NSInteger)section {
     UIImage *cellImage;
     if ([[fileObject class] conformsToProtocol:@protocol(File)]) {
         cellImage = [Utils scale:[UIImage imageNamed:@"file.png"]
-                                     toSize:CGSizeMake(40, 40)];
-        detailDescription = [NSString stringWithFormat:
-                             @"%@", [Utils humanReadableFileSize:fileObject.size]];
+                                     toSize:CGSizeMake(35, 35)];
+        detailDescription = [Utils humanReadableFileSize:fileObject.size];
     } else if ([[fileObject class] conformsToProtocol:@protocol(Folder)]) {
         cellImage = [Utils scale:[UIImage imageNamed:@"folder.png"]
-                                     toSize:CGSizeMake(40, 40)];
+                                     toSize:CGSizeMake(35, 35)];
         
         if (fileObject.size == 0) {
             detailDescription = @"Empty Folder";
@@ -208,12 +207,55 @@ titleForHeaderInSection:(NSInteger)section {
             detailDescription = [NSString stringWithFormat:@"%d items", fileObject.size];
         }
     }
+    
+    if ([[fileObject path] isEqualToString:[[[self delegate] currentfile] path]]) {
+        [tableView selectRowAtIndexPath:indexPath
+                               animated:YES
+                         scrollPosition:UITableViewScrollPositionMiddle];
+    }
 
     cell.textLabel.text = fileObject.name;
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:17];
+    
     cell.imageView.image = cellImage;
+    
     cell.detailTextLabel.text = detailDescription;
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
 
+    // selection
+    UIView *bg = [[UIView alloc] init];
+    bg.backgroundColor = [Utils colorWithHexString:@"ee151512"];
+    cell.selectedBackgroundView = bg;
+    
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    // Hide section title if section has zero rows
+    if ([self tableView:tableView numberOfRowsInSection:section] == 0) {
+        return 0;
+    }
+    return 22;
+}
+
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(10.0, 0.0, 320.0, 22.0)];
+    customView.backgroundColor = [Utils colorWithHexString:@"CC272821"];
+    
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.opaque = NO;
+    headerLabel.textColor = [UIColor whiteColor];
+    headerLabel.font = [UIFont fontWithName:@"Helvetica Neue Bold" size:18];
+    headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    headerLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    headerLabel.frame = CGRectMake(11,-11, 320.0, 44.0);
+    headerLabel.textAlignment = NSTextAlignmentLeft;
+    headerLabel.text = section == 0 ? @"Folders" : @"Files";
+    [customView addSubview:headerLabel];
+    return customView;
 }
 
 // Determines if the cell at the given index path can be edited.
@@ -243,8 +285,6 @@ titleForHeaderInSection:(NSInteger)section {
     } else {
         // Normal mode
         [self.delegate fileObjectSelected:fileObject];
-        [tableView deselectRowAtIndexPath:indexPath
-                                 animated:YES];
     }
 }
 
@@ -396,8 +436,17 @@ titleForHeaderInSection:(NSInteger)section {
         case 0:
             [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
             break;
-        case 1:
-            NSLog(@"SkyDrive");
+        case 1: {
+            SkyDriveServiceManager *serviceManager = [SkyDriveServiceManager sharedServiceManager];
+            
+            if (![serviceManager isLoggedIn]) {
+                [serviceManager loginWithViewController:self];
+            }
+            if ([serviceManager isLoggedIn]) {
+                CloudPickerViewController *pickerController = [[CloudPickerViewController alloc] initWithCloudFolder:[SkyDriveFolder getRoot] targetFolder:_folder serviceManager:[SkyDriveServiceManager sharedServiceManager]];
+                [self presentViewController:pickerController animated:YES completion:nil];
+            }
+        }
             break;
         case 2:
             NSLog(@"Google Drive");
