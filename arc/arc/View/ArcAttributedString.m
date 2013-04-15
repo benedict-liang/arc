@@ -84,6 +84,7 @@
 {    
     for (NSString* property in __attributesDictionary) {
         for (NSDictionary* attribute in [__attributesDictionary objectForKey:property]) {
+            NSLog(@"%@",attribute);
             [__attributedString addAttribute:[attribute objectForKey:@"type"]
                                        value:[attribute objectForKey:@"value"]
                                        range:NSRangeFromString([attribute objectForKey:@"range"])];
@@ -260,9 +261,13 @@
             NSRange attribRange = NSRangeFromString([attribute objectForKey:@"range"]);
             NSArray* transformedRanges = [self rangesFromTransformWithAttribRange:attribRange removedRange:rmRange];
             for (NSString* rs in transformedRanges) {
-                NSMutableDictionary* newAttrib = [NSMutableDictionary dictionaryWithDictionary:attribute];
-                [newAttrib setObject:rs forKey:@"range"];
-                [attributes addObject:newAttrib];
+                NSRange iterRange = NSRangeFromString(rs);
+                if (iterRange.location < _string.length) {
+                    NSMutableDictionary* newAttrib = [NSMutableDictionary dictionaryWithDictionary:attribute];
+                    [newAttrib setObject:rs forKey:@"range"];
+                    [attributes addObject:newAttrib];
+                }
+                
             }
         }
         [newAttribDict setObject:attributes forKey:property];
@@ -278,14 +283,14 @@
     
     // create arcString from str
     ArcAttributedString* rmArcString = [[ArcAttributedString alloc] initWithString:str];
-    NSMutableDictionary* rmArcStringAttribDictionary = [NSMutableDictionary dictionary];
+//    NSMutableDictionary* rmArcStringAttribDictionary = [NSMutableDictionary dictionary];
+//    
+//    // iterate through attributes and transform attributes for the new ranges
+//    [self produceAttributes:rmArcStringAttribDictionary From:__attributesDictionary WithRemovedRange:range];
+//    
+//    [self produceAttributes:rmArcStringAttribDictionary From:__appliedAttributesDictionary WithRemovedRange:range];
     
-    // iterate through attributes and transform attributes for the new ranges
-    [self produceAttributes:rmArcStringAttribDictionary From:__attributesDictionary WithRemovedRange:range];
-    
-    [self produceAttributes:rmArcStringAttribDictionary From:__appliedAttributesDictionary WithRemovedRange:range];
-    
-    rmArcString._attributesDictionary = rmArcStringAttribDictionary;
+    //rmArcString._attributesDictionary = rmArcStringAttribDictionary;
     return rmArcString;
 }
 @end

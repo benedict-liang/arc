@@ -288,7 +288,7 @@
         NSRange test = [(FoldTree*)[_foldTree.children objectAtIndex:0] contentRange];
         NSString* cutContent = [[arcAttributedString arcStringWithRemovedRange:test] string];
         NSLog(@"%@",cutContent);
-        _arcAttributedString = [arcAttributedString arcStringWithRemovedRange:test];
+        //_arcAttributedString = [arcAttributedString arcStringWithRemovedRange:test];
         while (!_linesGenerated);
         [self renderFile];
     }
