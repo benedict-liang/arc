@@ -55,6 +55,7 @@
 		4C43F90816F86AA900159B29 /* arc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C43F90616F86AA900159B29 /* arc.xcdatamodeld */; };
 		4C5E51EA171BEB480041BB2B /* ArcAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E51E9171BEB480041BB2B /* ArcAttribute.m */; };
 		4C5E51EF171BFB1E0041BB2B /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E51EE171BFB1E0041BB2B /* Theme.m */; };
+		4C5E51F5171C028C0041BB2B /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C5E51F4171C028C0041BB2B /* file.png */; };
 		4C8307EB17114CEF00F49C33 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8307EA17114CEF00F49C33 /* SettingCell.m */; };
 		4C9137281715B9D900413C79 /* Solarized (dark).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = 4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */; };
 		4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C963C81170D8E96004FDACB /* CodeLineCell.m */; };
@@ -88,7 +89,6 @@
 		4CEADA251716F3EF00F4F619 /* PrettyArc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CEADA231716F3EF00F4F619 /* PrettyArc.xcdatamodeld */; };
 		4CEADA2C1716F43E00F4F619 /* ArcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEADA2B1716F43E00F4F619 /* ArcViewController.m */; };
 		4CEADA311716F69A00F4F619 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC478170589C600A9AA5F /* QuartzCore.framework */; };
-		4CF6F0EE1706E08800EDDEDC /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0ED1706E08800EDDEDC /* file.png */; };
 		4CF6F0F21706E29300EDDEDC /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F11706E29300EDDEDC /* folder.png */; };
 		4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */; };
 		840B640FE8BA225B6750F377 /* SkyDriveFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B6B4068D4462DD00C7BE0 /* SkyDriveFolder.m */; };
@@ -461,6 +461,7 @@
 		4C5E51E9171BEB480041BB2B /* ArcAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcAttribute.m; sourceTree = "<group>"; };
 		4C5E51ED171BFB1D0041BB2B /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
 		4C5E51EE171BFB1E0041BB2B /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
+		4C5E51F4171C028C0041BB2B /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
 		4C8307E917114CEF00F49C33 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		4C8307EA17114CEF00F49C33 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Solarized (dark).tmTheme"; sourceTree = "<group>"; };
@@ -511,7 +512,6 @@
 		4CEADA241716F3EF00F4F619 /* PrettyArc.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PrettyArc.xcdatamodel; sourceTree = "<group>"; };
 		4CEADA2A1716F43E00F4F619 /* ArcViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArcViewController.h; path = Controllers/ArcViewController.h; sourceTree = "<group>"; };
 		4CEADA2B1716F43E00F4F619 /* ArcViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArcViewController.m; path = Controllers/ArcViewController.m; sourceTree = "<group>"; };
-		4CF6F0ED1706E08800EDDEDC /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
 		4CF6F0F11706E29300EDDEDC /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
 		4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
@@ -1214,7 +1214,7 @@
 				4C1AF1171714FF8400A2D0D8 /* settings.png */,
 				02CF20711712ACB8001A59E4 /* Reading Panel.png */,
 				4CF6F0F11706E29300EDDEDC /* folder.png */,
-				4CF6F0ED1706E08800EDDEDC /* file.png */,
+				4C5E51F4171C028C0041BB2B /* file.png */,
 				4CEADA031716AB0E00F4F619 /* threelines.png */,
 				840B6ABA3F91CF078F55C3DE /* Cloud-Download.png */,
 			);
@@ -1682,7 +1682,6 @@
 				4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */,
 				FCB0548017034DE6007832D7 /* README.md in Resources */,
 				8F151051170443AC00115E5E /* home.html in Resources */,
-				4CF6F0EE1706E08800EDDEDC /* file.png in Resources */,
 				4CF6F0F21706E29300EDDEDC /* folder.png in Resources */,
 				02E162CD170B02F400C9D23B /* appState.plist in Resources */,
 				02A5198D170DC0CE007C038E /* Inconsolata.ttf in Resources */,
@@ -1921,6 +1920,7 @@
 				4CEADA041716AB0E00F4F619 /* threelines.png in Resources */,
 				020C1285171A962F00603229 /* GTMOAuth2ViewTouch.xib in Resources */,
 				840B686FE41BCE38805A85BE /* Cloud-Download.png in Resources */,
+				4C5E51F5171C028C0041BB2B /* file.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

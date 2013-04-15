@@ -98,7 +98,7 @@
         UIViewAutoresizingFlexibleWidth;
 
     // TableView Row Height
-    _tableView.rowHeight = 60;
+    _tableView.rowHeight = 50;
     
     // Set TableView's Delegate and DataSource
     _tableView.dataSource = self;
@@ -193,12 +193,11 @@ titleForHeaderInSection:(NSInteger)section {
     UIImage *cellImage;
     if ([[fileObject class] conformsToProtocol:@protocol(File)]) {
         cellImage = [Utils scale:[UIImage imageNamed:@"file.png"]
-                                     toSize:CGSizeMake(40, 40)];
-        detailDescription = [NSString stringWithFormat:
-                             @"%@", [Utils humanReadableFileSize:fileObject.size]];
+                                     toSize:CGSizeMake(35, 35)];
+        detailDescription = [Utils humanReadableFileSize:fileObject.size];
     } else if ([[fileObject class] conformsToProtocol:@protocol(Folder)]) {
         cellImage = [Utils scale:[UIImage imageNamed:@"folder.png"]
-                                     toSize:CGSizeMake(40, 40)];
+                                     toSize:CGSizeMake(35, 35)];
         
         if (fileObject.size == 0) {
             detailDescription = @"Empty Folder";
@@ -213,7 +212,7 @@ titleForHeaderInSection:(NSInteger)section {
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:17];
     
     cell.imageView.image = cellImage;
-
+    
     cell.detailTextLabel.text = detailDescription;
     cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
 
