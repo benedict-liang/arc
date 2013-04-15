@@ -81,7 +81,8 @@
 }
 
 - (NSAttributedString*)attributedString
-{    
+{
+    NSMutableArray* removedProperties = [NSMutableArray array];
     for (NSString* property in __attributesDictionary) {
         for (NSDictionary* attribute in [__attributesDictionary objectForKey:property]) {
             NSLog(@"%@",attribute);
@@ -93,6 +94,10 @@
         // Move attributes to appliedAttributes dictionary
         [[self settingsAppliedAttributeForSettingsKey:property]
             addObjectsFromArray:[self settingsAttributeForSettingsKey:property]];
+        [removedProperties addObject:property];
+      
+    }
+    for (NSString* property in removedProperties) {
         [__attributesDictionary removeObjectForKey:property];
     }
 
