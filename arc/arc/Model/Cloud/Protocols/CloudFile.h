@@ -7,8 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "File.h"
 
-@protocol CloudFile <NSObject, File>
-@property (strong, nonatomic) NSString *fileSize;
+@protocol CloudFile <NSObject>
+
+// The name of this file.
+@property (strong, nonatomic) NSString *name;
+
+// The identifier of this file within the cloud service.
+@property (strong, nonatomic) NSString *identifier;
+
+// The file extension of this file.
+@property (strong, nonatomic) NSString *extension;
+
+// The size of this file, in bytes.
+@property float fileSize;
+
+- (id)initWithName:(NSString *)name identifier:(NSString *)identifier size:(float)size;
+
 @end
