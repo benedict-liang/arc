@@ -207,8 +207,7 @@
     
     _typesetter = CTTypesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_arcAttributedString.plainAttributedString);
     
-    while (start < length)
-    {
+    while (start < length) {
         [lineStarts setObject:[NSNumber numberWithBool:YES]
                        forKey:[NSNumber numberWithInt:start]];
         CFIndex count = CTTypesetterSuggestLineBreak(_typesetter, start, boundsWidth);
@@ -222,8 +221,7 @@
     start = 0;
     int lineNumber = 0;
     BOOL startOfLine;
-    while (start < length)
-    {
+    while (start < length) {
         if ([lineStarts objectForKey:[NSNumber numberWithInt:start]]) {
             lineNumber++;
             startOfLine = YES;
@@ -283,7 +281,10 @@
     if ([[file path] isEqual:[_currentFile path]]) {
         _arcAttributedString = arcAttributedString;
         
-        while (!_linesGenerated);
+        if (!_linesGenerated) {
+            [self generateLines];
+        }
+        
         [self renderFile];
     }
 }
