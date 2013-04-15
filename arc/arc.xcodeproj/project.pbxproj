@@ -24,6 +24,7 @@
 		026BC479170589C600A9AA5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC478170589C600A9AA5F /* QuartzCore.framework */; };
 		027EE0361716AAEC00302F07 /* LongSettingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 027EE0351716AAEC00302F07 /* LongSettingListViewController.m */; };
 		028B4900170E9D0600C0CEF6 /* UbuntuMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 028B48FF170E9D0600C0CEF6 /* UbuntuMono.ttf */; };
+		02A0078F171BBC6E0099FE61 /* CloudPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A0078E171BBC6E0099FE61 /* CloudPickerViewController.m */; };
 		02A5198D170DC0CE007C038E /* Inconsolata.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02A5198C170DC0CE007C038E /* Inconsolata.ttf */; };
 		02B04FCA1701672700FE51CB /* GameObject.h in Resources */ = {isa = PBXBuildFile; fileRef = 02B04FC91701608C00FE51CB /* GameObject.h */; };
 		02CF20721712ACB8001A59E4 /* Reading Panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 02CF20711712ACB8001A59E4 /* Reading Panel.png */; };
@@ -403,6 +404,9 @@
 		027EE0351716AAEC00302F07 /* LongSettingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LongSettingListViewController.m; sourceTree = "<group>"; };
 		027EE0381717FD7800302F07 /* LongSettingListViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongSettingListViewControllerDelegate.h; sourceTree = "<group>"; };
 		028B48FF170E9D0600C0CEF6 /* UbuntuMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UbuntuMono.ttf; sourceTree = "<group>"; };
+		02A0078D171BBC6E0099FE61 /* CloudPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudPickerViewController.h; sourceTree = "<group>"; };
+		02A0078E171BBC6E0099FE61 /* CloudPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudPickerViewController.m; sourceTree = "<group>"; };
+		02A00794171BBF650099FE61 /* CloudFolder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudFolder.h; sourceTree = "<group>"; };
 		02A5198C170DC0CE007C038E /* Inconsolata.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inconsolata.ttf; sourceTree = "<group>"; };
 		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
 		02C2E4841715594300C912E0 /* CreateFolderViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFolderViewControllerDelegate.h; sourceTree = "<group>"; };
@@ -1221,6 +1225,7 @@
 			isa = PBXGroup;
 			children = (
 				840B6454D395361AD2F521B2 /* CloudServiceManager.h */,
+				02A00794171BBF650099FE61 /* CloudFolder.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1455,6 +1460,8 @@
 				027EE0351716AAEC00302F07 /* LongSettingListViewController.m */,
 				8FC1B4EA1719DBCE002939D8 /* DragPointsViewController.h */,
 				8FC1B4EB1719DBCE002939D8 /* DragPointsViewController.m */,
+				02A0078D171BBC6E0099FE61 /* CloudPickerViewController.h */,
+				02A0078E171BBC6E0099FE61 /* CloudPickerViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1989,6 +1996,7 @@
 				020C128B171AAB2500603229 /* GoogleDriveFolder.m in Sources */,
 				020C128E171ABACD00603229 /* GoogleDriveFile.m in Sources */,
 				020C1291171AC14900603229 /* GoogleDriveDownloadHelper.m in Sources */,
+				02A0078F171BBC6E0099FE61 /* CloudPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

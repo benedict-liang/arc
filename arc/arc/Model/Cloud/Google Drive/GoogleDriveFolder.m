@@ -15,7 +15,7 @@
 @end
 
 @implementation GoogleDriveFolder
-@synthesize name = _name, path = _path, parent = _parent, isRemovable = _isRemovable;
+@synthesize name = _name, path = _path, parent = _parent, isRemovable = _isRemovable, delegate = _delegate;
 
 + (GoogleDriveFolder *)getRoot
 {
