@@ -2115,7 +2115,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "(arc)";
-				USER_HEADER_SEARCH_PATHS = "\"/Users/Jerome/Desktop/arc/arc/arc/Model/Cloud/Google\\ Drive/Source\"/**";
+				USER_HEADER_SEARCH_PATHS = "\"./arc/Model/Cloud/Google\\ Drive/Source\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2139,7 +2139,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "(arc)";
-				USER_HEADER_SEARCH_PATHS = "\"/Users/Jerome/Desktop/arc/arc/arc/Model/Cloud/Google\\ Drive/Source\"/**";
+				USER_HEADER_SEARCH_PATHS = "\"./arc/Model/Cloud/Google\\ Drive/Source\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
