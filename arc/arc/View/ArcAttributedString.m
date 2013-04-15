@@ -84,6 +84,7 @@
 {    
     for (NSString* property in __attributesDictionary) {
         for (NSDictionary* attribute in [__attributesDictionary objectForKey:property]) {
+            NSLog(@"%@",attribute);
             [__attributedString addAttribute:[attribute objectForKey:@"type"]
                                        value:[attribute objectForKey:@"value"]
                                        range:NSRangeFromString([attribute objectForKey:@"range"])];
@@ -251,7 +252,7 @@
 }
 
 - (void)produceAttributes:(NSMutableDictionary*)newAttribDict
-                     From:(NSMutableDictionary*)attribDict
+                     From:(NSDictionary*)attribDict
          WithRemovedRange:(NSRange)rmRange {
     
     for (NSString *property in attribDict) {
@@ -282,14 +283,14 @@
     
     // create arcString from str
     ArcAttributedString* rmArcString = [[ArcAttributedString alloc] initWithString:str];
-//    NSMutableDictionary* rmArcStringAttribDictionary = [NSMutableDictionary dictionary];
-//    
-//    // iterate through attributes and transform attributes for the new ranges
-//    [self produceAttributes:rmArcStringAttribDictionary From:__attributesDictionary WithRemovedRange:range];
-//    
-//    [self produceAttributes:rmArcStringAttribDictionary From:__appliedAttributesDictionary WithRemovedRange:range];
+    NSMutableDictionary* rmArcStringAttribDictionary = [NSMutableDictionary dictionary];
     
-    //rmArcString._attributesDictionary = rmArcStringAttribDictionary;
+    // iterate through attributes and transform attributes for the new ranges
+    [self produceAttributes:rmArcStringAttribDictionary From:[[NSDictionary alloc] initWithDictionary:__attributesDictionary copyItems:YES] WithRemovedRange:range];
+    
+    [self produceAttributes:rmArcStringAttribDictionary From:[[NSDictionary alloc] initWithDictionary:__appliedAttributesDictionary copyItems:YES] WithRemovedRange:range];
+    
+    rmArcString._attributesDictionary = rmArcStringAttribDictionary;
     return rmArcString;
 }
 @end

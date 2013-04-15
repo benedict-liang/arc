@@ -42,6 +42,7 @@
 @property (nonatomic) CTTypesetterRef typesetter;
 
 @property FoldTree* foldTree;
+@property BOOL testFold;
 
 - (void)loadFile;
 - (void)renderFile;
@@ -72,6 +73,7 @@
         // Defaults
         _backgroundColor = [Utils colorWithHexString:@"FDF6E3"];
         _sharedObject = [NSMutableDictionary dictionary];
+        _testFold = YES;
     }
     return self;
 }
@@ -283,14 +285,26 @@
                    AndTree:(FoldTree *)foldTree
 {
     if ([[file path] isEqual:[_currentFile path]]) {
-        _arcAttributedString = arcAttributedString;
+        //_arcAttributedString = arcAttributedString;
         _foldTree = foldTree;
-        NSRange test = [(FoldTree*)[_foldTree.children objectAtIndex:0] contentRange];
-        NSString* cutContent = [[arcAttributedString arcStringWithRemovedRange:test] string];
-        NSLog(@"%@",cutContent);
-        //_arcAttributedString = [arcAttributedString arcStringWithRemovedRange:test];
+
         while (!_linesGenerated);
         [self renderFile];
+        
+        if (_testFold) {
+            NSRange test = [(FoldTree*)[_foldTree.children objectAtIndex:0] contentRange];
+            NSString* cutContent = [[arcAttributedString arcStringWithRemovedRange:test] string];
+            NSLog(@"%@",cutContent);
+            _arcAttributedString = [arcAttributedString arcStringWithRemovedRange:test];
+            //[self refreshForSetting:@"colorScheme"];
+            _linesGenerated = NO;
+           // [self preRenderPluginsForSetting:nil];
+            [self generateLines];
+            [self calcLineHeight];
+            [self renderFile];
+            //[self postRenderPluginsForSetting:nil];
+            _testFold = NO;
+        }
     }
 }
 
