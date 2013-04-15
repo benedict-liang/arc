@@ -652,9 +652,12 @@
     CFIndex index = [self indexOfStringAtGesture:gesture];
     NSRange subtractRange = [_foldTree lowestNodeWithIndex:index];
     NSLog(@"%@",[NSValue value:&subtractRange withObjCType:@encode(NSRange)]);
+    [self swapArcAttributedStringWith:[_arcAttributedString arcStringWithRemovedRange:subtractRange]];
 }
 - (void)swapArcAttributedStringWith:(ArcAttributedString*)newArcString {
-    
+    _buffer = _arcAttributedString;
+    _arcAttributedString = newArcString;
+    [self renderFile];
 }
 - (CFIndex)indexOfStringAtGesture:(UIGestureRecognizer*)gesture {
     CodeLineCell *cell = (CodeLineCell*)[gesture view];
