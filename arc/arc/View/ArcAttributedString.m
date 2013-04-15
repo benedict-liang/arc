@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "Constants.h"
 #import <CoreText/CoreText.h>
 #import "ArcAttributedString.h"
 #import "ApplicationState.h"
@@ -71,9 +70,38 @@
 
 - (void)removeAttributesForSettingKey:(NSString*)settingKey
 {
-    for (NSDictionary *attribute in [__appliedAttributesDictionary objectForKey:settingKey]) {
-        [__attributedString removeAttribute:[attribute objectForKey:@"type"]
-                                      range:NSRangeFromString([attribute objectForKey:@"range"])];
+    NSUInteger *toRemove = 0;
+    NSUInteger *toRemain = 0;
+    for (NSString *sKey in __appliedAttributesDictionary) {
+        if ([sKey isEqualToString:settingKey]) {
+            toRemove += [[self settingsAppliedAttributeForSettingsKey:sKey] count];
+        } else {
+            toRemain += [[self settingsAppliedAttributeForSettingsKey:sKey] count];
+        }
+    }
+    
+    if (toRemove > toRemain) {
+        __attributedString = [__plainAttributedString mutableCopy];
+        for (NSString *sKey in __appliedAttributesDictionary) {
+            if ([sKey isEqualToString:settingKey]) {
+                continue;
+            }
+
+            for (ArcAttribute *attribute in [__attributesDictionary objectForKey:sKey]) {
+                if (!attribute.value) {
+                    continue;
+                }
+                
+                [__attributedString addAttribute:attribute.type
+                                           value:attribute.value
+                                           range:attribute.range];
+            }            
+        }
+    } else {
+        for (ArcAttribute *attribute in [__appliedAttributesDictionary objectForKey:settingKey]) {
+            [__attributedString removeAttribute:attribute.type
+                                          range:attribute.range];
+        }
     }
     
     // remove object from dictionary
@@ -84,11 +112,15 @@
 {
     NSMutableArray* removedProperties = [NSMutableArray array];
     for (NSString* property in __attributesDictionary) {
-        for (NSDictionary* attribute in [__attributesDictionary objectForKey:property]) {
-            NSLog(@"%@",attribute);
-            [__attributedString addAttribute:[attribute objectForKey:@"type"]
-                                       value:[attribute objectForKey:@"value"]
-                                       range:NSRangeFromString([attribute objectForKey:@"range"])];
+
+        for (ArcAttribute *attribute in [__attributesDictionary objectForKey:property]) {
+            if (!attribute.value) {
+                continue;
+            }
+            
+            [__attributedString addAttribute:attribute.type
+                                       value:attribute.value
+                                       range:attribute.range];
         }
         
         // Move attributes to appliedAttributes dictionary
@@ -132,11 +164,9 @@
     NSMutableArray *settingAttributes =
     [self settingsAttributeForSettingsKey:settingKey];
     
-    [settingAttributes addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-                                  color, @"value",
-                                  NSForegroundColorAttributeName, @"type",
-                                  NSStringFromRange(range), @"range",
-                                  nil]];
+    [settingAttributes addObject:[[ArcAttribute alloc] initWithType:NSForegroundColorAttributeName
+                                                          withValue:color
+                                                            onRange:range]];
 }
 
 - (void)setBackgroundColor:(UIColor *)color
@@ -146,11 +176,10 @@
     NSMutableArray *settingAttributes =
     [self settingsAttributeForSettingsKey:settingKey];
     
-    [settingAttributes addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-                                  color, @"value",
-                                  NSBackgroundColorAttributeName, @"type",
-                                  NSStringFromRange(range), @"range",
-                                  nil]];
+    
+    [settingAttributes addObject:[[ArcAttribute alloc] initWithType:NSBackgroundColorAttributeName
+                                                          withValue:color
+                                                            onRange:range]];
 }
 
 # pragma mark - Namespaced Attributes

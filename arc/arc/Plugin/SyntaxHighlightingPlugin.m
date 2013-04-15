@@ -12,9 +12,9 @@
 @property (nonatomic, strong) NSString* colorSchemeSettingKey;
 
 // Dictionary describing fontFamilySetting
-@property NSDictionary *properties;
-@property NSString *defaultTheme;
-@property NSMutableArray *threadPool;
+@property (nonatomic, strong) NSDictionary *properties;
+@property (nonatomic, strong) NSString *defaultTheme;
+@property (nonatomic, strong) NSMutableArray *threadPool;
 @end
 
 @implementation SyntaxHighlightingPlugin
@@ -35,8 +35,8 @@
                         PLUGIN_OPTIONS:[SyntaxHighlightingPlugin generateOptions]
                         };
         _threadPool = [NSMutableArray array];
+        _cache = [[NSCache alloc] init];
 
-        _cache = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -105,7 +105,7 @@
         sh.factory = self;
 
         // add to cache
-        [_cache setObject:sh forKey:[file path]];
+//        [_cache setObject:sh forKey:[file path]];
     }
     
     if (sh.bundle) {

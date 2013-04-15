@@ -69,6 +69,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [_textField becomeFirstResponder];
 }
 

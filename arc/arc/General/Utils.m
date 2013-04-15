@@ -7,6 +7,7 @@
 //
 
 #import "Utils.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation Utils
 + (UIImage *)scale:(UIImage *)image toSize:(CGSize)size
@@ -16,6 +17,13 @@
     UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return scaledImage;
+}
+
++ (UIColor *)colorFromRGB:(int)rgbValue
+{
+    return [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0
+                           green:((float)((rgbValue & 0xFF00) >> 8))/255.0
+                            blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0];
 }
 
 + (UIColor *)colorWithHexString:(NSString *)hexString
@@ -101,6 +109,7 @@
             @"%.1f%@", fileSize, [prefixes objectAtIndex:divisions]];
 }
 
+
 + (NSArray*)sortRanges:(NSArray*)ranges {
     //ASSUMES: ranges are either non intersecting, or subsets
     //Above holds true for foldable code blocks
@@ -172,4 +181,26 @@
 + (BOOL)isContainedByRange:(NSRange)range Index:(CFIndex)index {
     return range.location <= index && index <= (range.location + range.length);
 }
+
++ (UIImage *)imageSized:(CGRect)rect withColor:(UIColor *)color
+{
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
++ (UIImage *)imageWithColor:(UIColor *)color
+{
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    return [[self class] imageSized:rect withColor:color];
+}
+
+
 @end

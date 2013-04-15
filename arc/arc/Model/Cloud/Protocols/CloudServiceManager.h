@@ -5,6 +5,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LocalFolder.h"
+#import "CloudFile.h"
 
 @protocol CloudServiceManager <NSObject>
 
@@ -15,8 +16,10 @@
 // Triggers the cloud service's login procedure.
 - (void)loginWithViewController:(UIViewController *)controller;
 
-// Takes in a File object (representing a file on the cloud service), and a LocalFolder.
+// Takes in a CloudFile object, and a LocalFolder.
 // Downloads the file and stores it in the LocalFolder.
-- (void)downloadFile:(id<File>)file toFolder:(LocalFolder *)folder;
+- (void)downloadFile:(id<CloudFile>)file toFolder:(LocalFolder *)folder;
+
+- (BOOL)isLoggedIn;
 
 @end
