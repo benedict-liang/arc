@@ -40,9 +40,9 @@
     NSArray *fileObjects = (NSArray*)[_folder contents];
     
     for (id<FileSystemObject> fileSystemObject in fileObjects) {
-        if ([[fileSystemObject class] conformsToProtocol:@protocol(File)]) {
+        if ([[fileSystemObject class] conformsToProtocol:@protocol(CloudFile)]) {
             [files addObject:fileSystemObject];
-        } else if ([[fileSystemObject class] conformsToProtocol:@protocol(Folder) ]) {
+        } else if ([[fileSystemObject class] conformsToProtocol:@protocol(CloudFolder) ]) {
             [folders addObject:fileSystemObject];
         }
     }
@@ -111,11 +111,11 @@
     NSArray *section = [_segregatedContents objectAtIndex:indexPath.section];
     id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
     
-    if ([[fileObject class] conformsToProtocol:@protocol(File)]) {
+    if ([[fileObject class] conformsToProtocol:@protocol(CloudFile)]) {
         cellImage = [Utils scale:[UIImage imageNamed:@"file.png"]
                           toSize:CGSizeMake(40, 40)];
-        detailDescription = [(id<CloudFile>)fileObject fileSize];
-    } else if ([[fileObject class] conformsToProtocol:@protocol(Folder)]) {
+        detailDescription = [Utils humanReadableFileSize:[(id<CloudFile>)fileObject fileSize]];
+    } else if ([[fileObject class] conformsToProtocol:@protocol(CloudFolder)]) {
         cellImage = [Utils scale:[UIImage imageNamed:@"folder.png"]
                           toSize:CGSizeMake(40, 40)];
     }
