@@ -21,11 +21,6 @@
     return [[SkyDriveFolder alloc] initWithName:@"SkyDrive" path:@"me/skydrive" parent:nil];
 }
 
-- (id <NSObject>)contents
-{
-    return _contents;
-}
-
 - (id <FileSystemObject>)objectAtPath:(NSString *)path
 {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"SkyDriveFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
@@ -70,7 +65,6 @@
         _isRemovable = NO;
 
         _contents = [NSMutableArray array];
-        [self updateContents];
     }
     return self;
 }
