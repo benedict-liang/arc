@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		020C104E171A666500603229 /* SkyDriveFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C104D171A666500603229 /* SkyDriveFile.m */; };
 		020C1051171A6DB000603229 /* SkyDriveDownloadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C1050171A6DB000603229 /* SkyDriveDownloadHelper.m */; };
+		020C10E5171A93E100603229 /* libGTLTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 020C10E0171A935300603229 /* libGTLTouchStaticLib.a */; };
+		020C1283171A95C800603229 /* GTLDrive_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C1281171A95C800603229 /* GTLDrive_Sources.m */; };
+		020C1285171A962F00603229 /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 020C1284171A962F00603229 /* GTMOAuth2ViewTouch.xib */; };
+		020C1288171A9A5B00603229 /* GoogleDriveServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C1287171A9A5B00603229 /* GoogleDriveServiceManager.m */; };
+		020C128B171AAB2500603229 /* GoogleDriveFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C128A171AAB2400603229 /* GoogleDriveFolder.m */; };
+		020C128E171ABACD00603229 /* GoogleDriveFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C128D171ABACC00603229 /* GoogleDriveFile.m */; };
+		020C1291171AC14900603229 /* GoogleDriveDownloadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C1290171AC14600603229 /* GoogleDriveDownloadHelper.m */; };
 		026AC54716FF104D001E03E5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7F16FDF61C00C9DED3 /* Constants.m */; };
 		026BC4711705895500A9AA5F /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC4701705895500A9AA5F /* Dropbox.framework */; };
 		026BC473170589A700A9AA5F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC472170589A700A9AA5F /* CFNetwork.framework */; };
@@ -326,6 +333,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		020C10DD171A935300603229 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 020C10D6171A935200603229 /* GTL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F38F6A60B66E91D00B24B81;
+			remoteInfo = GTLFramework;
+		};
+		020C10DF171A935300603229 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 020C10D6171A935200603229 /* GTL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F12027C11A4CA2F00BEB470;
+			remoteInfo = GTLTouchStaticLib;
+		};
+		020C10E1171A935300603229 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 020C10D6171A935200603229 /* GTL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F12027D11A4CA2F00BEB470;
+			remoteInfo = GTLUnitTests;
+		};
+		020C10E3171A935300603229 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 020C10D6171A935200603229 /* GTL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F1AD9020B71603F00DC0485;
+			remoteInfo = DevelopmentTestTool;
+		};
 		0234361C16FDFA0700B0D7AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4C43F8E116F86AA800159B29 /* Project object */;
@@ -341,6 +376,18 @@
 		020C104F171A6DB000603229 /* SkyDriveDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveDownloadHelper.h; sourceTree = "<group>"; };
 		020C1050171A6DB000603229 /* SkyDriveDownloadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveDownloadHelper.m; sourceTree = "<group>"; };
 		020C1053171A77E200603229 /* CloudFolderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudFolderDelegate.h; sourceTree = "<group>"; };
+		020C10D6171A935200603229 /* GTL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTL.xcodeproj; path = "arc/Model/Cloud/Google Drive/Source/GTL.xcodeproj"; sourceTree = "<group>"; };
+		020C1281171A95C800603229 /* GTLDrive_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLDrive_Sources.m; path = Source/Services/Drive/Generated/GTLDrive_Sources.m; sourceTree = "<group>"; };
+		020C1282171A95C800603229 /* GTLDrive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLDrive.h; path = Source/Services/Drive/Generated/GTLDrive.h; sourceTree = "<group>"; };
+		020C1284171A962F00603229 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = "Model/Cloud/Google Drive/Source/OAuth2/Touch/GTMOAuth2ViewTouch.xib"; sourceTree = "<group>"; };
+		020C1286171A9A5A00603229 /* GoogleDriveServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleDriveServiceManager.h; sourceTree = "<group>"; };
+		020C1287171A9A5B00603229 /* GoogleDriveServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveServiceManager.m; sourceTree = "<group>"; };
+		020C1289171AAB2300603229 /* GoogleDriveFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleDriveFolder.h; sourceTree = "<group>"; };
+		020C128A171AAB2400603229 /* GoogleDriveFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveFolder.m; sourceTree = "<group>"; };
+		020C128C171ABACA00603229 /* GoogleDriveFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleDriveFile.h; sourceTree = "<group>"; };
+		020C128D171ABACC00603229 /* GoogleDriveFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveFile.m; sourceTree = "<group>"; };
+		020C128F171AC14500603229 /* GoogleDriveDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleDriveDownloadHelper.h; sourceTree = "<group>"; };
+		020C1290171AC14600603229 /* GoogleDriveDownloadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveDownloadHelper.m; sourceTree = "<group>"; };
 		025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		0260B50A1709286E0091B012 /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Folder.h; path = Protocols/Folder.h; sourceTree = "<group>"; };
 		0260B50B170928820091B012 /* FileSystemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystemObject.h; path = Protocols/FileSystemObject.h; sourceTree = "<group>"; };
@@ -726,6 +773,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				020C10E5171A93E100603229 /* libGTLTouchStaticLib.a in Frameworks */,
 				4CD06B8616FE0FE600C9DED3 /* CoreText.framework in Frameworks */,
 				4C43F8ED16F86AA900159B29 /* UIKit.framework in Frameworks */,
 				4C43F8EF16F86AA900159B29 /* Foundation.framework in Frameworks */,
@@ -771,6 +819,42 @@
 				020C1053171A77E200603229 /* CloudFolderDelegate.h */,
 			);
 			name = Delegates;
+			sourceTree = "<group>";
+		};
+		020C10D7171A935200603229 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				020C10DE171A935300603229 /* GTL.framework */,
+				020C10E0171A935300603229 /* libGTLTouchStaticLib.a */,
+				020C10E2171A935300603229 /* GTLUnitTests.octest */,
+				020C10E4171A935300603229 /* DevelopmentTestTool */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		020C10E7171A953000603229 /* Google Drive */ = {
+			isa = PBXGroup;
+			children = (
+				020C127D171A959F00603229 /* Library */,
+				020C1286171A9A5A00603229 /* GoogleDriveServiceManager.h */,
+				020C1287171A9A5B00603229 /* GoogleDriveServiceManager.m */,
+				020C1289171AAB2300603229 /* GoogleDriveFolder.h */,
+				020C128A171AAB2400603229 /* GoogleDriveFolder.m */,
+				020C128C171ABACA00603229 /* GoogleDriveFile.h */,
+				020C128D171ABACC00603229 /* GoogleDriveFile.m */,
+				020C128F171AC14500603229 /* GoogleDriveDownloadHelper.h */,
+				020C1290171AC14600603229 /* GoogleDriveDownloadHelper.m */,
+			);
+			path = "Google Drive";
+			sourceTree = "<group>";
+		};
+		020C127D171A959F00603229 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				020C1282171A95C800603229 /* GTLDrive.h */,
+				020C1281171A95C800603229 /* GTLDrive_Sources.m */,
+			);
+			name = Library;
 			sourceTree = "<group>";
 		};
 		0260B508170921C10091B012 /* Protocols */ = {
@@ -823,6 +907,7 @@
 		4C43F8E016F86AA800159B29 = {
 			isa = PBXGroup;
 			children = (
+				020C10D6171A935200603229 /* GTL.xcodeproj */,
 				4C43F8F416F86AA900159B29 /* arc */,
 				4CD06B6F16FDEEC100C9DED3 /* arcTests */,
 				4CEADA111716F3EF00F4F619 /* PrettyArc */,
@@ -882,6 +967,7 @@
 		4C43F8F516F86AA900159B29 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				020C1284171A962F00603229 /* GTMOAuth2ViewTouch.xib */,
 				FC72606C171113420068DD91 /* filter_routes.clj */,
 				FC72606A171106C60068DD91 /* RequestBuilder.hs */,
 				FC726064171102660068DD91 /* base.rb */,
@@ -1110,6 +1196,7 @@
 		840B636342E49333F3D17563 /* Cloud */ = {
 			isa = PBXGroup;
 			children = (
+				020C10E7171A953000603229 /* Google Drive */,
 				020C1052171A77C700603229 /* Delegates */,
 				840B65C878A6C7146123E560 /* Protocols */,
 				840B6BB5A0E39DE20D887CA8 /* SkyDrive */,
@@ -1500,6 +1587,12 @@
 			mainGroup = 4C43F8E016F86AA800159B29;
 			productRefGroup = 4C43F8EA16F86AA900159B29 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 020C10D7171A935200603229 /* Products */;
+					ProjectRef = 020C10D6171A935200603229 /* GTL.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4C43F8E816F86AA900159B29 /* arc */,
@@ -1508,6 +1601,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		020C10DE171A935300603229 /* GTL.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GTL.framework;
+			remoteRef = 020C10DD171A935300603229 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		020C10E0171A935300603229 /* libGTLTouchStaticLib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGTLTouchStaticLib.a;
+			remoteRef = 020C10DF171A935300603229 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		020C10E2171A935300603229 /* GTLUnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GTLUnitTests.octest;
+			remoteRef = 020C10E1171A935300603229 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		020C10E4171A935300603229 /* DevelopmentTestTool */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = DevelopmentTestTool;
+			remoteRef = 020C10E3171A935300603229 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4C43F8E716F86AA900159B29 /* Resources */ = {
@@ -1759,6 +1883,7 @@
 				4C9137281715B9D900413C79 /* Solarized (dark).tmTheme in Resources */,
 				FC3C2E9C1715C1F400C40490 /* ThemeConf.plist in Resources */,
 				4CEADA041716AB0E00F4F619 /* threelines.png in Resources */,
+				020C1285171A962F00603229 /* GTMOAuth2ViewTouch.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1845,6 +1970,11 @@
 				020C1051171A6DB000603229 /* SkyDriveDownloadHelper.m in Sources */,
 				8FC1B4E91719D8E0002939D8 /* DragPointImageView.m in Sources */,
 				8FC1B4EC1719DBCE002939D8 /* DragPointsViewController.m in Sources */,
+				020C1283171A95C800603229 /* GTLDrive_Sources.m in Sources */,
+				020C1288171A9A5B00603229 /* GoogleDriveServiceManager.m in Sources */,
+				020C128B171AAB2500603229 /* GoogleDriveFolder.m in Sources */,
+				020C128E171ABACD00603229 /* GoogleDriveFile.m in Sources */,
+				020C1291171AC14900603229 /* GoogleDriveDownloadHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1976,7 +2106,12 @@
 				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
 				INFOPLIST_FILE = "arc/arc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "(arc)";
+				USER_HEADER_SEARCH_PATHS = "\"/Users/Jerome/Desktop/arc/arc/arc/Model/Cloud/Google\\ Drive/Source\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1995,7 +2130,12 @@
 				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
 				INFOPLIST_FILE = "arc/arc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "(arc)";
+				USER_HEADER_SEARCH_PATHS = "\"/Users/Jerome/Desktop/arc/arc/arc/Model/Cloud/Google\\ Drive/Source\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

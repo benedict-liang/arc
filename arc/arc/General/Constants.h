@@ -42,11 +42,14 @@ extern NSString* const FOLDER_DROPBOX_ROOT;
 extern NSString* const CLOUD_DROPBOX_KEY;
 extern NSString* const CLOUD_DROPBOX_SECRET;
 extern NSString* const CLOUD_SKYDRIVE_KEY;
-extern NSString* const CLOUD_SKYDRIVE_SECRET;
+extern NSString* const CLOUD_GOOGLE_ID;
+extern NSString* const CLOUD_GOOGLE_SECRET;
 
 // SkyDrive scopes
 extern NSString* const SKYDRIVE_SCOPE_SIGNIN;
 extern NSString* const SKYDRIVE_SCOPE_READ_ACCESS;
+// Google Drive Variables
+extern NSString* const GOOGLE_KEYCHAIN_NAME;
 
 // Syntaxes File List
 extern NSString* const SYNTAXES_FILE_LIST;
