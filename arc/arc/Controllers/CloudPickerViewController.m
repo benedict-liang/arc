@@ -10,6 +10,7 @@
 
 @interface CloudPickerViewController ()
 // TableView-related properties.
+@property UITableView *tableView;
 @property NSArray *segregatedContents;
 
 // Download-related properties.
@@ -58,8 +59,20 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.navigationItem.title = [_folder name];
+    [self setModalPresentationStyle:UIModalPresentationFormSheet];
+    
+    [[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
+    [[self navigationItem] setTitle:[_folder name]];
+    
+    // Subview properties.
+    [[self view] setAutoresizesSubviews:YES];
+    
+    // Create the Table View.
+    _tableView = [[UITableView alloc] initWithFrame:[[self view] bounds] style:UITableViewStylePlain];
+    [_tableView setDelegate:self];
+    [_tableView setDataSource:self];
+    [_tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
+    [[self view] addSubview:_tableView];
 }
 
 - (void)didReceiveMemoryWarning
