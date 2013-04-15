@@ -7,6 +7,7 @@
 //
 
 #import "Utils.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation Utils
 + (UIImage *)scale:(UIImage *)image toSize:(CGSize)size
@@ -99,6 +100,26 @@
     
         return [NSString stringWithFormat:
             @"%.1f%@", fileSize, [prefixes objectAtIndex:divisions]];
+}
+
++ (UIImage *)imageSized:(CGRect)rect withColor:(UIColor *)color
+{
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
++ (UIImage *)imageWithColor:(UIColor *)color
+{
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    return [[self class] imageSized:rect withColor:color];
 }
 
 @end
