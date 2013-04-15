@@ -7,6 +7,7 @@
 //
 
 #import "SyntaxHighlight.h"
+#define SYNTAX_KEY @"sh"
 
 @interface SyntaxHighlight ()
 @property BOOL isAlive;
@@ -113,7 +114,7 @@
 {
     [output setForegroundColor:fcolor
                        OnRange:range
-                    ForSetting:@"sh"];
+                    ForSetting:SYNTAX_KEY];
 }
 
 - (NSArray*)capturableScopes:(NSString*)name
@@ -502,7 +503,7 @@
 - (void)applyStylesTo:(ArcAttributedString*)output
             withTheme:(NSDictionary*)theme
 {
-    [output removeAttributesForSettingKey:@"sh"];
+    [output removeAttributesForSettingKey:SYNTAX_KEY];
     [self applyForeground:output withTheme:theme];
     [self applyStylesTo:output withRanges:pairMatches withTheme:theme];
     [self applyStylesTo:output withRanges:nameMatches withTheme:theme];
