@@ -41,8 +41,9 @@
 @property (nonatomic) int cursor;
 @property (nonatomic) CTTypesetterRef typesetter;
 
+// Folding
 @property FoldTree* foldTree;
-@property BOOL testFold;
+@property ArcAttributedString* buffer;
 
 - (void)loadFile;
 - (void)renderFile;
@@ -73,7 +74,6 @@
         // Defaults
         _backgroundColor = [Utils colorWithHexString:@"FDF6E3"];
         _sharedObject = [NSMutableDictionary dictionary];
-        _testFold = YES;
     }
     return self;
 }
@@ -647,11 +647,14 @@
     }
 }
 
-#pragma mark - Folding UI Gesture 
+#pragma mark - Folding
 - (void)foldForGesture:(UIGestureRecognizer*)gesture {
     CFIndex index = [self indexOfStringAtGesture:gesture];
     NSRange subtractRange = [_foldTree lowestNodeWithIndex:index];
     NSLog(@"%@",[NSValue value:&subtractRange withObjCType:@encode(NSRange)]);
+}
+- (void)swapArcAttributedStringWith:(ArcAttributedString*)newArcString {
+    
 }
 - (CFIndex)indexOfStringAtGesture:(UIGestureRecognizer*)gesture {
     CodeLineCell *cell = (CodeLineCell*)[gesture view];
