@@ -2099,13 +2099,7 @@
 		4C43F90C16F86AA900159B29 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/arc\"",
-					"\"${PROJECT_DIR}/../../../Downloads/LiveSDK.framework/Versions/5.0.3380.0913\"/**",
-					"\"${PROJECT_DIR}/../../../Downloads\"/**",
-					"\"${PROJECT_DIR}/arc\"/**",
-				);
+				FRAMEWORK_SEARCH_PATHS = "\"./arc\"/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
 				INFOPLIST_FILE = "arc/arc-Info.plist";
@@ -2123,13 +2117,7 @@
 		4C43F90D16F86AA900159B29 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/arc\"",
-					"\"${PROJECT_DIR}/../../../Downloads/LiveSDK.framework/Versions/5.0.3380.0913\"/**",
-					"\"${PROJECT_DIR}/../../../Downloads\"/**",
-					"\"${PROJECT_DIR}/arc\"/**",
-				);
+				FRAMEWORK_SEARCH_PATHS = "\"./arc\"/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
 				INFOPLIST_FILE = "arc/arc-Info.plist";
