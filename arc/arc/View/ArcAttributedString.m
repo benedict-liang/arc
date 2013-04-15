@@ -84,7 +84,6 @@
 {    
     for (NSString* property in __attributesDictionary) {
         for (NSDictionary* attribute in [__attributesDictionary objectForKey:property]) {
-            NSLog(@"%@",attribute);
             [__attributedString addAttribute:[attribute objectForKey:@"type"]
                                        value:[attribute objectForKey:@"value"]
                                        range:NSRangeFromString([attribute objectForKey:@"range"])];

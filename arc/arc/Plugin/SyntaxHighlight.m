@@ -652,6 +652,11 @@
 }
 -(void)testFolds:(NSArray*)ranges output:(ArcAttributedString*)output {
  
+    for (NSValue*v in foldRanges) {
+        NSRange r;
+        [v getValue:&r];
+        [self styleOnRange:r fcolor:[UIColor yellowColor] output:output];
+    }
     NSLog(@"_foldStarts: %@",_foldStarts);
     for (NSValue* v in _foldStarts) {
         NSRange r;
@@ -666,11 +671,7 @@
         [self styleOnRange:r fcolor:[UIColor greenColor] output:output];
     }
     
-    for (NSValue*v in foldRanges) {
-        NSRange r;
-        [v getValue:&r];
-        [self styleOnRange:r fcolor:[UIColor yellowColor] output:output];
-    }
+
     
 }
 
