@@ -54,13 +54,13 @@
                                         tag:TAB_DOCUMENTS];
     _documentsNavigationViewController.view.autoresizesSubviews = YES;
     
-    [_documentsNavigationViewController.navigationBar setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIColor whiteColor], UITextAttributeTextColor,
-      [UIColor colorWithRed:0 green:0 blue:0 alpha:0], UITextAttributeTextShadowColor,
-      [NSValue valueWithUIOffset:UIOffsetMake(0, 0)], UITextAttributeTextShadowOffset,
-      [UIFont fontWithName:@"Helvetica Neue" size:0.0], UITextAttributeFont,
-      nil]];
+//    [_documentsNavigationViewController.navigationBar setTitleTextAttributes:
+//     [NSDictionary dictionaryWithObjectsAndKeys:
+//      [UIColor whiteColor], UITextAttributeTextColor,
+//      [UIColor colorWithRed:0 green:0 blue:0 alpha:0], UITextAttributeTextShadowColor,
+//      [NSValue valueWithUIOffset:UIOffsetMake(0, 0)], UITextAttributeTextShadowOffset,
+//      [UIFont fontWithName:@"Helvetica Neue" size:0.0], UITextAttributeFont,
+//      nil]];
     
     [self addChildViewController:_documentsNavigationViewController];
     
