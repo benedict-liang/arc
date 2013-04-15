@@ -44,7 +44,9 @@ static SkyDriveServiceManager *sharedServiceManager = nil;
 
 - (void)authCompleted:(LiveConnectSessionStatus)status session:(LiveConnectSession *)session userState:(id)userState
 {
-    _isLoggedIn = YES;
+    if (session != nil) {
+        _isLoggedIn = YES;
+    }
 }
 
 - (void)authFailed:(NSError *)error userState:(id)userState

@@ -12,7 +12,7 @@
 #import "ArcAttributedString.h"
 #import "FullTextSearch.h"
 #import "ResultsTableViewController.h"
-#import "SelectionView.h"
+#import "DragPointsViewController.h"
 
 #define KEY_RANGE @"range"
 #define KEY_LINE_NUMBER @"lineNumber"
@@ -31,9 +31,9 @@
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UIPopoverController *resultsPopoverController;
 @property (nonatomic, strong) ResultsTableViewController *resultsViewController;
-@property (nonatomic) CGFloat lineHeight;
-@property (nonatomic) NSMutableArray *plugins;
-@property (nonatomic) SelectionView *selectionView;
+@property (nonatomic, strong) DragPointsViewController *dragPointVC;
+@property CGFloat lineHeight;
+@property NSMutableArray *plugins;
 
 // Line Processing
 @property (nonatomic) BOOL linesGenerated;
@@ -201,11 +201,11 @@
     // Split into Logical Lines
     CGFloat boundsWidth = MAXFLOAT;
     NSMutableDictionary *lineStarts = [NSMutableDictionary dictionary];
-
+    
     // Calculate the lineStarts
     int start = 0;
     int length = _arcAttributedString.string.length;
-
+    
     _typesetter = CTTypesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_arcAttributedString.plainAttributedString);
     
     while (start < length)
@@ -220,7 +220,7 @@
     CGFloat actualBoundsWidth = _tableView.bounds.size.width - 20*2 - 45;
     
     // Calculate the lines
-    start = 0;    
+    start = 0;
     int lineNumber = 0;
     BOOL startOfLine;
     while (start < length)
@@ -231,7 +231,7 @@
         } else {
             startOfLine = NO;
         }
-
+        
         CFIndex count = CTTypesetterSuggestLineBreak(_typesetter, start, actualBoundsWidth);
         [_lines addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
                                                                [NSValue valueWithRange:NSMakeRange(start, count)],
@@ -253,6 +253,7 @@
                                                           (__bridge CFAttributedStringRef)(
                                                                                            [_arcAttributedString.attributedString attributedSubstringFromRange:
                                                                                             [[[_lines objectAtIndex:0] objectForKey:KEY_RANGE] rangeValue]]));
+
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
         _lineHeight = asscent + descent + leading;
         _tableView.rowHeight = ceil(_lineHeight);
@@ -290,7 +291,6 @@
 
 - (void)scrollToLineNumber:(int)lineNumber
 {
-    // TODO: Naive implementation
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lineNumber
                                                 inSection:0];
     [_tableView scrollToRowAtIndexPath:indexPath
@@ -298,6 +298,22 @@
                               animated:YES];
 }
 
+- (void)removeBackgroundColorForSetting:(NSString*)setting {
+    [_arcAttributedString removeAttributesForSettingKey:setting];
+}
+
+- (void)setBackgroundColorForString:(UIColor*)color
+                          WithRange:(NSRange)range
+                         forSetting:(NSString*)setting
+{
+    [_arcAttributedString setBackgroundColor:color
+                                     OnRange:range
+                                  ForSetting:setting];
+}
+
+- (NSString*)getStringForRange:(NSRange)range {
+    return [_arcAttributedString.attributedString.string substringWithRange:range];
+}
 
 #pragma mark - Execute Plugin Methods
 
@@ -354,7 +370,7 @@
     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
                                                   target:self
                                                   action:@selector(showSearchToolBar)];
-
+    
     [_toolbar setItems:[NSArray arrayWithObjects:
                         [Utils flexibleSpace],
                         _toolbarTitle,
@@ -391,7 +407,7 @@
     [[UIPopoverController alloc] initWithContentViewController:_resultsViewController];
     
     _resultsPopoverController.passthroughViews =
-        [NSArray arrayWithObject:_searchBar];
+    [NSArray arrayWithObject:_searchBar];
     [_searchBar becomeFirstResponder];
 }
 
@@ -458,24 +474,18 @@
         cell = [[CodeLineCell alloc] initWithStyle:UITableViewCellStyleDefault
                                    reuseIdentifier:cellIdentifier];
     }
-
+    
     [cell setForegroundColor:_foregroundColor];
     [cell setFontFamily:_fontFamily FontSize:_fontSize];
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
     NSDictionary *lineObject = (NSDictionary *)[_lines objectAtIndex:indexPath.row];
+    NSRange stringRange = [[lineObject objectForKey:KEY_RANGE] rangeValue];
     NSAttributedString *lineRef = [_arcAttributedString.attributedString attributedSubstringFromRange:
-                                   [[lineObject objectForKey:KEY_RANGE] rangeValue]];
-
+                                   stringRange];
+    
     cell.line = lineRef;
-    cell.indexPath = indexPath;
-    
-    // Additional code
-    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc]
-                                                      initWithTarget:self
-                                                      action:@selector(getTextLocation:)];
-    [cell addGestureRecognizer:longPressGesture];
-    
+    cell.stringRange = stringRange;
     NSInteger lineNumber = [[lineObject objectForKey:KEY_LINE_NUMBER] integerValue];
     
     if (_lineNumbers) {
@@ -483,83 +493,90 @@
             cell.lineNumber = lineNumber;
         }
     }
-
+    
+    // Long Press Gesture for text selection
+    UILongPressGestureRecognizer *longPressGesture =
+    [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                  action:@selector(selectText:)];
+    [cell addGestureRecognizer:longPressGesture];
+    
     [cell setNeedsDisplay];
     return cell;
 }
 
-#pragma mark - Text Selection + Copy and Paste
+- (void)selectText:(UILongPressGestureRecognizer*)gesture {
+    
+    if ([gesture state] == UIGestureRecognizerStateBegan) {
+        if (_dragPointVC != nil) {
+            [self dismissTextSelectionViews];
+        }
+        
+        CodeLineCell *cell = (CodeLineCell*)gesture.view;
+        NSAttributedString *attributedString = cell.line;
+        NSRange cellStringRange = cell.stringRange;
+        int lineNumberWidth = cell.lineNumberWidth;
+        
+        // Should only consider point.x
+        CGPoint point = [gesture locationInView:gesture.view];
+        
+        // Get global range of selected string (check width of line numbers)
+        CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                                             (attributedString));
+        CFIndex index = CTLineGetStringIndexForPosition(lineRef, point);
 
-- (void)getTextLocation:(UILongPressGestureRecognizer*)longPressGesture
-{
-    CodeLineCell *cell = (CodeLineCell*)[longPressGesture view];
-    CGPoint pointOfTouch = [longPressGesture locationInView:cell];
-    
-    NSAttributedString *line = cell.line;
-    CTLineRef lineref = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)(line));
-    CFIndex index = CTLineGetStringIndexForPosition(lineref, pointOfTouch);
-    
-    // 1)
-    CTFramesetterRef frameSetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)(cell.line));
-    CGPathRef path = CGPathCreateWithRect(CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height), NULL);
-    CTFrameRef frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, 0), path, NULL);
-    CGPoint lineOrigins[3];
-    CTFrameGetLineOrigins(frame, CFRangeMake(0, 0), lineOrigins);
-    
-    // 2)
-    CGFloat ascent, descent;
-    CTLineGetTypographicBounds(lineref, &ascent, &descent, NULL);
-    
-    // 3)
-    //CFRange strRange = CTLineGetStringRange(line);
-    
-    // 4)
-    CGFloat startOffset = CTLineGetOffsetForStringIndex(lineref, index, NULL);
-    CGFloat endOffset = CTLineGetOffsetForStringIndex(lineref, index+3, NULL);
-    
-    
-    // Finally
-    CGPoint origin = lineOrigins[0];
-    CGRect lineRect = CGRectMake(origin.x + startOffset,
-                                 origin.y - descent,
-                                 endOffset-startOffset,
-                                 ascent + descent);
-    
-    if (longPressGesture.state == UIGestureRecognizerStateBegan) {
-        _selectionView = [[SelectionView alloc] initWithFrame:lineRect];
-        CodeLineCell *cellAtIndexPath = (CodeLineCell*)[_tableView cellForRowAtIndexPath:cell.indexPath];
-        [cellAtIndexPath addSubview:_selectionView];
-        [cellAtIndexPath addSubview:_selectionView.rightDragPoint];
+        // Apply background color for index
+        NSRange selectedRange = NSMakeRange(cellStringRange.location + index, 3);
+        [self setBackgroundColorForString:[UIColor blueColor]
+                                WithRange:selectedRange
+                               forSetting:@"copyAndPaste"];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(showCopyMenuForTextSelection)
-                                                     name:@"showCopyMenu"
-                                                   object:nil];
+        // Get location of touch of tableviewcell in TableView (global)
+        NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+        CGRect cellRect = [_tableView rectForRowAtIndexPath:indexPath];
+        CGFloat startOffset = CTLineGetOffsetForStringIndex(lineRef, index, NULL);
+        CGFloat endOffset = CTLineGetOffsetForStringIndex(lineRef, index+3, NULL);
+
+        CGRect selectedRect = CGRectMake(cellRect.origin.x + startOffset, cellRect.origin.y,
+                                        endOffset - startOffset, cellRect.size.height);
+    
+        // Add drag points subview in CodeViewController
+        _dragPointVC = [[DragPointsViewController alloc] initWithSelectedTextRect:selectedRect
+                                                                        andOffset:lineNumberWidth];
+        _dragPointVC.topIndexPath = indexPath;
+        _dragPointVC.bottomIndexPath = indexPath;
+        _dragPointVC.tableView = _tableView;
+        _dragPointVC.codeViewController = self;
+        _dragPointVC.selectedTextRange = selectedRange;
         
-        CGFloat startX = lineRect.origin.x;
-        CGFloat endX = lineRect.origin.x + lineRect.size.width;
-        CFIndex startIndex = CTLineGetStringIndexForPosition(lineref, CGPointMake(startX, 0));
-        CFIndex endIndex = CTLineGetStringIndexForPosition(lineref, CGPointMake(endX, 0));
-        
-        _selectionView.selectedString = [line.string substringWithRange:NSMakeRange(startIndex, endIndex - startIndex)];
+        [_tableView addSubview:_dragPointVC.view];
+        [_tableView addSubview:_dragPointVC.leftDragPoint];
+        [_tableView addSubview:_dragPointVC.rightDragPoint];
+
+        [_tableView reloadData];
     }
-    if (longPressGesture.state == UIGestureRecognizerStateEnded) {
-        
+    if ([gesture state] == UIGestureRecognizerStateEnded) {
+
     }
 }
 
-#pragma mark - UIMenuController methods
-
-- (BOOL)canBecomeFirstResponder
-{
-    // NOTE: This menu item will not show if this is not YES!
-    return YES;
+- (void)dismissTextSelectionViews {
+    if (_dragPointVC != nil) {
+        
+        [self removeBackgroundColorForSetting:@"copyAndPaste"];
+        [_dragPointVC.leftDragPoint removeFromSuperview];
+        [_dragPointVC.rightDragPoint removeFromSuperview];
+        [_dragPointVC.view removeFromSuperview];
+        
+        _dragPointVC = nil;
+        
+        [_tableView reloadData];
+    }
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView*)tableView
-    didSelectRowAtIndexPath:(NSIndexPath*)indexPath
+didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath
                              animated:NO];
@@ -571,7 +588,7 @@
 {
     NSString *searchString = [searchBar text];
     NSArray *searchResultRangesArray = [FullTextSearch searchForText:searchString
-                                                         inFile:_currentFile];
+                                                              inFile:_currentFile];
     NSMutableArray *searchLineNumberArray;
     
     if (searchResultRangesArray != nil) {
@@ -581,8 +598,11 @@
     }
     
     [_arcAttributedString removeAttributesForSettingKey:@"search"];
-    [self applyBackgroundToAttributedStringForRanges:searchResultRangesArray
-                                           withColor:[UIColor yellowColor]];
+    for (NSValue *range in searchResultRangesArray) {
+        [self setBackgroundColorForString:[UIColor yellowColor]
+                                WithRange:[range rangeValue]
+                               forSetting:@"search"];
+    }
     
     // Hide keyboard after search button clicked
     [searchBar resignFirstResponder];
@@ -623,15 +643,9 @@
     }
 }
 
-- (void)applyBackgroundToAttributedStringForRanges:(NSArray *)rangesArray
-                                         withColor:(UIColor*)color
-
+- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    for (NSValue *range in rangesArray) {
-        [_arcAttributedString setBackgroundColor:color
-                                         OnRange:[range rangeValue]
-                                      ForSetting:@"search"];
-    }
+    return YES;
 }
 
 @end

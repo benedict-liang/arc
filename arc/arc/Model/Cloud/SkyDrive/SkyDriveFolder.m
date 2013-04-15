@@ -14,11 +14,11 @@
 @end
 
 @implementation SkyDriveFolder
-@synthesize name = _name, path = _path, parent = _parent, isRemovable = _isRemovable;
+@synthesize name = _name, path = _path, parent = _parent, isRemovable = _isRemovable, delegate = _delegate;
 
-+ (SkyDriveFolder *)getRoot
++ (id<CloudFolder>)getRoot
 {
-    return [[SkyDriveFolder alloc] initWithName:@"SkyDrive Documents" path:@"me/skydrive" parent:nil];
+    return [[SkyDriveFolder alloc] initWithName:@"SkyDrive" path:@"me/skydrive" parent:nil];
 }
 
 - (id <NSObject>)contents

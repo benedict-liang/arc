@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ArcViewController : UIViewController
-
+@property UIViewController *masterViewController;
+@property UIViewController *detailViewController;
 @end

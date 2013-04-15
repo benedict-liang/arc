@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		020C104E171A666500603229 /* SkyDriveFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C104D171A666500603229 /* SkyDriveFile.m */; };
 		020C1051171A6DB000603229 /* SkyDriveDownloadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C1050171A6DB000603229 /* SkyDriveDownloadHelper.m */; };
+		020C10E5171A93E100603229 /* libGTLTouchStaticLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 020C10E0171A935300603229 /* libGTLTouchStaticLib.a */; };
+		020C1283171A95C800603229 /* GTLDrive_Sources.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C1281171A95C800603229 /* GTLDrive_Sources.m */; };
+		020C1285171A962F00603229 /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 020C1284171A962F00603229 /* GTMOAuth2ViewTouch.xib */; };
+		020C1288171A9A5B00603229 /* GoogleDriveServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C1287171A9A5B00603229 /* GoogleDriveServiceManager.m */; };
+		020C128B171AAB2500603229 /* GoogleDriveFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C128A171AAB2400603229 /* GoogleDriveFolder.m */; };
+		020C128E171ABACD00603229 /* GoogleDriveFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C128D171ABACC00603229 /* GoogleDriveFile.m */; };
+		020C1291171AC14900603229 /* GoogleDriveDownloadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C1290171AC14600603229 /* GoogleDriveDownloadHelper.m */; };
 		026AC54716FF104D001E03E5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7F16FDF61C00C9DED3 /* Constants.m */; };
 		026BC4711705895500A9AA5F /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC4701705895500A9AA5F /* Dropbox.framework */; };
 		026BC473170589A700A9AA5F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC472170589A700A9AA5F /* CFNetwork.framework */; };
@@ -17,6 +24,7 @@
 		026BC479170589C600A9AA5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC478170589C600A9AA5F /* QuartzCore.framework */; };
 		027EE0361716AAEC00302F07 /* LongSettingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 027EE0351716AAEC00302F07 /* LongSettingListViewController.m */; };
 		028B4900170E9D0600C0CEF6 /* UbuntuMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 028B48FF170E9D0600C0CEF6 /* UbuntuMono.ttf */; };
+		02A0078F171BBC6E0099FE61 /* CloudPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A0078E171BBC6E0099FE61 /* CloudPickerViewController.m */; };
 		02A5198D170DC0CE007C038E /* Inconsolata.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02A5198C170DC0CE007C038E /* Inconsolata.ttf */; };
 		02B04FCA1701672700FE51CB /* GameObject.h in Resources */ = {isa = PBXBuildFile; fileRef = 02B04FC91701608C00FE51CB /* GameObject.h */; };
 		02CF20721712ACB8001A59E4 /* Reading Panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 02CF20711712ACB8001A59E4 /* Reading Panel.png */; };
@@ -60,6 +68,8 @@
 		4CE2950E17101BA0003B012A /* SyntaxHighlightingPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */; };
 		4CE2951117101C53003B012A /* FontSizePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE2951017101C53003B012A /* FontSizePlugin.m */; };
 		4CE2951417101C82003B012A /* FontFamilyPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE2951317101C82003B012A /* FontFamilyPlugin.m */; };
+		4CE9A3EF171BB21400705AEA /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE9A3EC171BB21400705AEA /* MasterViewController.m */; };
+		4CE9A3F0171BB21400705AEA /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE9A3EE171BB21400705AEA /* DetailViewController.m */; };
 		4CEADA041716AB0E00F4F619 /* threelines.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CEADA031716AB0E00F4F619 /* threelines.png */; };
 		4CEADA071716ADBB00F4F619 /* LineNumberPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEADA061716ADBB00F4F619 /* LineNumberPlugin.m */; };
 		4CEADA0D1716F3EF00F4F619 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
@@ -80,6 +90,7 @@
 		4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */; };
 		840B640FE8BA225B6750F377 /* SkyDriveFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B6B4068D4462DD00C7BE0 /* SkyDriveFolder.m */; };
 		840B6680091FC720B53CA8F3 /* LiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */; };
+		840B686FE41BCE38805A85BE /* Cloud-Download.png in Resources */ = {isa = PBXBuildFile; fileRef = 840B6ABA3F91CF078F55C3DE /* Cloud-Download.png */; };
 		840B6CE8D86D8BAA0E3CD4BC /* SkyDriveServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B67A71EB5C59B9BCEF1A2 /* SkyDriveServiceManager.m */; };
 		8F151051170443AC00115E5E /* home.html in Resources */ = {isa = PBXBuildFile; fileRef = 8F151050170443AC00115E5E /* home.html */; };
 		8F1510C9170468B100115E5E /* TMBundleThemeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510C8170468B100115E5E /* TMBundleThemeHandler.m */; };
@@ -249,7 +260,8 @@
 		8F7066B317199B1F00E8C64E /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7066B217199B1F00E8C64E /* SearchResultCell.m */; };
 		8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F771E131711B900002E9914 /* ResultsTableViewController.m */; };
 		8F84790D17102A14006893D6 /* FullTextSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F84790C17102A14006893D6 /* FullTextSearch.m */; };
-		8FC1B4E61719CE2F002939D8 /* SelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F46CDA41713DFB10088DE10 /* SelectionView.m */; };
+		8FC1B4E91719D8E0002939D8 /* DragPointImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC1B4E81719D8E0002939D8 /* DragPointImageView.m */; };
+		8FC1B4EC1719DBCE002939D8 /* DragPointsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC1B4EB1719DBCE002939D8 /* DragPointsViewController.m */; };
 		8FC7BD3F170F435900D0FA3A /* syntaxesFileList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8FC7BD3E170F435900D0FA3A /* syntaxesFileList.txt */; };
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
 		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
@@ -324,6 +336,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		020C10DD171A935300603229 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 020C10D6171A935200603229 /* GTL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F38F6A60B66E91D00B24B81;
+			remoteInfo = GTLFramework;
+		};
+		020C10DF171A935300603229 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 020C10D6171A935200603229 /* GTL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F12027C11A4CA2F00BEB470;
+			remoteInfo = GTLTouchStaticLib;
+		};
+		020C10E1171A935300603229 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 020C10D6171A935200603229 /* GTL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F12027D11A4CA2F00BEB470;
+			remoteInfo = GTLUnitTests;
+		};
+		020C10E3171A935300603229 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 020C10D6171A935200603229 /* GTL.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F1AD9020B71603F00DC0485;
+			remoteInfo = DevelopmentTestTool;
+		};
 		0234361C16FDFA0700B0D7AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4C43F8E116F86AA800159B29 /* Project object */;
@@ -339,6 +379,18 @@
 		020C104F171A6DB000603229 /* SkyDriveDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveDownloadHelper.h; sourceTree = "<group>"; };
 		020C1050171A6DB000603229 /* SkyDriveDownloadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveDownloadHelper.m; sourceTree = "<group>"; };
 		020C1053171A77E200603229 /* CloudFolderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudFolderDelegate.h; sourceTree = "<group>"; };
+		020C10D6171A935200603229 /* GTL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTL.xcodeproj; path = "arc/Model/Cloud/Google Drive/Source/GTL.xcodeproj"; sourceTree = "<group>"; };
+		020C1281171A95C800603229 /* GTLDrive_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLDrive_Sources.m; path = Source/Services/Drive/Generated/GTLDrive_Sources.m; sourceTree = "<group>"; };
+		020C1282171A95C800603229 /* GTLDrive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLDrive.h; path = Source/Services/Drive/Generated/GTLDrive.h; sourceTree = "<group>"; };
+		020C1284171A962F00603229 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = "Model/Cloud/Google Drive/Source/OAuth2/Touch/GTMOAuth2ViewTouch.xib"; sourceTree = "<group>"; };
+		020C1286171A9A5A00603229 /* GoogleDriveServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleDriveServiceManager.h; sourceTree = "<group>"; };
+		020C1287171A9A5B00603229 /* GoogleDriveServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveServiceManager.m; sourceTree = "<group>"; };
+		020C1289171AAB2300603229 /* GoogleDriveFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleDriveFolder.h; sourceTree = "<group>"; };
+		020C128A171AAB2400603229 /* GoogleDriveFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveFolder.m; sourceTree = "<group>"; };
+		020C128C171ABACA00603229 /* GoogleDriveFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleDriveFile.h; sourceTree = "<group>"; };
+		020C128D171ABACC00603229 /* GoogleDriveFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveFile.m; sourceTree = "<group>"; };
+		020C128F171AC14500603229 /* GoogleDriveDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleDriveDownloadHelper.h; sourceTree = "<group>"; };
+		020C1290171AC14600603229 /* GoogleDriveDownloadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveDownloadHelper.m; sourceTree = "<group>"; };
 		025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		0260B50A1709286E0091B012 /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Folder.h; path = Protocols/Folder.h; sourceTree = "<group>"; };
 		0260B50B170928820091B012 /* FileSystemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystemObject.h; path = Protocols/FileSystemObject.h; sourceTree = "<group>"; };
@@ -351,6 +403,9 @@
 		027EE0351716AAEC00302F07 /* LongSettingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LongSettingListViewController.m; sourceTree = "<group>"; };
 		027EE0381717FD7800302F07 /* LongSettingListViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongSettingListViewControllerDelegate.h; sourceTree = "<group>"; };
 		028B48FF170E9D0600C0CEF6 /* UbuntuMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UbuntuMono.ttf; sourceTree = "<group>"; };
+		02A0078D171BBC6E0099FE61 /* CloudPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudPickerViewController.h; sourceTree = "<group>"; };
+		02A0078E171BBC6E0099FE61 /* CloudPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudPickerViewController.m; sourceTree = "<group>"; };
+		02A00794171BBF650099FE61 /* CloudFolder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudFolder.h; sourceTree = "<group>"; };
 		02A5198C170DC0CE007C038E /* Inconsolata.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inconsolata.ttf; sourceTree = "<group>"; };
 		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
 		02C2E4841715594300C912E0 /* CreateFolderViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFolderViewControllerDelegate.h; sourceTree = "<group>"; };
@@ -429,6 +484,10 @@
 		4CE2951217101C82003B012A /* FontFamilyPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontFamilyPlugin.h; sourceTree = "<group>"; };
 		4CE2951317101C82003B012A /* FontFamilyPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontFamilyPlugin.m; sourceTree = "<group>"; };
 		4CE2951517104A4C003B012A /* SettingsViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewDelegate.h; sourceTree = "<group>"; };
+		4CE9A3EB171BB21400705AEA /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasterViewController.h; path = Controllers/MasterViewController.h; sourceTree = "<group>"; };
+		4CE9A3EC171BB21400705AEA /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewController.m; path = Controllers/MasterViewController.m; sourceTree = "<group>"; };
+		4CE9A3ED171BB21400705AEA /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = Controllers/DetailViewController.h; sourceTree = "<group>"; };
+		4CE9A3EE171BB21400705AEA /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = Controllers/DetailViewController.m; sourceTree = "<group>"; };
 		4CEADA011716814B00F4F619 /* CodeViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewDelegate.h; sourceTree = "<group>"; };
 		4CEADA031716AB0E00F4F619 /* threelines.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = threelines.png; sourceTree = "<group>"; };
 		4CEADA051716ADBB00F4F619 /* LineNumberPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineNumberPlugin.h; sourceTree = "<group>"; };
@@ -455,6 +514,7 @@
 		840B6733BB2064AE23C5FDF7 /* SkyDriveFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveFolder.h; sourceTree = "<group>"; };
 		840B67A71EB5C59B9BCEF1A2 /* SkyDriveServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveServiceManager.m; sourceTree = "<group>"; };
 		840B67E300617A8810E2F3F5 /* PluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginDelegate.h; path = Plugin/PluginDelegate.h; sourceTree = "<group>"; };
+		840B6ABA3F91CF078F55C3DE /* Cloud-Download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cloud-Download.png"; sourceTree = "<group>"; };
 		840B6B4068D4462DD00C7BE0 /* SkyDriveFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveFolder.m; sourceTree = "<group>"; };
 		840B6D541756B41E6BF42859 /* SkyDriveServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveServiceManager.h; sourceTree = "<group>"; };
 		8F15104F1704410000115E5E /* TMBundleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleHeader.h; sourceTree = "<group>"; };
@@ -623,8 +683,6 @@
 		8F1BC1CD170F1C1900D1D049 /* source.active4d.library.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.active4d.library.plist; sourceTree = "<group>"; };
 		8F1BC1CE170F1C1900D1D049 /* source.actionscript.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = source.actionscript.plist; sourceTree = "<group>"; };
 		8F2F5B8017061435005AD37F /* nav_gmaps_sample.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = nav_gmaps_sample.js; sourceTree = "<group>"; };
-		8F46CDA31713DFB10088DE10 /* SelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionView.h; sourceTree = "<group>"; };
-		8F46CDA41713DFB10088DE10 /* SelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionView.m; sourceTree = "<group>"; };
 		8F563F33170161C900EE5643 /* TMBundleSyntaxParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleSyntaxParser.h; sourceTree = "<group>"; };
 		8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBundleSyntaxParser.m; sourceTree = "<group>"; };
 		8F5C5C1416FDFDBE00B31A19 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = General/Utils.m; sourceTree = "<group>"; };
@@ -635,6 +693,10 @@
 		8F771E131711B900002E9914 /* ResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsTableViewController.m; sourceTree = "<group>"; };
 		8F84790B17102A14006893D6 /* FullTextSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullTextSearch.h; sourceTree = "<group>"; };
 		8F84790C17102A14006893D6 /* FullTextSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullTextSearch.m; sourceTree = "<group>"; };
+		8FC1B4E71719D8E0002939D8 /* DragPointImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragPointImageView.h; sourceTree = "<group>"; };
+		8FC1B4E81719D8E0002939D8 /* DragPointImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragPointImageView.m; sourceTree = "<group>"; };
+		8FC1B4EA1719DBCE002939D8 /* DragPointsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragPointsViewController.h; sourceTree = "<group>"; };
+		8FC1B4EB1719DBCE002939D8 /* DragPointsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragPointsViewController.m; sourceTree = "<group>"; };
 		8FC7BD3E170F435900D0FA3A /* syntaxesFileList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = syntaxesFileList.txt; sourceTree = "<group>"; };
 		8FCA1D6716F86C7000C6AAFC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		8FCA1D6816F86C7000C6AAFC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -721,6 +783,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				020C10E5171A93E100603229 /* libGTLTouchStaticLib.a in Frameworks */,
 				4CD06B8616FE0FE600C9DED3 /* CoreText.framework in Frameworks */,
 				4C43F8ED16F86AA900159B29 /* UIKit.framework in Frameworks */,
 				4C43F8EF16F86AA900159B29 /* Foundation.framework in Frameworks */,
@@ -766,6 +829,42 @@
 				020C1053171A77E200603229 /* CloudFolderDelegate.h */,
 			);
 			name = Delegates;
+			sourceTree = "<group>";
+		};
+		020C10D7171A935200603229 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				020C10DE171A935300603229 /* GTL.framework */,
+				020C10E0171A935300603229 /* libGTLTouchStaticLib.a */,
+				020C10E2171A935300603229 /* GTLUnitTests.octest */,
+				020C10E4171A935300603229 /* DevelopmentTestTool */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		020C10E7171A953000603229 /* Google Drive */ = {
+			isa = PBXGroup;
+			children = (
+				020C127D171A959F00603229 /* Library */,
+				020C1286171A9A5A00603229 /* GoogleDriveServiceManager.h */,
+				020C1287171A9A5B00603229 /* GoogleDriveServiceManager.m */,
+				020C1289171AAB2300603229 /* GoogleDriveFolder.h */,
+				020C128A171AAB2400603229 /* GoogleDriveFolder.m */,
+				020C128C171ABACA00603229 /* GoogleDriveFile.h */,
+				020C128D171ABACC00603229 /* GoogleDriveFile.m */,
+				020C128F171AC14500603229 /* GoogleDriveDownloadHelper.h */,
+				020C1290171AC14600603229 /* GoogleDriveDownloadHelper.m */,
+			);
+			path = "Google Drive";
+			sourceTree = "<group>";
+		};
+		020C127D171A959F00603229 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				020C1282171A95C800603229 /* GTLDrive.h */,
+				020C1281171A95C800603229 /* GTLDrive_Sources.m */,
+			);
+			name = Library;
 			sourceTree = "<group>";
 		};
 		0260B508170921C10091B012 /* Protocols */ = {
@@ -818,6 +917,7 @@
 		4C43F8E016F86AA800159B29 = {
 			isa = PBXGroup;
 			children = (
+				020C10D6171A935200603229 /* GTL.xcodeproj */,
 				4C43F8F416F86AA900159B29 /* arc */,
 				4CD06B6F16FDEEC100C9DED3 /* arcTests */,
 				4CEADA111716F3EF00F4F619 /* PrettyArc */,
@@ -877,6 +977,7 @@
 		4C43F8F516F86AA900159B29 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				020C1284171A962F00603229 /* GTMOAuth2ViewTouch.xib */,
 				FC72606C171113420068DD91 /* filter_routes.clj */,
 				FC72606A171106C60068DD91 /* RequestBuilder.hs */,
 				FC726064171102660068DD91 /* base.rb */,
@@ -1000,10 +1101,10 @@
 				4C8307EA17114CEF00F49C33 /* SettingCell.m */,
 				4C12D0701705CA7800F4593B /* ArcAttributedString.h */,
 				4C12D0711705CA7800F4593B /* ArcAttributedString.m */,
-				8F46CDA31713DFB10088DE10 /* SelectionView.h */,
-				8F46CDA41713DFB10088DE10 /* SelectionView.m */,
 				8F7066B117199B1F00E8C64E /* SearchResultCell.h */,
 				8F7066B217199B1F00E8C64E /* SearchResultCell.m */,
+				8FC1B4E71719D8E0002939D8 /* DragPointImageView.h */,
+				8FC1B4E81719D8E0002939D8 /* DragPointImageView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1072,6 +1173,10 @@
 		4CEADA291716F41700F4F619 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4CE9A3EB171BB21400705AEA /* MasterViewController.h */,
+				4CE9A3EC171BB21400705AEA /* MasterViewController.m */,
+				4CE9A3ED171BB21400705AEA /* DetailViewController.h */,
+				4CE9A3EE171BB21400705AEA /* DetailViewController.m */,
 				4CEADA2A1716F43E00F4F619 /* ArcViewController.h */,
 				4CEADA2B1716F43E00F4F619 /* ArcViewController.m */,
 			);
@@ -1097,6 +1202,7 @@
 				4CF6F0F11706E29300EDDEDC /* folder.png */,
 				4CF6F0ED1706E08800EDDEDC /* file.png */,
 				4CEADA031716AB0E00F4F619 /* threelines.png */,
+				840B6ABA3F91CF078F55C3DE /* Cloud-Download.png */,
 			);
 			name = Images;
 			path = Assets/Images;
@@ -1105,6 +1211,7 @@
 		840B636342E49333F3D17563 /* Cloud */ = {
 			isa = PBXGroup;
 			children = (
+				020C10E7171A953000603229 /* Google Drive */,
 				020C1052171A77C700603229 /* Delegates */,
 				840B65C878A6C7146123E560 /* Protocols */,
 				840B6BB5A0E39DE20D887CA8 /* SkyDrive */,
@@ -1116,6 +1223,7 @@
 			isa = PBXGroup;
 			children = (
 				840B6454D395361AD2F521B2 /* CloudServiceManager.h */,
+				02A00794171BBF650099FE61 /* CloudFolder.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1347,6 +1455,10 @@
 				4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */,
 				027EE0341716AAEC00302F07 /* LongSettingListViewController.h */,
 				027EE0351716AAEC00302F07 /* LongSettingListViewController.m */,
+				8FC1B4EA1719DBCE002939D8 /* DragPointsViewController.h */,
+				8FC1B4EB1719DBCE002939D8 /* DragPointsViewController.m */,
+				02A0078D171BBC6E0099FE61 /* CloudPickerViewController.h */,
+				02A0078E171BBC6E0099FE61 /* CloudPickerViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1492,6 +1604,12 @@
 			mainGroup = 4C43F8E016F86AA800159B29;
 			productRefGroup = 4C43F8EA16F86AA900159B29 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 020C10D7171A935200603229 /* Products */;
+					ProjectRef = 020C10D6171A935200603229 /* GTL.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4C43F8E816F86AA900159B29 /* arc */,
@@ -1500,6 +1618,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		020C10DE171A935300603229 /* GTL.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GTL.framework;
+			remoteRef = 020C10DD171A935300603229 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		020C10E0171A935300603229 /* libGTLTouchStaticLib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGTLTouchStaticLib.a;
+			remoteRef = 020C10DF171A935300603229 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		020C10E2171A935300603229 /* GTLUnitTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GTLUnitTests.octest;
+			remoteRef = 020C10E1171A935300603229 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		020C10E4171A935300603229 /* DevelopmentTestTool */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = DevelopmentTestTool;
+			remoteRef = 020C10E3171A935300603229 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4C43F8E716F86AA900159B29 /* Resources */ = {
@@ -1750,6 +1899,8 @@
 				4C9137281715B9D900413C79 /* Solarized (dark).tmTheme in Resources */,
 				FC3C2E9C1715C1F400C40490 /* ThemeConf.plist in Resources */,
 				4CEADA041716AB0E00F4F619 /* threelines.png in Resources */,
+				020C1285171A962F00603229 /* GTMOAuth2ViewTouch.xib in Resources */,
+				840B686FE41BCE38805A85BE /* Cloud-Download.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1830,11 +1981,18 @@
 				027EE0361716AAEC00302F07 /* LongSettingListViewController.m in Sources */,
 				4CEADA071716ADBB00F4F619 /* LineNumberPlugin.m in Sources */,
 				8F7066B317199B1F00E8C64E /* SearchResultCell.m in Sources */,
-				8FC1B4E61719CE2F002939D8 /* SelectionView.m in Sources */,
 				840B6CE8D86D8BAA0E3CD4BC /* SkyDriveServiceManager.m in Sources */,
 				840B640FE8BA225B6750F377 /* SkyDriveFolder.m in Sources */,
 				020C104E171A666500603229 /* SkyDriveFile.m in Sources */,
 				020C1051171A6DB000603229 /* SkyDriveDownloadHelper.m in Sources */,
+				8FC1B4E91719D8E0002939D8 /* DragPointImageView.m in Sources */,
+				8FC1B4EC1719DBCE002939D8 /* DragPointsViewController.m in Sources */,
+				020C1283171A95C800603229 /* GTLDrive_Sources.m in Sources */,
+				020C1288171A9A5B00603229 /* GoogleDriveServiceManager.m in Sources */,
+				020C128B171AAB2500603229 /* GoogleDriveFolder.m in Sources */,
+				020C128E171ABACD00603229 /* GoogleDriveFile.m in Sources */,
+				020C1291171AC14900603229 /* GoogleDriveDownloadHelper.m in Sources */,
+				02A0078F171BBC6E0099FE61 /* CloudPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1855,6 +2013,8 @@
 				4CEADA1C1716F3EF00F4F619 /* AppDelegate.m in Sources */,
 				4CEADA251716F3EF00F4F619 /* PrettyArc.xcdatamodeld in Sources */,
 				4CEADA2C1716F43E00F4F619 /* ArcViewController.m in Sources */,
+				4CE9A3EF171BB21400705AEA /* MasterViewController.m in Sources */,
+				4CE9A3F0171BB21400705AEA /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1955,18 +2115,17 @@
 		4C43F90C16F86AA900159B29 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/arc\"",
-					"\"${PROJECT_DIR}/../../../Downloads/LiveSDK.framework/Versions/5.0.3380.0913\"/**",
-					"\"${PROJECT_DIR}/../../../Downloads\"/**",
-					"\"${PROJECT_DIR}/arc\"/**",
-				);
+				FRAMEWORK_SEARCH_PATHS = "\"./arc\"/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
 				INFOPLIST_FILE = "arc/arc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "(arc)";
+				USER_HEADER_SEARCH_PATHS = "\"./arc/Model/Cloud/Google\\ Drive/Source\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1974,18 +2133,17 @@
 		4C43F90D16F86AA900159B29 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/arc\"",
-					"\"${PROJECT_DIR}/../../../Downloads/LiveSDK.framework/Versions/5.0.3380.0913\"/**",
-					"\"${PROJECT_DIR}/../../../Downloads\"/**",
-					"\"${PROJECT_DIR}/arc\"/**",
-				);
+				FRAMEWORK_SEARCH_PATHS = "\"./arc\"/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "arc/arc-Prefix.pch";
 				INFOPLIST_FILE = "arc/arc-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "(arc)";
+				USER_HEADER_SEARCH_PATHS = "\"./arc/Model/Cloud/Google\\ Drive/Source\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
