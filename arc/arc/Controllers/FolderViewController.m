@@ -437,7 +437,7 @@ titleForHeaderInSection:(NSInteger)section {
             [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
             break;
         case 1: {
-            SkyDriveServiceManager *serviceManager = [SkyDriveServiceManager sharedServiceManager];
+            SkyDriveServiceManager *serviceManager = (SkyDriveServiceManager *)[SkyDriveServiceManager sharedServiceManager];
             
             if (![serviceManager isLoggedIn]) {
                 [serviceManager loginWithViewController:self];
