@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Folder.h"
+#import "CloudFolderDelegate.h"
 
-@protocol CloudFolder <NSObject>
+@protocol CloudFolder <NSObject, Folder>
+
+@property (weak, nonatomic) id<CloudFolderDelegate> delegate;
+
++ (id<CloudFolder>)getRoot;
 
 @end
