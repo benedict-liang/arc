@@ -27,7 +27,7 @@
 
 @property CreateFolderViewController *createFolderController;
 @property UIPopoverController *addFolderPopoverController;
-@property UIBarButtonItem *addFolderButton;
+@property UIBarButtonItem *addItemButton;
 @end
 
 @implementation FolderViewController
@@ -70,19 +70,23 @@
 {
     [super viewDidLoad];
     
-    _addFolderButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                     target:self
-                                                                     action:@selector(triggerAddFolder)];
+    _addItemButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                   target:self
+                                                                   action:@selector(triggerAddItem)];
+    
+    // Create the add folder controller and its popover.
+    _createFolderController = [[CreateFolderViewController alloc] initWithDelegate:self];
+    _addFolderPopoverController = [[UIPopoverController alloc] initWithContentViewController:_createFolderController];
     
     // Set up the navigation bar.
     self.title = _folder.name;
     
     // Add the "edit" and "add folder" buttons.
     self.navigationItem.rightBarButtonItems =
-        [NSArray arrayWithObjects:
-            self.editButtonItem,
-            _addFolderButton,
-            nil];
+            [NSArray arrayWithObjects:
+                    self.editButtonItem,
+                    _addItemButton,
+                    nil];
 
     self.view.autoresizesSubviews = YES;
 
@@ -370,17 +374,36 @@ titleForHeaderInSection:(NSInteger)section {
 }
 
 // Triggers when the user clicks the Add button.
-- (void)triggerAddFolder
+- (void)triggerAddItem
 {
-    if (!_addFolderPopoverController) {
-        _addFolderPopoverController = [[UIPopoverController alloc] initWithContentViewController:_createFolderController];
-    }
-    
-    // Toggle the visibility of the popover controller.
-    if (![_addFolderPopoverController isPopoverVisible]) {
-        [_addFolderPopoverController presentPopoverFromBarButtonItem:_addFolderButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    } else {
+    // Hide the add folder popover.
+    if ([_addFolderPopoverController isPopoverVisible]) {
         [_addFolderPopoverController dismissPopoverAnimated:YES];
+    }
+
+    UIActionSheet *addItemActionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                            delegate:self
+                                                   cancelButtonTitle:@"Cancel"
+                                              destructiveButtonTitle:nil
+                                                   otherButtonTitles:@"New Folder", @"File from SkyDrive", @"File from Google Drive", nil];
+
+    [addItemActionSheet showFromBarButtonItem:_addItemButton animated:YES];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+            [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            break;
+        case 1:
+            NSLog(@"SkyDrive");
+            break;
+        case 2:
+            NSLog(@"Google Drive");
+            break;
+        default:
+            break;
     }
 }
 
