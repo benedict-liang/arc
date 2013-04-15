@@ -48,6 +48,7 @@ extern NSString* const CLOUD_GOOGLE_SECRET;
 // SkyDrive scopes
 extern NSString* const SKYDRIVE_SCOPE_SIGNIN;
 extern NSString* const SKYDRIVE_SCOPE_READ_ACCESS;
+extern NSString* const SKYDRIVE_SCOPE_OFFLINE;
 // Google Drive Variables
 extern NSString* const GOOGLE_KEYCHAIN_NAME;
 
