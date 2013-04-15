@@ -13,7 +13,7 @@
 @property NSArray *segregatedContents;
 
 // Download-related properties.
-@property (weak, nonatomic) id<CloudFolder> folder;
+@property (strong, nonatomic) id<CloudFolder> folder;
 @property (weak, nonatomic) id<CloudServiceManager>serviceManager;
 @property (weak, nonatomic) LocalFolder *target;
 @end
@@ -27,6 +27,7 @@
         _target = target;
         _serviceManager = serviceManager;
         [folder setDelegate:self];
+        [folder updateContents];
         [self separateFilesAndFolders];
     }
     return self;
@@ -96,10 +97,33 @@
 // Set up the cell at the given index path.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *cellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                      reuseIdentifier:cellIdentifier];
+    }
+    
+    NSString *detailDescription;
+    UIImage *cellImage;
+    
+    NSArray *section = [_segregatedContents objectAtIndex:indexPath.section];
+    id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
+    
+    if ([[fileObject class] conformsToProtocol:@protocol(File)]) {
+        cellImage = [Utils scale:[UIImage imageNamed:@"file.png"]
+                          toSize:CGSizeMake(40, 40)];
+        detailDescription = [(id<CloudFile>)fileObject fileSize];
+    } else if ([[fileObject class] conformsToProtocol:@protocol(Folder)]) {
+        cellImage = [Utils scale:[UIImage imageNamed:@"folder.png"]
+                          toSize:CGSizeMake(40, 40)];
+    }
+    
+    cell.textLabel.text = fileObject.name;
+    cell.imageView.image = cellImage;
+    cell.detailTextLabel.text = detailDescription;
+
     
     return cell;
 }
