@@ -87,6 +87,7 @@
 		4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */; };
 		840B640FE8BA225B6750F377 /* SkyDriveFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B6B4068D4462DD00C7BE0 /* SkyDriveFolder.m */; };
 		840B6680091FC720B53CA8F3 /* LiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */; };
+		840B686FE41BCE38805A85BE /* Cloud-Download.png in Resources */ = {isa = PBXBuildFile; fileRef = 840B6ABA3F91CF078F55C3DE /* Cloud-Download.png */; };
 		840B6CE8D86D8BAA0E3CD4BC /* SkyDriveServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B67A71EB5C59B9BCEF1A2 /* SkyDriveServiceManager.m */; };
 		8F151051170443AC00115E5E /* home.html in Resources */ = {isa = PBXBuildFile; fileRef = 8F151050170443AC00115E5E /* home.html */; };
 		8F1510C9170468B100115E5E /* TMBundleThemeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1510C8170468B100115E5E /* TMBundleThemeHandler.m */; };
@@ -504,6 +505,7 @@
 		840B6733BB2064AE23C5FDF7 /* SkyDriveFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveFolder.h; sourceTree = "<group>"; };
 		840B67A71EB5C59B9BCEF1A2 /* SkyDriveServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveServiceManager.m; sourceTree = "<group>"; };
 		840B67E300617A8810E2F3F5 /* PluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginDelegate.h; path = Plugin/PluginDelegate.h; sourceTree = "<group>"; };
+		840B6ABA3F91CF078F55C3DE /* Cloud-Download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cloud-Download.png"; sourceTree = "<group>"; };
 		840B6B4068D4462DD00C7BE0 /* SkyDriveFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveFolder.m; sourceTree = "<group>"; };
 		840B6D541756B41E6BF42859 /* SkyDriveServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveServiceManager.h; sourceTree = "<group>"; };
 		8F15104F1704410000115E5E /* TMBundleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBundleHeader.h; sourceTree = "<group>"; };
@@ -1188,6 +1190,7 @@
 				4CF6F0F11706E29300EDDEDC /* folder.png */,
 				4CF6F0ED1706E08800EDDEDC /* file.png */,
 				4CEADA031716AB0E00F4F619 /* threelines.png */,
+				840B6ABA3F91CF078F55C3DE /* Cloud-Download.png */,
 			);
 			name = Images;
 			path = Assets/Images;
@@ -1884,6 +1887,7 @@
 				FC3C2E9C1715C1F400C40490 /* ThemeConf.plist in Resources */,
 				4CEADA041716AB0E00F4F619 /* threelines.png in Resources */,
 				020C1285171A962F00603229 /* GTMOAuth2ViewTouch.xib in Resources */,
+				840B686FE41BCE38805A85BE /* Cloud-Download.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
