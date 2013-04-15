@@ -28,9 +28,8 @@ static SkyDriveServiceManager *sharedServiceManager = nil;
 - (id)init
 {
     if (self = [super init]) {
-        NSArray *scopesRequired = [NSArray arrayWithObjects:SKYDRIVE_SCOPE_SIGNIN, SKYDRIVE_SCOPE_READ_ACCESS, nil];
+        NSArray *scopesRequired = [NSArray arrayWithObjects:SKYDRIVE_SCOPE_SIGNIN, SKYDRIVE_SCOPE_READ_ACCESS, SKYDRIVE_SCOPE_OFFLINE, nil];
         _liveClient = [[LiveConnectClient alloc] initWithClientId:CLOUD_SKYDRIVE_KEY scopes:scopesRequired delegate:self];
-        _isLoggedIn = NO;
     }
     return self;
 }
