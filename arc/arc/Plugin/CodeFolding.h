@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FoldNode.h"
+#import "FoldTree.h"
 
 @interface CodeFolding : NSObject
-
++(FoldTree*)foldTreeForContent:(NSString*)content
+                     foldStart:(NSString*)fs
+                       foldEnd:(NSString*)fe
+                    skipRanges:(NSArray*)skips;
 @end

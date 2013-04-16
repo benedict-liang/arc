@@ -602,16 +602,7 @@
     
 }
 
-- (NSArray*)produceNodeArray {
-    NSMutableArray* accum = [NSMutableArray array];
-    for (int i = 0; i < foldRanges.count; i++) {
-        FoldNode* node = [[FoldNode alloc] initWithContentRange:[Utils rangeFromValue:[foldRanges objectAtIndex:i]]
-                                                     startRange:[Utils rangeFromValue:[_foldStarts objectAtIndex:i]]
-                                                       endRange:[Utils rangeFromValue:[_foldEnds objectAtIndex:i]]];
-        [accum addObject:node];
-    }
-    return accum;
-}
+
 
 - (void)foldsWithStart:(NSString*)foldStart
                    end:(NSString*)foldEnd

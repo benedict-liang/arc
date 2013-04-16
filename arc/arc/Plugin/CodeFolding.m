@@ -9,6 +9,31 @@
 #import "CodeFolding.h"
 
 @implementation CodeFolding
+
++ (FoldTree*)foldTreeForContent:(NSString *)content
+                      foldStart:(NSString *)fs
+                        foldEnd:(NSString *)fe
+                     skipRanges:(NSArray *)skips
+{
+    
+    NSArray* foldStarts = [NSArray array];
+    NSArray* foldEnds = [NSArray array];
+    NSArray* foldRanges = [NSArray array];
+    [CodeFolding foldsWithStart:fs
+                            end:fe
+                     skipRanges:skips
+                     foldRanges:foldRanges
+                     foldStarts:foldStarts
+                       foldEnds:foldEnds
+                        content:content];
+    
+    NSArray* nodeArray = [CodeFolding nodeArrayWithFoldRanges:foldRanges
+                                                   foldStarts:foldStarts
+                                                     foldEnds:foldEnds];
+    
+    FoldTree* tree = [[FoldTree alloc] initWithNodes:nodeArray RootRange:NSMakeRange(0, content.length)];
+    return tree;
+}
 + (void)foldsWithStart:(NSString*)foldStart
                    end:(NSString*)foldEnd
             skipRanges:(NSArray*)skips
@@ -104,4 +129,19 @@
     }
     
 }
+
++ (NSArray*)nodeArrayWithFoldRanges:(NSArray*)foldRanges
+                         foldStarts:(NSArray*)foldStarts
+                           foldEnds:(NSArray*)foldEnds
+{
+    NSMutableArray* accum = [NSMutableArray array];
+    for (int i = 0; i < foldRanges.count; i++) {
+        FoldNode* node = [[FoldNode alloc] initWithContentRange:[Utils rangeFromValue:[foldRanges objectAtIndex:i]]
+                                                     startRange:[Utils rangeFromValue:[foldStarts objectAtIndex:i]]
+                                                       endRange:[Utils rangeFromValue:[foldEnds objectAtIndex:i]]];
+        [accum addObject:node];
+    }
+    return accum;
+}
+
 @end
