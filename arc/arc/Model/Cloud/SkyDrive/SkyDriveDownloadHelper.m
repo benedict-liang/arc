@@ -8,11 +8,6 @@
 
 #import "SkyDriveDownloadHelper.h"
 
-@interface SkyDriveDownloadHelper ()
-@property (weak, nonatomic) SkyDriveFile *file;
-@property (weak, nonatomic) LocalFolder *folder;
-@end
-
 @implementation SkyDriveDownloadHelper
 
 - (id)initWithFile:(SkyDriveFile *)file Folder:(LocalFolder *)folder

@@ -17,6 +17,8 @@
 @interface SkyDriveDownloadHelper : NSObject <LiveDownloadOperationDelegate>
 
 @property (weak, nonatomic) id<DownloadHelperDelegate> delegate;
+@property (weak, nonatomic) SkyDriveFile *file;
+@property (weak, nonatomic) LocalFolder *folder;
 
 - (id)initWithFile:(SkyDriveFile *)file Folder:(LocalFolder *)folder;
 

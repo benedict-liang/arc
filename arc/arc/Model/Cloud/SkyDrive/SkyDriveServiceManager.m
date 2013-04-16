@@ -70,6 +70,7 @@ static SkyDriveServiceManager *sharedServiceManager = nil;
 
 - (void)downloadCompleteForHelper:(id)sender
 {
+    [[[UIAlertView alloc] initWithTitle:@"Download Complete" message:[[(SkyDriveDownloadHelper *)sender file] name] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
     [_helpers removeObject:sender];
 }
 
