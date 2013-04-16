@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "FoldNode.h"
 #import "FoldTree.h"
-
+#import "SyntaxHighlightDelegate.h"
 @interface CodeFolding : NSObject
 +(FoldTree*)foldTreeForContent:(NSString*)content
                      foldStart:(NSString*)fs
                        foldEnd:(NSString*)fe
-                    skipRanges:(NSArray*)skips;
+                    skipRanges:(NSArray*)skips
+                      delegate:(id<SyntaxHighlightDelegate>)del;
 @end

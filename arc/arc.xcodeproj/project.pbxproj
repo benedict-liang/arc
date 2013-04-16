@@ -804,6 +804,7 @@
 		FCBD832D171DD518005E2B31 /* RootFoldNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootFoldNode.m; sourceTree = "<group>"; };
 		FCBD832F171DE010005E2B31 /* CodeFolding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeFolding.h; sourceTree = "<group>"; };
 		FCBD8330171DE011005E2B31 /* CodeFolding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeFolding.m; sourceTree = "<group>"; };
+		FCBD8332171DEBA2005E2B31 /* SyntaxHighlightDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlightDelegate.h; sourceTree = "<group>"; };
 		FCE8F95D1709806B00C08724 /* CodeViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeViewControllerDelegate.h; sourceTree = "<group>"; };
 		FCFB4DA1170F466200B25FDC /* BundleConf.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BundleConf.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1191,6 +1192,7 @@
 				FCBD832D171DD518005E2B31 /* RootFoldNode.m */,
 				FCBD832F171DE010005E2B31 /* CodeFolding.h */,
 				FCBD8330171DE011005E2B31 /* CodeFolding.m */,
+				FCBD8332171DEBA2005E2B31 /* SyntaxHighlightDelegate.h */,
 			);
 			name = SyntaxHighlighting;
 			sourceTree = "<group>";

@@ -17,7 +17,7 @@
 #import "FoldNode.h"
 //Immutable class. Holds thread local state
 
-@interface SyntaxHighlight : NSObject {
+@interface SyntaxHighlight : NSObject <SyntaxHighlightingPluginDelegate> {
     __block NSDictionary *nameMatches;
     __block NSDictionary *captureMatches;
     __block NSDictionary *beginCMatches;
@@ -39,6 +39,8 @@
 @property FoldTree* foldTree;
 @property NSArray* foldStarts;
 @property NSArray* foldEnds;
+@property ArcAttributedString* finalOutput;
+
 - (id)initWithFile:(id<File>)file
        andDelegate:(id<CodeViewControllerDelegate>)delegate;
 

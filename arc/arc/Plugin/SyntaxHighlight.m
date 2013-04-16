@@ -546,6 +546,7 @@
 {
     _isAlive = YES;
     ArcAttributedString *output = [options objectForKey:@"attributedString"];
+    _finalOutput = output;
     NSDictionary* theme = [options objectForKey:@"theme"];
     overlapMatches = [NSDictionary dictionary];
 
@@ -570,10 +571,7 @@
     NSString* foldEnd = [_bundle objectForKey:@"foldingStopMarker"];
     
     if (foldStart && foldEnd) {
-        [self foldsWithStart:foldStart end:foldEnd skipRanges:[self rangeArrayForMatches:overlapMatches]];
-        [self testFolds:foldRanges output:output];
-        //NSLog(@"%@",foldRanges);
-        _foldTree = [[FoldTree alloc] initWithNodes:[self produceNodeArray] RootRange:NSMakeRange(0, _content.length)];
+        
         NSLog(@"%@",_foldTree);
     }
     
@@ -590,92 +588,28 @@
     _matchesDone = NO;
 }
 
-- (NSArray*)addFoldRange:(NSRange)range toArray:(NSArray*)arr {
-    if (range.location + range.length < _content.length) {
-        NSMutableArray* temp = [NSMutableArray arrayWithArray:arr];
-        [temp addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
-        return temp;
-    } else {
-        NSLog(@"fold range out of bounds");
-        return arr;
-    }
-    
-}
-
-
-
-- (void)foldsWithStart:(NSString*)foldStart
-                   end:(NSString*)foldEnd
-            skipRanges:(NSArray*)skips
+-(void)testFoldsOnFoldRanges:(NSArray*)fR
+                  foldStarts:(NSArray*)fS
+                    foldEnds:(NSArray*)fE
 {
-    int curI = 0;
-    NSMutableArray* stack = [NSMutableArray array];
-    NSRange startRange;
-    NSRange endRange; 
-    int offset = 0;
-    while (curI < _splitContent.count) {
-        NSString* lineContent = [_splitContent objectAtIndex:curI];
-        
-        startRange = [self findFirstPattern:foldStart range:NSMakeRange(0, lineContent.length) content:lineContent];
-        endRange = [self findFirstPattern:foldEnd range:NSMakeRange(0, lineContent.length) content:lineContent];
-        curI++;
-        
-        BOOL skipStart = [Utils range:NSMakeRange(startRange.location+offset, startRange.length) isSubsetOfRangeInArray:skips];
-        BOOL skipEnd = [Utils range:NSMakeRange(endRange.location+offset, endRange.length) isSubsetOfRangeInArray:skips];
-        if (startRange.location == NSNotFound && endRange.location == NSNotFound) {
-            
-        } else if (endRange.location == NSNotFound && !skipStart) {
-            //NSLog(@"begin... %d",startRange.location+offset);
-            [stack addObject:[NSNumber numberWithInt:startRange.location+offset+startRange.length]];
-            _foldStarts = [self addFoldRange:NSMakeRange(startRange.location+offset, startRange.length) toArray:_foldStarts];
-        } else if (startRange.location == NSNotFound && !skipEnd) {
-
-            if (stack.count > 0) {
-              //  NSLog(@"end %d",endRange.location+offset);
-                int s = [(NSNumber*)[stack lastObject] intValue];
-                [stack removeLastObject];
-                NSRange r =NSMakeRange(s, endRange.location+offset - s);
-                foldRanges = [self addFoldRange:r toArray:foldRanges];
-                _foldEnds = [self addFoldRange:NSMakeRange(endRange.location+offset, endRange.length) toArray:_foldEnds];
-            }
  
-        
-        } else {
-            if (startRange.location > endRange.location && !skipEnd) {
-                if (stack.count > 0) {
-                //    NSLog(@"end %d",endRange.location+offset);
-                    int s = [(NSNumber*)[stack lastObject] intValue];
-                    [stack removeLastObject];
-                    NSRange r =NSMakeRange(s, endRange.location+offset - s);
-                    foldRanges = [self addFoldRange:r toArray:foldRanges];
-                    _foldEnds = [self addFoldRange:NSMakeRange(endRange.location+offset, endRange.length) toArray:_foldEnds];
-                }
-
-            }
-        }
-        offset += lineContent.length+1;
-    }
-        
-}
--(void)testFolds:(NSArray*)ranges output:(ArcAttributedString*)output {
- 
-    for (NSValue*v in foldRanges) {
+    for (NSValue*v in fR) {
         NSRange r;
         [v getValue:&r];
-        [self styleOnRange:r fcolor:[UIColor yellowColor] output:output];
+        [self styleOnRange:r fcolor:[UIColor yellowColor] output:_finalOutput];
     }
     //NSLog(@"_foldStarts: %@",_foldStarts);
-    for (NSValue* v in _foldStarts) {
+    for (NSValue* v in fS) {
         NSRange r;
         [v getValue:&r];
-        [self styleOnRange:r fcolor:[UIColor redColor] output:output];
+        [self styleOnRange:r fcolor:[UIColor redColor] output:_finalOutput];
     }
     
     //NSLog(@"_foldEnds: %@",_foldEnds);
-    for (NSValue*v in _foldEnds) {
+    for (NSValue*v in fE) {
         NSRange r;
         [v getValue:&r];
-        [self styleOnRange:r fcolor:[UIColor greenColor] output:output];
+        [self styleOnRange:r fcolor:[UIColor greenColor] output:_finalOutput];
     }
     
 }

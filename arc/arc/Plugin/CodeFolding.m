@@ -14,6 +14,7 @@
                       foldStart:(NSString *)fs
                         foldEnd:(NSString *)fe
                      skipRanges:(NSArray *)skips
+                       delegate:(id<SyntaxHighlightDelegate>)del
 {
     
     NSArray* foldStarts = [NSArray array];
@@ -31,7 +32,10 @@
                                                    foldStarts:foldStarts
                                                      foldEnds:foldEnds];
     
+    [del testFoldsOnFoldRanges:foldRanges foldStarts:foldStarts foldEnds:foldEnds];
+    
     FoldTree* tree = [[FoldTree alloc] initWithNodes:nodeArray RootRange:NSMakeRange(0, content.length)];
+    
     return tree;
 }
 + (void)foldsWithStart:(NSString*)foldStart
