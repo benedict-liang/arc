@@ -570,7 +570,7 @@
     NSString* foldEnd = [_bundle objectForKey:@"foldingStopMarker"];
     
     if (foldStart && foldEnd) {
-        [self foldsWithStart:foldStart end:foldEnd skipRanges:overlapMatches];
+        [self foldsWithStart:foldStart end:foldEnd skipRanges:[self rangeArrayForMatches:overlapMatches]];
         [self testFolds:foldRanges output:output];
         NSLog(@"%@",foldRanges);
         _foldTree = [[FoldTree alloc] initWithContentRange:NSMakeRange(0, _content.length) ranges:foldRanges];
@@ -618,18 +618,19 @@
         startRange = [self findFirstPattern:foldStart range:NSMakeRange(0, lineContent.length) content:lineContent];
         endRange = [self findFirstPattern:foldEnd range:NSMakeRange(0, lineContent.length) content:lineContent];
         curI++;
-        BOOL skipStart = [Utils range:startRange isSubsetOfRangeInArray:skips];
-        BOOL skipEnd = [Utils range:endRange isSubsetOfRangeInArray:skips];
-        if (startRange.location == NSNotFound && endRange.location == NSNotFound && !skipStart && !skipEnd) {
+        
+        BOOL skipStart = [Utils range:NSMakeRange(startRange.location+offset, startRange.length) isSubsetOfRangeInArray:skips];
+        BOOL skipEnd = [Utils range:NSMakeRange(endRange.location+offset, endRange.length) isSubsetOfRangeInArray:skips];
+        if (startRange.location == NSNotFound && endRange.location == NSNotFound) {
             
-        } else if (endRange.location == NSNotFound) {
-            NSLog(@"begin... %d",startRange.location+offset);
+        } else if (endRange.location == NSNotFound && !skipStart) {
+            //NSLog(@"begin... %d",startRange.location+offset);
             [stack addObject:[NSNumber numberWithInt:startRange.location+offset+startRange.length]];
             _foldStarts = [self addFoldRange:NSMakeRange(startRange.location+offset, startRange.length) toArray:_foldStarts];
-        } else if (startRange.location == NSNotFound) {
+        } else if (startRange.location == NSNotFound && !skipEnd) {
 
             if (stack.count > 0) {
-                NSLog(@"end %d",endRange.location+offset);
+              //  NSLog(@"end %d",endRange.location+offset);
                 int s = [(NSNumber*)[stack lastObject] intValue];
                 [stack removeLastObject];
                 NSRange r =NSMakeRange(s, endRange.location+offset - s);
@@ -639,9 +640,9 @@
  
         
         } else {
-            if (startRange.location > endRange.location) {
+            if (startRange.location > endRange.location && !skipEnd) {
                 if (stack.count > 0) {
-                    NSLog(@"end %d",endRange.location+offset);
+                //    NSLog(@"end %d",endRange.location+offset);
                     int s = [(NSNumber*)[stack lastObject] intValue];
                     [stack removeLastObject];
                     NSRange r =NSMakeRange(s, endRange.location+offset - s);
@@ -662,14 +663,14 @@
         [v getValue:&r];
         [self styleOnRange:r fcolor:[UIColor yellowColor] output:output];
     }
-    NSLog(@"_foldStarts: %@",_foldStarts);
+    //NSLog(@"_foldStarts: %@",_foldStarts);
     for (NSValue* v in _foldStarts) {
         NSRange r;
         [v getValue:&r];
         [self styleOnRange:r fcolor:[UIColor redColor] output:output];
     }
     
-    NSLog(@"_foldEnds: %@",_foldEnds);
+    //NSLog(@"_foldEnds: %@",_foldEnds);
     for (NSValue*v in _foldEnds) {
         NSRange r;
         [v getValue:&r];
@@ -677,7 +678,15 @@
     }
     
 }
-
+- (NSArray*)rangeArrayForMatches:(NSDictionary*)matches {
+    NSMutableArray* res = [NSMutableArray array];
+    
+    for (NSString* scope in matches) {
+        NSArray* ranges = [(NSDictionary*)[matches objectForKey:scope] objectForKey:@"ranges"];
+        [res addObjectsFromArray:ranges];
+    }
+    return res;
+}
 - (void)dealloc {
     nameMatches = nil;
     captureMatches = nil;
