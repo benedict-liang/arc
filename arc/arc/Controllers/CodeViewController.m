@@ -190,6 +190,8 @@
     
     _lines = [NSMutableArray array];
     _cursor = 0;
+    _foldTree = nil;
+    _foldedLines = nil;
 }
 
 - (void)generateLines
