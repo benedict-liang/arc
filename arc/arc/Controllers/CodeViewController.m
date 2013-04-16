@@ -685,7 +685,7 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
     CFIndex index = [self indexOfStringAtGesture:gesture];
     NSRange subtractRange = [_foldTree lowestNodeWithIndex:index];
     NSLog(@"%@",[NSValue value:&subtractRange withObjCType:@encode(NSRange)]);
-    if (!NSEqualRanges(subtractRange, _foldTree.contentRange)) {
+    if (!NSEqualRanges(subtractRange, _foldTree.node.contentRange)) {
         _foldedLines = [self foldedLinesForRange:subtractRange];
         [self renderFile];
     }
