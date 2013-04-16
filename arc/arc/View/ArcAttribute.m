@@ -24,5 +24,14 @@
     return self;
 }
 
+- (id)initWithArcAttribute:(ArcAttribute*)attribute {
+    self = [super init];
+    if (self) {
+        _type = attribute.type;
+        _range = attribute.range;
+        _value = attribute.value;
+    }
+    return self;
+}
 @end
 
