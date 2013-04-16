@@ -10,7 +10,7 @@
 #import "CodeLineCell.h"
 
 #define KEY_COPY_SETTINGS @"copyAndPaste"
-#define KEY_WIDTH_OF_DRAG_POINT 44
+#define KEY_WIDTH_OF_DRAG_POINT 50
 
 @interface DragPointsViewController ()
 
