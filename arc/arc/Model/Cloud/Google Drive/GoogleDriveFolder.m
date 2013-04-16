@@ -11,7 +11,7 @@
 @interface GoogleDriveFolder ()
 
 @property (strong, atomic) NSArray *contents;
-
+@property (strong, atomic) NSArray *operations;
 @end
 
 @implementation GoogleDriveFolder
@@ -66,8 +66,16 @@
         _isRemovable = NO;
         
         _contents = [NSArray array];
+        _operations = [NSArray array];
     }
     return self;
+}
+
+- (void)cancelOperations
+{
+    for (GTLServiceTicket *currentTicket in _operations) {
+        [currentTicket cancelTicket];
+    }
 }
 
 - (void)updateContents
@@ -90,7 +98,8 @@
         for (GTLDriveChildReference *currentReference in children) {
             // Get the child's attributes.
             GTLQuery *attributeQuery = [GTLQueryDrive queryForFilesGetWithFileId:[currentReference identifier]];
-            [driveService executeQuery:attributeQuery delegate:self didFinishSelector:@selector(attributesTicket:file:error:)];
+            GTLServiceTicket *currentTicket = [driveService executeQuery:attributeQuery delegate:self didFinishSelector:@selector(attributesTicket:file:error:)];
+            _operations = [_operations arrayByAddingObject:currentTicket];
         }
     } else {
         NSLog(@"%@", error);
