@@ -62,6 +62,12 @@
 		4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C963C81170D8E96004FDACB /* CodeLineCell.m */; };
 		4C9E0619170F3AFC0000F783 /* arc72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E0618170F3AFC0000F783 /* arc72.png */; };
 		4C9E061B170F3B1A0000F783 /* arc144.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E061A170F3B1A0000F783 /* arc144.png */; };
+		4CC9E0ED171C4C580062C825 /* arcMonokai72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC9E0EC171C4C580062C825 /* arcMonokai72.png */; };
+		4CC9E0F3171C4C5B0062C825 /* arcMonokai144.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC9E0F2171C4C5B0062C825 /* arcMonokai144.png */; };
+		4CC9E0F5171C4EBC0062C825 /* monokai_icon_72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC9E0F4171C4EBC0062C825 /* monokai_icon_72.png */; };
+		4CC9E0F7171C4EBF0062C825 /* monokai_icon_144.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC9E0F6171C4EBF0062C825 /* monokai_icon_144.png */; };
+		4CC9E0F9171C4EC60062C825 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC9E0F8171C4EC60062C825 /* Default-Landscape~ipad.png */; };
+		4CC9E0FB171C4EC80062C825 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC9E0FA171C4EC80062C825 /* Default-Portrait~ipad.png */; };
 		4CD06B6C16FDEEC100C9DED3 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CD06B3B16FDEDA600C9DED3 /* SenTestingKit.framework */; };
 		4CD06B6D16FDEEC100C9DED3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EC16F86AA900159B29 /* UIKit.framework */; };
 		4CD06B6E16FDEEC100C9DED3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C43F8EE16F86AA900159B29 /* Foundation.framework */; };
@@ -395,6 +401,7 @@
 		020C128D171ABACC00603229 /* GoogleDriveFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveFile.m; sourceTree = "<group>"; };
 		020C128F171AC14500603229 /* GoogleDriveDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleDriveDownloadHelper.h; sourceTree = "<group>"; };
 		020C1290171AC14600603229 /* GoogleDriveDownloadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveDownloadHelper.m; sourceTree = "<group>"; };
+		023D4AFA171D1AAF00D9F60D /* CloudPickerViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudPickerViewControllerDelegate.h; sourceTree = "<group>"; };
 		025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		0260B50A1709286E0091B012 /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Folder.h; path = Protocols/Folder.h; sourceTree = "<group>"; };
 		0260B50B170928820091B012 /* FileSystemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystemObject.h; path = Protocols/FileSystemObject.h; sourceTree = "<group>"; };
@@ -472,6 +479,12 @@
 		4C9E061A170F3B1A0000F783 /* arc144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc144.png; sourceTree = SOURCE_ROOT; };
 		4CA4DE42170EA04400A86109 /* DetailViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewControllerDelegate.h; sourceTree = "<group>"; };
 		4CA4DE43170EA4C200A86109 /* MasterViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewControllerDelegate.h; sourceTree = "<group>"; };
+		4CC9E0EC171C4C580062C825 /* arcMonokai72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arcMonokai72.png; sourceTree = "<group>"; };
+		4CC9E0F2171C4C5B0062C825 /* arcMonokai144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arcMonokai144.png; sourceTree = "<group>"; };
+		4CC9E0F4171C4EBC0062C825 /* monokai_icon_72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monokai_icon_72.png; sourceTree = "<group>"; };
+		4CC9E0F6171C4EBF0062C825 /* monokai_icon_144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monokai_icon_144.png; sourceTree = "<group>"; };
+		4CC9E0F8171C4EC60062C825 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		4CC9E0FA171C4EC80062C825 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		4CD06B2C16FDE92D00C9DED3 /* SubViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubViewControllerDelegate.h; sourceTree = "<group>"; };
 		4CD06B3B16FDEDA600C9DED3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		4CD06B6B16FDEEC100C9DED3 /* arcTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = arcTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -925,6 +938,12 @@
 		4C43F8E016F86AA800159B29 = {
 			isa = PBXGroup;
 			children = (
+				4CC9E0FA171C4EC80062C825 /* Default-Portrait~ipad.png */,
+				4CC9E0F8171C4EC60062C825 /* Default-Landscape~ipad.png */,
+				4CC9E0F6171C4EBF0062C825 /* monokai_icon_144.png */,
+				4CC9E0F4171C4EBC0062C825 /* monokai_icon_72.png */,
+				4CC9E0F2171C4C5B0062C825 /* arcMonokai144.png */,
+				4CC9E0EC171C4C580062C825 /* arcMonokai72.png */,
 				020C10D6171A935200603229 /* GTL.xcodeproj */,
 				4C43F8F416F86AA900159B29 /* arc */,
 				4CD06B6F16FDEEC100C9DED3 /* arcTests */,
@@ -1063,6 +1082,7 @@
 				4C1AF11F1715119300A2D0D8 /* FolderViewControllerDelegate.h */,
 				02C2E4841715594300C912E0 /* CreateFolderViewControllerDelegate.h */,
 				027EE0381717FD7800302F07 /* LongSettingListViewControllerDelegate.h */,
+				023D4AFA171D1AAF00D9F60D /* CloudPickerViewControllerDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1922,6 +1942,12 @@
 				020C1285171A962F00603229 /* GTMOAuth2ViewTouch.xib in Resources */,
 				840B686FE41BCE38805A85BE /* Cloud-Download.png in Resources */,
 				4C5E51F5171C028C0041BB2B /* file.png in Resources */,
+				4CC9E0ED171C4C580062C825 /* arcMonokai72.png in Resources */,
+				4CC9E0F3171C4C5B0062C825 /* arcMonokai144.png in Resources */,
+				4CC9E0F5171C4EBC0062C825 /* monokai_icon_72.png in Resources */,
+				4CC9E0F7171C4EBF0062C825 /* monokai_icon_144.png in Resources */,
+				4CC9E0F9171C4EC60062C825 /* Default-Landscape~ipad.png in Resources */,
+				4CC9E0FB171C4EC80062C825 /* Default-Portrait~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

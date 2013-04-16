@@ -15,13 +15,14 @@
 
 // Cloud Imports
 #import "CloudPickerViewController.h"
+#import "CloudPickerViewControllerDelegate.h"
 #import "SkyDriveFolder.h"
 #import "GoogleDriveFolder.h"
 #import "SkyDriveServiceManager.h"
 #import "GoogleDriveServiceManager.h"
 
 @interface FolderViewController : UIViewController <SubViewControllerDelegate,
-    UITableViewDelegate, UITableViewDataSource, CreateFolderViewControllerDelegate, UIActionSheetDelegate>
+    UITableViewDelegate, UITableViewDataSource, CreateFolderViewControllerDelegate, UIActionSheetDelegate, CloudPickerViewControllerDelegate>
 @property (nonatomic, readonly) id<Folder> folder;
 @property (nonatomic, weak) id<FolderViewControllerDelegate> folderViewControllerDelegate;
 - (id)initWithFolder:(id<Folder>)folder;

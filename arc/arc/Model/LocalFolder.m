@@ -8,14 +8,10 @@
 
 #import "LocalFolder.h"
 
-@interface LocalFolder ()
-@property (nonatomic) NSArray *contents;
-@end
-
 @implementation LocalFolder
 
 // Synthesize properties from protocol.
-@synthesize name=_name, path=_path, parent=_parent, isRemovable=_isRemovable;
+@synthesize name=_name, path=_path, parent=_parent, isRemovable=_isRemovable, size=_size;
 
 // Initialises this object with the given name, path, and parent.
 - (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent
@@ -58,16 +54,15 @@
             }
             [contents addObject:retrievedObject];
         }
-        _contents = contents;
-        return _contents;
+        return contents;
     }
 }
 
 // Returns the size of this object.
 // Folders should return the number of objects within, Files their size in B.
-- (int)size
+- (float)size
 {
-    return [[self contents] count];
+    return [(NSArray *)[self contents] count];
 }
 
 // Moves the given FileSystemObject to this Folder.

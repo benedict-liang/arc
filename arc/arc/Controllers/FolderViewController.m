@@ -28,6 +28,9 @@
 @property CreateFolderViewController *createFolderController;
 @property UIPopoverController *addFolderPopoverController;
 @property UIBarButtonItem *addItemButton;
+
+// Cloud Controllers
+@property SkyDriveServiceManager *skyDriveManager;
 @end
 
 @implementation FolderViewController
@@ -133,6 +136,9 @@
 
     _editToolbar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview:_editToolbar];
+    
+    // Set up the cloud controllers.
+    _skyDriveManager = (SkyDriveServiceManager *)[SkyDriveServiceManager sharedServiceManager];
 }
 
 // Work Around to track back button action.
@@ -202,9 +208,9 @@ titleForHeaderInSection:(NSInteger)section {
         if (fileObject.size == 0) {
             detailDescription = @"Empty Folder";
         } else if (fileObject.size == 1) {
-            detailDescription = [NSString stringWithFormat:@"%d item", fileObject.size];
+            detailDescription = [NSString stringWithFormat:@"%f item", fileObject.size];
         } else {
-            detailDescription = [NSString stringWithFormat:@"%d items", fileObject.size];
+            detailDescription = [NSString stringWithFormat:@"%f items", fileObject.size];
         }
     }
     
@@ -437,14 +443,13 @@ titleForHeaderInSection:(NSInteger)section {
             [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
             break;
         case 1: {
-            SkyDriveServiceManager *serviceManager = [SkyDriveServiceManager sharedServiceManager];
-            
-            if (![serviceManager isLoggedIn]) {
-                [serviceManager loginWithViewController:self];
-            }
-            if ([serviceManager isLoggedIn]) {
-                CloudPickerViewController *pickerController = [[CloudPickerViewController alloc] initWithCloudFolder:[SkyDriveFolder getRoot] targetFolder:_folder serviceManager:[SkyDriveServiceManager sharedServiceManager]];
-                [self presentViewController:pickerController animated:YES completion:nil];
+            if (![_skyDriveManager isLoggedIn]) {
+                [_skyDriveManager loginWithViewController:self];
+            } else {
+                CloudPickerViewController *pickerController = [[CloudPickerViewController alloc] initWithCloudFolder:[SkyDriveFolder getRoot] targetFolder:_folder serviceManager:_skyDriveManager];
+                [pickerController setDelegate:self];
+                UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:pickerController];
+                [self presentViewController:navController animated:YES completion:nil];
             }
         }
             break;
@@ -454,6 +459,13 @@ titleForHeaderInSection:(NSInteger)section {
         default:
             break;
     }
+}
+
+- (void)cloudPickerDone:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:^ {
+        [self refreshFolderContents];
+    }];
 }
 
 - (void)createFolderWithName:(NSString *)name

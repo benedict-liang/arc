@@ -9,7 +9,11 @@
 #import "CloudPickerViewController.h"
 
 @interface CloudPickerViewController ()
+// View properties.
+@property UIBarButtonItem *closeButton;
+
 // TableView-related properties.
+@property UITableView *tableView;
 @property NSArray *segregatedContents;
 
 // Download-related properties.
@@ -28,7 +32,6 @@
         _serviceManager = serviceManager;
         [folder setDelegate:self];
         [folder updateContents];
-        [self separateFilesAndFolders];
     }
     return self;
 }
@@ -40,9 +43,9 @@
     NSArray *fileObjects = (NSArray*)[_folder contents];
     
     for (id<FileSystemObject> fileSystemObject in fileObjects) {
-        if ([[fileSystemObject class] conformsToProtocol:@protocol(File)]) {
+        if ([[fileSystemObject class] conformsToProtocol:@protocol(CloudFile)]) {
             [files addObject:fileSystemObject];
-        } else if ([[fileSystemObject class] conformsToProtocol:@protocol(Folder) ]) {
+        } else if ([[fileSystemObject class] conformsToProtocol:@protocol(CloudFolder) ]) {
             [folders addObject:fileSystemObject];
         }
     }
@@ -59,9 +62,29 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self setModalPresentationStyle:UIModalPresentationFormSheet];
+    [[self navigationItem] setTitle:[_folder name]];
     
-    self.title = [_folder name];
+    _closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(shouldClose)];
+    NSArray *buttonArray = [NSArray arrayWithObjects:_closeButton, [self editButtonItem], nil];
+    
+    [[self navigationItem] setRightBarButtonItems:buttonArray];
+    
+    // Subview properties.
+    [[self view] setAutoresizesSubviews:YES];
+    
+    // Create the Table View.
+    _tableView = [[UITableView alloc] initWithFrame:[[self view] bounds] style:UITableViewStylePlain];
+    [_tableView setDelegate:self];
+    [_tableView setDataSource:self];
+    [_tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
+    [[self view] addSubview:_tableView];
+}
+
+- (void)shouldClose
+{
+    [_folder cancelOperations];
+    [_delegate cloudPickerDone:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -111,11 +134,11 @@
     NSArray *section = [_segregatedContents objectAtIndex:indexPath.section];
     id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
     
-    if ([[fileObject class] conformsToProtocol:@protocol(File)]) {
+    if ([[fileObject class] conformsToProtocol:@protocol(CloudFile)]) {
         cellImage = [Utils scale:[UIImage imageNamed:@"file.png"]
                           toSize:CGSizeMake(40, 40)];
-        detailDescription = [(id<CloudFile>)fileObject fileSize];
-    } else if ([[fileObject class] conformsToProtocol:@protocol(Folder)]) {
+        detailDescription = [Utils humanReadableFileSize:[(id<CloudFile>)fileObject size]];
+    } else if ([[fileObject class] conformsToProtocol:@protocol(CloudFolder)]) {
         cellImage = [Utils scale:[UIImage imageNamed:@"folder.png"]
                           toSize:CGSizeMake(40, 40)];
     }
@@ -126,6 +149,11 @@
 
     
     return cell;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleNone;
 }
 
 /*
@@ -171,13 +199,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    NSArray *section = [_segregatedContents objectAtIndex:[indexPath section]];
+    id selectedObject = [section objectAtIndex:[indexPath row]];
+    
+    if ([selectedObject conformsToProtocol:@protocol(CloudFile)]) {
+        [_serviceManager downloadFile:selectedObject toFolder:_target];
+    } else {
+        CloudPickerViewController *newFolderController = [[CloudPickerViewController alloc] initWithCloudFolder:selectedObject targetFolder:_target serviceManager:_serviceManager];
+        [[self navigationController] pushViewController:newFolderController animated:YES];
+    }
 }
 
 @end

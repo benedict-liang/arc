@@ -673,8 +673,17 @@
         [self styleOnRange:r fcolor:[UIColor greenColor] output:output];
     }
     
+}
 
-    
+- (void)dealloc {
+    nameMatches = nil;
+    captureMatches = nil;
+    beginCMatches = nil;
+    endCMatches = nil;
+    pairMatches = nil;
+    contentNameMatches = nil;
+    overlapMatches = nil;
+
 }
 
 @end
