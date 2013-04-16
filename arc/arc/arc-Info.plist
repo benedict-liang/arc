@@ -31,8 +31,8 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>arc72.png</string>
-				<string>arc144.png</string>
+				<string>monokai_icon_72.png</string>
+				<string>monokai_icon_144.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>

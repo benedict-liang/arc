@@ -14,7 +14,7 @@
 @implementation DropBoxFile
 
 // Synthesize properties from protocol.
-@synthesize name=_name, path=_path, parent=_parent, extension=_extension, isRemovable=_isRemovable;
+@synthesize name=_name, path=_path, parent=_parent, extension=_extension, isRemovable=_isRemovable, size=_size;
 
 // Initialises this object with the given name, path, and parent.
 - (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent
@@ -54,7 +54,7 @@
 
 // Returns the size of this object.
 // Folders should return the number of objects within, Files their size in B.
-- (int)size
+- (float)size
 {
     DBFilesystem *filesystem = [DBFilesystem sharedFilesystem];
     DBPath *ourPath = [[DBPath alloc] initWithString:_path];

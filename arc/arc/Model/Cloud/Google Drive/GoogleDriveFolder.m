@@ -10,21 +10,16 @@
 
 @interface GoogleDriveFolder ()
 
-@property (strong, nonatomic) NSMutableArray *contents;
-
+@property (strong, atomic) NSArray *contents;
+@property (strong, atomic) NSArray *operations;
 @end
 
 @implementation GoogleDriveFolder
-@synthesize name = _name, path = _path, parent = _parent, isRemovable = _isRemovable, delegate = _delegate;
+@synthesize name = _name, path = _path, parent = _parent, isRemovable = _isRemovable, delegate = _delegate, size = _size;
 
 + (GoogleDriveFolder *)getRoot
 {
     return [[GoogleDriveFolder alloc] initWithName:@"Google Drive" path:@"root" parent:nil];
-}
-
-- (id <NSObject>)contents
-{
-    return _contents;
 }
 
 - (id <FileSystemObject>)objectAtPath:(NSString *)path
@@ -52,7 +47,7 @@
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"GoogleDriveFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
 }
 
-- (int)size
+- (float)size
 {
     return [_contents count];
 }
@@ -70,9 +65,17 @@
         _parent = parent;
         _isRemovable = NO;
         
-        _contents = [NSMutableArray array];
+        _contents = [NSArray array];
+        _operations = [NSArray array];
     }
     return self;
+}
+
+- (void)cancelOperations
+{
+    for (GTLServiceTicket *currentTicket in _operations) {
+        [currentTicket cancelTicket];
+    }
 }
 
 - (void)updateContents
@@ -95,7 +98,8 @@
         for (GTLDriveChildReference *currentReference in children) {
             // Get the child's attributes.
             GTLQuery *attributeQuery = [GTLQueryDrive queryForFilesGetWithFileId:[currentReference identifier]];
-            [driveService executeQuery:attributeQuery delegate:self didFinishSelector:@selector(attributesTicket:file:error:)];
+            GTLServiceTicket *currentTicket = [driveService executeQuery:attributeQuery delegate:self didFinishSelector:@selector(attributesTicket:file:error:)];
+            _operations = [_operations arrayByAddingObject:currentTicket];
         }
     } else {
         NSLog(@"%@", error);
@@ -108,16 +112,17 @@
     if (!error) {
         NSString *fileName = [file title];
         NSString *filePath = [file downloadUrl];
+        NSNumber *fileSize = [file fileSize];
         
         if ([[fileName pathExtension] isEqualToString:@""]) {
             // No extension means this is a folder.
             // Note that folders are retrieved by their identifier, not the download URL.
             GoogleDriveFolder *newFolder = [[GoogleDriveFolder alloc] initWithName:fileName path:[file identifier] parent:self];
-            [_contents addObject:newFolder];
+            _contents = [_contents arrayByAddingObject:newFolder];
         } else {
             // There is a file extension. This must be a file.
-            GoogleDriveFile *newFile = [[GoogleDriveFile alloc] initWithName:fileName path:filePath parent:self];
-            [_contents addObject:newFile];
+            GoogleDriveFile *newFile = [[GoogleDriveFile alloc] initWithName:fileName identifier:filePath size:[fileSize floatValue]];
+            _contents = [_contents arrayByAddingObject:newFile];
         }
         [_delegate folderContentsUpdated:self];
     } else {

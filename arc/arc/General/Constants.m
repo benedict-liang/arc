@@ -47,6 +47,7 @@ NSString* const CLOUD_GOOGLE_SECRET = @"7j820ouQmOBleXqrfk8U3lkU";
 // SkyDrive scopes
 NSString* const SKYDRIVE_SCOPE_SIGNIN = @"wl.signin";
 NSString* const SKYDRIVE_SCOPE_READ_ACCESS = @"wl.skydrive";
+NSString* const SKYDRIVE_SCOPE_OFFLINE = @"wl.offline_access";
 // Google Drive variables
 NSString* const GOOGLE_KEYCHAIN_NAME = @"arc";
 

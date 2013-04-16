@@ -10,8 +10,11 @@
 #import "CloudFolder.h"
 #import "CloudServiceManager.h"
 #import "CloudFolderDelegate.h"
+#import "CloudPickerViewControllerDelegate.h"
 
-@interface CloudPickerViewController : UITableViewController <CloudFolderDelegate>
+@interface CloudPickerViewController : UIViewController <CloudFolderDelegate, UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) id<CloudPickerViewControllerDelegate> delegate;
 
 - (id)initWithCloudFolder:(id<CloudFolder>)folder targetFolder:(LocalFolder *)target serviceManager:(id<CloudServiceManager>)serviceManager;
 

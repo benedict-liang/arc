@@ -8,14 +8,10 @@
 
 #import "DropBoxFolder.h"
 
-@interface DropBoxFolder ()
-@property (nonatomic) NSArray *contents;
-@end
-
 @implementation DropBoxFolder
 
 // Synthesize protocol properties.
-@synthesize name=_name, path=_path, parent=_parent, isRemovable=_isRemovable;
+@synthesize name=_name, path=_path, parent=_parent, isRemovable=_isRemovable, size=_size;
 
 // Initialises this object with the given name, path, and parent.
 - (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent
@@ -53,20 +49,18 @@
             [contents addObject:currentObject];
         }
         
-        _contents = contents;
+        return contents;
     } else {
         NSLog(@"%@", error);
         return nil;
     }
-    
-    return _contents;
 }
 
 // Returns the size of this object.
 // Folders should return the number of objects within, Files their size in B.
-- (int)size
+- (float)size
 {
-    return [[self contents] count];
+    return [(NSArray *)[self contents] count];
 }
 
 // Moves the given FileSystemObject to this Folder.

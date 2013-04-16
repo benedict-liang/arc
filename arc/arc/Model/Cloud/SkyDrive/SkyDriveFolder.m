@@ -11,10 +11,12 @@
 
 @property (strong, atomic) NSArray *contents;
 
+@property (strong, atomic) NSArray *operations;
+
 @end
 
 @implementation SkyDriveFolder
-@synthesize name = _name, path = _path, parent = _parent, isRemovable = _isRemovable, delegate = _delegate;
+@synthesize name = _name, path = _path, parent = _parent, isRemovable = _isRemovable, delegate = _delegate, size = _size;
 
 + (id<CloudFolder>)getRoot
 {
@@ -46,7 +48,7 @@
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"SkyDriveFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
 }
 
-- (int)size
+- (float)size
 {
     return [_contents count];
 }
@@ -64,7 +66,8 @@
         _parent = parent;
         _isRemovable = NO;
 
-        _contents = [NSMutableArray array];
+        _contents = [NSArray array];
+        _operations = [NSArray array];
     }
     return self;
 }
@@ -97,22 +100,22 @@
                                                  @"operationType" : [NSNumber numberWithInt:kFileInfo],
                                                  @"retrievedType" : [currentDictionary valueForKey:@"type"]
                                                  };
-                [connectClient getWithPath:[currentDictionary valueForKey:@"id"] delegate:self userState:operationState];
+                LiveOperation *currentOperation = [connectClient getWithPath:[currentDictionary valueForKey:@"id"] delegate:self userState:operationState];
+                _operations = [_operations arrayByAddingObject:currentOperation];
             }
         }
             break;
         case kFileInfo: {
             NSString *type = [[operation userState] valueForKey:@"retrievedType"];
             NSString *name = [result valueForKey:@"name"];
-            NSString *path = [result valueForKey:@"id"];
+            NSString *identifier = [result valueForKey:@"id"];
             
             if ([type isEqualToString:@"file"]) {
                 NSString *size = [result valueForKey:@"size"];
-                SkyDriveFile *newFile = [[SkyDriveFile alloc] initWithName:name path:path parent:self];
-                [newFile setFileSize:size];
+                SkyDriveFile *newFile = [[SkyDriveFile alloc] initWithName:name identifier:identifier size:[size floatValue]];
                 _contents = [_contents arrayByAddingObject:newFile];
             } else if ([type isEqualToString:@"folder"]) {
-                SkyDriveFolder *newFolder = [[SkyDriveFolder alloc] initWithName:name path:path parent:self];
+                SkyDriveFolder *newFolder = [[SkyDriveFolder alloc] initWithName:name path:identifier parent:self];
                 _contents = [_contents arrayByAddingObject:newFolder];
             } else {
                 // Do nothing. This is audio, a photo, or a video.
@@ -120,6 +123,13 @@
             [_delegate folderContentsUpdated:self];
         }
             break;
+    }
+}
+
+- (void)cancelOperations
+{
+    for (LiveOperation *currentOperation in _operations) {
+        [currentOperation cancel];
     }
 }
 
