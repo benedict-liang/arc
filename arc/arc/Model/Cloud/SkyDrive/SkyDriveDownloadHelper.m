@@ -33,6 +33,10 @@
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     [fileManager createFileAtPath:filePath contents:receivedData attributes:nil];
+    
+    if (_delegate != nil) {
+        [_delegate downloadCompleteForHelper:self];
+    }
 }
 
 @end

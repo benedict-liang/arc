@@ -12,8 +12,11 @@
 #import <LiveSDK/LiveConnectClient.h>
 #import "LocalFolder.h"
 #import "SkyDriveFile.h"
+#import "DownloadHelperDelegate.h"
 
 @interface SkyDriveDownloadHelper : NSObject <LiveDownloadOperationDelegate>
+
+@property (weak, nonatomic) id<DownloadHelperDelegate> delegate;
 
 - (id)initWithFile:(SkyDriveFile *)file Folder:(LocalFolder *)folder;
 
