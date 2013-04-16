@@ -446,27 +446,37 @@ titleForHeaderInSection:(NSInteger)section {
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    switch (buttonIndex) {
-        case 0:
-            [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-            break;
-        case 1: {
-            if (![_skyDriveManager isLoggedIn]) {
-                [_skyDriveManager loginWithViewController:self];
-            } else {
-                CloudPickerViewController *pickerController = [[CloudPickerViewController alloc] initWithCloudFolder:[SkyDriveFolder getRoot] targetFolder:_folder serviceManager:_skyDriveManager];
-                [pickerController setDelegate:self];
-                UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:pickerController];
-                [navController setModalPresentationStyle:UIModalPresentationFormSheet];
-                [self presentViewController:navController animated:YES completion:nil];
+    if (![_folder isKindOfClass:[DropBoxFolder class]]) {
+        switch (buttonIndex) {
+            case 0:
+                [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+                break;
+            case 1: {
+                if (![_skyDriveManager isLoggedIn]) {
+                    [_skyDriveManager loginWithViewController:self];
+                } else {
+                    CloudPickerViewController *pickerController = [[CloudPickerViewController alloc] initWithCloudFolder:[SkyDriveFolder getRoot] targetFolder:_folder serviceManager:_skyDriveManager];
+                    [pickerController setDelegate:self];
+                    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:pickerController];
+                    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
+                    [self presentViewController:navController animated:YES completion:nil];
+                }
             }
+                break;
+            case 2:
+                NSLog(@"Google Drive");
+                break;
+            default:
+                break;
         }
-            break;
-        case 2:
-            NSLog(@"Google Drive");
-            break;
-        default:
-            break;
+    } else {
+        switch (buttonIndex) {
+            case 0:
+                [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+                break;
+            default:
+                break;
+        }
     }
 }
 
