@@ -9,6 +9,7 @@
 
 @interface SkyDriveServiceManager ()
 @property BOOL isLoggedIn;
+@property NSMutableArray *helpers;
 @end
 
 
@@ -30,6 +31,7 @@ static SkyDriveServiceManager *sharedServiceManager = nil;
     if (self = [super init]) {
         NSArray *scopesRequired = [NSArray arrayWithObjects:SKYDRIVE_SCOPE_SIGNIN, SKYDRIVE_SCOPE_READ_ACCESS, SKYDRIVE_SCOPE_OFFLINE, nil];
         _liveClient = [[LiveConnectClient alloc] initWithClientId:CLOUD_SKYDRIVE_KEY scopes:scopesRequired delegate:self];
+        _helpers = [NSMutableArray array];
     }
     return self;
 }
@@ -59,8 +61,16 @@ static SkyDriveServiceManager *sharedServiceManager = nil;
 {
     if (_isLoggedIn) {
         SkyDriveDownloadHelper *helper = [[SkyDriveDownloadHelper alloc] initWithFile:file Folder:folder];
-        [_liveClient downloadFromPath:[file identifier] delegate:helper];
+        [helper setDelegate:self];
+        [_helpers addObject:helper];
+        NSString *filePath = [[file identifier] stringByAppendingPathComponent:SKYDRIVE_STRING_FILE_CONTENTS];
+        [_liveClient downloadFromPath:filePath delegate:helper];
     }
+}
+
+- (void)downloadCompleteForHelper:(id)sender
+{
+    [_helpers removeObject:sender];
 }
 
 @end
