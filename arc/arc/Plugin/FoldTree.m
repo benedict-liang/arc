@@ -10,52 +10,59 @@
 
 @implementation FoldTree
 
-- (id)initWithSortedRanges:(NSArray*)sn
+- (id)initWithSortedNodes:(NSArray*)sn Node:(FoldNode*)node
 {
     if (self = [super init]) {
-        _contentRange = range;
+        _node = node;
         _children = [NSMutableArray array];
         [self consWithSorted:sa];
     }
     return self;
 }
-- (id)initWithNodes:(NSArray *)nodes
+- (id)initWithNodes:(NSArray *)nodes RootRange:(NSRange)range
 {
-    return [self initWithContentRange:range sortedRanges:[Utils sortRanges:ranges]];
+    RootFoldNode* root = [[RootFoldNode alloc] initWithContentRange:range];
+    
+    return [self initWithSortedNodes:[FoldNode sortNodeArray:nodes] Node:root];
 }
 
-- (void)consWithSorted:(NSArray*)sortedRanges {
+- (void)consWithSorted:(NSArray*)sortedNodes {
     
     NSMutableArray *accum = [NSMutableArray array];
-    NSRange r;
-    NSRange elder;
+//    NSRange r;
+    FoldNode* elder;
     //NSLog(@"sortedRanges: %@",sortedRanges);
-    if (sortedRanges.count > 0) {
-        [(NSValue*)[sortedRanges objectAtIndex:0] getValue:&elder];
+    if (sortedNodes.count > 0) {
+        elder = [sortedNodes objectAtIndex:0];
         
-        for (int i = 1; i < sortedRanges.count; i++) {
-            NSValue* value = [sortedRanges objectAtIndex:i];
-            [value getValue:&r];
-            if ([Utils isSubsetOf:elder arg:r]) {
-                [accum  addObject:value];
+        for (int i = 1; i < sortedNodes.count; i++) {
+            FoldNode* node = [sortedNodes objectAtIndex:i];
+            
+            if ([Utils isSubsetOf:elder.contentRange arg:node.contentRange]) {
+                [accum  addObject:node];
             }
             else {
                 
-                FoldTree* subTree = [[FoldTree alloc] initWithContentRange:elder sortedRanges:[FoldTree rangeArrayCopy:accum]];
+                FoldTree* subTree = [[FoldTree alloc] initWithSortedNodes:[[NSArray alloc] initWithArray:accum copyItems:YES]
+                                                                     Node:elder];
+               // [[FoldTree alloc] initWithContentRange:elder sortedRanges:[[NSArray alloc] initWithArray:accum copyItems:YES]];
                 [_children addObject:subTree];
-                elder = r;
+                elder = node;
                 [accum removeAllObjects];
             }
 
         }
-        FoldTree* last = [[FoldTree alloc] initWithContentRange:elder ranges:[FoldTree rangeArrayCopy:accum]];
+        FoldTree* last = [[FoldTree alloc] initWithSortedNodes:[[NSArray alloc] initWithArray:accum copyItems:YES]
+                                                          Node:elder];
+
+//        [[FoldTree alloc] initWithContentRange:elder ranges:[FoldTree rangeArrayCopy:accum]];
         [_children addObject:last];
     
     }
 }
 
 -(NSString*)description {
-    NSMutableString* str = [NSMutableString stringWithFormat:@"Node: %@ children=> { \n",[NSValue value:&_contentRange withObjCType:@encode(NSRange)]];
+    NSMutableString* str = [NSMutableString stringWithFormat:@"Node: %@ children=> { \n",_node];
     for (FoldTree* subTree in _children) {
         [str appendString:@"    "];
         [str appendString:[subTree description]];
@@ -65,16 +72,13 @@
     return str;
 }
 
-+(NSArray*)rangeArrayCopy:(NSArray*)arr {
-    NSMutableArray *tmp = [NSMutableArray array];
-    for (NSValue *v in arr) {
-        NSRange range;
-        [v getValue:&range];
-        NSValue *m = [NSValue value:&range withObjCType:@encode(NSRange)];
-        [tmp addObject:m];
-    }
-    return tmp;
-}
+//+(NSArray*)nodeArrayCopy:(NSArray*)arr {
+//    NSMutableArray *tmp = [NSMutableArray array];
+//    for (FoldNode *v in arr) {
+//        [tmp addObject:];
+//    }
+//    return tmp;
+//}
 
 -(NSRange)lowestNodeWithIndex:(CFIndex)index {
     if ([Utils isContainedByRange:_contentRange Index:index]) {

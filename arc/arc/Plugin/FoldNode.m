@@ -19,6 +19,15 @@
     return self;
 }
 
+- (id)initWithNode:(FoldNode *)node {
+    return [self initWithContentRange:node.contentRange startRange:node.startRange endRange:node.endRange];
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    FoldNode* copy = [[FoldNode alloc] initWithNode:self];
+    return copy;
+}
+
 + (NSArray*)sortNodeArray:(NSArray*)nodes {
     //ASSUMES: ranges are either non intersecting, or subsets
     //Above holds true for foldable code blocks
@@ -42,4 +51,7 @@
     return sortedRanges;
 }
 
+- (NSString*)description {
+    return [NSString stringWithFormat:@"cR: %d %d sR: %d %d eR:%d %d",_contentRange.location,_contentRange.length,_startRange.location,_startRange.length, _endRange.location, _endRange.length];
+}
 @end

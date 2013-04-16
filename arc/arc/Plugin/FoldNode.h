@@ -8,14 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FoldNode : NSObject
+@interface FoldNode : NSObject <NSCopying>
 
-@property NSRange contentRange;
-@property NSRange startRange;
-@property NSRange endRange;
+@property(readonly) NSRange contentRange;
+@property(readonly) NSRange startRange;
+@property(readonly) NSRange endRange;
 
 -(id)initWithContentRange:(NSRange)cr
                startRange:(NSRange)sr
                  endRange:(NSRange)er;
 
+-(id)initWithNode:(FoldNode*)node;
++ (NSArray*)sortNodeArray:(NSArray*)nodes;
 @end

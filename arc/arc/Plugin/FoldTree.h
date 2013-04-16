@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "Utils.h"
 #import "FoldNode.h"
+#import "RootFoldNode.h"
+
 @interface FoldTree : NSObject
 
 @property NSMutableArray* children;
