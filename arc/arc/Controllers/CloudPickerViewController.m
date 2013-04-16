@@ -199,13 +199,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    NSArray *section = [_segregatedContents objectAtIndex:[indexPath section]];
+    id selectedObject = [section objectAtIndex:[indexPath row]];
+    
+    if ([selectedObject conformsToProtocol:@protocol(CloudFile)]) {
+        [_serviceManager downloadFile:selectedObject toFolder:_target];
+    } else {
+        CloudPickerViewController *newFolderController = [[CloudPickerViewController alloc] initWithCloudFolder:selectedObject targetFolder:_target serviceManager:_serviceManager];
+        [[self navigationController] pushViewController:newFolderController animated:YES];
+    }
 }
 
 @end
