@@ -29,9 +29,8 @@
 - (void)consWithSorted:(NSArray*)sortedNodes {
     
     NSMutableArray *accum = [NSMutableArray array];
-//    NSRange r;
     FoldNode* elder;
-    //NSLog(@"sortedRanges: %@",sortedRanges);
+
     if (sortedNodes.count > 0) {
         elder = [sortedNodes objectAtIndex:0];
         
@@ -45,7 +44,6 @@
                 
                 FoldTree* subTree = [[FoldTree alloc] initWithSortedNodes:[[NSArray alloc] initWithArray:accum copyItems:YES]
                                                                      Node:elder];
-               // [[FoldTree alloc] initWithContentRange:elder sortedRanges:[[NSArray alloc] initWithArray:accum copyItems:YES]];
                 [_children addObject:subTree];
                 elder = node;
                 [accum removeAllObjects];
@@ -55,7 +53,6 @@
         FoldTree* last = [[FoldTree alloc] initWithSortedNodes:[[NSArray alloc] initWithArray:accum copyItems:YES]
                                                           Node:elder];
 
-//        [[FoldTree alloc] initWithContentRange:elder ranges:[FoldTree rangeArrayCopy:accum]];
         [_children addObject:last];
     
     }
@@ -72,13 +69,6 @@
     return str;
 }
 
-//+(NSArray*)nodeArrayCopy:(NSArray*)arr {
-//    NSMutableArray *tmp = [NSMutableArray array];
-//    for (FoldNode *v in arr) {
-//        [tmp addObject:];
-//    }
-//    return tmp;
-//}
 
 -(NSRange)lowestNodeWithIndex:(CFIndex)index {
     if ([Utils isContainedByRange:_node.contentRange Index:index]) {
