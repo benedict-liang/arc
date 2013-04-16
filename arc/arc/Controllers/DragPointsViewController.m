@@ -171,7 +171,7 @@
             selectionDidChange = YES;
         }
         
-        if (selectionDidChange) {
+        if (selectionDidChange) {            
             gesture.view.center = CGPointMake(_lineNumberWidthOffSet,
                                               _topRowCellRect.origin.y + cellHeight/2);
             [gesture setTranslation:CGPointMake(0, 0)
@@ -260,11 +260,12 @@
         }
         
         if (selectionDidChange) {
-            gesture.view.center = CGPointMake(_bottomRowCellRect.size.width,
+            CGPoint endOfLineCoordinates = [self getLastCharacterCoordinatesInRow:_bottomIndexPath];
+            gesture.view.center = CGPointMake(endOfLineCoordinates.x,
                                               _bottomRowCellRect.origin.y + cellHeight/2);
             [gesture setTranslation:CGPointMake(0, 0)
                              inView:_tableView];
-            CGPoint endPointInRow = CGPointMake(_bottomRowCellRect.size.width, 0);
+            CGPoint endPointInRow = CGPointMake(endOfLineCoordinates.x, 0);
             [self updateBackgroundColorForRightDragPointVertical:endPointInRow];
         }
     }
@@ -551,6 +552,20 @@
     UIView* viewYouWishToObtain = [_tableView hitTest:locationPoint withEvent:event];
     if (viewYouWishToObtain != _leftDragPoint || viewYouWishToObtain != _rightDragPoint) {
         [_codeViewController dismissTextSelectionViews];
+    }
+}
+
+- (CGPoint)getLastCharacterCoordinatesInRow:(NSIndexPath*)indexPath {
+    CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:indexPath];
+    CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                                               (cell.line));
+    CFRange stringRangeForRow = CTLineGetStringRange(lineRef);
+    if (stringRangeForRow.length == NSNotFound) {
+        return CGPointMake(0, 0);
+    }
+    else {
+        CGFloat offset = CTLineGetOffsetForStringIndex(lineRef, stringRangeForRow.length, NULL);
+        return CGPointMake(offset, 0);
     }
 }
 
