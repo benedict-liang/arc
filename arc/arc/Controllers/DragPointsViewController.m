@@ -65,6 +65,9 @@
                                                              (cell.line));
         CFIndex index = CTLineGetStringIndexForPosition(lineRef, touchPoint);
         
+        // FIXME: Try using this - http://stackoverflow.com/a/10206497/1220192
+        
+        
         // Apply background color for index
         _selectedTextRange = NSMakeRange(cell.stringRange.location + index, 3);
         [self applyBackgroundColorWithSelectedTextRange];
@@ -72,20 +75,22 @@
         // Get location of touch of tableviewcell in TableView (global)
         CGRect cellRect = [_tableView rectForRowAtIndexPath:indexPath];
         CGFloat startOffset = CTLineGetOffsetForStringIndex(lineRef, index, NULL);
-        CGFloat endOffset = CTLineGetOffsetForStringIndex(lineRef, index+4, NULL);
+        CGFloat endOffset = CTLineGetOffsetForStringIndex(lineRef, index+3, NULL);
         
-        CGRect selectedRect = CGRectMake(cellRect.origin.x + startOffset, cellRect.origin.y,
-                                         endOffset - startOffset, cellRect.size.height);
+        CGRect selectedRect = CGRectMake(cellRect.origin.x + startOffset + cell.lineNumberWidth,
+                                         cellRect.origin.y,
+                                         endOffset - startOffset,
+                                         cellRect.size.height);
         
         
-        CGRect leftDragPointFrame = CGRectMake(selectedRect.origin.x + offset,
+        CGRect leftDragPointFrame = CGRectMake(selectedRect.origin.x,
                                                selectedRect.origin.y,
                                                WIDTH_OF_DRAG_POINT,
                                                selectedRect.size.height);
         _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame
                                                       andImageName:@"leftDragPoint.png"];
         
-        CGRect rightDragPointFrame = CGRectMake(selectedRect.origin.x + selectedRect.size.width + offset,
+        CGRect rightDragPointFrame = CGRectMake(selectedRect.origin.x + selectedRect.size.width,
                                                 selectedRect.origin.y,
                                                 WIDTH_OF_DRAG_POINT,
                                                 selectedRect.size.height);
