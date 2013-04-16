@@ -14,7 +14,7 @@
 @end
 
 @implementation SkyDriveFolder
-@synthesize name = _name, path = _path, parent = _parent, isRemovable = _isRemovable, delegate = _delegate;
+@synthesize name = _name, path = _path, parent = _parent, isRemovable = _isRemovable, delegate = _delegate, size = _size;
 
 + (id<CloudFolder>)getRoot
 {
@@ -46,7 +46,7 @@
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"SkyDriveFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
 }
 
-- (int)size
+- (float)size
 {
     return [_contents count];
 }

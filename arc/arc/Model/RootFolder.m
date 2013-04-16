@@ -17,7 +17,7 @@ static RootFolder *sharedRootFolder = nil;
 @implementation RootFolder
 
 // Synthesize properties from protocol.
-@synthesize name=_name, path=_path, parent=_parent, isRemovable=_isRemovable;
+@synthesize name=_name, path=_path, parent=_parent, isRemovable=_isRemovable, size=_size;
 
 + (RootFolder *)sharedRootFolder
 {
@@ -54,7 +54,7 @@ static RootFolder *sharedRootFolder = nil;
 
 // Returns the size of this object.
 // Folders should return the number of objects within, Files their size in B.
-- (int)size
+- (float)size
 {
     return [_contents count];
 }
