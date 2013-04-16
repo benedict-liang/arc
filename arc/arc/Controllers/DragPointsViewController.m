@@ -560,8 +560,9 @@
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                                (cell.line));
     CFRange stringRangeForRow = CTLineGetStringRange(lineRef);
-    if (stringRangeForRow.length == NSNotFound) {
-        return CGPointMake(0, 0);
+    
+    if (stringRangeForRow.length == 1) {
+        return CGPointMake(_lineNumberWidthOffSet, 0);
     }
     else {
         CGFloat offset = CTLineGetOffsetForStringIndex(lineRef, stringRangeForRow.length, NULL);
