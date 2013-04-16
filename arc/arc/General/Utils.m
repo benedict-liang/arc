@@ -202,5 +202,13 @@
     return [[self class] imageSized:rect withColor:color];
 }
 
-
++ (NSArray*)filterArray:(NSArray*)array With:(BOOL (^)(id))predicate {
+    NSMutableArray* res = [NSMutableArray array];
+    for (id elem in array) {
+        if (predicate(elem)) {
+            [res addObject:elem];
+        }
+    }
+    return res;
+}
 @end
