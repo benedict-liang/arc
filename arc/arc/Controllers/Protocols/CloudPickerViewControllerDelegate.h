@@ -10,4 +10,6 @@
 
 @protocol CloudPickerViewControllerDelegate <NSObject>
 
+- (void)cloudPickerDone:(id)sender;
+
 @end
