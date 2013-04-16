@@ -573,9 +573,8 @@
         [self foldsWithStart:foldStart end:foldEnd skipRanges:[self rangeArrayForMatches:overlapMatches]];
         [self testFolds:foldRanges output:output];
         //NSLog(@"%@",foldRanges);
-        _foldTree = [[FoldTree alloc] initWithContentRange:NSMakeRange(0, _content.length) ranges:foldRanges];
-        
-        //NSLog(@"%@",[_foldTree description]);
+        _foldTree = [[FoldTree alloc] initWithNodes:[self produceNodeArray] RootRange:NSMakeRange(0, _content.length)];
+        NSLog(@"%@",_foldTree);
     }
     
     

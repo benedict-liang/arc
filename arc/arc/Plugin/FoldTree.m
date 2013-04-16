@@ -15,7 +15,7 @@
     if (self = [super init]) {
         _node = node;
         _children = [NSMutableArray array];
-        [self consWithSorted:sa];
+        [self consWithSorted:sn];
     }
     return self;
 }
