@@ -404,7 +404,7 @@
 - (void)showCopyMenuForTextSelection {
     
     if ([self becomeFirstResponder]) {
-        NSLog(@"is first responder");
+        //NSLog(@"is first responder");
     }
     
     UIMenuController *menuController = [UIMenuController sharedMenuController];
