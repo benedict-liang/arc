@@ -10,7 +10,9 @@
 #import "CodeLineCell.h"
 
 #define KEY_COPY_SETTINGS @"copyAndPaste"
-#define KEY_WIDTH_OF_DRAG_POINT 50
+#define WIDTH_OF_DRAG_POINT 50
+#define HORIZONTAL_THRESHOLD_PERCENTAGE 0.95
+#define VERTICAL_THRESHOLD_PERCENTAGE 0.80
 
 @interface DragPointsViewController ()
 
@@ -47,14 +49,14 @@
     if (self) {
         CGRect leftDragPointFrame = CGRectMake(selectedTextRect.origin.x + offset,
                                                selectedTextRect.origin.y,
-                                               KEY_WIDTH_OF_DRAG_POINT,
+                                               WIDTH_OF_DRAG_POINT,
                                                selectedTextRect.size.height);
         _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame
                                                       andImageName:@"leftDragPoint.png"];
         
         CGRect rightDragPointFrame = CGRectMake(selectedTextRect.origin.x + selectedTextRect.size.width + offset,
                                                 selectedTextRect.origin.y,
-                                                KEY_WIDTH_OF_DRAG_POINT,
+                                                WIDTH_OF_DRAG_POINT,
                                                 selectedTextRect.size.height);
         _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame
                                                        andImageName:@"rightDragPoint.png"];
@@ -105,8 +107,8 @@
         // Set thresholds
         CGFloat forwardDifference = _nextFirstCharacterCoordinates.x - _firstCharacterCoordinates.x;
         CGFloat backwardDifference = _firstCharacterCoordinates.x - _previousFirstCharacterCoordinates.x;
-        CGFloat forwardThreshold = forwardDifference * 0.95;
-        CGFloat backwardThreshold = - backwardDifference * 0.95;
+        CGFloat forwardThreshold = forwardDifference * HORIZONTAL_THRESHOLD_PERCENTAGE;
+        CGFloat backwardThreshold = - backwardDifference * HORIZONTAL_THRESHOLD_PERCENTAGE;
         BOOL isDragPointsOverlapping = [self isDragPointsOverlapping:forwardDifference];
         
         CGPoint translation = [gesture translationInView:_tableView];
@@ -143,7 +145,7 @@
         
         // Set thresholds
         CGFloat cellHeight = _topRowCellRect.size.height;
-        CGFloat threshold = cellHeight / 4;
+        CGFloat threshold = cellHeight * VERTICAL_THRESHOLD_PERCENTAGE;
         
         // Checks if cells are within visible range
         NSArray *visibleCells = _tableView.visibleCells;
@@ -193,8 +195,8 @@
         // Set thresholds
         CGFloat forwardDifference = _nextLastCharacterCoordinates.x - _lastCharacterCoordinates.x;
         CGFloat backwardDifference = _lastCharacterCoordinates.x - _previousLastCharacterCoordinates.x;
-        CGFloat forwardThreshold = forwardDifference * 0.95;
-        CGFloat backwardThreshold = - backwardDifference * 0.95;
+        CGFloat forwardThreshold = forwardDifference * HORIZONTAL_THRESHOLD_PERCENTAGE;
+        CGFloat backwardThreshold = - backwardDifference * HORIZONTAL_THRESHOLD_PERCENTAGE;
         BOOL isDragPointsOverlapping = [self isDragPointsOverlapping:forwardDifference];
         
         CGPoint translation = [gesture translationInView:_tableView];
@@ -230,7 +232,7 @@
         
         // Set thresholds
         CGFloat cellHeight = _bottomRowCellRect.size.height;
-        CGFloat threshold = cellHeight / 4;
+        CGFloat threshold = cellHeight * VERTICAL_THRESHOLD_PERCENTAGE;
         
         // Checks if cells are within visible range
         NSArray *visibleCells = _tableView.visibleCells;
