@@ -508,10 +508,10 @@
     for (UIGestureRecognizer *g in [cell gestureRecognizers]) {
         [cell removeGestureRecognizer:g];
     }
-//    if ([_foldedLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
-//        cell.hidden = YES;
-//        return cell;
-//    }
+    if ([_foldedLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
+        cell.hidden = YES;
+        return cell;
+    }
     // Long Press Gesture for text selection
     UILongPressGestureRecognizer *longPressGesture =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self
