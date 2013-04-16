@@ -62,7 +62,6 @@
 {
     [super viewDidLoad];
     
-    [self setModalPresentationStyle:UIModalPresentationFormSheet];
     [[self navigationItem] setTitle:[_folder name]];
     
     _closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(shouldClose)];
