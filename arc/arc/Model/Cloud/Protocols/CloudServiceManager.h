@@ -6,8 +6,11 @@
 #import <Foundation/Foundation.h>
 #import "LocalFolder.h"
 #import "CloudFile.h"
+#import "CloudServiceManagerDelegate.h"
 
 @protocol CloudServiceManager <NSObject>
+
+@property (weak, nonatomic) id<CloudServiceManagerDelegate> delegate;
 
 // Returns the singleton service manager for this particular service.
 + (id<CloudServiceManager>)sharedServiceManager;

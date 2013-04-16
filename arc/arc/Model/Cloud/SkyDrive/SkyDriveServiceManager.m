@@ -16,6 +16,7 @@
 static SkyDriveServiceManager *sharedServiceManager = nil;
 
 @implementation SkyDriveServiceManager
+@synthesize delegate=_delegate;
 
 // Returns the singleton service manager for this particular service.
 + (id<CloudServiceManager>)sharedServiceManager
