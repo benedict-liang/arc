@@ -120,6 +120,9 @@
             } else {
                 // Do nothing. This is audio, a photo, or a video.
             }
+            _contents = [_contents sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                return [[obj1 name] compare:[obj2 name] options:NSCaseInsensitiveSearch];
+            }];
             [_delegate folderContentsUpdated:self];
         }
             break;
