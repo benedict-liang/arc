@@ -9,6 +9,9 @@
 #import "CloudPickerViewController.h"
 
 @interface CloudPickerViewController ()
+// View properties.
+@property UIBarButtonItem *closeButton;
+
 // TableView-related properties.
 @property UITableView *tableView;
 @property NSArray *segregatedContents;
@@ -60,9 +63,12 @@
     [super viewDidLoad];
     
     [self setModalPresentationStyle:UIModalPresentationFormSheet];
-    
-    [[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
     [[self navigationItem] setTitle:[_folder name]];
+    
+    _closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(shouldClose)];
+    NSArray *buttonArray = [NSArray arrayWithObjects:_closeButton, [self editButtonItem], nil];
+    
+    [[self navigationItem] setRightBarButtonItems:buttonArray];
     
     // Subview properties.
     [[self view] setAutoresizesSubviews:YES];
@@ -73,6 +79,11 @@
     [_tableView setDataSource:self];
     [_tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
     [[self view] addSubview:_tableView];
+}
+
+- (void)shouldClose
+{
+    [_delegate cloudPickerDone:self];
 }
 
 - (void)didReceiveMemoryWarning

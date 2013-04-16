@@ -447,10 +447,9 @@ titleForHeaderInSection:(NSInteger)section {
                 [_skyDriveManager loginWithViewController:self];
             } else {
                 CloudPickerViewController *pickerController = [[CloudPickerViewController alloc] initWithCloudFolder:[SkyDriveFolder getRoot] targetFolder:_folder serviceManager:_skyDriveManager];
+                [pickerController setDelegate:self];
                 UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:pickerController];
-                [self presentViewController:navController animated:YES completion:^{
-                    [self refreshFolderContents];
-                }];
+                [self presentViewController:navController animated:YES completion:nil];
             }
         }
             break;
@@ -460,6 +459,13 @@ titleForHeaderInSection:(NSInteger)section {
         default:
             break;
     }
+}
+
+- (void)cloudPickerDone:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:^ {
+        [self refreshFolderContents];
+    }];
 }
 
 - (void)createFolderWithName:(NSString *)name
