@@ -16,6 +16,7 @@
     if (self) {
         UIImage *dragPointImage = [UIImage imageNamed:@"leftDragPoint.png"];
         self.image = dragPointImage;
+        self.contentMode = UIViewContentModeScaleAspectFit;
         self.backgroundColor = [UIColor clearColor];
     }
     return self;
