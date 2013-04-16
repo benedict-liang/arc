@@ -427,11 +427,19 @@ titleForHeaderInSection:(NSInteger)section {
         [_addFolderPopoverController dismissPopoverAnimated:YES];
     }
 
-    UIActionSheet *addItemActionSheet = [[UIActionSheet alloc] initWithTitle:nil
+    UIActionSheet *addItemActionSheet;
+    
+    if ([_folder isKindOfClass:[DropBoxFolder class]]) {
+        addItemActionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                         delegate:self
+                                                cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New Folder", nil];
+    } else {
+        addItemActionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                             delegate:self
                                                    cancelButtonTitle:@"Cancel"
                                               destructiveButtonTitle:nil
                                                    otherButtonTitles:@"New Folder", @"File from SkyDrive", @"File from Google Drive", nil];
+    }
 
     [addItemActionSheet showFromBarButtonItem:_addItemButton animated:YES];
 }
