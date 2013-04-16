@@ -259,11 +259,11 @@
         }
         
         if (selectionDidChange) {
-            gesture.view.center = CGPointMake(gesture.view.center.x,
+            gesture.view.center = CGPointMake(_bottomRowCellRect.size.width,
                                               _bottomRowCellRect.origin.y + cellHeight/2);
             [gesture setTranslation:CGPointMake(0, 0)
                              inView:_tableView];
-            CGPoint endPointInRow = CGPointMake(gesture.view.center.x, 0);
+            CGPoint endPointInRow = CGPointMake(_bottomRowCellRect.size.width, 0);
             [self updateBackgroundColorForRightDragPoint:endPointInRow];
         }
     }
