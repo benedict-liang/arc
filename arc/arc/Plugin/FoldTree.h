@@ -14,7 +14,6 @@
 @interface FoldTree : NSObject
 
 @property NSMutableArray* children;
-@property NSRange contentRange;
 @property FoldNode* node;
 
 - (id)initWithNodes:(NSArray*)nodes RootRange:(NSRange)range;
