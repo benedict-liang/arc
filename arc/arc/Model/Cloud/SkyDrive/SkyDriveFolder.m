@@ -20,7 +20,7 @@
 
 + (id<CloudFolder>)getRoot
 {
-    return [[SkyDriveFolder alloc] initWithName:@"SkyDrive" path:@"me/skydrive" parent:nil];
+    return [[SkyDriveFolder alloc] initWithName:@"SkyDrive" path:SKYDRIVE_STRING_ROOT_FOLDER parent:nil];
 }
 
 - (id <FileSystemObject>)objectAtPath:(NSString *)path
@@ -79,7 +79,7 @@
     
     NSDictionary *operationState = @{@"operationType" : [NSNumber numberWithInt:kFolderListing]};
 
-    [connectClient getWithPath:[_path stringByAppendingString:@"/files"] delegate:self userState:operationState];
+    [connectClient getWithPath:[_path stringByAppendingString:SKYDRIVE_STRING_FOLDER_CONTENTS] delegate:self userState:operationState];
 }
 
 // Triggers when a SkyDrive async operation completes.
