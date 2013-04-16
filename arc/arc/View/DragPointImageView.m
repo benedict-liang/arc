@@ -14,7 +14,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor redColor];
+        UIImage *dragPointImage = [UIImage imageNamed:@"leftDragPoint.png"];
+        self.image = dragPointImage;
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
