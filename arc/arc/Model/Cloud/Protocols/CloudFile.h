@@ -20,7 +20,7 @@
 @property (strong, nonatomic) NSString *extension;
 
 // The size of this file, in bytes.
-@property float fileSize;
+@property float size;
 
 - (id)initWithName:(NSString *)name identifier:(NSString *)identifier size:(float)size;
 

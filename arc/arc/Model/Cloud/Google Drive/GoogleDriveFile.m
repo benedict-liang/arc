@@ -10,7 +10,7 @@
 
 @implementation GoogleDriveFile
 
-@synthesize name=_name, identifier=_identifier, fileSize=_size, extension=_extension;
+@synthesize name=_name, identifier=_identifier, size=_size, extension=_extension;
 
 - (id)initWithName:(NSString *)name identifier:(NSString *)identifier size:(float)size
 {
