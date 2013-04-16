@@ -208,9 +208,9 @@ titleForHeaderInSection:(NSInteger)section {
         if (fileObject.size == 0) {
             detailDescription = @"Empty Folder";
         } else if (fileObject.size == 1) {
-            detailDescription = [NSString stringWithFormat:@"%f item", fileObject.size];
+            detailDescription = [NSString stringWithFormat:@"%d item", (int)[fileObject size]];
         } else {
-            detailDescription = [NSString stringWithFormat:@"%f items", fileObject.size];
+            detailDescription = [NSString stringWithFormat:@"%d items", (int)[fileObject size]];
         }
     }
     
