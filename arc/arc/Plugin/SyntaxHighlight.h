@@ -14,7 +14,7 @@
 #import "Utils.h"
 #import "FoldTree.h"
 #import "SyntaxHighlightingPluginDelegate.h"
-
+#import "FoldNode.h"
 //Immutable class. Holds thread local state
 
 @interface SyntaxHighlight : NSObject {

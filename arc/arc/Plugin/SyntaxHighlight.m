@@ -572,10 +572,10 @@
     if (foldStart && foldEnd) {
         [self foldsWithStart:foldStart end:foldEnd skipRanges:[self rangeArrayForMatches:overlapMatches]];
         [self testFolds:foldRanges output:output];
-        NSLog(@"%@",foldRanges);
+        //NSLog(@"%@",foldRanges);
         _foldTree = [[FoldTree alloc] initWithContentRange:NSMakeRange(0, _content.length) ranges:foldRanges];
         
-        NSLog(@"%@",[_foldTree description]);
+        //NSLog(@"%@",[_foldTree description]);
     }
     
     
@@ -601,6 +601,16 @@
         return arr;
     }
     
+}
+
+- (NSArray*)produceNodeArray {
+    NSMutableArray* accum = [NSMutableArray array];
+    for (int i = 0; i < foldRanges.count; i++) {
+        FoldNode* node = [[FoldNode alloc] initWithContentRange:[foldRanges objectAtIndex:i]
+                                                     startRange:[_foldStarts objectAtIndex:i]
+                                                       endRange:[_foldEnds objectAtIndex:i]];
+        
+    }
 }
 
 - (void)foldsWithStart:(NSString*)foldStart

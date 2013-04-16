@@ -41,4 +41,5 @@
 + (UIImage *)imageSized:(CGRect)rect withColor:(UIColor *)color;
 + (UIImage *)imageWithColor:(UIColor *)color;
 
++ (NSRange)rangeFromValue:(NSValue*)value;
 @end

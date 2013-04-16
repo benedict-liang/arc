@@ -342,6 +342,7 @@
 		FC726087171152910068DD91 /* Solarized (light).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC726085171152910068DD91 /* Solarized (light).tmTheme */; };
 		FC7260921711B4D70068DD91 /* SyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7260911711B4D60068DD91 /* SyntaxHighlight.m */; };
 		FCB0548017034DE6007832D7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FCB0547F17034DE6007832D7 /* README.md */; };
+		FCBD8327171DC595005E2B31 /* FoldNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FCBD8326171DC595005E2B31 /* FoldNode.m */; };
 		FCFB4DA2170F466200B25FDC /* BundleConf.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCFB4DA1170F466200B25FDC /* BundleConf.plist */; };
 /* End PBXBuildFile section */
 
@@ -795,6 +796,8 @@
 		FC7260901711B4D50068DD91 /* SyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlight.h; sourceTree = "<group>"; };
 		FC7260911711B4D60068DD91 /* SyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxHighlight.m; sourceTree = "<group>"; };
 		FCB0547F17034DE6007832D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		FCBD8325171DC594005E2B31 /* FoldNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldNode.h; sourceTree = "<group>"; };
+		FCBD8326171DC595005E2B31 /* FoldNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldNode.m; sourceTree = "<group>"; };
 		FCE8F95D1709806B00C08724 /* CodeViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeViewControllerDelegate.h; sourceTree = "<group>"; };
 		FCFB4DA1170F466200B25FDC /* BundleConf.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BundleConf.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1176,6 +1179,8 @@
 				FC7260911711B4D60068DD91 /* SyntaxHighlight.m */,
 				FC137BDE1719AE1000878684 /* FoldTree.h */,
 				FC137BDF1719AE1000878684 /* FoldTree.m */,
+				FCBD8325171DC594005E2B31 /* FoldNode.h */,
+				FCBD8326171DC595005E2B31 /* FoldNode.m */,
 			);
 			name = SyntaxHighlighting;
 			sourceTree = "<group>";
@@ -2043,6 +2048,7 @@
 				02A0078F171BBC6E0099FE61 /* CloudPickerViewController.m in Sources */,
 				4C5E51EA171BEB480041BB2B /* ArcAttribute.m in Sources */,
 				4C5E51EF171BFB1E0041BB2B /* Theme.m in Sources */,
+				FCBD8327171DC595005E2B31 /* FoldNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

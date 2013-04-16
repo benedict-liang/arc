@@ -231,4 +231,9 @@
     }
     return flag;
 }
++ (NSRange)rangeFromValue:(NSValue *)value {
+    NSRange range;
+    [value getValue:&range];
+    return range;
+}
 @end

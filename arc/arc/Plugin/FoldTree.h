@@ -15,7 +15,12 @@
 @property NSRange contentRange;
 @property NSString* foldStart;
 @property NSString* foldEnd;
+@property NSRange startRange;
+@property NSRange endRange;
 
-- (id)initWithContentRange:(NSRange)range ranges:(NSArray*)ranges;
+- (id)initWithContentRange:(NSRange)range
+                    ranges:(NSArray*)ranges
+                    starts:(NSArray*)starts
+                      ends:(NSArray*)ends;
 -(NSRange)lowestNodeWithIndex:(CFIndex)index;
 @end
