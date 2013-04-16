@@ -10,8 +10,8 @@
 
 @interface GoogleDriveFolder ()
 
-@property (strong, nonatomic) NSMutableArray *contents;
-
+@property (strong, atomic) NSArray *contents;
+@property (strong, atomic) NSArray *operations;
 @end
 
 @implementation GoogleDriveFolder
@@ -20,11 +20,6 @@
 + (GoogleDriveFolder *)getRoot
 {
     return [[GoogleDriveFolder alloc] initWithName:@"Google Drive" path:@"root" parent:nil];
-}
-
-- (id <NSObject>)contents
-{
-    return _contents;
 }
 
 - (id <FileSystemObject>)objectAtPath:(NSString *)path
@@ -70,9 +65,17 @@
         _parent = parent;
         _isRemovable = NO;
         
-        _contents = [NSMutableArray array];
+        _contents = [NSArray array];
+        _operations = [NSArray array];
     }
     return self;
+}
+
+- (void)cancelOperations
+{
+    for (GTLServiceTicket *currentTicket in _operations) {
+        [currentTicket cancelTicket];
+    }
 }
 
 - (void)updateContents
@@ -95,7 +98,8 @@
         for (GTLDriveChildReference *currentReference in children) {
             // Get the child's attributes.
             GTLQuery *attributeQuery = [GTLQueryDrive queryForFilesGetWithFileId:[currentReference identifier]];
-            [driveService executeQuery:attributeQuery delegate:self didFinishSelector:@selector(attributesTicket:file:error:)];
+            GTLServiceTicket *currentTicket = [driveService executeQuery:attributeQuery delegate:self didFinishSelector:@selector(attributesTicket:file:error:)];
+            _operations = [_operations arrayByAddingObject:currentTicket];
         }
     } else {
         NSLog(@"%@", error);
@@ -114,11 +118,11 @@
             // No extension means this is a folder.
             // Note that folders are retrieved by their identifier, not the download URL.
             GoogleDriveFolder *newFolder = [[GoogleDriveFolder alloc] initWithName:fileName path:[file identifier] parent:self];
-            [_contents addObject:newFolder];
+            _contents = [_contents arrayByAddingObject:newFolder];
         } else {
             // There is a file extension. This must be a file.
             GoogleDriveFile *newFile = [[GoogleDriveFile alloc] initWithName:fileName identifier:filePath size:[fileSize floatValue]];
-            [_contents addObject:newFile];
+            _contents = [_contents arrayByAddingObject:newFile];
         }
         [_delegate folderContentsUpdated:self];
     } else {
