@@ -10,7 +10,7 @@
 
 @interface GoogleDriveFolder ()
 
-@property (strong, nonatomic) NSMutableArray *contents;
+@property (strong, atomic) NSArray *contents;
 
 @end
 
@@ -20,11 +20,6 @@
 + (GoogleDriveFolder *)getRoot
 {
     return [[GoogleDriveFolder alloc] initWithName:@"Google Drive" path:@"root" parent:nil];
-}
-
-- (id <NSObject>)contents
-{
-    return _contents;
 }
 
 - (id <FileSystemObject>)objectAtPath:(NSString *)path
@@ -70,7 +65,7 @@
         _parent = parent;
         _isRemovable = NO;
         
-        _contents = [NSMutableArray array];
+        _contents = [NSArray array];
     }
     return self;
 }
@@ -114,11 +109,11 @@
             // No extension means this is a folder.
             // Note that folders are retrieved by their identifier, not the download URL.
             GoogleDriveFolder *newFolder = [[GoogleDriveFolder alloc] initWithName:fileName path:[file identifier] parent:self];
-            [_contents addObject:newFolder];
+            _contents = [_contents arrayByAddingObject:newFolder];
         } else {
             // There is a file extension. This must be a file.
             GoogleDriveFile *newFile = [[GoogleDriveFile alloc] initWithName:fileName identifier:filePath size:[fileSize floatValue]];
-            [_contents addObject:newFile];
+            _contents = [_contents arrayByAddingObject:newFile];
         }
         [_delegate folderContentsUpdated:self];
     } else {
