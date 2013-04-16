@@ -211,4 +211,24 @@
     }
     return res;
 }
+
++ (NSDictionary*)rangeArrayToDict:(NSArray*)array {
+    NSMutableDictionary* res = [NSMutableDictionary dictionary];
+    for (NSValue* value in array) {
+        NSRange range;
+        [value getValue:&range];
+        [res setObject:value forKey:NSStringFromRange(range)];
+    }
+    return res;
+}
+
++ (BOOL)range:(NSRange)checkRange isSubsetOfRangeInArray:(NSArray *)ranges {
+    BOOL flag = NO;
+    for (NSValue* v in ranges) {
+        NSRange range;
+        [v getValue:&range];
+        flag = flag || [Utils isSubsetOf:range arg:checkRange];
+    }
+    return flag;
+}
 @end

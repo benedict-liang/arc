@@ -34,6 +34,9 @@
 
 + (BOOL)isContainedByRange:(NSRange)range Index:(CFIndex)index;
 
++ (NSDictionary*)rangeArrayToDict:(NSArray*)array;
+
++ (BOOL)range:(NSRange)checkRange isSubsetOfRangeInArray:(NSArray *)ranges;
 
 + (UIImage *)imageSized:(CGRect)rect withColor:(UIColor *)color;
 + (UIImage *)imageWithColor:(UIColor *)color;

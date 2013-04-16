@@ -570,7 +570,7 @@
     NSString* foldEnd = [_bundle objectForKey:@"foldingStopMarker"];
     
     if (foldStart && foldEnd) {
-        [self foldsWithStart:foldStart end:foldEnd];
+        [self foldsWithStart:foldStart end:foldEnd skipRanges:overlapMatches];
         [self testFolds:foldRanges output:output];
         NSLog(@"%@",foldRanges);
         _foldTree = [[FoldTree alloc] initWithContentRange:NSMakeRange(0, _content.length) ranges:foldRanges];
@@ -604,12 +604,13 @@
 }
 
 - (void)foldsWithStart:(NSString*)foldStart
-                        end:(NSString*)foldEnd
+                   end:(NSString*)foldEnd
+            skipRanges:(NSArray*)skips
 {
     int curI = 0;
     NSMutableArray* stack = [NSMutableArray array];
     NSRange startRange;
-    NSRange endRange;
+    NSRange endRange; 
     int offset = 0;
     while (curI < _splitContent.count) {
         NSString* lineContent = [_splitContent objectAtIndex:curI];
@@ -617,7 +618,9 @@
         startRange = [self findFirstPattern:foldStart range:NSMakeRange(0, lineContent.length) content:lineContent];
         endRange = [self findFirstPattern:foldEnd range:NSMakeRange(0, lineContent.length) content:lineContent];
         curI++;
-        if (startRange.location == NSNotFound && endRange.location == NSNotFound) {
+        BOOL skipStart = [Utils range:startRange isSubsetOfRangeInArray:skips];
+        BOOL skipEnd = [Utils range:endRange isSubsetOfRangeInArray:skips];
+        if (startRange.location == NSNotFound && endRange.location == NSNotFound && !skipStart && !skipEnd) {
             
         } else if (endRange.location == NSNotFound) {
             NSLog(@"begin... %d",startRange.location+offset);
