@@ -331,7 +331,7 @@
 }
 
 - (void)updateBackgroundColorForRightDragPoint:(CGPoint)endPoint {
-    CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
+    CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                          (cell.line));
     endPoint = CGPointMake(endPoint.x - _lineNumberWidthOffSet, endPoint.y);
