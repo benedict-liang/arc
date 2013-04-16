@@ -298,14 +298,13 @@
     
     for (NSString *property in attribDict) {
         NSMutableArray *attributes = [NSMutableArray array];
-        for (NSDictionary* attribute in [attribDict objectForKey:property]) {
-            NSRange attribRange = NSRangeFromString([attribute objectForKey:@"range"]);
+        for (ArcAttribute* attribute in [attribDict objectForKey:property]) {
+            NSRange attribRange = attribute.range;
             NSArray* transformedRanges = [self rangesFromTransformWithAttribRange:attribRange removedRange:rmRange];
             for (NSString* rs in transformedRanges) {
                 NSRange iterRange = NSRangeFromString(rs);
                 if (iterRange.location < _string.length) {
-                    NSMutableDictionary* newAttrib = [NSMutableDictionary dictionaryWithDictionary:attribute];
-                    [newAttrib setObject:rs forKey:@"range"];
+                    ArcAttribute* newAttrib = [[ArcAttribute alloc] initWithType:attribute.type withValue:attribute.value onRange:iterRange];
                     [attributes addObject:newAttrib];
                 }
                 
