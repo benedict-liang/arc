@@ -548,4 +548,14 @@
     _matchesDone = NO;
 }
 
+- (void)dealloc {
+    nameMatches = nil;
+    captureMatches = nil;
+    beginCMatches = nil;
+    endCMatches = nil;
+    pairMatches = nil;
+    contentNameMatches = nil;
+    overlapMatches = nil;
+}
+
 @end

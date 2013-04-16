@@ -36,8 +36,6 @@
 		<integer>1</integer>
 		<key>source.camlp4.ocaml</key>
 		<integer>1</integer>
-		<key>source.clojure</key>
-		<integer>1</integer>
 		<key>source.cm</key>
 		<integer>1</integer>
 		<key>source.coffee</key>
@@ -583,10 +581,6 @@
 		<key>cl</key>
 		<array>
 			<string>source.lisp.plist</string>
-		</array>
-		<key>clj</key>
-		<array>
-			<string>source.clojure.plist</string>
 		</array>
 		<key>cls</key>
 		<array>

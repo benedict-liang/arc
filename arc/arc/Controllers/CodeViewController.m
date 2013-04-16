@@ -41,6 +41,7 @@
 @property (nonatomic) int cursor;
 @property (nonatomic) CTTypesetterRef typesetter;
 
+
 - (void)loadFile;
 - (void)renderFile;
 - (void)clearPreviousLayoutInformation;

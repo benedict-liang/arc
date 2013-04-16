@@ -21,7 +21,6 @@
 @synthesize settingKeys = _settingKeys;
 @synthesize delegate = _delegate;
 @synthesize cache = _cache;
-@synthesize theme = _theme;
 
 - (id)init
 {
@@ -30,13 +29,11 @@
         _colorSchemeSettingKey = @"colorScheme";
         _defaultTheme = @"Monokai.tmTheme";
         _settingKeys = [NSArray arrayWithObject:_colorSchemeSettingKey];
-        _theme = (NSString *)[TMBundleThemeHandler produceStylesWithTheme:nil];
         _properties = @{
                         PLUGIN_TITLE: @"Color Schemes",
                         PLUGIN_TYPE: [NSNumber numberWithInt:kMCQSettingType],
                         PLUGIN_OPTIONS:[SyntaxHighlightingPlugin generateOptions]
                         };
-
         _threadPool = [NSMutableArray array];
         _cache = [[NSCache alloc] init];
     }
@@ -72,8 +69,11 @@
                      sharedObject:(NSMutableDictionary *)dictionary
                          delegate:(id<CodeViewControllerDelegate>)delegate
 {
-    _theme = [properties objectForKey:_colorSchemeSettingKey];
-    NSDictionary* themeDictionary = [TMBundleThemeHandler produceStylesWithTheme:_theme];
+    NSString *themeName = [properties objectForKey:_colorSchemeSettingKey];
+    
+    NSDictionary* themeDictionary = [TMBundleThemeHandler produceStylesWithTheme:themeName];
+
+    
     NSDictionary* global = [themeDictionary objectForKey:@"global"];
     
     // Set Foreground color
