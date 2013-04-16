@@ -8,11 +8,6 @@
 
 #import "SkyDriveDownloadHelper.h"
 
-@interface SkyDriveDownloadHelper ()
-@property (weak, nonatomic) SkyDriveFile *file;
-@property (weak, nonatomic) LocalFolder *folder;
-@end
-
 @implementation SkyDriveDownloadHelper
 
 - (id)initWithFile:(SkyDriveFile *)file Folder:(LocalFolder *)folder
@@ -33,6 +28,17 @@
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     [fileManager createFileAtPath:filePath contents:receivedData attributes:nil];
+    
+    if (_delegate != nil) {
+        [_delegate downloadCompleteForHelper:self];
+    }
+}
+
+- (void)liveOperationFailed:(NSError *)error operation:(LiveDownloadOperation *)operation
+{
+    if (_delegate != nil) {
+        [_delegate downloadFailedForHelper:self];
+    }
 }
 
 @end

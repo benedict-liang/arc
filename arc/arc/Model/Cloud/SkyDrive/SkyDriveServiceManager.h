@@ -12,6 +12,6 @@
 
 typedef enum { kFolderListing, kFileInfo } kSkyDriveOperations;
 
-@interface SkyDriveServiceManager : NSObject <CloudServiceManager, LiveAuthDelegate>
+@interface SkyDriveServiceManager : NSObject <CloudServiceManager, LiveAuthDelegate, DownloadHelperDelegate>
 @property (strong, nonatomic) LiveConnectClient *liveClient;
 @end

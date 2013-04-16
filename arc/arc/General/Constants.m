@@ -48,6 +48,11 @@ NSString* const CLOUD_GOOGLE_SECRET = @"7j820ouQmOBleXqrfk8U3lkU";
 NSString* const SKYDRIVE_SCOPE_SIGNIN = @"wl.signin";
 NSString* const SKYDRIVE_SCOPE_READ_ACCESS = @"wl.skydrive";
 NSString* const SKYDRIVE_SCOPE_OFFLINE = @"wl.offline_access";
+// SkyDrive Strings
+NSString* const SKYDRIVE_STRING_ROOT_FOLDER = @"me/skydrive";
+NSString* const SKYDRIVE_STRING_FILE_CONTENTS = @"/content";
+NSString* const SKYDRIVE_STRING_FOLDER_CONTENTS = @"/files";
+
 // Google Drive variables
 NSString* const GOOGLE_KEYCHAIN_NAME = @"arc";
 

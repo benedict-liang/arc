@@ -443,6 +443,8 @@
 		02E7A4A3171BCFC600E22752 /* CloudFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudFile.h; sourceTree = "<group>"; };
 		02F25A101713E660000B6301 /* CreateFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFolderViewController.h; sourceTree = "<group>"; };
 		02F25A111713E660000B6301 /* CreateFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateFolderViewController.m; sourceTree = "<group>"; };
+		02F7DEA6171D80F00053B447 /* DownloadHelperDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadHelperDelegate.h; sourceTree = "<group>"; };
+		02F7DEA7171D86450053B447 /* CloudServiceManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudServiceManagerDelegate.h; sourceTree = "<group>"; };
 		4C12D0701705CA7800F4593B /* ArcAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcAttributedString.h; sourceTree = "<group>"; };
 		4C12D0711705CA7800F4593B /* ArcAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcAttributedString.m; sourceTree = "<group>"; };
 		4C1AF1161714FF8400A2D0D8 /* documents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = documents.png; sourceTree = "<group>"; };
@@ -849,6 +851,8 @@
 			isa = PBXGroup;
 			children = (
 				020C1053171A77E200603229 /* CloudFolderDelegate.h */,
+				02F7DEA6171D80F00053B447 /* DownloadHelperDelegate.h */,
+				02F7DEA7171D86450053B447 /* CloudServiceManagerDelegate.h */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";

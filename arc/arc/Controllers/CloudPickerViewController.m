@@ -62,7 +62,6 @@
 {
     [super viewDidLoad];
     
-    [self setModalPresentationStyle:UIModalPresentationFormSheet];
     [[self navigationItem] setTitle:[_folder name]];
     
     _closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(shouldClose)];
@@ -206,6 +205,7 @@
         [_serviceManager downloadFile:selectedObject toFolder:_target];
     } else {
         CloudPickerViewController *newFolderController = [[CloudPickerViewController alloc] initWithCloudFolder:selectedObject targetFolder:_target serviceManager:_serviceManager];
+        [newFolderController setDelegate:_delegate];
         [[self navigationController] pushViewController:newFolderController animated:YES];
     }
 }
