@@ -532,7 +532,7 @@
     if ([_foldedLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
         return 0;
     }
-    return 20;
+    return _tableView.rowHeight;
 }
 - (void)selectText:(UILongPressGestureRecognizer*)gesture {
     
