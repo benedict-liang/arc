@@ -43,6 +43,85 @@
 
 @implementation DragPointsViewController
 
+- (id)initWithIndexPath:(NSIndexPath*)indexPath
+         withTouchPoint:(CGPoint)touchPoint
+              andOffset:(int)offset
+           forTableView:(UITableView*)tableView
+{
+    self = [super init];
+    
+    if (self) {
+        _topIndexPath = indexPath;
+        _bottomIndexPath = indexPath;
+        _lineNumberWidthOffSet = offset;
+        _tableView = tableView;
+        
+        CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:indexPath];
+        
+        // Get global range of selected string (check width of line numbers)
+        CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                                             (cell.line));
+        CFIndex index = CTLineGetStringIndexForPosition(lineRef, touchPoint);
+        
+        // Apply background color for index
+        _selectedTextRange = NSMakeRange(cell.stringRange.location + index, 3);
+        [self applyBackgroundColorWithSelectedTextRange];
+        
+        // Get location of touch of tableviewcell in TableView (global)
+        CGRect cellRect = [_tableView rectForRowAtIndexPath:indexPath];
+        CGFloat startOffset = CTLineGetOffsetForStringIndex(lineRef, index, NULL);
+        CGFloat endOffset = CTLineGetOffsetForStringIndex(lineRef, index+4, NULL);
+        
+        CGRect selectedRect = CGRectMake(cellRect.origin.x + startOffset, cellRect.origin.y,
+                                         endOffset - startOffset, cellRect.size.height);
+        
+        
+        CGRect leftDragPointFrame = CGRectMake(selectedRect.origin.x + offset,
+                                               selectedRect.origin.y,
+                                               WIDTH_OF_DRAG_POINT,
+                                               selectedRect.size.height);
+        _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame
+                                                      andImageName:@"leftDragPoint.png"];
+        
+        CGRect rightDragPointFrame = CGRectMake(selectedRect.origin.x + selectedRect.size.width + offset,
+                                                selectedRect.origin.y,
+                                                WIDTH_OF_DRAG_POINT,
+                                                selectedRect.size.height);
+        _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame
+                                                       andImageName:@"rightDragPoint.png"];
+        
+        UIPanGestureRecognizer *leftPanGestureHorizontal = [[UIPanGestureRecognizer alloc]
+                                                            initWithTarget:self
+                                                            action:@selector(moveLeftDragPointHorizontal:)];
+        UIPanGestureRecognizer *leftPanGestureVertical = [[UIPanGestureRecognizer alloc]
+                                                          initWithTarget:self
+                                                          action:@selector(moveLeftDragPointVertical:)];
+        UIPanGestureRecognizer *rightPanGestureHorizontal = [[UIPanGestureRecognizer alloc]
+                                                             initWithTarget:self
+                                                             action:@selector(moveRightDragPointHorizontal:)];
+        UIPanGestureRecognizer *rightPanGestureVertical = [[UIPanGestureRecognizer alloc]
+                                                           initWithTarget:self
+                                                           action:@selector(moveRightDragPointVertical:)];
+        
+        [leftPanGestureHorizontal setDelegate:self];
+        [leftPanGestureVertical setDelegate:self];
+        [_leftDragPoint addGestureRecognizer:leftPanGestureHorizontal];
+        [_leftDragPoint addGestureRecognizer:leftPanGestureVertical];
+        
+        [rightPanGestureHorizontal setDelegate:self];
+        [rightPanGestureVertical setDelegate:self];
+        [_rightDragPoint addGestureRecognizer:rightPanGestureHorizontal];
+        [_rightDragPoint addGestureRecognizer:rightPanGestureVertical];
+        
+        _leftDragPoint.userInteractionEnabled = YES;
+        _rightDragPoint.userInteractionEnabled = YES;
+        
+
+    }
+    
+    return self;
+}
+
 - (id)initWithSelectedTextRect:(CGRect)selectedTextRect andOffset:(int)offset {
     self = [super init];
     

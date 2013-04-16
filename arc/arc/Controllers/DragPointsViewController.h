@@ -21,5 +21,8 @@
 @property (nonatomic) NSRange selectedTextRange;
 
 - (id)initWithSelectedTextRect:(CGRect)selectedTextRect andOffset:(int)offset;
-
+- (id)initWithIndexPath:(NSIndexPath*)indexPath
+         withTouchPoint:(CGPoint)touchPoint
+              andOffset:(int)offset
+           forTableView:(UITableView*)tableView;
 @end
