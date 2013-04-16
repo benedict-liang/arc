@@ -16,4 +16,5 @@
                        foldEnd:(NSString*)fe
                     skipRanges:(NSArray*)skips
                       delegate:(id<SyntaxHighlightDelegate>)del;
+
 @end

@@ -17,35 +17,35 @@
                        delegate:(id<SyntaxHighlightDelegate>)del
 {
     
-    NSArray* foldStarts = [NSArray array];
-    NSArray* foldEnds = [NSArray array];
-    NSArray* foldRanges = [NSArray array];
-    [CodeFolding foldsWithStart:fs
-                            end:fe
-                     skipRanges:skips
-                     foldRanges:foldRanges
-                     foldStarts:foldStarts
-                       foldEnds:foldEnds
-                        content:content];
+   
+    NSDictionary* foldResults = [CodeFolding foldsWithStart:fs
+                                                        end:fe
+                                                 skipRanges:skips
+                                                    content:content];
+    
+    NSArray* foldStarts = [foldResults objectForKey:@"foldStarts"];
+    NSArray* foldEnds = [foldResults objectForKey:@"foldEnds"];
+    NSArray* foldRanges = [foldResults  objectForKey:@"foldRanges"];
     
     NSArray* nodeArray = [CodeFolding nodeArrayWithFoldRanges:foldRanges
                                                    foldStarts:foldStarts
                                                      foldEnds:foldEnds];
     
-    [del testFoldsOnFoldRanges:foldRanges foldStarts:foldStarts foldEnds:foldEnds];
+   // [del testFoldsOnFoldRanges:foldRanges foldStarts:foldStarts foldEnds:foldEnds];
     
     FoldTree* tree = [[FoldTree alloc] initWithNodes:nodeArray RootRange:NSMakeRange(0, content.length)];
     
     return tree;
 }
-+ (void)foldsWithStart:(NSString*)foldStart
++ (NSDictionary*)foldsWithStart:(NSString*)foldStart
                    end:(NSString*)foldEnd
             skipRanges:(NSArray*)skips
-            foldRanges:(NSArray*)foldRanges
-            foldStarts:(NSArray*)foldStarts
-              foldEnds:(NSArray*)foldEnds
                content:(NSString*)content
 {
+    NSArray* foldRanges;
+    NSArray* foldStarts;
+    NSArray* foldEnds;
+    
     NSArray* splitContent = [content componentsSeparatedByString:@"\n"];
     int curI = 0;
     NSMutableArray* stack = [NSMutableArray array];
@@ -94,7 +94,7 @@
         }
         offset += lineContent.length+1;
     }
-    
+    return @{@"foldRanges":foldRanges, @"foldStarts":foldStarts, @"foldEnds":foldEnds};
 }
 + (NSRange)findFirstPattern:(NSString*)pattern
                       range:(NSRange)range

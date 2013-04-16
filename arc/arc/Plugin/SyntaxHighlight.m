@@ -571,7 +571,11 @@
     NSString* foldEnd = [_bundle objectForKey:@"foldingStopMarker"];
     
     if (foldStart && foldEnd) {
-        
+        _foldTree = [CodeFolding foldTreeForContent:_content
+                                          foldStart:foldStart
+                                            foldEnd:foldEnd
+                                         skipRanges:[self rangeArrayForMatches:overlapMatches]
+                                           delegate:self];
         NSLog(@"%@",_foldTree);
     }
     
@@ -622,15 +626,6 @@
     }
     return res;
 }
-- (void)dealloc {
-    nameMatches = nil;
-    captureMatches = nil;
-    beginCMatches = nil;
-    endCMatches = nil;
-    pairMatches = nil;
-    contentNameMatches = nil;
-    overlapMatches = nil;
 
-}
 
 @end

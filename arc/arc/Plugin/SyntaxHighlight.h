@@ -15,9 +15,10 @@
 #import "FoldTree.h"
 #import "SyntaxHighlightingPluginDelegate.h"
 #import "FoldNode.h"
+#import "CodeFolding.h"
 //Immutable class. Holds thread local state
 
-@interface SyntaxHighlight : NSObject <SyntaxHighlightingPluginDelegate> {
+@interface SyntaxHighlight : NSObject <SyntaxHighlightDelegate> {
     __block NSDictionary *nameMatches;
     __block NSDictionary *captureMatches;
     __block NSDictionary *beginCMatches;
@@ -36,7 +37,7 @@
 @property (nonatomic, readonly) NSDictionary* bundle;
 @property (nonatomic, strong) NSArray* overlays;
 @property (readonly) NSArray* splitContent;
-@property FoldTree* foldTree;
+@property (strong) FoldTree* foldTree;
 @property NSArray* foldStarts;
 @property NSArray* foldEnds;
 @property ArcAttributedString* finalOutput;

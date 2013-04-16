@@ -42,7 +42,7 @@
 @property (nonatomic) CTTypesetterRef typesetter;
 
 // Folding
-@property FoldTree* foldTree;
+@property (strong) FoldTree* foldTree;
 @property ArcAttributedString* buffer;
 @property NSArray* foldedLines;
 
@@ -508,10 +508,10 @@
     for (UIGestureRecognizer *g in [cell gestureRecognizers]) {
         [cell removeGestureRecognizer:g];
     }
-    if ([_foldedLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
-        cell.hidden = YES;
-        return cell;
-    }
+//    if ([_foldedLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
+//        cell.hidden = YES;
+//        return cell;
+//    }
     // Long Press Gesture for text selection
     UILongPressGestureRecognizer *longPressGesture =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self
