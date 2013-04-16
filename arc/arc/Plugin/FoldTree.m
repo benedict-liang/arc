@@ -10,7 +10,7 @@
 
 @implementation FoldTree
 
-- (id)initWithContentRange:(NSRange)range sortedRanges:(NSArray*)sa
+- (id)initWithSortedRanges:(NSArray*)sn
 {
     if (self = [super init]) {
         _contentRange = range;
@@ -19,7 +19,7 @@
     }
     return self;
 }
-- (id)initWithContentRange:(NSRange)range ranges:(NSArray*)ranges
+- (id)initWithNodes:(NSArray *)nodes
 {
     return [self initWithContentRange:range sortedRanges:[Utils sortRanges:ranges]];
 }

@@ -8,19 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "Utils.h"
-
+#import "FoldNode.h"
 @interface FoldTree : NSObject
 
 @property NSMutableArray* children;
 @property NSRange contentRange;
-@property NSString* foldStart;
-@property NSString* foldEnd;
-@property NSRange startRange;
-@property NSRange endRange;
+@property FoldNode* node;
 
-- (id)initWithContentRange:(NSRange)range
-                    ranges:(NSArray*)ranges
-                    starts:(NSArray*)starts
-                      ends:(NSArray*)ends;
+- (id)initWithNodes:(NSArray*)nodes RootRange:(NSRange)range;
+
 -(NSRange)lowestNodeWithIndex:(CFIndex)index;
 @end
