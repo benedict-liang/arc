@@ -83,6 +83,7 @@
 
 - (void)shouldClose
 {
+    [_folder cancelOperations];
     [_delegate cloudPickerDone:self];
 }
 

@@ -17,5 +17,6 @@
 + (id<CloudFolder>)getRoot;
 
 - (void)updateContents;
+- (void)cancelOperations;
 
 @end
