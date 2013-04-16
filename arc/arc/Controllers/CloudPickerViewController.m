@@ -205,6 +205,7 @@
         [_serviceManager downloadFile:selectedObject toFolder:_target];
     } else {
         CloudPickerViewController *newFolderController = [[CloudPickerViewController alloc] initWithCloudFolder:selectedObject targetFolder:_target serviceManager:_serviceManager];
+        [newFolderController setDelegate:_delegate];
         [[self navigationController] pushViewController:newFolderController animated:YES];
     }
 }
