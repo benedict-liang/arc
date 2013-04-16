@@ -24,5 +24,6 @@
 - (id)initWithIndexPath:(NSIndexPath*)indexPath
          withTouchPoint:(CGPoint)touchPoint
               andOffset:(int)offset
-           forTableView:(UITableView*)tableView;
+           forTableView:(UITableView*)tableView
+      andViewController:(UIViewController*)viewController;
 @end

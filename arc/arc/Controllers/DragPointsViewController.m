@@ -47,6 +47,7 @@
          withTouchPoint:(CGPoint)touchPoint
               andOffset:(int)offset
            forTableView:(UITableView*)tableView
+      andViewController:(UIViewController*)viewController
 {
     self = [super init];
     
@@ -55,6 +56,7 @@
         _bottomIndexPath = indexPath;
         _lineNumberWidthOffSet = offset;
         _tableView = tableView;
+        _codeViewController = (CodeViewController*)viewController;
         
         CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:indexPath];
         

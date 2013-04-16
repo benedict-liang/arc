@@ -518,41 +518,44 @@
         }
         
         CodeLineCell *cell = (CodeLineCell*)gesture.view;
-        NSAttributedString *attributedString = cell.line;
-        NSRange cellStringRange = cell.stringRange;
-        int lineNumberWidth = cell.lineNumberWidth;
-        
-        // Should only consider point.x
+//        NSAttributedString *attributedString = cell.line;
+//        NSRange cellStringRange = cell.stringRange;
+//        int lineNumberWidth = cell.lineNumberWidth;
+//        
+//        // Should only consider point.x
         CGPoint point = [gesture locationInView:gesture.view];
-        
-        // Get global range of selected string (check width of line numbers)
-        CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
-                                                             (attributedString));
-        CFIndex index = CTLineGetStringIndexForPosition(lineRef, point);
-
-        // Apply background color for index
-        NSRange selectedRange = NSMakeRange(cellStringRange.location + index, 3);
-        [self setBackgroundColorForString:[UIColor blueColor]
-                                WithRange:selectedRange
-                               forSetting:@"copyAndPaste"];
-        
-        // Get location of touch of tableviewcell in TableView (global)
+//        
+//        // Get global range of selected string (check width of line numbers)
+//        CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+//                                                             (attributedString));
+//        CFIndex index = CTLineGetStringIndexForPosition(lineRef, point);
+//
+//        // Apply background color for index
+//        NSRange selectedRange = NSMakeRange(cellStringRange.location + index, 3);
+//        [self setBackgroundColorForString:[UIColor blueColor]
+//                                WithRange:selectedRange
+//                               forSetting:@"copyAndPaste"];
+//        
+//        // Get location of touch of tableviewcell in TableView (global)
         NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
-        CGRect cellRect = [_tableView rectForRowAtIndexPath:indexPath];
-        CGFloat startOffset = CTLineGetOffsetForStringIndex(lineRef, index, NULL);
-        CGFloat endOffset = CTLineGetOffsetForStringIndex(lineRef, index+3, NULL);
-
-        CGRect selectedRect = CGRectMake(cellRect.origin.x + startOffset, cellRect.origin.y,
-                                        endOffset - startOffset, cellRect.size.height);
+//        CGRect cellRect = [_tableView rectForRowAtIndexPath:indexPath];
+//        CGFloat startOffset = CTLineGetOffsetForStringIndex(lineRef, index, NULL);
+//        CGFloat endOffset = CTLineGetOffsetForStringIndex(lineRef, index+3, NULL);
+//
+//        CGRect selectedRect = CGRectMake(cellRect.origin.x + startOffset, cellRect.origin.y,
+//                                        endOffset - startOffset, cellRect.size.height);
     
         // Add drag points subview in CodeViewController
-        _dragPointVC = [[DragPointsViewController alloc] initWithSelectedTextRect:selectedRect
-                                                                        andOffset:lineNumberWidth];
-        _dragPointVC.topIndexPath = indexPath;
-        _dragPointVC.bottomIndexPath = indexPath;
-        _dragPointVC.tableView = _tableView;
-        _dragPointVC.codeViewController = self;
-        _dragPointVC.selectedTextRange = selectedRange;
+        _dragPointVC = [[DragPointsViewController alloc] initWithIndexPath:indexPath
+                                                            withTouchPoint:point
+                                                                 andOffset:cell.lineNumberWidth
+                                                              forTableView:_tableView
+                                                         andViewController:self];
+//        _dragPointVC.topIndexPath = indexPath;
+//        _dragPointVC.bottomIndexPath = indexPath;
+//        _dragPointVC.tableView = _tableView;
+//        _dragPointVC.codeViewController = self;
+//        _dragPointVC.selectedTextRange = selectedRange;
         
         [_tableView addSubview:_dragPointVC.view];
         [_tableView addSubview:_dragPointVC.leftDragPoint];
