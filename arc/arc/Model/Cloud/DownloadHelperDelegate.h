@@ -11,5 +11,6 @@
 @protocol DownloadHelperDelegate <NSObject>
 
 - (void)downloadCompleteForHelper:(id)sender;
+- (void)downloadFailedForHelper:(id)sender;
 
 @end

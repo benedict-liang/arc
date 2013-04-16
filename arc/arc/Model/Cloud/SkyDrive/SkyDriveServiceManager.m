@@ -75,4 +75,10 @@ static SkyDriveServiceManager *sharedServiceManager = nil;
     [_helpers removeObject:sender];
 }
 
+- (void)downloadFailedForHelper:(id)sender
+{
+    [[[UIAlertView alloc] initWithTitle:@"Download Failed" message:[[(SkyDriveDownloadHelper *)sender file] name] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+    [_helpers removeObject:sender];
+}
+
 @end

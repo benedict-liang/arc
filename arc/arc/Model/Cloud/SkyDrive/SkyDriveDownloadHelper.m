@@ -34,4 +34,11 @@
     }
 }
 
+- (void)liveOperationFailed:(NSError *)error operation:(LiveDownloadOperation *)operation
+{
+    if (_delegate != nil) {
+        [_delegate downloadFailedForHelper:self];
+    }
+}
+
 @end
