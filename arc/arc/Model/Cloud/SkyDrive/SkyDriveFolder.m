@@ -11,6 +11,8 @@
 
 @property (strong, atomic) NSArray *contents;
 
+@property (strong, atomic) NSArray *operations;
+
 @end
 
 @implementation SkyDriveFolder
@@ -64,7 +66,8 @@
         _parent = parent;
         _isRemovable = NO;
 
-        _contents = [NSMutableArray array];
+        _contents = [NSArray array];
+        _operations = [NSArray array];
     }
     return self;
 }
@@ -97,7 +100,8 @@
                                                  @"operationType" : [NSNumber numberWithInt:kFileInfo],
                                                  @"retrievedType" : [currentDictionary valueForKey:@"type"]
                                                  };
-                [connectClient getWithPath:[currentDictionary valueForKey:@"id"] delegate:self userState:operationState];
+                LiveOperation *currentOperation = [connectClient getWithPath:[currentDictionary valueForKey:@"id"] delegate:self userState:operationState];
+                _operations = [_operations arrayByAddingObject:currentOperation];
             }
         }
             break;
@@ -119,6 +123,13 @@
             [_delegate folderContentsUpdated:self];
         }
             break;
+    }
+}
+
+- (void)cancelOperations
+{
+    for (LiveOperation *currentOperation in _operations) {
+        [currentOperation cancel];
     }
 }
 
