@@ -44,6 +44,7 @@
 // Folding
 @property FoldTree* foldTree;
 @property ArcAttributedString* buffer;
+@property NSArray* foldedLines;
 
 - (void)loadFile;
 - (void)renderFile;
@@ -505,7 +506,10 @@
     for (UIGestureRecognizer *g in [cell gestureRecognizers]) {
         [cell removeGestureRecognizer:g];
     }
-    
+    if ([_foldedLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
+        cell.hidden = YES;
+        return cell;
+    }
     // Long Press Gesture for text selection
     UILongPressGestureRecognizer *longPressGesture =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self
@@ -524,6 +528,12 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([_foldedLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
+        return 0;
+    }
+    return 20;
+}
 - (void)selectText:(UILongPressGestureRecognizer*)gesture {
     
     if ([gesture state] == UIGestureRecognizerStateBegan) {
@@ -673,8 +683,23 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
     CFIndex index = [self indexOfStringAtGesture:gesture];
     NSRange subtractRange = [_foldTree lowestNodeWithIndex:index];
     NSLog(@"%@",[NSValue value:&subtractRange withObjCType:@encode(NSRange)]);
-    [self swapArcAttributedStringWith:[_arcAttributedString arcStringWithRemovedRange:subtractRange]];
+    _foldedLines = [self foldedLinesForRange:subtractRange];
+    //[self swapArcAttributedStringWith:[_arcAttributedString arcStringWithRemovedRange:subtractRange]];
+    [self renderFile];
 }
+- (NSArray*)foldedLinesForRange:(NSRange)subtractRange {
+    NSMutableArray *hideCells = [NSMutableArray array];
+    for(int i =0 ;i < _lines.count; i++) {
+        NSDictionary* line = [_lines objectAtIndex:i];
+        NSRange lineRange;
+        [(NSValue*)[line objectForKey:KEY_RANGE] getValue:&lineRange];
+        if ([Utils isSubsetOf:subtractRange arg:lineRange]) {
+            [hideCells addObject:[NSNumber numberWithInt:i]];
+        }
+    }
+    return hideCells;
+}
+
 - (void)swapArcAttributedStringWith:(ArcAttributedString*)newArcString {
     _buffer = _arcAttributedString;
     _arcAttributedString = newArcString;
