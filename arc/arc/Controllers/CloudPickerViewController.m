@@ -125,7 +125,7 @@
     if ([[fileObject class] conformsToProtocol:@protocol(CloudFile)]) {
         cellImage = [Utils scale:[UIImage imageNamed:@"file.png"]
                           toSize:CGSizeMake(40, 40)];
-        detailDescription = [Utils humanReadableFileSize:[(id<CloudFile>)fileObject fileSize]];
+        detailDescription = [Utils humanReadableFileSize:[(id<CloudFile>)fileObject size]];
     } else if ([[fileObject class] conformsToProtocol:@protocol(CloudFolder)]) {
         cellImage = [Utils scale:[UIImage imageNamed:@"folder.png"]
                           toSize:CGSizeMake(40, 40)];
