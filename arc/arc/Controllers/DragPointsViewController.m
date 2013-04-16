@@ -105,8 +105,8 @@
         // Set thresholds
         CGFloat forwardDifference = _nextFirstCharacterCoordinates.x - _firstCharacterCoordinates.x;
         CGFloat backwardDifference = _firstCharacterCoordinates.x - _previousFirstCharacterCoordinates.x;
-        CGFloat forwardThreshold = forwardDifference / 2;
-        CGFloat backwardThreshold = - backwardDifference / 2;
+        CGFloat forwardThreshold = forwardDifference * 0.95;
+        CGFloat backwardThreshold = - backwardDifference * 0.95;
         BOOL isDragPointsOverlapping = [self isDragPointsOverlapping:forwardDifference];
         
         CGPoint translation = [gesture translationInView:_tableView];
@@ -193,8 +193,8 @@
         // Set thresholds
         CGFloat forwardDifference = _nextLastCharacterCoordinates.x - _lastCharacterCoordinates.x;
         CGFloat backwardDifference = _lastCharacterCoordinates.x - _previousLastCharacterCoordinates.x;
-        CGFloat forwardThreshold = forwardDifference / 2;
-        CGFloat backwardThreshold = - backwardDifference / 2;
+        CGFloat forwardThreshold = forwardDifference * 0.95;
+        CGFloat backwardThreshold = - backwardDifference * 0.95;
         BOOL isDragPointsOverlapping = [self isDragPointsOverlapping:forwardDifference];
         
         CGPoint translation = [gesture translationInView:_tableView];
