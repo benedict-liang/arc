@@ -683,9 +683,11 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
     CFIndex index = [self indexOfStringAtGesture:gesture];
     NSRange subtractRange = [_foldTree lowestNodeWithIndex:index];
     NSLog(@"%@",[NSValue value:&subtractRange withObjCType:@encode(NSRange)]);
-    _foldedLines = [self foldedLinesForRange:subtractRange];
-    //[self swapArcAttributedStringWith:[_arcAttributedString arcStringWithRemovedRange:subtractRange]];
-    [self renderFile];
+    if (!NSEqualRanges(subtractRange, _foldTree.contentRange)) {
+        _foldedLines = [self foldedLinesForRange:subtractRange];
+        [self renderFile];
+    }
+
 }
 - (NSArray*)foldedLinesForRange:(NSRange)subtractRange {
     NSMutableArray *hideCells = [NSMutableArray array];
