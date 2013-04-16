@@ -49,13 +49,15 @@
                                                selectedTextRect.origin.y,
                                                KEY_WIDTH_OF_DRAG_POINT,
                                                selectedTextRect.size.height);
-        _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame];
+        _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame
+                                                      andImageName:@"leftDragPoint.png"];
         
         CGRect rightDragPointFrame = CGRectMake(selectedTextRect.origin.x + selectedTextRect.size.width + offset,
                                                 selectedTextRect.origin.y,
                                                 KEY_WIDTH_OF_DRAG_POINT,
                                                 selectedTextRect.size.height);
-        _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame];
+        _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame
+                                                       andImageName:@"rightDragPoint.png"];
         
         UIPanGestureRecognizer *leftPanGestureHorizontal = [[UIPanGestureRecognizer alloc]
                                                             initWithTarget:self

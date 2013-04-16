@@ -10,11 +10,11 @@
 
 @implementation DragPointImageView
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame andImageName:(NSString*)imageName
 {
     self = [super initWithFrame:frame];
     if (self) {
-        UIImage *dragPointImage = [UIImage imageNamed:@"leftDragPoint.png"];
+        UIImage *dragPointImage = [UIImage imageNamed:imageName];
         self.image = dragPointImage;
         self.contentMode = UIViewContentModeScaleAspectFit;
         self.backgroundColor = [UIColor clearColor];

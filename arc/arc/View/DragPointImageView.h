@@ -10,4 +10,6 @@
 
 @interface DragPointImageView : UIImageView
 
+- (id)initWithFrame:(CGRect)frame andImageName:(NSString*)imageName;
+
 @end
