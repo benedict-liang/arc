@@ -10,6 +10,7 @@
 #import "CodeLineCell.h"
 
 #define KEY_COPY_SETTINGS @"copyAndPaste"
+#define KEY_WIDTH_OF_DRAG_POINT 44
 
 @interface DragPointsViewController ()
 
@@ -46,13 +47,13 @@
     if (self) {
         CGRect leftDragPointFrame = CGRectMake(selectedTextRect.origin.x + offset,
                                                selectedTextRect.origin.y,
-                                               20,
+                                               KEY_WIDTH_OF_DRAG_POINT,
                                                selectedTextRect.size.height);
         _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame];
         
         CGRect rightDragPointFrame = CGRectMake(selectedTextRect.origin.x + selectedTextRect.size.width + offset,
                                                 selectedTextRect.origin.y,
-                                                20,
+                                                KEY_WIDTH_OF_DRAG_POINT,
                                                 selectedTextRect.size.height);
         _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame];
         
@@ -127,7 +128,7 @@
             [gesture setTranslation:CGPointMake(0, 0)
                              inView:_tableView];
             CGPoint startPointInRow = CGPointMake(gesture.view.center.x, 0);
-            [self updateBackgroundColorForLeftDragPoint:startPointInRow];
+            [self updateBackgroundColorForLeftDragPointHorizontal:startPointInRow];
         }
     }
 }
@@ -176,7 +177,7 @@
             [gesture setTranslation:CGPointMake(0, 0)
                              inView:_tableView];
             CGPoint startPointInRow = CGPointMake(_lineNumberWidthOffSet, 0);
-            [self updateBackgroundColorForLeftDragPoint:startPointInRow];
+            [self updateBackgroundColorForLeftDragPointVertical:startPointInRow];
         }
     }
 }
@@ -214,7 +215,7 @@
             gesture.view.center = CGPointMake(_lastCharacterCoordinates.x, gesture.view.center.y);
             [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
             CGPoint endPointInRow = CGPointMake(gesture.view.center.x, 0);
-            [self updateBackgroundColorForRightDragPoint:endPointInRow];
+            [self updateBackgroundColorForRightDragPointHorizontal:endPointInRow];
         }
     }
 }
@@ -264,7 +265,7 @@
             [gesture setTranslation:CGPointMake(0, 0)
                              inView:_tableView];
             CGPoint endPointInRow = CGPointMake(_bottomRowCellRect.size.width, 0);
-            [self updateBackgroundColorForRightDragPoint:endPointInRow];
+            [self updateBackgroundColorForRightDragPointVertical:endPointInRow];
         }
     }
 }
@@ -315,35 +316,6 @@
     }
 }
 
-- (void)updateBackgroundColorForLeftDragPoint:(CGPoint)startPoint {
-    
-    CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
-    CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
-                                                         (cell.line));
-    startPoint = CGPointMake(startPoint.x - _lineNumberWidthOffSet, startPoint.y);
-    CFIndex index = CTLineGetStringIndexForPosition(lineRef, startPoint);
-    int startLocation = cell.stringRange.location + index;
-    
-    int newRangeLength = _selectedTextRange.length + _selectedTextRange.location - startLocation;
-    _selectedTextRange = NSMakeRange(startLocation, newRangeLength);
-    
-    [self applyBackgroundColorWithSelectedTextRange];
-}
-
-- (void)updateBackgroundColorForRightDragPoint:(CGPoint)endPoint {
-    CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
-    CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
-                                                         (cell.line));
-    endPoint = CGPointMake(endPoint.x - _lineNumberWidthOffSet, endPoint.y);
-    CFIndex index = CTLineGetStringIndexForPosition(lineRef, endPoint);
-    int endLocation = cell.stringRange.location + index;
-    
-    int newRangeLength = endLocation - _selectedTextRange.location;
-    _selectedTextRange = NSMakeRange(_selectedTextRange.location, newRangeLength);
-    
-    [self applyBackgroundColorWithSelectedTextRange];
-}
-
 - (void)updateFirstCharacterValues:(CGPoint)firstCharacterCoordinates {
     _firstCharacterCoordinates = firstCharacterCoordinates;
     
@@ -356,6 +328,94 @@
     
     // Reset prev and next last character coordinates
     [self setLastCharacterCoordinates:_lastCharacterCoordinates];
+}
+
+#pragma mark - Update Background Color for Drag Points
+
+- (void)updateBackgroundColorForLeftDragPointHorizontal:(CGPoint)startPoint {
+    
+    [self updateSelectedTextRangeForLeftDragPoint:startPoint];
+    [self applyBackgroundColorWithSelectedTextRangeForRow:_topIndexPath];
+}
+
+- (void)updateBackgroundColorForLeftDragPointVertical:(CGPoint)startPoint {
+    
+    [self updateSelectedTextRangeForLeftDragPoint:startPoint];
+    [self applyBackgroundColorWithSelectedTextRange];
+}
+
+- (void)updateSelectedTextRangeForLeftDragPoint:(CGPoint)startPoint {
+    
+    CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
+    CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                                         (cell.line));
+    startPoint = CGPointMake(startPoint.x - _lineNumberWidthOffSet, startPoint.y);
+    CFIndex index = CTLineGetStringIndexForPosition(lineRef, startPoint);
+    int startLocation = cell.stringRange.location + index;
+    
+    int newRangeLength = _selectedTextRange.length + _selectedTextRange.location - startLocation;
+    _selectedTextRange = NSMakeRange(startLocation, newRangeLength);
+}
+
+- (void)updateBackgroundColorForRightDragPointHorizontal:(CGPoint)startPoint {
+    
+    [self updateSelectedTextRangeForRightDragPoint:startPoint];
+    [self applyBackgroundColorWithSelectedTextRangeForRow:_bottomIndexPath];
+}
+
+- (void)updateBackgroundColorForRightDragPointVertical:(CGPoint)startPoint {
+    
+    [self updateSelectedTextRangeForRightDragPoint:startPoint];
+    [self applyBackgroundColorWithSelectedTextRange];
+}
+
+- (void)updateSelectedTextRangeForRightDragPoint:(CGPoint)endPoint {
+    CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
+    CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
+                                                         (cell.line));
+    endPoint = CGPointMake(endPoint.x - _lineNumberWidthOffSet, endPoint.y);
+    CFIndex index = CTLineGetStringIndexForPosition(lineRef, endPoint);
+    int endLocation = cell.stringRange.location + index;
+    
+    int newRangeLength = endLocation - _selectedTextRange.location;
+    _selectedTextRange = NSMakeRange(_selectedTextRange.location, newRangeLength);
+}
+
+#pragma mark - Apply and Render Background Color
+
+- (void)applyBackgroundColorWithSelectedTextRange {
+    [_codeViewController removeBackgroundColorForSetting:KEY_COPY_SETTINGS];
+    [_codeViewController setBackgroundColorForString:[UIColor blueColor]
+                                           WithRange:_selectedTextRange
+                                          forSetting:KEY_COPY_SETTINGS];
+    
+    for (int i=_topIndexPath.row; i<=_bottomIndexPath.row; i++) {
+        [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:
+                                            [NSIndexPath indexPathForRow:i inSection:0]]
+                          withRowAnimation:UITableViewRowAnimationNone];
+    }
+    
+    if (_nextBottomRowIndexPath != nil) {
+        [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_nextBottomRowIndexPath]
+                          withRowAnimation:UITableViewRowAnimationNone];
+    }
+    
+    if (_nextTopRowIndexPath != nil) {
+        [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:_nextTopRowIndexPath]
+                          withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
+
+- (void)applyBackgroundColorWithSelectedTextRangeForRow:(NSIndexPath*)indexPath {
+    [_codeViewController removeBackgroundColorForSetting:KEY_COPY_SETTINGS];
+    [_codeViewController setBackgroundColorForString:[UIColor blueColor]
+                                           WithRange:_selectedTextRange
+                                          forSetting:KEY_COPY_SETTINGS];
+    
+    if (_nextTopRowIndexPath != nil) {
+        [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                          withRowAnimation:UITableViewRowAnimationNone];
+    }
 }
 
 #pragma mark - Calculations for character/row rects
@@ -461,14 +521,6 @@
     else {
         _nextLastCharacterCoordinates = CGPointMake(NAN, NAN);
     }
-}
-
-- (void)applyBackgroundColorWithSelectedTextRange {
-    [_codeViewController removeBackgroundColorForSetting:KEY_COPY_SETTINGS];
-    [_codeViewController setBackgroundColorForString:[UIColor blueColor]
-                                           WithRange:_selectedTextRange
-                                          forSetting:KEY_COPY_SETTINGS];
-    [_tableView reloadData];
 }
 
 - (BOOL)isDragPointsOverlapping:(CGFloat)characterWidth {
