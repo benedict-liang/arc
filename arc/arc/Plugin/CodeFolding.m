@@ -31,7 +31,7 @@
                                                    foldStarts:foldStarts
                                                      foldEnds:foldEnds];
     
-    [del testFoldsOnFoldRanges:foldRanges foldStarts:foldStarts foldEnds:foldEnds];
+    //[del testFoldsOnFoldRanges:foldRanges foldStarts:foldStarts foldEnds:foldEnds];
     
     FoldTree* tree = [[FoldTree alloc] initWithNodes:nodeArray RootRange:NSMakeRange(0, content.length)];
     
