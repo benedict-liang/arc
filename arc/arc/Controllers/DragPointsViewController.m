@@ -165,7 +165,9 @@
         }
         
         if (selectionDidChange) {
-            gesture.view.center = CGPointMake(_firstCharacterCoordinates.x, gesture.view.center.y);
+            CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
+            gesture.view.center = CGPointMake(_firstCharacterCoordinates.x + cell.lineNumberWidth + PADDING_WIDTH,
+                                              gesture.view.center.y);
             [gesture setTranslation:CGPointMake(0, 0)
                              inView:_tableView];
             CGPoint startPointInRow = CGPointMake(gesture.view.center.x, 0);
