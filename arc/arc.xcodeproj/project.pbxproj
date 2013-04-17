@@ -59,6 +59,8 @@
 		4C5E51EF171BFB1E0041BB2B /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E51EE171BFB1E0041BB2B /* Theme.m */; };
 		4C5E51F5171C028C0041BB2B /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C5E51F4171C028C0041BB2B /* file.png */; };
 		4C6B0908171EE27A009DB903 /* CodeViewLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B0907171EE27A009DB903 /* CodeViewLine.m */; };
+		4C6B090A171EEB46009DB903 /* file_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C6B0909171EEB46009DB903 /* file_white.png */; };
+		4C6B0911171EEC22009DB903 /* FileObjectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B0910171EEC22009DB903 /* FileObjectTableViewCell.m */; };
 		4C8307EB17114CEF00F49C33 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8307EA17114CEF00F49C33 /* SettingCell.m */; };
 		4C9137281715B9D900413C79 /* Solarized (dark).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = 4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */; };
 		4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C963C81170D8E96004FDACB /* CodeLineCell.m */; };
@@ -482,6 +484,9 @@
 		4C5E51F4171C028C0041BB2B /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
 		4C6B0906171EE27A009DB903 /* CodeViewLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewLine.h; sourceTree = "<group>"; };
 		4C6B0907171EE27A009DB903 /* CodeViewLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeViewLine.m; sourceTree = "<group>"; };
+		4C6B0909171EEB46009DB903 /* file_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file_white.png; sourceTree = "<group>"; };
+		4C6B090F171EEC22009DB903 /* FileObjectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileObjectTableViewCell.h; sourceTree = "<group>"; };
+		4C6B0910171EEC22009DB903 /* FileObjectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileObjectTableViewCell.m; sourceTree = "<group>"; };
 		4C8307E917114CEF00F49C33 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		4C8307EA17114CEF00F49C33 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Solarized (dark).tmTheme"; sourceTree = "<group>"; };
@@ -940,11 +945,10 @@
 			children = (
 				8FCA1D6716F86C7000C6AAFC /* MainViewController.h */,
 				8FCA1D6816F86C7000C6AAFC /* MainViewController.m */,
-				4C6B0901171EE242009DB903 /* CodeViewController */,
 				FC4B26CC16FF6E3700E1DC49 /* LeftViewController.h */,
 				FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */,
-				FC4B269C16F88CB800E1DC49 /* FolderViewController.h */,
-				FC4B269D16F88CB800E1DC49 /* FolderViewController.m */,
+				4C6B0901171EE242009DB903 /* CodeViewController */,
+				4C6B090B171EEBD1009DB903 /* FolderViewController */,
 			);
 			name = "Main UI";
 			sourceTree = "<group>";
@@ -1143,6 +1147,15 @@
 			name = CodeViewController;
 			sourceTree = "<group>";
 		};
+		4C6B090B171EEBD1009DB903 /* FolderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FC4B269C16F88CB800E1DC49 /* FolderViewController.h */,
+				FC4B269D16F88CB800E1DC49 /* FolderViewController.m */,
+			);
+			name = FolderViewController;
+			sourceTree = "<group>";
+		};
 		4CD06B2D16FDE97E00C9DED3 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -1215,6 +1228,8 @@
 				8F7066B217199B1F00E8C64E /* SearchResultCell.m */,
 				8FC1B4E71719D8E0002939D8 /* DragPointImageView.h */,
 				8FC1B4E81719D8E0002939D8 /* DragPointImageView.m */,
+				4C6B090F171EEC22009DB903 /* FileObjectTableViewCell.h */,
+				4C6B0910171EEC22009DB903 /* FileObjectTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1320,6 +1335,7 @@
 				02CF20711712ACB8001A59E4 /* Reading Panel.png */,
 				4CF6F0F11706E29300EDDEDC /* folder.png */,
 				4C5E51F4171C028C0041BB2B /* file.png */,
+				4C6B0909171EEB46009DB903 /* file_white.png */,
 				4CEADA031716AB0E00F4F619 /* threelines.png */,
 				840B6ABA3F91CF078F55C3DE /* Cloud-Download.png */,
 			);
@@ -2035,6 +2051,7 @@
 				4CC9E0FB171C4EC80062C825 /* Default-Portrait~ipad.png in Resources */,
 				8FDE2E28171D577500CF2BC9 /* leftDragPoint.png in Resources */,
 				8FDE2E29171D577500CF2BC9 /* rightDragPoint.png in Resources */,
+				4C6B090A171EEB46009DB903 /* file_white.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2135,6 +2152,7 @@
 				FCBD8331171DE013005E2B31 /* CodeFolding.m in Sources */,
 				02C4FBA7171E3E5500B2FACD /* LoadingOverlayViewController.m in Sources */,
 				4C6B0908171EE27A009DB903 /* CodeViewLine.m in Sources */,
+				4C6B0911171EEC22009DB903 /* FileObjectTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
