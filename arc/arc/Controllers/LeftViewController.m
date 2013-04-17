@@ -113,9 +113,6 @@
     // Force Document View
     [self showDocuments:nil];
     
-    // Jump to Folder.
-    // (no logical way to "animate" to folder"
-    
     // Clear stack of folderViewController
     [_documentsNavigationViewController popToRootViewControllerAnimated:NO];
     
