@@ -145,7 +145,8 @@
 
 #pragma mark - Drag Points
 
-- (void)moveLeftDragPointHorizontal:(UIPanGestureRecognizer*)gesture {
+- (void)moveLeftDragPointHorizontal:(UIPanGestureRecognizer*)gesture
+{
     
     [self defaultDragPointGestureRecognizerSetup:gesture];
     
@@ -186,7 +187,8 @@
     }
 }
 
-- (void)moveLeftDragPointVertical:(UIPanGestureRecognizer*)gesture {
+- (void)moveLeftDragPointVertical:(UIPanGestureRecognizer*)gesture
+{
     
     [self defaultDragPointGestureRecognizerSetup:gesture];
     
@@ -236,7 +238,8 @@
     }
 }
 
-- (void)moveRightDragPointHorizontal:(UIPanGestureRecognizer*)gesture {
+- (void)moveRightDragPointHorizontal:(UIPanGestureRecognizer*)gesture
+{
     
     [self defaultDragPointGestureRecognizerSetup:gesture];
     
@@ -276,7 +279,8 @@
     }
 }
 
-- (void)moveRightDragPointVertical:(UIPanGestureRecognizer*)gesture {
+- (void)moveRightDragPointVertical:(UIPanGestureRecognizer*)gesture
+{
     
     [self defaultDragPointGestureRecognizerSetup:gesture];
     
@@ -328,7 +332,8 @@
     }
 }
 
-- (void)defaultDragPointGestureRecognizerSetup:(UIPanGestureRecognizer*)gesture {
+- (void)defaultDragPointGestureRecognizerSetup:(UIPanGestureRecognizer*)gesture
+{
     if ([gesture state] == UIGestureRecognizerStateBegan) {
         [self calculateRectValues];
         _tableView.scrollEnabled = NO;
@@ -342,7 +347,8 @@
 
 #pragma mark - Update Values
 
-- (void)updateBottomRectValuesWithBottomIndexPath:(NSIndexPath*)bottomIndexPath {
+- (void)updateBottomRectValuesWithBottomIndexPath:(NSIndexPath*)bottomIndexPath
+{
     _bottomIndexPath = [NSIndexPath indexPathForRow:bottomIndexPath.row inSection:0];
     _bottomRowCellRect = [_tableView rectForRowAtIndexPath:bottomIndexPath];
     
@@ -358,7 +364,8 @@
     }
 }
 
-- (void)updateTopRectValuesWithTopIndexPath:(NSIndexPath*)topIndexPath {
+- (void)updateTopRectValuesWithTopIndexPath:(NSIndexPath*)topIndexPath
+{
     _topIndexPath = [NSIndexPath indexPathForRow:topIndexPath.row inSection:0];
     _topRowCellRect = [_tableView rectForRowAtIndexPath:topIndexPath];
     
@@ -374,14 +381,16 @@
     }
 }
 
-- (void)updateFirstCharacterValues:(CGPoint)firstCharacterCoordinates {
+- (void)updateFirstCharacterValues:(CGPoint)firstCharacterCoordinates
+{
     _firstCharacterCoordinates = firstCharacterCoordinates;
     
     // Reset prev and next last character coordinates
     [self setFirstCharacterCoordinates:_firstCharacterCoordinates];
 }
 
-- (void)updateLastCharacterValues:(CGPoint)lastCharacterCoordinates {
+- (void)updateLastCharacterValues:(CGPoint)lastCharacterCoordinates
+{
     _lastCharacterCoordinates = lastCharacterCoordinates;
     
     // Reset prev and next last character coordinates
@@ -390,19 +399,22 @@
 
 #pragma mark - Update Background Color for Drag Points
 
-- (void)updateBackgroundColorForLeftDragPointHorizontal:(CGPoint)startPoint {
+- (void)updateBackgroundColorForLeftDragPointHorizontal:(CGPoint)startPoint
+{
     
     [self updateSelectedTextRangeForLeftDragPoint:startPoint];
     [self applyBackgroundColorWithSelectedTextRangeForRow:_topIndexPath];
 }
 
-- (void)updateBackgroundColorForLeftDragPointVertical:(CGPoint)startPoint {
+- (void)updateBackgroundColorForLeftDragPointVertical:(CGPoint)startPoint
+{
     
     [self updateSelectedTextRangeForLeftDragPoint:startPoint];
     [self applyBackgroundColorWithSelectedTextRange];
 }
 
-- (void)updateSelectedTextRangeForLeftDragPoint:(CGPoint)startPoint {
+- (void)updateSelectedTextRangeForLeftDragPoint:(CGPoint)startPoint
+{
     
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
@@ -415,19 +427,22 @@
     _selectedTextRange = NSMakeRange(startLocation, newRangeLength);
 }
 
-- (void)updateBackgroundColorForRightDragPointHorizontal:(CGPoint)startPoint {
+- (void)updateBackgroundColorForRightDragPointHorizontal:(CGPoint)startPoint
+{
     
     [self updateSelectedTextRangeForRightDragPoint:startPoint];
     [self applyBackgroundColorWithSelectedTextRangeForRow:_bottomIndexPath];
 }
 
-- (void)updateBackgroundColorForRightDragPointVertical:(CGPoint)startPoint {
+- (void)updateBackgroundColorForRightDragPointVertical:(CGPoint)startPoint
+{
     
     [self updateSelectedTextRangeForRightDragPoint:startPoint];
     [self applyBackgroundColorWithSelectedTextRange];
 }
 
-- (void)updateSelectedTextRangeForRightDragPoint:(CGPoint)endPoint {
+- (void)updateSelectedTextRangeForRightDragPoint:(CGPoint)endPoint
+{
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                          (cell.line));
@@ -441,7 +456,8 @@
 
 #pragma mark - Apply and Render Background Color
 
-- (void)applyBackgroundColorWithSelectedTextRange {
+- (void)applyBackgroundColorWithSelectedTextRange
+{
     [_codeViewController removeBackgroundColorForSetting:KEY_COPY_SETTINGS];
     [_codeViewController setBackgroundColorForString:[UIColor blueColor]
                                            WithRange:_selectedTextRange
@@ -464,7 +480,8 @@
     }
 }
 
-- (void)applyBackgroundColorWithSelectedTextRangeForRow:(NSIndexPath*)indexPath {
+- (void)applyBackgroundColorWithSelectedTextRangeForRow:(NSIndexPath*)indexPath
+{
     [_codeViewController removeBackgroundColorForSetting:KEY_COPY_SETTINGS];
     [_codeViewController setBackgroundColorForString:[UIColor blueColor]
                                            WithRange:_selectedTextRange
@@ -478,12 +495,14 @@
 
 #pragma mark - Calculations for character/row rects
 
-- (void)calculateRectValues {
+- (void)calculateRectValues
+{
     [self calculateRectValuesForRows];
     [self calculateRectValuesForCharacters];
 }
 
-- (void)calculateRectValuesForCharacters {
+- (void)calculateRectValuesForCharacters
+{
     _firstCharacterCoordinates = CGPointMake(_leftDragPoint.center.x, 0);
     _lastCharacterCoordinates = CGPointMake(_rightDragPoint.center.x, 0);
     
@@ -519,7 +538,8 @@
 
 #pragma mark - UIMenuController Methods
 
-- (void)showCopyMenuForTextSelection {
+- (void)showCopyMenuForTextSelection
+{
     
     if ([self becomeFirstResponder]) {
         //NSLog(@"is first responder");
@@ -589,12 +609,14 @@
 
 #pragma mark - UIGestureRecognizerDelegate Methods
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     return YES;
 }
 
-- (void)copyString:(id)sender {
+- (void)copyString:(id)sender
+{
     UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
     NSString *copiedString = [_codeViewController getStringForRange:_selectedTextRange];
     [pasteBoard setString:copiedString];
@@ -604,7 +626,8 @@
 
 #pragma mark - Misc Methods
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     CGPoint locationPoint = [[touches anyObject] locationInView:_tableView];
     UIView* viewYouWishToObtain = [_tableView hitTest:locationPoint withEvent:event];
     if (viewYouWishToObtain != _leftDragPoint || viewYouWishToObtain != _rightDragPoint) {
@@ -612,10 +635,11 @@
     }
 }
 
-- (CGPoint)getLastCharacterCoordinatesInRow:(NSIndexPath*)indexPath {
+- (CGPoint)getLastCharacterCoordinatesInRow:(NSIndexPath*)indexPath
+{
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:indexPath];
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
-                                                               (cell.line));
+                                                         (cell.line));
     CFRange stringRangeForRow = CTLineGetStringRange(lineRef);
     
     if (stringRangeForRow.length == 1) {
@@ -627,7 +651,8 @@
     }
 }
 
-- (BOOL)canBecomeFirstResponder {
+- (BOOL)canBecomeFirstResponder
+{
     // NOTE: This menu item will not show if this is not YES!
     return YES;
 }
