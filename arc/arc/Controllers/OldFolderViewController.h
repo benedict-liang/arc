@@ -21,7 +21,7 @@
 #import "SkyDriveServiceManager.h"
 #import "GoogleDriveServiceManager.h"
 
-@interface FolderViewController : UIViewController <SubViewControllerDelegate,
+@interface OldFolderViewController : UIViewController <SubViewControllerDelegate,
     UITableViewDelegate, UITableViewDataSource, CreateFolderViewControllerDelegate, UIActionSheetDelegate, CloudPickerViewControllerDelegate>
 @property (nonatomic, readonly) id<Folder> folder;
 @property (nonatomic, weak) id<FolderViewControllerDelegate> folderViewControllerDelegate;

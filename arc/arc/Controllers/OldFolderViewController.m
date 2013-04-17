@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "FolderViewController.h"
+#import "OldFolderViewController.h"
 #import "Utils.h"
 #import "RootFolder.h"
 #import "File.h"
 #import "Folder.h"
 
-@interface FolderViewController ()
+@interface OldFolderViewController ()
 @property id<Folder> folder;
 @property UITableView *tableView;
 @property NSArray *filesAndFolders;
@@ -33,7 +33,7 @@
 @property SkyDriveServiceManager *skyDriveManager;
 @end
 
-@implementation FolderViewController
+@implementation OldFolderViewController
 @synthesize delegate = _delegate;
 @synthesize folderViewControllerDelegate = _folderViewControllerDelegate;
 
