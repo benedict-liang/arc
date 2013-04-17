@@ -214,12 +214,13 @@
             selectionDidChange = YES;
         }
         
-        if (selectionDidChange) {            
-            gesture.view.center = CGPointMake(_lineNumberWidthOffSet + PADDING_WIDTH,
+        if (selectionDidChange) {
+            CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
+            gesture.view.center = CGPointMake(cell.lineNumberWidth + PADDING_WIDTH,
                                               _topRowCellRect.origin.y + cellHeight/2);
             [gesture setTranslation:CGPointMake(0, 0)
                              inView:_tableView];
-            CGPoint startPointInRow = CGPointMake(_lineNumberWidthOffSet + PADDING_WIDTH, 0);
+            CGPoint startPointInRow = CGPointMake(gesture.view.center.x, 0);
             [self updateBackgroundColorForLeftDragPointVertical:startPointInRow];
         }
     }
