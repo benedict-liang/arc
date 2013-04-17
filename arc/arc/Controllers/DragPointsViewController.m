@@ -397,7 +397,7 @@
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                          (cell.line));
-    startPoint = CGPointMake(startPoint.x - _lineNumberWidthOffSet, startPoint.y);
+    startPoint = CGPointMake(startPoint.x - cell.lineNumberWidth - PADDING_WIDTH, startPoint.y);
     CFIndex index = CTLineGetStringIndexForPosition(lineRef, startPoint);
     int startLocation = cell.stringRange.location + index;
     
