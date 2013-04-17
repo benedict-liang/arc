@@ -189,7 +189,6 @@
 
 - (void)moveLeftDragPointVertical:(UIPanGestureRecognizer *)gesture
 {
-    
     [self defaultDragPointGestureRecognizerSetup:gesture];
     
     if ([gesture state] == UIGestureRecognizerStateChanged) {
@@ -204,7 +203,6 @@
                                                                 inSection:0];
         UITableViewCell *nextTopCell = [_tableView cellForRowAtIndexPath:_nextTopRowIndexPath];
         UITableViewCell *previousTopCell = [_tableView cellForRowAtIndexPath:previousCellIndexPath];
-        
         
         CGPoint translation = [gesture translationInView:_tableView];
         BOOL selectionDidChange = NO;
@@ -240,7 +238,6 @@
 
 - (void)moveRightDragPointHorizontal:(UIPanGestureRecognizer *)gesture
 {
-    
     [self defaultDragPointGestureRecognizerSetup:gesture];
     
     if ([gesture state] == UIGestureRecognizerStateChanged) {
@@ -281,7 +278,6 @@
 
 - (void)moveRightDragPointVertical:(UIPanGestureRecognizer *)gesture
 {
-    
     [self defaultDragPointGestureRecognizerSetup:gesture];
     
     if ([gesture state] == UIGestureRecognizerStateChanged) {
@@ -401,21 +397,18 @@
 
 - (void)updateBackgroundColorForLeftDragPointHorizontal:(CGPoint)startPoint
 {
-    
     [self updateSelectedTextRangeForLeftDragPoint:startPoint];
     [self applyBackgroundColorWithSelectedTextRangeForRow:_topIndexPath];
 }
 
 - (void)updateBackgroundColorForLeftDragPointVertical:(CGPoint)startPoint
 {
-    
     [self updateSelectedTextRangeForLeftDragPoint:startPoint];
     [self applyBackgroundColorWithSelectedTextRange];
 }
 
 - (void)updateSelectedTextRangeForLeftDragPoint:(CGPoint)startPoint
 {
-    
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                          (cell.line));
@@ -429,14 +422,12 @@
 
 - (void)updateBackgroundColorForRightDragPointHorizontal:(CGPoint)startPoint
 {
-    
     [self updateSelectedTextRangeForRightDragPoint:startPoint];
     [self applyBackgroundColorWithSelectedTextRangeForRow:_bottomIndexPath];
 }
 
 - (void)updateBackgroundColorForRightDragPointVertical:(CGPoint)startPoint
 {
-    
     [self updateSelectedTextRangeForRightDragPoint:startPoint];
     [self applyBackgroundColorWithSelectedTextRange];
 }
@@ -510,7 +501,8 @@
     [self setLastCharacterCoordinates:_lastCharacterCoordinates];
 }
 
-- (void)calculateRectValuesForRows {
+- (void)calculateRectValuesForRows
+{
     _topRowCellRect = [_tableView rectForRowAtIndexPath:_topIndexPath];
     _bottomRowCellRect = [_tableView rectForRowAtIndexPath:_bottomIndexPath];
     
@@ -540,7 +532,6 @@
 
 - (void)showCopyMenuForTextSelection
 {
-    
     if ([self becomeFirstResponder]) {
         //NSLog(@"is first responder");
     }
@@ -555,7 +546,8 @@
 
 #pragma mark - Helper Methods
 
-- (void)setFirstCharacterCoordinates:(CGPoint)firstCharacterCoordinates {
+- (void)setFirstCharacterCoordinates:(CGPoint)firstCharacterCoordinates
+{
     CodeLineCell *topCell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
     CTLineRef topLineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                             (topCell.line));
@@ -578,7 +570,8 @@
     }
 }
 
-- (void)setLastCharacterCoordinates:(CGPoint)lastCharacterCoordinates {
+- (void)setLastCharacterCoordinates:(CGPoint)lastCharacterCoordinates
+{
     CodeLineCell *bottomCell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
     CTLineRef bottomLineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                                (bottomCell.line));
@@ -601,7 +594,8 @@
     }
 }
 
-- (BOOL)isDragPointsOverlapping:(CGFloat)characterWidth {
+- (BOOL)isDragPointsOverlapping:(CGFloat)characterWidth
+{
     return
     (_topIndexPath.row == _bottomIndexPath.row) &&
     ((_lastCharacterCoordinates.x - _firstCharacterCoordinates.x) < characterWidth * 2);
