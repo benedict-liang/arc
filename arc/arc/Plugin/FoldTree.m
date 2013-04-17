@@ -71,13 +71,20 @@
 
 -(NSDictionary*)collapsibleLinesForIndex:(CFIndex)index WithLines:(NSArray*)lines {
     FoldNode* collapsibleNode = [self lowestNodeWithIndex:index];
+    NSMutableArray* collapsedLines = [NSMutableArray array];
+    int startLine = NSNotFound;
     for (int i =0; i < lines.count; i++) {
         NSDictionary* line = [lines objectAtIndex:i];
-        NSRange lineRange = [Utils rangeFromValue:[line objectForKey:KEY_]];
-        if ([Utils isSubsetOf: arg:<#(NSRange)#>]) {
-            <#statements#>
+        NSRange lineRange = [Utils rangeFromValue:[line objectForKey:KEY_RANGE]];
+        
+        if ([Utils isSubsetOf:collapsibleNode.contentRange arg:lineRange]) {
+            [collapsedLines addObject:[NSNumber numberWithInt:i]];
+        }
+        if ([Utils isSubsetOf:lineRange arg:collapsibleNode.startRange]) {
+            startLine = i;
         }
     }
+    return @{@"lines":collapsedLines, @"startLine":[NSNumber numberWithInt:startLine]};
 }
 
 -(FoldNode*)lowestNodeWithIndex:(CFIndex)index {
