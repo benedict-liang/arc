@@ -1106,8 +1106,10 @@
 		4C45551617016F21001C6F1D /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				FC349BD6171E819200D6FDC6 /* CodeFolding */,
 				02D55DB31711694900DD48D7 /* PluginUtilities.h */,
 				02D55DB41711694900DD48D7 /* PluginUtilities.m */,
+				FCBD832D171DD518005E2B31 /* RootFoldNode.m */,
 				4CEADA02171681F000F4F619 /* SyntaxHighlighting */,
 				4CE2950F17101C53003B012A /* FontSizePlugin.h */,
 				4CE2951017101C53003B012A /* FontSizePlugin.m */,
@@ -1232,19 +1234,11 @@
 		4CEADA02171681F000F4F619 /* SyntaxHighlighting */ = {
 			isa = PBXGroup;
 			children = (
+				4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */,
 				4C9DC9021719B64A00142E70 /* SyntaxHighlightingPluginDelegate.h */,
 				4CE2950C17101BA0003B012A /* SyntaxHighlightingPlugin.h */,
-				4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */,
 				FC7260901711B4D50068DD91 /* SyntaxHighlight.h */,
 				FC7260911711B4D60068DD91 /* SyntaxHighlight.m */,
-				FC137BDE1719AE1000878684 /* FoldTree.h */,
-				FC137BDF1719AE1000878684 /* FoldTree.m */,
-				FCBD8325171DC594005E2B31 /* FoldNode.h */,
-				FCBD8326171DC595005E2B31 /* FoldNode.m */,
-				FCBD832C171DD517005E2B31 /* RootFoldNode.h */,
-				FCBD832D171DD518005E2B31 /* RootFoldNode.m */,
-				FCBD832F171DE010005E2B31 /* CodeFolding.h */,
-				FCBD8330171DE011005E2B31 /* CodeFolding.m */,
 				FCBD8332171DEBA2005E2B31 /* SyntaxHighlightDelegate.h */,
 			);
 			name = SyntaxHighlighting;
@@ -1559,6 +1553,20 @@
 				02C4FBA4171E3E1C00B2FACD /* Cloud Downloader */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FC349BD6171E819200D6FDC6 /* CodeFolding */ = {
+			isa = PBXGroup;
+			children = (
+				FCBD8325171DC594005E2B31 /* FoldNode.h */,
+				FCBD8326171DC595005E2B31 /* FoldNode.m */,
+				FC137BDF1719AE1000878684 /* FoldTree.m */,
+				FCBD8330171DE011005E2B31 /* CodeFolding.m */,
+				FCBD832F171DE010005E2B31 /* CodeFolding.h */,
+				FCBD832C171DD517005E2B31 /* RootFoldNode.h */,
+				FC137BDE1719AE1000878684 /* FoldTree.h */,
+			);
+			name = CodeFolding;
 			sourceTree = "<group>";
 		};
 		FC726083171152910068DD91 /* Themes */ = {
