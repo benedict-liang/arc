@@ -123,7 +123,7 @@
 - (void)fileSelected:(id<File>)file
 {
  ApplicationState *appState = [ApplicationState sharedApplicationState];
-  [appState setCurrentFileOpened:file];
+    [appState setCurrentFileOpened:file];
     [_codeViewController showFile:file];
 }
 
@@ -132,7 +132,6 @@
 {
     ApplicationState *appState = [ApplicationState sharedApplicationState];
     [appState setCurrentFolderOpened:folder];
-    [_leftViewController navigateTo:folder];
 }
 
 #pragma mark - UISpiltViewControllerDelegate Methods
