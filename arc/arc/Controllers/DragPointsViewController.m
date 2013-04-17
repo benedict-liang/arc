@@ -10,7 +10,7 @@
 #import "CodeLineCell.h"
 
 #define KEY_COPY_SETTINGS @"copyAndPaste"
-#define WIDTH_OF_DRAG_POINT 50
+#define DRAG_POINT_WIDTH 50
 #define HORIZONTAL_THRESHOLD_PERCENTAGE 0.95
 #define VERTICAL_THRESHOLD_PERCENTAGE 0.80
 
@@ -77,22 +77,22 @@
         CGFloat startOffset = CTLineGetOffsetForStringIndex(lineRef, index, NULL);
         CGFloat endOffset = CTLineGetOffsetForStringIndex(lineRef, index+3, NULL);
         
-        CGRect selectedRect = CGRectMake(cellRect.origin.x + startOffset + cell.lineNumberWidth,
+        CGRect selectedRect = CGRectMake(startOffset + cell.lineNumberWidth + 10,
                                          cellRect.origin.y,
                                          endOffset - startOffset,
                                          cellRect.size.height);
         
         
-        CGRect leftDragPointFrame = CGRectMake(selectedRect.origin.x,
+        CGRect leftDragPointFrame = CGRectMake(selectedRect.origin.x - DRAG_POINT_WIDTH / 2,
                                                selectedRect.origin.y,
-                                               WIDTH_OF_DRAG_POINT,
+                                               DRAG_POINT_WIDTH,
                                                selectedRect.size.height);
         _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame
                                                       andImageName:@"leftDragPoint.png"];
         
-        CGRect rightDragPointFrame = CGRectMake(selectedRect.origin.x + selectedRect.size.width,
+        CGRect rightDragPointFrame = CGRectMake(selectedRect.origin.x + selectedRect.size.width - DRAG_POINT_WIDTH / 2,
                                                 selectedRect.origin.y,
-                                                WIDTH_OF_DRAG_POINT,
+                                                DRAG_POINT_WIDTH,
                                                 selectedRect.size.height);
         _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame
                                                        andImageName:@"rightDragPoint.png"];
@@ -135,14 +135,14 @@
     if (self) {
         CGRect leftDragPointFrame = CGRectMake(selectedTextRect.origin.x + offset,
                                                selectedTextRect.origin.y,
-                                               WIDTH_OF_DRAG_POINT,
+                                               DRAG_POINT_WIDTH,
                                                selectedTextRect.size.height);
         _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame
                                                       andImageName:@"leftDragPoint.png"];
         
         CGRect rightDragPointFrame = CGRectMake(selectedTextRect.origin.x + selectedTextRect.size.width + offset,
                                                 selectedTextRect.origin.y,
-                                                WIDTH_OF_DRAG_POINT,
+                                                DRAG_POINT_WIDTH,
                                                 selectedTextRect.size.height);
         _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame
                                                        andImageName:@"rightDragPoint.png"];
