@@ -79,7 +79,8 @@
     
     NSDictionary *operationState = @{@"operationType" : [NSNumber numberWithInt:kFolderListing]};
 
-    [connectClient getWithPath:[_path stringByAppendingString:SKYDRIVE_STRING_FOLDER_CONTENTS] delegate:self userState:operationState];
+    LiveOperation *initialOperation = [connectClient getWithPath:[_path stringByAppendingString:SKYDRIVE_STRING_FOLDER_CONTENTS] delegate:self userState:operationState];
+    _operations = [_operations arrayByAddingObject:initialOperation];
 }
 
 // Triggers when a SkyDrive async operation completes.
