@@ -170,8 +170,8 @@
     // File Navigator View Controller
     FolderViewController *folderViewController =
         [[FolderViewController alloc] initWithFolder:folder];
-    folderViewController.folderViewControllerDelegate = self;
-    folderViewController.delegate = self.delegate;
+//    folderViewController.folderViewControllerDelegate = self;
+    [folderViewController setDelegate:self];
     [_documentsNavigationViewController pushViewController:folderViewController
                                                   animated:animated];
 }
@@ -219,33 +219,33 @@ shouldSelectViewController:(UIViewController *)viewController
 
 # pragma mark - Folder View Controller Delegate
 
-- (void)folderViewController:(FolderViewController*)folderviewController
-     DidEnterEditModeAnimate:(BOOL)animate
-{
-    [UIView animateWithDuration:0.3
-                          delay:0
-                        options:UIViewAnimationOptionCurveEaseInOut
-                     animations:^{
-                         [self hideTabBar:_tabBarController];
-                     }
-                     completion:^(BOOL finished){
-                         [folderviewController editActionTriggeredAnimate:NO];
-                     }];
-}
-
-- (void)folderViewController:(FolderViewController*)folderviewController DidExitEditModeAnimate:(BOOL)animate
-{
-    [folderviewController editActionTriggeredAnimate:NO];
-    [UIView animateWithDuration:0.3
-                          delay:0
-                        options:UIViewAnimationOptionCurveEaseInOut
-                     animations:^{
-                        [self showTabBar:_tabBarController];
-                     }
-                     completion:^(BOOL finished){}];
-}
-
-# pragma mark - tmp code
+//- (void)folderViewController:(FolderViewController*)folderviewController
+//     DidEnterEditModeAnimate:(BOOL)animate
+//{
+//    [UIView animateWithDuration:0.3
+//                          delay:0
+//                        options:UIViewAnimationOptionCurveEaseInOut
+//                     animations:^{
+//                         [self hideTabBar:_tabBarController];
+//                     }
+//                     completion:^(BOOL finished){
+//                         [folderviewController editActionTriggeredAnimate:NO];
+//                     }];
+//}
+//
+//- (void)folderViewController:(FolderViewController*)folderviewController DidExitEditModeAnimate:(BOOL)animate
+//{
+//    [folderviewController editActionTriggeredAnimate:NO];
+//    [UIView animateWithDuration:0.3
+//                          delay:0
+//                        options:UIViewAnimationOptionCurveEaseInOut
+//                     animations:^{
+//                        [self showTabBar:_tabBarController];
+//                     }
+//                     completion:^(BOOL finished){}];
+//}
+//
+//# pragma mark - tmp code
 // copied from SO.
 // http://stackoverflow.com/questions/5272290/how-to-hide-uitabbarcontroller
 
