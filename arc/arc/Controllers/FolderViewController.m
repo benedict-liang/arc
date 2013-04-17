@@ -22,7 +22,6 @@
 {
     if (self = [super init]) {
         _folder = folder;
-        [self reloadContents];
     }
     return self;
 }
@@ -59,6 +58,12 @@
     // Set tableview properties.
     [[self tableView] setRowHeight:55];
     [[self tableView] setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self reloadContents];
 }
 
 - (void)viewDidLoad
