@@ -213,11 +213,11 @@
         }
         
         if (selectionDidChange) {            
-            gesture.view.center = CGPointMake(_lineNumberWidthOffSet,
+            gesture.view.center = CGPointMake(_lineNumberWidthOffSet + PADDING_WIDTH,
                                               _topRowCellRect.origin.y + cellHeight/2);
             [gesture setTranslation:CGPointMake(0, 0)
                              inView:_tableView];
-            CGPoint startPointInRow = CGPointMake(_lineNumberWidthOffSet, 0);
+            CGPoint startPointInRow = CGPointMake(_lineNumberWidthOffSet + PADDING_WIDTH, 0);
             [self updateBackgroundColorForLeftDragPointVertical:startPointInRow];
         }
     }
