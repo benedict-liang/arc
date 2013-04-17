@@ -10,13 +10,37 @@
 
 @implementation DragPointImageView
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame andImageName:(NSString*)imageName
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor redColor];
+        
+        UIImage *scaledImage = [self scaleImageWithAspectRatio:imageName];
+        self.image = scaledImage;
+        
+        self.contentMode = UIViewContentModeCenter;
+        self.backgroundColor = [UIColor clearColor];
+        
     }
     return self;
+}
+
+- (UIImage *)scaleImageWithAspectRatio:(NSString *)imageName
+{
+    CGRect frame = self.frame;
+    
+    UIImage *dragPointImage = [UIImage imageNamed:imageName];
+    CGFloat aspectRatio = dragPointImage.size.width / dragPointImage.size.height;
+    CGSize scaledSize = CGSizeMake(aspectRatio * frame.size.height,
+                                   frame.size.height);
+    
+    UIGraphicsBeginImageContext(scaledSize);
+    [dragPointImage drawInRect:CGRectMake(0,0,scaledSize.width,
+                                          scaledSize.height)];
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return scaledImage;
 }
 
 @end

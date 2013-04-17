@@ -146,12 +146,8 @@ static ApplicationState *sharedApplicationState = nil;
 
 - (void)registerPlugin:(id<PluginDelegate>)plugin
 {
-    for (NSString *settingKey in [plugin settingKeys]) {
-        if ([_settings objectForKey:settingKey] == nil) {
-            [self setSetting:[plugin defaultValueFor:settingKey]
-                      forKey:settingKey];
-        }
-    }
+    [self setSetting:[plugin defaultValue]
+              forKey:[plugin setting]];
 }
 
 // Returns a sample file.

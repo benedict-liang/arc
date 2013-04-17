@@ -10,8 +10,8 @@
 #define SYNTAX_KEY @"sh"
 
 @interface SyntaxHighlight ()
-@property BOOL isAlive;
-@property BOOL matchesDone;
+@property (nonatomic) BOOL isAlive;
+@property (nonatomic) BOOL matchesDone;
 @end
 
 @implementation SyntaxHighlight

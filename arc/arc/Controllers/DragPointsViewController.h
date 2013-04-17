@@ -14,12 +14,10 @@
 
 @property (nonatomic, strong) DragPointImageView *leftDragPoint;
 @property (nonatomic, strong) DragPointImageView *rightDragPoint;
-@property (nonatomic, strong) NSIndexPath *topIndexPath;
-@property (nonatomic, strong) NSIndexPath *bottomIndexPath;
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) CodeViewController *codeViewController;
-@property (nonatomic) NSRange selectedTextRange;
 
-- (id)initWithSelectedTextRect:(CGRect)selectedTextRect andOffset:(int)offset;
-
+- (id)initWithIndexPath:(NSIndexPath*)indexPath
+         withTouchPoint:(CGPoint)touchPoint
+              andOffset:(int)offset
+           forTableView:(UITableView*)tableView
+      andViewController:(UIViewController*)viewController;
 @end

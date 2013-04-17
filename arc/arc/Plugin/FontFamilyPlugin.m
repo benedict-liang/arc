@@ -10,77 +10,59 @@
 
 
 @interface FontFamilyPlugin ()
-@property NSString *fontFamilySettingKey;
-@property NSString *defaultFontFamily;
+@property (nonatomic, strong) NSString *defaultFontFamily;
 
 // Dictionary describing fontFamilySetting
-@property NSMutableDictionary *properties;
-@property NSArray *options;
+@property (nonatomic, strong) NSDictionary *properties;
 @end
 
 @implementation FontFamilyPlugin
-@synthesize settingKeys=_settingKeys;
+@synthesize setting = _setting;
 
 - (id)init
 {
     if (self = [super init]) {
-        _fontFamilySettingKey = @"fontFamily";
+        _setting = @"fontFamily";
         _defaultFontFamily = @"SourceCodePro-Regular";
-        _settingKeys = [NSArray arrayWithObject:_fontFamilySettingKey];
         
         // Setup the dictionary to be returned.
-        _properties = [NSMutableDictionary dictionary];
-        [_properties setValue:@"Font Family"
-                       forKey:PLUGIN_TITLE];
-        
-        [_properties setValue:[NSNumber numberWithInt:kMCQSettingType]
-                       forKey:PLUGIN_TYPE];
-        
-        _options = @[
-                     @{
-                         PLUGIN_OPTION_LABEL: @"Source Code Pro",
-                         PLUGIN_OPTION_VALUE: _defaultFontFamily
-                         },
-                     @{
-                         PLUGIN_OPTION_LABEL: @"Inconsolata",
-                         PLUGIN_OPTION_VALUE: @"Inconsolata"
-                         },
-                     @{
-                         PLUGIN_OPTION_LABEL: @"Ubuntu Monospace",
-                         PLUGIN_OPTION_VALUE: @"UbuntuMono-Regular"
-                         }
-                     ];
-        
-        [_properties setValue:_options forKey:PLUGIN_OPTIONS];
+        _properties = @{
+                        PLUGIN_TITLE: @"Font Family",
+                        PLUGIN_TYPE: [NSNumber numberWithInt:kMCQSettingType],
+                        PLUGIN_OPTIONS: @[
+                                @{
+                                    PLUGIN_OPTION_LABEL: @"Source Code Pro",
+                                    PLUGIN_OPTION_VALUE: _defaultFontFamily
+                                    },
+                                @{
+                                    PLUGIN_OPTION_LABEL: @"Inconsolata",
+                                    PLUGIN_OPTION_VALUE: @"Inconsolata"
+                                    },
+                                @{
+                                    PLUGIN_OPTION_LABEL: @"Ubuntu Monospace",
+                                    PLUGIN_OPTION_VALUE: @"UbuntuMono-Regular"
+                                    }
+                                ]
+                        };
     }
     return self;
 }
 
-- (BOOL)settingKeyAffectsBounds:(NSString *)settingKey
+- (BOOL)affectsBounds
 {
-    if ([settingKey isEqualToString:_fontFamilySettingKey]) {
-        return YES;
-    }
-    return NO;
+    return YES;
 }
 
 // Returns an NSDictionary of properties for this plugin.
-- (NSDictionary *)propertiesFor:(NSString *)settingKey
+- (NSDictionary *)properties
 {
-    if ([settingKey isEqualToString:_fontFamilySettingKey]) {
-        return [NSDictionary dictionaryWithDictionary:_properties];
-    }
-    return nil;
-
+    return _properties;
 }
 
-// Returns the default value for the given setting key.
-- (id<NSObject>)defaultValueFor:(NSString *)settingKey
+// Returns the default value
+- (id<NSObject>)defaultValue
 {
-    if ([settingKey isEqualToString:_fontFamilySettingKey]) {
-        return _defaultFontFamily;
-    }
-    return nil;
+    return _defaultFontFamily;
 }
 
 - (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString
@@ -89,7 +71,7 @@
                      sharedObject:(NSMutableDictionary *)dictionary
                          delegate:(id<CodeViewControllerDelegate>)delegate
 {
-    NSString *fontFamily = [properties objectForKey:_fontFamilySettingKey];
+    NSString *fontFamily = [properties objectForKey:_setting];
     [arcAttributedString setFontFamily:fontFamily];
 }
 
@@ -99,7 +81,7 @@
           sharedObject:(NSMutableDictionary *)dictionary
               delegate:(id<CodeViewControllerDelegate>)delegate
 {
-    NSString *fontFamily = [properties objectForKey:_fontFamilySettingKey];
+    NSString *fontFamily = [properties objectForKey:_setting];
     [codeView setFontFamily:fontFamily];
 }
 

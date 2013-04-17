@@ -9,26 +9,23 @@
 #import "SyntaxHighlightingPlugin.h"
 
 @interface SyntaxHighlightingPlugin ()
-@property (nonatomic, strong) NSString* colorSchemeSettingKey;
-
-// Dictionary describing fontFamilySetting
 @property (nonatomic, strong) NSDictionary *properties;
 @property (nonatomic, strong) NSString *defaultTheme;
 @property (nonatomic, strong) NSMutableArray *threadPool;
+@property (nonatomic, strong) NSString* theme;
+@property (nonatomic, strong) NSCache* cache;
 @end
 
 @implementation SyntaxHighlightingPlugin
-@synthesize settingKeys = _settingKeys;
+@synthesize setting = _setting;
 @synthesize delegate = _delegate;
-@synthesize cache = _cache;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        _colorSchemeSettingKey = @"colorScheme";
         _defaultTheme = @"Monokai.tmTheme";
-        _settingKeys = [NSArray arrayWithObject:_colorSchemeSettingKey];
+        _setting = @"colorScheme";
         _properties = @{
                         PLUGIN_TITLE: @"Color Schemes",
                         PLUGIN_TYPE: [NSNumber numberWithInt:kMCQSettingType],
@@ -41,7 +38,23 @@
     return self;
 }
 
-+ (NSArray*)generateOptions {
+- (BOOL)affectsBounds
+{
+    return NO;
+}
+
+- (NSDictionary*)properties
+{
+    return _properties;
+}
+
+- (id<NSObject>)defaultValue
+{
+    return _defaultTheme;
+}
+
++ (NSArray*)generateOptions
+{
     NSURL* themeConf = [[NSBundle mainBundle] URLForResource:@"ThemeConf.plist"
                                                withExtension:nil];
     NSDictionary* themes = [NSDictionary dictionaryWithContentsOfURL:themeConf];
@@ -53,7 +66,6 @@
             PLUGIN_OPTION_LABEL:themeName,
             PLUGIN_OPTION_VALUE:themeFile
          }];
-        
     }
     
     [opts sortUsingComparator:(NSComparator)^(id k1, id k2){
@@ -71,11 +83,8 @@
                          delegate:(id<CodeViewControllerDelegate>)delegate
 {
 
-    NSString* themeName = [properties objectForKey:_colorSchemeSettingKey];
-    
+    NSString *themeName = [properties objectForKey:_setting];
     NSDictionary* themeDictionary = [TMBundleThemeHandler produceStylesWithTheme:themeName];
-
-    
     NSDictionary* global = [themeDictionary objectForKey:@"global"];
     
     // Set Foreground color
@@ -83,7 +92,6 @@
     [arcAttributedString setForegroundColor:[global objectForKey:@"foreground"]
                                     OnRange:arcAttributedString.stringRange
                                  ForSetting:@"foreground"];
-
 
     [dictionary setValue:[themeDictionary objectForKey:@"global"]
                   forKey:@"syntaxHighlightingPlugin"];
@@ -105,7 +113,7 @@
         sh.factory = self;
 
         // add to cache
-//        [_cache setObject:sh forKey:[file path]];
+        [_cache setObject:sh forKey:[file path]];
     }
     
     if (sh.bundle) {
@@ -141,27 +149,4 @@
     codeView.foregroundColor = [style objectForKey:@"foreground"];
 }
 
-- (BOOL)settingKeyAffectsBounds:(NSString *)settingKey
-{
-    if ([settingKey isEqualToString:_colorSchemeSettingKey]) {
-        return NO;
-    }
-    return NO;
-}
-
-- (NSDictionary*)propertiesFor:(NSString *)settingKey
-{
-    if ([settingKey isEqualToString:_colorSchemeSettingKey]) {
-        return [NSDictionary dictionaryWithDictionary:_properties];
-    }
-    return nil;
-}
-
-- (id<NSObject>)defaultValueFor:(NSString *)settingKey
-{
-    if ([settingKey isEqualToString:_colorSchemeSettingKey]) {
-        return _defaultTheme;
-    }
-    return nil;
-}
 @end

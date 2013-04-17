@@ -9,20 +9,18 @@
 #import "LineNumberPlugin.h"
 
 @interface LineNumberPlugin ()
-@property (nonatomic, strong) NSString* lineNumberSettingsKey;
 @property (nonatomic) BOOL defaultSetting;
 @property (nonatomic, strong) NSDictionary *properties;
 @end
 
 @implementation LineNumberPlugin
-@synthesize settingKeys = _settingKeys;
+@synthesize setting = _setting;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        _lineNumberSettingsKey = @"lineNumbers";
-        _settingKeys = [NSArray arrayWithObject:_lineNumberSettingsKey];
+        _setting = @"lineNumbers";
         _defaultSetting = YES;
         _properties = @{
                         PLUGIN_TITLE: @"Line Numbers",
@@ -32,29 +30,20 @@
     return self;
 }
 
-- (BOOL)settingKeyAffectsBounds:(NSString *)settingKey
+- (BOOL)affectsBounds
 {
-    if ([settingKey isEqualToString:_lineNumberSettingsKey]) {
-        return YES;
-    }
-    return NO;
+    return YES;
 }
 
-- (NSDictionary *)propertiesFor:(NSString *)settingKey
+- (NSDictionary *)properties
 {
-    if ([settingKey isEqualToString:_lineNumberSettingsKey]) {
-        return _properties;
-    }
-    return nil;
+    return _properties;
 }
 
 // Returns the default value for the given setting key.
-- (id<NSObject>)defaultValueFor:(NSString *)settingKey
+- (id<NSObject>)defaultValue
 {
-    if ([settingKey isEqualToString:_lineNumberSettingsKey]) {
-        return [NSNumber numberWithBool:_defaultSetting];
-    }
-    return nil;
+    return [NSNumber numberWithBool:_defaultSetting];
 }
 
 //- (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString
@@ -72,7 +61,7 @@
           sharedObject:(NSMutableDictionary *)dictionary
               delegate:(id<CodeViewControllerDelegate>)delegate
 {
-    codeView.lineNumbers = [[properties objectForKey:_lineNumberSettingsKey] boolValue];
+    codeView.lineNumbers = [[properties objectForKey:_setting] boolValue];
 }
 
 @end
