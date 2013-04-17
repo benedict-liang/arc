@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Folder.h"
 
 @protocol CloudFolderDelegate <NSObject>
 
-- (void)folderContentsUpdated:(id<Folder>)sender;
+- (void)folderContentsUpdated:(id)sender;
+
+- (void)folderFinishedDownload:(id)sender;
 
 @end
