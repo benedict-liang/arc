@@ -41,8 +41,7 @@
 
 // Folding
 @property (strong) FoldTree* foldTree;
-@property ArcAttributedString* buffer;
-@property NSArray* foldedLines;
+@property NSMutableArray* activeFolds;
 @property NSArray* foldStartLines;
 
 - (void)loadFile;
@@ -190,7 +189,7 @@
     _lines = [NSMutableArray array];
     _cursor = 0;
     _foldTree = nil;
-    _foldedLines = nil;
+    _activeFolds = nil;
 }
 
 - (void)generateLines
@@ -512,7 +511,10 @@
     } else {
         [cell clearFolding];
     }
-    if ([_foldedLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
+    if ([self activeFoldsContainsStartLine:indexPath.row]) {
+        [cell activeFolding];
+    }
+    if ([self activeFoldsContainsLine:indexPath.row]) {
         cell.hidden = YES;
         return cell;
     }
@@ -536,7 +538,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([_foldedLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
+    if ([self activeFoldsContainsLine:indexPath.row]) {
         return 0;
     }
     return _tableView.rowHeight;
@@ -686,11 +688,19 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 }
 
 #pragma mark - Folding
-- (void)foldForGesture:(UIGestureRecognizer*)gesture {
+- (void)foldForGesture:(UIGestureRecognizer*)gesture
+{
     CFIndex index = [self indexOfStringAtGesture:gesture];
-    NSDictionary* activeFold = [_foldTree collapsibleLinesForIndex:index WithLines:_lines];
-    NSLog(@"%@",activeFold);
     
+    NSDictionary* activeFold = [_foldTree collapsibleLinesForIndex:index WithLines:_lines];
+    
+    if (!_activeFolds) {
+        _activeFolds = [NSMutableArray array];
+    }
+    [_activeFolds addObject:activeFold];
+    NSLog(@"%@",_activeFolds);
+
+    [self renderFile];
 }
 - (NSArray*)foldedLinesForRange:(NSRange)subtractRange {
     NSMutableArray *hideCells = [NSMutableArray array];
@@ -717,6 +727,28 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
         }
     }
     return lines;
+}
+
+- (BOOL)activeFoldsContainsLine:(int)lineIndex {
+    BOOL flag = NO;
+    for (NSDictionary* activeFold in _activeFolds) {
+        NSArray* lines = [activeFold objectForKey:@"lines"];
+        if ([lines containsObject:[NSNumber numberWithInt:lineIndex]]) {
+            return YES;
+        }
+    }
+    return flag;
+}
+
+- (BOOL)activeFoldsContainsStartLine:(int)lineIndex {
+    BOOL flag = NO;
+    for (NSDictionary* activeFold in _activeFolds) {
+        NSNumber* startLine = [activeFold objectForKey:@"startLine"];
+        if ([startLine intValue] == lineIndex) {
+            return YES;
+        }
+    }
+    return flag;
 }
 - (CFIndex)indexOfStringAtGesture:(UIGestureRecognizer*)gesture {
     CodeLineCell *cell = (CodeLineCell*)[gesture view];

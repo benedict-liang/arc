@@ -93,7 +93,8 @@
 - (void)setFolding {
     _foldingMarker.text = @"▼";
 }
-- (void)collapsedFolding {
+- (void)activeFolding {
+    _foldingMarker.textColor = _foregroundColor;
     _foldingMarker.text = @"▶";
 }
 - (void)clearFolding {
