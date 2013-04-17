@@ -256,7 +256,7 @@
         }
         
         if (selectionDidChange) {
-            CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
+            CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
             gesture.view.center = CGPointMake(_lastCharacterCoordinates.x + cell.lineNumberWidth + PADDING_WIDTH,
                                               gesture.view.center.y);
             [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
