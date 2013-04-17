@@ -912,6 +912,50 @@
 			name = "Local Files";
 			sourceTree = "<group>";
 		};
+		02C4FB9D171E3E0000B2FACD /* Main UI */ = {
+			isa = PBXGroup;
+			children = (
+				8FCA1D6716F86C7000C6AAFC /* MainViewController.h */,
+				8FCA1D6816F86C7000C6AAFC /* MainViewController.m */,
+				8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */,
+				8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */,
+				FC4B26CC16FF6E3700E1DC49 /* LeftViewController.h */,
+				FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */,
+				FC4B269C16F88CB800E1DC49 /* FolderViewController.h */,
+				FC4B269D16F88CB800E1DC49 /* FolderViewController.m */,
+			);
+			name = "Main UI";
+			sourceTree = "<group>";
+		};
+		02C4FBA2171E3E0700B2FACD /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */,
+				4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */,
+				027EE0341716AAEC00302F07 /* LongSettingListViewController.h */,
+				027EE0351716AAEC00302F07 /* LongSettingListViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		02C4FBA3171E3E0F00B2FACD /* Copy & Paste */ = {
+			isa = PBXGroup;
+			children = (
+				8FC1B4EA1719DBCE002939D8 /* DragPointsViewController.h */,
+				8FC1B4EB1719DBCE002939D8 /* DragPointsViewController.m */,
+			);
+			name = "Copy & Paste";
+			sourceTree = "<group>";
+		};
+		02C4FBA4171E3E1C00B2FACD /* Cloud Downloader */ = {
+			isa = PBXGroup;
+			children = (
+				02A0078D171BBC6E0099FE61 /* CloudPickerViewController.h */,
+				02A0078E171BBC6E0099FE61 /* CloudPickerViewController.m */,
+			);
+			name = "Cloud Downloader";
+			sourceTree = "<group>";
+		};
 		02E51AE8170957ED00247AF5 /* DropBox Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1482,22 +1526,10 @@
 			children = (
 				02F25A091713CF0A000B6301 /* Popup Controllers */,
 				4CD06B2D16FDE97E00C9DED3 /* Protocols */,
-				8FCA1D6716F86C7000C6AAFC /* MainViewController.h */,
-				8FCA1D6816F86C7000C6AAFC /* MainViewController.m */,
-				8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */,
-				8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */,
-				FC4B26CC16FF6E3700E1DC49 /* LeftViewController.h */,
-				FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */,
-				FC4B269C16F88CB800E1DC49 /* FolderViewController.h */,
-				FC4B269D16F88CB800E1DC49 /* FolderViewController.m */,
-				4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */,
-				4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */,
-				027EE0341716AAEC00302F07 /* LongSettingListViewController.h */,
-				027EE0351716AAEC00302F07 /* LongSettingListViewController.m */,
-				8FC1B4EA1719DBCE002939D8 /* DragPointsViewController.h */,
-				8FC1B4EB1719DBCE002939D8 /* DragPointsViewController.m */,
-				02A0078D171BBC6E0099FE61 /* CloudPickerViewController.h */,
-				02A0078E171BBC6E0099FE61 /* CloudPickerViewController.m */,
+				02C4FB9D171E3E0000B2FACD /* Main UI */,
+				02C4FBA2171E3E0700B2FACD /* Settings */,
+				02C4FBA3171E3E0F00B2FACD /* Copy & Paste */,
+				02C4FBA4171E3E1C00B2FACD /* Cloud Downloader */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
