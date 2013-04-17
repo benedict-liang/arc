@@ -36,18 +36,14 @@
 @property NSMutableArray *plugins;
 
 // Line Processing
-@property (nonatomic) BOOL linesGenerated;
 @property (nonatomic) NSMutableArray *lines;
-@property (nonatomic) int cursor;
 @property (nonatomic) CTTypesetterRef typesetter;
-
 
 - (void)loadFile;
 - (void)renderFile;
 - (void)clearPreviousLayoutInformation;
 - (void)generateLines;
 - (void)calcLineHeight;
-
 - (void)execPreRenderPluginsAffectingBounds:(BOOL)affectsBounds
                                    FilterBy:(NSString *)setting;
 - (void)execPostRenderPluginsFilterBy:(NSString *)setting;
@@ -128,11 +124,10 @@
     [self loadFile];
     
     _sharedObject = [NSMutableDictionary dictionary];
-    _linesGenerated = NO;
     [self execPreRenderPluginsAffectingBounds:YES FilterBy:nil];
     [self generateLines];
-    [self execPreRenderPluginsAffectingBounds:NO FilterBy:nil];
     [self calcLineHeight];
+    [self execPreRenderPluginsAffectingBounds:NO FilterBy:nil];
     [self renderFile];
     [self execPostRenderPluginsFilterBy:nil];
 }
@@ -154,29 +149,12 @@
 
 - (void)refreshForSetting:(NSString *)setting
 {
-    id<PluginDelegate> plugin = [self findPluginForSettingKey:setting];
-
-    if ([plugin affectsBounds]) {
-        _linesGenerated = NO;
-        [self execPreRenderPluginsAffectingBounds:YES FilterBy:setting];
-        [self generateLines];
-        [self calcLineHeight];
-    } else {
-        [self execPreRenderPluginsAffectingBounds:NO FilterBy:setting];
-    }
-    
+    [self execPreRenderPluginsAffectingBounds:YES FilterBy:setting];
+    [self generateLines];
+    [self calcLineHeight];
+    [self execPreRenderPluginsAffectingBounds:NO FilterBy:setting];
     [self renderFile];
     [self execPostRenderPluginsFilterBy:setting];
-}
-
-- (id<PluginDelegate>)findPluginForSettingKey:(NSString *)settingKey
-{
-    for (id<PluginDelegate> plugin in _plugins) {
-        if ([[plugin setting] isEqualToString:settingKey]) {
-            return plugin;
-        }
-    }
-    return nil;
 }
 
 # pragma mark - Lines Generation (Code Layout)
@@ -188,19 +166,12 @@
         _typesetter = NULL;
     }
     
-    _lines = [NSMutableArray array];
-    _cursor = 0;
+    [_lines removeAllObjects];
 }
 
 - (void)generateLines
 {
     [self clearPreviousLayoutInformation];
-    
-    NSArray *keys = [NSArray arrayWithObjects:
-                     KEY_RANGE,
-                     KEY_LINE_NUMBER,
-                     KEY_LINE_START,
-                     nil];
     
     // Split into Logical Lines
     CGFloat boundsWidth = MAXFLOAT;
@@ -228,26 +199,21 @@
     // Calculate the lines
     start = 0;
     int lineNumber = 0;
-    BOOL startOfLine;
+    CodeViewLine *line;
     while (start < length) {
+        CFIndex count = CTTypesetterSuggestLineBreak(_typesetter, start, actualBoundsWidth);
+        
         if ([lineStarts objectForKey:[NSNumber numberWithInt:start]]) {
             lineNumber++;
-            startOfLine = YES;
+            line = [[CodeViewLine alloc] initWithRange:NSMakeRange(start, count)
+                                         AndLineNumber:lineNumber];
         } else {
-            startOfLine = NO;
+            line = [[CodeViewLine alloc] initWithRange:NSMakeRange(start, count)];
         }
-        
-        CFIndex count = CTTypesetterSuggestLineBreak(_typesetter, start, actualBoundsWidth);
-        [_lines addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
-                                                               [NSValue valueWithRange:NSMakeRange(start, count)],
-                                                               [NSNumber numberWithInt:lineNumber],
-                                                               [NSNumber numberWithBool:startOfLine],
-                                                               nil]
-                                                      forKeys:keys]];
+
+        [_lines addObject:line];
         start += count;
     }
-    _linesGenerated = YES;
-    
 }
 
 - (void)calcLineHeight
@@ -259,11 +225,13 @@
         ((__bridge CFAttributedStringRef)
          ([_arcAttributedString.plainAttributedString
            attributedSubstringFromRange:
-           [[[_lines objectAtIndex:0] objectForKey:KEY_RANGE] rangeValue]]));
+           [((CodeViewLine *)[_lines objectAtIndex:0]) range]]));
 
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
         _lineHeight = asscent + descent + leading;
         _tableView.rowHeight = ceil(_lineHeight);
+        
+        CFRelease(line);
     }
 }
 
@@ -290,11 +258,6 @@
 {
     if ([[file path] isEqual:[_currentFile path]]) {
         _arcAttributedString = arcAttributedString;
-        
-        if (!_linesGenerated) {
-            [self generateLines];
-        }
-        
         [self renderFile];
     }
 }
@@ -440,12 +403,12 @@
 - (void)showShowMasterViewButton:(UIBarButtonItem *)button
 {
     // Customise the button.
-    UIImage *icon = [Utils scale:[UIImage imageNamed:@"threelines.png"]
-                          toSize:CGSizeMake(40, SIZE_TOOLBAR_ICON_WIDTH)];
-    [button setImage:icon];
-    [button setStyle:UIBarButtonItemStylePlain];
-    [button setTitle:nil];
-    
+//    UIImage *icon = [Utils scale:[UIImage imageNamed:@"threelines.png"]
+//                          toSize:CGSizeMake(40, SIZE_TOOLBAR_ICON_WIDTH)];
+//    [button setImage:icon];
+//    [button setStyle:UIBarButtonItemStylePlain];
+    // till i find smth better.
+    [button setTitle:@"Documents"];
     _toolbar.items = [NSArray arrayWithObjects:
                       button,
                       [Utils flexibleSpace],
@@ -471,6 +434,7 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"lines %d", [_lines count]);
     return [_lines count];
 }
 
@@ -489,18 +453,16 @@
     [cell setFontFamily:_fontFamily FontSize:_fontSize];
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
-    NSDictionary *lineObject = (NSDictionary *)[_lines objectAtIndex:indexPath.row];
-    NSRange stringRange = [[lineObject objectForKey:KEY_RANGE] rangeValue];
-    NSAttributedString *lineRef = [_arcAttributedString.attributedString attributedSubstringFromRange:
-                                   stringRange];
+    CodeViewLine *line = (CodeViewLine *)[_lines objectAtIndex:indexPath.row];
+    NSAttributedString *lineRef = [_arcAttributedString.attributedString
+                                   attributedSubstringFromRange:line.range];
     
     cell.line = lineRef;
-    cell.stringRange = stringRange;
-    NSInteger lineNumber = [[lineObject objectForKey:KEY_LINE_NUMBER] integerValue];
+    cell.stringRange = line.range;
     
     if (_lineNumbers) {
-        if ([[lineObject objectForKey:KEY_LINE_START] boolValue]) {
-            cell.lineNumber = lineNumber;
+        if (line.lineStart) {
+            cell.lineNumber = line.lineNumber;
         }
     }
 
@@ -519,8 +481,8 @@
     return cell;
 }
 
-- (void)selectText:(UILongPressGestureRecognizer*)gesture {
-    
+- (void)selectText:(UILongPressGestureRecognizer*)gesture
+{    
     if ([gesture state] == UIGestureRecognizerStateBegan) {
         if (_dragPointVC != nil) {
             [self dismissTextSelectionViews];
@@ -549,7 +511,8 @@
     }
 }
 
-- (void)dismissTextSelectionViews {
+- (void)dismissTextSelectionViews
+{
     if (_dragPointVC != nil) {
         
         [self removeBackgroundColorForSetting:@"copyAndPaste"];
@@ -566,7 +529,7 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView*)tableView
-didSelectRowAtIndexPath:(NSIndexPath*)indexPath
+    didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath
                              animated:NO];
@@ -617,14 +580,13 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
         NSRange searchResultRange = [[resultsArray objectAtIndex:i] rangeValue];
         
         for (int j=lineIndex; j<[_lines count]; j++) {
-            NSRange lineRange = [[[_lines objectAtIndex:j] objectForKey:KEY_RANGE] rangeValue];
+            NSRange lineRange = [((CodeViewLine *)[_lines objectAtIndex:j]) range];
             NSRange rangeIntersectionResult = NSIntersectionRange(lineRange, searchResultRange);
-            
+
             // Ranges intersect
             if (rangeIntersectionResult.length != 0) {
-                
                 [searchLineNumberArray addObject:[NSNumber numberWithInt:j]];
-                
+
                 // Update current lineIndex
                 lineIndex = j;
                 break;

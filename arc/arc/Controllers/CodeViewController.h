@@ -11,6 +11,7 @@
 #import "CodeViewControllerDelegate.h"
 #import "CodeViewDelegate.h"
 #import "DetailViewControllerDelegate.h"
+#import "CodeViewLine.h"
 #import "File.h"
 
 @interface CodeViewController : UIViewController<SubViewControllerDelegate,

@@ -111,7 +111,7 @@
         sh.factory = self;
 
         // add to cache
-//        [_cache setObject:sh forKey:[file path]];
+        [_cache setObject:sh forKey:[file path]];
     }
     
     if (sh.bundle) {
