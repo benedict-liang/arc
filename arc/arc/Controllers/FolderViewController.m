@@ -183,36 +183,24 @@ titleForHeaderInSection:(NSInteger)section {
 - (UITableViewCell*)tableView:(UITableView*)tableView
         cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    static NSString *cellIdentifier = @"FileAndFolderCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                      reuseIdentifier:cellIdentifier];
-    }
-
-    
     NSArray *section = [_filesAndFolders objectAtIndex:indexPath.section];
     id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
-    
-    NSString *detailDescription;
-    UIImage *cellImage;
+
+    NSString *cellIdentifier;
     if ([[fileObject class] conformsToProtocol:@protocol(File)]) {
-        cellImage = [Utils scale:[UIImage imageNamed:@"file.png"]
-                                     toSize:CGSizeMake(35, 35)];
-        detailDescription = [Utils humanReadableFileSize:fileObject.size];
+        cellIdentifier = (NSString *)FILECELL_REUSE_IDENTIFIER;
     } else if ([[fileObject class] conformsToProtocol:@protocol(Folder)]) {
-        cellImage = [Utils scale:[UIImage imageNamed:@"folder.png"]
-                                     toSize:CGSizeMake(35, 35)];
-        
-        if (fileObject.size == 0) {
-            detailDescription = @"Empty Folder";
-        } else if (fileObject.size == 1) {
-            detailDescription = [NSString stringWithFormat:@"%d item", (int)[fileObject size]];
-        } else {
-            detailDescription = [NSString stringWithFormat:@"%d items", (int)[fileObject size]];
-        }
+        cellIdentifier = (NSString *)FOLDERCELL_REUSE_IDENTIFIER;
     }
+    
+    FileObjectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[FileObjectTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                      reuseIdentifier:cellIdentifier];
+    }
+    
+    [cell setFileSystemObject:fileObject];
     
     if ([[fileObject path] isEqualToString:[[[self delegate] currentfile] path]]) {
         [tableView selectRowAtIndexPath:indexPath
@@ -220,19 +208,6 @@ titleForHeaderInSection:(NSInteger)section {
                          scrollPosition:UITableViewScrollPositionMiddle];
     }
 
-    cell.textLabel.text = fileObject.name;
-    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:17];
-    
-    cell.imageView.image = cellImage;
-    
-    cell.detailTextLabel.text = detailDescription;
-    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
-
-    // selection
-    UIView *bg = [[UIView alloc] init];
-    bg.backgroundColor = [Utils colorWithHexString:@"ee151512"];
-    cell.selectedBackgroundView = bg;
-    
     return cell;
 }
 

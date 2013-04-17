@@ -434,7 +434,6 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"lines %d", [_lines count]);
     return [_lines count];
 }
 

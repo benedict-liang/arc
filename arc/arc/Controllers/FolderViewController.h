@@ -12,6 +12,7 @@
 #import "FolderViewControllerDelegate.h"
 #import "CreateFolderViewController.h"
 #import "CreateFolderViewControllerDelegate.h"
+#import "FileObjectTableViewCell.h"
 
 // Cloud Imports
 #import "CloudPickerViewController.h"
