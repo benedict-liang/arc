@@ -690,30 +690,22 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 #pragma mark - Folding
 - (void)foldForGesture:(UIGestureRecognizer*)gesture
 {
+    if (!_activeFolds) {
+        _activeFolds = [NSMutableArray array];
+    }
     CFIndex index = [self indexOfStringAtGesture:gesture];
     
     NSDictionary* activeFold = [_foldTree collapsibleLinesForIndex:index WithLines:_lines];
     
-    if (!_activeFolds) {
-        _activeFolds = [NSMutableArray array];
+    if (activeFold) {
+        [_activeFolds addObject:activeFold];
     }
-    [_activeFolds addObject:activeFold];
+    
     NSLog(@"%@",_activeFolds);
 
     [self renderFile];
 }
-- (NSArray*)foldedLinesForRange:(NSRange)subtractRange {
-    NSMutableArray *hideCells = [NSMutableArray array];
-    for(int i =0 ;i < _lines.count; i++) {
-        NSDictionary* line = [_lines objectAtIndex:i];
-        NSRange lineRange;
-        [(NSValue*)[line objectForKey:KEY_RANGE] getValue:&lineRange];
-        if ([Utils isSubsetOf:subtractRange arg:lineRange]) {
-            [hideCells addObject:[NSNumber numberWithInt:i]];
-        }
-    }
-    return hideCells;
-}
+
 - (NSArray*)linesContainingRanges:(NSArray*)ranges {
     NSMutableArray* lines = [NSMutableArray array];
     for (int i =0; i < _lines.count; i++) {

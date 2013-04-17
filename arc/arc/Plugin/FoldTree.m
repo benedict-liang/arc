@@ -71,6 +71,9 @@
 
 -(NSDictionary*)collapsibleLinesForIndex:(CFIndex)index WithLines:(NSArray*)lines {
     FoldNode* collapsibleNode = [self lowestNodeWithIndex:index];
+    if (collapsibleNode.type == kRootNode) {
+        return nil;
+    }
     NSMutableArray* collapsedLines = [NSMutableArray array];
     int startLine = NSNotFound;
     for (int i =0; i < lines.count; i++) {
