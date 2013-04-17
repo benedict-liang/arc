@@ -695,16 +695,17 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
     }
     CFIndex index = [self indexOfStringAtGesture:gesture];
     int lineNumber = [self lineNumberForIndex:index];
-    if (lineNumber != NSNotFound) {
+    if (lineNumber == NSNotFound) {
         return;
     }
     if ([self activeFoldsContainsStartLine:lineNumber]) {
+        [self removeFoldWithStartLine:lineNumber];
+    } else {
+        NSDictionary* activeFold = [_foldTree collapsibleLinesForIndex:index WithLines:_lines];
         
-    }
-    NSDictionary* activeFold = [_foldTree collapsibleLinesForIndex:index WithLines:_lines];
-    
-    if (activeFold) {
-        [_activeFolds setObject:activeFold forKey:[activeFold objectForKey:@"startLine"]];
+        if (activeFold) {
+            [_activeFolds setObject:activeFold forKey:[activeFold objectForKey:@"startLine"]];
+        }
     }
     
     NSLog(@"%@",_activeFolds);
@@ -744,7 +745,8 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     for (int i = 0; i < _lines.count; i++) {
         NSDictionary* line = [_lines objectAtIndex:i];
-        if ([Utils isContainedByRange:[Utils rangeFromValue:[line objectForKey:KEY_RANGE]] Index:index]) {
+        NSRange lineRange =[Utils rangeFromValue:[line objectForKey:KEY_RANGE]];
+        if ([Utils isContainedByRange:lineRange Index:index]) {
             return i;
         }
     }
@@ -752,18 +754,13 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 }
 
 - (BOOL)activeFoldsContainsStartLine:(int)lineIndex {
-    BOOL flag = NO;
-    for (NSNumber* start in _activeFolds) {
-        if ([start intValue] == lineIndex) {
-            return YES;
-        }
-    }
-    return flag;
+    return [_activeFolds objectForKey:[NSNumber numberWithInt:lineIndex]]!= nil;
 }
 
 - (void)removeFoldWithStartLine:(int)lineNumber {
-    
+    [_activeFolds removeObjectForKey:[NSNumber numberWithInt:lineNumber]];
 }
+
 - (CFIndex)indexOfStringAtGesture:(UIGestureRecognizer*)gesture {
     CodeLineCell *cell = (CodeLineCell*)[gesture view];
 
