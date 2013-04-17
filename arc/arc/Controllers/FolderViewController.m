@@ -120,18 +120,18 @@
 {
     // Create a custom view for the section headers.
     UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(10.0, 0.0, 320.0, 22.0)];
-    customView.backgroundColor = [Utils colorWithHexString:@"CC272821"];
+    [customView setBackgroundColor:[Utils colorWithHexString:@"CC272821"]];
     
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    headerLabel.backgroundColor = [UIColor clearColor];
-    headerLabel.opaque = NO;
-    headerLabel.textColor = [UIColor whiteColor];
-    headerLabel.font = [UIFont fontWithName:@"Helvetica Neue Bold" size:18];
-    headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-    headerLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
-    headerLabel.frame = CGRectMake(11,-11, 320.0, 44.0);
-    headerLabel.textAlignment = NSTextAlignmentLeft;
-    headerLabel.text = section == 0 ? @"Folders" : @"Files";
+    [headerLabel setBackgroundColor:[UIColor clearColor]];
+    [headerLabel setOpaque:NO];
+    [headerLabel setTextColor:[UIColor whiteColor]];
+    [headerLabel setFont:[UIFont fontWithName:@"Helvetica Neue Bold" size:18]];
+    [headerLabel setShadowOffset:CGSizeMake(0.0f, 1.0f)];
+    [headerLabel setShadowColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5] ];
+    [headerLabel setFrame:CGRectMake(11,-11, 320.0, 44.0)];
+    [headerLabel setTextAlignment:NSTextAlignmentLeft];
+    [headerLabel setText:(section == 0 ? @"Folders" : @"Files")];
     [customView addSubview:headerLabel];
     return customView;
 }
@@ -173,17 +173,17 @@
     }
     
     // Cell Text Appearance
-    cell.textLabel.text = fileObject.name;
-    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:17];
-    cell.detailTextLabel.text = detailDescription;
-    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+    [[cell textLabel] setText:[fileObject name]];
+    [[cell textLabel] setFont:[UIFont fontWithName:@"Helvetica Neue" size:17]];
+    [[cell detailTextLabel] setText:detailDescription];
+    [[cell detailTextLabel] setFont:[UIFont fontWithName:@"Helvetica Neue" size:12]];
     
-    cell.imageView.image = cellImage;
+    [[cell imageView] setImage:cellImage];
     
     // Selection Appearance
     UIView *backgroundView = [[UIView alloc] init];
-    backgroundView.backgroundColor = [Utils colorWithHexString:@"ee151512"];
-    cell.selectedBackgroundView = backgroundView;
+    [backgroundView setBackgroundColor:[Utils colorWithHexString:@"ee151512"]];
+    [cell setSelectedBackgroundView:backgroundView];
     
     return cell;
 }
