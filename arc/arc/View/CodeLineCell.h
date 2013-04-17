@@ -20,5 +20,5 @@
 
 - (void)setForegroundColor:(UIColor*)foregroundColor;
 - (void)setFontFamily:(NSString*)fontFamily FontSize:(int)fontSize;
-
+- (void)setFolding;
 @end

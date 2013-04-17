@@ -34,7 +34,7 @@
         // defaults
         _lineNumberWidth = 30;
         _showLineNumber = YES;
-        _foldingMarkerWidth = 5;
+        _foldingMarkerWidth = 15;
         _lineNumberLabel = [[UILabel alloc] init];
         [self.contentView addSubview:_lineNumberLabel];
         _foldingMarker = [[UILabel alloc] init];
@@ -69,7 +69,9 @@
 
     _codeLine.attributedText = _line;
     _codeLine.numberOfLines = 1;
-
+    
+    _foldingMarker.backgroundColor = [UIColor clearColor];
+    _foldingMarker.textColor = _foregroundColor;
     self.contentView.backgroundColor = [UIColor clearColor];
     self.backgroundColor = [UIColor clearColor];
 }
@@ -101,8 +103,8 @@
     CGRectMake(_lineNumberWidth + 2, 0, _foldingMarkerWidth, self.contentView.bounds.size.height);
 
     _codeLine.frame =
-    CGRectMake(_lineNumberWidth + 2 + _foldingMarkerWidth, 0,
-               self.contentView.bounds.size.width - _lineNumberWidth - 2 - _foldingMarkerWidth,
+    CGRectMake(_lineNumberWidth + 5 + _foldingMarkerWidth, 0,
+               self.contentView.bounds.size.width - _lineNumberWidth - 5 - _foldingMarkerWidth,
                self.contentView.bounds.size.height);
     
     [_codeLine sizeToFit];

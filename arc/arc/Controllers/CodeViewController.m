@@ -45,6 +45,7 @@
 @property (strong) FoldTree* foldTree;
 @property ArcAttributedString* buffer;
 @property NSArray* foldedLines;
+@property NSArray* foldStartLines;
 
 - (void)loadFile;
 - (void)renderFile;
@@ -508,10 +509,14 @@
     for (UIGestureRecognizer *g in [cell gestureRecognizers]) {
         [cell removeGestureRecognizer:g];
     }
+    if ([_foldStartLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
+        [cell setFolding];
+    }
     if ([_foldedLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
         cell.hidden = YES;
         return cell;
     }
+
     // Long Press Gesture for text selection
     UILongPressGestureRecognizer *longPressGesture =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self
@@ -683,10 +688,11 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 #pragma mark - Folding
 - (void)foldForGesture:(UIGestureRecognizer*)gesture {
     CFIndex index = [self indexOfStringAtGesture:gesture];
-    NSRange subtractRange = [_foldTree lowestNodeWithFoldStartIndex:index];
+    NSRange subtractRange = [_foldTree lowestNodeWithIndex:index];
     NSLog(@"subtractRange: %@",[NSValue value:&subtractRange withObjCType:@encode(NSRange)]);
     if (!NSEqualRanges(subtractRange, _foldTree.node.contentRange)) {
         _foldedLines = [self foldedLinesForRange:subtractRange];
+        _foldStartLines = [self linesContainingRanges:[_foldTree foldStartRanges]];
         [self renderFile];
     }
 
@@ -703,7 +709,20 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
     }
     return hideCells;
 }
-
+- (NSArray*)linesContainingRanges:(NSArray*)ranges {
+    NSMutableArray* lines = [NSMutableArray array];
+    for (int i =0; i < _lines.count; i++) {
+        NSDictionary* line = [_lines objectAtIndex:i];
+        NSRange lineRange = [Utils rangeFromValue:[line objectForKey:KEY_RANGE]];
+        for (NSValue* v in ranges) {
+            NSRange startRange = [Utils rangeFromValue:v];
+            if ([Utils isSubsetOf:lineRange arg:startRange]) {
+                [lines addObject:[NSNumber numberWithInt:i]];
+            }
+        }
+    }
+    return lines;
+}
 - (CFIndex)indexOfStringAtGesture:(UIGestureRecognizer*)gesture {
     CodeLineCell *cell = (CodeLineCell*)[gesture view];
 
