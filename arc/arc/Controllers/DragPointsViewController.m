@@ -19,8 +19,6 @@
 
 @interface DragPointsViewController ()
 
-@property (nonatomic) int lineNumberWidthOffSet;
-
 @property (nonatomic) CGRect bottomRowCellRect;
 @property (nonatomic) CGRect topRowCellRect;
 
@@ -57,7 +55,6 @@
     if (self) {
         _topIndexPath = indexPath;
         _bottomIndexPath = indexPath;
-        _lineNumberWidthOffSet = offset;
         _tableView = tableView;
         _codeViewController = (CodeViewController*)viewController;
         
@@ -609,7 +606,7 @@
     CFRange stringRangeForRow = CTLineGetStringRange(lineRef);
     
     if (stringRangeForRow.length == 1) {
-        return CGPointMake(_lineNumberWidthOffSet, 0);
+        return CGPointMake(cell.lineNumberWidth, 0);
     }
     else {
         CGFloat offset = CTLineGetOffsetForStringIndex(lineRef, stringRangeForRow.length, NULL);
