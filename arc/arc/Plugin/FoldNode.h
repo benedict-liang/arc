@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
+typedef enum {kRootNode, kChildNode} FoldNodeType;
 @interface FoldNode : NSObject <NSCopying>
-
 @property(readonly) NSRange contentRange;
 @property(readonly) NSRange startRange;
 @property(readonly) NSRange endRange;
+@property(readonly) FoldNodeType type;
 
 -(id)initWithContentRange:(NSRange)cr
                startRange:(NSRange)sr

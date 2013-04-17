@@ -15,6 +15,7 @@
         _contentRange = cr;
         _startRange = sr;
         _endRange = er;
+        _type = kChildNode;
     }
     return self;
 }

@@ -683,8 +683,8 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 #pragma mark - Folding
 - (void)foldForGesture:(UIGestureRecognizer*)gesture {
     CFIndex index = [self indexOfStringAtGesture:gesture];
-    NSRange subtractRange = [_foldTree lowestNodeWithIndex:index];
-    NSLog(@"%@",[NSValue value:&subtractRange withObjCType:@encode(NSRange)]);
+    NSRange subtractRange = [_foldTree lowestNodeWithFoldStartIndex:index];
+    NSLog(@"subtractRange: %@",[NSValue value:&subtractRange withObjCType:@encode(NSRange)]);
     if (!NSEqualRanges(subtractRange, _foldTree.node.contentRange)) {
         _foldedLines = [self foldedLinesForRange:subtractRange];
         [self renderFile];

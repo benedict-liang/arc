@@ -1109,7 +1109,6 @@
 				FC349BD6171E819200D6FDC6 /* CodeFolding */,
 				02D55DB31711694900DD48D7 /* PluginUtilities.h */,
 				02D55DB41711694900DD48D7 /* PluginUtilities.m */,
-				FCBD832D171DD518005E2B31 /* RootFoldNode.m */,
 				4CEADA02171681F000F4F619 /* SyntaxHighlighting */,
 				4CE2950F17101C53003B012A /* FontSizePlugin.h */,
 				4CE2951017101C53003B012A /* FontSizePlugin.m */,
@@ -1564,6 +1563,7 @@
 				FCBD8330171DE011005E2B31 /* CodeFolding.m */,
 				FCBD832F171DE010005E2B31 /* CodeFolding.h */,
 				FCBD832C171DD517005E2B31 /* RootFoldNode.h */,
+				FCBD832D171DD518005E2B31 /* RootFoldNode.m */,
 				FC137BDE1719AE1000878684 /* FoldTree.h */,
 			);
 			name = CodeFolding;

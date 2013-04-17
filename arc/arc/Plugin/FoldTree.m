@@ -87,10 +87,10 @@
 }
 
 -(NSRange)lowestNodeWithFoldStartIndex:(CFIndex)index {
-    if ([Utils isContainedByRange:_node.startRange Index:index]) {
+    if ([Utils isContainedByRange:_node.startRange Index:index] ) {
         NSRange leafRange = _node.contentRange;
         for (FoldTree* subTree in _children) {
-            NSRange childRange = [subTree lowestNodeWithIndex:index];
+            NSRange childRange = [subTree lowestNodeWithFoldStartIndex:index];
             if (childRange.location!= NSNotFound) {
                 leafRange = childRange;
             }
