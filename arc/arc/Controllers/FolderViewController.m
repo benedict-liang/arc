@@ -208,9 +208,9 @@ titleForHeaderInSection:(NSInteger)section {
         if (fileObject.size == 0) {
             detailDescription = @"Empty Folder";
         } else if (fileObject.size == 1) {
-            detailDescription = [NSString stringWithFormat:@"%f item", fileObject.size];
+            detailDescription = [NSString stringWithFormat:@"%d item", (int)[fileObject size]];
         } else {
-            detailDescription = [NSString stringWithFormat:@"%f items", fileObject.size];
+            detailDescription = [NSString stringWithFormat:@"%d items", (int)[fileObject size]];
         }
     }
     
@@ -427,37 +427,56 @@ titleForHeaderInSection:(NSInteger)section {
         [_addFolderPopoverController dismissPopoverAnimated:YES];
     }
 
-    UIActionSheet *addItemActionSheet = [[UIActionSheet alloc] initWithTitle:nil
+    UIActionSheet *addItemActionSheet;
+    
+    if ([_folder isKindOfClass:[DropBoxFolder class]]) {
+        addItemActionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                         delegate:self
+                                                cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New Folder", nil];
+    } else {
+        addItemActionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                             delegate:self
                                                    cancelButtonTitle:@"Cancel"
                                               destructiveButtonTitle:nil
                                                    otherButtonTitles:@"New Folder", @"File from SkyDrive", @"File from Google Drive", nil];
+    }
 
     [addItemActionSheet showFromBarButtonItem:_addItemButton animated:YES];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    switch (buttonIndex) {
-        case 0:
-            [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-            break;
-        case 1: {
-            if (![_skyDriveManager isLoggedIn]) {
-                [_skyDriveManager loginWithViewController:self];
-            } else {
-                CloudPickerViewController *pickerController = [[CloudPickerViewController alloc] initWithCloudFolder:[SkyDriveFolder getRoot] targetFolder:_folder serviceManager:_skyDriveManager];
-                [pickerController setDelegate:self];
-                UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:pickerController];
-                [self presentViewController:navController animated:YES completion:nil];
+    if (![_folder isKindOfClass:[DropBoxFolder class]]) {
+        switch (buttonIndex) {
+            case 0:
+                [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+                break;
+            case 1: {
+                if (![_skyDriveManager isLoggedIn]) {
+                    [_skyDriveManager loginWithViewController:self];
+                } else {
+                    CloudPickerViewController *pickerController = [[CloudPickerViewController alloc] initWithCloudFolder:[SkyDriveFolder getRoot] targetFolder:_folder serviceManager:_skyDriveManager];
+                    [pickerController setDelegate:self];
+                    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:pickerController];
+                    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
+                    [self presentViewController:navController animated:YES completion:nil];
+                }
             }
+                break;
+            case 2:
+                NSLog(@"Google Drive");
+                break;
+            default:
+                break;
         }
-            break;
-        case 2:
-            NSLog(@"Google Drive");
-            break;
-        default:
-            break;
+    } else {
+        switch (buttonIndex) {
+            case 0:
+                [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+                break;
+            default:
+                break;
+        }
     }
 }
 

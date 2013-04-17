@@ -49,6 +49,11 @@ extern NSString* const CLOUD_GOOGLE_SECRET;
 extern NSString* const SKYDRIVE_SCOPE_SIGNIN;
 extern NSString* const SKYDRIVE_SCOPE_READ_ACCESS;
 extern NSString* const SKYDRIVE_SCOPE_OFFLINE;
+// SkyDrive Strings
+extern NSString* const SKYDRIVE_STRING_ROOT_FOLDER;
+extern NSString* const SKYDRIVE_STRING_FILE_CONTENTS;
+extern NSString* const SKYDRIVE_STRING_FOLDER_CONTENTS;
+
 // Google Drive Variables
 extern NSString* const GOOGLE_KEYCHAIN_NAME;
 

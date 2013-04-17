@@ -20,7 +20,7 @@
 
 + (id<CloudFolder>)getRoot
 {
-    return [[SkyDriveFolder alloc] initWithName:@"SkyDrive" path:@"me/skydrive" parent:nil];
+    return [[SkyDriveFolder alloc] initWithName:@"SkyDrive" path:SKYDRIVE_STRING_ROOT_FOLDER parent:nil];
 }
 
 - (id <FileSystemObject>)objectAtPath:(NSString *)path
@@ -79,7 +79,8 @@
     
     NSDictionary *operationState = @{@"operationType" : [NSNumber numberWithInt:kFolderListing]};
 
-    [connectClient getWithPath:[_path stringByAppendingString:@"/files"] delegate:self userState:operationState];
+    LiveOperation *initialOperation = [connectClient getWithPath:[_path stringByAppendingString:SKYDRIVE_STRING_FOLDER_CONTENTS] delegate:self userState:operationState];
+    _operations = [_operations arrayByAddingObject:initialOperation];
 }
 
 // Triggers when a SkyDrive async operation completes.
@@ -120,6 +121,9 @@
             } else {
                 // Do nothing. This is audio, a photo, or a video.
             }
+            _contents = [_contents sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                return [[obj1 name] compare:[obj2 name] options:NSCaseInsensitiveSearch];
+            }];
             [_delegate folderContentsUpdated:self];
         }
             break;

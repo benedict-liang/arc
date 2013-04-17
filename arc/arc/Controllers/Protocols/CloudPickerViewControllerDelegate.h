@@ -12,4 +12,6 @@
 
 - (void)cloudPickerDone:(id)sender;
 
+- (void)downloadedFileFromPicker:(id)sender;
+
 @end

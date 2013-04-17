@@ -9,6 +9,9 @@
 #import "CloudPickerViewController.h"
 
 @interface CloudPickerViewController ()
+// Loading Overlay view.
+@property LoadingOverlayViewController *loadingOverlayController;
+
 // View properties.
 @property UIBarButtonItem *closeButton;
 
@@ -62,13 +65,13 @@
 {
     [super viewDidLoad];
     
-    [self setModalPresentationStyle:UIModalPresentationFormSheet];
     [[self navigationItem] setTitle:[_folder name]];
     
     _closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(shouldClose)];
-    NSArray *buttonArray = [NSArray arrayWithObjects:_closeButton, [self editButtonItem], nil];
+//    NSArray *buttonArray = [NSArray arrayWithObjects:_closeButton, [self editButtonItem], nil];
     
-    [[self navigationItem] setRightBarButtonItems:buttonArray];
+//    [[self navigationItem] setRightBarButtonItems:buttonArray];
+    [[self navigationItem] setRightBarButtonItem:_closeButton];
     
     // Subview properties.
     [[self view] setAutoresizesSubviews:YES];
@@ -79,6 +82,10 @@
     [_tableView setDataSource:self];
     [_tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
     [[self view] addSubview:_tableView];
+    
+    // Create the loading overlay.
+    _loadingOverlayController = [[LoadingOverlayViewController alloc] initWithFrame:[[self view] bounds]];
+//    [[self view] insertSubview:[_loadingOverlayController view] aboveSubview:_tableView];
 }
 
 - (void)shouldClose
@@ -206,6 +213,7 @@
         [_serviceManager downloadFile:selectedObject toFolder:_target];
     } else {
         CloudPickerViewController *newFolderController = [[CloudPickerViewController alloc] initWithCloudFolder:selectedObject targetFolder:_target serviceManager:_serviceManager];
+        [newFolderController setDelegate:_delegate];
         [[self navigationController] pushViewController:newFolderController animated:YES];
     }
 }
