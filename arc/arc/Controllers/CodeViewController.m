@@ -47,6 +47,10 @@
 - (void)clearPreviousLayoutInformation;
 - (void)generateLines;
 - (void)calcLineHeight;
+
+- (void)execPreRenderPluginsAffectingBounds:(BOOL)affectsBounds
+                                   FilterBy:(NSString *)setting;
+- (void)execPostRenderPluginsFilterBy:(NSString *)setting;
 @end
 
 @implementation CodeViewController
@@ -125,12 +129,12 @@
     
     _sharedObject = [NSMutableDictionary dictionary];
     _linesGenerated = NO;
-
-    [self preRenderPluginsForSetting:nil];
+    [self execPreRenderPluginsAffectingBounds:YES FilterBy:nil];
     [self generateLines];
+    [self execPreRenderPluginsAffectingBounds:NO FilterBy:nil];
     [self calcLineHeight];
     [self renderFile];
-    [self postRenderPluginsForSetting:nil];
+    [self execPostRenderPluginsFilterBy:nil];
 }
 
 - (void)loadFile
@@ -154,15 +158,15 @@
 
     if ([plugin affectsBounds]) {
         _linesGenerated = NO;
-        [self preRenderPluginsForSetting:setting];
+        [self execPreRenderPluginsAffectingBounds:YES FilterBy:setting];
         [self generateLines];
         [self calcLineHeight];
     } else {
-        [self preRenderPluginsForSetting:setting];
+        [self execPreRenderPluginsAffectingBounds:NO FilterBy:setting];
     }
     
     [self renderFile];
-    [self postRenderPluginsForSetting:setting];
+    [self execPostRenderPluginsFilterBy:setting];
 }
 
 - (id<PluginDelegate>)findPluginForSettingKey:(NSString *)settingKey
@@ -206,7 +210,10 @@
     int start = 0;
     int length = _arcAttributedString.string.length;
     
-    _typesetter = CTTypesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_arcAttributedString.plainAttributedString);
+    _typesetter =
+    CTTypesetterCreateWithAttributedString
+    ((__bridge CFAttributedStringRef)
+     _arcAttributedString.plainAttributedString);
     
     while (start < length) {
         [lineStarts setObject:[NSNumber numberWithBool:YES]
@@ -320,27 +327,29 @@
 
 #pragma mark - Execute Plugin Methods
 
-- (void)preRenderPluginsForSetting:(NSString *)setting
+- (void)execPreRenderPluginsAffectingBounds:(BOOL)affectsBounds
+                                   FilterBy:(NSString *)setting
 {
     NSDictionary *settings;
     for (id<PluginDelegate> plugin in _plugins) {
-        if (setting == nil || [[plugin setting] isEqualToString:setting]) {
-            settings = [_appState settingsForKeys:@[[plugin setting]]];
-            if ([plugin respondsToSelector:
-                 @selector(execOnArcAttributedString:ofFile:forValues:sharedObject:delegate:)])
-            {
-                [plugin execOnArcAttributedString:_arcAttributedString
-                                           ofFile:_currentFile
-                                        forValues:settings
-                                     sharedObject:_sharedObject
-                                         delegate:self];
-            }
+        if ([plugin affectsBounds] == affectsBounds) {
+            if (setting == nil || [[plugin setting] isEqualToString:setting]) {
+                settings = [_appState settingsForKeys:@[[plugin setting]]];
+                if ([plugin respondsToSelector:
+                     @selector(execOnArcAttributedString:ofFile:forValues:sharedObject:delegate:)])
+                {
+                    [plugin execOnArcAttributedString:_arcAttributedString
+                                               ofFile:_currentFile
+                                            forValues:settings
+                                         sharedObject:_sharedObject
+                                             delegate:self];
+                }
+            }            
         }
     }
 }
 
-
-- (void)postRenderPluginsForSetting:(NSString *)setting
+- (void)execPostRenderPluginsFilterBy:(NSString *)setting
 {
     NSDictionary *settings;
     for (id<PluginDelegate> plugin in _plugins) {
