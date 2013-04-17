@@ -514,7 +514,6 @@
 
 - (void)selectText:(UILongPressGestureRecognizer*)gesture
 {
-    
     if ([gesture state] == UIGestureRecognizerStateBegan) {
         if (_dragPointVC != nil) {
             [self dismissTextSelectionViews];
@@ -537,9 +536,6 @@
         [_tableView addSubview:_dragPointVC.rightDragPoint];
 
         [_tableView reloadData];
-    }
-    if ([gesture state] == UIGestureRecognizerStateEnded) {
-
     }
 }
 
