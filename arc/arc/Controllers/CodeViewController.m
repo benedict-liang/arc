@@ -14,9 +14,7 @@
 #import "ResultsTableViewController.h"
 #import "DragPointsViewController.h"
 
-#define KEY_RANGE @"range"
-#define KEY_LINE_NUMBER @"lineNumber"
-#define KEY_LINE_START @"lineStart"
+
 
 @interface CodeViewController ()
 @property id<File> currentFile;

@@ -29,6 +29,11 @@ NSString* const KEY_FONT_SIZE = @"fontSize";
 NSString* const KEY_LINE_NUMBERS = @"lineNumbers";
 NSString* const KEY_WORD_WRAP = @"wordWrap";
 
+//Code VC keys
+NSString* const KEY_RANGE = @"range";
+NSString* const KEY_LINE_NUMBER = @"lineNumber";
+NSString* const KEY_LINE_START = @"lineStart";
+
 // Values
 const int THRESHOLD_LONG_SETTING_LIST = 5;
 

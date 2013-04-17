@@ -30,6 +30,11 @@ extern NSString* const KEY_FONT_SIZE;
 extern NSString* const KEY_LINE_NUMBERS;
 extern NSString* const KEY_WORD_WRAP;
 
+//Code VC Keys
+extern NSString* const KEY_RANGE;
+extern NSString* const KEY_LINE_NUMBER;
+extern NSString* const KEY_LINE_START;
+
 // Values
 extern const int THRESHOLD_LONG_SETTING_LIST;
 

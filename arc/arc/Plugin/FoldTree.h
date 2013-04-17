@@ -18,7 +18,7 @@
 
 - (id)initWithNodes:(NSArray*)nodes RootRange:(NSRange)range;
 
--(NSRange)lowestNodeWithIndex:(CFIndex)index;
+-(FoldNode*)lowestNodeWithIndex:(CFIndex)index;
 
 -(NSRange)lowestNodeWithFoldStartIndex:(CFIndex)index;
 

@@ -69,22 +69,49 @@
     return str;
 }
 
-
--(NSRange)lowestNodeWithIndex:(CFIndex)index {
-    if ([Utils isContainedByRange:_node.contentRange Index:index]) {
-            NSRange leafRange = _node.contentRange;
-            for (FoldTree* subTree in _children) {
-                NSRange childRange = [subTree lowestNodeWithIndex:index];
-                if (childRange.location!= NSNotFound) {
-                    leafRange = childRange;
-                }
-            }
-            return leafRange;
-
-    } else {
-        return NSMakeRange(NSNotFound, 0);
+-(NSDictionary*)collapsibleLinesForIndex:(CFIndex)index WithLines:(NSArray*)lines {
+    FoldNode* collapsibleNode = [self lowestNodeWithIndex:index];
+    for (int i =0; i < lines.count; i++) {
+        NSDictionary* line = [lines objectAtIndex:i];
+        NSRange lineRange = [Utils rangeFromValue:[line objectForKey:KEY_]];
+        if ([Utils isSubsetOf: arg:<#(NSRange)#>]) {
+            <#statements#>
+        }
     }
 }
+
+-(FoldNode*)lowestNodeWithIndex:(CFIndex)index {
+    if ([Utils isContainedByRange:_node.contentRange Index:index]) {
+        FoldNode* leafNode = _node;
+        for (FoldTree* subTree in _children) {
+            FoldNode* child = [subTree lowestNodeWithIndex:index];
+            if (child) {
+                leafNode = child;
+            }
+        }
+        return leafNode;
+        
+    } else {
+        return nil;
+    }
+}
+
+
+//-(NSRange)lowestNodeWithIndex:(CFIndex)index {
+//    if ([Utils isContainedByRange:_node.contentRange Index:index]) {
+//            NSRange leafRange = _node.contentRange;
+//            for (FoldTree* subTree in _children) {
+//                NSRange childRange = [subTree lowestNodeWithIndex:index];
+//                if (childRange.location!= NSNotFound) {
+//                    leafRange = childRange;
+//                }
+//            }
+//            return leafRange;
+//
+//    } else {
+//        return NSMakeRange(NSNotFound, 0);
+//    }
+//}
 
 -(NSRange)lowestNodeWithFoldStartIndex:(CFIndex)index {
     if ([Utils isContainedByRange:_node.startRange Index:index] || _node.type == kRootNode) {
