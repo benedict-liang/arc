@@ -208,6 +208,7 @@
         // Notify our delegate, and navigate into the folder.
         [_delegate folderViewController:self selectedFolder:selectedFolder];
         FolderViewController *newFolderViewController = [[FolderViewController alloc] initWithFolder:selectedFolder];
+        [newFolderViewController setDelegate:_delegate];
         [[self navigationController] pushViewController:newFolderViewController animated:YES];
     } else {
         id<File> selectedFile = (id<File>)fileObject;
