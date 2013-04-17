@@ -11,8 +11,8 @@
 @interface FolderViewController ()
 
 @property (weak, nonatomic) id<Folder>folder;
-
 @property NSArray *segregatedContents;
+@property NSMutableArray *editSelectedItems;
 
 @end
 
@@ -62,6 +62,7 @@
     // If we're allowed to edit, show the edit button.
     if (_isEditAllowed) {
         [[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
+        [[self tableView] setAllowsMultipleSelectionDuringEditing:YES];
     }
 }
 
@@ -207,7 +208,10 @@
     NSArray *section = [_segregatedContents objectAtIndex:[indexPath section]];
     id<FileSystemObject> fileObject = [section objectAtIndex:[indexPath row]];
     
-    if ([fileObject conformsToProtocol:@protocol(Folder)]) {
+    if ([[self tableView] isEditing]) {
+        
+        
+    } else if ([fileObject conformsToProtocol:@protocol(Folder)]) {
         id<Folder> selectedFolder = (id<Folder>)fileObject;
         
         // Notify our delegate, and navigate into the folder.
@@ -223,6 +227,16 @@
         [_delegate folderViewController:self selectedFile:selectedFile];
     }
     
+}
+
+#pragma mark - Editing-related methods
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    _editSelectedItems = [NSMutableArray array];
+    if (editing) {
+    } else {
+    }
 }
 
 @end
