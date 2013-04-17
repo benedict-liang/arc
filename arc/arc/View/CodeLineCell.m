@@ -112,7 +112,7 @@
     CGRectMake(_lineNumberWidth + 2, 0, _foldingMarkerWidth, self.contentView.bounds.size.height);
 
     _codeLine.frame =
-    CGRectMake(_lineNumberWidth + 5 + _foldingMarkerWidth, 0,
+    CGRectMake(_lineNumberWidth + _padding + _foldingMarkerWidth, 0,
                self.contentView.bounds.size.width - _lineNumberWidth - _padding - _foldingMarkerWidth,
                self.contentView.bounds.size.height);
     
