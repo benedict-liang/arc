@@ -41,7 +41,7 @@
 
 // Folding
 @property (strong) FoldTree* foldTree;
-@property NSMutableArray* activeFolds;
+@property NSMutableDictionary* activeFolds;
 @property NSArray* foldStartLines;
 
 - (void)loadFile;
@@ -691,14 +691,20 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 - (void)foldForGesture:(UIGestureRecognizer*)gesture
 {
     if (!_activeFolds) {
-        _activeFolds = [NSMutableArray array];
+        _activeFolds = [NSMutableDictionary dictionary];
     }
     CFIndex index = [self indexOfStringAtGesture:gesture];
-    
+    int lineNumber = [self lineNumberForIndex:index];
+    if (lineNumber != NSNotFound) {
+        return;
+    }
+    if ([self activeFoldsContainsStartLine:lineNumber]) {
+        
+    }
     NSDictionary* activeFold = [_foldTree collapsibleLinesForIndex:index WithLines:_lines];
     
     if (activeFold) {
-        [_activeFolds addObject:activeFold];
+        [_activeFolds setObject:activeFold forKey:[activeFold objectForKey:@"startLine"]];
     }
     
     NSLog(@"%@",_activeFolds);
@@ -723,7 +729,8 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 
 - (BOOL)activeFoldsContainsLine:(int)lineIndex {
     BOOL flag = NO;
-    for (NSDictionary* activeFold in _activeFolds) {
+    for (NSNumber* start in _activeFolds) {
+        NSDictionary* activeFold = [_activeFolds objectForKey:start];
         NSArray* lines = [activeFold objectForKey:@"lines"];
         if ([lines containsObject:[NSNumber numberWithInt:lineIndex]]) {
             return YES;
@@ -732,15 +739,30 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
     return flag;
 }
 
+// naive. Can use binary search for speed
+- (int)lineNumberForIndex:(CFIndex)index
+{
+    for (int i = 0; i < _lines.count; i++) {
+        NSDictionary* line = [_lines objectAtIndex:i];
+        if ([Utils isContainedByRange:[Utils rangeFromValue:[line objectForKey:KEY_RANGE]] Index:index]) {
+            return i;
+        }
+    }
+    return NSNotFound;
+}
+
 - (BOOL)activeFoldsContainsStartLine:(int)lineIndex {
     BOOL flag = NO;
-    for (NSDictionary* activeFold in _activeFolds) {
-        NSNumber* startLine = [activeFold objectForKey:@"startLine"];
-        if ([startLine intValue] == lineIndex) {
+    for (NSNumber* start in _activeFolds) {
+        if ([start intValue] == lineIndex) {
             return YES;
         }
     }
     return flag;
+}
+
+- (void)removeFoldWithStartLine:(int)lineNumber {
+    
 }
 - (CFIndex)indexOfStringAtGesture:(UIGestureRecognizer*)gesture {
     CodeLineCell *cell = (CodeLineCell*)[gesture view];
