@@ -110,24 +110,15 @@
     return [[_segregatedContents objectAtIndex:section] count];
 }
 
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    // Don't display a title if the section is empty.
-//    if ([self tableView:tableView numberOfRowsInSection:section] == 0) {
-//        return nil;
-//    }
-//    // Returns the header for the given section.
-//    return section == 0 ? @"Folders" : @"Files";
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-//{
-//    // Don't display the header if the section has no rows.
-//    if ([self tableView:tableView numberOfRowsInSection:section] == 0) {
-//        return 0;
-//    }
-//    // Return the height of the header for the given section.
-//    return 22;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    // Don't display the header if the section has no rows.
+    if ([self tableView:tableView numberOfRowsInSection:section] == 0) {
+        return 0;
+    }
+    // Return the height of the header for the given section.
+    return 22;
+}
 
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
