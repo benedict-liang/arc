@@ -17,10 +17,10 @@
 // Returns an array of NSStrings corresponding to the
 // settings keys this plugin uses.
 // eg: [@"fontFamily", @"fontSize"]
-@property (nonatomic, strong) NSArray *settingKeys;
+@property (nonatomic, strong) NSString *setting;
 
 // Returns an NSDictionary of properties for this plugin.
-// eg: [pluginInstance propertiesFor:@"fontFamily"]
+// eg: [pluginInstance properties]
 // returns:
 // {
 //   title: "Font Family",
@@ -28,13 +28,13 @@
 //   labels: ["Inconsolata", "Source Code Pro", "Ubuntu Monospace"],
 //   values: ["Inconsolata", "SourceCodePro-Regular", "Ubuntu Mono Regular"]
 // }
-- (NSDictionary *)propertiesFor:(NSString *)settingKey;
+- (NSDictionary *)properties;
 
-// Declares if settingKey change requires a recalculation of layout
-- (BOOL)settingKeyAffectsBounds:(NSString *)settingKey;
+// Declares if plugin change requires a recalculation of layout
+- (BOOL)affectsBounds;
 
 // Returns the default value for the given setting key.
-- (id<NSObject>)defaultValueFor:(NSString *)settingKey;
+- (id<NSObject>)defaultValue;
 
 // Exec Methods (Middleware)
 // - All Optional, implement as necessary
