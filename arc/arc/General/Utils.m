@@ -109,6 +109,79 @@
             @"%.1f%@", fileSize, [prefixes objectAtIndex:divisions]];
 }
 
+
++ (NSArray*)sortRanges:(NSArray*)ranges {
+    //ASSUMES: ranges are either non intersecting, or subsets
+    //Above holds true for foldable code blocks
+    NSMutableArray* sortedRanges = [NSMutableArray arrayWithArray:ranges];
+    [sortedRanges sortUsingComparator:^NSComparisonResult(NSValue* v1, NSValue* v2){
+        NSRange r1;
+        NSRange r2;
+        [v1 getValue:&r1];
+        [v2 getValue:&r2];
+        int r1Ends = r1.location + r1.length;
+        int r2Ends = r2.location + r2.length;
+        //r1 dominates
+        if (r1.location < r2.location && r1Ends > r2Ends) {
+            return NSOrderedAscending;
+            //r2 dominates
+        } else if (r1.location > r2.location && r1Ends < r2Ends) {
+            return NSOrderedDescending;
+        } else {
+            //don't care about other cases
+            return NSOrderedSame;
+        }
+    }];
+    return sortedRanges;
+}
++ (BOOL)isSubsetOf:(NSRange)ro arg:(NSRange)ri {
+    return ro.location <= ri.location && (ro.location+ro.length) >= (ri.location+ri.length);
+}
+
++ (BOOL)isIntersectingWith:(NSRange)r1 And:(NSRange)r2 {
+    return (r1.location <= (r2.location + r2.length) && (r1.location + r2.length) >= r2.location) ||
+    (r2.location <= (r1.location + r1.length) && (r2.location + r2.length) >= r1.location);
+}
+
++ (NSRange)maxRangeByLocation:(NSRange)r1 And:(NSRange)r2 {
+    if (r1.location > r2.location) {
+        return r1;
+    } else {
+        return r2;
+    }
+}
+// returns a range of r1 - intersection(r1,r2) .
+// returns nil if r1 is a subset of r2
++ (NSArray*)rangeDifferenceBetween:(NSRange)r1 And:(NSRange)r2 {
+    if ([Utils isSubsetOf:r1 arg:r2]) {
+        
+        NSRange res1 = NSMakeRange(r1.location, r2.location - r1.location);
+        int nextBegin = r2.location + r2.length+1;
+        NSRange res2 = NSMakeRange(nextBegin, r1.location + r1.length - nextBegin);
+        return @[NSStringFromRange(res1),
+                 NSStringFromRange(res2)];
+    }
+    if ([Utils isSubsetOf:r2 arg:r1]) {
+        return nil;
+    }
+    if ([Utils isIntersectingWith:r1 And:r2]) {
+        if (r1.location > r2.location) {
+            int newR1Start = r2.location+r2.length+1;
+            NSRange res = NSMakeRange(newR1Start, r1.location + r1.length - newR1Start);
+            return @[NSStringFromRange(res)];
+        } else {
+            int newR1End = r2.location - 1;
+            NSRange res = NSMakeRange(r1.location, newR1End - r1.location);
+            return @[NSStringFromRange(res)];
+        }
+    } else {
+        return @[NSStringFromRange(r1)];
+    }
+}
++ (BOOL)isContainedByRange:(NSRange)range Index:(CFIndex)index {
+    return range.location <= index && index <= (range.location + range.length);
+}
+
 + (UIImage *)imageSized:(CGRect)rect withColor:(UIColor *)color
 {
     UIGraphicsBeginImageContext(rect.size);
@@ -127,6 +200,44 @@
 {
     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
     return [[self class] imageSized:rect withColor:color];
+}
+
++ (NSArray*)filterArray:(NSArray*)array With:(BOOL (^)(id))predicate {
+    NSMutableArray* res = [NSMutableArray array];
+    for (id elem in array) {
+        if (predicate(elem)) {
+            [res addObject:elem];
+        }
+    }
+    return res;
+}
+
++ (NSDictionary*)rangeArrayToDict:(NSArray*)array {
+    NSMutableDictionary* res = [NSMutableDictionary dictionary];
+    for (NSValue* value in array) {
+        NSRange range;
+        [value getValue:&range];
+        [res setObject:value forKey:NSStringFromRange(range)];
+    }
+    return res;
+}
+
++ (BOOL)range:(NSRange)checkRange isSubsetOfRangeInArray:(NSArray *)ranges {
+    BOOL flag = NO;
+    for (NSValue* v in ranges) {
+        NSRange range;
+        [v getValue:&range];
+        flag = flag || [Utils isSubsetOf:range arg:checkRange];
+    }
+    return flag;
+}
++ (NSRange)rangeFromValue:(NSValue *)value {
+    NSRange range;
+    [value getValue:&range];
+    return range;
+}
++ (NSValue*)valueFromRange:(NSRange)range {
+    return [NSValue value:&range withObjCType:@encode(NSRange)];
 }
 
 @end

@@ -1,5 +1,7 @@
 /*
  Testing block comment
+ function init() {
+ 
  */
 $(document).ready(function(){
 

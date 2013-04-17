@@ -11,4 +11,5 @@
 
 @protocol SyntaxHighlightingPluginDelegate <NSObject>
 - (void)removeFromThreadPool:(SyntaxHighlight *)sh;
+
 @end

@@ -279,6 +279,7 @@
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
 		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
 		8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */; };
+		FC137BE01719AE1000878684 /* FoldTree.m in Sources */ = {isa = PBXBuildFile; fileRef = FC137BDF1719AE1000878684 /* FoldTree.m */; };
 		8FDE2E28171D577500CF2BC9 /* leftDragPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDE2E26171D577500CF2BC9 /* leftDragPoint.png */; };
 		8FDE2E29171D577500CF2BC9 /* rightDragPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDE2E27171D577500CF2BC9 /* rightDragPoint.png */; };
 		FC3C2E621715BF8100C40490 /* [ Argonaut ].tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E2A1715BF7A00C40490 /* [ Argonaut ].tmTheme */; };
@@ -347,6 +348,9 @@
 		FC726087171152910068DD91 /* Solarized (light).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC726085171152910068DD91 /* Solarized (light).tmTheme */; };
 		FC7260921711B4D70068DD91 /* SyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7260911711B4D60068DD91 /* SyntaxHighlight.m */; };
 		FCB0548017034DE6007832D7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FCB0547F17034DE6007832D7 /* README.md */; };
+		FCBD8327171DC595005E2B31 /* FoldNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FCBD8326171DC595005E2B31 /* FoldNode.m */; };
+		FCBD832E171DD519005E2B31 /* RootFoldNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FCBD832D171DD518005E2B31 /* RootFoldNode.m */; };
+		FCBD8331171DE013005E2B31 /* CodeFolding.m in Sources */ = {isa = PBXBuildFile; fileRef = FCBD8330171DE011005E2B31 /* CodeFolding.m */; };
 		FCFB4DA2170F466200B25FDC /* BundleConf.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCFB4DA1170F466200B25FDC /* BundleConf.plist */; };
 /* End PBXBuildFile section */
 
@@ -738,6 +742,8 @@
 		8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewController.h; sourceTree = "<group>"; };
 		8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeViewController.m; sourceTree = "<group>"; };
 		8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewControllerDelegate.h; sourceTree = "<group>"; };
+		FC137BDE1719AE1000878684 /* FoldTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldTree.h; sourceTree = "<group>"; };
+		FC137BDF1719AE1000878684 /* FoldTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldTree.m; sourceTree = "<group>"; };
 		8FDE2E26171D577500CF2BC9 /* leftDragPoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftDragPoint.png; sourceTree = "<group>"; };
 		8FDE2E27171D577500CF2BC9 /* rightDragPoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightDragPoint.png; sourceTree = "<group>"; };
 		FC3C2E2A1715BF7A00C40490 /* [ Argonaut ].tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "[ Argonaut ].tmTheme"; sourceTree = "<group>"; };
@@ -809,6 +815,13 @@
 		FC7260901711B4D50068DD91 /* SyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlight.h; sourceTree = "<group>"; };
 		FC7260911711B4D60068DD91 /* SyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxHighlight.m; sourceTree = "<group>"; };
 		FCB0547F17034DE6007832D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		FCBD8325171DC594005E2B31 /* FoldNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldNode.h; sourceTree = "<group>"; };
+		FCBD8326171DC595005E2B31 /* FoldNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldNode.m; sourceTree = "<group>"; };
+		FCBD832C171DD517005E2B31 /* RootFoldNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootFoldNode.h; sourceTree = "<group>"; };
+		FCBD832D171DD518005E2B31 /* RootFoldNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootFoldNode.m; sourceTree = "<group>"; };
+		FCBD832F171DE010005E2B31 /* CodeFolding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeFolding.h; sourceTree = "<group>"; };
+		FCBD8330171DE011005E2B31 /* CodeFolding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeFolding.m; sourceTree = "<group>"; };
+		FCBD8332171DEBA2005E2B31 /* SyntaxHighlightDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlightDelegate.h; sourceTree = "<group>"; };
 		FCE8F95D1709806B00C08724 /* CodeViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeViewControllerDelegate.h; sourceTree = "<group>"; };
 		FCFB4DA1170F466200B25FDC /* BundleConf.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BundleConf.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1097,6 +1110,7 @@
 		4C45551617016F21001C6F1D /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				FC349BD6171E819200D6FDC6 /* CodeFolding */,
 				02D55DB31711694900DD48D7 /* PluginUtilities.h */,
 				02D55DB41711694900DD48D7 /* PluginUtilities.m */,
 				4CEADA02171681F000F4F619 /* SyntaxHighlighting */,
@@ -1245,11 +1259,12 @@
 		4CEADA02171681F000F4F619 /* SyntaxHighlighting */ = {
 			isa = PBXGroup;
 			children = (
+				4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */,
 				4C9DC9021719B64A00142E70 /* SyntaxHighlightingPluginDelegate.h */,
 				4CE2950C17101BA0003B012A /* SyntaxHighlightingPlugin.h */,
-				4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */,
 				FC7260901711B4D50068DD91 /* SyntaxHighlight.h */,
 				FC7260911711B4D60068DD91 /* SyntaxHighlight.m */,
+				FCBD8332171DEBA2005E2B31 /* SyntaxHighlightDelegate.h */,
 			);
 			name = SyntaxHighlighting;
 			sourceTree = "<group>";
@@ -1572,6 +1587,21 @@
 				02C4FBA4171E3E1C00B2FACD /* Cloud Downloader */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FC349BD6171E819200D6FDC6 /* CodeFolding */ = {
+			isa = PBXGroup;
+			children = (
+				FCBD8325171DC594005E2B31 /* FoldNode.h */,
+				FCBD8326171DC595005E2B31 /* FoldNode.m */,
+				FC137BDF1719AE1000878684 /* FoldTree.m */,
+				FCBD8330171DE011005E2B31 /* CodeFolding.m */,
+				FCBD832F171DE010005E2B31 /* CodeFolding.h */,
+				FCBD832C171DD517005E2B31 /* RootFoldNode.h */,
+				FCBD832D171DD518005E2B31 /* RootFoldNode.m */,
+				FC137BDE1719AE1000878684 /* FoldTree.h */,
+			);
+			name = CodeFolding;
 			sourceTree = "<group>";
 		};
 		FC726083171152910068DD91 /* Themes */ = {
@@ -2099,6 +2129,7 @@
 				FC7260921711B4D70068DD91 /* SyntaxHighlight.m in Sources */,
 				8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */,
 				02F25A121713E660000B6301 /* CreateFolderViewController.m in Sources */,
+				FC137BE01719AE1000878684 /* FoldTree.m in Sources */,
 				027EE0361716AAEC00302F07 /* LongSettingListViewController.m in Sources */,
 				4CEADA071716ADBB00F4F619 /* LineNumberPlugin.m in Sources */,
 				8F7066B317199B1F00E8C64E /* SearchResultCell.m in Sources */,
@@ -2116,6 +2147,9 @@
 				02A0078F171BBC6E0099FE61 /* CloudPickerViewController.m in Sources */,
 				4C5E51EA171BEB480041BB2B /* ArcAttribute.m in Sources */,
 				4C5E51EF171BFB1E0041BB2B /* Theme.m in Sources */,
+				FCBD8327171DC595005E2B31 /* FoldNode.m in Sources */,
+				FCBD832E171DD519005E2B31 /* RootFoldNode.m in Sources */,
+				FCBD8331171DE013005E2B31 /* CodeFolding.m in Sources */,
 				02C4FBA7171E3E5500B2FACD /* LoadingOverlayViewController.m in Sources */,
 				4C6B0908171EE27A009DB903 /* CodeViewLine.m in Sources */,
 				4C6B0911171EEC22009DB903 /* FileObjectTableViewCell.m in Sources */,

@@ -10,6 +10,7 @@
 #import "ArcAttributedString.h"
 #import "PluginDelegate.h"
 #import "File.h"
+#import "FoldTree.h"
 
 @protocol CodeViewControllerDelegate <NSObject>
 - (void)showFile:(id<File>)file;
@@ -20,7 +21,9 @@
 - (void)removeBackgroundColorForSetting:(NSString*)setting;
 - (void)mergeAndRenderWith:(ArcAttributedString *)arcAttributedString
                    forFile:(id<File>)file
-                 WithStyle:(NSDictionary*)style;
+                 WithStyle:(NSDictionary*)style
+                   AndTree:(FoldTree*)foldTree;
+
 - (void)setBackgroundColorForString:(UIColor*)color
                           WithRange:(NSRange)range
                          forSetting:(NSString*)setting;

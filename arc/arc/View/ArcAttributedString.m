@@ -109,8 +109,10 @@
 }
 
 - (NSAttributedString*)attributedString
-{    
+{
+    NSMutableArray* removedProperties = [NSMutableArray array];
     for (NSString* property in __attributesDictionary) {
+
         for (ArcAttribute *attribute in [__attributesDictionary objectForKey:property]) {
             if (!attribute.value) {
                 continue;
@@ -124,6 +126,10 @@
         // Move attributes to appliedAttributes dictionary
         [[self settingsAppliedAttributeForSettingsKey:property]
             addObjectsFromArray:[self settingsAttributeForSettingsKey:property]];
+        [removedProperties addObject:property];
+      
+    }
+    for (NSString* property in removedProperties) {
         [__attributesDictionary removeObjectForKey:property];
     }
 
@@ -240,6 +246,7 @@
     [__plainAttributedString addAttribute:NSFontAttributeName
                                value:font
                                range:_stringRange];
+    
 }
 
 @end

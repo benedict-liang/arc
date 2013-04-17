@@ -31,6 +31,7 @@
         
         if ([[file contents] isKindOfClass:[NSString class]]) {
             _content = (NSString*)[file contents];
+            _splitContent = [_content componentsSeparatedByString:@"\n"];
         }
         
         //reset ranges
@@ -67,6 +68,32 @@
     } else {
         return NSMakeRange(NSNotFound, 0);
     }
+}
+
+- (NSRange)findFirstPattern:(NSString*)pattern
+                      range:(NSRange)range
+                    content:(NSString*)content
+{
+    NSError *error = NULL;
+    
+    NSRegularExpression *regex = [NSRegularExpression
+                                  regularExpressionWithPattern:pattern
+                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines
+                                  error:&error];
+    
+    if ((range.location + range.length <= [content length]) &&
+        (range.length > 0) &&
+        (range.length <= [content length]))
+    {
+        //NSLog(@"findFirstPattern:   %d %d",r.location,r.length);
+        return [regex rangeOfFirstMatchInString:content
+                                        options:0
+                                          range:range];
+    } else {
+        //NSLog(@"index out of bounds in regex. findFirstPatten:%d %d",r.location,r.length);
+        return NSMakeRange(NSNotFound, 0);
+    }
+    
 }
 
 - (NSArray*)foundPattern:(NSString*)pattern
@@ -476,7 +503,8 @@
     if (self.delegate) {
         [self.delegate mergeAndRenderWith:output
                                   forFile:_currentFile
-                                WithStyle:[theme objectForKey:@"global"]];
+                                WithStyle:[theme objectForKey:@"global"]
+                                  AndTree:_foldTree];
     }
 }
 
@@ -518,6 +546,7 @@
 {
     _isAlive = YES;
     ArcAttributedString *output = [options objectForKey:@"attributedString"];
+    _finalOutput = output;
     NSDictionary* theme = [options objectForKey:@"theme"];
     overlapMatches = [NSDictionary dictionary];
 
@@ -535,10 +564,25 @@
         _matchesDone = YES;
     }
     
+    [self applyStylesTo:output withTheme:theme];
+    
+    // folds. temporarily here
+    NSString* foldStart = [_bundle objectForKey:@"foldingStartMarker"];
+    NSString* foldEnd = [_bundle objectForKey:@"foldingStopMarker"];
+    
+    if (foldStart && foldEnd) {
+        _foldTree = [CodeFolding foldTreeForContent:_content
+                                          foldStart:foldStart
+                                            foldEnd:foldEnd
+                                         skipRanges:[self rangeArrayForMatches:overlapMatches]
+                                           delegate:self];
+//        NSLog(@"%@",_foldTree);
+    }
+    
+    
     // tell SH factory to remove self from thread pool.
     [_factory removeFromThreadPool:self];
     
-    [self applyStylesTo:output withTheme:theme];
     [self updateView:output withTheme:theme];
 }
 
@@ -548,14 +592,40 @@
     _matchesDone = NO;
 }
 
-- (void)dealloc {
-    nameMatches = nil;
-    captureMatches = nil;
-    beginCMatches = nil;
-    endCMatches = nil;
-    pairMatches = nil;
-    contentNameMatches = nil;
-    overlapMatches = nil;
+-(void)testFoldsOnFoldRanges:(NSArray*)fR
+                  foldStarts:(NSArray*)fS
+                    foldEnds:(NSArray*)fE
+{
+ 
+    for (NSValue*v in fR) {
+        NSRange r;
+        [v getValue:&r];
+        [self styleOnRange:r fcolor:[UIColor yellowColor] output:_finalOutput];
+    }
+    //NSLog(@"_foldStarts: %@",_foldStarts);
+    for (NSValue* v in fS) {
+        NSRange r;
+        [v getValue:&r];
+        [self styleOnRange:r fcolor:[UIColor redColor] output:_finalOutput];
+    }
+    
+    //NSLog(@"_foldEnds: %@",_foldEnds);
+    for (NSValue*v in fE) {
+        NSRange r;
+        [v getValue:&r];
+        [self styleOnRange:r fcolor:[UIColor greenColor] output:_finalOutput];
+    }
+    
 }
+- (NSArray*)rangeArrayForMatches:(NSDictionary*)matches {
+    NSMutableArray* res = [NSMutableArray array];
+    
+    for (NSString* scope in matches) {
+        NSArray* ranges = [(NSDictionary*)[matches objectForKey:scope] objectForKey:@"ranges"];
+        [res addObjectsFromArray:ranges];
+    }
+    return res;
+}
+
 
 @end

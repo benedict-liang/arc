@@ -24,6 +24,24 @@
 
 + (NSString *)humanReadableFileSize:(float)fileSize;
 
++ (NSArray*)sortRanges:(NSArray*)ranges;
+
++ (BOOL)isSubsetOf:(NSRange)ro arg:(NSRange)ri;
+
++ (BOOL)isIntersectingWith:(NSRange)r1 And:(NSRange)r2;
+
++ (NSArray*)rangeDifferenceBetween:(NSRange)r1 And:(NSRange)r2;
+
++ (BOOL)isContainedByRange:(NSRange)range Index:(CFIndex)index;
+
++ (NSDictionary*)rangeArrayToDict:(NSArray*)array;
+
++ (BOOL)range:(NSRange)checkRange isSubsetOfRangeInArray:(NSArray *)ranges;
+
 + (UIImage *)imageSized:(CGRect)rect withColor:(UIColor *)color;
 + (UIImage *)imageWithColor:(UIColor *)color;
+
++ (NSRange)rangeFromValue:(NSValue*)value;
+
++ (NSValue*)valueFromRange:(NSRange)range;
 @end

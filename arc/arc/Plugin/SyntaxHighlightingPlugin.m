@@ -33,6 +33,7 @@
                         };
         _threadPool = [NSMutableArray array];
         _cache = [[NSCache alloc] init];
+
     }
     return self;
 }
@@ -82,6 +83,7 @@
                               sharedObject:(NSMutableDictionary *)dictionary
                                   delegate:(id<CodeViewControllerDelegate>)delegate
 {
+
     NSString *themeName = [properties objectForKey:_setting];
     NSDictionary* themeDictionary = [TMBundleThemeHandler produceStylesWithTheme:themeName];
     NSDictionary* global = [themeDictionary objectForKey:@"global"];

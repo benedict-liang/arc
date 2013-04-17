@@ -13,4 +13,6 @@
 @property (nonatomic, readonly) id value;
 @property (nonatomic, readonly) NSString *type;
 - (id) initWithType:(NSString *)type withValue:(id)value onRange:(NSRange)range;
+- (id)initWithArcAttribute:(ArcAttribute*)attribute;
+
 @end

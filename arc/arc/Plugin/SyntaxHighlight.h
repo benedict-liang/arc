@@ -11,11 +11,14 @@
 #import "TMBundleHeader.h"
 #import "CodeViewControllerDelegate.h"
 #import "File.h"
+#import "Utils.h"
+#import "FoldTree.h"
 #import "SyntaxHighlightingPluginDelegate.h"
-
+#import "FoldNode.h"
+#import "CodeFolding.h"
 //Immutable class. Holds thread local state
 
-@interface SyntaxHighlight : NSObject {
+@interface SyntaxHighlight : NSObject <SyntaxHighlightDelegate> {
     __block NSDictionary *nameMatches;
     __block NSDictionary *captureMatches;
     __block NSDictionary *beginCMatches;
@@ -23,7 +26,9 @@
     __block NSDictionary *pairMatches;
     __block NSDictionary *contentNameMatches;
     __block NSDictionary *overlapMatches;
+    __block NSArray *foldRanges;
 }
+
 
 @property (nonatomic, readonly) id<CodeViewControllerDelegate> delegate;
 @property (nonatomic, weak) id<SyntaxHighlightingPluginDelegate> factory;
@@ -31,8 +36,15 @@
 @property (nonatomic, readonly) NSString* content;
 @property (nonatomic, readonly) NSDictionary* bundle;
 @property (nonatomic, strong) NSArray* overlays;
+@property (readonly) NSArray* splitContent;
+@property (strong) FoldTree* foldTree;
+@property NSArray* foldStarts;
+@property NSArray* foldEnds;
+@property ArcAttributedString* finalOutput;
+
 - (id)initWithFile:(id<File>)file
        andDelegate:(id<CodeViewControllerDelegate>)delegate;
+
 - (void)execOn:(NSDictionary*)options;
 - (void)kill;
 @end
