@@ -18,9 +18,11 @@
 
 - (id)initWithNodes:(NSArray*)nodes RootRange:(NSRange)range;
 
--(FoldNode*)lowestNodeWithIndex:(CFIndex)index;
+- (FoldNode*)lowestNodeWithIndex:(CFIndex)index;
 
--(NSRange)lowestNodeWithFoldStartIndex:(CFIndex)index;
+- (NSRange)lowestNodeWithFoldStartIndex:(CFIndex)index;
 
--(NSArray*)foldStartRanges;
+- (NSArray*)foldStartRanges;
+
+- (NSDictionary*)collapsibleLinesForIndex:(CFIndex)index WithLines:(NSArray*)lines;
 @end
