@@ -665,8 +665,8 @@
 - (NSArray*)linesContainingRanges:(NSArray*)ranges {
     NSMutableArray* lines = [NSMutableArray array];
     for (int i =0; i < _lines.count; i++) {
-        NSDictionary* line = [_lines objectAtIndex:i];
-        NSRange lineRange = [Utils rangeFromValue:[line objectForKey:KEY_RANGE]];
+        CodeViewLine* line = [_lines objectAtIndex:i];
+        NSRange lineRange = line.range;
         for (NSValue* v in ranges) {
             NSRange startRange = [Utils rangeFromValue:v];
             if ([Utils isSubsetOf:lineRange arg:startRange]) {
@@ -693,8 +693,8 @@
 - (int)lineNumberForIndex:(CFIndex)index
 {
     for (int i = 0; i < _lines.count; i++) {
-        NSDictionary* line = [_lines objectAtIndex:i];
-        NSRange lineRange =[Utils rangeFromValue:[line objectForKey:KEY_RANGE]];
+        CodeViewLine* line = [_lines objectAtIndex:i];
+        NSRange lineRange =line.range;
         if ([Utils isContainedByRange:lineRange Index:index]) {
             return i;
         }
@@ -714,15 +714,14 @@
     CodeLineCell *cell = (CodeLineCell*)[gesture view];
 
     NSIndexPath* cellIndex = [(UITableView*)cell.superview indexPathForCell:cell];
-    NSDictionary* lineDict = [_lines objectAtIndex:cellIndex.row];
+    CodeViewLine* lineDict = [_lines objectAtIndex:cellIndex.row];
     CGPoint pointOfTouch = [gesture locationInView:cell];
     
     NSAttributedString *line = cell.line;
     CTLineRef lineref = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)(line));
     CFIndex subIndex = CTLineGetStringIndexForPosition(lineref, pointOfTouch);
     
-    NSRange cellRange;
-    [(NSValue*)[lineDict objectForKey:KEY_RANGE] getValue:&cellRange];
+    NSRange cellRange = lineDict.range;
     CFIndex selectedIndex =  cellRange.location + subIndex;
      //NSLog(@"cellIndex: %@, range:%@ selectedIndex:%ld",cellIndex,[lineDict objectForKey:KEY_RANGE], selectedIndex);
     return selectedIndex;

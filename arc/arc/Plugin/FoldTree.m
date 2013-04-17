@@ -77,8 +77,8 @@
     NSMutableArray* collapsedLines = [NSMutableArray array];
     int startLine = NSNotFound;
     for (int i =0; i < lines.count; i++) {
-        NSDictionary* line = [lines objectAtIndex:i];
-        NSRange lineRange = [Utils rangeFromValue:[line objectForKey:KEY_RANGE]];
+        CodeViewLine* line = [lines objectAtIndex:i];
+        NSRange lineRange = line.range;
         
         if ([Utils isSubsetOf:collapsibleNode.contentRange arg:lineRange]) {
             [collapsedLines addObject:[NSNumber numberWithInt:i]];

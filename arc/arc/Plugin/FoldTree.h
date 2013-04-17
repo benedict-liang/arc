@@ -10,6 +10,7 @@
 #import "Utils.h"
 #import "FoldNode.h"
 #import "RootFoldNode.h"
+#import "CodeViewLine.h"
 
 @interface FoldTree : NSObject
 
