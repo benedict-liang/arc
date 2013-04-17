@@ -279,4 +279,16 @@
     }
 }
 
+- (void)itemTappedInEditModeAnimate:(BOOL)animate
+{
+    int numberOfSelectedItems = [_editSelectedItems count];
+
+    if (numberOfSelectedItems == 0) {
+        [self hideEditToolbarAnimate:animate];
+    } else {
+        [self showEditToolbarAnimate:animate];
+    }
+}
+
+
 @end
