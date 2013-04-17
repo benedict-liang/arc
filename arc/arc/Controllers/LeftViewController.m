@@ -148,6 +148,7 @@
     // File Navigator View Controller
     FolderViewController *folderViewController =
         [[FolderViewController alloc] initWithFolder:folder];
+    [folderViewController setIsEditAllowed:YES];
     [folderViewController setDelegate:self];
     [_documentsNavigationViewController pushViewController:folderViewController
                                                   animated:animated];
