@@ -42,4 +42,6 @@
 + (UIImage *)imageWithColor:(UIColor *)color;
 
 + (NSRange)rangeFromValue:(NSValue*)value;
+
++ (NSValue*)valueFromRange:(NSRange)range;
 @end

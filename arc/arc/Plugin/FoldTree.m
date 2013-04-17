@@ -86,4 +86,28 @@
     }
 }
 
+-(NSRange)lowestNodeWithFoldStartIndex:(CFIndex)index {
+    if ([Utils isContainedByRange:_node.startRange Index:index]) {
+        NSRange leafRange = _node.contentRange;
+        for (FoldTree* subTree in _children) {
+            NSRange childRange = [subTree lowestNodeWithIndex:index];
+            if (childRange.location!= NSNotFound) {
+                leafRange = childRange;
+            }
+        }
+        return leafRange;
+        
+    } else {
+        return NSMakeRange(NSNotFound, 0);
+    }
+}
+
+-(NSArray*)foldStartRanges {
+    NSMutableArray* accum = [NSMutableArray array];
+    [accum addObject:[Utils valueFromRange:_node.startRange]];
+    for (FoldTree* subtree in _children) {
+        [accum addObjectsFromArray:[subtree foldStartRanges]];
+    }
+    return accum;
+}
 @end

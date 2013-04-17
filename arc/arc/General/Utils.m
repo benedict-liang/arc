@@ -236,4 +236,8 @@
     [value getValue:&range];
     return range;
 }
++ (NSValue*)valueFromRange:(NSRange)range {
+    return [NSValue value:&range withObjCType:@encode(NSRange)];
+}
+
 @end
