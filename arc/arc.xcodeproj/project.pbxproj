@@ -30,6 +30,7 @@
 		02B341E9171C130400DC9639 /* LiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */; };
 		02C4FBA7171E3E5500B2FACD /* LoadingOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C4FBA6171E3E5500B2FACD /* LoadingOverlayViewController.m */; };
 		02C4FBAA171E8E3100B2FACD /* LocalNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C4FBA9171E8E3100B2FACD /* LocalNavigationViewController.m */; };
+		02C4FBB3171E8EDD00B2FACD /* FolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C4FBB2171E8EDD00B2FACD /* FolderViewController.m */; };
 		02CF20721712ACB8001A59E4 /* Reading Panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 02CF20711712ACB8001A59E4 /* Reading Panel.png */; };
 		02D2B73F17099E89002D22E7 /* RootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D2B73E17099E88002D22E7 /* RootFolder.m */; };
 		02D55DB51711694900DD48D7 /* PluginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D55DB41711694900DD48D7 /* PluginUtilities.m */; };
@@ -334,7 +335,7 @@
 		FC3C2E991715BF8100C40490 /* zenburn.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E611715BF8100C40490 /* zenburn.tmTheme */; };
 		FC3C2E9C1715C1F400C40490 /* ThemeConf.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E9B1715C1F400C40490 /* ThemeConf.plist */; };
 		FC4A8529170EB47200463EDA /* twist.py in Resources */ = {isa = PBXBuildFile; fileRef = FC4A8528170EB47200463EDA /* twist.py */; };
-		FC4B269E16F88CB800E1DC49 /* FolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B269D16F88CB800E1DC49 /* FolderViewController.m */; };
+		FC4B269E16F88CB800E1DC49 /* OldFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B269D16F88CB800E1DC49 /* OldFolderViewController.m */; };
 		FC4B26CE16FF6E3800E1DC49 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */; };
 		FC726065171102660068DD91 /* base.rb in Resources */ = {isa = PBXBuildFile; fileRef = FC726064171102660068DD91 /* base.rb */; };
 		FC72606B171106C60068DD91 /* RequestBuilder.hs in Resources */ = {isa = PBXBuildFile; fileRef = FC72606A171106C60068DD91 /* RequestBuilder.hs */; };
@@ -425,6 +426,8 @@
 		02C4FBA6171E3E5500B2FACD /* LoadingOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingOverlayViewController.m; sourceTree = "<group>"; };
 		02C4FBA8171E8E3100B2FACD /* LocalNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNavigationViewController.h; sourceTree = "<group>"; };
 		02C4FBA9171E8E3100B2FACD /* LocalNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalNavigationViewController.m; sourceTree = "<group>"; };
+		02C4FBB1171E8EDD00B2FACD /* FolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewController.h; sourceTree = "<group>"; };
+		02C4FBB2171E8EDD00B2FACD /* FolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderViewController.m; sourceTree = "<group>"; };
 		02CF20711712ACB8001A59E4 /* Reading Panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reading Panel.png"; sourceTree = "<group>"; };
 		02D2B73D17099E88002D22E7 /* RootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootFolder.h; sourceTree = "<group>"; };
 		02D2B73E17099E88002D22E7 /* RootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootFolder.m; sourceTree = "<group>"; };
@@ -788,8 +791,8 @@
 		FC3C2E611715BF8100C40490 /* zenburn.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = zenburn.tmTheme; sourceTree = "<group>"; };
 		FC3C2E9B1715C1F400C40490 /* ThemeConf.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ThemeConf.plist; sourceTree = "<group>"; };
 		FC4A8528170EB47200463EDA /* twist.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = twist.py; sourceTree = "<group>"; };
-		FC4B269C16F88CB800E1DC49 /* FolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewController.h; sourceTree = "<group>"; };
-		FC4B269D16F88CB800E1DC49 /* FolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderViewController.m; sourceTree = "<group>"; };
+		FC4B269C16F88CB800E1DC49 /* OldFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldFolderViewController.h; sourceTree = "<group>"; };
+		FC4B269D16F88CB800E1DC49 /* OldFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldFolderViewController.m; sourceTree = "<group>"; };
 		FC4B26CC16FF6E3700E1DC49 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
 		FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 		FC726064171102660068DD91 /* base.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = base.rb; sourceTree = "<group>"; };
@@ -927,10 +930,12 @@
 				8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */,
 				FC4B26CC16FF6E3700E1DC49 /* LeftViewController.h */,
 				FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */,
-				FC4B269C16F88CB800E1DC49 /* FolderViewController.h */,
-				FC4B269D16F88CB800E1DC49 /* FolderViewController.m */,
+				FC4B269C16F88CB800E1DC49 /* OldFolderViewController.h */,
+				FC4B269D16F88CB800E1DC49 /* OldFolderViewController.m */,
 				02C4FBA8171E8E3100B2FACD /* LocalNavigationViewController.h */,
 				02C4FBA9171E8E3100B2FACD /* LocalNavigationViewController.m */,
+				02C4FBB1171E8EDD00B2FACD /* FolderViewController.h */,
+				02C4FBB2171E8EDD00B2FACD /* FolderViewController.m */,
 			);
 			name = "Main UI";
 			sourceTree = "<group>";
@@ -2039,7 +2044,7 @@
 				4C43F8FF16F86AA900159B29 /* AppDelegate.m in Sources */,
 				4C43F90816F86AA900159B29 /* arc.xcdatamodeld in Sources */,
 				8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */,
-				FC4B269E16F88CB800E1DC49 /* FolderViewController.m in Sources */,
+				FC4B269E16F88CB800E1DC49 /* OldFolderViewController.m in Sources */,
 				8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */,
 				8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */,
 				8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */,
@@ -2085,6 +2090,7 @@
 				4C5E51EF171BFB1E0041BB2B /* Theme.m in Sources */,
 				02C4FBA7171E3E5500B2FACD /* LoadingOverlayViewController.m in Sources */,
 				02C4FBAA171E8E3100B2FACD /* LocalNavigationViewController.m in Sources */,
+				02C4FBB3171E8EDD00B2FACD /* FolderViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
