@@ -66,6 +66,19 @@
     [self reloadContents];
 }
 
+// Work Around to track back button action.
+- (void)viewWillDisappear:(BOOL)animated
+{
+    if ([[[self navigationController] viewControllers] indexOfObject:self] == NSNotFound) {
+        // back button was pressed.
+        // We know this is true because self is no longer
+        // in the navigation stack.
+        [_delegate folderViewController:self selectedFolder:(id<Folder>)[_folder parent]];
+    }
+    
+    [super viewWillDisappear:animated];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
