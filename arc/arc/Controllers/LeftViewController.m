@@ -197,32 +197,29 @@ shouldSelectViewController:(UIViewController *)viewController
 
 # pragma mark - Folder View Controller Delegate
 
-//- (void)folderViewController:(FolderViewController*)folderviewController
-//     DidEnterEditModeAnimate:(BOOL)animate
-//{
-//    [UIView animateWithDuration:0.3
-//                          delay:0
-//                        options:UIViewAnimationOptionCurveEaseInOut
-//                     animations:^{
-//                         [self hideTabBar:_tabBarController];
-//                     }
-//                     completion:^(BOOL finished){
-//                         [folderviewController editActionTriggeredAnimate:NO];
-//                     }];
-//}
-//
-//- (void)folderViewController:(FolderViewController*)folderviewController DidExitEditModeAnimate:(BOOL)animate
-//{
-//    [folderviewController editActionTriggeredAnimate:NO];
-//    [UIView animateWithDuration:0.3
-//                          delay:0
-//                        options:UIViewAnimationOptionCurveEaseInOut
-//                     animations:^{
-//                        [self showTabBar:_tabBarController];
-//                     }
-//                     completion:^(BOOL finished){}];
-//}
-//
+- (void)folderViewController:(FolderViewController *)folderviewController
+     DidEnterEditModeAnimate:(BOOL)animate
+{
+    [UIView animateWithDuration:0.3
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         [self hideTabBar:_tabBarController];
+                     }
+                     completion:nil];
+}
+
+- (void)folderViewController:(FolderViewController *)folderviewController DidExitEditModeAnimate:(BOOL)animate
+{
+    [UIView animateWithDuration:0.3
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                        [self showTabBar:_tabBarController];
+                     }
+                     completion:nil];
+}
+
 
 - (void)folderViewController:(FolderViewController *)sender selectedFile:(id<File>)file
 {
