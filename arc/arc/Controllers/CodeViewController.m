@@ -184,7 +184,9 @@
     ((__bridge CFAttributedStringRef)
      _arcAttributedString.plainAttributedString);
     
+    int lineNumber = 0;
     while (start < length) {
+        lineNumber++;
         [lineStarts setObject:[NSNumber numberWithBool:YES]
                        forKey:[NSNumber numberWithInt:start]];
         CFIndex count = CTTypesetterSuggestLineBreak(_typesetter, start, boundsWidth);
@@ -192,11 +194,15 @@
     }
     
     // Split Lines to it bounds
-    CGFloat actualBoundsWidth = _tableView.bounds.size.width - 20*2 - 45;
+    CGFloat actualBoundsWidth = _tableView.bounds.size.width - SIZE_CODEVIEW_PADDING_AROUND*2;
+    if (_lineNumbers) {
+        [self calcLineNumberWidthForMaxLineNumber:lineNumber];
+        actualBoundsWidth -= _lineNumberWidth;
+    }
     
     // Calculate the lines
     start = 0;
-    int lineNumber = 0;
+    lineNumber = 0;
     CodeViewLine *line;
     while (start < length) {
         CFIndex count = CTTypesetterSuggestLineBreak(_typesetter, start, actualBoundsWidth);
@@ -212,8 +218,6 @@
         [_lines addObject:line];
         start += count;
     }
-    
-    [self calcLineNumberWidthForMaxLineNumber:lineNumber];
 }
 
 - (void)calcLineNumberWidthForMaxLineNumber:(int)lineNumber
@@ -465,6 +469,7 @@
     NSAttributedString *lineRef = [_arcAttributedString.attributedString
                                    attributedSubstringFromRange:line.range];
 
+    cell.showLineNumber = _lineNumbers;
     cell.lineNumberWidth = _lineNumberWidth;
     cell.line = lineRef;
     cell.stringRange = line.range;

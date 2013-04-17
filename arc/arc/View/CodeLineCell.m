@@ -8,8 +8,6 @@
 
 #import "CodeLineCell.h"
 
-#define LINENUMBER_PADDING 10
-
 @interface CodeLineCell ()
 @property (nonatomic, strong) UIColor *foregroundColor;
 @property (nonatomic, strong) NSString *fontFamily;
@@ -32,8 +30,7 @@
                 reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        // defaults
-        _lineNumberWidth = 30;
+        _lineNumberWidth = SIZE_CODEVIEW_LINENUMBERS_MIN + SIZE_CODEVIEW_MARGIN_LINENUMBERS;
         _showLineNumber = YES;
         
         _lineNumberLabel = [[UILabel alloc] init];
@@ -79,18 +76,15 @@
 {
     CGSize textSize = [[NSString stringWithFormat:@"%d", lineNumber]
                        sizeWithFont:[UIFont fontWithName:fontFamily size:fontSize]];
-    return ceil(textSize.width);
-}
+    
+    int lineNumberWidth = ceil(textSize.width);
 
-- (void)setLineNumberWidth:(int)lineNumberWidth
-{
     // min line width 30 with margin = 5
-    if (lineNumberWidth < 30) {
-        lineNumberWidth = 30;
+    if (lineNumberWidth < SIZE_CODEVIEW_LINENUMBERS_MIN) {
+        lineNumberWidth = SIZE_CODEVIEW_LINENUMBERS_MIN;
     }
 
-    // margin
-    _lineNumberWidth = lineNumberWidth + 5;
+    return lineNumberWidth + SIZE_CODEVIEW_MARGIN_LINENUMBERS;
 }
 
 - (void)setLineNumber:(int)lineNumber
@@ -102,14 +96,20 @@
 - (void)layoutSubviews
 {
     self.contentView.frame = self.bounds;
-    _lineNumberLabel.frame =
-    CGRectMake(0, 0, _lineNumberWidth, self.contentView.bounds.size.height);
-
-    _codeLine.frame =
-    CGRectMake(_lineNumberWidth + LINENUMBER_PADDING, 0,
-               self.contentView.bounds.size.width - _lineNumberWidth - LINENUMBER_PADDING,
-               self.contentView.bounds.size.height);
-
+    if (_showLineNumber) {
+        _lineNumberLabel.frame =
+        CGRectMake(0, 0, _lineNumberWidth, self.contentView.bounds.size.height);
+        
+        _codeLine.frame =
+        CGRectMake(_lineNumberWidth + SIZE_CODEVIEW_PADDING_LINENUMBERS, 0,
+                   self.contentView.bounds.size.width - _lineNumberWidth - SIZE_CODEVIEW_PADDING_LINENUMBERS,
+                   self.contentView.bounds.size.height);
+    } else {
+        _codeLine.frame =
+        CGRectMake(SIZE_CODEVIEW_PADDING_LINENUMBERS, 0,
+                   self.contentView.bounds.size.width - SIZE_CODEVIEW_PADDING_LINENUMBERS,
+                   self.contentView.bounds.size.height);
+    }
     [_codeLine sizeToFit];
 }
 
