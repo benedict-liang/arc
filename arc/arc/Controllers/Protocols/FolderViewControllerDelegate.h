@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "File.h"
+#import "Folder.h"
+
+@class FolderViewController
 
 @protocol FolderViewControllerDelegate <NSObject>
+
+- (void)folderViewController:(id<FolderViewController>)sender selectedFile:(id<File>)file;
+
+- (void)folderViewController:(id<FolderViewController>)sender selectedFolder:(id<Folder>)folder;
 
 @end
