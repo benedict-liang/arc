@@ -214,6 +214,13 @@
         [_lines addObject:line];
         start += count;
     }
+    
+    [self calcLineNumberWidthForMaxLineNumber:lineNumber];
+}
+
+- (void)calcLineNumberWidthForMaxLineNumber:(int)lineNumber
+{
+    
 }
 
 - (void)calcLineHeight

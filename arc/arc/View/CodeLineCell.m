@@ -35,10 +35,17 @@
         _showLineNumber = YES;
         
         _lineNumberLabel = [[UILabel alloc] init];
+        _lineNumberLabel.backgroundColor = [UIColor clearColor];
+        _lineNumberLabel.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview:_lineNumberLabel];
+        
         _codeLine = [[UILabel alloc] init];
         _codeLine.backgroundColor = [UIColor clearColor];
+        _codeLine.numberOfLines = 1;
         [self.contentView addSubview:_codeLine];
+        
+        self.contentView.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
@@ -46,30 +53,22 @@
 - (void)setForegroundColor:(UIColor*)foregroundColor
 {
     _foregroundColor = foregroundColor;
+    _lineNumberLabel.textColor = _foregroundColor;
 }
 
 - (void)setFontFamily:(NSString*)fontFamily FontSize:(int)fontSize
 {
     _fontFamily = fontFamily;
     _fontSize = fontSize;
+    _lineNumberLabel.font = [UIFont fontWithName:_fontFamily size:_fontSize];
 }
 
 - (void)setLine:(NSAttributedString *)line
-{    
-    _lineNumberLabel.backgroundColor = [UIColor clearColor];
-    _lineNumberLabel.text = @"";
-    _lineNumberLabel.textColor = _foregroundColor;
-    _lineNumberLabel.font = [UIFont fontWithName:_fontFamily
-                                            size:_fontSize];
-    _lineNumberLabel.textAlignment = NSTextAlignmentRight;
-
+{
     _line = line;
-
     _codeLine.attributedText = _line;
-    _codeLine.numberOfLines = 1;
 
-    self.contentView.backgroundColor = [UIColor clearColor];
-    self.backgroundColor = [UIColor clearColor];
+    _lineNumberLabel.text = @"";
 }
 
 - (void)setLineNumber:(int)lineNumber
@@ -77,15 +76,6 @@
     _lineNumber = lineNumber;
     _lineNumberLabel.text = [NSString stringWithFormat:@"%d", _lineNumber];
 }
-
-//- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
-//{
-//    if (highlighted) {
-//        _codeLine.backgroundColor = [UIColor blueColor];
-//    } else {
-//        _codeLine.backgroundColor = [UIColor clearColor];
-//    }
-//}
 
 - (void)layoutSubviews
 {
@@ -101,7 +91,7 @@
     [_codeLine sizeToFit];
 }
 
-- (UIView*)backgroundView
+- (UIView *)backgroundView
 {
     return nil;
 }
