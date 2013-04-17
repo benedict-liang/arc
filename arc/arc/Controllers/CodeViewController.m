@@ -290,7 +290,7 @@
     if ([[file path] isEqual:[_currentFile path]]) {
         _arcAttributedString = arcAttributedString;
         _foldTree = foldTree;
-        
+        _foldStartLines = [self linesContainingRanges:[_foldTree foldStartRanges]];
         if (!_linesGenerated) {
             [self generateLines];
         }
@@ -511,6 +511,8 @@
     }
     if ([_foldStartLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
         [cell setFolding];
+    } else {
+        [cell clearFolding];
     }
     if ([_foldedLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
         cell.hidden = YES;
@@ -692,7 +694,7 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
     NSLog(@"subtractRange: %@",[NSValue value:&subtractRange withObjCType:@encode(NSRange)]);
     if (!NSEqualRanges(subtractRange, _foldTree.node.contentRange)) {
         _foldedLines = [self foldedLinesForRange:subtractRange];
-        _foldStartLines = [self linesContainingRanges:[_foldTree foldStartRanges]];
+        
         [self renderFile];
     }
 

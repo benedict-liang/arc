@@ -93,6 +93,12 @@
 - (void)setFolding {
     _foldingMarker.text = @"▼";
 }
+- (void)collapsedFolding {
+    _foldingMarker.text = @"▶";
+}
+- (void)clearFolding {
+    _foldingMarker.text = @"";
+}
 - (void)layoutSubviews
 {
     self.contentView.frame = self.bounds;
