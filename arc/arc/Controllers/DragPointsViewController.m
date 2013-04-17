@@ -52,11 +52,11 @@
 
 @implementation DragPointsViewController
 
-- (id)initWithIndexPath:(NSIndexPath*)indexPath
+- (id)initWithIndexPath:(NSIndexPath *)indexPath
          withTouchPoint:(CGPoint)touchPoint
               andOffset:(int)offset
-           forTableView:(UITableView*)tableView
-      andViewController:(UIViewController*)viewController
+           forTableView:(UITableView *)tableView
+      andViewController:(UIViewController *)viewController
 {
     self = [super init];
     
@@ -145,7 +145,7 @@
 
 #pragma mark - Drag Points
 
-- (void)moveLeftDragPointHorizontal:(UIPanGestureRecognizer*)gesture
+- (void)moveLeftDragPointHorizontal:(UIPanGestureRecognizer *)gesture
 {
     
     [self defaultDragPointGestureRecognizerSetup:gesture];
@@ -187,7 +187,7 @@
     }
 }
 
-- (void)moveLeftDragPointVertical:(UIPanGestureRecognizer*)gesture
+- (void)moveLeftDragPointVertical:(UIPanGestureRecognizer *)gesture
 {
     
     [self defaultDragPointGestureRecognizerSetup:gesture];
@@ -238,7 +238,7 @@
     }
 }
 
-- (void)moveRightDragPointHorizontal:(UIPanGestureRecognizer*)gesture
+- (void)moveRightDragPointHorizontal:(UIPanGestureRecognizer *)gesture
 {
     
     [self defaultDragPointGestureRecognizerSetup:gesture];
@@ -279,7 +279,7 @@
     }
 }
 
-- (void)moveRightDragPointVertical:(UIPanGestureRecognizer*)gesture
+- (void)moveRightDragPointVertical:(UIPanGestureRecognizer *)gesture
 {
     
     [self defaultDragPointGestureRecognizerSetup:gesture];
@@ -332,7 +332,7 @@
     }
 }
 
-- (void)defaultDragPointGestureRecognizerSetup:(UIPanGestureRecognizer*)gesture
+- (void)defaultDragPointGestureRecognizerSetup:(UIPanGestureRecognizer *)gesture
 {
     if ([gesture state] == UIGestureRecognizerStateBegan) {
         [self calculateRectValues];
@@ -347,7 +347,7 @@
 
 #pragma mark - Update Values
 
-- (void)updateBottomRectValuesWithBottomIndexPath:(NSIndexPath*)bottomIndexPath
+- (void)updateBottomRectValuesWithBottomIndexPath:(NSIndexPath *)bottomIndexPath
 {
     _bottomIndexPath = [NSIndexPath indexPathForRow:bottomIndexPath.row inSection:0];
     _bottomRowCellRect = [_tableView rectForRowAtIndexPath:bottomIndexPath];
@@ -364,7 +364,7 @@
     }
 }
 
-- (void)updateTopRectValuesWithTopIndexPath:(NSIndexPath*)topIndexPath
+- (void)updateTopRectValuesWithTopIndexPath:(NSIndexPath *)topIndexPath
 {
     _topIndexPath = [NSIndexPath indexPathForRow:topIndexPath.row inSection:0];
     _topRowCellRect = [_tableView rectForRowAtIndexPath:topIndexPath];
@@ -480,7 +480,7 @@
     }
 }
 
-- (void)applyBackgroundColorWithSelectedTextRangeForRow:(NSIndexPath*)indexPath
+- (void)applyBackgroundColorWithSelectedTextRangeForRow:(NSIndexPath *)indexPath
 {
     [_codeViewController removeBackgroundColorForSetting:KEY_COPY_SETTINGS];
     [_codeViewController setBackgroundColorForString:[UIColor blueColor]
@@ -635,7 +635,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     }
 }
 
-- (CGPoint)getLastCharacterCoordinatesInRow:(NSIndexPath*)indexPath
+- (CGPoint)getLastCharacterCoordinatesInRow:(NSIndexPath *)indexPath
 {
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:indexPath];
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
