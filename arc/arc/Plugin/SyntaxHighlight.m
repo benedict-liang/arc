@@ -576,7 +576,7 @@
                                             foldEnd:foldEnd
                                          skipRanges:[self rangeArrayForMatches:overlapMatches]
                                            delegate:self];
-        NSLog(@"%@",_foldTree);
+//        NSLog(@"%@",_foldTree);
     }
     
     

@@ -708,7 +708,7 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
         }
     }
     
-    NSLog(@"%@",_activeFolds);
+    //NSLog(@"%@",_activeFolds);
 
     [self renderFile];
 }
@@ -775,7 +775,7 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
     NSRange cellRange;
     [(NSValue*)[lineDict objectForKey:KEY_RANGE] getValue:&cellRange];
     CFIndex selectedIndex =  cellRange.location + subIndex;
-     NSLog(@"cellIndex: %@, range:%@ selectedIndex:%ld",cellIndex,[lineDict objectForKey:KEY_RANGE], selectedIndex);
+     //NSLog(@"cellIndex: %@, range:%@ selectedIndex:%ld",cellIndex,[lineDict objectForKey:KEY_RANGE], selectedIndex);
     return selectedIndex;
 }
 
