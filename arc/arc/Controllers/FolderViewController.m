@@ -214,6 +214,7 @@
         [_delegate folderViewController:self selectedFolder:selectedFolder];
         FolderViewController *newFolderViewController = [[FolderViewController alloc] initWithFolder:selectedFolder];
         [newFolderViewController setDelegate:_delegate];
+        [newFolderViewController setIsEditAllowed:_isEditAllowed];
         [[self navigationController] pushViewController:newFolderViewController animated:YES];
     } else {
         id<File> selectedFile = (id<File>)fileObject;
