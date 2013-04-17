@@ -629,8 +629,8 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     CGPoint locationPoint = [[touches anyObject] locationInView:_tableView];
-    UIView* viewYouWishToObtain = [_tableView hitTest:locationPoint withEvent:event];
-    if (viewYouWishToObtain != _leftDragPoint || viewYouWishToObtain != _rightDragPoint) {
+    UIView *view = [_tableView hitTest:locationPoint withEvent:event];
+    if (view != _leftDragPoint || view != _rightDragPoint) {
         [_codeViewController dismissTextSelectionViews];
     }
 }
