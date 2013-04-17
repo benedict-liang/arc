@@ -10,17 +10,55 @@
 
 @interface FolderViewController ()
 
+@property (weak, nonatomic) id<Folder>folder;
+
+@property NSArray *segregatedContents;
+
 @end
 
 @implementation FolderViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithFolder:(id<Folder>)folder
 {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+    if (self = [super init]) {
+        _folder = folder;
+        [self reloadContents];
     }
     return self;
+}
+
+- (void)reloadContents
+{
+    [self separateFilesAndFolders];
+    [[self tableView] reloadData];
+}
+
+- (void)separateFilesAndFolders
+{
+    NSMutableArray *folders = [NSMutableArray array];
+    NSMutableArray *files = [NSMutableArray array];
+    NSArray *fileObjects = (NSArray*)[_folder contents];
+    
+    for (id<FileSystemObject> fileSystemObject in fileObjects) {
+        if ([[fileSystemObject class] conformsToProtocol:@protocol(File)]) {
+            [files addObject:fileSystemObject];
+        } else if ([[fileSystemObject class] conformsToProtocol:@protocol(Folder) ]) {
+            [folders addObject:fileSystemObject];
+        }
+    }
+    _segregatedContents = [NSArray arrayWithObjects:folders, files, nil];
+}
+
+- (void)loadView
+{
+    [super loadView];
+    
+    // Set up the navigation bar title.
+    [[self navigationItem] setTitle:[_folder name]];
+    
+    // Set tableview properties.
+    [[self tableView] setRowHeight:55];
+    [[self tableView] setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
 }
 
 - (void)viewDidLoad
