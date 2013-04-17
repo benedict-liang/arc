@@ -29,6 +29,7 @@
     self = [super initWithStyle:style
                 reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         // defaults
         _lineNumberWidth = 30;
         _showLineNumber = YES;
@@ -36,6 +37,7 @@
         _lineNumberLabel = [[UILabel alloc] init];
         [self.contentView addSubview:_lineNumberLabel];
         _codeLine = [[UILabel alloc] init];
+        _codeLine.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_codeLine];
     }
     return self;
@@ -76,14 +78,14 @@
     _lineNumberLabel.text = [NSString stringWithFormat:@"%d", _lineNumber];
 }
 
-- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
-{
-    if (highlighted) {
-        _codeLine.backgroundColor = [UIColor blueColor];
-    } else {
-        _codeLine.backgroundColor = [UIColor clearColor];
-    }
-}
+//- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+//{
+//    if (highlighted) {
+//        _codeLine.backgroundColor = [UIColor blueColor];
+//    } else {
+//        _codeLine.backgroundColor = [UIColor clearColor];
+//    }
+//}
 
 - (void)layoutSubviews
 {
