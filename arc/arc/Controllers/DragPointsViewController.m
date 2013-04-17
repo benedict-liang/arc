@@ -111,10 +111,10 @@
     _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame
                                                    andImageName:@"rightDragPoint.png"];
     
-    [self setGestureRecognizersForDragPoints];
+    [self addGestureRecognizersForDragPoints];
 }
 
-- (void)setGestureRecognizersForDragPoints
+- (void)addGestureRecognizersForDragPoints
 {
     UIPanGestureRecognizer *leftPanGestureHorizontal = [[UIPanGestureRecognizer alloc]
                                                         initWithTarget:self

@@ -467,8 +467,8 @@
     return [_lines count];
 }
 
-- (UITableViewCell*)tableView:(UITableView*)tableView
-        cellForRowAtIndexPath:(NSIndexPath*)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+        cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"CodeLineCell";
     CodeLineCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -512,7 +512,8 @@
     return cell;
 }
 
-- (void)selectText:(UILongPressGestureRecognizer*)gesture {
+- (void)selectText:(UILongPressGestureRecognizer*)gesture
+{
     
     if ([gesture state] == UIGestureRecognizerStateBegan) {
         if (_dragPointVC != nil) {
@@ -542,7 +543,8 @@
     }
 }
 
-- (void)dismissTextSelectionViews {
+- (void)dismissTextSelectionViews
+{
     if (_dragPointVC != nil) {
         
         [self removeBackgroundColorForSetting:@"copyAndPaste"];
@@ -558,8 +560,8 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView*)tableView
-didSelectRowAtIndexPath:(NSIndexPath*)indexPath
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath
                              animated:NO];
@@ -567,7 +569,7 @@ didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 
 #pragma mark - Search Bar delegate
 
-- (void)searchBarSearchButtonClicked:(UISearchBar*)searchBar
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     NSString *searchString = [searchBar text];
     NSArray *searchResultRangesArray = [FullTextSearch searchForText:searchString
