@@ -107,50 +107,38 @@
 
 # pragma mark - FileNavigatorViewController Delegate Methods
 
+// Used to force navigation to a particular folder.
 - (void)navigateTo:(id<Folder>)folder
 {
     // Force Document View
     [self showDocuments:nil];
     
-    if ([Utils isEqual:[folder parent]
-                   and:_currentFolder]) {
-        // Normal Folder selected
-        [self pushFolderView:folder];
-    } else if ([Utils isEqual:folder
-                          and:[_currentFolder parent]]) {
-        // Back Button.
-        // Refresh folder contents
-        FolderViewController *folderViewController =
-            (FolderViewController*) _documentsNavigationViewController.visibleViewController;
-        [folderViewController refreshFolderContents];
-    } else {
-        // Jump to Folder.
-        // (no logical way to "animate" to folder"
-        
-        // Clear stack of folderViewController
-        [_documentsNavigationViewController popToRootViewControllerAnimated:NO];
-        
-        // Find path to root
-        // (excluding current folder and root)
-        id<Folder> current = folder;
-        NSMutableArray *pathToRootFolder = [NSMutableArray array];
-        while ([current parent]) {
-            [pathToRootFolder addObject:[current parent]];
-            current = (id<Folder>)[current parent];
-        }
-        
-        // Push folderViewController onto the stack
-        // in reverse order. (w/o animation)
-        id<Folder> parent;
-        NSEnumerator *enumerator = [pathToRootFolder reverseObjectEnumerator];
-        while (parent = [enumerator nextObject]) {
-            [self pushFolderView:parent
-                        animated:NO];
-        }
-        
-        // push folder to navigate to.
-        [self pushFolderView:folder];
+    // Jump to Folder.
+    // (no logical way to "animate" to folder"
+    
+    // Clear stack of folderViewController
+    [_documentsNavigationViewController popToRootViewControllerAnimated:NO];
+    
+    // Find path to root
+    // (excluding current folder and root)
+    id<Folder> current = folder;
+    NSMutableArray *pathToRootFolder = [NSMutableArray array];
+    while ([current parent]) {
+        [pathToRootFolder addObject:[current parent]];
+        current = (id<Folder>)[current parent];
     }
+    
+    // Push folderViewController onto the stack
+    // in reverse order. (w/o animation)
+    id<Folder> parent;
+    NSEnumerator *enumerator = [pathToRootFolder reverseObjectEnumerator];
+    while (parent = [enumerator nextObject]) {
+        [self pushFolderView:parent
+                    animated:NO];
+    }
+    
+    // push folder to navigate to.
+    [self pushFolderView:folder];
     
     // Update current folder.
     _currentFolder = folder;
