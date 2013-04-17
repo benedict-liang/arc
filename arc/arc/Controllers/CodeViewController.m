@@ -14,10 +14,6 @@
 #import "ResultsTableViewController.h"
 #import "DragPointsViewController.h"
 
-#define KEY_RANGE @"range"
-#define KEY_LINE_NUMBER @"lineNumber"
-#define KEY_LINE_START @"lineStart"
-
 @interface CodeViewController ()
 @property id<File> currentFile;
 @property (nonatomic, strong) UITableView *tableView;
@@ -32,7 +28,9 @@
 @property (nonatomic, strong) UIPopoverController *resultsPopoverController;
 @property (nonatomic, strong) ResultsTableViewController *resultsViewController;
 @property (nonatomic, strong) DragPointsViewController *dragPointVC;
-@property CGFloat lineHeight;
+
+@property int lineHeight;
+@property int lineNumberWidth;
 @property NSMutableArray *plugins;
 
 // Line Processing
@@ -220,7 +218,10 @@
 
 - (void)calcLineNumberWidthForMaxLineNumber:(int)lineNumber
 {
-    
+    _lineNumberWidth = [CodeLineCell
+                           calcLineNumberWidthForMaxLineNumber:lineNumber
+                           FontFamily:_fontFamily
+                           FontSize:_fontSize];
 }
 
 - (void)calcLineHeight
@@ -235,9 +236,9 @@
            [((CodeViewLine *)[_lines objectAtIndex:0]) range]]));
 
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
-        _lineHeight = asscent + descent + leading;
-        _tableView.rowHeight = ceil(_lineHeight);
-        
+        _lineHeight = ceil(asscent + descent + leading);
+        _tableView.rowHeight = _lineHeight;
+
         CFRelease(line);
     }
 }
@@ -306,13 +307,14 @@
             if (setting == nil || [[plugin setting] isEqualToString:setting]) {
                 settings = [_appState settingsForKeys:@[[plugin setting]]];
                 if ([plugin respondsToSelector:
-                     @selector(execOnArcAttributedString:ofFile:forValues:sharedObject:delegate:)])
+                     @selector(execPreRenderOnArcAttributedString:CodeView:ofFile:forValues:sharedObject:delegate:)])
                 {
-                    [plugin execOnArcAttributedString:_arcAttributedString
-                                               ofFile:_currentFile
-                                            forValues:settings
-                                         sharedObject:_sharedObject
-                                             delegate:self];
+                    [plugin execPreRenderOnArcAttributedString:_arcAttributedString
+                                                      CodeView:self
+                                                        ofFile:_currentFile
+                                                     forValues:settings
+                                                  sharedObject:_sharedObject
+                                                      delegate:self];
                 }
             }            
         }
@@ -326,13 +328,13 @@
         if (setting == nil || [[plugin setting] isEqualToString:setting]) {
             settings = [_appState settingsForKeys:@[[plugin setting]]];
             if ([plugin respondsToSelector:
-                 @selector(execOnCodeView:ofFile:forValues:sharedObject:delegate:)])
+                 @selector(execPostRenderOnCodeView:ofFile:forValues:sharedObject:delegate:)])
             {
-                [plugin execOnCodeView:self
-                                ofFile:_currentFile
-                             forValues:settings
-                          sharedObject:_sharedObject
-                              delegate:self];
+                [plugin execPostRenderOnCodeView:self
+                                          ofFile:_currentFile
+                                       forValues:settings
+                                    sharedObject:_sharedObject
+                                        delegate:self];
             }
         }
     }
@@ -462,7 +464,8 @@
     CodeViewLine *line = (CodeViewLine *)[_lines objectAtIndex:indexPath.row];
     NSAttributedString *lineRef = [_arcAttributedString.attributedString
                                    attributedSubstringFromRange:line.range];
-    
+
+    cell.lineNumberWidth = _lineNumberWidth;
     cell.line = lineRef;
     cell.stringRange = line.range;
     

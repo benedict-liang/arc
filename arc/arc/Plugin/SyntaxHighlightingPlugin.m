@@ -75,11 +75,12 @@
     return opts;
 }
 
-- (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString
-                           ofFile:(id<File>)file
-                        forValues:(NSDictionary *)properties
-                     sharedObject:(NSMutableDictionary *)dictionary
-                         delegate:(id<CodeViewControllerDelegate>)delegate
+- (void)execPreRenderOnArcAttributedString:(ArcAttributedString *)arcAttributedString
+                                  CodeView:(id<CodeViewDelegate>)codeView
+                                    ofFile:(id<File>)file
+                                 forValues:(NSDictionary *)properties
+                              sharedObject:(NSMutableDictionary *)dictionary
+                                  delegate:(id<CodeViewControllerDelegate>)delegate
 {
     NSString *themeName = [properties objectForKey:_setting];
     NSDictionary* themeDictionary = [TMBundleThemeHandler produceStylesWithTheme:themeName];
@@ -136,11 +137,11 @@
     [_threadPool removeObject:sh];
 }
 
-- (void)execOnCodeView:(id<CodeViewDelegate>)codeView
-                ofFile:(id<File>)file
-             forValues:(NSDictionary *)properties
-          sharedObject:(NSMutableDictionary *)dictionary
-              delegate:(id<CodeViewControllerDelegate>)delegate
+- (void)execPostRenderOnCodeView:(id<CodeViewDelegate>)codeView
+                          ofFile:(id<File>)file
+                       forValues:(NSDictionary *)properties
+                    sharedObject:(NSMutableDictionary *)dictionary
+                        delegate:(id<CodeViewControllerDelegate>)delegate
 {
     NSDictionary *style = [dictionary objectForKey:@"syntaxHighlightingPlugin"];
     codeView.backgroundColor = [style objectForKey:@"background"];

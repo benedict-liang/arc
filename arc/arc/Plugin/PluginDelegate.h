@@ -39,18 +39,19 @@
 // Exec Methods (Middleware)
 // - All Optional, implement as necessary
 @optional
-- (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString
-                           ofFile:(id<File>)file
-                        forValues:(NSDictionary *)properties
-                     sharedObject:(NSMutableDictionary *)dictionary
-                         delegate:(id<CodeViewControllerDelegate>)delegate;
+- (void)execPreRenderOnArcAttributedString:(ArcAttributedString *)arcAttributedString
+                                  CodeView:(id<CodeViewDelegate>)codeView
+                                    ofFile:(id<File>)file
+                                 forValues:(NSDictionary *)properties
+                              sharedObject:(NSMutableDictionary *)dictionary
+                                  delegate:(id<CodeViewControllerDelegate>)delegate;
 
 @optional
-- (void)execOnCodeView:(id<CodeViewDelegate>)codeView
-                ofFile:(id<File>)file
-             forValues:(NSDictionary *)properties
-          sharedObject:(NSMutableDictionary *)dictionary
-              delegate:(id<CodeViewControllerDelegate>)delegate;
+- (void)execPostRenderOnCodeView:(id<CodeViewDelegate>)codeView
+                          ofFile:(id<File>)file
+                       forValues:(NSDictionary *)properties
+                    sharedObject:(NSMutableDictionary *)dictionary
+                        delegate:(id<CodeViewControllerDelegate>)delegate;
 
 // Optional method used to allow the plugin
 // to customise its Settings Pane cells.
