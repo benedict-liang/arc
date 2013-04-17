@@ -65,9 +65,10 @@
     [[self navigationItem] setTitle:[_folder name]];
     
     _closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(shouldClose)];
-    NSArray *buttonArray = [NSArray arrayWithObjects:_closeButton, [self editButtonItem], nil];
+//    NSArray *buttonArray = [NSArray arrayWithObjects:_closeButton, [self editButtonItem], nil];
     
-    [[self navigationItem] setRightBarButtonItems:buttonArray];
+//    [[self navigationItem] setRightBarButtonItems:buttonArray];
+    [[self navigationItem] setRightBarButtonItem:_closeButton];
     
     // Subview properties.
     [[self view] setAutoresizesSubviews:YES];
