@@ -10,4 +10,6 @@
 
 @interface LoadingOverlayViewController : UIViewController
 
+- (id)initWithFrame:(CGRect)frame;
+
 @end
