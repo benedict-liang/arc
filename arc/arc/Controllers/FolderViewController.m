@@ -290,5 +290,34 @@
     }
 }
 
+- (void)showEditToolbarAnimate:(BOOL)animate
+{
+    CGRect endState = CGRectMake(0, self.view.frame.size.height - 44,
+                                 self.view.frame.size.width, 44);
+    if (!animate) {
+        _editToolbar.frame = endState;
+        return;
+    }
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    _editToolbar.frame = endState;
+    [UIView commitAnimations];
+}
+
+- (void)hideEditToolbarAnimate:(BOOL)animate
+{
+    CGRect endState = CGRectMake(0, self.view.frame.size.height,
+                                 self.view.frame.size.width, 44);
+    if (!animate) {
+        _editToolbar.frame = endState;
+        return;
+    }
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    _editToolbar.frame = endState;
+    [UIView commitAnimations];
+}
 
 @end
