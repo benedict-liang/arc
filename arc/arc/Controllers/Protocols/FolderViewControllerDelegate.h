@@ -10,12 +10,12 @@
 #import "File.h"
 #import "Folder.h"
 
-@class FolderViewController
+@class FolderViewController;
 
 @protocol FolderViewControllerDelegate <NSObject>
 
-- (void)folderViewController:(id<FolderViewController>)sender selectedFile:(id<File>)file;
+- (void)folderViewController:(FolderViewController *)sender selectedFile:(id<File>)file;
 
-- (void)folderViewController:(id<FolderViewController>)sender selectedFolder:(id<Folder>)folder;
+- (void)folderViewController:(FolderViewController *)sender selectedFolder:(id<Folder>)folder;
 
 @end
