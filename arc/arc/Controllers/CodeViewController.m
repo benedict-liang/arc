@@ -247,10 +247,12 @@
 {
     CGFloat asscent, descent, leading;
     if ([_lines count] > 0) {
-        CTLineRef line = CTLineCreateWithAttributedString(
-                                                          (__bridge CFAttributedStringRef)(
-                                                                                           [_arcAttributedString.plainAttributedString attributedSubstringFromRange:
-                                                                                            [[[_lines objectAtIndex:0] objectForKey:KEY_RANGE] rangeValue]]));
+        CTLineRef line =
+        CTLineCreateWithAttributedString
+        ((__bridge CFAttributedStringRef)
+         ([_arcAttributedString.plainAttributedString
+           attributedSubstringFromRange:
+           [[[_lines objectAtIndex:0] objectForKey:KEY_RANGE] rangeValue]]));
 
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
         _lineHeight = asscent + descent + leading;
