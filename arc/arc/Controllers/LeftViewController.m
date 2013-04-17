@@ -225,7 +225,18 @@ shouldSelectViewController:(UIViewController *)viewController
 //                     completion:^(BOOL finished){}];
 //}
 //
-//# pragma mark - tmp code
+
+- (void)folderViewController:(FolderViewController *)sender selectedFile:(id<File>)file
+{
+    [_delegate fileObjectSelected:file];
+}
+
+- (void)folderViewController:(FolderViewController *)sender selectedFolder:(id<Folder>)folder
+{
+    [_delegate fileObjectSelected:folder];
+}
+
+# pragma mark - tmp code
 // copied from SO.
 // http://stackoverflow.com/questions/5272290/how-to-hide-uitabbarcontroller
 
