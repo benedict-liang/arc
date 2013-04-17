@@ -19,6 +19,14 @@
 
 @interface DragPointsViewController ()
 
+@property (nonatomic, strong) CodeViewController *codeViewController;
+@property (nonatomic) NSRange selectedTextRange;
+@property (nonatomic, strong) UITableView *tableView;
+
+// Cell Index Paths
+
+@property (nonatomic, strong) NSIndexPath *topIndexPath;
+@property (nonatomic, strong) NSIndexPath *bottomIndexPath;
 @property (nonatomic) CGRect bottomRowCellRect;
 @property (nonatomic) CGRect topRowCellRect;
 
