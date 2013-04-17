@@ -48,7 +48,7 @@
     // File Navigator
     _documentsNavigationViewController = [[UINavigationController alloc] init];
     _documentsNavigationViewController.tabBarItem =
-        [[UITabBarItem alloc] initWithTitle:@"Document"
+        [[UITabBarItem alloc] initWithTitle:@"Documents"
                                       image:[Utils scale:[UIImage imageNamed:@"documents.png"]
                                                   toSize:CGSizeMake(40, 30)]
                                         tag:TAB_DOCUMENTS];
@@ -68,7 +68,7 @@
     _settingsNavigationViewController = [[UINavigationController alloc] init];
     _settingsNavigationViewController.view.autoresizesSubviews = YES;
     _settingsNavigationViewController.tabBarItem =
-        [[UITabBarItem alloc] initWithTitle:@"Setting"
+        [[UITabBarItem alloc] initWithTitle:@"Settings"
                                       image:[Utils scale:[UIImage imageNamed:@"settings.png"]
                                                   toSize:CGSizeMake(30, 30)]
                                         tag:TAB_SETTINGS];
