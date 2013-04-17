@@ -9,12 +9,12 @@
 #import "RootFoldNode.h"
 
 @implementation RootFoldNode
-@synthesize type = _type;
+
 - (id)initWithContentRange:(NSRange)cr {
     
     self = [super initWithContentRange:cr startRange:NSMakeRange(0, 0) endRange:NSMakeRange(0, 0)];
     if (self) {
-        _type = kRootNode;
+        self.type = kRootNode;
     }
     return self;
 }

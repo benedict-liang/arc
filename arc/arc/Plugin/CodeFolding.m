@@ -65,15 +65,19 @@
             
         } else if (endRange.location == NSNotFound && !skipStart) {
             //NSLog(@"begin... %d",startRange.location+offset);
-            [stack addObject:[NSNumber numberWithInt:startRange.location+offset+startRange.length]];
-            foldStarts = [CodeFolding addFoldRange:NSMakeRange(startRange.location+offset, startRange.length) toArray:foldStarts forContent:content];
+            [stack addObject:[Utils valueFromRange:NSMakeRange(startRange.location+offset, startRange.length)]];
+            //[stack addObject:[NSNumber numberWithInt:startRange.location+offset+startRange.length]];
+            //foldStarts = [CodeFolding addFoldRange:NSMakeRange(startRange.location+offset, startRange.length) toArray:foldStarts forContent:content];
         } else if (startRange.location == NSNotFound && !skipEnd) {
             
             if (stack.count > 0) {
                 //  NSLog(@"end %d",endRange.location+offset);
-                int s = [(NSNumber*)[stack lastObject] intValue];
+                //int s = [(NSNumber*)[stack lastObject] intValue];
+                NSRange poppedStartRange = [Utils rangeFromValue:(NSValue*)[stack lastObject]];
                 [stack removeLastObject];
-                NSRange r =NSMakeRange(s, endRange.location+offset - s);
+                int sEnds = poppedStartRange.location+poppedStartRange.length;
+                NSRange r =NSMakeRange(sEnds, endRange.location+offset - sEnds);
+                foldStarts = [CodeFolding addFoldRange:poppedStartRange toArray:foldStarts forContent:content];
                 foldRanges = [CodeFolding addFoldRange:r toArray:foldRanges forContent:content];
                 foldEnds = [CodeFolding addFoldRange:NSMakeRange(endRange.location+offset, endRange.length) toArray:foldEnds forContent:content];
             }
@@ -82,12 +86,14 @@
         } else {
             if (startRange.location > endRange.location && !skipEnd) {
                 if (stack.count > 0) {
-                    //    NSLog(@"end %d",endRange.location+offset);
-                    int s = [(NSNumber*)[stack lastObject] intValue];
+                    NSRange poppedStartRange = [Utils rangeFromValue:(NSValue*)[stack lastObject]];
                     [stack removeLastObject];
-                    NSRange r =NSMakeRange(s, endRange.location+offset - s);
+                    int sEnds = poppedStartRange.location+poppedStartRange.length;
+                    NSRange r =NSMakeRange(sEnds, endRange.location+offset - sEnds);
+                    foldStarts = [CodeFolding addFoldRange:poppedStartRange toArray:foldStarts forContent:content];
                     foldRanges = [CodeFolding addFoldRange:r toArray:foldRanges forContent:content];
                     foldEnds = [CodeFolding addFoldRange:NSMakeRange(endRange.location+offset, endRange.length) toArray:foldEnds forContent:content];
+
                 }
                 
             }

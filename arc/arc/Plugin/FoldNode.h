@@ -12,7 +12,7 @@ typedef enum {kRootNode, kChildNode} FoldNodeType;
 @property(readonly) NSRange contentRange;
 @property(readonly) NSRange startRange;
 @property(readonly) NSRange endRange;
-@property(readonly) FoldNodeType type;
+@property FoldNodeType type;
 
 -(id)initWithContentRange:(NSRange)cr
                startRange:(NSRange)sr

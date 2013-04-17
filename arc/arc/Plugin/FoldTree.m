@@ -87,7 +87,7 @@
 }
 
 -(NSRange)lowestNodeWithFoldStartIndex:(CFIndex)index {
-    if ([Utils isContainedByRange:_node.startRange Index:index] ) {
+    if ([Utils isContainedByRange:_node.startRange Index:index] || _node.type == kRootNode) {
         NSRange leafRange = _node.contentRange;
         for (FoldTree* subTree in _children) {
             NSRange childRange = [subTree lowestNodeWithFoldStartIndex:index];
