@@ -130,56 +130,6 @@
     return self;
 }
 
-- (id)initWithSelectedTextRect:(CGRect)selectedTextRect andOffset:(int)offset {
-    self = [super init];
-    
-    if (self) {
-        CGRect leftDragPointFrame = CGRectMake(selectedTextRect.origin.x + offset,
-                                               selectedTextRect.origin.y,
-                                               DRAG_POINT_WIDTH,
-                                               selectedTextRect.size.height);
-        _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame
-                                                      andImageName:@"leftDragPoint.png"];
-        
-        CGRect rightDragPointFrame = CGRectMake(selectedTextRect.origin.x + selectedTextRect.size.width + offset,
-                                                selectedTextRect.origin.y,
-                                                DRAG_POINT_WIDTH,
-                                                selectedTextRect.size.height);
-        _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame
-                                                       andImageName:@"rightDragPoint.png"];
-        
-        UIPanGestureRecognizer *leftPanGestureHorizontal = [[UIPanGestureRecognizer alloc]
-                                                            initWithTarget:self
-                                                            action:@selector(moveLeftDragPointHorizontal:)];
-        UIPanGestureRecognizer *leftPanGestureVertical = [[UIPanGestureRecognizer alloc]
-                                                          initWithTarget:self
-                                                          action:@selector(moveLeftDragPointVertical:)];
-        UIPanGestureRecognizer *rightPanGestureHorizontal = [[UIPanGestureRecognizer alloc]
-                                                             initWithTarget:self
-                                                             action:@selector(moveRightDragPointHorizontal:)];
-        UIPanGestureRecognizer *rightPanGestureVertical = [[UIPanGestureRecognizer alloc]
-                                                           initWithTarget:self
-                                                           action:@selector(moveRightDragPointVertical:)];
-        
-        [leftPanGestureHorizontal setDelegate:self];
-        [leftPanGestureVertical setDelegate:self];
-        [_leftDragPoint addGestureRecognizer:leftPanGestureHorizontal];
-        [_leftDragPoint addGestureRecognizer:leftPanGestureVertical];
-        
-        [rightPanGestureHorizontal setDelegate:self];
-        [rightPanGestureVertical setDelegate:self];
-        [_rightDragPoint addGestureRecognizer:rightPanGestureHorizontal];
-        [_rightDragPoint addGestureRecognizer:rightPanGestureVertical];
-        
-        _leftDragPoint.userInteractionEnabled = YES;
-        _rightDragPoint.userInteractionEnabled = YES;
-        
-        _lineNumberWidthOffSet = offset;
-    }
-    
-    return self;
-}
-
 #pragma mark - Drag Points
 
 // TODO: Set boundary conditions - Prevent left and right drag points from colliding
