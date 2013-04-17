@@ -275,6 +275,7 @@
         [_delegate folderViewController:self DidEnterEditModeAnimate:animated];
     } else {
         [_delegate folderViewController:self DidExitEditModeAnimate:animated];
+        [self hideEditToolbarAnimate:animated];
     }
 }
 
