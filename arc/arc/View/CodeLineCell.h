@@ -16,6 +16,8 @@
 @property (nonatomic) BOOL showLineNumber;
 @property (nonatomic) int lineNumber;
 @property (nonatomic) int lineNumberWidth;
+@property (nonatomic) int foldingMarkerWidth;
+@property (nonatomic) int padding;
 @property (nonatomic) NSRange stringRange;
 
 - (void)setForegroundColor:(UIColor*)foregroundColor;

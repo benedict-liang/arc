@@ -16,12 +16,13 @@
 @property (nonatomic, strong) UILabel *codeLine;
 @property (nonatomic, strong) UILabel *lineNumberLabel;
 @property (nonatomic, strong) UILabel *foldingMarker;
-@property (nonatomic) int foldingMarkerWidth;
 @end
 
 @implementation CodeLineCell
 @synthesize line = _line;
 @synthesize lineNumberWidth = _lineNumberWidth;
+@synthesize foldingMarkerWidth = _foldingMarkerWidth;
+@synthesize padding = _padding;
 @synthesize lineNumber = _lineNumber;
 @synthesize showLineNumber = _showLineNumber;
 
@@ -35,6 +36,7 @@
         _lineNumberWidth = 30;
         _showLineNumber = YES;
         _foldingMarkerWidth = 15;
+        _padding = 5;
         _lineNumberLabel = [[UILabel alloc] init];
         [self.contentView addSubview:_lineNumberLabel];
         _foldingMarker = [[UILabel alloc] init];
@@ -110,8 +112,8 @@
     CGRectMake(_lineNumberWidth + 2, 0, _foldingMarkerWidth, self.contentView.bounds.size.height);
 
     _codeLine.frame =
-    CGRectMake(_lineNumberWidth + 5 + _foldingMarkerWidth, 0,
-               self.contentView.bounds.size.width - _lineNumberWidth - 5 - _foldingMarkerWidth,
+    CGRectMake(_lineNumberWidth + _padding + _foldingMarkerWidth, 0,
+               self.contentView.bounds.size.width - _lineNumberWidth - _padding - _foldingMarkerWidth,
                self.contentView.bounds.size.height);
     
     [_codeLine sizeToFit];

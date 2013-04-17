@@ -14,9 +14,6 @@
 #define HORIZONTAL_THRESHOLD_PERCENTAGE 0.95
 #define VERTICAL_THRESHOLD_PERCENTAGE 0.80
 
-// TODO: Temp magic number
-#define PADDING_WIDTH 10
-
 @interface DragPointsViewController ()
 
 @property (nonatomic, strong) CodeViewController *codeViewController;
@@ -67,11 +64,12 @@
         _codeViewController = (CodeViewController*)viewController;
         
         CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:indexPath];
+        int totalGap = [self getTotalGapForCellAtIndexPath:indexPath];
         
         // Get global range of selected string (check width of line numbers)
         CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                              (cell.line));
-        CGPoint adjustedPoint = CGPointMake(touchPoint.x - cell.lineNumberWidth - PADDING_WIDTH, touchPoint.y);
+        CGPoint adjustedPoint = CGPointMake(touchPoint.x - totalGap, touchPoint.y);
         CFIndex index = CTLineGetStringIndexForPosition(lineRef, adjustedPoint);
         
         // Apply background color for index
@@ -83,7 +81,7 @@
         CGFloat startOffset = CTLineGetOffsetForStringIndex(lineRef, index, NULL);
         CGFloat endOffset = CTLineGetOffsetForStringIndex(lineRef, index+3, NULL);
         
-        CGRect selectedRect = CGRectMake(startOffset + cell.lineNumberWidth + PADDING_WIDTH,
+        CGRect selectedRect = CGRectMake(startOffset + totalGap,
                                          cellRect.origin.y,
                                          endOffset - startOffset,
                                          cellRect.size.height);
@@ -176,8 +174,9 @@
         }
         
         if (selectionDidChange) {
-            CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
-            gesture.view.center = CGPointMake(_firstCharacterCoordinates.x + cell.lineNumberWidth + PADDING_WIDTH,
+            int totalGap = [self getTotalGapForCellAtIndexPath:_topIndexPath];
+            
+            gesture.view.center = CGPointMake(_firstCharacterCoordinates.x + totalGap,
                                               gesture.view.center.y);
             [gesture setTranslation:CGPointMake(0, 0)
                              inView:_tableView];
@@ -225,8 +224,8 @@
         }
         
         if (selectionDidChange) {
-            CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
-            gesture.view.center = CGPointMake(cell.lineNumberWidth + PADDING_WIDTH,
+            int totalGap = [self getTotalGapForCellAtIndexPath:_topIndexPath];
+            gesture.view.center = CGPointMake(totalGap,
                                               _topRowCellRect.origin.y + cellHeight/2);
             [gesture setTranslation:CGPointMake(0, 0)
                              inView:_tableView];
@@ -266,8 +265,8 @@
         }
         
         if (selectionDidChange) {
-            CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
-            gesture.view.center = CGPointMake(_lastCharacterCoordinates.x + cell.lineNumberWidth + PADDING_WIDTH,
+            int totalGap = [self getTotalGapForCellAtIndexPath:_bottomIndexPath];
+            gesture.view.center = CGPointMake(_lastCharacterCoordinates.x + totalGap,
                                               gesture.view.center.y);
             [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
             CGPoint endPointInRow = CGPointMake(gesture.view.center.x, 0);
@@ -316,9 +315,9 @@
         }
         
         if (selectionDidChange) {
-            CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
+            int totalGap = [self getTotalGapForCellAtIndexPath:_bottomIndexPath];
             CGPoint endOfLineCoordinates = [self getLastCharacterCoordinatesInRow:_bottomIndexPath];
-            gesture.view.center = CGPointMake(endOfLineCoordinates.x + cell.lineNumberWidth + PADDING_WIDTH,
+            gesture.view.center = CGPointMake(endOfLineCoordinates.x + totalGap,
                                               _bottomRowCellRect.origin.y + cellHeight/2);
             [gesture setTranslation:CGPointMake(0, 0)
                              inView:_tableView];
@@ -412,7 +411,8 @@
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                          (cell.line));
-    startPoint = CGPointMake(startPoint.x - cell.lineNumberWidth - PADDING_WIDTH, startPoint.y);
+    int totalGap = [self getTotalGapForCellAtIndexPath:_topIndexPath];
+    startPoint = CGPointMake(startPoint.x - totalGap, startPoint.y);
     CFIndex index = CTLineGetStringIndexForPosition(lineRef, startPoint);
     int startLocation = cell.stringRange.location + index;
     
@@ -437,7 +437,8 @@
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                          (cell.line));
-    endPoint = CGPointMake(endPoint.x - cell.lineNumberWidth - PADDING_WIDTH, endPoint.y);
+    int totalGap = [self getTotalGapForCellAtIndexPath:_bottomIndexPath];
+    endPoint = CGPointMake(endPoint.x - totalGap, endPoint.y);
     CFIndex index = CTLineGetStringIndexForPosition(lineRef, endPoint);
     int endLocation = cell.stringRange.location + index;
     
@@ -599,6 +600,13 @@
     return
     (_topIndexPath.row == _bottomIndexPath.row) &&
     ((_lastCharacterCoordinates.x - _firstCharacterCoordinates.x) < characterWidth * 2);
+}
+
+- (int)getTotalGapForCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:indexPath];
+    int totalGap = cell.lineNumberWidth + cell.foldingMarkerWidth + cell.padding;
+    return totalGap;
 }
 
 #pragma mark - UIGestureRecognizerDelegate Methods
