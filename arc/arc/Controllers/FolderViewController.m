@@ -236,8 +236,9 @@
     id<FileSystemObject> fileObject = [section objectAtIndex:[indexPath row]];
     
     if ([[self tableView] isEditing]) {
-        
-        
+        // We're in edit mode. Add the selected index path to the array.
+        [_editSelectedItems addObject:indexPath];
+        [self itemTappedInEditModeAnimate:YES];
     } else if ([fileObject conformsToProtocol:@protocol(Folder)]) {
         id<Folder> selectedFolder = (id<Folder>)fileObject;
         
@@ -257,6 +258,15 @@
 }
 
 #pragma mark - Editing-related methods
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([tableView isEditing]) {
+        [_editSelectedItems removeObject:indexPath];
+        [self itemTappedInEditModeAnimate:YES];
+    }
+}
+
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];
