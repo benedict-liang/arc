@@ -306,12 +306,13 @@
         }
         
         if (selectionDidChange) {
+            CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
             CGPoint endOfLineCoordinates = [self getLastCharacterCoordinatesInRow:_bottomIndexPath];
-            gesture.view.center = CGPointMake(endOfLineCoordinates.x,
+            gesture.view.center = CGPointMake(endOfLineCoordinates.x + cell.lineNumberWidth + PADDING_WIDTH,
                                               _bottomRowCellRect.origin.y + cellHeight/2);
             [gesture setTranslation:CGPointMake(0, 0)
                              inView:_tableView];
-            CGPoint endPointInRow = CGPointMake(endOfLineCoordinates.x, 0);
+            CGPoint endPointInRow = CGPointMake(gesture.view.center.x, 0);
             [self updateBackgroundColorForRightDragPointVertical:endPointInRow];
         }
     }
