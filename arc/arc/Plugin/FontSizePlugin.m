@@ -9,20 +9,18 @@
 #import "FontSizePlugin.h"
 
 @interface FontSizePlugin ()
-@property (nonatomic, strong) NSString* fontSizeSettingsKey;
 @property (nonatomic) int defaultFontSize;
 @property (nonatomic, strong) NSDictionary *properties;
 @end
 
 @implementation FontSizePlugin
-@synthesize settingKeys = _settingKeys;
+@synthesize setting = _setting;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        _fontSizeSettingsKey = @"fontSize";
-        _settingKeys = [NSArray arrayWithObject:_fontSizeSettingsKey];
+        _setting = @"fontSize";
         _defaultFontSize = 14;
         _properties = @{
                         PLUGIN_TITLE: @"Font Size",
@@ -34,29 +32,20 @@
     return self;
 }
 
-- (NSDictionary *)propertiesFor:(NSString *)settingKey
+- (NSDictionary *)properties
 {
-    if ([settingKey isEqualToString:_fontSizeSettingsKey]) {
-        return _properties;
-    }
-    return nil;
+    return _properties;
 }
 
-- (BOOL)settingKeyAffectsBounds:(NSString *)settingKey
+- (BOOL)affectsBounds
 {
-    if ([settingKey isEqualToString:_fontSizeSettingsKey]) {
-        return YES;
-    }
-    return NO;
+    return YES;
 }
 
 // Returns the default value for the given setting key.
-- (id<NSObject>)defaultValueFor:(NSString *)settingKey
+- (id<NSObject>)defaultValue
 {
-    if ([settingKey isEqualToString:_fontSizeSettingsKey]) {
-        return [NSNumber numberWithInt:_defaultFontSize];
-    }
-    return nil;
+    return [NSNumber numberWithInt:_defaultFontSize];
 }
 
 - (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString
@@ -66,7 +55,7 @@
                          delegate:(id<CodeViewControllerDelegate>)delegate
 {
     [arcAttributedString setFontSize:
-     [[properties objectForKey:_fontSizeSettingsKey] intValue]];
+     [[properties objectForKey:_setting] intValue]];
 }
 
 - (void)execOnCodeView:(id<CodeViewDelegate>)codeView
@@ -75,7 +64,7 @@
           sharedObject:(NSMutableDictionary *)dictionary
               delegate:(id<CodeViewControllerDelegate>)delegate
 {
-    codeView.fontSize = [[properties objectForKey:_fontSizeSettingsKey] intValue];
+    codeView.fontSize = [[properties objectForKey:_setting] intValue];
 }
 
 @end

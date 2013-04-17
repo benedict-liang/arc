@@ -64,50 +64,48 @@
 {
     _settingOptions = [NSMutableArray array];
     for (id<PluginDelegate> plugin in _plugins) {
-        for (NSString *setting in [plugin settingKeys]) {
-            NSMutableDictionary *section = [NSMutableDictionary dictionary];
-            
-            // Reference to the plugin.
-            [section setValue:plugin
-                       forKey:SECTION_PLUGIN_OBJECT];
-            
-            // Section Setting Key
-            [section setValue:setting
-                       forKey:SECTION_SETTING_KEY];
-            
-            NSDictionary *properties = [plugin propertiesFor:setting];
-            
-            // Section Heading
-            [section setValue:[properties objectForKey:PLUGIN_TITLE]
-                       forKey:SECTION_HEADING];
-            
-            // Section Type
-            [section setValue:[properties objectForKey:PLUGIN_TYPE]
-                       forKey:SECTION_TYPE];
-            
-            // Set options depending on the type of the section.
-            kSettingType type =
-                [PluginUtilities settingTypeForNumber:[properties objectForKey:PLUGIN_TYPE]];
-            
-            switch (type) {
-                case kMCQSettingType:
-                    [section setValue:[properties objectForKey:PLUGIN_OPTIONS]
-                               forKey:SECTION_OPTIONS];
-                    break;
-                    
-                case kRangeSettingType:
-                    [section setValue:[properties objectForKey:PLUGIN_OPTION_RANGE_MAX]
-                               forKey:PLUGIN_OPTION_RANGE_MAX];
-                    [section setValue:[properties objectForKey:PLUGIN_OPTION_RANGE_MIN]
-                               forKey:PLUGIN_OPTION_RANGE_MIN];
-                    break;
-
-                case kBoolSettingType:
-                    break;
-            }
-            
-            [_settingOptions addObject:section];
+        NSMutableDictionary *section = [NSMutableDictionary dictionary];
+        
+        // Reference to the plugin.
+        [section setValue:plugin
+                   forKey:SECTION_PLUGIN_OBJECT];
+        
+        // Section Setting Key
+        [section setValue:[plugin setting]
+                   forKey:SECTION_SETTING_KEY];
+        
+        NSDictionary *properties = [plugin properties];
+        
+        // Section Heading
+        [section setValue:[properties objectForKey:PLUGIN_TITLE]
+                   forKey:SECTION_HEADING];
+        
+        // Section Type
+        [section setValue:[properties objectForKey:PLUGIN_TYPE]
+                   forKey:SECTION_TYPE];
+        
+        // Set options depending on the type of the section.
+        kSettingType type =
+        [PluginUtilities settingTypeForNumber:[properties objectForKey:PLUGIN_TYPE]];
+        
+        switch (type) {
+            case kMCQSettingType:
+                [section setValue:[properties objectForKey:PLUGIN_OPTIONS]
+                           forKey:SECTION_OPTIONS];
+                break;
+                
+            case kRangeSettingType:
+                [section setValue:[properties objectForKey:PLUGIN_OPTION_RANGE_MAX]
+                           forKey:PLUGIN_OPTION_RANGE_MAX];
+                [section setValue:[properties objectForKey:PLUGIN_OPTION_RANGE_MIN]
+                           forKey:PLUGIN_OPTION_RANGE_MIN];
+                break;
+                
+            case kBoolSettingType:
+                break;
         }
+        
+        [_settingOptions addObject:section];
     }
 }
 

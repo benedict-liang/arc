@@ -152,7 +152,7 @@
 {
     id<PluginDelegate> plugin = [self findPluginForSettingKey:setting];
 
-    if ([plugin settingKeyAffectsBounds:setting]) {
+    if ([plugin affectsBounds]) {
         _linesGenerated = NO;
         [self preRenderPluginsForSetting:setting];
         [self generateLines];
@@ -168,7 +168,7 @@
 - (id<PluginDelegate>)findPluginForSettingKey:(NSString *)settingKey
 {
     for (id<PluginDelegate> plugin in _plugins) {
-        if ([[plugin settingKeys] indexOfObject:settingKey] != NSNotFound) {
+        if ([[plugin setting] isEqualToString:settingKey]) {
             return plugin;
         }
     }
@@ -324,9 +324,8 @@
 {
     NSDictionary *settings;
     for (id<PluginDelegate> plugin in _plugins) {
-        NSArray *settingKeys = [plugin settingKeys];
-        if (setting == nil || [settingKeys indexOfObject:setting] != NSNotFound) {
-            settings = [_appState settingsForKeys:settingKeys];
+        if (setting == nil || [[plugin setting] isEqualToString:setting]) {
+            settings = [_appState settingsForKeys:@[[plugin setting]]];
             if ([plugin respondsToSelector:
                  @selector(execOnArcAttributedString:ofFile:forValues:sharedObject:delegate:)])
             {
@@ -345,9 +344,8 @@
 {
     NSDictionary *settings;
     for (id<PluginDelegate> plugin in _plugins) {
-        NSArray *settingKeys = [plugin settingKeys];
-        if (setting == nil || [settingKeys indexOfObject:setting] != NSNotFound) {
-            settings = [_appState settingsForKeys:settingKeys];
+        if (setting == nil || [[plugin setting] isEqualToString:setting]) {
+            settings = [_appState settingsForKeys:@[[plugin setting]]];
             if ([plugin respondsToSelector:
                  @selector(execOnCodeView:ofFile:forValues:sharedObject:delegate:)])
             {
