@@ -19,6 +19,14 @@
 
 @interface DragPointsViewController ()
 
+@property (nonatomic, strong) CodeViewController *codeViewController;
+@property (nonatomic) NSRange selectedTextRange;
+@property (nonatomic, strong) UITableView *tableView;
+
+// Cell Index Paths
+
+@property (nonatomic, strong) NSIndexPath *topIndexPath;
+@property (nonatomic, strong) NSIndexPath *bottomIndexPath;
 @property (nonatomic) CGRect bottomRowCellRect;
 @property (nonatomic) CGRect topRowCellRect;
 
@@ -44,11 +52,11 @@
 
 @implementation DragPointsViewController
 
-- (id)initWithIndexPath:(NSIndexPath*)indexPath
+- (id)initWithIndexPath:(NSIndexPath *)indexPath
          withTouchPoint:(CGPoint)touchPoint
               andOffset:(int)offset
-           forTableView:(UITableView*)tableView
-      andViewController:(UIViewController*)viewController
+           forTableView:(UITableView *)tableView
+      andViewController:(UIViewController *)viewController
 {
     self = [super init];
     
@@ -80,59 +88,65 @@
                                          endOffset - startOffset,
                                          cellRect.size.height);
         
-        
-        CGRect leftDragPointFrame = CGRectMake(selectedRect.origin.x - DRAG_POINT_WIDTH / 2,
-                                               selectedRect.origin.y,
-                                               DRAG_POINT_WIDTH,
-                                               selectedRect.size.height);
-        _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame
-                                                      andImageName:@"leftDragPoint.png"];
-        
-        CGRect rightDragPointFrame = CGRectMake(selectedRect.origin.x + selectedRect.size.width - DRAG_POINT_WIDTH / 2,
-                                                selectedRect.origin.y,
-                                                DRAG_POINT_WIDTH,
-                                                selectedRect.size.height);
-        _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame
-                                                       andImageName:@"rightDragPoint.png"];
-        
-        UIPanGestureRecognizer *leftPanGestureHorizontal = [[UIPanGestureRecognizer alloc]
-                                                            initWithTarget:self
-                                                            action:@selector(moveLeftDragPointHorizontal:)];
-        UIPanGestureRecognizer *leftPanGestureVertical = [[UIPanGestureRecognizer alloc]
-                                                          initWithTarget:self
-                                                          action:@selector(moveLeftDragPointVertical:)];
-        UIPanGestureRecognizer *rightPanGestureHorizontal = [[UIPanGestureRecognizer alloc]
-                                                             initWithTarget:self
-                                                             action:@selector(moveRightDragPointHorizontal:)];
-        UIPanGestureRecognizer *rightPanGestureVertical = [[UIPanGestureRecognizer alloc]
-                                                           initWithTarget:self
-                                                           action:@selector(moveRightDragPointVertical:)];
-        
-        [leftPanGestureHorizontal setDelegate:self];
-        [leftPanGestureVertical setDelegate:self];
-        [_leftDragPoint addGestureRecognizer:leftPanGestureHorizontal];
-        [_leftDragPoint addGestureRecognizer:leftPanGestureVertical];
-        
-        [rightPanGestureHorizontal setDelegate:self];
-        [rightPanGestureVertical setDelegate:self];
-        [_rightDragPoint addGestureRecognizer:rightPanGestureHorizontal];
-        [_rightDragPoint addGestureRecognizer:rightPanGestureVertical];
-        
-        _leftDragPoint.userInteractionEnabled = YES;
-        _rightDragPoint.userInteractionEnabled = YES;
-        
-
+        [self createDragPoints:selectedRect];
     }
     
     return self;
 }
 
+
+- (void)createDragPoints:(CGRect)selectedRect
+{
+    CGRect leftDragPointFrame = CGRectMake(selectedRect.origin.x - DRAG_POINT_WIDTH / 2,
+                                           selectedRect.origin.y,
+                                           DRAG_POINT_WIDTH,
+                                           selectedRect.size.height);
+    _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame
+                                                  andImageName:@"leftDragPoint.png"];
+    
+    CGRect rightDragPointFrame = CGRectMake(selectedRect.origin.x + selectedRect.size.width - DRAG_POINT_WIDTH / 2,
+                                            selectedRect.origin.y,
+                                            DRAG_POINT_WIDTH,
+                                            selectedRect.size.height);
+    _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame
+                                                   andImageName:@"rightDragPoint.png"];
+    
+    [self addGestureRecognizersForDragPoints];
+}
+
+- (void)addGestureRecognizersForDragPoints
+{
+    UIPanGestureRecognizer *leftPanGestureHorizontal = [[UIPanGestureRecognizer alloc]
+                                                        initWithTarget:self
+                                                        action:@selector(moveLeftDragPointHorizontal:)];
+    UIPanGestureRecognizer *leftPanGestureVertical = [[UIPanGestureRecognizer alloc]
+                                                      initWithTarget:self
+                                                      action:@selector(moveLeftDragPointVertical:)];
+    UIPanGestureRecognizer *rightPanGestureHorizontal = [[UIPanGestureRecognizer alloc]
+                                                         initWithTarget:self
+                                                         action:@selector(moveRightDragPointHorizontal:)];
+    UIPanGestureRecognizer *rightPanGestureVertical = [[UIPanGestureRecognizer alloc]
+                                                       initWithTarget:self
+                                                       action:@selector(moveRightDragPointVertical:)];
+    
+    [leftPanGestureHorizontal setDelegate:self];
+    [leftPanGestureVertical setDelegate:self];
+    [_leftDragPoint addGestureRecognizer:leftPanGestureHorizontal];
+    [_leftDragPoint addGestureRecognizer:leftPanGestureVertical];
+    
+    [rightPanGestureHorizontal setDelegate:self];
+    [rightPanGestureVertical setDelegate:self];
+    [_rightDragPoint addGestureRecognizer:rightPanGestureHorizontal];
+    [_rightDragPoint addGestureRecognizer:rightPanGestureVertical];
+    
+    _leftDragPoint.userInteractionEnabled = YES;
+    _rightDragPoint.userInteractionEnabled = YES;
+}
+
 #pragma mark - Drag Points
 
-// TODO: Set boundary conditions - Prevent left and right drag points from colliding
-// -> Always leave at least 1 character in between them
-
-- (void)moveLeftDragPointHorizontal:(UIPanGestureRecognizer*)gesture {
+- (void)moveLeftDragPointHorizontal:(UIPanGestureRecognizer *)gesture
+{
     
     [self defaultDragPointGestureRecognizerSetup:gesture];
     
@@ -173,8 +187,8 @@
     }
 }
 
-- (void)moveLeftDragPointVertical:(UIPanGestureRecognizer*)gesture {
-    
+- (void)moveLeftDragPointVertical:(UIPanGestureRecognizer *)gesture
+{
     [self defaultDragPointGestureRecognizerSetup:gesture];
     
     if ([gesture state] == UIGestureRecognizerStateChanged) {
@@ -189,7 +203,6 @@
                                                                 inSection:0];
         UITableViewCell *nextTopCell = [_tableView cellForRowAtIndexPath:_nextTopRowIndexPath];
         UITableViewCell *previousTopCell = [_tableView cellForRowAtIndexPath:previousCellIndexPath];
-        
         
         CGPoint translation = [gesture translationInView:_tableView];
         BOOL selectionDidChange = NO;
@@ -223,8 +236,8 @@
     }
 }
 
-- (void)moveRightDragPointHorizontal:(UIPanGestureRecognizer*)gesture {
-    
+- (void)moveRightDragPointHorizontal:(UIPanGestureRecognizer *)gesture
+{
     [self defaultDragPointGestureRecognizerSetup:gesture];
     
     if ([gesture state] == UIGestureRecognizerStateChanged) {
@@ -263,8 +276,8 @@
     }
 }
 
-- (void)moveRightDragPointVertical:(UIPanGestureRecognizer*)gesture {
-    
+- (void)moveRightDragPointVertical:(UIPanGestureRecognizer *)gesture
+{
     [self defaultDragPointGestureRecognizerSetup:gesture];
     
     if ([gesture state] == UIGestureRecognizerStateChanged) {
@@ -315,7 +328,8 @@
     }
 }
 
-- (void)defaultDragPointGestureRecognizerSetup:(UIPanGestureRecognizer*)gesture {
+- (void)defaultDragPointGestureRecognizerSetup:(UIPanGestureRecognizer *)gesture
+{
     if ([gesture state] == UIGestureRecognizerStateBegan) {
         [self calculateRectValues];
         _tableView.scrollEnabled = NO;
@@ -329,7 +343,8 @@
 
 #pragma mark - Update Values
 
-- (void)updateBottomRectValuesWithBottomIndexPath:(NSIndexPath*)bottomIndexPath {
+- (void)updateBottomRectValuesWithBottomIndexPath:(NSIndexPath *)bottomIndexPath
+{
     _bottomIndexPath = [NSIndexPath indexPathForRow:bottomIndexPath.row inSection:0];
     _bottomRowCellRect = [_tableView rectForRowAtIndexPath:bottomIndexPath];
     
@@ -345,7 +360,8 @@
     }
 }
 
-- (void)updateTopRectValuesWithTopIndexPath:(NSIndexPath*)topIndexPath {
+- (void)updateTopRectValuesWithTopIndexPath:(NSIndexPath *)topIndexPath
+{
     _topIndexPath = [NSIndexPath indexPathForRow:topIndexPath.row inSection:0];
     _topRowCellRect = [_tableView rectForRowAtIndexPath:topIndexPath];
     
@@ -361,14 +377,16 @@
     }
 }
 
-- (void)updateFirstCharacterValues:(CGPoint)firstCharacterCoordinates {
+- (void)updateFirstCharacterValues:(CGPoint)firstCharacterCoordinates
+{
     _firstCharacterCoordinates = firstCharacterCoordinates;
     
     // Reset prev and next last character coordinates
     [self setFirstCharacterCoordinates:_firstCharacterCoordinates];
 }
 
-- (void)updateLastCharacterValues:(CGPoint)lastCharacterCoordinates {
+- (void)updateLastCharacterValues:(CGPoint)lastCharacterCoordinates
+{
     _lastCharacterCoordinates = lastCharacterCoordinates;
     
     // Reset prev and next last character coordinates
@@ -377,20 +395,20 @@
 
 #pragma mark - Update Background Color for Drag Points
 
-- (void)updateBackgroundColorForLeftDragPointHorizontal:(CGPoint)startPoint {
-    
+- (void)updateBackgroundColorForLeftDragPointHorizontal:(CGPoint)startPoint
+{
     [self updateSelectedTextRangeForLeftDragPoint:startPoint];
     [self applyBackgroundColorWithSelectedTextRangeForRow:_topIndexPath];
 }
 
-- (void)updateBackgroundColorForLeftDragPointVertical:(CGPoint)startPoint {
-    
+- (void)updateBackgroundColorForLeftDragPointVertical:(CGPoint)startPoint
+{
     [self updateSelectedTextRangeForLeftDragPoint:startPoint];
     [self applyBackgroundColorWithSelectedTextRange];
 }
 
-- (void)updateSelectedTextRangeForLeftDragPoint:(CGPoint)startPoint {
-    
+- (void)updateSelectedTextRangeForLeftDragPoint:(CGPoint)startPoint
+{
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                          (cell.line));
@@ -402,19 +420,20 @@
     _selectedTextRange = NSMakeRange(startLocation, newRangeLength);
 }
 
-- (void)updateBackgroundColorForRightDragPointHorizontal:(CGPoint)startPoint {
-    
+- (void)updateBackgroundColorForRightDragPointHorizontal:(CGPoint)startPoint
+{
     [self updateSelectedTextRangeForRightDragPoint:startPoint];
     [self applyBackgroundColorWithSelectedTextRangeForRow:_bottomIndexPath];
 }
 
-- (void)updateBackgroundColorForRightDragPointVertical:(CGPoint)startPoint {
-    
+- (void)updateBackgroundColorForRightDragPointVertical:(CGPoint)startPoint
+{
     [self updateSelectedTextRangeForRightDragPoint:startPoint];
     [self applyBackgroundColorWithSelectedTextRange];
 }
 
-- (void)updateSelectedTextRangeForRightDragPoint:(CGPoint)endPoint {
+- (void)updateSelectedTextRangeForRightDragPoint:(CGPoint)endPoint
+{
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                          (cell.line));
@@ -428,7 +447,8 @@
 
 #pragma mark - Apply and Render Background Color
 
-- (void)applyBackgroundColorWithSelectedTextRange {
+- (void)applyBackgroundColorWithSelectedTextRange
+{
     [_codeViewController removeBackgroundColorForSetting:KEY_COPY_SETTINGS];
     [_codeViewController setBackgroundColorForString:[UIColor blueColor]
                                            WithRange:_selectedTextRange
@@ -451,7 +471,8 @@
     }
 }
 
-- (void)applyBackgroundColorWithSelectedTextRangeForRow:(NSIndexPath*)indexPath {
+- (void)applyBackgroundColorWithSelectedTextRangeForRow:(NSIndexPath *)indexPath
+{
     [_codeViewController removeBackgroundColorForSetting:KEY_COPY_SETTINGS];
     [_codeViewController setBackgroundColorForString:[UIColor blueColor]
                                            WithRange:_selectedTextRange
@@ -465,12 +486,14 @@
 
 #pragma mark - Calculations for character/row rects
 
-- (void)calculateRectValues {
+- (void)calculateRectValues
+{
     [self calculateRectValuesForRows];
     [self calculateRectValuesForCharacters];
 }
 
-- (void)calculateRectValuesForCharacters {
+- (void)calculateRectValuesForCharacters
+{
     _firstCharacterCoordinates = CGPointMake(_leftDragPoint.center.x, 0);
     _lastCharacterCoordinates = CGPointMake(_rightDragPoint.center.x, 0);
     
@@ -478,7 +501,8 @@
     [self setLastCharacterCoordinates:_lastCharacterCoordinates];
 }
 
-- (void)calculateRectValuesForRows {
+- (void)calculateRectValuesForRows
+{
     _topRowCellRect = [_tableView rectForRowAtIndexPath:_topIndexPath];
     _bottomRowCellRect = [_tableView rectForRowAtIndexPath:_bottomIndexPath];
     
@@ -506,8 +530,8 @@
 
 #pragma mark - UIMenuController Methods
 
-- (void)showCopyMenuForTextSelection {
-    
+- (void)showCopyMenuForTextSelection
+{
     if ([self becomeFirstResponder]) {
         //NSLog(@"is first responder");
     }
@@ -522,7 +546,8 @@
 
 #pragma mark - Helper Methods
 
-- (void)setFirstCharacterCoordinates:(CGPoint)firstCharacterCoordinates {
+- (void)setFirstCharacterCoordinates:(CGPoint)firstCharacterCoordinates
+{
     CodeLineCell *topCell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_topIndexPath];
     CTLineRef topLineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                             (topCell.line));
@@ -545,7 +570,8 @@
     }
 }
 
-- (void)setLastCharacterCoordinates:(CGPoint)lastCharacterCoordinates {
+- (void)setLastCharacterCoordinates:(CGPoint)lastCharacterCoordinates
+{
     CodeLineCell *bottomCell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:_bottomIndexPath];
     CTLineRef bottomLineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                                (bottomCell.line));
@@ -568,7 +594,8 @@
     }
 }
 
-- (BOOL)isDragPointsOverlapping:(CGFloat)characterWidth {
+- (BOOL)isDragPointsOverlapping:(CGFloat)characterWidth
+{
     return
     (_topIndexPath.row == _bottomIndexPath.row) &&
     ((_lastCharacterCoordinates.x - _firstCharacterCoordinates.x) < characterWidth * 2);
@@ -576,12 +603,14 @@
 
 #pragma mark - UIGestureRecognizerDelegate Methods
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     return YES;
 }
 
-- (void)copyString:(id)sender {
+- (void)copyString:(id)sender
+{
     UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
     NSString *copiedString = [_codeViewController getStringForRange:_selectedTextRange];
     [pasteBoard setString:copiedString];
@@ -591,18 +620,20 @@
 
 #pragma mark - Misc Methods
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     CGPoint locationPoint = [[touches anyObject] locationInView:_tableView];
-    UIView* viewYouWishToObtain = [_tableView hitTest:locationPoint withEvent:event];
-    if (viewYouWishToObtain != _leftDragPoint || viewYouWishToObtain != _rightDragPoint) {
+    UIView *view = [_tableView hitTest:locationPoint withEvent:event];
+    if (view != _leftDragPoint || view != _rightDragPoint) {
         [_codeViewController dismissTextSelectionViews];
     }
 }
 
-- (CGPoint)getLastCharacterCoordinatesInRow:(NSIndexPath*)indexPath {
+- (CGPoint)getLastCharacterCoordinatesInRow:(NSIndexPath *)indexPath
+{
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:indexPath];
     CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
-                                                               (cell.line));
+                                                         (cell.line));
     CFRange stringRangeForRow = CTLineGetStringRange(lineRef);
     
     if (stringRangeForRow.length == 1) {
@@ -614,7 +645,8 @@
     }
 }
 
-- (BOOL)canBecomeFirstResponder {
+- (BOOL)canBecomeFirstResponder
+{
     // NOTE: This menu item will not show if this is not YES!
     return YES;
 }

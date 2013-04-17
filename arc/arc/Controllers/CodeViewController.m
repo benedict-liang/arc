@@ -438,8 +438,8 @@
     return [_lines count];
 }
 
-- (UITableViewCell*)tableView:(UITableView*)tableView
-        cellForRowAtIndexPath:(NSIndexPath*)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+        cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"CodeLineCell";
     CodeLineCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -482,7 +482,7 @@
 }
 
 - (void)selectText:(UILongPressGestureRecognizer*)gesture
-{    
+{
     if ([gesture state] == UIGestureRecognizerStateBegan) {
         if (_dragPointVC != nil) {
             [self dismissTextSelectionViews];
@@ -505,9 +505,6 @@
         [_tableView addSubview:_dragPointVC.rightDragPoint];
 
         [_tableView reloadData];
-    }
-    if ([gesture state] == UIGestureRecognizerStateEnded) {
-
     }
 }
 
@@ -537,7 +534,7 @@
 
 #pragma mark - Search Bar delegate
 
-- (void)searchBarSearchButtonClicked:(UISearchBar*)searchBar
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     NSString *searchString = [searchBar text];
     NSArray *searchResultRangesArray = [FullTextSearch searchForText:searchString

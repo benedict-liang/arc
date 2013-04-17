@@ -14,33 +14,33 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-
-        UIImage *dragPointImage = [UIImage imageNamed:imageName];
-        CGFloat aspectRatio = dragPointImage.size.width / dragPointImage.size.height;
-
-        CGSize size=CGSizeMake(aspectRatio * frame.size.height, frame.size.height);//set the width and height
-        UIGraphicsBeginImageContext(size);
-        [dragPointImage drawInRect:CGRectMake(0,0,size.width,size.height)];
-        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-        //here is the scaled image which has been changed to the size specified
-        UIGraphicsEndImageContext();
+        
+        UIImage *scaledImage = [self scaleImageWithAspectRatio:imageName];
+        self.image = scaledImage;
         
         self.contentMode = UIViewContentModeCenter;
-        
-        self.image = newImage;
         self.backgroundColor = [UIColor clearColor];
-
-
-
-
         
-//        self.contentMode = UIViewContentModeScaleAspectFit;
-//        UIImage *dragPointImage = [UIImage imageNamed:imageName];
-//        self.image = dragPointImage;
-//        self.backgroundColor = [UIColor clearColor];
-//        self.frame = CGRectMake(frame.origin.x, frame.origin.y, self.image.size.width, self.image.size.height);
     }
     return self;
+}
+
+- (UIImage *)scaleImageWithAspectRatio:(NSString *)imageName
+{
+    CGRect frame = self.frame;
+    
+    UIImage *dragPointImage = [UIImage imageNamed:imageName];
+    CGFloat aspectRatio = dragPointImage.size.width / dragPointImage.size.height;
+    CGSize scaledSize = CGSizeMake(aspectRatio * frame.size.height,
+                                   frame.size.height);
+    
+    UIGraphicsBeginImageContext(scaledSize);
+    [dragPointImage drawInRect:CGRectMake(0,0,scaledSize.width,
+                                          scaledSize.height)];
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return scaledImage;
 }
 
 @end
