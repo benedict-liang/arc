@@ -170,6 +170,7 @@
                 break;
             case 1:
                 detailDescription = @"1 item";
+                break;
             default:
                 detailDescription = [NSString stringWithFormat:@"%d items", (int)[fileObject size]];
                 break;
