@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Folder.h"
 #import "SubViewControllerDelegate.h"
-#import "FolderViewControllerDelegate.h"
+#import "OldFolderViewControllerDelegate.h"
 #import "CreateFolderViewController.h"
 #import "CreateFolderViewControllerDelegate.h"
 
