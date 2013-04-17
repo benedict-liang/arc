@@ -320,4 +320,49 @@
     [UIView commitAnimations];
 }
 
+- (void)deleteItems:(id)sender
+{
+    for (NSIndexPath *indexPath in _editSelectedItems) {
+        NSArray *currentSection = [_segregatedContents objectAtIndex:indexPath.section];
+        id<FileSystemObject> fileSystemObject = [currentSection objectAtIndex:indexPath.row];
+        [fileSystemObject remove];
+    }
+    
+    [self separateFilesAndFolders];
+    [[self tableView] deleteRowsAtIndexPaths:_editSelectedItems
+                      withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)moveItems:(id)sender
+{
+    // TODO.
+    NSLog(@"%@", _editSelectedItems);
+}
+
+// Triggers when the user confirms an edit operation on the cell at the given index path.
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSArray *currentSection = [_segregatedContents objectAtIndex:indexPath.section];
+        id<FileSystemObject> fileObject = [currentSection objectAtIndex:indexPath.row];
+        
+        if ([fileObject remove]) {
+            [(NSMutableArray *)[_segregatedContents objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+    }
+}
+
+// Determines if the cell at the given index path can be edited.
+- (BOOL)tableView:(UITableView *)tableView
+canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *currentSection = [_segregatedContents objectAtIndex:indexPath.section];
+    id<FileSystemObject> fileObject = [currentSection objectAtIndex:indexPath.row];
+    
+    return [fileObject isRemovable];
+}
+
 @end
