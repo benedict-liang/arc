@@ -58,6 +58,11 @@
     // Set tableview properties.
     [[self tableView] setRowHeight:55];
     [[self tableView] setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
+    
+    // If we're allowed to edit, show the edit button.
+    if (_isEditAllowed) {
+        [[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

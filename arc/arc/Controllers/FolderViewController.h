@@ -14,6 +14,7 @@
 @interface FolderViewController : UITableViewController
 
 @property (weak, nonatomic) id<FolderViewControllerDelegate> delegate;
+@property BOOL isEditAllowed;
 
 - (id)initWithFolder:(id<Folder>)folder;
 
