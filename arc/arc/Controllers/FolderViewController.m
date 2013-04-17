@@ -12,7 +12,12 @@
 
 @property (weak, nonatomic) id<Folder>folder;
 @property NSArray *segregatedContents;
+
+// Edit-related Items
 @property NSMutableArray *editSelectedItems;
+@property UIToolbar *editToolbar;
+@property UIBarButtonItem *deleteButton;
+@property UIBarButtonItem *moveButton;
 
 @end
 
@@ -63,6 +68,28 @@
     if (_isEditAllowed) {
         [[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
         [[self tableView] setAllowsMultipleSelectionDuringEditing:YES];
+        
+        // Create the delete and move buttons.
+        _deleteButton = [[UIBarButtonItem alloc] initWithTitle:@"Delete"
+                                                         style:UIBarButtonItemStyleBordered target:self
+                                                        action:@selector(deleteItems:)];
+        _moveButton = [[UIBarButtonItem alloc] initWithTitle:@"Move"
+                                                       style:UIBarButtonItemStyleBordered
+                                                      target:self
+                                                      action:@selector(moveItems:)];
+        
+        // Create the edit toolbar.
+        _editToolbar = [[UIToolbar alloc] init];
+        [_editToolbar setFrame:CGRectMake(0, self.view.frame.size.height,
+                                        self.view.frame.size.width, 44)];
+        [_editToolbar setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin];
+        [_editToolbar setItems:[NSArray arrayWithObjects:
+                                [Utils flexibleSpace],
+                                _deleteButton,
+                                _moveButton,
+                                [Utils flexibleSpace],
+                                nil]];
+        [[self view] addSubview:_editToolbar];
     }
 }
 
