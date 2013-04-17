@@ -9,6 +9,9 @@
 #import "CloudPickerViewController.h"
 
 @interface CloudPickerViewController ()
+// Loading Overlay view.
+@property LoadingOverlayViewController *loadingOverlayController;
+
 // View properties.
 @property UIBarButtonItem *closeButton;
 
@@ -79,6 +82,10 @@
     [_tableView setDataSource:self];
     [_tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
     [[self view] addSubview:_tableView];
+    
+    // Create the loading overlay.
+    _loadingOverlayController = [[LoadingOverlayViewController alloc] initWithFrame:[[self view] bounds]];
+//    [[self view] insertSubview:[_loadingOverlayController view] aboveSubview:_tableView];
 }
 
 - (void)shouldClose

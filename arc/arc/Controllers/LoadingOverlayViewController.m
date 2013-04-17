@@ -31,45 +31,38 @@
 - (void)loadView
 {
     [super loadView];
+    [[self view] setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
+    [[self view] setAutoresizesSubviews:YES];
     
-    _spinnerContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 110, 30)];
-    [_spinnerContainer setCenter:CGPointMake(_frame.size.width / 2, _frame.size.height / 2)];
+    _spinnerContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 120, 40)];
     
     // Create the "Loading..." label.
     _loadingLabel = [[UILabel alloc] init];
     [_loadingLabel setText:@"Loading..."];
     [_loadingLabel setFont:[UIFont boldSystemFontOfSize:17]];
     [_loadingLabel setTextColor:[UIColor lightGrayColor]];
-    [_loadingLabel setFrame:CGRectMake(0, 3, 70, 25)];
     
     // Create the spinner.
     _spinnerView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [_spinnerView setFrame:CGRectMake(80, 0, 30, 30)];
+    [_spinnerView setHidden:NO];
     
     // Add the elements to the container.
     [_spinnerContainer addSubview:_loadingLabel];
+    [_loadingLabel setFrame:CGRectMake(0, 3, 80, 25)];
     [_spinnerContainer addSubview:_spinnerView];
-    
+    [_spinnerView setFrame:CGRectMake(80, 0, 30, 30)];
+
     [[self view] addSubview:_spinnerContainer];
+    [_spinnerContainer setCenter:CGPointMake([[self view] bounds].size.width / 2, [[self view] bounds].size.height / 2)];
     [[self view] setBackgroundColor:[UIColor whiteColor]];
-}
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [_spinnerView startAnimating];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [_spinnerView stopAnimating];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [_spinnerView startAnimating];
 }
 
 - (void)didReceiveMemoryWarning
