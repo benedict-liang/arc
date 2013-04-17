@@ -72,6 +72,7 @@
     
     _foldingMarker.backgroundColor = [UIColor clearColor];
     _foldingMarker.textColor = _foregroundColor;
+    _foldingMarker.font = [UIFont fontWithName:_fontFamily size:_fontSize];
     self.contentView.backgroundColor = [UIColor clearColor];
     self.backgroundColor = [UIColor clearColor];
 }
@@ -94,7 +95,6 @@
     _foldingMarker.text = @"▼";
 }
 - (void)activeFolding {
-    _foldingMarker.textColor = _foregroundColor;
     _foldingMarker.text = @"▶";
 }
 - (void)clearFolding {
