@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 @class FolderViewController;
 
-@protocol FolderViewControllerDelegate <NSObject>
+@protocol OldFolderViewControllerDelegate <NSObject>
 - (void)folderViewController:(FolderViewController*)folderviewController DidEnterEditModeAnimate:(BOOL)animate;
 - (void)folderViewController:(FolderViewController*)folderviewController DidExitEditModeAnimate:(BOOL)animate;
 @end

@@ -16,5 +16,5 @@
 @interface LeftViewController : UIViewController<SubViewControllerDelegate,
     MasterViewControllerDelegate, FileNavigatorViewControllerDelegate,
     SettingsViewDelegate, UITabBarControllerDelegate,
-    FolderViewControllerDelegate>
+    OldFolderViewControllerDelegate>
 @end

@@ -24,7 +24,7 @@
 @interface OldFolderViewController : UIViewController <SubViewControllerDelegate,
     UITableViewDelegate, UITableViewDataSource, CreateFolderViewControllerDelegate, UIActionSheetDelegate, CloudPickerViewControllerDelegate>
 @property (nonatomic, readonly) id<Folder> folder;
-@property (nonatomic, weak) id<FolderViewControllerDelegate> folderViewControllerDelegate;
+@property (nonatomic, weak) id<OldFolderViewControllerDelegate> folderViewControllerDelegate;
 - (id)initWithFolder:(id<Folder>)folder;
 - (void)triggerAddItem;
 - (void)refreshFolderContents;

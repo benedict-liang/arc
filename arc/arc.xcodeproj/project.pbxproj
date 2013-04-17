@@ -457,7 +457,7 @@
 		4C1AF1161714FF8400A2D0D8 /* documents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = documents.png; sourceTree = "<group>"; };
 		4C1AF1171714FF8400A2D0D8 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		4C1AF11A1715029100A2D0D8 /* dropbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropbox.png; sourceTree = "<group>"; };
-		4C1AF11F1715119300A2D0D8 /* FolderViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewControllerDelegate.h; sourceTree = "<group>"; };
+		4C1AF11F1715119300A2D0D8 /* OldFolderViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldFolderViewControllerDelegate.h; sourceTree = "<group>"; };
 		4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileNavigatorViewControllerDelegate.h; sourceTree = "<group>"; };
 		4C43F8E916F86AA900159B29 /* (arc).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "(arc).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C43F8EC16F86AA900159B29 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -1139,7 +1139,7 @@
 				4CEADA011716814B00F4F619 /* CodeViewDelegate.h */,
 				4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */,
 				4CE2951517104A4C003B012A /* SettingsViewDelegate.h */,
-				4C1AF11F1715119300A2D0D8 /* FolderViewControllerDelegate.h */,
+				4C1AF11F1715119300A2D0D8 /* OldFolderViewControllerDelegate.h */,
 				02C2E4841715594300C912E0 /* CreateFolderViewControllerDelegate.h */,
 				027EE0381717FD7800302F07 /* LongSettingListViewControllerDelegate.h */,
 				023D4AFA171D1AAF00D9F60D /* CloudPickerViewControllerDelegate.h */,
