@@ -78,8 +78,7 @@
     [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft animated:NO];
 
     ApplicationState *appState = [ApplicationState sharedApplicationState];
-    [self fileSelected:[appState currentFileOpened]];
-    [self folderSelected:[appState currentFolderOpened]];
+    [self openIn:[appState currentFileOpened]];
 }
 
 - (void)openIn:(id<File>)file
