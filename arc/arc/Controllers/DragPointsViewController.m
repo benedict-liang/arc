@@ -14,6 +14,9 @@
 #define HORIZONTAL_THRESHOLD_PERCENTAGE 0.95
 #define VERTICAL_THRESHOLD_PERCENTAGE 0.80
 
+// TODO: Temp magic number
+#define PADDING_WIDTH 10
+
 @interface DragPointsViewController ()
 
 @property (nonatomic) int lineNumberWidthOffSet;
@@ -63,10 +66,8 @@
         // Get global range of selected string (check width of line numbers)
         CTLineRef lineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                              (cell.line));
-        CFIndex index = CTLineGetStringIndexForPosition(lineRef, touchPoint);
-        
-        // FIXME: Try using this - http://stackoverflow.com/a/10206497/1220192
-        
+        CGPoint adjustedPoint = CGPointMake(touchPoint.x - cell.lineNumberWidth - PADDING_WIDTH, touchPoint.y);
+        CFIndex index = CTLineGetStringIndexForPosition(lineRef, adjustedPoint);
         
         // Apply background color for index
         _selectedTextRange = NSMakeRange(cell.stringRange.location + index, 3);
@@ -77,7 +78,7 @@
         CGFloat startOffset = CTLineGetOffsetForStringIndex(lineRef, index, NULL);
         CGFloat endOffset = CTLineGetOffsetForStringIndex(lineRef, index+3, NULL);
         
-        CGRect selectedRect = CGRectMake(startOffset + cell.lineNumberWidth + 10,
+        CGRect selectedRect = CGRectMake(startOffset + cell.lineNumberWidth + PADDING_WIDTH,
                                          cellRect.origin.y,
                                          endOffset - startOffset,
                                          cellRect.size.height);
