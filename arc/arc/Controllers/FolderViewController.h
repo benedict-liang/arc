@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Folder.h"
 #import "File.h"
+#import "FolderViewControllerDelegate.h"
 
 @interface FolderViewController : UITableViewController
+
+@property (weak, nonatomic) id<FolderViewControllerDelegate> delegate;
 
 - (id)initWithFolder:(id<Folder>)folder;
 
