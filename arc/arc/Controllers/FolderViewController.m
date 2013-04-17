@@ -235,7 +235,9 @@
     [super setEditing:editing animated:animated];
     _editSelectedItems = [NSMutableArray array];
     if (editing) {
+        [_delegate folderViewController:self DidEnterEditModeAnimate:animated];
     } else {
+        [_delegate folderViewController:self DidExitEditModeAnimate:animated];
     }
 }
 
