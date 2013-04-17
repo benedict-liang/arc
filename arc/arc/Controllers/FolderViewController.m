@@ -301,7 +301,7 @@
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
-    _editToolbar.frame = endState;
+    [_editToolbar setFrame:endState];
     [UIView commitAnimations];
 }
 
@@ -316,7 +316,7 @@
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
-    _editToolbar.frame = endState;
+    [_editToolbar setFrame:endState];
     [UIView commitAnimations];
 }
 
