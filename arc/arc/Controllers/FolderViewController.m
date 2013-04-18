@@ -245,8 +245,8 @@
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
-    [super setEditing:editing animated:animated];
     [[self tableView] setAllowsMultipleSelectionDuringEditing:editing];
+    [super setEditing:editing animated:animated];
     _editSelectedItems = [NSMutableArray array];
     if (editing) {
         [_delegate folderViewController:self DidEnterEditModeAnimate:animated];
