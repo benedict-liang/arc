@@ -635,22 +635,22 @@
 
 - (void)getSearchResultLineNumbers:(NSMutableArray *)searchLineNumberArray
                   withResultsArray:(NSArray *)resultsArray
-{
-    int lineIndex = 0;
-    
-    for (int i=0; i<[resultsArray count]; i++) {
+{    
+    for (int i = 0; i < [resultsArray count]; i++) {
         NSRange searchResultRange = [[resultsArray objectAtIndex:i] rangeValue];
-        
-        for (int j=lineIndex; j<[_lines count]; j++) {
-            NSRange lineRange = [((CodeViewLine *)[_lines objectAtIndex:j]) range];
-            NSRange rangeIntersectionResult = NSIntersectionRange(lineRange, searchResultRange);
 
+        int lineNumber = 0;
+        for (CodeViewLine *codeViewLine in _lines) {
+            if (codeViewLine.lineStart) {
+                lineNumber++;
+            }
+            
+            NSRange rangeIntersectionResult =
+            NSIntersectionRange(codeViewLine.range, searchResultRange);
+            
             // Ranges intersect
             if (rangeIntersectionResult.length != 0) {
-                [searchLineNumberArray addObject:[NSNumber numberWithInt:j]];
-
-                // Update current lineIndex
-                lineIndex = j;
+                [searchLineNumberArray addObject:[NSNumber numberWithInt:lineNumber]];
                 break;
             }
         }
