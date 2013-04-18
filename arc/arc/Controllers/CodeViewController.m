@@ -14,8 +14,6 @@
 #import "ResultsTableViewController.h"
 #import "DragPointsViewController.h"
 
-
-
 @interface CodeViewController ()
 @property id<File> currentFile;
 @property (nonatomic, strong) UITableView *tableView;
@@ -30,7 +28,9 @@
 @property (nonatomic, strong) UIPopoverController *resultsPopoverController;
 @property (nonatomic, strong) ResultsTableViewController *resultsViewController;
 @property (nonatomic, strong) DragPointsViewController *dragPointVC;
-@property CGFloat lineHeight;
+
+@property int lineHeight;
+@property int lineNumberWidth;
 @property NSMutableArray *plugins;
 
 // Line Processing
@@ -192,7 +192,9 @@
     ((__bridge CFAttributedStringRef)
      _arcAttributedString.plainAttributedString);
     
+    int lineNumber = 0;
     while (start < length) {
+        lineNumber++;
         [lineStarts setObject:[NSNumber numberWithBool:YES]
                        forKey:[NSNumber numberWithInt:start]];
         CFIndex count = CTTypesetterSuggestLineBreak(_typesetter, start, boundsWidth);
@@ -200,11 +202,15 @@
     }
     
     // Split Lines to it bounds
-    CGFloat actualBoundsWidth = _tableView.bounds.size.width - 20*2 - 45;
+    CGFloat actualBoundsWidth = _tableView.bounds.size.width - SIZE_CODEVIEW_PADDING_AROUND*2;
+    if (_lineNumbers) {
+        [self calcLineNumberWidthForMaxLineNumber:lineNumber];
+        actualBoundsWidth -= _lineNumberWidth;
+    }
     
     // Calculate the lines
     start = 0;
-    int lineNumber = 0;
+    lineNumber = 0;
     CodeViewLine *line;
     while (start < length) {
         CFIndex count = CTTypesetterSuggestLineBreak(_typesetter, start, actualBoundsWidth);
@@ -222,6 +228,14 @@
     }
 }
 
+- (void)calcLineNumberWidthForMaxLineNumber:(int)lineNumber
+{
+    _lineNumberWidth = [CodeLineCell
+                           calcLineNumberWidthForMaxLineNumber:lineNumber
+                           FontFamily:_fontFamily
+                           FontSize:_fontSize];
+}
+
 - (void)calcLineHeight
 {
     CGFloat asscent, descent, leading;
@@ -234,9 +248,9 @@
            [((CodeViewLine *)[_lines objectAtIndex:0]) range]]));
 
         CTLineGetTypographicBounds(line, &asscent, &descent, &leading);
-        _lineHeight = asscent + descent + leading;
-        _tableView.rowHeight = ceil(_lineHeight);
-        
+        _lineHeight = ceil(asscent + descent + leading);
+        _tableView.rowHeight = _lineHeight;
+
         CFRelease(line);
     }
 }
@@ -309,13 +323,14 @@
             if (setting == nil || [[plugin setting] isEqualToString:setting]) {
                 settings = [_appState settingsForKeys:@[[plugin setting]]];
                 if ([plugin respondsToSelector:
-                     @selector(execOnArcAttributedString:ofFile:forValues:sharedObject:delegate:)])
+                     @selector(execPreRenderOnArcAttributedString:CodeView:ofFile:forValues:sharedObject:delegate:)])
                 {
-                    [plugin execOnArcAttributedString:_arcAttributedString
-                                               ofFile:_currentFile
-                                            forValues:settings
-                                         sharedObject:_sharedObject
-                                             delegate:self];
+                    [plugin execPreRenderOnArcAttributedString:_arcAttributedString
+                                                      CodeView:self
+                                                        ofFile:_currentFile
+                                                     forValues:settings
+                                                  sharedObject:_sharedObject
+                                                      delegate:self];
                 }
             }            
         }
@@ -329,13 +344,13 @@
         if (setting == nil || [[plugin setting] isEqualToString:setting]) {
             settings = [_appState settingsForKeys:@[[plugin setting]]];
             if ([plugin respondsToSelector:
-                 @selector(execOnCodeView:ofFile:forValues:sharedObject:delegate:)])
+                 @selector(execPostRenderOnCodeView:ofFile:forValues:sharedObject:delegate:)])
             {
-                [plugin execOnCodeView:self
-                                ofFile:_currentFile
-                             forValues:settings
-                          sharedObject:_sharedObject
-                              delegate:self];
+                [plugin execPostRenderOnCodeView:self
+                                          ofFile:_currentFile
+                                       forValues:settings
+                                    sharedObject:_sharedObject
+                                        delegate:self];
             }
         }
     }
@@ -465,7 +480,9 @@
     CodeViewLine *line = (CodeViewLine *)[_lines objectAtIndex:indexPath.row];
     NSAttributedString *lineRef = [_arcAttributedString.attributedString
                                    attributedSubstringFromRange:line.range];
-    
+
+    cell.showLineNumber = _lineNumbers;
+    cell.lineNumberWidth = _lineNumberWidth;
     cell.line = lineRef;
 
     cell.stringRange = line.range;
@@ -485,6 +502,7 @@
     } else {
         [cell clearFolding];
     }
+    
     if ([self activeFoldsContainsStartLine:indexPath.row]) {
         [cell activeFolding];
     }
@@ -507,11 +525,12 @@
     doubleTapGesture.numberOfTapsRequired = 2;
     
     [cell addGestureRecognizer:doubleTapGesture];
-    [cell setNeedsDisplay];
+
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     if ([self activeFoldsContainsLine:indexPath.row]) {
         return 0;
     }
@@ -636,7 +655,7 @@
 }
 
 #pragma mark - Folding
-- (void)foldForGesture:(UIGestureRecognizer*)gesture
+- (void)foldForGesture:(UIGestureRecognizer *)gesture
 {
     if (!_activeFolds) {
         _activeFolds = [NSMutableDictionary dictionary];
@@ -661,7 +680,8 @@
     [self renderFile];
 }
 
-- (NSArray*)linesContainingRanges:(NSArray*)ranges {
+- (NSArray *)linesContainingRanges:(NSArray *)ranges
+{
     NSMutableArray* lines = [NSMutableArray array];
     for (int i =0; i < _lines.count; i++) {
         CodeViewLine* line = [_lines objectAtIndex:i];
@@ -676,7 +696,8 @@
     return lines;
 }
 
-- (BOOL)activeFoldsContainsLine:(int)lineIndex {
+- (BOOL)activeFoldsContainsLine:(int)lineIndex
+{
     BOOL flag = NO;
     for (NSNumber* start in _activeFolds) {
         NSDictionary* activeFold = [_activeFolds objectForKey:start];
@@ -701,15 +722,18 @@
     return NSNotFound;
 }
 
-- (BOOL)activeFoldsContainsStartLine:(int)lineIndex {
+- (BOOL)activeFoldsContainsStartLine:(int)lineIndex
+{
     return [_activeFolds objectForKey:[NSNumber numberWithInt:lineIndex]]!= nil;
 }
 
-- (void)removeFoldWithStartLine:(int)lineNumber {
+- (void)removeFoldWithStartLine:(int)lineNumber
+{
     [_activeFolds removeObjectForKey:[NSNumber numberWithInt:lineNumber]];
 }
 
-- (CFIndex)indexOfStringAtGesture:(UIGestureRecognizer*)gesture {
+- (CFIndex)indexOfStringAtGesture:(UIGestureRecognizer*)gesture
+{
     CodeLineCell *cell = (CodeLineCell*)[gesture view];
 
     NSIndexPath* cellIndex = [(UITableView*)cell.superview indexPathForCell:cell];

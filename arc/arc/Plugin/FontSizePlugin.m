@@ -48,22 +48,16 @@
     return [NSNumber numberWithInt:_defaultFontSize];
 }
 
-- (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString
-                           ofFile:(id<File>)file
-                        forValues:(NSDictionary *)properties
-                     sharedObject:(NSMutableDictionary *)dictionary
-                         delegate:(id<CodeViewControllerDelegate>)delegate
+- (void)execPreRenderOnArcAttributedString:(ArcAttributedString *)arcAttributedString
+                                  CodeView:(id<CodeViewDelegate>)codeView
+                                    ofFile:(id<File>)file
+                                 forValues:(NSDictionary *)properties
+                              sharedObject:(NSMutableDictionary *)dictionary
+                                  delegate:(id<CodeViewControllerDelegate>)delegate
 {
     [arcAttributedString setFontSize:
      [[properties objectForKey:_setting] intValue]];
-}
-
-- (void)execOnCodeView:(id<CodeViewDelegate>)codeView
-                ofFile:(id<File>)file
-             forValues:(NSDictionary *)properties
-          sharedObject:(NSMutableDictionary *)dictionary
-              delegate:(id<CodeViewControllerDelegate>)delegate
-{
+    
     codeView.fontSize = [[properties objectForKey:_setting] intValue];
 }
 
