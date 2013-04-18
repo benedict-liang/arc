@@ -13,6 +13,8 @@
 @property (weak, nonatomic) id<Folder>folder;
 @property NSArray *segregatedContents;
 
+@property UITableView *tableView;
+
 // Edit-related Items
 @property NSMutableArray *editSelectedItems;
 @property UIToolbar *editToolbar;
@@ -34,7 +36,7 @@
 - (void)reloadContents
 {
     [self separateFilesAndFolders];
-    [[self tableView] reloadData];
+    [_tableView reloadData];
 }
 
 - (void)separateFilesAndFolders
@@ -61,8 +63,13 @@
     [[self navigationItem] setTitle:[_folder name]];
     
     // Set tableview properties.
-    [[self tableView] setRowHeight:55];
-    [[self tableView] setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
+    _tableView = [[UITableView alloc] initWithFrame:[[self view] bounds]
+                                              style:UITableViewStylePlain];
+    [_tableView setRowHeight:55];
+    [_tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
+    [_tableView setDelegate:self];
+    [_tableView setDataSource:self];
+    [[self view] addSubview:_tableView];
     
     // If we're allowed to edit, show the edit button.
     if (_isEditAllowed) {
@@ -70,7 +77,8 @@
         
         // Create the delete and move buttons.
         _deleteButton = [[UIBarButtonItem alloc] initWithTitle:@"Delete"
-                                                         style:UIBarButtonItemStyleBordered target:self
+                                                         style:UIBarButtonItemStyleBordered
+                                                        target:self
                                                         action:@selector(deleteItems:)];
         _moveButton = [[UIBarButtonItem alloc] initWithTitle:@"Move"
                                                        style:UIBarButtonItemStyleBordered
@@ -211,7 +219,7 @@
     NSArray *section = [_segregatedContents objectAtIndex:[indexPath section]];
     id<FileSystemObject> fileObject = [section objectAtIndex:[indexPath row]];
     
-    if ([[self tableView] isEditing]) {
+    if ([_tableView isEditing]) {
         // We're in edit mode. Add the selected index path to the array.
         [_editSelectedItems addObject:indexPath];
         [self itemTappedInEditModeAnimate:YES];
@@ -245,7 +253,7 @@
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
-    [[self tableView] setAllowsMultipleSelectionDuringEditing:editing];
+    [_tableView setAllowsMultipleSelectionDuringEditing:editing];
     [super setEditing:editing animated:animated];
     _editSelectedItems = [NSMutableArray array];
     if (editing) {
@@ -291,7 +299,7 @@
         return;
     }
     
-    [UIView beginAnimations:nil context:NULL];
+    [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];
     [_editToolbar setFrame:endState];
     [UIView commitAnimations];
@@ -306,7 +314,7 @@
     }
     
     [self separateFilesAndFolders];
-    [[self tableView] deleteRowsAtIndexPaths:_editSelectedItems
+    [_tableView deleteRowsAtIndexPaths:_editSelectedItems
                       withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 

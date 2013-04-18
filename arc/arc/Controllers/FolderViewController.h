@@ -12,7 +12,7 @@
 #import "FolderViewControllerDelegate.h"
 #import "FileObjectTableViewCell.h"
 
-@interface FolderViewController : UITableViewController
+@interface FolderViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) id<FolderViewControllerDelegate> delegate;
 @property BOOL isEditAllowed;
