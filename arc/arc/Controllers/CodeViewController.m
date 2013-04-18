@@ -58,6 +58,7 @@
 // Code View Delegate Properties
 @synthesize backgroundColor = _backgroundColor;
 @synthesize foregroundColor = _foregroundColor;
+@synthesize selectionColor = _selectionColor;
 @synthesize fontFamily = _fontFamily;
 @synthesize fontSize = _fontSize;
 @synthesize lineNumbers = _lineNumbers;
@@ -288,7 +289,15 @@
 
 - (void)scrollToLineNumber:(int)lineNumber
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lineNumber
+    int row = 0;
+    for (CodeViewLine *codeViewLine in _lines) {
+        row++;
+        if (codeViewLine.lineNumber == lineNumber) {
+            break;
+        }
+    }
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row
                                                 inSection:0];
     [_tableView scrollToRowAtIndexPath:indexPath
                       atScrollPosition:UITableViewScrollPositionMiddle
@@ -605,7 +614,7 @@
     
     [_arcAttributedString removeAttributesForSettingKey:@"search"];
     for (NSValue *range in searchResultRangesArray) {
-        [self setBackgroundColorForString:[UIColor yellowColor]
+        [self setBackgroundColorForString:_selectionColor
                                 WithRange:[range rangeValue]
                                forSetting:@"search"];
     }

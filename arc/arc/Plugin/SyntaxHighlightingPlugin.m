@@ -147,6 +147,7 @@
 {
     NSDictionary *style = [dictionary objectForKey:@"syntaxHighlightingPlugin"];
     codeView.backgroundColor = [style objectForKey:@"background"];
+    codeView.selectionColor = [style objectForKey:@"lineHighlight"];
     codeView.foregroundColor = [style objectForKey:@"foreground"];
 }
 

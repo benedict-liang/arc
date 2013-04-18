@@ -1259,9 +1259,9 @@
 		4CEADA02171681F000F4F619 /* SyntaxHighlighting */ = {
 			isa = PBXGroup;
 			children = (
-				4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */,
 				4C9DC9021719B64A00142E70 /* SyntaxHighlightingPluginDelegate.h */,
 				4CE2950C17101BA0003B012A /* SyntaxHighlightingPlugin.h */,
+				4CE2950D17101BA0003B012A /* SyntaxHighlightingPlugin.m */,
 				FC7260901711B4D50068DD91 /* SyntaxHighlight.h */,
 				FC7260911711B4D60068DD91 /* SyntaxHighlight.m */,
 				FCBD8332171DEBA2005E2B31 /* SyntaxHighlightDelegate.h */,
