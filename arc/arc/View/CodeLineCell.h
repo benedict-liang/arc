@@ -20,6 +20,9 @@
 @property (nonatomic) int padding;
 @property (nonatomic) NSRange stringRange;
 
++ (int)calcLineNumberWidthForMaxLineNumber:(int)lineNumber
+                                FontFamily:(NSString *)fontFamily
+                                  FontSize:(int)fontSize;
 - (void)setForegroundColor:(UIColor*)foregroundColor;
 - (void)setFontFamily:(NSString*)fontFamily FontSize:(int)fontSize;
 - (void)setFolding;

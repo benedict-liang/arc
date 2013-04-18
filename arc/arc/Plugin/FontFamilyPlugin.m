@@ -65,23 +65,15 @@
     return _defaultFontFamily;
 }
 
-- (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString
-                           ofFile:(id<File>)file
-                        forValues:(NSDictionary *)properties
-                     sharedObject:(NSMutableDictionary *)dictionary
-                         delegate:(id<CodeViewControllerDelegate>)delegate
+- (void)execPreRenderOnArcAttributedString:(ArcAttributedString *)arcAttributedString
+                                  CodeView:(id<CodeViewDelegate>)codeView
+                                    ofFile:(id<File>)file
+                                 forValues:(NSDictionary *)properties
+                              sharedObject:(NSMutableDictionary *)dictionary
+                                  delegate:(id<CodeViewControllerDelegate>)delegate
 {
     NSString *fontFamily = [properties objectForKey:_setting];
     [arcAttributedString setFontFamily:fontFamily];
-}
-
-- (void)execOnCodeView:(id<CodeViewDelegate>)codeView
-                ofFile:(id<File>)file
-             forValues:(NSDictionary *)properties
-          sharedObject:(NSMutableDictionary *)dictionary
-              delegate:(id<CodeViewControllerDelegate>)delegate
-{
-    NSString *fontFamily = [properties objectForKey:_setting];
     [codeView setFontFamily:fontFamily];
 }
 

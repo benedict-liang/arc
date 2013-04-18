@@ -46,20 +46,12 @@
     return [NSNumber numberWithBool:_defaultSetting];
 }
 
-//- (void)execOnArcAttributedString:(ArcAttributedString *)arcAttributedString
-//                           ofFile:(id<File>)file
-//                        forValues:(NSDictionary *)properties
-//                     sharedObject:(NSMutableDictionary *)dictionary
-//                         delegate:(id<CodeViewControllerDelegate>)delegate
-//{
-//
-//}
-
-- (void)execOnCodeView:(id<CodeViewDelegate>)codeView
-                ofFile:(id<File>)file
-             forValues:(NSDictionary *)properties
-          sharedObject:(NSMutableDictionary *)dictionary
-              delegate:(id<CodeViewControllerDelegate>)delegate
+- (void)execPreRenderOnArcAttributedString:(ArcAttributedString *)arcAttributedString
+                                  CodeView:(id<CodeViewDelegate>)codeView
+                                    ofFile:(id<File>)file
+                                 forValues:(NSDictionary *)properties
+                              sharedObject:(NSMutableDictionary *)dictionary
+                                  delegate:(id<CodeViewControllerDelegate>)delegate
 {
     codeView.lineNumbers = [[properties objectForKey:_setting] boolValue];
 }

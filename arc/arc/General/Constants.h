@@ -15,6 +15,12 @@ extern const float SIZE_TOOLBAR_HEIGHT;
 extern const CGSize SIZE_POPOVER;
 extern const float SIZE_TOOLBAR_ICON_WIDTH;
 
+// CodeView
+extern const int SIZE_CODEVIEW_PADDING_AROUND;
+extern const int SIZE_CODEVIEW_MARGIN_LINENUMBERS;
+extern const int SIZE_CODEVIEW_LINENUMBERS_MIN;
+extern const int SIZE_CODEVIEW_PADDING_LINENUMBERS;
+
 // Defaults
 extern const CGColorRef* DEFAULT_TEXT_COLOR;
 
