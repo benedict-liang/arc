@@ -23,19 +23,22 @@
                                                  skipRanges:skips
                                                     content:content];
     
-    NSArray* foldStarts = [foldResults objectForKey:@"foldStarts"];
-    NSArray* foldEnds = [foldResults objectForKey:@"foldEnds"];
-    NSArray* foldRanges = [foldResults  objectForKey:@"foldRanges"];
-    
-    NSArray* nodeArray = [CodeFolding nodeArrayWithFoldRanges:foldRanges
-                                                   foldStarts:foldStarts
-                                                     foldEnds:foldEnds];
-    
-    //[del testFoldsOnFoldRanges:foldRanges foldStarts:foldStarts foldEnds:foldEnds];
-    
-    FoldTree* tree = [[FoldTree alloc] initWithNodes:nodeArray RootRange:NSMakeRange(0, content.length)];
-    
-    return tree;
+    if (foldResults) {
+        NSArray* foldStarts = [foldResults objectForKey:@"foldStarts"];
+        NSArray* foldEnds = [foldResults objectForKey:@"foldEnds"];
+        NSArray* foldRanges = [foldResults  objectForKey:@"foldRanges"];
+        
+        NSArray* nodeArray = [CodeFolding nodeArrayWithFoldRanges:foldRanges
+                                                       foldStarts:foldStarts
+                                                         foldEnds:foldEnds];
+        
+        //[del testFoldsOnFoldRanges:foldRanges foldStarts:foldStarts foldEnds:foldEnds];
+        
+        FoldTree* tree = [[FoldTree alloc] initWithNodes:nodeArray RootRange:NSMakeRange(0, content.length)];
+        
+        return tree;
+    }
+    return nil;
 }
 + (NSDictionary*)foldsWithStart:(NSString*)foldStart
                    end:(NSString*)foldEnd
@@ -100,7 +103,10 @@
         }
         offset += lineContent.length+1;
     }
-    return @{@"foldRanges":foldRanges, @"foldStarts":foldStarts, @"foldEnds":foldEnds};
+    if (foldRanges && foldStarts && foldEnds) {
+        return @{@"foldRanges":foldRanges, @"foldStarts":foldStarts, @"foldEnds":foldEnds};
+    }
+    return nil;
 }
 + (NSRange)findFirstPattern:(NSString*)pattern
                       range:(NSRange)range
