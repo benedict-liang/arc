@@ -48,19 +48,11 @@
     // File Navigator
     _documentsNavigationViewController = [[UINavigationController alloc] init];
     _documentsNavigationViewController.tabBarItem =
-        [[UITabBarItem alloc] initWithTitle:@"Document"
+        [[UITabBarItem alloc] initWithTitle:@"Documents"
                                       image:[Utils scale:[UIImage imageNamed:@"documents.png"]
                                                   toSize:CGSizeMake(40, 30)]
                                         tag:TAB_DOCUMENTS];
     _documentsNavigationViewController.view.autoresizesSubviews = YES;
-    
-//    [_documentsNavigationViewController.navigationBar setTitleTextAttributes:
-//     [NSDictionary dictionaryWithObjectsAndKeys:
-//      [UIColor whiteColor], UITextAttributeTextColor,
-//      [UIColor colorWithRed:0 green:0 blue:0 alpha:0], UITextAttributeTextShadowColor,
-//      [NSValue valueWithUIOffset:UIOffsetMake(0, 0)], UITextAttributeTextShadowOffset,
-//      [UIFont fontWithName:@"Helvetica Neue" size:0.0], UITextAttributeFont,
-//      nil]];
     
     [self addChildViewController:_documentsNavigationViewController];
     
@@ -68,7 +60,7 @@
     _settingsNavigationViewController = [[UINavigationController alloc] init];
     _settingsNavigationViewController.view.autoresizesSubviews = YES;
     _settingsNavigationViewController.tabBarItem =
-        [[UITabBarItem alloc] initWithTitle:@"Setting"
+        [[UITabBarItem alloc] initWithTitle:@"Settings"
                                       image:[Utils scale:[UIImage imageNamed:@"settings.png"]
                                                   toSize:CGSizeMake(30, 30)]
                                         tag:TAB_SETTINGS];
@@ -115,63 +107,49 @@
 
 # pragma mark - FileNavigatorViewController Delegate Methods
 
+// Used to force navigation to a particular folder.
 - (void)navigateTo:(id<Folder>)folder
 {
     // Force Document View
     [self showDocuments:nil];
     
-    if ([Utils isEqual:[folder parent]
-                   and:_currentFolder]) {
-        // Normal Folder selected
-        [self pushFolderView:folder];
-    } else if ([Utils isEqual:folder
-                          and:[_currentFolder parent]]) {
-        // Back Button.
-        // Refresh folder contents
-        FolderViewController *folderViewController =
-            (FolderViewController*) _documentsNavigationViewController.visibleViewController;
-        [folderViewController refreshFolderContents];
-    } else {
-        // Jump to Folder.
-        // (no logical way to "animate" to folder"
-        
-        // Clear stack of folderViewController
-        [_documentsNavigationViewController popToRootViewControllerAnimated:NO];
-        
-        // Find path to root
-        // (excluding current folder and root)
-        id<Folder> current = folder;
-        NSMutableArray *pathToRootFolder = [NSMutableArray array];
-        while ([current parent]) {
-            [pathToRootFolder addObject:[current parent]];
-            current = (id<Folder>)[current parent];
-        }
-        
-        // Push folderViewController onto the stack
-        // in reverse order. (w/o animation)
-        id<Folder> parent;
-        NSEnumerator *enumerator = [pathToRootFolder reverseObjectEnumerator];
-        while (parent = [enumerator nextObject]) {
-            [self pushFolderView:parent
-                        animated:NO];
-        }
-        
-        // push folder to navigate to.
-        [self pushFolderView:folder];
+    // Clear stack of folderViewController
+    [_documentsNavigationViewController popToRootViewControllerAnimated:NO];
+    
+    // Find path to root
+    // (excluding current folder and root)
+    id<Folder> current = folder;
+    NSMutableArray *pathToRootFolder = [NSMutableArray array];
+    while ([current parent]) {
+        [pathToRootFolder addObject:[current parent]];
+        current = (id<Folder>)[current parent];
     }
+    
+    // Push folderViewController onto the stack
+    // in reverse order. (w/o animation)
+    id<Folder> parent;
+    NSEnumerator *enumerator = [pathToRootFolder reverseObjectEnumerator];
+    while (parent = [enumerator nextObject]) {
+        [self pushFolderView:parent
+                    animated:NO];
+    }
+    
+    // push folder to navigate to.
+    [self pushFolderView:folder];
     
     // Update current folder.
     _currentFolder = folder;
 }
 
+// Used to initialise the folderViewController.
 - (void)pushFolderView:(id<Folder>)folder
               animated:(BOOL)animated
 {
     // File Navigator View Controller
     FolderViewController *folderViewController =
         [[FolderViewController alloc] initWithFolder:folder];
-    folderViewController.folderViewControllerDelegate = self;
-    folderViewController.delegate = self.delegate;
+    [folderViewController setIsEditAllowed:YES];
+    [folderViewController setDelegate:self];
     [_documentsNavigationViewController pushViewController:folderViewController
                                                   animated:animated];
 }
@@ -219,7 +197,7 @@ shouldSelectViewController:(UIViewController *)viewController
 
 # pragma mark - Folder View Controller Delegate
 
-- (void)folderViewController:(FolderViewController*)folderviewController
+- (void)folderViewController:(FolderViewController *)folderviewController
      DidEnterEditModeAnimate:(BOOL)animate
 {
     [UIView animateWithDuration:0.3
@@ -228,21 +206,29 @@ shouldSelectViewController:(UIViewController *)viewController
                      animations:^{
                          [self hideTabBar:_tabBarController];
                      }
-                     completion:^(BOOL finished){
-                         [folderviewController editActionTriggeredAnimate:NO];
-                     }];
+                     completion:nil];
 }
 
-- (void)folderViewController:(FolderViewController*)folderviewController DidExitEditModeAnimate:(BOOL)animate
+- (void)folderViewController:(FolderViewController *)folderviewController DidExitEditModeAnimate:(BOOL)animate
 {
-    [folderviewController editActionTriggeredAnimate:NO];
     [UIView animateWithDuration:0.3
                           delay:0
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
                         [self showTabBar:_tabBarController];
                      }
-                     completion:^(BOOL finished){}];
+                     completion:nil];
+}
+
+
+- (void)folderViewController:(FolderViewController *)sender selectedFile:(id<File>)file
+{
+    [_delegate fileObjectSelected:file];
+}
+
+- (void)folderViewController:(FolderViewController *)sender selectedFolder:(id<Folder>)folder
+{
+    [_delegate fileObjectSelected:folder];
 }
 
 # pragma mark - tmp code

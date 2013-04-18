@@ -78,8 +78,7 @@
     [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft animated:NO];
 
     ApplicationState *appState = [ApplicationState sharedApplicationState];
-    [self fileSelected:[appState currentFileOpened]];
-    [self folderSelected:[appState currentFolderOpened]];
+    [self openIn:[appState currentFileOpened]];
 }
 
 - (void)openIn:(id<File>)file
@@ -122,8 +121,8 @@
 // Shows the file using the CodeViewController
 - (void)fileSelected:(id<File>)file
 {
- ApplicationState *appState = [ApplicationState sharedApplicationState];
-  [appState setCurrentFileOpened:file];
+    ApplicationState *appState = [ApplicationState sharedApplicationState];
+    [appState setCurrentFileOpened:file];
     [_codeViewController showFile:file];
 }
 
@@ -132,7 +131,6 @@
 {
     ApplicationState *appState = [ApplicationState sharedApplicationState];
     [appState setCurrentFolderOpened:folder];
-    [_leftViewController navigateTo:folder];
 }
 
 #pragma mark - UISpiltViewControllerDelegate Methods
