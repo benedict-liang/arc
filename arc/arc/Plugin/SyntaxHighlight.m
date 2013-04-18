@@ -564,7 +564,6 @@
         _matchesDone = YES;
     }
     
-    [self applyStylesTo:output withTheme:theme];
     
     // folds. temporarily here
     NSString* foldStart = [_bundle objectForKey:@"foldingStartMarker"];
@@ -576,13 +575,12 @@
                                             foldEnd:foldEnd
                                          skipRanges:[self rangeArrayForMatches:overlapMatches]
                                            delegate:self];
-//        NSLog(@"%@",_foldTree);
     }
-    
     
     // tell SH factory to remove self from thread pool.
     [_factory removeFromThreadPool:self];
-    
+
+    [self applyStylesTo:output withTheme:theme];
     [self updateView:output withTheme:theme];
 }
 
@@ -592,9 +590,9 @@
     _matchesDone = NO;
 }
 
--(void)testFoldsOnFoldRanges:(NSArray*)fR
-                  foldStarts:(NSArray*)fS
-                    foldEnds:(NSArray*)fE
+- (void)testFoldsOnFoldRanges:(NSArray*)fR
+                   foldStarts:(NSArray*)fS
+                     foldEnds:(NSArray*)fE
 {
  
     for (NSValue*v in fR) {
@@ -617,7 +615,8 @@
     }
     
 }
-- (NSArray*)rangeArrayForMatches:(NSDictionary*)matches {
+- (NSArray *)rangeArrayForMatches:(NSDictionary*)matches
+{
     NSMutableArray* res = [NSMutableArray array];
     
     for (NSString* scope in matches) {

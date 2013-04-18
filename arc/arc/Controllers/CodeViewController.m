@@ -497,6 +497,7 @@
     for (UIGestureRecognizer *g in [cell gestureRecognizers]) {
         [cell removeGestureRecognizer:g];
     }
+
     if ([_foldStartLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
         [cell setFolding];
     } else {
@@ -506,6 +507,7 @@
     if ([self activeFoldsContainsStartLine:indexPath.row]) {
         [cell activeFolding];
     }
+
     if ([self activeFoldsContainsLine:indexPath.row]) {
         cell.hidden = YES;
         return cell;
@@ -521,9 +523,7 @@
     [[UITapGestureRecognizer alloc]
      initWithTarget:self
      action:@selector(foldForGesture:)];
-    
     doubleTapGesture.numberOfTapsRequired = 2;
-    
     [cell addGestureRecognizer:doubleTapGesture];
 
     return cell;
@@ -655,11 +655,13 @@
 }
 
 #pragma mark - Folding
+
 - (void)foldForGesture:(UIGestureRecognizer *)gesture
 {
     if (!_activeFolds) {
         _activeFolds = [NSMutableDictionary dictionary];
     }
+
     CFIndex index = [self indexOfStringAtGesture:gesture];
     int lineNumber = [self lineNumberForIndex:index];
     if (lineNumber == NSNotFound) {
