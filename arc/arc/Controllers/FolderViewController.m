@@ -67,7 +67,6 @@
     // If we're allowed to edit, show the edit button.
     if (_isEditAllowed) {
         [[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
-        [[self tableView] setAllowsMultipleSelectionDuringEditing:YES];
         
         // Create the delete and move buttons.
         _deleteButton = [[UIBarButtonItem alloc] initWithTitle:@"Delete"
@@ -270,6 +269,7 @@
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];
+    [[self tableView] setAllowsMultipleSelectionDuringEditing:editing];
     _editSelectedItems = [NSMutableArray array];
     if (editing) {
         [_delegate folderViewController:self DidEnterEditModeAnimate:animated];
