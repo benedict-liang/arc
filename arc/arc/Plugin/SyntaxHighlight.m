@@ -561,20 +561,18 @@
                           patterns:patterns
                             output:output];
     
+        NSString* foldStart = [_bundle objectForKey:@"foldingStartMarker"];
+        NSString* foldEnd = [_bundle objectForKey:@"foldingStopMarker"];
+        
+        if (foldStart && foldEnd) {
+            _foldTree = [CodeFolding foldTreeForContent:_content
+                                              foldStart:foldStart
+                                                foldEnd:foldEnd
+                                             skipRanges:[self rangeArrayForMatches:overlapMatches]
+                                               delegate:self];
+        }
+
         _matchesDone = YES;
-    }
-    
-    
-    // folds. temporarily here
-    NSString* foldStart = [_bundle objectForKey:@"foldingStartMarker"];
-    NSString* foldEnd = [_bundle objectForKey:@"foldingStopMarker"];
-    
-    if (foldStart && foldEnd) {
-        _foldTree = [CodeFolding foldTreeForContent:_content
-                                          foldStart:foldStart
-                                            foldEnd:foldEnd
-                                         skipRanges:[self rangeArrayForMatches:overlapMatches]
-                                           delegate:self];
     }
     
     // tell SH factory to remove self from thread pool.
@@ -615,6 +613,7 @@
     }
     
 }
+
 - (NSArray *)rangeArrayForMatches:(NSDictionary*)matches
 {
     NSMutableArray* res = [NSMutableArray array];

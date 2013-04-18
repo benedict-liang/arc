@@ -21,8 +21,6 @@
 @implementation CodeLineCell
 @synthesize line = _line;
 @synthesize lineNumberWidth = _lineNumberWidth;
-@synthesize foldingMarkerWidth = _foldingMarkerWidth;
-@synthesize padding = _padding;
 @synthesize lineNumber = _lineNumber;
 @synthesize showLineNumber = _showLineNumber;
 
@@ -35,8 +33,6 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         _lineNumberWidth = SIZE_CODEVIEW_LINENUMBERS_MIN + SIZE_CODEVIEW_MARGIN_LINENUMBERS;
         _showLineNumber = YES;
-        _foldingMarkerWidth = 15;
-        _padding = 5;
         _lineNumberLabel = [[UILabel alloc] init];
         _lineNumberLabel.backgroundColor = [UIColor clearColor];
         _lineNumberLabel.textAlignment = NSTextAlignmentRight;
@@ -48,9 +44,9 @@
         _codeLine.numberOfLines = 1;
         [self.contentView addSubview:_codeLine];
         
-        _foldingMarker = [[UILabel alloc] init];
-        _foldingMarker.backgroundColor = [UIColor clearColor];
-        [self.contentView addSubview:_foldingMarker];
+//        _foldingMarker = [[UILabel alloc] init];
+//        _foldingMarker.backgroundColor = [UIColor clearColor];
+//        [self.contentView addSubview:_foldingMarker];
         
         self.contentView.backgroundColor = [UIColor clearColor];
         self.backgroundColor = [UIColor clearColor];
@@ -62,7 +58,7 @@
 {
     _foregroundColor = foregroundColor;
     _lineNumberLabel.textColor = _foregroundColor;
-    _foldingMarker.textColor = _foregroundColor;
+//    _foldingMarker.textColor = _foregroundColor;
 }
 
 - (void)setFontFamily:(NSString*)fontFamily FontSize:(int)fontSize
@@ -70,7 +66,7 @@
     _fontFamily = fontFamily;
     _fontSize = fontSize;
     _lineNumberLabel.font = [UIFont fontWithName:_fontFamily size:_fontSize];
-    _foldingMarker.font = [UIFont fontWithName:_fontFamily size:_fontSize];
+//    _foldingMarker.font = [UIFont fontWithName:_fontFamily size:_fontSize];
 }
 
 - (void)setLine:(NSAttributedString *)line
@@ -110,20 +106,20 @@
         _lineNumberLabel.frame =
         CGRectMake(0, 0, _lineNumberWidth, self.contentView.bounds.size.height);
         
-        _foldingMarker.frame =
-        CGRectMake(_lineNumberWidth, 0, _foldingMarkerWidth, self.contentView.bounds.size.height);
+//        _foldingMarker.frame =
+//        CGRectMake(_lineNumberWidth, 0, _foldingMarkerWidth, self.contentView.bounds.size.height);
 
         _codeLine.frame =
-        CGRectMake(_lineNumberWidth + _foldingMarkerWidth + SIZE_CODEVIEW_PADDING_LINENUMBERS,
+        CGRectMake(_lineNumberWidth + SIZE_CODEVIEW_PADDING_LINENUMBERS,
                    0,
                    self.contentView.bounds.size.width - _lineNumberWidth - SIZE_CODEVIEW_PADDING_LINENUMBERS,
                    self.contentView.bounds.size.height);
     } else {
-        _foldingMarker.frame =
-        CGRectMake(SIZE_CODEVIEW_PADDING_LINENUMBERS, 0, _foldingMarkerWidth, self.contentView.bounds.size.height);
+//        _foldingMarker.frame =
+//        CGRectMake(SIZE_CODEVIEW_PADDING_LINENUMBERS, 0, _foldingMarkerWidth, self.contentView.bounds.size.height);
         
         _codeLine.frame =
-        CGRectMake(SIZE_CODEVIEW_PADDING_LINENUMBERS + _foldingMarkerWidth,
+        CGRectMake(SIZE_CODEVIEW_PADDING_LINENUMBERS,
                    0,
                    self.contentView.bounds.size.width - SIZE_CODEVIEW_PADDING_LINENUMBERS,
                    self.contentView.bounds.size.height);
@@ -131,6 +127,12 @@
     [_codeLine sizeToFit];
 }
 
+- (UIView *)backgroundView
+{
+    return nil;
+}
+
+# pragma mark - folding
 
 - (void)setFolding
 {
@@ -145,11 +147,6 @@
 - (void)clearFolding
 {
     _foldingMarker.text = @"";
-}
-
-- (UIView *)backgroundView
-{
-    return nil;
 }
 
 @end

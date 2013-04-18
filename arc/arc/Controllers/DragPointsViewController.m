@@ -51,7 +51,6 @@
 
 - (id)initWithIndexPath:(NSIndexPath *)indexPath
          withTouchPoint:(CGPoint)touchPoint
-              andOffset:(int)offset
            forTableView:(UITableView *)tableView
       andViewController:(UIViewController *)viewController
 {
@@ -605,7 +604,7 @@
 - (int)getTotalGapForCellAtIndexPath:(NSIndexPath *)indexPath
 {
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:indexPath];
-    int totalGap = cell.lineNumberWidth + cell.foldingMarkerWidth + cell.padding;
+    int totalGap = cell.lineNumberWidth + SIZE_CODEVIEW_PADDING_LINENUMBERS;
     return totalGap;
 }
 

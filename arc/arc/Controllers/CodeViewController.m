@@ -497,34 +497,34 @@
     for (UIGestureRecognizer *g in [cell gestureRecognizers]) {
         [cell removeGestureRecognizer:g];
     }
-
-    if ([_foldStartLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
-        [cell setFolding];
-    } else {
-        [cell clearFolding];
-    }
     
-    if ([self activeFoldsContainsStartLine:indexPath.row]) {
-        [cell activeFolding];
-    }
-
-    if ([self activeFoldsContainsLine:indexPath.row]) {
-        cell.hidden = YES;
-        return cell;
-    }
-
     // Long Press Gesture for text selection
     UILongPressGestureRecognizer *longPressGesture =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                   action:@selector(selectText:)];
     [cell addGestureRecognizer:longPressGesture];
     
-    UITapGestureRecognizer *doubleTapGesture =
-    [[UITapGestureRecognizer alloc]
-     initWithTarget:self
-     action:@selector(foldForGesture:)];
-    doubleTapGesture.numberOfTapsRequired = 2;
-    [cell addGestureRecognizer:doubleTapGesture];
+//    if ([_foldStartLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
+//        [cell setFolding];
+//    } else {
+//        [cell clearFolding];
+//    }
+//    
+//    if ([self activeFoldsContainsStartLine:indexPath.row]) {
+//        [cell activeFolding];
+//    }
+//
+//    if ([self activeFoldsContainsLine:indexPath.row]) {
+//        cell.hidden = YES;
+//        return cell;
+//    }
+//
+//    UITapGestureRecognizer *doubleTapGesture =
+//    [[UITapGestureRecognizer alloc]
+//     initWithTarget:self
+//     action:@selector(foldForGesture:)];
+//    doubleTapGesture.numberOfTapsRequired = 2;
+//    [cell addGestureRecognizer:doubleTapGesture];
 
     return cell;
 }
@@ -537,7 +537,7 @@
     return _tableView.rowHeight;
 }
 
-- (void)selectText:(UILongPressGestureRecognizer*)gesture
+- (void)selectText:(UILongPressGestureRecognizer *)gesture
 {
 
     if ([gesture state] == UIGestureRecognizerStateBegan) {
@@ -548,13 +548,12 @@
         CodeLineCell *cell = (CodeLineCell*)gesture.view;
 
         // Should only consider point.x
-        CGPoint point = [gesture locationInView:gesture.view];
+        CGPoint point = [gesture locationInView:_tableView];
         NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
     
         // Add drag points subview in CodeViewController
         _dragPointVC = [[DragPointsViewController alloc] initWithIndexPath:indexPath
                                                             withTouchPoint:point
-                                                                 andOffset:cell.lineNumberWidth
                                                               forTableView:_tableView
                                                          andViewController:self];
         [_tableView addSubview:_dragPointVC.view];

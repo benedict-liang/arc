@@ -14,17 +14,18 @@
 @property (nonatomic, strong) NSAttributedString *line;
 @property (nonatomic) NSIndexPath *indexPath;
 @property (nonatomic) BOOL showLineNumber;
-@property (nonatomic) int lineNumber;
 @property (nonatomic) int lineNumberWidth;
-@property (nonatomic) int foldingMarkerWidth;
-@property (nonatomic) int padding;
+@property (nonatomic) int lineNumber;
 @property (nonatomic) NSRange stringRange;
 
 + (int)calcLineNumberWidthForMaxLineNumber:(int)lineNumber
                                 FontFamily:(NSString *)fontFamily
                                   FontSize:(int)fontSize;
+
 - (void)setForegroundColor:(UIColor*)foregroundColor;
 - (void)setFontFamily:(NSString*)fontFamily FontSize:(int)fontSize;
+
+// Folding
 - (void)setFolding;
 - (void)clearFolding;
 - (void)activeFolding;
