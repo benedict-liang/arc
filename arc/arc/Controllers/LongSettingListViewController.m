@@ -21,6 +21,7 @@
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
         _properties = properties;
         _delegate = delegate;
+        self.title = [_properties valueForKey:SECTION_HEADING];
         _options = [_properties valueForKey:SECTION_OPTIONS];
     }
     return self;
