@@ -202,7 +202,9 @@ shouldSelectViewController:(UIViewController *)viewController
 - (void)tabBarController:(UITabBarController *)tabBarController
  didSelectViewController:(UIViewController *)viewController
 {
-
+    if ([viewController isEqual:_settingsNavigationViewController]) {
+        [_settingsNavigationViewController popToRootViewControllerAnimated:YES];
+    }
 }
 
 - (void)showSettings:(id)sender
