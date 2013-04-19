@@ -470,4 +470,9 @@ titleForHeaderInSection:(NSInteger)section {
     [self refreshFolderContents];
     [_addFolderPopoverController dismissPopoverAnimated:YES];
 }
+
+- (void)downloadedFileFromPicker:(id)sender
+{
+    
+}
 @end
