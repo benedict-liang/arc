@@ -301,7 +301,7 @@
                                                 inSection:0];
     [_tableView scrollToRowAtIndexPath:indexPath
                       atScrollPosition:UITableViewScrollPositionMiddle
-                              animated:YES];
+                              animated:NO];
 }
 
 - (void)removeBackgroundColorForSetting:(NSString*)setting {
