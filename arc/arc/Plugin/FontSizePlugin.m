@@ -21,7 +21,7 @@
     self = [super init];
     if (self) {
         _setting = @"fontSize";
-        _defaultFontSize = @"14";
+        _defaultFontSize = @"30";
         // Setup the dictionary to be returned.
         _properties = @{
                         PLUGIN_TITLE: @"Font Size",
@@ -29,20 +29,20 @@
                         PLUGIN_OPTIONS: @[
                                 @{
                                     PLUGIN_OPTION_LABEL: @"Smallest",
-                                    PLUGIN_OPTION_VALUE: @"Smallest"
+                                    PLUGIN_OPTION_VALUE: @"10"
                                     },
 
                                 @{
                                     PLUGIN_OPTION_LABEL: @"Tiny",
-                                    PLUGIN_OPTION_VALUE: @"Tiny"
+                                    PLUGIN_OPTION_VALUE: @"12"
                                     },
                                 @{
                                     PLUGIN_OPTION_LABEL: @"Smaller",
-                                    PLUGIN_OPTION_VALUE: @"Smaller"
+                                    PLUGIN_OPTION_VALUE: @"18"
                                     },
                                 @{
                                     PLUGIN_OPTION_LABEL: @"Small",
-                                    PLUGIN_OPTION_VALUE: @"Small"
+                                    PLUGIN_OPTION_VALUE: @"20"
                                     },
                                 @{
                                     PLUGIN_OPTION_LABEL: @"Medium",
@@ -50,19 +50,19 @@
                                     },
                                 @{
                                     PLUGIN_OPTION_LABEL: @"Large",
-                                    PLUGIN_OPTION_VALUE: @"Large"
+                                    PLUGIN_OPTION_VALUE: @"35"
                                     },
                                 @{
                                     PLUGIN_OPTION_LABEL: @"Larger",
-                                    PLUGIN_OPTION_VALUE: @"Larger"
+                                    PLUGIN_OPTION_VALUE: @"38"
                                     },
                                 @{
                                     PLUGIN_OPTION_LABEL: @"Giant",
-                                    PLUGIN_OPTION_VALUE: @"Giant"
+                                    PLUGIN_OPTION_VALUE: @"41"
                                     },
                                 @{
                                     PLUGIN_OPTION_LABEL: @"Largest",
-                                    PLUGIN_OPTION_VALUE: @"Largest"
+                                    PLUGIN_OPTION_VALUE: @"45"
                                     }
                                 ]
                         };
