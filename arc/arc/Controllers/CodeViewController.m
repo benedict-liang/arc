@@ -114,7 +114,7 @@
 
 - (void)showFile:(id<File>)file
 {
-    if ([[file path] isEqual:[_currentFile path]]) {
+    if ([[file identifier] isEqual:[_currentFile identifier]]) {
         return;
     }
     
@@ -279,7 +279,7 @@
                  WithStyle:(NSDictionary *)style
                    AndTree:(FoldTree *)foldTree
 {
-    if ([[file path] isEqual:[_currentFile path]]) {
+    if ([[file identifier] isEqual:[_currentFile identifier]]) {
         _arcAttributedString = arcAttributedString;
         _foldTree = foldTree;
         _foldStartLines = [self linesContainingRanges:[_foldTree foldStartRanges]];

@@ -24,7 +24,7 @@
     NSData *receivedData = [operation data];
     
     NSString *fileName = [_file name];
-    NSString *filePath = [[_folder path] stringByAppendingPathComponent:fileName];
+    NSString *filePath = [[_folder identifier] stringByAppendingPathComponent:fileName];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     [fileManager createFileAtPath:filePath contents:receivedData attributes:nil];

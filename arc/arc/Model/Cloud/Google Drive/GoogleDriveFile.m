@@ -10,7 +10,7 @@
 
 @implementation GoogleDriveFile
 
-@synthesize name=_name, identifier=_identifier, size=_size, extension=_extension;
+@synthesize name=_name, identifier=_identifier, parent=_parent, size=_size, extension=_extension, isRemovable=_isRemovable, lastModified=_lastModified;
 
 - (id)initWithName:(NSString *)name identifier:(NSString *)identifier size:(float)size
 {
@@ -21,6 +21,11 @@
         _extension = [name pathExtension];
     }
     return self;
+}
+
+- (NSString *)contents
+{
+    return @"";
 }
 
 @end

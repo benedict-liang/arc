@@ -104,7 +104,7 @@
     }
     [_threadPool removeAllObjects];
 
-    SyntaxHighlight* sh = [_cache objectForKey:[file path]];
+    SyntaxHighlight* sh = [_cache objectForKey:[file identifier]];
     if (!sh) {
         sh = [[SyntaxHighlight alloc] initWithFile:file
                                        andDelegate:delegate];
@@ -114,7 +114,7 @@
         sh.factory = self;
 
         // add to cache
-        [_cache setObject:sh forKey:[file path]];
+        [_cache setObject:sh forKey:[file identifier]];
     }
     
     if (sh.bundle) {

@@ -11,6 +11,7 @@
 static GoogleDriveServiceManager *sharedServiceManager = nil;
 
 @implementation GoogleDriveServiceManager
+@synthesize delegate=_delegate;
 
 - (BOOL)isLoggedIn
 {

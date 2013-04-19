@@ -17,7 +17,7 @@ static RootFolder *sharedRootFolder = nil;
 @implementation RootFolder
 
 // Synthesize properties from protocol.
-@synthesize name=_name, path=_path, parent=_parent, isRemovable=_isRemovable, size=_size;
+@synthesize name=_name, identifier=_path, parent=_parent, isRemovable=_isRemovable, size=_size;
 
 + (RootFolder *)sharedRootFolder
 {
@@ -32,7 +32,7 @@ static RootFolder *sharedRootFolder = nil;
     if (self = [super init]) {
         LocalRootFolder *localRoot = [LocalRootFolder sharedLocalRootFolder];
         _name = [localRoot name];
-        _path = [localRoot path];
+        _path = [localRoot identifier];
         _parent = nil;
         _isRemovable = NO;
     }
@@ -60,7 +60,7 @@ static RootFolder *sharedRootFolder = nil;
 }
 
 // Initialises this object with the given name, path, and parent.
-- (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent
+- (id)initWithName:(NSString *)name identifier:(NSString *)path parent:(id<FileSystemObject>)parent
 {
     // RootFolder can't be initialised manually.
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"RootFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];

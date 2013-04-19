@@ -11,10 +11,10 @@
 @implementation DropBoxFolder
 
 // Synthesize protocol properties.
-@synthesize name=_name, path=_path, parent=_parent, isRemovable=_isRemovable, size=_size;
+@synthesize name=_name, identifier=_path, parent=_parent, isRemovable=_isRemovable, size=_size;
 
 // Initialises this object with the given name, path, and parent.
-- (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent
+- (id)initWithName:(NSString *)name identifier:(NSString *)path parent:(id<FileSystemObject>)parent
 {
     if (self = [super init]) {
         _name = name;
@@ -42,9 +42,9 @@
             
             id<FileSystemObject>currentObject;
             if ([currentInfo isFolder]) {
-                currentObject = [[DropBoxFolder alloc] initWithName:currentName path:currentPathString parent:self];
+                currentObject = [[DropBoxFolder alloc] initWithName:currentName identifier:currentPathString parent:self];
             } else {
-                currentObject = [[DropBoxFile alloc] initWithName:currentName path:currentPathString parent:self];
+                currentObject = [[DropBoxFile alloc] initWithName:currentName identifier:currentPathString parent:self];
             }
             [contents addObject:currentObject];
         }
@@ -69,7 +69,7 @@
 // Returns YES if successful, NO otherwise.
 - (BOOL)takeFileSystemObject:(id<FileSystemObject>)target
 {
-    DBPath *targetPath = [[DBPath alloc] initWithString:[target path]];
+    DBPath *targetPath = [[DBPath alloc] initWithString:[target identifier]];
     if (targetPath) {
         DBPath *ourPath = [[DBPath alloc] initWithString:_path];
         DBPath *newPath = [ourPath childPath:[targetPath name]];
@@ -80,7 +80,7 @@
         BOOL isMoveSuccessful = [filesystem movePath:targetPath toPath:newPath error:&error];
         if (isMoveSuccessful) {
             [target setParent:self];
-            [target setPath:[newPath stringValue]];
+            [target setIdentifier:[newPath stringValue]];
         } else {
             NSLog(@"%@", error);
         }
@@ -116,7 +116,7 @@
     BOOL isCreateSuccessful = [filesystem createFolder:childPath error:&error];
 
     if (isCreateSuccessful) {
-        DropBoxFolder *newFolder = [[DropBoxFolder alloc] initWithName:name path:[childPath stringValue] parent:self];
+        DropBoxFolder *newFolder = [[DropBoxFolder alloc] initWithName:name identifier:[childPath stringValue] parent:self];
         return newFolder;
     } else {
         NSLog(@"%@", error);
@@ -127,7 +127,7 @@
 // Renames this Folder to the given name.
 - (BOOL)rename:(NSString *)name
 {
-    DBPath *parentPath = [[DBPath alloc] initWithString:[_parent path]];
+    DBPath *parentPath = [[DBPath alloc] initWithString:[_parent identifier]];
     DBPath *newPath = [parentPath childPath:name];
     DBPath *ourPath = [[DBPath alloc] initWithString:_path];
     
@@ -165,7 +165,7 @@
 // at that path.
 - (id<FileSystemObject>)objectAtPath:(NSString *)path
 {
-    NSString *commonPrefix = [[self path] commonPrefixWithString:path options:NSCaseInsensitiveSearch];
+    NSString *commonPrefix = [[self identifier] commonPrefixWithString:path options:NSCaseInsensitiveSearch];
     NSString *newPathString = [path substringFromIndex:[commonPrefix length]];
     
     NSArray *pathComponents = [newPathString pathComponents];

@@ -76,7 +76,7 @@
 + (BOOL)isEqual:(id<FileSystemObject>)fileSystemObject1
             and:(id<FileSystemObject>)fileSystemObject2
 {
-    return [[fileSystemObject1 path] isEqualToString:[fileSystemObject2 path]];
+    return [[fileSystemObject1 identifier] isEqualToString:[fileSystemObject2 identifier]];
 }
 
 + (UIBarButtonItem *)flexibleSpace

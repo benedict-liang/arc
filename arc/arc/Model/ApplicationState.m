@@ -41,12 +41,12 @@ static ApplicationState *sharedApplicationState = nil;
         
         // If we have no folder path, we should set a default.
         if (!folderPath) {
-            folderPath = [[LocalRootFolder sharedLocalRootFolder] path];
+            folderPath = [[LocalRootFolder sharedLocalRootFolder] identifier];
         }
         
         // TEMPORARILY set a default for the current file.
         if (!filePath) {
-            filePath = [[ApplicationState getSampleFile] path];
+            filePath = [[ApplicationState getSampleFile] identifier];
         }
         
         _currentFolderOpened = (id<Folder>)[[RootFolder sharedRootFolder] objectAtPath:folderPath];
@@ -59,14 +59,14 @@ static ApplicationState *sharedApplicationState = nil;
 - (void)setCurrentFileOpened:(id<File>)currentFileOpened
 {
     _currentFileOpened = currentFileOpened;
-    [self setSetting:[currentFileOpened path]
+    [self setSetting:[currentFileOpened identifier]
               forKey:KEY_CURRENT_FILE];
 }
 
 - (void)setCurrentFolderOpened:(id<Folder>)currentFolderOpened
 {
     _currentFolderOpened = currentFolderOpened;
-    [self setSetting:[currentFolderOpened path]
+    [self setSetting:[currentFolderOpened identifier]
               forKey:KEY_CURRENT_FOLDER];
 }
 
@@ -129,10 +129,10 @@ static ApplicationState *sharedApplicationState = nil;
     NSMutableDictionary *savedState = [[self retrieveSavedState] mutableCopy];
     
     // Set our application state.
-    [savedState setValue:[_currentFolderOpened path]
+    [savedState setValue:[_currentFolderOpened identifier]
                   forKey:KEY_CURRENT_FOLDER];
     
-    [savedState setValue:[_currentFileOpened path]
+    [savedState setValue:[_currentFileOpened identifier]
                   forKey:KEY_CURRENT_FILE];
     
     // Save our settings.

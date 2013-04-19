@@ -15,10 +15,9 @@
 // The name of this object.
 @property (strong, nonatomic) NSString *name;
 
-// The path leading to this object.
 // This should be able to be used to reconstruct whatever is needed
 // to actually access the file/folder.
-@property (strong, nonatomic) NSString *path;
+@property (strong, nonatomic) NSString *identifier;
 
 // The parent of this object.
 @property (weak, nonatomic) id<FileSystemObject> parent;
@@ -30,15 +29,16 @@
 // within, Files their size in bytes.
 @property float size;
 
-// Initialises this object with the given name, path, and parent.
-- (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent;
-
 // Returns the contents of this object.
 - (id<NSObject>)contents;
 
+@optional
 // Removes this object.
 // Returns YES if successful, NO otherwise.
 // If NO is returned, the state of the object or its contents is unstable.
 - (BOOL)remove;
+
+// Initialises this object with the given name, identifier, and parent.
+- (id)initWithName:(NSString *)name identifier:(NSString *)identifier parent:(id<FileSystemObject>)parent;
 
 @end

@@ -38,11 +38,11 @@
         NSString *inboxName = [inboxURL lastPathComponent];
         NSString *inboxPath = [inboxURL path];
         LocalFolder *inboxFolder = [[LocalFolder alloc] initWithName:inboxName
-                                                                path:inboxPath
+                                                                identifier:inboxPath
                                                               parent:[LocalRootFolder sharedLocalRootFolder]];
 
         LocalFile *receivedFile = [[LocalFile alloc] initWithName:[url lastPathComponent]
-                                                             path:[url path]
+                                                             identifier:[url path]
                                                            parent:inboxFolder];
         
         // Open file
@@ -73,7 +73,7 @@
     // Check if we have our appState property list.
     // If not, move it into the Documents library.
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *documentsPath = [[LocalRootFolder sharedLocalRootFolder] path];
+    NSString *documentsPath = [[LocalRootFolder sharedLocalRootFolder] identifier];
     NSString *appStatePath = [documentsPath stringByAppendingPathComponent:FILE_APP_STATE];
     if (![fileManager fileExistsAtPath:appStatePath]) {
         NSURL *plistURL = [[NSBundle mainBundle] URLForResource:FILE_APP_STATE withExtension:nil];

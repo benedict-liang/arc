@@ -205,7 +205,7 @@ titleForHeaderInSection:(NSInteger)section {
     
     [cell setFileSystemObject:fileObject];
     
-    if ([[fileObject path] isEqualToString:[[[self delegate] currentfile] path]]) {
+    if ([[fileObject identifier] isEqualToString:[[[self delegate] currentfile] identifier]]) {
         [tableView selectRowAtIndexPath:indexPath
                                animated:YES
                          scrollPosition:UITableViewScrollPositionMiddle];
@@ -472,5 +472,10 @@ titleForHeaderInSection:(NSInteger)section {
     [_folder createFolderWithName:name];
     [self refreshFolderContents];
     [_addFolderPopoverController dismissPopoverAnimated:YES];
+}
+
+- (void)downloadedFileFromPicker:(id)sender
+{
+    
 }
 @end
