@@ -10,7 +10,7 @@
 #import "FileSystemObject.h"
 @protocol Folder <FileSystemObject>
 
-@required
+@optional
 // Moves the given FileSystemObject to this Folder.
 // The given file must be of the same "type" as this Folder
 // (e.g. iOS file system, DropBox, etc.)
