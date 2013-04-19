@@ -146,8 +146,11 @@ static ApplicationState *sharedApplicationState = nil;
 
 - (void)registerPlugin:(id<PluginDelegate>)plugin
 {
-    [self setSetting:[plugin defaultValue]
-              forKey:[plugin setting]];
+    // Only set default setting if setting value is not set
+    if (![self settingForKey:[plugin setting]]) {
+        [self setSetting:[plugin defaultValue]
+                  forKey:[plugin setting]];
+    }
 }
 
 // Returns a sample file.
