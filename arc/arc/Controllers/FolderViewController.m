@@ -29,6 +29,7 @@
 @property CreateFolderViewController *createFolderController;
 @property UIPopoverController *addFolderPopoverController;
 @property UIBarButtonItem *addItemButton;
+@property UIActionSheet *addItemActionSheet;
 
 // Cloud Controllers
 @property SkyDriveServiceManager *skyDriveManager;
@@ -403,22 +404,24 @@ titleForHeaderInSection:(NSInteger)section {
     if ([_addFolderPopoverController isPopoverVisible]) {
         [_addFolderPopoverController dismissPopoverAnimated:YES];
     }
-
-    UIActionSheet *addItemActionSheet;
-    
-    if ([_folder isKindOfClass:[DropBoxFolder class]]) {
-        addItemActionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                         delegate:self
-                                                cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New Folder", nil];
-    } else {
-        addItemActionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                            delegate:self
-                                                   cancelButtonTitle:@"Cancel"
-                                              destructiveButtonTitle:nil
-                                                   otherButtonTitles:@"New Folder", @"File from SkyDrive", @"File from Google Drive", nil];
+    if ([_addItemActionSheet isVisible]) {
+        [_addItemActionSheet dismissWithClickedButtonIndex:-1 animated:YES];
     }
-
-    [addItemActionSheet showFromBarButtonItem:_addItemButton animated:YES];
+    else {
+        if ([_folder isKindOfClass:[DropBoxFolder class]]) {
+            _addItemActionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                              delegate:self
+                                                     cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New Folder", nil];
+        } else {
+            _addItemActionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                              delegate:self
+                                                     cancelButtonTitle:@"Cancel"
+                                                destructiveButtonTitle:nil
+                                                     otherButtonTitles:@"New Folder", @"File from SkyDrive", @"File from Google Drive", nil];
+        }
+        
+        [_addItemActionSheet showFromBarButtonItem:_addItemButton animated:YES];
+    }
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
