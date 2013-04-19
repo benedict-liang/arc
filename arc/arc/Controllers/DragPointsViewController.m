@@ -577,7 +577,7 @@
                                                                (bottomCell.line));
     CFRange stringRangeForBottomRow = CTLineGetStringRange(bottomLineRef);
     CFIndex index = CTLineGetStringIndexForPosition(bottomLineRef, _lastCharacterCoordinates);
-    if (index < stringRangeForBottomRow.length) {
+    if (index < stringRangeForBottomRow.length - 1) {
         CGFloat offset = CTLineGetOffsetForStringIndex(bottomLineRef, index + 1, NULL);
         _nextLastCharacterCoordinates = CGPointMake(offset, 0);
     }
