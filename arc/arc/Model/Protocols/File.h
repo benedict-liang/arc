@@ -16,4 +16,7 @@
 // The extension of this file.
 @property (strong, nonatomic) NSString *extension;
 
+// The last modified date of this file.
+@property (strong, nonatomic) NSDate *lastModified;
+
 @end
