@@ -11,7 +11,7 @@
 @implementation LocalFolder
 
 // Synthesize properties from protocol.
-@synthesize name=_name, path=_path, parent=_parent, isRemovable=_isRemovable, size=_size;
+@synthesize name=_name, identifier=_path, parent=_parent, isRemovable=_isRemovable, size=_size;
 
 // Initialises this object with the given name, path, and parent.
 - (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent
@@ -73,14 +73,14 @@
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    if ([fileManager fileExistsAtPath:[target path]]) {
-        NSString *newTargetPath = [_path stringByAppendingPathComponent:[[target path] lastPathComponent]];
+    if ([fileManager fileExistsAtPath:[target identifier]]) {
+        NSString *newTargetPath = [_path stringByAppendingPathComponent:[[target identifier] lastPathComponent]];
         
         NSError *error;
-        BOOL isMoveSuccessful = [fileManager moveItemAtPath:[target path] toPath:newTargetPath error:&error];
+        BOOL isMoveSuccessful = [fileManager moveItemAtPath:[target identifier] toPath:newTargetPath error:&error];
         if (isMoveSuccessful) {
             [target setParent:self];
-            [target setPath:newTargetPath];
+            [target setIdentifier:newTargetPath];
         } else {
             NSLog(@"%@", error);
         }
@@ -128,7 +128,7 @@
 - (BOOL)rename:(NSString *)name
 {
     NSString *escapedName = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *newPath = [[_parent path] stringByAppendingPathComponent:escapedName];
+    NSString *newPath = [[_parent identifier] stringByAppendingPathComponent:escapedName];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
@@ -163,7 +163,7 @@
 // at that path.
 - (id<FileSystemObject>)objectAtPath:(NSString *)path
 {
-    NSString *commonPrefix = [[self path] commonPrefixWithString:path options:NSCaseInsensitiveSearch];
+    NSString *commonPrefix = [[self identifier] commonPrefixWithString:path options:NSCaseInsensitiveSearch];
     NSString *newPathString = [path substringFromIndex:[commonPrefix length]];
     
     NSArray *pathComponents = [newPathString pathComponents];

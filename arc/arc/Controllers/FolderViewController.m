@@ -204,7 +204,7 @@ titleForHeaderInSection:(NSInteger)section {
     
     [cell setFileSystemObject:fileObject];
     
-    if ([[fileObject path] isEqualToString:[[[self delegate] currentfile] path]]) {
+    if ([[fileObject identifier] isEqualToString:[[[self delegate] currentfile] identifier]]) {
         [tableView selectRowAtIndexPath:indexPath
                                animated:YES
                          scrollPosition:UITableViewScrollPositionMiddle];

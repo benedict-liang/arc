@@ -28,7 +28,7 @@
 {
     if (!error) {
         NSString *fileName = [_file name];
-        NSString *filePath = [[_folder path] stringByAppendingPathComponent:fileName];
+        NSString *filePath = [[_folder identifier] stringByAppendingPathComponent:fileName];
         
         NSFileManager *fileManager = [NSFileManager defaultManager];
         [fileManager createFileAtPath:filePath contents:data attributes:nil];

@@ -14,7 +14,7 @@
 @implementation DropBoxFile
 
 // Synthesize properties from protocol.
-@synthesize name=_name, path=_path, parent=_parent, extension=_extension, isRemovable=_isRemovable, size=_size;
+@synthesize name=_name, identifier=_path, parent=_parent, extension=_extension, isRemovable=_isRemovable, size=_size;
 
 // Initialises this object with the given name, path, and parent.
 - (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent

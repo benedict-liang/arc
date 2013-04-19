@@ -16,7 +16,7 @@
 @end
 
 @implementation SkyDriveFolder
-@synthesize name = _name, path = _path, parent = _parent, isRemovable = _isRemovable, delegate = _delegate, size = _size;
+@synthesize name = _name, identifier = _path, parent = _parent, isRemovable = _isRemovable, delegate = _delegate, size = _size;
 
 + (id<CloudFolder>)getRoot
 {

@@ -15,10 +15,9 @@
 // The name of this object.
 @property (strong, nonatomic) NSString *name;
 
-// The path leading to this object.
 // This should be able to be used to reconstruct whatever is needed
 // to actually access the file/folder.
-@property (strong, nonatomic) NSString *path;
+@property (strong, nonatomic) NSString *identifier;
 
 // The parent of this object.
 @property (weak, nonatomic) id<FileSystemObject> parent;
