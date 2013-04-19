@@ -647,7 +647,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
         return CGPointMake(0, 0);
     }
     else {
-        CGFloat offset = CTLineGetOffsetForStringIndex(lineRef, stringRangeForRow.length, NULL);
+        CGFloat offset = CTLineGetOffsetForStringIndex(lineRef, stringRangeForRow.length - 1, NULL);
         return CGPointMake(offset, 0);
     }
 }
