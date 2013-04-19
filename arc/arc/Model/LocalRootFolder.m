@@ -27,7 +27,7 @@ static LocalRootFolder *sharedLocalRootFolder = nil;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *documentsPath = [[fileManager URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil] path];
     
-    if (self = [super initWithName:FOLDER_ROOT path:documentsPath parent:nil]) {
+    if (self = [super initWithName:FOLDER_ROOT identifier:documentsPath parent:nil]) {
         _isRemovable = NO;
     }
     return self;

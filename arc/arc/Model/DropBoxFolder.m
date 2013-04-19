@@ -14,7 +14,7 @@
 @synthesize name=_name, identifier=_path, parent=_parent, isRemovable=_isRemovable, size=_size;
 
 // Initialises this object with the given name, path, and parent.
-- (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent
+- (id)initWithName:(NSString *)name identifier:(NSString *)path parent:(id<FileSystemObject>)parent
 {
     if (self = [super init]) {
         _name = name;
@@ -42,9 +42,9 @@
             
             id<FileSystemObject>currentObject;
             if ([currentInfo isFolder]) {
-                currentObject = [[DropBoxFolder alloc] initWithName:currentName path:currentPathString parent:self];
+                currentObject = [[DropBoxFolder alloc] initWithName:currentName identifier:currentPathString parent:self];
             } else {
-                currentObject = [[DropBoxFile alloc] initWithName:currentName path:currentPathString parent:self];
+                currentObject = [[DropBoxFile alloc] initWithName:currentName identifier:currentPathString parent:self];
             }
             [contents addObject:currentObject];
         }
@@ -116,7 +116,7 @@
     BOOL isCreateSuccessful = [filesystem createFolder:childPath error:&error];
 
     if (isCreateSuccessful) {
-        DropBoxFolder *newFolder = [[DropBoxFolder alloc] initWithName:name path:[childPath stringValue] parent:self];
+        DropBoxFolder *newFolder = [[DropBoxFolder alloc] initWithName:name identifier:[childPath stringValue] parent:self];
         return newFolder;
     } else {
         NSLog(@"%@", error);

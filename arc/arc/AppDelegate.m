@@ -38,11 +38,11 @@
         NSString *inboxName = [inboxURL lastPathComponent];
         NSString *inboxPath = [inboxURL path];
         LocalFolder *inboxFolder = [[LocalFolder alloc] initWithName:inboxName
-                                                                path:inboxPath
+                                                                identifier:inboxPath
                                                               parent:[LocalRootFolder sharedLocalRootFolder]];
 
         LocalFile *receivedFile = [[LocalFile alloc] initWithName:[url lastPathComponent]
-                                                             path:[url path]
+                                                             identifier:[url path]
                                                            parent:inboxFolder];
         
         // Open file

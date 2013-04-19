@@ -19,7 +19,7 @@
 
 + (GoogleDriveFolder *)getRoot
 {
-    return [[GoogleDriveFolder alloc] initWithName:@"Google Drive" path:@"root" parent:nil];
+    return [[GoogleDriveFolder alloc] initWithName:@"Google Drive" identifier:@"root" parent:nil];
 }
 
 - (id <FileSystemObject>)objectAtPath:(NSString *)path
@@ -57,7 +57,7 @@
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"GoogleDriveFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
 }
 
-- (id)initWithName:(NSString *)name path:(NSString *)path parent:(id <FileSystemObject>)parent
+- (id)initWithName:(NSString *)name identifier:(NSString *)path parent:(id <FileSystemObject>)parent
 {
     if (self = [super init]) {
         _name = name;
@@ -117,7 +117,7 @@
         if ([[fileName pathExtension] isEqualToString:@""]) {
             // No extension means this is a folder.
             // Note that folders are retrieved by their identifier, not the download URL.
-            GoogleDriveFolder *newFolder = [[GoogleDriveFolder alloc] initWithName:fileName path:[file identifier] parent:self];
+            GoogleDriveFolder *newFolder = [[GoogleDriveFolder alloc] initWithName:fileName identifier:[file identifier] parent:self];
             _contents = [_contents arrayByAddingObject:newFolder];
         } else {
             // There is a file extension. This must be a file.

@@ -14,7 +14,7 @@
 @synthesize name=_name, identifier=_path, parent=_parent, isRemovable=_isRemovable, size=_size;
 
 // Initialises this object with the given name, path, and parent.
-- (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent
+- (id)initWithName:(NSString *)name identifier:(NSString *)path parent:(id<FileSystemObject>)parent
 {
     if (self = [super init]) {
         _name = name;
@@ -48,9 +48,9 @@
             BOOL isCurrentPathDirectory;
             [fileManager fileExistsAtPath:currentPath isDirectory:&isCurrentPathDirectory];
             if (isCurrentPathDirectory) {
-                retrievedObject = [[LocalFolder alloc] initWithName:readableName path:currentPath parent:self];
+                retrievedObject = [[LocalFolder alloc] initWithName:readableName identifier:currentPath parent:self];
             } else {
-                retrievedObject = [[LocalFile alloc] initWithName:readableName path:currentPath parent:self];
+                retrievedObject = [[LocalFile alloc] initWithName:readableName identifier:currentPath parent:self];
             }
             [contents addObject:retrievedObject];
         }
@@ -116,7 +116,7 @@
     BOOL isCreateSuccessful = [fileManager createDirectoryAtPath:newFolderPath withIntermediateDirectories:YES attributes:nil error:&error];
    
     if (isCreateSuccessful) {
-        LocalFolder *newFolder = [[LocalFolder alloc] initWithName:name path:newFolderPath parent:self];
+        LocalFolder *newFolder = [[LocalFolder alloc] initWithName:name identifier:newFolderPath parent:self];
         return newFolder;
     } else {
         NSLog(@"%@", error);

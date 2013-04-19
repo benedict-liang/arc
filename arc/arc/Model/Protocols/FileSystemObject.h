@@ -38,7 +38,7 @@
 // If NO is returned, the state of the object or its contents is unstable.
 - (BOOL)remove;
 
-// Initialises this object with the given name, path, and parent.
-- (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent;
+// Initialises this object with the given name, identifier, and parent.
+- (id)initWithName:(NSString *)name identifier:(NSString *)identifier parent:(id<FileSystemObject>)parent;
 
 @end

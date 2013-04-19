@@ -20,7 +20,7 @@
 
 + (id<CloudFolder>)getRoot
 {
-    return [[SkyDriveFolder alloc] initWithName:@"SkyDrive" path:SKYDRIVE_STRING_ROOT_FOLDER parent:nil];
+    return [[SkyDriveFolder alloc] initWithName:@"SkyDrive" identifier:SKYDRIVE_STRING_ROOT_FOLDER parent:nil];
 }
 
 - (id <FileSystemObject>)objectAtPath:(NSString *)path
@@ -58,7 +58,7 @@
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"SkyDriveFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
 }
 
-- (id)initWithName:(NSString *)name path:(NSString *)path parent:(id <FileSystemObject>)parent
+- (id)initWithName:(NSString *)name identifier:(NSString *)path parent:(id <FileSystemObject>)parent
 {
     if (self = [super init]) {
         _name = name;
@@ -116,7 +116,7 @@
                 SkyDriveFile *newFile = [[SkyDriveFile alloc] initWithName:name identifier:identifier size:[size floatValue]];
                 _contents = [_contents arrayByAddingObject:newFile];
             } else if ([type isEqualToString:@"folder"]) {
-                SkyDriveFolder *newFolder = [[SkyDriveFolder alloc] initWithName:name path:identifier parent:self];
+                SkyDriveFolder *newFolder = [[SkyDriveFolder alloc] initWithName:name identifier:identifier parent:self];
                 _contents = [_contents arrayByAddingObject:newFolder];
             } else {
                 // Do nothing. This is audio, a photo, or a video.
