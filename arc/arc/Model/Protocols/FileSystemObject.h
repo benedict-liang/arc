@@ -29,15 +29,16 @@
 // within, Files their size in bytes.
 @property float size;
 
-// Initialises this object with the given name, path, and parent.
-- (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent;
-
 // Returns the contents of this object.
 - (id<NSObject>)contents;
 
+@optional
 // Removes this object.
 // Returns YES if successful, NO otherwise.
 // If NO is returned, the state of the object or its contents is unstable.
 - (BOOL)remove;
+
+// Initialises this object with the given name, path, and parent.
+- (id)initWithName:(NSString *)name path:(NSString *)path parent:(id<FileSystemObject>)parent;
 
 @end
