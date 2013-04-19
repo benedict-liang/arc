@@ -21,7 +21,7 @@
     self = [super init];
     if (self) {
         _setting = @"fontSize";
-        _defaultFontSize = @"30";
+        _defaultFontSize = @"18";
         // Setup the dictionary to be returned.
         _properties = @{
                         PLUGIN_TITLE: @"Font Size",
@@ -38,11 +38,11 @@
                                     },
                                 @{
                                     PLUGIN_OPTION_LABEL: @"Smaller",
-                                    PLUGIN_OPTION_VALUE: @"18"
+                                    PLUGIN_OPTION_VALUE: @"14"
                                     },
                                 @{
                                     PLUGIN_OPTION_LABEL: @"Small",
-                                    PLUGIN_OPTION_VALUE: @"20"
+                                    PLUGIN_OPTION_VALUE: @"16"
                                     },
                                 @{
                                     PLUGIN_OPTION_LABEL: @"Medium",
@@ -50,19 +50,19 @@
                                     },
                                 @{
                                     PLUGIN_OPTION_LABEL: @"Large",
-                                    PLUGIN_OPTION_VALUE: @"35"
+                                    PLUGIN_OPTION_VALUE: @"22"
                                     },
                                 @{
                                     PLUGIN_OPTION_LABEL: @"Larger",
-                                    PLUGIN_OPTION_VALUE: @"38"
+                                    PLUGIN_OPTION_VALUE: @"28"
                                     },
                                 @{
                                     PLUGIN_OPTION_LABEL: @"Giant",
-                                    PLUGIN_OPTION_VALUE: @"41"
+                                    PLUGIN_OPTION_VALUE: @"35"
                                     },
                                 @{
                                     PLUGIN_OPTION_LABEL: @"Largest",
-                                    PLUGIN_OPTION_VALUE: @"45"
+                                    PLUGIN_OPTION_VALUE: @"40"
                                     }
                                 ]
                         };
