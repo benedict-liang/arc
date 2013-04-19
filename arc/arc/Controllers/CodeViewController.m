@@ -174,6 +174,7 @@
     //_foldTree = nil;
     //_activeFolds = nil;
     [_lines removeAllObjects];
+    [self dismissTextSelectionViews];
 }
 
 - (void)generateLines
