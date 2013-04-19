@@ -644,7 +644,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     CFRange stringRangeForRow = CTLineGetStringRange(lineRef);
     
     if (stringRangeForRow.length == 1) {
-        return CGPointMake(cell.lineNumberWidth, 0);
+        return CGPointMake(0, 0);
     }
     else {
         CGFloat offset = CTLineGetOffsetForStringIndex(lineRef, stringRangeForRow.length, NULL);
