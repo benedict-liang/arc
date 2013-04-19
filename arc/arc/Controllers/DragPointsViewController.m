@@ -590,7 +590,7 @@
         _previousLastCharacterCoordinates = CGPointMake(offset, 0);
     }
     else {
-        _nextLastCharacterCoordinates = CGPointMake(NAN, NAN);
+        _previousLastCharacterCoordinates = CGPointMake(NAN, NAN);
     }
 }
 
