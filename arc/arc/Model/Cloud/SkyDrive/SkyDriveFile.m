@@ -9,7 +9,7 @@
 #import "SkyDriveFile.h"
 
 @implementation SkyDriveFile
-@synthesize name=_name, identifier=_identifier, size=_size, extension=_extension;
+@synthesize name=_name, identifier=_identifier, size=_size, parent=_parent, extension=_extension, lastModified=_lastModified, isRemovable=_isRemovable;
 
 - (id)initWithName:(NSString *)name identifier:(NSString *)identifier size:(float)size
 {
@@ -22,5 +22,9 @@
     return self;
 }
 
+- (NSString *)contents
+{
+    return @"";
+}
 
 @end

@@ -15,7 +15,7 @@
 @implementation LocalFile
 
 // Synthesize properties from protocol.
-@synthesize name=_name, identifier=_path, parent=_parent, extension=_extension, isRemovable=_isRemovable, size=_size;
+@synthesize name=_name, identifier=_path, parent=_parent, extension=_extension, isRemovable=_isRemovable, size=_size, lastModified=_lastModified;
 
 // Initialises this object with the given name, path, and parent.
 - (id)initWithName:(NSString *)name identifier:(NSString *)path parent:(id<FileSystemObject>)parent
@@ -31,7 +31,7 @@
 }
 
 // Returns the contents of this object.
-- (id<NSObject>)contents
+- (NSString *)contents
 {
     NSError *error;
     NSString *retrievedContents = [NSString stringWithContentsOfFile:_path encoding:NSUTF8StringEncoding error:&error];
