@@ -9,7 +9,7 @@
 #import "FontSizePlugin.h"
 
 @interface FontSizePlugin ()
-@property (nonatomic) int defaultFontSize;
+@property (nonatomic) NSString *defaultFontSize;
 @property (nonatomic, strong) NSDictionary *properties;
 @end
 
@@ -18,23 +18,10 @@
 
 - (id)init
 {
-//    self = [super init];
-//    if (self) {
-//        _setting = @"fontSize";
-//        _defaultFontSize = 14;
-//        _properties = @{
-//                        PLUGIN_TITLE: @"Font Size",
-//                        PLUGIN_TYPE: [NSNumber numberWithInt:kRangeSettingType],
-//                        PLUGIN_OPTION_RANGE_MIN: [NSNumber numberWithInt:10],
-//                        PLUGIN_OPTION_RANGE_MAX: [NSNumber numberWithInt:70]
-//                        };
-//    }
-//    return self;
-    
     self = [super init];
     if (self) {
         _setting = @"fontSize";
-        _defaultFontSize = 14;
+        _defaultFontSize = @"14";
         // Setup the dictionary to be returned.
         _properties = @{
                         PLUGIN_TITLE: @"Font Size",
@@ -59,7 +46,7 @@
                                     },
                                 @{
                                     PLUGIN_OPTION_LABEL: @"Medium",
-                                    PLUGIN_OPTION_VALUE: @"14"
+                                    PLUGIN_OPTION_VALUE: _defaultFontSize
                                     },
                                 @{
                                     PLUGIN_OPTION_LABEL: @"Large",
@@ -96,7 +83,7 @@
 // Returns the default value for the given setting key.
 - (id<NSObject>)defaultValue
 {
-    return [NSNumber numberWithInt:_defaultFontSize];
+    return _defaultFontSize;
 }
 
 - (void)execPreRenderOnArcAttributedString:(ArcAttributedString *)arcAttributedString
