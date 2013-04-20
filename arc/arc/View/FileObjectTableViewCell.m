@@ -42,15 +42,41 @@ const NSString *FOLDERCELL_REUSE_IDENTIFIER = @"folderCell";
     _fileSystemObject = fileSystemObject;
     
     NSString *detailDescription;
-    if ([[_fileSystemObject class] conformsToProtocol:@protocol(File)]) {
+    if ([[_fileSystemObject class] conformsToProtocol:@protocol(CloudFile)]) {
+        id<CloudFile> cloudFile = (id<CloudFile>)fileSystemObject;
+        
+        NSString *fileSize = [Utils humanReadableFileSize:[cloudFile size]];
+        
+        switch ([cloudFile downloadStatus]) {
+            case kFileDownloading:
+                detailDescription = [fileSize stringByAppendingString:@" | Downloading..."];
+                break;
+            case kFileDownloaded:
+                detailDescription = [fileSize stringByAppendingString:@" | Download complete."];
+                break;
+            case kFileDownloadError:
+                detailDescription = [fileSize stringByAppendingString:@" | Download failed."];
+                break;
+            case kFileNotDownloading:
+            default:
+                detailDescription = fileSize;
+                break;
+        }
+    } else if ([[_fileSystemObject class] conformsToProtocol:@protocol(File)]) {
         detailDescription = [Utils humanReadableFileSize:_fileSystemObject.size];
+    } else if ([[_fileSystemObject class] conformsToProtocol:@protocol(CloudFolder)]) {
+        detailDescription = @"";
     } else if ([[_fileSystemObject class] conformsToProtocol:@protocol(Folder)]) {
-        if (_fileSystemObject.size == 0) {
-            detailDescription = @"Empty Folder";
-        } else if (_fileSystemObject.size == 1) {
-            detailDescription = [NSString stringWithFormat:@"%d item", (int)_fileSystemObject.size];
-        } else {
-            detailDescription = [NSString stringWithFormat:@"%d items", (int)_fileSystemObject.size];
+        switch ((int)[_fileSystemObject size]) {
+            case 0:
+                detailDescription = @"Empty Folder";
+                break;
+            case 1:
+                detailDescription = @"1 item";
+                break;
+            default:
+                detailDescription = [NSString stringWithFormat:@"%d items", (int)[_fileSystemObject size]];
+                break;
         }
     }
 

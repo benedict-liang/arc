@@ -61,6 +61,9 @@ static SkyDriveServiceManager *sharedServiceManager = nil;
 - (void)downloadFile:(SkyDriveFile *)file toFolder:(LocalFolder *)folder
 {
     if (_isLoggedIn) {
+        [file setDownloadStatus:kFileDownloading];
+        [_delegate fileStatusChangedForService:self];
+        
         SkyDriveDownloadHelper *helper = [[SkyDriveDownloadHelper alloc] initWithFile:file Folder:folder];
         [helper setDelegate:self];
         [_helpers addObject:helper];
@@ -71,13 +74,13 @@ static SkyDriveServiceManager *sharedServiceManager = nil;
 
 - (void)downloadCompleteForHelper:(id)sender
 {
-    [[[UIAlertView alloc] initWithTitle:@"Download Complete" message:[[(SkyDriveDownloadHelper *)sender file] name] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+    [_delegate fileStatusChangedForService:self];
     [_helpers removeObject:sender];
 }
 
 - (void)downloadFailedForHelper:(id)sender
 {
-    [[[UIAlertView alloc] initWithTitle:@"Download Failed" message:[[(SkyDriveDownloadHelper *)sender file] name] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+    [_delegate fileStatusChangedForService:self];
     [_helpers removeObject:sender];
 }
 

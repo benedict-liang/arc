@@ -9,7 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "File.h"
 
+typedef enum { kFileNotDownloading, kFileDownloading, kFileDownloaded, kFileDownloadError } kDownloadStatus;
+
 @protocol CloudFile <File>
+
+@property kDownloadStatus downloadStatus;
 
 - (id)initWithName:(NSString *)name identifier:(NSString *)identifier size:(float)size;
 

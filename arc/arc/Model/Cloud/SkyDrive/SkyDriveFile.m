@@ -9,7 +9,7 @@
 #import "SkyDriveFile.h"
 
 @implementation SkyDriveFile
-@synthesize name=_name, identifier=_identifier, size=_size, parent=_parent, extension=_extension, lastModified=_lastModified, isRemovable=_isRemovable;
+@synthesize name=_name, identifier=_identifier, size=_size, parent=_parent, extension=_extension, lastModified=_lastModified, isRemovable=_isRemovable, downloadStatus=_downloadStatus;
 
 - (id)initWithName:(NSString *)name identifier:(NSString *)identifier size:(float)size
 {
@@ -18,6 +18,7 @@
         _identifier = identifier;
         _size = size;
         _extension = [name pathExtension];
+        _downloadStatus = kFileNotDownloading;
     }
     return self;
 }
