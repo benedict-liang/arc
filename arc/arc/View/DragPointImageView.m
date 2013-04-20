@@ -17,16 +17,24 @@
         
         if ([imageName isEqualToString:@"leftDragPoint.png"]) {
             
-            UIImage *scaledImage = [self scaleImageWithAspectRatio:imageName];
+            UIImage *scaledImage = [self scaleImageWithAspectRatio:@"dragpointline.png"];
+            UIImage *circle = [UIImage imageNamed:@"dragpointcircle.png"];
+            
             CGFloat aspectRatio = scaledImage.size.width / scaledImage.size.height;
-            CGSize scaledSize = CGSizeMake(aspectRatio * (scaledImage.size.height - 30),
-                                           scaledImage.size.height - 30);
-            UIGraphicsBeginImageContext(scaledImage.size);
-            [scaledImage drawInRect:CGRectMake(0, 0,scaledSize.width,
+            CGSize newSize = CGSizeMake(20,
+                                        scaledImage.size.height);
+            
+            CGSize scaledSize = CGSizeMake(aspectRatio * (scaledImage.size.height - 20),
+                                           scaledImage.size.height - 20);
+            
+            UIGraphicsBeginImageContext(newSize);
+            [scaledImage drawInRect:CGRectMake(newSize.width - scaledImage.size.width,
+                                               0,
+                                               scaledSize.width,
                                                scaledSize.height)];
-            [scaledImage drawInRect:CGRectMake(0, scaledSize.height,
-                                               20,
-                                               20)];
+            [circle drawInRect:CGRectMake(0, scaledSize.height,
+                                          20,
+                                          20)];
             UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
             
