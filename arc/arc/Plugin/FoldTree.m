@@ -34,7 +34,8 @@
 
     if (sortedNodes.count > 0) {
         elder = [sortedNodes objectAtIndex:0];
-        for (FoldNode *node in sortedNodes) {
+        for (int i = 1; i < sortedNodes.count; i++) {
+            FoldNode* node = [sortedNodes objectAtIndex:i];
             if ([Utils isSubsetOf:elder.contentRange
                               arg:node.contentRange]) {
                 [accum  addObject:node];

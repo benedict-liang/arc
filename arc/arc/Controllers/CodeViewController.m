@@ -585,8 +585,13 @@
 - (void)showFold:(UILongPressGestureRecognizer *)gesture
 {
     if (gesture.state == UIGestureRecognizerStateBegan) {
-        NSLog(@"%@", _foldStartLines);
-        NSLog(@"%@", _foldTree);
+        CodeLineCell *cell = (CodeLineCell *)gesture.view;
+        NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+        CodeViewLine *codeViewLine =  [_lines objectAtIndex:indexPath.row];
+        
+        NSDictionary* activeFold = [_foldTree collapsibleLinesForIndex:codeViewLine.range.location
+                                                             WithLines:_lines];
+        NSLog(@"%@", activeFold);
     }
 }
 
