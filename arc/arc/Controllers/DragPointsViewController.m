@@ -13,6 +13,7 @@
 #define DRAG_POINT_WIDTH 55
 #define HORIZONTAL_THRESHOLD_PERCENTAGE 0.95
 #define VERTICAL_THRESHOLD_PERCENTAGE 0.80
+#define EXTRA_DRAG_POINT_HEIGHT 20
 
 @interface DragPointsViewController ()
 
@@ -83,7 +84,7 @@
         CGRect selectedRect = CGRectMake(startOffset + totalGap,
                                          cellRect.origin.y,
                                          endOffset - startOffset,
-                                         cellRect.size.height + 20);
+                                         cellRect.size.height + EXTRA_DRAG_POINT_HEIGHT);
         
         [self createDragPoints:selectedRect];
     }

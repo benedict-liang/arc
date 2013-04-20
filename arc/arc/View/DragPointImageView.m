@@ -21,11 +21,11 @@
             UIImage *circle = [UIImage imageNamed:@"dragpointcircle.png"];
             
             CGFloat aspectRatio = scaledImage.size.width / scaledImage.size.height;
-            CGSize newSize = CGSizeMake(20,
+            CGSize newSize = CGSizeMake(circle.size.width,
                                         scaledImage.size.height);
             
-            CGSize scaledSize = CGSizeMake(aspectRatio * (scaledImage.size.height - 20),
-                                           scaledImage.size.height - 20);
+            CGSize scaledSize = CGSizeMake(aspectRatio * (scaledImage.size.height - circle.size.height),
+                                           scaledImage.size.height - circle.size.height);
             
             UIGraphicsBeginImageContext(newSize);
             [scaledImage drawInRect:CGRectMake(newSize.width - scaledImage.size.width,
@@ -33,8 +33,8 @@
                                                scaledSize.width,
                                                scaledSize.height)];
             [circle drawInRect:CGRectMake(0, scaledSize.height,
-                                          20,
-                                          20)];
+                                          circle.size.width,
+                                          circle.size.height)];
             UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
             UIGraphicsEndImageContext();
             
