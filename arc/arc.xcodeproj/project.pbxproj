@@ -1599,12 +1599,12 @@
 			children = (
 				FCBD8325171DC594005E2B31 /* FoldNode.h */,
 				FCBD8326171DC595005E2B31 /* FoldNode.m */,
+				FC137BDE1719AE1000878684 /* FoldTree.h */,
 				FC137BDF1719AE1000878684 /* FoldTree.m */,
 				FCBD8330171DE011005E2B31 /* CodeFolding.m */,
 				FCBD832F171DE010005E2B31 /* CodeFolding.h */,
 				FCBD832C171DD517005E2B31 /* RootFoldNode.h */,
 				FCBD832D171DD518005E2B31 /* RootFoldNode.m */,
-				FC137BDE1719AE1000878684 /* FoldTree.h */,
 			);
 			name = CodeFolding;
 			sourceTree = "<group>";
