@@ -77,7 +77,7 @@ static GoogleDriveServiceManager *sharedServiceManager = nil;
         
         [_helpers addObject:helper];
         
-        [httpFetcher beginFetchWithDelegate:helper didFinishSelector:@selector(dataRetrieved:error:)];
+        [httpFetcher beginFetchWithDelegate:helper didFinishSelector:@selector(fetcher:dataRetrieved:error:)];
     }
 }
 

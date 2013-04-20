@@ -19,7 +19,7 @@
     return self;
 }
 
-- (void)dataRetrieved:(NSData *)data error:(NSError *)error
+- (void)fetcher:(GTMHTTPFetcher *)fetcher dataRetrieved:(NSData *)data error:(NSError *)error
 {
     if (!error) {
         [_file setDownloadStatus:kFileDownloaded];

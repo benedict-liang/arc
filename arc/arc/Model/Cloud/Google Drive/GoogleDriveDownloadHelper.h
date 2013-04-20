@@ -10,6 +10,7 @@
 #import "GoogleDriveFile.h"
 #import "LocalFolder.h"
 #import "DownloadHelperDelegate.h"
+#import "GTLDrive.h"
 
 // This class is used to act as a handler for downloading
 // Google Drive files. It acts as a delegate for a download
@@ -22,6 +23,6 @@
 @property (weak, nonatomic) LocalFolder *folder;
 
 - (id)initWithFile:(GoogleDriveFile *)file Folder:(LocalFolder *)folder;
-- (void)dataRetrieved:(NSData *)data error:(NSError *)error;
+- (void)fetcher:(GTMHTTPFetcher *)fetcher dataRetrieved:(NSData *)data error:(NSError *)error;
 
 @end
