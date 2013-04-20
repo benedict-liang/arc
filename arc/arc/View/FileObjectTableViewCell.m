@@ -50,12 +50,16 @@ const NSString *FOLDERCELL_REUSE_IDENTIFIER = @"folderCell";
     } else if ([[_fileSystemObject class] conformsToProtocol:@protocol(CloudFolder)]) {
         detailDescription = @"";
     } else if ([[_fileSystemObject class] conformsToProtocol:@protocol(Folder)]) {
-        if (_fileSystemObject.size == 0) {
-            detailDescription = @"Empty Folder";
-        } else if (_fileSystemObject.size == 1) {
-            detailDescription = [NSString stringWithFormat:@"%d item", (int)_fileSystemObject.size];
-        } else {
-            detailDescription = [NSString stringWithFormat:@"%d items", (int)_fileSystemObject.size];
+        switch ((int)[_fileSystemObject size]) {
+            case 0:
+                detailDescription = @"Empty Folder";
+                break;
+            case 1:
+                detailDescription = @"1 item";
+                break;
+            default:
+                detailDescription = [NSString stringWithFormat:@"%d items", (int)[_fileSystemObject size]];
+                break;
         }
     }
 
