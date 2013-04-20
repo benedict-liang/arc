@@ -10,6 +10,6 @@
 
 @protocol CloudServiceManagerDelegate <NSObject>
 
-- (void)downloadCompleteFromService:(id)sender;
+- (void)fileStatusChangedForService:(id)sender;
 
 @end
