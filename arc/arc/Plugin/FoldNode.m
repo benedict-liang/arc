@@ -10,26 +10,34 @@
 
 @implementation FoldNode
 
-- (id)initWithContentRange:(NSRange)cr startRange:(NSRange)sr endRange:(NSRange)er {
+- (id)initWithContentRange:(NSRange)contentRange
+                startRange:(NSRange)startRange
+                  endRange:(NSRange)endRange
+{
     if (self = [super init]) {
-        _contentRange = cr;
-        _startRange = sr;
-        _endRange = er;
+        _contentRange = contentRange;
+        _startRange = startRange;
+        _endRange = endRange;
         _type = kChildNode;
     }
     return self;
 }
 
-- (id)initWithNode:(FoldNode *)node {
-    return [self initWithContentRange:node.contentRange startRange:node.startRange endRange:node.endRange];
+- (id)initWithNode:(FoldNode *)node
+{
+    return [self initWithContentRange:node.contentRange
+                           startRange:node.startRange
+                             endRange:node.endRange];
 }
 
-- (id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone *)zone
+{
     FoldNode* copy = [[FoldNode alloc] initWithNode:self];
     return copy;
 }
 
-+ (NSArray*)sortNodeArray:(NSArray*)nodes {
++ (NSArray *)sortNodeArray:(NSArray *)nodes
+{
     //ASSUMES: ranges are either non intersecting, or subsets
     //Above holds true for foldable code blocks
     NSMutableArray* sortedRanges = [NSMutableArray arrayWithArray:nodes];
@@ -52,7 +60,15 @@
     return sortedRanges;
 }
 
-- (NSString*)description {
-    return [NSString stringWithFormat:@"cR: %d %d sR: %d %d eR:%d %d",_contentRange.location,_contentRange.length,_startRange.location,_startRange.length, _endRange.location, _endRange.length];
+- (NSString *)description
+{
+    return [NSString stringWithFormat:
+            @"Content Range: (%d %d) Start Range: (%d %d) End Range: (%d %d)",
+            _contentRange.location,
+            _contentRange.length,
+            _startRange.location,
+            _startRange.length,
+            _endRange.location,
+            _endRange.length];
 }
 @end

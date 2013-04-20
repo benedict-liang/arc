@@ -34,28 +34,23 @@
 
     if (sortedNodes.count > 0) {
         elder = [sortedNodes objectAtIndex:0];
-        
-        for (int i = 1; i < sortedNodes.count; i++) {
-            FoldNode* node = [sortedNodes objectAtIndex:i];
-            
-            if ([Utils isSubsetOf:elder.contentRange arg:node.contentRange]) {
+        for (FoldNode *node in sortedNodes) {
+            if ([Utils isSubsetOf:elder.contentRange
+                              arg:node.contentRange]) {
                 [accum  addObject:node];
-            }
-            else {
-                
-                FoldTree* subTree = [[FoldTree alloc] initWithSortedNodes:[[NSArray alloc] initWithArray:accum copyItems:YES]
+            } else {
+                FoldTree* subTree = [[FoldTree alloc] initWithSortedNodes:
+                                     [[NSArray alloc] initWithArray:accum copyItems:YES]
                                                                      Node:elder];
                 [_children addObject:subTree];
                 elder = node;
                 [accum removeAllObjects];
             }
-
         }
-        FoldTree* last = [[FoldTree alloc] initWithSortedNodes:[[NSArray alloc] initWithArray:accum copyItems:YES]
+        FoldTree* last = [[FoldTree alloc] initWithSortedNodes:
+                          [[NSArray alloc] initWithArray:accum copyItems:YES]
                                                           Node:elder];
-
         [_children addObject:last];
-    
     }
 }
 
@@ -91,7 +86,10 @@
             startLine = i;
         }
     }
-    return @{@"lines":collapsedLines, @"startLine":[NSNumber numberWithInt:startLine]};
+    return @{
+             @"lines":collapsedLines,
+             @"startLine":[NSNumber numberWithInt:startLine]
+             };
 }
 
 - (FoldNode *)lowestNodeWithIndex:(CFIndex)index
@@ -105,7 +103,6 @@
             }
         }
         return leafNode;
-        
     } else {
         return nil;
     }
@@ -130,7 +127,8 @@
 
 - (NSRange)lowestNodeWithFoldStartIndex:(CFIndex)index
 {
-    if ([Utils isContainedByRange:_node.startRange Index:index] || _node.type == kRootNode) {
+    if ([Utils isContainedByRange:_node.startRange Index:index] ||
+        _node.type == kRootNode) {
         NSRange leafRange = _node.contentRange;
         for (FoldTree* subTree in _children) {
             NSRange childRange = [subTree lowestNodeWithFoldStartIndex:index];
@@ -139,7 +137,6 @@
             }
         }
         return leafRange;
-        
     } else {
         return NSMakeRange(NSNotFound, 0);
     }

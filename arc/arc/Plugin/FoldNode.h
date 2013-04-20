@@ -19,9 +19,9 @@ typedef enum {
 @property (nonatomic, readonly) NSRange endRange;
 @property (nonatomic) FoldNodeType type;
 
-- (id)initWithContentRange:(NSRange)cr
-               startRange:(NSRange)sr
-                 endRange:(NSRange)er;
+- (id)initWithContentRange:(NSRange)contentRange
+               startRange:(NSRange)startRange
+                 endRange:(NSRange)endRange;
 - (id)initWithNode:(FoldNode *)node;
 + (NSArray *)sortNodeArray:(NSArray *)nodes;
 @end

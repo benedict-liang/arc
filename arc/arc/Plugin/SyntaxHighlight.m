@@ -564,6 +564,7 @@
     
         NSString* foldStart = [_bundle objectForKey:@"foldingStartMarker"];
         NSString* foldEnd = [_bundle objectForKey:@"foldingStopMarker"];
+
         
         if (foldStart && foldEnd) {
             _foldTree = [CodeFolding foldTreeForContent:_content
