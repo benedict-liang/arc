@@ -33,6 +33,7 @@
         _folder = folder;
         _target = target;
         _serviceManager = serviceManager;
+        [serviceManager setDelegate:self];
         [folder setDelegate:self];
         [folder updateContents];
     }
@@ -53,6 +54,11 @@
         }
     }
     _segregatedContents = [NSArray arrayWithObjects:folders, files, nil];
+}
+
+- (void)fileStatusChangedForService:(id)sender
+{
+    [self updateView];
 }
 
 - (void)folderContentsUpdated:(id<Folder>)sender
@@ -218,6 +224,7 @@
     
     if ([selectedObject conformsToProtocol:@protocol(CloudFile)]) {
         [_serviceManager downloadFile:selectedObject toFolder:_target];
+        [self folderContentsUpdated:_folder];
     } else {
         CloudPickerViewController *newFolderController = [[CloudPickerViewController alloc] initWithCloudFolder:selectedObject targetFolder:_target serviceManager:_serviceManager];
         [newFolderController setDelegate:_delegate];

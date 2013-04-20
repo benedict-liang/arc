@@ -14,7 +14,7 @@
 #import "LoadingOverlayViewController.h"
 #import "FileObjectTableViewCell.h"
 
-@interface CloudPickerViewController : UIViewController <CloudFolderDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface CloudPickerViewController : UIViewController <CloudFolderDelegate, UITableViewDataSource, UITableViewDelegate, CloudServiceManagerDelegate>
 
 @property (weak, nonatomic) id<CloudPickerViewControllerDelegate> delegate;
 
