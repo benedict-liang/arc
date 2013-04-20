@@ -63,6 +63,8 @@
         [self.delegate willShowMasterViewAnimated:animate];
     }
 
+    _masterViewVisible = YES;
+
     if (animate) {
         NSString *oldSize = NSStringFromCGSize(_detailView.frame.size);
         [UIView animateWithDuration:0.2
@@ -72,7 +74,6 @@
                              [self showMasterView];
                          }
                          completion:^(BOOL finished){
-                            _masterViewVisible = YES;
                              BOOL boundsChanged = [oldSize isEqualToString:
                                                    NSStringFromCGSize(_detailView.frame.size)];
                              if ([self.delegate respondsToSelector:@selector(didResizeSubViewsBoundsChanged:)]) {
@@ -108,6 +109,8 @@
         [self.delegate willHideMasterViewAnimated:animate];
     }
 
+    _masterViewVisible = NO;
+
     if (animate) {
         NSString *oldSize = NSStringFromCGSize(_detailView.frame.size);
         [UIView animateWithDuration:0.2
@@ -117,7 +120,6 @@
                              [self hideMasterView];
                          }
                          completion:^(BOOL finished){
-                             _masterViewVisible = NO;
                              BOOL boundsChanged = [oldSize isEqualToString:
                                                    NSStringFromCGSize(_detailView.frame.size)];
                              if ([self.delegate respondsToSelector:@selector(didResizeSubViewsBoundsChanged:)]) {
