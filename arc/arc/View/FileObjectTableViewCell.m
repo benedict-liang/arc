@@ -47,6 +47,8 @@ const NSString *FOLDERCELL_REUSE_IDENTIFIER = @"folderCell";
     NSString *detailDescription;
     if ([[_fileSystemObject class] conformsToProtocol:@protocol(File)]) {
         detailDescription = [Utils humanReadableFileSize:_fileSystemObject.size];
+    } else if ([[_fileSystemObject class] conformsToProtocol:@protocol(CloudFolder)]) {
+        detailDescription = @"";
     } else if ([[_fileSystemObject class] conformsToProtocol:@protocol(Folder)]) {
         if (_fileSystemObject.size == 0) {
             detailDescription = @"Empty Folder";
