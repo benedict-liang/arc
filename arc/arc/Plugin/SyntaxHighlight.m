@@ -311,6 +311,13 @@
     }
     
 }
+- (BOOL)isEscapedOnRange:(NSRange)range {
+    if ([Utils isContainedByRange:NSMakeRange(0, _content.length) Index:range.location-1]) {
+        unichar c =  [_content characterAtIndex:range.location-1];
+        return c=='\\';
+    }
+    return NO;
+}
 - (void)processPairRange:(NSRange)contentRange
                     item:(NSDictionary*)syntaxItem
                   output:(ArcAttributedString*)output
@@ -324,17 +331,9 @@
     NSString* end = [syntaxItem objectForKey:@"end"];
     NSString* name = [syntaxItem objectForKey:@"name"];
     
-    NSError *error = NULL;
-    NSRegularExpression *beginRegex = [NSRegularExpression
-                                  regularExpressionWithPattern:begin
-                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines
-                                  error:&error];
+    NSRegularExpression *beginRegex = [self regexForPattern:begin];
 
-    NSRegularExpression *endRegex = [NSRegularExpression
-                                  regularExpressionWithPattern:end
-                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines
-                                  error:&error];
-
+    NSRegularExpression *endRegex = [self regexForPattern:end];
     
     NSRange brange = [self findFirstPattern:beginRegex
                                       range:contentRange];
@@ -362,6 +361,17 @@
         long eEnds = erange.location + erange.length;
         NSArray *embedPatterns = [syntaxItem objectForKey:@"patterns"];
         
+        if ([self isEscapedOnRange:brange]) {
+            
+            NSLog(@"ecaped with brange:%@",[Utils valueFromRange:brange]);
+            //brange.location++;
+            //break;
+        }
+        if ([self isEscapedOnRange:erange]) {
+            NSLog(@"ecaped with erange:%@",[Utils valueFromRange:erange]);
+            //erange.location++;
+            //break;
+        }
         //if there are characters between begin and end, and brange and erange are valid results
         if (eEnds > brange.location &&
             brange.location != NSNotFound &&
