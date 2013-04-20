@@ -227,8 +227,10 @@ titleForHeaderInSection:(NSInteger)section {
 
 - (void)secondFileSelected:(UILongPressGestureRecognizer *)gesture
 {
-    FileObjectTableViewCell *cell = (FileObjectTableViewCell *)gesture.view;
-    [self.delegate secondFileObjectSelected:cell.fileSystemObject];
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        FileObjectTableViewCell *cell = (FileObjectTableViewCell *)gesture.view;
+        [self.delegate secondFileObjectSelected:cell.fileSystemObject];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

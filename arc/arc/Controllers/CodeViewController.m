@@ -550,7 +550,7 @@
     [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                   action:@selector(selectText:)];
     [cell addGestureRecognizer:longPressGesture];
-    
+
 //    if ([_foldStartLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
 //        [cell setFolding];
 //    } else {
