@@ -12,6 +12,4 @@
 
 - (void)folderContentsUpdated:(id)sender;
 
-- (void)folderFinishedDownload:(id)sender;
-
 @end
