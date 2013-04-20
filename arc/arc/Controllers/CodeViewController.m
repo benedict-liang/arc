@@ -550,6 +550,7 @@
     }
     
     [cell setForegroundColor:_foregroundColor];
+    [cell setHighlightColor:_selectionColor];    
     [cell setFontFamily:_fontFamily FontSize:_fontSize];
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
@@ -656,15 +657,12 @@
                                                                inSection:0]];
             [foldingCell removeHighlight];
         }
-        
-        NSLog(@"%@", activeFold);
     }
     
     if (gesture.state == UIGestureRecognizerStateEnded) {
         if (!_fold) {
             return;
         }
-        
         
         NSMutableArray *indexPaths = [NSMutableArray array];
         for (NSNumber *row in lines) {
