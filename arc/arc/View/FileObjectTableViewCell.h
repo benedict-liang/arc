@@ -11,6 +11,7 @@
 #import "File.h"
 #import "Folder.h"
 #import "CloudFolder.h"
+#import "CloudFile.h"
 
 @interface FileObjectTableViewCell : UITableViewCell
 extern const NSString *FILECELL_REUSE_IDENTIFIER;

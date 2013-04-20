@@ -45,7 +45,27 @@ const NSString *FOLDERCELL_REUSE_IDENTIFIER = @"folderCell";
     _fileSystemObject = fileSystemObject;
     
     NSString *detailDescription;
-    if ([[_fileSystemObject class] conformsToProtocol:@protocol(File)]) {
+    if ([[_fileSystemObject class] conformsToProtocol:@protocol(CloudFile)]) {
+        id<CloudFile> cloudFile = (id<CloudFile>)fileSystemObject;
+        
+        NSString *fileSize = [Utils humanReadableFileSize:[cloudFile size]];
+        
+        switch ([cloudFile downloadStatus]) {
+            case kFileDownloading:
+                detailDescription = [fileSize stringByAppendingString:@" | Downloading..."];
+                break;
+            case kFileDownloaded:
+                detailDescription = [fileSize stringByAppendingString:@" | Download complete."];
+                break;
+            case kFileDownloadError:
+                detailDescription = [fileSize stringByAppendingString:@" | Download failed."];
+                break;
+            case kFileNotDownloading:
+            default:
+                detailDescription = fileSize;
+                break;
+        }
+    } else if ([[_fileSystemObject class] conformsToProtocol:@protocol(File)]) {
         detailDescription = [Utils humanReadableFileSize:_fileSystemObject.size];
     } else if ([[_fileSystemObject class] conformsToProtocol:@protocol(CloudFolder)]) {
         detailDescription = @"";
