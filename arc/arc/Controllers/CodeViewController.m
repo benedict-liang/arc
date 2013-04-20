@@ -104,8 +104,7 @@
     // Set Up TableView
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds
                                               style:UITableViewStylePlain];
-    _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
-    UIViewAutoresizingFlexibleWidth;
+    _tableView.autoresizingMask = UIViewAutoresizingNone;
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.autoresizesSubviews = YES;
@@ -113,11 +112,17 @@
     // Set TableView's Delegate and DataSource
     _tableView.dataSource = self;
     _tableView.delegate = self;
+    
+    [self resizeTableView];
+    
+    [self.view addSubview:_tableView];
+}
+
+- (void)resizeTableView
+{
     _tableView.frame = CGRectMake(0, SIZE_TOOLBAR_HEIGHT,
                                   self.view.bounds.size.width,
                                   self.view.bounds.size.height - SIZE_TOOLBAR_HEIGHT);
-    
-    [self.view addSubview:_tableView];
 }
 
 - (void)showFile:(id<File>)file
@@ -337,6 +342,7 @@
         [self centerToolBarTitle];
     }];
     
+    [self resizeTableView];
     [self generateLines];
     [self renderFile];
 }
