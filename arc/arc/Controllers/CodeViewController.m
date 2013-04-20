@@ -378,12 +378,19 @@
 
 - (void)setUpDefaultToolBar
 {
+    _portraitButton =
+    [[UIBarButtonItem alloc] initWithTitle:@"meh"
+                                     style:UIBarButtonItemStyleBordered
+                                    target:self
+                                    action:@selector(toggleLeftBar:)];
+
     _searchButtonIcon =
     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
                                                   target:self
                                                   action:@selector(showSearchToolBar)];
     
     [_toolbar setItems:[NSArray arrayWithObjects:
+                        _portraitButton,
                         [Utils flexibleSpace],
                         _searchButtonIcon,
                         nil]];
@@ -393,24 +400,6 @@
     [UIView setAnimationDuration:0.1];
     [self centerToolBarTitle];
     [UIView commitAnimations];
-}
-
-- (void)centerToolBarTitle
-{
-    _toolbarTitle.textAlignment = NSTextAlignmentCenter;
-    _toolbarTitle.frame = CGRectMake(floorf((_toolbar.bounds.size.width - _toolbarTitle.frame.size.width)/2),
-                                     0,
-                                     _toolbarTitle.frame.size.width,
-                                     _toolbar.bounds.size.height);
-}
-
-- (void)leftAlignToolBarTitle
-{
-    _toolbarTitle.textAlignment = NSTextAlignmentLeft;
-    _toolbarTitle.frame = CGRectMake(10,
-                                     0,
-                                     _toolbarTitle.frame.size.width,
-                                     _toolbar.bounds.size.height);
 }
 
 - (void)showSearchToolBar
@@ -455,32 +444,31 @@
 {
     [_arcAttributedString removeAttributesForSettingKey:@"search"];
     [_tableView reloadData];
-    
-    if (UIDeviceOrientationIsLandscape(self.interfaceOrientation))
-    {
-        [self setUpDefaultToolBar];
-    }
-    else {
-        [self showShowMasterViewButton:_portraitButton];
-    }
-}
 
-#pragma mark - Detail View Controller Delegate
-
-- (void)showShowMasterViewButton:(UIBarButtonItem *)button
-{
-    [button setTitle:@"Documents"];
-    _toolbar.items = [NSArray arrayWithObjects:
-                      button,
-                      [Utils flexibleSpace],
-                      _searchButtonIcon,
-                      nil];
-    _portraitButton = button;
-}
-
-- (void)hideShowMasterViewButton:(UIBarButtonItem *)button
-{
     [self setUpDefaultToolBar];
+}
+
+- (void)centerToolBarTitle
+{
+    _toolbarTitle.textAlignment = NSTextAlignmentCenter;
+    _toolbarTitle.frame = CGRectMake(floorf((_toolbar.bounds.size.width - _toolbarTitle.frame.size.width)/2),
+                                     0,
+                                     _toolbarTitle.frame.size.width,
+                                     _toolbar.bounds.size.height);
+}
+
+- (void)leftAlignToolBarTitle
+{
+    _toolbarTitle.textAlignment = NSTextAlignmentLeft;
+    _toolbarTitle.frame = CGRectMake(10,
+                                     0,
+                                     _toolbarTitle.frame.size.width,
+                                     _toolbar.bounds.size.height);
+}
+
+- (void)toggleLeftBar:(id)sender
+{
+    
 }
 
 #pragma mark - Table view data source

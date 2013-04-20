@@ -498,7 +498,6 @@
 		4C9DC9021719B64A00142E70 /* SyntaxHighlightingPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlightingPluginDelegate.h; sourceTree = "<group>"; };
 		4C9E0618170F3AFC0000F783 /* arc72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc72.png; sourceTree = SOURCE_ROOT; };
 		4C9E061A170F3B1A0000F783 /* arc144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc144.png; sourceTree = SOURCE_ROOT; };
-		4CA4DE42170EA04400A86109 /* DetailViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewControllerDelegate.h; sourceTree = "<group>"; };
 		4CA4DE43170EA4C200A86109 /* MasterViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewControllerDelegate.h; sourceTree = "<group>"; };
 		4CC9E0EC171C4C580062C825 /* arcMonokai72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arcMonokai72.png; path = ../../../arcMonokai72.png; sourceTree = "<group>"; };
 		4CC9E0F2171C4C5B0062C825 /* arcMonokai144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arcMonokai144.png; path = ../../../arcMonokai144.png; sourceTree = "<group>"; };
@@ -1167,7 +1166,6 @@
 				8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */,
 				4CD06B2C16FDE92D00C9DED3 /* SubViewControllerDelegate.h */,
 				4CA4DE43170EA4C200A86109 /* MasterViewControllerDelegate.h */,
-				4CA4DE42170EA04400A86109 /* DetailViewControllerDelegate.h */,
 				FCE8F95D1709806B00C08724 /* CodeViewControllerDelegate.h */,
 				4CEADA011716814B00F4F619 /* CodeViewDelegate.h */,
 				4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */,

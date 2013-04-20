@@ -11,4 +11,6 @@
 @interface ArcSplitViewController : UIViewController
 @property (nonatomic, strong) UIViewController *masterViewController;
 @property (nonatomic, strong) UIViewController *detailViewController;
+- (void)showMasterView;
+- (void)hideMasterView;
 @end

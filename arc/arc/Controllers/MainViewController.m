@@ -137,32 +137,4 @@
     [_leftViewController navigateTo:folder];
 }
 
-#pragma mark - UISpiltViewControllerDelegate Methods
-
-- (void)splitViewController:(UISplitViewController *)svc
-     willHideViewController:(UIViewController *)aViewController
-          withBarButtonItem:(UIBarButtonItem *)barButtonItem
-       forPopoverController:(UIPopoverController *)pc
-{
-    [_codeViewController showShowMasterViewButton:barButtonItem];
-}
-
-- (void)splitViewController:(UISplitViewController *)svc
-     willShowViewController:(UIViewController *)aViewController
-  invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-    [_codeViewController hideShowMasterViewButton:barButtonItem];
-}
-
-#pragma mark - UISplitViewController iOS 5.1 Compatibility (Rotation)
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
-}
-
-- (NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskAll;
-}
 @end
