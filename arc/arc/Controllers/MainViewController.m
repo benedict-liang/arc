@@ -105,13 +105,18 @@
 
 #pragma mark - MainViewControllerDelegate Methods
 
-- (void)fileObjectSelected:(id<FileSystemObject>)fileSystemObject;
+- (void)fileObjectSelected:(id<FileSystemObject>)fileSystemObject
 {
     if ([[fileSystemObject class] conformsToProtocol:@protocol(Folder)]) {
         [self folderSelected:(id<Folder>)fileSystemObject];
     } else {
         [self fileSelected:(id<File>)fileSystemObject];
     }
+}
+
+- (void)secondFileObjectSelected:(id<FileSystemObject>)fileSystemObject
+{
+    
 }
 
 - (id<FileSystemObject>)currentfile

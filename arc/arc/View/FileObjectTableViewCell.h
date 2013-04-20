@@ -14,5 +14,5 @@
 @interface FileObjectTableViewCell : UITableViewCell
 extern const NSString *FILECELL_REUSE_IDENTIFIER;
 extern const NSString *FOLDERCELL_REUSE_IDENTIFIER;
-- (void)setFileSystemObject:(id<FileSystemObject>)fileSystemObject;
+@property (nonatomic, strong) id<FileSystemObject> fileSystemObject;
 @end

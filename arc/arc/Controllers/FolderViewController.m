@@ -211,7 +211,24 @@ titleForHeaderInSection:(NSInteger)section {
                          scrollPosition:UITableViewScrollPositionMiddle];
     }
 
+    // Remove Gesture Recoginzers
+    for (UIGestureRecognizer *g in [cell gestureRecognizers]) {
+        [cell removeGestureRecognizer:g];
+    }
+
+    // Long Press Gesture for splitcodeview
+    UILongPressGestureRecognizer *longPressGesture =
+    [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                  action:@selector(secondFileSelected:)];
+    [cell addGestureRecognizer:longPressGesture];
+
     return cell;
+}
+
+- (void)secondFileSelected:(UILongPressGestureRecognizer *)gesture
+{
+    FileObjectTableViewCell *cell = (FileObjectTableViewCell *)gesture.view;
+    [self.delegate secondFileObjectSelected:cell.fileSystemObject];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

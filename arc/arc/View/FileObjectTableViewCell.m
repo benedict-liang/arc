@@ -11,11 +11,8 @@
 const NSString *FILECELL_REUSE_IDENTIFIER = @"fileCell";
 const NSString *FOLDERCELL_REUSE_IDENTIFIER = @"folderCell";
 
-@interface FileObjectTableViewCell ()
-@property (nonatomic, strong) id<FileSystemObject> fileSystemObject;
-@end
-
 @implementation FileObjectTableViewCell
+@synthesize fileSystemObject = _fileSystemObject;
 
 - (id)initWithStyle:(UITableViewCellStyle)style
     reuseIdentifier:(NSString *)reuseIdentifier
