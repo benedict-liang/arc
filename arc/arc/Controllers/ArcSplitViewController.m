@@ -59,6 +59,10 @@
 
 - (void)showMasterViewAnimated:(BOOL)animate
 {
+    if ([self.delegate respondsToSelector:@selector(willShowMasterViewAnimated:)]) {
+        [self.delegate willShowMasterViewAnimated:animate];
+    }
+
     if (animate) {
         NSString *oldSize = NSStringFromCGSize(_detailView.frame.size);
         [UIView animateWithDuration:0.2
@@ -71,7 +75,9 @@
                             _masterViewVisible = YES;
                              BOOL boundsChanged = [oldSize isEqualToString:
                                                    NSStringFromCGSize(_detailView.frame.size)];
-                             [self.delegate resizeSubViewsBoundsChanged:boundsChanged];
+                             if ([self.delegate respondsToSelector:@selector(didResizeSubViewsBoundsChanged:)]) {
+                                 [self.delegate didResizeSubViewsBoundsChanged:boundsChanged];
+                             }
                          }];
     } else {
         [self showMasterView];
@@ -98,6 +104,10 @@
 
 - (void)hideMasterViewAnimated:(BOOL)animate
 {
+    if ([self.delegate respondsToSelector:@selector(willHideMasterViewAnimated:)]) {
+        [self.delegate willHideMasterViewAnimated:animate];
+    }
+
     if (animate) {
         NSString *oldSize = NSStringFromCGSize(_detailView.frame.size);
         [UIView animateWithDuration:0.2
@@ -110,7 +120,10 @@
                              _masterViewVisible = NO;
                              BOOL boundsChanged = [oldSize isEqualToString:
                                                    NSStringFromCGSize(_detailView.frame.size)];
-                             [self.delegate resizeSubViewsBoundsChanged:boundsChanged];
+                             if ([self.delegate respondsToSelector:@selector(didResizeSubViewsBoundsChanged:)]) {
+                                 [self.delegate didResizeSubViewsBoundsChanged:boundsChanged];
+                             }
+
                          }];
     } else {
         [self hideMasterView];
@@ -144,7 +157,9 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    [self.delegate resizeSubViewsBoundsChanged:YES];
+    if ([self.delegate respondsToSelector:@selector(didResizeSubViewsBoundsChanged:)]) {
+        [self.delegate didResizeSubViewsBoundsChanged:YES];
+    }
 }
 
 @end
