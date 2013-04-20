@@ -279,9 +279,9 @@
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
 		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
 		8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */; };
-		FC137BE01719AE1000878684 /* FoldTree.m in Sources */ = {isa = PBXBuildFile; fileRef = FC137BDF1719AE1000878684 /* FoldTree.m */; };
 		8FDE2E28171D577500CF2BC9 /* leftDragPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDE2E26171D577500CF2BC9 /* leftDragPoint.png */; };
 		8FDE2E29171D577500CF2BC9 /* rightDragPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDE2E27171D577500CF2BC9 /* rightDragPoint.png */; };
+		FC137BE01719AE1000878684 /* FoldTree.m in Sources */ = {isa = PBXBuildFile; fileRef = FC137BDF1719AE1000878684 /* FoldTree.m */; };
 		FC3C2E621715BF8100C40490 /* [ Argonaut ].tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E2A1715BF7A00C40490 /* [ Argonaut ].tmTheme */; };
 		FC3C2E631715BF8100C40490 /* All Hallow's Eve Custom.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E2B1715BF7A00C40490 /* All Hallow's Eve Custom.tmTheme */; };
 		FC3C2E641715BF8100C40490 /* BBEdit.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E2C1715BF7A00C40490 /* BBEdit.tmTheme */; };
@@ -742,10 +742,10 @@
 		8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewController.h; sourceTree = "<group>"; };
 		8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeViewController.m; sourceTree = "<group>"; };
 		8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewControllerDelegate.h; sourceTree = "<group>"; };
-		FC137BDE1719AE1000878684 /* FoldTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldTree.h; sourceTree = "<group>"; };
-		FC137BDF1719AE1000878684 /* FoldTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldTree.m; sourceTree = "<group>"; };
 		8FDE2E26171D577500CF2BC9 /* leftDragPoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftDragPoint.png; sourceTree = "<group>"; };
 		8FDE2E27171D577500CF2BC9 /* rightDragPoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightDragPoint.png; sourceTree = "<group>"; };
+		FC137BDE1719AE1000878684 /* FoldTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldTree.h; sourceTree = "<group>"; };
+		FC137BDF1719AE1000878684 /* FoldTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldTree.m; sourceTree = "<group>"; };
 		FC3C2E2A1715BF7A00C40490 /* [ Argonaut ].tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "[ Argonaut ].tmTheme"; sourceTree = "<group>"; };
 		FC3C2E2B1715BF7A00C40490 /* All Hallow's Eve Custom.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "All Hallow's Eve Custom.tmTheme"; sourceTree = "<group>"; };
 		FC3C2E2C1715BF7A00C40490 /* BBEdit.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BBEdit.tmTheme; sourceTree = "<group>"; };
@@ -1579,8 +1579,8 @@
 		8FCA1D6616F86C7000C6AAFC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				02F25A091713CF0A000B6301 /* Popup Controllers */,
 				4CD06B2D16FDE97E00C9DED3 /* Protocols */,
+				02F25A091713CF0A000B6301 /* Popup Controllers */,
 				02C4FB9D171E3E0000B2FACD /* Main UI */,
 				02C4FBA2171E3E0700B2FACD /* Settings */,
 				02C4FBA3171E3E0F00B2FACD /* Copy & Paste */,
