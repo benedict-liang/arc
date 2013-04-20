@@ -170,6 +170,7 @@
 {
     [self execPreRenderPluginsAffectingBounds:YES FilterBy:setting];
     [self generateLines];
+    [self resetFolds];
     [self calcLineHeight];
     [self execPreRenderPluginsAffectingBounds:NO FilterBy:setting];
     [self renderFile];
