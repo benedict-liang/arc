@@ -558,12 +558,14 @@
 
     // Remove Gesture Recognizers
     [Utils removeAllGestureRecognizersFrom:cell];
+    [Utils removeAllGestureRecognizersFrom:cell.lineNumberLabel];
+    [Utils removeAllGestureRecognizersFrom:cell.contentView];
     
     // Long Press Gesture for text selection
-//    UILongPressGestureRecognizer *longPressGesture =
-//    [[UILongPressGestureRecognizer alloc] initWithTarget:self
-//                                                  action:@selector(selectText:)];
-//    [cell addGestureRecognizer:longPressGesture];
+    UILongPressGestureRecognizer *longPressGesture =
+    [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                  action:@selector(selectText:)];
+    [cell.contentView addGestureRecognizer:longPressGesture];
 
     // Folding
     if ([_foldStartLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
@@ -576,7 +578,6 @@
     } else {
         cell.foldStart = NO;
         cell.lineNumberLabel.userInteractionEnabled = NO;
-        [Utils removeAllGestureRecognizersFrom:cell.lineNumberLabel];
     }
 
     return cell;
@@ -687,6 +688,22 @@
                       withRowAnimation:UITableViewRowAnimationFade];
 }
 
+- (NSArray *)linesContainingRanges:(NSArray *)ranges
+{
+    NSMutableArray* lines = [NSMutableArray array];
+    for (int i =0; i < _lines.count; i++) {
+        CodeViewLine* line = [_lines objectAtIndex:i];
+        NSRange lineRange = line.range;
+        for (NSValue* v in ranges) {
+            NSRange startRange = [Utils rangeFromValue:v];
+            if ([Utils isSubsetOf:lineRange arg:startRange]) {
+                [lines addObject:[NSNumber numberWithInt:i]];
+            }
+        }
+    }
+    return lines;
+}
+
 #pragma mark - Text Selection
 
 - (void)selectText:(UILongPressGestureRecognizer *)gesture
@@ -697,7 +714,11 @@
             [self dismissTextSelectionViews];
         }
         
-        CodeLineCell *cell = (CodeLineCell*)gesture.view;
+        UIView *v = gesture.view;
+        while (![v isKindOfClass:[UITableViewCell class]]) {
+            v = v.superview;
+        }
+        CodeLineCell *cell = (CodeLineCell*)v;
 
         // Should only consider point.x
         CGPoint point = [gesture locationInView:_tableView];
@@ -795,103 +816,6 @@
     shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
-}
-
-
-#pragma mark - old folding code.
-
-- (void)foldForGesture:(UIGestureRecognizer *)gesture
-{
-    if (!_activeFolds) {
-        _activeFolds = [NSMutableDictionary dictionary];
-    }
-
-    CFIndex index = [self indexOfStringAtGesture:gesture];
-    int lineNumber = [self lineNumberForIndex:index];
-    if (lineNumber == NSNotFound) {
-        return;
-    }
-    if ([self activeFoldsContainsStartLine:lineNumber]) {
-        [self removeFoldWithStartLine:lineNumber];
-    } else {
-        NSDictionary* activeFold = [_foldTree collapsibleLinesForIndex:index WithLines:_lines];
-        
-        if (activeFold) {
-            [_activeFolds setObject:activeFold forKey:[activeFold objectForKey:@"startLine"]];
-        }
-    }
-
-    [self renderFile];
-}
-
-- (NSArray *)linesContainingRanges:(NSArray *)ranges
-{
-    NSMutableArray* lines = [NSMutableArray array];
-    for (int i =0; i < _lines.count; i++) {
-        CodeViewLine* line = [_lines objectAtIndex:i];
-        NSRange lineRange = line.range;
-        for (NSValue* v in ranges) {
-            NSRange startRange = [Utils rangeFromValue:v];
-            if ([Utils isSubsetOf:lineRange arg:startRange]) {
-                [lines addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-    }
-    return lines;
-}
-
-- (BOOL)activeFoldsContainsLine:(int)lineIndex
-{
-    BOOL flag = NO;
-    for (NSNumber* start in _activeFolds) {
-        NSDictionary* activeFold = [_activeFolds objectForKey:start];
-        NSArray* lines = [activeFold objectForKey:@"lines"];
-        if ([lines containsObject:[NSNumber numberWithInt:lineIndex]]) {
-            return YES;
-        }
-    }
-    return flag;
-}
-
-// naive. Can use binary search for speed
-- (int)lineNumberForIndex:(CFIndex)index
-{
-    for (int i = 0; i < _lines.count; i++) {
-        CodeViewLine* line = [_lines objectAtIndex:i];
-        NSRange lineRange =line.range;
-        if ([Utils isContainedByRange:lineRange Index:index]) {
-            return i;
-        }
-    }
-    return NSNotFound;
-}
-
-- (BOOL)activeFoldsContainsStartLine:(int)lineIndex
-{
-    return [_activeFolds objectForKey:[NSNumber numberWithInt:lineIndex]]!= nil;
-}
-
-- (void)removeFoldWithStartLine:(int)lineNumber
-{
-    [_activeFolds removeObjectForKey:[NSNumber numberWithInt:lineNumber]];
-}
-
-- (CFIndex)indexOfStringAtGesture:(UIGestureRecognizer*)gesture
-{
-    CodeLineCell *cell = (CodeLineCell*)[gesture view];
-
-    NSIndexPath* cellIndex = [(UITableView*)cell.superview indexPathForCell:cell];
-    CodeViewLine* lineDict = [_lines objectAtIndex:cellIndex.row];
-    CGPoint pointOfTouch = [gesture locationInView:cell];
-    
-    NSAttributedString *line = cell.line;
-    CTLineRef lineref = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)(line));
-    CFIndex subIndex = CTLineGetStringIndexForPosition(lineref, pointOfTouch);
-    
-    NSRange cellRange = lineDict.range;
-    CFIndex selectedIndex =  cellRange.location + subIndex;
-     //NSLog(@"cellIndex: %@, range:%@ selectedIndex:%ld",cellIndex,[lineDict objectForKey:KEY_RANGE], selectedIndex);
-    return selectedIndex;
 }
 
 @end
