@@ -38,6 +38,8 @@
     [[UIApplication sharedApplication]
      setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
 
+    self.view.backgroundColor = [UIColor blackColor];
+    
     _masterView = _masterViewController.view;
     _detailView = _detailViewController.view;
     [self.view addSubview:_masterView];
@@ -92,12 +94,12 @@
     CGRectMake(0, 0, 320, self.view.bounds.size.height);
     if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication]statusBarOrientation])) {
         _detailView.frame =
-        CGRectMake(320, 0,
+        CGRectMake(321, 0,
                    self.view.bounds.size.width - 320,
                    self.view.bounds.size.height);
     } else {
         _detailView.frame =
-        CGRectMake(320, 0,
+        CGRectMake(321, 0,
                    self.view.bounds.size.width,
                    self.view.bounds.size.height);
     }
