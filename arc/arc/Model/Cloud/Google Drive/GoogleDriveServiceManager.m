@@ -51,7 +51,8 @@ static GoogleDriveServiceManager *sharedServiceManager = nil;
 {
     GTMOAuth2ViewControllerTouch *loginController = [[GTMOAuth2ViewControllerTouch alloc]
                                                      initWithScope:kGTLAuthScopeDriveReadonly clientID:CLOUD_GOOGLE_ID clientSecret:CLOUD_GOOGLE_SECRET keychainItemName:GOOGLE_KEYCHAIN_NAME delegate:self finishedSelector:@selector(viewController:finishedWithAuth:error:)];
-    [[controller navigationController] pushViewController:loginController animated:YES];
+    [loginController setModalPresentationStyle:UIModalPresentationFormSheet];
+    [controller presentViewController:loginController animated:YES completion:nil];
 }
 
 // Handle authentication from Drive.
