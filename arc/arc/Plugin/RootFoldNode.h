@@ -9,7 +9,5 @@
 #import "FoldNode.h"
 
 @interface RootFoldNode : FoldNode
-
-- (id)initWithContentRange:(NSRange)cr;
-
+- (id)initWithContentRange:(NSRange)contentRange;
 @end

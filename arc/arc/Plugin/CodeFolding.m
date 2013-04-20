@@ -11,40 +11,38 @@
 
 @implementation CodeFolding
 
-+ (FoldTree*)foldTreeForContent:(NSString *)content
-                      foldStart:(NSString *)fs
-                        foldEnd:(NSString *)fe
-                     skipRanges:(NSArray *)skips
-                       delegate:(id<SyntaxHighlightDelegate>)del
++ (FoldTree *)foldTreeForContent:(NSString *)content
+                       foldStart:(NSString *)foldStart
+                         foldEnd:(NSString *)foldEnd
+                      skipRanges:(NSArray *)skips
+                        delegate:(id<SyntaxHighlightDelegate>)del
 {
-    
-   
-    NSDictionary* foldResults = [CodeFolding foldsWithStart:fs
-                                                        end:fe
+    NSDictionary* foldResults = [CodeFolding foldsWithStart:foldStart
+                                                        end:foldEnd
                                                  skipRanges:skips
                                                     content:content];
     
     if (foldResults) {
-        NSArray* foldStarts = [foldResults objectForKey:@"foldStarts"];
-        NSArray* foldEnds = [foldResults objectForKey:@"foldEnds"];
-        NSArray* foldRanges = [foldResults  objectForKey:@"foldRanges"];
+        NSArray *foldStarts = [foldResults objectForKey:@"foldStarts"];
+        NSArray *foldEnds = [foldResults objectForKey:@"foldEnds"];
+        NSArray *foldRanges = [foldResults  objectForKey:@"foldRanges"];
         
-        NSArray* nodeArray = [CodeFolding nodeArrayWithFoldRanges:foldRanges
+        NSArray *nodeArray = [CodeFolding nodeArrayWithFoldRanges:foldRanges
                                                        foldStarts:foldStarts
                                                          foldEnds:foldEnds];
         
-        //[del testFoldsOnFoldRanges:foldRanges foldStarts:foldStarts foldEnds:foldEnds];
-        
-        FoldTree* tree = [[FoldTree alloc] initWithNodes:nodeArray RootRange:NSMakeRange(0, content.length)];
-        
+
+        FoldTree *tree = [[FoldTree alloc] initWithNodes:nodeArray
+                                               RootRange:NSMakeRange(0, content.length)];
         return tree;
     }
+
     return nil;
 }
 + (NSDictionary*)foldsWithStart:(NSString*)foldStart
-                   end:(NSString*)foldEnd
-            skipRanges:(NSArray*)skips
-               content:(NSString*)content
+                            end:(NSString*)foldEnd
+                     skipRanges:(NSArray*)skips
+                        content:(NSString*)content
 {
     NSArray* foldRanges;
     NSArray* foldStarts;
@@ -85,8 +83,6 @@
                 foldRanges = [CodeFolding addFoldRange:r toArray:foldRanges forContent:content];
                 foldEnds = [CodeFolding addFoldRange:NSMakeRange(endRange.location+offset, endRange.length) toArray:foldEnds forContent:content];
             }
-            
-            
         } else {
             if (startRange.location > endRange.location && !skipEnd) {
                 if (stack.count > 0) {
@@ -99,7 +95,6 @@
                     foldEnds = [CodeFolding addFoldRange:NSMakeRange(endRange.location+offset, endRange.length) toArray:foldEnds forContent:content];
 
                 }
-                
             }
         }
         offset += lineContent.length+1;
@@ -109,9 +104,10 @@
     }
     return nil;
 }
-+ (NSRange)findFirstPattern:(NSString*)pattern
+
++ (NSRange)findFirstPattern:(NSString *)pattern
                       range:(NSRange)range
-                    content:(NSString*)content
+                    content:(NSString *)content
 {
     NSError *error = NULL;
     
@@ -135,21 +131,24 @@
     
 }
 
-+ (NSArray*)addFoldRange:(NSRange)range toArray:(NSArray*)arr forContent:(NSString*)content{
++ (NSArray *)addFoldRange:(NSRange)range
+                  toArray:(NSArray *)array
+               forContent:(NSString *)content
+{
     if (range.location + range.length < content.length) {
-        NSMutableArray* temp = [NSMutableArray arrayWithArray:arr];
+        NSMutableArray* temp = [NSMutableArray arrayWithArray:array];
         [temp addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
         return temp;
     } else {
         NSLog(@"fold range out of bounds");
-        return arr;
+        return array;
     }
     
 }
 
-+ (NSArray*)nodeArrayWithFoldRanges:(NSArray*)foldRanges
-                         foldStarts:(NSArray*)foldStarts
-                           foldEnds:(NSArray*)foldEnds
++ (NSArray *)nodeArrayWithFoldRanges:(NSArray *)foldRanges
+                          foldStarts:(NSArray *)foldStarts
+                            foldEnds:(NSArray *)foldEnds
 {
     NSMutableArray* accum = [NSMutableArray array];
     for (int i = 0; i < foldRanges.count; i++) {

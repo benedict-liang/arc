@@ -13,17 +13,13 @@
 #import "CodeViewLine.h"
 
 @interface FoldTree : NSObject
+@property (nonatomic, strong) NSMutableArray* children;
+@property (nonatomic, strong) FoldNode* node;
 
-@property NSMutableArray* children;
-@property FoldNode* node;
-
-- (id)initWithNodes:(NSArray*)nodes RootRange:(NSRange)range;
-
-- (FoldNode*)lowestNodeWithIndex:(CFIndex)index;
-
+- (id)initWithNodes:(NSArray *)nodes RootRange:(NSRange)range;
+- (FoldNode *)lowestNodeWithIndex:(CFIndex)index;
 - (NSRange)lowestNodeWithFoldStartIndex:(CFIndex)index;
-
-- (NSArray*)foldStartRanges;
-
-- (NSDictionary*)collapsibleLinesForIndex:(CFIndex)index WithLines:(NSArray*)lines;
+- (NSArray *)foldStartRanges;
+- (NSDictionary *)collapsibleLinesForIndex:(CFIndex)index
+                                 WithLines:(NSArray *)lines;
 @end

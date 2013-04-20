@@ -10,12 +10,15 @@
 
 @implementation RootFoldNode
 
-- (id)initWithContentRange:(NSRange)cr {
-    
-    self = [super initWithContentRange:cr startRange:NSMakeRange(0, 0) endRange:NSMakeRange(0, 0)];
+- (id)initWithContentRange:(NSRange)contentRange
+{
+    self = [super initWithContentRange:contentRange
+                            startRange:NSMakeRange(0, 0)
+                              endRange:NSMakeRange(0, 0)];
     if (self) {
         self.type = kRootNode;
     }
+
     return self;
 }
 @end

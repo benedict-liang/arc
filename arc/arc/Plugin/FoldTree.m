@@ -10,12 +10,13 @@
 
 @implementation FoldTree
 
-- (id)initWithSortedNodes:(NSArray*)sn Node:(FoldNode*)node
+- (id)initWithSortedNodes:(NSArray *)sortedNodes
+                     Node:(FoldNode *)node
 {
     if (self = [super init]) {
         _node = node;
         _children = [NSMutableArray array];
-        [self consWithSorted:sn];
+        [self consWithSorted:sortedNodes];
     }
     return self;
 }
@@ -26,8 +27,8 @@
     return [self initWithSortedNodes:[FoldNode sortNodeArray:nodes] Node:root];
 }
 
-- (void)consWithSorted:(NSArray*)sortedNodes {
-    
+- (void)consWithSorted:(NSArray *)sortedNodes
+{    
     NSMutableArray *accum = [NSMutableArray array];
     FoldNode* elder;
 
@@ -58,7 +59,8 @@
     }
 }
 
--(NSString*)description {
+- (NSString *)description
+{
     NSMutableString* str = [NSMutableString stringWithFormat:@"Node: %@ children=> { \n",_node];
     for (FoldTree* subTree in _children) {
         [str appendString:@"    "];
@@ -69,7 +71,9 @@
     return str;
 }
 
--(NSDictionary*)collapsibleLinesForIndex:(CFIndex)index WithLines:(NSArray*)lines {
+- (NSDictionary *)collapsibleLinesForIndex:(CFIndex)index
+                                 WithLines:(NSArray *)lines
+{
     FoldNode* collapsibleNode = [self lowestNodeWithIndex:index];
     if (collapsibleNode.type == kRootNode) {
         return nil;
@@ -90,7 +94,8 @@
     return @{@"lines":collapsedLines, @"startLine":[NSNumber numberWithInt:startLine]};
 }
 
--(FoldNode*)lowestNodeWithIndex:(CFIndex)index {
+- (FoldNode *)lowestNodeWithIndex:(CFIndex)index
+{
     if ([Utils isContainedByRange:_node.contentRange Index:index]) {
         FoldNode* leafNode = _node;
         for (FoldTree* subTree in _children) {
@@ -123,7 +128,8 @@
 //    }
 //}
 
--(NSRange)lowestNodeWithFoldStartIndex:(CFIndex)index {
+- (NSRange)lowestNodeWithFoldStartIndex:(CFIndex)index
+{
     if ([Utils isContainedByRange:_node.startRange Index:index] || _node.type == kRootNode) {
         NSRange leafRange = _node.contentRange;
         for (FoldTree* subTree in _children) {
@@ -139,7 +145,8 @@
     }
 }
 
--(NSArray*)foldStartRanges {
+- (NSArray *)foldStartRanges
+{
     NSMutableArray* accum = [NSMutableArray array];
     [accum addObject:[Utils valueFromRange:_node.startRange]];
     for (FoldTree* subtree in _children) {
