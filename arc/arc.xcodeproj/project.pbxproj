@@ -490,6 +490,7 @@
 		4C6B0910171EEC22009DB903 /* FileObjectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileObjectTableViewCell.m; sourceTree = "<group>"; };
 		4C7A82BD1722512B00B7D229 /* ArcSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcSplitViewController.h; sourceTree = "<group>"; };
 		4C7A82BE1722512B00B7D229 /* ArcSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcSplitViewController.m; sourceTree = "<group>"; };
+		4C7A82C0172281C600B7D229 /* ArcSplitViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcSplitViewControllerDelegate.h; sourceTree = "<group>"; };
 		4C8307E917114CEF00F49C33 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		4C8307EA17114CEF00F49C33 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Solarized (dark).tmTheme"; sourceTree = "<group>"; };
@@ -1163,6 +1164,7 @@
 		4CD06B2D16FDE97E00C9DED3 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				4C7A82C0172281C600B7D229 /* ArcSplitViewControllerDelegate.h */,
 				8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */,
 				4CD06B2C16FDE92D00C9DED3 /* SubViewControllerDelegate.h */,
 				4CA4DE43170EA4C200A86109 /* MasterViewControllerDelegate.h */,

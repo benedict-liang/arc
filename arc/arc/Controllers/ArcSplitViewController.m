@@ -14,6 +14,7 @@
 @end
 
 @implementation ArcSplitViewController
+@synthesize delegate = _delegate;
 @synthesize masterViewController = _masterViewController;
 @synthesize detailViewController = _detailViewController;
 @synthesize masterViewVisible = _masterViewVisible;
@@ -41,35 +42,72 @@
     _detailView = _detailViewController.view;
     [self.view addSubview:_masterView];
     [self.view addSubview:_detailView];
-    
-    [self autoLayout:
-     [[UIApplication sharedApplication]statusBarOrientation]];
 }
 
 - (void)autoLayout:(UIInterfaceOrientation)toInterfaceOrientation
 {
-    _masterView.frame =
-    CGRectMake(0, 0, 320, self.view.bounds.size.height);
-    
-    _detailView.frame =
-    CGRectMake(320, 0,
-               self.view.bounds.size.width - 320,
-               self.view.bounds.size.height);
+    if (_masterViewVisible) {
+        [self showMasterViewAnimated:NO];
+    } else {
+        [self hideMasterViewAnimated:NO];
+    }
 }
 
 # pragma mark - Layout Methods
+
+- (void)showMasterViewAnimated:(BOOL)animate
+{
+    if (animate) {
+        [UIView animateWithDuration:0.2
+                              delay:0
+                            options:UIViewAnimationOptionCurveEaseIn
+                         animations:^{
+                             [self showMasterView];
+                         }
+                         completion:^(BOOL finished){
+                             _masterViewVisible = YES;
+                             [self.delegate resizeSubViews];
+                         }];
+    } else {
+        [self showMasterView];
+        _masterViewVisible = YES;
+    }
+}
 
 - (void)showMasterView
 {
     _masterView.frame =
     CGRectMake(0, 0, 320, self.view.bounds.size.height);
-    
-    _detailView.frame =
-    CGRectMake(320, 0,
-               self.view.bounds.size.width - 320,
-               self.view.bounds.size.height);
-    
-    _masterViewVisible = YES;
+    if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication]statusBarOrientation])) {
+        _detailView.frame =
+        CGRectMake(320, 0,
+                   self.view.bounds.size.width - 320,
+                   self.view.bounds.size.height);
+    } else {
+        _detailView.frame =
+        CGRectMake(320, 0,
+                   self.view.bounds.size.width,
+                   self.view.bounds.size.height);
+    }
+}
+
+- (void)hideMasterViewAnimated:(BOOL)animate
+{
+    if (animate) {
+        [UIView animateWithDuration:0.2
+                              delay:0
+                            options:UIViewAnimationOptionCurveEaseIn
+                         animations:^{
+                             [self hideMasterView];
+                         }
+                         completion:^(BOOL finished){
+                             _masterViewVisible = NO;
+                             [self.delegate resizeSubViews];
+                         }];
+    } else {
+        [self hideMasterView];
+        _masterViewVisible = NO;
+    }
 }
 
 - (void)hideMasterView
@@ -81,8 +119,6 @@
     CGRectMake(0, 0,
                self.view.bounds.size.width,
                self.view.bounds.size.height);
-    
-    _masterViewVisible = NO;
 }
 
 # pragma mark - Orientation Methods

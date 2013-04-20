@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ArcSplitViewControllerDelegate.h"
 
 @interface ArcSplitViewController : UIViewController
+@property (nonatomic, weak) id<ArcSplitViewControllerDelegate> delegate;
 @property (nonatomic, strong) UIViewController *masterViewController;
 @property (nonatomic, strong) UIViewController *detailViewController;
 @property (nonatomic, readonly) BOOL masterViewVisible;
-- (void)showMasterView;
-- (void)hideMasterView;
+- (void)showMasterViewAnimated:(BOOL)animate;
+- (void)hideMasterViewAnimated:(BOOL)animate;
 @end

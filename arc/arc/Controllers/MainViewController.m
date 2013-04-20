@@ -100,6 +100,13 @@
     [_codeViewController refreshForSetting:setting];
 }
 
+# pragma mark - Arc SplitView Controller Delegate
+
+- (void)resizeSubViews
+{
+    [_codeViewController redrawCodeView];
+}
+
 #pragma mark - MainViewControllerDelegate Methods
 
 - (void)fileObjectSelected:(id<FileSystemObject>)fileSystemObject

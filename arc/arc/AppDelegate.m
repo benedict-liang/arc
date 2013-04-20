@@ -170,6 +170,9 @@
     // Assign SubViewControllers
     mainViewController.masterViewController = leftViewController;
     mainViewController.detailViewController = codeViewController;
+    
+    // Set ArcSplitViewController Delegate
+    mainViewController.delegate = mainViewController;
 
     // Set MainViewController as RootViewController
     [self.window setRootViewController:mainViewController];

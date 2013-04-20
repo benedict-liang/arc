@@ -126,6 +126,10 @@
         return;
     }
     
+    if (file == nil) {
+        file = _currentFile;
+    }
+    
     // Update Current file
     _currentFile = file;
     _toolbarTitle.text = [_currentFile name];
@@ -313,7 +317,8 @@
                               animated:NO];
 }
 
-- (void)removeBackgroundColorForSetting:(NSString*)setting {
+- (void)removeBackgroundColorForSetting:(NSString*)setting
+{
     [_arcAttributedString removeAttributesForSettingKey:setting];
 }
 
@@ -326,8 +331,15 @@
                                   ForSetting:setting];
 }
 
-- (NSString*)getStringForRange:(NSRange)range {
+- (NSString*)getStringForRange:(NSRange)range
+{
     return [_arcAttributedString.attributedString.string substringWithRange:range];
+}
+
+- (void)redrawCodeView
+{
+    [self centerToolBarTitle];
+    [self showFile:nil];
 }
 
 #pragma mark - Execute Plugin Methods
@@ -469,9 +481,9 @@
 - (void)toggleMasterView:(id)sender
 {
     if ([self.delegate masterViewVisible]) {
-        [self.delegate hideMasterView];
+        [self.delegate hideMasterViewAnimated:YES];
     } else {
-        [self.delegate showMasterView];
+        [self.delegate showMasterViewAnimated:YES];
     }
 }
 

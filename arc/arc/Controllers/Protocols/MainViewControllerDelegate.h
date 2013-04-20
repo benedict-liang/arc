@@ -18,8 +18,8 @@
 
 # pragma mark - Layout
 @property (nonatomic, readonly) BOOL masterViewVisible;
-- (void)showMasterView;
-- (void)hideMasterView;
+- (void)showMasterViewAnimated:(BOOL)animate;
+- (void)hideMasterViewAnimated:(BOOL)animate;
 
 // TODO, refactor these methods
 #pragma mark - Others

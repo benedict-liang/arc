@@ -7,6 +7,7 @@
 //
 
 #import "ArcSplitViewController.h"
+#import "ArcSplitViewControllerDelegate.h"
 #import "MainViewControllerDelegate.h"
 #import "CodeViewController.h"
 #import "SettingsViewController.h"
@@ -17,5 +18,5 @@
 #import "File.h"
 #import "TMBundleHeader.h"
 
-@interface MainViewController : ArcSplitViewController <MainViewControllerDelegate>
+@interface MainViewController : ArcSplitViewController <MainViewControllerDelegate, ArcSplitViewControllerDelegate>
 @end
