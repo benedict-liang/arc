@@ -25,8 +25,27 @@
         _parent = parent;
         _extension = [name pathExtension];
         _isRemovable = YES;
+        [self updateAttributes];
     }
     return self;
+}
+
+- (void)updateAttributes
+{
+    DBFilesystem *filesystem = [DBFilesystem sharedFilesystem];
+    DBPath *ourPath = [[DBPath alloc] initWithString:_path];
+    
+    DBError *error;
+    DBFileInfo *fileInfo = [filesystem fileInfoForPath:ourPath error:&error];
+    
+    if (error) {
+        NSLog(@"%@", error);
+    }
+    
+    if (fileInfo) {
+        _size = [fileInfo size];
+        _lastModified = [fileInfo modifiedTime];
+    }
 }
 
 // Returns the contents of this object.
@@ -50,27 +69,6 @@
     }
     [ourFile close];
     return  _contents;
-}
-
-// Returns the size of this object.
-// Folders should return the number of objects within, Files their size in B.
-- (float)size
-{
-    DBFilesystem *filesystem = [DBFilesystem sharedFilesystem];
-    DBPath *ourPath = [[DBPath alloc] initWithString:_path];
-    
-    DBError *error;
-    DBFileInfo *fileInfo = [filesystem fileInfoForPath:ourPath error:&error];
-    
-    if (error) {
-        NSLog(@"%@", error);
-    }
-    
-    if (fileInfo) {
-        return [fileInfo size];
-    } else {
-        return 0;
-    }
 }
 
 // Removes this object.
