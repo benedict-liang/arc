@@ -26,8 +26,25 @@
         _parent = parent;
         _extension = [name pathExtension];
         _isRemovable = YES;
+        [self updateAttributes];
     }
     return self;
+}
+
+// Updates the attributes of this file.
+- (void)updateAttributes
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSError *error;
+    NSDictionary *fileProperties = [fileManager attributesOfItemAtPath:_path error:&error];
+    
+    if (error) {
+        NSLog(@"%@", error);
+    } else {
+        _size = [[fileProperties valueForKey:NSFileSize] floatValue];
+        _lastModified = [fileProperties valueForKey:NSFileModificationDate];
+    }
 }
 
 // Returns the contents of this object.
@@ -42,24 +59,6 @@
         _contents = retrievedContents;
     }
     return _contents;
-}
-
-// Returns the size of this object.
-// Folders should return the number of objects within, Files their size in B.
-- (float)size
-{
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    NSError *error;
-    NSDictionary *fileProperties = [fileManager attributesOfItemAtPath:_path error:&error];
-    
-    if (error) {
-        NSLog(@"%@", error);
-        return 0;
-    } else {
-        NSNumber *fileSize = [fileProperties valueForKey:NSFileSize];
-        return [fileSize floatValue];
-    }
 }
 
 // Removes this object.
