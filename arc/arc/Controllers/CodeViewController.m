@@ -31,14 +31,15 @@
 
 @property int lineHeight;
 @property int lineNumberWidth;
-@property NSMutableArray *plugins;
+@property (nonatomic, strong) NSMutableArray *plugins;
 
 // Line Processing
 @property (nonatomic) NSMutableArray *lines;
 @property (nonatomic) CTTypesetterRef typesetter;
 
 // Folding
-@property (strong) FoldTree* foldTree;
+@property (nonatomic, strong) FoldTree* foldTree;
+@property (nonatomic) BOOL fold;
 @property NSMutableDictionary* activeFolds;
 @property NSArray* foldStartLines;
 
@@ -146,6 +147,7 @@
     [self loadFile];
     
     _sharedObject = [NSMutableDictionary dictionary];
+    _foldTree = nil;
     [self refreshForSetting:nil];
 }
 
@@ -182,10 +184,7 @@
         CFRelease(_typesetter);
         _typesetter = NULL;
     }
-    
 
-    //_foldTree = nil;
-    //_activeFolds = nil;
     [_lines removeAllObjects];
     [self dismissTextSelectionViews];
 }
@@ -295,8 +294,17 @@
     if ([[file identifier] isEqual:[_currentFile identifier]]) {
         _arcAttributedString = arcAttributedString;
         _foldTree = foldTree;
-        _foldStartLines = [self linesContainingRanges:[_foldTree foldStartRanges]];
+        [self resetFolds];
         [self renderFile];
+    }
+}
+
+- (void)resetFolds
+{
+    _activeFolds = [NSMutableDictionary dictionary];
+    _foldStartLines = [self linesContainingRanges:[_foldTree foldStartRanges]];
+    for (CodeViewLine *line in _lines) {
+        line.visible = YES;
     }
 }
 
@@ -341,6 +349,7 @@
     [self setUpDefaultToolBar];
     [self resizeTableView];
     [self generateLines];
+    [self resetFolds];
     [self renderFile];
 }
 
@@ -533,10 +542,12 @@
     NSAttributedString *lineRef = [_arcAttributedString.attributedString
                                    attributedSubstringFromRange:line.range];
 
+    // Reset Cell
+    [cell resetCell];
+    
     cell.showLineNumber = _lineNumbers;
     cell.lineNumberWidth = _lineNumberWidth;
     cell.line = lineRef;
-
     cell.stringRange = line.range;
     
     if (_lineNumbers) {
@@ -568,22 +579,6 @@
         [Utils removeAllGestureRecognizersFrom:cell.lineNumberLabel];
     }
 
-//    if ([self activeFoldsContainsStartLine:indexPath.row]) {
-//        [cell activeFolding];
-//    }
-//
-//    if ([self activeFoldsContainsLine:indexPath.row]) {
-//        cell.hidden = YES;
-//        return cell;
-//    }
-//
-//    UITapGestureRecognizer *doubleTapGesture =
-//    [[UITapGestureRecognizer alloc]
-//     initWithTarget:self
-//     action:@selector(foldForGesture:)];
-//    doubleTapGesture.numberOfTapsRequired = 2;
-//    [cell addGestureRecognizer:doubleTapGesture];
-
     return cell;
 }
 
@@ -604,9 +599,14 @@
                                 codeViewLine.range.location + codeViewLine.range.length
                                                          WithLines:_lines];
     
+    if (activeFold == nil) {
+        return;
+    }
+    
     NSMutableArray *lines = [activeFold objectForKey:@"lines"];
     
     if (gesture.state == UIGestureRecognizerStateBegan) {
+        _fold = YES;
         [cell highlight];
         
         CodeLineCell *foldingCell;
@@ -618,17 +618,73 @@
         }
     }
     
+    if (gesture.state == UIGestureRecognizerStateCancelled ||
+        gesture.state == UIGestureRecognizerStateChanged) {
+        _fold = NO;
+        [cell removeHighlight];
+        
+        CodeLineCell *foldingCell;
+        for (NSNumber *row in lines) {
+            foldingCell = (CodeLineCell *)[_tableView cellForRowAtIndexPath:
+                                           [NSIndexPath indexPathForItem:[row intValue]
+                                                               inSection:0]];
+            [foldingCell removeHighlight];
+        }
+        
+        NSLog(@"%@", activeFold);
+    }
+    
     if (gesture.state == UIGestureRecognizerStateEnded) {
+        if (!_fold) {
+            return;
+        }
+        
         NSMutableArray *indexPaths = [NSMutableArray array];
         for (NSNumber *row in lines) {
-            CodeViewLine *line = [_lines objectAtIndex:[row intValue]];
-            line.visible = NO;
             [indexPaths addObject:[NSIndexPath indexPathForItem:[row intValue]
                                                       inSection:0]];
         }
+        
+        NSMutableArray *actualLines = [activeFold objectForKey:@"actualLines"];
+        for (NSNumber *row in actualLines) {
+            CodeViewLine *line = [_lines objectAtIndex:[row intValue]];
+            line.visible = NO;            
+        }
+        
         [_tableView deleteRowsAtIndexPaths:indexPaths
                           withRowAnimation:UITableViewRowAnimationFade];
+        
+        [_activeFolds setObject:activeFold
+                         forKey:[NSNumber numberWithInt:indexPath.row]];
+        
+        UITapGestureRecognizer *tapGesture =
+        [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(removeFold:)];
+        [cell addGestureRecognizer:tapGesture];
     }
+}
+
+- (void)removeFold:(UITapGestureRecognizer *)gesture
+{
+    CodeLineCell *cell = (CodeLineCell *)gesture.view;
+    [cell removeHighlight];
+    [cell removeGestureRecognizer:gesture];
+    NSIndexPath* indexPath = [_tableView indexPathForCell:cell];
+    NSDictionary *activeFold = [_activeFolds objectForKey:
+                                [NSNumber numberWithInt:indexPath.row]];
+
+    NSMutableArray *lines = [activeFold objectForKey:@"lines"];
+    
+    NSMutableArray *indexPaths = [NSMutableArray array];
+    for (NSNumber *row in lines) {
+        CodeViewLine *line = [_lines objectAtIndex:[row intValue]];
+        line.visible = YES;
+        [indexPaths addObject:[NSIndexPath indexPathForItem:[row intValue]
+                                                  inSection:0]];
+    }
+
+    [_tableView insertRowsAtIndexPaths:indexPaths
+                      withRowAnimation:UITableViewRowAnimationFade];
 }
 
 #pragma mark - Text Selection

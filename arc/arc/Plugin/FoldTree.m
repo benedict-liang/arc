@@ -75,11 +75,32 @@
         return nil;
     }
     NSMutableArray* collapsedLines = [NSMutableArray array];
+    NSMutableArray* actualLines = [NSMutableArray array];
     int startLine = NSNotFound;
-    for (int i =0; i < lines.count; i++) {
+    
+    NSMutableArray *visibleLines = [NSMutableArray array];
+    for (CodeViewLine *line in lines) {
+        if (line.visible) {
+            [visibleLines addObject:line];
+        }
+    }
+
+    for (int i = 0; i < lines.count; i++) {
         CodeViewLine* line = [lines objectAtIndex:i];
-        NSRange lineRange = line.range;
         
+        NSRange lineRange = line.range;
+        if ([Utils isSubsetOf:collapsibleNode.contentRange arg:lineRange]) {
+            [actualLines addObject:[NSNumber numberWithInt:i]];
+        }
+        if ([Utils isSubsetOf:lineRange arg:collapsibleNode.startRange]) {
+            startLine = i;
+        }
+    }
+
+    for (int i = 0; i < visibleLines.count; i++) {
+        CodeViewLine* line = [visibleLines objectAtIndex:i];
+        
+        NSRange lineRange = line.range;
         if ([Utils isSubsetOf:collapsibleNode.contentRange arg:lineRange]) {
             [collapsedLines addObject:[NSNumber numberWithInt:i]];
         }
@@ -87,9 +108,11 @@
             startLine = i;
         }
     }
+
     return @{
              @"lines":collapsedLines,
-             @"startLine":[NSNumber numberWithInt:startLine]
+             @"startLine":[NSNumber numberWithInt:startLine],
+             @"actualLines":actualLines
              };
 }
 

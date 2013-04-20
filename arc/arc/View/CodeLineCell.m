@@ -57,8 +57,6 @@
     if (_foldStart) {
         _lineNumberLabel.backgroundColor = [Utils darkenColor:_foregroundColor
                                             percentOfOriginal:20];
-    } else {
-        _lineNumberLabel.backgroundColor = [UIColor clearColor];
     }
 }
 
@@ -73,12 +71,10 @@
     self.contentView.backgroundColor = [UIColor clearColor];
 }
 
-- (void)fold
+- (void)resetCell
 {
-    self.bounds = CGRectMake(self.bounds.origin.x,
-                             self.bounds.origin.y,
-                             self.bounds.size.width,
-                             0);
+    [self removeHighlight];
+    _lineNumberLabel.backgroundColor = [UIColor clearColor];
 }
 
 - (void)setForegroundColor:(UIColor*)foregroundColor

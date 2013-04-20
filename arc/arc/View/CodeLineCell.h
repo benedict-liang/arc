@@ -29,7 +29,5 @@
 
 - (void)highlight;
 - (void)removeHighlight;
-
-- (void)fold;
-- (void)unfold;
+- (void)resetCell;
 @end
