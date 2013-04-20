@@ -16,6 +16,7 @@
 
 @interface MainViewController ()
 @property (nonatomic, strong) CodeViewController *codeViewController;
+@property (nonatomic, strong) CodeViewController *secondCodeViewController;
 @property (nonatomic, strong) LeftViewController *leftViewController;
 @property (nonatomic, strong) ApplicationState *appState;
 @property NSArray *plugins;
@@ -120,7 +121,28 @@
 
 - (void)secondFileObjectSelected:(id<FileSystemObject>)fileSystemObject
 {
+//    [self hideMasterViewAnimated:YES];
     
+    int width = floor(self.view.bounds.size.width/2);
+    _codeViewController.view.frame = CGRectMake(0, 0,
+                                                width,
+                                                self.view.frame.size.height);
+
+    [_codeViewController redrawCodeViewBoundsChanged:YES];
+    // add second code view
+    _secondCodeViewController = [[CodeViewController alloc] init];
+    for (id<PluginDelegate> plugin in _plugins) {
+        [_secondCodeViewController registerPlugin:plugin];
+    }
+
+    _secondCodeViewController.delegate = nil;
+
+    [self.view addSubview:_secondCodeViewController.view];
+    _secondCodeViewController.view.frame = CGRectMake(width, 0,
+                                                     width,
+                                                     self.view.frame.size.height);
+    [_secondCodeViewController showFile:(id<File>)fileSystemObject];
+    [_secondCodeViewController redrawCodeViewBoundsChanged:YES];
 }
 
 - (id<FileSystemObject>)currentfile
