@@ -83,7 +83,7 @@
         CGRect selectedRect = CGRectMake(startOffset + totalGap,
                                          cellRect.origin.y,
                                          endOffset - startOffset,
-                                         cellRect.size.height);
+                                         cellRect.size.height + 30);
         
         [self createDragPoints:selectedRect];
     }

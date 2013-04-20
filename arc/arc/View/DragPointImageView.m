@@ -15,12 +15,33 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        UIImage *scaledImage = [self scaleImageWithAspectRatio:imageName];
-        self.image = scaledImage;
-        
-        self.contentMode = UIViewContentModeCenter;
-        self.backgroundColor = [UIColor clearColor];
-        
+        if ([imageName isEqualToString:@"leftDragPoint.png"]) {
+            
+            UIImage *scaledImage = [self scaleImageWithAspectRatio:imageName];
+            CGFloat aspectRatio = scaledImage.size.width / scaledImage.size.height;
+            CGSize scaledSize = CGSizeMake(aspectRatio * (scaledImage.size.height - 30),
+                                           scaledImage.size.height - 30);
+            UIGraphicsBeginImageContext(scaledImage.size);
+            [scaledImage drawInRect:CGRectMake(0, 0,scaledSize.width,
+                                               scaledSize.height)];
+            [scaledImage drawInRect:CGRectMake(0, scaledSize.height,
+                                               20,
+                                               20)];
+            UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            
+            self.image = newImage;
+            
+            self.contentMode = UIViewContentModeTop;
+            self.backgroundColor = [UIColor clearColor];
+        }
+        else {
+            UIImage *scaledImage = [self scaleImageWithAspectRatio:imageName];
+            self.image = scaledImage;
+            
+            self.contentMode = UIViewContentModeCenter;
+            self.backgroundColor = [UIColor clearColor];
+        }
     }
     return self;
 }
