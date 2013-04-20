@@ -125,7 +125,6 @@
 
 - (BOOL)shouldAutorotate
 {
-    // Allow any orientation
     return YES;
 }
 
@@ -133,6 +132,11 @@
                                          duration:(NSTimeInterval)duration
 {
     [self autoLayout:toInterfaceOrientation];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [self.delegate resizeSubViews];
 }
 
 @end

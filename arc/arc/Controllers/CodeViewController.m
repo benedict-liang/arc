@@ -338,6 +338,7 @@
 
 - (void)redrawCodeView
 {
+    NSLog(@"%@", NSStringFromCGRect(self.view.frame));
     [self centerToolBarTitle];
     [self showFile:nil];
 }
