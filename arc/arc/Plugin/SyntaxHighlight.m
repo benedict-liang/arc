@@ -373,9 +373,6 @@
                                        scope:name
                                         dict:pairMatches
                             capturableScopes:capturableScopes];
-                if ([name isEqualToString:@"comment.line.double-slash.c++"]) {
-                   // NSLog(@"%@",pairMatches);
-                }
             }
             
             if ([syntaxItem objectForKey:@"contentName"]) {
