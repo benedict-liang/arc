@@ -60,4 +60,46 @@
         return nil;
     }
 }
++ (BOOL)dict:(NSDictionary*)dict HasScope:(NSString*)scope {
+    if (!dict) {
+        return NO;
+    }
+    for (id k in dict) {
+        NSDictionary* item = [dict objectForKey:k];
+        NSString* name = [item objectForKey:@"name"];
+        if (name) {
+            NSArray* capturableScopes = [item objectForKey:@"capturableScopes"];
+            return [capturableScopes containsObject:scope];
+        }
+    }
+    return NO;
+}
++ (BOOL)searchBundle:(NSDictionary*)bundle For:(NSString*)scope {
+// name appears in name, captures{}, beginCaptures{}, endCaptures{}, contentName,
+    NSString* name = [bundle objectForKey:@"name"];
+    BOOL flag = NO;
+    if (name) {
+        NSArray* capturableScopes = [bundle objectForKey:@"capturableScopes"];
+        flag = [capturableScopes containsObject:scope];
+    }
+    if (!flag) {
+        NSDictionary* captures = [bundle objectForKey:@"captures"];
+        NSDictionary* beginCaptures = [bundle objectForKey:@"beginCaptures"];
+        NSDictionary* endCaptures = [bundle objectForKey:@"endCaptures"];
+        flag = [TMBundleSyntaxParser dict:captures HasScope:scope] || [TMBundleSyntaxParser dict:beginCaptures HasScope:scope] || [TMBundleSyntaxParser dict:endCaptures HasScope:scope];
+    }
+    if (!flag) {
+        NSArray* patterns = [bundle objectForKey:@"patterns"];
+        flag = [TMBundleSyntaxParser ]
+    }
+    
+}
+
++ (NSDictionary *)prunePatterns:(NSArray*)patterns WithTheme:(NSDictionary* )theme {
+    NSDictionary* scopes = [theme objectForKey:@"scopes"];
+    NSMutableArray* newBundle = [NSMutableArray array];
+    for (NSString* scope in scopes) {
+        
+    }
+}
 @end

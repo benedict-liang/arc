@@ -361,17 +361,6 @@
         long eEnds = erange.location + erange.length;
         NSArray *embedPatterns = [syntaxItem objectForKey:@"patterns"];
         
-        if ([self isEscapedOnRange:brange]) {
-            
-            NSLog(@"ecaped with brange:%@",[Utils valueFromRange:brange]);
-            //brange.location++;
-            //break;
-        }
-        if ([self isEscapedOnRange:erange]) {
-            NSLog(@"ecaped with erange:%@",[Utils valueFromRange:erange]);
-            //erange.location++;
-            //break;
-        }
         //if there are characters between begin and end, and brange and erange are valid results
         if (eEnds > brange.location &&
             brange.location != NSNotFound &&
