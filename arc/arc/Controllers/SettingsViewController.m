@@ -358,7 +358,8 @@
                 reloadTableData:YES];
         } else  {
             // Link to the long settings list.
-            LongSettingListViewController *listController = [[LongSettingListViewController alloc] initWithProperties:sectionProperties delegate:self];
+            LongSettingListViewController *listController =
+            [[LongSettingListViewController alloc] initWithProperties:sectionProperties delegate:self];
             [self.navigationController pushViewController:listController animated:YES];
         }
     }
