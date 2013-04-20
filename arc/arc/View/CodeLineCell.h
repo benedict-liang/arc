@@ -12,8 +12,10 @@
 
 @interface CodeLineCell : UITableViewCell
 @property (nonatomic, strong) NSAttributedString *line;
+@property (nonatomic, strong) UILabel *lineNumberLabel;
 @property (nonatomic) NSIndexPath *indexPath;
 @property (nonatomic) BOOL showLineNumber;
+@property (nonatomic) BOOL foldStart;
 @property (nonatomic) int lineNumberWidth;
 @property (nonatomic) int lineNumber;
 @property (nonatomic) NSRange stringRange;
@@ -24,9 +26,4 @@
 
 - (void)setForegroundColor:(UIColor*)foregroundColor;
 - (void)setFontFamily:(NSString*)fontFamily FontSize:(int)fontSize;
-
-// Folding
-- (void)setFolding;
-- (void)clearFolding;
-- (void)activeFolding;
 @end

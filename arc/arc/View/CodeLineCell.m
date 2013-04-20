@@ -14,15 +14,15 @@
 @property (nonatomic) int fontSize;
 //@property (nonatomic, strong) CodeLine *codeLine;
 @property (nonatomic, strong) UILabel *codeLine;
-@property (nonatomic, strong) UILabel *lineNumberLabel;
-@property (nonatomic, strong) UILabel *foldingMarker;
 @end
 
 @implementation CodeLineCell
 @synthesize line = _line;
+@synthesize lineNumberLabel = _lineNumberLabel;
 @synthesize lineNumberWidth = _lineNumberWidth;
 @synthesize lineNumber = _lineNumber;
 @synthesize showLineNumber = _showLineNumber;
+@synthesize foldStart = _foldStart;
 
 - (id)initWithStyle:(UITableViewCellStyle)style
     reuseIdentifier:(NSString *)reuseIdentifier
@@ -33,8 +33,9 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         _lineNumberWidth = SIZE_CODEVIEW_LINENUMBERS_MIN + SIZE_CODEVIEW_MARGIN_LINENUMBERS;
         _showLineNumber = YES;
+        _foldStart = NO;
+
         _lineNumberLabel = [[UILabel alloc] init];
-        _lineNumberLabel.backgroundColor = [UIColor clearColor];
         _lineNumberLabel.textAlignment = NSTextAlignmentRight;
         _lineNumberLabel.numberOfLines = 1;
         [self.contentView addSubview:_lineNumberLabel];
@@ -44,21 +45,27 @@
         _codeLine.numberOfLines = 1;
         [self.contentView addSubview:_codeLine];
         
-//        _foldingMarker = [[UILabel alloc] init];
-//        _foldingMarker.backgroundColor = [UIColor clearColor];
-//        [self.contentView addSubview:_foldingMarker];
-        
         self.contentView.backgroundColor = [UIColor clearColor];
         self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
 
+- (void)setFoldStart:(BOOL)foldStart
+{
+    _foldStart = foldStart;
+    if (_foldStart) {
+        _lineNumberLabel.backgroundColor = [Utils darkenColor:_foregroundColor
+                                            percentOfOriginal:20];
+    } else {
+        _lineNumberLabel.backgroundColor = [UIColor clearColor];
+    }
+}
+
 - (void)setForegroundColor:(UIColor*)foregroundColor
 {
     _foregroundColor = foregroundColor;
     _lineNumberLabel.textColor = _foregroundColor;
-//    _foldingMarker.textColor = _foregroundColor;
 }
 
 - (void)setFontFamily:(NSString*)fontFamily FontSize:(int)fontSize
@@ -66,7 +73,6 @@
     _fontFamily = fontFamily;
     _fontSize = fontSize;
     _lineNumberLabel.font = [UIFont fontWithName:_fontFamily size:_fontSize];
-//    _foldingMarker.font = [UIFont fontWithName:_fontFamily size:_fontSize];
 }
 
 - (void)setLine:(NSAttributedString *)line
@@ -105,19 +111,12 @@
     if (_showLineNumber) {
         _lineNumberLabel.frame =
         CGRectMake(0, 0, _lineNumberWidth, self.contentView.bounds.size.height);
-        
-//        _foldingMarker.frame =
-//        CGRectMake(_lineNumberWidth, 0, _foldingMarkerWidth, self.contentView.bounds.size.height);
-
         _codeLine.frame =
         CGRectMake(_lineNumberWidth + SIZE_CODEVIEW_PADDING_LINENUMBERS,
                    0,
                    self.contentView.bounds.size.width - _lineNumberWidth - SIZE_CODEVIEW_PADDING_LINENUMBERS,
                    self.contentView.bounds.size.height);
     } else {
-//        _foldingMarker.frame =
-//        CGRectMake(SIZE_CODEVIEW_PADDING_LINENUMBERS, 0, _foldingMarkerWidth, self.contentView.bounds.size.height);
-        
         _codeLine.frame =
         CGRectMake(SIZE_CODEVIEW_PADDING_LINENUMBERS,
                    0,
@@ -130,23 +129,6 @@
 - (UIView *)backgroundView
 {
     return nil;
-}
-
-# pragma mark - folding
-
-- (void)setFolding
-{
-    _foldingMarker.text = @"▼";
-}
-
-- (void)activeFolding
-{
-    _foldingMarker.text = @"▶";
-}
-
-- (void)clearFolding
-{
-    _foldingMarker.text = @"";
 }
 
 @end
