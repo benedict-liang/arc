@@ -103,9 +103,17 @@
 
 # pragma mark - Arc SplitView Controller Delegate
 
-- (void)resizeSubViewsBoundsChanged:(BOOL)boundsChanged
+- (void)didResizeSubViewsBoundsChanged:(BOOL)boundsChanged
 {
     [_codeViewController redrawCodeViewBoundsChanged:boundsChanged];
+}
+
+- (void)willShowMasterViewAnimated:(BOOL)animate
+{
+    if (_secondCodeViewController) {
+        [_secondCodeViewController.view removeFromSuperview];
+        _secondCodeViewController = nil;
+    }
 }
 
 #pragma mark - MainViewControllerDelegate Methods
@@ -130,13 +138,14 @@
                                                 height);
 
     [_codeViewController redrawCodeViewBoundsChanged:YES];
+
     // add second code view
     _secondCodeViewController = [[CodeViewController alloc] init];
     for (id<PluginDelegate> plugin in _plugins) {
         [_secondCodeViewController registerPlugin:plugin];
     }
 
-    _secondCodeViewController.delegate = nil;
+    _secondCodeViewController.delegate = self;
 
     [self.view addSubview:_secondCodeViewController.view];
 
