@@ -637,8 +637,8 @@
 - (void)getSearchResultLineNumbers:(NSMutableArray *)searchLineNumberArray
                   withResultsArray:(NSArray *)resultsArray
 {    
-    for (int i = 0; i < [resultsArray count]; i++) {
-        NSRange searchResultRange = [[resultsArray objectAtIndex:i] rangeValue];
+    for (NSValue *value in resultsArray) {
+        NSRange searchResultRange = [value rangeValue];
 
         int lineNumber = 0;
         for (CodeViewLine *codeViewLine in _lines) {
