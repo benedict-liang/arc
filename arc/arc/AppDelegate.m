@@ -168,13 +168,9 @@
     codeViewController.delegate = mainViewController;
     
     // Assign SubViewControllers
-    mainViewController.viewControllers = [NSArray arrayWithObjects:
-                                          leftViewController,
-                                          codeViewController,
-                                          nil];
+    mainViewController.masterViewController = leftViewController;
+    mainViewController.detailViewController = codeViewController;
 
-    mainViewController.delegate = mainViewController;
-    
     // Set MainViewController as RootViewController
     [self.window setRootViewController:mainViewController];
     [self.window makeKeyAndVisible];

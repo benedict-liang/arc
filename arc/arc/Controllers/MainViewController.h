@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
+#import "ArcSplitViewController.h"
 #import "MainViewControllerDelegate.h"
 #import "CodeViewController.h"
 #import "SettingsViewController.h"
@@ -16,5 +17,5 @@
 #import "File.h"
 #import "TMBundleHeader.h"
 
-@interface MainViewController : UISplitViewController <MainViewControllerDelegate, UISplitViewControllerDelegate>
+@interface MainViewController : ArcSplitViewController <MainViewControllerDelegate>
 @end

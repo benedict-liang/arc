@@ -61,6 +61,7 @@
 		4C6B0908171EE27A009DB903 /* CodeViewLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B0907171EE27A009DB903 /* CodeViewLine.m */; };
 		4C6B090A171EEB46009DB903 /* file_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C6B0909171EEB46009DB903 /* file_white.png */; };
 		4C6B0911171EEC22009DB903 /* FileObjectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B0910171EEC22009DB903 /* FileObjectTableViewCell.m */; };
+		4C7A82BF1722512B00B7D229 /* ArcSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7A82BE1722512B00B7D229 /* ArcSplitViewController.m */; };
 		4C8307EB17114CEF00F49C33 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8307EA17114CEF00F49C33 /* SettingCell.m */; };
 		4C9137281715B9D900413C79 /* Solarized (dark).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = 4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */; };
 		4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C963C81170D8E96004FDACB /* CodeLineCell.m */; };
@@ -487,6 +488,8 @@
 		4C6B0909171EEB46009DB903 /* file_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file_white.png; sourceTree = "<group>"; };
 		4C6B090F171EEC22009DB903 /* FileObjectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileObjectTableViewCell.h; sourceTree = "<group>"; };
 		4C6B0910171EEC22009DB903 /* FileObjectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileObjectTableViewCell.m; sourceTree = "<group>"; };
+		4C7A82BD1722512B00B7D229 /* ArcSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcSplitViewController.h; sourceTree = "<group>"; };
+		4C7A82BE1722512B00B7D229 /* ArcSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcSplitViewController.m; sourceTree = "<group>"; };
 		4C8307E917114CEF00F49C33 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		4C8307EA17114CEF00F49C33 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Solarized (dark).tmTheme"; sourceTree = "<group>"; };
@@ -943,6 +946,8 @@
 		02C4FB9D171E3E0000B2FACD /* Main UI */ = {
 			isa = PBXGroup;
 			children = (
+				4C7A82BD1722512B00B7D229 /* ArcSplitViewController.h */,
+				4C7A82BE1722512B00B7D229 /* ArcSplitViewController.m */,
 				8FCA1D6716F86C7000C6AAFC /* MainViewController.h */,
 				8FCA1D6816F86C7000C6AAFC /* MainViewController.m */,
 				FC4B26CC16FF6E3700E1DC49 /* LeftViewController.h */,
@@ -2153,6 +2158,7 @@
 				02C4FBA7171E3E5500B2FACD /* LoadingOverlayViewController.m in Sources */,
 				4C6B0908171EE27A009DB903 /* CodeViewLine.m in Sources */,
 				4C6B0911171EEC22009DB903 /* FileObjectTableViewCell.m in Sources */,
+				4C7A82BF1722512B00B7D229 /* ArcSplitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

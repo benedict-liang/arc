@@ -65,8 +65,8 @@
 {
     [super viewDidLoad];
 
-    _leftViewController = [self.viewControllers objectAtIndex:0];
-    _codeViewController = [self.viewControllers objectAtIndex:1];
+    _leftViewController = (LeftViewController*)self.masterViewController;
+    _codeViewController = (CodeViewController*)self.detailViewController;
 
     // Not sure if this is the best place for this.
     [self registerPlugins];
@@ -74,9 +74,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    // Work Around to trigger delegate and show document button in uitoolbar.
-    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft animated:NO];
-
     ApplicationState *appState = [ApplicationState sharedApplicationState];
     [self fileSelected:[appState currentFileOpened]];
     [self folderSelected:[appState currentFolderOpened]];
