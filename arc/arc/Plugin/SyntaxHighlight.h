@@ -30,7 +30,7 @@
 }
 
 
-@property (nonatomic, readonly) id<CodeViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<CodeViewControllerDelegate> delegate;
 @property (nonatomic, weak) id<SyntaxHighlightingPluginDelegate> factory;
 @property (nonatomic, readonly) id<File> currentFile;
 @property (nonatomic, readonly) NSString* content;

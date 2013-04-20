@@ -16,6 +16,7 @@
 
 @implementation SyntaxHighlight
 @synthesize factory = _factory;
+@synthesize delegate = _delegate;
 
 - (id)initWithFile:(id<File>)file andDelegate:(id<CodeViewControllerDelegate>)delegate
 {
