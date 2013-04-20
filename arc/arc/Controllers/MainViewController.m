@@ -121,7 +121,7 @@
 
 - (void)secondFileObjectSelected:(id<FileSystemObject>)fileSystemObject
 {
-//    [self hideMasterViewAnimated:YES];
+    [self hideMasterViewAnimated:YES];
     
     int width = floor(self.view.bounds.size.width/2);
     int height = _codeViewController.view.bounds.size.height;
