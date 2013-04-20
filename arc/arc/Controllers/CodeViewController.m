@@ -21,7 +21,7 @@
 @property (nonatomic, strong) ArcAttributedString *arcAttributedString;
 @property (nonatomic, strong) NSMutableDictionary *sharedObject;
 @property (nonatomic, strong) UIToolbar *toolbar;
-@property (nonatomic, strong) UIBarButtonItem *toolbarTitle;
+@property (nonatomic, strong) UILabel *toolbarTitle;
 @property (nonatomic, strong) UIBarButtonItem *portraitButton;
 @property (nonatomic, strong) UIBarButtonItem *searchButtonIcon;
 @property (nonatomic, strong) UISearchBar *searchBar;
@@ -89,6 +89,14 @@
                 CGRectMake(0, 0, self.view.bounds.size.width, SIZE_TOOLBAR_HEIGHT)];
     _toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
+    // Toolbar title
+    _toolbarTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 400, _toolbar.bounds.size.height)];
+    _toolbarTitle.backgroundColor = [UIColor clearColor];
+    _toolbarTitle.textAlignment = NSTextAlignmentCenter;
+    _toolbarTitle.textColor = [UIColor whiteColor];
+    _toolbarTitle.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
+    [_toolbar addSubview:_toolbarTitle];
+
     [self setUpDefaultToolBar];
     
     [self.view addSubview:_toolbar];
@@ -120,7 +128,7 @@
     
     // Update Current file
     _currentFile = file;
-    _toolbarTitle.title = [_currentFile name];
+    _toolbarTitle.text = [_currentFile name];
     
     // Reset table view scroll position
     [_tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
@@ -370,10 +378,6 @@
 
 - (void)setUpDefaultToolBar
 {
-    _toolbarTitle = [[UIBarButtonItem alloc] initWithTitle:[_currentFile name]
-                                                     style:UIBarButtonItemStylePlain
-                                                    target:nil
-                                                    action:nil];
     _searchButtonIcon =
     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
                                                   target:self
@@ -381,10 +385,32 @@
     
     [_toolbar setItems:[NSArray arrayWithObjects:
                         [Utils flexibleSpace],
-                        _toolbarTitle,
-                        [Utils flexibleSpace],
                         _searchButtonIcon,
                         nil]];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+    [UIView setAnimationDuration:0.1];
+    [self centerToolBarTitle];
+    [UIView commitAnimations];
+}
+
+- (void)centerToolBarTitle
+{
+    _toolbarTitle.textAlignment = NSTextAlignmentCenter;
+    _toolbarTitle.frame = CGRectMake(floorf((_toolbar.bounds.size.width - _toolbarTitle.frame.size.width)/2),
+                                     0,
+                                     _toolbarTitle.frame.size.width,
+                                     _toolbar.bounds.size.height);
+}
+
+- (void)leftAlignToolBarTitle
+{
+    _toolbarTitle.textAlignment = NSTextAlignmentLeft;
+    _toolbarTitle.frame = CGRectMake(10,
+                                     0,
+                                     _toolbarTitle.frame.size.width,
+                                     _toolbar.bounds.size.height);
 }
 
 - (void)showSearchToolBar
@@ -399,8 +425,14 @@
     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                   target:self
                                                   action:@selector(hideSearchToolBar)];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+    [UIView setAnimationDuration:0.1];
+    [self leftAlignToolBarTitle];
+    [UIView commitAnimations];
+    
     [_toolbar setItems:[NSArray arrayWithObjects:
-                        _toolbarTitle,
                         [Utils flexibleSpace],
                         searchBarItem,
                         doneBarItem,
@@ -437,17 +469,9 @@
 
 - (void)showShowMasterViewButton:(UIBarButtonItem *)button
 {
-    // Customise the button.
-//    UIImage *icon = [Utils scale:[UIImage imageNamed:@"threelines.png"]
-//                          toSize:CGSizeMake(40, SIZE_TOOLBAR_ICON_WIDTH)];
-//    [button setImage:icon];
-//    [button setStyle:UIBarButtonItemStylePlain];
-    // till i find smth better.
     [button setTitle:@"Documents"];
     _toolbar.items = [NSArray arrayWithObjects:
                       button,
-                      [Utils flexibleSpace],
-                      _toolbarTitle,
                       [Utils flexibleSpace],
                       _searchButtonIcon,
                       nil];
@@ -685,8 +709,6 @@
             [_activeFolds setObject:activeFold forKey:[activeFold objectForKey:@"startLine"]];
         }
     }
-    
-    //NSLog(@"%@",_activeFolds);
 
     [self renderFile];
 }
