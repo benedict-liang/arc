@@ -99,8 +99,13 @@
         }
         offset += lineContent.length+1;
     }
+
     if (foldRanges && foldStarts && foldEnds) {
-        return @{@"foldRanges":foldRanges, @"foldStarts":foldStarts, @"foldEnds":foldEnds};
+        return @{
+                 @"foldRanges":foldRanges,
+                 @"foldStarts":foldStarts,
+                 @"foldEnds":foldEnds
+                 };
     }
     return nil;
 }

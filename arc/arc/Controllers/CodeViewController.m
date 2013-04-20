@@ -296,7 +296,6 @@
         _arcAttributedString = arcAttributedString;
         _foldTree = foldTree;
         _foldStartLines = [self linesContainingRanges:[_foldTree foldStartRanges]];
-        
         [self renderFile];
     }
 }
@@ -731,6 +730,7 @@
 
 - (NSArray *)linesContainingRanges:(NSArray *)ranges
 {
+    NSLog(@"%@", ranges);
     NSMutableArray* lines = [NSMutableArray array];
     for (int i =0; i < _lines.count; i++) {
         CodeViewLine* line = [_lines objectAtIndex:i];
