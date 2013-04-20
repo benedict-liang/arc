@@ -275,7 +275,7 @@
 		8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F771E131711B900002E9914 /* ResultsTableViewController.m */; };
 		8F84790D17102A14006893D6 /* FullTextSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F84790C17102A14006893D6 /* FullTextSearch.m */; };
 		8FBF53CD1722F87200099C70 /* dragpointline.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBF53CB1722F87200099C70 /* dragpointline.png */; };
-		8FBF53CE1722F87200099C70 /* dragpointcircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBF53CC1722F87200099C70 /* dragpointcircle.png */; };
+		8FBF53D41722F8E800099C70 /* dragpointcircle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBF53D31722F8E800099C70 /* dragpointcircle.png */; };
 		8FC1B4E91719D8E0002939D8 /* DragPointImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC1B4E81719D8E0002939D8 /* DragPointImageView.m */; };
 		8FC1B4EC1719DBCE002939D8 /* DragPointsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC1B4EB1719DBCE002939D8 /* DragPointsViewController.m */; };
 		8FC7BD3F170F435900D0FA3A /* syntaxesFileList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8FC7BD3E170F435900D0FA3A /* syntaxesFileList.txt */; };
@@ -736,7 +736,7 @@
 		8F84790B17102A14006893D6 /* FullTextSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullTextSearch.h; sourceTree = "<group>"; };
 		8F84790C17102A14006893D6 /* FullTextSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullTextSearch.m; sourceTree = "<group>"; };
 		8FBF53CB1722F87200099C70 /* dragpointline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragpointline.png; sourceTree = "<group>"; };
-		8FBF53CC1722F87200099C70 /* dragpointcircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragpointcircle.png; sourceTree = "<group>"; };
+		8FBF53D31722F8E800099C70 /* dragpointcircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragpointcircle.png; sourceTree = "<group>"; };
 		8FC1B4E71719D8E0002939D8 /* DragPointImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragPointImageView.h; sourceTree = "<group>"; };
 		8FC1B4E81719D8E0002939D8 /* DragPointImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragPointImageView.m; sourceTree = "<group>"; };
 		8FC1B4EA1719DBCE002939D8 /* DragPointsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragPointsViewController.h; sourceTree = "<group>"; };
@@ -1329,7 +1329,7 @@
 			isa = PBXGroup;
 			children = (
 				8FBF53CB1722F87200099C70 /* dragpointline.png */,
-				8FBF53CC1722F87200099C70 /* dragpointcircle.png */,
+				8FBF53D31722F8E800099C70 /* dragpointcircle.png */,
 				4CC9E0FA171C4EC80062C825 /* Default-Portrait~ipad.png */,
 				4CC9E0F8171C4EC60062C825 /* Default-Landscape~ipad.png */,
 				4CC9E0F6171C4EBF0062C825 /* monokai_icon_144.png */,
@@ -2064,7 +2064,7 @@
 				8FDE2E29171D577500CF2BC9 /* rightDragPoint.png in Resources */,
 				4C6B090A171EEB46009DB903 /* file_white.png in Resources */,
 				8FBF53CD1722F87200099C70 /* dragpointline.png in Resources */,
-				8FBF53CE1722F87200099C70 /* dragpointcircle.png in Resources */,
+				8FBF53D41722F8E800099C70 /* dragpointcircle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
