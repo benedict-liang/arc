@@ -62,6 +62,25 @@
     }
 }
 
+- (void)highlight
+{
+    self.contentView.backgroundColor = [Utils darkenColor:_foregroundColor
+                                        percentOfOriginal:20];
+}
+
+- (void)removeHighlight
+{
+    self.contentView.backgroundColor = [UIColor clearColor];
+}
+
+- (void)fold
+{
+    self.bounds = CGRectMake(self.bounds.origin.x,
+                             self.bounds.origin.y,
+                             self.bounds.size.width,
+                             0);
+}
+
 - (void)setForegroundColor:(UIColor*)foregroundColor
 {
     _foregroundColor = foregroundColor;

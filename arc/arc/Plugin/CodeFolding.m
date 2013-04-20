@@ -30,8 +30,6 @@
         NSArray *nodeArray = [CodeFolding nodeArrayWithFoldRanges:foldRanges
                                                        foldStarts:foldStarts
                                                          foldEnds:foldEnds];
-    
-        NSLog(@"%@", nodeArray);
 
         FoldTree *tree = [[FoldTree alloc] initWithNodes:nodeArray
                                                RootRange:NSMakeRange(0, content.length)];

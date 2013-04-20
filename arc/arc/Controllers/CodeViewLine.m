@@ -12,6 +12,7 @@
 @synthesize range = _range;
 @synthesize lineStart = _lineStart;
 @synthesize lineNumber = _lineNumber;
+@synthesize visible = _visible;
 
 - (id)initWithRange:(NSRange)range
 {
@@ -20,6 +21,7 @@
         _range = range;
         _lineNumber = 0;
         _lineStart = NO;
+        _visible = YES;
     }
     return self;
 }
@@ -31,6 +33,7 @@
         _range = range;
         _lineNumber = lineNumber;
         _lineStart = YES;
+        _visible = YES;
     }
     return self;
 }

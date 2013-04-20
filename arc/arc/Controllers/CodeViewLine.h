@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface CodeViewLine : NSObject
+@property (nonatomic) BOOL visible;
 @property (nonatomic, readonly) NSRange range;
 @property (nonatomic, readonly) BOOL lineStart;
 @property (nonatomic, readonly) NSUInteger lineNumber;

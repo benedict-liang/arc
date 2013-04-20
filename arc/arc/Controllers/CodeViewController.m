@@ -505,7 +505,13 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return [_lines count];
+    int count = 0;
+    for (CodeViewLine *line in _lines) {
+        if (line.visible) {
+            count++;
+        }
+    }
+    return count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -551,9 +557,10 @@
     // Folding
     if ([_foldStartLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
         cell.foldStart = YES;
+        cell.lineNumberLabel.userInteractionEnabled = YES;
+        
         UILongPressGestureRecognizer *longPressGesture =
         [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(showFold:)];
-        cell.lineNumberLabel.userInteractionEnabled = YES;
         [cell.lineNumberLabel addGestureRecognizer:longPressGesture];
     } else {
         cell.foldStart = NO;
@@ -584,17 +591,45 @@
 
 - (void)showFold:(UILongPressGestureRecognizer *)gesture
 {
+    UIView *v = gesture.view;
+    while (![v isKindOfClass:[UITableViewCell class]]) {
+        v = v.superview;
+    }
+    
+    CodeLineCell *cell = (CodeLineCell *)v;
+    NSIndexPath* indexPath = [_tableView indexPathForCell:cell];
+    
+    CodeViewLine *codeViewLine = [_lines objectAtIndex:indexPath.row];
+    NSDictionary* activeFold = [_foldTree collapsibleLinesForIndex:
+                                codeViewLine.range.location + codeViewLine.range.length
+                                                         WithLines:_lines];
+    
+    NSMutableArray *lines = [activeFold objectForKey:@"lines"];
+    
     if (gesture.state == UIGestureRecognizerStateBegan) {
-        CodeLineCell *cell = (CodeLineCell *)gesture.view;
-        NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
-        CodeViewLine *codeViewLine =  [_lines objectAtIndex:indexPath.row];
+        [cell highlight];
         
-        NSDictionary* activeFold = [_foldTree collapsibleLinesForIndex:codeViewLine.range.location
-                                                             WithLines:_lines];
-        NSLog(@"%@", activeFold);
+        CodeLineCell *foldingCell;
+        for (NSNumber *row in lines) {
+            foldingCell = (CodeLineCell *)[_tableView cellForRowAtIndexPath:
+                                           [NSIndexPath indexPathForItem:[row intValue]
+                                                               inSection:0]];
+            [foldingCell highlight];
+        }
+    }
+    
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        NSMutableArray *indexPaths = [NSMutableArray array];
+        for (NSNumber *row in lines) {
+            CodeViewLine *line = [_lines objectAtIndex:[row intValue]];
+            line.visible = NO;
+            [indexPaths addObject:[NSIndexPath indexPathForItem:[row intValue]
+                                                      inSection:0]];
+        }
+        [_tableView deleteRowsAtIndexPaths:indexPaths
+                          withRowAnimation:UITableViewRowAnimationFade];
     }
 }
-
 
 #pragma mark - Text Selection
 
@@ -735,7 +770,6 @@
 
 - (NSArray *)linesContainingRanges:(NSArray *)ranges
 {
-    NSLog(@"%@", ranges);
     NSMutableArray* lines = [NSMutableArray array];
     for (int i =0; i < _lines.count; i++) {
         CodeViewLine* line = [_lines objectAtIndex:i];

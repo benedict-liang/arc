@@ -26,4 +26,10 @@
 
 - (void)setForegroundColor:(UIColor*)foregroundColor;
 - (void)setFontFamily:(NSString*)fontFamily FontSize:(int)fontSize;
+
+- (void)highlight;
+- (void)removeHighlight;
+
+- (void)fold;
+- (void)unfold;
 @end
