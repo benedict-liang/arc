@@ -219,6 +219,8 @@ titleForHeaderInSection:(NSInteger)section {
         [cell removeGestureRecognizer:g];
     }
 
+    [Utils removeAllGestureRecognizersFrom:cell];
+
     // Long Press Gesture for splitcodeview
     UILongPressGestureRecognizer *longPressGesture =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self

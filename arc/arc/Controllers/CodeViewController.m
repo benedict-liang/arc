@@ -541,9 +541,7 @@
     }
 
     // Remove Gesture Recognizers
-    for (UIGestureRecognizer *g in [cell gestureRecognizers]) {
-        [cell removeGestureRecognizer:g];
-    }
+    [Utils removeAllGestureRecognizersFrom:cell];
     
     // Long Press Gesture for text selection
     UILongPressGestureRecognizer *longPressGesture =

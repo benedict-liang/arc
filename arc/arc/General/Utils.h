@@ -18,6 +18,13 @@
 
 + (UIColor *)colorFromRGB:(int)rgbValue;
 
+// Taken from https://gist.github.com/hmcfletch/1661029
+// darkens a UIColor by a given amount
++ (UIColor *)darkenColor:(UIColor *)oldColor percentOfOriginal:(float)amount;
+
+// lightens a UIColor by a given amount
++ (UIColor *)lightenColor:(UIColor *)oldColor byPercentage:(float)amount;
+
 + (BOOL)isEqual:(id<FileSystemObject>)fileSystemObject1 and:(id<FileSystemObject>)fileSystemObject2;
 
 + (UIBarButtonItem *)flexibleSpace;
@@ -44,4 +51,6 @@
 + (NSRange)rangeFromValue:(NSValue*)value;
 
 + (NSValue*)valueFromRange:(NSRange)range;
+
++ (void)removeAllGestureRecognizersFrom:(UIView *)view;
 @end
