@@ -12,11 +12,14 @@
 #import "Folder.h"
 
 @protocol MainViewControllerDelegate
-
-#pragma mark - Triggered by LeftBarViewController
 - (void)fileObjectSelected:(id<FileSystemObject>)fileSystemObject;
 - (void)secondFileObjectSelected:(id<FileSystemObject>)fileSystemObject;
 - (id<FileSystemObject>)currentfile;
+
+# pragma mark - Layout
+@property (nonatomic, readonly) BOOL masterViewVisible;
+- (void)showMasterView;
+- (void)hideMasterView;
 
 // TODO, refactor these methods
 #pragma mark - Others

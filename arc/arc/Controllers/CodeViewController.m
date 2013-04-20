@@ -382,7 +382,7 @@
     [[UIBarButtonItem alloc] initWithTitle:@"meh"
                                      style:UIBarButtonItemStyleBordered
                                     target:self
-                                    action:@selector(toggleLeftBar:)];
+                                    action:@selector(toggleMasterView:)];
 
     _searchButtonIcon =
     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
@@ -466,9 +466,13 @@
                                      _toolbar.bounds.size.height);
 }
 
-- (void)toggleLeftBar:(id)sender
+- (void)toggleMasterView:(id)sender
 {
-    
+    if ([self.delegate masterViewVisible]) {
+        [self.delegate hideMasterView];
+    } else {
+        [self.delegate showMasterView];
+    }
 }
 
 #pragma mark - Table view data source

@@ -16,12 +16,13 @@
 @implementation ArcSplitViewController
 @synthesize masterViewController = _masterViewController;
 @synthesize detailViewController = _detailViewController;
+@synthesize masterViewVisible = _masterViewVisible;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-
+        _masterViewVisible = YES;
     }
     return self;
 }
@@ -60,12 +61,28 @@
 
 - (void)showMasterView
 {
+    _masterView.frame =
+    CGRectMake(0, 0, 320, self.view.bounds.size.height);
     
+    _detailView.frame =
+    CGRectMake(320, 0,
+               self.view.bounds.size.width - 320,
+               self.view.bounds.size.height);
+    
+    _masterViewVisible = YES;
 }
 
 - (void)hideMasterView
 {
+    _masterView.frame =
+    CGRectMake(-320, 0, 320, self.view.bounds.size.height);
     
+    _detailView.frame =
+    CGRectMake(0, 0,
+               self.view.bounds.size.width,
+               self.view.bounds.size.height);
+    
+    _masterViewVisible = NO;
 }
 
 # pragma mark - Orientation Methods
