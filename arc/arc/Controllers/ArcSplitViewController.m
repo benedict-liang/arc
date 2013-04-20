@@ -37,14 +37,16 @@
     // iOS initial frame is unreliable.
     [[UIApplication sharedApplication]
      setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
-    
+
     _masterView = _masterViewController.view;
     _detailView = _detailViewController.view;
     [self.view addSubview:_masterView];
     [self.view addSubview:_detailView];
+
+    [self autoLayout];
 }
 
-- (void)autoLayout:(UIInterfaceOrientation)toInterfaceOrientation
+- (void)autoLayout
 {
     if (_masterViewVisible) {
         [self showMasterViewAnimated:NO];
@@ -58,6 +60,7 @@
 - (void)showMasterViewAnimated:(BOOL)animate
 {
     if (animate) {
+        NSString *oldSize = NSStringFromCGSize(_detailView.frame.size);
         [UIView animateWithDuration:0.2
                               delay:0
                             options:UIViewAnimationOptionCurveEaseIn
@@ -65,8 +68,10 @@
                              [self showMasterView];
                          }
                          completion:^(BOOL finished){
+                             if (![oldSize isEqualToString:NSStringFromCGSize(_detailView.frame.size)]) {
+                                 [self.delegate resizeSubViews];
+                             }
                              _masterViewVisible = YES;
-                             [self.delegate resizeSubViews];
                          }];
     } else {
         [self showMasterView];
@@ -94,6 +99,7 @@
 - (void)hideMasterViewAnimated:(BOOL)animate
 {
     if (animate) {
+        NSString *oldSize = NSStringFromCGSize(_detailView.frame.size);
         [UIView animateWithDuration:0.2
                               delay:0
                             options:UIViewAnimationOptionCurveEaseIn
@@ -102,7 +108,9 @@
                          }
                          completion:^(BOOL finished){
                              _masterViewVisible = NO;
-                             [self.delegate resizeSubViews];
+                             if (![oldSize isEqualToString:NSStringFromCGSize(_detailView.frame.size)]) {
+                                 [self.delegate resizeSubViews];
+                             }
                          }];
     } else {
         [self hideMasterView];
@@ -131,7 +139,7 @@
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
                                          duration:(NSTimeInterval)duration
 {
-    [self autoLayout:toInterfaceOrientation];
+    [self autoLayout];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation

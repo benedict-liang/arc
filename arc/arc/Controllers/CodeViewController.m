@@ -336,7 +336,7 @@
     [UIView animateWithDuration:0.1 animations:^{
         [self centerToolBarTitle];
     }];
-
+    
     [self generateLines];
     [self renderFile];
 }
