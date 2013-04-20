@@ -10,6 +10,10 @@
 
 static GoogleDriveServiceManager *sharedServiceManager = nil;
 
+@interface GoogleDriveServiceManager ()
+@property NSMutableArray *helpers;
+@end
+
 @implementation GoogleDriveServiceManager
 @synthesize delegate=_delegate;
 
@@ -35,6 +39,7 @@ static GoogleDriveServiceManager *sharedServiceManager = nil;
                                     authForGoogleFromKeychainForName:GOOGLE_KEYCHAIN_NAME
                                     clientID:CLOUD_GOOGLE_ID
                                     clientSecret:CLOUD_GOOGLE_SECRET];
+        _helpers = [NSMutableArray array];
     }
     return self;
 }
@@ -46,7 +51,8 @@ static GoogleDriveServiceManager *sharedServiceManager = nil;
 {
     GTMOAuth2ViewControllerTouch *loginController = [[GTMOAuth2ViewControllerTouch alloc]
                                                      initWithScope:kGTLAuthScopeDriveReadonly clientID:CLOUD_GOOGLE_ID clientSecret:CLOUD_GOOGLE_SECRET keychainItemName:GOOGLE_KEYCHAIN_NAME delegate:self finishedSelector:@selector(viewController:finishedWithAuth:error:)];
-    [[controller navigationController] pushViewController:loginController animated:YES];
+    [loginController setModalPresentationStyle:UIModalPresentationFormSheet];
+    [controller presentViewController:loginController animated:YES completion:nil];
 }
 
 // Handle authentication from Drive.
@@ -64,11 +70,27 @@ static GoogleDriveServiceManager *sharedServiceManager = nil;
 - (void)downloadFile:(id<CloudFile>)file toFolder:(LocalFolder *)folder
 {
     if ([self isLoggedIn]) {
+        [file setDownloadStatus:kFileDownloading];
         GTMHTTPFetcher *httpFetcher = [[_driveService fetcherService] fetcherWithURLString:[file identifier]];
         GoogleDriveDownloadHelper *helper = [[GoogleDriveDownloadHelper alloc] initWithFile:file Folder:folder];
+        [helper setDelegate:self];
         
-        [httpFetcher beginFetchWithDelegate:helper didFinishSelector:@selector(dataRetrieved:error:)];
+        [_helpers addObject:helper];
+        
+        [httpFetcher beginFetchWithDelegate:helper didFinishSelector:@selector(fetcher:dataRetrieved:error:)];
     }
+}
+
+- (void)downloadCompleteForHelper:(id)sender
+{
+    [_delegate fileStatusChangedForService:self];
+    [_helpers removeObject:sender];
+}
+
+- (void)downloadFailedForHelper:(id)sender
+{
+    [_delegate fileStatusChangedForService:self];
+    [_helpers removeObject:sender];
 }
 
 @end

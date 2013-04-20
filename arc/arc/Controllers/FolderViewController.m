@@ -33,6 +33,7 @@
 
 // Cloud Controllers
 @property SkyDriveServiceManager *skyDriveManager;
+@property GoogleDriveServiceManager *googleDriveManager;
 @end
 
 @implementation FolderViewController
@@ -44,6 +45,11 @@
     self = [super init];
     if (self) {
         _folder = folder;
+        
+        // Set up the cloud controllers.
+        _skyDriveManager = (SkyDriveServiceManager *)[SkyDriveServiceManager sharedServiceManager];
+        _googleDriveManager = (GoogleDriveServiceManager *)[GoogleDriveServiceManager sharedServiceManager];
+        
         [self sortFilesAndFolders];
     }
     return self;
@@ -139,9 +145,6 @@
 
     _editToolbar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview:_editToolbar];
-    
-    // Set up the cloud controllers.
-    _skyDriveManager = (SkyDriveServiceManager *)[SkyDriveServiceManager sharedServiceManager];
 }
 
 // Work Around to track back button action.
@@ -463,7 +466,15 @@ titleForHeaderInSection:(NSInteger)section {
             }
                 break;
             case 2:
-                NSLog(@"Google Drive");
+                if (![_googleDriveManager isLoggedIn]) {
+                    [_googleDriveManager loginWithViewController:self];
+                } else {
+                    CloudPickerViewController *pickerController = [[CloudPickerViewController alloc] initWithCloudFolder:[GoogleDriveFolder getRoot] targetFolder:_folder serviceManager:_googleDriveManager];
+                    [pickerController setDelegate:self];
+                    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:pickerController];
+                    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
+                    [self presentViewController:navController animated:YES completion:nil];
+                }
                 break;
             default:
                 break;

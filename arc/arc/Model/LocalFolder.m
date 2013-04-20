@@ -41,7 +41,7 @@
         
         for (NSString *currentRelativePath in retrievedContents) {
             NSString *itemName = currentRelativePath;
-            NSString *readableName = [currentRelativePath stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSString *readableName = currentRelativePath;
             NSString *currentPath = [_path stringByAppendingPathComponent:itemName];
             
             id<FileSystemObject>retrievedObject;
