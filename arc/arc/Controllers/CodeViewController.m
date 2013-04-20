@@ -544,17 +544,24 @@
     [Utils removeAllGestureRecognizersFrom:cell];
     
     // Long Press Gesture for text selection
-    UILongPressGestureRecognizer *longPressGesture =
-    [[UILongPressGestureRecognizer alloc] initWithTarget:self
-                                                  action:@selector(selectText:)];
-    [cell addGestureRecognizer:longPressGesture];
+//    UILongPressGestureRecognizer *longPressGesture =
+//    [[UILongPressGestureRecognizer alloc] initWithTarget:self
+//                                                  action:@selector(selectText:)];
+//    [cell addGestureRecognizer:longPressGesture];
 
-//    if ([_foldStartLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
-//        [cell setFolding];
-//    } else {
-//        [cell clearFolding];
-//    }
-//    
+    // Folding
+    if ([_foldStartLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
+        cell.foldStart = YES;
+        UILongPressGestureRecognizer *longPressGesture =
+        [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(showFold:)];
+        cell.lineNumberLabel.userInteractionEnabled = YES;
+        [cell.lineNumberLabel addGestureRecognizer:longPressGesture];
+    } else {
+        cell.foldStart = NO;
+        cell.lineNumberLabel.userInteractionEnabled = NO;
+        [Utils removeAllGestureRecognizersFrom:cell.lineNumberLabel];
+    }
+
 //    if ([self activeFoldsContainsStartLine:indexPath.row]) {
 //        [cell activeFolding];
 //    }
@@ -574,13 +581,18 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - Folding
+
+- (void)showFold:(UILongPressGestureRecognizer *)gesture
 {
-    if ([self activeFoldsContainsLine:indexPath.row]) {
-        return 0;
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"%@", _foldStartLines);
+        NSLog(@"%@", _foldTree);
     }
-    return _tableView.rowHeight;
 }
+
+
+#pragma mark - Text Selection
 
 - (void)selectText:(UILongPressGestureRecognizer *)gesture
 {
@@ -622,15 +634,6 @@
         
         [_tableView reloadData];
     }
-}
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView*)tableView
-    didSelectRowAtIndexPath:(NSIndexPath*)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath
-                             animated:NO];
 }
 
 #pragma mark - Search Bar delegate
@@ -693,12 +696,14 @@
     }
 }
 
-- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
+- (BOOL)tableView:(UITableView *)tableView
+    shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
 }
 
-#pragma mark - Folding
+
+#pragma mark - old folding code.
 
 - (void)foldForGesture:(UIGestureRecognizer *)gesture
 {
