@@ -8,11 +8,6 @@
 
 #import "GoogleDriveDownloadHelper.h"
 
-@interface GoogleDriveDownloadHelper ()
-@property (weak, nonatomic) GoogleDriveFile *file;
-@property (weak, nonatomic) LocalFolder *folder;
-@end
-
 @implementation GoogleDriveDownloadHelper
 
 - (id)initWithFile:(GoogleDriveFile *)file Folder:(LocalFolder *)folder
@@ -27,12 +22,18 @@
 - (void)dataRetrieved:(NSData *)data error:(NSError *)error
 {
     if (!error) {
+        [_file setDownloadStatus:kFileDownloaded];
+        [_delegate downloadCompleteForHelper:self];
+        
         NSString *fileName = [_file name];
         NSString *filePath = [[_folder identifier] stringByAppendingPathComponent:fileName];
         
         NSFileManager *fileManager = [NSFileManager defaultManager];
         [fileManager createFileAtPath:filePath contents:data attributes:nil];
     } else {
+        [_file setDownloadStatus:kFileDownloadError];
+        [_delegate downloadFailedForHelper:self];
+        
         NSLog(@"%@", error);
     }
 }
