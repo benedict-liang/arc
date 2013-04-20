@@ -127,32 +127,24 @@
 // Set up the cell at the given index path.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                      reuseIdentifier:cellIdentifier];
-    }
-    
-    NSString *detailDescription;
-    UIImage *cellImage;
-    
     NSArray *section = [_segregatedContents objectAtIndex:indexPath.section];
     id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
     
-    if ([[fileObject class] conformsToProtocol:@protocol(CloudFile)]) {
-        cellImage = [Utils scale:[UIImage imageNamed:@"file.png"]
-                          toSize:CGSizeMake(40, 40)];
-        detailDescription = [Utils humanReadableFileSize:[(id<CloudFile>)fileObject size]];
-    } else if ([[fileObject class] conformsToProtocol:@protocol(CloudFolder)]) {
-        cellImage = [Utils scale:[UIImage imageNamed:@"folder.png"]
-                          toSize:CGSizeMake(40, 40)];
+    NSString *cellIdentifier;
+    if ([[fileObject class] conformsToProtocol:@protocol(File)]) {
+        cellIdentifier = (NSString *)FILECELL_REUSE_IDENTIFIER;
+    } else if ([[fileObject class] conformsToProtocol:@protocol(Folder)]) {
+        cellIdentifier = (NSString *)FOLDERCELL_REUSE_IDENTIFIER;
     }
     
-    cell.textLabel.text = fileObject.name;
-    cell.imageView.image = cellImage;
-    cell.detailTextLabel.text = detailDescription;
+    FileObjectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[FileObjectTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                              reuseIdentifier:cellIdentifier];
+    }
+    
+    [cell setFileSystemObject:fileObject];
 
     
     return cell;
