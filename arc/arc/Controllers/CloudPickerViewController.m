@@ -145,6 +145,15 @@
     return customView;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    // Hide section title if section has zero rows
+    if ([self tableView:tableView numberOfRowsInSection:section] == 0) {
+        return 0;
+    }
+    return 22;
+}
+
 // Set up the cell at the given index path.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
