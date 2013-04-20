@@ -113,14 +113,15 @@
         NSString *fileName = [file title];
         NSString *filePath = [file downloadUrl];
         NSNumber *fileSize = [file fileSize];
+        NSString *fileType = [file mimeType];
         
-        if ([[fileName pathExtension] isEqualToString:@""]) {
-            // No extension means this is a folder.
+        if ([fileType isEqualToString:@"application/vnd.google-apps.folder"]) {
+            // This is a folder.
             // Note that folders are retrieved by their identifier, not the download URL.
             GoogleDriveFolder *newFolder = [[GoogleDriveFolder alloc] initWithName:fileName identifier:[file identifier] parent:self];
             _contents = [_contents arrayByAddingObject:newFolder];
         } else {
-            // There is a file extension. This must be a file.
+            // This must be a file.
             GoogleDriveFile *newFile = [[GoogleDriveFile alloc] initWithName:fileName identifier:filePath size:[fileSize floatValue]];
             _contents = [_contents arrayByAddingObject:newFile];
         }

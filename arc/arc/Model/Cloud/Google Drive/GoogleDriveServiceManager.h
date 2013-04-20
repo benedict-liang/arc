@@ -11,8 +11,9 @@
 #import "GTLDrive.h"
 #import "GTMOAuth2ViewControllerTouch.h"
 #import "GoogleDriveDownloadHelper.h"
+#import "DownloadHelperDelegate.h"
 
-@interface GoogleDriveServiceManager : NSObject <CloudServiceManager>
+@interface GoogleDriveServiceManager : NSObject <CloudServiceManager, DownloadHelperDelegate>
 
 @property (strong, nonatomic) GTLServiceDrive *driveService;
 
