@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @protocol ArcSplitViewControllerDelegate <NSObject>
-- (void)resizeSubViews;
+- (void)resizeSubViewsBoundsChanged:(BOOL)boundsChanged;
 @end

@@ -31,6 +31,6 @@
 // TODO: Need to apply this somewhere else, but this works
 // fine for prototyping
 - (void)dismissTextSelectionViews;
-- (void)redrawCodeView;
+- (void)redrawCodeViewBoundsChanged:(BOOL)boundsChanged;
 @end
 

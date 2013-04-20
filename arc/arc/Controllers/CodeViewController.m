@@ -22,7 +22,7 @@
 @property (nonatomic, strong) NSMutableDictionary *sharedObject;
 @property (nonatomic, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UILabel *toolbarTitle;
-@property (nonatomic, strong) UIBarButtonItem *portraitButton;
+@property (nonatomic, strong) UIBarButtonItem *masterViewButton;
 @property (nonatomic, strong) UIBarButtonItem *searchButtonIcon;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UIPopoverController *resultsPopoverController;
@@ -336,12 +336,9 @@
     return [_arcAttributedString.attributedString.string substringWithRange:range];
 }
 
-- (void)redrawCodeView
+- (void)redrawCodeViewBoundsChanged:(BOOL)boundsChanged
 {
-    [UIView animateWithDuration:0.1 animations:^{
-        [self centerToolBarTitle];
-    }];
-    
+    [self setUpDefaultToolBar];
     [self resizeTableView];
     [self generateLines];
     [self renderFile];
@@ -393,13 +390,23 @@
 
 #pragma mark - Tool Bar Methods
 
-- (void)setUpDefaultToolBar
+- (UIBarButtonItem *)makeMasterViewButton
 {
-    _portraitButton =
-    [[UIBarButtonItem alloc] initWithTitle:@"meh"
+    NSString *title;
+    if ([self.delegate masterViewVisible]) {
+        title = @"◄◄";
+    } else {
+        title = @"►►";
+    }
+    return [[UIBarButtonItem alloc] initWithTitle:title
                                      style:UIBarButtonItemStyleBordered
                                     target:self
                                     action:@selector(toggleMasterView:)];
+}
+
+- (void)setUpDefaultToolBar
+{
+    _masterViewButton = [self makeMasterViewButton];
 
     _searchButtonIcon =
     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
@@ -407,7 +414,7 @@
                                                   action:@selector(showSearchToolBar)];
     
     [_toolbar setItems:[NSArray arrayWithObjects:
-                        _portraitButton,
+                        _masterViewButton,
                         [Utils flexibleSpace],
                         _searchButtonIcon,
                         nil]];

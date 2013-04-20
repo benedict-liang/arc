@@ -102,9 +102,9 @@
 
 # pragma mark - Arc SplitView Controller Delegate
 
-- (void)resizeSubViews
+- (void)resizeSubViewsBoundsChanged:(BOOL)boundsChanged
 {
-    [_codeViewController redrawCodeView];
+    [_codeViewController redrawCodeViewBoundsChanged:boundsChanged];
 }
 
 #pragma mark - MainViewControllerDelegate Methods

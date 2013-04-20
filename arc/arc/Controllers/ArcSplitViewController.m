@@ -68,10 +68,10 @@
                              [self showMasterView];
                          }
                          completion:^(BOOL finished){
-                             if (![oldSize isEqualToString:NSStringFromCGSize(_detailView.frame.size)]) {
-                                 [self.delegate resizeSubViews];
-                             }
-                             _masterViewVisible = YES;
+                            _masterViewVisible = YES;
+                             BOOL boundsChanged = [oldSize isEqualToString:
+                                                   NSStringFromCGSize(_detailView.frame.size)];
+                             [self.delegate resizeSubViewsBoundsChanged:boundsChanged];
                          }];
     } else {
         [self showMasterView];
@@ -108,9 +108,9 @@
                          }
                          completion:^(BOOL finished){
                              _masterViewVisible = NO;
-                             if (![oldSize isEqualToString:NSStringFromCGSize(_detailView.frame.size)]) {
-                                 [self.delegate resizeSubViews];
-                             }
+                             BOOL boundsChanged = [oldSize isEqualToString:
+                                                   NSStringFromCGSize(_detailView.frame.size)];
+                             [self.delegate resizeSubViewsBoundsChanged:boundsChanged];
                          }];
     } else {
         [self hideMasterView];
@@ -144,7 +144,7 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    [self.delegate resizeSubViews];
+    [self.delegate resizeSubViewsBoundsChanged:YES];
 }
 
 @end
