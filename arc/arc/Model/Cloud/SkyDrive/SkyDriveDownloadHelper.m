@@ -22,6 +22,7 @@
 - (void)liveOperationSucceeded:(LiveDownloadOperation *)operation
 {
     NSData *receivedData = [operation data];
+    [_file setDownloadStatus:kFileDownloaded];
     
     NSString *fileName = [_file name];
     NSString *filePath = [[_folder identifier] stringByAppendingPathComponent:fileName];
@@ -36,6 +37,7 @@
 
 - (void)liveOperationFailed:(NSError *)error operation:(LiveDownloadOperation *)operation
 {
+    [_file setDownloadStatus:kFileDownloadError];
     if (_delegate != nil) {
         [_delegate downloadFailedForHelper:self];
     }
