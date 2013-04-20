@@ -57,8 +57,13 @@
 
 - (void)folderContentsUpdated:(id<Folder>)sender
 {
+    [self updateView];
+}
+
+- (void)updateView
+{
     [self separateFilesAndFolders];
-    [self.tableView reloadData];
+    [_tableView reloadData];
 }
 
 - (void)viewDidLoad
