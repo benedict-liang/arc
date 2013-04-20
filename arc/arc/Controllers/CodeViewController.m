@@ -140,12 +140,7 @@
     [self loadFile];
     
     _sharedObject = [NSMutableDictionary dictionary];
-    [self execPreRenderPluginsAffectingBounds:YES FilterBy:nil];
-    [self generateLines];
-    [self calcLineHeight];
-    [self execPreRenderPluginsAffectingBounds:NO FilterBy:nil];
-    [self renderFile];
-    [self execPostRenderPluginsFilterBy:nil];
+    [self refreshForSetting:nil];
 }
 
 - (void)loadFile
@@ -338,9 +333,12 @@
 
 - (void)redrawCodeView
 {
-    NSLog(@"%@", NSStringFromCGRect(self.view.frame));
-    [self centerToolBarTitle];
-    [self showFile:nil];
+    [UIView animateWithDuration:0.1 animations:^{
+        [self centerToolBarTitle];
+    }];
+
+    [self generateLines];
+    [self renderFile];
 }
 
 #pragma mark - Execute Plugin Methods
@@ -408,11 +406,9 @@
                         _searchButtonIcon,
                         nil]];
     
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
-    [UIView setAnimationDuration:0.1];
-    [self centerToolBarTitle];
-    [UIView commitAnimations];
+    [UIView animateWithDuration:0.1 animations:^{
+        [self centerToolBarTitle];
+    }];
 }
 
 - (void)showSearchToolBar
@@ -428,12 +424,10 @@
                                                   target:self
                                                   action:@selector(hideSearchToolBar)];
     
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
-    [UIView setAnimationDuration:0.1];
-    [self leftAlignToolBarTitle];
-    [UIView commitAnimations];
-    
+    [UIView animateWithDuration:0.1 animations:^{
+        [self leftAlignToolBarTitle];
+    }];
+
     [_toolbar setItems:[NSArray arrayWithObjects:
                         [Utils flexibleSpace],
                         searchBarItem,
