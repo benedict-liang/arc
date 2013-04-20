@@ -145,6 +145,14 @@
                                                      height);
     [_secondCodeViewController showFile:(id<File>)fileSystemObject];
     [_secondCodeViewController redrawCodeViewBoundsChanged:YES];
+
+    // add left border to second code view
+    UIColor *borderColor = _secondCodeViewController.foregroundColor;
+    UIView *leftBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, height)];
+    leftBorder.opaque = YES;
+    leftBorder.backgroundColor = borderColor;
+    leftBorder.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin;
+    [_secondCodeViewController.view addSubview:leftBorder];
 }
 
 - (id<FileSystemObject>)currentfile
