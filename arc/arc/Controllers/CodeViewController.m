@@ -83,6 +83,7 @@
 {
     [super viewDidLoad];
     self.view.autoresizesSubviews = YES;
+    self.view.clipsToBounds = YES;
     
     // Add a toolbar
     _toolbar = [[UIToolbar alloc] initWithFrame:
