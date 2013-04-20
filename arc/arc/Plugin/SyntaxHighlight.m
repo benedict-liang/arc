@@ -46,6 +46,15 @@
     }
     return self;
 }
+- (NSRegularExpression *)regexForPattern:(NSString *)pattern {
+    NSError *error = NULL;
+    
+    NSRegularExpression *regex = [NSRegularExpression
+                                  regularExpressionWithPattern:pattern
+                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines
+                                  error:&error];
+    return regex;
+}
 
 - (NSArray*)foundPattern:(NSString*)pattern
                    range:(NSRange)range
@@ -75,12 +84,8 @@
                       range:(NSRange)range
                     content:(NSString*)content
 {
-    NSError *error = NULL;
     
-    NSRegularExpression *regex = [NSRegularExpression
-                                  regularExpressionWithPattern:pattern
-                                  options:NSRegularExpressionUseUnixLineSeparators|NSRegularExpressionAnchorsMatchLines
-                                  error:&error];
+    NSRegularExpression *regex = [self regexForPattern:pattern];
     
     if ((range.location + range.length <= [content length]) &&
         (range.length > 0) &&
@@ -91,7 +96,7 @@
                                         options:0
                                           range:range];
     } else {
-        //NSLog(@"index out of bounds in regex. findFirstPatten:%d %d",r.location,r.length);
+        NSLog(@"index out of bounds in regex. findFirstPatten:%@",[Utils valueFromRange:range]);
         return NSMakeRange(NSNotFound, 0);
     }
     
@@ -101,14 +106,8 @@
                  capture:(int)capture
                    range:(NSRange)range
 {
-    NSError *error = NULL;
     NSMutableArray* results = [[NSMutableArray alloc] init];
-    NSRegularExpression *regex = [NSRegularExpression
-                                  regularExpressionWithPattern:pattern
-                                  options:
-                                  NSRegularExpressionUseUnixLineSeparators |
-                                  NSRegularExpressionAnchorsMatchLines
-                                  error:&error];
+    NSRegularExpression *regex = [self regexForPattern:pattern];
     
     if (range.location + range.length <= [_content length]) {
         
@@ -287,6 +286,7 @@
 
 - (NSArray*)resolveInclude:(NSString*)include
 {
+    //NSLog(@"%@",include);
     if ([include isEqualToString:@"$base"]) {
         //returns top most pattern
         return [_bundle objectForKey:@"patterns"];
