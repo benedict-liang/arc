@@ -124,9 +124,10 @@
 //    [self hideMasterViewAnimated:YES];
     
     int width = floor(self.view.bounds.size.width/2);
+    int height = _codeViewController.view.bounds.size.height;
     _codeViewController.view.frame = CGRectMake(0, 0,
                                                 width,
-                                                self.view.frame.size.height);
+                                                height);
 
     [_codeViewController redrawCodeViewBoundsChanged:YES];
     // add second code view
@@ -138,9 +139,10 @@
     _secondCodeViewController.delegate = nil;
 
     [self.view addSubview:_secondCodeViewController.view];
+
     _secondCodeViewController.view.frame = CGRectMake(width, 0,
                                                      width,
-                                                     self.view.frame.size.height);
+                                                     height);
     [_secondCodeViewController showFile:(id<File>)fileSystemObject];
     [_secondCodeViewController redrawCodeViewBoundsChanged:YES];
 }
