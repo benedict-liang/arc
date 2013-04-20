@@ -18,7 +18,6 @@
 
 @implementation SyntaxHighlightingPlugin
 @synthesize setting = _setting;
-@synthesize delegate = _delegate;
 
 - (id)init
 {
@@ -105,6 +104,8 @@
     [_threadPool removeAllObjects];
 
     SyntaxHighlight* sh = [_cache objectForKey:[file identifier]];
+    sh.delegate = delegate;
+
     if (!sh) {
         sh = [[SyntaxHighlight alloc] initWithFile:file
                                        andDelegate:delegate];

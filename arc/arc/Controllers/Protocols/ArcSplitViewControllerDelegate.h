@@ -9,5 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @protocol ArcSplitViewControllerDelegate <NSObject>
-- (void)resizeSubViewsBoundsChanged:(BOOL)boundsChanged;
+@optional
+- (void)didResizeSubViewsBoundsChanged:(BOOL)boundsChanged;
+
+@optional
+- (void)willShowMasterViewAnimated:(BOOL)animate;
+
+@optional
+- (void)willHideMasterViewAnimated:(BOOL)animate;
 @end

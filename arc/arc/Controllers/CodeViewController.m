@@ -83,6 +83,7 @@
 {
     [super viewDidLoad];
     self.view.autoresizesSubviews = YES;
+    self.view.clipsToBounds = YES;
     
     // Add a toolbar
     _toolbar = [[UIToolbar alloc] initWithFrame:
@@ -549,7 +550,7 @@
     [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                   action:@selector(selectText:)];
     [cell addGestureRecognizer:longPressGesture];
-    
+
 //    if ([_foldStartLines containsObject:[NSNumber numberWithInt:indexPath.row]]) {
 //        [cell setFolding];
 //    } else {
