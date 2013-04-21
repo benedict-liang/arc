@@ -39,7 +39,7 @@
 
 - (void)setUpFolderContents
 {
-    NSArray *fileObjects = (NSArray*)[self.folder contents];
+    NSArray *fileObjects = (NSArray*)self.folder.contents;
     NSMutableArray *folders = [NSMutableArray array];
     NSMutableArray *files = [NSMutableArray array];
 
@@ -83,25 +83,20 @@
 {
     [super viewDidLoad];
     
-    [[self navigationItem] setTitle:[self.folder name]];
-    
-    _closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
-                                                                 target:self
-                                                                 action:@selector(shouldClose)];
-
-//    NSArray *buttonArray = [NSArray arrayWithObjects:_closeButton, [self editButtonItem], nil];
-    
-//    [[self navigationItem] setRightBarButtonItems:buttonArray];
-    [[self navigationItem] setRightBarButtonItem:_closeButton];
-    
-    // Subview properties.
-    [[self view] setAutoresizesSubviews:YES];
+    _closeButton =
+    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
+                                                  target:self
+                                                  action:@selector(shouldClose)];
+    self.navigationItem.rightBarButtonItem = _closeButton;
+    self.view.autoresizesSubviews = YES;
+    self.navigationItem.title = self.folder.name;
     
     // Create the Table View.
     [self setUpTableView];
     
     // Create the loading overlay.
-    _loadingOverlayController = [[LoadingOverlayViewController alloc] initWithFrame:[[self view] bounds]];
+    _loadingOverlayController =
+    [[LoadingOverlayViewController alloc] initWithFrame:[[self view] bounds]];
 //    [[self view] insertSubview:[_loadingOverlayController view] aboveSubview:_tableView];
 }
 
@@ -111,7 +106,8 @@
     [_delegate cloudPickerDone:self];
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
+           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return UITableViewCellEditingStyleNone;
 }
