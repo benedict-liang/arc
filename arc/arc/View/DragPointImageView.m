@@ -30,19 +30,19 @@
         
         CGSize newDragPointSize = CGSizeMake(circle.size.width,
                                     scaledLineImage.size.height);
-        
+
         CGSize newLineSize = CGSizeMake(aspectRatio * (scaledLineImage.size.height - circle.size.height),
-                                       scaledLineImage.size.height - circle.size.height);
+                                       scaledLineImage.size.height);
         
         if (type == kRight) {
-            circleOrigin = CGPointMake(0, newLineSize.height);
-            lineOrigin = CGPointMake(newDragPointSize.width / 2 - scaledLineImage.size.width / 2,
+            circleOrigin = CGPointMake(0, newLineSize.height - circle.size.height);
+            lineOrigin = CGPointMake(newDragPointSize.width / 2,
                                      0);
         }
         else {
             circleOrigin = CGPointMake(0, 0);
             lineOrigin = CGPointMake(newDragPointSize.width / 2 - scaledLineImage.size.width / 2,
-                                     circle.size.height);
+                                     0);
         }
         
         // Draw new drag point image
@@ -61,7 +61,7 @@
         
         
         self.image = newDragPointImage;
-        self.contentMode = UIViewContentModeTop;
+        self.contentMode = UIViewContentModeCenter;
         self.backgroundColor = [UIColor clearColor];
     }
     return self;

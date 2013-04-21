@@ -96,7 +96,7 @@
 - (void)createDragPoints:(CGRect)selectedRect
 {
     CGRect leftDragPointFrame = CGRectMake(selectedRect.origin.x - DRAG_POINT_WIDTH / 2,
-                                           selectedRect.origin.y,
+                                           selectedRect.origin.y - EXTRA_DRAG_POINT_HEIGHT,
                                            DRAG_POINT_WIDTH,
                                            selectedRect.size.height);
 //    _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame
