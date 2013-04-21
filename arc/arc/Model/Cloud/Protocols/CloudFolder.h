@@ -19,4 +19,6 @@
 - (void)updateContents;
 - (void)cancelOperations;
 
+- (BOOL)hasOngoingOperations;
+
 @end

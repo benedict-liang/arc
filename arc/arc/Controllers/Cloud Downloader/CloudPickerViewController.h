@@ -16,7 +16,7 @@
 #import "LoadingOverlayViewController.h"
 
 @interface CloudPickerViewController : BasicFolderViewController <CloudFolderDelegate,
-    UITableViewDataSource, UITableViewDelegate, CloudServiceManagerDelegate>
+    UITableViewDataSource, UITableViewDelegate, CloudServiceManagerDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) id<PresentingModalViewControllerDelegate> delegate;
 
