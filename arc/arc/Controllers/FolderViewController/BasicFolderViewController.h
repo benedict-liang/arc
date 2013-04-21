@@ -18,6 +18,7 @@
 - (void)setUpFolderContents;
 - (void)setUpTableView;
 - (void)didPopFromNavigationController;
+- (void)refreshFolderView;
 
 @property (nonatomic, readonly) id<Folder> folder;
 @property (nonatomic, readonly) UITableView *tableView;
@@ -32,6 +33,7 @@
 
 // Data source Accessor Methods
 - (void)setFilesAndFolders:(NSArray *)filesAndFolders;
+- (NSInteger)numberOfSections;
 - (FileSystemObjectGroup *)sectionObjectGroup:(NSInteger)section;
 - (NSString *)sectionHeading:(NSInteger)section;
 - (NSArray *)sectionItems:(NSInteger)section;

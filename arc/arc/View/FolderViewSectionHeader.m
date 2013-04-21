@@ -19,7 +19,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [Utils colorWithHexString:@"CC272821"];
+        self.backgroundColor = [UI tableViewSectionHeaderColor];
         [self setUpLabel];
     }
     return self;
@@ -31,7 +31,7 @@
     _label.backgroundColor = [UIColor clearColor];
     _label.opaque = NO;
     _label.textColor = [UIColor whiteColor];
-    _label.font = [UIFont fontWithName:@"Helvetica Neue Bold" size:18];
+    _label.font = [UIFont fontWithName:[UI fontNameBold] size:18];
     _label.shadowOffset = CGSizeMake(0.0f, 1.0f);
     _label.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
     _label.textAlignment = NSTextAlignmentLeft;

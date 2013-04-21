@@ -72,9 +72,6 @@
         _lines = [NSMutableArray array];
         _plugins = [NSMutableArray array];
         _appState = [ApplicationState sharedApplicationState];
-        
-        // Defaults
-        _backgroundColor = [Utils colorWithHexString:@"FDF6E3"];
         _sharedObject = [NSMutableDictionary dictionary];
     }
     return self;
@@ -96,7 +93,7 @@
     _toolbarTitle.backgroundColor = [UIColor clearColor];
     _toolbarTitle.textAlignment = NSTextAlignmentCenter;
     _toolbarTitle.textColor = [UIColor whiteColor];
-    _toolbarTitle.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
+    _toolbarTitle.font = [UI toolBarTitleFont];
     [_toolbar addSubview:_toolbarTitle];
 
     [self setUpDefaultToolBar];

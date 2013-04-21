@@ -7,8 +7,11 @@
 //
 
 #import "BasicFolderViewController.h"
+#import "FolderCommandObject.h"
 #import "PresentingModalViewControllerDelegate.h"
+#import "ModalViewControllerDelegate.h"
+#import "AddFolderViewController.h"
 
-@interface DestinationFolderViewController : BasicFolderViewController<UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, weak) id<PresentingModalViewControllerDelegate> delegate;
+@interface DestinationFolderViewController : BasicFolderViewController<UITableViewDataSource,
+    UITableViewDelegate, ModalViewControllerDelegate, PresentingModalViewControllerDelegate>
 @end

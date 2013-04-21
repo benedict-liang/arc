@@ -14,6 +14,7 @@
 
 // View properties.
 @property UIBarButtonItem *closeButton;
+@property UIAlertView *closeAlert;
 
 // Download-related properties.
 @property (strong, nonatomic) id<CloudFolder> folder;
@@ -22,6 +23,7 @@
 @end
 
 @implementation CloudPickerViewController
+@synthesize delegate = _delegate;
 
 - (id)initWithCloudFolder:(id<CloudFolder>)folder
              targetFolder:(LocalFolder *)target
@@ -93,8 +95,25 @@
 
 - (void)shouldClose:(id)sender
 {
-    [self.folder cancelOperations];
-    [_delegate modalViewControllerDone:nil];
+    if ([self.folder hasOngoingOperations]) {
+        _closeAlert = [[UIAlertView alloc] initWithTitle:@"Downloads in Progress" message:@"Closing this picker will cancel any ongoing downloads." delegate:self cancelButtonTitle:@"Stay Here" otherButtonTitles:@"Close Picker", nil];
+        [_closeAlert show];
+    } else {
+        [_delegate modalViewControllerDone:nil];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 1:
+            [self.folder cancelOperations];
+            [_delegate modalViewControllerDone:nil];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView

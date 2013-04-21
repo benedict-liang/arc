@@ -56,6 +56,9 @@
 		4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C963C81170D8E96004FDACB /* CodeLineCell.m */; };
 		4C9C7C211723B17900DBFA13 /* FolderViewSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C201723B17900DBFA13 /* FolderViewSectionHeader.m */; };
 		4C9C7C491723D43700DBFA13 /* DestinationFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C481723D43700DBFA13 /* DestinationFolderViewController.m */; };
+		4C9C7C551724195E00DBFA13 /* FolderCommandObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C541724195D00DBFA13 /* FolderCommandObject.m */; };
+		4C9C7C59172428E400DBFA13 /* UI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C58172428E400DBFA13 /* UI.m */; };
+		4C9C7C5C172430E500DBFA13 /* AddFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C5B172430E400DBFA13 /* AddFolderViewController.m */; };
 		4C9E0619170F3AFC0000F783 /* arc72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E0618170F3AFC0000F783 /* arc72.png */; };
 		4C9E061B170F3B1A0000F783 /* arc144.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E061A170F3B1A0000F783 /* arc144.png */; };
 		4CC9E0ED171C4C580062C825 /* arcMonokai72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC9E0EC171C4C580062C825 /* arcMonokai72.png */; };
@@ -271,7 +274,6 @@
 		8FE0039417239DA70013B9AC /* dragpointcircletop.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE0039317239DA70013B9AC /* dragpointcircletop.png */; };
 		8FE003971723C8BD0013B9AC /* dragpointcirclebottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE003951723C8BD0013B9AC /* dragpointcirclebottom@2x.png */; };
 		8FE003981723C8BD0013B9AC /* dragpointcircletop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE003961723C8BD0013B9AC /* dragpointcircletop@2x.png */; };
-		8FE003A91723D0C20013B9AC /* CreateFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003A61723D0C20013B9AC /* CreateFolderViewController.m */; };
 		8FE003AA1723D0C20013B9AC /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003A81723D0C20013B9AC /* ResultsTableViewController.m */; };
 		8FE003B21723D0F50013B9AC /* ArcSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003AD1723D0F50013B9AC /* ArcSplitViewController.m */; };
 		8FE003B31723D0F50013B9AC /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003AF1723D0F50013B9AC /* LeftViewController.m */; };
@@ -433,7 +435,6 @@
 		02A00794171BBF650099FE61 /* CloudFolder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudFolder.h; sourceTree = "<group>"; };
 		02A5198C170DC0CE007C038E /* Inconsolata.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inconsolata.ttf; sourceTree = "<group>"; };
 		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
-		02C2E4841715594300C912E0 /* CreateFolderViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFolderViewControllerDelegate.h; sourceTree = "<group>"; };
 		02CF20711712ACB8001A59E4 /* Reading Panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reading Panel.png"; sourceTree = "<group>"; };
 		02D2B73D17099E88002D22E7 /* RootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootFolder.h; sourceTree = "<group>"; };
 		02D2B73E17099E88002D22E7 /* RootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootFolder.m; sourceTree = "<group>"; };
@@ -482,6 +483,13 @@
 		4C9C7C201723B17900DBFA13 /* FolderViewSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderViewSectionHeader.m; sourceTree = "<group>"; };
 		4C9C7C471723D43700DBFA13 /* DestinationFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DestinationFolderViewController.h; sourceTree = "<group>"; };
 		4C9C7C481723D43700DBFA13 /* DestinationFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DestinationFolderViewController.m; sourceTree = "<group>"; };
+		4C9C7C531724195D00DBFA13 /* FolderCommandObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderCommandObject.h; sourceTree = "<group>"; };
+		4C9C7C541724195D00DBFA13 /* FolderCommandObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderCommandObject.m; sourceTree = "<group>"; };
+		4C9C7C57172428E400DBFA13 /* UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UI.h; path = General/UI.h; sourceTree = "<group>"; };
+		4C9C7C58172428E400DBFA13 /* UI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UI.m; path = General/UI.m; sourceTree = "<group>"; };
+		4C9C7C5A172430E300DBFA13 /* AddFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFolderViewController.h; sourceTree = "<group>"; };
+		4C9C7C5B172430E400DBFA13 /* AddFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFolderViewController.m; sourceTree = "<group>"; };
+		4C9C7C5D172439C500DBFA13 /* ModalViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewControllerDelegate.h; sourceTree = "<group>"; };
 		4C9DC9021719B64A00142E70 /* SyntaxHighlightingPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlightingPluginDelegate.h; sourceTree = "<group>"; };
 		4C9E0618170F3AFC0000F783 /* arc72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc72.png; sourceTree = SOURCE_ROOT; };
 		4C9E061A170F3B1A0000F783 /* arc144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc144.png; sourceTree = SOURCE_ROOT; };
@@ -726,8 +734,6 @@
 		8FE0039317239DA70013B9AC /* dragpointcircletop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragpointcircletop.png; sourceTree = "<group>"; };
 		8FE003951723C8BD0013B9AC /* dragpointcirclebottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dragpointcirclebottom@2x.png"; sourceTree = "<group>"; };
 		8FE003961723C8BD0013B9AC /* dragpointcircletop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dragpointcircletop@2x.png"; sourceTree = "<group>"; };
-		8FE003A51723D0C20013B9AC /* CreateFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFolderViewController.h; sourceTree = "<group>"; };
-		8FE003A61723D0C20013B9AC /* CreateFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateFolderViewController.m; sourceTree = "<group>"; };
 		8FE003A71723D0C20013B9AC /* ResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsTableViewController.h; sourceTree = "<group>"; };
 		8FE003A81723D0C20013B9AC /* ResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsTableViewController.m; sourceTree = "<group>"; };
 		8FE003AC1723D0F50013B9AC /* ArcSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcSplitViewController.h; sourceTree = "<group>"; };
@@ -1139,9 +1145,9 @@
 				4C21C9E71709D387002F4FEA /* FileNavigatorViewControllerDelegate.h */,
 				4CE2951517104A4C003B012A /* SettingsViewDelegate.h */,
 				4C1AF11F1715119300A2D0D8 /* FolderViewControllerDelegate.h */,
-				02C2E4841715594300C912E0 /* CreateFolderViewControllerDelegate.h */,
 				027EE0381717FD7800302F07 /* LongSettingListViewControllerDelegate.h */,
 				023D4AFA171D1AAF00D9F60D /* PresentingModalViewControllerDelegate.h */,
+				4C9C7C5D172439C500DBFA13 /* ModalViewControllerDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1182,6 +1188,8 @@
 				8F5C5C1416FDFDBE00B31A19 /* Utils.m */,
 				4CD06B7E16FDF61C00C9DED3 /* Constants.h */,
 				4CD06B7F16FDF61C00C9DED3 /* Constants.m */,
+				4C9C7C57172428E400DBFA13 /* UI.h */,
+				4C9C7C58172428E400DBFA13 /* UI.m */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -1561,8 +1569,6 @@
 		8FE003A41723D0C20013B9AC /* Popup Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8FE003A51723D0C20013B9AC /* CreateFolderViewController.h */,
-				8FE003A61723D0C20013B9AC /* CreateFolderViewController.m */,
 				8FE003A71723D0C20013B9AC /* ResultsTableViewController.h */,
 				8FE003A81723D0C20013B9AC /* ResultsTableViewController.m */,
 			);
@@ -1609,12 +1615,16 @@
 			children = (
 				4C9C7C471723D43700DBFA13 /* DestinationFolderViewController.h */,
 				4C9C7C481723D43700DBFA13 /* DestinationFolderViewController.m */,
+				4C9C7C5A172430E300DBFA13 /* AddFolderViewController.h */,
+				4C9C7C5B172430E400DBFA13 /* AddFolderViewController.m */,
+				8FE003C61723D1D80013B9AC /* FolderViewController.h */,
+				8FE003C71723D1D80013B9AC /* FolderViewController.m */,
 				8FE003C21723D1D80013B9AC /* BasicFolderViewController.h */,
 				8FE003C31723D1D80013B9AC /* BasicFolderViewController.m */,
 				8FE003C41723D1D80013B9AC /* FileSystemObjectGroup.h */,
 				8FE003C51723D1D80013B9AC /* FileSystemObjectGroup.m */,
-				8FE003C61723D1D80013B9AC /* FolderViewController.h */,
-				8FE003C71723D1D80013B9AC /* FolderViewController.m */,
+				4C9C7C531724195D00DBFA13 /* FolderCommandObject.h */,
+				4C9C7C541724195D00DBFA13 /* FolderCommandObject.m */,
 			);
 			path = FolderViewController;
 			sourceTree = "<group>";
@@ -2228,7 +2238,6 @@
 				8FE003CB1723D1D80013B9AC /* FileSystemObjectGroup.m in Sources */,
 				4C9C7C491723D43700DBFA13 /* DestinationFolderViewController.m in Sources */,
 				4C9C7C211723B17900DBFA13 /* FolderViewSectionHeader.m in Sources */,
-				8FE003A91723D0C20013B9AC /* CreateFolderViewController.m in Sources */,
 				8FE003AA1723D0C20013B9AC /* ResultsTableViewController.m in Sources */,
 				8FE003B21723D0F50013B9AC /* ArcSplitViewController.m in Sources */,
 				8FE003B31723D0F50013B9AC /* LeftViewController.m in Sources */,
@@ -2247,6 +2256,9 @@
 				8FE003E91723D2BD0013B9AC /* DropBoxFile.m in Sources */,
 				8FE003EA1723D2BD0013B9AC /* DropBoxFolder.m in Sources */,
 				8FE003EB1723D2BD0013B9AC /* DropBoxRootFolder.m in Sources */,
+				4C9C7C551724195E00DBFA13 /* FolderCommandObject.m in Sources */,
+				4C9C7C59172428E400DBFA13 /* UI.m in Sources */,
+				4C9C7C5C172430E500DBFA13 /* AddFolderViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

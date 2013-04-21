@@ -19,24 +19,38 @@ const NSString *FOLDERCELL_REUSE_IDENTIFIER = @"folderCell";
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        if ([reuseIdentifier isEqualToString:(NSString *)FILECELL_REUSE_IDENTIFIER]) {
-            self.imageView.image = [Utils scale:[UIImage imageNamed:@"file.png"]
-                                         toSize:CGSizeMake(35, 35)];
-            self.imageView.highlightedImage = [Utils scale:[UIImage imageNamed:@"file_white.png"]
-                                                    toSize:CGSizeMake(35, 35)];
-        } else if ([reuseIdentifier isEqualToString:(NSString *)FOLDERCELL_REUSE_IDENTIFIER]) {
-            self.imageView.image = [Utils scale:[UIImage imageNamed:@"folder.png"]
-                                         toSize:CGSizeMake(35, 35)];
-        }
+        self.textLabel.font = [UIFont fontWithName:[UI fontName] size:17];
+        self.detailTextLabel.font = [UIFont fontWithName:[UI fontName] size:12];
         
-        // selection
-        UIView *bg = [[UIView alloc] init];
-        bg.backgroundColor = [Utils colorWithHexString:@"ee151512"];
-        self.selectedBackgroundView = bg;
-        self.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:17];
-        self.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+        if ([reuseIdentifier isEqualToString:(NSString *)FILECELL_REUSE_IDENTIFIER]) {
+            [self setUpFileCellImageView];
+        } else if ([reuseIdentifier isEqualToString:(NSString *)FOLDERCELL_REUSE_IDENTIFIER]) {
+            [self setUpFolderCellImageView];
+        }
+        [self setUpSelection];
     }
     return self;
+}
+
+- (void)setUpFileCellImageView
+{
+    self.imageView.image = [Utils scale:[UIImage imageNamed:[UI fileImage]]
+                                 toSize:CGSizeMake(35, 35)];
+    self.imageView.highlightedImage = [Utils scale:[UIImage imageNamed:[UI fileImageHighlighted]]
+                                            toSize:CGSizeMake(35, 35)];
+}
+
+- (void)setUpFolderCellImageView
+{
+    self.imageView.image = [Utils scale:[UIImage imageNamed:[UI folderImage]]
+                                 toSize:CGSizeMake(35, 35)];
+}
+
+- (void)setUpSelection
+{
+    UIView *backgroundView = [[UIView alloc] init];
+    backgroundView.backgroundColor = [Utils lightenColor:[UI navigationBarColor] byPercentage:30];
+    self.selectedBackgroundView = backgroundView;
 }
 
 - (void)setFileSystemObject:(id<FileSystemObject>)fileSystemObject
@@ -93,8 +107,15 @@ const NSString *FOLDERCELL_REUSE_IDENTIFIER = @"folderCell";
         self.selectedBackgroundView.backgroundColor = [UIColor clearColor];
     } else {
         self.selectedBackgroundView.backgroundColor =
-        [Utils colorWithHexString:@"ee151512"];
+        [Utils lightenColor:[UI navigationBarColor] byPercentage:30];;
     }
+}
+
+- (void)resetCell
+{
+    self.editing = NO;
+    self.highlighted = NO;
+    self.selected = NO;
 }
 
 @end
