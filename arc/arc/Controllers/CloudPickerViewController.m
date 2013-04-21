@@ -7,7 +7,6 @@
 //
 
 #import "CloudPickerViewController.h"
-#import "FolderViewSectionHeader.h"
 
 @interface CloudPickerViewController ()
 // Loading Overlay view.
@@ -15,10 +14,6 @@
 
 // View properties.
 @property UIBarButtonItem *closeButton;
-
-// TableView-related properties.
-@property UITableView *tableView;
-@property NSArray *segregatedContents;
 
 // Download-related properties.
 @property (strong, nonatomic) id<CloudFolder> folder;
@@ -32,8 +27,7 @@
              targetFolder:(LocalFolder *)target
            serviceManager:(id<CloudServiceManager>)serviceManager
 {
-    if (self = [super init]) {
-        _folder = folder;
+    if (self = [super initWithFolder:folder]) {
         _target = target;
         _serviceManager = serviceManager;
         [serviceManager setDelegate:self];
@@ -43,12 +37,12 @@
     return self;
 }
 
-- (void)separateFilesAndFolders
+- (void)setUpFolderContents
 {
+    NSArray *fileObjects = (NSArray*)self.folder.contents;
     NSMutableArray *folders = [NSMutableArray array];
     NSMutableArray *files = [NSMutableArray array];
-    NSArray *fileObjects = (NSArray*)[_folder contents];
-    
+
     for (id<FileSystemObject> fileSystemObject in fileObjects) {
         if ([[fileSystemObject class] conformsToProtocol:@protocol(CloudFile)]) {
             [files addObject:fileSystemObject];
@@ -56,7 +50,17 @@
             [folders addObject:fileSystemObject];
         }
     }
-    _segregatedContents = [NSArray arrayWithObjects:folders, files, nil];
+    
+    [self setFilesAndFolders:@[
+                         @{
+                             FOLDER_VIEW_SECTION_HEADING_KEY: FOLDER_VIEW_FOLDERS,
+                             FOLDER_VIEW_SECTION_ITEMS_KEY: folders
+                             },
+                         @{
+                             FOLDER_VIEW_SECTION_HEADING_KEY: FOLDER_VIEW_FILES,
+                             FOLDER_VIEW_SECTION_ITEMS_KEY: files
+                             }
+                         ]];
 }
 
 - (void)fileStatusChangedForService:(id)sender
@@ -71,169 +75,60 @@
 
 - (void)updateView
 {
-    [self separateFilesAndFolders];
-    [_tableView reloadData];
+    [self setUpFolderContents];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [[self navigationItem] setTitle:[_folder name]];
-    
-    _closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
-                                                                 target:self
-                                                                 action:@selector(shouldClose)];
-
-//    NSArray *buttonArray = [NSArray arrayWithObjects:_closeButton, [self editButtonItem], nil];
-    
-//    [[self navigationItem] setRightBarButtonItems:buttonArray];
-    [[self navigationItem] setRightBarButtonItem:_closeButton];
-    
-    // Subview properties.
-    [[self view] setAutoresizesSubviews:YES];
+    _closeButton =
+    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
+                                                  target:self
+                                                  action:@selector(shouldClose)];
+    self.navigationItem.rightBarButtonItem = _closeButton;
+    self.view.autoresizesSubviews = YES;
+    self.navigationItem.title = self.folder.name;
     
     // Create the Table View.
-    _tableView = [[UITableView alloc] initWithFrame:[[self view] bounds] style:UITableViewStylePlain];
-    [_tableView setDelegate:self];
-    [_tableView setDataSource:self];
-    [_tableView setAutoresizingMask:UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth];
-    [[self view] addSubview:_tableView];
+    [self setUpTableView];
     
     // Create the loading overlay.
-    _loadingOverlayController = [[LoadingOverlayViewController alloc] initWithFrame:[[self view] bounds]];
+    _loadingOverlayController =
+    [[LoadingOverlayViewController alloc] initWithFrame:[[self view] bounds]];
 //    [[self view] insertSubview:[_loadingOverlayController view] aboveSubview:_tableView];
 }
 
 - (void)shouldClose
 {
-    [_folder cancelOperations];
+    [self.folder cancelOperations];
     [_delegate cloudPickerDone:self];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-// Returns the number of sections in the table.
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return [_segregatedContents count];
-}
-
-// Returns the number of rows in the given section.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [[_segregatedContents objectAtIndex:section] count];
-}
-
-// Returns the header for the given section.
-- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    FolderViewSectionHeader *sectionHeader =
-    [[FolderViewSectionHeader alloc] initWithFrame:CGRectMake(10.0, 0.0, 320.0, 22.0)];
-
-    sectionHeader.title = section == 0 ? @"Folders" : @"Files";
-    return sectionHeader;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    // Hide section title if section has zero rows
-    if ([self tableView:tableView numberOfRowsInSection:section] == 0) {
-        return 0;
-    }
-    return 22;
-}
-
-// Set up the cell at the given index path.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSArray *section = [_segregatedContents objectAtIndex:indexPath.section];
-    id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
-    
-    NSString *cellIdentifier;
-    if ([[fileObject class] conformsToProtocol:@protocol(File)]) {
-        cellIdentifier = (NSString *)FILECELL_REUSE_IDENTIFIER;
-    } else if ([[fileObject class] conformsToProtocol:@protocol(Folder)]) {
-        cellIdentifier = (NSString *)FOLDERCELL_REUSE_IDENTIFIER;
-    }
-    
-    FileObjectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[FileObjectTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                              reuseIdentifier:cellIdentifier];
-    }
-    
-    [cell setFileSystemObject:fileObject];
-
-    
-    return cell;
-}
-
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
+           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return UITableViewCellEditingStyleNone;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *section = [_segregatedContents objectAtIndex:[indexPath section]];
-    id selectedObject = [section objectAtIndex:[indexPath row]];
-    
+    id<FileSystemObject> selectedObject = [self sectionItem:indexPath];
     if ([selectedObject conformsToProtocol:@protocol(CloudFile)]) {
-        [_serviceManager downloadFile:selectedObject toFolder:_target];
-        [self folderContentsUpdated:_folder];
+        [_serviceManager downloadFile:(id<CloudFile>)selectedObject
+                             toFolder:_target];
+        [self folderContentsUpdated:self.folder];
     } else {
-        CloudPickerViewController *newFolderController = [[CloudPickerViewController alloc] initWithCloudFolder:selectedObject targetFolder:_target serviceManager:_serviceManager];
+        CloudPickerViewController *newFolderController =
+        [[CloudPickerViewController alloc] initWithCloudFolder:(id<CloudFolder>)selectedObject
+                                                  targetFolder:_target
+                                                serviceManager:_serviceManager];
         [newFolderController setDelegate:_delegate];
-        [[self navigationController] pushViewController:newFolderController animated:YES];
+        [[self navigationController] pushViewController:newFolderController
+                                               animated:YES];
     }
 }
 
