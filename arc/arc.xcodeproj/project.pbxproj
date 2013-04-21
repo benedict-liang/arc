@@ -283,6 +283,8 @@
 		8FE0039017239C740013B9AC /* dragpointline.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE0038F17239C740013B9AC /* dragpointline.png */; };
 		8FE0039217239D540013B9AC /* dragpointcirclebottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE0039117239D540013B9AC /* dragpointcirclebottom.png */; };
 		8FE0039417239DA70013B9AC /* dragpointcircletop.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE0039317239DA70013B9AC /* dragpointcircletop.png */; };
+		8FE003971723C8BD0013B9AC /* dragpointcirclebottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE003951723C8BD0013B9AC /* dragpointcirclebottom@2x.png */; };
+		8FE003981723C8BD0013B9AC /* dragpointcircletop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE003961723C8BD0013B9AC /* dragpointcircletop@2x.png */; };
 		FC137BE01719AE1000878684 /* FoldTree.m in Sources */ = {isa = PBXBuildFile; fileRef = FC137BDF1719AE1000878684 /* FoldTree.m */; };
 		FC3C2E621715BF8100C40490 /* [ Argonaut ].tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E2A1715BF7A00C40490 /* [ Argonaut ].tmTheme */; };
 		FC3C2E631715BF8100C40490 /* All Hallow's Eve Custom.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E2B1715BF7A00C40490 /* All Hallow's Eve Custom.tmTheme */; };
@@ -749,6 +751,8 @@
 		8FE0038F17239C740013B9AC /* dragpointline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragpointline.png; sourceTree = "<group>"; };
 		8FE0039117239D540013B9AC /* dragpointcirclebottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragpointcirclebottom.png; sourceTree = "<group>"; };
 		8FE0039317239DA70013B9AC /* dragpointcircletop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragpointcircletop.png; sourceTree = "<group>"; };
+		8FE003951723C8BD0013B9AC /* dragpointcirclebottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dragpointcirclebottom@2x.png"; sourceTree = "<group>"; };
+		8FE003961723C8BD0013B9AC /* dragpointcircletop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dragpointcircletop@2x.png"; sourceTree = "<group>"; };
 		FC137BDE1719AE1000878684 /* FoldTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldTree.h; sourceTree = "<group>"; };
 		FC137BDF1719AE1000878684 /* FoldTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldTree.m; sourceTree = "<group>"; };
 		FC3C2E2A1715BF7A00C40490 /* [ Argonaut ].tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "[ Argonaut ].tmTheme"; sourceTree = "<group>"; };
@@ -1326,9 +1330,6 @@
 		4CF6F0EC1706E05500EDDEDC /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				8FE0038F17239C740013B9AC /* dragpointline.png */,
-				8FE0039317239DA70013B9AC /* dragpointcircletop.png */,
-				8FE0039117239D540013B9AC /* dragpointcirclebottom.png */,
 				4CC9E0FA171C4EC80062C825 /* Default-Portrait~ipad.png */,
 				4CC9E0F8171C4EC60062C825 /* Default-Landscape~ipad.png */,
 				4CC9E0F6171C4EBF0062C825 /* monokai_icon_144.png */,
@@ -1346,6 +1347,11 @@
 				4C6B0909171EEB46009DB903 /* file_white.png */,
 				4CEADA031716AB0E00F4F619 /* threelines.png */,
 				840B6ABA3F91CF078F55C3DE /* Cloud-Download.png */,
+				8FE0038F17239C740013B9AC /* dragpointline.png */,
+				8FE0039317239DA70013B9AC /* dragpointcircletop.png */,
+				8FE0039117239D540013B9AC /* dragpointcirclebottom.png */,
+				8FE003951723C8BD0013B9AC /* dragpointcirclebottom@2x.png */,
+				8FE003961723C8BD0013B9AC /* dragpointcircletop@2x.png */,
 			);
 			name = Images;
 			path = Assets/Images;
@@ -2061,6 +2067,8 @@
 				8FE0039017239C740013B9AC /* dragpointline.png in Resources */,
 				8FE0039217239D540013B9AC /* dragpointcirclebottom.png in Resources */,
 				8FE0039417239DA70013B9AC /* dragpointcircletop.png in Resources */,
+				8FE003971723C8BD0013B9AC /* dragpointcirclebottom@2x.png in Resources */,
+				8FE003981723C8BD0013B9AC /* dragpointcircletop@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
