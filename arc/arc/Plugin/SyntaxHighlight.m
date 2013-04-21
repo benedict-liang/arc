@@ -328,14 +328,15 @@
     NSDictionary* minSyntax = nil;
     for (NSDictionary* syntaxItem  in syntaxItems) {
         NSString* match = [syntaxItem objectForKey:@"match"];
-        if (match) {
-            NSRange matchResult = [self findFirstPattern:match range:range content:_content];
-            if (minBegin) {
-                <#statements#>
-            }
-        }
         NSString* begin = [syntaxItem objectForKey:@"begin"];
         NSString* end = [syntaxItem objectForKey:@"end"];
+        if (match) {
+            NSRange matchResult = [self findFirstPattern:match range:range content:_content];
+            if (minBegin.location > matchResult.location) {
+                
+            }
+        }
+
         NSRange bresult = [self findFirstPattern:begin range:range content:_content];
         if (bresult.location > _content.length) {
             continue;

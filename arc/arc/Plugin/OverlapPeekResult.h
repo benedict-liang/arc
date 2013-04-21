@@ -16,6 +16,7 @@ typedef SyntaxType;
 @property NSRange beginRange;
 @property NSRange endRange;
 @property NSDictionary* syntaxItem;
+@property NSRange matchRange;
 @property SyntaxType type;
 +(OverlapPeekResult*)resultWithBeginRange:(NSRange)br EndRange:(NSRange)er SyntaxItem:(NSDictionary*)si;
 @end
