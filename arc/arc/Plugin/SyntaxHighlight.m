@@ -12,6 +12,8 @@
 @interface SyntaxHighlight ()
 @property (nonatomic) BOOL isAlive;
 @property (nonatomic) BOOL matchesDone;
+@property ParcoaParser* pairParsers;
+@property NSMutableArray* parserAccum;
 @end
 
 @implementation SyntaxHighlight
@@ -43,6 +45,7 @@
         pairMatches = [NSDictionary dictionary];
         contentNameMatches = [NSDictionary dictionary];
         overlapMatches = [NSDictionary dictionary];
+        _parserAccum = [NSMutableArray array];
     }
     return self;
 }
@@ -325,7 +328,7 @@
     return NO;
 }
 
-- (ParcoaParser*)parserForRegex:(NSRegularExpression*)regex WithName:(NSString*)name {
+- (ParcoaParser*)parserForRegex:(NSRegularExpression*)regex WithName:(NSString*)name WithScope:(NSString*)scope {
     return [ParcoaParser parserWithBlock:^ParcoaResult*(NSString *input){
         NSRange beginRange = [self findFirstPatternWithRegex:regex
                                                        range:NSMakeRange(0, input.length)
@@ -335,9 +338,22 @@
         } else {
             CFIndex bEnds = beginRange.location+beginRange.length+1;
             NSString* remaining = [input substringFromIndex:bEnds];
-            return [ParcoaResult ok:[Utils valueFromRange:beginRange] residual:remaining expected:[ParcoaExpectation unsatisfiable]];
+            NSString* key = nil;
+            if (!scope) {
+                key = @"unknown";
+            } else {
+                key = scope;
+            }
+            return [ParcoaResult ok:@{@"scope":scope,@"range":[Utils valueFromRange:beginRange]} residual:remaining expected:[ParcoaExpectation unsatisfiable]];
         }
     } name:name summary:nil];
+}
+- (void)parsePairsForInput:(NSString*)input {
+    ParcoaParser* pairs = [Parcoa many:[Parcoa choice:_parserAccum]];
+    NSLog(@"%@",_parserAccum);
+    ParcoaResult* result = [pairs parse:input];
+    NSLog(@"results:%@", result.value);
+    
 }
 - (void)processPairRange:(NSRange)contentRange
                     item:(NSDictionary*)syntaxItem
@@ -360,8 +376,8 @@
 //                                      range:contentRange];
     NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
     
-    ParcoaParser* beginParser = [self parserForRegex:beginRegex WithName:@"begin"];
-    ParcoaParser* endParser = [self parserForRegex:endRegex WithName:@"end"];
+    ParcoaParser* beginParser = [self parserForRegex:beginRegex WithName:@"begin" WithScope:name];
+    ParcoaParser* endParser = [self parserForRegex:endRegex WithName:@"end" WithScope:name];
     
     //ParcoaParser* afterBegin = [Parcoa parser:beginParser notFollowedBy:endParser];
     
@@ -373,7 +389,7 @@
     
     NSLog(@"name = %@, ranges = %@",name, result.value);
     
-    
+    [_parserAccum addObject:pairParser];
     //ParcoaResult* beginResult = [beginParser parse:[_content substringWithRange:contentRange]];
     //NSLog(@"beginRange: %@", beginResult.value);
     
@@ -506,9 +522,9 @@
                     //NSLog(@"recurring for include: %@ with %d %d name:%@",includes, contentRange.location, contentRange.length, name);
                     if (contentRange.length <= [_content length] &&
                         includes) {
-                        [self iterPatternsForRange:contentRange
-                                          patterns:includes
-                                            output:output];
+//                        [self iterPatternsForRange:contentRange
+//                                          patterns:includes
+//                                            output:output];
                     }
                 }
             }
@@ -517,6 +533,7 @@
 //    
 //    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     }
+    [self parsePairsForInput:[_content substringWithRange:contentRange]];
 }
 
 - (BOOL)whileCondition:(NSRange)brange e:(NSRange)erange cr:(NSRange)contentRange
