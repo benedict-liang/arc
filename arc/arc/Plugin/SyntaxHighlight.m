@@ -325,7 +325,7 @@
 - (OverlapPeekResult*)peekMinForItems:(NSArray*)syntaxItems WithRange:(NSRange)range {
     NSRange minBegin = NSMakeRange(_content.length, 0);
     NSRange minEnd = minBegin;
-    NSRange minMatch = minBegin;
+    //NSRange minMatch = minBegin;
     NSDictionary* minSyntax = nil;
     SyntaxType minType = kNone;
     for (NSDictionary* syntaxItem  in syntaxItems) {
@@ -334,9 +334,9 @@
         NSString* end = [syntaxItem objectForKey:@"end"];
         if (match) {
             NSRange matchResult = [self findFirstPattern:match range:range content:_content];
-            if (minMatch.location > matchResult.location) {
+            if (minBegin.location > matchResult.location) {
                 minType = kSyntaxSingle;
-                minMatch = matchResult;
+                minBegin = matchResult;
                 minSyntax = syntaxItem;
             }
         }
@@ -345,7 +345,7 @@
             if (bresult.location > _content.length) {
                 continue;
             }
-            CFIndex bEnds = bresult.location+bresult.length+1;
+            CFIndex bEnds = bresult.location+bresult.length;
             NSRange eresult = [self findFirstPattern:end range:NSMakeRange(bEnds, _content.length - bEnds) content:_content];
             
             if (minBegin.location > bresult.location && eresult.location < _content.length && bresult.location < _content.length && eresult.location > bresult.location) {
@@ -359,7 +359,7 @@
     if (minSyntax && minType == kSyntaxPair) {
         return [OverlapPeekResult resultWithBeginRange:minBegin EndRange:minEnd SyntaxItem:minSyntax];
     } else if (minSyntax && minType == kSyntaxSingle) {
-        return [OverlapPeekResult resultWithMatchRange:minMatch SyntaxItem:minSyntax];
+        return [OverlapPeekResult resultWithMatchRange:minBegin SyntaxItem:minSyntax];
     }
     return nil;
 }
@@ -569,7 +569,7 @@
 //    
 //    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     }
-    //NSLog(@"%@",_overlapAccum);
+    NSLog(@"%@",_overlapAccum);
     [self handleOverlaps:_overlapAccum];
 }
 
