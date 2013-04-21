@@ -182,7 +182,7 @@
     for (NSString *s in cpS) {
         NSDictionary* style = [(NSDictionary*)[theme objectForKey:@"scopes"] objectForKey:s];
         if (![dict isEqual:(NSObject*)overlapMatches] && [_overlays containsObject:s]) {
-            overlapMatches = [self addRange:range
+            [self addRange:range
                                       scope:s
                                        dict:overlapMatches
                            capturableScopes:@[s]];
@@ -262,18 +262,17 @@
  capturableScopes:(NSArray*)cpS
 {
     
-    NSArray* ranges = [[matchesStore objectForKey:scope] objectForKey:@"ranges"];
+    NSMutableArray* ranges = [[matchesStore objectForKey:scope] objectForKey:@"ranges"];
     if (ranges) {
-        NSMutableArray* temp = [NSMutableArray arrayWithArray:ranges];
-        [temp addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
-        NSDictionary* vals = @{@"capturableScopes":cpS, @"ranges":temp};
-        [res setObject:vals forKey:scope];
+        [ranges addObject:[Utils valueFromRange:range]];
     } else {
         if (scope) {
-            NSDictionary* vals = @{@"capturableScopes":cpS, @"ranges":@[[NSValue value:&range
-                                                                          withObjCType:@encode(NSRange)]]};
-            [res setObject:vals
-                    forKey:scope];
+            NSMutableDictionary* vals = [NSMutableDictionary dictionary];
+            [vals setObject:cpS forKey:@"capturableScopes"];
+            [vals setObject:[NSMutableArray arrayWithObject:[Utils valueFromRange:range]] forKey:@"ranges"];
+            
+            [matchesStore setObject:vals
+                             forKey:scope];
         }
     }
 
