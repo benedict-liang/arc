@@ -5,12 +5,13 @@
 //  Created by Yong Michael on 21/4/13.
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
-#define SECTION_HEADING @"section heading"
-#define SECTION_ITEMS @"section items"
-#define FOLDER @"Folders"
-#define FILES @"Files"
 
 #import "BasicFolderViewController.h"
+
+NSString* const FOLDER_VIEW_SECTION_HEADING_KEY = @"section heading";
+NSString* const FOLDER_VIEW_SECTION_ITEMS_KEY = @"section items";
+NSString* const FOLDER_VIEW_FOLDERS = @"Folders";
+NSString* const FOLDER_VIEW_FILES = @"Files";
 
 @interface BasicFolderViewController ()
 @property (nonatomic, strong) id<Folder> folder;
@@ -50,14 +51,19 @@
     
     _filesAndFolders = @[
                          @{
-                             SECTION_HEADING: FOLDER,
-                             SECTION_ITEMS: folders
+                             FOLDER_VIEW_SECTION_HEADING_KEY: FOLDER_VIEW_FOLDERS,
+                             FOLDER_VIEW_SECTION_ITEMS_KEY: folders
                              },
                          @{
-                             SECTION_HEADING: FILES,
-                             SECTION_ITEMS: files
+                             FOLDER_VIEW_SECTION_HEADING_KEY: FOLDER_VIEW_FILES,
+                             FOLDER_VIEW_SECTION_ITEMS_KEY: files
                              }
                          ];
+}
+
+- (void)setFilesAndFolders:(NSArray *)filesAndFolders
+{
+    _filesAndFolders = filesAndFolders;
 }
 
 - (void)setUpTableView
@@ -103,13 +109,13 @@
 
 - (NSString *)sectionHeading:(NSInteger)section
 {
-    return [[self sectionDictionary:section] objectForKey:SECTION_HEADING];
+    return [[self sectionDictionary:section] objectForKey:FOLDER_VIEW_SECTION_HEADING_KEY];
 }
 
 - (NSMutableArray *)sectionItems:(NSInteger)section
 {
     return (NSMutableArray *)[[self sectionDictionary:section]
-                              objectForKey:SECTION_ITEMS];
+                              objectForKey:FOLDER_VIEW_SECTION_ITEMS_KEY];
 }
 
 - (id<FileSystemObject>)sectionItem:(NSIndexPath *)indexPath

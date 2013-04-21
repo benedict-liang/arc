@@ -30,9 +30,15 @@
       atIndexPath:(NSIndexPath *)indexPath;
 
 // Data source Accessor Methods
+- (void)setFilesAndFolders:(NSArray *)filesAndFolders;
 - (NSDictionary *)sectionDictionary:(NSInteger)section;
 - (NSString *)sectionHeading:(NSInteger)section;
 - (NSMutableArray *)sectionItems:(NSInteger)section;
 - (id<FileSystemObject>)sectionItem:(NSIndexPath *)indexPath;
 
+// Constants
+extern NSString* const FOLDER_VIEW_SECTION_HEADING_KEY;
+extern NSString* const FOLDER_VIEW_SECTION_ITEMS_KEY;
+extern NSString* const FOLDER_VIEW_FOLDERS;
+extern NSString* const FOLDER_VIEW_FILES;
 @end

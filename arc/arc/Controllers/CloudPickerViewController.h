@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#import "BasicFolderViewController.h"
 #import "CloudFolder.h"
 #import "CloudServiceManager.h"
 #import "CloudFolderDelegate.h"
 #import "CloudPickerViewControllerDelegate.h"
 #import "LoadingOverlayViewController.h"
-#import "FileObjectTableViewCell.h"
 
-@interface CloudPickerViewController : UIViewController <CloudFolderDelegate,
+@interface CloudPickerViewController : BasicFolderViewController <CloudFolderDelegate,
     UITableViewDataSource, UITableViewDelegate, CloudServiceManagerDelegate>
 
 @property (weak, nonatomic) id<CloudPickerViewControllerDelegate> delegate;
