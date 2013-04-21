@@ -143,9 +143,9 @@
         NSLog(@"%@", error);
     }
     
-    NSMutableArray *newContents = [NSMutableArray arrayWithArray:_contents];
-    [newContents removeObject:ticket];
-    _contents = [NSArray arrayWithArray:newContents];
+    NSMutableArray *newOperations = [NSMutableArray arrayWithArray:_operations];
+    [newOperations removeObject:ticket];
+    _operations = [NSArray arrayWithArray:newOperations];
 }
 
 @end
