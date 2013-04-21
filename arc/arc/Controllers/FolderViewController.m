@@ -6,8 +6,12 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
+#define SECTION_HEADING @"section heading"
+#define SECTION_ITEMS @"section items"
+#define FOLDER @"Files"
+#define FILES @"Files"
+
 #import "FolderViewController.h"
-#import "Utils.h"
 #import "RootFolder.h"
 #import "File.h"
 #import "Folder.h"
@@ -45,23 +49,30 @@
     self = [super init];
     if (self) {
         _folder = folder;
-        
-        // Set up the cloud controllers.
-        _skyDriveManager = (SkyDriveServiceManager *)[SkyDriveServiceManager sharedServiceManager];
-        _googleDriveManager = (GoogleDriveServiceManager *)[GoogleDriveServiceManager sharedServiceManager];
-        
-        [self sortFilesAndFolders];
+        [self setUpCloudControllers];
+        [self setUpFilesAndFolders];
     }
     return self;
 }
 
-
-- (void)sortFilesAndFolders
+- (void)setUpCloudControllers
 {
+    _skyDriveManager =
+    (SkyDriveServiceManager *)[SkyDriveServiceManager sharedServiceManager];
+    
+    _googleDriveManager =
+    (GoogleDriveServiceManager *)[GoogleDriveServiceManager sharedServiceManager];
+}
+
+
+- (void)setUpFilesAndFolders
+{
+    NSArray *fileObjects = (NSArray*)[_folder contents];
+    
+    // Temporary buckets to hold different file object types
     NSMutableArray *folders = [NSMutableArray array];
     NSMutableArray *files = [NSMutableArray array];
-    NSArray *fileObjects = (NSArray*)[_folder contents];
-
+    
     for (id<FileSystemObject> fileSystemObject in fileObjects) {
         if ([[fileSystemObject class] conformsToProtocol:@protocol(File)]) {
             [files addObject:fileSystemObject];
@@ -69,12 +80,22 @@
             [folders addObject:fileSystemObject];
         }
     }
-    _filesAndFolders = [NSArray arrayWithObjects:folders, files, nil];
+
+    _filesAndFolders = @[
+                         @{
+                             SECTION_HEADING: FOLDER,
+                             SECTION_ITEMS: folders
+                             },
+                         @{
+                             SECTION_HEADING: FILES,
+                             SECTION_ITEMS: files
+                             }
+                         ];
 }
 
-- (void)refreshFolderContents
+- (void)refreshFolderView
 {
-    [self sortFilesAndFolders];
+    [self setUpFilesAndFolders];
     [_tableView reloadData];
 }
 
@@ -82,48 +103,47 @@
 {
     [super viewDidLoad];
     
-    _addItemButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                   target:self
-                                                                   action:@selector(triggerAddItem)];
-    
+    _addItemButton =
+    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                  target:self
+                                                  action:@selector(triggerAddItem)];
+
     // Create the add folder controller and its popover.
-    _createFolderController = [[CreateFolderViewController alloc] initWithDelegate:self];
-    _addFolderPopoverController = [[UIPopoverController alloc] initWithContentViewController:_createFolderController];
+    _createFolderController =
+    [[CreateFolderViewController alloc] initWithDelegate:self];
+    
+    _addFolderPopoverController =
+    [[UIPopoverController alloc] initWithContentViewController:_createFolderController];
     
     // Set up the navigation bar.
     self.title = _folder.name;
     
     // Add the "edit" and "add folder" buttons.
     self.navigationItem.rightBarButtonItems =
-            [NSArray arrayWithObjects:
-                    self.editButtonItem,
-                    _addItemButton,
-                    nil];
+    [NSArray arrayWithObjects:self.editButtonItem, _addItemButton, nil];
 
     self.view.autoresizesSubviews = YES;
 
     // Set Up TableView
     _tableView =
-        [[UITableView alloc] initWithFrame:self.view.bounds
-                                     style:UITableViewStylePlain];
+    [[UITableView alloc] initWithFrame:self.view.bounds
+                                 style:UITableViewStylePlain];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
-        UIViewAutoresizingFlexibleWidth;
-
-    // TableView Row Height
+    UIViewAutoresizingFlexibleWidth;
     _tableView.rowHeight = 55;
-    
-    // Set TableView's Delegate and DataSource
     _tableView.dataSource = self;
     _tableView.delegate = self;
     
     [self.view addSubview:_tableView];
     
     // Create the add folder controller.
-    _createFolderController = [[CreateFolderViewController alloc] initWithDelegate:self];
+    _createFolderController =
+    [[CreateFolderViewController alloc] initWithDelegate:self];
     
     _editToolbar = [[UIToolbar alloc] init];
     _editToolbar.frame = CGRectMake(0, self.view.frame.size.height,
                                     self.view.frame.size.width, 44);
+    _editToolbar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     
     _deleteButton =
     [[UIBarButtonItem alloc] initWithTitle:@"Delete Item"
@@ -143,11 +163,11 @@
                           [Utils flexibleSpace],
                           nil];
 
-    _editToolbar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview:_editToolbar];
 }
 
 // Work Around to track back button action.
+// track back button to persist current folder
 - (void)viewWillDisappear:(BOOL)animated
 {
     if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
@@ -172,7 +192,13 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return [[_filesAndFolders objectAtIndex:section] count];
+    NSDictionary *sectionDict =
+    (NSDictionary *)[_filesAndFolders objectAtIndex:section];
+    
+    NSArray *sectionItems =
+    (NSArray *)[sectionDict objectForKey:SECTION_ITEMS];
+    
+    return [sectionItems count];
 }
 
 // Returns the header for the given section.
@@ -182,15 +208,24 @@ titleForHeaderInSection:(NSInteger)section {
     if ([self tableView:tableView numberOfRowsInSection:section] == 0) {
         return nil;
     }
-    return section == 0 ? @"Folders" : @"Files";
+    
+    NSDictionary *sectionDict =
+    (NSDictionary *)[_filesAndFolders objectAtIndex:section];
+    
+    return (NSString *)[sectionDict objectForKey:SECTION_HEADING];
 }
 
 // Sets up a table cell for the given index path.
 - (UITableViewCell*)tableView:(UITableView*)tableView
         cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    NSArray *section = [_filesAndFolders objectAtIndex:indexPath.section];
-    id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
+    NSDictionary *sectionDict =
+    (NSDictionary *)[_filesAndFolders objectAtIndex:indexPath.section];
+    
+    NSArray *sectionItems =
+    (NSArray *)[sectionDict objectForKey:SECTION_ITEMS];
+    
+    id<FileSystemObject> fileObject = [sectionItems objectAtIndex:indexPath.row];
 
     NSString *cellIdentifier;
     if ([[fileObject class] conformsToProtocol:@protocol(File)]) {
@@ -203,7 +238,7 @@ titleForHeaderInSection:(NSInteger)section {
     
     if (cell == nil) {
         cell = [[FileObjectTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                      reuseIdentifier:cellIdentifier];
+                                              reuseIdentifier:cellIdentifier];
     }
     
     [cell setFileSystemObject:fileObject];
@@ -215,10 +250,6 @@ titleForHeaderInSection:(NSInteger)section {
     }
 
     // Remove Gesture Recoginzers
-    for (UIGestureRecognizer *g in [cell gestureRecognizers]) {
-        [cell removeGestureRecognizer:g];
-    }
-
     [Utils removeAllGestureRecognizersFrom:cell];
 
     // Long Press Gesture for splitcodeview
@@ -270,8 +301,13 @@ titleForHeaderInSection:(NSInteger)section {
 - (BOOL)tableView:(UITableView *)tableView
     canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *currentSection = [_filesAndFolders objectAtIndex:indexPath.section];
-    id<FileSystemObject> fileObject = [currentSection objectAtIndex:indexPath.row];
+    NSDictionary *sectionDict =
+    (NSDictionary *)[_filesAndFolders objectAtIndex:indexPath.section];
+    
+    NSArray *sectionItems =
+    (NSArray *)[sectionDict objectForKey:SECTION_ITEMS];
+    
+    id<FileSystemObject> fileObject = [sectionItems objectAtIndex:indexPath.row];
     
     return [fileObject isRemovable];
 }
@@ -282,8 +318,13 @@ titleForHeaderInSection:(NSInteger)section {
 - (void)tableView:(UITableView*)tableView
     didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    NSArray *section = [_filesAndFolders objectAtIndex:indexPath.section];
-    id<FileSystemObject> fileObject = [section objectAtIndex:indexPath.row];
+    NSDictionary *sectionDict =
+    (NSDictionary *)[_filesAndFolders objectAtIndex:indexPath.section];
+    
+    NSArray *sectionItems =
+    (NSArray *)[sectionDict objectForKey:SECTION_ITEMS];
+    
+    id<FileSystemObject> fileObject = [sectionItems objectAtIndex:indexPath.row];
 
     if (tableView.editing) {
         // Editing mode
@@ -388,13 +429,18 @@ titleForHeaderInSection:(NSInteger)section {
 
 - (void)deleteItems:(id)sender
 {
+    NSDictionary *sectionDict;
+    NSArray *sectionItems;
     for (NSIndexPath *indexPath in _editSelection) {
-        NSArray *currentSection = [_filesAndFolders objectAtIndex:indexPath.section];
-        id<FileSystemObject> fileSystemObject = [currentSection objectAtIndex:indexPath.row];
-        [fileSystemObject remove];
+        sectionDict = (NSDictionary *)[_filesAndFolders objectAtIndex:indexPath.section];
+        sectionItems = (NSArray *)[sectionDict objectForKey:SECTION_ITEMS];
+        
+        id<FileSystemObject> fileObject = [sectionItems objectAtIndex:indexPath.row];
+        [fileObject remove];
     }
 
-    [self sortFilesAndFolders];
+    [self setUpFilesAndFolders];
+
     [_tableView deleteRowsAtIndexPaths:_editSelection
                       withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -408,15 +454,19 @@ titleForHeaderInSection:(NSInteger)section {
 // Triggers when the user confirms an edit operation on the cell at the given index path.
 - (void)tableView:(UITableView *)tableView
     commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-     forRowAtIndexPath:(NSIndexPath *)indexPath
+    forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSArray *currentSection = [_filesAndFolders objectAtIndex:indexPath.section];
-        id<FileSystemObject> fileObject = [currentSection objectAtIndex:indexPath.row];
+        NSDictionary *sectionDict =
+        (NSDictionary *)[_filesAndFolders objectAtIndex:indexPath.section];
         
+        NSMutableArray *sectionItems =
+        (NSMutableArray *)[sectionDict objectForKey:SECTION_ITEMS];
+        
+        id<FileSystemObject> fileObject = [sectionItems objectAtIndex:indexPath.row];
+
         if ([fileObject remove]) {
-            [((NSMutableArray *)[_filesAndFolders objectAtIndex:indexPath.section])
-             removeObjectAtIndex:indexPath.row];
+            [sectionItems removeObjectAtIndex:indexPath.row];
             [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                              withRowAnimation:UITableViewRowAnimationAutomatic];
         }
@@ -527,14 +577,15 @@ titleForHeaderInSection:(NSInteger)section {
 - (void)cloudPickerDone:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:^ {
-        [self refreshFolderContents];
+        [self refreshFolderView];
     }];
 }
 
 - (void)createFolderWithName:(NSString *)name
 {
     [_folder createFolderWithName:name];
-    [self refreshFolderContents];
+    [self refreshFolderView];
+    
     [_addFolderPopoverController dismissPopoverAnimated:YES];
 }
 

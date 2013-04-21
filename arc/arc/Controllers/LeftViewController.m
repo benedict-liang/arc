@@ -130,7 +130,7 @@
         // Refresh folder contents
         FolderViewController *folderViewController =
             (FolderViewController*) _documentsNavigationViewController.visibleViewController;
-        [folderViewController refreshFolderContents];
+        [folderViewController refreshFolderView];
     } else {
         // Jump to Folder.
         // (no logical way to "animate" to folder"

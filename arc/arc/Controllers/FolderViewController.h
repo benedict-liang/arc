@@ -28,6 +28,6 @@
 @property (nonatomic, weak) id<FolderViewControllerDelegate> folderViewControllerDelegate;
 - (id)initWithFolder:(id<Folder>)folder;
 - (void)triggerAddItem;
-- (void)refreshFolderContents;
+- (void)refreshFolderView;
 - (void)editActionTriggeredAnimate:(BOOL)animate;
 @end
