@@ -65,21 +65,27 @@
                         range:range];
 }
 
-- (NSRange)findFirstPattern:(NSRegularExpression *)regex
+- (NSRange)findFirstPatternWithRegex:(NSRegularExpression *)regex
                       range:(NSRange)range
 {   
-    if ((range.location + range.length <= [_content length]) &&
+    return [self findFirstPatternWithRegex:regex range:range content:_content];
+}
+
+- (NSRange)findFirstPatternWithRegex:(NSRegularExpression *)regex
+                               range:(NSRange)range
+                             content:(NSString*)content
+{
+    if ((range.location + range.length <= [content length]) &&
         (range.length > 0) &&
-        (range.length <= [_content length]))
+        (range.length <= [content length]))
     {
-        return [regex rangeOfFirstMatchInString:_content
+        return [regex rangeOfFirstMatchInString:content
                                         options:0
                                           range:range];
     } else {
         return NSMakeRange(NSNotFound, 0);
     }
 }
-
 - (NSRange)findFirstPattern:(NSString*)pattern
                       range:(NSRange)range
                     content:(NSString*)content
@@ -318,6 +324,21 @@
     }
     return NO;
 }
+
+- (ParcoaParser*)parserForRegex:(NSRegularExpression*)regex WithName:(NSString*)name {
+    return [ParcoaParser parserWithBlock:^ParcoaResult*(NSString *input){
+        NSRange beginRange = [self findFirstPatternWithRegex:regex
+                                                       range:NSMakeRange(0, input.length)
+                                                     content:input];
+        if (beginRange.location == NSNotFound) {
+            return [ParcoaResult failWithRemaining:input expected:input];
+        } else {
+            CFIndex bEnds = beginRange.location+beginRange.length+1;
+            NSString* remaining = [input substringFromIndex:bEnds];
+            return [ParcoaResult ok:[Utils valueFromRange:beginRange] residual:remaining expected:[ParcoaExpectation unsatisfiable]];
+        }
+    } name:name summary:nil];
+}
 - (void)processPairRange:(NSRange)contentRange
                     item:(NSDictionary*)syntaxItem
                   output:(ArcAttributedString*)output
@@ -335,67 +356,78 @@
 
     NSRegularExpression *endRegex = [self regexForPattern:end];
     
-    NSRange brange = [self findFirstPattern:beginRegex
-                                      range:contentRange];
+//    NSRange brange = [self findFirstPatternWithRegex:beginRegex
+//                                      range:contentRange];
     NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
-    NSRange erange;
-    do {
-        // NSLog(@"traversing while brange:%@ erange:%@",
-        // [NSValue value:&brange withObjCType:@encode(NSRange)],
-        // [NSValue value:&erange withObjCType:@encode(NSRange)]);
-        // using longs because int went out of range as NSNotFound returns MAX_INT, which fucks arithmetic
-        long bEnds = brange.location + brange.length;
-        if (contentRange.length > bEnds) {
-            //HACK BELOW. BLAME TEXTMATE FOR THIS SHIT. IT MAKES COMMENTS WORK THOUGH
-            //if ([self fixAnchor:end]) {
-            //erange = NSMakeRange(bEnds, contentRange.length - bEnds);
-            //} else {
-            erange = [self findFirstPattern:endRegex
-                                      range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
-            //}
-        } else {
-            //if bEnds > contentRange.length, skip
-            break;
-        }
-        
-        long eEnds = erange.location + erange.length;
-        NSArray *embedPatterns = [syntaxItem objectForKey:@"patterns"];
-        
-        //if there are characters between begin and end, and brange and erange are valid results
-        if (eEnds > brange.location &&
-            brange.location != NSNotFound &&
-            erange.location != NSNotFound &&
-            eEnds - brange.location< contentRange.length) {
-            
-            if (name) {
-                pairMatches = [self addRange:NSMakeRange(brange.location, eEnds - brange.location)
-                                       scope:name
-                                        dict:pairMatches
-                            capturableScopes:capturableScopes];
-            }
-            
-            if ([syntaxItem objectForKey:@"contentName"]) {
-                contentNameMatches = [self addRange:NSMakeRange(bEnds, eEnds - bEnds)
-                                              scope:name
-                                               dict:contentNameMatches
-                                   capturableScopes:capturableScopes];
-            }
-            
-            if (embedPatterns &&
-                contentRange.length < [_content length]) {
-                //recursively apply iterPatterns to embedded patterns inclusive of begin and end
-                // [self logs];
-                // NSLog(@"recurring with %d %ld", brange.location, eEnds - brange.location);
-                [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location)
-                                  patterns:embedPatterns
-                                    output:output];
-            }
-        }
-        
-        brange = [self findFirstPattern:beginRegex
-                                  range:NSMakeRange(eEnds, contentRange.length - eEnds)];
-        
-    } while ([self whileCondition:brange e:erange cr:contentRange]);
+    
+    ParcoaParser* beginParser = [self parserForRegex:beginRegex WithName:@"begin"];
+    ParcoaParser* endParser = [self parserForRegex:endRegex WithName:@"end"];
+    
+    ParcoaParser* afterBegin = [Parcoa parser:beginParser notFollowedBy:endParser];
+    
+    ParcoaParser* pairParser = [Parcoa many1:[Parcoa sequential:@[afterBegin,endParser]]];
+    
+    ParcoaResult* result = [pairParser parse:[_content substringWithRange:contentRange]];
+    NSLog(@"%@",result.value);
+    
+//    NSRange erange;
+//    do {
+//        // NSLog(@"traversing while brange:%@ erange:%@",
+//        // [NSValue value:&brange withObjCType:@encode(NSRange)],
+//        // [NSValue value:&erange withObjCType:@encode(NSRange)]);
+//        // using longs because int went out of range as NSNotFound returns MAX_INT, which fucks arithmetic
+//        long bEnds = brange.location + brange.length;
+//        if (contentRange.length > bEnds) {
+//            //HACK BELOW. BLAME TEXTMATE FOR THIS SHIT. IT MAKES COMMENTS WORK THOUGH
+//            //if ([self fixAnchor:end]) {
+//            //erange = NSMakeRange(bEnds, contentRange.length - bEnds);
+//            //} else {
+//            erange = [self findFirstPattern:endRegex
+//                                      range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
+//            //}
+//        } else {
+//            //if bEnds > contentRange.length, skip
+//            break;
+//        }
+//        
+//        long eEnds = erange.location + erange.length;
+//        NSArray *embedPatterns = [syntaxItem objectForKey:@"patterns"];
+//        
+//        //if there are characters between begin and end, and brange and erange are valid results
+//        if (eEnds > brange.location &&
+//            brange.location != NSNotFound &&
+//            erange.location != NSNotFound &&
+//            eEnds - brange.location< contentRange.length) {
+//            
+//            if (name) {
+//                pairMatches = [self addRange:NSMakeRange(brange.location, eEnds - brange.location)
+//                                       scope:name
+//                                        dict:pairMatches
+//                            capturableScopes:capturableScopes];
+//            }
+//            
+//            if ([syntaxItem objectForKey:@"contentName"]) {
+//                contentNameMatches = [self addRange:NSMakeRange(bEnds, eEnds - bEnds)
+//                                              scope:name
+//                                               dict:contentNameMatches
+//                                   capturableScopes:capturableScopes];
+//            }
+//            
+//            if (embedPatterns &&
+//                contentRange.length < [_content length]) {
+//                //recursively apply iterPatterns to embedded patterns inclusive of begin and end
+//                // [self logs];
+//                // NSLog(@"recurring with %d %ld", brange.location, eEnds - brange.location);
+//                [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location)
+//                                  patterns:embedPatterns
+//                                    output:output];
+//            }
+//        }
+//        
+//        brange = [self findFirstPattern:beginRegex
+//                                  range:NSMakeRange(eEnds, contentRange.length - eEnds)];
+//        
+//    } while ([self whileCondition:brange e:erange cr:contentRange]);
     
     
 }
@@ -403,13 +435,16 @@
                     patterns:(NSArray*)patterns
                       output:(ArcAttributedString*)output
 {
+    for (int i =0; i < patterns.count; i++) {
+        
+    
     //  NSLog(@"patterns: %@",patterns);
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
-    dispatch_group_t group = dispatch_group_create();
-    
-    
-    dispatch_apply([patterns count], queue, ^(size_t i){
-        dispatch_group_async(group, queue, ^{
+//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+//    dispatch_group_t group = dispatch_group_create();
+//    
+//    
+//    dispatch_apply([patterns count], queue, ^(size_t i){
+//        dispatch_group_async(group, queue, ^{
             if (_isAlive) {
                 NSDictionary* syntaxItem = [patterns objectAtIndex:i];
                 NSString *name = [syntaxItem objectForKey:@"name"];
@@ -470,10 +505,11 @@
                     }
                 }
             }
-        });
-    });
-    
-    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+//        });
+//    });
+//    
+//    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+    }
 }
 
 - (BOOL)whileCondition:(NSRange)brange e:(NSRange)erange cr:(NSRange)contentRange

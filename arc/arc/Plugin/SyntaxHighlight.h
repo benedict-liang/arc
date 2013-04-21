@@ -16,6 +16,7 @@
 #import "SyntaxHighlightingPluginDelegate.h"
 #import "FoldNode.h"
 #import "CodeFolding.h"
+#import "Parcoa.h"
 //Immutable class. Holds thread local state
 
 @interface SyntaxHighlight : NSObject <SyntaxHighlightDelegate> {
