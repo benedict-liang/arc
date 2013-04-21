@@ -30,12 +30,6 @@
 		02D2B73F17099E89002D22E7 /* RootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D2B73E17099E88002D22E7 /* RootFolder.m */; };
 		02D55DB51711694900DD48D7 /* PluginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D55DB41711694900DD48D7 /* PluginUtilities.m */; };
 		02E162CD170B02F400C9D23B /* appState.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02E162CC170B02F400C9D23B /* appState.plist */; };
-		02E51AE017092D4300247AF5 /* LocalFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51ADF17092D4300247AF5 /* LocalFolder.m */; };
-		02E51AE417093C8B00247AF5 /* LocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AE317093C8B00247AF5 /* LocalFile.m */; };
-		02E51AE71709438900247AF5 /* LocalRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AE61709438900247AF5 /* LocalRootFolder.m */; };
-		02E51AEB1709580400247AF5 /* DropBoxFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AEA1709580400247AF5 /* DropBoxFile.m */; };
-		02E51AEE1709581200247AF5 /* DropBoxFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AED1709581200247AF5 /* DropBoxFolder.m */; };
-		02E51AF11709582300247AF5 /* DropBoxRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AF01709582300247AF5 /* DropBoxRootFolder.m */; };
 		02E7A4A8171BD80E00E22752 /* LiveSDK.framework in Resources */ = {isa = PBXBuildFile; fileRef = 840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */; };
 		4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D0711705CA7800F4593B /* ArcAttributedString.m */; };
 		4C1AF1181714FF8400A2D0D8 /* documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1AF1161714FF8400A2D0D8 /* documents.png */; };
@@ -290,6 +284,12 @@
 		8FE003D51723D2190013B9AC /* DragPointsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003CF1723D2190013B9AC /* DragPointsViewController.m */; };
 		8FE003D61723D2190013B9AC /* CloudPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003D21723D2190013B9AC /* CloudPickerViewController.m */; };
 		8FE003D71723D2190013B9AC /* LoadingOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003D41723D2190013B9AC /* LoadingOverlayViewController.m */; };
+		8FE003E61723D2BD0013B9AC /* LocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003DA1723D2BD0013B9AC /* LocalFile.m */; };
+		8FE003E71723D2BD0013B9AC /* LocalFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003DC1723D2BD0013B9AC /* LocalFolder.m */; };
+		8FE003E81723D2BD0013B9AC /* LocalRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003DE1723D2BD0013B9AC /* LocalRootFolder.m */; };
+		8FE003E91723D2BD0013B9AC /* DropBoxFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003E11723D2BD0013B9AC /* DropBoxFile.m */; };
+		8FE003EA1723D2BD0013B9AC /* DropBoxFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003E31723D2BD0013B9AC /* DropBoxFolder.m */; };
+		8FE003EB1723D2BD0013B9AC /* DropBoxRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003E51723D2BD0013B9AC /* DropBoxRootFolder.m */; };
 		FC137BE01719AE1000878684 /* FoldTree.m in Sources */ = {isa = PBXBuildFile; fileRef = FC137BDF1719AE1000878684 /* FoldTree.m */; };
 		FC3C2E621715BF8100C40490 /* [ Argonaut ].tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E2A1715BF7A00C40490 /* [ Argonaut ].tmTheme */; };
 		FC3C2E631715BF8100C40490 /* All Hallow's Eve Custom.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E2B1715BF7A00C40490 /* All Hallow's Eve Custom.tmTheme */; };
@@ -438,19 +438,7 @@
 		02D55DB31711694900DD48D7 /* PluginUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginUtilities.h; sourceTree = "<group>"; };
 		02D55DB41711694900DD48D7 /* PluginUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluginUtilities.m; sourceTree = "<group>"; };
 		02E162CC170B02F400C9D23B /* appState.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = appState.plist; sourceTree = "<group>"; };
-		02E51ADE17092D4300247AF5 /* LocalFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFolder.h; sourceTree = "<group>"; };
-		02E51ADF17092D4300247AF5 /* LocalFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFolder.m; sourceTree = "<group>"; };
 		02E51AE117092FCE00247AF5 /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = File.h; path = Protocols/File.h; sourceTree = "<group>"; };
-		02E51AE217093C8B00247AF5 /* LocalFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFile.h; sourceTree = "<group>"; };
-		02E51AE317093C8B00247AF5 /* LocalFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFile.m; sourceTree = "<group>"; };
-		02E51AE51709438800247AF5 /* LocalRootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalRootFolder.h; sourceTree = "<group>"; };
-		02E51AE61709438900247AF5 /* LocalRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalRootFolder.m; sourceTree = "<group>"; };
-		02E51AE91709580400247AF5 /* DropBoxFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxFile.h; sourceTree = "<group>"; };
-		02E51AEA1709580400247AF5 /* DropBoxFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxFile.m; sourceTree = "<group>"; };
-		02E51AEC1709581100247AF5 /* DropBoxFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxFolder.h; sourceTree = "<group>"; };
-		02E51AED1709581200247AF5 /* DropBoxFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxFolder.m; sourceTree = "<group>"; };
-		02E51AEF1709582300247AF5 /* DropBoxRootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxRootFolder.h; sourceTree = "<group>"; };
-		02E51AF01709582300247AF5 /* DropBoxRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxRootFolder.m; sourceTree = "<group>"; };
 		02E7A4A3171BCFC600E22752 /* CloudFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudFile.h; sourceTree = "<group>"; };
 		02F7DEA6171D80F00053B447 /* DownloadHelperDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadHelperDelegate.h; sourceTree = "<group>"; };
 		02F7DEA7171D86450053B447 /* CloudServiceManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudServiceManagerDelegate.h; sourceTree = "<group>"; };
@@ -766,6 +754,18 @@
 		8FE003D21723D2190013B9AC /* CloudPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudPickerViewController.m; sourceTree = "<group>"; };
 		8FE003D31723D2190013B9AC /* LoadingOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingOverlayViewController.h; sourceTree = "<group>"; };
 		8FE003D41723D2190013B9AC /* LoadingOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingOverlayViewController.m; sourceTree = "<group>"; };
+		8FE003D91723D2BD0013B9AC /* LocalFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFile.h; sourceTree = "<group>"; };
+		8FE003DA1723D2BD0013B9AC /* LocalFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFile.m; sourceTree = "<group>"; };
+		8FE003DB1723D2BD0013B9AC /* LocalFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFolder.h; sourceTree = "<group>"; };
+		8FE003DC1723D2BD0013B9AC /* LocalFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFolder.m; sourceTree = "<group>"; };
+		8FE003DD1723D2BD0013B9AC /* LocalRootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalRootFolder.h; sourceTree = "<group>"; };
+		8FE003DE1723D2BD0013B9AC /* LocalRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalRootFolder.m; sourceTree = "<group>"; };
+		8FE003E01723D2BD0013B9AC /* DropBoxFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxFile.h; sourceTree = "<group>"; };
+		8FE003E11723D2BD0013B9AC /* DropBoxFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxFile.m; sourceTree = "<group>"; };
+		8FE003E21723D2BD0013B9AC /* DropBoxFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxFolder.h; sourceTree = "<group>"; };
+		8FE003E31723D2BD0013B9AC /* DropBoxFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxFolder.m; sourceTree = "<group>"; };
+		8FE003E41723D2BD0013B9AC /* DropBoxRootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxRootFolder.h; sourceTree = "<group>"; };
+		8FE003E51723D2BD0013B9AC /* DropBoxRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxRootFolder.m; sourceTree = "<group>"; };
 		FC137BDE1719AE1000878684 /* FoldTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldTree.h; sourceTree = "<group>"; };
 		FC137BDF1719AE1000878684 /* FoldTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldTree.m; sourceTree = "<group>"; };
 		FC3C2E2A1715BF7A00C40490 /* [ Argonaut ].tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "[ Argonaut ].tmTheme"; sourceTree = "<group>"; };
@@ -945,32 +945,6 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
-		026BC47A1705913200A9AA5F /* Local Files */ = {
-			isa = PBXGroup;
-			children = (
-				02E51ADE17092D4300247AF5 /* LocalFolder.h */,
-				02E51ADF17092D4300247AF5 /* LocalFolder.m */,
-				02E51AE217093C8B00247AF5 /* LocalFile.h */,
-				02E51AE317093C8B00247AF5 /* LocalFile.m */,
-				02E51AE51709438800247AF5 /* LocalRootFolder.h */,
-				02E51AE61709438900247AF5 /* LocalRootFolder.m */,
-			);
-			name = "Local Files";
-			sourceTree = "<group>";
-		};
-		02E51AE8170957ED00247AF5 /* DropBox Files */ = {
-			isa = PBXGroup;
-			children = (
-				02E51AE91709580400247AF5 /* DropBoxFile.h */,
-				02E51AEA1709580400247AF5 /* DropBoxFile.m */,
-				02E51AEC1709581100247AF5 /* DropBoxFolder.h */,
-				02E51AED1709581200247AF5 /* DropBoxFolder.m */,
-				02E51AEF1709582300247AF5 /* DropBoxRootFolder.h */,
-				02E51AF01709582300247AF5 /* DropBoxRootFolder.m */,
-			);
-			name = "DropBox Files";
-			sourceTree = "<group>";
-		};
 		4C43F8E016F86AA800159B29 = {
 			isa = PBXGroup;
 			children = (
@@ -1059,9 +1033,9 @@
 			isa = PBXGroup;
 			children = (
 				0260B508170921C10091B012 /* Protocols */,
-				026BC47A1705913200A9AA5F /* Local Files */,
-				02E51AE8170957ED00247AF5 /* DropBox Files */,
 				840B636342E49333F3D17563 /* Cloud */,
+				8FE003D81723D2BD0013B9AC /* Local Files */,
+				8FE003DF1723D2BD0013B9AC /* DropBox Files */,
 				8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */,
 				8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */,
 				02D2B73D17099E88002D22E7 /* RootFolder.h */,
@@ -1666,6 +1640,32 @@
 			path = "Cloud Downloader";
 			sourceTree = "<group>";
 		};
+		8FE003D81723D2BD0013B9AC /* Local Files */ = {
+			isa = PBXGroup;
+			children = (
+				8FE003D91723D2BD0013B9AC /* LocalFile.h */,
+				8FE003DA1723D2BD0013B9AC /* LocalFile.m */,
+				8FE003DB1723D2BD0013B9AC /* LocalFolder.h */,
+				8FE003DC1723D2BD0013B9AC /* LocalFolder.m */,
+				8FE003DD1723D2BD0013B9AC /* LocalRootFolder.h */,
+				8FE003DE1723D2BD0013B9AC /* LocalRootFolder.m */,
+			);
+			path = "Local Files";
+			sourceTree = "<group>";
+		};
+		8FE003DF1723D2BD0013B9AC /* DropBox Files */ = {
+			isa = PBXGroup;
+			children = (
+				8FE003E01723D2BD0013B9AC /* DropBoxFile.h */,
+				8FE003E11723D2BD0013B9AC /* DropBoxFile.m */,
+				8FE003E21723D2BD0013B9AC /* DropBoxFolder.h */,
+				8FE003E31723D2BD0013B9AC /* DropBoxFolder.m */,
+				8FE003E41723D2BD0013B9AC /* DropBoxRootFolder.h */,
+				8FE003E51723D2BD0013B9AC /* DropBoxRootFolder.m */,
+			);
+			path = "DropBox Files";
+			sourceTree = "<group>";
+		};
 		FC349BD6171E819200D6FDC6 /* CodeFolding */ = {
 			isa = PBXGroup;
 			children = (
@@ -2187,12 +2187,6 @@
 				8F1510C9170468B100115E5E /* TMBundleThemeHandler.m in Sources */,
 				8F1510CC1704697900115E5E /* TMBundleGrammar.m in Sources */,
 				4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */,
-				02E51AE017092D4300247AF5 /* LocalFolder.m in Sources */,
-				02E51AE417093C8B00247AF5 /* LocalFile.m in Sources */,
-				02E51AE71709438900247AF5 /* LocalRootFolder.m in Sources */,
-				02E51AEB1709580400247AF5 /* DropBoxFile.m in Sources */,
-				02E51AEE1709581200247AF5 /* DropBoxFolder.m in Sources */,
-				02E51AF11709582300247AF5 /* DropBoxRootFolder.m in Sources */,
 				02D2B73F17099E89002D22E7 /* RootFolder.m in Sources */,
 				4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */,
 				4CE2950E17101BA0003B012A /* SyntaxHighlightingPlugin.m in Sources */,
@@ -2237,6 +2231,12 @@
 				8FE003D51723D2190013B9AC /* DragPointsViewController.m in Sources */,
 				8FE003D61723D2190013B9AC /* CloudPickerViewController.m in Sources */,
 				8FE003D71723D2190013B9AC /* LoadingOverlayViewController.m in Sources */,
+				8FE003E61723D2BD0013B9AC /* LocalFile.m in Sources */,
+				8FE003E71723D2BD0013B9AC /* LocalFolder.m in Sources */,
+				8FE003E81723D2BD0013B9AC /* LocalRootFolder.m in Sources */,
+				8FE003E91723D2BD0013B9AC /* DropBoxFile.m in Sources */,
+				8FE003EA1723D2BD0013B9AC /* DropBoxFolder.m in Sources */,
+				8FE003EB1723D2BD0013B9AC /* DropBoxRootFolder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
