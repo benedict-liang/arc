@@ -394,29 +394,50 @@
 }
 
 
-- (NSDictionary*)peekMinForItems:(NSArray*)syntaxItems WithRange:(NSRange)range {
-    NSRange min = NSMakeRange(_content.length-1, 0);
+- (OverlapPeekResult*)peekMinForItems:(NSArray*)syntaxItems WithRange:(NSRange)range {
+    NSRange minBegin = NSMakeRange(_content.length, 0);
+    NSRange minEnd = minBegin;
     NSDictionary* minSyntax = nil;
     for (NSDictionary* syntaxItem  in syntaxItems) {
         NSString* begin = [syntaxItem objectForKey:@"begin"];
-       
-        NSRange result = [self findFirstPattern:begin range:range content:_content];
-        if (min.location > result.location) {
-            min = result;
+        NSString* end = [syntaxItem objectForKey:@"end"];
+        NSRange bresult = [self findFirstPattern:begin range:range content:_content];
+        CFIndex bEnds = bresult.location+bresult.length;
+        NSRange eresult = [self findFirstPattern:end range:NSMakeRange(bEnds, _content.length - bEnds) content:_content];
+        
+        if (minBegin.location > bresult.location && eresult.location < _content.length) {
+            minBegin = bresult;
             minSyntax = syntaxItem;
         }
     }
-    return minSyntax;
+    if (minSyntax) {
+        return [OverlapPeekResult resultWithBeginRange:minBegin EndRange:minEnd SyntaxItem:minSyntax];
+    }
+    return nil;
 }
 
 - (void)handleOverlaps:(NSArray*)overlaps {
-    NSDictionary* syntaxItem = [self peekMinForItems:overlaps WithRange:NSMakeRange(0, _content.length)];
-    if (syntaxItem) {
-         NSString* name = [syntaxItem objectForKey:@"name"];
-        NSString* begin = [syntaxItem objectForKey:@"begin"];
-        NSString* end = [syntaxItem objectForKey:@"end"];
-        
+    NSRange iterRange = NSMakeRange(0, _content.length);
+    while (iterRange.location < _content.length) {
+        OverlapPeekResult* peekRes = [self peekMinForItems:overlaps WithRange:iterRange];
+        if (peekRes) {
+            NSDictionary* syntaxItem = peekRes.syntaxItem;
+            NSString* name = [syntaxItem objectForKey:@"name"];
+            NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
+            if (name) {
+                NSRange nameRange = NSMakeRange(peekRes.beginRange.location, peekRes.endRange.location+peekRes.endRange.length - peekRes.beginRange.location);
+                
+                [self addRange:nameRange scope:name dict:overlapMatches capturableScopes:capturableScopes];
+            }
+            CFIndex eEnds = peekRes.endRange.location + peekRes.endRange.length;
+            
+            iterRange = NSMakeRange(eEnds, _content.length - eEnds);
+            
+        } else {
+            break;
+        }
     }
+    
 }
 - (void)processPairRange:(NSRange)contentRange
                     item:(NSDictionary*)syntaxItem

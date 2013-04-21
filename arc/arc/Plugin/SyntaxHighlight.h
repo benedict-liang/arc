@@ -17,6 +17,7 @@
 #import "FoldNode.h"
 #import "CodeFolding.h"
 #import "Parcoa.h"
+#import "OverlapPeekResult.h"
 //Immutable class. Holds thread local state
 
 @interface SyntaxHighlight : NSObject <SyntaxHighlightDelegate> {
