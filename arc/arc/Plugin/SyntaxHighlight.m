@@ -427,6 +427,8 @@
 - (void)processPairRange:(NSRange)contentRange
                     item:(NSDictionary*)syntaxItem
                   output:(ArcAttributedString*)output
+             PairMatches:(NSMutableDictionary *)pairMatchesStore
+          ContentMatches:(NSMutableDictionary *)contentMatchesStore
 {
     /*
      Algo finds a begin match and an end match (from begin to content's end),
