@@ -149,12 +149,13 @@
         // Editing mode
         [_editSelection addObject:indexPath];
         [self editActionTriggeredAnimate:YES];
-        return;
     } else {
         // Normal mode
         [self.delegate fileObjectSelected:fileObject];
     }
 }
+
+
 
 - (void)tableView:(UITableView *)tableView
     didDeselectRowAtIndexPath:(NSIndexPath *)indexPath

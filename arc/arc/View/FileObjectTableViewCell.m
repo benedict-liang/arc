@@ -85,4 +85,16 @@ const NSString *FOLDERCELL_REUSE_IDENTIFIER = @"folderCell";
     self.textLabel.text = _fileSystemObject.name;
     self.detailTextLabel.text = detailDescription;
 }
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    if (editing) {
+        self.selectedBackgroundView.backgroundColor = [UIColor clearColor];
+    } else {
+        self.selectedBackgroundView.backgroundColor =
+        [Utils colorWithHexString:@"ee151512"];
+    }
+}
+
 @end
