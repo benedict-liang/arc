@@ -10,6 +10,7 @@
 
 @interface CodeLineCell ()
 @property (nonatomic, strong) UIColor *foregroundColor;
+@property (nonatomic, strong) UIColor *highlightColor;
 @property (nonatomic, strong) NSString *fontFamily;
 @property (nonatomic) int fontSize;
 //@property (nonatomic, strong) CodeLine *codeLine;
@@ -55,15 +56,13 @@
 {
     _foldStart = foldStart;
     if (_foldStart) {
-        _lineNumberLabel.backgroundColor = [Utils darkenColor:_foregroundColor
-                                            percentOfOriginal:20];
+        _lineNumberLabel.backgroundColor = _highlightColor;
     }
 }
 
 - (void)highlight
 {
-    self.contentView.backgroundColor = [Utils darkenColor:_foregroundColor
-                                        percentOfOriginal:20];
+    self.contentView.backgroundColor = _highlightColor;
 }
 
 - (void)removeHighlight
@@ -83,6 +82,11 @@
     _lineNumberLabel.textColor = _foregroundColor;
 }
 
+- (void)setHighlightColor:(UIColor*)highlightColor
+{
+    _highlightColor = highlightColor;
+}
+
 - (void)setFontFamily:(NSString*)fontFamily FontSize:(int)fontSize
 {
     _fontFamily = fontFamily;
@@ -93,7 +97,7 @@
 - (void)setLine:(NSAttributedString *)line
 {
     _line = line;
-    _codeLine.attributedText = _line;
+    _codeLine.attributedText = [[NSAttributedString alloc] initWithAttributedString:_line];
     _lineNumberLabel.text = @"";
 }
 

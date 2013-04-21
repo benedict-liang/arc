@@ -8,6 +8,7 @@
 
 #import "Utils.h"
 #import <QuartzCore/QuartzCore.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
 @implementation Utils
 + (UIImage *)scale:(UIImage *)image toSize:(CGSize)size
@@ -179,6 +180,21 @@
     }
 }
 
++ (BOOL)isLightColor:(UIColor *)color
+{
+    CGFloat hue = 0;
+    CGFloat brightness = 0;
+    CGFloat saturation = 0;
+    CGFloat alpha = 0;
+    
+    [color getHue:&hue
+       saturation:&saturation
+       brightness:&brightness
+            alpha:&alpha];
+    
+    return brightness > 0.5;
+}
+
 + (UIColor *)darkenColor:(UIColor *)oldColor percentOfOriginal:(float)amount
 {
     float percentage      = amount / 100.0;
@@ -316,6 +332,35 @@
     for (UIGestureRecognizer *g in [view gestureRecognizers]) {
         [view removeGestureRecognizer:g];
     }
+}
+
++ (BOOL)isFileSupported:(NSString *)name
+{
+    NSString *ourUTI = @"com.nus.arc.source";
+    NSString *extension = [name pathExtension];
+    
+    // Get all the UTIs this file falls under.
+    NSArray *matchingUTIs = CFBridgingRelease(UTTypeCreateAllIdentifiersForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)extension, NULL));
+    
+    // Check if any of the UTIs are supported by the app.
+    BOOL isOurUTI, isText, isPlainText, isSource;
+    for (NSString *currentUTI in matchingUTIs) {
+        isOurUTI = UTTypeConformsTo((__bridge CFStringRef)currentUTI, (__bridge CFStringRef)ourUTI);
+        isText = UTTypeConformsTo((__bridge CFStringRef)currentUTI, (__bridge CFStringRef)@"public.text");
+        isPlainText = UTTypeConformsTo((__bridge CFStringRef)currentUTI, (__bridge CFStringRef)@"public.plain-text");
+        isSource = UTTypeConformsTo((__bridge CFStringRef)currentUTI, (__bridge CFStringRef)@"public.source-code");
+        
+        if (isOurUTI || isText || isPlainText || isSource) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
++ (void)showUnsupportedFileDialog
+{
+    [[[UIAlertView alloc] initWithTitle:@"Unsupported File" message:@"Sorry, (arc) doesn't support this file type." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
 }
 
 @end

@@ -10,17 +10,58 @@
 
 @implementation DragPointImageView
 
-- (id)initWithFrame:(CGRect)frame andImageName:(NSString*)imageName
+- (id)initWithFrame:(CGRect)frame andType:(DragPointType)type
 {
     self = [super initWithFrame:frame];
     if (self) {
         
-        UIImage *scaledImage = [self scaleImageWithAspectRatio:imageName];
-        self.image = scaledImage;
+        UIImage *scaledLineImage = [self scaleImageWithAspectRatio:@"dragpointline.png"];
+        UIImage *circle;
+        CGPoint circleOrigin;
         
+        if (type == kRightDragPoint) {
+            circle = [UIImage imageNamed:@"dragpointcirclebottom.png"];
+        }
+        else {
+            circle = [UIImage imageNamed:@"dragpointcircletop.png"];
+        }
+        
+        
+        CGSize newDragPointSize = CGSizeMake(circle.size.width,
+                                             scaledLineImage.size.height);
+        
+        CGFloat aspectRatio = scaledLineImage.size.width / scaledLineImage.size.height;
+        CGSize newLineSize = CGSizeMake(aspectRatio * (scaledLineImage.size.height - circle.size.height),
+                                        scaledLineImage.size.height);
+        
+        CGPoint lineOrigin = CGPointMake(newDragPointSize.width / 2 - newLineSize.width / 2,
+                                         0);
+        
+        if (type == kRightDragPoint) {
+            circleOrigin = CGPointMake(0, newLineSize.height - circle.size.height);
+        }
+        else {
+            circleOrigin = CGPointMake(0, 0);
+        }
+        
+        // Draw new drag point image
+        UIGraphicsBeginImageContext(newDragPointSize);
+        
+        [scaledLineImage drawInRect:CGRectMake(lineOrigin.x,
+                                               lineOrigin.y,
+                                               newLineSize.width,
+                                               newLineSize.height)];
+        [circle drawInRect:CGRectMake(circleOrigin.x,
+                                      circleOrigin.y,
+                                      circle.size.width,
+                                      circle.size.height)];
+        UIImage* newDragPointImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        
+        self.image = newDragPointImage;
         self.contentMode = UIViewContentModeCenter;
         self.backgroundColor = [UIColor clearColor];
-        
     }
     return self;
 }
