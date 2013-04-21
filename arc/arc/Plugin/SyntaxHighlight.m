@@ -13,7 +13,7 @@
 @property (nonatomic) BOOL isAlive;
 @property (nonatomic) BOOL matchesDone;
 @property ParcoaParser* pairParsers;
-@property NSMutableArray* parserAccum;
+@property NSMutableArray* overlapAccum;
 @end
 
 @implementation SyntaxHighlight
@@ -45,7 +45,7 @@
         pairMatches = [NSMutableDictionary dictionary];
         contentNameMatches = [NSMutableDictionary dictionary];
         overlapMatches = [NSMutableDictionary dictionary];
-        _parserAccum = [NSMutableArray array];
+        _overlapAccum = [NSMutableArray array];
     }
     return self;
 }
@@ -581,11 +581,16 @@
                 
                 //matching blocks
                 if (begin && end) {
-                    [self processPairRange:contentRange
-                                      item:syntaxItem
-                                    output:output
-                               PairMatches:pairMatches
-                            ContentMatches:contentNameMatches];
+                    if ([_overlays containsObject:capturableScopes[0] ]) {
+                        [_overlapAccum addObject:syntaxItem];
+                    } else {
+                        [self processPairRange:contentRange
+                                          item:syntaxItem
+                                        output:output
+                                   PairMatches:pairMatches
+                                ContentMatches:contentNameMatches];
+                    }
+
                     
                 } else if (embedPatterns) {
                     [self iterPatternsForRange:contentRange patterns:embedPatterns output:output];
@@ -606,7 +611,7 @@
 //    
 //    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     }
-    
+    [self handleOverlaps:_overlapAccum];
 }
 
 - (BOOL)whileCondition:(NSRange)brange e:(NSRange)erange cr:(NSRange)contentRange
