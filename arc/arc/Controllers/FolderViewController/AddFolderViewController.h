@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "PresentingModalViewControllerDelegate.h"
+#import "ModalViewControllerDelegate.h"
 
-@interface AddFolderViewController : UIViewController<UITextFieldDelegate>
-@property (nonatomic, weak) id<PresentingModalViewControllerDelegate> delegate;
+@interface AddFolderViewController : UIViewController<UITextFieldDelegate,
+    ModalViewControllerDelegate>
 @end

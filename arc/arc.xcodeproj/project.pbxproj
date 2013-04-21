@@ -489,6 +489,7 @@
 		4C9C7C58172428E400DBFA13 /* UI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UI.m; path = General/UI.m; sourceTree = "<group>"; };
 		4C9C7C5A172430E300DBFA13 /* AddFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFolderViewController.h; sourceTree = "<group>"; };
 		4C9C7C5B172430E400DBFA13 /* AddFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFolderViewController.m; sourceTree = "<group>"; };
+		4C9C7C5D172439C500DBFA13 /* ModalViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewControllerDelegate.h; sourceTree = "<group>"; };
 		4C9DC9021719B64A00142E70 /* SyntaxHighlightingPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlightingPluginDelegate.h; sourceTree = "<group>"; };
 		4C9E0618170F3AFC0000F783 /* arc72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc72.png; sourceTree = SOURCE_ROOT; };
 		4C9E061A170F3B1A0000F783 /* arc144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc144.png; sourceTree = SOURCE_ROOT; };
@@ -1146,6 +1147,7 @@
 				4C1AF11F1715119300A2D0D8 /* FolderViewControllerDelegate.h */,
 				027EE0381717FD7800302F07 /* LongSettingListViewControllerDelegate.h */,
 				023D4AFA171D1AAF00D9F60D /* PresentingModalViewControllerDelegate.h */,
+				4C9C7C5D172439C500DBFA13 /* ModalViewControllerDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";

@@ -23,6 +23,7 @@
 @end
 
 @implementation CloudPickerViewController
+@synthesize delegate = _delegate;
 
 - (id)initWithCloudFolder:(id<CloudFolder>)folder
              targetFolder:(LocalFolder *)target
