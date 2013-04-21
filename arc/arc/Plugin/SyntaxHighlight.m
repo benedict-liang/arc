@@ -345,7 +345,7 @@
             if (bresult.location > _content.length) {
                 continue;
             }
-            CFIndex bEnds = bresult.location+bresult.length;
+            CFIndex bEnds = bresult.location+bresult.length+1;
             NSRange eresult = [self findFirstPattern:end range:NSMakeRange(bEnds, _content.length - bEnds) content:_content];
             
             if (minBegin.location > bresult.location && eresult.location < _content.length && bresult.location < _content.length && eresult.location > bresult.location) {
@@ -370,6 +370,7 @@
         OverlapPeekResult* peekRes = [self peekMinForItems:overlaps WithRange:iterRange];
         NSLog(@"%@",peekRes);
         if (peekRes && peekRes.type == kSyntaxPair) {
+            
             NSDictionary* syntaxItem = peekRes.syntaxItem;
             NSString* name = [syntaxItem objectForKey:@"name"];
             NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
@@ -377,6 +378,7 @@
                 NSRange nameRange = NSMakeRange(peekRes.beginRange.location, peekRes.endRange.location+peekRes.endRange.length - peekRes.beginRange.location);
                 
                 [self addRange:nameRange scope:name dict:overlapMatches capturableScopes:capturableScopes];
+                NSLog(@"strings: %@",[_content substringWithRange:nameRange]);
             }
             CFIndex eEnds = peekRes.endRange.location + peekRes.endRange.length;
             
@@ -389,7 +391,10 @@
             NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
             [self addRange:peekRes.matchRange scope:name dict:overlapMatches capturableScopes:capturableScopes];
             CFIndex matchEnds = peekRes.matchRange.location+peekRes.matchRange.length;
+            NSLog(@"strings: %@",[_content substringWithRange:peekRes.matchRange]);
+
             iterRange = NSMakeRange(matchEnds, _content.length - matchEnds);
+            
         }
         else {
             return;
@@ -569,8 +574,7 @@
 //    
 //    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     }
-    NSLog(@"%@",_overlapAccum);
-    [self handleOverlaps:_overlapAccum];
+
 }
 
 - (BOOL)whileCondition:(NSRange)brange e:(NSRange)erange cr:(NSRange)contentRange
@@ -645,10 +649,10 @@
 
     if (!_matchesDone) {
         NSMutableArray* patterns = [NSMutableArray arrayWithArray:[_bundle objectForKey:@"patterns"]];
-//        NSDictionary* repo = [_bundle objectForKey:@"repository"];
-//        for (id k in repo) {
-//            [patterns addObject:[repo objectForKey:k]];
-//        }
+        NSDictionary* repo = [_bundle objectForKey:@"repository"];
+        for (id k in repo) {
+            [patterns addObject:[repo objectForKey:k]];
+        }
         
         [self iterPatternsForRange:NSMakeRange(0, [_content length])
                           patterns:patterns
@@ -665,14 +669,18 @@
                                              skipRanges:[self rangeArrayForMatches:overlapMatches]
                                                delegate:self];
         }
-
+        [self applyStylesTo:output withTheme:theme];
+        [self updateView:output withTheme:theme];
+        //NSLog(@"%@",_overlapAccum);
+        [self handleOverlaps:_overlapAccum];
+        [self applyStylesTo:output withRanges:overlapMatches withTheme:theme];
         _matchesDone = YES;
     }
     
     // tell SH factory to remove self from thread pool.
     [_factory removeFromThreadPool:self];
 
-    [self applyStylesTo:output withTheme:theme];
+    //[self applyStylesTo:output withTheme:theme];
     [self updateView:output withTheme:theme];
 }
 
