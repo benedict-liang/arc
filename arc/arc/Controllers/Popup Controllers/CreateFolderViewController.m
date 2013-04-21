@@ -28,26 +28,7 @@
 
 - (void)loadView
 {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 119)];
-    [view setBackgroundColor:[UIColor whiteColor]];
-    [self setContentSizeForViewInPopover:[view frame].size];
-    [self setView:view];
-    
-    UILabel *createFolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, 6, 238, 25)];
-    [createFolderLabel setText:@"Enter folder name:"];
-    [createFolderLabel setFont:[UIFont boldSystemFontOfSize:17]];
-    _textField = [[UITextField alloc] initWithFrame:CGRectMake(6, 37, 238, 25)];
-    [_textField setBorderStyle:UITextBorderStyleRoundedRect];
-    [_textField setDelegate:self];
-
-    _okButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [_okButton setTitle:@"OK" forState:UIControlStateNormal];
-    [_okButton setFrame:CGRectMake(6, 68, 238, 45)];
-    [_okButton addTarget:self action:@selector(okButtonPressed) forControlEvents:UIControlEventTouchDown];
-
-    [[self view] addSubview:createFolderLabel];
-    [[self view] addSubview:_textField];
-    [[self view] addSubview:_okButton];
+    self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 119)];
 }
 
 - (void)okButtonPressed
@@ -66,9 +47,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self setContentSizeForViewInPopover:self.view.frame.size];
+    
+    UILabel *createFolderLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, 6, 238, 25)];
+    [createFolderLabel setText:@"Enter folder name:"];
+    [createFolderLabel setFont:[UIFont boldSystemFontOfSize:17]];
+    _textField = [[UITextField alloc] initWithFrame:CGRectMake(6, 37, 238, 25)];
+    [_textField setBorderStyle:UITextBorderStyleRoundedRect];
+    [_textField setDelegate:self];
+    
+    _okButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [_okButton setTitle:@"OK" forState:UIControlStateNormal];
+    [_okButton setFrame:CGRectMake(6, 68, 238, 45)];
+    [_okButton addTarget:self action:@selector(okButtonPressed) forControlEvents:UIControlEventTouchDown];
+    
+    [[self view] addSubview:createFolderLabel];
+    [[self view] addSubview:_textField];
+    [[self view] addSubview:_okButton];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
     [_textField becomeFirstResponder];
 }

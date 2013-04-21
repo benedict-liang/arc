@@ -11,9 +11,6 @@
 #import "CreateFolderViewControllerDelegate.h"
 
 @interface CreateFolderViewController : UIViewController <UITextFieldDelegate>
-
 @property (weak, nonatomic) id<CreateFolderViewControllerDelegate> delegate;
-
 - (id)initWithDelegate:(id<CreateFolderViewControllerDelegate>)delegate;
-
 @end
