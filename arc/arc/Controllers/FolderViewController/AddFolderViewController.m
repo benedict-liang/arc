@@ -52,8 +52,13 @@
     container.frame = CGRectMake(10, 10, self.view.frame.size.width - 20, 50);
     [self.view addSubview:container];
     
+    UIImageView *image = [[UIImageView alloc] initWithImage:[Utils scale:[UIImage imageNamed:[UI folderImage]]
+                                                                  toSize:CGSizeMake(30, 30)]];
+    image.frame = CGRectMake(10, 10, 30, 30);
+    [container addSubview:image];
+    
     _textField = [[UITextField alloc]
-                  initWithFrame:CGRectMake(10, 10, floorf((container.frame.size.width - 20)/2), 30)];
+                  initWithFrame:CGRectMake(50, 10, floorf((container.frame.size.width - 60)/2), 30)];
     _textField.adjustsFontSizeToFitWidth = YES;
     _textField.font = [UIFont fontWithName:[UI fontName] size:20];
     _textField.textColor = [UIColor blackColor];
@@ -96,6 +101,7 @@
          [FolderCommandObject commandOfType:kCreateFolderCommand
                                  withTarget:[_textField text]]];
     } else {
+        _textField.placeholder = @"Please enter a name for your new folder";
         [_textField becomeFirstResponder];
     }
 }
