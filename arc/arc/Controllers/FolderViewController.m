@@ -181,6 +181,30 @@
     [super viewWillDisappear:animated];
 }
 
+#pragma mark - Utils
+
+- (NSDictionary *)sectionDictionary:(NSInteger)section
+{
+    return (NSDictionary *)[_filesAndFolders objectAtIndex:section];
+}
+
+- (NSString *)sectionHeading:(NSInteger)section
+{
+    return [[self sectionDictionary:section] objectForKey:SECTION_HEADING];
+}
+
+- (NSMutableArray *)sectionItems:(NSInteger)section
+{
+    return (NSMutableArray *)[[self sectionDictionary:section]
+                              objectForKey:SECTION_ITEMS];
+}
+
+- (id<FileSystemObject>)sectionItem:(NSIndexPath *)indexPath
+{
+    return [[self sectionItems:indexPath.section] objectAtIndex:indexPath.row];
+}
+
+
 #pragma mark - Table view data source
 
 // Returns the number of sections in the table view.
@@ -193,40 +217,25 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    NSDictionary *sectionDict =
-    (NSDictionary *)[_filesAndFolders objectAtIndex:section];
-    
-    NSArray *sectionItems =
-    (NSArray *)[sectionDict objectForKey:SECTION_ITEMS];
-    
-    return [sectionItems count];
+    return [[self sectionItems:section] count];
 }
 
 // Returns the header for the given section.
-- (NSString *)tableView:(UITableView *)tableView
-titleForHeaderInSection:(NSInteger)section {
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
     // Hide section title if section has zero rows
     if ([self tableView:tableView numberOfRowsInSection:section] == 0) {
         return nil;
     }
     
-    NSDictionary *sectionDict =
-    (NSDictionary *)[_filesAndFolders objectAtIndex:section];
-    
-    return (NSString *)[sectionDict objectForKey:SECTION_HEADING];
+    return [self sectionHeading:section];
 }
 
 // Sets up a table cell for the given index path.
 - (UITableViewCell*)tableView:(UITableView*)tableView
         cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    NSDictionary *sectionDict =
-    (NSDictionary *)[_filesAndFolders objectAtIndex:indexPath.section];
-    
-    NSArray *sectionItems =
-    (NSArray *)[sectionDict objectForKey:SECTION_ITEMS];
-    
-    id<FileSystemObject> fileObject = [sectionItems objectAtIndex:indexPath.row];
+    id<FileSystemObject> fileObject = [self sectionItem:indexPath];
 
     NSString *cellIdentifier;
     if ([[fileObject class] conformsToProtocol:@protocol(File)]) {
@@ -284,10 +293,7 @@ titleForHeaderInSection:(NSInteger)section {
     FolderViewSectionHeader *sectionHeader =
     [[FolderViewSectionHeader alloc] initWithFrame:CGRectMake(10.0, 0.0, 320.0, 22.0)];
     
-    NSDictionary *sectionDict =
-    (NSDictionary *)[_filesAndFolders objectAtIndex:section];
-    
-    sectionHeader.title = (NSString *)[sectionDict objectForKey:SECTION_HEADING];
+    sectionHeader.title = [self sectionHeading:section];
 
     return sectionHeader;
 }
@@ -296,13 +302,7 @@ titleForHeaderInSection:(NSInteger)section {
 - (BOOL)tableView:(UITableView *)tableView
     canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *sectionDict =
-    (NSDictionary *)[_filesAndFolders objectAtIndex:indexPath.section];
-    
-    NSArray *sectionItems =
-    (NSArray *)[sectionDict objectForKey:SECTION_ITEMS];
-    
-    id<FileSystemObject> fileObject = [sectionItems objectAtIndex:indexPath.row];
+    id<FileSystemObject> fileObject = [self sectionItem:indexPath];
     
     return [fileObject isRemovable];
 }
@@ -313,13 +313,7 @@ titleForHeaderInSection:(NSInteger)section {
 - (void)tableView:(UITableView*)tableView
     didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    NSDictionary *sectionDict =
-    (NSDictionary *)[_filesAndFolders objectAtIndex:indexPath.section];
-    
-    NSArray *sectionItems =
-    (NSArray *)[sectionDict objectForKey:SECTION_ITEMS];
-    
-    id<FileSystemObject> fileObject = [sectionItems objectAtIndex:indexPath.row];
+    id<FileSystemObject> fileObject = [self sectionItem:indexPath];
 
     if (tableView.editing) {
         // Editing mode
@@ -424,13 +418,8 @@ titleForHeaderInSection:(NSInteger)section {
 
 - (void)deleteItems:(id)sender
 {
-    NSDictionary *sectionDict;
-    NSArray *sectionItems;
     for (NSIndexPath *indexPath in _editSelection) {
-        sectionDict = (NSDictionary *)[_filesAndFolders objectAtIndex:indexPath.section];
-        sectionItems = (NSArray *)[sectionDict objectForKey:SECTION_ITEMS];
-        
-        id<FileSystemObject> fileObject = [sectionItems objectAtIndex:indexPath.row];
+        id<FileSystemObject> fileObject = [self sectionItem:indexPath];
         [fileObject remove];
     }
 
@@ -452,16 +441,10 @@ titleForHeaderInSection:(NSInteger)section {
     forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSDictionary *sectionDict =
-        (NSDictionary *)[_filesAndFolders objectAtIndex:indexPath.section];
-        
-        NSMutableArray *sectionItems =
-        (NSMutableArray *)[sectionDict objectForKey:SECTION_ITEMS];
-        
-        id<FileSystemObject> fileObject = [sectionItems objectAtIndex:indexPath.row];
+        id<FileSystemObject> fileObject = [self sectionItem:indexPath];
 
         if ([fileObject remove]) {
-            [sectionItems removeObjectAtIndex:indexPath.row];
+            [[self sectionItems:indexPath.section] removeObjectAtIndex:indexPath.row];
             [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                              withRowAnimation:UITableViewRowAnimationAutomatic];
         }
