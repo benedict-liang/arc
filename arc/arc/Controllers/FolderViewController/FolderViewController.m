@@ -254,7 +254,7 @@
 - (void)moveItems:(id)sender
 {
     DestinationFolderViewController *moveDestinationFolderViewController =
-    [[DestinationFolderViewController alloc] initWithFolder:self.folder];
+    [[DestinationFolderViewController alloc] initWithFolder:[RootFolder sharedRootFolder]];
     
     moveDestinationFolderViewController.delegate = self;
 

@@ -75,9 +75,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    ApplicationState *appState = [ApplicationState sharedApplicationState];
-    [self fileSelected:[appState currentFileOpened]];
-    [self folderSelected:[appState currentFolderOpened]];
+    [self fileSelected:[_appState currentFileOpened]];
+    [self folderSelected:[_appState currentFolderOpened]];
 }
 
 - (void)openIn:(id<File>)file
@@ -91,6 +90,9 @@
     DBAccountManager *dbAccountManager = [DBAccountManager sharedManager];
     DBAccount *dbAccount = dbAccountManager.linkedAccount;
     if (!dbAccount) {
+        [dbAccountManager addObserver:self block:^(DBAccount *dbAccount) {
+            [_leftViewController forceFolderRefresh];
+        }];
         // Link to the main view controller instance here.
         [dbAccountManager linkFromController:self];
     }

@@ -12,4 +12,5 @@
 @protocol FolderViewControllerDelegate <NSObject>
 - (void)folderViewController:(FolderViewController*)folderviewController DidEnterEditModeAnimate:(BOOL)animate;
 - (void)folderViewController:(FolderViewController*)folderviewController DidExitEditModeAnimate:(BOOL)animate;
+- (void)forceFolderRefresh;
 @end
