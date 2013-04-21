@@ -36,10 +36,21 @@
     return [UIColor whiteColor];
 }
 
++ (UIColor *)tableViewSectionHeaderColor
+{
+    return [Utils colorWithHexString:@"CC272821"];
+}
+
 + (NSString *)fontName
 {
     return @"Helvetica Neue";
 }
+
++ (NSString *)fontNameBold
+{
+    return @"Helvetica Neue Bold";
+}
+
 
 + (void)navigationBarAppearance
 {
