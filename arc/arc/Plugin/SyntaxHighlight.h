@@ -20,13 +20,13 @@
 //Immutable class. Holds thread local state
 
 @interface SyntaxHighlight : NSObject <SyntaxHighlightDelegate> {
-    __block NSDictionary *nameMatches;
-    __block NSDictionary *captureMatches;
-    __block NSDictionary *beginCMatches;
-    __block NSDictionary *endCMatches;
-    __block NSDictionary *pairMatches;
-    __block NSDictionary *contentNameMatches;
-    __block NSDictionary *overlapMatches;
+    __block NSMutableDictionary *nameMatches;
+    __block NSMutableDictionary *captureMatches;
+    __block NSMutableDictionary *beginCMatches;
+    __block NSMutableDictionary *endCMatches;
+    __block NSMutableDictionary *pairMatches;
+    __block NSMutableDictionary *contentNameMatches;
+    __block NSMutableDictionary *overlapMatches;
     __block NSArray *foldRanges;
 }
 

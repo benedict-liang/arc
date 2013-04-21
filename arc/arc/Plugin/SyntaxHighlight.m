@@ -242,18 +242,14 @@
     
 }
 
-- (NSDictionary*)merge:(NSDictionary*)dictionary1
-                withd2:(NSDictionary*)dictionary2
-{
-    NSMutableDictionary* res =
-    [[NSMutableDictionary alloc] initWithDictionary:dictionary1];
-    
-    for (id k in dictionary2) {
-        [res setValue:[dictionary2 objectForKey:k]
+- (void)merge:(NSDictionary*)dictionary1
+                withDictionary:(NSMutableDictionary*)dictionary2
+{   
+    for (id k in dictionary1) {
+        [dictionary2 setValue:[dictionary1 objectForKey:k]
                forKey:k];
     }
-    
-    return res;
+
 }
 
 - (void) addRange:(NSRange)range
@@ -480,14 +476,14 @@
             eEnds - brange.location< contentRange.length) {
             
             if (name) {
-                pairMatches = [self addRange:NSMakeRange(brange.location, eEnds - brange.location)
+                [self addRange:NSMakeRange(brange.location, eEnds - brange.location)
                                        scope:name
                                         dict:pairMatches
                             capturableScopes:capturableScopes];
             }
             
             if ([syntaxItem objectForKey:@"contentName"]) {
-                contentNameMatches = [self addRange:NSMakeRange(bEnds, eEnds - bEnds)
+                 [self addRange:NSMakeRange(bEnds, eEnds - bEnds)
                                               scope:name
                                                dict:contentNameMatches
                                    capturableScopes:capturableScopes];
@@ -541,29 +537,29 @@
                 if (name && match) {
                     NSArray *a = [self foundPattern:match
                                               range:contentRange];
-                    nameMatches = [self merge:@{name: @{@"ranges":a, @"capturableScopes":capturableScopes}}
-                                       withd2:nameMatches];
+                    [self merge:@{name: @{@"ranges":a, @"capturableScopes":capturableScopes}}
+                                       withDictionary:nameMatches];
                 }
                 
                 if (captures && match) {
-                    captureMatches = [self merge:[self findCaptures:captures
+                    [self merge:[self findCaptures:captures
                                                             pattern:match
                                                               range:contentRange]
-                                          withd2:captureMatches];
+                                          withDictionary:captureMatches];
                 }
                 
                 if (beginCaptures && begin) {
-                    beginCMatches = [self merge:[self findCaptures:beginCaptures
+                    [self merge:[self findCaptures:beginCaptures
                                                            pattern:begin
                                                              range:contentRange]
-                                         withd2:beginCMatches];
+                         withDictionary:beginCMatches];
                 }
                 
                 if (endCaptures && end) {
-                    endCMatches = [self merge:[self findCaptures:endCaptures
+                    [self merge:[self findCaptures:endCaptures
                                                          pattern:end
                                                            range:contentRange]
-                                       withd2:endCMatches];
+                                       withDictionary:endCMatches];
                 }
                 
                 //matching blocks
