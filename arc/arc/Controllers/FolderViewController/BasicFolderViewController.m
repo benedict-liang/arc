@@ -47,7 +47,7 @@ NSString* const FOLDER_VIEW_FILES = @"Files";
         }
     }
     
-    _filesAndFolders = @[files, folders];
+    _filesAndFolders = @[folders, files];
 }
 
 - (void)setFilesAndFolders:(NSArray *)filesAndFolders
@@ -91,6 +91,11 @@ NSString* const FOLDER_VIEW_FILES = @"Files";
 
 #pragma mark - Data Source Accessor Methods
 
+- (NSInteger)numberOfSections
+{
+    return [_filesAndFolders count];
+}
+
 - (FileSystemObjectGroup *)sectionObjectGroup:(NSInteger)section
 {
     return (FileSystemObjectGroup *)[_filesAndFolders objectAtIndex:section];
@@ -116,7 +121,7 @@ NSString* const FOLDER_VIEW_FILES = @"Files";
 // Returns the number of sections in the table view.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [_filesAndFolders count];
+    return [self numberOfSections];
 }
 
 // Returns the number of rows in the given section.

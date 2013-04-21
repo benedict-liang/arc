@@ -19,24 +19,38 @@ const NSString *FOLDERCELL_REUSE_IDENTIFIER = @"folderCell";
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        if ([reuseIdentifier isEqualToString:(NSString *)FILECELL_REUSE_IDENTIFIER]) {
-            self.imageView.image = [Utils scale:[UIImage imageNamed:@"file.png"]
-                                         toSize:CGSizeMake(35, 35)];
-            self.imageView.highlightedImage = [Utils scale:[UIImage imageNamed:@"file_white.png"]
-                                                    toSize:CGSizeMake(35, 35)];
-        } else if ([reuseIdentifier isEqualToString:(NSString *)FOLDERCELL_REUSE_IDENTIFIER]) {
-            self.imageView.image = [Utils scale:[UIImage imageNamed:@"folder.png"]
-                                         toSize:CGSizeMake(35, 35)];
-        }
-        
-        // selection
-        UIView *bg = [[UIView alloc] init];
-        bg.backgroundColor = [Utils colorWithHexString:@"ee151512"];
-        self.selectedBackgroundView = bg;
         self.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:17];
         self.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+        
+        if ([reuseIdentifier isEqualToString:(NSString *)FILECELL_REUSE_IDENTIFIER]) {
+            [self setUpFileCellImageView];
+        } else if ([reuseIdentifier isEqualToString:(NSString *)FOLDERCELL_REUSE_IDENTIFIER]) {
+            [self setUpFolderCellImageView];
+        }
+        [self setUpSelection];
     }
     return self;
+}
+
+- (void)setUpFileCellImageView
+{
+    self.imageView.image = [Utils scale:[UIImage imageNamed:@"file.png"]
+                                 toSize:CGSizeMake(35, 35)];
+    self.imageView.highlightedImage = [Utils scale:[UIImage imageNamed:@"file_white.png"]
+                                            toSize:CGSizeMake(35, 35)];
+}
+
+- (void)setUpFolderCellImageView
+{
+    self.imageView.image = [Utils scale:[UIImage imageNamed:@"folder.png"]
+                                 toSize:CGSizeMake(35, 35)];
+}
+
+- (void)setUpSelection
+{
+    UIView *backgoundView = [[UIView alloc] init];
+    backgoundView.backgroundColor = [Utils colorWithHexString:@"ee151512"];
+    self.selectedBackgroundView = backgoundView;
 }
 
 - (void)setFileSystemObject:(id<FileSystemObject>)fileSystemObject
