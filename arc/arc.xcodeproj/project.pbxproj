@@ -66,6 +66,7 @@
 		4C9137281715B9D900413C79 /* Solarized (dark).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = 4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */; };
 		4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C963C81170D8E96004FDACB /* CodeLineCell.m */; };
 		4C9C7C211723B17900DBFA13 /* FolderViewSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C201723B17900DBFA13 /* FolderViewSectionHeader.m */; };
+		4C9C7C291723B87B00DBFA13 /* BasicFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C281723B87B00DBFA13 /* BasicFolderViewController.m */; };
 		4C9E0619170F3AFC0000F783 /* arc72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E0618170F3AFC0000F783 /* arc72.png */; };
 		4C9E061B170F3B1A0000F783 /* arc144.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E061A170F3B1A0000F783 /* arc144.png */; };
 		4CC9E0ED171C4C580062C825 /* arcMonokai72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC9E0EC171C4C580062C825 /* arcMonokai72.png */; };
@@ -499,6 +500,8 @@
 		4C963C81170D8E96004FDACB /* CodeLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeLineCell.m; sourceTree = "<group>"; };
 		4C9C7C1F1723B17900DBFA13 /* FolderViewSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewSectionHeader.h; sourceTree = "<group>"; };
 		4C9C7C201723B17900DBFA13 /* FolderViewSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderViewSectionHeader.m; sourceTree = "<group>"; };
+		4C9C7C271723B87B00DBFA13 /* BasicFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicFolderViewController.h; sourceTree = "<group>"; };
+		4C9C7C281723B87B00DBFA13 /* BasicFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicFolderViewController.m; sourceTree = "<group>"; };
 		4C9DC9021719B64A00142E70 /* SyntaxHighlightingPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlightingPluginDelegate.h; sourceTree = "<group>"; };
 		4C9E0618170F3AFC0000F783 /* arc72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc72.png; sourceTree = SOURCE_ROOT; };
 		4C9E061A170F3B1A0000F783 /* arc144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc144.png; sourceTree = SOURCE_ROOT; };
@@ -955,8 +958,6 @@
 				8FCA1D6816F86C7000C6AAFC /* MainViewController.m */,
 				FC4B26CC16FF6E3700E1DC49 /* LeftViewController.h */,
 				FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */,
-				4C6B0901171EE242009DB903 /* CodeViewController */,
-				4C6B090B171EEBD1009DB903 /* FolderViewController */,
 			);
 			name = "Main UI";
 			sourceTree = "<group>";
@@ -1157,6 +1158,8 @@
 			children = (
 				FC4B269C16F88CB800E1DC49 /* FolderViewController.h */,
 				FC4B269D16F88CB800E1DC49 /* FolderViewController.m */,
+				4C9C7C271723B87B00DBFA13 /* BasicFolderViewController.h */,
+				4C9C7C281723B87B00DBFA13 /* BasicFolderViewController.m */,
 			);
 			name = FolderViewController;
 			sourceTree = "<group>";
@@ -1640,6 +1643,8 @@
 				4CD06B2D16FDE97E00C9DED3 /* Protocols */,
 				02F25A091713CF0A000B6301 /* Popup Controllers */,
 				02C4FB9D171E3E0000B2FACD /* Main UI */,
+				4C6B0901171EE242009DB903 /* CodeViewController */,
+				4C6B090B171EEBD1009DB903 /* FolderViewController */,
 				02C4FBA2171E3E0700B2FACD /* Settings */,
 				02C4FBA3171E3E0F00B2FACD /* Copy & Paste */,
 				02C4FBA4171E3E1C00B2FACD /* Cloud Downloader */,
@@ -2213,6 +2218,7 @@
 				4C6B0911171EEC22009DB903 /* FileObjectTableViewCell.m in Sources */,
 				4C7A82BF1722512B00B7D229 /* ArcSplitViewController.m in Sources */,
 				4C9C7C211723B17900DBFA13 /* FolderViewSectionHeader.m in Sources */,
+				4C9C7C291723B87B00DBFA13 /* BasicFolderViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

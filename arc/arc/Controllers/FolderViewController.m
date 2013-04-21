@@ -8,7 +8,7 @@
 
 #define SECTION_HEADING @"section heading"
 #define SECTION_ITEMS @"section items"
-#define FOLDER @"Files"
+#define FOLDER @"Folders"
 #define FILES @"Files"
 
 #import "FolderViewController.h"
