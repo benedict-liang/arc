@@ -38,13 +38,13 @@
         }
         
         //reset ranges
-        nameMatches = [NSDictionary dictionary];
-        captureMatches = [NSDictionary dictionary];
-        beginCMatches = [NSDictionary dictionary];
-        endCMatches = [NSDictionary dictionary];
-        pairMatches = [NSDictionary dictionary];
-        contentNameMatches = [NSDictionary dictionary];
-        overlapMatches = [NSDictionary dictionary];
+        nameMatches = [NSMutableDictionary dictionary];
+        captureMatches = [NSMutableDictionary dictionary];
+        beginCMatches = [NSMutableDictionary dictionary];
+        endCMatches = [NSMutableDictionary dictionary];
+        pairMatches = [NSMutableDictionary dictionary];
+        contentNameMatches = [NSMutableDictionary dictionary];
+        overlapMatches = [NSMutableDictionary dictionary];
         _parserAccum = [NSMutableArray array];
     }
     return self;
@@ -181,12 +181,12 @@
   
     for (NSString *s in cpS) {
         NSDictionary* style = [(NSDictionary*)[theme objectForKey:@"scopes"] objectForKey:s];
-        if (![dict isEqual:(NSObject*)overlapMatches] && [_overlays containsObject:s]) {
-            [self addRange:range
-                                      scope:s
-                                       dict:overlapMatches
-                           capturableScopes:@[s]];
-        }
+//        if (![dict isEqual:(NSObject*)overlapMatches] && [_overlays containsObject:s]) {
+//            [self addRange:range
+//                                      scope:s
+//                                       dict:overlapMatches
+//                           capturableScopes:@[s]];
+//        }
         
         if (style) {
             UIColor *fg = [style objectForKey:@"foreground"];
@@ -246,7 +246,7 @@
                 withDictionary:(NSMutableDictionary*)dictionary2
 {   
     for (id k in dictionary1) {
-        [dictionary2 setValue:[dictionary1 objectForKey:k]
+        [dictionary2 setObject:[dictionary1 objectForKey:k]
                forKey:k];
     }
 
@@ -341,13 +341,7 @@
         }
     } name:name summary:nil];
 }
-- (void)parsePairsForInput:(NSString*)input {
-    ParcoaParser* pairs = [Parcoa many:[SyntaxHighlight chooseBetween:_parserAccum]];
-    NSLog(@"%@",_parserAccum);
-    ParcoaResult* result = [pairs parse:input];
-    NSLog(@"results:%@", result.value);
-    
-}
+
 
 //chooses from an array of parsers, which pair parser returns the smallest location
 //pairParser = beginParser >> endParser
@@ -480,14 +474,14 @@
             if (name) {
                 [self addRange:NSMakeRange(brange.location, eEnds - brange.location)
                                        scope:name
-                                        dict:pairMatches
+                                        dict:pairMatchesStore
                             capturableScopes:capturableScopes];
             }
             
             if ([syntaxItem objectForKey:@"contentName"]) {
                  [self addRange:NSMakeRange(bEnds, eEnds - bEnds)
                                               scope:name
-                                               dict:contentNameMatches
+                                               dict:contentMatchesStore
                                    capturableScopes:capturableScopes];
             }
             
@@ -568,7 +562,10 @@
                 if (begin && end) {
                     [self processPairRange:contentRange
                                       item:syntaxItem
-                                    output:output];
+                                    output:output
+                               PairMatches:pairMatches
+                            ContentMatches:contentNameMatches];
+                    
                 } else if (embedPatterns) {
                     [self iterPatternsForRange:contentRange patterns:embedPatterns output:output];
                 }
@@ -588,7 +585,7 @@
 //    
 //    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     }
-    [self parsePairsForInput:[_content substringWithRange:contentRange]];
+    
 }
 
 - (BOOL)whileCondition:(NSRange)brange e:(NSRange)erange cr:(NSRange)contentRange
