@@ -7,6 +7,7 @@
 //
 
 #import "CloudPickerViewController.h"
+#import "FolderViewSectionHeader.h"
 
 @interface CloudPickerViewController ()
 // Loading Overlay view.
@@ -27,7 +28,9 @@
 
 @implementation CloudPickerViewController
 
-- (id)initWithCloudFolder:(id<CloudFolder>)folder targetFolder:(LocalFolder *)target serviceManager:(id<CloudServiceManager>)serviceManager
+- (id)initWithCloudFolder:(id<CloudFolder>)folder
+             targetFolder:(LocalFolder *)target
+           serviceManager:(id<CloudServiceManager>)serviceManager
 {
     if (self = [super init]) {
         _folder = folder;
@@ -78,7 +81,10 @@
     
     [[self navigationItem] setTitle:[_folder name]];
     
-    _closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(shouldClose)];
+    _closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
+                                                                 target:self
+                                                                 action:@selector(shouldClose)];
+
 //    NSArray *buttonArray = [NSArray arrayWithObjects:_closeButton, [self editButtonItem], nil];
     
 //    [[self navigationItem] setRightBarButtonItems:buttonArray];
@@ -128,21 +134,11 @@
 // Returns the header for the given section.
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(10.0, 0.0, 320.0, 22.0)];
-    customView.backgroundColor = [Utils colorWithHexString:@"CC272821"];
-    
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    headerLabel.backgroundColor = [UIColor clearColor];
-    headerLabel.opaque = NO;
-    headerLabel.textColor = [UIColor whiteColor];
-    headerLabel.font = [UIFont fontWithName:@"Helvetica Neue Bold" size:18];
-    headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-    headerLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
-    headerLabel.frame = CGRectMake(11,-11, 320.0, 44.0);
-    headerLabel.textAlignment = NSTextAlignmentLeft;
-    headerLabel.text = section == 0 ? @"Folders" : @"Files";
-    [customView addSubview:headerLabel];
-    return customView;
+    FolderViewSectionHeader *sectionHeader =
+    [[FolderViewSectionHeader alloc] initWithFrame:CGRectMake(10.0, 0.0, 320.0, 22.0)];
+
+    sectionHeader.title = section == 0 ? @"Folders" : @"Files";
+    return sectionHeader;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

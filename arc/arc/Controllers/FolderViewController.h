@@ -23,11 +23,13 @@
 #import "GoogleDriveServiceManager.h"
 
 @interface FolderViewController : UIViewController <SubViewControllerDelegate,
-    UITableViewDelegate, UITableViewDataSource, CreateFolderViewControllerDelegate, UIActionSheetDelegate, CloudPickerViewControllerDelegate>
+    UITableViewDelegate, UITableViewDataSource, CreateFolderViewControllerDelegate,
+    UIActionSheetDelegate, CloudPickerViewControllerDelegate>
+
 @property (nonatomic, readonly) id<Folder> folder;
 @property (nonatomic, weak) id<FolderViewControllerDelegate> folderViewControllerDelegate;
 - (id)initWithFolder:(id<Folder>)folder;
 - (void)triggerAddItem;
-- (void)refreshFolderContents;
+- (void)refreshFolderView;
 - (void)editActionTriggeredAnimate:(BOOL)animate;
 @end

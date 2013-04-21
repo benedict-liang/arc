@@ -9,7 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LoadingOverlayViewController : UIViewController
-
 - (id)initWithFrame:(CGRect)frame;
-
 @end
