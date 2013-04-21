@@ -382,9 +382,19 @@
     return [ParcoaParser parserWithBlock:^ParcoaResult* (NSString* input) {
         NSMutableArray* accum = [NSMutableArray array];
         ParcoaResult* result = [chooseBetween parse:input];
+        CFIndex offset = 0;
         while (result.isOK) {
-            
+            NSArray* pair = result.value;
+            NSRange resBeginRange = [Utils rangeFromValue:[(NSDictionary*)pair[0] objectForKey:@"range"]];
+            resBeginRange.location+=offset;
+            offset+= resBeginRange.location +resBeginRange.length;
+            NSRange resEndRange = [Utils rangeFromValue:[(NSDictionary*)pair[1] objectForKey:@"range"]];
+            resEndRange.location+=offset;
+            offset+= resEndRange.location +resEndRange.length;
+            [accum addObject:@{@"begin":[Utils valueFromRange:resBeginRange], @"end":[Utils valueFromRange:resEndRange]}];
+            result = [chooseBetween parse:result.residual];
         }
+        return [ParcoaResult ok:accum residual:result.residual expected:[ParcoaExpectation unsatisfiable]];
     } name:@"manyChoose" summary:nil];
 }
 - (void)processPairRange:(NSRange)contentRange
