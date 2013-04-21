@@ -106,8 +106,10 @@
                                             selectedRect.origin.y,
                                             DRAG_POINT_WIDTH,
                                             selectedRect.size.height);
+//    _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame
+//                                                   andImageName:@"rightDragPoint.png"];
     _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame
-                                                   andImageName:@"rightDragPoint.png"];
+                                                        andType:kRight];
     
     [self addGestureRecognizersForDragPoints];
 }

@@ -10,12 +10,12 @@
 
 @implementation DragPointImageView
 
-- (id)initWithFrame:(CGRect)frame andImageName:(NSString*)imageName
+- (id)initWithFrame:(CGRect)frame andType:(DragPointType)type
 {
     self = [super initWithFrame:frame];
     if (self) {
         
-        if ([imageName isEqualToString:@"leftDragPoint.png"]) {
+        if (type == kRight) {
             
             UIImage *scaledImage = [self scaleImageWithAspectRatio:@"dragpointline.png"];
             UIImage *circle = [UIImage imageNamed:@"dragpointcirclebottom.png"];
@@ -28,7 +28,7 @@
                                            scaledImage.size.height - circle.size.height);
             
             UIGraphicsBeginImageContext(newSize);
-            [scaledImage drawInRect:CGRectMake(newSize.width - scaledImage.size.width,
+            [scaledImage drawInRect:CGRectMake(newSize.width / 2 - scaledImage.size.width / 2,
                                                0,
                                                scaledSize.width,
                                                scaledSize.height)];
@@ -43,16 +43,31 @@
             self.contentMode = UIViewContentModeTop;
             self.backgroundColor = [UIColor clearColor];
         }
-        else {
-            UIImage *scaledImage = [self scaleImageWithAspectRatio:imageName];
-            self.image = scaledImage;
-            
-            self.contentMode = UIViewContentModeCenter;
-            self.backgroundColor = [UIColor clearColor];
-        }
+        //        else {
+        //            UIImage *scaledImage = [self scaleImageWithAspectRatio:imageName];
+        //            self.image = scaledImage;
+        //
+        //            self.contentMode = UIViewContentModeCenter;
+        //            self.backgroundColor = [UIColor clearColor];
+        //        }
     }
     return self;
 }
+
+- (id)initWithFrame:(CGRect)frame andImageName:(NSString*)imageName
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+        UIImage *scaledImage = [self scaleImageWithAspectRatio:imageName];
+        self.image = scaledImage;
+        
+        self.contentMode = UIViewContentModeCenter;
+        self.backgroundColor = [UIColor clearColor];
+    }
+    return self;
+}
+
 
 - (UIImage *)scaleImageWithAspectRatio:(NSString *)imageName
 {
