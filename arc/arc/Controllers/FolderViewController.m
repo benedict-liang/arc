@@ -12,6 +12,7 @@
 #define FILES @"Files"
 
 #import "FolderViewController.h"
+#import "FolderViewSectionHeader.h"
 #import "RootFolder.h"
 #import "File.h"
 #import "Folder.h"
@@ -278,23 +279,17 @@ titleForHeaderInSection:(NSInteger)section {
     return 22;
 }
 
-- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(10.0, 0.0, 320.0, 22.0)];
-    customView.backgroundColor = [Utils colorWithHexString:@"CC272821"];
+    FolderViewSectionHeader *sectionHeader =
+    [[FolderViewSectionHeader alloc] initWithFrame:CGRectMake(10.0, 0.0, 320.0, 22.0)];
     
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    headerLabel.backgroundColor = [UIColor clearColor];
-    headerLabel.opaque = NO;
-    headerLabel.textColor = [UIColor whiteColor];
-    headerLabel.font = [UIFont fontWithName:@"Helvetica Neue Bold" size:18];
-    headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-    headerLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
-    headerLabel.frame = CGRectMake(11,-11, 320.0, 44.0);
-    headerLabel.textAlignment = NSTextAlignmentLeft;
-    headerLabel.text = section == 0 ? @"Folders" : @"Files";
-    [customView addSubview:headerLabel];
-    return customView;
+    NSDictionary *sectionDict =
+    (NSDictionary *)[_filesAndFolders objectAtIndex:section];
+    
+    sectionHeader.title = (NSString *)[sectionDict objectForKey:SECTION_HEADING];
+
+    return sectionHeader;
 }
 
 // Determines if the cell at the given index path can be edited.

@@ -65,6 +65,7 @@
 		4C8307EB17114CEF00F49C33 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8307EA17114CEF00F49C33 /* SettingCell.m */; };
 		4C9137281715B9D900413C79 /* Solarized (dark).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = 4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */; };
 		4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C963C81170D8E96004FDACB /* CodeLineCell.m */; };
+		4C9C7C211723B17900DBFA13 /* FolderViewSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C201723B17900DBFA13 /* FolderViewSectionHeader.m */; };
 		4C9E0619170F3AFC0000F783 /* arc72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E0618170F3AFC0000F783 /* arc72.png */; };
 		4C9E061B170F3B1A0000F783 /* arc144.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E061A170F3B1A0000F783 /* arc144.png */; };
 		4CC9E0ED171C4C580062C825 /* arcMonokai72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC9E0EC171C4C580062C825 /* arcMonokai72.png */; };
@@ -496,6 +497,8 @@
 		4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Solarized (dark).tmTheme"; sourceTree = "<group>"; };
 		4C963C80170D8E96004FDACB /* CodeLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeLineCell.h; sourceTree = "<group>"; };
 		4C963C81170D8E96004FDACB /* CodeLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeLineCell.m; sourceTree = "<group>"; };
+		4C9C7C1F1723B17900DBFA13 /* FolderViewSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewSectionHeader.h; sourceTree = "<group>"; };
+		4C9C7C201723B17900DBFA13 /* FolderViewSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderViewSectionHeader.m; sourceTree = "<group>"; };
 		4C9DC9021719B64A00142E70 /* SyntaxHighlightingPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlightingPluginDelegate.h; sourceTree = "<group>"; };
 		4C9E0618170F3AFC0000F783 /* arc72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc72.png; sourceTree = SOURCE_ROOT; };
 		4C9E061A170F3B1A0000F783 /* arc144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc144.png; sourceTree = SOURCE_ROOT; };
@@ -1161,6 +1164,17 @@
 			name = FolderViewController;
 			sourceTree = "<group>";
 		};
+		4C9C7C1A1723B15200DBFA13 /* FolderView */ = {
+			isa = PBXGroup;
+			children = (
+				4C6B090F171EEC22009DB903 /* FileObjectTableViewCell.h */,
+				4C6B0910171EEC22009DB903 /* FileObjectTableViewCell.m */,
+				4C9C7C1F1723B17900DBFA13 /* FolderViewSectionHeader.h */,
+				4C9C7C201723B17900DBFA13 /* FolderViewSectionHeader.m */,
+			);
+			name = FolderView;
+			sourceTree = "<group>";
+		};
 		4CD06B2D16FDE97E00C9DED3 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -1233,8 +1247,7 @@
 				8F7066B217199B1F00E8C64E /* SearchResultCell.m */,
 				8FC1B4E71719D8E0002939D8 /* DragPointImageView.h */,
 				8FC1B4E81719D8E0002939D8 /* DragPointImageView.m */,
-				4C6B090F171EEC22009DB903 /* FileObjectTableViewCell.h */,
-				4C6B0910171EEC22009DB903 /* FileObjectTableViewCell.m */,
+				4C9C7C1A1723B15200DBFA13 /* FolderView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2159,6 +2172,7 @@
 				4C6B0908171EE27A009DB903 /* CodeViewLine.m in Sources */,
 				4C6B0911171EEC22009DB903 /* FileObjectTableViewCell.m in Sources */,
 				4C7A82BF1722512B00B7D229 /* ArcSplitViewController.m in Sources */,
+				4C9C7C211723B17900DBFA13 /* FolderViewSectionHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
