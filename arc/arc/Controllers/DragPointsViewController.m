@@ -99,8 +99,6 @@
                                            selectedRect.origin.y - EXTRA_DRAG_POINT_HEIGHT,
                                            DRAG_POINT_WIDTH,
                                            selectedRect.size.height);
-//    _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame
-//                                                  andImageName:@"leftDragPoint.png"];
     _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame
                                                        andType:kLeft];
     
@@ -108,8 +106,6 @@
                                             selectedRect.origin.y,
                                             DRAG_POINT_WIDTH,
                                             selectedRect.size.height);
-//    _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame
-//                                                   andImageName:@"rightDragPoint.png"];
     _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame
                                                         andType:kRight];
     

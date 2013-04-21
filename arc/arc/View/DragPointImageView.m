@@ -67,21 +67,6 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame andImageName:(NSString*)imageName
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        
-        UIImage *scaledImage = [self scaleImageWithAspectRatio:imageName];
-        self.image = scaledImage;
-        
-        self.contentMode = UIViewContentModeCenter;
-        self.backgroundColor = [UIColor clearColor];
-    }
-    return self;
-}
-
-
 - (UIImage *)scaleImageWithAspectRatio:(NSString *)imageName
 {
     CGRect frame = self.frame;

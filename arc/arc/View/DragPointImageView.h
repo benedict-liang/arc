@@ -14,7 +14,6 @@ typedef enum {kLeft, kRight} DragPointType;
 
 @property (nonatomic, readonly) DragPointType dragPointType;
 
-- (id)initWithFrame:(CGRect)frame andImageName:(NSString*)imageName;
 - (id)initWithFrame:(CGRect)frame andType:(DragPointType)type;
 
 @end
