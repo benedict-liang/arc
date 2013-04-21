@@ -330,7 +330,7 @@
         NSRange beginRange = [self findFirstPatternWithRegex:regex
                                                        range:NSMakeRange(0, input.length)
                                                      content:input];
-        if (beginRange.location == NSNotFound) {
+        if (beginRange.location == NSNotFound || beginRange.length == 0) {
             return [ParcoaResult failWithRemaining:input expected:input];
         } else {
             CFIndex bEnds = beginRange.location+beginRange.length+1;
@@ -363,13 +363,16 @@
     ParcoaParser* beginParser = [self parserForRegex:beginRegex WithName:@"begin"];
     ParcoaParser* endParser = [self parserForRegex:endRegex WithName:@"end"];
     
-    ParcoaParser* afterBegin = [Parcoa parser:beginParser notFollowedBy:endParser];
+    //ParcoaParser* afterBegin = [Parcoa parser:beginParser notFollowedBy:endParser];
     
     ParcoaParser* pairParser =[Parcoa sequential:@[beginParser,endParser]];
     
-    ParcoaResult* result = [pairParser parse:[_content substringWithRange:contentRange]];
+    ParcoaParser* manyPairs = [Parcoa many:pairParser];
     
-    NSLog(@"%@",result.value);
+    ParcoaResult* result = [manyPairs parse:[_content substringWithRange:contentRange]];
+    
+    NSLog(@"name = %@, ranges = %@",name, result.value);
+    
     
     //ParcoaResult* beginResult = [beginParser parse:[_content substringWithRange:contentRange]];
     //NSLog(@"beginRange: %@", beginResult.value);
