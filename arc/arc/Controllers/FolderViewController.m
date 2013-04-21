@@ -415,8 +415,10 @@ titleForHeaderInSection:(NSInteger)section {
         id<FileSystemObject> fileObject = [currentSection objectAtIndex:indexPath.row];
         
         if ([fileObject remove]) {
-            [(NSMutableArray *)[_filesAndFolders objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [((NSMutableArray *)[_filesAndFolders objectAtIndex:indexPath.section])
+             removeObjectAtIndex:indexPath.row];
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationAutomatic];
         }
     }
 }
@@ -428,14 +430,18 @@ titleForHeaderInSection:(NSInteger)section {
     if ([_addFolderPopoverController isPopoverVisible]) {
         [_addFolderPopoverController dismissPopoverAnimated:YES];
     }
+
     if ([_addItemActionSheet isVisible]) {
         [_addItemActionSheet dismissWithClickedButtonIndex:-1 animated:YES];
     }
+
     else {
         if ([_folder isKindOfClass:[DropBoxFolder class]]) {
             _addItemActionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                               delegate:self
-                                                     cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New Folder", nil];
+                                                     cancelButtonTitle:@"Cancel"
+                                                destructiveButtonTitle:nil
+                                                     otherButtonTitles:@"New Folder", nil];
         } else {
             _addItemActionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                               delegate:self
@@ -453,39 +459,65 @@ titleForHeaderInSection:(NSInteger)section {
     if (![_folder isKindOfClass:[DropBoxFolder class]]) {
         switch (buttonIndex) {
             case 0:
-                [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+                [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton
+                                                    permittedArrowDirections:UIPopoverArrowDirectionAny
+                                                                    animated:YES];
                 break;
-            case 1: {
+
+            case 1:
                 if (![_skyDriveManager isLoggedIn]) {
                     [_skyDriveManager loginWithViewController:self];
                 } else {
-                    CloudPickerViewController *pickerController = [[CloudPickerViewController alloc] initWithCloudFolder:[SkyDriveFolder getRoot] targetFolder:_folder serviceManager:_skyDriveManager];
+                    CloudPickerViewController *pickerController =
+                    [[CloudPickerViewController alloc] initWithCloudFolder:[SkyDriveFolder getRoot]
+                                                              targetFolder:_folder
+                                                            serviceManager:_skyDriveManager];
                     [pickerController setDelegate:self];
-                    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:pickerController];
+
+                    UINavigationController *navController =
+                    [[UINavigationController alloc] initWithRootViewController:pickerController];
+
                     [navController setModalPresentationStyle:UIModalPresentationFormSheet];
-                    [self presentViewController:navController animated:YES completion:nil];
+
+                    [self presentViewController:navController
+                                       animated:YES
+                                     completion:nil];
                 }
-            }
                 break;
+
             case 2:
                 if (![_googleDriveManager isLoggedIn]) {
                     [_googleDriveManager loginWithViewController:self];
                 } else {
-                    CloudPickerViewController *pickerController = [[CloudPickerViewController alloc] initWithCloudFolder:[GoogleDriveFolder getRoot] targetFolder:_folder serviceManager:_googleDriveManager];
+                    CloudPickerViewController *pickerController =
+                    [[CloudPickerViewController alloc] initWithCloudFolder:[GoogleDriveFolder getRoot]
+                                                              targetFolder:_folder
+                                                            serviceManager:_googleDriveManager];
+
                     [pickerController setDelegate:self];
-                    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:pickerController];
+                    
+                    UINavigationController *navController =
+                    [[UINavigationController alloc] initWithRootViewController:pickerController];
+                    
                     [navController setModalPresentationStyle:UIModalPresentationFormSheet];
-                    [self presentViewController:navController animated:YES completion:nil];
+                    
+                    [self presentViewController:navController
+                                       animated:YES
+                                     completion:nil];
                 }
                 break;
+
             default:
                 break;
         }
     } else {
         switch (buttonIndex) {
             case 0:
-                [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+                [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton
+                                                    permittedArrowDirections:UIPopoverArrowDirectionAny
+                                                                    animated:YES];
                 break;
+
             default:
                 break;
         }
