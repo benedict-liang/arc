@@ -133,6 +133,9 @@
         }
             break;
     }
+    NSMutableArray *newOperations = [NSMutableArray arrayWithArray:_operations];
+    [newOperations removeObject:operation];
+    _operations = newOperations;
 }
 
 - (void)cancelOperations

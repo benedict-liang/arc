@@ -62,6 +62,8 @@ static GoogleDriveServiceManager *sharedServiceManager = nil;
 {
     if (!error) {
         _driveService.authorizer = authResult;
+    } else {
+        NSLog(@"%@", error);
     }
 }
 

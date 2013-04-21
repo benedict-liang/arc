@@ -76,6 +76,7 @@
     for (GTLServiceTicket *currentTicket in _operations) {
         [currentTicket cancelTicket];
     }
+    _operations = [NSArray array];
 }
 
 - (void)updateContents
@@ -141,6 +142,10 @@
     } else {
         NSLog(@"%@", error);
     }
+    
+    NSMutableArray *newOperations = [NSMutableArray arrayWithArray:_operations];
+    [newOperations removeObject:ticket];
+    _operations = [NSArray arrayWithArray:newOperations];
 }
 
 @end
