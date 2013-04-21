@@ -268,6 +268,9 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DestinationFolderViewController *moveDestinationFolderViewController =
     [[DestinationFolderViewController alloc] initWithFolder:self.folder];
+    
+    moveDestinationFolderViewController.delegate = self;
+
     [self showModalViewController:moveDestinationFolderViewController];
 }
 

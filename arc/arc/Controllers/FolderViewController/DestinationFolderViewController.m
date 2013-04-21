@@ -13,6 +13,7 @@
 @end
 
 @implementation DestinationFolderViewController
+@synthesize delegate = _delegate;
 
 - (void)viewDidLoad
 {
@@ -27,7 +28,7 @@
 
 - (void)shouldClose:(id)sender
 {
-    
+    [self.delegate modalViewControllerDone:nil];
 }
 
 @end
