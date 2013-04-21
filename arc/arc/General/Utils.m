@@ -336,15 +336,26 @@
 
 + (BOOL)isFileSupported:(NSString *)name
 {
-    NSString *uti = CFBridgingRelease(UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)([name pathExtension]), NULL));
     NSString *ourUTI = @"com.nus.arc.source";
-
-    BOOL isOurUTI = UTTypeConformsTo((__bridge CFStringRef)uti, (__bridge CFStringRef)ourUTI);
-    BOOL isText = UTTypeConformsTo((__bridge CFStringRef)(uti), (__bridge CFStringRef)@"public.text");
-    BOOL isPlainText = UTTypeConformsTo((__bridge CFStringRef)(uti), (__bridge CFStringRef)@"public.plain-text");
-    BOOL isSource = UTTypeConformsTo((__bridge CFStringRef)(uti), (__bridge CFStringRef)@"public.source-code");
+    NSString *extension = [name pathExtension];
     
-    return isOurUTI || isText || isPlainText || isSource;
+    // Get all the UTIs this file falls under.
+    NSArray *matchingUTIs = CFBridgingRelease(UTTypeCreateAllIdentifiersForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)extension, NULL));
+    
+    // Check if any of the UTIs are supported by the app.
+    BOOL isOurUTI, isText, isPlainText, isSource;
+    for (NSString *currentUTI in matchingUTIs) {
+        isOurUTI = UTTypeConformsTo((__bridge CFStringRef)currentUTI, (__bridge CFStringRef)ourUTI);
+        isText = UTTypeConformsTo((__bridge CFStringRef)currentUTI, (__bridge CFStringRef)@"public.text");
+        isPlainText = UTTypeConformsTo((__bridge CFStringRef)currentUTI, (__bridge CFStringRef)@"public.plain-text");
+        isSource = UTTypeConformsTo((__bridge CFStringRef)currentUTI, (__bridge CFStringRef)@"public.source-code");
+        
+        if (isOurUTI || isText || isPlainText || isSource) {
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
 + (void)showUnsupportedFileDialog
