@@ -97,7 +97,7 @@
 - (void)setLine:(NSAttributedString *)line
 {
     _line = line;
-    _codeLine.attributedText = _line;
+    _codeLine.attributedText = [[NSAttributedString alloc] initWithAttributedString:_line];
     _lineNumberLabel.text = @"";
 }
 
@@ -142,9 +142,7 @@
                    self.contentView.bounds.size.width - SIZE_CODEVIEW_PADDING_LINENUMBERS,
                    self.contentView.bounds.size.height);
     }
-    @autoreleasepool {
-        [_codeLine sizeToFit];
-    }
+    [_codeLine sizeToFit];
 }
 
 - (UIView *)backgroundView
