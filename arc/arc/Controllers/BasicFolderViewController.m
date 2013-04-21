@@ -8,8 +8,6 @@
 
 #import "BasicFolderViewController.h"
 
-NSString* const FOLDER_VIEW_SECTION_HEADING_KEY = @"section heading";
-NSString* const FOLDER_VIEW_SECTION_ITEMS_KEY = @"section items";
 NSString* const FOLDER_VIEW_FOLDERS = @"Folders";
 NSString* const FOLDER_VIEW_FILES = @"Files";
 
@@ -38,27 +36,18 @@ NSString* const FOLDER_VIEW_FILES = @"Files";
     NSArray *fileObjects = (NSArray*)[_folder contents];
     
     // Temporary buckets to hold different file object types
-    NSMutableArray *folders = [NSMutableArray array];
-    NSMutableArray *files = [NSMutableArray array];
+    FileSystemObjectGroup *folders = [[FileSystemObjectGroup alloc] initWithName:FOLDER_VIEW_FOLDERS];
+    FileSystemObjectGroup *files = [[FileSystemObjectGroup alloc] initWithName:FOLDER_VIEW_FILES];
     
     for (id<FileSystemObject> fileSystemObject in fileObjects) {
         if ([[fileSystemObject class] conformsToProtocol:@protocol(File)]) {
-            [files addObject:fileSystemObject];
+            [files addFileSystemObject:fileSystemObject];
         } else if ([[fileSystemObject class] conformsToProtocol:@protocol(Folder) ]) {
-            [folders addObject:fileSystemObject];
+            [folders addFileSystemObject:fileSystemObject];
         }
     }
     
-    _filesAndFolders = @[
-                         @{
-                             FOLDER_VIEW_SECTION_HEADING_KEY: FOLDER_VIEW_FOLDERS,
-                             FOLDER_VIEW_SECTION_ITEMS_KEY: folders
-                             },
-                         @{
-                             FOLDER_VIEW_SECTION_HEADING_KEY: FOLDER_VIEW_FILES,
-                             FOLDER_VIEW_SECTION_ITEMS_KEY: files
-                             }
-                         ];
+    _filesAndFolders = @[files, folders];
 }
 
 - (void)setFilesAndFolders:(NSArray *)filesAndFolders
@@ -102,27 +91,25 @@ NSString* const FOLDER_VIEW_FILES = @"Files";
 
 #pragma mark - Data Source Accessor Methods
 
-- (NSDictionary *)sectionDictionary:(NSInteger)section
+- (FileSystemObjectGroup *)sectionObjectGroup:(NSInteger)section
 {
-    return (NSDictionary *)[_filesAndFolders objectAtIndex:section];
+    return (FileSystemObjectGroup *)[_filesAndFolders objectAtIndex:section];
 }
 
 - (NSString *)sectionHeading:(NSInteger)section
 {
-    return [[self sectionDictionary:section] objectForKey:FOLDER_VIEW_SECTION_HEADING_KEY];
+    return [[self sectionObjectGroup:section] groupName];
 }
 
-- (NSMutableArray *)sectionItems:(NSInteger)section
+- (NSArray *)sectionItems:(NSInteger)section
 {
-    return (NSMutableArray *)[[self sectionDictionary:section]
-                              objectForKey:FOLDER_VIEW_SECTION_ITEMS_KEY];
+    return [[self sectionObjectGroup:section] items];
 }
 
 - (id<FileSystemObject>)sectionItem:(NSIndexPath *)indexPath
 {
     return [[self sectionItems:indexPath.section] objectAtIndex:indexPath.row];
 }
-
 
 #pragma mark - Table view data source
 
@@ -136,7 +123,7 @@ NSString* const FOLDER_VIEW_FILES = @"Files";
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return [[self sectionItems:section] count];
+    return [[self sectionObjectGroup:section] length];
 }
 
 // Returns the header for the given section.

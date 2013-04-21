@@ -67,6 +67,7 @@
 		4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C963C81170D8E96004FDACB /* CodeLineCell.m */; };
 		4C9C7C211723B17900DBFA13 /* FolderViewSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C201723B17900DBFA13 /* FolderViewSectionHeader.m */; };
 		4C9C7C291723B87B00DBFA13 /* BasicFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C281723B87B00DBFA13 /* BasicFolderViewController.m */; };
+		4C9C7C2E1723C99400DBFA13 /* FileSystemObjectGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C2D1723C99400DBFA13 /* FileSystemObjectGroup.m */; };
 		4C9E0619170F3AFC0000F783 /* arc72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E0618170F3AFC0000F783 /* arc72.png */; };
 		4C9E061B170F3B1A0000F783 /* arc144.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E061A170F3B1A0000F783 /* arc144.png */; };
 		4CC9E0ED171C4C580062C825 /* arcMonokai72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC9E0EC171C4C580062C825 /* arcMonokai72.png */; };
@@ -502,6 +503,8 @@
 		4C9C7C201723B17900DBFA13 /* FolderViewSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderViewSectionHeader.m; sourceTree = "<group>"; };
 		4C9C7C271723B87B00DBFA13 /* BasicFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicFolderViewController.h; sourceTree = "<group>"; };
 		4C9C7C281723B87B00DBFA13 /* BasicFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicFolderViewController.m; sourceTree = "<group>"; };
+		4C9C7C2C1723C99400DBFA13 /* FileSystemObjectGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemObjectGroup.h; sourceTree = "<group>"; };
+		4C9C7C2D1723C99400DBFA13 /* FileSystemObjectGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSystemObjectGroup.m; sourceTree = "<group>"; };
 		4C9DC9021719B64A00142E70 /* SyntaxHighlightingPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlightingPluginDelegate.h; sourceTree = "<group>"; };
 		4C9E0618170F3AFC0000F783 /* arc72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc72.png; sourceTree = SOURCE_ROOT; };
 		4C9E061A170F3B1A0000F783 /* arc144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc144.png; sourceTree = SOURCE_ROOT; };
@@ -1160,6 +1163,8 @@
 				FC4B269D16F88CB800E1DC49 /* FolderViewController.m */,
 				4C9C7C271723B87B00DBFA13 /* BasicFolderViewController.h */,
 				4C9C7C281723B87B00DBFA13 /* BasicFolderViewController.m */,
+				4C9C7C2C1723C99400DBFA13 /* FileSystemObjectGroup.h */,
+				4C9C7C2D1723C99400DBFA13 /* FileSystemObjectGroup.m */,
 			);
 			name = FolderViewController;
 			sourceTree = "<group>";
@@ -2219,6 +2224,7 @@
 				4C7A82BF1722512B00B7D229 /* ArcSplitViewController.m in Sources */,
 				4C9C7C211723B17900DBFA13 /* FolderViewSectionHeader.m in Sources */,
 				4C9C7C291723B87B00DBFA13 /* BasicFolderViewController.m in Sources */,
+				4C9C7C2E1723C99400DBFA13 /* FileSystemObjectGroup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -278,7 +278,8 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         id<FileSystemObject> fileObject = [self sectionItem:indexPath];
         if ([fileObject remove]) {
-            [[self sectionItems:indexPath.section] removeObjectAtIndex:indexPath.row];
+            [[self sectionObjectGroup:indexPath.section]
+             removeFileSystemObject:[self sectionItem:indexPath]];
             [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                              withRowAnimation:UITableViewRowAnimationAutomatic];
         }
