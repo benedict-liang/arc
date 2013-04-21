@@ -330,10 +330,13 @@
         NSString* begin = [syntaxItem objectForKey:@"begin"];
         NSString* end = [syntaxItem objectForKey:@"end"];
         NSRange bresult = [self findFirstPattern:begin range:range content:_content];
-        CFIndex bEnds = bresult.location+bresult.length;
+        if (bresult.location > _content.length) {
+            continue;
+        }
+        CFIndex bEnds = bresult.location+bresult.length+1;
         NSRange eresult = [self findFirstPattern:end range:NSMakeRange(bEnds, _content.length - bEnds) content:_content];
         
-        if (minBegin.location > bresult.location && eresult.location < _content.length) {
+        if (minBegin.location > bresult.location && eresult.location < _content.length && bresult.location < _content.length && eresult.location > bresult.location) {
             minBegin = bresult;
             minSyntax = syntaxItem;
             minEnd = eresult;
@@ -364,7 +367,7 @@
             iterRange = NSMakeRange(eEnds, _content.length - eEnds);
             
         } else {
-            break;
+            return;
         }
     }
     
@@ -481,6 +484,11 @@
                 NSArray* embedPatterns = [syntaxItem objectForKey:@"patterns"];
                 NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
                 //case name, match
+                if ([_overlays containsObject:capturableScopes[0] ]) {
+                    [_overlapAccum addObject:syntaxItem];
+                    continue;
+                }
+
                 if (name && match) {
                     NSArray *a = [self foundPattern:match
                                               range:contentRange];
@@ -511,16 +519,11 @@
                 
                 //matching blocks
                 if (begin && end) {
-                    if ([_overlays containsObject:capturableScopes[0] ]) {
-                        [_overlapAccum addObject:syntaxItem];
-                    } else {
-                        [self processPairRange:contentRange
-                                          item:syntaxItem
-                                        output:output
-                                   PairMatches:pairMatches
-                                ContentMatches:contentNameMatches];
-                    }
-
+                    [self processPairRange:contentRange
+                                      item:syntaxItem
+                                    output:output
+                               PairMatches:pairMatches
+                            ContentMatches:contentNameMatches];
                     
                 } else if (embedPatterns) {
                     [self iterPatternsForRange:contentRange patterns:embedPatterns output:output];
@@ -541,7 +544,7 @@
 //    
 //    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     }
-    //NSLog(@"%@",_overlapAccum);
+    NSLog(@"%@",_overlapAccum);
     [self handleOverlaps:_overlapAccum];
 }
 
@@ -617,10 +620,10 @@
 
     if (!_matchesDone) {
         NSMutableArray* patterns = [NSMutableArray arrayWithArray:[_bundle objectForKey:@"patterns"]];
-        NSDictionary* repo = [_bundle objectForKey:@"repository"];
-        for (id k in repo) {
-            [patterns addObject:[repo objectForKey:k]];
-        }
+//        NSDictionary* repo = [_bundle objectForKey:@"repository"];
+//        for (id k in repo) {
+//            [patterns addObject:[repo objectForKey:k]];
+//        }
         
         [self iterPatternsForRange:NSMakeRange(0, [_content length])
                           patterns:patterns
