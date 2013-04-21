@@ -355,6 +355,20 @@
     NSLog(@"results:%@", result.value);
     
 }
+
+- (ParcoaParser*)chooseBetween:(NSArray*)parsers {
+    return [ParcoaParser parserWithBlock:^ParcoaResult* (NSString* input){
+        NSRange first = NSMakeRange(_content.length - 1, 0);
+        
+        for (ParcoaParser* parser in parsers) {
+            ParcoaResult* result = [parser parse:input];
+            if (result.isOK) {
+                NSArray* pair = result.value;
+                
+            }
+        }
+    } name:@"chooseBetween" summary:nil];
+}
 - (void)processPairRange:(NSRange)contentRange
                     item:(NSDictionary*)syntaxItem
                   output:(ArcAttributedString*)output
@@ -390,6 +404,8 @@
     NSLog(@"name = %@, ranges = %@",name, result.value);
     
     [_parserAccum addObject:pairParser];
+    
+    
     //ParcoaResult* beginResult = [beginParser parse:[_content substringWithRange:contentRange]];
     //NSLog(@"beginRange: %@", beginResult.value);
     
