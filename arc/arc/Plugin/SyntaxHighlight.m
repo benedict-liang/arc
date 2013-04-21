@@ -344,30 +344,48 @@
             } else {
                 key = scope;
             }
-            return [ParcoaResult ok:@{@"scope":scope,@"range":[Utils valueFromRange:beginRange]} residual:remaining expected:[ParcoaExpectation unsatisfiable]];
+            return [ParcoaResult ok:@{@"scope":key,@"range":[Utils valueFromRange:beginRange]} residual:remaining expected:[ParcoaExpectation unsatisfiable]];
         }
     } name:name summary:nil];
 }
 - (void)parsePairsForInput:(NSString*)input {
-    ParcoaParser* pairs = [Parcoa many:[Parcoa choice:_parserAccum]];
+    ParcoaParser* pairs = [SyntaxHighlight chooseBetween:_parserAccum];
     NSLog(@"%@",_parserAccum);
     ParcoaResult* result = [pairs parse:input];
     NSLog(@"results:%@", result.value);
     
 }
 
-- (ParcoaParser*)chooseBetween:(NSArray*)parsers {
++ (ParcoaParser*)chooseBetween:(NSArray*)parsers {
     return [ParcoaParser parserWithBlock:^ParcoaResult* (NSString* input){
-        NSRange first = NSMakeRange(_content.length - 1, 0);
-        
+        NSRange first = NSMakeRange(NSNotFound, 0);
+        NSArray* val = nil;
         for (ParcoaParser* parser in parsers) {
             ParcoaResult* result = [parser parse:input];
             if (result.isOK) {
                 NSArray* pair = result.value;
-                
+                NSRange resRange = [Utils rangeFromValue:[(NSDictionary*)pair[0] objectForKey:@"range"]];
+                if (resRange.location < first.location) {
+                    first = resRange;
+                    val = result.value;
+                }
             }
         }
+        if (!val) {
+            return [ParcoaResult failWithRemaining:input expected:[ParcoaExpectation unsatisfiable]];
+        }
+        return [ParcoaResult ok:val residual:[input substringFromIndex:first.location] expected:[ParcoaExpectation unsatisfiable]];
     } name:@"chooseBetween" summary:nil];
+}
+
++ (ParcoaParser*)manyChoose:(ParcoaParser*)chooseBetween {
+    return [ParcoaParser parserWithBlock:^ParcoaResult* (NSString* input) {
+        NSMutableArray* accum = [NSMutableArray array];
+        ParcoaResult* result = [chooseBetween parse:input];
+        while (result.isOK) {
+            
+        }
+    } name:@"manyChoose" summary:nil];
 }
 - (void)processPairRange:(NSRange)contentRange
                     item:(NSDictionary*)syntaxItem
