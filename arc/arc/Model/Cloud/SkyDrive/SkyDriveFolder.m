@@ -111,20 +111,25 @@
             NSString *name = [result valueForKey:@"name"];
             NSString *identifier = [result valueForKey:@"id"];
             
-            if ([type isEqualToString:@"file"]) {
-                NSString *size = [result valueForKey:@"size"];
-                SkyDriveFile *newFile = [[SkyDriveFile alloc] initWithName:name identifier:identifier size:[size floatValue]];
-                _contents = [_contents arrayByAddingObject:newFile];
-            } else if ([type isEqualToString:@"folder"]) {
-                SkyDriveFolder *newFolder = [[SkyDriveFolder alloc] initWithName:name identifier:identifier parent:self];
-                _contents = [_contents arrayByAddingObject:newFolder];
-            } else {
-                // Do nothing. This is audio, a photo, or a video.
+            NSArray *filteredArray = [_contents filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+                return [[(id<FileSystemObject>)evaluatedObject identifier] isEqualToString:identifier];
+            }]];
+            if ([filteredArray count] == 0) {
+                if ([type isEqualToString:@"file"]) {
+                    NSString *size = [result valueForKey:@"size"];
+                    SkyDriveFile *newFile = [[SkyDriveFile alloc] initWithName:name identifier:identifier size:[size floatValue]];
+                    _contents = [_contents arrayByAddingObject:newFile];
+                } else if ([type isEqualToString:@"folder"]) {
+                    SkyDriveFolder *newFolder = [[SkyDriveFolder alloc] initWithName:name identifier:identifier parent:self];
+                    _contents = [_contents arrayByAddingObject:newFolder];
+                } else {
+                    // Do nothing. This is audio, a photo, or a video.
+                }
+                _contents = [_contents sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                    return [[obj1 name] compare:[obj2 name] options:NSCaseInsensitiveSearch];
+                }];
+                [_delegate folderContentsUpdated:self];
             }
-            _contents = [_contents sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                return [[obj1 name] compare:[obj2 name] options:NSCaseInsensitiveSearch];
-            }];
-            [_delegate folderContentsUpdated:self];
         }
             break;
     }
