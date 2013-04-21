@@ -14,10 +14,12 @@
 #import "LoadingOverlayViewController.h"
 #import "FileObjectTableViewCell.h"
 
-@interface CloudPickerViewController : UIViewController <CloudFolderDelegate, UITableViewDataSource, UITableViewDelegate, CloudServiceManagerDelegate>
+@interface CloudPickerViewController : UIViewController <CloudFolderDelegate,
+    UITableViewDataSource, UITableViewDelegate, CloudServiceManagerDelegate>
 
 @property (weak, nonatomic) id<CloudPickerViewControllerDelegate> delegate;
 
-- (id)initWithCloudFolder:(id<CloudFolder>)folder targetFolder:(LocalFolder *)target serviceManager:(id<CloudServiceManager>)serviceManager;
-
+- (id)initWithCloudFolder:(id<CloudFolder>)folder
+             targetFolder:(LocalFolder *)target
+           serviceManager:(id<CloudServiceManager>)serviceManager;
 @end

@@ -9,12 +9,10 @@
 #import "LoadingOverlayViewController.h"
 
 @interface LoadingOverlayViewController ()
-
 @property CGRect frame;
 @property UIActivityIndicatorView *spinnerView;
 @property UILabel *loadingLabel;
 @property UIView *spinnerContainer;
-
 @end
 
 @implementation LoadingOverlayViewController
@@ -61,14 +59,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     [_spinnerView startAnimating];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
