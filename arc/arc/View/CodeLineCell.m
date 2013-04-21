@@ -142,7 +142,9 @@
                    self.contentView.bounds.size.width - SIZE_CODEVIEW_PADDING_LINENUMBERS,
                    self.contentView.bounds.size.height);
     }
-    [_codeLine sizeToFit];
+    @autoreleasepool {
+        [_codeLine sizeToFit];
+    }
 }
 
 - (UIView *)backgroundView
