@@ -388,7 +388,8 @@
             NSString* name = [syntaxItem objectForKey:@"name"];
             NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
             [self addRange:peekRes.matchRange scope:name dict:overlapMatches capturableScopes:capturableScopes];
-
+            CFIndex matchEnds = peekRes.matchRange.location+peekRes.matchRange.length;
+            iterRange = NSMakeRange(matchEnds, _content.length - matchEnds);
         }
         else {
             return;
@@ -568,7 +569,7 @@
 //    
 //    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     }
-    NSLog(@"%@",_overlapAccum);
+    //NSLog(@"%@",_overlapAccum);
     [self handleOverlaps:_overlapAccum];
 }
 
