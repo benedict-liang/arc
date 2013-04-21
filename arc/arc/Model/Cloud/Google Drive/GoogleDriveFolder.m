@@ -121,9 +121,11 @@
             GoogleDriveFolder *newFolder = [[GoogleDriveFolder alloc] initWithName:fileName identifier:[file identifier] parent:self];
             _contents = [_contents arrayByAddingObject:newFolder];
         } else {
-            // This must be a file.
-            GoogleDriveFile *newFile = [[GoogleDriveFile alloc] initWithName:fileName identifier:filePath size:[fileSize floatValue]];
-            _contents = [_contents arrayByAddingObject:newFile];
+            // This must be a file. Add it if we have a download URL.
+            if (filePath != nil) {
+                GoogleDriveFile *newFile = [[GoogleDriveFile alloc] initWithName:fileName identifier:filePath size:[fileSize floatValue]];
+                _contents = [_contents arrayByAddingObject:newFile];
+            }
         }
         [_delegate folderContentsUpdated:self];
     } else {
