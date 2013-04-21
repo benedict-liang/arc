@@ -22,39 +22,13 @@
     return [[GoogleDriveFolder alloc] initWithName:@"Google Drive" identifier:@"root" parent:nil];
 }
 
-- (id <FileSystemObject>)objectAtPath:(NSString *)path
 {
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"GoogleDriveFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
 }
 
-- (BOOL)takeFileSystemObject:(id <FileSystemObject>)target
-{
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"GoogleDriveFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
-}
-
-- (id <FileSystemObject>)retrieveItemWithName:(NSString *)name
-{
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"GoogleDriveFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
-}
-
-- (id <Folder>)createFolderWithName:(NSString *)name
-{
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"GoogleDriveFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
-}
-
-- (BOOL)rename:(NSString *)name
-{
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"GoogleDriveFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
-}
 
 - (float)size
 {
     return [_contents count];
-}
-
-- (BOOL)remove
-{
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:[NSString stringWithFormat:@"GoogleDriveFolder doesn't allow %@", NSStringFromSelector(_cmd)] userInfo:nil];
 }
 
 - (id)initWithName:(NSString *)name identifier:(NSString *)path parent:(id <FileSystemObject>)parent
