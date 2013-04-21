@@ -11,10 +11,16 @@
 @interface UI : NSObject
 + (void)exec;
 
-// Colors
+// properties
 + (UIColor *)navigationBarColor;
 + (UIColor *)navigationBarButtonColor;
 + (UIColor *)toolBarColor;
 + (UIColor *)fontColor;
 + (NSString *)fontName;
++ (UIFont *)toolBarTitleFont;
+
+// Images
++ (NSString *)folderImage;
++ (NSString *)fileImage;
++ (NSString *)fileImageHighlighted;
 @end

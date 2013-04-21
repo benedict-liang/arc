@@ -96,7 +96,7 @@
     _toolbarTitle.backgroundColor = [UIColor clearColor];
     _toolbarTitle.textAlignment = NSTextAlignmentCenter;
     _toolbarTitle.textColor = [UIColor whiteColor];
-    _toolbarTitle.font = [UIFont fontWithName:@"Helvetica Neue" size:20];
+    _toolbarTitle.font = [UI toolBarTitleFont];
     [_toolbar addSubview:_toolbarTitle];
 
     [self setUpDefaultToolBar];

@@ -85,4 +85,24 @@
                                     barMetrics:UIBarMetricsDefault];
 }
 
++ (UIFont *)toolBarTitleFont
+{
+    return [UIFont fontWithName:[UI fontName] size:20];
+}
+
++ (NSString *)folderImage
+{
+    return @"folder.png";
+}
+
++ (NSString *)fileImage
+{
+    return @"file";
+}
+
++ (NSString *)fileImageHighlighted
+{
+    return @"file_white";   
+}
+
 @end

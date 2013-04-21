@@ -19,8 +19,8 @@ const NSString *FOLDERCELL_REUSE_IDENTIFIER = @"folderCell";
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:17];
-        self.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+        self.textLabel.font = [UIFont fontWithName:[UI fontName] size:17];
+        self.detailTextLabel.font = [UIFont fontWithName:[UI fontName] size:12];
         
         if ([reuseIdentifier isEqualToString:(NSString *)FILECELL_REUSE_IDENTIFIER]) {
             [self setUpFileCellImageView];
@@ -34,23 +34,23 @@ const NSString *FOLDERCELL_REUSE_IDENTIFIER = @"folderCell";
 
 - (void)setUpFileCellImageView
 {
-    self.imageView.image = [Utils scale:[UIImage imageNamed:@"file.png"]
+    self.imageView.image = [Utils scale:[UIImage imageNamed:[UI fileImage]]
                                  toSize:CGSizeMake(35, 35)];
-    self.imageView.highlightedImage = [Utils scale:[UIImage imageNamed:@"file_white.png"]
+    self.imageView.highlightedImage = [Utils scale:[UIImage imageNamed:[UI fileImageHighlighted]]
                                             toSize:CGSizeMake(35, 35)];
 }
 
 - (void)setUpFolderCellImageView
 {
-    self.imageView.image = [Utils scale:[UIImage imageNamed:@"folder.png"]
+    self.imageView.image = [Utils scale:[UIImage imageNamed:[UI folderImage]]
                                  toSize:CGSizeMake(35, 35)];
 }
 
 - (void)setUpSelection
 {
-    UIView *backgoundView = [[UIView alloc] init];
-    backgoundView.backgroundColor = [Utils colorWithHexString:@"ee151512"];
-    self.selectedBackgroundView = backgoundView;
+    UIView *backgroundView = [[UIView alloc] init];
+    backgroundView.backgroundColor = [Utils lightenColor:[UI navigationBarColor] byPercentage:30];
+    self.selectedBackgroundView = backgroundView;
 }
 
 - (void)setFileSystemObject:(id<FileSystemObject>)fileSystemObject
@@ -107,7 +107,7 @@ const NSString *FOLDERCELL_REUSE_IDENTIFIER = @"folderCell";
         self.selectedBackgroundView.backgroundColor = [UIColor clearColor];
     } else {
         self.selectedBackgroundView.backgroundColor =
-        [Utils colorWithHexString:@"ee151512"];
+        [Utils lightenColor:[UI navigationBarColor] byPercentage:30];;
     }
 }
 
