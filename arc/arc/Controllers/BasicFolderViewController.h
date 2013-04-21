@@ -18,9 +18,16 @@
 - (void)setUpTableView;
 - (void)didPopFromNavigationController;
 
+@property (nonatomic, readonly) id<Folder> folder;
+@property (nonatomic, readonly) UITableView *tableView;
+
 // TableView Delegate and Datasource
 @property (nonatomic, strong) id<UITableViewDelegate> tableViewDelegate;
 @property (nonatomic, strong) id<UITableViewDataSource> tableViewDataSource;
+
+- (void)tableView:(UITableView *)tableView
+  willPresentCell:(FileObjectTableViewCell *)cell
+      atIndexPath:(NSIndexPath *)indexPath;
 
 // Data source Accessor Methods
 - (NSDictionary *)sectionDictionary:(NSInteger)section;
