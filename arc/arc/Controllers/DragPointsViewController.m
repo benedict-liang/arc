@@ -99,8 +99,10 @@
                                            selectedRect.origin.y,
                                            DRAG_POINT_WIDTH,
                                            selectedRect.size.height);
+//    _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame
+//                                                  andImageName:@"leftDragPoint.png"];
     _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame
-                                                  andImageName:@"leftDragPoint.png"];
+                                                       andType:kLeft];
     
     CGRect rightDragPointFrame = CGRectMake(selectedRect.origin.x + selectedRect.size.width - DRAG_POINT_WIDTH / 2,
                                             selectedRect.origin.y,
