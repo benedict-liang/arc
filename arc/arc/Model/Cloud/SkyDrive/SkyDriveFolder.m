@@ -23,7 +23,9 @@
     return [[SkyDriveFolder alloc] initWithName:@"SkyDrive" identifier:SKYDRIVE_STRING_ROOT_FOLDER parent:nil];
 }
 
+- (BOOL)hasOngoingOperations
 {
+    return [_operations count] > 0;
 }
 
 - (float)size

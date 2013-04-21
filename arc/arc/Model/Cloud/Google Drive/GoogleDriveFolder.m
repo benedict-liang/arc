@@ -22,7 +22,9 @@
     return [[GoogleDriveFolder alloc] initWithName:@"Google Drive" identifier:@"root" parent:nil];
 }
 
+- (BOOL)hasOngoingOperations
 {
+    return [_operations count] > 0;
 }
 
 
