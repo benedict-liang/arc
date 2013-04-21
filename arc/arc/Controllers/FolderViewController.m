@@ -231,16 +231,14 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)showEditToolbarAnimate:(BOOL)animate
 {
     CGRect endState = CGRectMake(0, self.view.frame.size.height - 44,
-                                    self.view.frame.size.width, 44);
+                                 self.view.frame.size.width, 44);
     if (!animate) {
         _editToolbar.frame = endState;
-        return;
+    } else {
+        [UIView animateWithDuration:0.3 animations:^{
+            _editToolbar.frame = endState;
+        }];   
     }
-
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
-    _editToolbar.frame = endState;
-    [UIView commitAnimations];
 }
 
 - (void)hideEditToolbarAnimate:(BOOL)animate
@@ -249,26 +247,21 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
                                  self.view.frame.size.width, 44);
     if (!animate) {
         _editToolbar.frame = endState;
-        return;
+    } else {
+        [UIView animateWithDuration:0.3 animations:^{
+            _editToolbar.frame = endState;
+        }];
     }
-
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
-    _editToolbar.frame = endState;
-    [UIView commitAnimations];
 }
 
 - (void)deleteItems:(id)sender
 {
     for (NSIndexPath *indexPath in _editSelection) {
-        id<FileSystemObject> fileObject = [self sectionItem:indexPath];
-        [fileObject remove];
+        [[self sectionItem:indexPath] remove];
     }
-
     [self setUpFolderContents];
-
     [self.tableView deleteRowsAtIndexPaths:_editSelection
-                      withRowAnimation:UITableViewRowAnimationAutomatic];
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)moveItems:(id)sender
@@ -284,7 +277,6 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         id<FileSystemObject> fileObject = [self sectionItem:indexPath];
-
         if ([fileObject remove]) {
             [[self sectionItems:indexPath.section] removeObjectAtIndex:indexPath.row];
             [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
@@ -310,13 +302,12 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
     // Hide the add folder popover.
     if ([_addFolderPopoverController isPopoverVisible]) {
         [_addFolderPopoverController dismissPopoverAnimated:YES];
+        return;
     }
 
     if ([_addItemActionSheet isVisible]) {
         [_addItemActionSheet dismissWithClickedButtonIndex:-1 animated:YES];
-    }
-
-    else {
+    } else {
         if ([self.folder isKindOfClass:[DropBoxFolder class]]) {
             _addItemActionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                               delegate:self
@@ -331,7 +322,8 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
                                                      otherButtonTitles:@"New Folder", @"File from SkyDrive", @"File from Google Drive", nil];
         }
         
-        [_addItemActionSheet showFromBarButtonItem:_addItemButton animated:YES];
+        [_addItemActionSheet showFromBarButtonItem:_addItemButton
+                                          animated:YES];
     }
 }
 
@@ -416,7 +408,6 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.folder createFolderWithName:name];
     [self refreshFolderView];
-    
     [_addFolderPopoverController dismissPopoverAnimated:YES];
 }
 
