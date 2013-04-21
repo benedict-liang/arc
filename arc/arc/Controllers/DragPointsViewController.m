@@ -455,7 +455,7 @@
 - (void)applyBackgroundColorWithSelectedTextRange
 {
     [_codeViewController removeBackgroundColorForSetting:KEY_COPY_SETTINGS];
-    [_codeViewController setBackgroundColorForString:[UIColor blueColor]
+    [_codeViewController setBackgroundColorForString:[self selectionColor]
                                            WithRange:_selectedTextRange
                                           forSetting:KEY_COPY_SETTINGS];
     
@@ -479,7 +479,7 @@
 - (void)applyBackgroundColorWithSelectedTextRangeForRow:(NSIndexPath *)indexPath
 {
     [_codeViewController removeBackgroundColorForSetting:KEY_COPY_SETTINGS];
-    [_codeViewController setBackgroundColorForString:[UIColor blueColor]
+    [_codeViewController setBackgroundColorForString:[self selectionColor]
                                            WithRange:_selectedTextRange
                                           forSetting:KEY_COPY_SETTINGS];
     
@@ -611,6 +611,10 @@
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:indexPath];
     int totalGap = cell.lineNumberWidth + SIZE_CODEVIEW_PADDING_LINENUMBERS;
     return totalGap;
+}
+
+- (UIColor*)selectionColor {
+    return [UIColor colorWithRed:0.847 green:0.863 blue:1.0 alpha:1.0];
 }
 
 #pragma mark - UIGestureRecognizerDelegate Methods
