@@ -114,7 +114,7 @@
                                  toFolder:_target];
             [self folderContentsUpdated:self.folder];
         } else {
-            [[[UIAlertView alloc] initWithTitle:@"Unsupported File" message:@"Sorry, (arc) doesn't support this file type." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+            [Utils showUnsupportedFileDialog];
         }
     } else {
         CloudPickerViewController *newFolderController =

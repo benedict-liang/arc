@@ -57,4 +57,6 @@
 + (void)removeAllGestureRecognizersFrom:(UIView *)view;
 
 + (BOOL)isFileSupported:(NSString *)name;
+
++ (void)showUnsupportedFileDialog;
 @end
