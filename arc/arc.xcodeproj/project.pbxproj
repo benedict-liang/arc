@@ -54,6 +54,9 @@
 		4C9137281715B9D900413C79 /* Solarized (dark).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = 4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */; };
 		4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C963C81170D8E96004FDACB /* CodeLineCell.m */; };
 		4C9C7C211723B17900DBFA13 /* FolderViewSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C201723B17900DBFA13 /* FolderViewSectionHeader.m */; };
+		4C9C7C291723B87B00DBFA13 /* BasicFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C281723B87B00DBFA13 /* BasicFolderViewController.m */; };
+		4C9C7C2E1723C99400DBFA13 /* FileSystemObjectGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C2D1723C99400DBFA13 /* FileSystemObjectGroup.m */; };
+		4C9C7C361723CEE300DBFA13 /* DestinationFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C351723CEE300DBFA13 /* DestinationFolderViewController.m */; };
 		4C9E0619170F3AFC0000F783 /* arc72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E0618170F3AFC0000F783 /* arc72.png */; };
 		4C9E061B170F3B1A0000F783 /* arc144.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E061A170F3B1A0000F783 /* arc144.png */; };
 		4CC9E0ED171C4C580062C825 /* arcMonokai72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC9E0EC171C4C580062C825 /* arcMonokai72.png */; };
@@ -416,7 +419,7 @@
 		020C128D171ABACC00603229 /* GoogleDriveFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveFile.m; sourceTree = "<group>"; };
 		020C128F171AC14500603229 /* GoogleDriveDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleDriveDownloadHelper.h; sourceTree = "<group>"; };
 		020C1290171AC14600603229 /* GoogleDriveDownloadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveDownloadHelper.m; sourceTree = "<group>"; };
-		023D4AFA171D1AAF00D9F60D /* CloudPickerViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudPickerViewControllerDelegate.h; sourceTree = "<group>"; };
+		023D4AFA171D1AAF00D9F60D /* PresentingModalViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentingModalViewControllerDelegate.h; sourceTree = "<group>"; };
 		025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		0260B50A1709286E0091B012 /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Folder.h; path = Protocols/Folder.h; sourceTree = "<group>"; };
 		0260B50B170928820091B012 /* FileSystemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystemObject.h; path = Protocols/FileSystemObject.h; sourceTree = "<group>"; };
@@ -477,6 +480,12 @@
 		4C963C81170D8E96004FDACB /* CodeLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeLineCell.m; sourceTree = "<group>"; };
 		4C9C7C1F1723B17900DBFA13 /* FolderViewSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewSectionHeader.h; sourceTree = "<group>"; };
 		4C9C7C201723B17900DBFA13 /* FolderViewSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderViewSectionHeader.m; sourceTree = "<group>"; };
+		4C9C7C271723B87B00DBFA13 /* BasicFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicFolderViewController.h; sourceTree = "<group>"; };
+		4C9C7C281723B87B00DBFA13 /* BasicFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicFolderViewController.m; sourceTree = "<group>"; };
+		4C9C7C2C1723C99400DBFA13 /* FileSystemObjectGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemObjectGroup.h; sourceTree = "<group>"; };
+		4C9C7C2D1723C99400DBFA13 /* FileSystemObjectGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSystemObjectGroup.m; sourceTree = "<group>"; };
+		4C9C7C341723CEE300DBFA13 /* DestinationFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DestinationFolderViewController.h; sourceTree = "<group>"; };
+		4C9C7C351723CEE300DBFA13 /* DestinationFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DestinationFolderViewController.m; sourceTree = "<group>"; };
 		4C9DC9021719B64A00142E70 /* SyntaxHighlightingPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlightingPluginDelegate.h; sourceTree = "<group>"; };
 		4C9E0618170F3AFC0000F783 /* arc72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc72.png; sourceTree = SOURCE_ROOT; };
 		4C9E061A170F3B1A0000F783 /* arc144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc144.png; sourceTree = SOURCE_ROOT; };
@@ -1060,6 +1069,32 @@
 			name = ArcAttributedString;
 			sourceTree = "<group>";
 		};
+		4C6B0901171EE242009DB903 /* CodeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */,
+				8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */,
+				4C6B0906171EE27A009DB903 /* CodeViewLine.h */,
+				4C6B0907171EE27A009DB903 /* CodeViewLine.m */,
+			);
+			name = CodeViewController;
+			sourceTree = "<group>";
+		};
+		4C6B090B171EEBD1009DB903 /* FolderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4C9C7C341723CEE300DBFA13 /* DestinationFolderViewController.h */,
+				4C9C7C351723CEE300DBFA13 /* DestinationFolderViewController.m */,
+				FC4B269C16F88CB800E1DC49 /* FolderViewController.h */,
+				FC4B269D16F88CB800E1DC49 /* FolderViewController.m */,
+				4C9C7C271723B87B00DBFA13 /* BasicFolderViewController.h */,
+				4C9C7C281723B87B00DBFA13 /* BasicFolderViewController.m */,
+				4C9C7C2C1723C99400DBFA13 /* FileSystemObjectGroup.h */,
+				4C9C7C2D1723C99400DBFA13 /* FileSystemObjectGroup.m */,
+			);
+			name = FolderViewController;
+			sourceTree = "<group>";
+		};
 		4C9C7C1A1723B15200DBFA13 /* FolderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1134,7 +1169,7 @@
 				4C1AF11F1715119300A2D0D8 /* FolderViewControllerDelegate.h */,
 				02C2E4841715594300C912E0 /* CreateFolderViewControllerDelegate.h */,
 				027EE0381717FD7800302F07 /* LongSettingListViewControllerDelegate.h */,
-				023D4AFA171D1AAF00D9F60D /* CloudPickerViewControllerDelegate.h */,
+				023D4AFA171D1AAF00D9F60D /* PresentingModalViewControllerDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -2216,6 +2251,9 @@
 				FCBD8331171DE013005E2B31 /* CodeFolding.m in Sources */,
 				4C6B0911171EEC22009DB903 /* FileObjectTableViewCell.m in Sources */,
 				4C9C7C211723B17900DBFA13 /* FolderViewSectionHeader.m in Sources */,
+				4C9C7C291723B87B00DBFA13 /* BasicFolderViewController.m in Sources */,
+				4C9C7C2E1723C99400DBFA13 /* FileSystemObjectGroup.m in Sources */,
+				4C9C7C361723CEE300DBFA13 /* DestinationFolderViewController.m in Sources */,
 				8FE003A91723D0C20013B9AC /* CreateFolderViewController.m in Sources */,
 				8FE003AA1723D0C20013B9AC /* ResultsTableViewController.m in Sources */,
 				8FE003B21723D0F50013B9AC /* ArcSplitViewController.m in Sources */,

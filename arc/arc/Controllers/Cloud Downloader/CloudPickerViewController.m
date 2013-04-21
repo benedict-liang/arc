@@ -77,7 +77,7 @@
     _closeButton =
     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
                                                   target:self
-                                                  action:@selector(shouldClose)];
+                                                  action:@selector(shouldClose:)];
     self.navigationItem.rightBarButtonItem = _closeButton;
     self.view.autoresizesSubviews = YES;
     self.navigationItem.title = self.folder.name;
@@ -91,10 +91,10 @@
 //    [[self view] insertSubview:[_loadingOverlayController view] aboveSubview:_tableView];
 }
 
-- (void)shouldClose
+- (void)shouldClose:(id)sender
 {
     [self.folder cancelOperations];
-    [_delegate cloudPickerDone:self];
+    [_delegate modalViewControllerDone:nil];
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView

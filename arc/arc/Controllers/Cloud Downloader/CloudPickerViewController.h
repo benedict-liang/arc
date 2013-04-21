@@ -12,13 +12,13 @@
 #import "CloudFolder.h"
 #import "CloudServiceManager.h"
 #import "CloudFolderDelegate.h"
-#import "CloudPickerViewControllerDelegate.h"
+#import "PresentingModalViewControllerDelegate.h"
 #import "LoadingOverlayViewController.h"
 
 @interface CloudPickerViewController : BasicFolderViewController <CloudFolderDelegate,
     UITableViewDataSource, UITableViewDelegate, CloudServiceManagerDelegate>
 
-@property (weak, nonatomic) id<CloudPickerViewControllerDelegate> delegate;
+@property (weak, nonatomic) id<PresentingModalViewControllerDelegate> delegate;
 
 - (id)initWithCloudFolder:(id<CloudFolder>)folder
              targetFolder:(LocalFolder *)target
