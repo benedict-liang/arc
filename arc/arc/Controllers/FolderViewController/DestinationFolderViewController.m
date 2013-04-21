@@ -129,7 +129,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)shouldClose:(id)sender
 {
-    [self.delegate modalViewControllerDone:nil];
+    [self.delegate modalViewControllerDone:
+     [FolderCommandObject commandOfType:kCancelCommand
+                             withTarget:nil]];
 }
 
 @end

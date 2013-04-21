@@ -10,7 +10,8 @@
 
 
 typedef enum {
-    kMoveFileObjects
+    kMoveFileObjects,
+    kCancelCommand
 } kFolderCommandType;
 
 @interface FolderCommandObject : NSObject

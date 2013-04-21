@@ -424,9 +424,14 @@
             }
             [self setEditing:NO animated:YES];
         }
+        [self dismissViewControllerAnimated:YES completion:^{}];
+    } else if (folderCommandObject.type == kCancelCommand) {
+        [self dismissViewControllerAnimated:YES completion:^{}];
+    } else {
+         [self dismissViewControllerAnimated:YES completion:^{
+             [self refreshFolderView];
+         }];
     }
-    
-    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (NSArray *)editSelection
