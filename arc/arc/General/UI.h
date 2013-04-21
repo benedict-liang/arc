@@ -10,4 +10,11 @@
 
 @interface UI : NSObject
 + (void)exec;
+
+// Colors
++ (UIColor *)navigationBarColor;
++ (UIColor *)navigationBarButtonColor;
++ (UIColor *)toolBarColor;
++ (UIColor *)fontColor;
++ (NSString *)fontName;
 @end
