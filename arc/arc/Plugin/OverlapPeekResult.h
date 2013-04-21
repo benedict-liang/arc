@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
  enum SyntaxType{
+     kNone,
     kSyntaxPair,
      kSyntaxSingle}
 typedef SyntaxType;
@@ -19,4 +20,5 @@ typedef SyntaxType;
 @property NSRange matchRange;
 @property SyntaxType type;
 +(OverlapPeekResult*)resultWithBeginRange:(NSRange)br EndRange:(NSRange)er SyntaxItem:(NSDictionary*)si;
++ (OverlapPeekResult*)resultWithMatchRange:(NSRange)m SyntaxItem:(NSDictionary*)si;
 @end

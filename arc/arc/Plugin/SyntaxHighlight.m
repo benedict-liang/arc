@@ -325,33 +325,41 @@
 - (OverlapPeekResult*)peekMinForItems:(NSArray*)syntaxItems WithRange:(NSRange)range {
     NSRange minBegin = NSMakeRange(_content.length, 0);
     NSRange minEnd = minBegin;
+    NSRange minMatch = minBegin;
     NSDictionary* minSyntax = nil;
+    SyntaxType minType = kNone;
     for (NSDictionary* syntaxItem  in syntaxItems) {
         NSString* match = [syntaxItem objectForKey:@"match"];
         NSString* begin = [syntaxItem objectForKey:@"begin"];
         NSString* end = [syntaxItem objectForKey:@"end"];
         if (match) {
             NSRange matchResult = [self findFirstPattern:match range:range content:_content];
-            if (minBegin.location > matchResult.location) {
-                
+            if (minMatch.location > matchResult.location) {
+                minType = kSyntaxSingle;
+                minMatch = matchResult;
+                minSyntax = syntaxItem;
             }
         }
-
-        NSRange bresult = [self findFirstPattern:begin range:range content:_content];
-        if (bresult.location > _content.length) {
-            continue;
-        }
-        CFIndex bEnds = bresult.location+bresult.length+1;
-        NSRange eresult = [self findFirstPattern:end range:NSMakeRange(bEnds, _content.length - bEnds) content:_content];
-        
-        if (minBegin.location > bresult.location && eresult.location < _content.length && bresult.location < _content.length && eresult.location > bresult.location) {
-            minBegin = bresult;
-            minSyntax = syntaxItem;
-            minEnd = eresult;
+        else if (begin && end) {
+            NSRange bresult = [self findFirstPattern:begin range:range content:_content];
+            if (bresult.location > _content.length) {
+                continue;
+            }
+            CFIndex bEnds = bresult.location+bresult.length+1;
+            NSRange eresult = [self findFirstPattern:end range:NSMakeRange(bEnds, _content.length - bEnds) content:_content];
+            
+            if (minBegin.location > bresult.location && eresult.location < _content.length && bresult.location < _content.length && eresult.location > bresult.location) {
+                minType = kSyntaxPair;
+                minBegin = bresult;
+                minSyntax = syntaxItem;
+                minEnd = eresult;
+            }
         }
     }
-    if (minSyntax) {
+    if (minSyntax && minType == kSyntaxPair) {
         return [OverlapPeekResult resultWithBeginRange:minBegin EndRange:minEnd SyntaxItem:minSyntax];
+    } else if (minSyntax && minType == kSyntaxSingle) {
+        return [OverlapPeekResult resultWithMatchRange:minMatch SyntaxItem:minSyntax];
     }
     return nil;
 }
@@ -361,7 +369,7 @@
     while (iterRange.location < _content.length) {
         OverlapPeekResult* peekRes = [self peekMinForItems:overlaps WithRange:iterRange];
         NSLog(@"%@",peekRes);
-        if (peekRes) {
+        if (peekRes && peekRes.type == kSyntaxPair) {
             NSDictionary* syntaxItem = peekRes.syntaxItem;
             NSString* name = [syntaxItem objectForKey:@"name"];
             NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
@@ -374,7 +382,15 @@
             
             iterRange = NSMakeRange(eEnds, _content.length - eEnds);
             
-        } else {
+        }
+        else if (peekRes && peekRes.type ==kSyntaxSingle) {
+            NSDictionary* syntaxItem = peekRes.syntaxItem;
+            NSString* name = [syntaxItem objectForKey:@"name"];
+            NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
+            [self addRange:peekRes.matchRange scope:name dict:overlapMatches capturableScopes:capturableScopes];
+
+        }
+        else {
             return;
         }
     }
