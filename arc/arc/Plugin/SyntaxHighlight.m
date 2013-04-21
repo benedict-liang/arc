@@ -256,15 +256,13 @@
     return res;
 }
 
-- (NSDictionary*) addRange:(NSRange)range
-                     scope:(NSString*)scope
-                      dict:(NSDictionary*)matchesStore
-          capturableScopes:(NSArray*)cpS
+- (void) addRange:(NSRange)range
+            scope:(NSString*)scope
+             dict:(NSMutableDictionary*)matchesStore
+ capturableScopes:(NSArray*)cpS
 {
-    NSMutableDictionary* res =
-    [NSMutableDictionary dictionaryWithDictionary:matchesStore];
     
-    NSArray* ranges = [[res objectForKey:scope] objectForKey:@"ranges"];
+    NSArray* ranges = [[matchesStore objectForKey:scope] objectForKey:@"ranges"];
     if (ranges) {
         NSMutableArray* temp = [NSMutableArray arrayWithArray:ranges];
         [temp addObject:[NSValue value:&range withObjCType:@encode(NSRange)]];
@@ -278,7 +276,7 @@
                     forKey:scope];
         }
     }
-    return res;
+
 }
 
 - (id)repositoryRule:(NSString*)rule
@@ -349,13 +347,17 @@
     } name:name summary:nil];
 }
 - (void)parsePairsForInput:(NSString*)input {
-    ParcoaParser* pairs = [self manyChoose:[SyntaxHighlight chooseBetween:_parserAccum]];
+    ParcoaParser* pairs = [Parcoa many:[SyntaxHighlight chooseBetween:_parserAccum]];
     NSLog(@"%@",_parserAccum);
     ParcoaResult* result = [pairs parse:input];
     NSLog(@"results:%@", result.value);
     
 }
 
+//chooses from an array of parsers, which pair parser returns the smallest location
+//pairParser = beginParser >> endParser
+//chooseBetween = minRange([pairParsers])
+//
 + (ParcoaParser*)chooseBetween:(NSArray*)parsers {
     return [ParcoaParser parserWithBlock:^ParcoaResult* (NSString* input){
         NSRange first = NSMakeRange(NSNotFound, 0);
@@ -371,7 +373,7 @@
                 }
             }
         }
-        if (!val || first.location == NSNotFound) {
+        if (!val || first.location == NSNotFound || first.location > input.length || first.length == 0) {
             return [ParcoaResult failWithRemaining:input expected:[ParcoaExpectation unsatisfiable]];
         }
         return [ParcoaResult ok:val residual:[input substringFromIndex:first.location] expected:[ParcoaExpectation unsatisfiable]];
@@ -383,7 +385,9 @@
         NSMutableArray* accum = [NSMutableArray array];
         ParcoaResult* result = [chooseBetween parse:input];
         CFIndex offset = 0;
+        
         while (result.isOK && offset < _content.length) {
+            
             NSArray* pair = result.value;
             NSRange resBeginRange = [Utils rangeFromValue:[(NSDictionary*)pair[0] objectForKey:@"range"]];
             resBeginRange.location+=offset;
@@ -391,12 +395,39 @@
             NSRange resEndRange = [Utils rangeFromValue:[(NSDictionary*)pair[1] objectForKey:@"range"]];
             resEndRange.location+=offset;
             offset+= resEndRange.location +resEndRange.length;
-            [accum addObject:@{@"begin":[Utils valueFromRange:resBeginRange], @"end":[Utils valueFromRange:resEndRange]}];
-            NSLog(@"%@",accum);
+            NSString* scope = [(NSDictionary*)pair[0] objectForKey:@"scope"];
+            [accum addObject:@{@"begin":[Utils valueFromRange:resBeginRange], @"end":[Utils valueFromRange:resEndRange], @"scope":scope}];
+            //NSLog(@"%@",accum);
             result = [chooseBetween parse:result.residual];
         }
         return [ParcoaResult ok:accum residual:result.residual expected:[ParcoaExpectation unsatisfiable]];
     } name:@"manyChoose" summary:nil];
+}
+
+
+- (NSDictionary*)peekMinForItems:(NSArray*)syntaxItems WithRange:(NSRange)range {
+    NSRange min = NSMakeRange(_content.length-1, 0);
+    NSDictionary* minSyntax = nil;
+    for (NSDictionary* syntaxItem  in syntaxItems) {
+        NSString* begin = [syntaxItem objectForKey:@"begin"];
+       
+        NSRange result = [self findFirstPattern:begin range:range content:_content];
+        if (min.location > result.location) {
+            min = result;
+            minSyntax = syntaxItem;
+        }
+    }
+    return minSyntax;
+}
+
+- (void)handleOverlaps:(NSArray*)overlaps {
+    NSDictionary* syntaxItem = [self peekMinForItems:overlaps WithRange:NSMakeRange(0, _content.length)];
+    if (syntaxItem) {
+         NSString* name = [syntaxItem objectForKey:@"name"];
+        NSString* begin = [syntaxItem objectForKey:@"begin"];
+        NSString* end = [syntaxItem objectForKey:@"end"];
+        
+    }
 }
 - (void)processPairRange:(NSRange)contentRange
                     item:(NSDictionary*)syntaxItem
@@ -415,87 +446,69 @@
 
     NSRegularExpression *endRegex = [self regexForPattern:end];
     
-//    NSRange brange = [self findFirstPatternWithRegex:beginRegex
-//                                      range:contentRange];
+    NSRange brange = [self findFirstPatternWithRegex:beginRegex
+                                      range:contentRange];
     NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
     
-    ParcoaParser* beginParser = [self parserForRegex:beginRegex WithName:@"begin" WithScope:name];
-    ParcoaParser* endParser = [self parserForRegex:endRegex WithName:@"end" WithScope:name];
     
-    //ParcoaParser* afterBegin = [Parcoa parser:beginParser notFollowedBy:endParser];
-    
-    ParcoaParser* pairParser =[Parcoa sequential:@[beginParser,endParser]];
-    
-    ParcoaParser* manyPairs = [Parcoa many:pairParser];
-    
-    ParcoaResult* result = [manyPairs parse:[_content substringWithRange:contentRange]];
-    
-    NSLog(@"name = %@, ranges = %@",name, result.value);
-    
-    [_parserAccum addObject:pairParser];
-    
-    
-    //ParcoaResult* beginResult = [beginParser parse:[_content substringWithRange:contentRange]];
-    //NSLog(@"beginRange: %@", beginResult.value);
-    
-//    NSRange erange;
-//    do {
-//        // NSLog(@"traversing while brange:%@ erange:%@",
-//        // [NSValue value:&brange withObjCType:@encode(NSRange)],
-//        // [NSValue value:&erange withObjCType:@encode(NSRange)]);
-//        // using longs because int went out of range as NSNotFound returns MAX_INT, which fucks arithmetic
-//        long bEnds = brange.location + brange.length;
-//        if (contentRange.length > bEnds) {
-//            //HACK BELOW. BLAME TEXTMATE FOR THIS SHIT. IT MAKES COMMENTS WORK THOUGH
-//            //if ([self fixAnchor:end]) {
-//            //erange = NSMakeRange(bEnds, contentRange.length - bEnds);
-//            //} else {
-//            erange = [self findFirstPattern:endRegex
-//                                      range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
-//            //}
-//        } else {
-//            //if bEnds > contentRange.length, skip
-//            break;
-//        }
-//        
-//        long eEnds = erange.location + erange.length;
-//        NSArray *embedPatterns = [syntaxItem objectForKey:@"patterns"];
-//        
-//        //if there are characters between begin and end, and brange and erange are valid results
-//        if (eEnds > brange.location &&
-//            brange.location != NSNotFound &&
-//            erange.location != NSNotFound &&
-//            eEnds - brange.location< contentRange.length) {
-//            
-//            if (name) {
-//                pairMatches = [self addRange:NSMakeRange(brange.location, eEnds - brange.location)
-//                                       scope:name
-//                                        dict:pairMatches
-//                            capturableScopes:capturableScopes];
-//            }
-//            
-//            if ([syntaxItem objectForKey:@"contentName"]) {
-//                contentNameMatches = [self addRange:NSMakeRange(bEnds, eEnds - bEnds)
-//                                              scope:name
-//                                               dict:contentNameMatches
-//                                   capturableScopes:capturableScopes];
-//            }
-//            
-//            if (embedPatterns &&
-//                contentRange.length < [_content length]) {
-//                //recursively apply iterPatterns to embedded patterns inclusive of begin and end
-//                // [self logs];
-//                // NSLog(@"recurring with %d %ld", brange.location, eEnds - brange.location);
-//                [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location)
-//                                  patterns:embedPatterns
-//                                    output:output];
-//            }
-//        }
-//        
-//        brange = [self findFirstPattern:beginRegex
-//                                  range:NSMakeRange(eEnds, contentRange.length - eEnds)];
-//        
-//    } while ([self whileCondition:brange e:erange cr:contentRange]);
+    NSRange erange;
+    do {
+        // NSLog(@"traversing while brange:%@ erange:%@",
+        // [NSValue value:&brange withObjCType:@encode(NSRange)],
+        // [NSValue value:&erange withObjCType:@encode(NSRange)]);
+        // using longs because int went out of range as NSNotFound returns MAX_INT, which fucks arithmetic
+        long bEnds = brange.location + brange.length;
+        if (contentRange.length > bEnds) {
+            //HACK BELOW. BLAME TEXTMATE FOR THIS SHIT. IT MAKES COMMENTS WORK THOUGH
+            //if ([self fixAnchor:end]) {
+            //erange = NSMakeRange(bEnds, contentRange.length - bEnds);
+            //} else {
+            erange = [self findFirstPatternWithRegex:endRegex
+                                               range:NSMakeRange(bEnds, contentRange.length - bEnds - 1)];
+            //}
+        } else {
+            //if bEnds > contentRange.length, skip
+            break;
+        }
+        
+        long eEnds = erange.location + erange.length;
+        NSArray *embedPatterns = [syntaxItem objectForKey:@"patterns"];
+        
+        //if there are characters between begin and end, and brange and erange are valid results
+        if (eEnds > brange.location &&
+            brange.location != NSNotFound &&
+            erange.location != NSNotFound &&
+            eEnds - brange.location< contentRange.length) {
+            
+            if (name) {
+                pairMatches = [self addRange:NSMakeRange(brange.location, eEnds - brange.location)
+                                       scope:name
+                                        dict:pairMatches
+                            capturableScopes:capturableScopes];
+            }
+            
+            if ([syntaxItem objectForKey:@"contentName"]) {
+                contentNameMatches = [self addRange:NSMakeRange(bEnds, eEnds - bEnds)
+                                              scope:name
+                                               dict:contentNameMatches
+                                   capturableScopes:capturableScopes];
+            }
+            
+            if (embedPatterns &&
+                contentRange.length < [_content length]) {
+                //recursively apply iterPatterns to embedded patterns inclusive of begin and end
+                // [self logs];
+                // NSLog(@"recurring with %d %ld", brange.location, eEnds - brange.location);
+                [self iterPatternsForRange:NSMakeRange(brange.location, eEnds - brange.location)
+                                  patterns:embedPatterns
+                                    output:output];
+            }
+        }
+        
+        brange = [self findFirstPatternWithRegex:beginRegex
+                                           range:NSMakeRange(eEnds, contentRange.length - eEnds)];
+        
+    } while ([self whileCondition:brange e:erange cr:contentRange]);
     
     
 }
