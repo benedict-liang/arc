@@ -333,7 +333,7 @@
         NSRange beginRange = [self findFirstPatternWithRegex:regex
                                                        range:NSMakeRange(0, input.length)
                                                      content:input];
-        if (beginRange.location == NSNotFound || beginRange.length == 0) {
+        if (beginRange.location >= _content.length || beginRange.length == 0) {
             return [ParcoaResult failWithRemaining:input expected:input];
         } else {
             CFIndex bEnds = beginRange.location+beginRange.length+1;
@@ -349,7 +349,7 @@
     } name:name summary:nil];
 }
 - (void)parsePairsForInput:(NSString*)input {
-    ParcoaParser* pairs = [SyntaxHighlight chooseBetween:_parserAccum];
+    ParcoaParser* pairs = [self manyChoose:[SyntaxHighlight chooseBetween:_parserAccum]];
     NSLog(@"%@",_parserAccum);
     ParcoaResult* result = [pairs parse:input];
     NSLog(@"results:%@", result.value);
@@ -371,19 +371,19 @@
                 }
             }
         }
-        if (!val) {
+        if (!val || first.location == NSNotFound) {
             return [ParcoaResult failWithRemaining:input expected:[ParcoaExpectation unsatisfiable]];
         }
         return [ParcoaResult ok:val residual:[input substringFromIndex:first.location] expected:[ParcoaExpectation unsatisfiable]];
     } name:@"chooseBetween" summary:nil];
 }
 
-+ (ParcoaParser*)manyChoose:(ParcoaParser*)chooseBetween {
+- (ParcoaParser*)manyChoose:(ParcoaParser*)chooseBetween {
     return [ParcoaParser parserWithBlock:^ParcoaResult* (NSString* input) {
         NSMutableArray* accum = [NSMutableArray array];
         ParcoaResult* result = [chooseBetween parse:input];
         CFIndex offset = 0;
-        while (result.isOK) {
+        while (result.isOK && offset < _content.length) {
             NSArray* pair = result.value;
             NSRange resBeginRange = [Utils rangeFromValue:[(NSDictionary*)pair[0] objectForKey:@"range"]];
             resBeginRange.location+=offset;
@@ -392,6 +392,7 @@
             resEndRange.location+=offset;
             offset+= resEndRange.location +resEndRange.length;
             [accum addObject:@{@"begin":[Utils valueFromRange:resBeginRange], @"end":[Utils valueFromRange:resEndRange]}];
+            NSLog(@"%@",accum);
             result = [chooseBetween parse:result.residual];
         }
         return [ParcoaResult ok:accum residual:result.residual expected:[ParcoaExpectation unsatisfiable]];
