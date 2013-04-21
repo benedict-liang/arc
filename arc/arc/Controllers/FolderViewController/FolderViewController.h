@@ -12,8 +12,6 @@
 #import "RootFolder.h"
 
 #import "FolderViewControllerDelegate.h"
-#import "CreateFolderViewController.h"
-#import "CreateFolderViewControllerDelegate.h"
 #import "DestinationFolderViewController.h"
 #import "AddFolderViewController.h"
 #import "PresentingModalViewControllerDelegate.h"
@@ -27,7 +25,7 @@
 #import "GoogleDriveServiceManager.h"
 
 @interface FolderViewController : BasicFolderViewController <SubViewControllerDelegate,
-    UITableViewDelegate, UITableViewDataSource, CreateFolderViewControllerDelegate,
+    UITableViewDelegate, UITableViewDataSource,
     UIActionSheetDelegate, PresentingModalViewControllerDelegate>
 @property (nonatomic, weak) id<FolderViewControllerDelegate> folderViewControllerDelegate;
 - (void)refreshFolderView;

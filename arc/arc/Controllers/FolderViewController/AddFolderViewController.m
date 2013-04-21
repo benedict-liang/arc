@@ -65,6 +65,7 @@
     _textField.autocorrectionType = UITextAutocorrectionTypeNo;
     _textField.textAlignment = NSTextAlignmentLeft;
     _textField.enabled = YES;
+    _textField.delegate = self;
     [container addSubview:_textField];
 
     [_textField becomeFirstResponder];
@@ -77,12 +78,25 @@
                              withTarget:nil]];
 }
 
+- (BOOL)textFieldShouldReturn:(id)sender
+{
+    if ([sender isEqual:_textField]) {
+        [_textField resignFirstResponder];
+        [self createFolder:nil];
+        return NO;
+    }
+
+    return YES;
+}
+
 - (void)createFolder:(id)sender
 {
     if ([_textField text].length != 0) {
         [self.delegate modalViewControllerDone:
          [FolderCommandObject commandOfType:kCreateFolderCommand
                                  withTarget:[_textField text]]];
+    } else {
+        [_textField becomeFirstResponder];
     }
 }
 

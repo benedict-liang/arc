@@ -13,7 +13,6 @@
 @property UIToolbar *editToolbar;
 @property UIBarButtonItem *deleteButton;
 @property UIBarButtonItem *moveButton;
-@property CreateFolderViewController *createFolderController;
 @property UIPopoverController *addFolderPopoverController;
 @property UIBarButtonItem *addItemButton;
 @property UIActionSheet *addItemActionSheet;
@@ -59,13 +58,6 @@
     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                   target:self
                                                   action:@selector(triggerAddItem:)];
-
-    // Create the add folder controller and its popover.
-    _createFolderController =
-    [[CreateFolderViewController alloc] initWithDelegate:self];
-    
-    _addFolderPopoverController =
-    [[UIPopoverController alloc] initWithContentViewController:_createFolderController];
     
     // Set up the navigation bar.
     self.title = self.folder.name;
@@ -77,10 +69,6 @@
     self.view.autoresizesSubviews = YES;
     
     [self setUpTableView];
-    
-    // Create the add folder controller.
-    _createFolderController =
-    [[CreateFolderViewController alloc] initWithDelegate:self];
     
     _editToolbar = [[UIToolbar alloc] init];
     _editToolbar.frame = CGRectMake(0, self.view.frame.size.height,
@@ -402,17 +390,15 @@
                      completion:nil];
 }
 
-- (void)createFolderWithName:(NSString *)name
-{
-    [self.folder createFolderWithName:name];
-    [self refreshFolderView];
-    [_addFolderPopoverController dismissPopoverAnimated:YES];
-}
-
 #pragma mark - presenting modal view controller delegate
 
 - (void)modalViewControllerDone:(FolderCommandObject *)folderCommandObject
 {
+    if (folderCommandObject.type == kCancelCommand) {
+        [self dismissViewControllerAnimated:YES completion:^{}];
+        return;
+    }
+    
     if (folderCommandObject.type == kMoveFileObjects) {
         if ([[folderCommandObject.target class] conformsToProtocol:@protocol(Folder)]) {
             id<Folder> destination = (id<Folder>)folderCommandObject.target;
@@ -429,13 +415,21 @@
             [self setEditing:NO animated:YES];
         }
         [self dismissViewControllerAnimated:YES completion:^{}];
-    } else if (folderCommandObject.type == kCancelCommand) {
-        [self dismissViewControllerAnimated:YES completion:^{}];
-    } else {
-         [self dismissViewControllerAnimated:YES completion:^{
-             [self refreshFolderView];
-         }];
+        return;
     }
+    
+    if (folderCommandObject.type == kCreateFolderCommand) {
+        NSString *folderName = (NSString *)folderCommandObject.target;
+        [self.folder createFolderWithName:folderName];
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self refreshFolderView];
+        }];
+    }
+    
+    // Default
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self refreshFolderView];
+    }];
 }
 
 - (NSArray *)editSelection
