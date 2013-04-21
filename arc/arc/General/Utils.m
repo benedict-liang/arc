@@ -179,6 +179,21 @@
     }
 }
 
++ (BOOL)isLightColor:(UIColor *)color
+{
+    CGFloat hue = 0;
+    CGFloat brightness = 0;
+    CGFloat saturation = 0;
+    CGFloat alpha = 0;
+    
+    [color getHue:&hue
+       saturation:&saturation
+       brightness:&brightness
+            alpha:&alpha];
+    
+    return brightness > 0.5;
+}
+
 + (UIColor *)darkenColor:(UIColor *)oldColor percentOfOriginal:(float)amount
 {
     float percentage      = amount / 100.0;
