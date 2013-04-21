@@ -16,9 +16,10 @@
     if (self) {
         
         UIImage *scaledLineImage = [self scaleImageWithAspectRatio:@"dragpointline.png"];
+//        UIImage *scaledLineImage = [UIImage imageNamed:@"dragpointline.png"];
         CGFloat aspectRatio = scaledLineImage.size.width / scaledLineImage.size.height;
         UIImage *circle;
-        CGPoint circleOrigin, lineOrigin;
+        CGPoint circleOrigin;
         
         if (type == kRight) {
             circle = [UIImage imageNamed:@"dragpointcirclebottom.png"]; 
@@ -34,15 +35,14 @@
         CGSize newLineSize = CGSizeMake(aspectRatio * (scaledLineImage.size.height - circle.size.height),
                                        scaledLineImage.size.height);
         
+        CGPoint lineOrigin = CGPointMake(newDragPointSize.width / 2 - newLineSize.width / 2,
+                                 0);
+        
         if (type == kRight) {
             circleOrigin = CGPointMake(0, newLineSize.height - circle.size.height);
-            lineOrigin = CGPointMake(newDragPointSize.width / 2,
-                                     0);
         }
         else {
             circleOrigin = CGPointMake(0, 0);
-            lineOrigin = CGPointMake(newDragPointSize.width / 2 - scaledLineImage.size.width / 2,
-                                     0);
         }
         
         // Draw new drag point image
