@@ -11,6 +11,7 @@
 
 typedef enum {
     kMoveFileObjects,
+    kCreateFolderCommand,
     kCancelCommand
 } kFolderCommandType;
 
