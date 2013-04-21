@@ -8,6 +8,7 @@
 
 #import "Utils.h"
 #import <QuartzCore/QuartzCore.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
 @implementation Utils
 + (UIImage *)scale:(UIImage *)image toSize:(CGSize)size
@@ -331,6 +332,19 @@
     for (UIGestureRecognizer *g in [view gestureRecognizers]) {
         [view removeGestureRecognizer:g];
     }
+}
+
++ (BOOL)isFileSupported:(NSString *)name
+{
+    NSString *uti = (__bridge NSString *)(UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)([name pathExtension]), NULL));
+    NSString *ourUTI = @"com.nus.arc.source";
+
+    BOOL isOurUTI = UTTypeConformsTo((__bridge CFStringRef)(uti), (__bridge CFStringRef)(ourUTI));
+    BOOL isText = UTTypeConformsTo((__bridge CFStringRef)(uti), (__bridge CFStringRef)@"public.text");
+    BOOL isPlainText = UTTypeConformsTo((__bridge CFStringRef)(uti), (__bridge CFStringRef)@"public.plain-text");
+    BOOL isSource = UTTypeConformsTo((__bridge CFStringRef)(uti), (__bridge CFStringRef)@"public.source-code");
+    
+    return isOurUTI || isText || isPlainText || isSource;
 }
 
 @end

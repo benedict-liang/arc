@@ -55,4 +55,6 @@
 + (NSValue*)valueFromRange:(NSRange)range;
 
 + (void)removeAllGestureRecognizersFrom:(UIView *)view;
+
++ (BOOL)isFileSupported:(NSString *)name;
 @end
