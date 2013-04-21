@@ -12,7 +12,6 @@
 @interface SyntaxHighlight ()
 @property (nonatomic) BOOL isAlive;
 @property (nonatomic) BOOL matchesDone;
-@property ParcoaParser* pairParsers;
 @property NSMutableArray* overlapAccum;
 @end
 
