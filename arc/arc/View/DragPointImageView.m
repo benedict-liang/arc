@@ -15,20 +15,20 @@
     self = [super initWithFrame:frame];
     if (self) {
         
+        UIImage *scaledLineImage = [self scaleImageWithAspectRatio:@"dragpointline.png"];
+        CGFloat aspectRatio = scaledLineImage.size.width / scaledLineImage.size.height;
+
         if (type == kRight) {
             
-            UIImage *scaledImage = [self scaleImageWithAspectRatio:@"dragpointline.png"];
             UIImage *circle = [UIImage imageNamed:@"dragpointcirclebottom.png"];
-            
-            CGFloat aspectRatio = scaledImage.size.width / scaledImage.size.height;
             CGSize newSize = CGSizeMake(circle.size.width,
-                                        scaledImage.size.height);
+                                        scaledLineImage.size.height);
             
-            CGSize scaledSize = CGSizeMake(aspectRatio * (scaledImage.size.height - circle.size.height),
-                                           scaledImage.size.height - circle.size.height);
+            CGSize scaledSize = CGSizeMake(aspectRatio * (scaledLineImage.size.height - circle.size.height),
+                                           scaledLineImage.size.height - circle.size.height);
             
             UIGraphicsBeginImageContext(newSize);
-            [scaledImage drawInRect:CGRectMake(newSize.width / 2 - scaledImage.size.width / 2,
+            [scaledLineImage drawInRect:CGRectMake(newSize.width / 2 - scaledLineImage.size.width / 2,
                                                0,
                                                scaledSize.width,
                                                scaledSize.height)];
@@ -39,17 +39,13 @@
             UIGraphicsEndImageContext();
             
             self.image = newImage;
-            
-            self.contentMode = UIViewContentModeTop;
-            self.backgroundColor = [UIColor clearColor];
         }
-        //        else {
-        //            UIImage *scaledImage = [self scaleImageWithAspectRatio:imageName];
-        //            self.image = scaledImage;
-        //
-        //            self.contentMode = UIViewContentModeCenter;
-        //            self.backgroundColor = [UIColor clearColor];
-        //        }
+        else {
+            
+        }
+        
+        self.contentMode = UIViewContentModeTop;
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
