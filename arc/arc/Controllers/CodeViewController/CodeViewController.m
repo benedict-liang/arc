@@ -72,9 +72,6 @@
         _lines = [NSMutableArray array];
         _plugins = [NSMutableArray array];
         _appState = [ApplicationState sharedApplicationState];
-        
-        // Defaults
-        _backgroundColor = [Utils colorWithHexString:@"FDF6E3"];
         _sharedObject = [NSMutableDictionary dictionary];
     }
     return self;
