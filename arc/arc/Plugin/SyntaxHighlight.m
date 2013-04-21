@@ -365,10 +365,14 @@
     
     ParcoaParser* afterBegin = [Parcoa parser:beginParser notFollowedBy:endParser];
     
-    ParcoaParser* pairParser = [Parcoa many1:[Parcoa sequential:@[afterBegin,endParser]]];
+    ParcoaParser* pairParser =[Parcoa sequential:@[beginParser,endParser]];
     
     ParcoaResult* result = [pairParser parse:[_content substringWithRange:contentRange]];
+    
     NSLog(@"%@",result.value);
+    
+    //ParcoaResult* beginResult = [beginParser parse:[_content substringWithRange:contentRange]];
+    //NSLog(@"beginRange: %@", beginResult.value);
     
 //    NSRange erange;
 //    do {
