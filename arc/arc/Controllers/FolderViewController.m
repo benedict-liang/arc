@@ -347,15 +347,7 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
                                                               targetFolder:self.folder
                                                             serviceManager:_skyDriveManager];
                     [pickerController setDelegate:self];
-
-                    UINavigationController *navController =
-                    [[UINavigationController alloc] initWithRootViewController:pickerController];
-
-                    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
-
-                    [self presentViewController:navController
-                                       animated:YES
-                                     completion:nil];
+                    [self showModalViewController:pickerController];
                 }
                 break;
 
@@ -369,15 +361,8 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
                                                             serviceManager:_googleDriveManager];
 
                     [pickerController setDelegate:self];
-                    
-                    UINavigationController *navController =
-                    [[UINavigationController alloc] initWithRootViewController:pickerController];
-                    
-                    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
-                    
-                    [self presentViewController:navController
-                                       animated:YES
-                                     completion:nil];
+                    [self showModalViewController:pickerController];
+
                 }
                 break;
 
@@ -396,6 +381,18 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
                 break;
         }
     }
+}
+
+- (void)showModalViewController:(UIViewController *)viewController
+{
+    UINavigationController *navController =
+    [[UINavigationController alloc] initWithRootViewController:viewController];
+    
+    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
+    
+    [self presentViewController:navController
+                       animated:YES
+                     completion:nil];
 }
 
 - (void)cloudPickerDone:(id)sender
