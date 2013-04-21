@@ -13,13 +13,11 @@
 @property UIToolbar *editToolbar;
 @property UIBarButtonItem *deleteButton;
 @property UIBarButtonItem *moveButton;
-- (void)editMode;
-- (void)normalMode;
 @property CreateFolderViewController *createFolderController;
 @property UIPopoverController *addFolderPopoverController;
 @property UIBarButtonItem *addItemButton;
 @property UIActionSheet *addItemActionSheet;
-
+@property NSIndexPath *currentFile;
 // Cloud Controllers
 @property SkyDriveServiceManager *skyDriveManager;
 @property GoogleDriveServiceManager *googleDriveManager;
@@ -123,6 +121,7 @@
 {
     id<FileSystemObject> fileObject = [self sectionItem:indexPath];
     if ([[fileObject identifier] isEqualToString:[[[self delegate] currentfile] identifier]]) {
+        _currentFile = indexPath;
         [tableView selectRowAtIndexPath:indexPath
                                animated:YES
                          scrollPosition:UITableViewScrollPositionMiddle];
@@ -165,63 +164,48 @@
         [_editSelection removeObject:indexPath];
         [self editActionTriggeredAnimate:YES];
         return;
-    } else {
-        // Normal Mode
-        // Do nothing.
     }
 }
 
 
 #pragma mark - Edit Related methods
 
-// Determines if the cell at the given index path can be edited.
 - (BOOL)tableView:(UITableView *)tableView
-canEditRowAtIndexPath:(NSIndexPath *)indexPath
+    canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    id<FileSystemObject> fileObject = [self sectionItem:indexPath];
-    
-    return [fileObject isRemovable];
+    return [[self sectionItem:indexPath] isRemovable];
 }
 
 - (void)setEditing:(BOOL)editing
           animated:(BOOL)animated
 {
-    self.tableView.allowsMultipleSelectionDuringEditing = editing;
+    [self.tableView setAllowsMultipleSelectionDuringEditing:editing];
     [super setEditing:editing animated:animated];
     [self.tableView setEditing:editing animated:animated];
+
+    _editSelection = [NSMutableArray array];
+
     if (editing) {
-        [self editMode];
+        [self.folderViewControllerDelegate folderViewController:self
+                                        DidEnterEditModeAnimate:YES];
     } else {
-        [self normalMode];
+        [self.folderViewControllerDelegate folderViewController:self
+                                         DidExitEditModeAnimate:YES];
+        [self.tableView reloadRowsAtIndexPaths:@[_currentFile]
+                              withRowAnimation:UITableViewRowAnimationNone];
     }
-}
-
-- (void)editMode
-{
-    _editSelection = [NSMutableArray array];
-    [self.folderViewControllerDelegate folderViewController:self
-                                    DidEnterEditModeAnimate:YES];
-}
-
-- (void)normalMode
-{
-    _editSelection = [NSMutableArray array];
-    [self.folderViewControllerDelegate folderViewController:self
-                                    DidExitEditModeAnimate:YES];
 }
 
 - (void)editActionTriggeredAnimate:(BOOL)animate
 {
-    int count = [_editSelection count];
-    if (count > 0) {
-        if (count > 1) {
-            _deleteButton.title = @"Delete Items";
-            _moveButton.title = @"Move Items";
-        } else {
+    if ([_editSelection count] > 0) {
+        if ([_editSelection count] == 1) {
             _deleteButton.title = @"Delete Item";
             _moveButton.title = @"Move Item";
+        } else {
+            _deleteButton.title = @"Delete Items";
+            _moveButton.title = @"Move Items";
         }
-        
         [self showEditToolbarAnimate:animate];
     } else {
         [self hideEditToolbarAnimate:animate];
@@ -262,6 +246,8 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
     [self setUpFolderContents];
     [self.tableView deleteRowsAtIndexPaths:_editSelection
                           withRowAnimation:UITableViewRowAnimationAutomatic];
+
+    _editSelection = [NSMutableArray array];
 }
 
 - (void)moveItems:(id)sender
@@ -274,7 +260,8 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
     [self showModalViewController:moveDestinationFolderViewController];
 }
 
-// Triggers when the user confirms an edit operation on the cell at the given index path.
+#pragma mark - Single Cell Delete (Swipe)
+
 - (void)tableView:(UITableView *)tableView
     commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -290,9 +277,18 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
     }
 }
 
+- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    id<FileSystemObject> fileObject = [self sectionItem:indexPath];
+    if ([[fileObject identifier] isEqualToString:[[[self delegate] currentfile] identifier]]) {
+        [tableView selectRowAtIndexPath:indexPath
+                               animated:YES
+                         scrollPosition:UITableViewScrollPositionMiddle];
+    }
+}
 
-#pragma mark - targets
 
+// MultiView target
 - (void)secondFileSelected:(UILongPressGestureRecognizer *)gesture
 {
     if (gesture.state == UIGestureRecognizerStateEnded) {
@@ -301,7 +297,7 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
     }
 }
 
-// Triggers when the user clicks the Add button.
+// Triggers when the user taps the Add button.
 - (void)triggerAddItem:(id)sender
 {
     // Hide the add folder popover.
@@ -314,19 +310,21 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
         [_addItemActionSheet dismissWithClickedButtonIndex:-1 animated:YES];
     } else {
         if ([self.folder isKindOfClass:[DropBoxFolder class]]) {
-            _addItemActionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                              delegate:self
-                                                     cancelButtonTitle:@"Cancel"
-                                                destructiveButtonTitle:nil
-                                                     otherButtonTitles:@"New Folder", nil];
+            _addItemActionSheet =
+            [[UIActionSheet alloc] initWithTitle:nil
+                                        delegate:self
+                               cancelButtonTitle:@"Cancel"
+                          destructiveButtonTitle:nil
+                               otherButtonTitles:@"New Folder", nil];
         } else {
-            _addItemActionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                              delegate:self
-                                                     cancelButtonTitle:@"Cancel"
-                                                destructiveButtonTitle:nil
-                                                     otherButtonTitles:@"New Folder", @"File from SkyDrive", @"File from Google Drive", nil];
+            _addItemActionSheet =
+            [[UIActionSheet alloc] initWithTitle:nil
+                                        delegate:self
+                               cancelButtonTitle:@"Cancel"
+                          destructiveButtonTitle:nil
+                               otherButtonTitles:@"New Folder", @"File from SkyDrive", @"File from Google Drive", nil];
         }
-        
+
         [_addItemActionSheet showFromBarButtonItem:_addItemButton
                                           animated:YES];
     }

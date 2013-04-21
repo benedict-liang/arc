@@ -33,6 +33,8 @@ const NSString *FOLDERCELL_REUSE_IDENTIFIER = @"folderCell";
         UIView *bg = [[UIView alloc] init];
         bg.backgroundColor = [Utils colorWithHexString:@"ee151512"];
         self.selectedBackgroundView = bg;
+        self.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:17];
+        self.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
     }
     return self;
 }
@@ -81,8 +83,6 @@ const NSString *FOLDERCELL_REUSE_IDENTIFIER = @"folderCell";
     }
 
     self.textLabel.text = _fileSystemObject.name;
-    self.textLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:17];
     self.detailTextLabel.text = detailDescription;
-    self.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
 }
 @end
