@@ -15,6 +15,7 @@
 #import "CreateFolderViewController.h"
 #import "CreateFolderViewControllerDelegate.h"
 #import "DestinationFolderViewController.h"
+#import "AddFolderViewController.h"
 #import "PresentingModalViewControllerDelegate.h"
 #import "DropBoxFolder.h"
 

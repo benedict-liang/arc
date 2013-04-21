@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Folder.h"
 #import "FolderCommandObject.h"
 
 @protocol PresentingModalViewControllerDelegate <NSObject>

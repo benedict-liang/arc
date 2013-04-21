@@ -155,8 +155,6 @@
     }
 }
 
-
-
 - (void)tableView:(UITableView *)tableView
     didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -336,9 +334,7 @@
     if (![self.folder isKindOfClass:[DropBoxFolder class]]) {
         switch (buttonIndex) {
             case 0:
-                [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton
-                                                    permittedArrowDirections:UIPopoverArrowDirectionAny
-                                                                    animated:YES];
+                [self showAddFolderModal];
                 break;
 
             case 1:
@@ -375,15 +371,23 @@
     } else {
         switch (buttonIndex) {
             case 0:
-                [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton
-                                                    permittedArrowDirections:UIPopoverArrowDirectionAny
-                                                                    animated:YES];
+                [self showAddFolderModal];
                 break;
 
             default:
                 break;
         }
     }
+}
+
+- (void)showAddFolderModal
+{
+    AddFolderViewController *addFolderViewController =
+    [[AddFolderViewController alloc] init];
+
+    addFolderViewController.delegate = self;
+    
+    [self showModalViewController:addFolderViewController];
 }
 
 - (void)showModalViewController:(UIViewController *)viewController
