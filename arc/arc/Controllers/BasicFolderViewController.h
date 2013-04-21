@@ -11,6 +11,7 @@
 #import "Folder.h"
 #import "FileObjectTableViewCell.h"
 #import "FolderViewSectionHeader.h"
+#import "FileSystemObjectGroup.h"
 
 @interface BasicFolderViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 - (id)initWithFolder:(id<Folder>)folder;
@@ -31,14 +32,12 @@
 
 // Data source Accessor Methods
 - (void)setFilesAndFolders:(NSArray *)filesAndFolders;
-- (NSDictionary *)sectionDictionary:(NSInteger)section;
+- (FileSystemObjectGroup *)sectionObjectGroup:(NSInteger)section;
 - (NSString *)sectionHeading:(NSInteger)section;
-- (NSMutableArray *)sectionItems:(NSInteger)section;
+- (NSArray *)sectionItems:(NSInteger)section;
 - (id<FileSystemObject>)sectionItem:(NSIndexPath *)indexPath;
 
 // Constants
-extern NSString* const FOLDER_VIEW_SECTION_HEADING_KEY;
-extern NSString* const FOLDER_VIEW_SECTION_ITEMS_KEY;
 extern NSString* const FOLDER_VIEW_FOLDERS;
 extern NSString* const FOLDER_VIEW_FILES;
 @end

@@ -40,27 +40,18 @@
 - (void)setUpFolderContents
 {
     NSArray *fileObjects = (NSArray*)self.folder.contents;
-    NSMutableArray *folders = [NSMutableArray array];
-    NSMutableArray *files = [NSMutableArray array];
+    FileSystemObjectGroup *files = [[FileSystemObjectGroup alloc] initWithName:FOLDER_VIEW_FILES];
+    FileSystemObjectGroup *folders = [[FileSystemObjectGroup alloc] initWithName:FOLDER_VIEW_FOLDERS];
 
     for (id<FileSystemObject> fileSystemObject in fileObjects) {
         if ([[fileSystemObject class] conformsToProtocol:@protocol(CloudFile)]) {
-            [files addObject:fileSystemObject];
+            [files addFileSystemObject:fileSystemObject];
         } else if ([[fileSystemObject class] conformsToProtocol:@protocol(CloudFolder) ]) {
-            [folders addObject:fileSystemObject];
+            [folders addFileSystemObject:fileSystemObject];
         }
     }
     
-    [self setFilesAndFolders:@[
-                         @{
-                             FOLDER_VIEW_SECTION_HEADING_KEY: FOLDER_VIEW_FOLDERS,
-                             FOLDER_VIEW_SECTION_ITEMS_KEY: folders
-                             },
-                         @{
-                             FOLDER_VIEW_SECTION_HEADING_KEY: FOLDER_VIEW_FILES,
-                             FOLDER_VIEW_SECTION_ITEMS_KEY: files
-                             }
-                         ]];
+    [self setFilesAndFolders:@[folders, files]];
 }
 
 - (void)fileStatusChangedForService:(id)sender

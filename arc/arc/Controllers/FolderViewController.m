@@ -278,7 +278,8 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         id<FileSystemObject> fileObject = [self sectionItem:indexPath];
         if ([fileObject remove]) {
-            [[self sectionItems:indexPath.section] removeObjectAtIndex:indexPath.row];
+            [[self sectionObjectGroup:indexPath.section]
+             removeFileSystemObject:[self sectionItem:indexPath]];
             [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                              withRowAnimation:UITableViewRowAnimationAutomatic];
         }
@@ -346,15 +347,7 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
                                                               targetFolder:self.folder
                                                             serviceManager:_skyDriveManager];
                     [pickerController setDelegate:self];
-
-                    UINavigationController *navController =
-                    [[UINavigationController alloc] initWithRootViewController:pickerController];
-
-                    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
-
-                    [self presentViewController:navController
-                                       animated:YES
-                                     completion:nil];
+                    [self showModalViewController:pickerController];
                 }
                 break;
 
@@ -368,15 +361,8 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
                                                             serviceManager:_googleDriveManager];
 
                     [pickerController setDelegate:self];
-                    
-                    UINavigationController *navController =
-                    [[UINavigationController alloc] initWithRootViewController:pickerController];
-                    
-                    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
-                    
-                    [self presentViewController:navController
-                                       animated:YES
-                                     completion:nil];
+                    [self showModalViewController:pickerController];
+
                 }
                 break;
 
@@ -395,6 +381,18 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
                 break;
         }
     }
+}
+
+- (void)showModalViewController:(UIViewController *)viewController
+{
+    UINavigationController *navController =
+    [[UINavigationController alloc] initWithRootViewController:viewController];
+    
+    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
+    
+    [self presentViewController:navController
+                       animated:YES
+                     completion:nil];
 }
 
 - (void)cloudPickerDone:(id)sender

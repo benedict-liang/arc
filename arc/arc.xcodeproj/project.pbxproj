@@ -67,6 +67,7 @@
 		4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C963C81170D8E96004FDACB /* CodeLineCell.m */; };
 		4C9C7C211723B17900DBFA13 /* FolderViewSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C201723B17900DBFA13 /* FolderViewSectionHeader.m */; };
 		4C9C7C291723B87B00DBFA13 /* BasicFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C281723B87B00DBFA13 /* BasicFolderViewController.m */; };
+		4C9C7C2E1723C99400DBFA13 /* FileSystemObjectGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C2D1723C99400DBFA13 /* FileSystemObjectGroup.m */; };
 		4C9E0619170F3AFC0000F783 /* arc72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E0618170F3AFC0000F783 /* arc72.png */; };
 		4C9E061B170F3B1A0000F783 /* arc144.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E061A170F3B1A0000F783 /* arc144.png */; };
 		4CC9E0ED171C4C580062C825 /* arcMonokai72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC9E0EC171C4C580062C825 /* arcMonokai72.png */; };
@@ -282,8 +283,11 @@
 		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
 		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
 		8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */; };
-		8FDE2E28171D577500CF2BC9 /* leftDragPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDE2E26171D577500CF2BC9 /* leftDragPoint.png */; };
-		8FDE2E29171D577500CF2BC9 /* rightDragPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDE2E27171D577500CF2BC9 /* rightDragPoint.png */; };
+		8FE0039017239C740013B9AC /* dragpointline.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE0038F17239C740013B9AC /* dragpointline.png */; };
+		8FE0039217239D540013B9AC /* dragpointcirclebottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE0039117239D540013B9AC /* dragpointcirclebottom.png */; };
+		8FE0039417239DA70013B9AC /* dragpointcircletop.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE0039317239DA70013B9AC /* dragpointcircletop.png */; };
+		8FE003971723C8BD0013B9AC /* dragpointcirclebottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE003951723C8BD0013B9AC /* dragpointcirclebottom@2x.png */; };
+		8FE003981723C8BD0013B9AC /* dragpointcircletop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE003961723C8BD0013B9AC /* dragpointcircletop@2x.png */; };
 		FC137BE01719AE1000878684 /* FoldTree.m in Sources */ = {isa = PBXBuildFile; fileRef = FC137BDF1719AE1000878684 /* FoldTree.m */; };
 		FC3C2E621715BF8100C40490 /* [ Argonaut ].tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E2A1715BF7A00C40490 /* [ Argonaut ].tmTheme */; };
 		FC3C2E631715BF8100C40490 /* All Hallow's Eve Custom.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E2B1715BF7A00C40490 /* All Hallow's Eve Custom.tmTheme */; };
@@ -502,6 +506,8 @@
 		4C9C7C201723B17900DBFA13 /* FolderViewSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderViewSectionHeader.m; sourceTree = "<group>"; };
 		4C9C7C271723B87B00DBFA13 /* BasicFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicFolderViewController.h; sourceTree = "<group>"; };
 		4C9C7C281723B87B00DBFA13 /* BasicFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicFolderViewController.m; sourceTree = "<group>"; };
+		4C9C7C2C1723C99400DBFA13 /* FileSystemObjectGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemObjectGroup.h; sourceTree = "<group>"; };
+		4C9C7C2D1723C99400DBFA13 /* FileSystemObjectGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSystemObjectGroup.m; sourceTree = "<group>"; };
 		4C9DC9021719B64A00142E70 /* SyntaxHighlightingPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlightingPluginDelegate.h; sourceTree = "<group>"; };
 		4C9E0618170F3AFC0000F783 /* arc72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc72.png; sourceTree = SOURCE_ROOT; };
 		4C9E061A170F3B1A0000F783 /* arc144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc144.png; sourceTree = SOURCE_ROOT; };
@@ -751,8 +757,11 @@
 		8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewController.h; sourceTree = "<group>"; };
 		8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeViewController.m; sourceTree = "<group>"; };
 		8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewControllerDelegate.h; sourceTree = "<group>"; };
-		8FDE2E26171D577500CF2BC9 /* leftDragPoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftDragPoint.png; sourceTree = "<group>"; };
-		8FDE2E27171D577500CF2BC9 /* rightDragPoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightDragPoint.png; sourceTree = "<group>"; };
+		8FE0038F17239C740013B9AC /* dragpointline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragpointline.png; sourceTree = "<group>"; };
+		8FE0039117239D540013B9AC /* dragpointcirclebottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragpointcirclebottom.png; sourceTree = "<group>"; };
+		8FE0039317239DA70013B9AC /* dragpointcircletop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragpointcircletop.png; sourceTree = "<group>"; };
+		8FE003951723C8BD0013B9AC /* dragpointcirclebottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dragpointcirclebottom@2x.png"; sourceTree = "<group>"; };
+		8FE003961723C8BD0013B9AC /* dragpointcircletop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dragpointcircletop@2x.png"; sourceTree = "<group>"; };
 		FC137BDE1719AE1000878684 /* FoldTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldTree.h; sourceTree = "<group>"; };
 		FC137BDF1719AE1000878684 /* FoldTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldTree.m; sourceTree = "<group>"; };
 		FC3C2E2A1715BF7A00C40490 /* [ Argonaut ].tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "[ Argonaut ].tmTheme"; sourceTree = "<group>"; };
@@ -1160,6 +1169,8 @@
 				FC4B269D16F88CB800E1DC49 /* FolderViewController.m */,
 				4C9C7C271723B87B00DBFA13 /* BasicFolderViewController.h */,
 				4C9C7C281723B87B00DBFA13 /* BasicFolderViewController.m */,
+				4C9C7C2C1723C99400DBFA13 /* FileSystemObjectGroup.h */,
+				4C9C7C2D1723C99400DBFA13 /* FileSystemObjectGroup.m */,
 			);
 			name = FolderViewController;
 			sourceTree = "<group>";
@@ -1386,8 +1397,6 @@
 				4CC9E0F4171C4EBC0062C825 /* monokai_icon_72.png */,
 				4CC9E0F2171C4C5B0062C825 /* arcMonokai144.png */,
 				4CC9E0EC171C4C580062C825 /* arcMonokai72.png */,
-				8FDE2E26171D577500CF2BC9 /* leftDragPoint.png */,
-				8FDE2E27171D577500CF2BC9 /* rightDragPoint.png */,
 				4C9E061A170F3B1A0000F783 /* arc144.png */,
 				4C9E0618170F3AFC0000F783 /* arc72.png */,
 				4C1AF11A1715029100A2D0D8 /* dropbox.png */,
@@ -1399,6 +1408,11 @@
 				4C6B0909171EEB46009DB903 /* file_white.png */,
 				4CEADA031716AB0E00F4F619 /* threelines.png */,
 				840B6ABA3F91CF078F55C3DE /* Cloud-Download.png */,
+				8FE0038F17239C740013B9AC /* dragpointline.png */,
+				8FE0039317239DA70013B9AC /* dragpointcircletop.png */,
+				8FE0039117239D540013B9AC /* dragpointcirclebottom.png */,
+				8FE003951723C8BD0013B9AC /* dragpointcirclebottom@2x.png */,
+				8FE003961723C8BD0013B9AC /* dragpointcircletop@2x.png */,
 			);
 			name = Images;
 			path = Assets/Images;
@@ -2112,9 +2126,12 @@
 				4CC9E0F7171C4EBF0062C825 /* monokai_icon_144.png in Resources */,
 				4CC9E0F9171C4EC60062C825 /* Default-Landscape~ipad.png in Resources */,
 				4CC9E0FB171C4EC80062C825 /* Default-Portrait~ipad.png in Resources */,
-				8FDE2E28171D577500CF2BC9 /* leftDragPoint.png in Resources */,
-				8FDE2E29171D577500CF2BC9 /* rightDragPoint.png in Resources */,
 				4C6B090A171EEB46009DB903 /* file_white.png in Resources */,
+				8FE0039017239C740013B9AC /* dragpointline.png in Resources */,
+				8FE0039217239D540013B9AC /* dragpointcirclebottom.png in Resources */,
+				8FE0039417239DA70013B9AC /* dragpointcircletop.png in Resources */,
+				8FE003971723C8BD0013B9AC /* dragpointcirclebottom@2x.png in Resources */,
+				8FE003981723C8BD0013B9AC /* dragpointcircletop@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2219,6 +2236,7 @@
 				4C7A82BF1722512B00B7D229 /* ArcSplitViewController.m in Sources */,
 				4C9C7C211723B17900DBFA13 /* FolderViewSectionHeader.m in Sources */,
 				4C9C7C291723B87B00DBFA13 /* BasicFolderViewController.m in Sources */,
+				4C9C7C2E1723C99400DBFA13 /* FileSystemObjectGroup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
