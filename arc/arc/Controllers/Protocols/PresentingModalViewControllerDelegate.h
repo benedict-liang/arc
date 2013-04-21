@@ -11,7 +11,11 @@
 #import "FolderCommandObject.h"
 
 @protocol PresentingModalViewControllerDelegate <NSObject>
-@property (nonatomic, readonly) id<Folder> folder;
-@property (nonatomic, readonly) NSArray *editSelection;
 - (void)modalViewControllerDone:(FolderCommandObject *)folderCommandObject;
+
+@optional
+@property (nonatomic, readonly) id<Folder> folder;
+
+@optional
+@property (nonatomic, readonly) NSArray *targetFiles;
 @end

@@ -71,7 +71,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id<FileSystemObject> fileSystemObject = [self sectionItem:indexPath];
     
-    for (id<FileSystemObject> objectToMove in [self.delegate editSelection]) {
+    for (id<FileSystemObject> objectToMove in [self.delegate targetFiles]) {
         if ([[objectToMove identifier] isEqualToString:[fileSystemObject identifier]]) {
             // Do nothing.
             return;
@@ -107,7 +107,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
     id<FileSystemObject> cellFileSystemObject = cell.fileSystemObject;
-    for (id<FileSystemObject> objectToMove in [self.delegate editSelection]) {
+    for (id<FileSystemObject> objectToMove in [self.delegate targetFiles]) {
         if ([[objectToMove identifier] isEqualToString:[cellFileSystemObject identifier]]) {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return;
@@ -117,7 +117,40 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)newFolder:(id)sender
 {
-    // TODO.
+    AddFolderViewController *addFolderViewController =
+    [[AddFolderViewController alloc] init];
+    
+    addFolderViewController.delegate = self;
+    
+    UINavigationController *navController =
+    [[UINavigationController alloc] initWithRootViewController:addFolderViewController];
+    
+    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
+    
+    [self presentViewController:navController
+                       animated:YES
+                     completion:nil];
+}
+
+- (void)modalViewControllerDone:(FolderCommandObject *)folderCommandObject
+{
+    if (folderCommandObject.type == kCancelCommand) {
+        [self dismissViewControllerAnimated:YES completion:^{}];
+        return;
+    }
+
+    if (folderCommandObject.type == kCreateFolderCommand) {
+        NSString *folderName = (NSString *)folderCommandObject.target;
+        [self.folder createFolderWithName:folderName];
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self refreshFolderView];
+        }];
+    }
+    
+    // Default
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self refreshFolderView];
+    }];
 }
 
 - (void)selectFolder:(id)sender

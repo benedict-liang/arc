@@ -198,4 +198,10 @@ NSString* const FOLDER_VIEW_FILES = @"Files";
     return sectionHeader;
 }
 
+- (void)refreshFolderView
+{
+    [self setUpFolderContents];
+    [self.tableView reloadData];
+}
+
 @end

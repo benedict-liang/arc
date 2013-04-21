@@ -44,12 +44,6 @@
     (GoogleDriveServiceManager *)[GoogleDriveServiceManager sharedServiceManager];
 }
 
-- (void)refreshFolderView
-{
-    [self setUpFolderContents];
-    [self.tableView reloadData];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -407,10 +401,7 @@
                 for (NSIndexPath *indexPath in _editSelection) {
                     [destination takeFileSystemObject:[self sectionItem:indexPath]];
                 }
-                
-                [self setUpFolderContents];
-                [self.tableView deleteRowsAtIndexPaths:_editSelection
-                                      withRowAnimation:UITableViewRowAnimationAutomatic];
+                [self refreshFolderView];
             }
             [self setEditing:NO animated:YES];
         }
@@ -432,7 +423,7 @@
     }];
 }
 
-- (NSArray *)editSelection
+- (NSArray *)targetFiles
 {
     NSMutableArray *fileObjectsSelected = [NSMutableArray array];
     for (NSIndexPath *indexPath in _editSelection) {

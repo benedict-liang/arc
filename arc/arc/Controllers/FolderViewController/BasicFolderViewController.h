@@ -18,6 +18,7 @@
 - (void)setUpFolderContents;
 - (void)setUpTableView;
 - (void)didPopFromNavigationController;
+- (void)refreshFolderView;
 
 @property (nonatomic, readonly) id<Folder> folder;
 @property (nonatomic, readonly) UITableView *tableView;
