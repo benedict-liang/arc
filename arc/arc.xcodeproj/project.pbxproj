@@ -352,6 +352,7 @@
 		FCBD8327171DC595005E2B31 /* FoldNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FCBD8326171DC595005E2B31 /* FoldNode.m */; };
 		FCBD832E171DD519005E2B31 /* RootFoldNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FCBD832D171DD518005E2B31 /* RootFoldNode.m */; };
 		FCBD8331171DE013005E2B31 /* CodeFolding.m in Sources */ = {isa = PBXBuildFile; fileRef = FCBD8330171DE011005E2B31 /* CodeFolding.m */; };
+		FCF50EA11723CE540038E0AD /* libParcoa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF50E9C1723CE280038E0AD /* libParcoa.a */; };
 		FCFB4DA2170F466200B25FDC /* BundleConf.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCFB4DA1170F466200B25FDC /* BundleConf.plist */; };
 /* End PBXBuildFile section */
 
@@ -390,6 +391,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4C43F8E816F86AA900159B29;
 			remoteInfo = arc;
+		};
+		FCF50E9B1723CE280038E0AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCF50E951723CE280038E0AD /* Parcoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E50C9B5E16903D1A00851B04;
+			remoteInfo = Parcoa;
+		};
+		FCF50E9D1723CE280038E0AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCF50E951723CE280038E0AD /* Parcoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E50C9B6F16903D1A00851B04;
+			remoteInfo = ParcoaTests;
+		};
+		FCF50E9F1723CE280038E0AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCF50E951723CE280038E0AD /* Parcoa.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E5A2DF2C16966C1000EFC414;
+			remoteInfo = "Parcoa OS X";
+		};
+		FCF50EA21723CE600038E0AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCF50E951723CE280038E0AD /* Parcoa.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E50C9B5D16903D1900851B04;
+			remoteInfo = Parcoa;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -826,6 +855,7 @@
 		FCBD8330171DE011005E2B31 /* CodeFolding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeFolding.m; sourceTree = "<group>"; };
 		FCBD8332171DEBA2005E2B31 /* SyntaxHighlightDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlightDelegate.h; sourceTree = "<group>"; };
 		FCE8F95D1709806B00C08724 /* CodeViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeViewControllerDelegate.h; sourceTree = "<group>"; };
+		FCF50E951723CE280038E0AD /* Parcoa.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Parcoa.xcodeproj; path = arc/Plugin/Parcoa/Parcoa.xcodeproj; sourceTree = "<group>"; };
 		FCFB4DA1170F466200B25FDC /* BundleConf.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BundleConf.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -834,6 +864,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCF50EA11723CE540038E0AD /* libParcoa.a in Frameworks */,
 				020C10E5171A93E100603229 /* libGTLTouchStaticLib.a in Frameworks */,
 				02B341E9171C130400DC9639 /* LiveSDK.framework in Frameworks */,
 				4CD06B8616FE0FE600C9DED3 /* CoreText.framework in Frameworks */,
@@ -1016,6 +1047,7 @@
 		4C43F8E016F86AA800159B29 = {
 			isa = PBXGroup;
 			children = (
+				FCF50E951723CE280038E0AD /* Parcoa.xcodeproj */,
 				020C10D6171A935200603229 /* GTL.xcodeproj */,
 				4C43F8F416F86AA900159B29 /* arc */,
 				4CD06B6F16FDEEC100C9DED3 /* arcTests */,
@@ -1675,6 +1707,16 @@
 			path = Assets/Themes;
 			sourceTree = "<group>";
 		};
+		FCF50E961723CE280038E0AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FCF50E9C1723CE280038E0AD /* libParcoa.a */,
+				FCF50E9E1723CE280038E0AD /* ParcoaTests.octest */,
+				FCF50EA01723CE280038E0AD /* Parcoa OS X.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1689,6 +1731,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FCF50EA31723CE600038E0AD /* PBXTargetDependency */,
 			);
 			name = arc;
 			productName = arc;
@@ -1755,6 +1798,10 @@
 					ProductGroup = 020C10D7171A935200603229 /* Products */;
 					ProjectRef = 020C10D6171A935200603229 /* GTL.xcodeproj */;
 				},
+				{
+					ProductGroup = FCF50E961723CE280038E0AD /* Products */;
+					ProjectRef = FCF50E951723CE280038E0AD /* Parcoa.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -1792,6 +1839,27 @@
 			fileType = "compiled.mach-o.executable";
 			path = DevelopmentTestTool;
 			remoteRef = 020C10E3171A935300603229 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FCF50E9C1723CE280038E0AD /* libParcoa.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libParcoa.a;
+			remoteRef = FCF50E9B1723CE280038E0AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FCF50E9E1723CE280038E0AD /* ParcoaTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ParcoaTests.octest;
+			remoteRef = FCF50E9D1723CE280038E0AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FCF50EA01723CE280038E0AD /* Parcoa OS X.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = "Parcoa OS X.dylib";
+			remoteRef = FCF50E9F1723CE280038E0AD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -2192,6 +2260,11 @@
 			target = 4C43F8E816F86AA900159B29 /* arc */;
 			targetProxy = 0234361C16FDFA0700B0D7AE /* PBXContainerItemProxy */;
 		};
+		FCF50EA31723CE600038E0AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Parcoa;
+			targetProxy = FCF50EA21723CE600038E0AD /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -2281,6 +2354,7 @@
 		4C43F90C16F86AA900159B29 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"./arc\"/**",
@@ -2298,7 +2372,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "(arc)";
-				USER_HEADER_SEARCH_PATHS = "\"./arc/Model/Cloud/Google\\ Drive/Source\"/**";
+				USER_HEADER_SEARCH_PATHS = "\"./arc/Model/Cloud/Google\\ Drive/Source\"/** \"./arc/Plugin/Parcoa\"/**";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2307,6 +2381,7 @@
 		4C43F90D16F86AA900159B29 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"./arc\"/**",
@@ -2322,7 +2397,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "(arc)";
-				USER_HEADER_SEARCH_PATHS = "\"./arc/Model/Cloud/Google\\ Drive/Source\"/**";
+				USER_HEADER_SEARCH_PATHS = "\"./arc/Model/Cloud/Google\\ Drive/Source\"/** \"./arc/Plugin/Parcoa\"/**";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

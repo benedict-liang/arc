@@ -90,9 +90,9 @@
     }
     if (!flag) {
         NSArray* patterns = [bundle objectForKey:@"patterns"];
-        flag = [TMBundleSyntaxParser ]
+      //  flag = [TMBundleSyntaxParser ]
     }
-    
+    return flag;
 }
 
 + (NSDictionary *)prunePatterns:(NSArray*)patterns WithTheme:(NSDictionary* )theme {
@@ -101,5 +101,6 @@
     for (NSString* scope in scopes) {
         
     }
+    return nil;
 }
 @end
