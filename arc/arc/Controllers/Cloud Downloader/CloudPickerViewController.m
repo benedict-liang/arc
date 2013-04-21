@@ -109,9 +109,13 @@
 {
     id<FileSystemObject> selectedObject = [self sectionItem:indexPath];
     if ([selectedObject conformsToProtocol:@protocol(CloudFile)]) {
-        [_serviceManager downloadFile:(id<CloudFile>)selectedObject
-                             toFolder:_target];
-        [self folderContentsUpdated:self.folder];
+        if ([Utils isFileSupported:[selectedObject name]]) {
+            [_serviceManager downloadFile:(id<CloudFile>)selectedObject
+                                 toFolder:_target];
+            [self folderContentsUpdated:self.folder];
+        } else {
+            [[[UIAlertView alloc] initWithTitle:@"Unsupported File" message:@"Sorry, (arc) doesn't support this file type." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+        }
     } else {
         CloudPickerViewController *newFolderController =
         [[CloudPickerViewController alloc] initWithCloudFolder:(id<CloudFolder>)selectedObject
