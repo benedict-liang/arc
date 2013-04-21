@@ -19,4 +19,7 @@
 + (OverlapPeekResult*)resultWithBeginRange:(NSRange)br EndRange:(NSRange)er SyntaxItem:(NSDictionary *)si {
     return [[OverlapPeekResult alloc] initWithBrange:br Erange:er Syntax:si];
 }
+- (NSString*)description {
+    return [NSString stringWithFormat:@"beginRange:%@ \nendRange:%@\n syntaxItem:%@",[Utils valueFromRange:_beginRange],[Utils valueFromRange:_endRange],_syntaxItem];
+}
 @end

@@ -408,6 +408,7 @@
         if (minBegin.location > bresult.location && eresult.location < _content.length) {
             minBegin = bresult;
             minSyntax = syntaxItem;
+            minEnd = eresult;
         }
     }
     if (minSyntax) {
@@ -420,6 +421,7 @@
     NSRange iterRange = NSMakeRange(0, _content.length);
     while (iterRange.location < _content.length) {
         OverlapPeekResult* peekRes = [self peekMinForItems:overlaps WithRange:iterRange];
+        NSLog(@"%@",peekRes);
         if (peekRes) {
             NSDictionary* syntaxItem = peekRes.syntaxItem;
             NSString* name = [syntaxItem objectForKey:@"name"];
@@ -611,6 +613,7 @@
 //    
 //    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
     }
+    //NSLog(@"%@",_overlapAccum);
     [self handleOverlaps:_overlapAccum];
 }
 
@@ -683,7 +686,6 @@
     ArcAttributedString *output = [options objectForKey:@"attributedString"];
     _finalOutput = output;
     NSDictionary* theme = [options objectForKey:@"theme"];
-    overlapMatches = [NSDictionary dictionary];
 
     if (!_matchesDone) {
         NSMutableArray* patterns = [NSMutableArray arrayWithArray:[_bundle objectForKey:@"patterns"]];
