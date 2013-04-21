@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum {kLeft, kRight} DragPointType;
+typedef enum {kLeftDragPoint, kRightDragPoint} DragPointType;
 
 @interface DragPointImageView : UIImageView
 

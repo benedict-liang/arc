@@ -100,14 +100,14 @@
                                            DRAG_POINT_WIDTH,
                                            selectedRect.size.height);
     _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame
-                                                       andType:kLeft];
+                                                       andType:kLeftDragPoint];
     
     CGRect rightDragPointFrame = CGRectMake(selectedRect.origin.x + selectedRect.size.width - DRAG_POINT_WIDTH / 2,
                                             selectedRect.origin.y,
                                             DRAG_POINT_WIDTH,
                                             selectedRect.size.height);
     _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame
-                                                        andType:kRight];
+                                                        andType:kRightDragPoint];
     
     [self addGestureRecognizersForDragPoints];
 }
