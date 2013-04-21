@@ -391,12 +391,12 @@
 
 - (void)modalViewControllerDone:(FolderCommandObject *)folderCommandObject
 {
-    if (folderCommandObject.type == kCancelCommand) {
+    if (folderCommandObject.type == kCancelCommand && ![self.presentedViewController isBeingDismissed]) {
         [self dismissViewControllerAnimated:YES completion:^{}];
         return;
     }
     
-    if (folderCommandObject.type == kMoveFileObjects) {
+    if (folderCommandObject.type == kMoveFileObjects && ![self.presentedViewController isBeingDismissed]) {
         if ([[folderCommandObject.target class] conformsToProtocol:@protocol(Folder)]) {
             id<Folder> destination = (id<Folder>)folderCommandObject.target;
             
@@ -412,7 +412,7 @@
         return;
     }
     
-    if (folderCommandObject.type == kCreateFolderCommand) {
+    if (folderCommandObject.type == kCreateFolderCommand && ![self.presentedViewController isBeingDismissed]) {
         NSString *folderName = (NSString *)folderCommandObject.target;
         [self.folder createFolderWithName:folderName];
         [self dismissViewControllerAnimated:YES completion:^{
@@ -420,10 +420,12 @@
         }];
     }
     
-    // Default
-    [self dismissViewControllerAnimated:YES completion:^{
-        [self refreshFolderView];
-    }];
+    if (![self.presentedViewController isBeingDismissed]) {
+        // Default
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self refreshFolderView];
+        }];
+    }
 }
 
 - (NSArray *)targetFiles

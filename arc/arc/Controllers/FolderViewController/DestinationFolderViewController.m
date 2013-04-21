@@ -134,12 +134,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)modalViewControllerDone:(FolderCommandObject *)folderCommandObject
 {
-    if (folderCommandObject.type == kCancelCommand) {
+    if (folderCommandObject.type == kCancelCommand && ![self.presentedViewController isBeingDismissed]) {
         [self dismissViewControllerAnimated:YES completion:^{}];
         return;
     }
 
-    if (folderCommandObject.type == kCreateFolderCommand) {
+    if (folderCommandObject.type == kCreateFolderCommand  && ![self.presentedViewController isBeingDismissed]) {
         NSString *folderName = (NSString *)folderCommandObject.target;
         [self.folder createFolderWithName:folderName];
         [self dismissViewControllerAnimated:YES completion:^{
@@ -147,10 +147,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         }];
     }
     
-    // Default
-    [self dismissViewControllerAnimated:YES completion:^{
-        [self refreshFolderView];
-    }];
+    if (![self.presentedViewController isBeingDismissed]) {
+        // Default
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self refreshFolderView];
+        }];
+    }
 }
 
 - (void)selectFolder:(id)sender
