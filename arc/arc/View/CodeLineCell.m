@@ -97,7 +97,7 @@
 - (void)setLine:(NSAttributedString *)line
 {
     _line = line;
-    _codeLine.attributedText = _line;
+    _codeLine.attributedText = [[NSAttributedString alloc] initWithAttributedString:_line];
     _lineNumberLabel.text = @"";
 }
 

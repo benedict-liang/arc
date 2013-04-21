@@ -161,7 +161,9 @@
 - (void)renderFile
 {
     // Render Code to screen
-    [_tableView reloadData];
+    @synchronized(_tableView) {
+        [_tableView reloadData];
+    }
 }
 
 # pragma mark - Change of settings
