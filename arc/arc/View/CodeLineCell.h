@@ -25,6 +25,7 @@
                                   FontSize:(int)fontSize;
 
 - (void)setForegroundColor:(UIColor*)foregroundColor;
+- (void)setHighlightColor:(UIColor*)highlightColor;
 - (void)setFontFamily:(NSString*)fontFamily FontSize:(int)fontSize;
 
 - (void)highlight;

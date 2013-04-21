@@ -172,9 +172,13 @@
 // Shows the file using the CodeViewController
 - (void)fileSelected:(id<File>)file
 {
- ApplicationState *appState = [ApplicationState sharedApplicationState];
-  [appState setCurrentFileOpened:file];
-    [_codeViewController showFile:file];
+    if ([Utils isFileSupported:[file name]]) {
+        ApplicationState *appState = [ApplicationState sharedApplicationState];
+        [appState setCurrentFileOpened:file];
+        [_codeViewController showFile:file];
+    } else {
+        [Utils showUnsupportedFileDialog];
+    }
 }
 
 // Updates Current Folder being Viewed

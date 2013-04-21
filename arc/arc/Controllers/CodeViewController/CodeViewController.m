@@ -161,7 +161,9 @@
 - (void)renderFile
 {
     // Render Code to screen
-    [_tableView reloadData];
+    @synchronized(_tableView) {
+        [_tableView reloadData];
+    }
 }
 
 # pragma mark - Change of settings
@@ -170,6 +172,7 @@
 {
     [self execPreRenderPluginsAffectingBounds:YES FilterBy:setting];
     [self generateLines];
+    [self resetFolds];
     [self calcLineHeight];
     [self execPreRenderPluginsAffectingBounds:NO FilterBy:setting];
     [self renderFile];
@@ -523,6 +526,20 @@
     return count;
 }
 
+- (CodeViewLine *)lineAtIndexPath:(NSIndexPath *)indexPath
+{
+    int index = 0;
+    for (CodeViewLine *line in _lines) {
+        if (line.visible) {
+            if (index == indexPath.row) {
+                return line;
+            }
+            index++;
+        }
+    }
+    return nil;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -535,10 +552,12 @@
     }
     
     [cell setForegroundColor:_foregroundColor];
+    [cell setHighlightColor:_selectionColor];    
     [cell setFontFamily:_fontFamily FontSize:_fontSize];
     cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
-    CodeViewLine *line = (CodeViewLine *)[_lines objectAtIndex:indexPath.row];
+    
+    CodeViewLine *line = [self lineAtIndexPath:indexPath];
     NSAttributedString *lineRef = [_arcAttributedString.attributedString
                                    attributedSubstringFromRange:line.range];
 
@@ -557,8 +576,6 @@
     }
 
     // Remove Gesture Recognizers
-    [Utils removeAllGestureRecognizersFrom:cell];
-    [Utils removeAllGestureRecognizersFrom:cell.lineNumberLabel];
     [Utils removeAllGestureRecognizersFrom:cell.contentView];
     
     // Long Press Gesture for text selection
@@ -572,12 +589,23 @@
         cell.foldStart = YES;
         cell.lineNumberLabel.userInteractionEnabled = YES;
         
+        if ([_activeFolds objectForKey:[NSNumber numberWithInt:indexPath.row]]) {
+            [cell highlight];
+
+            UITapGestureRecognizer *tapGesture =
+            [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                    action:@selector(removeFold:)];
+            [cell addGestureRecognizer:tapGesture];
+        }
+
         UILongPressGestureRecognizer *longPressGesture =
         [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(showFold:)];
         [cell.lineNumberLabel addGestureRecognizer:longPressGesture];
     } else {
         cell.foldStart = NO;
         cell.lineNumberLabel.userInteractionEnabled = NO;
+        [Utils removeAllGestureRecognizersFrom:cell.lineNumberLabel];
+        [Utils removeAllGestureRecognizersFrom:cell];
     }
 
     return cell;
@@ -631,8 +659,6 @@
                                                                inSection:0]];
             [foldingCell removeHighlight];
         }
-        
-        NSLog(@"%@", activeFold);
     }
     
     if (gesture.state == UIGestureRecognizerStateEnded) {
@@ -649,9 +675,9 @@
         NSMutableArray *actualLines = [activeFold objectForKey:@"actualLines"];
         for (NSNumber *row in actualLines) {
             CodeViewLine *line = [_lines objectAtIndex:[row intValue]];
-            line.visible = NO;            
+            line.visible = NO;
         }
-        
+
         [_tableView deleteRowsAtIndexPaths:indexPaths
                           withRowAnimation:UITableViewRowAnimationFade];
         

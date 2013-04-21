@@ -16,31 +16,22 @@
 		020C128B171AAB2500603229 /* GoogleDriveFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C128A171AAB2400603229 /* GoogleDriveFolder.m */; };
 		020C128E171ABACD00603229 /* GoogleDriveFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C128D171ABACC00603229 /* GoogleDriveFile.m */; };
 		020C1291171AC14900603229 /* GoogleDriveDownloadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C1290171AC14600603229 /* GoogleDriveDownloadHelper.m */; };
+		022726391723D56500615BC1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022726381723D56500615BC1 /* MobileCoreServices.framework */; };
 		026AC54716FF104D001E03E5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7F16FDF61C00C9DED3 /* Constants.m */; };
 		026BC4711705895500A9AA5F /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC4701705895500A9AA5F /* Dropbox.framework */; };
 		026BC473170589A700A9AA5F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC472170589A700A9AA5F /* CFNetwork.framework */; };
 		026BC475170589B000A9AA5F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC474170589B000A9AA5F /* Security.framework */; };
 		026BC477170589BD00A9AA5F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC476170589BD00A9AA5F /* SystemConfiguration.framework */; };
 		026BC479170589C600A9AA5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC478170589C600A9AA5F /* QuartzCore.framework */; };
-		027EE0361716AAEC00302F07 /* LongSettingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 027EE0351716AAEC00302F07 /* LongSettingListViewController.m */; };
 		028B4900170E9D0600C0CEF6 /* UbuntuMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 028B48FF170E9D0600C0CEF6 /* UbuntuMono.ttf */; };
-		02A0078F171BBC6E0099FE61 /* CloudPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A0078E171BBC6E0099FE61 /* CloudPickerViewController.m */; };
 		02A5198D170DC0CE007C038E /* Inconsolata.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02A5198C170DC0CE007C038E /* Inconsolata.ttf */; };
 		02B04FCA1701672700FE51CB /* GameObject.h in Resources */ = {isa = PBXBuildFile; fileRef = 02B04FC91701608C00FE51CB /* GameObject.h */; };
 		02B341E9171C130400DC9639 /* LiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */; };
-		02C4FBA7171E3E5500B2FACD /* LoadingOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C4FBA6171E3E5500B2FACD /* LoadingOverlayViewController.m */; };
 		02CF20721712ACB8001A59E4 /* Reading Panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 02CF20711712ACB8001A59E4 /* Reading Panel.png */; };
 		02D2B73F17099E89002D22E7 /* RootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D2B73E17099E88002D22E7 /* RootFolder.m */; };
 		02D55DB51711694900DD48D7 /* PluginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D55DB41711694900DD48D7 /* PluginUtilities.m */; };
 		02E162CD170B02F400C9D23B /* appState.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02E162CC170B02F400C9D23B /* appState.plist */; };
-		02E51AE017092D4300247AF5 /* LocalFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51ADF17092D4300247AF5 /* LocalFolder.m */; };
-		02E51AE417093C8B00247AF5 /* LocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AE317093C8B00247AF5 /* LocalFile.m */; };
-		02E51AE71709438900247AF5 /* LocalRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AE61709438900247AF5 /* LocalRootFolder.m */; };
-		02E51AEB1709580400247AF5 /* DropBoxFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AEA1709580400247AF5 /* DropBoxFile.m */; };
-		02E51AEE1709581200247AF5 /* DropBoxFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AED1709581200247AF5 /* DropBoxFolder.m */; };
-		02E51AF11709582300247AF5 /* DropBoxRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E51AF01709582300247AF5 /* DropBoxRootFolder.m */; };
 		02E7A4A8171BD80E00E22752 /* LiveSDK.framework in Resources */ = {isa = PBXBuildFile; fileRef = 840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */; };
-		02F25A121713E660000B6301 /* CreateFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F25A111713E660000B6301 /* CreateFolderViewController.m */; };
 		4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D0711705CA7800F4593B /* ArcAttributedString.m */; };
 		4C1AF1181714FF8400A2D0D8 /* documents.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1AF1161714FF8400A2D0D8 /* documents.png */; };
 		4C1AF1191714FF8400A2D0D8 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1AF1171714FF8400A2D0D8 /* settings.png */; };
@@ -58,13 +49,13 @@
 		4C5E51EA171BEB480041BB2B /* ArcAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E51E9171BEB480041BB2B /* ArcAttribute.m */; };
 		4C5E51EF171BFB1E0041BB2B /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5E51EE171BFB1E0041BB2B /* Theme.m */; };
 		4C5E51F5171C028C0041BB2B /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C5E51F4171C028C0041BB2B /* file.png */; };
-		4C6B0908171EE27A009DB903 /* CodeViewLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B0907171EE27A009DB903 /* CodeViewLine.m */; };
 		4C6B090A171EEB46009DB903 /* file_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C6B0909171EEB46009DB903 /* file_white.png */; };
 		4C6B0911171EEC22009DB903 /* FileObjectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B0910171EEC22009DB903 /* FileObjectTableViewCell.m */; };
-		4C7A82BF1722512B00B7D229 /* ArcSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7A82BE1722512B00B7D229 /* ArcSplitViewController.m */; };
 		4C8307EB17114CEF00F49C33 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8307EA17114CEF00F49C33 /* SettingCell.m */; };
 		4C9137281715B9D900413C79 /* Solarized (dark).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = 4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */; };
 		4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C963C81170D8E96004FDACB /* CodeLineCell.m */; };
+		4C9C7C211723B17900DBFA13 /* FolderViewSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C201723B17900DBFA13 /* FolderViewSectionHeader.m */; };
+		4C9C7C491723D43700DBFA13 /* DestinationFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C7C481723D43700DBFA13 /* DestinationFolderViewController.m */; };
 		4C9E0619170F3AFC0000F783 /* arc72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E0618170F3AFC0000F783 /* arc72.png */; };
 		4C9E061B170F3B1A0000F783 /* arc144.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C9E061A170F3B1A0000F783 /* arc144.png */; };
 		4CC9E0ED171C4C580062C825 /* arcMonokai72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC9E0EC171C4C580062C825 /* arcMonokai72.png */; };
@@ -102,7 +93,6 @@
 		4CEADA2C1716F43E00F4F619 /* ArcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEADA2B1716F43E00F4F619 /* ArcViewController.m */; };
 		4CEADA311716F69A00F4F619 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC478170589C600A9AA5F /* QuartzCore.framework */; };
 		4CF6F0F21706E29300EDDEDC /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F11706E29300EDDEDC /* folder.png */; };
-		4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */; };
 		840B640FE8BA225B6750F377 /* SkyDriveFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B6B4068D4462DD00C7BE0 /* SkyDriveFolder.m */; };
 		840B686FE41BCE38805A85BE /* Cloud-Download.png in Resources */ = {isa = PBXBuildFile; fileRef = 840B6ABA3F91CF078F55C3DE /* Cloud-Download.png */; };
 		840B6CE8D86D8BAA0E3CD4BC /* SkyDriveServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B67A71EB5C59B9BCEF1A2 /* SkyDriveServiceManager.m */; };
@@ -272,16 +262,36 @@
 		8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F563F34170161C900EE5643 /* TMBundleSyntaxParser.m */; };
 		8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C5C1416FDFDBE00B31A19 /* Utils.m */; };
 		8F7066B317199B1F00E8C64E /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F7066B217199B1F00E8C64E /* SearchResultCell.m */; };
-		8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F771E131711B900002E9914 /* ResultsTableViewController.m */; };
 		8F84790D17102A14006893D6 /* FullTextSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F84790C17102A14006893D6 /* FullTextSearch.m */; };
 		8FC1B4E91719D8E0002939D8 /* DragPointImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC1B4E81719D8E0002939D8 /* DragPointImageView.m */; };
-		8FC1B4EC1719DBCE002939D8 /* DragPointsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FC1B4EB1719DBCE002939D8 /* DragPointsViewController.m */; };
 		8FC7BD3F170F435900D0FA3A /* syntaxesFileList.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8FC7BD3E170F435900D0FA3A /* syntaxesFileList.txt */; };
-		8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6816F86C7000C6AAFC /* MainViewController.m */; };
 		8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */; };
-		8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */; };
-		8FDE2E28171D577500CF2BC9 /* leftDragPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDE2E26171D577500CF2BC9 /* leftDragPoint.png */; };
-		8FDE2E29171D577500CF2BC9 /* rightDragPoint.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FDE2E27171D577500CF2BC9 /* rightDragPoint.png */; };
+		8FE0039017239C740013B9AC /* dragpointline.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE0038F17239C740013B9AC /* dragpointline.png */; };
+		8FE0039217239D540013B9AC /* dragpointcirclebottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE0039117239D540013B9AC /* dragpointcirclebottom.png */; };
+		8FE0039417239DA70013B9AC /* dragpointcircletop.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE0039317239DA70013B9AC /* dragpointcircletop.png */; };
+		8FE003971723C8BD0013B9AC /* dragpointcirclebottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE003951723C8BD0013B9AC /* dragpointcirclebottom@2x.png */; };
+		8FE003981723C8BD0013B9AC /* dragpointcircletop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE003961723C8BD0013B9AC /* dragpointcircletop@2x.png */; };
+		8FE003A91723D0C20013B9AC /* CreateFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003A61723D0C20013B9AC /* CreateFolderViewController.m */; };
+		8FE003AA1723D0C20013B9AC /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003A81723D0C20013B9AC /* ResultsTableViewController.m */; };
+		8FE003B21723D0F50013B9AC /* ArcSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003AD1723D0F50013B9AC /* ArcSplitViewController.m */; };
+		8FE003B31723D0F50013B9AC /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003AF1723D0F50013B9AC /* LeftViewController.m */; };
+		8FE003B41723D0F50013B9AC /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003B11723D0F50013B9AC /* MainViewController.m */; };
+		8FE003BA1723D1810013B9AC /* CodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003B71723D1810013B9AC /* CodeViewController.m */; };
+		8FE003BB1723D1810013B9AC /* CodeViewLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003B91723D1810013B9AC /* CodeViewLine.m */; };
+		8FE003C81723D1D80013B9AC /* LongSettingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003BE1723D1D80013B9AC /* LongSettingListViewController.m */; };
+		8FE003C91723D1D80013B9AC /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003C01723D1D80013B9AC /* SettingsViewController.m */; };
+		8FE003CA1723D1D80013B9AC /* BasicFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003C31723D1D80013B9AC /* BasicFolderViewController.m */; };
+		8FE003CB1723D1D80013B9AC /* FileSystemObjectGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003C51723D1D80013B9AC /* FileSystemObjectGroup.m */; };
+		8FE003CC1723D1D80013B9AC /* FolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003C71723D1D80013B9AC /* FolderViewController.m */; };
+		8FE003D51723D2190013B9AC /* DragPointsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003CF1723D2190013B9AC /* DragPointsViewController.m */; };
+		8FE003D61723D2190013B9AC /* CloudPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003D21723D2190013B9AC /* CloudPickerViewController.m */; };
+		8FE003D71723D2190013B9AC /* LoadingOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003D41723D2190013B9AC /* LoadingOverlayViewController.m */; };
+		8FE003E61723D2BD0013B9AC /* LocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003DA1723D2BD0013B9AC /* LocalFile.m */; };
+		8FE003E71723D2BD0013B9AC /* LocalFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003DC1723D2BD0013B9AC /* LocalFolder.m */; };
+		8FE003E81723D2BD0013B9AC /* LocalRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003DE1723D2BD0013B9AC /* LocalRootFolder.m */; };
+		8FE003E91723D2BD0013B9AC /* DropBoxFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003E11723D2BD0013B9AC /* DropBoxFile.m */; };
+		8FE003EA1723D2BD0013B9AC /* DropBoxFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003E31723D2BD0013B9AC /* DropBoxFolder.m */; };
+		8FE003EB1723D2BD0013B9AC /* DropBoxRootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE003E51723D2BD0013B9AC /* DropBoxRootFolder.m */; };
 		FC137BE01719AE1000878684 /* FoldTree.m in Sources */ = {isa = PBXBuildFile; fileRef = FC137BDF1719AE1000878684 /* FoldTree.m */; };
 		FC3C2E621715BF8100C40490 /* [ Argonaut ].tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E2A1715BF7A00C40490 /* [ Argonaut ].tmTheme */; };
 		FC3C2E631715BF8100C40490 /* All Hallow's Eve Custom.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E2B1715BF7A00C40490 /* All Hallow's Eve Custom.tmTheme */; };
@@ -340,8 +350,6 @@
 		FC3C2E991715BF8100C40490 /* zenburn.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E611715BF8100C40490 /* zenburn.tmTheme */; };
 		FC3C2E9C1715C1F400C40490 /* ThemeConf.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC3C2E9B1715C1F400C40490 /* ThemeConf.plist */; };
 		FC4A8529170EB47200463EDA /* twist.py in Resources */ = {isa = PBXBuildFile; fileRef = FC4A8528170EB47200463EDA /* twist.py */; };
-		FC4B269E16F88CB800E1DC49 /* FolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B269D16F88CB800E1DC49 /* FolderViewController.m */; };
-		FC4B26CE16FF6E3800E1DC49 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */; };
 		FC726065171102660068DD91 /* base.rb in Resources */ = {isa = PBXBuildFile; fileRef = FC726064171102660068DD91 /* base.rb */; };
 		FC72606B171106C60068DD91 /* RequestBuilder.hs in Resources */ = {isa = PBXBuildFile; fileRef = FC72606A171106C60068DD91 /* RequestBuilder.hs */; };
 		FC72606D171113420068DD91 /* filter_routes.clj in Resources */ = {isa = PBXBuildFile; fileRef = FC72606C171113420068DD91 /* filter_routes.clj */; };
@@ -427,7 +435,6 @@
 		020C104D171A666500603229 /* SkyDriveFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveFile.m; sourceTree = "<group>"; };
 		020C104F171A6DB000603229 /* SkyDriveDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveDownloadHelper.h; sourceTree = "<group>"; };
 		020C1050171A6DB000603229 /* SkyDriveDownloadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveDownloadHelper.m; sourceTree = "<group>"; };
-		020C1053171A77E200603229 /* CloudFolderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudFolderDelegate.h; sourceTree = "<group>"; };
 		020C10D6171A935200603229 /* GTL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GTL.xcodeproj; path = "arc/Model/Cloud/Google Drive/Source/GTL.xcodeproj"; sourceTree = "<group>"; };
 		020C1281171A95C800603229 /* GTLDrive_Sources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTLDrive_Sources.m; path = Source/Services/Drive/Generated/GTLDrive_Sources.m; sourceTree = "<group>"; };
 		020C1282171A95C800603229 /* GTLDrive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTLDrive.h; path = Source/Services/Drive/Generated/GTLDrive.h; sourceTree = "<group>"; };
@@ -440,7 +447,8 @@
 		020C128D171ABACC00603229 /* GoogleDriveFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveFile.m; sourceTree = "<group>"; };
 		020C128F171AC14500603229 /* GoogleDriveDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleDriveDownloadHelper.h; sourceTree = "<group>"; };
 		020C1290171AC14600603229 /* GoogleDriveDownloadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveDownloadHelper.m; sourceTree = "<group>"; };
-		023D4AFA171D1AAF00D9F60D /* CloudPickerViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudPickerViewControllerDelegate.h; sourceTree = "<group>"; };
+		022726381723D56500615BC1 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		023D4AFA171D1AAF00D9F60D /* PresentingModalViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentingModalViewControllerDelegate.h; sourceTree = "<group>"; };
 		025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		0260B50A1709286E0091B012 /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Folder.h; path = Protocols/Folder.h; sourceTree = "<group>"; };
 		0260B50B170928820091B012 /* FileSystemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystemObject.h; path = Protocols/FileSystemObject.h; sourceTree = "<group>"; };
@@ -449,42 +457,20 @@
 		026BC474170589B000A9AA5F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		026BC476170589BD00A9AA5F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		026BC478170589C600A9AA5F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		027EE0341716AAEC00302F07 /* LongSettingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongSettingListViewController.h; sourceTree = "<group>"; };
-		027EE0351716AAEC00302F07 /* LongSettingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LongSettingListViewController.m; sourceTree = "<group>"; };
 		027EE0381717FD7800302F07 /* LongSettingListViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongSettingListViewControllerDelegate.h; sourceTree = "<group>"; };
 		028B48FF170E9D0600C0CEF6 /* UbuntuMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UbuntuMono.ttf; sourceTree = "<group>"; };
-		02A0078D171BBC6E0099FE61 /* CloudPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudPickerViewController.h; sourceTree = "<group>"; };
-		02A0078E171BBC6E0099FE61 /* CloudPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudPickerViewController.m; sourceTree = "<group>"; };
 		02A00794171BBF650099FE61 /* CloudFolder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudFolder.h; sourceTree = "<group>"; };
 		02A5198C170DC0CE007C038E /* Inconsolata.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inconsolata.ttf; sourceTree = "<group>"; };
 		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
 		02C2E4841715594300C912E0 /* CreateFolderViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFolderViewControllerDelegate.h; sourceTree = "<group>"; };
-		02C4FBA5171E3E5500B2FACD /* LoadingOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingOverlayViewController.h; sourceTree = "<group>"; };
-		02C4FBA6171E3E5500B2FACD /* LoadingOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingOverlayViewController.m; sourceTree = "<group>"; };
 		02CF20711712ACB8001A59E4 /* Reading Panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reading Panel.png"; sourceTree = "<group>"; };
 		02D2B73D17099E88002D22E7 /* RootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootFolder.h; sourceTree = "<group>"; };
 		02D2B73E17099E88002D22E7 /* RootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootFolder.m; sourceTree = "<group>"; };
 		02D55DB31711694900DD48D7 /* PluginUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginUtilities.h; sourceTree = "<group>"; };
 		02D55DB41711694900DD48D7 /* PluginUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluginUtilities.m; sourceTree = "<group>"; };
 		02E162CC170B02F400C9D23B /* appState.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = appState.plist; sourceTree = "<group>"; };
-		02E51ADE17092D4300247AF5 /* LocalFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFolder.h; sourceTree = "<group>"; };
-		02E51ADF17092D4300247AF5 /* LocalFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFolder.m; sourceTree = "<group>"; };
 		02E51AE117092FCE00247AF5 /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = File.h; path = Protocols/File.h; sourceTree = "<group>"; };
-		02E51AE217093C8B00247AF5 /* LocalFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFile.h; sourceTree = "<group>"; };
-		02E51AE317093C8B00247AF5 /* LocalFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFile.m; sourceTree = "<group>"; };
-		02E51AE51709438800247AF5 /* LocalRootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalRootFolder.h; sourceTree = "<group>"; };
-		02E51AE61709438900247AF5 /* LocalRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalRootFolder.m; sourceTree = "<group>"; };
-		02E51AE91709580400247AF5 /* DropBoxFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxFile.h; sourceTree = "<group>"; };
-		02E51AEA1709580400247AF5 /* DropBoxFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxFile.m; sourceTree = "<group>"; };
-		02E51AEC1709581100247AF5 /* DropBoxFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxFolder.h; sourceTree = "<group>"; };
-		02E51AED1709581200247AF5 /* DropBoxFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxFolder.m; sourceTree = "<group>"; };
-		02E51AEF1709582300247AF5 /* DropBoxRootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxRootFolder.h; sourceTree = "<group>"; };
-		02E51AF01709582300247AF5 /* DropBoxRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxRootFolder.m; sourceTree = "<group>"; };
 		02E7A4A3171BCFC600E22752 /* CloudFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudFile.h; sourceTree = "<group>"; };
-		02F25A101713E660000B6301 /* CreateFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFolderViewController.h; sourceTree = "<group>"; };
-		02F25A111713E660000B6301 /* CreateFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateFolderViewController.m; sourceTree = "<group>"; };
-		02F7DEA6171D80F00053B447 /* DownloadHelperDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadHelperDelegate.h; sourceTree = "<group>"; };
-		02F7DEA7171D86450053B447 /* CloudServiceManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudServiceManagerDelegate.h; sourceTree = "<group>"; };
 		4C12D0701705CA7800F4593B /* ArcAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcAttributedString.h; sourceTree = "<group>"; };
 		4C12D0711705CA7800F4593B /* ArcAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcAttributedString.m; sourceTree = "<group>"; };
 		4C1AF1161714FF8400A2D0D8 /* documents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = documents.png; sourceTree = "<group>"; };
@@ -512,19 +498,19 @@
 		4C5E51ED171BFB1D0041BB2B /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
 		4C5E51EE171BFB1E0041BB2B /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
 		4C5E51F4171C028C0041BB2B /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
-		4C6B0906171EE27A009DB903 /* CodeViewLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewLine.h; sourceTree = "<group>"; };
-		4C6B0907171EE27A009DB903 /* CodeViewLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeViewLine.m; sourceTree = "<group>"; };
 		4C6B0909171EEB46009DB903 /* file_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file_white.png; sourceTree = "<group>"; };
 		4C6B090F171EEC22009DB903 /* FileObjectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileObjectTableViewCell.h; sourceTree = "<group>"; };
 		4C6B0910171EEC22009DB903 /* FileObjectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileObjectTableViewCell.m; sourceTree = "<group>"; };
-		4C7A82BD1722512B00B7D229 /* ArcSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcSplitViewController.h; sourceTree = "<group>"; };
-		4C7A82BE1722512B00B7D229 /* ArcSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcSplitViewController.m; sourceTree = "<group>"; };
 		4C7A82C0172281C600B7D229 /* ArcSplitViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcSplitViewControllerDelegate.h; sourceTree = "<group>"; };
 		4C8307E917114CEF00F49C33 /* SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
 		4C8307EA17114CEF00F49C33 /* SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
 		4C9137271715B9D900413C79 /* Solarized (dark).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Solarized (dark).tmTheme"; sourceTree = "<group>"; };
 		4C963C80170D8E96004FDACB /* CodeLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeLineCell.h; sourceTree = "<group>"; };
 		4C963C81170D8E96004FDACB /* CodeLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeLineCell.m; sourceTree = "<group>"; };
+		4C9C7C1F1723B17900DBFA13 /* FolderViewSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewSectionHeader.h; sourceTree = "<group>"; };
+		4C9C7C201723B17900DBFA13 /* FolderViewSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderViewSectionHeader.m; sourceTree = "<group>"; };
+		4C9C7C471723D43700DBFA13 /* DestinationFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DestinationFolderViewController.h; sourceTree = "<group>"; };
+		4C9C7C481723D43700DBFA13 /* DestinationFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DestinationFolderViewController.m; sourceTree = "<group>"; };
 		4C9DC9021719B64A00142E70 /* SyntaxHighlightingPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlightingPluginDelegate.h; sourceTree = "<group>"; };
 		4C9E0618170F3AFC0000F783 /* arc72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc72.png; sourceTree = SOURCE_ROOT; };
 		4C9E061A170F3B1A0000F783 /* arc144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arc144.png; sourceTree = SOURCE_ROOT; };
@@ -576,13 +562,11 @@
 		4CEADA2A1716F43E00F4F619 /* ArcViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArcViewController.h; path = Controllers/ArcViewController.h; sourceTree = "<group>"; };
 		4CEADA2B1716F43E00F4F619 /* ArcViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArcViewController.m; path = Controllers/ArcViewController.m; sourceTree = "<group>"; };
 		4CF6F0F11706E29300EDDEDC /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
-		4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		840B6454D395361AD2F521B2 /* CloudServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudServiceManager.h; sourceTree = "<group>"; };
 		840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LiveSDK.framework; path = arc/LiveSDK.framework; sourceTree = SOURCE_ROOT; };
 		840B6733BB2064AE23C5FDF7 /* SkyDriveFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveFolder.h; sourceTree = "<group>"; };
 		840B67A71EB5C59B9BCEF1A2 /* SkyDriveServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveServiceManager.m; sourceTree = "<group>"; };
-		840B67E300617A8810E2F3F5 /* PluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginDelegate.h; path = Plugin/PluginDelegate.h; sourceTree = "<group>"; };
+		840B67E300617A8810E2F3F5 /* PluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginDelegate.h; sourceTree = "<group>"; };
 		840B6ABA3F91CF078F55C3DE /* Cloud-Download.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cloud-Download.png"; sourceTree = "<group>"; };
 		840B6B4068D4462DD00C7BE0 /* SkyDriveFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkyDriveFolder.m; sourceTree = "<group>"; };
 		840B6D541756B41E6BF42859 /* SkyDriveServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkyDriveServiceManager.h; sourceTree = "<group>"; };
@@ -758,24 +742,64 @@
 		8F5C5C1516FDFDBE00B31A19 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = General/Utils.h; sourceTree = "<group>"; };
 		8F7066B117199B1F00E8C64E /* SearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultCell.h; sourceTree = "<group>"; };
 		8F7066B217199B1F00E8C64E /* SearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
-		8F771E121711B900002E9914 /* ResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsTableViewController.h; sourceTree = "<group>"; };
-		8F771E131711B900002E9914 /* ResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsTableViewController.m; sourceTree = "<group>"; };
 		8F84790B17102A14006893D6 /* FullTextSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullTextSearch.h; sourceTree = "<group>"; };
 		8F84790C17102A14006893D6 /* FullTextSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullTextSearch.m; sourceTree = "<group>"; };
 		8FC1B4E71719D8E0002939D8 /* DragPointImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragPointImageView.h; sourceTree = "<group>"; };
 		8FC1B4E81719D8E0002939D8 /* DragPointImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragPointImageView.m; sourceTree = "<group>"; };
-		8FC1B4EA1719DBCE002939D8 /* DragPointsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragPointsViewController.h; sourceTree = "<group>"; };
-		8FC1B4EB1719DBCE002939D8 /* DragPointsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragPointsViewController.m; sourceTree = "<group>"; };
 		8FC7BD3E170F435900D0FA3A /* syntaxesFileList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = syntaxesFileList.txt; sourceTree = "<group>"; };
-		8FCA1D6716F86C7000C6AAFC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		8FCA1D6816F86C7000C6AAFC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationState.h; sourceTree = "<group>"; };
 		8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationState.m; sourceTree = "<group>"; };
-		8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewController.h; sourceTree = "<group>"; };
-		8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeViewController.m; sourceTree = "<group>"; };
 		8FCA1D7116F8AA6000C6AAFC /* MainViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewControllerDelegate.h; sourceTree = "<group>"; };
-		8FDE2E26171D577500CF2BC9 /* leftDragPoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftDragPoint.png; sourceTree = "<group>"; };
-		8FDE2E27171D577500CF2BC9 /* rightDragPoint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightDragPoint.png; sourceTree = "<group>"; };
+		8FE0038F17239C740013B9AC /* dragpointline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragpointline.png; sourceTree = "<group>"; };
+		8FE0039117239D540013B9AC /* dragpointcirclebottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragpointcirclebottom.png; sourceTree = "<group>"; };
+		8FE0039317239DA70013B9AC /* dragpointcircletop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragpointcircletop.png; sourceTree = "<group>"; };
+		8FE003951723C8BD0013B9AC /* dragpointcirclebottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dragpointcirclebottom@2x.png"; sourceTree = "<group>"; };
+		8FE003961723C8BD0013B9AC /* dragpointcircletop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dragpointcircletop@2x.png"; sourceTree = "<group>"; };
+		8FE003A51723D0C20013B9AC /* CreateFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateFolderViewController.h; sourceTree = "<group>"; };
+		8FE003A61723D0C20013B9AC /* CreateFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateFolderViewController.m; sourceTree = "<group>"; };
+		8FE003A71723D0C20013B9AC /* ResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsTableViewController.h; sourceTree = "<group>"; };
+		8FE003A81723D0C20013B9AC /* ResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsTableViewController.m; sourceTree = "<group>"; };
+		8FE003AC1723D0F50013B9AC /* ArcSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcSplitViewController.h; sourceTree = "<group>"; };
+		8FE003AD1723D0F50013B9AC /* ArcSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArcSplitViewController.m; sourceTree = "<group>"; };
+		8FE003AE1723D0F50013B9AC /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		8FE003AF1723D0F50013B9AC /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		8FE003B01723D0F50013B9AC /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		8FE003B11723D0F50013B9AC /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		8FE003B61723D1810013B9AC /* CodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewController.h; sourceTree = "<group>"; };
+		8FE003B71723D1810013B9AC /* CodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeViewController.m; sourceTree = "<group>"; };
+		8FE003B81723D1810013B9AC /* CodeViewLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeViewLine.h; sourceTree = "<group>"; };
+		8FE003B91723D1810013B9AC /* CodeViewLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeViewLine.m; sourceTree = "<group>"; };
+		8FE003BD1723D1D80013B9AC /* LongSettingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongSettingListViewController.h; sourceTree = "<group>"; };
+		8FE003BE1723D1D80013B9AC /* LongSettingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LongSettingListViewController.m; sourceTree = "<group>"; };
+		8FE003BF1723D1D80013B9AC /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		8FE003C01723D1D80013B9AC /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		8FE003C21723D1D80013B9AC /* BasicFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicFolderViewController.h; sourceTree = "<group>"; };
+		8FE003C31723D1D80013B9AC /* BasicFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicFolderViewController.m; sourceTree = "<group>"; };
+		8FE003C41723D1D80013B9AC /* FileSystemObjectGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemObjectGroup.h; sourceTree = "<group>"; };
+		8FE003C51723D1D80013B9AC /* FileSystemObjectGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileSystemObjectGroup.m; sourceTree = "<group>"; };
+		8FE003C61723D1D80013B9AC /* FolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewController.h; sourceTree = "<group>"; };
+		8FE003C71723D1D80013B9AC /* FolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderViewController.m; sourceTree = "<group>"; };
+		8FE003CE1723D2190013B9AC /* DragPointsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragPointsViewController.h; sourceTree = "<group>"; };
+		8FE003CF1723D2190013B9AC /* DragPointsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragPointsViewController.m; sourceTree = "<group>"; };
+		8FE003D11723D2190013B9AC /* CloudPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudPickerViewController.h; sourceTree = "<group>"; };
+		8FE003D21723D2190013B9AC /* CloudPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CloudPickerViewController.m; sourceTree = "<group>"; };
+		8FE003D31723D2190013B9AC /* LoadingOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingOverlayViewController.h; sourceTree = "<group>"; };
+		8FE003D41723D2190013B9AC /* LoadingOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingOverlayViewController.m; sourceTree = "<group>"; };
+		8FE003D91723D2BD0013B9AC /* LocalFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFile.h; sourceTree = "<group>"; };
+		8FE003DA1723D2BD0013B9AC /* LocalFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFile.m; sourceTree = "<group>"; };
+		8FE003DB1723D2BD0013B9AC /* LocalFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalFolder.h; sourceTree = "<group>"; };
+		8FE003DC1723D2BD0013B9AC /* LocalFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalFolder.m; sourceTree = "<group>"; };
+		8FE003DD1723D2BD0013B9AC /* LocalRootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalRootFolder.h; sourceTree = "<group>"; };
+		8FE003DE1723D2BD0013B9AC /* LocalRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalRootFolder.m; sourceTree = "<group>"; };
+		8FE003E01723D2BD0013B9AC /* DropBoxFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxFile.h; sourceTree = "<group>"; };
+		8FE003E11723D2BD0013B9AC /* DropBoxFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxFile.m; sourceTree = "<group>"; };
+		8FE003E21723D2BD0013B9AC /* DropBoxFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxFolder.h; sourceTree = "<group>"; };
+		8FE003E31723D2BD0013B9AC /* DropBoxFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxFolder.m; sourceTree = "<group>"; };
+		8FE003E41723D2BD0013B9AC /* DropBoxRootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBoxRootFolder.h; sourceTree = "<group>"; };
+		8FE003E51723D2BD0013B9AC /* DropBoxRootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBoxRootFolder.m; sourceTree = "<group>"; };
+		8FE003ED1723D3220013B9AC /* CloudFolderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudFolderDelegate.h; sourceTree = "<group>"; };
+		8FE003EE1723D3220013B9AC /* CloudServiceManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudServiceManagerDelegate.h; sourceTree = "<group>"; };
+		8FE003EF1723D3220013B9AC /* DownloadHelperDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadHelperDelegate.h; sourceTree = "<group>"; };
 		FC137BDE1719AE1000878684 /* FoldTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldTree.h; sourceTree = "<group>"; };
 		FC137BDF1719AE1000878684 /* FoldTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldTree.m; sourceTree = "<group>"; };
 		FC3C2E2A1715BF7A00C40490 /* [ Argonaut ].tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "[ Argonaut ].tmTheme"; sourceTree = "<group>"; };
@@ -835,10 +859,6 @@
 		FC3C2E611715BF8100C40490 /* zenburn.tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = zenburn.tmTheme; sourceTree = "<group>"; };
 		FC3C2E9B1715C1F400C40490 /* ThemeConf.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ThemeConf.plist; sourceTree = "<group>"; };
 		FC4A8528170EB47200463EDA /* twist.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = twist.py; sourceTree = "<group>"; };
-		FC4B269C16F88CB800E1DC49 /* FolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderViewController.h; sourceTree = "<group>"; };
-		FC4B269D16F88CB800E1DC49 /* FolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderViewController.m; sourceTree = "<group>"; };
-		FC4B26CC16FF6E3700E1DC49 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
-		FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 		FC726064171102660068DD91 /* base.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = base.rb; sourceTree = "<group>"; };
 		FC72606A171106C60068DD91 /* RequestBuilder.hs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RequestBuilder.hs; sourceTree = "<group>"; };
 		FC72606C171113420068DD91 /* filter_routes.clj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = filter_routes.clj; sourceTree = "<group>"; };
@@ -865,6 +885,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCF50EA11723CE540038E0AD /* libParcoa.a in Frameworks */,
+				022726391723D56500615BC1 /* MobileCoreServices.framework in Frameworks */,
 				020C10E5171A93E100603229 /* libGTLTouchStaticLib.a in Frameworks */,
 				02B341E9171C130400DC9639 /* LiveSDK.framework in Frameworks */,
 				4CD06B8616FE0FE600C9DED3 /* CoreText.framework in Frameworks */,
@@ -905,16 +926,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		020C1052171A77C700603229 /* Delegates */ = {
-			isa = PBXGroup;
-			children = (
-				020C1053171A77E200603229 /* CloudFolderDelegate.h */,
-				02F7DEA6171D80F00053B447 /* DownloadHelperDelegate.h */,
-				02F7DEA7171D86450053B447 /* CloudServiceManagerDelegate.h */,
-			);
-			name = Delegates;
-			sourceTree = "<group>";
-		};
 		020C10D7171A935200603229 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -961,89 +972,6 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
-		026BC47A1705913200A9AA5F /* Local Files */ = {
-			isa = PBXGroup;
-			children = (
-				02E51ADE17092D4300247AF5 /* LocalFolder.h */,
-				02E51ADF17092D4300247AF5 /* LocalFolder.m */,
-				02E51AE217093C8B00247AF5 /* LocalFile.h */,
-				02E51AE317093C8B00247AF5 /* LocalFile.m */,
-				02E51AE51709438800247AF5 /* LocalRootFolder.h */,
-				02E51AE61709438900247AF5 /* LocalRootFolder.m */,
-			);
-			name = "Local Files";
-			sourceTree = "<group>";
-		};
-		02C4FB9D171E3E0000B2FACD /* Main UI */ = {
-			isa = PBXGroup;
-			children = (
-				4C7A82BD1722512B00B7D229 /* ArcSplitViewController.h */,
-				4C7A82BE1722512B00B7D229 /* ArcSplitViewController.m */,
-				8FCA1D6716F86C7000C6AAFC /* MainViewController.h */,
-				8FCA1D6816F86C7000C6AAFC /* MainViewController.m */,
-				FC4B26CC16FF6E3700E1DC49 /* LeftViewController.h */,
-				FC4B26CD16FF6E3700E1DC49 /* LeftViewController.m */,
-				4C6B0901171EE242009DB903 /* CodeViewController */,
-				4C6B090B171EEBD1009DB903 /* FolderViewController */,
-			);
-			name = "Main UI";
-			sourceTree = "<group>";
-		};
-		02C4FBA2171E3E0700B2FACD /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				4CF6F0F31706F2F000EDDEDC /* SettingsViewController.h */,
-				4CF6F0F41706F2F000EDDEDC /* SettingsViewController.m */,
-				027EE0341716AAEC00302F07 /* LongSettingListViewController.h */,
-				027EE0351716AAEC00302F07 /* LongSettingListViewController.m */,
-			);
-			name = Settings;
-			sourceTree = "<group>";
-		};
-		02C4FBA3171E3E0F00B2FACD /* Copy & Paste */ = {
-			isa = PBXGroup;
-			children = (
-				8FC1B4EA1719DBCE002939D8 /* DragPointsViewController.h */,
-				8FC1B4EB1719DBCE002939D8 /* DragPointsViewController.m */,
-			);
-			name = "Copy & Paste";
-			sourceTree = "<group>";
-		};
-		02C4FBA4171E3E1C00B2FACD /* Cloud Downloader */ = {
-			isa = PBXGroup;
-			children = (
-				02A0078D171BBC6E0099FE61 /* CloudPickerViewController.h */,
-				02A0078E171BBC6E0099FE61 /* CloudPickerViewController.m */,
-				02C4FBA5171E3E5500B2FACD /* LoadingOverlayViewController.h */,
-				02C4FBA6171E3E5500B2FACD /* LoadingOverlayViewController.m */,
-			);
-			name = "Cloud Downloader";
-			sourceTree = "<group>";
-		};
-		02E51AE8170957ED00247AF5 /* DropBox Files */ = {
-			isa = PBXGroup;
-			children = (
-				02E51AE91709580400247AF5 /* DropBoxFile.h */,
-				02E51AEA1709580400247AF5 /* DropBoxFile.m */,
-				02E51AEC1709581100247AF5 /* DropBoxFolder.h */,
-				02E51AED1709581200247AF5 /* DropBoxFolder.m */,
-				02E51AEF1709582300247AF5 /* DropBoxRootFolder.h */,
-				02E51AF01709582300247AF5 /* DropBoxRootFolder.m */,
-			);
-			name = "DropBox Files";
-			sourceTree = "<group>";
-		};
-		02F25A091713CF0A000B6301 /* Popup Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				8F771E121711B900002E9914 /* ResultsTableViewController.h */,
-				8F771E131711B900002E9914 /* ResultsTableViewController.m */,
-				02F25A101713E660000B6301 /* CreateFolderViewController.h */,
-				02F25A111713E660000B6301 /* CreateFolderViewController.m */,
-			);
-			name = "Popup Controllers";
-			sourceTree = "<group>";
-		};
 		4C43F8E016F86AA800159B29 = {
 			isa = PBXGroup;
 			children = (
@@ -1070,6 +998,7 @@
 		4C43F8EB16F86AA900159B29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				022726381723D56500615BC1 /* MobileCoreServices.framework */,
 				026BC478170589C600A9AA5F /* QuartzCore.framework */,
 				026BC476170589BD00A9AA5F /* SystemConfiguration.framework */,
 				026BC474170589B000A9AA5F /* Security.framework */,
@@ -1132,14 +1061,14 @@
 		4C43F90E16F86AC400159B29 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0260B508170921C10091B012 /* Protocols */,
+				840B636342E49333F3D17563 /* Cloud */,
+				8FE003D81723D2BD0013B9AC /* Local Files */,
+				8FE003DF1723D2BD0013B9AC /* DropBox Files */,
 				8FCA1D6B16F89BF000C6AAFC /* ApplicationState.h */,
 				8FCA1D6C16F89BF000C6AAFC /* ApplicationState.m */,
-				0260B508170921C10091B012 /* Protocols */,
-				02E51AE8170957ED00247AF5 /* DropBox Files */,
-				026BC47A1705913200A9AA5F /* Local Files */,
 				02D2B73D17099E88002D22E7 /* RootFolder.h */,
 				02D2B73E17099E88002D22E7 /* RootFolder.m */,
-				840B636342E49333F3D17563 /* Cloud */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1147,16 +1076,13 @@
 		4C45551617016F21001C6F1D /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				4CEADA02171681F000F4F619 /* SyntaxHighlighting */,
 				FC349BD6171E819200D6FDC6 /* CodeFolding */,
+				4C9C7C251723B7D800DBFA13 /* Fonts */,
+				4C9C7C261723B7DF00DBFA13 /* LineNumbers */,
+				840B67E300617A8810E2F3F5 /* PluginDelegate.h */,
 				02D55DB31711694900DD48D7 /* PluginUtilities.h */,
 				02D55DB41711694900DD48D7 /* PluginUtilities.m */,
-				4CEADA02171681F000F4F619 /* SyntaxHighlighting */,
-				4CE2950F17101C53003B012A /* FontSizePlugin.h */,
-				4CE2951017101C53003B012A /* FontSizePlugin.m */,
-				4CE2951217101C82003B012A /* FontFamilyPlugin.h */,
-				4CE2951317101C82003B012A /* FontFamilyPlugin.m */,
-				4CEADA051716ADBB00F4F619 /* LineNumberPlugin.h */,
-				4CEADA061716ADBB00F4F619 /* LineNumberPlugin.m */,
 			);
 			name = Plugins;
 			path = Plugin;
@@ -1173,24 +1099,64 @@
 			name = ArcAttributedString;
 			sourceTree = "<group>";
 		};
-		4C6B0901171EE242009DB903 /* CodeViewController */ = {
+		4C9C7C1A1723B15200DBFA13 /* FolderView */ = {
 			isa = PBXGroup;
 			children = (
-				8FCA1D6E16F8A36200C6AAFC /* CodeViewController.h */,
-				8FCA1D6F16F8A36200C6AAFC /* CodeViewController.m */,
-				4C6B0906171EE27A009DB903 /* CodeViewLine.h */,
-				4C6B0907171EE27A009DB903 /* CodeViewLine.m */,
+				4C6B090F171EEC22009DB903 /* FileObjectTableViewCell.h */,
+				4C6B0910171EEC22009DB903 /* FileObjectTableViewCell.m */,
+				4C9C7C1F1723B17900DBFA13 /* FolderViewSectionHeader.h */,
+				4C9C7C201723B17900DBFA13 /* FolderViewSectionHeader.m */,
 			);
-			name = CodeViewController;
+			name = FolderView;
 			sourceTree = "<group>";
 		};
-		4C6B090B171EEBD1009DB903 /* FolderViewController */ = {
+		4C9C7C221723B62700DBFA13 /* CodeView */ = {
 			isa = PBXGroup;
 			children = (
-				FC4B269C16F88CB800E1DC49 /* FolderViewController.h */,
-				FC4B269D16F88CB800E1DC49 /* FolderViewController.m */,
+				8F7066B117199B1F00E8C64E /* SearchResultCell.h */,
+				8F7066B217199B1F00E8C64E /* SearchResultCell.m */,
+				4C963C80170D8E96004FDACB /* CodeLineCell.h */,
+				4C963C81170D8E96004FDACB /* CodeLineCell.m */,
 			);
-			name = FolderViewController;
+			name = CodeView;
+			sourceTree = "<group>";
+		};
+		4C9C7C231723B63700DBFA13 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4C8307E917114CEF00F49C33 /* SettingCell.h */,
+				4C8307EA17114CEF00F49C33 /* SettingCell.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		4C9C7C241723B64200DBFA13 /* Copy & Paste */ = {
+			isa = PBXGroup;
+			children = (
+				8FC1B4E71719D8E0002939D8 /* DragPointImageView.h */,
+				8FC1B4E81719D8E0002939D8 /* DragPointImageView.m */,
+			);
+			name = "Copy & Paste";
+			sourceTree = "<group>";
+		};
+		4C9C7C251723B7D800DBFA13 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4CE2950F17101C53003B012A /* FontSizePlugin.h */,
+				4CE2951017101C53003B012A /* FontSizePlugin.m */,
+				4CE2951217101C82003B012A /* FontFamilyPlugin.h */,
+				4CE2951317101C82003B012A /* FontFamilyPlugin.m */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		4C9C7C261723B7DF00DBFA13 /* LineNumbers */ = {
+			isa = PBXGroup;
+			children = (
+				4CEADA051716ADBB00F4F619 /* LineNumberPlugin.h */,
+				4CEADA061716ADBB00F4F619 /* LineNumberPlugin.m */,
+			);
+			name = LineNumbers;
 			sourceTree = "<group>";
 		};
 		4CD06B2D16FDE97E00C9DED3 /* Protocols */ = {
@@ -1207,7 +1173,7 @@
 				4C1AF11F1715119300A2D0D8 /* FolderViewControllerDelegate.h */,
 				02C2E4841715594300C912E0 /* CreateFolderViewControllerDelegate.h */,
 				027EE0381717FD7800302F07 /* LongSettingListViewControllerDelegate.h */,
-				023D4AFA171D1AAF00D9F60D /* CloudPickerViewControllerDelegate.h */,
+				023D4AFA171D1AAF00D9F60D /* PresentingModalViewControllerDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1248,7 +1214,6 @@
 				8F5C5C1416FDFDBE00B31A19 /* Utils.m */,
 				4CD06B7E16FDF61C00C9DED3 /* Constants.h */,
 				4CD06B7F16FDF61C00C9DED3 /* Constants.m */,
-				840B67E300617A8810E2F3F5 /* PluginDelegate.h */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -1257,16 +1222,10 @@
 			isa = PBXGroup;
 			children = (
 				4C5E51E7171BEB290041BB2B /* ArcAttributedString */,
-				4C963C80170D8E96004FDACB /* CodeLineCell.h */,
-				4C963C81170D8E96004FDACB /* CodeLineCell.m */,
-				4C8307E917114CEF00F49C33 /* SettingCell.h */,
-				4C8307EA17114CEF00F49C33 /* SettingCell.m */,
-				8F7066B117199B1F00E8C64E /* SearchResultCell.h */,
-				8F7066B217199B1F00E8C64E /* SearchResultCell.m */,
-				8FC1B4E71719D8E0002939D8 /* DragPointImageView.h */,
-				8FC1B4E81719D8E0002939D8 /* DragPointImageView.m */,
-				4C6B090F171EEC22009DB903 /* FileObjectTableViewCell.h */,
-				4C6B0910171EEC22009DB903 /* FileObjectTableViewCell.m */,
+				4C9C7C221723B62700DBFA13 /* CodeView */,
+				4C9C7C231723B63700DBFA13 /* Settings */,
+				4C9C7C241723B64200DBFA13 /* Copy & Paste */,
+				4C9C7C1A1723B15200DBFA13 /* FolderView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1362,8 +1321,6 @@
 				4CC9E0F4171C4EBC0062C825 /* monokai_icon_72.png */,
 				4CC9E0F2171C4C5B0062C825 /* arcMonokai144.png */,
 				4CC9E0EC171C4C580062C825 /* arcMonokai72.png */,
-				8FDE2E26171D577500CF2BC9 /* leftDragPoint.png */,
-				8FDE2E27171D577500CF2BC9 /* rightDragPoint.png */,
 				4C9E061A170F3B1A0000F783 /* arc144.png */,
 				4C9E0618170F3AFC0000F783 /* arc72.png */,
 				4C1AF11A1715029100A2D0D8 /* dropbox.png */,
@@ -1375,6 +1332,11 @@
 				4C6B0909171EEB46009DB903 /* file_white.png */,
 				4CEADA031716AB0E00F4F619 /* threelines.png */,
 				840B6ABA3F91CF078F55C3DE /* Cloud-Download.png */,
+				8FE0038F17239C740013B9AC /* dragpointline.png */,
+				8FE0039317239DA70013B9AC /* dragpointcircletop.png */,
+				8FE0039117239D540013B9AC /* dragpointcirclebottom.png */,
+				8FE003951723C8BD0013B9AC /* dragpointcirclebottom@2x.png */,
+				8FE003961723C8BD0013B9AC /* dragpointcircletop@2x.png */,
 			);
 			name = Images;
 			path = Assets/Images;
@@ -1383,8 +1345,8 @@
 		840B636342E49333F3D17563 /* Cloud */ = {
 			isa = PBXGroup;
 			children = (
+				8FE003EC1723D3220013B9AC /* Delegates */,
 				020C10E7171A953000603229 /* Google Drive */,
-				020C1052171A77C700603229 /* Delegates */,
 				840B65C878A6C7146123E560 /* Protocols */,
 				840B6BB5A0E39DE20D887CA8 /* SkyDrive */,
 			);
@@ -1617,13 +1579,132 @@
 			isa = PBXGroup;
 			children = (
 				4CD06B2D16FDE97E00C9DED3 /* Protocols */,
-				02F25A091713CF0A000B6301 /* Popup Controllers */,
-				02C4FB9D171E3E0000B2FACD /* Main UI */,
-				02C4FBA2171E3E0700B2FACD /* Settings */,
-				02C4FBA3171E3E0F00B2FACD /* Copy & Paste */,
-				02C4FBA4171E3E1C00B2FACD /* Cloud Downloader */,
+				8FE003A41723D0C20013B9AC /* Popup Controllers */,
+				8FE003AB1723D0F50013B9AC /* Main UI */,
+				8FE003B51723D1810013B9AC /* CodeViewController */,
+				8FE003C11723D1D80013B9AC /* FolderViewController */,
+				8FE003BC1723D1D80013B9AC /* Settings */,
+				8FE003CD1723D2190013B9AC /* Copy & Paste */,
+				8FE003D01723D2190013B9AC /* Cloud Downloader */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8FE003A41723D0C20013B9AC /* Popup Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8FE003A51723D0C20013B9AC /* CreateFolderViewController.h */,
+				8FE003A61723D0C20013B9AC /* CreateFolderViewController.m */,
+				8FE003A71723D0C20013B9AC /* ResultsTableViewController.h */,
+				8FE003A81723D0C20013B9AC /* ResultsTableViewController.m */,
+			);
+			path = "Popup Controllers";
+			sourceTree = "<group>";
+		};
+		8FE003AB1723D0F50013B9AC /* Main UI */ = {
+			isa = PBXGroup;
+			children = (
+				8FE003AC1723D0F50013B9AC /* ArcSplitViewController.h */,
+				8FE003AD1723D0F50013B9AC /* ArcSplitViewController.m */,
+				8FE003AE1723D0F50013B9AC /* LeftViewController.h */,
+				8FE003AF1723D0F50013B9AC /* LeftViewController.m */,
+				8FE003B01723D0F50013B9AC /* MainViewController.h */,
+				8FE003B11723D0F50013B9AC /* MainViewController.m */,
+			);
+			path = "Main UI";
+			sourceTree = "<group>";
+		};
+		8FE003B51723D1810013B9AC /* CodeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8FE003B61723D1810013B9AC /* CodeViewController.h */,
+				8FE003B71723D1810013B9AC /* CodeViewController.m */,
+				8FE003B81723D1810013B9AC /* CodeViewLine.h */,
+				8FE003B91723D1810013B9AC /* CodeViewLine.m */,
+			);
+			path = CodeViewController;
+			sourceTree = "<group>";
+		};
+		8FE003BC1723D1D80013B9AC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				8FE003BD1723D1D80013B9AC /* LongSettingListViewController.h */,
+				8FE003BE1723D1D80013B9AC /* LongSettingListViewController.m */,
+				8FE003BF1723D1D80013B9AC /* SettingsViewController.h */,
+				8FE003C01723D1D80013B9AC /* SettingsViewController.m */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		8FE003C11723D1D80013B9AC /* FolderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4C9C7C471723D43700DBFA13 /* DestinationFolderViewController.h */,
+				4C9C7C481723D43700DBFA13 /* DestinationFolderViewController.m */,
+				8FE003C21723D1D80013B9AC /* BasicFolderViewController.h */,
+				8FE003C31723D1D80013B9AC /* BasicFolderViewController.m */,
+				8FE003C41723D1D80013B9AC /* FileSystemObjectGroup.h */,
+				8FE003C51723D1D80013B9AC /* FileSystemObjectGroup.m */,
+				8FE003C61723D1D80013B9AC /* FolderViewController.h */,
+				8FE003C71723D1D80013B9AC /* FolderViewController.m */,
+			);
+			path = FolderViewController;
+			sourceTree = "<group>";
+		};
+		8FE003CD1723D2190013B9AC /* Copy & Paste */ = {
+			isa = PBXGroup;
+			children = (
+				8FE003CE1723D2190013B9AC /* DragPointsViewController.h */,
+				8FE003CF1723D2190013B9AC /* DragPointsViewController.m */,
+			);
+			path = "Copy & Paste";
+			sourceTree = "<group>";
+		};
+		8FE003D01723D2190013B9AC /* Cloud Downloader */ = {
+			isa = PBXGroup;
+			children = (
+				8FE003D11723D2190013B9AC /* CloudPickerViewController.h */,
+				8FE003D21723D2190013B9AC /* CloudPickerViewController.m */,
+				8FE003D31723D2190013B9AC /* LoadingOverlayViewController.h */,
+				8FE003D41723D2190013B9AC /* LoadingOverlayViewController.m */,
+			);
+			path = "Cloud Downloader";
+			sourceTree = "<group>";
+		};
+		8FE003D81723D2BD0013B9AC /* Local Files */ = {
+			isa = PBXGroup;
+			children = (
+				8FE003D91723D2BD0013B9AC /* LocalFile.h */,
+				8FE003DA1723D2BD0013B9AC /* LocalFile.m */,
+				8FE003DB1723D2BD0013B9AC /* LocalFolder.h */,
+				8FE003DC1723D2BD0013B9AC /* LocalFolder.m */,
+				8FE003DD1723D2BD0013B9AC /* LocalRootFolder.h */,
+				8FE003DE1723D2BD0013B9AC /* LocalRootFolder.m */,
+			);
+			path = "Local Files";
+			sourceTree = "<group>";
+		};
+		8FE003DF1723D2BD0013B9AC /* DropBox Files */ = {
+			isa = PBXGroup;
+			children = (
+				8FE003E01723D2BD0013B9AC /* DropBoxFile.h */,
+				8FE003E11723D2BD0013B9AC /* DropBoxFile.m */,
+				8FE003E21723D2BD0013B9AC /* DropBoxFolder.h */,
+				8FE003E31723D2BD0013B9AC /* DropBoxFolder.m */,
+				8FE003E41723D2BD0013B9AC /* DropBoxRootFolder.h */,
+				8FE003E51723D2BD0013B9AC /* DropBoxRootFolder.m */,
+			);
+			path = "DropBox Files";
+			sourceTree = "<group>";
+		};
+		8FE003EC1723D3220013B9AC /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				8FE003ED1723D3220013B9AC /* CloudFolderDelegate.h */,
+				8FE003EE1723D3220013B9AC /* CloudServiceManagerDelegate.h */,
+				8FE003EF1723D3220013B9AC /* DownloadHelperDelegate.h */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		FC349BD6171E819200D6FDC6 /* CodeFolding */ = {
@@ -2122,9 +2203,12 @@
 				4CC9E0F7171C4EBF0062C825 /* monokai_icon_144.png in Resources */,
 				4CC9E0F9171C4EC60062C825 /* Default-Landscape~ipad.png in Resources */,
 				4CC9E0FB171C4EC80062C825 /* Default-Portrait~ipad.png in Resources */,
-				8FDE2E28171D577500CF2BC9 /* leftDragPoint.png in Resources */,
-				8FDE2E29171D577500CF2BC9 /* rightDragPoint.png in Resources */,
 				4C6B090A171EEB46009DB903 /* file_white.png in Resources */,
+				8FE0039017239C740013B9AC /* dragpointline.png in Resources */,
+				8FE0039217239D540013B9AC /* dragpointcirclebottom.png in Resources */,
+				8FE0039417239DA70013B9AC /* dragpointcircletop.png in Resources */,
+				8FE003971723C8BD0013B9AC /* dragpointcirclebottom@2x.png in Resources */,
+				8FE003981723C8BD0013B9AC /* dragpointcircletop@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2174,23 +2258,12 @@
 				4CD06B8016FDF61C00C9DED3 /* Constants.m in Sources */,
 				4C43F8FF16F86AA900159B29 /* AppDelegate.m in Sources */,
 				4C43F90816F86AA900159B29 /* arc.xcdatamodeld in Sources */,
-				8FCA1D6916F86C7000C6AAFC /* MainViewController.m in Sources */,
-				FC4B269E16F88CB800E1DC49 /* FolderViewController.m in Sources */,
 				8FCA1D6D16F89BF000C6AAFC /* ApplicationState.m in Sources */,
-				8FCA1D7016F8A36200C6AAFC /* CodeViewController.m in Sources */,
 				8F5C5C1616FDFDBE00B31A19 /* Utils.m in Sources */,
-				FC4B26CE16FF6E3800E1DC49 /* LeftViewController.m in Sources */,
 				8F563F35170161C900EE5643 /* TMBundleSyntaxParser.m in Sources */,
 				8F1510C9170468B100115E5E /* TMBundleThemeHandler.m in Sources */,
 				8F1510CC1704697900115E5E /* TMBundleGrammar.m in Sources */,
 				4C12D0721705CA7800F4593B /* ArcAttributedString.m in Sources */,
-				4CF6F0F51706F2F000EDDEDC /* SettingsViewController.m in Sources */,
-				02E51AE017092D4300247AF5 /* LocalFolder.m in Sources */,
-				02E51AE417093C8B00247AF5 /* LocalFile.m in Sources */,
-				02E51AE71709438900247AF5 /* LocalRootFolder.m in Sources */,
-				02E51AEB1709580400247AF5 /* DropBoxFile.m in Sources */,
-				02E51AEE1709581200247AF5 /* DropBoxFolder.m in Sources */,
-				02E51AF11709582300247AF5 /* DropBoxRootFolder.m in Sources */,
 				02D2B73F17099E89002D22E7 /* RootFolder.m in Sources */,
 				4C963C82170D8E96004FDACB /* CodeLineCell.m in Sources */,
 				4CE2950E17101BA0003B012A /* SyntaxHighlightingPlugin.m in Sources */,
@@ -2200,10 +2273,7 @@
 				4C8307EB17114CEF00F49C33 /* SettingCell.m in Sources */,
 				02D55DB51711694900DD48D7 /* PluginUtilities.m in Sources */,
 				FC7260921711B4D70068DD91 /* SyntaxHighlight.m in Sources */,
-				8F771E141711B900002E9914 /* ResultsTableViewController.m in Sources */,
-				02F25A121713E660000B6301 /* CreateFolderViewController.m in Sources */,
 				FC137BE01719AE1000878684 /* FoldTree.m in Sources */,
-				027EE0361716AAEC00302F07 /* LongSettingListViewController.m in Sources */,
 				4CEADA071716ADBB00F4F619 /* LineNumberPlugin.m in Sources */,
 				8F7066B317199B1F00E8C64E /* SearchResultCell.m in Sources */,
 				840B6CE8D86D8BAA0E3CD4BC /* SkyDriveServiceManager.m in Sources */,
@@ -2211,22 +2281,40 @@
 				020C104E171A666500603229 /* SkyDriveFile.m in Sources */,
 				020C1051171A6DB000603229 /* SkyDriveDownloadHelper.m in Sources */,
 				8FC1B4E91719D8E0002939D8 /* DragPointImageView.m in Sources */,
-				8FC1B4EC1719DBCE002939D8 /* DragPointsViewController.m in Sources */,
 				020C1283171A95C800603229 /* GTLDrive_Sources.m in Sources */,
 				020C1288171A9A5B00603229 /* GoogleDriveServiceManager.m in Sources */,
 				020C128B171AAB2500603229 /* GoogleDriveFolder.m in Sources */,
 				020C128E171ABACD00603229 /* GoogleDriveFile.m in Sources */,
 				020C1291171AC14900603229 /* GoogleDriveDownloadHelper.m in Sources */,
-				02A0078F171BBC6E0099FE61 /* CloudPickerViewController.m in Sources */,
 				4C5E51EA171BEB480041BB2B /* ArcAttribute.m in Sources */,
 				4C5E51EF171BFB1E0041BB2B /* Theme.m in Sources */,
 				FCBD8327171DC595005E2B31 /* FoldNode.m in Sources */,
 				FCBD832E171DD519005E2B31 /* RootFoldNode.m in Sources */,
 				FCBD8331171DE013005E2B31 /* CodeFolding.m in Sources */,
-				02C4FBA7171E3E5500B2FACD /* LoadingOverlayViewController.m in Sources */,
-				4C6B0908171EE27A009DB903 /* CodeViewLine.m in Sources */,
 				4C6B0911171EEC22009DB903 /* FileObjectTableViewCell.m in Sources */,
-				4C7A82BF1722512B00B7D229 /* ArcSplitViewController.m in Sources */,
+				8FE003CA1723D1D80013B9AC /* BasicFolderViewController.m in Sources */,
+				8FE003CB1723D1D80013B9AC /* FileSystemObjectGroup.m in Sources */,
+				4C9C7C491723D43700DBFA13 /* DestinationFolderViewController.m in Sources */,
+				4C9C7C211723B17900DBFA13 /* FolderViewSectionHeader.m in Sources */,
+				8FE003A91723D0C20013B9AC /* CreateFolderViewController.m in Sources */,
+				8FE003AA1723D0C20013B9AC /* ResultsTableViewController.m in Sources */,
+				8FE003B21723D0F50013B9AC /* ArcSplitViewController.m in Sources */,
+				8FE003B31723D0F50013B9AC /* LeftViewController.m in Sources */,
+				8FE003B41723D0F50013B9AC /* MainViewController.m in Sources */,
+				8FE003BA1723D1810013B9AC /* CodeViewController.m in Sources */,
+				8FE003BB1723D1810013B9AC /* CodeViewLine.m in Sources */,
+				8FE003C81723D1D80013B9AC /* LongSettingListViewController.m in Sources */,
+				8FE003C91723D1D80013B9AC /* SettingsViewController.m in Sources */,
+				8FE003CC1723D1D80013B9AC /* FolderViewController.m in Sources */,
+				8FE003D51723D2190013B9AC /* DragPointsViewController.m in Sources */,
+				8FE003D61723D2190013B9AC /* CloudPickerViewController.m in Sources */,
+				8FE003D71723D2190013B9AC /* LoadingOverlayViewController.m in Sources */,
+				8FE003E61723D2BD0013B9AC /* LocalFile.m in Sources */,
+				8FE003E71723D2BD0013B9AC /* LocalFolder.m in Sources */,
+				8FE003E81723D2BD0013B9AC /* LocalRootFolder.m in Sources */,
+				8FE003E91723D2BD0013B9AC /* DropBoxFile.m in Sources */,
+				8FE003EA1723D2BD0013B9AC /* DropBoxFolder.m in Sources */,
+				8FE003EB1723D2BD0013B9AC /* DropBoxRootFolder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

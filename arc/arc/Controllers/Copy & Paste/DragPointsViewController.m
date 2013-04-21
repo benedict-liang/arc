@@ -13,6 +13,7 @@
 #define DRAG_POINT_WIDTH 55
 #define HORIZONTAL_THRESHOLD_PERCENTAGE 0.95
 #define VERTICAL_THRESHOLD_PERCENTAGE 0.80
+#define EXTRA_DRAG_POINT_HEIGHT 22
 
 @interface DragPointsViewController ()
 
@@ -83,7 +84,7 @@
         CGRect selectedRect = CGRectMake(startOffset + totalGap,
                                          cellRect.origin.y,
                                          endOffset - startOffset,
-                                         cellRect.size.height);
+                                         cellRect.size.height + EXTRA_DRAG_POINT_HEIGHT);
         
         [self createDragPoints:selectedRect];
     }
@@ -95,18 +96,18 @@
 - (void)createDragPoints:(CGRect)selectedRect
 {
     CGRect leftDragPointFrame = CGRectMake(selectedRect.origin.x - DRAG_POINT_WIDTH / 2,
-                                           selectedRect.origin.y,
+                                           selectedRect.origin.y - EXTRA_DRAG_POINT_HEIGHT,
                                            DRAG_POINT_WIDTH,
                                            selectedRect.size.height);
     _leftDragPoint = [[DragPointImageView alloc] initWithFrame:leftDragPointFrame
-                                                  andImageName:@"leftDragPoint.png"];
+                                                       andType:kLeftDragPoint];
     
     CGRect rightDragPointFrame = CGRectMake(selectedRect.origin.x + selectedRect.size.width - DRAG_POINT_WIDTH / 2,
                                             selectedRect.origin.y,
                                             DRAG_POINT_WIDTH,
                                             selectedRect.size.height);
     _rightDragPoint = [[DragPointImageView alloc] initWithFrame:rightDragPointFrame
-                                                   andImageName:@"rightDragPoint.png"];
+                                                        andType:kRightDragPoint];
     
     [self addGestureRecognizersForDragPoints];
 }
@@ -225,7 +226,7 @@
         if (selectionDidChange) {
             int totalGap = [self getTotalGapForCellAtIndexPath:_topIndexPath];
             gesture.view.center = CGPointMake(totalGap,
-                                              _topRowCellRect.origin.y + cellHeight/2);
+                                              _topRowCellRect.origin.y + cellHeight/2 - EXTRA_DRAG_POINT_HEIGHT / 2);
             [gesture setTranslation:CGPointMake(0, 0)
                              inView:_tableView];
             CGPoint startPointInRow = CGPointMake(gesture.view.center.x, 0);
@@ -317,7 +318,7 @@
             int totalGap = [self getTotalGapForCellAtIndexPath:_bottomIndexPath];
             CGPoint endOfLineCoordinates = [self getLastCharacterCoordinatesInRow:_bottomIndexPath];
             gesture.view.center = CGPointMake(endOfLineCoordinates.x + totalGap,
-                                              _bottomRowCellRect.origin.y + cellHeight/2);
+                                              _bottomRowCellRect.origin.y + cellHeight/2 + EXTRA_DRAG_POINT_HEIGHT / 2);
             [gesture setTranslation:CGPointMake(0, 0)
                              inView:_tableView];
             CGPoint endPointInRow = CGPointMake(gesture.view.center.x, 0);
@@ -450,7 +451,7 @@
 - (void)applyBackgroundColorWithSelectedTextRange
 {
     [_codeViewController removeBackgroundColorForSetting:KEY_COPY_SETTINGS];
-    [_codeViewController setBackgroundColorForString:[UIColor blueColor]
+    [_codeViewController setBackgroundColorForString:[self selectionColor]
                                            WithRange:_selectedTextRange
                                           forSetting:KEY_COPY_SETTINGS];
     
@@ -474,7 +475,7 @@
 - (void)applyBackgroundColorWithSelectedTextRangeForRow:(NSIndexPath *)indexPath
 {
     [_codeViewController removeBackgroundColorForSetting:KEY_COPY_SETTINGS];
-    [_codeViewController setBackgroundColorForString:[UIColor blueColor]
+    [_codeViewController setBackgroundColorForString:[self selectionColor]
                                            WithRange:_selectedTextRange
                                           forSetting:KEY_COPY_SETTINGS];
     
@@ -606,6 +607,10 @@
     CodeLineCell *cell = (CodeLineCell*)[_tableView cellForRowAtIndexPath:indexPath];
     int totalGap = cell.lineNumberWidth + SIZE_CODEVIEW_PADDING_LINENUMBERS;
     return totalGap;
+}
+
+- (UIColor*)selectionColor {
+    return [UIColor colorWithRed:0.847 green:0.863 blue:1.0 alpha:1.0];
 }
 
 #pragma mark - UIGestureRecognizerDelegate Methods

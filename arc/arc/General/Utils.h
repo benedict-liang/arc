@@ -18,6 +18,8 @@
 
 + (UIColor *)colorFromRGB:(int)rgbValue;
 
++ (BOOL)isLightColor:(UIColor *)color;
+
 // Taken from https://gist.github.com/hmcfletch/1661029
 // darkens a UIColor by a given amount
 + (UIColor *)darkenColor:(UIColor *)oldColor percentOfOriginal:(float)amount;
@@ -53,4 +55,8 @@
 + (NSValue*)valueFromRange:(NSRange)range;
 
 + (void)removeAllGestureRecognizersFrom:(UIView *)view;
+
++ (BOOL)isFileSupported:(NSString *)name;
+
++ (void)showUnsupportedFileDialog;
 @end
