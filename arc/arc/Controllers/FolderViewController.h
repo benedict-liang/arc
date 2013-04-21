@@ -13,12 +13,12 @@
 #import "FolderViewControllerDelegate.h"
 #import "CreateFolderViewController.h"
 #import "CreateFolderViewControllerDelegate.h"
-
+#import "DestinationFolderViewController.h"
+#import "PresentingModalViewControllerDelegate.h"
 #import "DropBoxFolder.h"
 
 // Cloud Imports
 #import "CloudPickerViewController.h"
-#import "CloudPickerViewControllerDelegate.h"
 #import "SkyDriveFolder.h"
 #import "GoogleDriveFolder.h"
 #import "SkyDriveServiceManager.h"
@@ -26,7 +26,7 @@
 
 @interface FolderViewController : BasicFolderViewController <SubViewControllerDelegate,
     UITableViewDelegate, UITableViewDataSource, CreateFolderViewControllerDelegate,
-    UIActionSheetDelegate, CloudPickerViewControllerDelegate>
+    UIActionSheetDelegate, PresentingModalViewControllerDelegate>
 @property (nonatomic, weak) id<FolderViewControllerDelegate> folderViewControllerDelegate;
 - (void)refreshFolderView;
 - (void)editActionTriggeredAnimate:(BOOL)animate;

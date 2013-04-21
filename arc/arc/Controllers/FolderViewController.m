@@ -266,8 +266,9 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)moveItems:(id)sender
 {
-    // TODO.
-    NSLog(@"%@", _editSelection);
+    DestinationFolderViewController *moveDestinationFolderViewController =
+    [[DestinationFolderViewController alloc] initWithFolder:self.folder];
+    [self showModalViewController:moveDestinationFolderViewController];
 }
 
 // Triggers when the user confirms an edit operation on the cell at the given index path.
@@ -395,13 +396,6 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
                      completion:nil];
 }
 
-- (void)cloudPickerDone:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:^ {
-        [self refreshFolderView];
-    }];
-}
-
 - (void)createFolderWithName:(NSString *)name
 {
     [self.folder createFolderWithName:name];
@@ -409,8 +403,13 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath
     [_addFolderPopoverController dismissPopoverAnimated:YES];
 }
 
-- (void)downloadedFileFromPicker:(id)sender
+#pragma mark - presenting modal view controller delegate
+
+- (void)modalViewControllerDone:(NSDictionary *)options
 {
-    
+    [self dismissViewControllerAnimated:YES completion:^ {
+        [self refreshFolderView];
+    }];
 }
+
 @end

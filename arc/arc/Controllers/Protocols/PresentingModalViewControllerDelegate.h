@@ -8,10 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol CloudPickerViewControllerDelegate <NSObject>
-
-- (void)cloudPickerDone:(id)sender;
-
-- (void)downloadedFileFromPicker:(id)sender;
-
+@protocol PresentingModalViewControllerDelegate <NSObject>
+- (void)modalViewControllerDone:(NSDictionary *)options;
 @end
