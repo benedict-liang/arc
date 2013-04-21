@@ -18,7 +18,7 @@
         if ([imageName isEqualToString:@"leftDragPoint.png"]) {
             
             UIImage *scaledImage = [self scaleImageWithAspectRatio:@"dragpointline.png"];
-            UIImage *circle = [UIImage imageNamed:@"dragpointcircle.png"];
+            UIImage *circle = [UIImage imageNamed:@"dragpointcirclebottom.png"];
             
             CGFloat aspectRatio = scaledImage.size.width / scaledImage.size.height;
             CGSize newSize = CGSizeMake(circle.size.width,
