@@ -161,7 +161,7 @@ NSString* const FOLDER_VIEW_FILES = @"Files";
         cell = [[FileObjectTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                               reuseIdentifier:cellIdentifier];
     }
-    
+    [cell resetCell];
     [cell setFileSystemObject:fileObject];
     
     // Hook for subclasses to make changes to cell before display

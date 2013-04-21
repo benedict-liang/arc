@@ -111,4 +111,11 @@ const NSString *FOLDERCELL_REUSE_IDENTIFIER = @"folderCell";
     }
 }
 
+- (void)resetCell
+{
+    self.editing = NO;
+    self.highlighted = NO;
+    self.selected = NO;
+}
+
 @end

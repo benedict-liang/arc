@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FolderCommandObject.h"
 
 @protocol PresentingModalViewControllerDelegate <NSObject>
-- (void)modalViewControllerDone:(NSDictionary *)options;
+@property (nonatomic, readonly) id<Folder> folder;
+@property (nonatomic, readonly) NSArray *editSelection;
+- (void)modalViewControllerDone:(FolderCommandObject *)folderCommandObject;
 @end

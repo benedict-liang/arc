@@ -17,4 +17,5 @@
 extern const NSString *FILECELL_REUSE_IDENTIFIER;
 extern const NSString *FOLDERCELL_REUSE_IDENTIFIER;
 @property (nonatomic, strong) id<FileSystemObject> fileSystemObject;
+- (void)resetCell;
 @end

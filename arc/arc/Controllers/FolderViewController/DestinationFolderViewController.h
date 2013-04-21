@@ -7,6 +7,7 @@
 //
 
 #import "BasicFolderViewController.h"
+#import "FolderCommandObject.h"
 #import "PresentingModalViewControllerDelegate.h"
 
 @interface DestinationFolderViewController : BasicFolderViewController<UITableViewDataSource, UITableViewDelegate>

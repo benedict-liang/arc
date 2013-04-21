@@ -407,11 +407,35 @@
 
 #pragma mark - presenting modal view controller delegate
 
-- (void)modalViewControllerDone:(NSDictionary *)options
+- (void)modalViewControllerDone:(FolderCommandObject *)folderCommandObject
 {
-    [self dismissViewControllerAnimated:YES completion:^ {
-        [self refreshFolderView];
-    }];
+    if (folderCommandObject.type == kMoveFileObjects) {
+        if ([[folderCommandObject.target class] conformsToProtocol:@protocol(Folder)]) {
+            id<Folder> destination = (id<Folder>)folderCommandObject.target;
+            
+            if (![[destination identifier] isEqualToString:[self.folder identifier]]) {
+                for (NSIndexPath *indexPath in _editSelection) {
+                    [destination takeFileSystemObject:[self sectionItem:indexPath]];
+                }
+                
+                [self setUpFolderContents];
+                [self.tableView deleteRowsAtIndexPaths:_editSelection
+                                      withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
+            [self setEditing:NO animated:YES];
+        }
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:^{}];
+}
+
+- (NSArray *)editSelection
+{
+    NSMutableArray *fileObjectsSelected = [NSMutableArray array];
+    for (NSIndexPath *indexPath in _editSelection) {
+        [fileObjectsSelected addObject:[self sectionItem:indexPath]];
+    }
+    return [NSArray arrayWithArray:fileObjectsSelected];
 }
 
 @end
