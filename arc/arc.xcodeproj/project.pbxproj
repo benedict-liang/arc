@@ -1175,6 +1175,35 @@
 			name = FolderView;
 			sourceTree = "<group>";
 		};
+		4C9C7C221723B62700DBFA13 /* CodeView */ = {
+			isa = PBXGroup;
+			children = (
+				8F7066B117199B1F00E8C64E /* SearchResultCell.h */,
+				8F7066B217199B1F00E8C64E /* SearchResultCell.m */,
+				4C963C80170D8E96004FDACB /* CodeLineCell.h */,
+				4C963C81170D8E96004FDACB /* CodeLineCell.m */,
+			);
+			name = CodeView;
+			sourceTree = "<group>";
+		};
+		4C9C7C231723B63700DBFA13 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4C8307E917114CEF00F49C33 /* SettingCell.h */,
+				4C8307EA17114CEF00F49C33 /* SettingCell.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		4C9C7C241723B64200DBFA13 /* Copy & Paste */ = {
+			isa = PBXGroup;
+			children = (
+				8FC1B4E71719D8E0002939D8 /* DragPointImageView.h */,
+				8FC1B4E81719D8E0002939D8 /* DragPointImageView.m */,
+			);
+			name = "Copy & Paste";
+			sourceTree = "<group>";
+		};
 		4CD06B2D16FDE97E00C9DED3 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -1239,14 +1268,9 @@
 			isa = PBXGroup;
 			children = (
 				4C5E51E7171BEB290041BB2B /* ArcAttributedString */,
-				4C963C80170D8E96004FDACB /* CodeLineCell.h */,
-				4C963C81170D8E96004FDACB /* CodeLineCell.m */,
-				4C8307E917114CEF00F49C33 /* SettingCell.h */,
-				4C8307EA17114CEF00F49C33 /* SettingCell.m */,
-				8F7066B117199B1F00E8C64E /* SearchResultCell.h */,
-				8F7066B217199B1F00E8C64E /* SearchResultCell.m */,
-				8FC1B4E71719D8E0002939D8 /* DragPointImageView.h */,
-				8FC1B4E81719D8E0002939D8 /* DragPointImageView.m */,
+				4C9C7C221723B62700DBFA13 /* CodeView */,
+				4C9C7C231723B63700DBFA13 /* Settings */,
+				4C9C7C241723B64200DBFA13 /* Copy & Paste */,
 				4C9C7C1A1723B15200DBFA13 /* FolderView */,
 			);
 			path = View;
