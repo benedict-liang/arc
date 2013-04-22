@@ -83,4 +83,8 @@
     }
     return item;
 }
+
+- (NSString*) description {
+    return [NSString stringWithFormat:@"patterns:%@\n repo:%@",_patterns, _repository];
+}
 @end

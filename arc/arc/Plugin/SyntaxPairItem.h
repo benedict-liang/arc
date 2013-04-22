@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SyntaxItemProtocol.h"
-#import "SyntaxPatterns.h"
+@class SyntaxPatterns;
 
 @interface SyntaxPairItem : NSObject <SyntaxItemProtocol>
 @property NSString* begin;

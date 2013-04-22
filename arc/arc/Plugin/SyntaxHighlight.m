@@ -29,6 +29,7 @@
         _bundle = [TMBundleSyntaxParser plistForExt:[file extension]];
         
         _syntaxPatterns = [[SyntaxPatterns alloc] initWithBundlePatterns:[_bundle objectForKey:@"patterns"] Repository:[_bundle objectForKey:@"repository"]];
+        NSLog(@"%@",_syntaxPatterns);
         _isAlive = YES;
         _matchesDone = NO;
         
@@ -381,7 +382,7 @@
     NSRange iterRange = overlapRange;
     while (iterRange.location < overlapRange.length) {
         OverlapPeekResult* peekRes = [self peekMinForItems:overlaps WithRange:iterRange];
-        NSLog(@"%@",peekRes);
+        //NSLog(@"%@",peekRes);
         if (peekRes && peekRes.type == kSyntaxPair) {
             
             NSDictionary* syntaxItem = peekRes.syntaxItem;
@@ -391,7 +392,7 @@
                 NSRange nameRange = NSMakeRange(peekRes.beginRange.location, peekRes.endRange.location+peekRes.endRange.length - peekRes.beginRange.location);
                 
                 [self addRange:nameRange scope:name dict:overlapMatches capturableScopes:capturableScopes];
-                NSLog(@"strings: %@",[_content substringWithRange:nameRange]);
+          //      NSLog(@"strings: %@",[_content substringWithRange:nameRange]);
             }
             CFIndex eEnds = peekRes.endRange.location + peekRes.endRange.length;
             
@@ -684,7 +685,7 @@
         }
         [self applyStylesTo:output withTheme:theme];
         [self updateView:output withTheme:theme];
-        NSLog(@"%@",_overlapAccum);
+    //    NSLog(@"%@",_overlapAccum);
         [self handleOverlaps:_overlapAccum WithinRange:NSMakeRange(0, _content.length)];
         [self applyStylesTo:output withRanges:overlapMatches withTheme:theme];
         _matchesDone = YES;
