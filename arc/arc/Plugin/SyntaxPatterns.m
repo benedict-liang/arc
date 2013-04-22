@@ -84,9 +84,14 @@
         }
         
     }
+    else if (embedPatterns) {
+        SyntaxPatterns* embed = [[SyntaxPatterns alloc] initWithBundlePatterns:embedPatterns Parent:self];
+        item = [[SyntaxPatternItem alloc] initWithEmbedPatterns:embed];
+    }
     else if (include) {
         item = [[SyntaxIncludeItem alloc] initWithInclude:include Parent:self];
     }
+
     return item;
 }
 

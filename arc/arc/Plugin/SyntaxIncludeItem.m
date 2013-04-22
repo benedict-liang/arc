@@ -29,7 +29,7 @@
         return [root parseResultsForRepoRule:str Content:content Range:range];
     }
     else {
-        //TODO external include
+        
         NSDictionary* bundle = [TMBundleSyntaxParser plistByName:_include];
         NSArray* extPatterns= [bundle objectForKey:@"patterns"];
         NSDictionary* extRepo = [bundle objectForKey:@"repository"];

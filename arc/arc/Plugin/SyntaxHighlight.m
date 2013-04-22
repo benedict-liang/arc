@@ -457,7 +457,7 @@
     if (!_matchesDone) {
 
         _matchStore = [_syntaxPatterns parseResultsForContent:_content Range:NSMakeRange(0, _content.length)];
-       // NSLog(@"%@",_matchStore);
+        NSLog(@"%@",_matchStore);
         [self setupFoldTree];
         [self applyStylesTo:output withTheme:theme];
         [self updateView:output withTheme:theme];

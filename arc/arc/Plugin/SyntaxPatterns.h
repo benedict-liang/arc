@@ -11,6 +11,7 @@
 #import "SyntaxPairItem.h"
 #import "SyntaxSingleItem.h"
 #import "SyntaxIncludeItem.h"
+#import "SyntaxPatternItem.h"
 #import "SyntaxPatternsDelegate.h"
 @interface SyntaxPatterns : NSObject<SyntaxPatternsDelegate>
 
