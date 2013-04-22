@@ -32,6 +32,11 @@
     return [_contents count];
 }
 
+- (int)ongoingOperationCount
+{
+    return [_operations count];
+}
+
 - (id)initWithName:(NSString *)name identifier:(NSString *)path parent:(id <FileSystemObject>)parent
 {
     if (self = [super init]) {
