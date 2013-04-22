@@ -17,15 +17,20 @@
     return self;
 }
 - (void)addParserResult:(SyntaxParserResult *)pres {
-    NSMutableArray* ranges = [_store objectForKey:pres.scope];
-    if (ranges) {
+    NSMutableDictionary* vals = [_store objectForKey:pres.scope];
+    
+    if (vals) {
+        NSMutableArray* ranges = [vals objectForKey:@"ranges"];
         [ranges addObjectsFromArray:pres.ranges];
     } else {
-        [_store setObject:pres.ranges forKey:pres.scope];
+        NSMutableDictionary* vals = [NSMutableDictionary dictionary];
+        [vals setObject:pres.capturableScopes forKey:@"capturableScopes"];
+        [vals setObject:pres.ranges forKey:@"ranges"];
+        [_store setObject:vals forKey:pres.scope];
     }
 }
 - (NSArray*)rangesForScope:(NSString*)scope {
-    NSMutableArray* ranges = [_store objectForKey:scope];
+    NSMutableArray* ranges = [(NSDictionary*)[_store objectForKey:scope] objectForKey:@"ranges"];
     if (ranges) {
         return [NSArray arrayWithArray:ranges];
     }
@@ -34,8 +39,9 @@
 
 - (void)mergeWithStore:(SyntaxMatchStore *)store {
     for (NSString* scope in store.store) {
-        NSArray* ranges = [store rangesForScope:scope];
-        [self addParserResult:[[SyntaxParserResult alloc] initWithScope:scope Ranges:ranges]];
+        NSDictionary* val = [store.store objectForKey:scope];
+        NSArray* ranges = [val objectForKey:@"ranges"];
+        [self addParserResult:[[SyntaxParserResult alloc] initWithScope:scope Ranges:ranges CPS:[val objectForKey:@"capturableScopes"]]];
     }
 }
 @end

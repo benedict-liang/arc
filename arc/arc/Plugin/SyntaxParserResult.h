@@ -11,6 +11,9 @@
 @interface SyntaxParserResult : NSObject
 @property NSString* scope;
 @property NSMutableArray* ranges;
+@property NSArray* capturableScopes;
 
--(id)initWithScope:(NSString*)scope Ranges:(NSArray*)ranges;
+-(id)initWithScope:(NSString*)scope Ranges:(NSArray*)ranges CPS:(NSArray*)cps;
+
+
 @end

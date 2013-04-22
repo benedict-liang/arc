@@ -8,7 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "SyntaxParserResult.h"
-
+/*
+ structure:
+ { scope : {
+        ranges: [NSRange]
+        capturableScopes:[]
+ }
+ }
+ */
 @interface SyntaxMatchStore : NSObject
 
 - (void)mergeWithStore:(SyntaxMatchStore*)store;

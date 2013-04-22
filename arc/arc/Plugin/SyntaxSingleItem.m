@@ -25,6 +25,17 @@
 }
 
 - (SyntaxMatchStore*)parseContent:(NSString *)content WithRange:(NSRange)range {
-    
+    SyntaxMatchStore* store = [[SyntaxMatchStore alloc] init];
+    if (_name) {
+        NSArray* nameMatches = [RegexUtils foundPattern:_match capture:0 range:range content:content];
+        SyntaxParserResult* result = [[SyntaxParserResult alloc] initWithScope:_name Ranges:nameMatches];
+        [store addParserResult:result];
+    }
+    if (_captures) {
+        for (NSNumber* k in _captures) {
+            NSArray* captureMatches = [RegexUtils foundPattern:_match capture:[k intValue] range:range content:content];
+            
+        }
+    }
 }
 @end
