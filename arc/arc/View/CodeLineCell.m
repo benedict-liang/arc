@@ -98,7 +98,7 @@
 {
     _line = line;
     _codeLine.attributedText = [[NSAttributedString alloc] initWithAttributedString:_line];
-    _lineNumberLabel.text = @"";
+    _lineNumberLabel.hidden = YES;
 }
 
 + (int)calcLineNumberWidthForMaxLineNumber:(int)lineNumber
@@ -122,6 +122,7 @@
 {
     _lineNumber = lineNumber;
     _lineNumberLabel.text = [NSString stringWithFormat:@"%d", _lineNumber];
+    _lineNumberLabel.hidden = NO;
 }
 
 - (void)layoutSubviews
