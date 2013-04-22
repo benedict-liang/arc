@@ -683,7 +683,7 @@
         }
         [self applyStylesTo:output withTheme:theme];
         [self updateView:output withTheme:theme];
-        //NSLog(@"%@",_overlapAccum);
+        NSLog(@"%@",_overlapAccum);
         [self handleOverlaps:_overlapAccum WithinRange:NSMakeRange(0, _content.length)];
         [self applyStylesTo:output withRanges:overlapMatches withTheme:theme];
         _matchesDone = YES;

@@ -31,6 +31,6 @@
     return [[OverlapPeekResult alloc] initWithMatch:m Syntax:si];
 }
 - (NSString*)description {
-    return [NSString stringWithFormat:@"matchRange:%@ \n beginRange:%@ \nendRange:%@\n syntaxItem:%@",[Utils valueFromRange:_matchRange],[Utils valueFromRange:_beginRange],[Utils valueFromRange:_endRange],_syntaxItem];
+    return [NSString stringWithFormat:@"matchRange:%@ \n beginRange:%@ \nendRange:%@\n",[Utils valueFromRange:_matchRange],[Utils valueFromRange:_beginRange],[Utils valueFromRange:_endRange]];
 }
 @end
