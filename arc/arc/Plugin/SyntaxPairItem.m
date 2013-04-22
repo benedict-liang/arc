@@ -26,6 +26,81 @@
 }
 
 -(SyntaxMatchStore*)parseContent:(NSString *)content WithRange:(NSRange)range {
-    return [[SyntaxMatchStore alloc] init];
+    SyntaxMatchStore* store = [[SyntaxMatchStore alloc] init];
+    
+    [self addCaptures:_beginCaptures
+              Pattern:_begin
+              toStore:store
+              Content:content
+                Range:range];
+    
+    [self addCaptures:_endCaptures
+              Pattern:_end
+              toStore:store
+              Content:content
+                Range:range];
+    SyntaxParserResult* resName = [[SyntaxParserResult alloc] initWithScope:_name Ranges:[NSMutableArray array] CPS:_capturableScopes];
+
+    NSRegularExpression* beginRegex = [RegexUtils regexForPattern:_begin];
+    NSRegularExpression* endRegex = [RegexUtils regexForPattern:_end];
+    
+    NSRange beginRange = [RegexUtils findFirstPatternWithRegex:beginRegex
+                                                         range:range
+                                                       content:content];
+    if (beginRange.location >= content.length) {
+        return store;
+    }
+    
+    NSRange endRange;
+    do {
+        CFIndex bEnds = beginRange.location + beginRange.length;
+        NSRange residue = NSMakeRange(bEnds, content.length - bEnds);
+        endRange = [RegexUtils findFirstPatternWithRegex:endRegex
+                                                   range:residue
+                                                 content:content];
+        if (endRange.location >= content.length || NSEqualRanges(endRange, NSMakeRange(0, 0))) {
+            break;
+        }
+        CFIndex eEnds = endRange.location +endRange.length;
+        
+        if (_name) {
+            NSRange nameRange = NSMakeRange(beginRange.location, eEnds - beginRange.location);
+            [resName.ranges addObject:[Utils valueFromRange:nameRange]];
+        }
+        residue = NSMakeRange(eEnds, content.length - eEnds);
+        beginRange = [RegexUtils findFirstPatternWithRegex:beginRegex
+                                        range:residue
+                                      content:content];
+        NSLog(@"%@ %@",[Utils valueFromRange:beginRange],[Utils valueFromRange:endRange]);
+        
+    } while (beginRange.location < content.length);
+    if (_name) {
+        [store addParserResult:resName];
+
+    }
+    return store;
+}
+
+-(void)processForBegin:(NSRange)brange End:(NSRange)erange Store:(SyntaxMatchStore*)store {
+   
+}
+
+-(void)addCaptures:(NSDictionary*)captures
+           Pattern:(NSString*)regexPattern
+           toStore:(SyntaxMatchStore*)store
+           Content:(NSString*)content
+             Range:(NSRange)range
+{
+    if (!captures) {
+        return;
+    }
+    for (NSNumber* k in captures) {
+        NSArray* captureMatches = [RegexUtils foundPattern:regexPattern capture:[k intValue] range:range content:content];
+        NSDictionary* captureDict = [captures objectForKey:k];
+        NSString* scope = [captureDict objectForKey:@"name"];
+        NSArray* cps = [captureDict objectForKey:@"capturableScopes"];
+        SyntaxParserResult* result = [[SyntaxParserResult alloc] initWithScope:scope Ranges:captureMatches CPS:cps];
+        [store addParserResult:result];
+    }
 }
 @end
