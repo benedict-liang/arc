@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface SyntaxPairItem : NSObject
+#import "SyntaxItemProtocol.h"
+@interface SyntaxPairItem : NSObject <SyntaxItemProtocol>
 @property NSString* begin;
 @property NSString* end;
 @property NSDictionary* beginCaptures;
 @property NSDictionary* endCaptures;
 @property NSString* contentName;
+
+- (id)initWithBegin:(NSString*)begin End:(NSString*)end Name:(NSString*)name CPS:(NSArray*)cps BeginCaptures:(NSDictionary*)beginCaptures EndCaptures:(NSDictionary*)endCaptures ContentName:(NSString*)contentName;
 
 @end

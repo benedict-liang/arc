@@ -9,5 +9,19 @@
 #import "SyntaxPairItem.h"
 
 @implementation SyntaxPairItem
+@synthesize name = _name, capturableScopes = _capturableScopes;
 
+-(id)initWithBegin:(NSString *)begin End:(NSString *)end Name:(NSString *)name CPS:(NSArray *)cps BeginCaptures:(NSDictionary *)beginCaptures EndCaptures:(NSDictionary *)endCaptures ContentName:(NSString *)contentName{
+    if (self = [super init]) {
+        _begin = begin;
+        _end = end;
+        _name = name;
+        _capturableScopes = cps;
+        _beginCaptures = beginCaptures;
+        _endCaptures = endCaptures;
+        _contentName = contentName;
+        
+    }
+    return self;
+}
 @end
