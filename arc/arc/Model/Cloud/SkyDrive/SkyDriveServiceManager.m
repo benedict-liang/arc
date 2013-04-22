@@ -84,4 +84,9 @@ static SkyDriveServiceManager *sharedServiceManager = nil;
     [_helpers removeObject:sender];
 }
 
+- (void)logOutOfService
+{
+    [_liveClient logout];
+}
+
 @end
