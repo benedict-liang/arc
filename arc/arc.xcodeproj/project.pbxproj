@@ -1278,15 +1278,9 @@
 				FCBD8332171DEBA2005E2B31 /* SyntaxHighlightDelegate.h */,
 				FCC737791724486E0024865B /* OverlapPeekResult.h */,
 				FCC7377A1724486F0024865B /* OverlapPeekResult.m */,
-				FCC7378C1725112C0024865B /* SyntaxItemProtocol.h */,
-				FCC7378D172511750024865B /* SyntaxSingleItem.h */,
-				FCC7378E172511760024865B /* SyntaxSingleItem.m */,
-				FCC737901725151B0024865B /* SyntaxPairItem.h */,
-				FCC737911725151C0024865B /* SyntaxPairItem.m */,
+				FCDAC6931725DEFA00C245EC /* SyntaxItems */,
 				FCC73793172516D40024865B /* SyntaxPatterns.h */,
 				FCC73794172516D40024865B /* SyntaxPatterns.m */,
-				FCC73796172522290024865B /* SyntaxIncludeItem.h */,
-				FCC73797172522290024865B /* SyntaxIncludeItem.m */,
 				FCC7379917252D7C0024865B /* SyntaxParserResult.h */,
 				FCC7379A17252D7D0024865B /* SyntaxParserResult.m */,
 				FCC7379C17252F6D0024865B /* SyntaxMatchStore.h */,
@@ -1294,8 +1288,6 @@
 				FCC7379F172535D50024865B /* RegexUtils.h */,
 				FCC737A0172535D60024865B /* RegexUtils.m */,
 				FCEEA46517255BE400AFC932 /* SyntaxPatternsDelegate.h */,
-				FCDAC68C1725DC5E00C245EC /* SyntaxPatternItem.h */,
-				FCDAC68D1725DC5E00C245EC /* SyntaxPatternItem.m */,
 			);
 			name = SyntaxHighlighting;
 			sourceTree = "<group>";
@@ -1823,6 +1815,22 @@
 			);
 			name = Themes;
 			path = Assets/Themes;
+			sourceTree = "<group>";
+		};
+		FCDAC6931725DEFA00C245EC /* SyntaxItems */ = {
+			isa = PBXGroup;
+			children = (
+				FCDAC68C1725DC5E00C245EC /* SyntaxPatternItem.h */,
+				FCDAC68D1725DC5E00C245EC /* SyntaxPatternItem.m */,
+				FCC73796172522290024865B /* SyntaxIncludeItem.h */,
+				FCC73797172522290024865B /* SyntaxIncludeItem.m */,
+				FCC7378C1725112C0024865B /* SyntaxItemProtocol.h */,
+				FCC7378D172511750024865B /* SyntaxSingleItem.h */,
+				FCC7378E172511760024865B /* SyntaxSingleItem.m */,
+				FCC737901725151B0024865B /* SyntaxPairItem.h */,
+				FCC737911725151C0024865B /* SyntaxPairItem.m */,
+			);
+			name = SyntaxItems;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

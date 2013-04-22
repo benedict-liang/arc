@@ -36,7 +36,9 @@
         if (extPatterns) {
             id<SyntaxPatternsDelegate> sp = [root patternsForBundlePatterns:extPatterns Repository:extRepo];
             
-            return [sp parseResultsForContent:content Range:range];
+            SyntaxMatchStore* extSt = [sp parseResultsForContent:content Range:range];
+            NSLog(@"%@",extSt);
+            return extSt;
         }
        
         return [[SyntaxMatchStore alloc] init];
@@ -48,7 +50,9 @@
 - (id<SyntaxPatternsDelegate>)rootParent {
     id<SyntaxPatternsDelegate> pp = [_parent parent];
    // NSLog(@"include root search");
-
+    if (!pp) {
+        return _parent;
+    }
     id<SyntaxPatternsDelegate> lp = pp;
     while (pp != nil) {
         lp = pp;
