@@ -13,6 +13,7 @@
 
 @protocol MainViewControllerDelegate
 - (void)fileObjectSelected:(id<FileSystemObject>)fileSystemObject;
+- (void)fileObjectDeleted:(id<FileSystemObject>)fileSystemObject;
 - (void)secondFileObjectSelected:(id<FileSystemObject>)fileSystemObject;
 - (id<FileSystemObject>)currentfile;
 

@@ -225,6 +225,13 @@
     return [_appState currentFileOpened];
 }
 
+- (void)fileObjectDeleted:(id<FileSystemObject>)fileSystemObject
+{
+    if ([[fileSystemObject identifier] isEqualToString:[[self currentfile] identifier]]) {
+        [self fileSelected:[ApplicationState defaultFile]];
+    }
+}
+
 // Shows the file using the CodeViewController
 - (void)fileSelected:(id<File>)file
 {

@@ -93,7 +93,7 @@
     [self addFileToFileManager:fileManager name:@"GameObject.h" docURL:documentsURL];
     [self addFileToFileManager:fileManager name:@"home.html" docURL:documentsURL];
     [self addFileToFileManager:fileManager name:@"nav_gmaps_sample.js" docURL:documentsURL];
-    [self addFileToFileManager:fileManager name:@"README.md" docURL:documentsURL];
+    [self addFileToFileManager:fileManager name:@"arc.md" docURL:documentsURL];
     [self addFileToFileManager:fileManager name:@"base.rb" docURL:documentsURL];
     [self addFileToFileManager:fileManager name:@"RequestBuilder.hs" docURL:documentsURL];
     [self addFileToFileManager:fileManager name:@"filter_routes.clj" docURL:documentsURL];

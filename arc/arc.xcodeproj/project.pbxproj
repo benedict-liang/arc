@@ -358,7 +358,7 @@
 		FC726086171152910068DD91 /* Monokai.tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC726084171152910068DD91 /* Monokai.tmTheme */; };
 		FC726087171152910068DD91 /* Solarized (light).tmTheme in Resources */ = {isa = PBXBuildFile; fileRef = FC726085171152910068DD91 /* Solarized (light).tmTheme */; };
 		FC7260921711B4D70068DD91 /* SyntaxHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = FC7260911711B4D60068DD91 /* SyntaxHighlight.m */; };
-		FCB0548017034DE6007832D7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FCB0547F17034DE6007832D7 /* README.md */; };
+		FCB0548017034DE6007832D7 /* arc.md in Resources */ = {isa = PBXBuildFile; fileRef = FCB0547F17034DE6007832D7 /* arc.md */; };
 		FCBD8327171DC595005E2B31 /* FoldNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FCBD8326171DC595005E2B31 /* FoldNode.m */; };
 		FCBD832E171DD519005E2B31 /* RootFoldNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FCBD832D171DD518005E2B31 /* RootFoldNode.m */; };
 		FCBD8331171DE013005E2B31 /* CodeFolding.m in Sources */ = {isa = PBXBuildFile; fileRef = FCBD8330171DE011005E2B31 /* CodeFolding.m */; };
@@ -843,7 +843,7 @@
 		FC726085171152910068DD91 /* Solarized (light).tmTheme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Solarized (light).tmTheme"; sourceTree = "<group>"; };
 		FC7260901711B4D50068DD91 /* SyntaxHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxHighlight.h; sourceTree = "<group>"; };
 		FC7260911711B4D60068DD91 /* SyntaxHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxHighlight.m; sourceTree = "<group>"; };
-		FCB0547F17034DE6007832D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		FCB0547F17034DE6007832D7 /* arc.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = arc.md; sourceTree = "<group>"; };
 		FCBD8325171DC594005E2B31 /* FoldNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldNode.h; sourceTree = "<group>"; };
 		FCBD8326171DC595005E2B31 /* FoldNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldNode.m; sourceTree = "<group>"; };
 		FCBD832C171DD517005E2B31 /* RootFoldNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootFoldNode.h; sourceTree = "<group>"; };
@@ -1016,7 +1016,7 @@
 				FC72606A171106C60068DD91 /* RequestBuilder.hs */,
 				FC726064171102660068DD91 /* base.rb */,
 				FC4A8528170EB47200463EDA /* twist.py */,
-				FCB0547F17034DE6007832D7 /* README.md */,
+				FCB0547F17034DE6007832D7 /* arc.md */,
 				02B04FC91701608C00FE51CB /* GameObject.h */,
 				8F151050170443AC00115E5E /* home.html */,
 				8F2F5B8017061435005AD37F /* nav_gmaps_sample.js */,
@@ -1899,7 +1899,7 @@
 				4C43F90316F86AA900159B29 /* Default@2x.png in Resources */,
 				4C43F90516F86AA900159B29 /* Default-568h@2x.png in Resources */,
 				4CD06B8F16FE1A4800C9DED3 /* SourceCodePro-Regular.ttf in Resources */,
-				FCB0548017034DE6007832D7 /* README.md in Resources */,
+				FCB0548017034DE6007832D7 /* arc.md in Resources */,
 				8F151051170443AC00115E5E /* home.html in Resources */,
 				4CF6F0F21706E29300EDDEDC /* folder.png in Resources */,
 				02E162CD170B02F400C9D23B /* appState.plist in Resources */,

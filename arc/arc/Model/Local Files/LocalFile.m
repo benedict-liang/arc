@@ -25,7 +25,7 @@
         _identifier = identifier;
         _parent = parent;
         _extension = [name pathExtension];
-        _isRemovable = YES;
+        _isRemovable = [[Constants privilegedFileList] indexOfObject:_name] == NSNotFound;
         [self updateAttributes];
     }
     return self;

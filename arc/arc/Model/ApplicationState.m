@@ -46,9 +46,9 @@ static ApplicationState *sharedApplicationState = nil;
         
         // TEMPORARILY set a default for the current file.
         if (!filePath) {
-            filePath = [[ApplicationState getSampleFile] identifier];
+            filePath = [[ApplicationState defaultFile] identifier];
         }
-        
+
         _currentFolderOpened = (id<Folder>)[[RootFolder sharedRootFolder] objectAtPath:folderPath];
         _currentFileOpened = (id<File>)[[RootFolder sharedRootFolder] objectAtPath:filePath];
         _fonts = [storedState valueForKey:KEY_FONTS];
@@ -153,11 +153,11 @@ static ApplicationState *sharedApplicationState = nil;
     }
 }
 
-// Returns a sample file.
-+ (id<File>)getSampleFile
+// Returns the default file
++ (id<File>)defaultFile;
 {
     return (id<File>)[[RootFolder sharedRootFolder]
-                      retrieveItemWithName:@"GameObject.h"];
+                      retrieveItemWithName:DEFAULT_FILE];
 }
 
 @end
