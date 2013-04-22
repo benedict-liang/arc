@@ -155,13 +155,13 @@
 
 - (void)folderReportsAuthFailed:(id)sender
 {
+    [_delegate modalViewControllerDone:nil];
     [_serviceManager logOutOfService];
     [[[UIAlertView alloc] initWithTitle:@"Authentication Error"
                                 message:@"Sorry, we couldn't log you in automatically."
                                delegate:nil
                       cancelButtonTitle:nil
                       otherButtonTitles:@"OK", nil] show];
-    [_delegate modalViewControllerDone:nil];
 }
 
 @end

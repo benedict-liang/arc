@@ -426,7 +426,7 @@
                 [self refreshFolderView];
             }];
         }
-    } else {
+    } else if (![[self presentedViewController] isBeingDismissed]) {
         // Default
         [self dismissViewControllerAnimated:YES completion:^{
             [self refreshFolderView];
