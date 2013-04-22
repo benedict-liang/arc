@@ -114,9 +114,20 @@
 
 # pragma mark - Arc SplitView Controller Delegate
 
-- (void)didResizeSubViewsBoundsChanged:(BOOL)boundsChanged
+- (void)didShowMasterViewAnimated:(BOOL)animate
+                    boundsChanged:(BOOL)boundsChanged
 {
-    [_codeViewController redrawCodeViewBoundsChanged:boundsChanged];
+    if (boundsChanged) {
+        [_codeViewController redrawCodeViewBoundsChanged:boundsChanged];
+    }
+}
+
+- (void)didHideMasterViewAnimated:(BOOL)animate
+                    boundsChanged:(BOOL)boundsChanged
+{
+    if (boundsChanged) {
+        [_codeViewController redrawCodeViewBoundsChanged:boundsChanged];
+    }
 }
 
 - (void)willShowMasterViewAnimated:(BOOL)animate
@@ -126,6 +137,34 @@
         _secondCodeViewController = nil;
     }
     _codeViewController.view.frame = self.detailView.bounds;
+}
+
+- (void)willHideMasterViewAnimated:(BOOL)animate
+{
+    if (_secondCodeViewController) {
+        if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication]statusBarOrientation])) {
+            int width = floor(self.view.bounds.size.width/2);
+            int height = self.detailView.bounds.size.height;
+            
+            _codeViewController.view.frame = CGRectMake(0, 0, width, height);
+            [_codeViewController redrawCodeViewBoundsChanged:YES];
+            
+            _secondCodeViewController.view.frame = CGRectMake(width, 0, width, height);
+            [_secondCodeViewController redrawCodeViewBoundsChanged:YES];
+            
+            _leftBorder.hidden = NO;
+        } else {
+            int width = self.detailView.bounds.size.width;
+            int height = floor(self.view.bounds.size.height/2);
+            
+            _codeViewController.view.frame = CGRectMake(0, 0, width, height);
+            [_codeViewController redrawCodeViewBoundsChanged:YES];
+            
+            _secondCodeViewController.view.frame = CGRectMake(0, height, width, height);
+            [_secondCodeViewController redrawCodeViewBoundsChanged:YES];
+            _leftBorder.hidden = YES;
+        }
+    }
 }
 
 #pragma mark - MainViewControllerDelegate Methods

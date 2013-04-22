@@ -76,13 +76,13 @@
                          completion:^(BOOL finished){
                              BOOL boundsChanged = [oldSize isEqualToString:
                                                    NSStringFromCGSize(_detailView.frame.size)];
-                             if ([self.delegate respondsToSelector:@selector(didResizeSubViewsBoundsChanged:)]) {
-                                 [self.delegate didResizeSubViewsBoundsChanged:boundsChanged];
+                             
+                             if ([self.delegate respondsToSelector:@selector(didShowMasterViewAnimated:boundsChanged:)]) {
+                                 [self.delegate didShowMasterViewAnimated:animate boundsChanged:boundsChanged];
                              }
                          }];
     } else {
         [self showMasterView];
-        _masterViewVisible = YES;
     }
 }
 
@@ -122,14 +122,12 @@
                          completion:^(BOOL finished){
                              BOOL boundsChanged = [oldSize isEqualToString:
                                                    NSStringFromCGSize(_detailView.frame.size)];
-                             if ([self.delegate respondsToSelector:@selector(didResizeSubViewsBoundsChanged:)]) {
-                                 [self.delegate didResizeSubViewsBoundsChanged:boundsChanged];
+                             if ([self.delegate respondsToSelector:@selector(didHideMasterViewAnimated:boundsChanged:)]) {
+                                 [self.delegate didHideMasterViewAnimated:animate boundsChanged:boundsChanged];
                              }
-
                          }];
     } else {
         [self hideMasterView];
-        _masterViewVisible = NO;
     }
 }
 
@@ -159,8 +157,10 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    if ([self.delegate respondsToSelector:@selector(didResizeSubViewsBoundsChanged:)]) {
-        [self.delegate didResizeSubViewsBoundsChanged:YES];
+    if (_masterViewVisible) {
+        [self showMasterViewAnimated:YES];
+    } else {
+        [self hideMasterViewAnimated:YES];
     }
 }
 

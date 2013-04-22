@@ -81,8 +81,6 @@
 {
     [super viewDidLoad];
     self.view.autoresizesSubviews = YES;
-    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth |
-    UIViewAutoresizingFlexibleHeight;
     self.view.clipsToBounds = YES;
     
     // Add a toolbar
