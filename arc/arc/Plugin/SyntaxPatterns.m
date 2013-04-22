@@ -18,6 +18,7 @@
 @implementation SyntaxPatterns
 
 - (id)initWithBundlePatterns:(NSArray *)bundlePatterns Repository:(NSDictionary *)repo{
+    _isRoot = YES;
     NSMutableArray* accum = [NSMutableArray array];
     
     for (NSDictionary* syntaxItem in bundlePatterns) {
@@ -40,7 +41,9 @@
     return self;
 }
 - (id)initWithBundlePatterns:(NSArray *)bundlePatterns {
-    return [self initWithBundlePatterns:bundlePatterns Repository:nil];
+    self = [self initWithBundlePatterns:bundlePatterns Repository:nil];
+    _isRoot = NO;
+    return self;
 }
 - (id<SyntaxItemProtocol>)syntaxItemForDict:(NSDictionary*)syntaxItem {
     id<SyntaxItemProtocol> item = nil;
@@ -79,7 +82,7 @@
         
     }
     else if (include) {
-        item = [[SyntaxIncludeItem alloc] initWithInclude:include];
+        item = [[SyntaxIncludeItem alloc] initWithInclude:include Parent:self];
     }
     return item;
 }

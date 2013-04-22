@@ -12,7 +12,7 @@
 #import "SyntaxSingleItem.h"
 #import "SyntaxIncludeItem.h"
 #import "SyntaxPatternsDelegate.h"
-@interface SyntaxPatterns : NSObject
+@interface SyntaxPatterns : NSObject<SyntaxPatternsDelegate>
 
 - (id)initWithBundlePatterns:(NSArray*)bundlePatterns Repository:(NSDictionary*)repo;
 
@@ -21,4 +21,5 @@
 - (SyntaxMatchStore*)parseResultsForContent:(NSString*)content Range:(NSRange)range;
 @property NSArray* patterns;
 @property NSDictionary* repository;
+@property BOOL isRoot;
 @end

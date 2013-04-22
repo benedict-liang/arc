@@ -9,9 +9,10 @@
 #import "SyntaxIncludeItem.h"
 
 @implementation SyntaxIncludeItem
-- (id)initWithInclude:(NSString *)i {
+- (id)initWithInclude:(NSString *)i Parent:(id<SyntaxPatternsDelegate>)p{
     if (self = [super init]) {
         _include = i;
+        _parent = p;
     }
     return self;
 }

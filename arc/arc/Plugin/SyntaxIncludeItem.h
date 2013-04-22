@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "SyntaxItemProtocol.h"
+#import "SyntaxPatternsDelegate.h"
+
 @interface SyntaxIncludeItem : NSObject <SyntaxItemProtocol>
 @property NSString* include;
-- (id)initWithInclude:(NSString*)i;
+@property id<SyntaxPatternsDelegate> parent;
+- (id)initWithInclude:(NSString*)i Parent:(id<SyntaxPatternsDelegate>)p;
 
 @end
