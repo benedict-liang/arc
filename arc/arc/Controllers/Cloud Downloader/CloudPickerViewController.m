@@ -103,11 +103,17 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[self folder] cancelOperations];
+    [super viewWillDisappear:animated];
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (buttonIndex) {
         case 1:
-            [self.folder cancelOperations];
+            [[self folder] cancelOperations];
             [_delegate modalViewControllerDone:nil];
             break;
             
