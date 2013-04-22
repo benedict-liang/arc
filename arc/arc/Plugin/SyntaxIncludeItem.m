@@ -37,7 +37,7 @@
             id<SyntaxPatternsDelegate> sp = [root patternsForBundlePatterns:extPatterns Repository:extRepo];
             
             SyntaxMatchStore* extSt = [sp parseResultsForContent:content Range:range];
-            NSLog(@"%@",extSt);
+            //NSLog(@"%@",extSt);
             return extSt;
         }
        
