@@ -117,17 +117,13 @@
 - (void)didShowMasterViewAnimated:(BOOL)animate
                     boundsChanged:(BOOL)boundsChanged
 {
-    if (boundsChanged) {
-        [_codeViewController redrawCodeViewBoundsChanged:boundsChanged];
-    }
+    [_codeViewController redrawCodeViewBoundsChanged:boundsChanged];
 }
 
 - (void)didHideMasterViewAnimated:(BOOL)animate
                     boundsChanged:(BOOL)boundsChanged
 {
-    if (boundsChanged) {
-        [_codeViewController redrawCodeViewBoundsChanged:boundsChanged];
-    }
+    [_codeViewController redrawCodeViewBoundsChanged:boundsChanged];
 }
 
 - (void)willShowMasterViewAnimated:(BOOL)animate
