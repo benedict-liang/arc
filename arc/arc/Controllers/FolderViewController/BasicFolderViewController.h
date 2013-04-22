@@ -13,7 +13,7 @@
 #import "FolderViewSectionHeader.h"
 #import "FileSystemObjectGroup.h"
 
-@interface BasicFolderViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface BasicFolderViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, FolderDelegate>
 - (id)initWithFolder:(id<Folder>)folder;
 - (void)setUpFolderContents;
 - (void)setUpTableView;
