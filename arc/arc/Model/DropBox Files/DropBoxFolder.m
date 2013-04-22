@@ -25,6 +25,16 @@
     return self;
 }
 
+- (void)setDelegate:(id<FolderDelegate>)delegate
+{
+    _delegate = delegate;
+    
+    DBFilesystem *filesystem = [DBFilesystem sharedFilesystem];
+    [filesystem addObserver:self forPathAndChildren:[[DBPath alloc] initWithString:_path] block:^{
+        [_delegate folderContentsUpdated:self];
+    }];
+}
+
 // Returns the contents of this object.
 - (id<NSObject>)contents
 {
@@ -49,12 +59,7 @@
                 DBFile *currentFile = [filesystem openFile:[[DBPath alloc] initWithString:currentPathString] error:nil];
                 BOOL isFileCached = [[currentFile status] cached];
                 [(DropBoxFile *)currentObject setIsAvailable:isFileCached];
-                
-                if (!isFileCached) {
-                    [filesystem addObserver:self forPath:currentPath block:^{
-                        [_delegate folderContentsUpdated:self];
-                    }];
-                }
+                [currentFile close];
             }
             [contents addObject:currentObject];
         }
