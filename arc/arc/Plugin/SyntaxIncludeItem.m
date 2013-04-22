@@ -19,7 +19,8 @@
 - (SyntaxMatchStore*)parseContent:(NSString *)content WithRange:(NSRange)range {
     id<SyntaxPatternsDelegate> root = [self rootParent];
     if ([_include isEqualToString:@"$base"]) {
-        return [root parseResultsForContent:content Range:range];
+        //return [root parseResultsForContent:content Range:range];
+        return  [[SyntaxMatchStore alloc] init];
     }
     else if([_include characterAtIndex:0]=='#') {
         NSString *str = [_include substringFromIndex:1];
@@ -34,11 +35,15 @@
 
 - (id<SyntaxPatternsDelegate>)rootParent {
     id<SyntaxPatternsDelegate> pp = [_parent parent];
+    NSLog(@"include root search");
+
     id<SyntaxPatternsDelegate> lp = pp;
-    while (pp) {
+    while (pp != nil) {
         lp = pp;
-        pp = [_parent parent];
+        //NSLog(@"%@",lp);
+        pp = [pp parent];
     }
+    NSLog(@"include root found");
     return lp;
 }
 @end

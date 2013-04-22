@@ -97,6 +97,11 @@
         SyntaxMatchStore* res = [syntaxItem parseContent:content WithRange:range];
         [accum mergeWithStore:res];
     }
+    for (id k in _repository) {
+        id<SyntaxItemProtocol> syntaxItem = [_repository objectForKey:k];
+        SyntaxMatchStore* res = [syntaxItem parseContent:content WithRange:range];
+        [accum mergeWithStore:res];
+    }
     return accum;
 }
 

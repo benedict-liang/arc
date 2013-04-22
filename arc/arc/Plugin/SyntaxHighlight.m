@@ -29,7 +29,7 @@
         _bundle = [TMBundleSyntaxParser plistForExt:[file extension]];
         
         _syntaxPatterns = [[SyntaxPatterns alloc] initWithBundlePatterns:[_bundle objectForKey:@"patterns"] Repository:[_bundle objectForKey:@"repository"]];
-        NSLog(@"%@",_syntaxPatterns);
+        //NSLog(@"%@",_syntaxPatterns);
         _isAlive = YES;
         _matchesDone = NO;
         
