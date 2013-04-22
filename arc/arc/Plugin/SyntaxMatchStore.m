@@ -36,12 +36,17 @@
     }
     return nil;
 }
-
+- (NSArray*)capturableScopesForScope:(NSString*)scope {
+    return [(NSDictionary*)[_store objectForKey:scope] objectForKey:@"capturableScopes"];
+}
 - (void)mergeWithStore:(SyntaxMatchStore *)store {
     for (NSString* scope in store.store) {
         NSDictionary* val = [store.store objectForKey:scope];
         NSArray* ranges = [val objectForKey:@"ranges"];
         [self addParserResult:[[SyntaxParserResult alloc] initWithScope:scope Ranges:ranges CPS:[val objectForKey:@"capturableScopes"]]];
     }
+}
+- (NSArray*)scopes {
+    return [_store allKeys];
 }
 @end

@@ -18,17 +18,11 @@
 #import "CodeFolding.h"
 #import "OverlapPeekResult.h"
 #import "SyntaxPatterns.h"
+#import "SyntaxMatchStore.h"
 //Immutable class. Holds thread local state
 
 @interface SyntaxHighlight : NSObject <SyntaxHighlightDelegate> {
-    __block NSMutableDictionary *nameMatches;
-    __block NSMutableDictionary *captureMatches;
-    __block NSMutableDictionary *beginCMatches;
-    __block NSMutableDictionary *endCMatches;
-    __block NSMutableDictionary *pairMatches;
-    __block NSMutableDictionary *contentNameMatches;
-    __block NSMutableDictionary *overlapMatches;
-    __block NSArray *foldRanges;
+
 }
 
 
@@ -42,6 +36,7 @@
 @property (strong) FoldTree* foldTree;
 @property NSArray* foldStarts;
 @property NSArray* foldEnds;
+@property NSArray* foldRanges;
 @property ArcAttributedString* finalOutput;
 @property SyntaxPatterns* syntaxPatterns;
 

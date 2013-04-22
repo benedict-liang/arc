@@ -12,7 +12,7 @@
 @interface SyntaxHighlight ()
 @property (nonatomic) BOOL isAlive;
 @property (nonatomic) BOOL matchesDone;
-@property NSMutableArray* overlapAccum;
+@property SyntaxMatchStore* matchStore;
 @end
 
 @implementation SyntaxHighlight
@@ -39,14 +39,7 @@
         }
         
         //reset ranges
-        nameMatches = [NSMutableDictionary dictionary];
-        captureMatches = [NSMutableDictionary dictionary];
-        beginCMatches = [NSMutableDictionary dictionary];
-        endCMatches = [NSMutableDictionary dictionary];
-        pairMatches = [NSMutableDictionary dictionary];
-        contentNameMatches = [NSMutableDictionary dictionary];
-        overlapMatches = [NSMutableDictionary dictionary];
-        _overlapAccum = [NSMutableArray array];
+        
     }
     return self;
 }
@@ -107,16 +100,15 @@
 
 
 - (void)applyStylesTo:(ArcAttributedString*)output
-           withRanges:(NSDictionary*)pairs
+           withRanges:(SyntaxMatchStore*)pairs
             withTheme:(NSDictionary*)theme
 {
     if (pairs) {
-        for (NSString* scope in pairs) {
-            NSArray* ranges = [[pairs objectForKey:scope] objectForKey:@"ranges"];
-            NSArray* capturableScopes = [[pairs objectForKey:scope] objectForKey:@"capturableScopes"];
+        for (NSString* scope in pairs.scopes) {
+            NSArray* ranges = [pairs rangesForScope:scope];
+            NSArray* capturableScopes = [pairs capturableScopesForScope:scope];
             for (NSValue *v in ranges) {
-                NSRange range;
-                [v getValue:&range];
+                NSRange range = [Utils rangeFromValue:v];
                 [self applyStyleToScope:scope
                                   range:range
                                  output:output
@@ -429,11 +421,11 @@
 
 - (void)logs
 {
-    NSLog(@"nameMatches: %@",nameMatches);
-    NSLog(@"captureM: %@",captureMatches);
-    NSLog(@"beginM: %@",beginCMatches);
-    NSLog(@"endM: %@",endCMatches);
-    NSLog(@"pairM: %@",pairMatches);
+//    NSLog(@"nameMatches: %@",nameMatches);
+//    NSLog(@"captureM: %@",captureMatches);
+//    NSLog(@"beginM: %@",beginCMatches);
+//    NSLog(@"endM: %@",endCMatches);
+//    NSLog(@"pairM: %@",pairMatches);
 }
 
 - (void)applyForeground:(ArcAttributedString*)output withTheme:(NSDictionary*)theme
@@ -452,15 +444,22 @@
 {
     [output removeAttributesForSettingKey:SYNTAX_KEY];
     [self applyForeground:output withTheme:theme];
-    [self applyStylesTo:output withRanges:pairMatches withTheme:theme];
-    [self applyStylesTo:output withRanges:nameMatches withTheme:theme];
-    [self applyStylesTo:output withRanges:captureMatches withTheme:theme];
-    [self applyStylesTo:output withRanges:beginCMatches withTheme:theme];
-    [self applyStylesTo:output withRanges:endCMatches withTheme:theme];
-    [self applyStylesTo:output withRanges:contentNameMatches withTheme:theme];
-    [self applyStylesTo:output withRanges:overlapMatches withTheme:theme];
+    [self applyStylesTo:output withRanges:_matchStore withTheme:theme];
+
 }
 
+- (void)setupFoldTree {
+    NSString* foldStart = [_bundle objectForKey:@"foldingStartMarker"];
+    NSString* foldEnd = [_bundle objectForKey:@"foldingStopMarker"];
+    
+    if (foldStart && foldEnd) {
+        _foldTree = [CodeFolding foldTreeForContent:_content
+                                          foldStart:foldStart
+                                            foldEnd:foldEnd
+                                         skipRanges:[NSArray array]
+                                           delegate:self];
+    }
+}
 - (void)execOn:(NSDictionary*)options
 {
     _isAlive = YES;
@@ -470,23 +469,12 @@
 
     if (!_matchesDone) {
 
-    
-        NSString* foldStart = [_bundle objectForKey:@"foldingStartMarker"];
-        NSString* foldEnd = [_bundle objectForKey:@"foldingStopMarker"];
-
+        _matchStore = [_syntaxPatterns parseResultsForContent:_content Range:NSMakeRange(0, _content.length)];
         
-        if (foldStart && foldEnd) {
-            _foldTree = [CodeFolding foldTreeForContent:_content
-                                              foldStart:foldStart
-                                                foldEnd:foldEnd
-                                             skipRanges:[self rangeArrayForMatches:overlapMatches]
-                                               delegate:self];
-        }
+        [self setupFoldTree];
         [self applyStylesTo:output withTheme:theme];
         [self updateView:output withTheme:theme];
-    //    NSLog(@"%@",_overlapAccum);
 
-        [self applyStylesTo:output withRanges:overlapMatches withTheme:theme];
         _matchesDone = YES;
     }
     

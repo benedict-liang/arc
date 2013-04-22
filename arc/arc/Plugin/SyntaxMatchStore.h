@@ -21,5 +21,6 @@
 - (void)mergeWithStore:(SyntaxMatchStore*)store;
 - (void)addParserResult:(SyntaxParserResult*)pres;
 - (NSArray*)rangesForScope:(NSString*)scope;
-
+- (NSArray*)scopes;
+- (NSArray*)capturableScopesForScope:(NSString*)scope;
 @end
