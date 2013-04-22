@@ -76,27 +76,30 @@
                     theme:(NSDictionary*)theme
                capturableScopes:(NSArray*)cpS
 {
-
-  
+    NSDictionary* global = [theme objectForKey:@"global"];
+    UIColor* foreground = [global objectForKey:@"foreground"];
+    NSDictionary* style = nil;
+    NSString* fscope = nil;
+    NSDictionary* styleScopes = [theme objectForKey:@"scopes"];
     for (NSString *s in cpS) {
-        NSDictionary* style = [(NSDictionary*)[theme objectForKey:@"scopes"] objectForKey:s];
-//        if (![dict isEqual:(NSObject*)overlapMatches] && [_overlays containsObject:s]) {
-//            [self addRange:range
-//                                      scope:s
-//                                       dict:overlapMatches
-//                           capturableScopes:@[s]];
-//        }
-        
-        if (style) {
-            UIColor *fg = [style objectForKey:@"foreground"];
-            if (!fg) {
-                return;
-            }
-            NSLog(@"s = %@ \n fg = %@",s,fg);
-            [output setForegroundColor:fg
-                               OnRange:range
-                            ForSetting:SYNTAX_KEY];
+        NSDictionary* scopeStyle = [styleScopes objectForKey:s];
+        if (scopeStyle) {
+            style = scopeStyle;
+            fscope = s;
         }
+        
+    }
+    if (style) {
+        NSLog(@"%@  scope:%@",style,fscope);
+        UIColor *fg = [style objectForKey:@"foreground"];
+        
+        if (!fg) {
+            return;
+        }
+        //NSLog(@"s = %@ \n fg = %@",s,fg);
+        [output setForegroundColor:fg
+                           OnRange:range
+                        ForSetting:SYNTAX_KEY];
     }
 }
 
@@ -108,22 +111,40 @@
 {
     if (pairs) {
         for (NSString* scope in pairs.scopes) {
+            NSLog(@"%@",pairs.scopes);
             NSArray* ranges = [pairs rangesForScope:scope];
             NSArray* capturableScopes = [pairs capturableScopesForScope:scope];
+            if (!capturableScopes) {
+                capturableScopes = [self capturableScopes:scope];
+            }
             if ([capturableScopes[0] isEqualToString:@"comment"] && ![pairs isEqual:_overlapStore]) {
                 [_overlapStore addParserResult:[[SyntaxParserResult alloc] initWithScope:scope Ranges:ranges CPS:capturableScopes]];
-                return;
+                continue;
             }
-            for (NSValue *v in ranges) {
-                
-                NSRange range = [Utils rangeFromValue:v];
-                [self applyStyleToScope:scope
-                                  range:range
-                                 output:output
-                                   dict:pairs
-                                  theme:theme
-                       capturableScopes:capturableScopes];
+//            if ([[capturableScopes objectAtIndex:0] isEqualToString:@"meta"]) {
+//                NSLog(@"arrgh");
+//            }
+            
+            NSDictionary* styleScopes = [theme objectForKey:@"scopes"];
+            NSLog(@"%@",capturableScopes);
+            NSLog(@"%@",styleScopes);
+            UIColor* fg = nil;
+            for (NSString* ascope in capturableScopes) {
+                NSDictionary* style = [styleScopes objectForKey:ascope];
+                if (style) {
+                    fg = [style objectForKey:@"foreground"];
+                }
             }
+            if (fg) {
+                for (NSValue *v in ranges) {
+                    
+                    NSRange range = [Utils rangeFromValue:v];
+                    [output setForegroundColor:fg
+                                       OnRange:range
+                                    ForSetting:SYNTAX_KEY];
+                }
+            }
+        
         }
     }
     
