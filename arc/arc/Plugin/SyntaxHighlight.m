@@ -470,6 +470,12 @@
 
 }
 
+- (void)renderOn:(NSDictionary *)options {
+     NSDictionary* theme = [options objectForKey:@"theme"];
+    ArcAttributedString *output = [options objectForKey:@"attributedString"];
+    [self applyStylesTo:output withTheme:theme];
+    [self updateView:output withTheme:theme];
+}
 - (void)kill
 {
     _isAlive = NO;

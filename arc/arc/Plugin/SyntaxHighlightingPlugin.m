@@ -104,7 +104,7 @@
     [_threadPool removeAllObjects];
 
     SyntaxHighlight* sh = [_cache objectForKey:[file identifier]];
-    sh.delegate = delegate;
+    //sh.delegate = delegate;
 
     if (!sh) {
         sh = [[SyntaxHighlight alloc] initWithFile:file
@@ -116,6 +116,11 @@
 
         // add to cache
         [_cache setObject:sh forKey:[file identifier]];
+    } else {
+        ArcAttributedString *copy =
+        [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
+        [sh renderOn:@{@"theme":themeDictionary,
+         @"attributedString":copy}];
     }
     
     if (sh.bundle) {

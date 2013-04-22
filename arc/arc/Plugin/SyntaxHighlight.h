@@ -44,5 +44,6 @@
        andDelegate:(id<CodeViewControllerDelegate>)delegate;
 
 - (void)execOn:(NSDictionary*)options;
+- (void)renderOn:(NSDictionary*)options;
 - (void)kill;
 @end
