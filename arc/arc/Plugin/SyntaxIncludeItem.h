@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SyntaxItemProtocol.h"
 #import "SyntaxPatternsDelegate.h"
-
+#import "TMBundleHeader.h"
 @interface SyntaxIncludeItem : NSObject <SyntaxItemProtocol>
 @property NSString* include;
 @property id<SyntaxPatternsDelegate> parent;

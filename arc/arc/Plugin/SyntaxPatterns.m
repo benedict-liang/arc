@@ -17,6 +17,9 @@
 @end
 @implementation SyntaxPatterns
 
+-(id)patternsForBundlePatterns:(NSArray*)ps Repository:(NSDictionary*)repo {
+    return [[SyntaxPatterns alloc] initWithBundlePatterns:ps Repository:repo];
+}
 - (id)initWithBundlePatterns:(NSArray *)bundlePatterns Repository:(NSDictionary *)repo{
     _parent = nil;
     NSMutableArray* accum = [NSMutableArray array];

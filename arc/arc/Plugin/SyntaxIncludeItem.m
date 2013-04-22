@@ -18,6 +18,8 @@
 }
 - (SyntaxMatchStore*)parseContent:(NSString *)content WithRange:(NSRange)range {
     id<SyntaxPatternsDelegate> root = [self rootParent];
+    
+    NSLog(@"include: %@ range:%@",_include, [Utils valueFromRange:range]);
     if ([_include isEqualToString:@"$base"]) {
         //return [root parseResultsForContent:content Range:range];
         return  [[SyntaxMatchStore alloc] init];
@@ -28,6 +30,16 @@
     }
     else {
         //TODO external include
+        NSDictionary* bundle = [TMBundleSyntaxParser plistByName:_include];
+        NSArray* extPatterns= [bundle objectForKey:@"patterns"];
+        NSDictionary* extRepo = [bundle objectForKey:@"repository"];
+        if (extPatterns) {
+            id<SyntaxPatternsDelegate> sp = [root patternsForBundlePatterns:extPatterns Repository:extRepo];
+            
+            return [sp parseResultsForContent:content Range:range];
+        }
+       
+        return [[SyntaxMatchStore alloc] init];
     }
     
     return [[SyntaxMatchStore alloc] init];
@@ -35,7 +47,7 @@
 
 - (id<SyntaxPatternsDelegate>)rootParent {
     id<SyntaxPatternsDelegate> pp = [_parent parent];
-    NSLog(@"include root search");
+   // NSLog(@"include root search");
 
     id<SyntaxPatternsDelegate> lp = pp;
     while (pp != nil) {
@@ -43,7 +55,7 @@
         //NSLog(@"%@",lp);
         pp = [pp parent];
     }
-    NSLog(@"include root found");
+    //NSLog(@"include root found");
     return lp;
 }
 @end

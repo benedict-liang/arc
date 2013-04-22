@@ -49,4 +49,7 @@
 - (NSArray*)scopes {
     return [_store allKeys];
 }
+-(NSString*)description {
+    return _store.description;
+}
 @end

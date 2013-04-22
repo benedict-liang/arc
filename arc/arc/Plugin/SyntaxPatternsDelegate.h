@@ -14,4 +14,5 @@
 - (SyntaxMatchStore*)parseResultsForRepoRule:(NSString*)key
                                      Content:(NSString*)content
                                        Range:(NSRange)range;
+-(id)patternsForBundlePatterns:(NSArray*)ps Repository:(NSDictionary*)repo;
 @end

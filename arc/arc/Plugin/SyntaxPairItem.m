@@ -53,7 +53,7 @@
     
     NSRange endRange;
     do {
-        CFIndex bEnds = beginRange.location + beginRange.length+1;
+        CFIndex bEnds = beginRange.location + beginRange.length;
         NSRange residue = NSMakeRange(bEnds, content.length - bEnds);
         endRange = [RegexUtils findFirstPatternWithRegex:endRegex
                                                    range:residue
@@ -61,14 +61,14 @@
         if (endRange.location >= content.length || NSEqualRanges(endRange, NSMakeRange(0, 0))) {
             break;
         }
-        CFIndex eEnds = endRange.location +endRange.length+1;
+        CFIndex eEnds = endRange.location +endRange.length;
            NSRange nameRange = NSMakeRange(beginRange.location, eEnds - beginRange.location);
         if (_name) {
          
             [resName.ranges addObject:[Utils valueFromRange:nameRange]];
         }
         if (_patterns) {
-            [store mergeWithStore:[_patterns parseResultsForContent:content Range:nameRange]];
+//            [store mergeWithStore:[_patterns parseResultsForContent:content Range:nameRange]];
             
         }
         residue = NSMakeRange(eEnds, content.length - eEnds);
@@ -77,7 +77,7 @@
                                       content:content];
         NSLog(@"%@ %@",[Utils valueFromRange:beginRange],[Utils valueFromRange:endRange]);
         
-    } while (beginRange.location < content.length);
+    } while (beginRange.location < content.length && !NSEqualRanges(endRange, beginRange));
     if (_name) {
         [store addParserResult:resName];
 

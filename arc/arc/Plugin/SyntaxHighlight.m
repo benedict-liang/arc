@@ -13,6 +13,7 @@
 @property (nonatomic) BOOL isAlive;
 @property (nonatomic) BOOL matchesDone;
 @property SyntaxMatchStore* matchStore;
+@property SyntaxMatchStore* overlapStore;
 @end
 
 @implementation SyntaxHighlight
@@ -37,7 +38,7 @@
             _content = (NSString*)[file contents];
             _splitContent = [_content componentsSeparatedByString:@"\n"];
         }
-        
+        _overlapStore = [[SyntaxMatchStore alloc] init];
         //reset ranges
         
     }
@@ -48,9 +49,7 @@
               fcolor:(UIColor*)fcolor
               output:(ArcAttributedString*)output
 {
-    [output setForegroundColor:fcolor
-                       OnRange:range
-                    ForSetting:SYNTAX_KEY];
+
 }
 
 - (NSArray*)capturableScopes:(NSString*)name
@@ -90,9 +89,13 @@
         
         if (style) {
             UIColor *fg = [style objectForKey:@"foreground"];
-            [self styleOnRange:range
-                        fcolor:fg
-                        output:output];
+            if (!fg) {
+                return;
+            }
+            NSLog(@"s = %@ \n fg = %@",s,fg);
+            [output setForegroundColor:fg
+                               OnRange:range
+                            ForSetting:SYNTAX_KEY];
         }
     }
 }
@@ -107,7 +110,12 @@
         for (NSString* scope in pairs.scopes) {
             NSArray* ranges = [pairs rangesForScope:scope];
             NSArray* capturableScopes = [pairs capturableScopesForScope:scope];
+            if ([capturableScopes[0] isEqualToString:@"comment"] && ![pairs isEqual:_overlapStore]) {
+                [_overlapStore addParserResult:[[SyntaxParserResult alloc] initWithScope:scope Ranges:ranges CPS:capturableScopes]];
+                return;
+            }
             for (NSValue *v in ranges) {
+                
                 NSRange range = [Utils rangeFromValue:v];
                 [self applyStyleToScope:scope
                                   range:range
@@ -445,6 +453,7 @@
     [output removeAttributesForSettingKey:SYNTAX_KEY];
     [self applyForeground:output withTheme:theme];
     [self applyStylesTo:output withRanges:_matchStore withTheme:theme];
+    [self applyStylesTo:output withRanges:_overlapStore withTheme:theme];
 
 }
 
@@ -470,19 +479,17 @@
     if (!_matchesDone) {
 
         _matchStore = [_syntaxPatterns parseResultsForContent:_content Range:NSMakeRange(0, _content.length)];
-        
+        NSLog(@"%@",_matchStore);
         [self setupFoldTree];
         [self applyStylesTo:output withTheme:theme];
         [self updateView:output withTheme:theme];
-
+        NSLog(@"view updated!");
         _matchesDone = YES;
     }
     
     // tell SH factory to remove self from thread pool.
     [_factory removeFromThreadPool:self];
 
-    //[self applyStylesTo:output withTheme:theme];
-    [self updateView:output withTheme:theme];
 }
 
 - (void)kill
