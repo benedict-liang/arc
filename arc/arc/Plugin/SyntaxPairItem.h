@@ -8,13 +8,23 @@
 
 #import <Foundation/Foundation.h>
 #import "SyntaxItemProtocol.h"
+#import "SyntaxPatterns.h"
+
 @interface SyntaxPairItem : NSObject <SyntaxItemProtocol>
 @property NSString* begin;
 @property NSString* end;
 @property NSDictionary* beginCaptures;
 @property NSDictionary* endCaptures;
 @property NSString* contentName;
+@property SyntaxPatterns* patterns;
 
-- (id)initWithBegin:(NSString*)begin End:(NSString*)end Name:(NSString*)name CPS:(NSArray*)cps BeginCaptures:(NSDictionary*)beginCaptures EndCaptures:(NSDictionary*)endCaptures ContentName:(NSString*)contentName;
+- (id)initWithBegin:(NSString*)begin
+                End:(NSString*)end
+               Name:(NSString*)name
+                CPS:(NSArray*)cps
+      BeginCaptures:(NSDictionary*)beginCaptures
+        EndCaptures:(NSDictionary*)endCaptures
+        ContentName:(NSString*)contentName
+      EmbedPatterns:(SyntaxPatterns*)patterns;
 
 @end

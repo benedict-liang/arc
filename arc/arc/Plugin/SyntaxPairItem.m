@@ -11,7 +11,7 @@
 @implementation SyntaxPairItem
 @synthesize name = _name, capturableScopes = _capturableScopes;
 
--(id)initWithBegin:(NSString *)begin End:(NSString *)end Name:(NSString *)name CPS:(NSArray *)cps BeginCaptures:(NSDictionary *)beginCaptures EndCaptures:(NSDictionary *)endCaptures ContentName:(NSString *)contentName{
+-(id)initWithBegin:(NSString *)begin End:(NSString *)end Name:(NSString *)name CPS:(NSArray *)cps BeginCaptures:(NSDictionary *)beginCaptures EndCaptures:(NSDictionary *)endCaptures ContentName:(NSString *)contentName EmbedPatterns:(SyntaxPatterns *)patterns{
     if (self = [super init]) {
         _begin = begin;
         _end = end;
@@ -20,7 +20,7 @@
         _beginCaptures = beginCaptures;
         _endCaptures = endCaptures;
         _contentName = contentName;
-        
+        _patterns = patterns;
     }
     return self;
 }
