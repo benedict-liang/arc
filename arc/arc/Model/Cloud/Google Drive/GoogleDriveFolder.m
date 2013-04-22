@@ -130,10 +130,15 @@
 
 - (void)handleError:(NSError *)error
 {
-    NSLog(@"%@", error);
-    NSString *errorMessage = [[[error userInfo] valueForKey:@"json"] valueForKey:@"error"];
-    if ([errorMessage isEqualToString:@"invalid_grant"]) {
-        [_delegate folderReportsAuthFailed:self];
+    int errorCode = [error code];
+    switch (errorCode) {
+        case 400:
+        case 401:
+            [_delegate folderReportsAuthFailed:self];
+            break;
+        default:
+            NSLog(@"%@", error);
+            break;
     }
 }
 
