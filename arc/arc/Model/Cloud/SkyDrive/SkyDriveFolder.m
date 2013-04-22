@@ -52,7 +52,7 @@
     SkyDriveServiceManager *serviceManager = (SkyDriveServiceManager *)[SkyDriveServiceManager sharedServiceManager];
     LiveConnectClient *connectClient = [serviceManager liveClient];
     
-    NSDictionary *operationState = @{@"operationType" : [NSNumber numberWithInt:kFolderListing]};
+    NSNumber *operationState = [NSNumber numberWithInt:kFolderListing];
 
     LiveOperation *initialOperation = [connectClient getWithPath:[_path stringByAppendingString:SKYDRIVE_STRING_FOLDER_CONTENTS] delegate:self userState:operationState];
     _operations = [_operations arrayByAddingObject:initialOperation];
@@ -67,22 +67,18 @@
     
     NSDictionary *result = [operation result];
     
-    int state = [[[operation userState] valueForKey:@"operationType"] intValue];
+    int state = [[operation userState] intValue];
     switch (state) {
         case kFolderListing: {
             NSArray *fileDictionaries = [result valueForKey:@"data"];
             for (NSDictionary *currentDictionary in fileDictionaries) {
-                NSDictionary *operationState = @{
-                                                 @"operationType" : [NSNumber numberWithInt:kFileInfo],
-                                                 @"retrievedType" : [currentDictionary valueForKey:@"type"]
-                                                 };
-                LiveOperation *currentOperation = [connectClient getWithPath:[currentDictionary valueForKey:@"id"] delegate:self userState:operationState];
+                NSNumber *operationType = [NSNumber numberWithInt:kFileInfo];
+                LiveOperation *currentOperation = [connectClient getWithPath:[currentDictionary valueForKey:@"id"] delegate:self userState:operationType];
                 _operations = [_operations arrayByAddingObject:currentOperation];
             }
         }
             break;
         case kFileInfo: {
-            NSString *type = [[operation userState] valueForKey:@"retrievedType"];
             NSString *name = [result valueForKey:@"name"];
             NSString *identifier = [result valueForKey:@"id"];
             
@@ -90,13 +86,11 @@
                 return [[(id<FileSystemObject>)evaluatedObject identifier] isEqualToString:identifier];
             }]];
             if ([filteredArray count] == 0) {
-                // We only bother with files and folders.
-                // Ignore albums, photos, audio, and videos.
-                if ([type isEqualToString:@"file"]) {
+                if ([identifier hasPrefix:@"file"]) {
                     NSString *size = [result valueForKey:@"size"];
                     SkyDriveFile *newFile = [[SkyDriveFile alloc] initWithName:name identifier:identifier size:[size floatValue]];
                     _contents = [_contents arrayByAddingObject:newFile];
-                } else if ([type isEqualToString:@"folder"]) {
+                } else if ([identifier hasPrefix:@"folder"]) {
                     SkyDriveFolder *newFolder = [[SkyDriveFolder alloc] initWithName:name identifier:identifier parent:self];
                     _contents = [_contents arrayByAddingObject:newFolder];
                 }
