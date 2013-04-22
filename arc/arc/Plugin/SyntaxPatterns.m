@@ -6,6 +6,11 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
+/*
+ Axioms:
+ 1. embedPatterns only in SyntaxPairItem
+ 2. include occurs by itself
+ */
 #import "SyntaxPatterns.h"
 @interface SyntaxPatterns ()
 
@@ -49,6 +54,9 @@
             } else {
                 item = [[SyntaxPairItem alloc] initWithBegin:begin End:end Name:name CPS:capturableScopes BeginCaptures:beginCaptures EndCaptures:endCaptures ContentName:contentName EmbedPatterns:nil];
             }
+            
+        }
+        else if (include) {
             
         }
         
