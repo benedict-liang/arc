@@ -100,4 +100,15 @@
     return accum;
 }
 
+- (SyntaxMatchStore*)parseResultsForRepoRule:(NSString *)key
+                                     Content:(NSString *)content
+                                       Range:(NSRange)range
+{
+    id<SyntaxItemProtocol> rule = [_repository objectForKey:key];
+    
+    if (rule) {
+        return [rule parseContent:content WithRange:range];
+    }
+    return nil;
+}
 @end

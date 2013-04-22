@@ -10,4 +10,8 @@
 
 @protocol SyntaxPatternsDelegate <NSObject>
 - (SyntaxMatchStore*)parseResultsForContent:(NSString*)content Range:(NSRange)range;
+@property id<SyntaxPatternsDelegate> parent;
+- (SyntaxMatchStore*)parseResultsForRepoRule:(NSString*)key
+                                     Content:(NSString*)content
+                                       Range:(NSRange)range;
 @end
