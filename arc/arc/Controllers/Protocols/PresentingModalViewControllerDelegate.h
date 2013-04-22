@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Folder.h"
+#import "FolderCommandObject.h"
 
 @protocol PresentingModalViewControllerDelegate <NSObject>
-- (void)modalViewControllerDone:(NSDictionary *)options;
+- (void)modalViewControllerDone:(FolderCommandObject *)folderCommandObject;
+
+@optional
+@property (nonatomic, readonly) id<Folder> folder;
+
+@optional
+@property (nonatomic, readonly) NSArray *targetFiles;
 @end

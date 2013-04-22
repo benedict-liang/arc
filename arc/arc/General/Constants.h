@@ -68,6 +68,9 @@ extern NSString* const SKYDRIVE_STRING_FOLDER_CONTENTS;
 // Google Drive Variables
 extern NSString* const GOOGLE_KEYCHAIN_NAME;
 
+// Cloud Constants
+extern const int CLOUD_MAX_CONCURRENT_DOWNLOADS;
+
 // Syntaxes File List
 extern NSString* const SYNTAXES_FILE_LIST;
 

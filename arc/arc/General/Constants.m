@@ -67,6 +67,8 @@ NSString* const SKYDRIVE_STRING_FOLDER_CONTENTS = @"/files";
 // Google Drive variables
 NSString* const GOOGLE_KEYCHAIN_NAME = @"arc";
 
+// Cloud Constants
+const int CLOUD_MAX_CONCURRENT_DOWNLOADS = 10;
 
 // Syntaxes File List
 NSString* const SYNTAXES_FILE_LIST = @"syntaxesFileList.txt";

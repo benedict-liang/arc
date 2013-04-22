@@ -13,7 +13,6 @@
 @property UIToolbar *editToolbar;
 @property UIBarButtonItem *deleteButton;
 @property UIBarButtonItem *moveButton;
-@property CreateFolderViewController *createFolderController;
 @property UIPopoverController *addFolderPopoverController;
 @property UIBarButtonItem *addItemButton;
 @property UIActionSheet *addItemActionSheet;
@@ -59,13 +58,6 @@
     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                   target:self
                                                   action:@selector(triggerAddItem:)];
-
-    // Create the add folder controller and its popover.
-    _createFolderController =
-    [[CreateFolderViewController alloc] initWithDelegate:self];
-    
-    _addFolderPopoverController =
-    [[UIPopoverController alloc] initWithContentViewController:_createFolderController];
     
     // Set up the navigation bar.
     self.title = self.folder.name;
@@ -77,10 +69,6 @@
     self.view.autoresizesSubviews = YES;
     
     [self setUpTableView];
-    
-    // Create the add folder controller.
-    _createFolderController =
-    [[CreateFolderViewController alloc] initWithDelegate:self];
     
     _editToolbar = [[UIToolbar alloc] init];
     _editToolbar.frame = CGRectMake(0, self.view.frame.size.height,
@@ -154,8 +142,6 @@
         [self.delegate fileObjectSelected:fileObject];
     }
 }
-
-
 
 - (void)tableView:(UITableView *)tableView
     didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -254,7 +240,7 @@
 - (void)moveItems:(id)sender
 {
     DestinationFolderViewController *moveDestinationFolderViewController =
-    [[DestinationFolderViewController alloc] initWithFolder:self.folder];
+    [[DestinationFolderViewController alloc] initWithFolder:[RootFolder sharedRootFolder]];
     
     moveDestinationFolderViewController.delegate = self;
 
@@ -278,15 +264,18 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    id<FileSystemObject> fileObject = [self sectionItem:indexPath];
-    if ([[fileObject identifier] isEqualToString:[[[self delegate] currentfile] identifier]]) {
-        [tableView selectRowAtIndexPath:indexPath
-                               animated:YES
-                         scrollPosition:UITableViewScrollPositionMiddle];
-    }
-}
+// FIXME: This code breaks because the above method is called first.
+// The top method deletes the row before the bottom method can access it.
+
+//- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    id<FileSystemObject> fileObject = [self sectionItem:indexPath];
+//    if ([[fileObject identifier] isEqualToString:[[[self delegate] currentfile] identifier]]) {
+//        [tableView selectRowAtIndexPath:indexPath
+//                               animated:YES
+//                         scrollPosition:UITableViewScrollPositionMiddle];
+//    }
+//}
 
 
 // MultiView target
@@ -336,9 +325,7 @@
     if (![self.folder isKindOfClass:[DropBoxFolder class]]) {
         switch (buttonIndex) {
             case 0:
-                [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton
-                                                    permittedArrowDirections:UIPopoverArrowDirectionAny
-                                                                    animated:YES];
+                [self showAddFolderModal];
                 break;
 
             case 1:
@@ -375,15 +362,23 @@
     } else {
         switch (buttonIndex) {
             case 0:
-                [_addFolderPopoverController presentPopoverFromBarButtonItem:_addItemButton
-                                                    permittedArrowDirections:UIPopoverArrowDirectionAny
-                                                                    animated:YES];
+                [self showAddFolderModal];
                 break;
 
             default:
                 break;
         }
     }
+}
+
+- (void)showAddFolderModal
+{
+    AddFolderViewController *addFolderViewController =
+    [[AddFolderViewController alloc] init];
+
+    addFolderViewController.delegate = self;
+    
+    [self showModalViewController:addFolderViewController];
 }
 
 - (void)showModalViewController:(UIViewController *)viewController
@@ -398,20 +393,54 @@
                      completion:nil];
 }
 
-- (void)createFolderWithName:(NSString *)name
-{
-    [self.folder createFolderWithName:name];
-    [self refreshFolderView];
-    [_addFolderPopoverController dismissPopoverAnimated:YES];
-}
-
 #pragma mark - presenting modal view controller delegate
 
-- (void)modalViewControllerDone:(NSDictionary *)options
+- (void)modalViewControllerDone:(FolderCommandObject *)folderCommandObject
 {
-    [self dismissViewControllerAnimated:YES completion:^ {
-        [self refreshFolderView];
-    }];
+    if (folderCommandObject) {
+        if (folderCommandObject.type == kCancelCommand && ![self.presentedViewController isBeingDismissed]) {
+            [self dismissViewControllerAnimated:YES completion:^{}];
+            return;
+        }
+        
+        if (folderCommandObject.type == kMoveFileObjects && ![self.presentedViewController isBeingDismissed]) {
+            if ([[folderCommandObject.target class] conformsToProtocol:@protocol(Folder)]) {
+                id<Folder> destination = (id<Folder>)folderCommandObject.target;
+                
+                if (![[destination identifier] isEqualToString:[self.folder identifier]]) {
+                    for (NSIndexPath *indexPath in _editSelection) {
+                        [destination takeFileSystemObject:[self sectionItem:indexPath]];
+                    }
+                    [self refreshFolderView];
+                }
+                [self setEditing:NO animated:YES];
+            }
+            [self dismissViewControllerAnimated:YES completion:^{}];
+            return;
+        }
+        
+        if (folderCommandObject.type == kCreateFolderCommand && ![self.presentedViewController isBeingDismissed]) {
+            NSString *folderName = (NSString *)folderCommandObject.target;
+            [self.folder createFolderWithName:folderName];
+            [self dismissViewControllerAnimated:YES completion:^{
+                [self refreshFolderView];
+            }];
+        }
+    } else if (![[self presentedViewController] isBeingDismissed]) {
+        // Default
+        [self dismissViewControllerAnimated:YES completion:^{
+            [self refreshFolderView];
+        }];
+    }
+}
+
+- (NSArray *)targetFiles
+{
+    NSMutableArray *fileObjectsSelected = [NSMutableArray array];
+    for (NSIndexPath *indexPath in _editSelection) {
+        [fileObjectsSelected addObject:[self sectionItem:indexPath]];
+    }
+    return [NSArray arrayWithArray:fileObjectsSelected];
 }
 
 @end

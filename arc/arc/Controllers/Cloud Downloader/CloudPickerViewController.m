@@ -14,6 +14,7 @@
 
 // View properties.
 @property UIBarButtonItem *closeButton;
+@property UIAlertView *closeAlert;
 
 // Download-related properties.
 @property (strong, nonatomic) id<CloudFolder> folder;
@@ -22,6 +23,7 @@
 @end
 
 @implementation CloudPickerViewController
+@synthesize delegate = _delegate;
 
 - (id)initWithCloudFolder:(id<CloudFolder>)folder
              targetFolder:(LocalFolder *)target
@@ -59,11 +61,6 @@
     [self updateView];
 }
 
-- (void)folderContentsUpdated:(id<Folder>)sender
-{
-    [self updateView];
-}
-
 - (void)updateView
 {
     [self setUpFolderContents];
@@ -93,8 +90,31 @@
 
 - (void)shouldClose:(id)sender
 {
-    [self.folder cancelOperations];
-    [_delegate modalViewControllerDone:nil];
+    if ([self.folder hasOngoingOperations]) {
+        _closeAlert = [[UIAlertView alloc] initWithTitle:@"Downloads in Progress" message:@"Closing this picker will cancel any ongoing downloads." delegate:self cancelButtonTitle:@"Stay Here" otherButtonTitles:@"Close Picker", nil];
+        [_closeAlert show];
+    } else {
+        [_delegate modalViewControllerDone:nil];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[self folder] cancelOperations];
+    [super viewWillDisappear:animated];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 1:
+            [[self folder] cancelOperations];
+            [_delegate modalViewControllerDone:nil];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
@@ -125,6 +145,28 @@
         [[self navigationController] pushViewController:newFolderController
                                                animated:YES];
     }
+}
+
+#pragma mark - Cloud Folder delegate
+- (void)folderContentsUpdated:(id<Folder>)sender
+{
+    [self updateView];
+}
+
+- (void)folderReportsAuthFailed:(id)sender
+{
+    [_delegate modalViewControllerDone:nil];
+    [_serviceManager logOutOfService];
+    [[[UIAlertView alloc] initWithTitle:@"Authentication Error"
+                                message:@"Sorry, we couldn't log you in automatically."
+                               delegate:nil
+                      cancelButtonTitle:nil
+                      otherButtonTitles:@"OK", nil] show];
+}
+
+- (void)folderOperationCountChanged:(id)sender
+{
+    NSLog(@"%d", [[self folder] ongoingOperationCount]);
 }
 
 @end

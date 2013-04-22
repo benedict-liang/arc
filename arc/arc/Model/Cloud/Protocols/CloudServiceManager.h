@@ -25,4 +25,6 @@
 
 - (BOOL)isLoggedIn;
 
+- (void)logOutOfService;
+
 @end
