@@ -9,14 +9,12 @@
 #import "ArcSplitViewController.h"
 
 @interface ArcSplitViewController ()
-@property UIView *masterView;
-@property UIView *detailView;
 @end
 
 @implementation ArcSplitViewController
 @synthesize delegate = _delegate;
-@synthesize masterViewController = _masterViewController;
-@synthesize detailViewController = _detailViewController;
+@synthesize masterView = _masterView;
+@synthesize detailView = _detailView;
 @synthesize masterViewVisible = _masterViewVisible;
 
 - (id)init
@@ -32,6 +30,11 @@
 {
     [super viewDidLoad];
     
+    [self.view addSubview:_masterView];
+    [self.view addSubview:_detailView];
+    _masterView.autoresizesSubviews = YES;
+    _detailView.autoresizesSubviews = YES;
+    
     // Work Around
     // (force recalculation of self.view.bounds)
     // iOS initial frame is unreliable.
@@ -39,11 +42,6 @@
      setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
 
     self.view.backgroundColor = [UIColor blackColor];
-    
-    _masterView = _masterViewController.view;
-    _detailView = _detailViewController.view;
-    [self.view addSubview:_masterView];
-    [self.view addSubview:_detailView];
 
     [self autoLayout];
 }

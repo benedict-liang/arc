@@ -1580,10 +1580,10 @@
 			children = (
 				8FE003AC1723D0F50013B9AC /* ArcSplitViewController.h */,
 				8FE003AD1723D0F50013B9AC /* ArcSplitViewController.m */,
-				8FE003AE1723D0F50013B9AC /* LeftViewController.h */,
-				8FE003AF1723D0F50013B9AC /* LeftViewController.m */,
 				8FE003B01723D0F50013B9AC /* MainViewController.h */,
 				8FE003B11723D0F50013B9AC /* MainViewController.m */,
+				8FE003AE1723D0F50013B9AC /* LeftViewController.h */,
+				8FE003AF1723D0F50013B9AC /* LeftViewController.m */,
 			);
 			path = "Main UI";
 			sourceTree = "<group>";

@@ -39,7 +39,13 @@
                     [[LineNumberPlugin alloc] init],
                     [[SyntaxHighlightingPlugin alloc] init],
                     nil];
-        _appState = [ApplicationState sharedApplicationState];
+        _appState = [ApplicationState sharedApplicationState];        
+
+        _leftViewController = [[LeftViewController alloc] init];
+        _leftViewController.delegate = self;
+        
+        _codeViewController = [[CodeViewController alloc] init];
+        _codeViewController.delegate = self;
     }
     return self;
 }
@@ -66,9 +72,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    _leftViewController = (LeftViewController*)self.masterViewController;
-    _codeViewController = (CodeViewController*)self.detailViewController;
+    
+    [self.masterView addSubview:_leftViewController.view];
+    _leftViewController.view.frame = self.masterView.bounds;
+    
+    [self.detailView addSubview:_codeViewController.view];
+    _codeViewController.view.frame = self.detailView.bounds;
 
     // Not sure if this is the best place for this.
     [self registerPlugins];

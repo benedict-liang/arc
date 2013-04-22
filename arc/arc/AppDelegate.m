@@ -120,20 +120,10 @@
     
     // Create MainViewController
     MainViewController *mainViewController = [[MainViewController alloc] init];
-    
-    // Create CodeViewController
-    CodeViewController *codeViewController = [[CodeViewController alloc] init];
-    
-    // Create LeftBarViewController
-    LeftViewController *leftViewController = [[LeftViewController alloc] init];
 
-    // Assign Delegates
-    leftViewController.delegate = mainViewController;
-    codeViewController.delegate = mainViewController;
-    
     // Assign SubViewControllers
-    mainViewController.masterViewController = leftViewController;
-    mainViewController.detailViewController = codeViewController;
+    mainViewController.masterView = [[UIView alloc] init];
+    mainViewController.detailView = [[UIView alloc] init];
     
     // Set ArcSplitViewController Delegate
     mainViewController.delegate = mainViewController;

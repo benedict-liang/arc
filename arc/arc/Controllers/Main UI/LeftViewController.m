@@ -28,6 +28,8 @@
 {
     self = [super init];
     if (self) {
+        self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth |
+        UIViewAutoresizingFlexibleHeight;
         self.view.autoresizesSubviews = YES;
         self.view.clipsToBounds = YES;
         self.title = @"Documents";
