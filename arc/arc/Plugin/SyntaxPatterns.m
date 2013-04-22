@@ -16,6 +16,7 @@
     NSMutableArray* accum = [NSMutableArray array];
     
     for (NSDictionary* syntaxItem in bundlePatterns) {
+        id<SyntaxItemProtocol> item = nil;
         NSString *name = [syntaxItem objectForKey:@"name"];
         NSString *match = [syntaxItem objectForKey:@"match"];
         NSString *begin = [syntaxItem objectForKey:@"begin"];
@@ -26,9 +27,25 @@
         NSString *include = [syntaxItem objectForKey:@"include"];
         NSArray* embedPatterns = [syntaxItem objectForKey:@"patterns"];
         NSArray* capturableScopes = [syntaxItem objectForKey:@"capturableScopes"];
-        if (name && match) {
+        
+        //possible scenarios with SyntaxSingleItem
+        if (name && match && captures) {
+           item = [[SyntaxSingleItem alloc] initWithName:name Match:match Captures:captures CapturableScopes:capturableScopes];
+        }
+        else if (name && match && !captures)
+        {
+            item = [[SyntaxSingleItem alloc] initWithName:name Match:match Captures:nil CapturableScopes:capturableScopes];
+        }
+        else if (!name && match && captures)
+        {
+            item = [[SyntaxSingleItem alloc] initWithName:nil Match:match Captures:captures CapturableScopes:capturableScopes];
+        }
+        
+        else if (begin && end)
+        {
             
         }
+        
         
     }
 }
