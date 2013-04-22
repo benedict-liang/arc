@@ -12,7 +12,10 @@
 #import "SyntaxSingleItem.h"
 #import "SyntaxIncludeItem.h"
 @interface SyntaxPatterns : NSObject
+
 - (id)initWithBundlePatterns:(NSArray*)bundlePatterns Repository:(NSDictionary*)repo;
+
+- (id)initWithBundlePatterns:(NSArray *)bundlePatterns;
 
 @property NSArray* patterns;
 @property NSDictionary* repository;

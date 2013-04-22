@@ -17,6 +17,7 @@
 #import "FoldNode.h"
 #import "CodeFolding.h"
 #import "OverlapPeekResult.h"
+#import "SyntaxPatterns.h"
 //Immutable class. Holds thread local state
 
 @interface SyntaxHighlight : NSObject <SyntaxHighlightDelegate> {
@@ -42,6 +43,7 @@
 @property NSArray* foldStarts;
 @property NSArray* foldEnds;
 @property ArcAttributedString* finalOutput;
+@property SyntaxPatterns* syntaxPatterns;
 
 - (id)initWithFile:(id<File>)file
        andDelegate:(id<CodeViewControllerDelegate>)delegate;

@@ -19,4 +19,7 @@
     }
     return self;
 }
+- (NSString *)description {
+    return [NSString stringWithFormat:@"name: %@ match:%@ captures:%@",_name,_match, _captures];
+}
 @end

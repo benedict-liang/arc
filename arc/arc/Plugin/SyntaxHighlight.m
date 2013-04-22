@@ -28,6 +28,7 @@
         _overlays = @[@"string",@"comment"];
         _bundle = [TMBundleSyntaxParser plistForExt:[file extension]];
         
+        _syntaxPatterns = [[SyntaxPatterns alloc] initWithBundlePatterns:[_bundle objectForKey:@"patterns"] Repository:[_bundle objectForKey:@"repository"]];
         _isAlive = YES;
         _matchesDone = NO;
         
