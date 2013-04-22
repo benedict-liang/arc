@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SyntaxItemProtocol.h"
-@interface SyntaxIncludeItem : NSObject
+@interface SyntaxIncludeItem : NSObject <SyntaxItemProtocol>
 @property NSString* include;
 - (id)initWithInclude:(NSString*)i;
 

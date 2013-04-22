@@ -10,9 +10,10 @@
 #import "SyntaxItemProtocol.h"
 #import "SyntaxPairItem.h"
 #import "SyntaxSingleItem.h"
-
+#import "SyntaxIncludeItem.h"
 @interface SyntaxPatterns : NSObject
-- (id)initWithBundlePatterns:(NSArray*)bundlePatterns;
+- (id)initWithBundlePatterns:(NSArray*)bundlePatterns Repository:(NSDictionary*)repo;
 
 @property NSArray* patterns;
+@property NSDictionary* repository;
 @end
