@@ -61,6 +61,7 @@
 
     LiveOperation *initialOperation = [connectClient getWithPath:[_path stringByAppendingString:SKYDRIVE_STRING_FOLDER_CONTENTS] delegate:self userState:operationState];
     _operations = [_operations arrayByAddingObject:initialOperation];
+    [_delegate folderOperationCountChanged:self];
 }
 
 // Triggers when a SkyDrive async operation completes.
@@ -80,6 +81,7 @@
                 NSNumber *operationType = [NSNumber numberWithInt:kFileInfo];
                 LiveOperation *currentOperation = [connectClient getWithPath:[currentDictionary valueForKey:@"id"] delegate:self userState:operationType];
                 _operations = [_operations arrayByAddingObject:currentOperation];
+                [_delegate folderOperationCountChanged:self];
             }
         }
             break;
@@ -110,6 +112,7 @@
     NSMutableArray *newOperations = [NSMutableArray arrayWithArray:_operations];
     [newOperations removeObject:operation];
     _operations = newOperations;
+    [_delegate folderOperationCountChanged:self];
 }
 
 - (void)liveOperationFailed:(NSError *)error operation:(LiveOperation *)operation
@@ -123,6 +126,7 @@
             NSMutableArray *newOperations = [NSMutableArray arrayWithArray:_operations];
             [newOperations removeObject:operation];
             _operations = newOperations;
+            [_delegate folderOperationCountChanged:self];
             break;
     }
 }
@@ -133,6 +137,7 @@
         [currentOperation cancel];
     }
     _operations = [NSArray array];
+    [_delegate folderOperationCountChanged:self];
 }
 
 @end

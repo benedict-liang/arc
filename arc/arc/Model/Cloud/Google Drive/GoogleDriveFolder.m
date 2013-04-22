@@ -57,6 +57,7 @@
         [currentTicket cancelTicket];
     }
     _operations = [NSArray array];
+    [_delegate folderOperationCountChanged:self];
 }
 
 - (void)updateContents
@@ -81,6 +82,7 @@
             GTLQuery *attributeQuery = [GTLQueryDrive queryForFilesGetWithFileId:[currentReference identifier]];
             GTLServiceTicket *currentTicket = [driveService executeQuery:attributeQuery delegate:self didFinishSelector:@selector(attributesTicket:file:error:)];
             _operations = [_operations arrayByAddingObject:currentTicket];
+            [_delegate folderOperationCountChanged:self];
         }
     } else {
         [self handleError:error];
@@ -126,6 +128,7 @@
     NSMutableArray *newOperations = [NSMutableArray arrayWithArray:_operations];
     [newOperations removeObject:ticket];
     _operations = [NSArray arrayWithArray:newOperations];
+    [_delegate folderOperationCountChanged:self];
 }
 
 - (void)handleError:(NSError *)error
