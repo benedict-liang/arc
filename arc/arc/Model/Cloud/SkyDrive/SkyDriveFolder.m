@@ -11,7 +11,9 @@
 
 @property (strong, atomic) NSArray *contents;
 
-@property (strong, atomic) NSArray *operations;
+@property (strong, atomic) NSArray *ongoingOperations;
+
+@property (strong, atomic) NSArray *pendingIdentifiers;
 
 @end
 
@@ -25,7 +27,7 @@
 
 - (BOOL)hasOngoingOperations
 {
-    return [_operations count] > 0;
+    return [_ongoingOperations count] > 0;
 }
 
 - (float)size
@@ -35,7 +37,7 @@
 
 - (int)ongoingOperationCount
 {
-    return [_operations count];
+    return [_ongoingOperations count] + [_pendingIdentifiers count];
 }
 
 - (id)initWithName:(NSString *)name identifier:(NSString *)path parent:(id <FileSystemObject>)parent
@@ -47,7 +49,8 @@
         _isRemovable = NO;
 
         _contents = [NSArray array];
-        _operations = [NSArray array];
+        _ongoingOperations = [NSArray array];
+        _pendingIdentifiers = [NSArray array];
     }
     return self;
 }
@@ -60,7 +63,7 @@
     NSNumber *operationState = [NSNumber numberWithInt:kFolderListing];
 
     LiveOperation *initialOperation = [connectClient getWithPath:[_path stringByAppendingString:SKYDRIVE_STRING_FOLDER_CONTENTS] delegate:self userState:operationState];
-    _operations = [_operations arrayByAddingObject:initialOperation];
+    _ongoingOperations = [_ongoingOperations arrayByAddingObject:initialOperation];
     [_delegate folderOperationCountChanged:self];
 }
 
@@ -68,21 +71,12 @@
 // Handles both the listing of folders and retrieval of individual file properties.
 - (void)liveOperationSucceeded:(LiveOperation *)operation
 {
-    SkyDriveServiceManager *serviceManager = (SkyDriveServiceManager *)[SkyDriveServiceManager sharedServiceManager];
-    LiveConnectClient *connectClient = [serviceManager liveClient];
-    
     NSDictionary *result = [operation result];
     
     int state = [[operation userState] intValue];
     switch (state) {
         case kFolderListing: {
-            NSArray *fileDictionaries = [result valueForKey:@"data"];
-            for (NSDictionary *currentDictionary in fileDictionaries) {
-                NSNumber *operationType = [NSNumber numberWithInt:kFileInfo];
-                LiveOperation *currentOperation = [connectClient getWithPath:[currentDictionary valueForKey:@"id"] delegate:self userState:operationType];
-                _operations = [_operations arrayByAddingObject:currentOperation];
-                [_delegate folderOperationCountChanged:self];
-            }
+            _pendingIdentifiers = [result valueForKey:@"data"];
         }
             break;
         case kFileInfo: {
@@ -109,10 +103,11 @@
         }
             break;
     }
-    NSMutableArray *newOperations = [NSMutableArray arrayWithArray:_operations];
+    NSMutableArray *newOperations = [NSMutableArray arrayWithArray:_ongoingOperations];
     [newOperations removeObject:operation];
-    _operations = newOperations;
+    _ongoingOperations = newOperations;
     [_delegate folderOperationCountChanged:self];
+    [self startNextPendingOperation];
 }
 
 - (void)liveOperationFailed:(NSError *)error operation:(LiveOperation *)operation
@@ -123,20 +118,40 @@
             break;
         default:
             NSLog(@"%@", error);
-            NSMutableArray *newOperations = [NSMutableArray arrayWithArray:_operations];
+            NSMutableArray *newOperations = [NSMutableArray arrayWithArray:_ongoingOperations];
             [newOperations removeObject:operation];
-            _operations = newOperations;
+            _ongoingOperations = newOperations;
             [_delegate folderOperationCountChanged:self];
+            [self startNextPendingOperation];
             break;
+    }
+}
+
+- (void)startNextPendingOperation
+{
+    while ([_ongoingOperations count] < 10 && [_pendingIdentifiers count] > 0) {
+        NSDictionary *currentFileDetails = [_pendingIdentifiers objectAtIndex:0];
+        NSMutableArray *mutableCopy = [_pendingIdentifiers mutableCopy];
+        [mutableCopy removeObjectAtIndex:0];
+        _pendingIdentifiers = mutableCopy;
+        
+        SkyDriveServiceManager *serviceManager = (SkyDriveServiceManager *)[SkyDriveServiceManager sharedServiceManager];
+        LiveConnectClient *connectClient = [serviceManager liveClient];
+        
+        NSNumber *operationType = [NSNumber numberWithInt:kFileInfo];
+        LiveOperation *currentOperation = [connectClient getWithPath:[currentFileDetails valueForKey:@"id"] delegate:self userState:operationType];
+        _ongoingOperations = [_ongoingOperations arrayByAddingObject:currentOperation];
+        [_delegate folderOperationCountChanged:self];
     }
 }
 
 - (void)cancelOperations
 {
-    for (LiveOperation *currentOperation in _operations) {
+    for (LiveOperation *currentOperation in _ongoingOperations) {
         [currentOperation cancel];
     }
-    _operations = [NSArray array];
+    _ongoingOperations = [NSArray array];
+    _pendingIdentifiers = [NSArray array];
     [_delegate folderOperationCountChanged:self];
 }
 
