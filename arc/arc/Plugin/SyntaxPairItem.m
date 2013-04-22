@@ -75,7 +75,7 @@
         beginRange = [RegexUtils findFirstPatternWithRegex:beginRegex
                                         range:residue
                                       content:content];
-        NSLog(@"%@ %@",[Utils valueFromRange:beginRange],[Utils valueFromRange:endRange]);
+        //NSLog(@"%@ %@",[Utils valueFromRange:beginRange],[Utils valueFromRange:endRange]);
         
     } while (beginRange.location < content.length && !NSEqualRanges(endRange, beginRange));
     if (_name) {

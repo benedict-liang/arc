@@ -19,7 +19,7 @@
 - (SyntaxMatchStore*)parseContent:(NSString *)content WithRange:(NSRange)range {
     id<SyntaxPatternsDelegate> root = [self rootParent];
     
-    NSLog(@"include: %@ range:%@",_include, [Utils valueFromRange:range]);
+    //NSLog(@"include: %@ range:%@",_include, [Utils valueFromRange:range]);
     if ([_include isEqualToString:@"$base"]) {
         //return [root parseResultsForContent:content Range:range];
         return  [[SyntaxMatchStore alloc] init];

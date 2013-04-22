@@ -70,7 +70,7 @@
 {
     if (pairs) {
         for (NSString* scope in pairs.scopes) {
-            NSLog(@"%@",pairs.scopes);
+            //NSLog(@"%@",pairs.scopes);
             NSArray* ranges = [pairs rangesForScope:scope];
             NSArray* capturableScopes = [pairs capturableScopesForScope:scope];
             if (!capturableScopes) {
@@ -85,8 +85,8 @@
 //            }
             
             NSDictionary* styleScopes = [theme objectForKey:@"scopes"];
-            NSLog(@"%@",capturableScopes);
-            NSLog(@"%@",styleScopes);
+            //NSLog(@"%@",capturableScopes);
+           // NSLog(@"%@",styleScopes);
             UIColor* fg = nil;
             for (NSString* ascope in capturableScopes) {
                 NSDictionary* style = [styleScopes objectForKey:ascope];
@@ -457,7 +457,7 @@
     if (!_matchesDone) {
 
         _matchStore = [_syntaxPatterns parseResultsForContent:_content Range:NSMakeRange(0, _content.length)];
-        NSLog(@"%@",_matchStore);
+       // NSLog(@"%@",_matchStore);
         [self setupFoldTree];
         [self applyStylesTo:output withTheme:theme];
         [self updateView:output withTheme:theme];
