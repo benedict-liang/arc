@@ -95,4 +95,10 @@ static GoogleDriveServiceManager *sharedServiceManager = nil;
     [_helpers removeObject:sender];
 }
 
+- (void)logOutOfService
+{
+    [GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:GOOGLE_KEYCHAIN_NAME];
+    [_driveService setAuthorizer:nil];
+}
+
 @end

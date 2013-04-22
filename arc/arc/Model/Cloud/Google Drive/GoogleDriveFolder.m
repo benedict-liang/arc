@@ -83,7 +83,7 @@
             _operations = [_operations arrayByAddingObject:currentTicket];
         }
     } else {
-        NSLog(@"%@", error);
+        [self handleError:error];
     }
 }
 
@@ -120,12 +120,21 @@
             [_delegate folderContentsUpdated:self];
         }
     } else {
-        NSLog(@"%@", error);
+        [self handleError:error];
     }
     
     NSMutableArray *newOperations = [NSMutableArray arrayWithArray:_operations];
     [newOperations removeObject:ticket];
     _operations = [NSArray arrayWithArray:newOperations];
+}
+
+- (void)handleError:(NSError *)error
+{
+    NSLog(@"%@", error);
+    NSString *errorMessage = [[[error userInfo] valueForKey:@"json"] valueForKey:@"error"];
+    if ([errorMessage isEqualToString:@"invalid_grant"]) {
+        [_delegate folderReportsAuthFailed:self];
+    }
 }
 
 @end
