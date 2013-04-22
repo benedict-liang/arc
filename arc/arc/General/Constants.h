@@ -81,4 +81,7 @@ extern NSString* const BUNDLE_CONF;
 extern const int TAB_DROPBOX;
 extern const int TAB_DOCUMENTS;
 extern const int TAB_SETTINGS;
+
++ (NSArray *)privilegedFileList;
+extern NSString* const DEFAULT_FILE;
 @end

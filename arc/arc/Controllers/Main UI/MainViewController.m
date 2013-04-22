@@ -17,6 +17,7 @@
 @interface MainViewController ()
 @property (nonatomic, strong) CodeViewController *codeViewController;
 @property (nonatomic, strong) CodeViewController *secondCodeViewController;
+@property (nonatomic, strong) UIView *leftBorder;
 @property (nonatomic, strong) LeftViewController *leftViewController;
 @property (nonatomic, strong) ApplicationState *appState;
 @property NSArray *plugins;
@@ -38,7 +39,13 @@
                     [[LineNumberPlugin alloc] init],
                     [[SyntaxHighlightingPlugin alloc] init],
                     nil];
-        _appState = [ApplicationState sharedApplicationState];
+        _appState = [ApplicationState sharedApplicationState];        
+
+        _leftViewController = [[LeftViewController alloc] init];
+        _leftViewController.delegate = self;
+        
+        _codeViewController = [[CodeViewController alloc] init];
+        _codeViewController.delegate = self;
     }
     return self;
 }
@@ -65,11 +72,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.masterView addSubview:_leftViewController.view];
+    _leftViewController.view.frame = self.masterView.bounds;
+    
+    [self.detailView addSubview:_codeViewController.view];
+    _codeViewController.view.frame = self.detailView.bounds;
 
-    _leftViewController = (LeftViewController*)self.masterViewController;
-    _codeViewController = (CodeViewController*)self.detailViewController;
-
-    // Not sure if this is the best place for this.
     [self registerPlugins];
 }
 
@@ -105,7 +114,14 @@
 
 # pragma mark - Arc SplitView Controller Delegate
 
-- (void)didResizeSubViewsBoundsChanged:(BOOL)boundsChanged
+- (void)didShowMasterViewAnimated:(BOOL)animate
+                    boundsChanged:(BOOL)boundsChanged
+{
+    [_codeViewController redrawCodeViewBoundsChanged:boundsChanged];
+}
+
+- (void)didHideMasterViewAnimated:(BOOL)animate
+                    boundsChanged:(BOOL)boundsChanged
 {
     [_codeViewController redrawCodeViewBoundsChanged:boundsChanged];
 }
@@ -115,6 +131,35 @@
     if (_secondCodeViewController) {
         [_secondCodeViewController.view removeFromSuperview];
         _secondCodeViewController = nil;
+    }
+    _codeViewController.view.frame = self.detailView.bounds;
+}
+
+- (void)willHideMasterViewAnimated:(BOOL)animate
+{
+    if (_secondCodeViewController) {
+        if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication]statusBarOrientation])) {
+            int width = floor(self.view.bounds.size.width/2);
+            int height = self.detailView.bounds.size.height;
+            
+            _codeViewController.view.frame = CGRectMake(0, 0, width, height);
+            [_codeViewController redrawCodeViewBoundsChanged:YES];
+            
+            _secondCodeViewController.view.frame = CGRectMake(width, 0, width, height);
+            [_secondCodeViewController redrawCodeViewBoundsChanged:YES];
+            
+            _leftBorder.hidden = NO;
+        } else {
+            int width = self.detailView.bounds.size.width;
+            int height = floor(self.view.bounds.size.height/2);
+            
+            _codeViewController.view.frame = CGRectMake(0, 0, width, height);
+            [_codeViewController redrawCodeViewBoundsChanged:YES];
+            
+            _secondCodeViewController.view.frame = CGRectMake(0, height, width, height);
+            [_secondCodeViewController redrawCodeViewBoundsChanged:YES];
+            _leftBorder.hidden = YES;
+        }
     }
 }
 
@@ -132,39 +177,50 @@
 - (void)secondFileObjectSelected:(id<FileSystemObject>)fileSystemObject
 {
     if ([Utils isFileSupported:[fileSystemObject name]]) {
+        id<File> selectedFile = (id<File>)fileSystemObject;
+        if (![selectedFile isAvailable]) {
+            [Utils showUnavailableFileDialog];
+            return;
+        }
+        
         [self hideMasterViewAnimated:YES];
-        
-        int width = floor(self.view.bounds.size.width/2);
-        int height = _codeViewController.view.bounds.size.height;
-        _codeViewController.view.frame = CGRectMake(0, 0,
-                                                    width,
-                                                    height);
-        
-        [_codeViewController redrawCodeViewBoundsChanged:YES];
-        
-        // add second code view
+
         _secondCodeViewController = [[CodeViewController alloc] init];
         for (id<PluginDelegate> plugin in _plugins) {
             [_secondCodeViewController registerPlugin:plugin];
         }
-        
         _secondCodeViewController.delegate = self;
+        [self.detailView addSubview:_secondCodeViewController.view];
         
-        [self.view addSubview:_secondCodeViewController.view];
-        
-        _secondCodeViewController.view.frame = CGRectMake(width, 0,
-                                                          width,
-                                                          height);
-        [_secondCodeViewController showFile:(id<File>)fileSystemObject];
-        [_secondCodeViewController redrawCodeViewBoundsChanged:YES];
-        
-        // add left border to second code view
-        UIColor *borderColor = _secondCodeViewController.foregroundColor;
-        UIView *leftBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, height)];
-        leftBorder.opaque = YES;
-        leftBorder.backgroundColor = borderColor;
-        leftBorder.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin;
-        [_secondCodeViewController.view addSubview:leftBorder];
+        if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication]statusBarOrientation])) {
+            int width = floor(self.view.bounds.size.width/2);
+            int height = self.detailView.bounds.size.height;
+
+            _codeViewController.view.frame = CGRectMake(0, 0, width, height);
+            [_codeViewController redrawCodeViewBoundsChanged:YES];
+            
+            _secondCodeViewController.view.frame = CGRectMake(width, 0, width, height);
+            [_secondCodeViewController showFile:(id<File>)fileSystemObject];
+            [_secondCodeViewController redrawCodeViewBoundsChanged:YES];
+            
+            // add left border to second code view
+            _leftBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, height)];
+            _leftBorder.opaque = YES;
+            _leftBorder.backgroundColor = _secondCodeViewController.foregroundColor;
+            _leftBorder.autoresizingMask = UIViewAutoresizingFlexibleHeight |
+            UIViewAutoresizingFlexibleRightMargin;
+            [_secondCodeViewController.view addSubview:_leftBorder];
+        } else {
+            int width = self.detailView.bounds.size.width;
+            int height = floor(self.view.bounds.size.height/2);
+            
+            _codeViewController.view.frame = CGRectMake(0, 0, width, height);
+            [_codeViewController redrawCodeViewBoundsChanged:YES];
+            
+            _secondCodeViewController.view.frame = CGRectMake(0, height, width, height);
+            [_secondCodeViewController showFile:(id<File>)fileSystemObject];
+            [_secondCodeViewController redrawCodeViewBoundsChanged:YES];
+        }
     } else {
         [Utils showUnsupportedFileDialog];
     }
@@ -175,13 +231,23 @@
     return [_appState currentFileOpened];
 }
 
+- (void)fileObjectDeleted:(id<FileSystemObject>)fileSystemObject
+{
+    if ([[fileSystemObject identifier] isEqualToString:[[self currentfile] identifier]]) {
+        [self fileSelected:[ApplicationState defaultFile]];
+    }
+}
+
 // Shows the file using the CodeViewController
 - (void)fileSelected:(id<File>)file
 {
     if ([Utils isFileSupported:[file name]]) {
-        ApplicationState *appState = [ApplicationState sharedApplicationState];
-        [appState setCurrentFileOpened:file];
-        [_codeViewController showFile:file];
+        if ([file isAvailable]) {
+            [_appState setCurrentFileOpened:file];
+            [_codeViewController showFile:file];
+        } else {
+            [Utils showUnavailableFileDialog];
+        }
     } else {
         [Utils showUnsupportedFileDialog];
     }
@@ -190,8 +256,7 @@
 // Updates Current Folder being Viewed
 - (void)folderSelected:(id<Folder>)folder
 {
-    ApplicationState *appState = [ApplicationState sharedApplicationState];
-    [appState setCurrentFolderOpened:folder];
+    [_appState setCurrentFolderOpened:folder];
     [_leftViewController navigateTo:folder];
 }
 

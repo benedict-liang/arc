@@ -360,7 +360,12 @@
 
 + (void)showUnsupportedFileDialog
 {
-    [[[UIAlertView alloc] initWithTitle:@"Unsupported File" message:@"Sorry, (arc) doesn't support this file type." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+    [[[UIAlertView alloc] initWithTitle:@"Unsupported File" message:@"Sorry, (arc) can't open files of this type." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+}
+
++ (void)showUnavailableFileDialog
+{
+    [[[UIAlertView alloc] initWithTitle:@"File Unavailable" message:@"(arc) can't open this file right now. Please try again later!" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
 }
 
 @end

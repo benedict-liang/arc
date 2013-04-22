@@ -32,21 +32,20 @@
 {
     self.navigationController.toolbarHidden = NO;
     
-    UILabel *label =
-    [[UILabel alloc] initWithFrame:CGRectZero];
-    label.text = @"Choose a destination.";
-    label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont fontWithName:@"Helvetica Neue" size:13];
-    label.textColor = [UIColor whiteColor];
-    label.backgroundColor = [UIColor clearColor];
-    [label sizeToFit];
-    label.frame = CGRectMake(10,
-                             floorf((self.navigationController.toolbar.bounds.size.height - label.frame.size.height)/2),
-                             label.frame.size.width,
-                             label.frame.size.height);
+    UIBarButtonItem *message =
+    [[UIBarButtonItem alloc] initWithTitle:@"Choose a destination."
+                                     style:UIBarButtonItemStyleDone
+                                    target:nil
+                                    action:nil];
+
+    // fake label.
+    [message setBackgroundImage:[Utils imageWithColor:[UI toolBarColor]]
+                       forState:UIControlStateNormal
+                     barMetrics:UIBarMetricsDefault];
     
-    [self.navigationController.toolbar addSubview:label];
-    
+    [message setBackgroundImage:[Utils imageWithColor:[UI toolBarColor]]
+                       forState:UIControlStateHighlighted
+                     barMetrics:UIBarMetricsDefault];
     
     UIBarButtonItem *createFolderButton =
     [[UIBarButtonItem alloc] initWithTitle:@"New Folder"
@@ -60,6 +59,7 @@
                                     action:@selector(selectFolder:)];
     
     self.toolbarItems = @[
+                          message,
                           [Utils flexibleSpace],
                           createFolderButton,
                           selectFolderButton

@@ -11,8 +11,8 @@
 
 @interface ArcSplitViewController : UIViewController
 @property (nonatomic, weak) id<ArcSplitViewControllerDelegate> delegate;
-@property (nonatomic, strong) UIViewController *masterViewController;
-@property (nonatomic, strong) UIViewController *detailViewController;
+@property (nonatomic, strong) UIView *masterView;
+@property (nonatomic, strong) UIView *detailView;
 @property (nonatomic, readonly) BOOL masterViewVisible;
 - (void)showMasterViewAnimated:(BOOL)animate;
 - (void)hideMasterViewAnimated:(BOOL)animate;

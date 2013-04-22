@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "FileSystemObject.h"
+#import "FolderDelegate.h"
+
 @protocol Folder <FileSystemObject>
+
+@property (weak, nonatomic) id<FolderDelegate> delegate;
 
 @optional
 // Moves the given FileSystemObject to this Folder.

@@ -10,7 +10,7 @@
 
 @implementation GoogleDriveFile
 
-@synthesize name=_name, identifier=_identifier, parent=_parent, size=_size, extension=_extension, isRemovable=_isRemovable, lastModified=_lastModified, downloadStatus=_downloadStatus;
+@synthesize name=_name, identifier=_identifier, parent=_parent, size=_size, extension=_extension, isRemovable=_isRemovable, lastModified=_lastModified, downloadStatus=_downloadStatus, isAvailable=_isAvailable;
 
 - (id)initWithName:(NSString *)name identifier:(NSString *)identifier size:(float)size
 {
@@ -20,6 +20,7 @@
         _size = size;
         _extension = [name pathExtension];
         _downloadStatus = kFileNotDownloading;
+        _isAvailable = YES;
     }
     return self;
 }

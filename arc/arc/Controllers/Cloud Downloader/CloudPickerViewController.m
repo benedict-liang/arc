@@ -9,12 +9,11 @@
 #import "CloudPickerViewController.h"
 
 @interface CloudPickerViewController ()
-// Loading Overlay view.
-@property LoadingOverlayViewController *loadingOverlayController;
 
 // View properties.
 @property UIBarButtonItem *closeButton;
 @property UIAlertView *closeAlert;
+@property UIBarButtonItem *message;
 
 // Download-related properties.
 @property (strong, nonatomic) id<CloudFolder> folder;
@@ -67,31 +66,42 @@
     [self.tableView reloadData];
 }
 
-- (void)viewDidLoad
+- (void)loadView
 {
-    [super viewDidLoad];
-    
+    [super loadView];
     _closeButton =
     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
                                                   target:self
                                                   action:@selector(shouldClose:)];
     self.navigationItem.rightBarButtonItem = _closeButton;
+    self.navigationController.toolbarHidden = NO;
     self.view.autoresizesSubviews = YES;
     self.navigationItem.title = self.folder.name;
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight |
+    UIViewAutoresizingFlexibleWidth;
     
     // Create the Table View.
     [self setUpTableView];
     
-    // Create the loading overlay.
-    _loadingOverlayController =
-    [[LoadingOverlayViewController alloc] initWithFrame:[[self view] bounds]];
-//    [[self view] insertSubview:[_loadingOverlayController view] aboveSubview:_tableView];
+    _message = [[UIBarButtonItem alloc] initWithTitle:@"Loading..."
+                                                style:UIBarButtonItemStylePlain
+                                               target:nil
+                                               action:nil];
+    
+    [_message setTitleTextAttributes:[UI barButtonTitleTextAttribute]
+                            forState:UIControlStateNormal];
+    
+    self.toolbarItems = @[[Utils flexibleSpace], _message, [Utils flexibleSpace]];
 }
 
 - (void)shouldClose:(id)sender
 {
     if ([self.folder hasOngoingOperations]) {
-        _closeAlert = [[UIAlertView alloc] initWithTitle:@"Downloads in Progress" message:@"Closing this picker will cancel any ongoing downloads." delegate:self cancelButtonTitle:@"Stay Here" otherButtonTitles:@"Close Picker", nil];
+        _closeAlert = [[UIAlertView alloc] initWithTitle:@"Downloads in Progress"
+                                                 message:@"Closing this picker will cancel any ongoing downloads."
+                                                delegate:self
+                                       cancelButtonTitle:@"Stay Here"
+                                       otherButtonTitles:@"Close Picker", nil];
         [_closeAlert show];
     } else {
         [_delegate modalViewControllerDone:nil];
@@ -145,6 +155,8 @@
         [[self navigationController] pushViewController:newFolderController
                                                animated:YES];
     }
+
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Cloud Folder delegate
@@ -166,7 +178,14 @@
 
 - (void)folderOperationCountChanged:(id)sender
 {
-    NSLog(@"%d", [[self folder] ongoingOperationCount]);
+    int operations = [[self folder] ongoingOperationCount];
+    if (operations == 0) {
+        _message.title = @"Please select files to download.";
+    } else {
+        _message.title =
+        [NSString stringWithFormat:
+         @"Remaining operations: %d", operations];
+    }
 }
 
 @end

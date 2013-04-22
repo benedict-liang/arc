@@ -10,11 +10,15 @@
 
 @protocol ArcSplitViewControllerDelegate <NSObject>
 @optional
-- (void)didResizeSubViewsBoundsChanged:(BOOL)boundsChanged;
-
-@optional
 - (void)willShowMasterViewAnimated:(BOOL)animate;
 
 @optional
 - (void)willHideMasterViewAnimated:(BOOL)animate;
+
+@optional
+- (void)didShowMasterViewAnimated:(BOOL)animate boundsChanged:(BOOL)boundsChanged;
+
+@optional
+- (void)didHideMasterViewAnimated:(BOOL)animate boundsChanged:(BOOL)boundsChanged;
+
 @end

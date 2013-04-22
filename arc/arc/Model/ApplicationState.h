@@ -40,7 +40,8 @@
 
 // tmp
 // Returns a sample file.
-+ (id<File>)getSampleFile;
++ (id<File>)defaultFile;
 
 - (void)registerPlugin:(id<PluginDelegate>)plugin;
+
 @end

@@ -26,6 +26,7 @@ NSString* const FOLDER_VIEW_FILES = @"Files";
     self = [super init];
     if (self) {
         _folder = folder;
+        [folder setDelegate:self];
         [self setUpFolderContents];
     }
     return self;
@@ -202,6 +203,11 @@ NSString* const FOLDER_VIEW_FILES = @"Files";
 {
     [self setUpFolderContents];
     [self.tableView reloadData];
+}
+
+- (void)folderContentsUpdated:(id)sender
+{
+    [self refreshFolderView];
 }
 
 @end

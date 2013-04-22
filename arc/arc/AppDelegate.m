@@ -93,7 +93,7 @@
     [self addFileToFileManager:fileManager name:@"GameObject.h" docURL:documentsURL];
     [self addFileToFileManager:fileManager name:@"home.html" docURL:documentsURL];
     [self addFileToFileManager:fileManager name:@"nav_gmaps_sample.js" docURL:documentsURL];
-    [self addFileToFileManager:fileManager name:@"README.md" docURL:documentsURL];
+    [self addFileToFileManager:fileManager name:@"arc.md" docURL:documentsURL];
     [self addFileToFileManager:fileManager name:@"base.rb" docURL:documentsURL];
     [self addFileToFileManager:fileManager name:@"RequestBuilder.hs" docURL:documentsURL];
     [self addFileToFileManager:fileManager name:@"filter_routes.clj" docURL:documentsURL];
@@ -120,20 +120,10 @@
     
     // Create MainViewController
     MainViewController *mainViewController = [[MainViewController alloc] init];
-    
-    // Create CodeViewController
-    CodeViewController *codeViewController = [[CodeViewController alloc] init];
-    
-    // Create LeftBarViewController
-    LeftViewController *leftViewController = [[LeftViewController alloc] init];
 
-    // Assign Delegates
-    leftViewController.delegate = mainViewController;
-    codeViewController.delegate = mainViewController;
-    
     // Assign SubViewControllers
-    mainViewController.masterViewController = leftViewController;
-    mainViewController.detailViewController = codeViewController;
+    mainViewController.masterView = [[UIView alloc] init];
+    mainViewController.detailView = [[UIView alloc] init];
     
     // Set ArcSplitViewController Delegate
     mainViewController.delegate = mainViewController;

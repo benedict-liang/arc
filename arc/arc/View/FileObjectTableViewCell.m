@@ -80,6 +80,12 @@ const NSString *FOLDERCELL_REUSE_IDENTIFIER = @"folderCell";
         }
     } else if ([[_fileSystemObject class] conformsToProtocol:@protocol(File)]) {
         detailDescription = [Utils humanReadableFileSize:_fileSystemObject.size];
+        
+        BOOL isFileAvailable = [(id<File>)_fileSystemObject isAvailable];
+        if (!isFileAvailable) {
+            detailDescription = [detailDescription stringByAppendingString:@" | Not available locally."];
+        }
+        
     } else if ([[_fileSystemObject class] conformsToProtocol:@protocol(CloudFolder)]) {
         detailDescription = @"";
     } else if ([[_fileSystemObject class] conformsToProtocol:@protocol(Folder)]) {
