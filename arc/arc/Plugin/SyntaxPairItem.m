@@ -11,7 +11,7 @@
 @implementation SyntaxPairItem
 @synthesize name = _name, capturableScopes = _capturableScopes;
 
--(id)initWithBegin:(NSString *)begin End:(NSString *)end Name:(NSString *)name CPS:(NSArray *)cps BeginCaptures:(NSDictionary *)beginCaptures EndCaptures:(NSDictionary *)endCaptures ContentName:(NSString *)contentName EmbedPatterns:(SyntaxPatterns *)patterns{
+-(id)initWithBegin:(NSString *)begin End:(NSString *)end Name:(NSString *)name CPS:(NSArray *)cps BeginCaptures:(NSDictionary *)beginCaptures EndCaptures:(NSDictionary *)endCaptures ContentName:(NSString *)contentName EmbedPatterns:(id<SyntaxPatternsDelegate>)patterns{
     if (self = [super init]) {
         _begin = begin;
         _end = end;
@@ -62,10 +62,14 @@
             break;
         }
         CFIndex eEnds = endRange.location +endRange.length;
-        
+           NSRange nameRange = NSMakeRange(beginRange.location, eEnds - beginRange.location);
         if (_name) {
-            NSRange nameRange = NSMakeRange(beginRange.location, eEnds - beginRange.location);
+         
             [resName.ranges addObject:[Utils valueFromRange:nameRange]];
+        }
+        if (_patterns) {
+            [store mergeWithStore:[_patterns parseResultsForContent:content Range:nameRange]];
+            
         }
         residue = NSMakeRange(eEnds, content.length - eEnds);
         beginRange = [RegexUtils findFirstPatternWithRegex:beginRegex

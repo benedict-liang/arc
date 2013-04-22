@@ -877,6 +877,7 @@
 		FCC7379F172535D50024865B /* RegexUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexUtils.h; sourceTree = "<group>"; };
 		FCC737A0172535D60024865B /* RegexUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexUtils.m; sourceTree = "<group>"; };
 		FCE8F95D1709806B00C08724 /* CodeViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeViewControllerDelegate.h; sourceTree = "<group>"; };
+		FCEEA46517255BE400AFC932 /* SyntaxPatternsDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyntaxPatternsDelegate.h; sourceTree = "<group>"; };
 		FCFB4DA1170F466200B25FDC /* BundleConf.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BundleConf.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1279,6 +1280,7 @@
 				FCC7379D17252F6E0024865B /* SyntaxMatchStore.m */,
 				FCC7379F172535D50024865B /* RegexUtils.h */,
 				FCC737A0172535D60024865B /* RegexUtils.m */,
+				FCEEA46517255BE400AFC932 /* SyntaxPatternsDelegate.h */,
 			);
 			name = SyntaxHighlighting;
 			sourceTree = "<group>";
