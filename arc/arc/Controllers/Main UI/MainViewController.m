@@ -79,7 +79,6 @@
     [self.detailView addSubview:_codeViewController.view];
     _codeViewController.view.frame = self.detailView.bounds;
 
-    // Not sure if this is the best place for this.
     [self registerPlugins];
 }
 
@@ -126,6 +125,7 @@
         [_secondCodeViewController.view removeFromSuperview];
         _secondCodeViewController = nil;
     }
+    _codeViewController.view.frame = self.detailView.bounds;
 }
 
 #pragma mark - MainViewControllerDelegate Methods
@@ -143,49 +143,46 @@
 {
     if ([Utils isFileSupported:[fileSystemObject name]]) {
         [self hideMasterViewAnimated:YES];
-        
-        if (_secondCodeViewController) {
-            _secondCodeViewController = nil;
-        }
 
         _secondCodeViewController = [[CodeViewController alloc] init];
         for (id<PluginDelegate> plugin in _plugins) {
             [_secondCodeViewController registerPlugin:plugin];
         }
         _secondCodeViewController.delegate = self;
+        [self.detailView addSubview:_secondCodeViewController.view];
         
-        [self.view addSubview:_secondCodeViewController.view];
+        if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication]statusBarOrientation])) {
+            int width = floor(self.view.bounds.size.width/2);
+            int height = self.detailView.bounds.size.height;
 
-        int width = floor(self.view.bounds.size.width/2);
-        int height = _codeViewController.view.bounds.size.height;
-        _codeViewController.view.frame = CGRectMake(0, 0,
-                                                    width,
-                                                    height);
-        
-        [_codeViewController redrawCodeViewBoundsChanged:YES];
-
-        _secondCodeViewController.view.frame = CGRectMake(width, 0,
-                                                          width,
-                                                          height);
-        [_secondCodeViewController showFile:(id<File>)fileSystemObject];
-        [_secondCodeViewController redrawCodeViewBoundsChanged:YES];
-        
-        // add left border to second code view
-        _leftBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, height)];
-        _leftBorder.opaque = YES;
-        _leftBorder.backgroundColor = _secondCodeViewController.foregroundColor;
-        _leftBorder.autoresizingMask = UIViewAutoresizingFlexibleHeight |
-        UIViewAutoresizingFlexibleRightMargin;
-        [_secondCodeViewController.view addSubview:_leftBorder];
-
+            _codeViewController.view.frame = CGRectMake(0, 0, width, height);
+            [_codeViewController redrawCodeViewBoundsChanged:YES];
+            
+            _secondCodeViewController.view.frame = CGRectMake(width, 0, width, height);
+            [_secondCodeViewController showFile:(id<File>)fileSystemObject];
+            [_secondCodeViewController redrawCodeViewBoundsChanged:YES];
+            
+            // add left border to second code view
+            _leftBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, height)];
+            _leftBorder.opaque = YES;
+            _leftBorder.backgroundColor = _secondCodeViewController.foregroundColor;
+            _leftBorder.autoresizingMask = UIViewAutoresizingFlexibleHeight |
+            UIViewAutoresizingFlexibleRightMargin;
+            [_secondCodeViewController.view addSubview:_leftBorder];
+        } else {
+            int width = self.detailView.bounds.size.width;
+            int height = floor(self.view.bounds.size.height/2);
+            
+            _codeViewController.view.frame = CGRectMake(0, 0, width, height);
+            [_codeViewController redrawCodeViewBoundsChanged:YES];
+            
+            _secondCodeViewController.view.frame = CGRectMake(0, height, width, height);
+            [_secondCodeViewController showFile:(id<File>)fileSystemObject];
+            [_secondCodeViewController redrawCodeViewBoundsChanged:YES];
+        }
     } else {
         [Utils showUnsupportedFileDialog];
     }
-}
-
-- (void)layoutMultiView
-{
-    
 }
 
 - (id<FileSystemObject>)currentfile
