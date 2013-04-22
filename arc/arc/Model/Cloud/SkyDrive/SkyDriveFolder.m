@@ -118,6 +118,7 @@
     for (LiveOperation *currentOperation in _operations) {
         [currentOperation cancel];
     }
+    _operations = [NSArray array];
 }
 
 @end
