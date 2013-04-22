@@ -177,6 +177,12 @@
 - (void)secondFileObjectSelected:(id<FileSystemObject>)fileSystemObject
 {
     if ([Utils isFileSupported:[fileSystemObject name]]) {
+        id<File> selectedFile = (id<File>)fileSystemObject;
+        if (![selectedFile isAvailable]) {
+            [Utils showUnavailableFileDialog];
+            return;
+        }
+        
         [self hideMasterViewAnimated:YES];
 
         _secondCodeViewController = [[CodeViewController alloc] init];
@@ -236,8 +242,12 @@
 - (void)fileSelected:(id<File>)file
 {
     if ([Utils isFileSupported:[file name]]) {
-        [_appState setCurrentFileOpened:file];
-        [_codeViewController showFile:file];
+        if ([file isAvailable]) {
+            [_appState setCurrentFileOpened:file];
+            [_codeViewController showFile:file];
+        } else {
+            [Utils showUnavailableFileDialog];
+        }
     } else {
         [Utils showUnsupportedFileDialog];
     }
