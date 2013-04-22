@@ -72,12 +72,7 @@
                                           barMetrics:UIBarMetricsDefault];
     
     // NavBar button titles
-    [[UIBarButtonItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                          [UI fontColor], UITextAttributeTextColor,
-                                                          [UIColor colorWithRed:0 green:0 blue:0 alpha:0], UITextAttributeTextShadowColor,
-                                                          [NSValue valueWithUIOffset:UIOffsetMake(0, 0)], UITextAttributeTextShadowOffset,
-                                                          [UIFont fontWithName:[UI fontName] size:0.0], UITextAttributeFont,
-                                                          nil]
+    [[UIBarButtonItem appearance] setTitleTextAttributes:[UI barButtonTitleTextAttribute]
                                                 forState:UIControlStateNormal];
     
     // TODO
@@ -87,6 +82,16 @@
                                                                 resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)]
                                                       forState:UIControlStateNormal
                                                     barMetrics:UIBarMetricsDefault];
+}
+
++ (NSDictionary *)barButtonTitleTextAttribute
+{
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            [UI fontColor], UITextAttributeTextColor,
+            [UIColor colorWithRed:0 green:0 blue:0 alpha:0], UITextAttributeTextShadowColor,
+            [NSValue valueWithUIOffset:UIOffsetMake(0, 0)], UITextAttributeTextShadowOffset,
+            [UIFont fontWithName:[UI fontName] size:15.0], UITextAttributeFont,
+            nil];
 }
 
 + (void)toolBarAppearance
