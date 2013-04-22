@@ -10,9 +10,7 @@
 @interface SkyDriveFolder ()
 
 @property (strong, atomic) NSArray *contents;
-
 @property (strong, atomic) NSArray *ongoingOperations;
-
 @property (strong, atomic) NSArray *pendingIdentifiers;
 
 @end
@@ -129,7 +127,7 @@
 
 - (void)startNextPendingOperation
 {
-    while ([_ongoingOperations count] < 10 && [_pendingIdentifiers count] > 0) {
+    while ([_ongoingOperations count] < CLOUD_MAX_CONCURRENT_DOWNLOADS && [_pendingIdentifiers count] > 0) {
         NSDictionary *currentFileDetails = [_pendingIdentifiers objectAtIndex:0];
         NSMutableArray *mutableCopy = [_pendingIdentifiers mutableCopy];
         [mutableCopy removeObjectAtIndex:0];
