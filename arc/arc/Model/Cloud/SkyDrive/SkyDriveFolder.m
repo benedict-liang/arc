@@ -8,15 +8,18 @@
 #import "SkyDriveFolder.h"
 
 @interface SkyDriveFolder ()
-
 @property (strong, atomic) NSArray *contents;
-
 @property (strong, atomic) NSArray *operations;
-
 @end
 
 @implementation SkyDriveFolder
-@synthesize name = _name, identifier = _path, parent = _parent, isRemovable = _isRemovable, delegate = _delegate, size = _size;
+@synthesize name = _name;
+@synthesize identifier = _path;
+@synthesize parent = _parent;
+@synthesize isRemovable = _isRemovable;
+@synthesize delegate = _delegate;
+@synthesize size = _size;
+@synthesize ongoingOperationCount = _ongoingOperationCount;
 
 + (id<CloudFolder>)getRoot
 {
