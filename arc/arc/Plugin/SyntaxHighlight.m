@@ -45,12 +45,7 @@
     return self;
 }
 
-- (void)styleOnRange:(NSRange)range
-              fcolor:(UIColor*)fcolor
-              output:(ArcAttributedString*)output
-{
 
-}
 
 - (NSArray*)capturableScopes:(NSString*)name
 {
@@ -68,42 +63,6 @@
     }
     return scopes;
 }
-
-- (void)applyStyleToScope:(NSString*)name
-                    range:(NSRange)range
-                   output:(ArcAttributedString*)output
-                     dict:(NSObject*)dict
-                    theme:(NSDictionary*)theme
-               capturableScopes:(NSArray*)cpS
-{
-    NSDictionary* global = [theme objectForKey:@"global"];
-    UIColor* foreground = [global objectForKey:@"foreground"];
-    NSDictionary* style = nil;
-    NSString* fscope = nil;
-    NSDictionary* styleScopes = [theme objectForKey:@"scopes"];
-    for (NSString *s in cpS) {
-        NSDictionary* scopeStyle = [styleScopes objectForKey:s];
-        if (scopeStyle) {
-            style = scopeStyle;
-            fscope = s;
-        }
-        
-    }
-    if (style) {
-        NSLog(@"%@  scope:%@",style,fscope);
-        UIColor *fg = [style objectForKey:@"foreground"];
-        
-        if (!fg) {
-            return;
-        }
-        //NSLog(@"s = %@ \n fg = %@",s,fg);
-        [output setForegroundColor:fg
-                           OnRange:range
-                        ForSetting:SYNTAX_KEY];
-    }
-}
-
-
 
 - (void)applyStylesTo:(ArcAttributedString*)output
            withRanges:(SyntaxMatchStore*)pairs
@@ -462,9 +421,7 @@
     NSDictionary* global = [theme objectForKey:@"global"];
     UIColor* foreground = [global objectForKey:@"foreground"];
     if (foreground) {
-        [self styleOnRange:NSMakeRange(0, [_content length])
-                    fcolor:foreground
-                    output:output];
+        [output setForegroundColor:foreground OnRange:NSMakeRange(0, _content.length) ForSetting:SYNTAX_KEY];
     }
 }
 
@@ -519,31 +476,31 @@
     _matchesDone = NO;
 }
 
-- (void)testFoldsOnFoldRanges:(NSArray*)fR
-                   foldStarts:(NSArray*)fS
-                     foldEnds:(NSArray*)fE
-{
- 
-    for (NSValue*v in fR) {
-        NSRange r;
-        [v getValue:&r];
-        [self styleOnRange:r fcolor:[UIColor yellowColor] output:_finalOutput];
-    }
-    //NSLog(@"_foldStarts: %@",_foldStarts);
-    for (NSValue* v in fS) {
-        NSRange r;
-        [v getValue:&r];
-        [self styleOnRange:r fcolor:[UIColor redColor] output:_finalOutput];
-    }
-    
-    //NSLog(@"_foldEnds: %@",_foldEnds);
-    for (NSValue*v in fE) {
-        NSRange r;
-        [v getValue:&r];
-        [self styleOnRange:r fcolor:[UIColor greenColor] output:_finalOutput];
-    }
-    
-}
+//- (void)testFoldsOnFoldRanges:(NSArray*)fR
+//                   foldStarts:(NSArray*)fS
+//                     foldEnds:(NSArray*)fE
+//{
+// 
+//    for (NSValue*v in fR) {
+//        NSRange r;
+//        [v getValue:&r];
+//        [self styleOnRange:r fcolor:[UIColor yellowColor] output:_finalOutput];
+//    }
+//    //NSLog(@"_foldStarts: %@",_foldStarts);
+//    for (NSValue* v in fS) {
+//        NSRange r;
+//        [v getValue:&r];
+//        [self styleOnRange:r fcolor:[UIColor redColor] output:_finalOutput];
+//    }
+//    
+//    //NSLog(@"_foldEnds: %@",_foldEnds);
+//    for (NSValue*v in fE) {
+//        NSRange r;
+//        [v getValue:&r];
+//        [self styleOnRange:r fcolor:[UIColor greenColor] output:_finalOutput];
+//    }
+//    
+//}
 
 
 
