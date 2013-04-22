@@ -44,6 +44,12 @@
     (GoogleDriveServiceManager *)[GoogleDriveServiceManager sharedServiceManager];
 }
 
+- (void)refreshFolderView
+{
+    [self setUpFolderContents];
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
