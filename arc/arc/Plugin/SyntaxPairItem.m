@@ -25,4 +25,7 @@
     return self;
 }
 
+-(SyntaxMatchStore*)parseContent:(NSString *)content WithRange:(NSRange)range {
+    return [[SyntaxMatchStore alloc] init];
+}
 @end
