@@ -18,7 +18,7 @@
 @implementation SyntaxPatterns
 
 - (id)initWithBundlePatterns:(NSArray *)bundlePatterns Repository:(NSDictionary *)repo{
-    _isRoot = YES;
+    _parent = nil;
     NSMutableArray* accum = [NSMutableArray array];
     
     for (NSDictionary* syntaxItem in bundlePatterns) {
@@ -40,9 +40,9 @@
     _repository = repoAccum;
     return self;
 }
-- (id)initWithBundlePatterns:(NSArray *)bundlePatterns {
+- (id)initWithBundlePatterns:(NSArray *)bundlePatterns Parent:(SyntaxPatterns*)p {
     self = [self initWithBundlePatterns:bundlePatterns Repository:nil];
-    _isRoot = NO;
+    _parent = p;
     return self;
 }
 - (id<SyntaxItemProtocol>)syntaxItemForDict:(NSDictionary*)syntaxItem {
@@ -74,7 +74,7 @@
     else if (begin && end)
     {
         if (embedPatterns) {
-            SyntaxPatterns* embed = [[SyntaxPatterns alloc] initWithBundlePatterns:embedPatterns];
+            SyntaxPatterns* embed = [[SyntaxPatterns alloc] initWithBundlePatterns:embedPatterns Parent:self];
             item = [[SyntaxPairItem alloc] initWithBegin:begin End:end Name:name CPS:capturableScopes BeginCaptures:beginCaptures EndCaptures:endCaptures ContentName:contentName EmbedPatterns:embed];
         } else {
             item = [[SyntaxPairItem alloc] initWithBegin:begin End:end Name:name CPS:capturableScopes BeginCaptures:beginCaptures EndCaptures:endCaptures ContentName:contentName EmbedPatterns:nil];

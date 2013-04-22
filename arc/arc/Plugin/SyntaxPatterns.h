@@ -16,10 +16,10 @@
 
 - (id)initWithBundlePatterns:(NSArray*)bundlePatterns Repository:(NSDictionary*)repo;
 
-- (id)initWithBundlePatterns:(NSArray *)bundlePatterns;
+- (id)initWithBundlePatterns:(NSArray *)bundlePatterns Parent:(SyntaxPatterns*)p;
 
 - (SyntaxMatchStore*)parseResultsForContent:(NSString*)content Range:(NSRange)range;
 @property NSArray* patterns;
 @property NSDictionary* repository;
-@property BOOL isRoot;
+@property SyntaxPatterns* parent;
 @end
