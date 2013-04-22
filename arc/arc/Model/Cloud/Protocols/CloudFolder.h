@@ -13,7 +13,6 @@
 @protocol CloudFolder <NSObject, Folder>
 
 @property (weak, nonatomic) id<CloudFolderDelegate> delegate;
-@property int ongoingOperationCount;
 
 + (id<CloudFolder>)getRoot;
 
@@ -21,5 +20,6 @@
 - (void)cancelOperations;
 
 - (BOOL)hasOngoingOperations;
+- (int)ongoingOperationCount;
 
 @end

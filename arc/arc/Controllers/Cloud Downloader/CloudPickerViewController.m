@@ -164,4 +164,9 @@
                       otherButtonTitles:@"OK", nil] show];
 }
 
+- (void)folderOperationCountChanged:(id)sender
+{
+    NSLog(@"%d", [[self folder] ongoingOperationCount]);
+}
+
 @end

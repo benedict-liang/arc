@@ -14,4 +14,5 @@
 
 - (void)folderReportsAuthFailed:(id)sender;
 
+- (void)folderOperationCountChanged:(id)sender;
 @end
