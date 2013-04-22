@@ -332,6 +332,8 @@
         NSString* match = [syntaxItem objectForKey:@"match"];
         NSString* begin = [syntaxItem objectForKey:@"begin"];
         NSString* end = [syntaxItem objectForKey:@"end"];
+        NSArray* embedPatterns = [syntaxItem objectForKey:@"patterns"];
+        NSString* include = [syntaxItem objectForKey:@"include"];
         if (match) {
             NSRange matchResult = [self findFirstPattern:match range:range content:_content];
             if (minBegin.location > matchResult.location) {
@@ -342,19 +344,29 @@
         }
         else if (begin && end) {
             NSRange bresult = [self findFirstPattern:begin range:range content:_content];
-            if (bresult.location > _content.length) {
+            if (bresult.location > range.length) {
                 continue;
             }
-            CFIndex bEnds = bresult.location+bresult.length+1;
-            NSRange eresult = [self findFirstPattern:end range:NSMakeRange(bEnds, _content.length - bEnds) content:_content];
+            CFIndex bEnds = bresult.location+bresult.length;
+            NSRange findEndRange = NSMakeRange(bEnds, range.length - bEnds);
+//            if (embedPatterns) {
+//                [self handleOverlaps:embedPatterns WithinRange:findEndRange];
+//                
+//            }
             
-            if (minBegin.location > bresult.location && eresult.location < _content.length && bresult.location < _content.length && eresult.location > bresult.location) {
+            NSRange eresult = [self findFirstPattern:end range:findEndRange content:_content];
+            
+            if (minBegin.location > bresult.location && eresult.location < range.length && bresult.location < range.length && eresult.location > bresult.location) {
                 minType = kSyntaxPair;
                 minBegin = bresult;
                 minSyntax = syntaxItem;
                 minEnd = eresult;
             }
         }
+//        else if (include) {
+//            NSArray* includes = [self resolveInclude:include];
+//            [self handleOverlaps:includes WithinRange:range];
+//        }
     }
     if (minSyntax && minType == kSyntaxPair) {
         return [OverlapPeekResult resultWithBeginRange:minBegin EndRange:minEnd SyntaxItem:minSyntax];
@@ -364,9 +376,9 @@
     return nil;
 }
 
-- (void)handleOverlaps:(NSArray*)overlaps {
-    NSRange iterRange = NSMakeRange(0, _content.length);
-    while (iterRange.location < _content.length) {
+- (void)handleOverlaps:(NSArray*)overlaps WithinRange:(NSRange)overlapRange {
+    NSRange iterRange = overlapRange;
+    while (iterRange.location < overlapRange.length) {
         OverlapPeekResult* peekRes = [self peekMinForItems:overlaps WithRange:iterRange];
         NSLog(@"%@",peekRes);
         if (peekRes && peekRes.type == kSyntaxPair) {
@@ -382,7 +394,7 @@
             }
             CFIndex eEnds = peekRes.endRange.location + peekRes.endRange.length;
             
-            iterRange = NSMakeRange(eEnds, _content.length - eEnds);
+            iterRange = NSMakeRange(eEnds, overlapRange.length - eEnds);
             
         }
         else if (peekRes && peekRes.type ==kSyntaxSingle) {
@@ -393,7 +405,7 @@
             CFIndex matchEnds = peekRes.matchRange.location+peekRes.matchRange.length;
             NSLog(@"strings: %@",[_content substringWithRange:peekRes.matchRange]);
 
-            iterRange = NSMakeRange(matchEnds, _content.length - matchEnds);
+            iterRange = NSMakeRange(matchEnds, overlapRange.length - matchEnds);
             
         }
         else {
@@ -559,13 +571,13 @@
                     [self iterPatternsForRange:contentRange patterns:embedPatterns output:output];
                 }
                 if (include) {
-                    id includes = [self resolveInclude:include];
+                    NSArray* includes = [self resolveInclude:include];
                     //NSLog(@"recurring for include: %@ with %d %d name:%@",includes, contentRange.location, contentRange.length, name);
                     if (contentRange.length <= [_content length] &&
                         includes) {
-//                        [self iterPatternsForRange:contentRange
-//                                          patterns:includes
-//                                            output:output];
+                        [self iterPatternsForRange:contentRange
+                                          patterns:includes
+                                            output:output];
                     }
                 }
             }
@@ -672,7 +684,7 @@
         [self applyStylesTo:output withTheme:theme];
         [self updateView:output withTheme:theme];
         //NSLog(@"%@",_overlapAccum);
-        [self handleOverlaps:_overlapAccum];
+        [self handleOverlaps:_overlapAccum WithinRange:NSMakeRange(0, _content.length)];
         [self applyStylesTo:output withRanges:overlapMatches withTheme:theme];
         _matchesDone = YES;
     }
