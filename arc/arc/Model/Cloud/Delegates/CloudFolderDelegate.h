@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FolderDelegate.h"
 
-@protocol CloudFolderDelegate <NSObject>
-
-- (void)folderContentsUpdated:(id)sender;
+@protocol CloudFolderDelegate <FolderDelegate>
 
 - (void)folderReportsAuthFailed:(id)sender;
 

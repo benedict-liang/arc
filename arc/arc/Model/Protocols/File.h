@@ -13,6 +13,9 @@
 
 @required
 
+// Whether or not this file is available.
+@property BOOL isAvailable;
+
 // The extension of this file.
 @property (strong, nonatomic) NSString *extension;
 

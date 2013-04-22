@@ -140,6 +140,7 @@
     } else {
         // Normal mode
         [self.delegate fileObjectSelected:fileObject];
+        _currentFile = indexPath;
     }
 }
 
@@ -228,7 +229,9 @@
 - (void)deleteItems:(id)sender
 {
     for (NSIndexPath *indexPath in _editSelection) {
-        [[self sectionItem:indexPath] remove];
+        id<FileSystemObject> fileSystemObject = [self sectionItem:indexPath];
+        [fileSystemObject remove];
+        [self.delegate fileObjectDeleted:fileSystemObject];
     }
     [self setUpFolderContents];
     [self.tableView deleteRowsAtIndexPaths:_editSelection
@@ -256,6 +259,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         id<FileSystemObject> fileObject = [self sectionItem:indexPath];
         if ([fileObject remove]) {
+            [self.delegate fileObjectDeleted:fileObject];
             [[self sectionObjectGroup:indexPath.section]
              removeFileSystemObject:[self sectionItem:indexPath]];
             [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
@@ -266,7 +270,6 @@
 
 // FIXME: This code breaks because the above method is called first.
 // The top method deletes the row before the bottom method can access it.
-
 //- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    id<FileSystemObject> fileObject = [self sectionItem:indexPath];

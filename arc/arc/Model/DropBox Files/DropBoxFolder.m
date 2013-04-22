@@ -11,7 +11,7 @@
 @implementation DropBoxFolder
 
 // Synthesize protocol properties.
-@synthesize name=_name, identifier=_path, parent=_parent, isRemovable=_isRemovable, size=_size;
+@synthesize name=_name, identifier=_path, parent=_parent, isRemovable=_isRemovable, size=_size, delegate=_delegate;
 
 // Initialises this object with the given name, path, and parent.
 - (id)initWithName:(NSString *)name identifier:(NSString *)path parent:(id<FileSystemObject>)parent
@@ -23,6 +23,16 @@
         _isRemovable = YES;
     }
     return self;
+}
+
+- (void)setDelegate:(id<FolderDelegate>)delegate
+{
+    _delegate = delegate;
+    
+    DBFilesystem *filesystem = [DBFilesystem sharedFilesystem];
+    [filesystem addObserver:self forPathAndChildren:[[DBPath alloc] initWithString:_path] block:^{
+        [_delegate folderContentsUpdated:self];
+    }];
 }
 
 // Returns the contents of this object.
@@ -45,6 +55,11 @@
                 currentObject = [[DropBoxFolder alloc] initWithName:currentName identifier:currentPathString parent:self];
             } else {
                 currentObject = [[DropBoxFile alloc] initWithName:currentName identifier:currentPathString parent:self];
+                
+                DBFile *currentFile = [filesystem openFile:[[DBPath alloc] initWithString:currentPathString] error:nil];
+                BOOL isFileCached = [[currentFile status] cached];
+                [(DropBoxFile *)currentObject setIsAvailable:isFileCached];
+                [currentFile close];
             }
             [contents addObject:currentObject];
         }

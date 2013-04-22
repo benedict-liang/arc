@@ -59,4 +59,6 @@
 + (BOOL)isFileSupported:(NSString *)name;
 
 + (void)showUnsupportedFileDialog;
+
++ (void)showUnavailableFileDialog;
 @end

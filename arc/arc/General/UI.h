@@ -18,6 +18,7 @@
 + (UIColor *)toolBarColor;
 + (UIColor *)fontColor;
 + (UIFont *)toolBarTitleFont;
++ (NSDictionary *)barButtonTitleTextAttribute;
 
 + (NSString *)fontName;
 + (NSString *)fontNameBold;

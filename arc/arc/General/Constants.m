@@ -81,5 +81,10 @@ const int TAB_DROPBOX = 0;
 const int TAB_DOCUMENTS = 1;
 const int TAB_SETTINGS = 2;
 
+NSString* const DEFAULT_FILE = @"arc.md";
 @implementation Constants
++ (NSArray *)privilegedFileList
+{
+    return @[@"appState.plist",DEFAULT_FILE];
+}
 @end
