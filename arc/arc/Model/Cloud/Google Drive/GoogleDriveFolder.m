@@ -27,7 +27,6 @@
     return [_operations count] > 0;
 }
 
-
 - (float)size
 {
     return [_contents count];
