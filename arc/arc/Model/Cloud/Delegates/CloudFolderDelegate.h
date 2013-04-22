@@ -12,4 +12,6 @@
 
 - (void)folderContentsUpdated:(id)sender;
 
+- (void)folderReportsAuthFailed:(id)sender;
+
 @end

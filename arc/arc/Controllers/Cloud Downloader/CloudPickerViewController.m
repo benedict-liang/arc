@@ -61,11 +61,6 @@
     [self updateView];
 }
 
-- (void)folderContentsUpdated:(id<Folder>)sender
-{
-    [self updateView];
-}
-
 - (void)updateView
 {
     [self setUpFolderContents];
@@ -150,6 +145,23 @@
         [[self navigationController] pushViewController:newFolderController
                                                animated:YES];
     }
+}
+
+#pragma mark - Cloud Folder delegate
+- (void)folderContentsUpdated:(id<Folder>)sender
+{
+    [self updateView];
+}
+
+- (void)folderReportsAuthFailed:(id)sender
+{
+    [_serviceManager logOutOfService];
+    [[[UIAlertView alloc] initWithTitle:@"Authentication Error"
+                                message:@"Sorry, we couldn't log you in automatically."
+                               delegate:nil
+                      cancelButtonTitle:nil
+                      otherButtonTitles:@"OK", nil] show];
+    [_delegate modalViewControllerDone:nil];
 }
 
 @end
