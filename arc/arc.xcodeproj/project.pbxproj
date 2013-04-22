@@ -420,6 +420,7 @@
 		020C128D171ABACC00603229 /* GoogleDriveFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveFile.m; sourceTree = "<group>"; };
 		020C128F171AC14500603229 /* GoogleDriveDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleDriveDownloadHelper.h; sourceTree = "<group>"; };
 		020C1290171AC14600603229 /* GoogleDriveDownloadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleDriveDownloadHelper.m; sourceTree = "<group>"; };
+		02209C9F17258DAF006A7CF8 /* FolderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FolderDelegate.h; path = Delegates/FolderDelegate.h; sourceTree = "<group>"; };
 		022726381723D56500615BC1 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		023D4AFA171D1AAF00D9F60D /* PresentingModalViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentingModalViewControllerDelegate.h; sourceTree = "<group>"; };
 		025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -937,6 +938,14 @@
 			name = Library;
 			sourceTree = "<group>";
 		};
+		02209C9A17258D80006A7CF8 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				02209C9F17258DAF006A7CF8 /* FolderDelegate.h */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
 		0260B508170921C10091B012 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -1035,6 +1044,7 @@
 		4C43F90E16F86AC400159B29 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				02209C9A17258D80006A7CF8 /* Delegates */,
 				0260B508170921C10091B012 /* Protocols */,
 				840B636342E49333F3D17563 /* Cloud */,
 				8FE003D81723D2BD0013B9AC /* Local Files */,
