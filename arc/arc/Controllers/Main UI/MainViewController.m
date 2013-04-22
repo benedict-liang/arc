@@ -144,12 +144,16 @@
     if ([Utils isFileSupported:[fileSystemObject name]]) {
         [self hideMasterViewAnimated:YES];
         
-        // add second code view
+        if (_secondCodeViewController) {
+            _secondCodeViewController = nil;
+        }
+
         _secondCodeViewController = [[CodeViewController alloc] init];
         for (id<PluginDelegate> plugin in _plugins) {
             [_secondCodeViewController registerPlugin:plugin];
         }
         _secondCodeViewController.delegate = self;
+        
         [self.view addSubview:_secondCodeViewController.view];
 
         int width = floor(self.view.bounds.size.width/2);
@@ -193,8 +197,7 @@
 - (void)fileSelected:(id<File>)file
 {
     if ([Utils isFileSupported:[file name]]) {
-        ApplicationState *appState = [ApplicationState sharedApplicationState];
-        [appState setCurrentFileOpened:file];
+        [_appState setCurrentFileOpened:file];
         [_codeViewController showFile:file];
     } else {
         [Utils showUnsupportedFileDialog];
@@ -204,8 +207,7 @@
 // Updates Current Folder being Viewed
 - (void)folderSelected:(id<Folder>)folder
 {
-    ApplicationState *appState = [ApplicationState sharedApplicationState];
-    [appState setCurrentFolderOpened:folder];
+    [_appState setCurrentFolderOpened:folder];
     [_leftViewController navigateTo:folder];
 }
 
