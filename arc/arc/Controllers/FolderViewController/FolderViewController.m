@@ -44,6 +44,12 @@
     (GoogleDriveServiceManager *)[GoogleDriveServiceManager sharedServiceManager];
 }
 
+- (void)refreshFolderView
+{
+    [self setUpFolderContents];
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -391,36 +397,36 @@
 
 - (void)modalViewControllerDone:(FolderCommandObject *)folderCommandObject
 {
-    if (folderCommandObject.type == kCancelCommand && ![self.presentedViewController isBeingDismissed]) {
-        [self dismissViewControllerAnimated:YES completion:^{}];
-        return;
-    }
-    
-    if (folderCommandObject.type == kMoveFileObjects && ![self.presentedViewController isBeingDismissed]) {
-        if ([[folderCommandObject.target class] conformsToProtocol:@protocol(Folder)]) {
-            id<Folder> destination = (id<Folder>)folderCommandObject.target;
-            
-            if (![[destination identifier] isEqualToString:[self.folder identifier]]) {
-                for (NSIndexPath *indexPath in _editSelection) {
-                    [destination takeFileSystemObject:[self sectionItem:indexPath]];
-                }
-                [self refreshFolderView];
-            }
-            [self setEditing:NO animated:YES];
+    if (folderCommandObject) {
+        if (folderCommandObject.type == kCancelCommand && ![self.presentedViewController isBeingDismissed]) {
+            [self dismissViewControllerAnimated:YES completion:^{}];
+            return;
         }
-        [self dismissViewControllerAnimated:YES completion:^{}];
-        return;
-    }
-    
-    if (folderCommandObject.type == kCreateFolderCommand && ![self.presentedViewController isBeingDismissed]) {
-        NSString *folderName = (NSString *)folderCommandObject.target;
-        [self.folder createFolderWithName:folderName];
-        [self dismissViewControllerAnimated:YES completion:^{
-            [self refreshFolderView];
-        }];
-    }
-    
-    if (![self.presentedViewController isBeingDismissed]) {
+        
+        if (folderCommandObject.type == kMoveFileObjects && ![self.presentedViewController isBeingDismissed]) {
+            if ([[folderCommandObject.target class] conformsToProtocol:@protocol(Folder)]) {
+                id<Folder> destination = (id<Folder>)folderCommandObject.target;
+                
+                if (![[destination identifier] isEqualToString:[self.folder identifier]]) {
+                    for (NSIndexPath *indexPath in _editSelection) {
+                        [destination takeFileSystemObject:[self sectionItem:indexPath]];
+                    }
+                    [self refreshFolderView];
+                }
+                [self setEditing:NO animated:YES];
+            }
+            [self dismissViewControllerAnimated:YES completion:^{}];
+            return;
+        }
+        
+        if (folderCommandObject.type == kCreateFolderCommand && ![self.presentedViewController isBeingDismissed]) {
+            NSString *folderName = (NSString *)folderCommandObject.target;
+            [self.folder createFolderWithName:folderName];
+            [self dismissViewControllerAnimated:YES completion:^{
+                [self refreshFolderView];
+            }];
+        }
+    } else if (![[self presentedViewController] isBeingDismissed]) {
         // Default
         [self dismissViewControllerAnimated:YES completion:^{
             [self refreshFolderView];

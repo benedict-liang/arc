@@ -48,6 +48,8 @@ static SkyDriveServiceManager *sharedServiceManager = nil;
 {
     if (session != nil) {
         _isLoggedIn = YES;
+    } else {
+        [self logOutOfService];
     }
 }
 
@@ -82,6 +84,12 @@ static SkyDriveServiceManager *sharedServiceManager = nil;
 {
     [_delegate fileStatusChangedForService:self];
     [_helpers removeObject:sender];
+}
+
+- (void)logOutOfService
+{
+    _isLoggedIn = NO;
+    [_liveClient logout];
 }
 
 @end

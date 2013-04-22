@@ -12,4 +12,7 @@
 
 - (void)folderContentsUpdated:(id)sender;
 
+- (void)folderReportsAuthFailed:(id)sender;
+
+- (void)folderOperationCountChanged:(id)sender;
 @end

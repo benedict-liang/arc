@@ -20,5 +20,6 @@
 - (void)cancelOperations;
 
 - (BOOL)hasOngoingOperations;
+- (int)ongoingOperationCount;
 
 @end

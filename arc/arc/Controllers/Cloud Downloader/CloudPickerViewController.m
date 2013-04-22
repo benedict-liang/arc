@@ -61,11 +61,6 @@
     [self updateView];
 }
 
-- (void)folderContentsUpdated:(id<Folder>)sender
-{
-    [self updateView];
-}
-
 - (void)updateView
 {
     [self setUpFolderContents];
@@ -103,11 +98,17 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[self folder] cancelOperations];
+    [super viewWillDisappear:animated];
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (buttonIndex) {
         case 1:
-            [self.folder cancelOperations];
+            [[self folder] cancelOperations];
             [_delegate modalViewControllerDone:nil];
             break;
             
@@ -144,6 +145,28 @@
         [[self navigationController] pushViewController:newFolderController
                                                animated:YES];
     }
+}
+
+#pragma mark - Cloud Folder delegate
+- (void)folderContentsUpdated:(id<Folder>)sender
+{
+    [self updateView];
+}
+
+- (void)folderReportsAuthFailed:(id)sender
+{
+    [_delegate modalViewControllerDone:nil];
+    [_serviceManager logOutOfService];
+    [[[UIAlertView alloc] initWithTitle:@"Authentication Error"
+                                message:@"Sorry, we couldn't log you in automatically."
+                               delegate:nil
+                      cancelButtonTitle:nil
+                      otherButtonTitles:@"OK", nil] show];
+}
+
+- (void)folderOperationCountChanged:(id)sender
+{
+    NSLog(@"%d", [[self folder] ongoingOperationCount]);
 }
 
 @end

@@ -10,8 +10,8 @@
 @interface SkyDriveFolder ()
 
 @property (strong, atomic) NSArray *contents;
-
-@property (strong, atomic) NSArray *operations;
+@property (strong, atomic) NSArray *ongoingOperations;
+@property (strong, atomic) NSArray *pendingIdentifiers;
 
 @end
 
@@ -25,12 +25,17 @@
 
 - (BOOL)hasOngoingOperations
 {
-    return [_operations count] > 0;
+    return [_ongoingOperations count] > 0;
 }
 
 - (float)size
 {
     return [_contents count];
+}
+
+- (int)ongoingOperationCount
+{
+    return [_ongoingOperations count] + [_pendingIdentifiers count];
 }
 
 - (id)initWithName:(NSString *)name identifier:(NSString *)path parent:(id <FileSystemObject>)parent
@@ -42,7 +47,8 @@
         _isRemovable = NO;
 
         _contents = [NSArray array];
-        _operations = [NSArray array];
+        _ongoingOperations = [NSArray array];
+        _pendingIdentifiers = [NSArray array];
     }
     return self;
 }
@@ -52,37 +58,26 @@
     SkyDriveServiceManager *serviceManager = (SkyDriveServiceManager *)[SkyDriveServiceManager sharedServiceManager];
     LiveConnectClient *connectClient = [serviceManager liveClient];
     
-    NSDictionary *operationState = @{@"operationType" : [NSNumber numberWithInt:kFolderListing]};
+    NSNumber *operationState = [NSNumber numberWithInt:kFolderListing];
 
     LiveOperation *initialOperation = [connectClient getWithPath:[_path stringByAppendingString:SKYDRIVE_STRING_FOLDER_CONTENTS] delegate:self userState:operationState];
-    _operations = [_operations arrayByAddingObject:initialOperation];
+    _ongoingOperations = [_ongoingOperations arrayByAddingObject:initialOperation];
+    [_delegate folderOperationCountChanged:self];
 }
 
 // Triggers when a SkyDrive async operation completes.
 // Handles both the listing of folders and retrieval of individual file properties.
 - (void)liveOperationSucceeded:(LiveOperation *)operation
 {
-    SkyDriveServiceManager *serviceManager = (SkyDriveServiceManager *)[SkyDriveServiceManager sharedServiceManager];
-    LiveConnectClient *connectClient = [serviceManager liveClient];
-    
     NSDictionary *result = [operation result];
     
-    int state = [[[operation userState] valueForKey:@"operationType"] intValue];
+    int state = [[operation userState] intValue];
     switch (state) {
         case kFolderListing: {
-            NSArray *fileDictionaries = [result valueForKey:@"data"];
-            for (NSDictionary *currentDictionary in fileDictionaries) {
-                NSDictionary *operationState = @{
-                                                 @"operationType" : [NSNumber numberWithInt:kFileInfo],
-                                                 @"retrievedType" : [currentDictionary valueForKey:@"type"]
-                                                 };
-                LiveOperation *currentOperation = [connectClient getWithPath:[currentDictionary valueForKey:@"id"] delegate:self userState:operationState];
-                _operations = [_operations arrayByAddingObject:currentOperation];
-            }
+            _pendingIdentifiers = [result valueForKey:@"data"];
         }
             break;
         case kFileInfo: {
-            NSString *type = [[operation userState] valueForKey:@"retrievedType"];
             NSString *name = [result valueForKey:@"name"];
             NSString *identifier = [result valueForKey:@"id"];
             
@@ -90,13 +85,11 @@
                 return [[(id<FileSystemObject>)evaluatedObject identifier] isEqualToString:identifier];
             }]];
             if ([filteredArray count] == 0) {
-                // We only bother with files and folders.
-                // Ignore albums, photos, audio, and videos.
-                if ([type isEqualToString:@"file"]) {
+                if ([identifier hasPrefix:@"file"]) {
                     NSString *size = [result valueForKey:@"size"];
                     SkyDriveFile *newFile = [[SkyDriveFile alloc] initWithName:name identifier:identifier size:[size floatValue]];
                     _contents = [_contents arrayByAddingObject:newFile];
-                } else if ([type isEqualToString:@"folder"]) {
+                } else if ([identifier hasPrefix:@"folder"]) {
                     SkyDriveFolder *newFolder = [[SkyDriveFolder alloc] initWithName:name identifier:identifier parent:self];
                     _contents = [_contents arrayByAddingObject:newFolder];
                 }
@@ -108,16 +101,56 @@
         }
             break;
     }
-    NSMutableArray *newOperations = [NSMutableArray arrayWithArray:_operations];
+    NSMutableArray *newOperations = [NSMutableArray arrayWithArray:_ongoingOperations];
     [newOperations removeObject:operation];
-    _operations = newOperations;
+    _ongoingOperations = newOperations;
+    [_delegate folderOperationCountChanged:self];
+    [self startNextPendingOperation];
+}
+
+- (void)liveOperationFailed:(NSError *)error operation:(LiveOperation *)operation
+{
+    switch ([error code]) {
+        case 1:
+            // The operation was cancelled. Do nothing.
+            break;
+        default:
+            NSLog(@"%@", error);
+            NSMutableArray *newOperations = [NSMutableArray arrayWithArray:_ongoingOperations];
+            [newOperations removeObject:operation];
+            _ongoingOperations = newOperations;
+            [_delegate folderOperationCountChanged:self];
+            [self startNextPendingOperation];
+            break;
+    }
+}
+
+- (void)startNextPendingOperation
+{
+    while ([_ongoingOperations count] < CLOUD_MAX_CONCURRENT_DOWNLOADS && [_pendingIdentifiers count] > 0) {
+        NSDictionary *currentFileDetails = [_pendingIdentifiers objectAtIndex:0];
+        NSMutableArray *mutableCopy = [_pendingIdentifiers mutableCopy];
+        [mutableCopy removeObjectAtIndex:0];
+        _pendingIdentifiers = mutableCopy;
+        
+        SkyDriveServiceManager *serviceManager = (SkyDriveServiceManager *)[SkyDriveServiceManager sharedServiceManager];
+        LiveConnectClient *connectClient = [serviceManager liveClient];
+        
+        NSNumber *operationType = [NSNumber numberWithInt:kFileInfo];
+        LiveOperation *currentOperation = [connectClient getWithPath:[currentFileDetails valueForKey:@"id"] delegate:self userState:operationType];
+        _ongoingOperations = [_ongoingOperations arrayByAddingObject:currentOperation];
+        [_delegate folderOperationCountChanged:self];
+    }
 }
 
 - (void)cancelOperations
 {
-    for (LiveOperation *currentOperation in _operations) {
+    for (LiveOperation *currentOperation in _ongoingOperations) {
         [currentOperation cancel];
     }
+    _ongoingOperations = [NSArray array];
+    _pendingIdentifiers = [NSArray array];
+    [_delegate folderOperationCountChanged:self];
 }
 
 @end
