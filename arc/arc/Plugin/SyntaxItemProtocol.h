@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "SyntaxMatchStore.h"
 @protocol SyntaxItemProtocol <NSObject>
-
+- (SyntaxMatchStore*)parseContent:(NSString*)content WithRange:(NSRange)range;
 @optional
 @property NSString* name;
 @property NSArray* capturableScopes;

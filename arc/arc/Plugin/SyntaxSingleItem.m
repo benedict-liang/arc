@@ -10,6 +10,7 @@
 
 @implementation SyntaxSingleItem
 @synthesize name=_name, capturableScopes = _capturableScopes;
+
 - (id)initWithName:(NSString *)name Match:(NSString *)match Captures:(NSDictionary*)captures CapturableScopes:(NSArray*)cpS{
     if (self = [super init]) {
         _name = name;
@@ -21,5 +22,9 @@
 }
 - (NSString *)description {
     return [NSString stringWithFormat:@"name: %@ match:%@ captures:%@",_name,_match, _captures];
+}
+
+- (SyntaxMatchStore*)parseContent:(NSString *)content WithRange:(NSRange)range {
+    
 }
 @end

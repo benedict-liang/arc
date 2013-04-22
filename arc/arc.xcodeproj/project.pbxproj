@@ -367,6 +367,7 @@
 		FCC737981725222B0024865B /* SyntaxIncludeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC73797172522290024865B /* SyntaxIncludeItem.m */; };
 		FCC7379B17252D7E0024865B /* SyntaxParserResult.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC7379A17252D7D0024865B /* SyntaxParserResult.m */; };
 		FCC7379E17252F700024865B /* SyntaxMatchStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC7379D17252F6E0024865B /* SyntaxMatchStore.m */; };
+		FCC737A1172535D90024865B /* RegexUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC737A0172535D60024865B /* RegexUtils.m */; };
 		FCFB4DA2170F466200B25FDC /* BundleConf.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCFB4DA1170F466200B25FDC /* BundleConf.plist */; };
 /* End PBXBuildFile section */
 
@@ -867,6 +868,8 @@
 		FCC7379A17252D7D0024865B /* SyntaxParserResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxParserResult.m; sourceTree = "<group>"; };
 		FCC7379C17252F6D0024865B /* SyntaxMatchStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyntaxMatchStore.h; sourceTree = "<group>"; };
 		FCC7379D17252F6E0024865B /* SyntaxMatchStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyntaxMatchStore.m; sourceTree = "<group>"; };
+		FCC7379F172535D50024865B /* RegexUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexUtils.h; sourceTree = "<group>"; };
+		FCC737A0172535D60024865B /* RegexUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexUtils.m; sourceTree = "<group>"; };
 		FCE8F95D1709806B00C08724 /* CodeViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CodeViewControllerDelegate.h; sourceTree = "<group>"; };
 		FCFB4DA1170F466200B25FDC /* BundleConf.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BundleConf.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1266,6 +1269,8 @@
 				FCC7379A17252D7D0024865B /* SyntaxParserResult.m */,
 				FCC7379C17252F6D0024865B /* SyntaxMatchStore.h */,
 				FCC7379D17252F6E0024865B /* SyntaxMatchStore.m */,
+				FCC7379F172535D50024865B /* RegexUtils.h */,
+				FCC737A0172535D60024865B /* RegexUtils.m */,
 			);
 			name = SyntaxHighlighting;
 			sourceTree = "<group>";
@@ -2291,6 +2296,7 @@
 				FCC737981725222B0024865B /* SyntaxIncludeItem.m in Sources */,
 				FCC7379B17252D7E0024865B /* SyntaxParserResult.m in Sources */,
 				FCC7379E17252F700024865B /* SyntaxMatchStore.m in Sources */,
+				FCC737A1172535D90024865B /* RegexUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
