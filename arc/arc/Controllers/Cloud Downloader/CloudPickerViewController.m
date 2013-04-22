@@ -9,12 +9,11 @@
 #import "CloudPickerViewController.h"
 
 @interface CloudPickerViewController ()
-// Loading Overlay view.
-@property LoadingOverlayViewController *loadingOverlayController;
 
 // View properties.
 @property UIBarButtonItem *closeButton;
 @property UIAlertView *closeAlert;
+@property UILabel *loadingLabel;
 
 // Download-related properties.
 @property (strong, nonatomic) id<CloudFolder> folder;
@@ -67,10 +66,9 @@
     [self.tableView reloadData];
 }
 
-- (void)viewDidLoad
+- (void)loadView
 {
-    [super viewDidLoad];
-    
+    [super loadView];
     _closeButton =
     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
                                                   target:self
@@ -79,13 +77,24 @@
     self.view.autoresizesSubviews = YES;
     self.navigationItem.title = self.folder.name;
     
+    [[self view] setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+    
+    NSLog(@"%f %f", [[self view] frame].size.width, [[self view] frame].size.height);
+    
     // Create the Table View.
     [self setUpTableView];
     
     // Create the loading overlay.
-    _loadingOverlayController =
-    [[LoadingOverlayViewController alloc] initWithFrame:[[self view] bounds]];
-//    [[self view] insertSubview:[_loadingOverlayController view] aboveSubview:_tableView];
+    _loadingLabel = [[UILabel alloc] init];
+    [_loadingLabel setFont:[UIFont fontWithName:[UI fontName] size:12]];
+    [_loadingLabel setText:@"Loading..."];
+    [_loadingLabel setTextAlignment:NSTextAlignmentRight];
+    [_loadingLabel setBackgroundColor:[UIColor blackColor]];
+    [_loadingLabel setTextColor:[UIColor lightTextColor]];
+    [_loadingLabel setAlpha:0.8];
+    
+    [[self view] insertSubview:_loadingLabel aboveSubview:[self tableView]];
+    [_loadingLabel setFrame:CGRectMake(350, 530, 150, 25)];
 }
 
 - (void)shouldClose:(id)sender
@@ -166,7 +175,7 @@
 
 - (void)folderOperationCountChanged:(id)sender
 {
-    NSLog(@"%d", [[self folder] ongoingOperationCount]);
+    [_loadingLabel setText:[NSString stringWithFormat:@"Remaining operations: %d", [[self folder] ongoingOperationCount]]];
 }
 
 @end

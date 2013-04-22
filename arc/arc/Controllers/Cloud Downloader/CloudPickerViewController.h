@@ -14,7 +14,6 @@
 #import "CloudFolderDelegate.h"
 #import "PresentingModalViewControllerDelegate.h"
 #import "ModalViewControllerDelegate.h"
-#import "LoadingOverlayViewController.h"
 
 @interface CloudPickerViewController : BasicFolderViewController <CloudFolderDelegate,
     UITableViewDataSource, UITableViewDelegate,
