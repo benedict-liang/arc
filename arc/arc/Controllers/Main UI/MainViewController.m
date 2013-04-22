@@ -131,39 +131,43 @@
 
 - (void)secondFileObjectSelected:(id<FileSystemObject>)fileSystemObject
 {
-    [self hideMasterViewAnimated:YES];
-    
-    int width = floor(self.view.bounds.size.width/2);
-    int height = _codeViewController.view.bounds.size.height;
-    _codeViewController.view.frame = CGRectMake(0, 0,
-                                                width,
-                                                height);
-
-    [_codeViewController redrawCodeViewBoundsChanged:YES];
-
-    // add second code view
-    _secondCodeViewController = [[CodeViewController alloc] init];
-    for (id<PluginDelegate> plugin in _plugins) {
-        [_secondCodeViewController registerPlugin:plugin];
+    if ([Utils isFileSupported:[fileSystemObject name]]) {
+        [self hideMasterViewAnimated:YES];
+        
+        int width = floor(self.view.bounds.size.width/2);
+        int height = _codeViewController.view.bounds.size.height;
+        _codeViewController.view.frame = CGRectMake(0, 0,
+                                                    width,
+                                                    height);
+        
+        [_codeViewController redrawCodeViewBoundsChanged:YES];
+        
+        // add second code view
+        _secondCodeViewController = [[CodeViewController alloc] init];
+        for (id<PluginDelegate> plugin in _plugins) {
+            [_secondCodeViewController registerPlugin:plugin];
+        }
+        
+        _secondCodeViewController.delegate = self;
+        
+        [self.view addSubview:_secondCodeViewController.view];
+        
+        _secondCodeViewController.view.frame = CGRectMake(width, 0,
+                                                          width,
+                                                          height);
+        [_secondCodeViewController showFile:(id<File>)fileSystemObject];
+        [_secondCodeViewController redrawCodeViewBoundsChanged:YES];
+        
+        // add left border to second code view
+        UIColor *borderColor = _secondCodeViewController.foregroundColor;
+        UIView *leftBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, height)];
+        leftBorder.opaque = YES;
+        leftBorder.backgroundColor = borderColor;
+        leftBorder.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin;
+        [_secondCodeViewController.view addSubview:leftBorder];
+    } else {
+        [Utils showUnsupportedFileDialog];
     }
-
-    _secondCodeViewController.delegate = self;
-
-    [self.view addSubview:_secondCodeViewController.view];
-
-    _secondCodeViewController.view.frame = CGRectMake(width, 0,
-                                                     width,
-                                                     height);
-    [_secondCodeViewController showFile:(id<File>)fileSystemObject];
-    [_secondCodeViewController redrawCodeViewBoundsChanged:YES];
-
-    // add left border to second code view
-    UIColor *borderColor = _secondCodeViewController.foregroundColor;
-    UIView *leftBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, height)];
-    leftBorder.opaque = YES;
-    leftBorder.backgroundColor = borderColor;
-    leftBorder.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleRightMargin;
-    [_secondCodeViewController.view addSubview:leftBorder];
 }
 
 - (id<FileSystemObject>)currentfile
