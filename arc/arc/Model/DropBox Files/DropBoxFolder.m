@@ -45,6 +45,16 @@
                 currentObject = [[DropBoxFolder alloc] initWithName:currentName identifier:currentPathString parent:self];
             } else {
                 currentObject = [[DropBoxFile alloc] initWithName:currentName identifier:currentPathString parent:self];
+                
+                DBFile *currentFile = [filesystem openFile:[[DBPath alloc] initWithString:currentPathString] error:nil];
+                BOOL isFileCached = [[currentFile status] cached];
+                [(DropBoxFile *)currentObject setIsAvailable:isFileCached];
+                
+                if (!isFileCached) {
+                    [filesystem addObserver:self forPath:currentPath block:^{
+                        [_delegate folderContentsUpdated:self];
+                    }];
+                }
             }
             [contents addObject:currentObject];
         }
