@@ -11,7 +11,9 @@
 @interface GoogleDriveFolder ()
 
 @property (strong, atomic) NSArray *contents;
-@property (strong, atomic) NSArray *operations;
+@property (strong, atomic) NSArray *ongoingOperations;
+@property (strong, atomic) NSArray *pendingIdentifiers;
+
 @end
 
 @implementation GoogleDriveFolder
@@ -24,7 +26,7 @@
 
 - (BOOL)hasOngoingOperations
 {
-    return [_operations count] > 0;
+    return [_ongoingOperations count] > 0;
 }
 
 - (float)size
@@ -34,7 +36,7 @@
 
 - (int)ongoingOperationCount
 {
-    return [_operations count];
+    return [_ongoingOperations count] + [_pendingIdentifiers count];
 }
 
 - (id)initWithName:(NSString *)name identifier:(NSString *)path parent:(id <FileSystemObject>)parent
@@ -46,17 +48,19 @@
         _isRemovable = NO;
         
         _contents = [NSArray array];
-        _operations = [NSArray array];
+        _ongoingOperations = [NSArray array];
+        _pendingIdentifiers = [NSArray array];
     }
     return self;
 }
 
 - (void)cancelOperations
 {
-    for (GTLServiceTicket *currentTicket in _operations) {
+    for (GTLServiceTicket *currentTicket in _ongoingOperations) {
         [currentTicket cancelTicket];
     }
-    _operations = [NSArray array];
+    _ongoingOperations = [NSArray array];
+    _pendingIdentifiers = [NSArray array];
     [_delegate folderOperationCountChanged:self];
 }
 
@@ -74,16 +78,12 @@
 - (void)contentsTicket:(GTLServiceTicket *)ticket children:(GTLDriveChildList *)children error:(NSError *)error
 {
     if (!error) {
-        GoogleDriveServiceManager *serviceManager = (GoogleDriveServiceManager *)[GoogleDriveServiceManager sharedServiceManager];
-        GTLServiceDrive *driveService = [serviceManager driveService];
-        
-        for (GTLDriveChildReference *currentReference in children) {
-            // Get the child's attributes.
-            GTLQuery *attributeQuery = [GTLQueryDrive queryForFilesGetWithFileId:[currentReference identifier]];
-            GTLServiceTicket *currentTicket = [driveService executeQuery:attributeQuery delegate:self didFinishSelector:@selector(attributesTicket:file:error:)];
-            _operations = [_operations arrayByAddingObject:currentTicket];
-            [_delegate folderOperationCountChanged:self];
-        }
+        _pendingIdentifiers = [children items];
+        NSMutableArray *newOperations = [NSMutableArray arrayWithArray:_ongoingOperations];
+        [newOperations removeObject:ticket];
+        _ongoingOperations = newOperations;
+        [_delegate folderOperationCountChanged:self];
+        [self startNextPendingOperation];
     } else {
         [self handleError:error];
     }
@@ -125,10 +125,29 @@
         [self handleError:error];
     }
     
-    NSMutableArray *newOperations = [NSMutableArray arrayWithArray:_operations];
+    NSMutableArray *newOperations = [NSMutableArray arrayWithArray:_ongoingOperations];
     [newOperations removeObject:ticket];
-    _operations = [NSArray arrayWithArray:newOperations];
+    _ongoingOperations = [NSArray arrayWithArray:newOperations];
     [_delegate folderOperationCountChanged:self];
+    [self startNextPendingOperation];
+}
+
+- (void)startNextPendingOperation
+{
+    while ([_ongoingOperations count] < CLOUD_MAX_CONCURRENT_DOWNLOADS && [_pendingIdentifiers count] > 0) {
+        GTLDriveChildReference *currentReference = [_pendingIdentifiers objectAtIndex:0];
+        NSMutableArray *mutableCopy = [_pendingIdentifiers mutableCopy];
+        [mutableCopy removeObjectAtIndex:0];
+        _pendingIdentifiers = mutableCopy;
+        
+        GoogleDriveServiceManager *serviceManager = (GoogleDriveServiceManager *)[GoogleDriveServiceManager sharedServiceManager];
+        GTLServiceDrive *driveService = [serviceManager driveService];
+        
+        GTLQuery *attributeQuery = [GTLQueryDrive queryForFilesGetWithFileId:[currentReference identifier]];
+        GTLServiceTicket *currentTicket = [driveService executeQuery:attributeQuery delegate:self didFinishSelector:@selector(attributesTicket:file:error:)];
+        _ongoingOperations = [_ongoingOperations arrayByAddingObject:currentTicket];
+        [_delegate folderOperationCountChanged:self];
+    }
 }
 
 - (void)handleError:(NSError *)error
