@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol SyntaxItemProtocol <NSObject>
+
 @optional
 @property NSString* name;
 @property NSArray* capturableScopes;
