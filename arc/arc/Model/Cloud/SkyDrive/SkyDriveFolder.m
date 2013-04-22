@@ -112,6 +112,21 @@
     _operations = newOperations;
 }
 
+- (void)liveOperationFailed:(NSError *)error operation:(LiveOperation *)operation
+{
+    switch ([error code]) {
+        case 1:
+            // The operation was cancelled. Do nothing.
+            break;
+        default:
+            NSLog(@"%@", error);
+            NSMutableArray *newOperations = [NSMutableArray arrayWithArray:_operations];
+            [newOperations removeObject:operation];
+            _operations = newOperations;
+            break;
+    }
+}
+
 - (void)cancelOperations
 {
     for (LiveOperation *currentOperation in _operations) {
