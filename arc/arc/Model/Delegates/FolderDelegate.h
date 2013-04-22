@@ -10,4 +10,6 @@
 
 @protocol FolderDelegate <NSObject>
 
+- (void)folderContentsUpdated:(id)sender;
+
 @end
