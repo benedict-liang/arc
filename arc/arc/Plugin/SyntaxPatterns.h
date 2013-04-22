@@ -17,6 +17,7 @@
 
 - (id)initWithBundlePatterns:(NSArray *)bundlePatterns;
 
+- (SyntaxMatchStore*)parseResultsForContent:(NSString*)content Range:(NSRange)range;
 @property NSArray* patterns;
 @property NSDictionary* repository;
 @end

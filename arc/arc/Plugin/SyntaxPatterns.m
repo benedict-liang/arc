@@ -87,4 +87,14 @@
 - (NSString*) description {
     return [NSString stringWithFormat:@"patterns:%@\n repo:%@",_patterns, _repository];
 }
+
+- (SyntaxMatchStore*)parseResultsForContent:(NSString*)content Range:(NSRange)range {
+    SyntaxMatchStore* accum = [[SyntaxMatchStore alloc] init];
+    for (id<SyntaxItemProtocol> syntaxItem in _patterns) {
+        SyntaxMatchStore* res = [syntaxItem parseContent:content WithRange:range];
+        [accum mergeWithStore:res];
+    }
+    return accum;
+}
+
 @end
