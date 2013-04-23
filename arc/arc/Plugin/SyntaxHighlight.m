@@ -14,6 +14,7 @@
 @property (nonatomic) BOOL matchesDone;
 @property SyntaxMatchStore* matchStore;
 @property SyntaxMatchStore* overlapStore;
+@property SyntaxMatchStore* renderTimeOverlapStore;
 @end
 
 @implementation SyntaxHighlight
@@ -39,6 +40,7 @@
             _splitContent = [_content componentsSeparatedByString:@"\n"];
         }
         _overlapStore = [[SyntaxMatchStore alloc] init];
+        _renderTimeOverlapStore = [[SyntaxMatchStore alloc] init];
         //reset ranges
         
     }
@@ -76,10 +78,10 @@
             if (!capturableScopes) {
                 capturableScopes = [self capturableScopes:scope];
             }
-//            if ([_overlays containsObject:capturableScopes[0]] && ![pairs isEqual:_overlapStore]) {
-//                [_overlapStore addParserResult:[[SyntaxParserResult alloc] initWithScope:scope Ranges:ranges CPS:capturableScopes]];
-//                continue;
-//            }
+            if ([_overlays containsObject:capturableScopes[0]] && [pairs isEqual:_matchStore]) {
+                [_renderTimeOverlapStore addParserResult:[[SyntaxParserResult alloc] initWithScope:scope Ranges:ranges CPS:capturableScopes]];
+                continue;
+            }
 //            if ([[capturableScopes objectAtIndex:0] isEqualToString:@"meta"]) {
 //                NSLog(@"arrgh");
 //            }
@@ -163,19 +165,26 @@
 
     _matchStore = [_syntaxPatterns parseResultsForContent:_content Range:NSMakeRange(0, _content.length)];
     NSLog(@"blowing up...");
+    
+//    [output removeAttributesForSettingKey:SYNTAX_KEY];
+//    [self applyForeground:output withTheme:theme];
+//    [self applyStylesTo:output withRanges:_matchStore withTheme:theme];
+//    [self applyStylesTo:output withRanges:_renderTimeOverlapStore withTheme:theme];
+//    [self setupFoldTree];
+//    [self updateView:output withTheme:theme];
+//    NSLog(@"view updated!");
     _overlapStore = [_syntaxPatterns forwardParseForContent:_content Range:NSMakeRange(0, _content.length)];
     NSLog(@"%@",_overlapStore);
+
+    [_matchStore removeDuplicateScopesWith:_overlapStore];
+    [_renderTimeOverlapStore removeDuplicateScopesWith:_overlapStore];
     [output removeAttributesForSettingKey:SYNTAX_KEY];
     [self applyForeground:output withTheme:theme];
-    [_matchStore removeDuplicateScopesWith:_overlapStore];
     [self applyStylesTo:output withRanges:_matchStore withTheme:theme];
+    //[self applyStylesTo:output withRanges:_renderTimeOverlapStore withTheme:theme];
     [self applyStylesTo:output withRanges:_overlapStore withTheme:theme];
-    
-    [self setupFoldTree];
     [self updateView:output withTheme:theme];
-    NSLog(@"view updated!");
-
-
+     NSLog(@"view updated!");
 }
 
 - (void)renderOn:(NSDictionary *)options {
