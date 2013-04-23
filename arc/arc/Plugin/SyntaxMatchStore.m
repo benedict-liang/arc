@@ -9,11 +9,13 @@
 #import "SyntaxMatchStore.h"
 @interface SyntaxMatchStore ()
 @property NSMutableDictionary* store;
+@property NSArray* syntaxOverlays;
 @end
 @implementation SyntaxMatchStore
 
 -(id)init {
     _store = [NSMutableDictionary dictionary];
+    _syntaxOverlays = [Constants syntaxOverlays];
     return self;
 }
 - (void)addParserResult:(SyntaxParserResult *)pres {
@@ -63,10 +65,10 @@
         NSString* s2 = (NSString*)k2;
         NSArray* cp1 = [self capturableScopesForScope:s1];
         NSArray* cp2 = [self capturableScopesForScope:s2];
-        NSArray* overlays = [Constants syntaxOverlays];
-        if ([overlays containsObject:cp1[0]] && [overlays containsObject:cp2[0]]) {
-            int i1 = [overlays indexOfObject:cp1[0]];
-            int i2 = [overlays indexOfObject:cp2[0]];
+        
+        if ([_syntaxOverlays containsObject:cp1[0]] && [_syntaxOverlays containsObject:cp2[0]]) {
+            int i1 = [_syntaxOverlays indexOfObject:cp1[0]];
+            int i2 = [_syntaxOverlays indexOfObject:cp2[0]];
             if (i1 > i2) {
                 return NSOrderedAscending;
             }
@@ -85,7 +87,7 @@
     for (NSString* scope in _store) {
         NSMutableDictionary* dict = [_store objectForKey:scope];
         NSArray* cpS = [dict objectForKey:@"capturableScopes"];
-        if ([[Constants syntaxOverlays] containsObject:cpS[0]]) {
+        if ([_syntaxOverlays containsObject:cpS[0]]) {
             [overlapRanges addObjectsFromArray:[dict objectForKey:@"ranges"]];
         }
     }
@@ -94,7 +96,7 @@
         NSMutableArray* ranges = [dict objectForKey:@"ranges"];
         NSArray* iter = [NSArray arrayWithArray:ranges];
         NSArray* cpS = [dict objectForKey:@"capturableScopes"];
-        if (![[Constants syntaxOverlays] containsObject:cpS[0]]) {
+        if (![_syntaxOverlays containsObject:cpS[0]]) {
             for (NSValue* v in iter) {
                 NSRange testRange = [Utils rangeFromValue:v];
                 if ([Utils range:testRange isSubsetOfRangeInArray:overlapRanges]) {
