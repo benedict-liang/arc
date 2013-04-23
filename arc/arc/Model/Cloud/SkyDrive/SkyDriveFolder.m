@@ -97,9 +97,6 @@
                     SkyDriveFolder *newFolder = [[SkyDriveFolder alloc] initWithName:name identifier:identifier parent:self];
                     _contents = [_contents arrayByAddingObject:newFolder];
                 }
-                _contents = [_contents sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                    return [[obj1 name] compare:[obj2 name] options:NSCaseInsensitiveSearch];
-                }];
                 [_delegate folderContentsUpdated:self];
             }
         }

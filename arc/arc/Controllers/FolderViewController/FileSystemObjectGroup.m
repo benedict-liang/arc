@@ -33,6 +33,9 @@
 - (void)addFileSystemObject:(id<FileSystemObject>)fileSystemObject
 {
     [__items addObject:fileSystemObject];
+    [__items sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [[obj1 name] compare:[obj2 name] options:NSCaseInsensitiveSearch];
+    }];
 }
 
 - (void)removeFileSystemObject:(id<FileSystemObject>)fileSystemObject
