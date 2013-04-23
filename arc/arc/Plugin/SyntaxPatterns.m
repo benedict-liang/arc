@@ -131,14 +131,19 @@
     SyntaxMatchStore* accum = [[SyntaxMatchStore alloc] init];
     ScopeRange* min = [ScopeRange scope:@"" Range:NSMakeRange(content.length, 0) CPS:nil];
     NSRange residueRange = NSMakeRange(0, content.length);
-    
-    for (id<SyntaxItemProtocol> syntaxItem in _patterns) {
-        ScopeRange* res = [syntaxItem forwardParse:content WithResidue:residueRange OverlayScopes:_syntaxOverlays];
-        if (res) {
-            min = [res minByRange:min];
+    while (residueRange.location < content.length) {
+        for (id<SyntaxItemProtocol> syntaxItem in _patterns) {
+            ScopeRange* res = [syntaxItem forwardParse:content WithResidue:residueRange OverlayScopes:_syntaxOverlays];
+            if (res) {
+                min = [res minByRange:min];
+            }
         }
+       
+        [accum addScopeRange:min];
+        CFIndex minEnds = min.range.location + min.range.length+1;
+        residueRange = NSMakeRange(minEnds, content.length - minEnds);
     }
-    
+    return accum;
 }
 
 @end

@@ -107,4 +107,20 @@
         [store addParserResult:result];
     }
 }
+- (ScopeRange*)forwardParse:(NSString *)content WithResidue:(NSRange)range OverlayScopes:(NSArray *)overlays {
+    if ([overlays containsObject:_capturableScopes[0]]) {
+        NSRange beginRange = [RegexUtils findFirstPattern:_begin range:range content:content];
+        if (beginRange.location >= content.length) {
+            return nil;
+        }
+        NSRange endRange = [RegexUtils findFirstPattern:_end range:range content:content];
+        if (endRange.location >= content.length) {
+            return nil;
+        }
+        CFIndex eEnds = endRange.location + endRange.length;
+        NSRange pairRange = NSMakeRange(beginRange.location, eEnds - beginRange.location);
+        return [ScopeRange scope:_name Range:pairRange CPS:_capturableScopes];
+    }
+    return nil;
+}
 @end

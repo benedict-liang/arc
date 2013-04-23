@@ -14,7 +14,7 @@
  { scope : {
         ranges: [NSRange]
         capturableScopes:[]
- }
+    }
  }
  */
 @interface SyntaxMatchStore : NSObject
