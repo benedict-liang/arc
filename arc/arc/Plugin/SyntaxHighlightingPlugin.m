@@ -109,35 +109,40 @@
     if (!sh) {
         sh = [[SyntaxHighlight alloc] initWithFile:file
                                        andDelegate:delegate];
+        
+        //only proceed if sh finds a bundle
+        if (sh.bundle) {
+            // give sh object a reference to the factory
+            // to enable it to remove itself from the thread pool
+            sh.factory = self;
+            // add to cache
+            [_cache setObject:sh forKey:[file identifier]];
+            // add object to the thread pool
+            [_threadPool addObject:sh];
+            
+            ArcAttributedString *copy =
+            [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
+            
+            NSDictionary* syntaxOptions = @{
+                                            @"theme":themeDictionary,
+                                            @"attributedString":copy
+                                            };
+            
+            [sh performSelectorInBackground:@selector(execOn:)
+                                 withObject:syntaxOptions];
+        }
 
-        // give sh object a reference to the factory
-        // to enable it to remove itself from the thread pool
-        sh.factory = self;
-
-        // add to cache
-        [_cache setObject:sh forKey:[file identifier]];
     } else {
+        //use the cached sh
         ArcAttributedString *copy =
         [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
-        [sh renderOn:@{@"theme":themeDictionary,
-         @"attributedString":copy}];
-    }
-    
-    if (sh.bundle) {
-        // add object to the thread pool
-        [_threadPool addObject:sh];
-        
-        ArcAttributedString *copy =
-        [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
-        
         NSDictionary* syntaxOptions = @{
                                         @"theme":themeDictionary,
                                         @"attributedString":copy
                                         };
-
-        [sh performSelectorInBackground:@selector(execOn:)
-                             withObject:syntaxOptions];
+        [sh renderOn:syntaxOptions];
     }
+    
 }
 
 - (void)removeFromThreadPool:(SyntaxHighlight *)sh

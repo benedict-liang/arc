@@ -454,19 +454,19 @@
     _finalOutput = output;
     NSDictionary* theme = [options objectForKey:@"theme"];
 
-    if (!_matchesDone) {
+  //  if (!_matchesDone) {
 
         _matchStore = [_syntaxPatterns parseResultsForContent:_content Range:NSMakeRange(0, _content.length)];
         //NSLog(@"%@",_matchStore);
         [self setupFoldTree];
         [self applyStylesTo:output withTheme:theme];
         [self updateView:output withTheme:theme];
-       // NSLog(@"view updated!");
-        _matchesDone = YES;
-    }
+        NSLog(@"view updated!");
+   //     _matchesDone = YES;
+   // }
     
     // tell SH factory to remove self from thread pool.
-    [_factory removeFromThreadPool:self];
+    //[_factory removeFromThreadPool:self];
 
 }
 
@@ -474,7 +474,7 @@
      NSDictionary* theme = [options objectForKey:@"theme"];
     ArcAttributedString *output = [options objectForKey:@"attributedString"];
     [self applyStylesTo:output withTheme:theme];
-    [self updateView:output withTheme:theme];
+     [self updateView:output withTheme:theme];
 }
 - (void)kill
 {
