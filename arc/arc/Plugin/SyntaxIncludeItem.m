@@ -62,4 +62,7 @@
     //NSLog(@"include root found");
     return lp;
 }
+-(ScopeRange*)forwardParse:(NSString *)content WithResidue:(NSRange)range OverlayScopes:(NSArray *)overlays {
+    return nil;
+}
 @end

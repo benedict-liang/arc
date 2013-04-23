@@ -16,5 +16,7 @@
 - (SyntaxMatchStore*)parseContent:(NSString *)content WithRange:(NSRange)range {
     return [_patterns parseResultsForContent:content Range:range];
 }
-
+- (ScopeRange*)forwardParse:(NSString *)content WithResidue:(NSRange)range OverlayScopes:(NSArray *)overlays {
+    return nil;
+}
 @end
