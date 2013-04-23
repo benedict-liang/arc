@@ -81,9 +81,28 @@
 }
 
 - (void)postHook {
+    NSMutableArray* overlapRanges = [NSMutableArray array];
     for (NSString* scope in _store) {
         NSMutableDictionary* dict = [_store objectForKey:scope];
         NSArray* cpS = [dict objectForKey:@"capturableScopes"];
+        if ([[Constants syntaxOverlays] containsObject:cpS[0]]) {
+            [overlapRanges addObjectsFromArray:[dict objectForKey:@"ranges"]];
+        }
+    }
+    for (NSString* scope in _store) {
+        NSMutableDictionary* dict = [_store objectForKey:scope];
+        NSMutableArray* ranges = [dict objectForKey:@"ranges"];
+        NSArray* iter = [NSArray arrayWithArray:ranges];
+        NSArray* cpS = [dict objectForKey:@"capturableScopes"];
+        if (![[Constants syntaxOverlays] containsObject:cpS[0]]) {
+            for (NSValue* v in iter) {
+                NSRange testRange = [Utils rangeFromValue:v];
+                if ([Utils range:testRange isSubsetOfRangeInArray:overlapRanges]) {
+                    [ranges removeObject:v];
+                }
+            }
+        }
+    
     }
 }
 @end

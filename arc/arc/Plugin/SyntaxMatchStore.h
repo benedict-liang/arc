@@ -24,4 +24,5 @@
 - (NSArray*)scopes;
 - (NSArray*)capturableScopesForScope:(NSString*)scope;
 - (NSArray*)allRanges;
+- (void)postHook;
 @end

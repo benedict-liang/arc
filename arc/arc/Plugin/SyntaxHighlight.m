@@ -163,7 +163,8 @@
   //  if (!_matchesDone) {
 
         _matchStore = [_syntaxPatterns parseResultsForContent:_content Range:NSMakeRange(0, _content.length)];
-        NSLog(@"%@",_matchStore);
+    //[_matchStore postHook];
+        //NSLog(@"%@",_matchStore);
         
         [self applyStylesTo:output withTheme:theme];
     
