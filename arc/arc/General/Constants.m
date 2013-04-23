@@ -87,4 +87,7 @@ NSString* const DEFAULT_FILE = @"arc.md";
 {
     return @[@"appState.plist",DEFAULT_FILE];
 }
++(NSArray*)syntaxOverlays {
+    return @[@"comment",@"string"];
+}
 @end

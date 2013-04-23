@@ -47,7 +47,11 @@
     }
 }
 - (NSArray*)scopes {
-    return [_store allKeys];
+    NSMutableArray* unsortedKeys = [NSMutableArray arrayWithArray:[_store allKeys]];
+    [unsortedKeys sortUsingComparator:^NSComparisonResult(NSString* s1, NSString*s2) {
+        
+    }];
+    
 }
 -(NSString*)description {
     return _store.description;

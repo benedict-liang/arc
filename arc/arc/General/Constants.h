@@ -84,4 +84,6 @@ extern const int TAB_SETTINGS;
 
 + (NSArray *)privilegedFileList;
 extern NSString* const DEFAULT_FILE;
+
++ (NSArray*)syntaxOverlays;
 @end

@@ -76,7 +76,7 @@
             if (!capturableScopes) {
                 capturableScopes = [self capturableScopes:scope];
             }
-            if ([capturableScopes[0] isEqualToString:@"comment"] && ![pairs isEqual:_overlapStore]) {
+            if ([_overlays containsObject:capturableScopes[0]] && ![pairs isEqual:_overlapStore]) {
                 [_overlapStore addParserResult:[[SyntaxParserResult alloc] initWithScope:scope Ranges:ranges CPS:capturableScopes]];
                 continue;
             }
