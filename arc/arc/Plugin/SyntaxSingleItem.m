@@ -43,4 +43,8 @@
     }
     return store;
 }
+
+- (SyntaxParserResult*)forwardParse:(NSString *)content WithResidue:(NSRange)range {
+    
+}
 @end

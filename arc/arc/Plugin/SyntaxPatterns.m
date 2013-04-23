@@ -113,6 +113,7 @@
     return accum;
 }
 
+
 - (SyntaxMatchStore*)parseResultsForRepoRule:(NSString *)key
                                      Content:(NSString *)content
                                        Range:(NSRange)range
@@ -124,4 +125,6 @@
     }
     return nil;
 }
+
+
 @end
