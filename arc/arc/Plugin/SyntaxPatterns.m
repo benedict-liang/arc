@@ -13,7 +13,7 @@
  */
 #import "SyntaxPatterns.h"
 @interface SyntaxPatterns ()
-
+@property NSArray* syntaxOverlays;
 @end
 @implementation SyntaxPatterns
 
@@ -22,6 +22,7 @@
 }
 - (id)initWithBundlePatterns:(NSArray *)bundlePatterns Repository:(NSDictionary *)repo{
     _parent = nil;
+    _syntaxOverlays = [Constants syntaxOverlays];
     NSMutableArray* accum = [NSMutableArray array];
     
     for (NSDictionary* syntaxItem in bundlePatterns) {
@@ -126,5 +127,18 @@
     return nil;
 }
 
+- (SyntaxMatchStore*)forwardParseForContent:(NSString *)content Range:(NSRange)range {
+    SyntaxMatchStore* accum = [[SyntaxMatchStore alloc] init];
+    ScopeRange* min = [ScopeRange scope:@"" Range:NSMakeRange(content.length, 0) CPS:nil];
+    NSRange residueRange = NSMakeRange(0, content.length);
+    
+    for (id<SyntaxItemProtocol> syntaxItem in _patterns) {
+        ScopeRange* res = [syntaxItem forwardParse:content WithResidue:residueRange OverlayScopes:_syntaxOverlays];
+        if (res) {
+            min = [res minByRange:min];
+        }
+    }
+    
+}
 
 @end

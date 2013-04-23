@@ -19,4 +19,10 @@
 + (ScopeRange*)scope:(NSString *)s Range:(NSRange)r CPS:(NSArray *)cps{
     return [[ScopeRange alloc] initWithScope:s Range:r CPS:cps];
 }
+- (ScopeRange*)minByRange:(ScopeRange *)s1 {
+    if (_range.location < s1.range.location) {
+        return self;
+    }
+    return s1;
+}
 @end

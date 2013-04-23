@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SyntaxItemProtocol.h"
 #import "SyntaxPatternsDelegate.h"
+#import "ScopeRange.h"
 
 @interface SyntaxPairItem : NSObject <SyntaxItemProtocol>
 @property NSString* begin;

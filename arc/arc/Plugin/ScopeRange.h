@@ -14,5 +14,6 @@
 @property NSArray* capturableScopes;
 - (id)initWithScope:(NSString*)s Range:(NSRange)r CPS:(NSArray*)cps;
 + (ScopeRange*)scope:(NSString*)s Range:(NSRange)r CPS:(NSArray*)cps;
+- (ScopeRange*)minByRange:(ScopeRange*)s1;
 
 @end
