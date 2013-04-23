@@ -132,7 +132,7 @@
     
     NSRange residueRange = NSMakeRange(0, content.length);
     while (residueRange.location < content.length) {
-        NSLog(@"%@",[Utils valueFromRange:residueRange]);
+       // NSLog(@"%@",[Utils valueFromRange:residueRange]);
         ScopeRange* min = [ScopeRange scope:@"" Range:NSMakeRange(content.length, 0) CPS:nil];
         for (id<SyntaxItemProtocol> syntaxItem in _patterns) {
             ScopeRange* res = [syntaxItem forwardParse:content WithResidue:residueRange OverlayScopes:_syntaxOverlays];
@@ -141,7 +141,7 @@
             }
         }
         if (![min.scope isEqualToString:@""]) {
-            NSLog(@"min: %@",min);
+         //   NSLog(@"min: %@",min);
             [accum addScopeRange:min];
             CFIndex minEnds = min.range.location + min.range.length+1;
             residueRange = NSMakeRange(minEnds, content.length - minEnds);
