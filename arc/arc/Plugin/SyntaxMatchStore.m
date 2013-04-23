@@ -48,10 +48,23 @@
 }
 - (NSArray*)scopes {
     NSMutableArray* unsortedKeys = [NSMutableArray arrayWithArray:[_store allKeys]];
-    [unsortedKeys sortUsingComparator:^NSComparisonResult(NSString* s1, NSString*s2) {
-        
+    [unsortedKeys sortUsingComparator:^NSComparisonResult(id k1, id k2) {
+        NSString* s1 = (NSString*)k1;
+        NSString* s2 = (NSString*)k2;
+        NSArray* cp1 = [self capturableScopesForScope:s1];
+        NSArray* cp2 = [self capturableScopesForScope:s2];
+        NSArray* overlays = [Constants syntaxOverlays];
+        if ([overlays containsObject:cp1[0]] && [overlays containsObject:cp2[0]]) {
+            int i1 = [overlays indexOfObject:cp1[0]];
+            int i2 = [overlays indexOfObject:cp2[0]];
+            if (i1 > i2) {
+                return NSOrderedAscending;
+            }
+            return NSOrderedDescending;
+        }
+        return NSOrderedSame;
     }];
-    
+    return unsortedKeys;
 }
 -(NSString*)description {
     return _store.description;
