@@ -155,7 +155,8 @@
                             foldEnds:(NSArray *)foldEnds
 {
     NSMutableArray* accum = [NSMutableArray array];
-    for (int i = 0; i < foldRanges.count; i++) {
+    int numFolds = MIN(MIN(foldRanges.count, foldStarts.count),foldEnds.count);
+    for (int i = 0; i < numFolds; i++) {
         FoldNode* node = [[FoldNode alloc] initWithContentRange:[Utils rangeFromValue:[foldRanges objectAtIndex:i]]
                                                      startRange:[Utils rangeFromValue:[foldStarts objectAtIndex:i]]
                                                        endRange:[Utils rangeFromValue:[foldEnds objectAtIndex:i]]];
