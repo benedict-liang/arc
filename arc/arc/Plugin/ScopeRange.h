@@ -11,7 +11,8 @@
 @interface ScopeRange : NSObject
 @property NSRange range;
 @property NSString* scope;
-- (id)initWithScope:(NSString*)s Range:(NSRange)r;
-+ (ScopeRange*)scope:(NSString*)s Range:(NSRange)r;
+@property NSArray* capturableScopes;
+- (id)initWithScope:(NSString*)s Range:(NSRange)r CPS:(NSArray*)cps;
++ (ScopeRange*)scope:(NSString*)s Range:(NSRange)r CPS:(NSArray*)cps;
 
 @end

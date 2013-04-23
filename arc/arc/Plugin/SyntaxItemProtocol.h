@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "SyntaxMatchStore.h"
+#import "ScopeRange.h"
 #import "RegexUtils.h"
 @protocol SyntaxItemProtocol <NSObject>
 - (SyntaxMatchStore*)parseContent:(NSString*)content WithRange:(NSRange)range;
-- (SyntaxParserResult*)forwardParse:(NSString*)content WithResidue:(NSRange)range;
+- (ScopeRange*)forwardParse:(NSString*)content WithResidue:(NSRange)range;
 
 @optional
 @property NSString* name;

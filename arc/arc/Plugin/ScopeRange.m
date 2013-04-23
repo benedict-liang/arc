@@ -10,12 +10,13 @@
 
 @implementation ScopeRange
 
-- (id)initWithScope:(NSString *)s Range:(NSRange)r {
+- (id)initWithScope:(NSString *)s Range:(NSRange)r CPS:(NSArray *)cps{
     _scope = s;
     _range = r;
+    _capturableScopes = cps;
     return self;
 }
-+ (ScopeRange*)scope:(NSString *)s Range:(NSRange)r {
-    return [[ScopeRange alloc] initWithScope:s Range:r];
++ (ScopeRange*)scope:(NSString *)s Range:(NSRange)r CPS:(NSArray *)cps{
+    return [[ScopeRange alloc] initWithScope:s Range:r CPS:cps];
 }
 @end
