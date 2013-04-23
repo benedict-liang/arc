@@ -89,6 +89,13 @@
     [self addParserResult:temp];
 }
 
+- (void)removeDuplicateScopesWith:(SyntaxMatchStore*)store {
+    for (NSString* scope in store.store) {
+        if ([_store objectForKey:scope]) {
+            [_store removeObjectForKey:scope];
+        }
+    }
+}
 - (void)postHook {
 //    NSMutableDictionary* overlapRanges = [NSMutableDictionary dictionary];
 //    for (NSString* scope in _store) {
