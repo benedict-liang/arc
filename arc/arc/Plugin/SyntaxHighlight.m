@@ -164,7 +164,7 @@
 
 
     _matchStore = [_syntaxPatterns parseResultsForContent:_content Range:NSMakeRange(0, _content.length)];
-    NSLog(@"blowing up...");
+    //NSLog(@"blowing up...");
     
     [output removeAttributesForSettingKey:SYNTAX_KEY];
     [self applyForeground:output withTheme:theme];
@@ -172,7 +172,7 @@
     [self applyStylesTo:output withRanges:_renderTimeOverlapStore withTheme:theme];
     [self setupFoldTree];
     [self updateView:output withTheme:theme];
-    NSLog(@"view updated!");
+    //NSLog(@"view updated!");
     _overlapStore = [_syntaxPatterns forwardParseForContent:_content Range:NSMakeRange(0, _content.length)];
     //NSLog(@"%@",_overlapStore);
 
@@ -184,7 +184,7 @@
     //[self applyStylesTo:output withRanges:_renderTimeOverlapStore withTheme:theme];
     [self applyStylesTo:output withRanges:_overlapStore withTheme:theme];
     [self updateView:output withTheme:theme];
-     NSLog(@"view updated!");
+     //NSLog(@"view updated!");
 }
 
 - (void)renderOn:(NSDictionary *)options {
