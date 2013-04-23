@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Dropbox/Dropbox.h>
 #import "DropBoxFolder.h"
-#import "LocalRootFolder.h"
+#import "RootFolder.h"
 
 @interface DropBoxRootFolder : DropBoxFolder
 

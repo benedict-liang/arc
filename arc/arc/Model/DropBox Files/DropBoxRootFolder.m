@@ -27,7 +27,7 @@ static DropBoxRootFolder *sharedDropBoxRootFolder = nil;
     DBPath *rootPath = [DBPath root];
     NSString *ourPath = [rootPath stringValue];
     
-    if (self = [super initWithName:FOLDER_DROPBOX_ROOT identifier:ourPath parent:[LocalRootFolder sharedLocalRootFolder]]) {
+    if (self = [super initWithName:FOLDER_DROPBOX_ROOT identifier:ourPath parent:[RootFolder sharedRootFolder]]) {
         _isRemovable = NO;
     }
     return self;
