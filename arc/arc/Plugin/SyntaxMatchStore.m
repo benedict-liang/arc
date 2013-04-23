@@ -82,6 +82,11 @@
     return _store.description;
 }
 
+-(void)addScopeRange:(ScopeRange*)scopeRange {
+    SyntaxParserResult* temp = [[SyntaxParserResult alloc] initWithScope:scopeRange.scope Ranges:@[scopeRange.range] CPS:scopeRange.capturableScopes];
+    [self addParserResult:temp];
+}
+
 - (void)postHook {
 //    NSMutableDictionary* overlapRanges = [NSMutableDictionary dictionary];
 //    for (NSString* scope in _store) {

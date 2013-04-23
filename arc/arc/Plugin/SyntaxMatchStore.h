@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SyntaxParserResult.h"
+#import "ScopeRange.h"
 /*
  structure:
  { scope : {
@@ -25,4 +26,5 @@
 - (NSArray*)capturableScopesForScope:(NSString*)scope;
 - (NSArray*)allRanges;
 - (void)postHook;
+- (void)addScopeRange:(ScopeRange*)scopeRange;
 @end
