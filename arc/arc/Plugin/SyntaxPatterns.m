@@ -140,6 +140,13 @@
                 min = [res minByRange:min];
             }
         }
+        for (id k in _repository) {
+            id<SyntaxItemProtocol> syntaxItem = [_repository objectForKey:k];
+            ScopeRange* res = [syntaxItem forwardParse:content WithResidue:residueRange OverlayScopes:_syntaxOverlays];
+            if (res) {
+                min = [res minByRange:min];
+            }
+        }
         if (![min.scope isEqualToString:@""]) {
          //   NSLog(@"min: %@",min);
             [accum addScopeRange:min];
