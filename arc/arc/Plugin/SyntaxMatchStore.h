@@ -27,4 +27,5 @@
 - (NSArray*)allRanges;
 - (void)postHook;
 - (void)addScopeRange:(ScopeRange*)scopeRange;
+- (void)removeDuplicateScopesWith:(SyntaxMatchStore*)store;
 @end

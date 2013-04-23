@@ -28,9 +28,7 @@
 -(SyntaxMatchStore*)parseContent:(NSString *)content WithRange:(NSRange)range {
     
     SyntaxMatchStore* store = [[SyntaxMatchStore alloc] init];
-    if ([[Constants syntaxOverlays] containsObject:_capturableScopes[0]]) {
-        return store;
-    }
+
     [self addCaptures:_beginCaptures
               Pattern:_begin
               toStore:store

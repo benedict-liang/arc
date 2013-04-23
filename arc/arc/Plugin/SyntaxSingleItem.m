@@ -26,9 +26,7 @@
 
 - (SyntaxMatchStore*)parseContent:(NSString *)content WithRange:(NSRange)range {
     SyntaxMatchStore* store = [[SyntaxMatchStore alloc] init];
-    if ([[Constants syntaxOverlays] containsObject:_capturableScopes[0]]) {
-        return store;
-    }
+
     if (_name) {
         NSArray* nameMatches = [RegexUtils foundPattern:_match capture:0 range:range content:content];
         SyntaxParserResult* result = [[SyntaxParserResult alloc] initWithScope:_name Ranges:nameMatches CPS:_capturableScopes];
