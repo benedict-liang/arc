@@ -83,37 +83,38 @@
 }
 
 - (void)postHook {
-    NSMutableDictionary* overlapRanges = [NSMutableDictionary dictionary];
-    for (NSString* scope in _store) {
-        NSMutableDictionary* dict = [_store objectForKey:scope];
-        NSArray* cpS = [dict objectForKey:@"capturableScopes"];
-        if ([_syntaxOverlays containsObject:cpS[0]]) {
-            int priority = [_syntaxOverlays indexOfObject:cpS[0]];
-            [overlapRanges setObject:[dict objectForKey:@"ranges"] forKey:[NSNumber numberWithInt:priority]];
-            
-        }
-    }
-    for (NSString* scope in _store) {
-        NSMutableDictionary* dict = [_store objectForKey:scope];
-        NSMutableArray* ranges = [dict objectForKey:@"ranges"];
-        NSArray* iter = [NSArray arrayWithArray:ranges];
-        NSArray* cpS = [dict objectForKey:@"capturableScopes"];
-        int priority = INT16_MAX;
-        if ([_syntaxOverlays containsObject:cpS[0]]) {
-            priority = [_syntaxOverlays indexOfObject:cpS[0]];
-        }
-        for (NSValue* v in iter) {
-            NSRange testRange = [Utils rangeFromValue:v];
-            
-            for (id k in overlapRanges) {
-                int checkPriority = [k intValue];
-                if (priority < checkPriority) {
-                    
-                }
-            }
-            
-        }
-    
-    }
+//    NSMutableDictionary* overlapRanges = [NSMutableDictionary dictionary];
+//    for (NSString* scope in _store) {
+//        NSMutableDictionary* dict = [_store objectForKey:scope];
+//        NSArray* cpS = [dict objectForKey:@"capturableScopes"];
+//        if ([_syntaxOverlays containsObject:cpS[0]]) {
+//            int priority = [_syntaxOverlays indexOfObject:cpS[0]];
+//            [overlapRanges setObject:[dict objectForKey:@"ranges"] forKey:[NSNumber numberWithInt:priority]];
+//            
+//        }
+//    }
+//    for (NSString* scope in _store) {
+//        NSMutableDictionary* dict = [_store objectForKey:scope];
+//        NSMutableArray* ranges = [dict objectForKey:@"ranges"];
+//        NSArray* iter = [NSArray arrayWithArray:ranges];
+//        NSArray* cpS = [dict objectForKey:@"capturableScopes"];
+//        int priority = INT16_MAX;
+//        if ([_syntaxOverlays containsObject:cpS[0]]) {
+//            priority = [_syntaxOverlays indexOfObject:cpS[0]];
+//        }
+//        for (NSValue* v in iter) {
+//            NSRange testRange = [Utils rangeFromValue:v];
+//            
+//            for (id k in overlapRanges) {
+//                int checkPriority = [k intValue];
+//                //if scope is of lower priority, remove its itersections
+//                if (priority > checkPriority) {
+//                    
+//                }
+//            }
+//            
+//        }
+//    
+//    }
 }
 @end
