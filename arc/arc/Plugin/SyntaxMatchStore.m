@@ -48,6 +48,9 @@
 }
 - (NSArray*)scopes {
     NSMutableArray* unsortedKeys = [NSMutableArray arrayWithArray:[_store allKeys]];
+    if (!unsortedKeys) {
+        return @[];
+    }
     [unsortedKeys sortUsingComparator:^NSComparisonResult(id k1, id k2) {
         NSString* s1 = (NSString*)k1;
         NSString* s2 = (NSString*)k2;
