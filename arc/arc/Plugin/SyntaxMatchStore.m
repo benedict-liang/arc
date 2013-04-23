@@ -83,7 +83,9 @@
 }
 
 -(void)addScopeRange:(ScopeRange*)scopeRange {
-    SyntaxParserResult* temp = [[SyntaxParserResult alloc] initWithScope:scopeRange.scope Ranges:@[scopeRange.range] CPS:scopeRange.capturableScopes];
+    SyntaxParserResult* temp = [[SyntaxParserResult alloc] initWithScope:scopeRange.scope
+                                                                  Ranges:@[[Utils valueFromRange:scopeRange.range]]
+                                                                     CPS:scopeRange.capturableScopes];
     [self addParserResult:temp];
 }
 

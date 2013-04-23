@@ -76,10 +76,10 @@
             if (!capturableScopes) {
                 capturableScopes = [self capturableScopes:scope];
             }
-            if ([_overlays containsObject:capturableScopes[0]] && ![pairs isEqual:_overlapStore]) {
-                [_overlapStore addParserResult:[[SyntaxParserResult alloc] initWithScope:scope Ranges:ranges CPS:capturableScopes]];
-                continue;
-            }
+//            if ([_overlays containsObject:capturableScopes[0]] && ![pairs isEqual:_overlapStore]) {
+//                [_overlapStore addParserResult:[[SyntaxParserResult alloc] initWithScope:scope Ranges:ranges CPS:capturableScopes]];
+//                continue;
+//            }
 //            if ([[capturableScopes objectAtIndex:0] isEqualToString:@"meta"]) {
 //                NSLog(@"arrgh");
 //            }
@@ -160,22 +160,17 @@
     _finalOutput = output;
     NSDictionary* theme = [options objectForKey:@"theme"];
 
-  //  if (!_matchesDone) {
 
-        _matchStore = [_syntaxPatterns parseResultsForContent:_content Range:NSMakeRange(0, _content.length)];
-    //[_matchStore postHook];
-        //NSLog(@"%@",_matchStore);
-        
-        [self applyStylesTo:output withTheme:theme];
+    _matchStore = [_syntaxPatterns parseResultsForContent:_content Range:NSMakeRange(0, _content.length)];
+    NSLog(@"blowing up...");
+    _overlapStore = [_syntaxPatterns forwardParseForContent:_content Range:NSMakeRange(0, _content.length)];
+    NSLog(@"%@",_overlapStore);
+    [self applyStylesTo:output withTheme:theme];
     
-        [self setupFoldTree];
-        [self updateView:output withTheme:theme];
-        NSLog(@"view updated!");
-   //     _matchesDone = YES;
-   // }
-    
-    // tell SH factory to remove self from thread pool.
-    //[_factory removeFromThreadPool:self];
+    [self setupFoldTree];
+    [self updateView:output withTheme:theme];
+    NSLog(@"view updated!");
+
 
 }
 

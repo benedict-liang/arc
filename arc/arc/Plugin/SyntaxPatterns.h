@@ -20,6 +20,9 @@
 - (id)initWithBundlePatterns:(NSArray *)bundlePatterns Parent:(SyntaxPatterns*)p;
 
 - (SyntaxMatchStore*)parseResultsForContent:(NSString*)content Range:(NSRange)range;
+
+- (SyntaxMatchStore*)forwardParseForContent:(NSString *)content Range:(NSRange)range;
+
 @property NSArray* patterns;
 @property NSDictionary* repository;
 @property SyntaxPatterns* parent;
