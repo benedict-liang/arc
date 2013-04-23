@@ -26,7 +26,7 @@
     if (self) {
         _delegate = delegate;
         _currentFile = file;
-        _overlays = @[@"string",@"comment"];
+        _overlays = [Constants syntaxOverlays];
         _bundle = [TMBundleSyntaxParser plistForExt:[file extension]];
         
         _syntaxPatterns = [[SyntaxPatterns alloc] initWithBundlePatterns:[_bundle objectForKey:@"patterns"] Repository:[_bundle objectForKey:@"repository"]];
