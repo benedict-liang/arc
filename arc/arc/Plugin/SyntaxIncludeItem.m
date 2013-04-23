@@ -65,4 +65,7 @@
 -(ScopeRange*)forwardParse:(NSString *)content WithResidue:(NSRange)range OverlayScopes:(NSArray *)overlays {
     return nil;
 }
+- (SyntaxMatchStore*)storeForwardParse:(NSString*)content WithResidue:(NSRange)range OverlayScopes:(NSArray*)overlays {
+    return nil;
+}
 @end

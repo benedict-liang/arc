@@ -15,4 +15,5 @@
                                      Content:(NSString*)content
                                        Range:(NSRange)range;
 -(id<SyntaxPatternsDelegate>)patternsForBundlePatterns:(NSArray*)ps Repository:(NSDictionary*)repo;
+- (SyntaxMatchStore*)forwardParseForContent:(NSString *)content Range:(NSRange)range;
 @end

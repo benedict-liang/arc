@@ -157,6 +157,20 @@
         }
         
     }
+    for (id<SyntaxItemProtocol> syntaxItem in _patterns) {
+        SyntaxMatchStore* res = [syntaxItem storeForwardParse:content WithResidue:range OverlayScopes:_syntaxOverlays];
+        if (res) {
+            [accum mergeWithStore:res];
+        }
+    
+    }
+    for (id k in _repository) {
+        id<SyntaxItemProtocol> syntaxItem = [_repository objectForKey:k];
+        SyntaxMatchStore* res = [syntaxItem storeForwardParse:content WithResidue:range OverlayScopes:_syntaxOverlays];
+        if (res) {
+         [accum mergeWithStore:res];   
+        }
+    }
     return accum;
 }
 
