@@ -164,8 +164,10 @@
 
         _matchStore = [_syntaxPatterns parseResultsForContent:_content Range:NSMakeRange(0, _content.length)];
         //NSLog(@"%@",_matchStore);
-        [self setupFoldTree];
+        
         [self applyStylesTo:output withTheme:theme];
+    
+        [self setupFoldTree];
         [self updateView:output withTheme:theme];
         NSLog(@"view updated!");
    //     _matchesDone = YES;

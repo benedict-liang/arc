@@ -36,6 +36,13 @@
     }
     return nil;
 }
+- (NSArray*)allRanges {
+    NSMutableArray* accum = [NSMutableArray array];
+    for (id k in _store) {
+        [accum addObjectsFromArray:[(NSDictionary*)[_store objectForKey:k] objectForKey:@"ranges"]];
+    }
+    return accum;
+}
 - (NSArray*)capturableScopesForScope:(NSString*)scope {
     return [(NSDictionary*)[_store objectForKey:scope] objectForKey:@"capturableScopes"];
 }

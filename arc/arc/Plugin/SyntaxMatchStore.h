@@ -23,4 +23,5 @@
 - (NSArray*)rangesForScope:(NSString*)scope;
 - (NSArray*)scopes;
 - (NSArray*)capturableScopesForScope:(NSString*)scope;
+- (NSArray*)allRanges;
 @end
