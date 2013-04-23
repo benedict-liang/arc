@@ -141,6 +141,7 @@
             }
         }
         if (![min.scope isEqualToString:@""]) {
+            NSLog(@"min: %@",min);
             [accum addScopeRange:min];
             CFIndex minEnds = min.range.location + min.range.length+1;
             residueRange = NSMakeRange(minEnds, content.length - minEnds);

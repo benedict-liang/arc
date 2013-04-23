@@ -113,8 +113,10 @@
         if (beginRange.location >= content.length) {
             return nil;
         }
-        NSRange endRange = [RegexUtils findFirstPattern:_end range:range content:content];
-        if (endRange.location >= content.length) {
+        CFIndex bEnds = beginRange.location + beginRange.length;
+        NSRange bResidue = NSMakeRange(bEnds, content.length - bEnds);
+        NSRange endRange = [RegexUtils findFirstPattern:_end range:bResidue content:content];
+        if (endRange.location >= content.length || NSEqualRanges(endRange, NSMakeRange(0, 0))) {
             return nil;
         }
         CFIndex eEnds = endRange.location + endRange.length;

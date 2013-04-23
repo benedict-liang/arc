@@ -25,4 +25,7 @@
     }
     return s1;
 }
+- (NSString*)description {
+    return [NSString stringWithFormat:@"scope: %@\n range: %@",_scope,[Utils valueFromRange:_range]];
+}
 @end
