@@ -44,7 +44,14 @@
     return store;
 }
 
-- (SyntaxParserResult*)forwardParse:(NSString *)content WithResidue:(NSRange)range {
-    
+- (ScopeRange*)forwardParse:(NSString *)content WithResidue:(NSRange)range OverlayScopes:(NSArray *)overlays{
+    if (_name && [overlays containsObject:_capturableScopes[0]]) {
+        NSRange foundRange = [RegexUtils findFirstPattern:_match range:range content:content];
+        if (foundRange.location < content.length) {
+            return [ScopeRange scope:_name Range:foundRange CPS:_capturableScopes];
+        }
+        return nil;
+    }
+    return nil;
 }
 @end
