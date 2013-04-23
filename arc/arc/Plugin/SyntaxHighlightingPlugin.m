@@ -133,6 +133,7 @@
         }
 
     } else {
+        sh.delegate = delegate;
         //use the cached sh
         ArcAttributedString *copy =
         [[ArcAttributedString alloc] initWithArcAttributedString:arcAttributedString];
