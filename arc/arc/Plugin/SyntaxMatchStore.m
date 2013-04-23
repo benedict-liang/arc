@@ -79,4 +79,11 @@
 -(NSString*)description {
     return _store.description;
 }
+
+- (void)postHook {
+    for (NSString* scope in _store) {
+        NSMutableDictionary* dict = [_store objectForKey:scope];
+        NSArray* cpS = [dict objectForKey:@"capturableScopes"];
+    }
+}
 @end
