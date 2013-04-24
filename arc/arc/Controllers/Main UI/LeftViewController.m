@@ -137,7 +137,11 @@
         id<Folder> current = folder;
         NSMutableArray *pathToRootFolder = [NSMutableArray array];
         while ([current parent]) {
-            [pathToRootFolder addObject:[current parent]];
+            if ([current parent] == [LocalRootFolder sharedLocalRootFolder]) {
+                [pathToRootFolder addObject:[RootFolder sharedRootFolder]];
+            } else {
+                [pathToRootFolder addObject:[current parent]];
+            }
             current = (id<Folder>)[current parent];
         }
         
