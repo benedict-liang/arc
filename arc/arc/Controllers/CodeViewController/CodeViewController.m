@@ -353,6 +353,10 @@
     [self renderFile];
 }
 
+- (id<File>)getCurrentFile {
+    return _currentFile;
+}
+
 #pragma mark - Execute Plugin Methods
 
 - (void)execPreRenderPluginsAffectingBounds:(BOOL)affectsBounds
