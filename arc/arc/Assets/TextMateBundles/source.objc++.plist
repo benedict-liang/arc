@@ -14,25 +14,25 @@
 	</array>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-						 /\*\*(?!\*)
-						|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))
-						|^@(interface|protocol|implementation)\b
-					</string>
+			 /\*\*(?!\*)
+			|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))
+			|^@(interface|protocol|implementation)\b
+		</string>
 	<key>foldingStopMarker</key>
 	<string>(?&lt;!\*)\*\*/|^\s*\}|^@end\b</string>
 	<key>keyEquivalent</key>
-	<string>~^O</string>
+	<string>^~O</string>
 	<key>name</key>
 	<string>Objective-C++</string>
 	<key>patterns</key>
 	<array>
 		<dict>
 			<key>include</key>
-			<string>source.objc</string>
+			<string>source.c++</string>
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>source.c++</string>
+			<string>source.objc</string>
 		</dict>
 	</array>
 	<key>scopeName</key>

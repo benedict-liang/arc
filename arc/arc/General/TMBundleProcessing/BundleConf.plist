@@ -44,8 +44,6 @@
 		<integer>1</integer>
 		<key>source.css</key>
 		<integer>1</integer>
-		<key>source.css.beta</key>
-		<integer>1</integer>
 		<key>source.d</key>
 		<integer>1</integer>
 		<key>source.diff</key>
@@ -144,6 +142,8 @@
 		<integer>1</integer>
 		<key>source.perl</key>
 		<integer>1</integer>
+		<key>source.php</key>
+		<integer>1</integer>
 		<key>source.php.cake</key>
 		<integer>1</integer>
 		<key>source.plist.tm-grammar</key>
@@ -185,6 +185,8 @@
 		<key>source.s5</key>
 		<integer>1</integer>
 		<key>source.sass</key>
+		<integer>1</integer>
+		<key>source.scala</key>
 		<integer>1</integer>
 		<key>source.scheme</key>
 		<integer>1</integer>
@@ -274,6 +276,8 @@
 		<integer>1</integer>
 		<key>text.man</key>
 		<integer>1</integer>
+		<key>text.markdown</key>
+		<integer>1</integer>
 		<key>text.moinmoin</key>
 		<integer>1</integer>
 		<key>text.plain</key>
@@ -325,9 +329,33 @@
 	</dict>
 	<key>fileTypes</key>
 	<dict>
+		<key>.bash_login</key>
+		<array>
+			<string>source.shell.plist</string>
+		</array>
+		<key>.bash_logout</key>
+		<array>
+			<string>source.shell.plist</string>
+		</array>
+		<key>.bash_profile</key>
+		<array>
+			<string>source.shell.plist</string>
+		</array>
+		<key>.bashrc</key>
+		<array>
+			<string>source.shell.plist</string>
+		</array>
+		<key>.profile</key>
+		<array>
+			<string>source.shell.plist</string>
+		</array>
 		<key>.reminders</key>
 		<array>
 			<string>source.remind.plist</string>
+		</array>
+		<key>.textmate_init</key>
+		<array>
+			<string>source.shell.plist</string>
 		</array>
 		<key>C</key>
 		<array>
@@ -340,6 +368,10 @@
 		<key>DOT</key>
 		<array>
 			<string>source.dot.plist</string>
+		</array>
+		<key>Emakefile</key>
+		<array>
+			<string>source.erlang.plist</string>
 		</array>
 		<key>F</key>
 		<array>
@@ -462,39 +494,20 @@
 		<array>
 			<string>source.asp.plist</string>
 		</array>
-		<key>ascx</key>
-		<array>
-			<string>text.html.asp.net.plist</string>
-		</array>
 		<key>asm</key>
 		<array>
 			<string>source.mips.plist</string>
 		</array>
 		<key>asp</key>
 		<array>
-			<string>text.html.asp.plist</string>
-		</array>
-		<key>aspx</key>
-		<array>
 			<string>text.html.asp.net.plist</string>
+			<string>text.html.asp.plist</string>
 		</array>
 		<key>autohandler</key>
 		<array>
 			<string>text.html.mason.plist</string>
 		</array>
-		<key>bash_login</key>
-		<array>
-			<string>source.shell.plist</string>
-		</array>
-		<key>bash_logout</key>
-		<array>
-			<string>source.shell.plist</string>
-		</array>
-		<key>bash_profile</key>
-		<array>
-			<string>source.shell.plist</string>
-		</array>
-		<key>bashrc</key>
+		<key>bash</key>
 		<array>
 			<string>source.shell.plist</string>
 		</array>
@@ -541,6 +554,10 @@
 		<key>build</key>
 		<array>
 			<string>source.nant-build.plist</string>
+		</array>
+		<key>builder</key>
+		<array>
+			<string>source.ruby.rails.plist</string>
 		</array>
 		<key>c</key>
 		<array>
@@ -636,12 +653,19 @@
 		</array>
 		<key>css</key>
 		<array>
-			<string>source.css.beta.plist</string>
+			<string>source.css.plist</string>
+		</array>
+		<key>css.erb</key>
+		<array>
 			<string>source.css.plist</string>
 		</array>
 		<key>csv</key>
 		<array>
 			<string>text.tabular.csv.plist</string>
+		</array>
+		<key>ctp</key>
+		<array>
+			<string>text.html.basic.plist</string>
 		</array>
 		<key>cxx</key>
 		<array>
@@ -666,6 +690,10 @@
 		<key>dhandler</key>
 		<array>
 			<string>text.html.mason.plist</string>
+		</array>
+		<key>di</key>
+		<array>
+			<string>source.d.plist</string>
 		</array>
 		<key>dict</key>
 		<array>
@@ -714,6 +742,10 @@
 		<key>el</key>
 		<array>
 			<string>source.lisp.plist</string>
+		</array>
+		<key>emakefile</key>
+		<array>
+			<string>source.erlang.plist</string>
 		</array>
 		<key>eps</key>
 		<array>
@@ -803,6 +835,7 @@
 		<key>h</key>
 		<array>
 			<string>source.objc.plist</string>
+			<string>source.c++.plist</string>
 			<string>source.c++.qt.plist</string>
 			<string>source.c.plist</string>
 			<string>source.objc++.plist</string>
@@ -847,6 +880,10 @@
 		<array>
 			<string>text.html.basic.plist</string>
 		</array>
+		<key>hxx</key>
+		<array>
+			<string>source.c++.plist</string>
+		</array>
 		<key>i</key>
 		<array>
 			<string>source.swig.plist</string>
@@ -877,9 +914,17 @@
 			<string>source.ini.plist</string>
 			<string>text.active4d-ini.plist</string>
 		</array>
+		<key>inl</key>
+		<array>
+			<string>source.c++.plist</string>
+		</array>
 		<key>io</key>
 		<array>
 			<string>source.io.plist</string>
+		</array>
+		<key>ipp</key>
+		<array>
+			<string>source.c++.plist</string>
 		</array>
 		<key>java</key>
 		<array>
@@ -938,6 +983,10 @@
 		<array>
 			<string>text.mail.markdown.plist</string>
 		</array>
+		<key>make</key>
+		<array>
+			<string>source.makefile.plist</string>
+		</array>
 		<key>makefile</key>
 		<array>
 			<string>source.makefile.plist</string>
@@ -945,6 +994,26 @@
 		<key>man</key>
 		<array>
 			<string>text.man.plist</string>
+		</array>
+		<key>markdn</key>
+		<array>
+			<string>text.markdown.plist</string>
+		</array>
+		<key>markdown</key>
+		<array>
+			<string>text.markdown.plist</string>
+		</array>
+		<key>matlab</key>
+		<array>
+			<string>source.matlab.plist</string>
+		</array>
+		<key>md</key>
+		<array>
+			<string>text.markdown.plist</string>
+		</array>
+		<key>mdown</key>
+		<array>
+			<string>text.markdown.plist</string>
 		</array>
 		<key>mediawiki</key>
 		<array>
@@ -1012,7 +1081,7 @@
 		</array>
 		<key>php</key>
 		<array>
-			<string>text.html.basic.plist</string>
+			<string>source.php.plist</string>
 		</array>
 		<key>phtml</key>
 		<array>
@@ -1046,10 +1115,6 @@
 		<array>
 			<string>source.qmake.plist</string>
 		</array>
-		<key>profile</key>
-		<array>
-			<string>source.shell.plist</string>
-		</array>
 		<key>properties</key>
 		<array>
 			<string>source.java-props.plist</string>
@@ -1063,6 +1128,10 @@
 			<string>text.xml.plist</string>
 		</array>
 		<key>py</key>
+		<array>
+			<string>source.python.plist</string>
+		</array>
+		<key>pyw</key>
 		<array>
 			<string>source.python.plist</string>
 		</array>
@@ -1150,6 +1219,10 @@
 		<array>
 			<string>text.plist.plist</string>
 		</array>
+		<key>scala</key>
+		<array>
+			<string>source.scala.plist</string>
+		</array>
 		<key>sce</key>
 		<array>
 			<string>source.scilab.plist</string>
@@ -1217,10 +1290,6 @@
 		<key>sql</key>
 		<array>
 			<string>source.sql.plist</string>
-		</array>
-		<key>ss</key>
-		<array>
-			<string>source.shell.plist</string>
 		</array>
 		<key>ssh_config</key>
 		<array>
@@ -1390,6 +1459,10 @@
 		<key>yml</key>
 		<array>
 			<string>source.yaml.plist</string>
+		</array>
+		<key>zsh</key>
+		<array>
+			<string>source.shell.plist</string>
 		</array>
 	</dict>
 </dict>

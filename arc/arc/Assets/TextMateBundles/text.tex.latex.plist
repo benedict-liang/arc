@@ -232,21 +232,21 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-																(													# Capture 1
-																	(\\)											# Marker
-																	(?:
-																		(?:sub){0,2}section							# Functions
-																	  | (?:sub)?paragraph
-																	  | chapter|part|addpart
-																	  | addchap|addsec|minisec
-																	)
-																	(?:\*)?											# Optional Unnumbered
-																)
-																(?:
-																	(\[)([^\[]*?)(\])								# Optional Title
-																)??
-																(\{)												# Opening Bracket
-																</string>
+							(													# Capture 1
+								(\\)											# Marker
+								(?:
+									(?:sub){0,2}section							# Functions
+								  | (?:sub)?paragraph
+								  | chapter|part|addpart
+								  | addchap|addsec|minisec
+								)
+								(?:\*)?											# Optional Unnumbered
+							)
+							(?:
+								(\[)([^\[]*?)(\])								# Optional Title
+							)??
+							(\{)												# Opening Bracket
+							</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -498,7 +498,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?:\s*)((\\)begin)(\{)(lstlisting)(\})(?:(\[).*(\]))?(\s*%.*\n?)?</string>
+			<string>(?:\s*)((\\)begin)(\{)(lstlisting)(\})(?:(\[).*(\]))?(\s*%\s*(?i:Python)\n?)</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>meta</string>
@@ -630,7 +630,132 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?:\s*)((\\)begin)(\{)((?:V|v)erbatim)(\})</string>
+			<string>(?:\s*)((\\)begin)(\{)(lstlisting)(\})(?:(\[).*(\]))?(\s*%.*\n?)?</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.embedded</string>
+				<string>meta.function.embedded.generic</string>
+				<string>meta.function.embedded.generic.latex</string>
+			</array>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.be</string>
+						<string>support.function.be.latex</string>
+					</array>
+					<key>name</key>
+					<string>support.function.be.latex</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.latex</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.function.latex</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.begin</string>
+						<string>punctuation.definition.arguments.begin.latex</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.arguments.begin.latex</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.parameter</string>
+						<string>variable.parameter.function</string>
+						<string>variable.parameter.function.latex</string>
+					</array>
+					<key>name</key>
+					<string>variable.parameter.function.latex</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.end</string>
+						<string>punctuation.definition.arguments.end.latex</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.arguments.end.latex</string>
+				</dict>
+				<key>6</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.optional</string>
+						<string>punctuation.definition.arguments.optional.begin</string>
+						<string>punctuation.definition.arguments.optional.begin.latex</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.arguments.optional.begin.latex</string>
+				</dict>
+				<key>7</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.optional</string>
+						<string>punctuation.definition.arguments.optional.end</string>
+						<string>punctuation.definition.arguments.optional.end.latex</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.arguments.optional.end.latex</string>
+				</dict>
+				<key>8</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.percentage</string>
+						<string>comment.line.percentage.latex</string>
+					</array>
+					<key>name</key>
+					<string>comment.line.percentage.latex</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Put the lstlisting match before the more general environment listing. Someday it would be nice to make this rule general enough to figure out which language is inside the lstlisting environment rather than my own personal use for python. --Brad</string>
+			<key>contentName</key>
+			<string>source.generic.embedded</string>
+			<key>end</key>
+			<string>((\\)end)(\{)(lstlisting)(\})</string>
+			<key>name</key>
+			<string>meta.function.embedded.generic.latex</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(?:\s*)((\\)begin)(\{)((?:V|v)erbatim|alltt)(\})</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>meta</string>
@@ -709,6 +834,85 @@
 			<string>((\\)end)(\{)(\4)(\})</string>
 			<key>name</key>
 			<string>meta.function.verbatim.latex</string>
+		</dict>
+		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.link</string>
+				<string>meta.function.link.url</string>
+				<string>meta.function.link.url.latex</string>
+			</array>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.url</string>
+						<string>support.function.url.latex</string>
+					</array>
+					<key>name</key>
+					<string>support.function.url.latex</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.latex</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.function.latex</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.begin</string>
+						<string>punctuation.definition.arguments.begin.latex</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.arguments.begin.latex</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>markup</string>
+						<string>markup.underline</string>
+						<string>markup.underline.link</string>
+						<string>markup.underline.link.latex</string>
+					</array>
+					<key>name</key>
+					<string>markup.underline.link.latex</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.arguments</string>
+						<string>punctuation.definition.arguments.end</string>
+						<string>punctuation.definition.arguments.end.latex</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.arguments.end.latex</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?:\s*)((\\)(?:url|href))(\{)([^}]*)(\})</string>
+			<key>name</key>
+			<string>meta.function.link.url.latex</string>
 		</dict>
 		<dict>
 			<key>capturableScopes</key>
@@ -871,20 +1075,20 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-																	(?:\s*)										# Optional whitespace
-																	((\\)begin)									# Marker - Function
-																	(\{)										# Open Bracket
-																		(
-																			(?:
-																				align|equation|eqnarray			# Argument
-																			  | multline|aligned|alignat
-																			  | split|gather|gathered
-																			)
-																			(?:\*)?								# Optional Unnumbered
-																		)
-																	(\})										# Close Bracket
-																	(\s*\n)?				# Match to end of line absent of content
-																</string>
+								(?:\s*)										# Optional whitespace
+								((\\)begin)									# Marker - Function
+								(\{)										# Open Bracket
+									(
+										(?:
+											align|equation|eqnarray			# Argument
+										  | multline|aligned|alignat
+										  | split|gather|gathered
+										)
+										(?:\*)?								# Optional Unnumbered
+									)
+								(\})										# Close Bracket
+								(\s*\n)?				# Match to end of line absent of content
+							</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>meta</string>
@@ -962,13 +1166,13 @@
 			<string>string.other.math.block.environment.latex</string>
 			<key>end</key>
 			<string>(?x)
-																	(?:\s*)										# Optional whitespace
-																	((\\)end)									# Marker - Function
-																	(\{)										# Open Bracket
-																		(\4)				# Previous capture from begin
-																	(\})										# Close Bracket
-																	(?:\s*\n)?				# Match to end of line absent of content
-																</string>
+								(?:\s*)										# Optional whitespace
+								((\\)end)									# Marker - Function
+								(\{)										# Open Bracket
+									(\4)				# Previous capture from begin
+								(\})										# Close Bracket
+								(?:\s*\n)?				# Match to end of line absent of content
+							</string>
 			<key>name</key>
 			<string>meta.function.environment.math.latex</string>
 			<key>patterns</key>
@@ -982,13 +1186,13 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-																	(?:\s*)										# Optional whitespace
-																	((\\)begin)									# Marker - Function
-																	(\{)										# Open Bracket
-																		(array|tabular[xy*]?)
-																	(\})										# Close Bracket
-																	(\s*\n)?				# Match to end of line absent of content
-																</string>
+								(?:\s*)										# Optional whitespace
+								((\\)begin)									# Marker - Function
+								(\{)										# Open Bracket
+									(array|tabular[xy*]?)
+								(\})										# Close Bracket
+								(\s*\n)?				# Match to end of line absent of content
+							</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>meta</string>
@@ -1066,13 +1270,13 @@
 			<string>meta.data.environment.tabular.latex</string>
 			<key>end</key>
 			<string>(?x)
-																	(?:\s*)										# Optional whitespace
-																	((\\)end)									# Marker - Function
-																	(\{)										# Open Bracket
-																		(\4)				# Previous capture from begin
-																	(\})										# Close Bracket
-																	(?:\s*\n)?				# Match to end of line absent of content
-																</string>
+								(?:\s*)										# Optional whitespace
+								((\\)end)									# Marker - Function
+								(\{)										# Open Bracket
+									(\4)				# Previous capture from begin
+								(\})										# Close Bracket
+								(?:\s*\n)?				# Match to end of line absent of content
+							</string>
 			<key>name</key>
 			<string>meta.function.environment.tabular.latex</string>
 			<key>patterns</key>
@@ -1631,8 +1835,8 @@
 			</dict>
 			<key>comment</key>
 			<string>We put the keyword in a capture and name this capture, so that disabling spell checking for “keyword” won't be inherited by the argument to \textit{...}.
-												
-												Put specific matches for particular LaTeX keyword.functions before the last two more general functions</string>
+			
+			Put specific matches for particular LaTeX keyword.functions before the last two more general functions</string>
 			<key>contentName</key>
 			<string>markup.italic.textit.latex</string>
 			<key>end</key>
@@ -1866,17 +2070,17 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-																	(
-																		(\\)										# Marker
-																		(?:foot)?(?:full)?(?:no)?(?:short)?		# Function Name
-																		cite
-																		(?:al)?(?:t|p|author|year(?:par)?|title)?[ANP]*
-																		\*?											# Optional Unabreviated
-																	)
-																	(?:(\[)[^\]]*(\]))?								# Optional
-																	(?:(\[)[^\]]*(\]))?								#   Arguments
-																	(\{)											# Opening Bracket
-																</string>
+								(
+									(\\)										# Marker
+									(?:foot)?(?:full)?(?:no)?(?:short)?		# Function Name
+									[cC]ite
+									(?:al)?(?:t|p|author|year(?:par)?|title)?[ANP]*
+									\*?											# Optional Unabreviated
+								)
+								(?:(\[)[^\]]*(\]))?								# Optional
+								(?:(\[)[^\]]*(\]))?								#   Arguments
+								(\{)											# Opening Bracket
+							</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>meta</string>
@@ -2188,6 +2392,108 @@
 					<string>[a-zA-Z0-9\.,:/*!^_-]</string>
 					<key>name</key>
 					<string>variable.parameter.definition.label.latex</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>((\\)verb[\*]?)\s*((\\)scantokens)(\{)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.verb</string>
+						<string>support.function.verb.latex</string>
+					</array>
+					<key>name</key>
+					<string>support.function.verb.latex</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.function</string>
+						<string>punctuation.definition.function.latex</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.function.latex</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.function</string>
+						<string>support.function.verb</string>
+						<string>support.function.verb.latex</string>
+					</array>
+					<key>name</key>
+					<string>support.function.verb.latex</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.verb</string>
+						<string>punctuation.definition.verb.latex</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.verb.latex</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.begin</string>
+						<string>punctuation.definition.begin.latex</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.begin.latex</string>
+				</dict>
+			</dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.verb</string>
+				<string>meta.function.verb.latex</string>
+			</array>
+			<key>contentName</key>
+			<string>markup.raw.verb.latex</string>
+			<key>end</key>
+			<string>(\})</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.end</string>
+						<string>punctuation.definition.end.latex</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.end.latex</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.function.verb.latex</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
 				</dict>
 			</array>
 		</dict>
@@ -2593,18 +2899,6 @@
 					<string>$base</string>
 				</dict>
 			</array>
-		</dict>
-		<dict>
-			<key>capturableScopes</key>
-			<array>
-				<string>meta</string>
-				<string>meta.escape-character</string>
-				<string>meta.escape-character.latex</string>
-			</array>
-			<key>match</key>
-			<string>\\$</string>
-			<key>name</key>
-			<string>meta.escape-character.latex</string>
 		</dict>
 		<dict>
 			<key>capturableScopes</key>

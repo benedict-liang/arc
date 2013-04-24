@@ -38,10 +38,10 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-												                (?: (?i:subroutine\s+) | (?i:function\s+) )
-												              	([A-Za-z_][A-Za-z0-9_:]+)
-												              	 \s*((\()(?=[^)\n]*))?
-												              </string>
+																								                (?: (?i:subroutine\s+) | (?i:function\s+) )
+																								              	([A-Za-z_][A-Za-z0-9_:]+)
+																								              	 \s*((\()(?=[^)\n]*))?
+																								              </string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -455,13 +455,13 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-												        		^\s*\#\s*(define)\s+             # define
-												        		((?&lt;id&gt;[a-zA-Z_][a-zA-Z0-9_]*))  # macro name
-												        		\((
-												        			\s* \g&lt;id&gt; \s*              # first argument
-												        			(, \s* \g&lt;id&gt; \s*)*         # additional arguments
-												        		)\)
-												        	</string>
+																								        		^\s*\#\s*(define)\s+             # define
+																								        		((?&lt;id&gt;[a-zA-Z_][a-zA-Z0-9_]*))  # macro name
+																								        		\((
+																								        			\s* \g&lt;id&gt; \s*              # first argument
+																								        			(, \s* \g&lt;id&gt; \s*)*         # additional arguments
+																								        		)\)
+																								        	</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>meta</string>

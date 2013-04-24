@@ -12,6 +12,10 @@
 	<array>
 		<string>asa</string>
 	</array>
+	<key>foldingStartMarker</key>
+	<string>(?i)^\s*(Public|Private)?\s*(Class|Function|Sub|Property)\s*([a-zA-Z_]\w*)\s*(\(.*\)\s*)?$</string>
+	<key>foldingStopMarker</key>
+	<string>(?i)^\s*End (Class|Function|Sub|Property)\s*$</string>
 	<key>keyEquivalent</key>
 	<string>^~A</string>
 	<key>name</key>
@@ -124,12 +128,40 @@
 		<dict>
 			<key>capturableScopes</key>
 			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.rem</string>
+				<string>comment.line.rem.asp</string>
+			</array>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.comment</string>
+						<string>punctuation.definition.comment.asp</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.comment.asp</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(REM ).*$\n?</string>
+			<key>name</key>
+			<string>comment.line.rem.asp</string>
+		</dict>
+		<dict>
+			<key>capturableScopes</key>
+			<array>
 				<string>keyword</string>
 				<string>keyword.control</string>
 				<string>keyword.control.asp</string>
 			</array>
 			<key>match</key>
-			<string>(?i:\b(If|Then|Else|ElseIf|End If|While|Wend|For|To|Each|Case|Select|End Select|Return|Continue|Do|Until|Loop|Next|With|Exit Do|Exit For|Exit Function|Exit Property|Exit Sub)\b)</string>
+			<string>(?i:\b(If|Then|Else|ElseIf|End If|While|Wend|For|To|Each|In|Step|Case|Select|End Select|Return|Continue|Do|Until|Loop|Next|With|Exit Do|Exit For|Exit Function|Exit Property|Exit Sub)\b)</string>
 			<key>name</key>
 			<string>keyword.control.asp</string>
 		</dict>
@@ -141,7 +173,7 @@
 				<string>keyword.operator.asp</string>
 			</array>
 			<key>match</key>
-			<string>(?i:\b(Mod|And|Not|Or|Xor)\b)</string>
+			<string>=|&gt;=|&lt;|&gt;|&lt;|&lt;&gt;|\+|-|\*|\^|&amp;|\b(?i:(Mod|And|Not|Or|Xor|Is))\b</string>
 			<key>name</key>
 			<string>keyword.operator.asp</string>
 		</dict>
@@ -153,7 +185,7 @@
 				<string>storage.type.asp</string>
 			</array>
 			<key>match</key>
-			<string>(?i:\b(Call|Class|Const|Dim|Redim|Function|Sub|End sub|End Function|Set|Let|Get|New|Randomize|Option Explicit|On Error Resume Next|On Error GoTo)\b)</string>
+			<string>(?i:\b(Call|Class|Const|Dim|Redim|Function|Sub|Property|End Property|End sub|End Function|Set|Let|Get|New|Randomize|Option Explicit|On Error Resume Next|On Error GoTo)\b)</string>
 			<key>name</key>
 			<string>storage.type.asp</string>
 		</dict>
@@ -330,7 +362,7 @@
 				<string>support.function.event.asp</string>
 			</array>
 			<key>match</key>
-			<string>(?i:\b(Application_OnEnd|Application_OnStart|OnTransactionAbort|OnTransactionCommit|Session_OnEnd|Session_OnStart)\b)</string>
+			<string>(?i:\b(Application_OnEnd|Application_OnStart|OnTransactionAbort|OnTransactionCommit|Session_OnEnd|Session_OnStart|Class_Initialize|Class_Terminate)\b)</string>
 			<key>name</key>
 			<string>support.function.event.asp</string>
 		</dict>

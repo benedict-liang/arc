@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>capturableScopes</key>
@@ -47,10 +47,11 @@
 						<string>punctuation</string>
 						<string>punctuation.definition</string>
 						<string>punctuation.definition.tag</string>
-						<string>punctuation.definition.tag.xml</string>
+						<string>punctuation.definition.tag.begin</string>
+						<string>punctuation.definition.tag.begin.xml</string>
 					</array>
 					<key>name</key>
-					<string>punctuation.definition.tag.xml</string>
+					<string>punctuation.definition.tag.begin.xml</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -96,7 +97,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(&lt;!)(DOCTYPE)</string>
+			<string>(&lt;!)(DOCTYPE)\s+([:a-zA-Z_][:a-zA-Z0-9_.-]*)</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>meta</string>
@@ -114,86 +115,44 @@
 						<string>punctuation</string>
 						<string>punctuation.definition</string>
 						<string>punctuation.definition.tag</string>
-						<string>punctuation.definition.tag.xml</string>
+						<string>punctuation.definition.tag.begin</string>
+						<string>punctuation.definition.tag.begin.xml</string>
 					</array>
 					<key>name</key>
-					<string>punctuation.definition.tag.xml</string>
+					<string>punctuation.definition.tag.begin.xml</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>capturableScopes</key>
 					<array>
-						<string>entity</string>
-						<string>entity.name</string>
-						<string>entity.name.tag</string>
-						<string>entity.name.tag.doctype</string>
-						<string>entity.name.tag.doctype.xml</string>
+						<string>keyword</string>
+						<string>keyword.doctype</string>
+						<string>keyword.doctype.xml</string>
 					</array>
 					<key>name</key>
-					<string>entity.name.tag.doctype.xml</string>
+					<string>keyword.doctype.xml</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.documentroot</string>
+						<string>variable.documentroot.xml</string>
+					</array>
+					<key>name</key>
+					<string>variable.documentroot.xml</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(&gt;)</string>
+			<string>\s*(&gt;)</string>
 			<key>name</key>
 			<string>meta.tag.sgml.doctype.xml</string>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>begin</key>
-					<string>(&lt;!)(ENTITY)\s([-_a-zA-Z0-9]+)</string>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>capturableScopes</key>
-							<array>
-								<string>punctuation</string>
-								<string>punctuation.definition</string>
-								<string>punctuation.definition.tag</string>
-								<string>punctuation.definition.tag.xml</string>
-							</array>
-							<key>name</key>
-							<string>punctuation.definition.tag.xml</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>capturableScopes</key>
-							<array>
-								<string>entity</string>
-								<string>entity.name</string>
-								<string>entity.name.tag</string>
-								<string>entity.name.tag.entity</string>
-								<string>entity.name.tag.entity.xml</string>
-							</array>
-							<key>name</key>
-							<string>entity.name.tag.entity.xml</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>capturableScopes</key>
-							<array>
-								<string>meta</string>
-								<string>meta.entity</string>
-								<string>meta.entity.xml</string>
-							</array>
-							<key>name</key>
-							<string>meta.entity.xml</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(&gt;)</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#doublequotedString</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#singlequotedString</string>
-						</dict>
-					</array>
+					<key>include</key>
+					<string>#internalSubset</string>
 				</dict>
 			</array>
 		</dict>
@@ -238,10 +197,11 @@
 						<string>punctuation</string>
 						<string>punctuation.definition</string>
 						<string>punctuation.definition.tag</string>
-						<string>punctuation.definition.tag.xml</string>
+						<string>punctuation.definition.tag.begin</string>
+						<string>punctuation.definition.tag.begin.xml</string>
 					</array>
 					<key>name</key>
-					<string>punctuation.definition.tag.xml</string>
+					<string>punctuation.definition.tag.begin.xml</string>
 				</dict>
 				<key>3</key>
 				<dict>
@@ -302,7 +262,7 @@
 				<string>meta.tag.no-content.xml</string>
 			</array>
 			<key>end</key>
-			<string>(&gt;(&lt;))/(?:([-_a-zA-Z0-9]+)((:)))?([-_a-zA-Z0-9:]+)(&gt;)</string>
+			<string>(&gt;)(&lt;)(/)(?:([-_a-zA-Z0-9]+)((:)))?([-_a-zA-Z0-9:]+)(&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
@@ -312,24 +272,42 @@
 						<string>punctuation</string>
 						<string>punctuation.definition</string>
 						<string>punctuation.definition.tag</string>
-						<string>punctuation.definition.tag.xml</string>
+						<string>punctuation.definition.tag.end</string>
+						<string>punctuation.definition.tag.end.xml</string>
 					</array>
 					<key>name</key>
-					<string>punctuation.definition.tag.xml</string>
+					<string>punctuation.definition.tag.end.xml</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>capturableScopes</key>
 					<array>
-						<string>meta</string>
-						<string>meta.scope</string>
-						<string>meta.scope.between-tag-pair</string>
-						<string>meta.scope.between-tag-pair.xml</string>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.begin</string>
+						<string>punctuation.definition.tag.begin.xml meta</string>
+						<string>punctuation.definition.tag.begin.xml meta.scope</string>
+						<string>punctuation.definition.tag.begin.xml meta.scope.between-tag-pair</string>
+						<string>punctuation.definition.tag.begin.xml meta.scope.between-tag-pair.xml</string>
 					</array>
 					<key>name</key>
-					<string>meta.scope.between-tag-pair.xml</string>
+					<string>punctuation.definition.tag.begin.xml meta.scope.between-tag-pair.xml</string>
 				</dict>
 				<key>3</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.begin</string>
+						<string>punctuation.definition.tag.begin.xml</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.tag.begin.xml</string>
+				</dict>
+				<key>4</key>
 				<dict>
 					<key>capturableScopes</key>
 					<array>
@@ -342,7 +320,7 @@
 					<key>name</key>
 					<string>entity.name.tag.namespace.xml</string>
 				</dict>
-				<key>4</key>
+				<key>5</key>
 				<dict>
 					<key>capturableScopes</key>
 					<array>
@@ -354,7 +332,7 @@
 					<key>name</key>
 					<string>entity.name.tag.xml</string>
 				</dict>
-				<key>5</key>
+				<key>6</key>
 				<dict>
 					<key>capturableScopes</key>
 					<array>
@@ -366,7 +344,7 @@
 					<key>name</key>
 					<string>punctuation.separator.namespace.xml</string>
 				</dict>
-				<key>6</key>
+				<key>7</key>
 				<dict>
 					<key>capturableScopes</key>
 					<array>
@@ -379,17 +357,18 @@
 					<key>name</key>
 					<string>entity.name.tag.localname.xml</string>
 				</dict>
-				<key>7</key>
+				<key>8</key>
 				<dict>
 					<key>capturableScopes</key>
 					<array>
 						<string>punctuation</string>
 						<string>punctuation.definition</string>
 						<string>punctuation.definition.tag</string>
-						<string>punctuation.definition.tag.xml</string>
+						<string>punctuation.definition.tag.end</string>
+						<string>punctuation.definition.tag.end.xml</string>
 					</array>
 					<key>name</key>
-					<string>punctuation.definition.tag.xml</string>
+					<string>punctuation.definition.tag.end.xml</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -420,10 +399,11 @@
 						<string>punctuation</string>
 						<string>punctuation.definition</string>
 						<string>punctuation.definition.tag</string>
-						<string>punctuation.definition.tag.xml</string>
+						<string>punctuation.definition.tag.begin</string>
+						<string>punctuation.definition.tag.begin.xml</string>
 					</array>
 					<key>name</key>
-					<string>punctuation.definition.tag.xml</string>
+					<string>punctuation.definition.tag.begin.xml</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -478,6 +458,22 @@
 			</dict>
 			<key>end</key>
 			<string>(/?&gt;)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.end</string>
+						<string>punctuation.definition.tag.end.xml</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.tag.end.xml</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>meta.tag.xml</string>
 			<key>patterns</key>
@@ -489,57 +485,12 @@
 			</array>
 		</dict>
 		<dict>
-			<key>capturableScopes</key>
-			<array>
-				<string>constant</string>
-				<string>constant.character</string>
-				<string>constant.character.entity</string>
-				<string>constant.character.entity.xml</string>
-			</array>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>capturableScopes</key>
-					<array>
-						<string>punctuation</string>
-						<string>punctuation.definition</string>
-						<string>punctuation.definition.constant</string>
-						<string>punctuation.definition.constant.xml</string>
-					</array>
-					<key>name</key>
-					<string>punctuation.definition.constant.xml</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>capturableScopes</key>
-					<array>
-						<string>punctuation</string>
-						<string>punctuation.definition</string>
-						<string>punctuation.definition.constant</string>
-						<string>punctuation.definition.constant.xml</string>
-					</array>
-					<key>name</key>
-					<string>punctuation.definition.constant.xml</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>(&amp;)([a-zA-Z0-9_-]+|#[0-9]+|#x[0-9a-fA-F]+)(;)</string>
-			<key>name</key>
-			<string>constant.character.entity.xml</string>
+			<key>include</key>
+			<string>#entity</string>
 		</dict>
 		<dict>
-			<key>capturableScopes</key>
-			<array>
-				<string>invalid</string>
-				<string>invalid.illegal</string>
-				<string>invalid.illegal.bad-ampersand</string>
-				<string>invalid.illegal.bad-ampersand.xml</string>
-			</array>
-			<key>match</key>
-			<string>&amp;</string>
-			<key>name</key>
-			<string>invalid.illegal.bad-ampersand.xml</string>
+			<key>include</key>
+			<string>#bare-ampersand</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -708,6 +659,99 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>EntityDecl</key>
+		<dict>
+			<key>begin</key>
+			<string>(&lt;!)(ENTITY)\s+(%\s+)?([:a-zA-Z_][:a-zA-Z0-9_.-]*)(\s+(?:SYSTEM|PUBLIC)\s+)?</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.tag</string>
+						<string>punctuation.definition.tag.begin</string>
+						<string>punctuation.definition.tag.begin.xml</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.tag.begin.xml</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.entity</string>
+						<string>keyword.entity.xml</string>
+					</array>
+					<key>name</key>
+					<string>keyword.entity.xml</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.entity</string>
+						<string>punctuation.definition.entity.xml</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.entity.xml</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.entity</string>
+						<string>variable.entity.xml</string>
+					</array>
+					<key>name</key>
+					<string>variable.entity.xml</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.entitytype</string>
+						<string>keyword.entitytype.xml</string>
+					</array>
+					<key>name</key>
+					<string>keyword.entitytype.xml</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(&gt;)</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#doublequotedString</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#singlequotedString</string>
+				</dict>
+			</array>
+		</dict>
+		<key>bare-ampersand</key>
+		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>invalid</string>
+				<string>invalid.illegal</string>
+				<string>invalid.illegal.bad-ampersand</string>
+				<string>invalid.illegal.bad-ampersand.xml</string>
+			</array>
+			<key>match</key>
+			<string>&amp;</string>
+			<key>name</key>
+			<string>invalid.illegal.bad-ampersand.xml</string>
+		</dict>
 		<key>doublequotedString</key>
 		<dict>
 			<key>begin</key>
@@ -755,11 +799,145 @@
 			</dict>
 			<key>name</key>
 			<string>string.quoted.double.xml</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#entity</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#bare-ampersand</string>
+				</dict>
+			</array>
+		</dict>
+		<key>entity</key>
+		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.entity</string>
+				<string>constant.character.entity.xml</string>
+			</array>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.xml</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.constant.xml</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.xml</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.constant.xml</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(&amp;)([:a-zA-Z_][:a-zA-Z0-9_.-]*|#[0-9]+|#x[0-9a-fA-F]+)(;)</string>
+			<key>name</key>
+			<string>constant.character.entity.xml</string>
+		</dict>
+		<key>internalSubset</key>
+		<dict>
+			<key>begin</key>
+			<string>(\[)</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.internalsubset</string>
+				<string>meta.internalsubset.xml</string>
+			</array>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.xml</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.constant.xml</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\])</string>
+			<key>name</key>
+			<string>meta.internalsubset.xml</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#EntityDecl</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#parameterEntity</string>
+				</dict>
+			</array>
+		</dict>
+		<key>parameterEntity</key>
+		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>constant</string>
+				<string>constant.character</string>
+				<string>constant.character.parameter-entity</string>
+				<string>constant.character.parameter-entity.xml</string>
+			</array>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.xml</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.constant.xml</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.constant</string>
+						<string>punctuation.definition.constant.xml</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.constant.xml</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(%)([:a-zA-Z_][:a-zA-Z0-9_.-]*)(;)</string>
+			<key>name</key>
+			<string>constant.character.parameter-entity.xml</string>
 		</dict>
 		<key>singlequotedString</key>
 		<dict>
 			<key>begin</key>
-			<string>&apos;</string>
+			<string>'</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -784,7 +962,7 @@
 				<string>string.quoted.single.xml</string>
 			</array>
 			<key>end</key>
-			<string>&apos;</string>
+			<string>'</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
@@ -803,6 +981,17 @@
 			</dict>
 			<key>name</key>
 			<string>string.quoted.single.xml</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#entity</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#bare-ampersand</string>
+				</dict>
+			</array>
 		</dict>
 		<key>tagStuff</key>
 		<dict>
@@ -863,7 +1052,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string> (?:([-_a-zA-Z0-9]+)((:)))?([_a-zA-Z-]+)=</string>
+					<string> (?:([-_a-zA-Z0-9]+)((:)))?([-_a-zA-Z0-9]+)=</string>
 				</dict>
 				<dict>
 					<key>include</key>

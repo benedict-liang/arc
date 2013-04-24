@@ -23,6 +23,10 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>include</key>
+			<string>#comments</string>
+		</dict>
+		<dict>
 			<key>capturableScopes</key>
 			<array>
 				<string>meta</string>
@@ -383,26 +387,26 @@
 			</dict>
 			<key>match</key>
 			<string>(?xi)
-												
-																# normal stuff, capture 1
-																 \b(bigint|bigserial|bit|boolean|box|bytea|cidr|circle|date|double\sprecision|inet|int|integer|line|lseg|macaddr|money|oid|path|point|polygon|real|serial|smallint|sysdate|text)\b
-												
-																# numeric suffix, capture 2 + 3i
-																|\b(bit\svarying|character\s(?:varying)?|tinyint|var\schar|float|interval)\((\d+)\)
-												
-																# optional numeric suffix, capture 4 + 5i
-																|\b(char|number|varchar\d?)\b(?:\((\d+)\))?
-												
-																# special case, capture 6 + 7i + 8i
-																|\b(numeric)\b(?:\((\d+),(\d+)\))?
-												
-																# special case, captures 9, 10i, 11
-																|\b(times)(?:\((\d+)\))(\swithoutstimeszone\b)?
-												
-																# special case, captures 12, 13, 14i, 15
-																|\b(timestamp)(?:(s)\((\d+)\)(\swithoutstimeszone\b)?)?
-												
-															</string>
+			
+							# normal stuff, capture 1
+							 \b(bigint|bigserial|bit|boolean|box|bytea|cidr|circle|date|double\sprecision|inet|int|integer|line|lseg|macaddr|money|oid|path|point|polygon|real|serial|smallint|sysdate|text)\b
+			
+							# numeric suffix, capture 2 + 3i
+							|\b(bit\svarying|character\s(?:varying)?|tinyint|var\schar|float|interval)\((\d+)\)
+			
+							# optional numeric suffix, capture 4 + 5i
+							|\b(char|number|varchar\d?)\b(?:\((\d+)\))?
+			
+							# special case, capture 6 + 7i + 8i
+							|\b(numeric)\b(?:\((\d+),(\d+)\))?
+			
+							# special case, captures 9, 10i, 11
+							|\b(times)(?:\((\d+)\))(\swithoutstimeszone\b)?
+			
+							# special case, captures 12, 13, 14i, 15
+							|\b(timestamp)(?:(s)\((\d+)\)(\swithoutstimeszone\b)?)?
+			
+						</string>
 		</dict>
 		<dict>
 			<key>capturableScopes</key>
@@ -424,7 +428,7 @@
 				<string>constant.numeric.sql</string>
 			</array>
 			<key>match</key>
-			<string>\d+</string>
+			<string>\b\d+\b</string>
 			<key>name</key>
 			<string>constant.numeric.sql</string>
 		</dict>
@@ -437,7 +441,7 @@
 				<string>keyword.other.DML.sql</string>
 			</array>
 			<key>match</key>
-			<string>(?i:\b(select(\s+distinct)?|insert\s+(ignore\s+)?into|update|delete|from|set|where|group\sby|and|union(\s+all)?|having|order\sby|limit|(inner|cross)\s+join|straight_join|(left|right)(\s+outer)?\s+join|natural(\s+(left|right)(\s+outer)?)?\s+join)\b)</string>
+			<string>(?i:\b(select(\s+distinct)?|insert\s+(ignore\s+)?into|update|delete|from|set|where|group\sby|or|like|and|union(\s+all)?|having|order\sby|limit|(inner|cross)\s+join|straight_join|(left|right)(\s+outer)?\s+join|natural(\s+(left|right)(\s+outer)?)?\s+join)\b)</string>
 			<key>name</key>
 			<string>keyword.other.DML.sql</string>
 		</dict>
@@ -452,7 +456,7 @@
 				<string>keyword.other.DDL.create.II.sql</string>
 			</array>
 			<key>match</key>
-			<string>(?i:\b(on\s+|(not\s+)?null)\b)</string>
+			<string>(?i:\b(on|((is\s+)?not\s+)?null)\b)</string>
 			<key>name</key>
 			<string>keyword.other.DDL.create.II.sql</string>
 		</dict>
@@ -523,8 +527,156 @@
 			<string>keyword.other.object-comments.sql</string>
 		</dict>
 		<dict>
-			<key>include</key>
-			<string>#comments</string>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.alias</string>
+				<string>keyword.other.alias.sql</string>
+			</array>
+			<key>match</key>
+			<string>(?i)\bAS\b</string>
+			<key>name</key>
+			<string>keyword.other.alias.sql</string>
+		</dict>
+		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.other</string>
+				<string>keyword.other.order</string>
+				<string>keyword.other.order.sql</string>
+			</array>
+			<key>match</key>
+			<string>(?i)\b(DESC|ASC)\b</string>
+			<key>name</key>
+			<string>keyword.other.order.sql</string>
+		</dict>
+		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.star</string>
+				<string>keyword.operator.star.sql</string>
+			</array>
+			<key>match</key>
+			<string>\*</string>
+			<key>name</key>
+			<string>keyword.operator.star.sql</string>
+		</dict>
+		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.comparison</string>
+				<string>keyword.operator.comparison.sql</string>
+			</array>
+			<key>match</key>
+			<string>[!&lt;&gt;]?=|&lt;&gt;|&lt;|&gt;</string>
+			<key>name</key>
+			<string>keyword.operator.comparison.sql</string>
+		</dict>
+		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.math</string>
+				<string>keyword.operator.math.sql</string>
+			</array>
+			<key>match</key>
+			<string>-|\+|/</string>
+			<key>name</key>
+			<string>keyword.operator.math.sql</string>
+		</dict>
+		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>keyword</string>
+				<string>keyword.operator</string>
+				<string>keyword.operator.concatenator</string>
+				<string>keyword.operator.concatenator.sql</string>
+			</array>
+			<key>match</key>
+			<string>\|\|</string>
+			<key>name</key>
+			<string>keyword.operator.concatenator.sql</string>
+		</dict>
+		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.scalar</string>
+				<string>support.function.scalar.sql</string>
+			</array>
+			<key>comment</key>
+			<string>List of SQL99 built-in functions from http://www.oreilly.com/catalog/sqlnut/chapter/ch04.html</string>
+			<key>match</key>
+			<string>(?i)\b(CURRENT_(DATE|TIME(STAMP)?|USER)|(SESSION|SYSTEM)_USER)\b</string>
+			<key>name</key>
+			<string>support.function.scalar.sql</string>
+		</dict>
+		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.aggregate</string>
+				<string>support.function.aggregate.sql</string>
+			</array>
+			<key>comment</key>
+			<string>List of SQL99 built-in functions from http://www.oreilly.com/catalog/sqlnut/chapter/ch04.html</string>
+			<key>match</key>
+			<string>(?i)\b(AVG|COUNT|MIN|MAX|SUM)(?=\s*\()</string>
+			<key>name</key>
+			<string>support.function.aggregate.sql</string>
+		</dict>
+		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>support</string>
+				<string>support.function</string>
+				<string>support.function.string</string>
+				<string>support.function.string.sql</string>
+			</array>
+			<key>match</key>
+			<string>(?i)\b(CONCATENATE|CONVERT|LOWER|SUBSTRING|TRANSLATE|TRIM|UPPER)\b</string>
+			<key>name</key>
+			<string>support.function.string.sql</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.database-name</string>
+						<string>constant.other.database-name.sql</string>
+					</array>
+					<key>name</key>
+					<string>constant.other.database-name.sql</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>constant</string>
+						<string>constant.other</string>
+						<string>constant.other.table-name</string>
+						<string>constant.other.table-name.sql</string>
+					</array>
+					<key>name</key>
+					<string>constant.other.table-name.sql</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>\b(\w+?)\.(\w+)\b</string>
 		</dict>
 		<dict>
 			<key>include</key>

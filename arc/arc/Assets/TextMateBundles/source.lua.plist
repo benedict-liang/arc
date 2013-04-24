@@ -13,7 +13,7 @@
 		<string>lua</string>
 	</array>
 	<key>foldingStartMarker</key>
-	<string>^\s*\b(function|if|for)\b|{[ \t]*$|\[\[</string>
+	<string>^\s*\b(function|local\s+function|if|for)\b|{[ \t]*$|\[\[</string>
 	<key>foldingStopMarker</key>
 	<string>\bend\b|^\s*}|\]\]</string>
 	<key>keyEquivalent</key>
@@ -424,7 +424,7 @@
 				<string>keyword.operator.lua</string>
 			</array>
 			<key>match</key>
-			<string>\b(and|or)\b</string>
+			<string>\b(and|or|not)\b</string>
 			<key>name</key>
 			<string>keyword.operator.lua</string>
 		</dict>

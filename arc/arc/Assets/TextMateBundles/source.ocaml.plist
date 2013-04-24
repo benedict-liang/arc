@@ -207,7 +207,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\()(?=fun\s)</string>
+			<string>(\(|\s)(?=fun\s)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -255,10 +255,10 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?&lt;=\()(fun)\s</string>
+					<string>(?&lt;=(\(|\s))(fun)\s</string>
 					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>2</key>
 						<dict>
 							<key>capturableScopes</key>
 							<array>
@@ -322,7 +322,7 @@
 				<string>meta.type-definition-group.ocaml</string>
 			</array>
 			<key>end</key>
-			<string>\b(?=let|end)|^\s*$</string>
+			<string>\b(?=let|end|val)|^\s*$</string>
 			<key>name</key>
 			<string>meta.type-definition-group.ocaml</string>
 			<key>patterns</key>
@@ -350,11 +350,10 @@
 							<array>
 								<string>storage</string>
 								<string>storage.type</string>
-								<string>storage.type.user-defined</string>
-								<string>storage.type.user-defined.ocaml</string>
+								<string>storage.type.ocaml</string>
 							</array>
 							<key>name</key>
-							<string>storage.type.user-defined.ocaml</string>
+							<string>storage.type.ocaml</string>
 						</dict>
 						<key>3</key>
 						<dict>
@@ -376,7 +375,7 @@
 						<string>meta.type-definition.ocaml</string>
 					</array>
 					<key>end</key>
-					<string>(?=\b(type|and|let|end)\b)|(?=^\s*$)</string>
+					<string>(?=\b(type|and|let|end|val)\b)|(?=^\s*$)</string>
 					<key>name</key>
 					<string>meta.type-definition.ocaml</string>
 					<key>patterns</key>
@@ -391,7 +390,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>\b(with|function)(?=(\s*$|.*-&gt;))\b|((?&lt;!\|)(\|)(?!\|)(?=.*-&gt;))</string>
+			<string>\b(with|function)(?=(\s*$|.*-&gt;))\b|((?&lt;!\S)(\|)(?=(\w|\s).*-&gt;))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -517,11 +516,10 @@
 					<array>
 						<string>storage</string>
 						<string>storage.type</string>
-						<string>storage.type.user-defined</string>
-						<string>storage.type.user-defined.ocaml</string>
+						<string>storage.type.ocaml</string>
 					</array>
 					<key>name</key>
-					<string>storage.type.user-defined.ocaml</string>
+					<string>storage.type.ocaml</string>
 				</dict>
 			</dict>
 			<key>match</key>
@@ -565,11 +563,10 @@
 					<array>
 						<string>storage</string>
 						<string>storage.type</string>
-						<string>storage.type.user-defined</string>
-						<string>storage.type.user-defined.ocaml</string>
+						<string>storage.type.ocaml</string>
 					</array>
 					<key>name</key>
-					<string>storage.type.user-defined.ocaml</string>
+					<string>storage.type.ocaml</string>
 				</dict>
 			</dict>
 			<key>capturableScopes</key>
@@ -640,11 +637,10 @@
 					<array>
 						<string>storage</string>
 						<string>storage.type</string>
-						<string>storage.type.user-defined</string>
-						<string>storage.type.user-defined.ocaml</string>
+						<string>storage.type.ocaml</string>
 					</array>
 					<key>name</key>
-					<string>storage.type.user-defined.ocaml</string>
+					<string>storage.type.ocaml</string>
 				</dict>
 			</dict>
 			<key>capturableScopes</key>
@@ -722,11 +718,10 @@
 					<array>
 						<string>storage</string>
 						<string>storage.type</string>
-						<string>storage.type.user-defined</string>
-						<string>storage.type.user-defined.ocaml</string>
+						<string>storage.type.ocaml</string>
 					</array>
 					<key>name</key>
-					<string>storage.type.user-defined.ocaml</string>
+					<string>storage.type.ocaml</string>
 				</dict>
 			</dict>
 			<key>match</key>
@@ -1076,11 +1071,10 @@
 							<array>
 								<string>storage</string>
 								<string>storage.type</string>
-								<string>storage.type.user-defined</string>
-								<string>storage.type.user-defined.ocaml</string>
+								<string>storage.type.ocaml</string>
 							</array>
 							<key>name</key>
-							<string>storage.type.user-defined.ocaml</string>
+							<string>storage.type.ocaml</string>
 						</dict>
 						<key>3</key>
 						<dict>
@@ -1134,11 +1128,10 @@
 							<array>
 								<string>storage</string>
 								<string>storage.type</string>
-								<string>storage.type.user-defined</string>
-								<string>storage.type.user-defined.ocaml</string>
+								<string>storage.type.ocaml</string>
 							</array>
 							<key>name</key>
-							<string>storage.type.user-defined.ocaml</string>
+							<string>storage.type.ocaml</string>
 						</dict>
 					</dict>
 					<key>name</key>
@@ -2118,7 +2111,7 @@
 				<string>keyword.other.ocaml</string>
 			</array>
 			<key>match</key>
-			<string>\b(as|assert|class|constraint|exception|functor|in|include|inherit|initializer|lazy|let|mod|module|mutable|new|object|open|private|rec|sig|struct|type|val|virtual)\b</string>
+			<string>\b(as|assert|class|constraint|exception|functor|in|include|inherit|initializer|lazy|let|mod|module|mutable|new|object|open|private|rec|sig|struct|type|virtual)\b</string>
 			<key>name</key>
 			<string>keyword.other.ocaml</string>
 		</dict>
@@ -2232,7 +2225,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>\(\*\*?(\*)\)</string>
+					<string>\(\*+(\*)\)</string>
 					<key>name</key>
 					<string>comment.block.ocaml</string>
 				</dict>
@@ -2249,27 +2242,6 @@
 					<string>\*\)</string>
 					<key>name</key>
 					<string>comment.block.ocaml</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#comments</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>/\*</string>
-					<key>capturableScopes</key>
-					<array>
-						<string>comment</string>
-						<string>comment.block</string>
-						<string>comment.block.ocamlyacc</string>
-					</array>
-					<key>end</key>
-					<string>\*/</string>
-					<key>name</key>
-					<string>comment.block.ocamlyacc</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -2462,6 +2434,28 @@
 					<string>'(.|\\(x[a-fA-F0-9][a-fA-F0-9]|[0-2]\d\d|[bnrt'&quot;\\]))'</string>
 					<key>name</key>
 					<string>constant.character.ocaml</string>
+				</dict>
+			</array>
+		</dict>
+		<key>definite_storagetypes</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#storagetypes</string>
+				</dict>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.ocaml</string>
+					</array>
+					<key>match</key>
+					<string>\b[a-zA-Z0-9'_]+\b</string>
+					<key>name</key>
+					<string>storage.type.ocaml</string>
 				</dict>
 			</array>
 		</dict>
@@ -2705,8 +2699,9 @@
 							<array>
 								<string>variable</string>
 								<string>variable.parameter</string>
-								<string>variable.parameter.optional</string>
-								<string>variable.parameter.optional.ocaml</string>
+								<string>variable.parameter.ameter</string>
+								<string>variable.parameter.ameter.optional</string>
+								<string>variable.parameter.ameter.optional.ocaml</string>
 							</array>
 							<key>captures</key>
 							<dict>
@@ -2752,26 +2747,14 @@
 							<key>match</key>
 							<string>(\?)([a-z][a-zA-Z0-9_]*)\s*(:)</string>
 							<key>name</key>
-							<string>variable.parameter.optional.ocaml</string>
+							<string>variable.parameter.ameter.optional.ocaml</string>
 						</dict>
 						<dict>
 							<key>begin</key>
-							<string>(~)([a-z][a-zA-Z0-9'_]*)\s*(:)\s*</string>
+							<string>([a-z][a-zA-Z0-9'_]*)\s*(:)\s*</string>
 							<key>beginCaptures</key>
 							<dict>
 								<key>1</key>
-								<dict>
-									<key>capturableScopes</key>
-									<array>
-										<string>punctuation</string>
-										<string>punctuation.definition</string>
-										<string>punctuation.definition.labeled-parameter</string>
-										<string>punctuation.definition.labeled-parameter.ocaml</string>
-									</array>
-									<key>name</key>
-									<string>punctuation.definition.labeled-parameter.ocaml</string>
-								</dict>
-								<key>2</key>
 								<dict>
 									<key>capturableScopes</key>
 									<array>
@@ -2784,7 +2767,7 @@
 									<key>name</key>
 									<string>entity.name.tag.label.ocaml</string>
 								</dict>
-								<key>3</key>
+								<key>2</key>
 								<dict>
 									<key>capturableScopes</key>
 									<array>
@@ -2795,6 +2778,17 @@
 									</array>
 									<key>name</key>
 									<string>punctuation.separator.label.ocaml</string>
+								</dict>
+								<key>3</key>
+								<dict>
+									<key>capturableScopes</key>
+									<array>
+										<string>storage</string>
+										<string>storage.type</string>
+										<string>storage.type.ocaml</string>
+									</array>
+									<key>name</key>
+									<string>storage.type.ocaml</string>
 								</dict>
 							</dict>
 							<key>capturableScopes</key>
@@ -2812,7 +2806,7 @@
 							<array>
 								<dict>
 									<key>include</key>
-									<string>#variables</string>
+									<string>#definite_storagetypes</string>
 								</dict>
 							</array>
 						</dict>
@@ -2873,7 +2867,7 @@
 						<string>meta.module.signature.external.ocaml</string>
 					</array>
 					<key>end</key>
-					<string>(?=\b(type|val|external|class|module|end)\b)|^\s*$</string>
+					<string>(?=\b(type|val|external|class|module|let|end)\b)|^\s*$</string>
 					<key>name</key>
 					<string>meta.module.signature.external.ocaml</string>
 					<key>patterns</key>
@@ -3452,7 +3446,7 @@
 						<string>variable.parameter.labeled.ocaml</string>
 					</array>
 					<key>end</key>
-					<string>\s</string>
+					<string>(?=(-&gt;|\s))</string>
 					<key>name</key>
 					<string>variable.parameter.labeled.ocaml</string>
 					<key>patterns</key>

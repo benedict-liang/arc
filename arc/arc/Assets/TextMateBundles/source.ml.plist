@@ -293,8 +293,8 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)\b
-																	(functor|structure|signature|funsig)\s+
-																	(\w+)\s* # identifier</string>
+																													(functor|structure|signature|funsig)\s+
+																													(\w+)\s* # identifier</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>meta</string>
