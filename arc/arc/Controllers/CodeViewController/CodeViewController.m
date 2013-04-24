@@ -526,12 +526,14 @@
 - (CodeViewLine *)lineAtIndexPath:(NSIndexPath *)indexPath
 {
     int index = 0;
-    for (CodeViewLine *line in _lines) {
-        if (line.visible) {
-            if (index == indexPath.row) {
-                return line;
+    @synchronized(_lines) {
+        for (CodeViewLine *line in _lines) {
+            if (line.visible) {
+                if (index == indexPath.row) {
+                    return line;
+                }
+                index++;
             }
-            index++;
         }
     }
     return nil;
