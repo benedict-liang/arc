@@ -175,8 +175,6 @@
         }
         
         if (selectionDidChange) {
-            int totalGap = [self getTotalGapForCellAtIndexPath:_topIndexPath];
-            
             gesture.view.center = CGPointMake(_firstCharacterCoordinates.x,
                                               gesture.view.center.y);
             [gesture setTranslation:CGPointMake(0, 0)
@@ -266,7 +264,6 @@
         }
         
         if (selectionDidChange) {
-            int totalGap = [self getTotalGapForCellAtIndexPath:_bottomIndexPath];
             gesture.view.center = CGPointMake(_lastCharacterCoordinates.x,
                                               gesture.view.center.y);
             [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
