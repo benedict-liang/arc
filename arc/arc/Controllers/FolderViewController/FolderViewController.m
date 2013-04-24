@@ -277,19 +277,6 @@
     }
 }
 
-// FIXME: This code breaks because the above method is called first.
-// The top method deletes the row before the bottom method can access it.
-//- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    id<FileSystemObject> fileObject = [self sectionItem:indexPath];
-//    if ([[fileObject identifier] isEqualToString:[[[self delegate] currentfile] identifier]]) {
-//        [tableView selectRowAtIndexPath:indexPath
-//                               animated:YES
-//                         scrollPosition:UITableViewScrollPositionMiddle];
-//    }
-//}
-
-
 // MultiView target
 - (void)secondFileSelected:(UILongPressGestureRecognizer *)gesture
 {
