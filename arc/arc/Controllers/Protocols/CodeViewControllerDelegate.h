@@ -13,6 +13,8 @@
 #import "FoldTree.h"
 
 @protocol CodeViewControllerDelegate <NSObject>
+
+- (id<File>)getCurrentFile;
 - (void)showFile:(id<File>)file;
 - (void)scrollToLineNumber:(int)lineNumber;
 - (void)refreshForSetting:(NSString*)setting;
