@@ -605,8 +605,6 @@
 
 - (BOOL)isDragPointsOverlapping:(CGFloat)characterWidth
 {
-    NSLog(@"first: %f, last: %f, width: %f", _firstCharacterCoordinates.x, _lastCharacterCoordinates.x, characterWidth);
-    NSLog(@"next first: %f", _nextFirstCharacterCoordinates.x);
     return
     (_topIndexPath.row == _bottomIndexPath.row) &&
     ((_lastCharacterCoordinates.x - _firstCharacterCoordinates.x) < characterWidth * 2);
