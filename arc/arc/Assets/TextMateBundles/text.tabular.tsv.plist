@@ -156,8 +156,8 @@
 					</dict>
 					<key>comment</key>
 					<string>
-																																														everything after the first row is not a header
-																																													</string>
+																																																			everything after the first row is not a header
+																																																		</string>
 					<key>end</key>
 					<string>^$not possible$^</string>
 					<key>patterns</key>

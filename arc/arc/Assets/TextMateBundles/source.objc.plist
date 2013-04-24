@@ -13,10 +13,10 @@
 	</array>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-			 /\*\*(?!\*)
-			|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))
-			|^@(interface|protocol|implementation)\b
-		</string>
+				 /\*\*(?!\*)
+				|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))
+				|^@(interface|protocol|implementation)\b
+			</string>
 	<key>foldingStopMarker</key>
 	<string>(?&lt;!\*)\*\*/|^\s*\}|^@end\b</string>
 	<key>keyEquivalent</key>
@@ -1343,10 +1343,10 @@
 					</dict>
 					<key>match</key>
 					<string>(?x) (?: (?= \s )  (?:(?&lt;=else|new|return) | (?&lt;!\w)) (\s+))?
-					            			(\b 
-					            				(?!(while|for|do|if|else|switch|catch|enumerate|return|r?iterate)\s*\()(?:(?!NS)[A-Za-z_][A-Za-z0-9_]*+\b | :: )++                  # actual name
-					            			)
-					            			 \s*(\()</string>
+										            			(\b 
+										            				(?!(while|for|do|if|else|switch|catch|enumerate|return|r?iterate)\s*\()(?:(?!NS)[A-Za-z_][A-Za-z0-9_]*+\b | :: )++                  # actual name
+										            			)
+										            			 \s*(\()</string>
 					<key>name</key>
 					<string>meta.function-call.c</string>
 				</dict>

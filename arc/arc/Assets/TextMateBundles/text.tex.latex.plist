@@ -232,21 +232,21 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-							(													# Capture 1
-								(\\)											# Marker
-								(?:
-									(?:sub){0,2}section							# Functions
-								  | (?:sub)?paragraph
-								  | chapter|part|addpart
-								  | addchap|addsec|minisec
-								)
-								(?:\*)?											# Optional Unnumbered
-							)
-							(?:
-								(\[)([^\[]*?)(\])								# Optional Title
-							)??
-							(\{)												# Opening Bracket
-							</string>
+										(													# Capture 1
+											(\\)											# Marker
+											(?:
+												(?:sub){0,2}section							# Functions
+											  | (?:sub)?paragraph
+											  | chapter|part|addpart
+											  | addchap|addsec|minisec
+											)
+											(?:\*)?											# Optional Unnumbered
+										)
+										(?:
+											(\[)([^\[]*?)(\])								# Optional Title
+										)??
+										(\{)												# Opening Bracket
+										</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1075,20 +1075,20 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-								(?:\s*)										# Optional whitespace
-								((\\)begin)									# Marker - Function
-								(\{)										# Open Bracket
-									(
-										(?:
-											align|equation|eqnarray			# Argument
-										  | multline|aligned|alignat
-										  | split|gather|gathered
-										)
-										(?:\*)?								# Optional Unnumbered
-									)
-								(\})										# Close Bracket
-								(\s*\n)?				# Match to end of line absent of content
-							</string>
+											(?:\s*)										# Optional whitespace
+											((\\)begin)									# Marker - Function
+											(\{)										# Open Bracket
+												(
+													(?:
+														align|equation|eqnarray			# Argument
+													  | multline|aligned|alignat
+													  | split|gather|gathered
+													)
+													(?:\*)?								# Optional Unnumbered
+												)
+											(\})										# Close Bracket
+											(\s*\n)?				# Match to end of line absent of content
+										</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>meta</string>
@@ -1166,13 +1166,13 @@
 			<string>string.other.math.block.environment.latex</string>
 			<key>end</key>
 			<string>(?x)
-								(?:\s*)										# Optional whitespace
-								((\\)end)									# Marker - Function
-								(\{)										# Open Bracket
-									(\4)				# Previous capture from begin
-								(\})										# Close Bracket
-								(?:\s*\n)?				# Match to end of line absent of content
-							</string>
+											(?:\s*)										# Optional whitespace
+											((\\)end)									# Marker - Function
+											(\{)										# Open Bracket
+												(\4)				# Previous capture from begin
+											(\})										# Close Bracket
+											(?:\s*\n)?				# Match to end of line absent of content
+										</string>
 			<key>name</key>
 			<string>meta.function.environment.math.latex</string>
 			<key>patterns</key>
@@ -1186,13 +1186,13 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-								(?:\s*)										# Optional whitespace
-								((\\)begin)									# Marker - Function
-								(\{)										# Open Bracket
-									(array|tabular[xy*]?)
-								(\})										# Close Bracket
-								(\s*\n)?				# Match to end of line absent of content
-							</string>
+											(?:\s*)										# Optional whitespace
+											((\\)begin)									# Marker - Function
+											(\{)										# Open Bracket
+												(array|tabular[xy*]?)
+											(\})										# Close Bracket
+											(\s*\n)?				# Match to end of line absent of content
+										</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>meta</string>
@@ -1270,13 +1270,13 @@
 			<string>meta.data.environment.tabular.latex</string>
 			<key>end</key>
 			<string>(?x)
-								(?:\s*)										# Optional whitespace
-								((\\)end)									# Marker - Function
-								(\{)										# Open Bracket
-									(\4)				# Previous capture from begin
-								(\})										# Close Bracket
-								(?:\s*\n)?				# Match to end of line absent of content
-							</string>
+											(?:\s*)										# Optional whitespace
+											((\\)end)									# Marker - Function
+											(\{)										# Open Bracket
+												(\4)				# Previous capture from begin
+											(\})										# Close Bracket
+											(?:\s*\n)?				# Match to end of line absent of content
+										</string>
 			<key>name</key>
 			<string>meta.function.environment.tabular.latex</string>
 			<key>patterns</key>
@@ -1835,8 +1835,8 @@
 			</dict>
 			<key>comment</key>
 			<string>We put the keyword in a capture and name this capture, so that disabling spell checking for “keyword” won't be inherited by the argument to \textit{...}.
-			
-			Put specific matches for particular LaTeX keyword.functions before the last two more general functions</string>
+						
+						Put specific matches for particular LaTeX keyword.functions before the last two more general functions</string>
 			<key>contentName</key>
 			<string>markup.italic.textit.latex</string>
 			<key>end</key>
@@ -2070,17 +2070,17 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-								(
-									(\\)										# Marker
-									(?:foot)?(?:full)?(?:no)?(?:short)?		# Function Name
-									[cC]ite
-									(?:al)?(?:t|p|author|year(?:par)?|title)?[ANP]*
-									\*?											# Optional Unabreviated
-								)
-								(?:(\[)[^\]]*(\]))?								# Optional
-								(?:(\[)[^\]]*(\]))?								#   Arguments
-								(\{)											# Opening Bracket
-							</string>
+											(
+												(\\)										# Marker
+												(?:foot)?(?:full)?(?:no)?(?:short)?		# Function Name
+												[cC]ite
+												(?:al)?(?:t|p|author|year(?:par)?|title)?[ANP]*
+												\*?											# Optional Unabreviated
+											)
+											(?:(\[)[^\]]*(\]))?								# Optional
+											(?:(\[)[^\]]*(\]))?								#   Arguments
+											(\{)											# Opening Bracket
+										</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>meta</string>

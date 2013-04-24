@@ -112,9 +112,9 @@
 				<dict>
 					<key>match</key>
 					<string>(?x)
-								(?! /\*)
-								(?! \*/)
-							  </string>
+													(?! /\*)
+													(?! \*/)
+												  </string>
 				</dict>
 			</array>
 		</dict>
@@ -344,8 +344,8 @@
 					</dict>
 					<key>match</key>
 					<string>(?x)
-											\b(def)\s+
-											(([a-zA-Z$_][a-zA-Z0-9$_]*(_[^a-zA-Z0-9\s]+)?)|`.*`|[^\w\[\(\:\_\s]+)</string>
+																\b(def)\s+
+																(([a-zA-Z$_][a-zA-Z0-9$_]*(_[^a-zA-Z0-9\s]+)?)|`.*`|[^\w\[\(\:\_\s]+)</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -662,10 +662,10 @@
 							</dict>
 							<key>match</key>
 							<string>(?x) \s*
-											([^\s.,}]+) \s*
-											(=&gt;) \s*
-											([^\s.,}]+) \s*
-										  </string>
+																		([^\s.,}]+) \s*
+																		(=&gt;) \s*
+																		([^\s.,}]+) \s*
+																	  </string>
 						</dict>
 						<dict>
 							<key>capturableScopes</key>

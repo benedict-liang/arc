@@ -10,16 +10,16 @@
 	<string>^Format:\s*(?i:complete)\s*$</string>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-										(&lt;(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)\b.*?&gt;
-										|&lt;!--(?!.*--&gt;)
-										|\{\s*($|\?&gt;\s*$|//|/\*(.*\*/\s*$|(?!.*?\*/)))
-										)</string>
+											(&lt;(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)\b.*?&gt;
+											|&lt;!--(?!.*--&gt;)
+											|\{\s*($|\?&gt;\s*$|//|/\*(.*\*/\s*$|(?!.*?\*/)))
+											)</string>
 	<key>foldingStopMarker</key>
 	<string>(?x)
-										(&lt;/(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)&gt;
-										|^\s*--&gt;
-										|(^|\s)\}
-										)</string>
+											(&lt;/(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)&gt;
+											|^\s*--&gt;
+											|(^|\s)\}
+											)</string>
 	<key>keyEquivalent</key>
 	<string>^~M</string>
 	<key>name</key>
@@ -76,8 +76,8 @@
 					</array>
 					<key>comment</key>
 					<string>The reason for not setting scopeName = &quot;string.unquoted&quot; 
-																																														(for the parent rule) is that we do not want
-																																														newlines to be marked as string.unquoted</string>
+																																																			(for the parent rule) is that we do not want
+																																																			newlines to be marked as string.unquoted</string>
 					<key>match</key>
 					<string>.+</string>
 					<key>name</key>

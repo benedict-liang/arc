@@ -10,12 +10,12 @@
 	<array/>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-										(^\s*(?i:if|while|for\ each|for|case\ of|repeat|method|save output)\b
-										)</string>
+											(^\s*(?i:if|while|for\ each|for|case\ of|repeat|method|save output)\b
+											)</string>
 	<key>foldingStopMarker</key>
 	<string>(?x)
-										(^\s*(?i:end\ (if|while|for\ each|for|case|method|save output)|until)\b
-										)</string>
+											(^\s*(?i:end\ (if|while|for\ each|for|case|method|save output)|until)\b
+											)</string>
 	<key>keyEquivalent</key>
 	<string>^~A</string>
 	<key>name</key>
@@ -805,54 +805,54 @@
 			</array>
 			<key>match</key>
 			<string>(?x) (
-																												:=
-																											|	\+=	
-																											|	\-=	
-																											|	/=	
-																											|	\\=	
-																											|	\*=	
-																											|	\%=	
-																											|	\^=	
-																											|	&amp;=	
-																											|	\|=	
-																											|	&lt;&lt;=	
-																											|	&gt;&gt;=	
-																											|	&gt;	
-																											|	&lt;	
-																											|	&gt;=	
-																											|	&lt;=	
-																											|	=	
-																											|	=~	
-																											|	\#	
-																											|	\#~	
-																											|	~	
-																											|	!~	
-																											|	\+
-																											|	\+\+	
-																											|	\-	
-																											|	\-\-	
-																											|	/	
-																											|	\\	
-																											|	\*
-																											|	\*\+
-																											|	\*/
-																											|	%	
-																											|	&amp;	
-																											|	\|	
-																											|	\^	
-																											|	\^\|	
-																											|	&lt;&lt;
-																											|	&gt;&gt;
-																											|	\?\+
-																											|	\?\-
-																											|	\?\?
-																											|	\}
-																											|	\{
-																											|	;
-																											|	\:
-																											|	\]\]
-																											|	\[\[
-																											|	\-&gt;)</string>
+																															:=
+																														|	\+=	
+																														|	\-=	
+																														|	/=	
+																														|	\\=	
+																														|	\*=	
+																														|	\%=	
+																														|	\^=	
+																														|	&amp;=	
+																														|	\|=	
+																														|	&lt;&lt;=	
+																														|	&gt;&gt;=	
+																														|	&gt;	
+																														|	&lt;	
+																														|	&gt;=	
+																														|	&lt;=	
+																														|	=	
+																														|	=~	
+																														|	\#	
+																														|	\#~	
+																														|	~	
+																														|	!~	
+																														|	\+
+																														|	\+\+	
+																														|	\-	
+																														|	\-\-	
+																														|	/	
+																														|	\\	
+																														|	\*
+																														|	\*\+
+																														|	\*/
+																														|	%	
+																														|	&amp;	
+																														|	\|	
+																														|	\^	
+																														|	\^\|	
+																														|	&lt;&lt;
+																														|	&gt;&gt;
+																														|	\?\+
+																														|	\?\-
+																														|	\?\?
+																														|	\}
+																														|	\{
+																														|	;
+																														|	\:
+																														|	\]\]
+																														|	\[\[
+																														|	\-&gt;)</string>
 			<key>name</key>
 			<string>keyword.operator.active4d</string>
 		</dict>

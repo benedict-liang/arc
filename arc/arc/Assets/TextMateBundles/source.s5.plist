@@ -12,16 +12,16 @@
 	</array>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-										(&lt;(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)\b.*?&gt;
-										|&lt;!--(?!.*--&gt;)
-										|\{\s*($|\?&gt;\s*$|//|/\*(.*\*/\s*$|(?!.*?\*/)))
-										)</string>
+											(&lt;(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)\b.*?&gt;
+											|&lt;!--(?!.*--&gt;)
+											|\{\s*($|\?&gt;\s*$|//|/\*(.*\*/\s*$|(?!.*?\*/)))
+											)</string>
 	<key>foldingStopMarker</key>
 	<string>(?x)
-										(&lt;/(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)&gt;
-										|^\s*--&gt;
-										|(^|\s)\}
-										)</string>
+											(&lt;/(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)&gt;
+											|^\s*--&gt;
+											|(^|\s)\}
+											)</string>
 	<key>keyEquivalent</key>
 	<string>^~S</string>
 	<key>name</key>
@@ -104,9 +104,9 @@
 					</dict>
 					<key>comment</key>
 					<string>
-																																														name = 'meta.separator.handout.s5';
-																																														match = '(^_{10}$)';
-																																													</string>
+																																																			name = 'meta.separator.handout.s5';
+																																																			match = '(^_{10}$)';
+																																																		</string>
 					<key>contentName</key>
 					<string>text.html.markdown.handout.s5</string>
 					<key>end</key>
@@ -139,9 +139,9 @@
 					</dict>
 					<key>comment</key>
 					<string>
-																																														name = 'meta.separator.notes.s5';
-																																														match = '(^#{10}$)';
-																																													</string>
+																																																			name = 'meta.separator.notes.s5';
+																																																			match = '(^#{10}$)';
+																																																		</string>
 					<key>contentName</key>
 					<string>text.html.markdown.notes.s5</string>
 					<key>end</key>
@@ -174,9 +174,9 @@
 					</dict>
 					<key>comment</key>
 					<string>
-																																														name = 'meta.separator.slide.s5';
-																																														match = '^((✂-{6})+$\n)';
-																																													</string>
+																																																			name = 'meta.separator.slide.s5';
+																																																			match = '^((✂-{6})+$\n)';
+																																																		</string>
 					<key>contentName</key>
 					<string>text.html.markdown.slide.s5</string>
 					<key>end</key>

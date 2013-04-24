@@ -60,21 +60,21 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)^\s*
-								((?:\b(public|private|protected|static|final|native|synchronized|abstract|export)\b\s*)*) # modifier
-								(class|interface)\s+
-								(\w+)\s* # identifier
-								(?:\(\s*([^\)]+)\s*\)|)\s* # Template type
-								(?:
-								  \s*(:)\s*
-								  (\w+)
-								  (?:\s*,\s*(\w+))?
-								  (?:\s*,\s*(\w+))?
-								  (?:\s*,\s*(\w+))?
-								  (?:\s*,\s*(\w+))?
-								  (?:\s*,\s*(\w+))?
-								  (?:\s*,\s*(\w+))?
-								)? # super class
-								</string>
+											((?:\b(public|private|protected|static|final|native|synchronized|abstract|export)\b\s*)*) # modifier
+											(class|interface)\s+
+											(\w+)\s* # identifier
+											(?:\(\s*([^\)]+)\s*\)|)\s* # Template type
+											(?:
+											  \s*(:)\s*
+											  (\w+)
+											  (?:\s*,\s*(\w+))?
+											  (?:\s*,\s*(\w+))?
+											  (?:\s*,\s*(\w+))?
+											  (?:\s*,\s*(\w+))?
+											  (?:\s*,\s*(\w+))?
+											  (?:\s*,\s*(\w+))?
+											)? # super class
+											</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -277,11 +277,11 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)^\s*
-								((?:\b(public|private|protected|static|final|native|synchronized|abstract|export)\b\s*)*) # modifier
-								(struct)\s+
-								(\w+)\s* # identifier
-								(?:\(\s*([^\)]+)\s*\)|)\s* # Template type
-								</string>
+											((?:\b(public|private|protected|static|final|native|synchronized|abstract|export)\b\s*)*) # modifier
+											(struct)\s+
+											(\w+)\s* # identifier
+											(?:\(\s*([^\)]+)\s*\)|)\s* # Template type
+											</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -388,10 +388,10 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)^\s*
-								((?:\b(public|private|protected|static|final|native|synchronized|abstract|threadsafe|transient|export)\b\s*)*) # modifier
-								(\b(this))\s* # identifier
-								(?!.*;)  # abort if line has a ;
-								(?=\()</string>
+											((?:\b(public|private|protected|static|final|native|synchronized|abstract|threadsafe|transient|export)\b\s*)*) # modifier
+											(\b(this))\s* # identifier
+											(?!.*;)  # abort if line has a ;
+											(?=\()</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>meta</string>
@@ -441,13 +441,13 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-			    				(?:  ^                                 # begin-of-line
-			    				  |  (?: (?&lt;!else|new|=) )             #  or word + space before name
-			    				)
-								((?:\b(?:public|private|protected|static|final|native|synchronized|abstract|threadsafe|transient|export)\b\s*)*) # modifier
-			    				(~this) # actual name
-			    				 \s*(\()                           # start bracket or end-of-line
-			    			</string>
+						    				(?:  ^                                 # begin-of-line
+						    				  |  (?: (?&lt;!else|new|=) )             #  or word + space before name
+						    				)
+											((?:\b(?:public|private|protected|static|final|native|synchronized|abstract|threadsafe|transient|export)\b\s*)*) # modifier
+						    				(~this) # actual name
+						    				 \s*(\()                           # start bracket or end-of-line
+						    			</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>meta</string>
@@ -512,11 +512,11 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)^\s*
-								((?:\b(?:public|private|protected|static|final|native|lazy|synchronized|abstract|threadsafe|transient|export)\b\s*)*) # modifier
-								(\b(?:void|boolean|byte|char|short|int|float|long|double|[\w_]+[\w0-9_]*|(?:\w+\.)*[A-Z]\w+)\b(?:&lt;(?:(?:(?:\w+\.)*[A-Z]\w+)(?:\s*,\s*)?)+&gt;|(?:\[\s*\])*)?)\s* # type
-								(\w+)\s* # identifier
-								(?!.*;)  # abort if line has a ;
-								(?=\()</string>
+											((?:\b(?:public|private|protected|static|final|native|lazy|synchronized|abstract|threadsafe|transient|export)\b\s*)*) # modifier
+											(\b(?:void|boolean|byte|char|short|int|float|long|double|[\w_]+[\w0-9_]*|(?:\w+\.)*[A-Z]\w+)\b(?:&lt;(?:(?:(?:\w+\.)*[A-Z]\w+)(?:\s*,\s*)?)+&gt;|(?:\[\s*\])*)?)\s* # type
+											(\w+)\s* # identifier
+											(?!.*;)  # abort if line has a ;
+											(?=\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>

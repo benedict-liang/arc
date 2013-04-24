@@ -14,10 +14,10 @@
 	</array>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-			 /\*\*(?!\*)
-			|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))
-			|^@(interface|protocol|implementation)\b
-		</string>
+				 /\*\*(?!\*)
+				|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))
+				|^@(interface|protocol|implementation)\b
+			</string>
 	<key>foldingStopMarker</key>
 	<string>(?&lt;!\*)\*\*/|^\s*\}|^@end\b</string>
 	<key>keyEquivalent</key>

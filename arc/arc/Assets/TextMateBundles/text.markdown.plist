@@ -15,16 +15,16 @@
 	</array>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-			(&lt;(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)\b.*?&gt;
-			|&lt;!--(?!.*--&gt;)
-			|\{\s*($|\?&gt;\s*$|//|/\*(.*\*/\s*$|(?!.*?\*/)))
-			)</string>
+				(&lt;(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)\b.*?&gt;
+				|&lt;!--(?!.*--&gt;)
+				|\{\s*($|\?&gt;\s*$|//|/\*(.*\*/\s*$|(?!.*?\*/)))
+				)</string>
 	<key>foldingStopMarker</key>
 	<string>(?x)
-			(&lt;/(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)&gt;
-			|^\s*--&gt;
-			|(^|\s)\}
-			)</string>
+				(&lt;/(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|form|dl)&gt;
+				|^\s*--&gt;
+				|(^|\s)\}
+				)</string>
 	<key>keyEquivalent</key>
 	<string>^~M</string>
 	<key>name</key>
@@ -34,11 +34,11 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)^
-							(?=	[ ]{,3}&gt;.
-							|	([ ]{4}|\t)(?!$)
-							|	[#]{1,6}\s*+
-							|	[ ]{,3}(?&lt;marker&gt;[-*_])([ ]{,2}\k&lt;marker&gt;){2,}[ \t]*+$
-							)</string>
+										(?=	[ ]{,3}&gt;.
+										|	([ ]{4}|\t)(?!$)
+										|	[#]{1,6}\s*+
+										|	[ ]{,3}(?&lt;marker&gt;[-*_])([ ]{,2}\k&lt;marker&gt;){2,}[ \t]*+$
+										)</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>meta</string>
@@ -47,17 +47,17 @@
 			</array>
 			<key>comment</key>
 			<string>
-							We could also use an empty end match and set
-							applyEndPatternLast, but then we must be sure that the begin
-							pattern will only match stuff matched by the sub-patterns.
-						</string>
+										We could also use an empty end match and set
+										applyEndPatternLast, but then we must be sure that the begin
+										pattern will only match stuff matched by the sub-patterns.
+									</string>
 			<key>end</key>
 			<string>(?x)^
-							(?!	[ ]{,3}&gt;.
-							|	([ ]{4}|\t)
-							|	[#]{1,6}\s*+
-							|	[ ]{,3}(?&lt;marker&gt;[-*_])([ ]{,2}\k&lt;marker&gt;){2,}[ \t]*+$
-							)</string>
+										(?!	[ ]{,3}&gt;.
+										|	([ ]{4}|\t)
+										|	[#]{1,6}\s*+
+										|	[ ]{,3}(?&lt;marker&gt;[-*_])([ ]{,2}\k&lt;marker&gt;){2,}[ \t]*+$
+										)</string>
 			<key>name</key>
 			<string>meta.block-level.markdown</string>
 			<key>patterns</key>
@@ -164,8 +164,8 @@
 			</array>
 			<key>comment</key>
 			<string>
-							Markdown formatting is disabled inside block-level tags.
-						</string>
+										Markdown formatting is disabled inside block-level tags.
+									</string>
 			<key>end</key>
 			<string>(?&lt;=^&lt;/\1&gt;$\n)</string>
 			<key>name</key>
@@ -379,18 +379,18 @@
 			</dict>
 			<key>match</key>
 			<string>(?x:
-							\s*						# Leading whitespace
-							(\[)(.+?)(\])(:)		# Reference name
-							[ \t]*					# Optional whitespace
-							(&lt;?)(\S+?)(&gt;?)			# The url
-							[ \t]*					# Optional whitespace
-							(?:
-								  ((\().+?(\)))		# Match title in quotes…
-								| ((&quot;).+?(&quot;))		# or in parens.
-							)?						# Title is optional
-							\s*						# Optional whitespace
-							$
-						)</string>
+										\s*						# Leading whitespace
+										(\[)(.+?)(\])(:)		# Reference name
+										[ \t]*					# Optional whitespace
+										(&lt;?)(\S+?)(&gt;?)			# The url
+										[ \t]*					# Optional whitespace
+										(?:
+											  ((\().+?(\)))		# Match title in quotes…
+											| ((&quot;).+?(&quot;))		# or in parens.
+										)?						# Title is optional
+										\s*						# Optional whitespace
+										$
+									)</string>
 			<key>name</key>
 			<string>meta.link.reference.def.markdown</string>
 		</dict>
@@ -489,9 +489,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-							Markdown will convert this for us. We match it so that the
-							HTML grammar will not mark it up as invalid.
-						</string>
+										Markdown will convert this for us. We match it so that the
+										HTML grammar will not mark it up as invalid.
+									</string>
 			<key>match</key>
 			<string>&amp;(?!([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+);)</string>
 			<key>name</key>
@@ -524,16 +524,16 @@
 			</array>
 			<key>comment</key>
 			<string>
-							We terminate the block quote when seeing an empty line, a
-							separator or a line with leading &gt; characters. The latter is
-							to “reset” the quote level for quoted lines.
-						</string>
+										We terminate the block quote when seeing an empty line, a
+										separator or a line with leading &gt; characters. The latter is
+										to “reset” the quote level for quoted lines.
+									</string>
 			<key>end</key>
 			<string>(?x)^
-							(?=	\s*$
-							|	[ ]{,3}(?&lt;marker&gt;[-*_])([ ]{,2}\k&lt;marker&gt;){2,}[ \t]*+$
-							|	[ ]{,3}&gt;.
-							)</string>
+										(?=	\s*$
+										|	[ ]{,3}(?&lt;marker&gt;[-*_])([ ]{,2}\k&lt;marker&gt;){2,}[ \t]*+$
+										|	[ ]{,3}&gt;.
+										)</string>
 			<key>name</key>
 			<string>markup.quote.markdown</string>
 			<key>patterns</key>
@@ -541,8 +541,8 @@
 				<dict>
 					<key>begin</key>
 					<string>(?x)\G
-											(?=	[ ]{,3}&gt;.
-											)</string>
+																(?=	[ ]{,3}&gt;.
+																)</string>
 					<key>end</key>
 					<string>^</string>
 					<key>patterns</key>
@@ -558,10 +558,10 @@
 					<integer>1</integer>
 					<key>begin</key>
 					<string>(?x)\G
-											(?=	([ ]{4}|\t)
-											|	[#]{1,6}\s*+
-											|	[ ]{,3}(?&lt;marker&gt;[-*_])([ ]{,2}\k&lt;marker&gt;){2,}[ \t]*+$
-											)</string>
+																(?=	([ ]{4}|\t)
+																|	[#]{1,6}\s*+
+																|	[ ]{,3}(?&lt;marker&gt;[-*_])([ ]{,2}\k&lt;marker&gt;){2,}[ \t]*+$
+																)</string>
 					<key>end</key>
 					<string>^</string>
 					<key>patterns</key>
@@ -583,12 +583,12 @@
 				<dict>
 					<key>begin</key>
 					<string>(?x)\G
-											(?!	$
-											|	[ ]{,3}&gt;.
-											|	([ ]{4}|\t)
-											|	[#]{1,6}\s*+
-											|	[ ]{,3}(?&lt;marker&gt;[-*_])([ ]{,2}\k&lt;marker&gt;){2,}[ \t]*+$
-											)</string>
+																(?!	$
+																|	[ ]{,3}&gt;.
+																|	([ ]{4}|\t)
+																|	[#]{1,6}\s*+
+																|	[ ]{,3}(?&lt;marker&gt;[-*_])([ ]{,2}\k&lt;marker&gt;){2,}[ \t]*+$
+																)</string>
 					<key>end</key>
 					<string>$|(?&lt;=\n)</string>
 					<key>patterns</key>
@@ -619,46 +619,46 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-									(\*\*|__)(?=\S)								# Open
-									(?=
-										(
-										    &lt;[^&gt;]*+&gt;							# HTML tags
-										  | (?&lt;raw&gt;`+)([^`]|(?!(?&lt;!`)\k&lt;raw&gt;(?!`))`)*+\k&lt;raw&gt;
-																				# Raw
-										  | \\[\\`*_{}\[\]()#.!+\-&gt;]?+			# Escapes
-										  | \[
-											(				
-											        (?&lt;square&gt;					# Named group
-														[^\[\]\\]				# Match most chars
-											          | \\.						# Escaped chars
-											          | \[ \g&lt;square&gt;*+ \]		# Nested brackets
-											        )*+
-												\]
-												(
-													(							# Reference Link
-														[ ]?					# Optional space
-														\[[^\]]*+\]				# Ref name
-													)
-												  | (							# Inline Link
-														\(						# Opening paren
-															[ \t]*+				# Optional whtiespace
-															&lt;?(.*?)&gt;?			# URL
-															[ \t]*+				# Optional whtiespace
-															(					# Optional Title
-																(?&lt;title&gt;['&quot;])
-																(.*?)
-																\k&lt;title&gt;
-															)?
-														\)
-													)
+												(\*\*|__)(?=\S)								# Open
+												(?=
+													(
+													    &lt;[^&gt;]*+&gt;							# HTML tags
+													  | (?&lt;raw&gt;`+)([^`]|(?!(?&lt;!`)\k&lt;raw&gt;(?!`))`)*+\k&lt;raw&gt;
+																							# Raw
+													  | \\[\\`*_{}\[\]()#.!+\-&gt;]?+			# Escapes
+													  | \[
+														(				
+														        (?&lt;square&gt;					# Named group
+																	[^\[\]\\]				# Match most chars
+														          | \\.						# Escaped chars
+														          | \[ \g&lt;square&gt;*+ \]		# Nested brackets
+														        )*+
+															\]
+															(
+																(							# Reference Link
+																	[ ]?					# Optional space
+																	\[[^\]]*+\]				# Ref name
+																)
+															  | (							# Inline Link
+																	\(						# Opening paren
+																		[ \t]*+				# Optional whtiespace
+																		&lt;?(.*?)&gt;?			# URL
+																		[ \t]*+				# Optional whtiespace
+																		(					# Optional Title
+																			(?&lt;title&gt;['&quot;])
+																			(.*?)
+																			\k&lt;title&gt;
+																		)?
+																	\)
+																)
+															)
+														)
+													  | (?!(?&lt;=\S)\1).						# Everything besides
+																							# style closer
+													)++
+													(?&lt;=\S)\1								# Close
 												)
-											)
-										  | (?!(?&lt;=\S)\1).						# Everything besides
-																				# style closer
-										)++
-										(?&lt;=\S)\1								# Close
-									)
-								</string>
+											</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>markup</string>
@@ -762,9 +762,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-							Markdown will convert this for us. We match it so that the
-							HTML grammar will not mark it up as invalid.
-						</string>
+										Markdown will convert this for us. We match it so that the
+										HTML grammar will not mark it up as invalid.
+									</string>
 			<key>match</key>
 			<string>&lt;(?![a-z/?\$!])</string>
 			<key>name</key>
@@ -1025,20 +1025,20 @@
 			</dict>
 			<key>match</key>
 			<string>(?x:
-							\!							# Images start with !
-							(\[)((?&lt;square&gt;[^\[\]\\]|\\.|\[\g&lt;square&gt;*+\])*+)(\])	
-														# Match the link text.
-							([ ])?						# Space not allowed
-							(\()						# Opening paren for url
-								(&lt;?)(\S+?)(&gt;?)			# The url
-								[ \t]*					# Optional whitespace
-								(?:
-									  ((\().+?(\)))		# Match title in parens…
-									| ((&quot;).+?(&quot;))		# or in quotes.
-								)?						# Title is optional
-								\s*						# Optional whitespace
-							(\))
-						 )</string>
+										\!							# Images start with !
+										(\[)((?&lt;square&gt;[^\[\]\\]|\\.|\[\g&lt;square&gt;*+\])*+)(\])	
+																	# Match the link text.
+										([ ])?						# Space not allowed
+										(\()						# Opening paren for url
+											(&lt;?)(\S+?)(&gt;?)			# The url
+											[ \t]*					# Optional whitespace
+											(?:
+												  ((\().+?(\)))		# Match title in parens…
+												| ((&quot;).+?(&quot;))		# or in quotes.
+											)?						# Title is optional
+											\s*						# Optional whitespace
+										(\))
+									 )</string>
 			<key>name</key>
 			<string>meta.image.inline.markdown</string>
 		</dict>
@@ -1201,47 +1201,47 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-									(\*|_)(?=\S)								# Open
-									(?=
-										(
-										    &lt;[^&gt;]*+&gt;							# HTML tags
-										  | (?&lt;raw&gt;`+)([^`]|(?!(?&lt;!`)\k&lt;raw&gt;(?!`))`)*+\k&lt;raw&gt;
-																				# Raw
-										  | \\[\\`*_{}\[\]()#.!+\-&gt;]?+			# Escapes
-										  | \[
-											(				
-											        (?&lt;square&gt;					# Named group
-														[^\[\]\\]				# Match most chars
-											          | \\.						# Escaped chars
-											          | \[ \g&lt;square&gt;*+ \]		# Nested brackets
-											        )*+
-												\]
-												(
-													(							# Reference Link
-														[ ]?					# Optional space
-														\[[^\]]*+\]				# Ref name
-													)
-												  | (							# Inline Link
-														\(						# Opening paren
-															[ \t]*+				# Optional whtiespace
-															&lt;?(.*?)&gt;?			# URL
-															[ \t]*+				# Optional whtiespace
-															(					# Optional Title
-																(?&lt;title&gt;['&quot;])
-																(.*?)
-																\k&lt;title&gt;
-															)?
-														\)
-													)
+												(\*|_)(?=\S)								# Open
+												(?=
+													(
+													    &lt;[^&gt;]*+&gt;							# HTML tags
+													  | (?&lt;raw&gt;`+)([^`]|(?!(?&lt;!`)\k&lt;raw&gt;(?!`))`)*+\k&lt;raw&gt;
+																							# Raw
+													  | \\[\\`*_{}\[\]()#.!+\-&gt;]?+			# Escapes
+													  | \[
+														(				
+														        (?&lt;square&gt;					# Named group
+																	[^\[\]\\]				# Match most chars
+														          | \\.						# Escaped chars
+														          | \[ \g&lt;square&gt;*+ \]		# Nested brackets
+														        )*+
+															\]
+															(
+																(							# Reference Link
+																	[ ]?					# Optional space
+																	\[[^\]]*+\]				# Ref name
+																)
+															  | (							# Inline Link
+																	\(						# Opening paren
+																		[ \t]*+				# Optional whtiespace
+																		&lt;?(.*?)&gt;?			# URL
+																		[ \t]*+				# Optional whtiespace
+																		(					# Optional Title
+																			(?&lt;title&gt;['&quot;])
+																			(.*?)
+																			\k&lt;title&gt;
+																		)?
+																	\)
+																)
+															)
+														)
+													  | \1\1								# Must be bold closer
+													  | (?!(?&lt;=\S)\1).						# Everything besides
+																							# style closer
+													)++
+													(?&lt;=\S)\1								# Close
 												)
-											)
-										  | \1\1								# Must be bold closer
-										  | (?!(?&lt;=\S)\1).						# Everything besides
-																				# style closer
-										)++
-										(?&lt;=\S)\1								# Close
-									)
-								</string>
+											</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>markup</string>
@@ -1659,19 +1659,19 @@
 			</dict>
 			<key>match</key>
 			<string>(?x:
-							(\[)((?&lt;square&gt;[^\[\]\\]|\\.|\[\g&lt;square&gt;*+\])*+)(\])	
-														# Match the link text.
-							([ ])?						# Space not allowed
-							(\()						# Opening paren for url
-								(&lt;?)(.*?)(&gt;?)			# The url
-								[ \t]*					# Optional whitespace
-								(?:
-									  ((\().+?(\)))		# Match title in parens…
-									| ((&quot;).+?(&quot;))		# or in quotes.
-								)?						# Title is optional
-								\s*						# Optional whitespace
-							(\))
-						 )</string>
+										(\[)((?&lt;square&gt;[^\[\]\\]|\\.|\[\g&lt;square&gt;*+\])*+)(\])	
+																	# Match the link text.
+										([ ])?						# Space not allowed
+										(\()						# Opening paren for url
+											(&lt;?)(.*?)(&gt;?)			# The url
+											[ \t]*					# Optional whitespace
+											(?:
+												  ((\().+?(\)))		# Match title in parens…
+												| ((&quot;).+?(&quot;))		# or in quotes.
+											)?						# Title is optional
+											\s*						# Optional whitespace
+										(\))
+									 )</string>
 			<key>name</key>
 			<string>meta.link.inline.markdown</string>
 		</dict>

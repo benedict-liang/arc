@@ -8,8 +8,8 @@
 	</array>
 	<key>comment</key>
 	<string>TODO:
-	• Try to improve parameters list syntax – scope numbers, ‘=’, ‘,’ and possibly be intelligent about entity ordering
-	• Is meta.function-call the correct scope? I've added it to my theme but by default it's not highlighted</string>
+		• Try to improve parameters list syntax – scope numbers, ‘=’, ‘,’ and possibly be intelligent about entity ordering
+		• Is meta.function-call the correct scope? I've added it to my theme but by default it's not highlighted</string>
 	<key>fileTypes</key>
 	<array>
 		<string>php</string>
@@ -129,25 +129,25 @@
 			<string>Matches empty tags.</string>
 			<key>match</key>
 			<string>(?x)
-							(^\s*)?							# 1 - Leading whitespace
-								(							# 2 - meta.embedded.line.empty.php
-									(						# 3 - Open Tag
-										(?:
-											((?&lt;=\?&gt;)&lt;)		# 4 - Consecutive tags
-										  | &lt;
+										(^\s*)?							# 1 - Leading whitespace
+											(							# 2 - meta.embedded.line.empty.php
+												(						# 3 - Open Tag
+													(?:
+														((?&lt;=\?&gt;)&lt;)		# 4 - Consecutive tags
+													  | &lt;
+													)
+													\?(?i:php|=)?
+												)
+													(\s*)				# 5 - Loneliness
+												((\?)&gt;)					# 6 - Close Tag
+																		# 7 - Scope ? as scope.php
+											)
+										(
+											\1							# Match nothing if there was no
+																		#   leading whitespace...
+										  | (\s*$\n)?					# or match trailing whitespace.
 										)
-										\?(?i:php|=)?
-									)
-										(\s*)				# 5 - Loneliness
-									((\?)&gt;)					# 6 - Close Tag
-															# 7 - Scope ? as scope.php
-								)
-							(
-								\1							# Match nothing if there was no
-															#   leading whitespace...
-							  | (\s*$\n)?					# or match trailing whitespace.
-							)
-						</string>
+									</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -389,8 +389,8 @@
 					</array>
 					<key>comment</key>
 					<string>In PHP, any identifier which is not a variable is taken to be a constant.
-									However, if there is no constant defined with the given name then a notice
-									is generated and the constant is assumed to have the value of its name.</string>
+														However, if there is no constant defined with the given name then a notice
+														is generated and the constant is assumed to have the value of its name.</string>
 					<key>match</key>
 					<string>[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*</string>
 					<key>name</key>
@@ -552,8 +552,8 @@
 					<string>Simple syntax with braces: &quot;foo${bar}baz&quot;</string>
 					<key>match</key>
 					<string>(?x)
-											((\$\{)(?&lt;name&gt;[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)(\}))
-											</string>
+																((\$\{)(?&lt;name&gt;[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)(\}))
+																</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -705,20 +705,20 @@
 					<string>Simple syntax: $foo, $foo[0], $foo[$bar], $foo-&gt;bar</string>
 					<key>match</key>
 					<string>(?x)
-											((\$)(?&lt;name&gt;[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*))
-											(?:
-												(-&gt;)
-													(?:
-														(\g&lt;name&gt;)
-														|
-														(\$\g&lt;name&gt;)
-													)
-												|
-												(\[)
-													(?:(\d+)|((\$)\g&lt;name&gt;)|(\w+)|(.*?))
-												(\])
-											)?
-											</string>
+																((\$)(?&lt;name&gt;[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*))
+																(?:
+																	(-&gt;)
+																		(?:
+																			(\g&lt;name&gt;)
+																			|
+																			(\$\g&lt;name&gt;)
+																		)
+																	|
+																	(\[)
+																		(?:(\d+)|((\$)\g&lt;name&gt;)|(\w+)|(.*?))
+																	(\])
+																)?
+																</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -740,8 +740,8 @@
 					</dict>
 					<key>comment</key>
 					<string>Complex syntax. It seems this now supports complex method calls, as of PHP5.
-												   I've put wildcards into the function call parameter lists to handle this, but this may break the pattern.
-												   It also might be better to disable it as I shouldn't imagine it's used often (hopefully) and it may confuse PHP4 users.</string>
+																	   I've put wildcards into the function call parameter lists to handle this, but this may break the pattern.
+																	   It also might be better to disable it as I shouldn't imagine it's used often (hopefully) and it may confuse PHP4 users.</string>
 					<key>end</key>
 					<string>\}</string>
 					<key>endCaptures</key>
@@ -1285,8 +1285,8 @@
 					</dict>
 					<key>comment</key>
 					<string>This now only highlights a docblock if the first line contains only /**
-													- this is to stop highlighting everything as invalid when people do comment banners with /******** ...
-													- Now matches /**#@+ too - used for docblock templates: http://manual.phpdoc.org/HTMLframesConverter/default/phpDocumentor/tutorial_phpDocumentor.howto.pkg.html#basics.docblocktemplate</string>
+																		- this is to stop highlighting everything as invalid when people do comment banners with /******** ...
+																		- Now matches /**#@+ too - used for docblock templates: http://manual.phpdoc.org/HTMLframesConverter/default/phpDocumentor/tutorial_phpDocumentor.howto.pkg.html#basics.docblocktemplate</string>
 					<key>end</key>
 					<string>\*/</string>
 					<key>name</key>
@@ -1831,12 +1831,12 @@
 						<dict>
 							<key>begin</key>
 							<string>(?x)
-																\s*(array) # Typehint
-																\s*(&amp;)? 					# Reference
-																\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*) # The variable name
-																\s*(=)	# A default value
-																\s*(array)\s*(\()
-																</string>
+																							\s*(array) # Typehint
+																							\s*(&amp;)? 					# Reference
+																							\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*) # The variable name
+																							\s*(=)	# A default value
+																							\s*(array)\s*(\()
+																							</string>
 							<key>beginCaptures</key>
 							<dict>
 								<key>1</key>
@@ -2058,19 +2058,19 @@
 							</dict>
 							<key>match</key>
 							<string>(?x)
-																\s*(array) # Typehint
-																\s*(&amp;)? 					# Reference
-																\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*) # The variable name
-																(?:
-																	\s*(=)	# A default value
-																	\s*(?i:
-																		(NULL)
-																		|
-																		(\S.*?)
-																		)?
-																)?
-																\s*(?=,|\)) # A closing parentheses (end of argument list) or a comma
-																</string>
+																							\s*(array) # Typehint
+																							\s*(&amp;)? 					# Reference
+																							\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*) # The variable name
+																							(?:
+																								\s*(=)	# A default value
+																								\s*(?i:
+																									(NULL)
+																									|
+																									(\S.*?)
+																									)?
+																							)?
+																							\s*(?=,|\)) # A closing parentheses (end of argument list) or a comma
+																							</string>
 							<key>name</key>
 							<string>meta.function.argument.array.php</string>
 						</dict>
@@ -2168,19 +2168,19 @@
 							</dict>
 							<key>match</key>
 							<string>(?x)
-																\s*([A-Za-z_][A-Za-z_0-9]*) # Typehinted class name
-																\s*(&amp;)? 					# Reference
-																\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*) # The variable name
-																(?:
-																	\s*(=)	# A default value
-																	\s*(?i:
-																		(NULL)
-																		|
-																		(\S.*?)
-																		)?
-																)?
-																\s*(?=,|\)) # A closing parentheses (end of argument list) or a comma
-																</string>
+																							\s*([A-Za-z_][A-Za-z_0-9]*) # Typehinted class name
+																							\s*(&amp;)? 					# Reference
+																							\s*((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*) # The variable name
+																							(?:
+																								\s*(=)	# A default value
+																								\s*(?i:
+																									(NULL)
+																									|
+																									(\S.*?)
+																									)?
+																							)?
+																							\s*(?=,|\)) # A closing parentheses (end of argument list) or a comma
+																							</string>
 							<key>name</key>
 							<string>meta.function.argument.typehinted.php</string>
 						</dict>
@@ -2432,13 +2432,13 @@
 					</dict>
 					<key>match</key>
 					<string>(?x)(::)
-					                        (?:
-					        				    ([A-Za-z_][A-Za-z_0-9]*)\s*\(
-					        				    |
-					        				    ((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)
-					        				    |
-					        				    ([a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)
-					        				)?</string>
+										                        (?:
+										        				    ([A-Za-z_][A-Za-z_0-9]*)\s*\(
+										        				    |
+										        				    ((\$+)[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)
+										        				    |
+										        				    ([a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)
+										        				)?</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -2821,11 +2821,11 @@
 			</dict>
 			<key>match</key>
 			<string>(?x)(-&gt;)
-			    				(?:
-			    				    ([A-Za-z_][A-Za-z_0-9]*)\s*\(
-			    				    |
-			    				    ((\$+)?[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)
-			    				)?</string>
+						    				(?:
+						    				    ([A-Za-z_][A-Za-z_0-9]*)\s*\(
+						    				    |
+						    				    ((\$+)?[a-zA-Z_\x{7f}-\x{ff}][a-zA-Z0-9_\x{7f}-\x{ff}]*)
+						    				)?</string>
 		</dict>
 		<key>parameter-default-types</key>
 		<dict>
@@ -3545,7 +3545,7 @@
 					</array>
 					<key>comment</key>
 					<string>Unclosed strings must be captured to avoid them eating the remainder of the PHP script
-										Sample case: $sql = &quot;SELECT * FROM bar WHERE foo = '&quot; . $variable . &quot;'&quot;</string>
+															Sample case: $sql = &quot;SELECT * FROM bar WHERE foo = '&quot; . $variable . &quot;'&quot;</string>
 					<key>end</key>
 					<string>(?=&quot;)</string>
 					<key>name</key>
@@ -3581,7 +3581,7 @@
 					</array>
 					<key>comment</key>
 					<string>Unclosed strings must be captured to avoid them eating the remainder of the PHP script
-										Sample case: $sql = &quot;SELECT * FROM bar WHERE foo = '&quot; . $variable . &quot;'&quot;</string>
+															Sample case: $sql = &quot;SELECT * FROM bar WHERE foo = '&quot; . $variable . &quot;'&quot;</string>
 					<key>end</key>
 					<string>(?=&quot;)</string>
 					<key>name</key>
@@ -3616,7 +3616,7 @@
 					</array>
 					<key>comment</key>
 					<string>Unclosed strings must be captured to avoid them eating the remainder of the PHP script
-										Sample case: $sql = &quot;SELECT * FROM bar WHERE foo = '&quot; . $variable . &quot;'&quot;</string>
+															Sample case: $sql = &quot;SELECT * FROM bar WHERE foo = '&quot; . $variable . &quot;'&quot;</string>
 					<key>end</key>
 					<string>(?=&quot;)</string>
 					<key>name</key>
@@ -3834,7 +3834,7 @@
 					</array>
 					<key>comment</key>
 					<string>Unclosed strings must be captured to avoid them eating the remainder of the PHP script
-										Sample case: $sql = &quot;SELECT * FROM bar WHERE foo = '&quot; . $variable . &quot;'&quot;</string>
+															Sample case: $sql = &quot;SELECT * FROM bar WHERE foo = '&quot; . $variable . &quot;'&quot;</string>
 					<key>end</key>
 					<string>(?=')</string>
 					<key>name</key>
@@ -3870,7 +3870,7 @@
 					</array>
 					<key>comment</key>
 					<string>Unclosed strings must be captured to avoid them eating the remainder of the PHP script
-										Sample case: $sql = &quot;SELECT * FROM bar WHERE foo = '&quot; . $variable . &quot;'&quot;</string>
+															Sample case: $sql = &quot;SELECT * FROM bar WHERE foo = '&quot; . $variable . &quot;'&quot;</string>
 					<key>end</key>
 					<string>(?=')</string>
 					<key>name</key>
@@ -3905,7 +3905,7 @@
 					</array>
 					<key>comment</key>
 					<string>Unclosed strings must be captured to avoid them eating the remainder of the PHP script
-										Sample case: $sql = &quot;SELECT * FROM bar WHERE foo = '&quot; . $variable . &quot;'&quot;</string>
+															Sample case: $sql = &quot;SELECT * FROM bar WHERE foo = '&quot; . $variable . &quot;'&quot;</string>
 					<key>end</key>
 					<string>(?=')</string>
 					<key>name</key>
@@ -6439,8 +6439,8 @@
 			</dict>
 			<key>match</key>
 			<string>(?x)
-						            (\$+)[a-zA-Z_\x{7f}-\x{ff}]
-						            [a-zA-Z0-9_\x{7f}-\x{ff}]*?\b</string>
+									            (\$+)[a-zA-Z_\x{7f}-\x{ff}]
+									            [a-zA-Z0-9_\x{7f}-\x{ff}]*?\b</string>
 			<key>name</key>
 			<string>variable.other.php</string>
 		</dict>

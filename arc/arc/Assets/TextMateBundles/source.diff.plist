@@ -13,15 +13,15 @@
 	</array>
 	<key>firstLineMatch</key>
 	<string>(?x)^
-			(===\ modified\ file
-			|==== \s* // .+ \s - \s .+ \s+ ====
-			|Index:[ ]
-			|---\ [^%]
-			|\*\*\*.*\d{4}\s*$
-			|\d+(,\d+)* (a|d|c) \d+(,\d+)* $
-			|diff\ --git[ ]
-			)
-		</string>
+				(===\ modified\ file
+				|==== \s* // .+ \s - \s .+ \s+ ====
+				|Index:[ ]
+				|---\ [^%]
+				|\*\*\*.*\d{4}\s*$
+				|\d+(,\d+)* (a|d|c) \d+(,\d+)* $
+				|diff\ --git[ ]
+				)
+			</string>
 	<key>foldingStartMarker</key>
 	<string>^\+\+\+</string>
 	<key>foldingStopMarker</key>

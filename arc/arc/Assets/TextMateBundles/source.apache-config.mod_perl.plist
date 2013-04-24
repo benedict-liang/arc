@@ -12,12 +12,12 @@
 	</array>
 	<key>foldingStartMarker</key>
 	<string>^[ ]*(?x)
-										(&lt;(?i:FilesMatch|Files|DirectoryMatch|Directory|LocationMatch|Location|VirtualHost|IfModule|IfDefine|Perl)\b.*?&gt;
-										)</string>
+											(&lt;(?i:FilesMatch|Files|DirectoryMatch|Directory|LocationMatch|Location|VirtualHost|IfModule|IfDefine|Perl)\b.*?&gt;
+											)</string>
 	<key>foldingStopMarker</key>
 	<string>^[ ]*(?x)
-										(&lt;/(?i:FilesMatch|Files|DirectoryMatch|Directory|LocationMatch|Location|VirtualHost|IfModule|IfDefine|Perl)&gt;
-										)</string>
+											(&lt;/(?i:FilesMatch|Files|DirectoryMatch|Directory|LocationMatch|Location|VirtualHost|IfModule|IfDefine|Perl)&gt;
+											)</string>
 	<key>keyEquivalent</key>
 	<string>^~A</string>
 	<key>name</key>

@@ -500,25 +500,25 @@
 					</dict>
 					<key>match</key>
 					<string>(?x)
-													&quot;								# Start name, etc
-														(?:							# Attributes
-															# I swear, this is how the language is defined,
-															# couldnt make it up if I tried.
-															(?:\([^)]+\))?(?:\{[^}]+\})?(?:\[[^\]]+\])?
-																# Class, Style, Lang
-														  | (?:\{[^}]+\})?(?:\[[^\]]+\])?(?:\([^)]+\))?
-																# Style, Lang, Class
-														  | (?:\[[^\]]+\])?(?:\{[^}]+\})?(?:\([^)]+\))?
-																# Lang, Style, Class
-														)?
-														([^&quot;]+?)					# Link name
-														\s?							# Optional whitespace
-														(?:\(([^)]+?)\))?
-													&quot;:								# End name
-													(\w[-\w_]*)						# Linkref
-													(?=[^\w\/;]*?(&lt;|\s|$))			# Catch closing punctuation
-																					#  and end of meta.link
-										</string>
+																		&quot;								# Start name, etc
+																			(?:							# Attributes
+																				# I swear, this is how the language is defined,
+																				# couldnt make it up if I tried.
+																				(?:\([^)]+\))?(?:\{[^}]+\})?(?:\[[^\]]+\])?
+																					# Class, Style, Lang
+																			  | (?:\{[^}]+\})?(?:\[[^\]]+\])?(?:\([^)]+\))?
+																					# Style, Lang, Class
+																			  | (?:\[[^\]]+\])?(?:\{[^}]+\})?(?:\([^)]+\))?
+																					# Lang, Style, Class
+																			)?
+																			([^&quot;]+?)					# Link name
+																			\s?							# Optional whitespace
+																			(?:\(([^)]+?)\))?
+																		&quot;:								# End name
+																		(\w[-\w_]*)						# Linkref
+																		(?=[^\w\/;]*?(&lt;|\s|$))			# Catch closing punctuation
+																										#  and end of meta.link
+															</string>
 					<key>name</key>
 					<string>meta.link.reference.textile</string>
 				</dict>
@@ -574,25 +574,25 @@
 					</dict>
 					<key>match</key>
 					<string>(?x)
-													&quot;								# Start name, etc
-														(?:							# Attributes
-															# I swear, this is how the language is defined,
-															# couldnt make it up if I tried.
-															(?:\([^)]+\))?(?:\{[^}]+\})?(?:\[[^\]]+\])?
-																# Class, Style, Lang
-														  | (?:\{[^}]+\})?(?:\[[^\]]+\])?(?:\([^)]+\))?
-																# Style, Lang, Class
-														  | (?:\[[^\]]+\])?(?:\{[^}]+\})?(?:\([^)]+\))?
-																# Lang, Style, Class
-														)?
-														([^&quot;]+?)					# Link name
-														\s?							# Optional whitespace
-														(?:\(([^)]+?)\))?
-													&quot;:								# End Name
-													(\S*?(?:\w|\/|;))				# URL
-													(?=[^\w\/;]*?(&lt;|\s|$))			# Catch closing punctuation
-																					#  and end of meta.link
-										</string>
+																		&quot;								# Start name, etc
+																			(?:							# Attributes
+																				# I swear, this is how the language is defined,
+																				# couldnt make it up if I tried.
+																				(?:\([^)]+\))?(?:\{[^}]+\})?(?:\[[^\]]+\])?
+																					# Class, Style, Lang
+																			  | (?:\{[^}]+\})?(?:\[[^\]]+\])?(?:\([^)]+\))?
+																					# Style, Lang, Class
+																			  | (?:\[[^\]]+\])?(?:\{[^}]+\})?(?:\([^)]+\))?
+																					# Lang, Style, Class
+																			)?
+																			([^&quot;]+?)					# Link name
+																			\s?							# Optional whitespace
+																			(?:\(([^)]+?)\))?
+																		&quot;:								# End Name
+																		(\S*?(?:\w|\/|;))				# URL
+																		(?=[^\w\/;]*?(&lt;|\s|$))			# Catch closing punctuation
+																										#  and end of meta.link
+															</string>
 					<key>name</key>
 					<string>meta.link.inline.textile</string>
 				</dict>
@@ -647,29 +647,29 @@
 					</dict>
 					<key>match</key>
 					<string>(?x)
-													\!										# Open image
-													(\&lt;|\=|\&gt;)?								# Optional alignment
-													(?:										# Attributes
-														# I swear, this is how the language is defined,
-														# couldnt make it up if I tried.
-														(?:\([^)]+\))?(?:\{[^}]+\})?(?:\[[^\]]+\])?
-															# Class, Style, Lang
-													  | (?:\{[^}]+\})?(?:\[[^\]]+\])?(?:\([^)]+\))?
-															# Style, Lang, Class
-													  | (?:\[[^\]]+\])?(?:\{[^}]+\})?(?:\([^)]+\))?
-															# Lang, Style, Class
-													)?
-													(?:\.[ ])?            					# Optional
-													([^\s(!]+?)         					# Image URL
-													\s?                						# Optional space
-													(?:\(((?:[^\(\)]|\([^\)]+\))+?)\))?   	# Optional title
-													\!										# Close image
-													(?:
-														:
-														(\S*?(?:\w|\/|;))					# URL
-														(?=[^\w\/;]*?(&lt;|\s|$))				# Catch closing punctuation
-													)?
-										</string>
+																		\!										# Open image
+																		(\&lt;|\=|\&gt;)?								# Optional alignment
+																		(?:										# Attributes
+																			# I swear, this is how the language is defined,
+																			# couldnt make it up if I tried.
+																			(?:\([^)]+\))?(?:\{[^}]+\})?(?:\[[^\]]+\])?
+																				# Class, Style, Lang
+																		  | (?:\{[^}]+\})?(?:\[[^\]]+\])?(?:\([^)]+\))?
+																				# Style, Lang, Class
+																		  | (?:\[[^\]]+\])?(?:\{[^}]+\})?(?:\([^)]+\))?
+																				# Lang, Style, Class
+																		)?
+																		(?:\.[ ])?            					# Optional
+																		([^\s(!]+?)         					# Image URL
+																		\s?                						# Optional space
+																		(?:\(((?:[^\(\)]|\([^\)]+\))+?)\))?   	# Optional title
+																		\!										# Close image
+																		(?:
+																			:
+																			(\S*?(?:\w|\/|;))					# URL
+																			(?=[^\w\/;]*?(&lt;|\s|$))				# Catch closing punctuation
+																		)?
+															</string>
 					<key>name</key>
 					<string>meta.image.inline.textile</string>
 				</dict>

@@ -28,9 +28,9 @@
 	<string>-\*- C\+\+ -\*-</string>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-				 /\*\*(?!\*)
-				|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))
-			</string>
+					 /\*\*(?!\*)
+					|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))
+				</string>
 	<key>foldingStopMarker</key>
 	<string>(?&lt;!\*)\*\*/|^\s*\}</string>
 	<key>keyEquivalent</key>
@@ -188,12 +188,12 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-						    				(?:  ^                                 # begin-of-line
-						    				  |  (?: (?&lt;!else|new|=) )             #  or word + space before name
-						    				)
-						    				((?:[A-Za-z_][A-Za-z0-9_]*::)*+~[A-Za-z_][A-Za-z0-9_]*) # actual name
-						    				 \s*(\()                           # start bracket or end-of-line
-						    			</string>
+									    				(?:  ^                                 # begin-of-line
+									    				  |  (?: (?&lt;!else|new|=) )             #  or word + space before name
+									    				)
+									    				((?:[A-Za-z_][A-Za-z0-9_]*::)*+~[A-Za-z_][A-Za-z0-9_]*) # actual name
+									    				 \s*(\()                           # start bracket or end-of-line
+									    			</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -258,12 +258,12 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-						    				(?:  ^                                 # begin-of-line
-						    				  |  (?: (?&lt;!else|new|=) )             #  or word + space before name
-						    				)
-						    				((?:[A-Za-z_][A-Za-z0-9_]*::)*+~[A-Za-z_][A-Za-z0-9_]*) # actual name
-						    				 \s*(\()                           # terminating semi-colon
-						    			</string>
+									    				(?:  ^                                 # begin-of-line
+									    				  |  (?: (?&lt;!else|new|=) )             #  or word + space before name
+									    				)
+									    				((?:[A-Za-z_][A-Za-z0-9_]*::)*+~[A-Za-z_][A-Za-z0-9_]*) # actual name
+									    				 \s*(\()                           # terminating semi-colon
+									    			</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -407,10 +407,10 @@
 					</dict>
 					<key>match</key>
 					<string>(?x)
-										    				(
-										    					(?!while|for|do|if|else|switch|catch|enumerate|return|r?iterate)(?: \b[A-Za-z_][A-Za-z0-9_]*+\b | :: )*+                  # actual name
-										    				)
-										    				 \s*(\()</string>
+															    				(
+															    					(?!while|for|do|if|else|switch|catch|enumerate|return|r?iterate)(?: \b[A-Za-z_][A-Za-z0-9_]*+\b | :: )*+                  # actual name
+															    				)
+															    				 \s*(\()</string>
 					<key>name</key>
 					<string>meta.function-call.c</string>
 				</dict>
@@ -427,10 +427,10 @@
 				<dict>
 					<key>begin</key>
 					<string>(?x)
-										    				(?:  ^\s*)                             # begin-of-line
-										    				((?!while|for|do|if|else|switch|catch|enumerate|r?iterate)[A-Za-z_][A-Za-z0-9_:]*) # actual name
-										    				 \s*(\()                            # start bracket or end-of-line
-										    			</string>
+															    				(?:  ^\s*)                             # begin-of-line
+															    				((?!while|for|do|if|else|switch|catch|enumerate|r?iterate)[A-Za-z_][A-Za-z0-9_:]*) # actual name
+															    				 \s*(\()                            # start bracket or end-of-line
+															    			</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -495,10 +495,10 @@
 				<dict>
 					<key>begin</key>
 					<string>(?x)
-										    				(:)                            # begin-of-line
-										    				((?=\s*[A-Za-z_][A-Za-z0-9_:]* # actual name
-										    				 \s*(\()))                      # start bracket or end-of-line
-										    			</string>
+															    				(:)                            # begin-of-line
+															    				((?=\s*[A-Za-z_][A-Za-z0-9_:]* # actual name
+															    				 \s*(\()))                      # start bracket or end-of-line
+															    			</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>

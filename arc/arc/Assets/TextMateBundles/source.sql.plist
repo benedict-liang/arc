@@ -387,26 +387,26 @@
 			</dict>
 			<key>match</key>
 			<string>(?xi)
-			
-							# normal stuff, capture 1
-							 \b(bigint|bigserial|bit|boolean|box|bytea|cidr|circle|date|double\sprecision|inet|int|integer|line|lseg|macaddr|money|oid|path|point|polygon|real|serial|smallint|sysdate|text)\b
-			
-							# numeric suffix, capture 2 + 3i
-							|\b(bit\svarying|character\s(?:varying)?|tinyint|var\schar|float|interval)\((\d+)\)
-			
-							# optional numeric suffix, capture 4 + 5i
-							|\b(char|number|varchar\d?)\b(?:\((\d+)\))?
-			
-							# special case, capture 6 + 7i + 8i
-							|\b(numeric)\b(?:\((\d+),(\d+)\))?
-			
-							# special case, captures 9, 10i, 11
-							|\b(times)(?:\((\d+)\))(\swithoutstimeszone\b)?
-			
-							# special case, captures 12, 13, 14i, 15
-							|\b(timestamp)(?:(s)\((\d+)\)(\swithoutstimeszone\b)?)?
-			
-						</string>
+						
+										# normal stuff, capture 1
+										 \b(bigint|bigserial|bit|boolean|box|bytea|cidr|circle|date|double\sprecision|inet|int|integer|line|lseg|macaddr|money|oid|path|point|polygon|real|serial|smallint|sysdate|text)\b
+						
+										# numeric suffix, capture 2 + 3i
+										|\b(bit\svarying|character\s(?:varying)?|tinyint|var\schar|float|interval)\((\d+)\)
+						
+										# optional numeric suffix, capture 4 + 5i
+										|\b(char|number|varchar\d?)\b(?:\((\d+)\))?
+						
+										# special case, capture 6 + 7i + 8i
+										|\b(numeric)\b(?:\((\d+),(\d+)\))?
+						
+										# special case, captures 9, 10i, 11
+										|\b(times)(?:\((\d+)\))(\swithoutstimeszone\b)?
+						
+										# special case, captures 12, 13, 14i, 15
+										|\b(timestamp)(?:(s)\((\d+)\)(\swithoutstimeszone\b)?)?
+						
+									</string>
 		</dict>
 		<dict>
 			<key>capturableScopes</key>

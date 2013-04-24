@@ -13,37 +13,37 @@
 	</array>
 	<key>foldingStartMarker</key>
 	<string>(?x)^
-		    (\s*+
-		        (module|class|def
-		        |unless|if
-		        |case
-		        |begin
-		        |for|while|until
-		        |(  &quot;(\\.|[^&quot;])*+&quot;          # eat a double quoted string
-		         | '(\\.|[^'])*+'        # eat a single quoted string
-		         |   [^#&quot;']                # eat all but comments and strings
-		         )*
-		         (                 \s   (do|begin|case)
-		         | [-+=&amp;|*/~%^&lt;&gt;~] \s*+ (if|unless)
-		         )
-		        )\b
-		        (?! [^;]*+ ; .*? \bend\b )
-		    |(  &quot;(\\.|[^&quot;])*+&quot;              # eat a double quoted string
-		     | '(\\.|[^'])*+'            # eat a single quoted string
-		     |   [^#&quot;']                    # eat all but comments and strings
-		     )*
-		     ( \{ (?!  [^}]*+ \} )
-		     | \[ (?! [^\]]*+ \] )
-		     )
-		    ).*$
-		|   [#] .*? \(fold\) \s*+ $         # Sune’s special marker
-		</string>
+			    (\s*+
+			        (module|class|def
+			        |unless|if
+			        |case
+			        |begin
+			        |for|while|until
+			        |(  &quot;(\\.|[^&quot;])*+&quot;          # eat a double quoted string
+			         | '(\\.|[^'])*+'        # eat a single quoted string
+			         |   [^#&quot;']                # eat all but comments and strings
+			         )*
+			         (                 \s   (do|begin|case)
+			         | [-+=&amp;|*/~%^&lt;&gt;~] \s*+ (if|unless)
+			         )
+			        )\b
+			        (?! [^;]*+ ; .*? \bend\b )
+			    |(  &quot;(\\.|[^&quot;])*+&quot;              # eat a double quoted string
+			     | '(\\.|[^'])*+'            # eat a single quoted string
+			     |   [^#&quot;']                    # eat all but comments and strings
+			     )*
+			     ( \{ (?!  [^}]*+ \} )
+			     | \[ (?! [^\]]*+ \] )
+			     )
+			    ).*$
+			|   [#] .*? \(fold\) \s*+ $         # Sune’s special marker
+			</string>
 	<key>foldingStopMarker</key>
 	<string>(?x)
-			(   (^|;) \s*+ end   \s*+ ([#].*)? $
-			|   ^     \s*+ [}\]] \s*+ ([#].*)? $
-			|   [#] .*? \(end\) \s*+ $    # Sune’s special marker
-			)</string>
+				(   (^|;) \s*+ end   \s*+ ([#].*)? $
+				|   ^     \s*+ [}\]] \s*+ ([#].*)? $
+				|   [#] .*? \(end\) \s*+ $    # Sune’s special marker
+				)</string>
 	<key>keyEquivalent</key>
 	<string>^~R</string>
 	<key>name</key>

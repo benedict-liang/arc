@@ -10,10 +10,10 @@
 	</array>
 	<key>comment</key>
 	<string>
-		todo:
-			list comprehension / generator comprehension scope.
-	
-		</string>
+			todo:
+				list comprehension / generator comprehension scope.
+		
+			</string>
 	<key>fileTypes</key>
 	<array>
 		<string>py</string>
@@ -1851,17 +1851,17 @@
 			</array>
 			<key>match</key>
 			<string>(?x)\b(
-			                (
-			                    Arithmetic|Assertion|Attribute|Buffer|EOF|Environment|FloatingPoint|IO|
-			                    Import|Indentation|Index|Key|Lookup|Memory|Name|NotImplemented|OS|Overflow|
-			                    Reference|Runtime|Standard|Syntax|System|Tab|Type|UnboundLocal|
-			                    Unicode(Encode|Decode|Translate)?|
-			                    Value|VMS|Windows|ZeroDivision
-			                )Error|
-			                ((Pending)?Deprecation|Runtime|Syntax|User|Future|Import|Unicode|Bytes)?Warning|
-			                (Base)?Exception|
-			                SystemExit|StopIteration|NotImplemented|KeyboardInterrupt|GeneratorExit
-						)\b</string>
+						                (
+						                    Arithmetic|Assertion|Attribute|Buffer|EOF|Environment|FloatingPoint|IO|
+						                    Import|Indentation|Index|Key|Lookup|Memory|Name|NotImplemented|OS|Overflow|
+						                    Reference|Runtime|Standard|Syntax|System|Tab|Type|UnboundLocal|
+						                    Unicode(Encode|Decode|Translate)?|
+						                    Value|VMS|Windows|ZeroDivision
+						                )Error|
+						                ((Pending)?Deprecation|Runtime|Syntax|User|Future|Import|Unicode|Bytes)?Warning|
+						                (Base)?Exception|
+						                SystemExit|StopIteration|NotImplemented|KeyboardInterrupt|GeneratorExit
+									)\b</string>
 			<key>name</key>
 			<string>support.type.exception.python</string>
 		</dict>
@@ -1876,12 +1876,12 @@
 			</array>
 			<key>match</key>
 			<string>(?x)\b(
-			                __import__|all|abs|any|apply|callable|chr|cmp|coerce|compile|delattr|dir|
-			                divmod|eval|execfile|filter|getattr|globals|hasattr|hash|hex|id|
-			                input|intern|isinstance|issubclass|iter|len|locals|map|max|min|oct|
-			                ord|pow|range|raw_input|reduce|reload|repr|round|setattr|sorted|
-			                sum|unichr|vars|zip
-						)\b</string>
+						                __import__|all|abs|any|apply|callable|chr|cmp|coerce|compile|delattr|dir|
+						                divmod|eval|execfile|filter|getattr|globals|hasattr|hash|hex|id|
+						                input|intern|isinstance|issubclass|iter|len|locals|map|max|min|oct|
+						                ord|pow|range|raw_input|reduce|reload|repr|round|setattr|sorted|
+						                sum|unichr|vars|zip
+									)\b</string>
 			<key>name</key>
 			<string>support.function.builtin.python</string>
 		</dict>
@@ -1895,10 +1895,10 @@
 			</array>
 			<key>match</key>
 			<string>(?x)\b(
-							basestring|bool|buffer|classmethod|complex|dict|enumerate|file|
-							float|frozenset|int|list|long|object|open|property|reversed|set|
-							slice|staticmethod|str|super|tuple|type|unicode|xrange
-						)\b</string>
+										basestring|bool|buffer|classmethod|complex|dict|enumerate|file|
+										float|frozenset|int|list|long|object|open|property|reversed|set|
+										slice|staticmethod|str|super|tuple|type|unicode|xrange
+									)\b</string>
 			<key>name</key>
 			<string>support.type.python</string>
 		</dict>
@@ -2463,16 +2463,16 @@
 			<string>these methods have magic interpretation by python and are generally called indirectly through syntactic constructs</string>
 			<key>match</key>
 			<string>(?x)\b(__(?:
-									abs|add|and|call|cmp|coerce|complex|contains|del|delattr|
-									delete|delitem|delslice|div|divmod|enter|eq|exit|float|
-									floordiv|ge|get|getattr|getattribute|getitem|getslice|gt|
-									hash|hex|iadd|iand|idiv|ifloordiv|ilshift|imod|imul|init|
-									int|invert|ior|ipow|irshift|isub|iter|itruediv|ixor|le|len|
-									long|lshift|lt|mod|mul|ne|neg|new|nonzero|oct|or|pos|pow|
-									radd|rand|rdiv|rdivmod|repr|rfloordiv|rlshift|rmod|rmul|ror|
-									rpow|rrshift|rshift|rsub|rtruediv|rxor|set|setattr|setitem|
-									setslice|str|sub|truediv|unicode|xor
-								)__)\b</string>
+												abs|add|and|call|cmp|coerce|complex|contains|del|delattr|
+												delete|delitem|delslice|div|divmod|enter|eq|exit|float|
+												floordiv|ge|get|getattr|getattribute|getitem|getslice|gt|
+												hash|hex|iadd|iand|idiv|ifloordiv|ilshift|imod|imul|init|
+												int|invert|ior|ipow|irshift|isub|iter|itruediv|ixor|le|len|
+												long|lshift|lt|mod|mul|ne|neg|new|nonzero|oct|or|pos|pow|
+												radd|rand|rdiv|rdivmod|repr|rfloordiv|rlshift|rmod|rmul|ror|
+												rpow|rrshift|rshift|rsub|rtruediv|rxor|set|setattr|setitem|
+												setslice|str|sub|truediv|unicode|xor
+											)__)\b</string>
 			<key>name</key>
 			<string>support.function.magic.python</string>
 		</dict>

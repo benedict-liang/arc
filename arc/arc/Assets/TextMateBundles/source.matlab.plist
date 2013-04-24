@@ -23,14 +23,14 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-			(?=function\b) # borrowed from ruby bundle
-			(?&lt;=^|\s)(function)\s+ # the function keyword
-			(?&gt;\[(.*)\])?\t# match various different combination of output arguments
-			((?&gt;[a-zA-Z_]\w*))?
-			(?&gt;\s*=\s*)?
-			((?&gt;[a-zA-Z_]\w*(?&gt;[?!]|=(?!&gt;))? )) # the function name
-			(?=[ \t]*[^\s%|#]) # make sure arguments and not a comment follow
-			\s*(\() # the opening parenthesis for arguments</string>
+						(?=function\b) # borrowed from ruby bundle
+						(?&lt;=^|\s)(function)\s+ # the function keyword
+						(?&gt;\[(.*)\])?\t# match various different combination of output arguments
+						((?&gt;[a-zA-Z_]\w*))?
+						(?&gt;\s*=\s*)?
+						((?&gt;[a-zA-Z_]\w*(?&gt;[?!]|=(?!&gt;))? )) # the function name
+						(?=[ \t]*[^\s%|#]) # make sure arguments and not a comment follow
+						\s*(\() # the opening parenthesis for arguments</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -174,12 +174,12 @@
 			</dict>
 			<key>match</key>
 			<string>(?x)
-			(?=function\b) # borrowed from ruby bundle
-			(?&lt;=^|\s)(function)\s+ # the function keyword
-			(?&gt;\[(.*)\])? # match various different combination of output arguments
-			((?&gt;[a-zA-Z_]\w*))?
-			(?&gt;\s*=\s*)?
-			((?&gt;[a-zA-Z_]\w*(?&gt;[?!]|=(?!&gt;))? )) # the function name</string>
+						(?=function\b) # borrowed from ruby bundle
+						(?&lt;=^|\s)(function)\s+ # the function keyword
+						(?&gt;\[(.*)\])? # match various different combination of output arguments
+						((?&gt;[a-zA-Z_]\w*))?
+						(?&gt;\s*=\s*)?
+						((?&gt;[a-zA-Z_]\w*(?&gt;[?!]|=(?!&gt;))? )) # the function name</string>
 			<key>name</key>
 			<string>meta.function.without-arguments.matlab</string>
 		</dict>

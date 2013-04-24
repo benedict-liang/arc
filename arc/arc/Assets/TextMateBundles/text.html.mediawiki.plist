@@ -8,61 +8,61 @@
 	</array>
 	<key>comment</key>
 	<string>
-										This language grammar tries to handle Mediawiki syntax.  Mediawiki
-										syntax is a mess.  This grammar will likely never quite work right.
-										This is unsurprising as Mediawiki itself has never quite worked right.
-										
-												--Jacob
-										
-										TODO: lots of fixes still to do:
-										
-										 1. Add a bunch of HTML tags.  See the #block and #style sections.
-										 3. Correctly scope all the parser functions and their contents.
-										    This on will be complicated, as there are several: expr, if, etc.
-										 4. This is probably the biggest one: get all the lists to scope
-										    correctly by type of list.  Right now we just scope every list
-										    as a list, and do not worry about what happens beyond that.
-										    Eventually we want to do numbered and unnumbered separately, etc.
-										 5. Get some kind of folding by heading.  Maybe it should just fold
-										    to the next header, no matter which level it is.  Then we can
-										    make a contents just by folding everything.  Not completely sure
-											this is possible with current TM folding.
-										 7. Make sure that illegal things are correctly scoped illegal.
-										    This is non-trivial, and has several parts
-										    
-										      - Bold/italic are based on brain-dead heuristics.  I want to
-										        be stricter than Mediawiki on this one.  Also, we should
-										        scope as illegal when for instance a new heading starts
-										        before an italic has been closed.
-										      - Templates... these will be pretty tough to do, as they can
-										        be so flexible.
-										      - 
-										
-										 9. &lt;timeline&gt;&lt;/timeline&gt; tag.  I am really not sure this one is
-										    worth trying to do
-										10. Figure out a better scope for meta.function-call.  Infininight
-										    suggests entity.name.function.call, to be paralleled by
-										    entity.name.function.definition.  I am not completly sure I like
-										    that solution, but it is probably better than meta.function-call
-										
-										
-										TODO items not closely related to the grammar:
-										
-										 2. Add a drop command for links/images, add keyboard shortcuts for
-										    them too
-										 3. Make sure all the preference items are sorted out, for instance
-										    smart typing pairs, indent patterns, etc.
-										 4. Commands to do bold/italic, and maybe things like big/small 
-										 5. 
-										
-										FINISHED:
-										 2. Add support for LaTeX math mode inside of &lt;math&gt;&lt;/math&gt; tags.
-										 1. Add a command for new list item.  This one is trivial
-										 6. Get the symbol list working on headings.  Trivial.
-										 8. &lt;gallery&gt;&lt;/gallery&gt; tag.  This one adds some complication, but
-										    is worth supporting.
-										 
-									</string>
+											This language grammar tries to handle Mediawiki syntax.  Mediawiki
+											syntax is a mess.  This grammar will likely never quite work right.
+											This is unsurprising as Mediawiki itself has never quite worked right.
+											
+													--Jacob
+											
+											TODO: lots of fixes still to do:
+											
+											 1. Add a bunch of HTML tags.  See the #block and #style sections.
+											 3. Correctly scope all the parser functions and their contents.
+											    This on will be complicated, as there are several: expr, if, etc.
+											 4. This is probably the biggest one: get all the lists to scope
+											    correctly by type of list.  Right now we just scope every list
+											    as a list, and do not worry about what happens beyond that.
+											    Eventually we want to do numbered and unnumbered separately, etc.
+											 5. Get some kind of folding by heading.  Maybe it should just fold
+											    to the next header, no matter which level it is.  Then we can
+											    make a contents just by folding everything.  Not completely sure
+												this is possible with current TM folding.
+											 7. Make sure that illegal things are correctly scoped illegal.
+											    This is non-trivial, and has several parts
+											    
+											      - Bold/italic are based on brain-dead heuristics.  I want to
+											        be stricter than Mediawiki on this one.  Also, we should
+											        scope as illegal when for instance a new heading starts
+											        before an italic has been closed.
+											      - Templates... these will be pretty tough to do, as they can
+											        be so flexible.
+											      - 
+											
+											 9. &lt;timeline&gt;&lt;/timeline&gt; tag.  I am really not sure this one is
+											    worth trying to do
+											10. Figure out a better scope for meta.function-call.  Infininight
+											    suggests entity.name.function.call, to be paralleled by
+											    entity.name.function.definition.  I am not completly sure I like
+											    that solution, but it is probably better than meta.function-call
+											
+											
+											TODO items not closely related to the grammar:
+											
+											 2. Add a drop command for links/images, add keyboard shortcuts for
+											    them too
+											 3. Make sure all the preference items are sorted out, for instance
+											    smart typing pairs, indent patterns, etc.
+											 4. Commands to do bold/italic, and maybe things like big/small 
+											 5. 
+											
+											FINISHED:
+											 2. Add support for LaTeX math mode inside of &lt;math&gt;&lt;/math&gt; tags.
+											 1. Add a command for new list item.  This one is trivial
+											 6. Get the symbol list working on headings.  Trivial.
+											 8. &lt;gallery&gt;&lt;/gallery&gt; tag.  This one adds some complication, but
+											    is worth supporting.
+											 
+										</string>
 	<key>fileTypes</key>
 	<array>
 		<string>mediawiki</string>
@@ -153,10 +153,10 @@
 					</array>
 					<key>comment</key>
 					<string>
-																																														This matches lines which begin and end with some
-																																													    number of “=” marks.  If they are mismatched, then
-																																													    interior “=” marks will be treated as invalid.
-																																												    </string>
+																																																			This matches lines which begin and end with some
+																																																		    number of “=” marks.  If they are mismatched, then
+																																																		    interior “=” marks will be treated as invalid.
+																																																	    </string>
 					<key>end</key>
 					<string>\1\s*$\n?</string>
 					<key>name</key>
@@ -191,9 +191,9 @@
 					</array>
 					<key>comment</key>
 					<string>
-																																														A separator is made up of 4 or more -s alone on a
-																																														line by themselves.
-																																													</string>
+																																																			A separator is made up of 4 or more -s alone on a
+																																																			line by themselves.
+																																																		</string>
 					<key>match</key>
 					<string>^-{4,}[ \t]*($\n)?</string>
 					<key>name</key>
@@ -211,10 +211,10 @@
 					</array>
 					<key>comment</key>
 					<string>
-																																														Code blocks start with one space.  Wiki text and
-																																														html are still interpreted in MediaWiki, unlike in
-																																														mediawiki.
-																																													</string>
+																																																			Code blocks start with one space.  Wiki text and
+																																																			html are still interpreted in MediaWiki, unlike in
+																																																			mediawiki.
+																																																		</string>
 					<key>end</key>
 					<string>^(?=[^ ])</string>
 					<key>name</key>
@@ -238,20 +238,20 @@
 					</array>
 					<key>comment</key>
 					<string>
-																																														This is preliminary.  Eventually it would be nice
-																																														to scope each type of list differently, and even to
-																																														do scopes of nested lists.  There are 4 main things
-																																														which will be scoped as lists:
-																																														
-																																														  - numbered lists (#)
-																																														  - unnumbered lists (*)
-																																														  - definition lists (; :)
-																																														  - indented paragraphs, as used on talk pages (:)
-																																														
-																																														this last one might not even be scoped as a list in
-																																														the ideal case.  It is fine as a list for now,
-																																														however.
-																																													</string>
+																																																			This is preliminary.  Eventually it would be nice
+																																																			to scope each type of list differently, and even to
+																																																			do scopes of nested lists.  There are 4 main things
+																																																			which will be scoped as lists:
+																																																			
+																																																			  - numbered lists (#)
+																																																			  - unnumbered lists (*)
+																																																			  - definition lists (; :)
+																																																			  - indented paragraphs, as used on talk pages (:)
+																																																			
+																																																			this last one might not even be scoped as a list in
+																																																			the ideal case.  It is fine as a list for now,
+																																																			however.
+																																																		</string>
 					<key>end</key>
 					<string>^(?!\1)</string>
 					<key>name</key>
@@ -283,9 +283,9 @@
 					</array>
 					<key>comment</key>
 					<string>
-																																														Anything that is not a code block, list, header, etc.
-																																														is a paragraph.
-																																													</string>
+																																																			Anything that is not a code block, list, header, etc.
+																																																			is a paragraph.
+																																																		</string>
 					<key>end</key>
 					<string>^(?:\s*$|(?=[;*#:=]|----))</string>
 					<key>name</key>
@@ -304,15 +304,15 @@
 		<dict>
 			<key>comment</key>
 			<string>
-																												The available block HTML tags supported are:
-																												
-																												  * blockquote, center, pre, div, hr, p
-																												  * tables: table, th, tr, td, caption
-																												  * lists: ul, ol, li
-																												  * definition lists: dl, dt, dd
-																												  * headers: h1, h2, h3, h4, h5, h6
-																												  * br
-																											</string>
+																															The available block HTML tags supported are:
+																															
+																															  * blockquote, center, pre, div, hr, p
+																															  * tables: table, th, tr, td, caption
+																															  * lists: ul, ol, li
+																															  * definition lists: dl, dt, dd
+																															  * headers: h1, h2, h3, h4, h5, h6
+																															  * br
+																														</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -405,12 +405,12 @@
 						<dict>
 							<key>begin</key>
 							<string>(?x)
-																																																																^(?!\s*\n)				# not an empty line
-																																																																( [ ]*(((i|I)mage)(:))  # spaces, image, colon
-																																																																  ([^\[\]|]+)           # anything
-																																																																  (?&lt;!\s)[ ]*           # spaces
-																																																																)?
-																																																															</string>
+																																																																							^(?!\s*\n)				# not an empty line
+																																																																							( [ ]*(((i|I)mage)(:))  # spaces, image, colon
+																																																																							  ([^\[\]|]+)           # anything
+																																																																							  (?&lt;!\s)[ ]*           # spaces
+																																																																							)?
+																																																																						</string>
 							<key>beginCaptures</key>
 							<dict>
 								<key>3</key>
@@ -556,9 +556,9 @@
 		<dict>
 			<key>comment</key>
 			<string>
-																												Mediawiki supports Unicode, so these should not usually be
-																												necessary, but they do show up on pages from time to time.
-																											</string>
+																															Mediawiki supports Unicode, so these should not usually be
+																															necessary, but they do show up on pages from time to time.
+																														</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -672,12 +672,12 @@
 					<integer>1</integer>
 					<key>begin</key>
 					<string>(?x:
-																																														(\[\[)                         # opening brackets
-																																														  ( [ ]*(((i|I)mage)(:))       # spaces, image, colon
-																																														    ([^\[\]|]+)                # anything
-																																														    (?&lt;!\s)[ ]*                # spaces
-																																														  )
-																																													)</string>
+																																																			(\[\[)                         # opening brackets
+																																																			  ( [ ]*(((i|I)mage)(:))       # spaces, image, colon
+																																																			    ([^\[\]|]+)                # anything
+																																																			    (?&lt;!\s)[ ]*                # spaces
+																																																			  )
+																																																		)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -740,9 +740,9 @@
 					</array>
 					<key>end</key>
 					<string>(?x:
-																																														  ((\|)[ ]*( [^\[\]|]+ )[ ]*)? # pipe, spaces, anything, spaces
-																																														(\]\])                         # closing brackets
-																																													)</string>
+																																																			  ((\|)[ ]*( [^\[\]|]+ )[ ]*)? # pipe, spaces, anything, spaces
+																																																			(\]\])                         # closing brackets
+																																																		)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>2</key>
@@ -845,12 +845,12 @@
 							</dict>
 							<key>match</key>
 							<string>(?x)
-																																																																(\|)[ ]*
-																																																																( (thumb|thumbnail|frame)
-																																																																 |(right|left|center|none)
-																																																																 |([0-9]+)(px)
-																																																																)[ ]*
-																																																															</string>
+																																																																							(\|)[ ]*
+																																																																							( (thumb|thumbnail|frame)
+																																																																							 |(right|left|center|none)
+																																																																							 |([0-9]+)(px)
+																																																																							)[ ]*
+																																																																						</string>
 						</dict>
 						<dict>
 							<key>capturableScopes</key>
@@ -874,14 +874,14 @@
 				<dict>
 					<key>begin</key>
 					<string>(?x:
-																																														(\[\[)                       # opening brackets
-																																														  (:)?                       # colon to suppress image or category?
-																																														  ((\s+):[^\[\]]*(?=\]\]))?  # a colon after spaces is invalid
-																																														  [ ]*                       # spaces
-																																														  ( (([^\[\]|]+)(:))?        # namespace
-																																														    ([^\[\]|]+)(?&lt;!\s)[ ]*   # link name
-																																														  )?
-																																													)</string>
+																																																			(\[\[)                       # opening brackets
+																																																			  (:)?                       # colon to suppress image or category?
+																																																			  ((\s+):[^\[\]]*(?=\]\]))?  # a colon after spaces is invalid
+																																																			  [ ]*                       # spaces
+																																																			  ( (([^\[\]|]+)(:))?        # namespace
+																																																			    ([^\[\]|]+)(?&lt;!\s)[ ]*   # link name
+																																																			  )?
+																																																		)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -967,9 +967,9 @@
 					</array>
 					<key>end</key>
 					<string>(?x:
-																																														  (\|[ ]*([^\[\]|]+)[ ]*)?     # pipe, spaces, anything, spaces
-																																														(\]\])                         # closing brackets
-																																													)</string>
+																																																			  (\|[ ]*([^\[\]|]+)[ ]*)?     # pipe, spaces, anything, spaces
+																																																			(\]\])                         # closing brackets
+																																																		)</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>2</key>
@@ -1058,22 +1058,22 @@
 		<dict>
 			<key>comment</key>
 			<string>
-																												TODO: We still need to add:
-																								
-																												  * font
-																												  * ruby, rb, rp, rt
-																												  * cite
-																												
-																												inline tags to this section, and make sure that the other
-																												tags can accept attributes in the tag opening, etc.  The
-																												current implementation is intended to be naive, but covering
-																												the majority of uses in mediawiki code.
-																												
-																												We also need to add mediawiki-specific tags:
-																												
-																												  * nowiki, noinclude, includeonly
-																												
-																											</string>
+																															TODO: We still need to add:
+																											
+																															  * font
+																															  * ruby, rb, rp, rt
+																															  * cite
+																															
+																															inline tags to this section, and make sure that the other
+																															tags can accept attributes in the tag opening, etc.  The
+																															current implementation is intended to be naive, but covering
+																															the majority of uses in mediawiki code.
+																															
+																															We also need to add mediawiki-specific tags:
+																															
+																															  * nowiki, noinclude, includeonly
+																															
+																														</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -1572,10 +1572,10 @@
 					</array>
 					<key>comment</key>
 					<string>
-																																														we are going to have to add the styling capabilities
-																																														to this section eventually.  It is complicated,
-																																														though, so I am putting it off.
-																																													</string>
+																																																			we are going to have to add the styling capabilities
+																																																			to this section eventually.  It is complicated,
+																																																			though, so I am putting it off.
+																																																		</string>
 					<key>end</key>
 					<string>^\|}</string>
 					<key>name</key>
@@ -1595,10 +1595,10 @@
 							</array>
 							<key>comment</key>
 							<string>
-																																																																hopefully we can allow selection of a whole
-																																																																table row, and possibly later allow things
-																																																																like moving a whole row up/down, etc.
-																																																															</string>
+																																																																							hopefully we can allow selection of a whole
+																																																																							table row, and possibly later allow things
+																																																																							like moving a whole row up/down, etc.
+																																																																						</string>
 							<key>end</key>
 							<string>^(?=\|-|\|})</string>
 							<key>name</key>
@@ -1623,8 +1623,8 @@
 		<dict>
 			<key>comment</key>
 			<string>
-																												This repository item covers templates and parser functions.
-																											</string>
+																															This repository item covers templates and parser functions.
+																														</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -1722,8 +1722,8 @@
 					</array>
 					<key>comment</key>
 					<string>
-																																														Why oh why did mediawiki have to add these??
-																																													</string>
+																																																			Why oh why did mediawiki have to add these??
+																																																		</string>
 					<key>end</key>
 					<string>(}})</string>
 					<key>endCaptures</key>
@@ -1789,11 +1789,11 @@
 					</array>
 					<key>comment</key>
 					<string>
-																																														I am not sure I really like the scope of
-																																														meta.function-call for templates, but it seems like
-																																														the closest thing to what a template is really doing,
-																																														with parameters, etc.
-																																													</string>
+																																																			I am not sure I really like the scope of
+																																																			meta.function-call for templates, but it seems like
+																																																			the closest thing to what a template is really doing,
+																																																			with parameters, etc.
+																																																		</string>
 					<key>end</key>
 					<string>(}})</string>
 					<key>endCaptures</key>

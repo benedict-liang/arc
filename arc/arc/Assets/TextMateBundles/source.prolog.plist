@@ -158,10 +158,10 @@
 			</array>
 			<key>comment</key>
 			<string>
-																											I changed this from entity to storage.type, but have no idea what it is -- Allan
-																											And I changed this to constant.other.symbol after glancing over the docs,
-																											    might still be wrong.  -- Infininight
-																											</string>
+																														I changed this from entity to storage.type, but have no idea what it is -- Allan
+																														And I changed this to constant.other.symbol after glancing over the docs,
+																														    might still be wrong.  -- Infininight
+																														</string>
 			<key>match</key>
 			<string>\b[a-z][a-zA-Z0-9_]*\b</string>
 			<key>name</key>

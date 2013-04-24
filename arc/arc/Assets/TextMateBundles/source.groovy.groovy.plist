@@ -148,13 +148,13 @@
 					</array>
 					<key>match</key>
 					<string>(?x)
-												\b(
-													(?:[a-z]\w*\.)* # Optional package specification
-													[A-Z]\w+\b # Class name
-													(?:&lt;(?:[\w, ]*)&gt;)? # Optional Generics
-													(?:\[\s*\])* # Optional brackets (array)
-												)\b
-										</string>
+																	\b(
+																		(?:[a-z]\w*\.)* # Optional package specification
+																		[A-Z]\w+\b # Class name
+																		(?:&lt;(?:[\w, ]*)&gt;)? # Optional Generics
+																		(?:\[\s*\])* # Optional brackets (array)
+																	)\b
+															</string>
 					<key>name</key>
 					<string>storage.type.class.groovy</string>
 				</dict>
@@ -164,9 +164,9 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)^\s*
-								(?:(?:\b(?:(public|private|protected)|(static)|(final)|(native|synchronized|abstract|threadsafe|transient))\b\s*)*) # modifier
-								(class)\s+
-								(\w+)\s* # identifier</string>
+											(?:(?:\b(?:(public|private|protected)|(static)|(final)|(native|synchronized|abstract|threadsafe|transient))\b\s*)*) # modifier
+											(class)\s+
+											(\w+)\s* # identifier</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>meta</string>
@@ -535,7 +535,7 @@
 		<dict>
 			<key>comment</key>
 			<string>In some situations, maps can't be declared without enclosing []'s, 
-							therefore we create a collection of everything but that</string>
+										therefore we create a collection of everything but that</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -1204,12 +1204,12 @@
 							</dict>
 							<key>match</key>
 							<string>(?x)\s*
-															(
-																(?:boolean|byte|char|short|int|float|long|double|(?:\w+\.)*[A-Z]\w*\b(?:&lt;(?:[\w, ]*)&gt;)?(?:\[\s*\])*)
-															)?
-															\s*
-															([a-z_][A-Za-z0-9_]*) # variable
-														</string>
+																						(
+																							(?:boolean|byte|char|short|int|float|long|double|(?:\w+\.)*[A-Z]\w*\b(?:&lt;(?:[\w, ]*)&gt;)?(?:\[\s*\])*)
+																						)?
+																						\s*
+																						([a-z_][A-Za-z0-9_]*) # variable
+																					</string>
 							<key>name</key>
 							<string>meta.definition.method.parameter.groovy</string>
 						</dict>
@@ -1337,17 +1337,17 @@
 				<dict>
 					<key>begin</key>
 					<string>(?x)^\s*
-											(?: # zero or more modifiers
-												(?:
-													(public|private|protected)|(final)|(native|synchronized|abstract|threadsafe|transient)
-												)
-												\s+
-											)?
-											\s*  
-											([A-Z](?:[a-zA-Z0-9_])+) # constructor/class name
-											\s* 
-											(?=\()
-										</string>
+																(?: # zero or more modifiers
+																	(?:
+																		(public|private|protected)|(final)|(native|synchronized|abstract|threadsafe|transient)
+																	)
+																	\s+
+																)?
+																\s*  
+																([A-Z](?:[a-zA-Z0-9_])+) # constructor/class name
+																\s* 
+																(?=\()
+															</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1435,41 +1435,41 @@
 				<dict>
 					<key>begin</key>
 					<string>(?x)^\s*
-											(?:
-												(?: # or modifier and optional type
-													(?:(?:\b(public|private|protected)|(static)|(final)|(native|synchronized|abstract|threadsafe|transient))\b\s+)+\s* # modifier
-													(?:\b 
-														(void)
-														|
-														(boolean|byte|char|short|int|float|long|double) # primitive
-														|
-														( # or class type
-															(?:\w+\.)*[A-Z]\w+\b # Class name
-															(?:&lt;(?:[\w, ]*)&gt;)? # optional Generic type
-															(?:\[\s*\])* # zero or more square brackets (array)
-														)
-													)?
-												)
-												|
-												(?:\b # or type by itself
-													(def)
-													|
-													(void)
-													|
-													(boolean|byte|char|short|int|float|long|double) # primitive
-													|
-													( # or class type
-														(?:\w+\.)*[A-Z]\w+\b # Class name
-														(?:&lt;(?:[\w, ]*)&gt;)? # optional generics info
-														(?:\[\s*\])* # zero or more square brackets (array)
-													)
-												)
-											)
-											\s*
-											(\w+) # method name
-											\s* 
-											(?=\() # opening parens 
-										</string>
+																(?:
+																	(?: # or modifier and optional type
+																		(?:(?:\b(public|private|protected)|(static)|(final)|(native|synchronized|abstract|threadsafe|transient))\b\s+)+\s* # modifier
+																		(?:\b 
+																			(void)
+																			|
+																			(boolean|byte|char|short|int|float|long|double) # primitive
+																			|
+																			( # or class type
+																				(?:\w+\.)*[A-Z]\w+\b # Class name
+																				(?:&lt;(?:[\w, ]*)&gt;)? # optional Generic type
+																				(?:\[\s*\])* # zero or more square brackets (array)
+																			)
+																		)?
+																	)
+																	|
+																	(?:\b # or type by itself
+																		(def)
+																		|
+																		(void)
+																		|
+																		(boolean|byte|char|short|int|float|long|double) # primitive
+																		|
+																		( # or class type
+																			(?:\w+\.)*[A-Z]\w+\b # Class name
+																			(?:&lt;(?:[\w, ]*)&gt;)? # optional generics info
+																			(?:\[\s*\])* # zero or more square brackets (array)
+																		)
+																	)
+																)
+																\s*
+																(\w+) # method name
+																\s* 
+																(?=\() # opening parens 
+															</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -2265,8 +2265,8 @@
 					</array>
 					<key>match</key>
 					<string>(?x)\b(?:shouldFail|fail(?:NotEquals)?|ass(?:ume|ert(?:S(?:cript|ame)|N(?:ot(?:Same|
-										Null)|ull)|Contains|T(?:hat|oString|rue)|Inspect|Equals|False|Length|
-										ArrayEquals)))\b</string>
+															Null)|ull)|Contains|T(?:hat|oString|rue)|Inspect|Equals|False|Length|
+															ArrayEquals)))\b</string>
 					<key>name</key>
 					<string>support.function.testing.groovy</string>
 				</dict>

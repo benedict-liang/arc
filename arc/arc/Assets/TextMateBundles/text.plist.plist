@@ -24,28 +24,28 @@
 	</array>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-															(
-																(^|=|=[ ]|\s\s|\t)				# Openstep foldings
-																(\{|\()(?!.*(\)|\}))			# spaces before them to 
-																								# limit false positives
-															  | (
-																	^\s*
-																	(
-																		&lt;[^!?%/](?!.+?(/&gt;
-																	  | &lt;/.+?&gt;))
-																	  | &lt;[!%]--(?!.+?--%?&gt;)
+																(
+																	(^|=|=[ ]|\s\s|\t)				# Openstep foldings
+																	(\{|\()(?!.*(\)|\}))			# spaces before them to 
+																									# limit false positives
+																  | (
+																		^\s*
+																		(
+																			&lt;[^!?%/](?!.+?(/&gt;
+																		  | &lt;/.+?&gt;))
+																		  | &lt;[!%]--(?!.+?--%?&gt;)
+																		)
 																	)
 																)
-															)
-														 </string>
+															 </string>
 	<key>foldingStopMarker</key>
 	<string>(?x)
-															(
-																(\}|\))(,|;)?					# Openstep foldings
-																.*$								# limit false positives
-															  | (^\s*(&lt;/[^&gt;]+&gt;|/&gt;|--&gt;)\s*$)		# XML						
-															)
-														</string>
+																(
+																	(\}|\))(,|;)?					# Openstep foldings
+																	.*$								# limit false positives
+																  | (^\s*(&lt;/[^&gt;]+&gt;|/&gt;|--&gt;)\s*$)		# XML						
+																)
+															</string>
 	<key>keyEquivalent</key>
 	<string>^~P</string>
 	<key>name</key>
@@ -528,7 +528,7 @@
 							<string>(?&lt;=('|&quot;|[-a-zA-Z0-9_.]))(?!=)|\s</string>
 							<key>comment</key>
 							<string>Mark anything between the name and the =
-																																																																		as invalid.</string>
+																																																																									as invalid.</string>
 							<key>end</key>
 							<string>(?==)</string>
 							<key>patterns</key>
@@ -3048,19 +3048,19 @@
 							</array>
 							<key>match</key>
 							<string>(?x)
-																																																																		[0-9]{4}						# Year
-																																																																		-								# Divider
-																																																																		(0[1-9]|1[012])					# Month
-																																																																		-								# Divider
-																																																																		(?!00|3[2-9])[0-3][0-9]			# Day
-																																																																		T								# Separator
-																																																																		(?!2[5-9])[0-2][0-9]			# Hour
-																																																																		:								# Divider
-																																																																		[0-5][0-9]						# Minute
-																																																																		:								# Divider
-																																																																		(?!6[1-9])[0-6][0-9]			# Second
-																																																																		Z								# Zulu
-																																																																	</string>
+																																																																									[0-9]{4}						# Year
+																																																																									-								# Divider
+																																																																									(0[1-9]|1[012])					# Month
+																																																																									-								# Divider
+																																																																									(?!00|3[2-9])[0-3][0-9]			# Day
+																																																																									T								# Separator
+																																																																									(?!2[5-9])[0-2][0-9]			# Hour
+																																																																									:								# Divider
+																																																																									[0-5][0-9]						# Minute
+																																																																									:								# Divider
+																																																																									(?!6[1-9])[0-6][0-9]			# Second
+																																																																									Z								# Zulu
+																																																																								</string>
 							<key>name</key>
 							<string>constant.other.date.xml.plist</string>
 						</dict>

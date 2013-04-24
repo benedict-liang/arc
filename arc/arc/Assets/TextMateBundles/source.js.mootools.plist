@@ -8,11 +8,11 @@
 	</array>
 	<key>comment</key>
 	<string>
-								MooTools Framework by Valerio Proietti. 
-								http://mootools.net
-								This syntax document is largely based on the documentation at http://docs.mootools.net
-								Initial bundle by Joe Maller. 
-								</string>
+									MooTools Framework by Valerio Proietti. 
+									http://mootools.net
+									This syntax document is largely based on the documentation at http://docs.mootools.net
+									Initial bundle by Joe Maller. 
+									</string>
 	<key>foldingStartMarker</key>
 	<string>(^.*{[^}]*$|^.*\([^\)]*$|^.*/\*(?!.*\*/).*$)</string>
 	<key>foldingStopMarker</key>
@@ -33,9 +33,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Class
-																								The base class object of the http://mootools.net framework. 
-																								http://docs.mootools.net/files/Core/Moo-js.html</string>
+																											Class
+																											The base class object of the http://mootools.net framework. 
+																											http://docs.mootools.net/files/Core/Moo-js.html</string>
 			<key>match</key>
 			<string>\b(Class|Array|Element|Event|Function|String)\b</string>
 			<key>name</key>
@@ -80,10 +80,10 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Utility
-																								Contains Utility functions
-																								http://docs.mootools.net/files/Core/Utility-js.html
-																								</string>
+																											Utility
+																											Contains Utility functions
+																											http://docs.mootools.net/files/Core/Utility-js.html
+																											</string>
 			<key>match</key>
 			<string>\$(type|chk|pick|random|clear)\b</string>
 			<key>name</key>
@@ -113,9 +113,9 @@
 		<dict>
 			<key>comment</key>
 			<string>
-																								Array
-																								A collection of The Array Object prototype methods.
-																								http://docs.mootools.net/files/Native/Array-js.html</string>
+																											Array
+																											A collection of The Array Object prototype methods.
+																											http://docs.mootools.net/files/Native/Array-js.html</string>
 			<key>include</key>
 			<string>#array-functions</string>
 		</dict>
@@ -136,9 +136,9 @@
 		<dict>
 			<key>comment</key>
 			<string>
-																								Element
-																								Custom class to allow all of its methods to be used with any DOM element via the dollar function $.
-																								http://docs.mootools.net/files/Native/Element-js.html</string>
+																											Element
+																											Custom class to allow all of its methods to be used with any DOM element via the dollar function $.
+																											http://docs.mootools.net/files/Native/Element-js.html</string>
 			<key>include</key>
 			<string>#element-functions</string>
 		</dict>
@@ -167,9 +167,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Event
-																								Cross browser methods to manage events.
-																								http://docs.mootools.net/files/Native/Event-js.html</string>
+																											Event
+																											Cross browser methods to manage events.
+																											http://docs.mootools.net/files/Native/Event-js.html</string>
 			<key>match</key>
 			<string>\b(stop|stopPropagation|preventDefault|bindWithEvent)\b</string>
 			<key>name</key>
@@ -186,9 +186,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Function
-																								A collection of The Function Object prototype methods.
-																								http://docs.mootools.net/files/Native/Function-js.html</string>
+																											Function
+																											A collection of The Function Object prototype methods.
+																											http://docs.mootools.net/files/Native/Function-js.html</string>
 			<key>match</key>
 			<string>\b(create|pass|attempt|bind|bindAsEventListener|delay|periodical)\b</string>
 			<key>name</key>
@@ -205,9 +205,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								String
-																								A collection of The String Object prototype methods.
-																								http://docs.mootools.net/files/Native/String-js.html</string>
+																											String
+																											A collection of The String Object prototype methods.
+																											http://docs.mootools.net/files/Native/String-js.html</string>
 			<key>match</key>
 			<string>\b(test|toInt|camelCase|hyphenate|capitalize|trim|clean|rgbToHex|hexToRgb)\b</string>
 			<key>name</key>
@@ -230,9 +230,9 @@
 		<dict>
 			<key>comment</key>
 			<string>
-																								DOM
-																								Css Query related function and Element extensions.
-																								http://docs.mootools.net/files/Addons/Dom-js.html</string>
+																											DOM
+																											Css Query related function and Element extensions.
+																											http://docs.mootools.net/files/Addons/Dom-js.html</string>
 			<key>include</key>
 			<string>#dom-functions</string>
 		</dict>
@@ -255,10 +255,10 @@
 		<dict>
 			<key>comment</key>
 			<string>
-																								Hash
-																								It wraps an object that it uses internally as a map.
-																								http://docs.mootools.net/files/Addons/Hash-js.html
-																								 -- note: several overlaps in here with named properties from array.js.mootools</string>
+																											Hash
+																											It wraps an object that it uses internally as a map.
+																											http://docs.mootools.net/files/Addons/Hash-js.html
+																											 -- note: several overlaps in here with named properties from array.js.mootools</string>
 			<key>include</key>
 			<string>#hash-functions</string>
 		</dict>
@@ -287,9 +287,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Color
-																								Creates a new Color Object, which is an array with some color specific methods.
-																								http://docs.mootools.net/files/Addons/Color-js.html</string>
+																											Color
+																											Creates a new Color Object, which is an array with some color specific methods.
+																											http://docs.mootools.net/files/Addons/Color-js.html</string>
 			<key>match</key>
 			<string>\b(mix|invert|setHue|setSaturation|setBrightness)\b</string>
 			<key>name</key>
@@ -335,9 +335,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Common
-																								Contains common implementations for custom classes.
-																								http://docs.mootools.net/files/Addons/Common-js.html</string>
+																											Common
+																											Contains common implementations for custom classes.
+																											http://docs.mootools.net/files/Addons/Common-js.html</string>
 			<key>match</key>
 			<string>\b(chain|(call|clear)Chain)\b</string>
 			<key>name</key>
@@ -383,10 +383,10 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Window Base
-																								Cross browser methods to get the window size, onDomReady method.
-																								http://docs.mootools.net/files/Window/Window-Base-js.html
-																								 -- note: addEvent is already listed under Element</string>
+																											Window Base
+																											Cross browser methods to get the window size, onDomReady method.
+																											http://docs.mootools.net/files/Window/Window-Base-js.html
+																											 -- note: addEvent is already listed under Element</string>
 			<key>match</key>
 			<string>\bonDomReady\b</string>
 			<key>name</key>
@@ -404,10 +404,10 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Window Size
-																								Cross browser methods to get various window dimensions.
-																								http://docs.mootools.net/files/Window/Window-Size-js.html
-																								 -- note: getSize is already listed under Element</string>
+																											Window Size
+																											Cross browser methods to get various window dimensions.
+																											http://docs.mootools.net/files/Window/Window-Size-js.html
+																											 -- note: getSize is already listed under Element</string>
 			<key>match</key>
 			<string>\b(get(Width|Height|Scroll(Width|Height|Left|Top)))\b</string>
 			<key>name</key>
@@ -424,9 +424,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Ajax
-																								An Ajax class, For all your asynchronous needs.
-																								http://docs.mootools.net/files/Remote/Ajax-js.html</string>
+																											Ajax
+																											An Ajax class, For all your asynchronous needs.
+																											http://docs.mootools.net/files/Remote/Ajax-js.html</string>
 			<key>match</key>
 			<string>\b(request|evalScripts)\b</string>
 			<key>name</key>
@@ -471,9 +471,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Assets
-																								provides dynamic loading for images, css and javascript files.
-																								http://docs.mootools.net/files/Remote/Assets-js.html</string>
+																											Assets
+																											provides dynamic loading for images, css and javascript files.
+																											http://docs.mootools.net/files/Remote/Assets-js.html</string>
 			<key>match</key>
 			<string>\b(javascript|css|images?)\b</string>
 			<key>name</key>
@@ -490,9 +490,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Cookie
-																								Class for creating, getting, and removing cookies.
-																								http://docs.mootools.net/files/Remote/Assets-js.html</string>
+																											Cookie
+																											Class for creating, getting, and removing cookies.
+																											http://docs.mootools.net/files/Remote/Assets-js.html</string>
 			<key>match</key>
 			<string>\b(set|get|remove)\b</string>
 			<key>name</key>
@@ -509,9 +509,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Json
-																								Simple Json parser and Stringyfier, See: http://www.json.org/
-																								http://docs.mootools.net/files/Remote/Json-js.html</string>
+																											Json
+																											Simple Json parser and Stringyfier, See: http://www.json.org/
+																											http://docs.mootools.net/files/Remote/Json-js.html</string>
 			<key>match</key>
 			<string>\b(toString|evaluate)\b</string>
 			<key>name</key>
@@ -528,9 +528,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Json Remote
-																								Wrapped XHR with automated sending and receiving of Javascript Objects in Json Format.
-																								http://docs.mootools.net/files/Remote/Json-Remote-js.html</string>
+																											Json Remote
+																											Wrapped XHR with automated sending and receiving of Javascript Objects in Json Format.
+																											http://docs.mootools.net/files/Remote/Json-Remote-js.html</string>
 			<key>match</key>
 			<string>\bJson\.Remote\b</string>
 			<key>name</key>
@@ -547,9 +547,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								XHR
-																								Contains the basic XMLHttpRequest Class Wrapper.
-																								http://docs.mootools.net/files/Remote/XHR-js.html</string>
+																											XHR
+																											Contains the basic XMLHttpRequest Class Wrapper.
+																											http://docs.mootools.net/files/Remote/XHR-js.html</string>
 			<key>match</key>
 			<string>\bXHR\b</string>
 			<key>name</key>
@@ -567,9 +567,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Fx.Base			
-																								Base class for the Mootools Effects (Moo.Fx) library.			
-																								http://docs.mootools.net/files/Effects/Fx-Base-js.html</string>
+																											Fx.Base			
+																											Base class for the Mootools Effects (Moo.Fx) library.			
+																											http://docs.mootools.net/files/Effects/Fx-Base-js.html</string>
 			<key>match</key>
 			<string>\b(set|start|stop)\b</string>
 			<key>name</key>
@@ -617,9 +617,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Fx.Elements
-																								Fx.Elements allows you to apply any number of styles transitions to a selection of elements.
-																								http://docs.mootools.net/files/Effects/Fx-Elements-js.html</string>
+																											Fx.Elements
+																											Fx.Elements allows you to apply any number of styles transitions to a selection of elements.
+																											http://docs.mootools.net/files/Effects/Fx-Elements-js.html</string>
 			<key>match</key>
 			<string>\b(start)\b</string>
 			<key>name</key>
@@ -787,9 +787,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Fx.Scroll
-																								Scroll any element with an overflow, including the window element.
-																								http://docs.mootools.net/files/Effects/Fx-Scroll-js.html</string>
+																											Fx.Scroll
+																											Scroll any element with an overflow, including the window element.
+																											http://docs.mootools.net/files/Effects/Fx-Scroll-js.html</string>
 			<key>match</key>
 			<string>\b(scrollTo|to(Top|Bottom|Left|Right|Element))</string>
 			<key>name</key>
@@ -957,9 +957,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Fx.Slide
-																								The slide effect; slides an element in horizontally or vertically, the contents will fold inside.
-																								http://docs.mootools.net/files/Effects/Fx-Slide-js.html</string>
+																											Fx.Slide
+																											The slide effect; slides an element in horizontally or vertically, the contents will fold inside.
+																											http://docs.mootools.net/files/Effects/Fx-Slide-js.html</string>
 			<key>match</key>
 			<string>\b(slide(In|Out)|hide|show|toggle)\b</string>
 			<key>name</key>
@@ -1127,9 +1127,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Fx.Style
-																								The Style effect; Extends Fx.Base, inherits all its properties.
-																								http://docs.mootools.net/files/Effects/Fx-Style-js.html</string>
+																											Fx.Style
+																											The Style effect; Extends Fx.Base, inherits all its properties.
+																											http://docs.mootools.net/files/Effects/Fx-Style-js.html</string>
 			<key>match</key>
 			<string>\b(hide|start)\b</string>
 			<key>name</key>
@@ -1313,9 +1313,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Fx.Styles
-																								Allows you to animate multiple css properties at once; Extends Fx.Base, inherits all its properties. 
-																								http://docs.mootools.net/files/Effects/Fx-Styles-js.html</string>
+																											Fx.Styles
+																											Allows you to animate multiple css properties at once; Extends Fx.Base, inherits all its properties. 
+																											http://docs.mootools.net/files/Effects/Fx-Styles-js.html</string>
 			<key>match</key>
 			<string>\b(start)\b</string>
 			<key>name</key>
@@ -1497,9 +1497,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Fx.Transitions
-																								A collection of tweaning transitions for use with the Fx.Base classes.
-																								http://docs.mootools.net/files/Effects/Fx-Transitions-js.html</string>
+																											Fx.Transitions
+																											A collection of tweaning transitions for use with the Fx.Base classes.
+																											http://docs.mootools.net/files/Effects/Fx-Transitions-js.html</string>
 			<key>match</key>
 			<string>\b(linear|quadIn|quadOut|quadInOut|cubicIn|cubicOut|cubicInOut|quartIn|quartOut|quartInOut|quintIn|quintOut|quintInOut|sineIn|sineOut|sineInOut|expoIn|expoOut|expoInOut|circIn|circOut|circInOut|elasticIn|elasticOut|elasticInOut|backIn|backOut|backInOut|bounceIn|bounceOut|bounceInOut)\b</string>
 			<key>name</key>
@@ -1517,9 +1517,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Fx.Utils
-																								Contains Fx.Height, Fx.Width, Fx.Opacity.
-																								http://docs.mootools.net/files/Effects/Fx-Styles-js.html</string>
+																											Fx.Utils
+																											Contains Fx.Height, Fx.Width, Fx.Opacity.
+																											http://docs.mootools.net/files/Effects/Fx-Styles-js.html</string>
 			<key>match</key>
 			<string>\b(toggle|show)\b</string>
 			<key>name</key>
@@ -1686,9 +1686,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Drag.Base
-																								Modify two css properties of an element based on the position of the mouse.
-																								http://docs.mootools.net/files/Drag/Drag-Base-js.html</string>
+																											Drag.Base
+																											Modify two css properties of an element based on the position of the mouse.
+																											http://docs.mootools.net/files/Drag/Drag-Base-js.html</string>
 			<key>match</key>
 			<string>\b(makeResizable)\b</string>
 			<key>name</key>
@@ -1705,9 +1705,9 @@
 			</array>
 			<key>comment</key>
 			<string>
-																								Drag.Move
-																								Modify two css properties of an element based on the position of the mouse.
-																								http://docs.mootools.net/files/Drag/Drag-Base-js.html</string>
+																											Drag.Move
+																											Modify two css properties of an element based on the position of the mouse.
+																											http://docs.mootools.net/files/Drag/Drag-Base-js.html</string>
 			<key>match</key>
 			<string>\b(makeDraggable)\b</string>
 			<key>name</key>
@@ -1999,10 +1999,10 @@
 		<dict>
 			<key>comment</key>
 			<string>
-																								The leading-space code is the ribbon highlighing thomas Aylott contributed to source.js.prototype.
-																								More info in this thread:
-																								http://comox.textdrive.com/pipermail/textmate/2006-August/012373.html
-																								</string>
+																											The leading-space code is the ribbon highlighing thomas Aylott contributed to source.js.prototype.
+																											More info in this thread:
+																											http://comox.textdrive.com/pipermail/textmate/2006-August/012373.html
+																											</string>
 			<key>patterns</key>
 			<array>
 				<dict>
