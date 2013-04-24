@@ -12,14 +12,14 @@
 	</array>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-						(^\s*(?i:if|while|for\ each|for|case\ of|repeat|method)\b
-						|^\s*&lt;fusedoc\ fuse
-						)</string>
+										(^\s*(?i:if|while|for\ each|for|case\ of|repeat|method)\b
+										|^\s*&lt;fusedoc\ fuse
+										)</string>
 	<key>foldingStopMarker</key>
 	<string>(?x)
-						(^\s*(?i:end\ (if|while|for\ each|for|case|method)|until)\b
-						|^\s*&lt;/fusedoc&gt;
-						)</string>
+										(^\s*(?i:end\ (if|while|for\ each|for|case|method)|until)\b
+										|^\s*&lt;/fusedoc&gt;
+										)</string>
 	<key>keyEquivalent</key>
 	<string>^~A</string>
 	<key>name</key>

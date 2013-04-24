@@ -14,6 +14,8 @@
 		<string>htc</string>
 		<string>jsx</string>
 	</array>
+	<key>firstLineMatch</key>
+	<string>^#!/usr/bin/env node</string>
 	<key>foldingStartMarker</key>
 	<string>^.*\bfunction\s*(\w+\s*)?\([^\)]*\)(\s*\{[^\}]*)?\s*$</string>
 	<key>foldingStopMarker</key>
@@ -24,6 +26,20 @@
 	<string>JavaScript</string>
 	<key>patterns</key>
 	<array>
+		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>comment</string>
+				<string>comment.line</string>
+				<string>comment.line.js</string>
+			</array>
+			<key>comment</key>
+			<string>node.js shebang</string>
+			<key>match</key>
+			<string>^#!/usr/bin/env node</string>
+			<key>name</key>
+			<string>comment.line.js</string>
+		</dict>
 		<dict>
 			<key>capturableScopes</key>
 			<array>
@@ -55,11 +71,22 @@
 					<key>name</key>
 					<string>support.constant.js</string>
 				</dict>
+				<key>3</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.js</string>
+					</array>
+					<key>name</key>
+					<string>keyword.operator.js</string>
+				</dict>
 			</dict>
 			<key>comment</key>
 			<string>match stuff like: Sound.prototype = { … } when extending an object</string>
 			<key>match</key>
-			<string>([a-zA-Z_?.$][\w?.$]*)\.(prototype)\s*=\s*</string>
+			<string>([a-zA-Z_?.$][\w?.$]*)\.(prototype)\s*(=)\s*</string>
 			<key>name</key>
 			<string>meta.class.js</string>
 		</dict>
@@ -106,6 +133,180 @@
 					</array>
 					<key>name</key>
 					<string>entity.name.function.js</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.js</string>
+					</array>
+					<key>name</key>
+					<string>keyword.operator.js</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>storage</string>
+						<string>storage.type</string>
+						<string>storage.type.function</string>
+						<string>storage.type.function.js</string>
+					</array>
+					<key>name</key>
+					<string>storage.type.function.js</string>
+				</dict>
+				<key>6</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.begin</string>
+						<string>punctuation.definition.parameters.begin.js</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.parameters.begin.js</string>
+				</dict>
+				<key>7</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>variable</string>
+						<string>variable.parameter</string>
+						<string>variable.parameter.function</string>
+						<string>variable.parameter.function.js</string>
+					</array>
+					<key>name</key>
+					<string>variable.parameter.function.js</string>
+				</dict>
+				<key>8</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>punctuation</string>
+						<string>punctuation.definition</string>
+						<string>punctuation.definition.parameters</string>
+						<string>punctuation.definition.parameters.end</string>
+						<string>punctuation.definition.parameters.end.js</string>
+					</array>
+					<key>name</key>
+					<string>punctuation.definition.parameters.end.js</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>match stuff like: Sound.prototype.play = function() { … }</string>
+			<key>match</key>
+			<string>([a-zA-Z_?.$][\w?.$]*)\.(prototype)\.([a-zA-Z_?.$][\w?.$]*)\s*(=)\s*(function)?\s*(\()(.*?)(\))</string>
+			<key>name</key>
+			<string>meta.function.prototype.js</string>
+		</dict>
+		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.js</string>
+			</array>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.class</string>
+						<string>support.class.js</string>
+					</array>
+					<key>name</key>
+					<string>support.class.js</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.constant</string>
+						<string>support.constant.js</string>
+					</array>
+					<key>name</key>
+					<string>support.constant.js</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.js</string>
+					</array>
+					<key>name</key>
+					<string>entity.name.function.js</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.js</string>
+					</array>
+					<key>name</key>
+					<string>keyword.operator.js</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>match stuff like: Sound.prototype.play = myfunc</string>
+			<key>match</key>
+			<string>([a-zA-Z_?.$][\w?.$]*)\.(prototype)\.([a-zA-Z_?.$][\w?.$]*)\s*(=)\s*</string>
+			<key>name</key>
+			<string>meta.function.js</string>
+		</dict>
+		<dict>
+			<key>capturableScopes</key>
+			<array>
+				<string>meta</string>
+				<string>meta.function</string>
+				<string>meta.function.js</string>
+			</array>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>support</string>
+						<string>support.class</string>
+						<string>support.class.js</string>
+					</array>
+					<key>name</key>
+					<string>support.class.js</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>entity</string>
+						<string>entity.name</string>
+						<string>entity.name.function</string>
+						<string>entity.name.function.js</string>
+					</array>
+					<key>name</key>
+					<string>entity.name.function.js</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.js</string>
+					</array>
+					<key>name</key>
+					<string>keyword.operator.js</string>
 				</dict>
 				<key>4</key>
 				<dict>
@@ -159,60 +360,9 @@
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>match stuff like: Sound.prototype.play = function() { … }</string>
+			<string>match stuff like: Sound.play = function() { … }</string>
 			<key>match</key>
-			<string>([a-zA-Z_?.$][\w?.$]*)\.(prototype)\.([a-zA-Z_?.$][\w?.$]*)\s*=\s*(function)?\s*(\()(.*?)(\))</string>
-			<key>name</key>
-			<string>meta.function.prototype.js</string>
-		</dict>
-		<dict>
-			<key>capturableScopes</key>
-			<array>
-				<string>meta</string>
-				<string>meta.function</string>
-				<string>meta.function.js</string>
-			</array>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>capturableScopes</key>
-					<array>
-						<string>support</string>
-						<string>support.class</string>
-						<string>support.class.js</string>
-					</array>
-					<key>name</key>
-					<string>support.class.js</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>capturableScopes</key>
-					<array>
-						<string>support</string>
-						<string>support.constant</string>
-						<string>support.constant.js</string>
-					</array>
-					<key>name</key>
-					<string>support.constant.js</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>capturableScopes</key>
-					<array>
-						<string>entity</string>
-						<string>entity.name</string>
-						<string>entity.name.function</string>
-						<string>entity.name.function.js</string>
-					</array>
-					<key>name</key>
-					<string>entity.name.function.js</string>
-				</dict>
-			</dict>
-			<key>comment</key>
-			<string>match stuff like: Sound.prototype.play = myfunc</string>
-			<key>match</key>
-			<string>([a-zA-Z_?.$][\w?.$]*)\.(prototype)\.([a-zA-Z_?.$][\w?.$]*)\s*=\s*</string>
+			<string>([a-zA-Z_?.$][\w?.$]*)\.([a-zA-Z_?.$][\w?.$]*)\s*(=)\s*(function)\s*(\()(.*?)(\))</string>
 			<key>name</key>
 			<string>meta.function.js</string>
 		</dict>
@@ -229,17 +379,6 @@
 				<dict>
 					<key>capturableScopes</key>
 					<array>
-						<string>support</string>
-						<string>support.class</string>
-						<string>support.class.js</string>
-					</array>
-					<key>name</key>
-					<string>support.class.js</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>capturableScopes</key>
-					<array>
 						<string>entity</string>
 						<string>entity.name</string>
 						<string>entity.name.function</string>
@@ -247,6 +386,17 @@
 					</array>
 					<key>name</key>
 					<string>entity.name.function.js</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.operator</string>
+						<string>keyword.operator.js</string>
+					</array>
+					<key>name</key>
+					<string>keyword.operator.js</string>
 				</dict>
 				<key>3</key>
 				<dict>
@@ -300,88 +450,9 @@
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>match stuff like: Sound.play = function() { … }</string>
-			<key>match</key>
-			<string>([a-zA-Z_?.$][\w?.$]*)\.([a-zA-Z_?.$][\w?.$]*)\s*=\s*(function)\s*(\()(.*?)(\))</string>
-			<key>name</key>
-			<string>meta.function.js</string>
-		</dict>
-		<dict>
-			<key>capturableScopes</key>
-			<array>
-				<string>meta</string>
-				<string>meta.function</string>
-				<string>meta.function.js</string>
-			</array>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>capturableScopes</key>
-					<array>
-						<string>entity</string>
-						<string>entity.name</string>
-						<string>entity.name.function</string>
-						<string>entity.name.function.js</string>
-					</array>
-					<key>name</key>
-					<string>entity.name.function.js</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>capturableScopes</key>
-					<array>
-						<string>storage</string>
-						<string>storage.type</string>
-						<string>storage.type.function</string>
-						<string>storage.type.function.js</string>
-					</array>
-					<key>name</key>
-					<string>storage.type.function.js</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>capturableScopes</key>
-					<array>
-						<string>punctuation</string>
-						<string>punctuation.definition</string>
-						<string>punctuation.definition.parameters</string>
-						<string>punctuation.definition.parameters.begin</string>
-						<string>punctuation.definition.parameters.begin.js</string>
-					</array>
-					<key>name</key>
-					<string>punctuation.definition.parameters.begin.js</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>capturableScopes</key>
-					<array>
-						<string>variable</string>
-						<string>variable.parameter</string>
-						<string>variable.parameter.function</string>
-						<string>variable.parameter.function.js</string>
-					</array>
-					<key>name</key>
-					<string>variable.parameter.function.js</string>
-				</dict>
-				<key>5</key>
-				<dict>
-					<key>capturableScopes</key>
-					<array>
-						<string>punctuation</string>
-						<string>punctuation.definition</string>
-						<string>punctuation.definition.parameters</string>
-						<string>punctuation.definition.parameters.end</string>
-						<string>punctuation.definition.parameters.end.js</string>
-					</array>
-					<key>name</key>
-					<string>punctuation.definition.parameters.end.js</string>
-				</dict>
-			</dict>
-			<key>comment</key>
 			<string>match stuff like: play = function() { … }</string>
 			<key>match</key>
-			<string>([a-zA-Z_?$][\w?$]*)\s*=\s*(function)\s*(\()(.*?)(\))</string>
+			<string>([a-zA-Z_?$][\w?$]*)\s*(=)\s*(function)\s*(\()(.*?)(\))</string>
 			<key>name</key>
 			<string>meta.function.js</string>
 		</dict>
@@ -708,7 +779,7 @@
 			<key>comment</key>
 			<string>Attempt to match &quot;foo&quot;: function</string>
 			<key>match</key>
-			<string>(?:((')(.*?)('))|((&quot;)(.*?)(&quot;)))\s*:\s*\b(function)?\s*(\()(.*?)(\))</string>
+			<string>(?:((')([^']*)('))|((&quot;)([^&quot;]*)(&quot;)))\s*:\s*\b(function)?\s*(\()([^)]*)(\))</string>
 			<key>name</key>
 			<string>meta.function.json.js</string>
 		</dict>
@@ -921,7 +992,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>/\*\*</string>
+			<string>/\*\*(?!/)</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>comment</string>
@@ -1206,7 +1277,7 @@
 				<string>support.constant.js</string>
 			</array>
 			<key>match</key>
-			<string>(?&lt;=\.)(s(ystemLanguage|cr(ipts|ollbars|een(X|Y|Top|Left))|t(yle(Sheets)?|atus(Text|bar)?)|ibling(Below|Above)|ource|uffixes|e(curity(Policy)?|l(ection|f)))|h(istory|ost(name)?|as(h|Focus))|y|X(MLDocument|SLDocument)|n(ext|ame(space(s|URI)|Prop))|M(IN_VALUE|AX_VALUE)|c(haracterSet|o(n(structor|trollers)|okieEnabled|lorDepth|mp(onents|lete))|urrent|puClass|l(i(p(boardData)?|entInformation)|osed|asses)|alle(e|r)|rypto)|t(o(olbar|p)|ext(Transform|Indent|Decoration|Align)|ags)|SQRT(1_2|2)|i(n(ner(Height|Width)|put)|ds|gnoreCase)|zIndex|o(scpu|n(readystatechange|Line)|uter(Height|Width)|p(sProfile|ener)|ffscreenBuffering)|NEGATIVE_INFINITY|d(i(splay|alog(Height|Top|Width|Left|Arguments)|rectories)|e(scription|fault(Status|Ch(ecked|arset)|View)))|u(ser(Profile|Language|Agent)|n(iqueID|defined)|pdateInterval)|_content|p(ixelDepth|ort|ersonalbar|kcs11|l(ugins|atform)|a(thname|dding(Right|Bottom|Top|Left)|rent(Window|Layer)?|ge(X(Offset)?|Y(Offset)?))|r(o(to(col|type)|duct(Sub)?|mpter)|e(vious|fix)))|e(n(coding|abledPlugin)|x(ternal|pando)|mbeds)|v(isibility|endor(Sub)?|Linkcolor)|URLUnencoded|P(I|OSITIVE_INFINITY)|f(ilename|o(nt(Size|Family|Weight)|rmName)|rame(s|Element)|gColor)|E|whiteSpace|l(i(stStyleType|n(eHeight|kColor))|o(ca(tion(bar)?|lName)|wsrc)|e(ngth|ft(Context)?)|a(st(M(odified|atch)|Index|Paren)|yer(s|X)|nguage))|a(pp(MinorVersion|Name|Co(deName|re)|Version)|vail(Height|Top|Width|Left)|ll|r(ity|guments)|Linkcolor|bove)|r(ight(Context)?|e(sponse(XML|Text)|adyState))|global|x|m(imeTypes|ultiline|enubar|argin(Right|Bottom|Top|Left))|L(N(10|2)|OG(10E|2E))|b(o(ttom|rder(RightWidth|BottomWidth|Style|Color|TopWidth|LeftWidth))|ufferDepth|elow|ackground(Color|Image)))\b</string>
+			<string>(?&lt;=\.)(s(ystemLanguage|cr(ipts|ollbars|een(X|Y|Top|Left))|t(yle(Sheets)?|atus(Text|bar)?)|ibling(Below|Above)|ource|uffixes|e(curity(Policy)?|l(ection|f)))|h(istory|ost(name)?|as(h|Focus))|y|X(MLDocument|SLDocument)|n(ext|ame(space(s|URI)|Prop))|M(IN_VALUE|AX_VALUE)|c(haracterSet|o(n(structor|trollers)|okieEnabled|lorDepth|mp(onents|lete))|urrent|puClass|l(i(p(boardData)?|entInformation)|osed|asses)|alle(e|r)|rypto)|t(o(olbar|p)|ext(Transform|Indent|Decoration|Align)|ags)|SQRT(1_2|2)|i(n(ner(Height|Width)|put)|ds|gnoreCase)|zIndex|o(scpu|n(readystatechange|Line)|uter(Height|Width)|p(sProfile|ener)|ffscreenBuffering)|NEGATIVE_INFINITY|d(i(splay|alog(Height|Top|Width|Left|Arguments)|rectories)|e(scription|fault(Status|Ch(ecked|arset)|View)))|u(ser(Profile|Language|Agent)|n(iqueID|defined)|pdateInterval)|_content|p(ixelDepth|ort|ersonalbar|kcs11|l(ugins|atform)|a(thname|dding(Right|Bottom|Top|Left)|rent(Window|Layer)?|ge(X(Offset)?|Y(Offset)?))|r(o(to(col|type)|duct(Sub)?|mpter)|e(vious|fix)))|e(n(coding|abledPlugin)|x(ternal|pando)|mbeds)|v(isibility|endor(Sub)?|Linkcolor)|URLUnencoded|P(I|OSITIVE_INFINITY)|f(ilename|o(nt(Size|Family|Weight)|rmName)|rame(s|Element)|gColor)|E|whiteSpace|l(i(stStyleType|n(eHeight|kColor))|o(ca(tion(bar)?|lName)|wsrc)|e(ngth|ft(Context)?)|a(st(M(odified|atch)|Index|Paren)|yer(s|X)|nguage))|a(pp(MinorVersion|Name|Co(deName|re)|Version)|vail(Height|Top|Width|Left)|ll|r(ity|guments)|Linkcolor|bove)|r(ight(Context)?|e(sponse(XML|Text)|adyState))|global|x|m(imeTypes|ultiline|enubar|argin(Right|Bottom|Top|Left))|L(N(10|2)|OG(10E|2E))|b(o(ttom|rder(Width|RightWidth|BottomWidth|Style|Color|TopWidth|LeftWidth))|ufferDepth|elow|ackground(Color|Image)))\b</string>
 			<key>name</key>
 			<string>support.constant.js</string>
 		</dict>
@@ -1257,7 +1328,7 @@
 				<string>keyword.operator.js</string>
 			</array>
 			<key>match</key>
-			<string>!|\$|%|&amp;|\*|\-\-|\-|\+\+|\+|~|===|==|=|!=|!==|&lt;=|&gt;=|&lt;&lt;=|&gt;&gt;=|&gt;&gt;&gt;=|&lt;&gt;|&lt;|&gt;|!|&amp;&amp;|\|\||\?\:|\*=|/=|%=|\+=|\-=|&amp;=|\^=|\b(in|instanceof|new|delete|typeof|void)\b</string>
+			<string>!|\$|%|&amp;|\*|\-\-|\-|\+\+|\+|~|===|==|=|!=|!==|&lt;=|&gt;=|&lt;&lt;=|&gt;&gt;=|&gt;&gt;&gt;=|&lt;&gt;|&lt;|&gt;|!|&amp;&amp;|\|\||\?\:|\*=|(?&lt;!\()/=|%=|\+=|\-=|&amp;=|\^=|\b(in|instanceof|new|delete|typeof|void)\b</string>
 			<key>name</key>
 			<string>keyword.operator.js</string>
 		</dict>
@@ -1269,13 +1340,13 @@
 				<string>constant.language.js</string>
 			</array>
 			<key>match</key>
-			<string>\b(Infinity|NaN|Undefined)\b</string>
+			<string>\b(Infinity|NaN|undefined)\b</string>
 			<key>name</key>
 			<string>constant.language.js</string>
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=[=(:]|^|return)\s*(/)(?![/*+{}?])</string>
+			<string>(?&lt;=[=(:]|^|return|&amp;&amp;|\|\||!)\s*(/)(?![/*+{}?])</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1358,7 +1429,7 @@
 				<string>meta.delimiter.object.comma.js</string>
 			</array>
 			<key>match</key>
-			<string>,[ |	]*</string>
+			<string>,[ |\t]*</string>
 			<key>name</key>
 			<string>meta.delimiter.object.comma.js</string>
 		</dict>

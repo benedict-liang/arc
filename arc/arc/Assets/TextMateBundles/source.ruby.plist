@@ -8,46 +8,46 @@
 	</array>
 	<key>comment</key>
 	<string>
-					TODO: unresolved issues
-				
-					text:
-					&quot;p &lt;&lt; end
-					print me!
-					end&quot;
-					symptoms:
-					not recognized as a heredoc
-					solution:
-					there is no way to distinguish perfectly between the &lt;&lt; operator and the start
-					of a heredoc. Currently, we require assignment to recognize a heredoc. More
-					refinement is possible.
-					• Heredocs with indented terminators (&lt;&lt;-) are always distinguishable, however.
-					• Nested heredocs are not really supportable at present
-				
-					text:
-					print &lt;&lt;-'THERE' 
-					This is single quoted. 
-					The above used #{Time.now} 
-					THERE 
-					symtoms:
-					From Programming Ruby p306; should be a non-interpolated heredoc.
-					
-					text:
-					&quot;a\332a&quot;
-					symptoms:
-					'\332' is not recognized as slash3.. which should be octal 332.
-					solution:
-					plain regexp.. should be easy.
-				
-				    text:
-				    val?(a):p(b)
-				    val?'a':'b'
-				    symptoms:
-				    ':p' is recognized as a symbol.. its 2 things ':' and 'p'.
-				    :'b' has same problem.
-				    solution:
-				    ternary operator rule, precedence stuff, symbol rule.
-				    but also consider 'a.b?(:c)' ??
-				</string>
+									TODO: unresolved issues
+								
+									text:
+									&quot;p &lt;&lt; end
+									print me!
+									end&quot;
+									symptoms:
+									not recognized as a heredoc
+									solution:
+									there is no way to distinguish perfectly between the &lt;&lt; operator and the start
+									of a heredoc. Currently, we require assignment to recognize a heredoc. More
+									refinement is possible.
+									• Heredocs with indented terminators (&lt;&lt;-) are always distinguishable, however.
+									• Nested heredocs are not really supportable at present
+								
+									text:
+									print &lt;&lt;-'THERE' 
+									This is single quoted. 
+									The above used #{Time.now} 
+									THERE 
+									symtoms:
+									From Programming Ruby p306; should be a non-interpolated heredoc.
+									
+									text:
+									&quot;a\332a&quot;
+									symptoms:
+									'\332' is not recognized as slash3.. which should be octal 332.
+									solution:
+									plain regexp.. should be easy.
+								
+								    text:
+								    val?(a):p(b)
+								    val?'a':'b'
+								    symptoms:
+								    ':p' is recognized as a symbol.. its 2 things ':' and 'p'.
+								    :'b' has same problem.
+								    solution:
+								    ternary operator rule, precedence stuff, symbol rule.
+								    but also consider 'a.b?(:c)' ??
+								</string>
 	<key>fileTypes</key>
 	<array>
 		<string>rb</string>
@@ -63,40 +63,40 @@
 	<string>^#!/.*\bruby\b</string>
 	<key>foldingStartMarker</key>
 	<string>(?x)^
-					    (\s*+
-					        (module|class|def
-					        |unless|if
-					        |case
-					        |begin
-					        |for|while|until
-							 |^=begin
-					        |(  &quot;(\\.|[^&quot;])*+&quot;          # eat a double quoted string
-					         | '(\\.|[^'])*+'        # eat a single quoted string
-					         |   [^#&quot;']                # eat all but comments and strings
-					         )*
-					         (                        \s   (do|begin|case)
-					         | (?&lt;!\$)[-+=&amp;|*/~%^&lt;&gt;~] \s*+ (if|unless)
-					         )
-					        )\b
-					        (?! [^;]*+ ; .*? \bend\b )
-					    |(  &quot;(\\.|[^&quot;])*+&quot;              # eat a double quoted string
-					     | '(\\.|[^'])*+'            # eat a single quoted string
-					     |   [^#&quot;']                    # eat all but comments and strings
-					     )*
-					     ( \{ (?!  [^}]*+ \} )
-					     | \[ (?! [^\]]*+ \] )
-					     )
-					    ).*$
-					|   [#] .*? \(fold\) \s*+ $         # Sune’s special marker
-					</string>
+									    (\s*+
+									        (module|class|def
+									        |unless|if
+									        |case
+									        |begin
+									        |for|while|until
+											 |^=begin
+									        |(  &quot;(\\.|[^&quot;])*+&quot;          # eat a double quoted string
+									         | '(\\.|[^'])*+'        # eat a single quoted string
+									         |   [^#&quot;']                # eat all but comments and strings
+									         )*
+									         (                        \s   (do|begin|case)
+									         | (?&lt;!\$)[-+=&amp;|*/~%^&lt;&gt;~] \s*+ (if|unless)
+									         )
+									        )\b
+									        (?! [^;]*+ ; .*? \bend\b )
+									    |(  &quot;(\\.|[^&quot;])*+&quot;              # eat a double quoted string
+									     | '(\\.|[^'])*+'            # eat a single quoted string
+									     |   [^#&quot;']                    # eat all but comments and strings
+									     )*
+									     ( \{ (?!  [^}]*+ \} )
+									     | \[ (?! [^\]]*+ \] )
+									     )
+									    ).*$
+									|   [#] .*? \(fold\) \s*+ $         # Sune’s special marker
+									</string>
 	<key>foldingStopMarker</key>
 	<string>(?x)
-						(   (^|;) \s*+ end   \s*+ ([#].*)? $
-						|   (^|;) \s*+ end \. .* $
-						|   ^     \s*+ [}\]] \s*+ ([#].*)? $
-						|   [#] .*? \(end\) \s*+ $    # Sune’s special marker
-						|   ^=end
-						)</string>
+										(   (^|;) \s*+ end   \s*+ ([#].*)? $
+										|   (^|;) \s*+ end \. .* $
+										|   ^     \s*+ [}\]] \s*+ ([#].*)? $
+										|   [#] .*? \(end\) \s*+ $    # Sune’s special marker
+										|   ^=end
+										)</string>
 	<key>keyEquivalent</key>
 	<string>^~R</string>
 	<key>name</key>
@@ -1373,42 +1373,42 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-															   (?:
-															     ^                      # beginning of line
-															   | (?&lt;=                   # or look-behind on:
-															       [=&gt;~(?:\[,|&amp;]
-															     | (?:\s|;)when\s
-															     | (?:\s|;)or\s
-															     | (?:\s|;)and\s
-															     | (?:\s|;|\.)index\s
-															     | (?:\s|;|\.)scan\s
-															     | (?:\s|;|\.)sub\s
-															     | (?:\s|l|\.)sub!\s
-															     | (?:\s|;|\.)gsub\s
-															     | (?:\s|;|\.)gsub!\s
-															     | (?:\s|;|\.)match\s
-															     | (?:\s|;)if\s
-															     | (?:\s|;)elsif\s
-															     | (?:\s|;)while\s
-															     | (?:\s|;)unless\s
-															     )
-															   | (?&lt;=                  # or a look-behind with line anchor:
-															        ^when\s              # duplication necessary due to limits of regex
-															      | ^index\s
-															      | ^scan\s
-															      | ^sub\s
-															      | ^gsub\s
-															      | ^sub!\s
-															      | ^gsub!\s
-															      | ^match\s
-															      | ^if\s
-															      | ^elsif\s
-															      | ^while\s
-															      | ^unless\s
-															      )
-															   )
-															   \s*((/))(?![*+{}?])
-															</string>
+																											   (?:
+																											     ^                      # beginning of line
+																											   | (?&lt;=                   # or look-behind on:
+																											       [=&gt;~(?:\[,|&amp;]
+																											     | (?:\s|;)when\s
+																											     | (?:\s|;)or\s
+																											     | (?:\s|;)and\s
+																											     | (?:\s|;|\.)index\s
+																											     | (?:\s|;|\.)scan\s
+																											     | (?:\s|;|\.)sub\s
+																											     | (?:\s|l|\.)sub!\s
+																											     | (?:\s|;|\.)gsub\s
+																											     | (?:\s|;|\.)gsub!\s
+																											     | (?:\s|;|\.)match\s
+																											     | (?:\s|;)if\s
+																											     | (?:\s|;)elsif\s
+																											     | (?:\s|;)while\s
+																											     | (?:\s|;)unless\s
+																											     )
+																											   | (?&lt;=                  # or a look-behind with line anchor:
+																											        ^when\s              # duplication necessary due to limits of regex
+																											      | ^index\s
+																											      | ^scan\s
+																											      | ^sub\s
+																											      | ^gsub\s
+																											      | ^sub!\s
+																											      | ^gsub!\s
+																											      | ^match\s
+																											      | ^if\s
+																											      | ^elsif\s
+																											      | ^while\s
+																											      | ^unless\s
+																											      )
+																											   )
+																											   \s*((/))(?![*+{}?])
+																											</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -1438,9 +1438,9 @@
 			</dict>
 			<key>comment</key>
 			<string>regular expressions (normal)
-															we only start a regexp if the character before it (excluding whitespace)
-															is what we think is before a regexp
-															</string>
+																											we only start a regexp if the character before it (excluding whitespace)
+																											is what we think is before a regexp
+																											</string>
 			<key>contentName</key>
 			<string>string.regexp.classic.ruby</string>
 			<key>end</key>
@@ -2579,29 +2579,29 @@
 			</array>
 			<key>comment</key>
 			<string>
-															matches questionmark-letters.
-												
-															examples (1st alternation = hex):
-															?\x1     ?\x61
-												
-															examples (2nd alternation = octal):
-															?\0      ?\07     ?\017
-												
-															examples (3rd alternation = escaped):
-															?\n      ?\b
-												
-															examples (4th alternation = meta-ctrl):
-															?\C-a    ?\M-a    ?\C-\M-\C-\M-a
-												
-															examples (4th alternation = normal):
-															?a       ?A       ?0 
-															?*       ?&quot;       ?( 
-															?.       ?#
-															
-															
-															the negative lookbehind prevents against matching
-															p(42.tainted?)
-															</string>
+																											matches questionmark-letters.
+																								
+																											examples (1st alternation = hex):
+																											?\x1     ?\x61
+																								
+																											examples (2nd alternation = octal):
+																											?\0      ?\07     ?\017
+																								
+																											examples (3rd alternation = escaped):
+																											?\n      ?\b
+																								
+																											examples (4th alternation = meta-ctrl):
+																											?\C-a    ?\M-a    ?\C-\M-\C-\M-a
+																								
+																											examples (4th alternation = normal):
+																											?a       ?A       ?0 
+																											?*       ?&quot;       ?( 
+																											?.       ?#
+																											
+																											
+																											the negative lookbehind prevents against matching
+																											p(42.tainted?)
+																											</string>
 			<key>match</key>
 			<string>(?&lt;!\w)\?(\\(x\h{1,2}(?!\h)\b|0[0-7]{0,2}(?![0-7])\b|[^x0MC])|(\\[MC]-)+\w|[^\s\\])</string>
 			<key>name</key>

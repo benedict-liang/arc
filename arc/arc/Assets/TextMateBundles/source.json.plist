@@ -12,27 +12,27 @@
 	</array>
 	<key>foldingStartMarker</key>
 	<string>(?x:       # turn on extended mode
-				                          ^        # a line beginning with
-				                          \s*      # some optional space
-				                          [{\[]    # the start of an object or array
-				                          (?!      # but not followed by
-				                            .*     # whatever
-				                            [}\]]  # and the close of an object or array
-				                            ,?     # an optional comma
-				                            \s*    # some optional space
-				                            $      # at the end of the line
-				                          )
-				                          |        # ...or...
-				                          [{\[]    # the start of an object or array
-				                          \s*      # some optional space
-				                          $        # at the end of the line
-				                        )</string>
+	                          ^        # a line beginning with
+	                          \s*      # some optional space
+	                          [{\[]    # the start of an object or array
+	                          (?!      # but not followed by
+	                            .*     # whatever
+	                            [}\]]  # and the close of an object or array
+	                            ,?     # an optional comma
+	                            \s*    # some optional space
+	                            $      # at the end of the line
+	                          )
+	                          |        # ...or...
+	                          [{\[]    # the start of an object or array
+	                          \s*      # some optional space
+	                          $        # at the end of the line
+	                        )</string>
 	<key>foldingStopMarker</key>
 	<string>(?x:     # turn on extended mode
-				                         ^      # a line beginning with
-				                         \s*    # some optional space
-				                         [}\]]  # and the close of an object or array
-				                       )</string>
+	                         ^      # a line beginning with
+	                         \s*    # some optional space
+	                         [}\]]  # and the close of an object or array
+	                       )</string>
 	<key>keyEquivalent</key>
 	<string>^~J</string>
 	<key>name</key>
@@ -127,6 +127,99 @@
 				</dict>
 			</array>
 		</dict>
+		<key>comments</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>/\*\*</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.block</string>
+						<string>comment.block.documentation</string>
+						<string>comment.block.documentation.json</string>
+					</array>
+					<key>captures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.json</string>
+							</array>
+							<key>name</key>
+							<string>punctuation.definition.comment.json</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\*/</string>
+					<key>name</key>
+					<string>comment.block.documentation.json</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>/\*</string>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.block</string>
+						<string>comment.block.json</string>
+					</array>
+					<key>captures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.json</string>
+							</array>
+							<key>name</key>
+							<string>punctuation.definition.comment.json</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\*/</string>
+					<key>name</key>
+					<string>comment.block.json</string>
+				</dict>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>comment</string>
+						<string>comment.line</string>
+						<string>comment.line.double-slash</string>
+						<string>comment.line.double-slash.js</string>
+					</array>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>punctuation</string>
+								<string>punctuation.definition</string>
+								<string>punctuation.definition.comment</string>
+								<string>punctuation.definition.comment.json</string>
+							</array>
+							<key>name</key>
+							<string>punctuation.definition.comment.json</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(//).*$\n?</string>
+					<key>name</key>
+					<string>comment.line.double-slash.js</string>
+				</dict>
+			</array>
+		</dict>
 		<key>constant</key>
 		<dict>
 			<key>capturableScopes</key>
@@ -152,23 +245,25 @@
 			<string>handles integer and decimal numbers</string>
 			<key>match</key>
 			<string>(?x:         # turn on extended mode
-												                 -?         # an optional minus
-												                 (?:
-												                   0        # a zero
-												                   |        # ...or...
-												                   [1-9]    # a 1-9 character
-												                   \d*      # followed by zero or more digits
-												                 )
-												                 (?:
-												                   \.       # a period
-												                   \d+      # followed by one or more digits
-												                   (?:
-												                     [eE]   # an e character
-												                     [+-]?  # followed by an option +/-
-												                     \d+    # followed by one or more digits
-												                   )?       # make exponent optional
-												                 )?         # make decimal portion optional
-												               )</string>
+						             -?         # an optional minus
+						             (?:
+						               0        # a zero
+						               |        # ...or...
+						               [1-9]    # a 1-9 character
+						               \d*      # followed by zero or more digits
+						             )
+						             (?:
+						               (?:
+						                 \.     # a period
+						                 \d+    # followed by one or more digits
+						               )?
+						               (?:
+						                 [eE]   # an e character
+						                 [+-]?  # followed by an option +/-
+						                 \d+    # followed by one or more digits
+						               )?       # make exponent optional
+						             )?         # make decimal portion optional
+						           )</string>
 			<key>name</key>
 			<string>constant.numeric.json</string>
 		</dict>
@@ -228,6 +323,10 @@
 					<string>the JSON object key</string>
 					<key>include</key>
 					<string>#string</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comments</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -373,14 +472,14 @@
 					</array>
 					<key>match</key>
 					<string>(?x:                # turn on extended mode
-																				                     \\                # a literal backslash
-																				                     (?:               # ...followed by...
-																				                       [&quot;\\/bfnrt]     # one of these characters
-																				                       |               # ...or...
-																				                       u               # a u
-																				                       [0-9a-fA-F]{4}  # and four hex digits
-																				                     )
-																				                   )</string>
+					                     \\                # a literal backslash
+					                     (?:               # ...followed by...
+					                       [&quot;\\/bfnrt]     # one of these characters
+					                       |               # ...or...
+					                       u               # a u
+					                       [0-9a-fA-F]{4}  # and four hex digits
+					                     )
+					                   )</string>
 					<key>name</key>
 					<string>constant.character.escape.json</string>
 				</dict>
@@ -424,6 +523,10 @@
 				<dict>
 					<key>include</key>
 					<string>#object</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comments</string>
 				</dict>
 			</array>
 		</dict>

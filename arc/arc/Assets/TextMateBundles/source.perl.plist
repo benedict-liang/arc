@@ -6,8 +6,6 @@
 	<array>
 		<string>Perl</string>
 	</array>
-	<key>comment</key>
-	<string></string>
 	<key>fileTypes</key>
 	<array>
 		<string>pl</string>
@@ -437,6 +435,21 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>keyword</string>
+								<string>keyword.control</string>
+								<string>keyword.control.anchor</string>
+								<string>keyword.control.anchor.perl</string>
+							</array>
+							<key>comment</key>
+							<string>This is to prevent thinks like qr/foo$/ to treat $/ as a variable</string>
+							<key>match</key>
+							<string>\$(?=[^\s\w\'\{\[\(\&lt;])</string>
+							<key>name</key>
+							<string>keyword.control.anchor.perl</string>
+						</dict>
+						<dict>
 							<key>include</key>
 							<string>#escaped_char</string>
 						</dict>
@@ -456,7 +469,7 @@
 			<key>applyEndPatternLast</key>
 			<integer>1</integer>
 			<key>begin</key>
-			<string>\b(?=(s)(\s+\S|\s*[;\,\#\{\}\(\)\[&lt;]|$))</string>
+			<string>\b(?=(?&lt;!\&amp;)(s)(\s+\S|\s*[;\,\#\{\}\(\)\[&lt;]|$))</string>
 			<key>comment</key>
 			<string>string.regexp.replace.perl</string>
 			<key>end</key>
@@ -1424,7 +1437,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?&lt;!\\)((~\s*)?\/)(.*?)(?&lt;!\\)(\\{2})*(\/)</string>
+			<string>(?&lt;!\\)((~\s*)?\/)(\S.*?)(?&lt;!\\)(\\{2})*(\/)</string>
 			<key>name</key>
 			<string>string.regexp.find.perl</string>
 		</dict>
@@ -2075,7 +2088,7 @@
 				<string>keyword.control.perl</string>
 			</array>
 			<key>match</key>
-			<string>\b(continue|die|do|else|elsif|exit|for|foreach|goto|if|last|next|redo|return|select|unless|until|wait|while|switch|case|package|require|use|eval)\b</string>
+			<string>(?&lt;!-&gt;)\b(continue|die|do|else|elsif|exit|for|foreach|goto|if|last|next|redo|return|select|unless|until|wait|while|switch|case|package|require|use|eval)\b</string>
 			<key>name</key>
 			<string>keyword.control.perl</string>
 		</dict>
@@ -4911,6 +4924,21 @@
 			<string>\)</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>capturableScopes</key>
+					<array>
+						<string>keyword</string>
+						<string>keyword.control</string>
+						<string>keyword.control.anchor</string>
+						<string>keyword.control.anchor.perl</string>
+					</array>
+					<key>comment</key>
+					<string>This is to prevent thinks like qr/foo$/ to treat $/ as a variable</string>
+					<key>match</key>
+					<string>\$(?=[^\s\w\'\{\[\(\&lt;])</string>
+					<key>name</key>
+					<string>keyword.control.anchor.perl</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#escaped_char</string>

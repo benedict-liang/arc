@@ -585,7 +585,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(\$)([a-zA-Z0-9_:]+(\([^\)]+\))?|\{[^\}]*\})</string>
+			<string>(\$)((?:[a-zA-Z0-9_]|::)+(\([^\)]+\))?|\{[^\}]*\})</string>
 			<key>name</key>
 			<string>variable.other.tcl</string>
 		</dict>

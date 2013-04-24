@@ -241,7 +241,6 @@
 		8F1BC257170F1C1900D1D049 /* source.diff.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1B8170F1C1800D1D049 /* source.diff.plist */; };
 		8F1BC258170F1C1900D1D049 /* source.d.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1B9170F1C1900D1D049 /* source.d.plist */; };
 		8F1BC259170F1C1900D1D049 /* source.css.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1BA170F1C1900D1D049 /* source.css.plist */; };
-		8F1BC25A170F1C1900D1D049 /* source.css.beta.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1BB170F1C1900D1D049 /* source.css.beta.plist */; };
 		8F1BC25B170F1C1900D1D049 /* source.context-free.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1BC170F1C1900D1D049 /* source.context-free.plist */; };
 		8F1BC25C170F1C1900D1D049 /* source.coffee.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1BD170F1C1900D1D049 /* source.coffee.plist */; };
 		8F1BC25D170F1C1900D1D049 /* source.cm.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F1BC1BE170F1C1900D1D049 /* source.cm.plist */; };
@@ -2116,7 +2115,6 @@
 				8F1BC257170F1C1900D1D049 /* source.diff.plist in Resources */,
 				8F1BC258170F1C1900D1D049 /* source.d.plist in Resources */,
 				8F1BC259170F1C1900D1D049 /* source.css.plist in Resources */,
-				8F1BC25A170F1C1900D1D049 /* source.css.beta.plist in Resources */,
 				8F1BC25B170F1C1900D1D049 /* source.context-free.plist in Resources */,
 				8F1BC25C170F1C1900D1D049 /* source.coffee.plist in Resources */,
 				8F1BC25D170F1C1900D1D049 /* source.cm.plist in Resources */,

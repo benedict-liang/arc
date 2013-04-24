@@ -12,7 +12,20 @@
 		<string>patch</string>
 	</array>
 	<key>firstLineMatch</key>
-	<string>^(=== modified file|====\s*//.+\s-\s.+\s+====|Index: |--- [^%]|\*\*\* |\d+(,\d+)*(a|d|c)\d+(,\d+)*$)</string>
+	<string>(?x)^
+			(===\ modified\ file
+			|==== \s* // .+ \s - \s .+ \s+ ====
+			|Index:[ ]
+			|---\ [^%]
+			|\*\*\*.*\d{4}\s*$
+			|\d+(,\d+)* (a|d|c) \d+(,\d+)* $
+			|diff\ --git[ ]
+			)
+		</string>
+	<key>foldingStartMarker</key>
+	<string>^\+\+\+</string>
+	<key>foldingStopMarker</key>
+	<string>^---|^$</string>
 	<key>keyEquivalent</key>
 	<string>^~D</string>
 	<key>name</key>
@@ -107,7 +120,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^(@@)\s*(.+?)\s*(@@)$\n?</string>
+			<string>^(@@)\s*(.+?)\s*(@@)($\n?)?</string>
 			<key>name</key>
 			<string>meta.diff.range.unified</string>
 		</dict>

@@ -8,9 +8,9 @@
 	</array>
 	<key>comment</key>
 	<string>Grammar based on description from http://artis.imag.fr/~Xavier.Decoret/resources/xdkbibtex/bibtex_summary.html#comment
-					
-					TODO: Does not support @preamble
-					</string>
+									
+									TODO: Does not support @preamble
+									</string>
 	<key>fileTypes</key>
 	<array>
 		<string>bib</string>

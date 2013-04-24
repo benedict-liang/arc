@@ -12,16 +12,16 @@
 	</array>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-				        (\[(?i:quote|code|list)\b.*?\]
-				        |&lt;!--(?!.*--&gt;)
-				        |\{\s*($|\?&gt;\s*$|//|/\*(.*\*/\s*$|(?!.*?\*/)))
-				        )</string>
+								        (\[(?i:quote|code|list)\b.*?\]
+								        |&lt;!--(?!.*--&gt;)
+								        |\{\s*($|\?&gt;\s*$|//|/\*(.*\*/\s*$|(?!.*?\*/)))
+								        )</string>
 	<key>foldingStopMarker</key>
 	<string>(?x)
-				        (\[/(?i:quote|code|list)\b.*?\]
-				        |^\s*--&gt;
-				        |(^|\s)\}
-				        )</string>
+								        (\[/(?i:quote|code|list)\b.*?\]
+								        |^\s*--&gt;
+								        |(^|\s)\}
+								        )</string>
 	<key>keyEquivalent</key>
 	<string>^~B</string>
 	<key>name</key>
@@ -568,12 +568,12 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)(\[)(?i:color)=(
-														            (?i:(red|green|blue|yellow
-														                |white|black|pink
-														                |purple|brown|grey))
-												                    |(\#([0-9a-fA-F]{6}))
-												                    |([^\]]+))
-												                (\])</string>
+																										            (?i:(red|green|blue|yellow
+																										                |white|black|pink
+																										                |purple|brown|grey))
+																								                    |(\#([0-9a-fA-F]{6}))
+																								                    |([^\]]+))
+																								                (\])</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -701,9 +701,9 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)(\[)(?i:size)=
-												                 (?i:([0-9]{1,3})\b
-												                     |([^\]]+))
-												                 (\])</string>
+																								                 (?i:([0-9]{1,3})\b
+																								                     |([^\]]+))
+																								                 (\])</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -1213,15 +1213,15 @@
 			</dict>
 			<key>match</key>
 			<string>(?x)
-																(
-																	(
-																		(:)
-																		(mad|rolleyes|cool|eek|confused|devious|
-																		judge|scared|eyebrow|bigdumbgrin)
-																		(:)
-																	)
-																  | (?::\)|;\)|:D|:\(|:p|:o)
-																)</string>
+																												(
+																													(
+																														(:)
+																														(mad|rolleyes|cool|eek|confused|devious|
+																														judge|scared|eyebrow|bigdumbgrin)
+																														(:)
+																													)
+																												  | (?::\)|;\)|:D|:\(|:p|:o)
+																												)</string>
 			<key>name</key>
 			<string>constant.other.smiley.bbcode</string>
 		</dict>

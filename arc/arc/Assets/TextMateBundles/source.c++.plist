@@ -7,11 +7,11 @@
 		<string>C++</string>
 	</array>
 	<key>comment</key>
-	<string>I don&amp;apos;t think anyone uses .hp. .cp tends to be paired with .h. (I could be wrong. :) -- chris</string>
+	<string>I don't think anyone uses .hp. .cp tends to be paired with .h. (I could be wrong. :) -- chris</string>
 	<key>fileTypes</key>
 	<array>
-		<string>cc</string>
 		<string>cpp</string>
+		<string>cc</string>
 		<string>cp</string>
 		<string>cxx</string>
 		<string>c++</string>
@@ -19,15 +19,18 @@
 		<string>h</string>
 		<string>hh</string>
 		<string>hpp</string>
+		<string>hxx</string>
 		<string>h++</string>
+		<string>inl</string>
+		<string>ipp</string>
 	</array>
 	<key>firstLineMatch</key>
 	<string>-\*- C\+\+ -\*-</string>
 	<key>foldingStartMarker</key>
 	<string>(?x)
-						 /\*\*(?!\*)
-						|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))
-					</string>
+				 /\*\*(?!\*)
+				|^(?![^{]*?//|[^{]*?/\*(?!.*?\*/.*?\{)).*?\{\s*($|//|/\*(?!.*?\*/.*\S))
+			</string>
 	<key>foldingStopMarker</key>
 	<string>(?&lt;!\*)\*\*/|^\s*\}</string>
 	<key>keyEquivalent</key>
@@ -88,7 +91,7 @@
 				<string>keyword.control.c++</string>
 			</array>
 			<key>match</key>
-			<string>\bdelete\b(\s*\[\])?|\bnew\b(?!\])</string>
+			<string>\bdelete\b(\s*\[\])?|\bnew\b(?!])</string>
 			<key>name</key>
 			<string>keyword.control.c++</string>
 		</dict>
@@ -185,12 +188,12 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-												    				(?:  ^                                 # begin-of-line
-												    				  |  (?: (?&lt;!else|new|=) )             #  or word + space before name
-												    				)
-												    				((?:[A-Za-z_][A-Za-z0-9_]*::)*+~[A-Za-z_][A-Za-z0-9_]*) # actual name
-												    				 \s*(\()                           # start bracket or end-of-line
-												    			</string>
+						    				(?:  ^                                 # begin-of-line
+						    				  |  (?: (?&lt;!else|new|=) )             #  or word + space before name
+						    				)
+						    				((?:[A-Za-z_][A-Za-z0-9_]*::)*+~[A-Za-z_][A-Za-z0-9_]*) # actual name
+						    				 \s*(\()                           # start bracket or end-of-line
+						    			</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -255,12 +258,12 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-												    				(?:  ^                                 # begin-of-line
-												    				  |  (?: (?&lt;!else|new|=) )             #  or word + space before name
-												    				)
-												    				((?:[A-Za-z_][A-Za-z0-9_]*::)*+~[A-Za-z_][A-Za-z0-9_]*) # actual name
-												    				 \s*(\()                           # terminating semi-colon
-												    			</string>
+						    				(?:  ^                                 # begin-of-line
+						    				  |  (?: (?&lt;!else|new|=) )             #  or word + space before name
+						    				)
+						    				((?:[A-Za-z_][A-Za-z0-9_]*::)*+~[A-Za-z_][A-Za-z0-9_]*) # actual name
+						    				 \s*(\()                           # terminating semi-colon
+						    			</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -404,10 +407,10 @@
 					</dict>
 					<key>match</key>
 					<string>(?x)
-																				    				(
-																				    					(?!while|for|do|if|else|switch|catch|enumerate|return|r?iterate)(?: \b[A-Za-z_][A-Za-z0-9_]*+\b | :: )*+                  # actual name
-																				    				)
-																				    				 \s*(\()</string>
+										    				(
+										    					(?!while|for|do|if|else|switch|catch|enumerate|return|r?iterate)(?: \b[A-Za-z_][A-Za-z0-9_]*+\b | :: )*+                  # actual name
+										    				)
+										    				 \s*(\()</string>
 					<key>name</key>
 					<string>meta.function-call.c</string>
 				</dict>
@@ -424,10 +427,10 @@
 				<dict>
 					<key>begin</key>
 					<string>(?x)
-																				    				(?:  ^\s*)                             # begin-of-line
-																				    				((?!while|for|do|if|else|switch|catch|enumerate|r?iterate)[A-Za-z_][A-Za-z0-9_:]*) # actual name
-																				    				 \s*(\()                            # start bracket or end-of-line
-																				    			</string>
+										    				(?:  ^\s*)                             # begin-of-line
+										    				((?!while|for|do|if|else|switch|catch|enumerate|r?iterate)[A-Za-z_][A-Za-z0-9_:]*) # actual name
+										    				 \s*(\()                            # start bracket or end-of-line
+										    			</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -492,10 +495,10 @@
 				<dict>
 					<key>begin</key>
 					<string>(?x)
-																				    				(:)                            # begin-of-line
-																				    				((?=\s*[A-Za-z_][A-Za-z0-9_:]* # actual name
-																				    				 \s*(\()))                      # start bracket or end-of-line
-																				    			</string>
+										    				(:)                            # begin-of-line
+										    				((?=\s*[A-Za-z_][A-Za-z0-9_:]* # actual name
+										    				 \s*(\()))                      # start bracket or end-of-line
+										    			</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -539,33 +542,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>\b(namespace)\b\s*([_A-Za-z][_A-Za-z0-9]*\b)?+</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>capturableScopes</key>
-							<array>
-								<string>storage</string>
-								<string>storage.type</string>
-								<string>storage.type.c++</string>
-							</array>
-							<key>name</key>
-							<string>storage.type.c++</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>capturableScopes</key>
-							<array>
-								<string>entity</string>
-								<string>entity.name</string>
-								<string>entity.name.type</string>
-								<string>entity.name.type.c++</string>
-							</array>
-							<key>name</key>
-							<string>entity.name.type.c++</string>
-						</dict>
-					</dict>
+					<string>\b(namespace)\s+([A-Za-z_][_A-Za-z0-9:]*\b)?+(?!\s*?(;|=|,))</string>
 					<key>capturableScopes</key>
 					<array>
 						<string>meta</string>
@@ -573,46 +550,16 @@
 						<string>meta.namespace-block.c++</string>
 					</array>
 					<key>end</key>
-					<string>(?&lt;=\})|(?=(;|,|\(|\)|&gt;|\[|\]|=))</string>
+					<string>(?&lt;=\})</string>
 					<key>name</key>
 					<string>meta.namespace-block.c++</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>begin</key>
-							<string>(\{)</string>
-							<key>beginCaptures</key>
-							<dict>
-								<key>1</key>
-								<dict>
-									<key>capturableScopes</key>
-									<array>
-										<string>punctuation</string>
-										<string>punctuation.definition</string>
-										<string>punctuation.definition.scope</string>
-										<string>punctuation.definition.scope.c++</string>
-									</array>
-									<key>name</key>
-									<string>punctuation.definition.scope.c++</string>
-								</dict>
-							</dict>
+							<string>\{</string>
 							<key>end</key>
-							<string>(\})</string>
-							<key>endCaptures</key>
-							<dict>
-								<key>1</key>
-								<dict>
-									<key>capturableScopes</key>
-									<array>
-										<string>punctuation</string>
-										<string>punctuation.definition</string>
-										<string>punctuation.definition.invalid</string>
-										<string>punctuation.definition.invalid.c++</string>
-									</array>
-									<key>name</key>
-									<string>punctuation.definition.invalid.c++</string>
-								</dict>
-							</dict>
+							<string>\}</string>
 							<key>patterns</key>
 							<array>
 								<dict>
@@ -629,15 +576,11 @@
 								</dict>
 							</array>
 						</dict>
-						<dict>
-							<key>include</key>
-							<string>$base</string>
-						</dict>
 					</array>
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>\b(class|struct)\b\s*([_A-Za-z][_A-Za-z0-9]*\b)?+</string>
+					<string>\b(class|struct)\s+([_A-Za-z][_A-Za-z0-9]*\b)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -671,7 +614,7 @@
 						<string>meta.class-struct-block.c++</string>
 					</array>
 					<key>end</key>
-					<string>(?&lt;=\})|(?=(;|,|\(|\)|&gt;|\[|\]|=))</string>
+					<string>(?&lt;=\})|(?=(;|,|\(|\)|&gt;|\[|\]))</string>
 					<key>name</key>
 					<string>meta.class-struct-block.c++</string>
 					<key>patterns</key>

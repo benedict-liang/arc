@@ -12,6 +12,7 @@
 		<string>makefile</string>
 		<string>Makefile</string>
 		<string>OCamlMakefile</string>
+		<string>make</string>
 	</array>
 	<key>name</key>
 	<string>Makefile</string>
@@ -141,7 +142,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^([^\t ]+:(?!\=))\s*.*</string>
+			<string>^([^\t ]+(\s[^\t ]+)*:(?!\=))\s*.*</string>
 			<key>name</key>
 			<string>meta.function.makefile</string>
 		</dict>

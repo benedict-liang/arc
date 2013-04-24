@@ -12,6 +12,8 @@
 	<array>
 		<string>erl</string>
 		<string>hrl</string>
+		<string>Emakefile</string>
+		<string>emakefile</string>
 	</array>
 	<key>keyEquivalent</key>
 	<string>^~E</string>
@@ -1493,6 +1495,25 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>capturableScopes</key>
+							<array>
+								<string>entity</string>
+								<string>entity.name</string>
+								<string>entity.name.function</string>
+								<string>entity.name.function.erlang</string>
+							</array>
+							<key>name</key>
+							<string>entity.name.function.erlang</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>^\s*+([a-z][a-zA-Z\d@_]*+)\s*+(?=\()</string>
+				</dict>
+				<dict>
 					<key>begin</key>
 					<string>(?=\()</string>
 					<key>end</key>
@@ -1516,28 +1537,13 @@
 					<array>
 						<dict>
 							<key>include</key>
+							<string>#parenthesized-expression</string>
+						</dict>
+						<dict>
+							<key>include</key>
 							<string>#internal-function-parts</string>
 						</dict>
 					</array>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>capturableScopes</key>
-							<array>
-								<string>entity</string>
-								<string>entity.name</string>
-								<string>entity.name.function</string>
-								<string>entity.name.function.erlang</string>
-							</array>
-							<key>name</key>
-							<string>entity.name.function.erlang</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>^\s*+([a-z][a-zA-Z\d@_]*+)\s*+(?=\()</string>
 				</dict>
 				<dict>
 					<key>include</key>

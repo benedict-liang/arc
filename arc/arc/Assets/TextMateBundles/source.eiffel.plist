@@ -216,9 +216,9 @@
 		<dict>
 			<key>begin</key>
 			<string>^\s*
-																	((?:\b(deferred|expanded)\b\s*)*) # modifier
-																	(class)\s+
-																	(\w+)\s* # identifier</string>
+																													((?:\b(deferred|expanded)\b\s*)*) # modifier
+																													(class)\s+
+																													(\w+)\s* # identifier</string>
 			<key>capturableScopes</key>
 			<array>
 				<string>meta</string>
