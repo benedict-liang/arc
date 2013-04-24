@@ -135,6 +135,15 @@
 
 # pragma mark - Arc SplitView Controller Delegate
 
+- (void)closedViewController:(UIViewController *)viewController
+{
+    // TODO: 'Hard coded' for now
+    if (_codeViewController == viewController) {
+        [_appState setCurrentFileOpened:[_secondCodeViewController getCurrentFile]];
+        [_codeViewController showFile:[_secondCodeViewController getCurrentFile]];
+    }
+}
+
 - (void)didShowMasterViewAnimated:(BOOL)animate
                     boundsChanged:(BOOL)boundsChanged
 {
