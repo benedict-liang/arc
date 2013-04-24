@@ -41,6 +41,12 @@ NSString* const FOLDER_VIEW_FILES = @"Files";
     FileSystemObjectGroup *files = [[FileSystemObjectGroup alloc] initWithName:FOLDER_VIEW_FILES];
     
     for (id<FileSystemObject> fileSystemObject in fileObjects) {
+        // Ignore privileged files
+        if ([[Constants privilegedFileList] indexOfObject:fileSystemObject.name] != NSNotFound) {
+            NSLog(@"asdf");
+            continue;
+        }
+        
         if ([[fileSystemObject class] conformsToProtocol:@protocol(File)]) {
             [files addFileSystemObject:fileSystemObject];
         } else if ([[fileSystemObject class] conformsToProtocol:@protocol(Folder) ]) {
