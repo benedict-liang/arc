@@ -17,6 +17,8 @@
 		020C128E171ABACD00603229 /* GoogleDriveFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C128D171ABACC00603229 /* GoogleDriveFile.m */; };
 		020C1291171AC14900603229 /* GoogleDriveDownloadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 020C1290171AC14600603229 /* GoogleDriveDownloadHelper.m */; };
 		022726391723D56500615BC1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022726381723D56500615BC1 /* MobileCoreServices.framework */; };
+		0258EC781727CCB600BC8610 /* Model in Resources */ = {isa = PBXBuildFile; fileRef = 0258EC771727CCB600BC8610 /* Model */; };
+		0258EC7A1727CCDB00BC8610 /* Controllers in Resources */ = {isa = PBXBuildFile; fileRef = 0258EC791727CCDB00BC8610 /* Controllers */; };
 		026AC54716FF104D001E03E5 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD06B7F16FDF61C00C9DED3 /* Constants.m */; };
 		026BC4711705895500A9AA5F /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC4701705895500A9AA5F /* Dropbox.framework */; };
 		026BC473170589A700A9AA5F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC472170589A700A9AA5F /* CFNetwork.framework */; };
@@ -27,6 +29,8 @@
 		02A5198D170DC0CE007C038E /* Inconsolata.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02A5198C170DC0CE007C038E /* Inconsolata.ttf */; };
 		02B04FCA1701672700FE51CB /* GameObject.h in Resources */ = {isa = PBXBuildFile; fileRef = 02B04FC91701608C00FE51CB /* GameObject.h */; };
 		02B341E9171C130400DC9639 /* LiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */; };
+		02B75DB31727D4ED00FF51B5 /* Plugin in Resources */ = {isa = PBXBuildFile; fileRef = 02B75DB21727D4ED00FF51B5 /* Plugin */; };
+		02B75DB91727D4FE00FF51B5 /* View in Resources */ = {isa = PBXBuildFile; fileRef = 02B75DB81727D4FE00FF51B5 /* View */; };
 		02CF20721712ACB8001A59E4 /* Reading Panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 02CF20711712ACB8001A59E4 /* Reading Panel.png */; };
 		02D2B73F17099E89002D22E7 /* RootFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D2B73E17099E88002D22E7 /* RootFolder.m */; };
 		02D55DB51711694900DD48D7 /* PluginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D55DB41711694900DD48D7 /* PluginUtilities.m */; };
@@ -432,6 +436,8 @@
 		02209C9F17258DAF006A7CF8 /* FolderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FolderDelegate.h; path = Delegates/FolderDelegate.h; sourceTree = "<group>"; };
 		022726381723D56500615BC1 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		023D4AFA171D1AAF00D9F60D /* PresentingModalViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentingModalViewControllerDelegate.h; sourceTree = "<group>"; };
+		0258EC771727CCB600BC8610 /* Model */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Model; path = arc/Model; sourceTree = "<group>"; };
+		0258EC791727CCDB00BC8610 /* Controllers */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Controllers; path = arc/Controllers; sourceTree = "<group>"; };
 		025ABF5F16FAF2BD00DD54C6 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		0260B50A1709286E0091B012 /* Folder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Folder.h; path = Protocols/Folder.h; sourceTree = "<group>"; };
 		0260B50B170928820091B012 /* FileSystemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystemObject.h; path = Protocols/FileSystemObject.h; sourceTree = "<group>"; };
@@ -445,6 +451,8 @@
 		02A00794171BBF650099FE61 /* CloudFolder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudFolder.h; sourceTree = "<group>"; };
 		02A5198C170DC0CE007C038E /* Inconsolata.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inconsolata.ttf; sourceTree = "<group>"; };
 		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
+		02B75DB21727D4ED00FF51B5 /* Plugin */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Plugin; path = arc/Plugin; sourceTree = "<group>"; };
+		02B75DB81727D4FE00FF51B5 /* View */ = {isa = PBXFileReference; lastKnownFileType = folder; name = View; path = arc/View; sourceTree = "<group>"; };
 		02CF20711712ACB8001A59E4 /* Reading Panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reading Panel.png"; sourceTree = "<group>"; };
 		02D2B73D17099E88002D22E7 /* RootFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootFolder.h; sourceTree = "<group>"; };
 		02D2B73E17099E88002D22E7 /* RootFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootFolder.m; sourceTree = "<group>"; };
@@ -990,6 +998,10 @@
 		4C43F8E016F86AA800159B29 = {
 			isa = PBXGroup;
 			children = (
+				02B75DB81727D4FE00FF51B5 /* View */,
+				02B75DB21727D4ED00FF51B5 /* Plugin */,
+				0258EC791727CCDB00BC8610 /* Controllers */,
+				0258EC771727CCB600BC8610 /* Model */,
 				020C10D6171A935200603229 /* GTL.xcodeproj */,
 				4C43F8F416F86AA900159B29 /* arc */,
 				4CD06B6F16FDEEC100C9DED3 /* arcTests */,
@@ -1963,6 +1975,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02B75DB91727D4FE00FF51B5 /* View in Resources */,
+				02B75DB31727D4ED00FF51B5 /* Plugin in Resources */,
+				0258EC7A1727CCDB00BC8610 /* Controllers in Resources */,
+				0258EC781727CCB600BC8610 /* Model in Resources */,
 				02E7A4A8171BD80E00E22752 /* LiveSDK.framework in Resources */,
 				02B04FCA1701672700FE51CB /* GameObject.h in Resources */,
 				8F2F5B8217061445005AD37F /* nav_gmaps_sample.js in Resources */,

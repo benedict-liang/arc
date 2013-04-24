@@ -83,21 +83,60 @@
         [fileManager copyItemAtURL:plistURL toURL:targetURL error:&error];
         if (error) {
             NSLog(@"%@", error);
+            error = nil;
         }
+        
+        // This is the first time the app has launched.
+        // Copy our source code into the Documents folder.
+        NSURL *documentsURL = [NSURL fileURLWithPath:documentsPath];
+        NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
+        
+        NSURL *controllersFolder = [bundleURL URLByAppendingPathComponent:@"Controllers" isDirectory:YES];
+        NSURL *modelFolder = [bundleURL URLByAppendingPathComponent:@"Model" isDirectory:YES];
+        NSURL *pluginFolder = [bundleURL URLByAppendingPathComponent:@"Plugin" isDirectory:YES];
+        NSURL *viewFolder = [bundleURL URLByAppendingPathComponent:@"View" isDirectory:YES];
+
+        NSURL *arcFolder = [documentsURL URLByAppendingPathComponent:@"(arc) Code" isDirectory:YES];
+        NSURL *controllerTarget = [arcFolder URLByAppendingPathComponent:@"Controllers" isDirectory:YES];
+        NSURL *modelTarget = [arcFolder URLByAppendingPathComponent:@"Model" isDirectory:YES];
+        NSURL *pluginTarget = [arcFolder URLByAppendingPathComponent:@"Plugins" isDirectory:YES];
+        NSURL *viewTarget = [arcFolder URLByAppendingPathComponent:@"View" isDirectory:YES];
+        
+        [fileManager createDirectoryAtURL:arcFolder withIntermediateDirectories:YES attributes:nil error:nil];
+        
+        [fileManager copyItemAtURL:controllersFolder toURL:controllerTarget error:&error];
+        if (error) {
+            NSLog(@"%@", error);
+            error = nil;
+        }
+        [fileManager copyItemAtURL:modelFolder toURL:modelTarget error:&error];
+        if (error) {
+            NSLog(@"%@", error);
+            error = nil;
+        }
+        [fileManager copyItemAtURL:pluginFolder toURL:pluginTarget error:&error];
+        if (error) {
+            NSLog(@"%@", error);
+            error = nil;
+        }
+        [fileManager copyItemAtURL:viewFolder toURL:viewTarget error:&error];
+        if (error) {
+            NSLog(@"%@", error);
+            error = nil;
+        }
+        
+        
+        // Jerome: Temporary code to move support files into the Documents folder.
+        [self addFileToFileManager:fileManager name:@"twist.py" docURL:documentsURL];
+        [self addFileToFileManager:fileManager name:@"GameObject.h" docURL:documentsURL];
+        [self addFileToFileManager:fileManager name:@"home.html" docURL:documentsURL];
+        [self addFileToFileManager:fileManager name:@"nav_gmaps_sample.js" docURL:documentsURL];
+        [self addFileToFileManager:fileManager name:@"arc.md" docURL:documentsURL];
+        [self addFileToFileManager:fileManager name:@"base.rb" docURL:documentsURL];
+        [self addFileToFileManager:fileManager name:@"RequestBuilder.hs" docURL:documentsURL];
+        [self addFileToFileManager:fileManager name:@"filter_routes.clj" docURL:documentsURL];
+        // End of temporary code.
     }
-    
-    // Jerome: Temporary code to move support files into the Documents folder.
-    NSURL *documentsURL = [NSURL fileURLWithPath:documentsPath];
-    
-    [self addFileToFileManager:fileManager name:@"twist.py" docURL:documentsURL];
-    [self addFileToFileManager:fileManager name:@"GameObject.h" docURL:documentsURL];
-    [self addFileToFileManager:fileManager name:@"home.html" docURL:documentsURL];
-    [self addFileToFileManager:fileManager name:@"nav_gmaps_sample.js" docURL:documentsURL];
-    [self addFileToFileManager:fileManager name:@"arc.md" docURL:documentsURL];
-    [self addFileToFileManager:fileManager name:@"base.rb" docURL:documentsURL];
-    [self addFileToFileManager:fileManager name:@"RequestBuilder.hs" docURL:documentsURL];
-    [self addFileToFileManager:fileManager name:@"filter_routes.clj" docURL:documentsURL];
-    // End of temporary code.
     
     // Create the DropBox account manager.
     DBAccountManager* dbAccountManager =
