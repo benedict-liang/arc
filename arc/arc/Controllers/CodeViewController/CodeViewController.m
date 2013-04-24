@@ -312,10 +312,10 @@
 {
     int row = 0;
     for (CodeViewLine *codeViewLine in _lines) {
-        row++;
         if (codeViewLine.lineNumber == lineNumber) {
             break;
         }
+        row++;
     }
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row
