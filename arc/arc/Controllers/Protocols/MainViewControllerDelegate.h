@@ -28,4 +28,7 @@
 - (void)openIn:(id<File>)file;
 - (void)dropboxAuthentication;
 
+@optional
+- (void)closedViewController:(UIViewController *)viewController;
+
 @end
