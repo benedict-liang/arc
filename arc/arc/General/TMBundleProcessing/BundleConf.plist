@@ -1363,6 +1363,10 @@
 		<array>
 			<string>text.html.mediawiki.plist</string>
 		</array>
+		<key>xaml</key>
+		<array>
+			<string>text.xml.plist</string>
+		</array>
 		<key>xhtml</key>
 		<array>
 			<string>text.html.basic.plist</string>

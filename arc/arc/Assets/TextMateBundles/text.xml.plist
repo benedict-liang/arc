@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>capturableScopes</key>
@@ -16,6 +16,7 @@
 		<string>dtml</string>
 		<string>rss</string>
 		<string>opml</string>
+		<string>xaml</string>
 	</array>
 	<key>foldingStartMarker</key>
 	<string>^\s*(&lt;[^!?%/](?!.+?(/&gt;|&lt;/.+?&gt;))|&lt;[!%]--(?!.+?--%?&gt;)|&lt;%[!]?(?!.+?%&gt;))</string>
@@ -758,7 +759,7 @@
 		<key>singlequotedString</key>
 		<dict>
 			<key>begin</key>
-			<string>'</string>
+			<string>&apos;</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -783,7 +784,7 @@
 				<string>string.quoted.single.xml</string>
 			</array>
 			<key>end</key>
-			<string>'</string>
+			<string>&apos;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
