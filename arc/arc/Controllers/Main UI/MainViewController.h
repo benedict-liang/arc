@@ -18,5 +18,6 @@
 #import "File.h"
 #import "TMBundleHeader.h"
 
-@interface MainViewController : ArcSplitViewController <MainViewControllerDelegate, ArcSplitViewControllerDelegate>
+@interface MainViewController : ArcSplitViewController <MainViewControllerDelegate,
+    ArcSplitViewControllerDelegate, UIActionSheetDelegate>
 @end

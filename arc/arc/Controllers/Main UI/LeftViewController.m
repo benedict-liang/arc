@@ -14,7 +14,6 @@
 
 @interface LeftViewController ()
 @property (nonatomic, strong) id<Folder> currentFolder;
-@property (nonatomic, strong) UITabBarController *tabBarController;
 @property (nonatomic, strong) UINavigationController *documentsNavigationViewController;
 @property (nonatomic, strong) UINavigationController *settingsNavigationViewController;
 @property (nonatomic, strong) SettingsViewController *settingsViewController;
@@ -23,6 +22,7 @@
 
 @implementation LeftViewController
 @synthesize delegate = _delegate;
+@synthesize tabBarController = _tabBarController;
 
 - (id)init
 {

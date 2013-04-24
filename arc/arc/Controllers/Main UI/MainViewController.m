@@ -104,6 +104,27 @@
         }];
         // Link to the main view controller instance here.
         [dbAccountManager linkFromController:self];
+    } else {
+        // Ask to unlink account
+        UIActionSheet *dropboxUnlink = [[UIActionSheet alloc] initWithTitle:nil
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"Cancel"
+                                                     destructiveButtonTitle:nil
+                                                          otherButtonTitles:@"Unlink Dropbox", nil];
+        [dropboxUnlink showFromRect:_leftViewController.tabBarController.tabBar.frame
+                             inView:_leftViewController.view
+                           animated:YES];
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet
+    clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        DBAccountManager *dbAccountManager = [DBAccountManager sharedManager];
+        DBAccount *dbAccount = dbAccountManager.linkedAccount;
+        [dbAccount unlink];
+        [_leftViewController forceFolderRefresh];
     }
 }
 
