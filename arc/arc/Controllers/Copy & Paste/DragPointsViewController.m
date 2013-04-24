@@ -552,10 +552,10 @@
                                                             (topCell.line));
     CFRange stringRangeForTopRow = CTLineGetStringRange(topLineRef);
     
-    //temp
     int totalGap = [self getTotalGapForCellAtIndexPath:_topIndexPath];
-    CGPoint adj = CGPointMake(_firstCharacterCoordinates.x - totalGap, _firstCharacterCoordinates.y);
-    CFIndex index = CTLineGetStringIndexForPosition(topLineRef, adj);
+    CGPoint coordinatesWithoutOffset = CGPointMake(_firstCharacterCoordinates.x - totalGap,
+                                                   _firstCharacterCoordinates.y);
+    CFIndex index = CTLineGetStringIndexForPosition(topLineRef, coordinatesWithoutOffset);
     
     if (index < stringRangeForTopRow.length) {
         CGFloat offset = CTLineGetOffsetForStringIndex(topLineRef, index + 1, NULL);
@@ -581,10 +581,10 @@
                                                                (bottomCell.line));
     CFRange stringRangeForBottomRow = CTLineGetStringRange(bottomLineRef);
     
-    //temp
     int totalGap = [self getTotalGapForCellAtIndexPath:_bottomIndexPath];
-    CGPoint adj = CGPointMake(_lastCharacterCoordinates.x - totalGap, _lastCharacterCoordinates.y);
-    CFIndex index = CTLineGetStringIndexForPosition(bottomLineRef, adj);
+    CGPoint coordinatesWithoutOffset = CGPointMake(_lastCharacterCoordinates.x - totalGap,
+                                                   _lastCharacterCoordinates.y);
+    CFIndex index = CTLineGetStringIndexForPosition(bottomLineRef, coordinatesWithoutOffset);
     
     if (index < stringRangeForBottomRow.length - 1) {
         CGFloat offset = CTLineGetOffsetForStringIndex(bottomLineRef, index + 1, NULL);
