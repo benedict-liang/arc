@@ -179,8 +179,10 @@
     } else {
         [self.folderViewControllerDelegate folderViewController:self
                                          DidExitEditModeAnimate:YES];
-        [self.tableView reloadRowsAtIndexPaths:@[_currentFile]
-                              withRowAnimation:UITableViewRowAnimationNone];
+        if (_currentFile) {
+            [self.tableView reloadRowsAtIndexPaths:@[_currentFile]
+                                  withRowAnimation:UITableViewRowAnimationNone];
+        }
     }
 }
 
