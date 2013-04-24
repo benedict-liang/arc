@@ -10,4 +10,5 @@
 
 @protocol MasterViewControllerDelegate <NSObject>
 @property (nonatomic, readonly) NSString *title;
+@property (nonatomic, strong) UITabBarController *tabBarController;
 @end
