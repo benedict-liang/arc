@@ -197,7 +197,7 @@
 
 - (void)secondFileObjectSelected:(id<FileSystemObject>)fileSystemObject
 {
-    if ([Utils isFileSupported:[fileSystemObject name]]) {
+    @try {
         id<File> selectedFile = (id<File>)fileSystemObject;
         if (![selectedFile isAvailable]) {
             [Utils showUnavailableFileDialog];
@@ -205,7 +205,7 @@
         }
         
         [self hideMasterViewAnimated:YES];
-
+        
         _secondCodeViewController = [[CodeViewController alloc] init];
         for (id<PluginDelegate> plugin in _plugins) {
             [_secondCodeViewController registerPlugin:plugin];
@@ -216,7 +216,7 @@
         if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication]statusBarOrientation])) {
             int width = floor(self.view.bounds.size.width/2);
             int height = self.detailView.bounds.size.height;
-
+            
             _codeViewController.view.frame = CGRectMake(0, 0, width, height);
             [_codeViewController redrawCodeViewBoundsChanged:YES];
             
@@ -242,7 +242,8 @@
             [_secondCodeViewController showFile:(id<File>)fileSystemObject];
             [_secondCodeViewController redrawCodeViewBoundsChanged:YES];
         }
-    } else {
+    }
+    @catch (NSException *exception) {
         [Utils showUnsupportedFileDialog];
     }
 }
@@ -262,15 +263,16 @@
 // Shows the file using the CodeViewController
 - (void)fileSelected:(id<File>)file
 {
-    if ([Utils isFileSupported:[file name]]) {
-        if ([file isAvailable]) {
-            [_appState setCurrentFileOpened:file];
+    if ([file isAvailable]) {
+        @try {
             [_codeViewController showFile:file];
-        } else {
-            [Utils showUnavailableFileDialog];
+            [_appState setCurrentFileOpened:file];
+        }
+        @catch (NSException *exception) {
+            [Utils showUnsupportedFileDialog];
         }
     } else {
-        [Utils showUnsupportedFileDialog];
+        [Utils showUnavailableFileDialog];
     }
 }
 
