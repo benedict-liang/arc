@@ -87,6 +87,7 @@
                                          cellRect.size.height + EXTRA_DRAG_POINT_HEIGHT);
         
         [self createDragPoints:selectedRect];
+        [self calculateRectValues];
     }
     
     return self;
@@ -176,7 +177,7 @@
         if (selectionDidChange) {
             int totalGap = [self getTotalGapForCellAtIndexPath:_topIndexPath];
             
-            gesture.view.center = CGPointMake(_firstCharacterCoordinates.x + totalGap,
+            gesture.view.center = CGPointMake(_firstCharacterCoordinates.x,
                                               gesture.view.center.y);
             [gesture setTranslation:CGPointMake(0, 0)
                              inView:_tableView];
@@ -266,7 +267,7 @@
         
         if (selectionDidChange) {
             int totalGap = [self getTotalGapForCellAtIndexPath:_bottomIndexPath];
-            gesture.view.center = CGPointMake(_lastCharacterCoordinates.x + totalGap,
+            gesture.view.center = CGPointMake(_lastCharacterCoordinates.x,
                                               gesture.view.center.y);
             [gesture setTranslation:CGPointMake(0, 0) inView:_tableView];
             CGPoint endPointInRow = CGPointMake(gesture.view.center.x, 0);
@@ -553,10 +554,15 @@
     CTLineRef topLineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                             (topCell.line));
     CFRange stringRangeForTopRow = CTLineGetStringRange(topLineRef);
-    CFIndex index = CTLineGetStringIndexForPosition(topLineRef, _firstCharacterCoordinates);
+    
+    //temp
+    int totalGap = [self getTotalGapForCellAtIndexPath:_topIndexPath];
+    CGPoint adj = CGPointMake(_firstCharacterCoordinates.x - totalGap, _firstCharacterCoordinates.y);
+    CFIndex index = CTLineGetStringIndexForPosition(topLineRef, adj);
+    
     if (index < stringRangeForTopRow.length) {
         CGFloat offset = CTLineGetOffsetForStringIndex(topLineRef, index + 1, NULL);
-        _nextFirstCharacterCoordinates = CGPointMake(offset, 0);
+        _nextFirstCharacterCoordinates = CGPointMake(offset + totalGap, 0);
     }
     else {
         _nextFirstCharacterCoordinates = CGPointMake(NAN, NAN);
@@ -564,7 +570,7 @@
     
     if (index != 0) {
         CGFloat offset = CTLineGetOffsetForStringIndex(topLineRef, index - 1, NULL);
-        _previousFirstCharacterCoordinates = CGPointMake(offset, 0);
+        _previousFirstCharacterCoordinates = CGPointMake(offset + totalGap, 0);
     }
     else {
         _previousFirstCharacterCoordinates = CGPointMake(NAN, NAN);
@@ -577,10 +583,15 @@
     CTLineRef bottomLineRef = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)
                                                                (bottomCell.line));
     CFRange stringRangeForBottomRow = CTLineGetStringRange(bottomLineRef);
-    CFIndex index = CTLineGetStringIndexForPosition(bottomLineRef, _lastCharacterCoordinates);
+    
+    //temp
+    int totalGap = [self getTotalGapForCellAtIndexPath:_bottomIndexPath];
+    CGPoint adj = CGPointMake(_lastCharacterCoordinates.x - totalGap, _lastCharacterCoordinates.y);
+    CFIndex index = CTLineGetStringIndexForPosition(bottomLineRef, adj);
+    
     if (index < stringRangeForBottomRow.length - 1) {
         CGFloat offset = CTLineGetOffsetForStringIndex(bottomLineRef, index + 1, NULL);
-        _nextLastCharacterCoordinates = CGPointMake(offset, 0);
+        _nextLastCharacterCoordinates = CGPointMake(offset + totalGap, 0);
     }
     else {
         _nextLastCharacterCoordinates = CGPointMake(NAN, NAN);
@@ -588,7 +599,7 @@
     
     if (index != 0) {
         CGFloat offset = CTLineGetOffsetForStringIndex(bottomLineRef, index - 1, NULL);
-        _previousLastCharacterCoordinates = CGPointMake(offset, 0);
+        _previousLastCharacterCoordinates = CGPointMake(offset + totalGap, 0);
     }
     else {
         _previousLastCharacterCoordinates = CGPointMake(NAN, NAN);
@@ -597,6 +608,8 @@
 
 - (BOOL)isDragPointsOverlapping:(CGFloat)characterWidth
 {
+    NSLog(@"first: %f, last: %f, width: %f", _firstCharacterCoordinates.x, _lastCharacterCoordinates.x, characterWidth);
+    NSLog(@"next first: %f", _nextFirstCharacterCoordinates.x);
     return
     (_topIndexPath.row == _bottomIndexPath.row) &&
     ((_lastCharacterCoordinates.x - _firstCharacterCoordinates.x) < characterWidth * 2);
