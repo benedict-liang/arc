@@ -179,8 +179,10 @@
     } else {
         [self.folderViewControllerDelegate folderViewController:self
                                          DidExitEditModeAnimate:YES];
-        [self.tableView reloadRowsAtIndexPaths:@[_currentFile]
-                              withRowAnimation:UITableViewRowAnimationNone];
+        if (_currentFile) {
+            [self.tableView reloadRowsAtIndexPaths:@[_currentFile]
+                                  withRowAnimation:UITableViewRowAnimationNone];
+        }
     }
 }
 
@@ -242,9 +244,16 @@
 
 - (void)moveItems:(id)sender
 {
-    DestinationFolderViewController *moveDestinationFolderViewController =
-    [[DestinationFolderViewController alloc] initWithFolder:[RootFolder sharedRootFolder]];
+    DestinationFolderViewController *moveDestinationFolderViewController;
     
+    if ([[self folder] isKindOfClass:[LocalFolder class]] || [[self folder] isEqual:[RootFolder sharedRootFolder]]) {
+        moveDestinationFolderViewController =
+        [[DestinationFolderViewController alloc] initWithFolder:[LocalRootFolder sharedLocalRootFolder]];
+    } else if ([[self folder] isKindOfClass:[DropBoxFolder class]]) {
+        moveDestinationFolderViewController =
+        [[DestinationFolderViewController alloc] initWithFolder:[DropBoxRootFolder sharedDropBoxRootFolder]];
+    }
+
     moveDestinationFolderViewController.delegate = self;
 
     [self showModalViewController:moveDestinationFolderViewController];
