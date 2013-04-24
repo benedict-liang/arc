@@ -46,7 +46,7 @@ const int THRESHOLD_LONG_SETTING_LIST = 5;
 // Default Folder Names
 NSString* const FOLDER_EXTERNAL_APPLICATIONS = @"External Applications";
 NSString* const FOLDER_ROOT = @"Documents";
-NSString* const FOLDER_DROPBOX_ROOT = @"DropBox";
+NSString* const FOLDER_DROPBOX_ROOT = @"Dropbox";
 
 // API Keys
 NSString* const CLOUD_DROPBOX_KEY = @"q591oqy8n4yxgt1";
