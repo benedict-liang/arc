@@ -245,6 +245,7 @@
     }
     @catch (NSException *exception) {
         [Utils showUnsupportedFileDialog];
+        [self showMasterViewAnimated:NO];
     }
 }
 
@@ -264,12 +265,15 @@
 - (void)fileSelected:(id<File>)file
 {
     if ([file isAvailable]) {
+        id<File> originalFile = [_appState currentFileOpened];
         @try {
             [_codeViewController showFile:file];
             [_appState setCurrentFileOpened:file];
+            [_leftViewController forceFolderRefresh];
         }
         @catch (NSException *exception) {
             [Utils showUnsupportedFileDialog];
+            [self fileObjectSelected:originalFile];
         }
     } else {
         [Utils showUnavailableFileDialog];
