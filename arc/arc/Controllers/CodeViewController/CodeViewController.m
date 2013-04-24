@@ -504,6 +504,7 @@
     if ([self.delegate masterViewVisible]) {
         [self.delegate hideMasterViewAnimated:YES];
     } else {
+        [self.delegate closedViewController:self];
         [self.delegate showMasterViewAnimated:YES];
     }
 }
