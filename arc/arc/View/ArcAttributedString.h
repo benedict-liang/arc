@@ -13,6 +13,8 @@
 @property (nonatomic, readonly) NSString *string;
 @property (nonatomic, readonly) NSRange stringRange;
 @property (nonatomic, readonly) NSAttributedString *attributedString;
+
+// returns a "lightweight" NSAttributedString which is sufficient for computation of bounds
 @property (nonatomic, readonly) NSAttributedString *plainAttributedString;
 @property (nonatomic, readonly) NSDictionary *attributesDictionary;
 @property (nonatomic, readonly) NSDictionary *appliedAttributesDictionary;
