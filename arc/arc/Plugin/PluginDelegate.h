@@ -14,9 +14,8 @@
 @protocol CodeViewControllerDelegate;
 
 @protocol PluginDelegate <NSObject>
-// Returns an array of NSStrings corresponding to the
-// settings keys this plugin uses.
-// eg: [@"fontFamily", @"fontSize"]
+// Returns the setting key this plugin uses.
+// eg: @"fontFamily"
 @property (nonatomic, strong) NSString *setting;
 
 // Returns an NSDictionary of properties for this plugin.
@@ -33,7 +32,7 @@
 // Declares if plugin change requires a recalculation of layout
 - (BOOL)affectsBounds;
 
-// Returns the default value for the given setting key.
+// Returns the default value for the plugin
 - (id<NSObject>)defaultValue;
 
 // Exec Methods (Middleware)
