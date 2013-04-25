@@ -278,7 +278,7 @@
         @try {
             [_codeViewController showFile:file];
             [_appState setCurrentFileOpened:file];
-            [_leftViewController forceFolderRefresh];
+         //   [_leftViewController forceFolderRefresh];
         }
         @catch (NSException *exception) {
             [Utils showUnsupportedFileDialog];
