@@ -162,23 +162,41 @@
     _finalOutput = output;
     NSDictionary* theme = [options objectForKey:@"theme"];
 
-
+    // "Greedy parser"
     _matchStore = [_syntaxPatterns parseResultsForContent:_content Range:NSMakeRange(0, _content.length)];
-    //NSLog(@"blowing up...");
     
+    // remove the previous attributes
     [output removeAttributesForSettingKey:SYNTAX_KEY];
+    
+    // apply results
     [self applyForeground:output withTheme:theme];
     [self applyStylesTo:output withRanges:_matchStore withTheme:theme];
+    
+    // render the overlaps
     [self applyStylesTo:output withRanges:_renderTimeOverlapStore withTheme:theme];
+    
+    // setup the fold tree.
     [self setupFoldTree];
+    
+    // update the view
     [self updateView:output withTheme:theme];
     //NSLog(@"view updated!");
+    
+    
+    // "Forward Parse"
     _overlapStore = [_syntaxPatterns forwardParseForContent:_content Range:NSMakeRange(0, _content.length)];
     //NSLog(@"%@",_overlapStore);
-
+    
+    // remove duplicate scopes from matchStore
     [_matchStore removeDuplicateScopesWith:_overlapStore];
+    
+    // again
     [_renderTimeOverlapStore removeDuplicateScopesWith:_overlapStore];
+    
+    // remove everything again
     [output removeAttributesForSettingKey:SYNTAX_KEY];
+    
+    // apply results again.
     [self applyForeground:output withTheme:theme];
     [self applyStylesTo:output withRanges:_matchStore withTheme:theme];
     //[self applyStylesTo:output withRanges:_renderTimeOverlapStore withTheme:theme];
