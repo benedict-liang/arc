@@ -14,12 +14,24 @@
 #import "FileSystemObjectGroup.h"
 
 @interface BasicFolderViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, FolderDelegate>
+// folder to display
 - (id)initWithFolder:(id<Folder>)folder;
+
+// method to group folder contents
+// default implementation segregates folders and files
 - (void)setUpFolderContents;
+
+// create tableView and attaches it to self.view
 - (void)setUpTableView;
+
+// hook for back button
+// in navigation controller stack
 - (void)didPopFromNavigationController;
+
+// reloads tableView
 - (void)refreshFolderView;
 
+// readonly properties for more customisation
 @property (nonatomic, readonly) id<Folder> folder;
 @property (nonatomic, readonly) UITableView *tableView;
 
@@ -27,11 +39,13 @@
 @property (nonatomic, strong) id<UITableViewDelegate> tableViewDelegate;
 @property (nonatomic, strong) id<UITableViewDataSource> tableViewDataSource;
 
+// hook to customise tableView cell before presenting
 - (void)tableView:(UITableView *)tableView
   willPresentCell:(FileObjectTableViewCell *)cell
       atIndexPath:(NSIndexPath *)indexPath;
 
 // Data source Accessor Methods
+// helpers to interface with data
 - (void)setFilesAndFolders:(NSArray *)filesAndFolders;
 - (NSInteger)numberOfSections;
 - (FileSystemObjectGroup *)sectionObjectGroup:(NSInteger)section;
