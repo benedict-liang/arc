@@ -31,7 +31,12 @@ static SkyDriveServiceManager *sharedServiceManager = nil;
 {
     if (self = [super init]) {
         NSArray *scopesRequired = [NSArray arrayWithObjects:SKYDRIVE_SCOPE_SIGNIN, SKYDRIVE_SCOPE_READ_ACCESS, SKYDRIVE_SCOPE_OFFLINE, nil];
-        _liveClient = [[LiveConnectClient alloc] initWithClientId:CLOUD_SKYDRIVE_KEY scopes:scopesRequired delegate:self];
+        
+        NSString *cloudPath = [[NSBundle mainBundle] pathForResource:@"cloudKeys" ofType:@"plist"];
+        NSDictionary *cloudKeys = [NSDictionary dictionaryWithContentsOfFile:cloudPath];
+        NSDictionary *skyDriveCredentials = [cloudKeys valueForKey:@"SkyDrive"];
+        NSString *skyDriveKey = [skyDriveCredentials valueForKey:@"Key"];
+        _liveClient = [[LiveConnectClient alloc] initWithClientId:skyDriveKey scopes:scopesRequired delegate:self];
         _helpers = [NSMutableArray array];
     }
     return self;

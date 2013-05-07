@@ -12,6 +12,8 @@ static GoogleDriveServiceManager *sharedServiceManager = nil;
 
 @interface GoogleDriveServiceManager ()
 @property NSMutableArray *helpers;
+@property NSString *driveId;
+@property NSString *driveSecret;
 @end
 
 @implementation GoogleDriveServiceManager
@@ -35,10 +37,16 @@ static GoogleDriveServiceManager *sharedServiceManager = nil;
 {
     if (self = [super init]) {
         _driveService = [[GTLServiceDrive alloc] init];
+        
+        NSString *cloudPath = [[NSBundle mainBundle] pathForResource:@"cloudKeys" ofType:@"plist"];
+        NSDictionary *cloudKeys = [NSDictionary dictionaryWithContentsOfFile:cloudPath];
+        NSDictionary *googleDriveCredentials = [cloudKeys valueForKey:@"GoogleDrive"];
+        _driveId = [googleDriveCredentials valueForKey:@"ID"];
+        _driveSecret = [googleDriveCredentials valueForKey:@"Secret"];
         _driveService.authorizer = [GTMOAuth2ViewControllerTouch
                                     authForGoogleFromKeychainForName:GOOGLE_KEYCHAIN_NAME
-                                    clientID:CLOUD_GOOGLE_ID
-                                    clientSecret:CLOUD_GOOGLE_SECRET];
+                                    clientID:_driveId
+                                    clientSecret:_driveSecret];
         _helpers = [NSMutableArray array];
     }
     return self;
@@ -50,7 +58,8 @@ static GoogleDriveServiceManager *sharedServiceManager = nil;
 - (void)loginWithViewController:(UIViewController *)controller
 {
     GTMOAuth2ViewControllerTouch *loginController = [[GTMOAuth2ViewControllerTouch alloc]
-                                                     initWithScope:kGTLAuthScopeDriveReadonly clientID:CLOUD_GOOGLE_ID clientSecret:CLOUD_GOOGLE_SECRET keychainItemName:GOOGLE_KEYCHAIN_NAME delegate:self finishedSelector:@selector(viewController:finishedWithAuth:error:)];
+                                                     initWithScope:kGTLAuthScopeDriveReadonly clientID:_driveId clientSecret:_driveSecret
+                                                     keychainItemName:GOOGLE_KEYCHAIN_NAME delegate:self finishedSelector:@selector(viewController:finishedWithAuth:error:)];
     [[controller navigationController] pushViewController:loginController animated:YES];
 }
 

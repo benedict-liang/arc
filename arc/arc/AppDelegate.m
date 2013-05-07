@@ -139,9 +139,12 @@
     }
     
     // Create the DropBox account manager.
+    NSString *cloudPath = [[NSBundle mainBundle] pathForResource:@"cloudKeys" ofType:@"plist"];
+    NSDictionary *cloudKeys = [NSDictionary dictionaryWithContentsOfFile:cloudPath];
+    NSDictionary *dropboxCredentials = [cloudKeys valueForKey:@"Dropbox"];
     DBAccountManager* dbAccountManager =
-    [[DBAccountManager alloc] initWithAppKey:(NSString*)CLOUD_DROPBOX_KEY
-                                      secret:(NSString*)CLOUD_DROPBOX_SECRET];
+    [[DBAccountManager alloc] initWithAppKey:[dropboxCredentials valueForKey:@"Key"]
+                                      secret:[dropboxCredentials valueForKey:@"Secret"]];
     [DBAccountManager setSharedManager:dbAccountManager];
     DBAccount *dbAccount = dbAccountManager.linkedAccount;
     
