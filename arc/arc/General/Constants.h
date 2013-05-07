@@ -49,13 +49,6 @@ extern NSString* const FOLDER_EXTERNAL_APPLICATIONS;
 extern NSString* const FOLDER_ROOT;
 extern NSString* const FOLDER_DROPBOX_ROOT;
 
-// API Keys
-extern NSString* const CLOUD_DROPBOX_KEY;
-extern NSString* const CLOUD_DROPBOX_SECRET;
-extern NSString* const CLOUD_SKYDRIVE_KEY;
-extern NSString* const CLOUD_GOOGLE_ID;
-extern NSString* const CLOUD_GOOGLE_SECRET;
-
 // SkyDrive scopes
 extern NSString* const SKYDRIVE_SCOPE_SIGNIN;
 extern NSString* const SKYDRIVE_SCOPE_READ_ACCESS;

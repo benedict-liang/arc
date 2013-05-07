@@ -26,6 +26,7 @@
 		026BC477170589BD00A9AA5F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC476170589BD00A9AA5F /* SystemConfiguration.framework */; };
 		026BC479170589C600A9AA5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026BC478170589C600A9AA5F /* QuartzCore.framework */; };
 		028B4900170E9D0600C0CEF6 /* UbuntuMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 028B48FF170E9D0600C0CEF6 /* UbuntuMono.ttf */; };
+		028E97961738AE39007B9C0B /* cloudKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 028E97951738AE39007B9C0B /* cloudKeys.plist */; };
 		02A5198D170DC0CE007C038E /* Inconsolata.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02A5198C170DC0CE007C038E /* Inconsolata.ttf */; };
 		02B04FCA1701672700FE51CB /* GameObject.h in Resources */ = {isa = PBXBuildFile; fileRef = 02B04FC91701608C00FE51CB /* GameObject.h */; };
 		02B341E9171C130400DC9639 /* LiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840B66A9445DFA0D1AFD04DC /* LiveSDK.framework */; };
@@ -448,6 +449,7 @@
 		026BC478170589C600A9AA5F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		027EE0381717FD7800302F07 /* LongSettingListViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LongSettingListViewControllerDelegate.h; sourceTree = "<group>"; };
 		028B48FF170E9D0600C0CEF6 /* UbuntuMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UbuntuMono.ttf; sourceTree = "<group>"; };
+		028E97951738AE39007B9C0B /* cloudKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cloudKeys.plist; sourceTree = "<group>"; };
 		02A00794171BBF650099FE61 /* CloudFolder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudFolder.h; sourceTree = "<group>"; };
 		02A5198C170DC0CE007C038E /* Inconsolata.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inconsolata.ttf; sourceTree = "<group>"; };
 		02B04FC91701608C00FE51CB /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
@@ -1080,6 +1082,7 @@
 				4C43F90216F86AA900159B29 /* Default@2x.png */,
 				4C43F90416F86AA900159B29 /* Default-568h@2x.png */,
 				02E162CC170B02F400C9D23B /* appState.plist */,
+				028E97951738AE39007B9C0B /* cloudKeys.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2237,6 +2240,7 @@
 				8FE0039417239DA70013B9AC /* dragpointcircletop.png in Resources */,
 				8FE003971723C8BD0013B9AC /* dragpointcirclebottom@2x.png in Resources */,
 				8FE003981723C8BD0013B9AC /* dragpointcircletop@2x.png in Resources */,
+				028E97961738AE39007B9C0B /* cloudKeys.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

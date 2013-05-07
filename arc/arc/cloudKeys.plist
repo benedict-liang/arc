@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SkyDrive</key>
+	<dict>
+		<key>Key</key>
+		<string>00000000480F0B47</string>
+	</dict>
+	<key>GoogleDrive</key>
+	<dict>
+		<key>Secret</key>
+		<string>7j820ouQmOBleXqrfk8U3lkU</string>
+		<key>ID</key>
+		<string>53087368546.apps.googleusercontent.com</string>
+	</dict>
+	<key>Dropbox</key>
+	<dict>
+		<key>Key</key>
+		<string>q591oqy8n4yxgt1</string>
+		<key>Secret</key>
+		<string>kkb1vzgnah76zmr</string>
+	</dict>
+</dict>
+</plist>
