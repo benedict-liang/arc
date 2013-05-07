@@ -5,21 +5,21 @@
 	<key>SkyDrive</key>
 	<dict>
 		<key>Key</key>
-		<string>00000000480F0B47</string>
+		<string>SKYDRIVE_KEY_HERE</string>
 	</dict>
 	<key>GoogleDrive</key>
 	<dict>
 		<key>Secret</key>
-		<string>7j820ouQmOBleXqrfk8U3lkU</string>
+		<string>GOOGLE_SECRET_HERE</string>
 		<key>ID</key>
-		<string>53087368546.apps.googleusercontent.com</string>
+		<string>GOOGLE_ID_HERE</string>
 	</dict>
 	<key>Dropbox</key>
 	<dict>
 		<key>Key</key>
-		<string>q591oqy8n4yxgt1</string>
+		<string>DROPBOX_KEY_HERE</string>
 		<key>Secret</key>
-		<string>kkb1vzgnah76zmr</string>
+		<string>DROPBOX_SECRET_HERE</string>
 	</dict>
 </dict>
 </plist>
